@@ -1,0 +1,306 @@
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@800&family=Inter:wght@900&display=swap" rel="stylesheet">
+
+<style>
+  /* === SHARED STAGE === */
+  .stage { display: flex; flex-direction: column; gap: 56px; margin-top: 12px; }
+  .candidate { display: flex; flex-direction: column; gap: 16px; }
+  .candidate-header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .candidate-letter {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 6px;
+    background: rgba(255,255,255,0.08); color: #fff;
+    font: 700 18px/1 system-ui, sans-serif;
+  }
+  .candidate-title { font: 700 22px/1.1 system-ui, sans-serif; color: #fff; }
+  .candidate-vibe { font: 400 14px/1.4 system-ui, sans-serif; color: rgba(255,255,255,0.6); }
+  .candidate-specs {
+    display: flex; gap: 18px; flex-wrap: wrap; font: 500 11px/1 system-ui, sans-serif;
+    color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .swatch {
+    display: inline-block; width: 12px; height: 12px; border-radius: 2px;
+    vertical-align: -1px; margin-right: 6px;
+  }
+  .row { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+  .row-label { font: 500 10px/1 system-ui, sans-serif; color: rgba(255,255,255,0.4);
+              text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+
+  /* Each thumb is rendered at 1280x720 internally and CSS-scaled down so
+     proportions are pixel-faithful at any preview size. */
+  .thumb-frame { display: inline-block; }
+  .thumb {
+    width: 1280px; height: 720px; transform-origin: top left;
+    position: relative; overflow: hidden;
+  }
+  .full   { transform: scale(0.4); width: 512px; height: 288px; }
+  .full > .thumb { /* nothing — the wrapper is the visible box */ }
+  .full-wrap { width: 512px; height: 288px; overflow: hidden; }
+  .grid-wrap { width: 210px; height: 118px; overflow: hidden; }
+  .grid-wrap .thumb { transform: scale(0.164); }
+
+  /* === CANDIDATE A — PROGRAMMING MAGAZINE === */
+  .a-thumb {
+    background: #0A0E1A;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  .a-text {
+    position: absolute; left: 80px; top: 110px; width: 760px;
+    color: #fff; font-weight: 700; line-height: 1.0;
+    letter-spacing: -0.01em;
+  }
+  .a-row { display: block; font-size: 132px; margin-bottom: 18px; text-transform: uppercase; }
+  .a-accent { color: #C7FF3D; }
+  .a-icon {
+    position: absolute; right: 130px; top: 50%; transform: translateY(-50%);
+    width: 220px; height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  }
+  .a-icon .glyph { font-size: 220px; line-height: 0.85; color: #fff; }
+  .a-icon .glyph-accent { color: #C7FF3D; }
+
+  /* === CANDIDATE B — TERMINAL SCHOLAR === */
+  .b-thumb {
+    background: #1A1410;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .b-text {
+    position: absolute; left: 80px; top: 100px; width: 760px;
+    color: #F5E6D3; font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .b-row { display: block; font-size: 116px; margin-bottom: 20px; text-transform: uppercase; }
+  .b-accent { color: #FFB627; }
+  .b-icon {
+    position: absolute; right: 120px; top: 50%; transform: translateY(-50%);
+    width: 220px; height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-weight: 800;
+  }
+  .b-icon .glyph { font-size: 200px; line-height: 0.85; color: #F5E6D3;
+                   border: 4px solid #F5E6D3; padding: 18px 28px; border-radius: 8px; }
+  .b-icon .glyph-accent { color: #FFB627; }
+
+  /* === CANDIDATE C — PRINT CONTRARIAN === */
+  .c-thumb {
+    background: #F4F1E8;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .c-text {
+    position: absolute; left: 80px; top: 90px; width: 780px;
+    color: #1A1A1A; font-weight: 900; line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .c-row { display: block; font-size: 138px; margin-bottom: 16px; text-transform: uppercase; }
+  .c-accent { color: #00665E; }
+  .c-icon {
+    position: absolute; right: 130px; top: 50%; transform: translateY(-50%);
+    width: 230px; height: 230px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif; font-weight: 900;
+  }
+  .c-icon .glyph { font-size: 230px; line-height: 0.85; color: #1A1A1A; letter-spacing: -0.05em; }
+  .c-icon .glyph-accent { color: #00665E; }
+
+  .compare-strip {
+    margin-top: 8px; padding: 14px 18px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  }
+  .compare-strip h4 { font: 600 12px/1 system-ui, sans-serif; color: rgba(255,255,255,0.6);
+                      text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px; }
+  .compare-row { display: flex; gap: 14px; align-items: flex-end; }
+  .compare-cell { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .compare-cell .lbl { font: 500 10px/1 system-ui, sans-serif; color: rgba(255,255,255,0.5);
+                       text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .pawel-note {
+    margin-top: 8px; padding: 14px 18px;
+    background: rgba(239, 74, 74, 0.06); border: 1px solid rgba(239, 74, 74, 0.2);
+    border-radius: 8px; color: rgba(255,255,255,0.7);
+    font: 400 13px/1.5 system-ui, sans-serif;
+  }
+  .pawel-note code {
+    background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 3px;
+    font-size: 12px;
+  }
+</style>
+
+<h2>Pick a visual signature for the channel</h2>
+<p class="subtitle">All three render the same content (Pawel's actual #8 thumbnail wording) so you can compare like-for-like. Each candidate is a coherent set: font + background + accent color + icon style. Whichever you pick gets locked into the skill's templates and used for every video.</p>
+
+<div class="pawel-note">
+  Compare against Pawel's original at <code>research/pawel-code-stuff/thumbnails/08-text-rendering.jpg</code> &mdash; that's the thumbnail you're trying to <em>not</em> look like in a feed.
+</div>
+
+<div class="stage">
+
+  <!-- ============ CANDIDATE A ============ -->
+  <div class="candidate">
+    <div class="candidate-header">
+      <span class="candidate-letter">A</span>
+      <span class="candidate-title">Programming magazine</span>
+      <span class="candidate-vibe">Confident editorial &mdash; like the cover of an indie tech zine.</span>
+    </div>
+    <div class="candidate-specs">
+      <span><span class="swatch" style="background:#0A0E1A;border:1px solid rgba(255,255,255,0.2)"></span>BG &nbsp;#0A0E1A deep ink</span>
+      <span><span class="swatch" style="background:#C7FF3D"></span>ACCENT &nbsp;#C7FF3D electric lime</span>
+      <span>FONT &nbsp;Space Grotesk Bold</span>
+      <span>ICON &nbsp;solid silhouette, accent cutout</span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-label">Full size (40% scale of 1280&times;720)</div>
+        <div class="full-wrap">
+          <div class="thumb a-thumb full" style="transform:scale(0.4)">
+            <div class="a-text">
+              <span class="a-row"><span class="a-accent">TEXT</span> RENDERING</span>
+              <span class="a-row">IS INSANELY</span>
+              <span class="a-row a-accent">DIFFICULT</span>
+            </div>
+            <div class="a-icon">
+              <span class="glyph">A<span class="glyph-accent">a</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row-label">YouTube feed grid (~210px)</div>
+        <div class="grid-wrap">
+          <div class="thumb a-thumb">
+            <div class="a-text">
+              <span class="a-row"><span class="a-accent">TEXT</span> RENDERING</span>
+              <span class="a-row">IS INSANELY</span>
+              <span class="a-row a-accent">DIFFICULT</span>
+            </div>
+            <div class="a-icon">
+              <span class="glyph">A<span class="glyph-accent">a</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CANDIDATE B ============ -->
+  <div class="candidate">
+    <div class="candidate-header">
+      <span class="candidate-letter">B</span>
+      <span class="candidate-title">Terminal scholar</span>
+      <span class="candidate-vibe">Espresso lab notebook &mdash; warm dark, monospace, scholarly.</span>
+    </div>
+    <div class="candidate-specs">
+      <span><span class="swatch" style="background:#1A1410"></span>BG &nbsp;#1A1410 espresso</span>
+      <span><span class="swatch" style="background:#FFB627"></span>ACCENT &nbsp;#FFB627 amber</span>
+      <span>FONT &nbsp;JetBrains Mono ExtraBold</span>
+      <span>ICON &nbsp;outlined badge, accent fill</span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-label">Full size (40% scale)</div>
+        <div class="full-wrap">
+          <div class="thumb b-thumb full" style="transform:scale(0.4)">
+            <div class="b-text">
+              <span class="b-row"><span class="b-accent">TEXT</span> RENDERING</span>
+              <span class="b-row">IS INSANELY</span>
+              <span class="b-row b-accent">DIFFICULT</span>
+            </div>
+            <div class="b-icon">
+              <span class="glyph">A<span class="glyph-accent">a</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row-label">YouTube feed grid (~210px)</div>
+        <div class="grid-wrap">
+          <div class="thumb b-thumb">
+            <div class="b-text">
+              <span class="b-row"><span class="b-accent">TEXT</span> RENDERING</span>
+              <span class="b-row">IS INSANELY</span>
+              <span class="b-row b-accent">DIFFICULT</span>
+            </div>
+            <div class="b-icon">
+              <span class="glyph">A<span class="glyph-accent">a</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CANDIDATE C ============ -->
+  <div class="candidate">
+    <div class="candidate-header">
+      <span class="candidate-letter">C</span>
+      <span class="candidate-title">Print contrarian</span>
+      <span class="candidate-vibe">Light mode in a dark feed &mdash; paper, heavy display type, deep teal.</span>
+    </div>
+    <div class="candidate-specs">
+      <span><span class="swatch" style="background:#F4F1E8"></span>BG &nbsp;#F4F1E8 warm paper</span>
+      <span><span class="swatch" style="background:#00665E"></span>ACCENT &nbsp;#00665E deep teal</span>
+      <span>FONT &nbsp;Inter Black</span>
+      <span>ICON &nbsp;heavy filled, accent detail</span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-label">Full size (40% scale)</div>
+        <div class="full-wrap">
+          <div class="thumb c-thumb full" style="transform:scale(0.4)">
+            <div class="c-text">
+              <span class="c-row"><span class="c-accent">TEXT</span> RENDERING</span>
+              <span class="c-row">IS INSANELY</span>
+              <span class="c-row c-accent">DIFFICULT</span>
+            </div>
+            <div class="c-icon">
+              <span class="glyph">A<span class="glyph-accent">a</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row-label">YouTube feed grid (~210px)</div>
+        <div class="grid-wrap">
+          <div class="thumb c-thumb">
+            <div class="c-text">
+              <span class="c-row"><span class="c-accent">TEXT</span> RENDERING</span>
+              <span class="c-row">IS INSANELY</span>
+              <span class="c-row c-accent">DIFFICULT</span>
+            </div>
+            <div class="c-icon">
+              <span class="glyph">A<span class="glyph-accent">a</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options" style="margin-top: 48px">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Programming magazine</h3>
+      <p>Deep ink + electric lime + Space Grotesk. Modern, editorial, distinctive lime accent that no other tech channel uses.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Terminal scholar</h3>
+      <p>Espresso brown + amber + JetBrains Mono. Code-feeling without copying Pawel's bitmap font. Warm dark stands apart from blue-dark and pure black.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Print contrarian</h3>
+      <p>Warm paper + deep teal + Inter Black. The riskiest pick &mdash; light mode in a feed of dark thumbnails screams "different." High differentiation, but viewers expect dark.</p>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top: 24px; font-size: 13px;">
+  Click a candidate above to register a pick, and tell me in the terminal what you think &mdash; including any tweaks (e.g., "B but with a different accent color" or "A but warmer background"). I can iterate on this screen before locking the choice into the spec.
+</p>

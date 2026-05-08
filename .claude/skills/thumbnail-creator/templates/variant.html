@@ -1,0 +1,50 @@
+<!--
+  Tokens substituted by the thumbnail-creator skill:
+    {{STYLES_HREF}}        absolute file:// URL to templates/styles.css
+    {{TITLE_PLAIN}}        plain text title (for <title>)
+    {{ROW_FONT_SIZE_PX}}   integer pixel size, autosized per variant
+    {{TITLE_ROW_1..3}}     row HTML with accent <span> markup
+    {{ICON_SVG_BODY}}      SVG body (children of <svg>); from Lucide cache
+                           or Iconify on-demand fetch (never hand-coded)
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{TITLE_PLAIN}}</title>
+  <link rel="stylesheet" href="{{STYLES_HREF}}">
+</head>
+<body>
+  <div class="thumbnail">
+    <div class="thumbnail-text" style="font-size: {{ROW_FONT_SIZE_PX}}px;">
+      <span class="thumbnail-row">{{TITLE_ROW_1}}</span>
+      <span class="thumbnail-row">{{TITLE_ROW_2}}</span>
+      <span class="thumbnail-row">{{TITLE_ROW_3}}</span>
+    </div>
+    <div class="thumbnail-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">{{ICON_SVG_BODY}}</svg>
+    </div>
+    <div class="grid-overlay" aria-hidden="true">
+      <div class="grid-cell">1</div>
+      <div class="grid-cell">2</div>
+      <div class="grid-cell">3</div>
+      <div class="grid-cell">4</div>
+      <div class="grid-cell">5</div>
+      <div class="grid-cell">6</div>
+      <div class="grid-cell">7</div>
+      <div class="grid-cell">8</div>
+      <div class="grid-cell">9</div>
+      <div class="grid-cell">10</div>
+      <div class="grid-cell">11</div>
+      <div class="grid-cell">12</div>
+      <div class="grid-safe-area"></div>
+      <div class="grid-duration-badge"></div>
+    </div>
+  </div>
+  <script>
+    if (location.search.includes('grid')) {
+      document.querySelector('.thumbnail').classList.add('with-grid');
+    }
+  </script>
+</body>
+</html>

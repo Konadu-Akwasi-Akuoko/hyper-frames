@@ -1,0 +1,1249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Why is rendering text so complicated?</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0b0d12;
+        color: #e8eaed;
+        font-family: "Inter", system-ui, sans-serif;
+        font-feature-settings: "ss01" on, "cv11" on;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0b0d12;
+      }
+      #s1 { z-index: 1; }
+      #s2, #s3, #s4, #s5, #s6, #s7, #s8, #s9 { opacity: 0; }
+      .mono { font-family: "JetBrains Mono", "SF Mono", monospace; }
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #a3acba;
+      }
+      .meta-corner {
+        position: absolute;
+        top: 48px; left: 64px;
+        display: flex; align-items: center; gap: 14px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #9099a8;
+        letter-spacing: 0.14em;
+      }
+      .meta-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: #ffb547;
+        box-shadow: 0 0 12px rgba(255, 181, 71, 0.6);
+      }
+      .meta-right {
+        position: absolute;
+        top: 48px; right: 64px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #9099a8;
+        letter-spacing: 0.14em;
+      }
+      .footer-rule {
+        position: absolute;
+        bottom: 80px; left: 64px; right: 64px;
+        height: 1px;
+        background: #1f242c;
+      }
+      .footer-label {
+        position: absolute;
+        bottom: 36px; left: 64px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #9099a8;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .footer-counter {
+        position: absolute;
+        bottom: 36px; right: 64px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #9099a8;
+        letter-spacing: 0.14em;
+      }
+
+      /* ===== Scene 1: Hook ===== */
+      #s1 .grid-bg {
+        position: absolute; inset: 0;
+        background-image:
+          linear-gradient(#1a1f2a 1px, transparent 1px),
+          linear-gradient(90deg, #1a1f2a 1px, transparent 1px);
+        background-size: 80px 80px;
+        opacity: 0.35;
+      }
+      #s1 .glow {
+        position: absolute;
+        left: 50%; top: 50%;
+        width: 1400px; height: 1400px;
+        margin: -700px 0 0 -700px;
+        background: radial-gradient(circle at center, rgba(255,181,71,0.18) 0%, rgba(255,181,71,0) 60%);
+        pointer-events: none;
+      }
+      #s1 .editor {
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: 1100px; height: 360px;
+        background: #11141b;
+        border: 2px solid #1f242c;
+        border-radius: 14px;
+        padding: 36px 48px;
+        display: flex; flex-direction: column; gap: 20px;
+      }
+      #s1 .editor-titlebar {
+        display: flex; align-items: center; gap: 14px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #9099a8;
+      }
+      #s1 .tl-dot {
+        width: 12px; height: 12px; border-radius: 50%;
+        background: #2a313d;
+      }
+      #s1 .editor-line {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 96px;
+        font-weight: 600;
+        color: #e8eaed;
+        display: flex; align-items: center;
+        line-height: 1;
+        height: 130px;
+      }
+      #s1 .typed { color: #ffb547; }
+      #s1 .cursor {
+        display: inline-block;
+        width: 6px; height: 96px;
+        background: #ffb547;
+        margin-left: 10px;
+        box-shadow: 0 0 18px rgba(255,181,71,0.7);
+      }
+      #s1 .nightmare-stack {
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 0;
+      }
+      #s1 .ns-eyebrow { color: #a3acba; }
+      #s1 .ns-line {
+        font-size: 168px;
+        font-weight: 900;
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        margin-top: 10px;
+      }
+      #s1 .ns-amber { color: #ffb547; }
+      #s1 .ns-foot {
+        margin-top: 16px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        color: #9099a8;
+        letter-spacing: 0.18em;
+      }
+
+      /* ===== Scene 2: Easy vs Hard ===== */
+      #s2 .split { display: flex; width: 100%; height: 100%; }
+      #s2 .pane { flex: 1; padding: 140px 100px; position: relative; }
+      #s2 .pane-easy { border-right: 1px solid #1f242c; }
+      #s2 .pane-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px; font-weight: 500;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: #a3acba;
+      }
+      #s2 .pane-tag.ok { color: #7dd87d; }
+      #s2 .pane-tag.bad { color: #ff6b5d; }
+      #s2 .pane-title {
+        font-size: 88px; font-weight: 800;
+        line-height: 1; margin-top: 14px;
+        letter-spacing: -0.025em;
+      }
+      #s2 .easy-rect {
+        margin-top: 60px;
+        width: 540px; height: 320px;
+        background: #ffb547;
+        border-radius: 6px;
+        box-shadow: 0 0 60px rgba(255,181,71,0.25);
+      }
+      #s2 .easy-call {
+        margin-top: 28px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 26px;
+        color: #e8eaed;
+      }
+      #s2 .easy-call .fn { color: #ffb547; }
+      #s2 .easy-call .arg { color: #67e8f9; }
+      #s2 .glyph-box {
+        margin-top: 60px;
+        width: 540px; height: 320px;
+        position: relative;
+      }
+      #s2 .glyph {
+        font-family: "Inter", sans-serif;
+        font-size: 360px; font-weight: 800;
+        color: #e8eaed;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+      #s2 .glyph-overlay {
+        position: absolute; inset: 0;
+        pointer-events: none;
+      }
+      #s2 .hard-tags {
+        margin-top: 28px;
+        display: flex; flex-wrap: wrap; gap: 12px;
+      }
+      #s2 .tag {
+        padding: 8px 14px;
+        border: 1px solid #2a313d;
+        border-radius: 4px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #b8c0cc;
+        letter-spacing: 0.06em;
+      }
+      #s2 .tag.danger { color: #ff6b5d; border-color: #4a2724; }
+
+      /* ===== Scene 3: 3 pillars ===== */
+      #s3 .s3-wrap {
+        width: 100%; height: 100%;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        gap: 60px;
+      }
+      #s3 .s3-eyebrow { color: #a3acba; }
+      #s3 .s3-headline {
+        font-size: 112px; font-weight: 900;
+        letter-spacing: -0.03em; line-height: 1;
+      }
+      #s3 .pillars { display: flex; gap: 60px; margin-top: 30px; }
+      #s3 .pillar {
+        width: 380px; height: 380px;
+        border: 2px solid #1f242c;
+        background: #11141b;
+        border-radius: 18px;
+        padding: 50px 36px;
+        display: flex; flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+      #s3 .pillar-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        color: #9099a8;
+        letter-spacing: 0.18em;
+      }
+      #s3 .pillar-title {
+        font-size: 80px; font-weight: 900;
+        letter-spacing: -0.02em;
+        color: #ffb547;
+        line-height: 0.95;
+      }
+      #s3 .pillar-icon {
+        position: absolute;
+        right: 28px; bottom: 28px;
+        width: 64px; height: 64px;
+        opacity: 0.5;
+      }
+      #s3 .pillar-icon svg { width: 100%; height: 100%; display: block; }
+
+      /* ===== Scene 4: Bitmap fails ===== */
+      #s4 .s4-wrap {
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 0 120px;
+        gap: 80px;
+      }
+      #s4 .s4-text { display: flex; flex-direction: column; gap: 20px; }
+      #s4 .s4-eq {
+        font-size: 96px; font-weight: 900;
+        letter-spacing: -0.03em; line-height: 1;
+      }
+      #s4 .s4-eq .pic { color: #9099a8; text-decoration: line-through; text-decoration-color: #ff6b5d; text-decoration-thickness: 6px; }
+      #s4 .s4-sub {
+        font-size: 32px;
+        color: #a3acba;
+        max-width: 600px;
+        line-height: 1.35;
+      }
+      #s4 .bitmap-stage {
+        width: 600px; height: 600px;
+        margin-left: auto;
+        position: relative;
+        display: flex; align-items: center; justify-content: center;
+      }
+      #s4 .bitmap-canvas {
+        position: relative;
+        width: 480px; height: 480px;
+      }
+      #s4 .pix {
+        position: absolute;
+        background: #e8eaed;
+      }
+      #s4 .ruler {
+        position: absolute;
+        bottom: -50px; left: 0; right: 0;
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 20px;
+        color: #9099a8;
+        letter-spacing: 0.16em;
+      }
+
+      /* ===== Scene 5: Bezier ===== */
+      #s5 .s5-wrap {
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-columns: 720px 1fr;
+        padding: 100px 100px 120px 100px;
+        gap: 80px;
+      }
+      #s5 .s5-left { display: flex; flex-direction: column; justify-content: center; gap: 26px; }
+      #s5 .s5-eyebrow { color: #a3acba; }
+      #s5 .s5-title {
+        font-size: 110px;
+        font-weight: 900;
+        line-height: 0.96;
+        letter-spacing: -0.035em;
+      }
+      #s5 .s5-title .accent { color: #ffb547; }
+      #s5 .s5-eq {
+        margin-top: 12px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 24px;
+        color: #b8c0cc;
+        background: #11141b;
+        border: 1px solid #1f242c;
+        padding: 18px 22px;
+        border-radius: 10px;
+        line-height: 1.6;
+      }
+      #s5 .s5-eq .k { color: #67e8f9; }
+      #s5 .s5-eq .a { color: #ffb547; }
+      #s5 .s5-instructions {
+        margin-top: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        line-height: 1.7;
+        color: #a3acba;
+      }
+      #s5 .s5-instructions .row { display: flex; align-items: baseline; gap: 14px; }
+      #s5 .s5-instructions .row.active { color: #e8eaed; }
+      #s5 .s5-instructions .marker {
+        display: inline-block;
+        width: 10px; height: 10px; border-radius: 50%;
+        background: #2a313d;
+        flex-shrink: 0;
+        position: relative;
+        top: 2px;
+      }
+      #s5 .s5-instructions .row.active .marker { background: #ffb547; box-shadow: 0 0 10px rgba(255,181,71,0.8); }
+      #s5 .s5-canvas-wrap {
+        position: relative;
+        background: #11141b;
+        border: 1px solid #1f242c;
+        border-radius: 14px;
+        padding: 30px;
+        display: flex; align-items: center; justify-content: center;
+      }
+      #s5 .s5-grid-bg {
+        position: absolute; inset: 30px;
+        background-image:
+          linear-gradient(#1a1f2a 1px, transparent 1px),
+          linear-gradient(90deg, #1a1f2a 1px, transparent 1px);
+        background-size: 80px 80px;
+        opacity: 0.6;
+        border-radius: 6px;
+      }
+      #s5 svg.bezier { width: 100%; height: 100%; position: relative; z-index: 2; }
+
+      /* ===== Scene 6: Continuous vs Discrete ===== */
+      #s6 .s6-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%; height: 100%;
+        padding: 100px 80px;
+        gap: 60px;
+      }
+      #s6 .s6-pane {
+        position: relative;
+        border: 1px solid #1f242c;
+        background: #11141b;
+        border-radius: 14px;
+        padding: 60px 50px;
+        display: flex; flex-direction: column;
+        align-items: flex-start; gap: 22px;
+        overflow: hidden;
+      }
+      #s6 .s6-eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      #s6 .s6-pane.cont .s6-eyebrow { color: #67e8f9; }
+      #s6 .s6-pane.disc .s6-eyebrow { color: #ffb547; }
+      #s6 .s6-title {
+        font-size: 84px; font-weight: 900;
+        letter-spacing: -0.03em; line-height: 0.96;
+      }
+      #s6 .s6-canvas {
+        flex: 1; width: 100%;
+        position: relative;
+        margin-top: 6px;
+      }
+      #s6 .s6-tag {
+        position: absolute;
+        bottom: 30px; left: 50px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 20px;
+        color: #9099a8;
+        letter-spacing: 0.14em;
+      }
+
+      /* ===== Scene 7: Rasterization ===== */
+      #s7 .s7-wrap {
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 800px;
+        align-items: center;
+        padding: 100px 100px;
+        gap: 80px;
+      }
+      #s7 .s7-left { display: flex; flex-direction: column; gap: 26px; }
+      #s7 .s7-eyebrow { color: #a3acba; }
+      #s7 .s7-title {
+        font-size: 116px;
+        font-weight: 900;
+        line-height: 0.94;
+        letter-spacing: -0.035em;
+      }
+      #s7 .s7-title .accent { color: #ffb547; }
+      #s7 .s7-arrow {
+        display: flex; align-items: center; gap: 28px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 26px;
+        color: #b8c0cc;
+        margin-top: 10px;
+      }
+      #s7 .s7-arrow .arr { color: #ffb547; font-size: 30px; }
+      #s7 .s7-arrow .label { color: #a3acba; }
+      #s7 .s7-canvas {
+        width: 720px; height: 720px;
+        margin-left: auto;
+        background: #11141b;
+        border: 1px solid #1f242c;
+        border-radius: 14px;
+        padding: 30px;
+        position: relative;
+      }
+
+      /* ===== Scene 8: Aliasing ===== */
+      #s8 .s8-wrap {
+        width: 100%; height: 100%;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        gap: 50px;
+      }
+      #s8 .s8-eyebrow { color: #ff6b5d; }
+      #s8 .s8-title {
+        font-size: 140px;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        line-height: 0.96;
+      }
+      #s8 .s8-title .accent { color: #ff6b5d; }
+      #s8 .s8-stage {
+        position: relative;
+        width: 1100px; height: 460px;
+        display: flex; align-items: center; justify-content: center;
+      }
+      #s8 .s8-callout {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        color: #a3acba;
+        letter-spacing: 0.16em;
+      }
+
+      /* ===== Scene 9: Anti-aliasing ===== */
+      #s9 .s9-wrap {
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-columns: 720px 1fr;
+        padding: 100px 100px 120px 100px;
+        gap: 80px;
+        align-items: center;
+      }
+      #s9 .s9-left { display: flex; flex-direction: column; gap: 24px; }
+      #s9 .s9-eyebrow { color: #7dd87d; }
+      #s9 .s9-title {
+        font-size: 108px;
+        font-weight: 900;
+        line-height: 0.94;
+        letter-spacing: -0.035em;
+      }
+      #s9 .s9-title .accent { color: #7dd87d; }
+      #s9 .s9-explainer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        line-height: 1.7;
+        color: #b8c0cc;
+        background: #11141b;
+        border: 1px solid #1f242c;
+        padding: 22px 26px;
+        border-radius: 10px;
+      }
+      #s9 .s9-explainer .pct { color: #ffb547; font-weight: 600; }
+      #s9 .s9-canvas {
+        width: 720px; height: 720px;
+        margin-left: auto;
+        background: #11141b;
+        border: 1px solid #1f242c;
+        border-radius: 14px;
+        padding: 30px;
+        position: relative;
+      }
+      #s9 .s9-end-fade {
+        position: absolute; inset: 0;
+        background: #0b0d12;
+        opacity: 0;
+        z-index: 99;
+        pointer-events: none;
+      }
+      #s9 .s9-end-card {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        gap: 16px;
+        opacity: 0;
+        z-index: 100;
+        text-align: center;
+        padding: 0 200px;
+      }
+      #s9 .s9-end-card .end-eyebrow { color: #9099a8; }
+      #s9 .s9-end-card .end-title {
+        font-size: 72px; font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="120"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- audio: voiceover -->
+      <audio id="vo"
+        data-start="0"
+        data-duration="120"
+        data-track-index="9"
+        data-volume="1"
+        src="audio/rendering-text-2min.mp3"></audio>
+
+      <!-- ===== Scene 1: Hook ===== -->
+      <div id="s1" class="scene">
+        <div class="grid-bg"></div>
+        <div class="glow" data-layout-allow-overflow></div>
+        <div id="s1-editor" class="editor">
+          <div class="editor-titlebar">
+            <span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span>
+            <span style="margin-left: 14px;">~/draft.txt</span>
+          </div>
+          <div class="editor-line">
+            <span id="s1-typed" class="typed"></span><span id="s1-cursor" class="cursor"></span>
+          </div>
+        </div>
+
+        <div id="s1-nightmare" class="nightmare-stack">
+          <div class="eyebrow ns-eyebrow">UNDER THE HOOD</div>
+          <div class="ns-line">A <span class="ns-amber">MATHEMATICAL</span></div>
+          <div class="ns-line ns-amber">NIGHTMARE.</div>
+          <div class="ns-foot">/// translating one keystroke into pixels</div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 2: Easy vs Hard ===== -->
+      <div id="s2" class="scene">
+        <div class="split">
+          <div class="pane pane-easy">
+            <div id="s2-easy-tag" class="pane-tag ok">// EASY</div>
+            <div id="s2-easy-title" class="pane-title">Draw a rectangle.</div>
+            <div id="s2-easy-rect" class="easy-rect"></div>
+            <div id="s2-easy-call" class="easy-call">
+              <span class="fn">gpu.fillRect</span>(<span class="arg">x, y, w, h, color</span>)
+            </div>
+          </div>
+          <div class="pane pane-hard">
+            <div id="s2-hard-tag" class="pane-tag bad">// HARD</div>
+            <div id="s2-hard-title" class="pane-title">Draw text.</div>
+            <div class="glyph-box">
+              <div id="s2-glyph" class="glyph">A</div>
+              <svg id="s2-overlay" class="glyph-overlay" viewBox="0 0 540 320">
+                <g stroke="#ff6b5d" stroke-width="2" fill="none" opacity="0">
+                  <circle cx="105" cy="270" r="6" fill="#ff6b5d"/>
+                  <circle cx="265" cy="40"  r="6" fill="#ff6b5d"/>
+                  <circle cx="425" cy="270" r="6" fill="#ff6b5d"/>
+                  <circle cx="195" cy="190" r="5" fill="#ff6b5d"/>
+                  <circle cx="335" cy="190" r="5" fill="#ff6b5d"/>
+                  <line x1="105" y1="270" x2="265" y2="40" stroke-dasharray="4 4"/>
+                  <line x1="265" y1="40"  x2="425" y2="270" stroke-dasharray="4 4"/>
+                  <line x1="195" y1="190" x2="335" y2="190" stroke-dasharray="4 4"/>
+                </g>
+              </svg>
+            </div>
+            <div id="s2-hard-tags" class="hard-tags">
+              <span class="tag">vector outline</span>
+              <span class="tag">hinting</span>
+              <span class="tag">kerning</span>
+              <span class="tag">sub-pixel AA</span>
+              <span class="tag danger">computationally expensive</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 3: 3 pillars ===== -->
+      <div id="s3" class="scene">
+        <div class="s3-wrap">
+          <div id="s3-eyebrow" class="eyebrow s3-eyebrow">A FIGHT AGAINST</div>
+          <div class="pillars">
+            <div id="s3-p1" class="pillar">
+              <div class="pillar-num">01</div>
+              <div class="pillar-title">MATH</div>
+              <div class="pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M22 14 Q30 14 30 22 L30 50 Q30 58 22 58" stroke="#ffb547" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M42 14 Q34 14 34 22 L34 50 Q34 58 42 58" stroke="#ffb547" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+                </svg>
+              </div>
+            </div>
+            <div id="s3-p2" class="pillar">
+              <div class="pillar-num">02</div>
+              <div class="pillar-title">PHYSICS</div>
+              <div class="pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <ellipse cx="32" cy="32" rx="26" ry="10" stroke="#ffb547" stroke-width="2"/>
+                  <ellipse cx="32" cy="32" rx="26" ry="10" stroke="#ffb547" stroke-width="2" transform="rotate(60 32 32)"/>
+                  <ellipse cx="32" cy="32" rx="26" ry="10" stroke="#ffb547" stroke-width="2" transform="rotate(-60 32 32)"/>
+                  <circle cx="32" cy="32" r="3.5" fill="#ffb547"/>
+                </svg>
+              </div>
+            </div>
+            <div id="s3-p3" class="pillar">
+              <div class="pillar-num">03</div>
+              <div class="pillar-title">BIOLOGY</div>
+              <div class="pillar-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <circle cx="32" cy="32" r="22" stroke="#ffb547" stroke-width="2.5"/>
+                  <circle cx="32" cy="32" r="10" stroke="#ffb547" stroke-width="2.5"/>
+                  <circle cx="32" cy="32" r="3.5" fill="#ffb547"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 4: Bitmap fails ===== -->
+      <div id="s4" class="scene">
+        <div class="s4-wrap">
+          <div class="s4-text">
+            <div id="s4-eyebrow" class="eyebrow">ROOT OF THE PROBLEM</div>
+            <div id="s4-eq" class="s4-eq">FONTS<br/><span class="pic">PICTURES</span></div>
+            <div id="s4-sub" class="s4-sub">If a font were just pixels, it would shatter the moment you zoomed in.</div>
+          </div>
+          <div class="bitmap-stage">
+            <div id="s4-bitmap" class="bitmap-canvas"></div>
+            <div id="s4-ruler" class="ruler">8 &times; 8 BITMAP   &middot;   200%   &rarr;   1600%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 5: Bezier ===== -->
+      <div id="s5" class="scene">
+        <div class="s5-wrap">
+          <div class="s5-left">
+            <div id="s5-eyebrow" class="eyebrow s5-eyebrow">INFINITELY SCALABLE</div>
+            <div id="s5-title" class="s5-title">Built from <span class="accent">B&eacute;zier</span> curves.</div>
+            <div id="s5-eq" class="s5-eq">
+              B(<span class="k">t</span>) = (1&minus;<span class="k">t</span>)&sup2; <span class="a">P&#8320;</span>
+              + 2<span class="k">t</span>(1&minus;<span class="k">t</span>) <span class="a">P&#8321;</span>
+              + <span class="k">t</span>&sup2; <span class="a">P&#8322;</span>
+            </div>
+            <div class="s5-instructions">
+              <div id="s5-row1" class="row"><span class="marker"></span>start at <span class="mono" style="color:#ffb547">(96, 540)</span></div>
+              <div id="s5-row2" class="row"><span class="marker"></span>curve toward <span class="mono" style="color:#ffb547">(420, 80)</span></div>
+              <div id="s5-row3" class="row"><span class="marker"></span>end at <span class="mono" style="color:#ffb547">(620, 540)</span></div>
+            </div>
+          </div>
+          <div class="s5-canvas-wrap">
+            <div class="s5-grid-bg"></div>
+            <svg class="bezier" viewBox="0 0 720 600" preserveAspectRatio="xMidYMid meet">
+              <line id="s5-poly1" x1="96" y1="540" x2="420" y2="80" stroke="#3a4150" stroke-width="2" stroke-dasharray="6 6" opacity="0"/>
+              <line id="s5-poly2" x1="420" y1="80" x2="620" y2="540" stroke="#3a4150" stroke-width="2" stroke-dasharray="6 6" opacity="0"/>
+              <path id="s5-curve" d="M 96 540 Q 420 80 620 540"
+                    fill="none" stroke="#ffb547" stroke-width="6"
+                    stroke-linecap="round"/>
+              <g id="s5-pt0" opacity="0">
+                <circle cx="96" cy="540" r="14" fill="#0b0d12" stroke="#ffb547" stroke-width="4"/>
+                <circle cx="96" cy="540" r="5" fill="#ffb547"/>
+              </g>
+              <g id="s5-pt1" opacity="0">
+                <circle cx="420" cy="80" r="14" fill="#0b0d12" stroke="#67e8f9" stroke-width="4"/>
+                <circle cx="420" cy="80" r="5" fill="#67e8f9"/>
+              </g>
+              <g id="s5-pt2" opacity="0">
+                <circle cx="620" cy="540" r="14" fill="#0b0d12" stroke="#ffb547" stroke-width="4"/>
+                <circle cx="620" cy="540" r="5" fill="#ffb547"/>
+              </g>
+              <text id="s5-lbl0" x="62" y="585" font-family="JetBrains Mono" font-size="20" fill="#a3acba" opacity="0">P0 start</text>
+              <text id="s5-lbl1" x="430" y="65" font-family="JetBrains Mono" font-size="20" fill="#67e8f9" opacity="0">P1 control</text>
+              <text id="s5-lbl2" x="588" y="585" font-family="JetBrains Mono" font-size="20" fill="#a3acba" opacity="0">P2 end</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 6: Continuous vs Discrete ===== -->
+      <div id="s6" class="scene">
+        <div class="s6-wrap">
+          <div id="s6-pane-c" class="s6-pane cont">
+            <div class="s6-eyebrow">&infin;   The Math</div>
+            <div class="s6-title">Infinite,<br/>continuous.</div>
+            <div class="s6-canvas">
+              <svg id="s6-svg-c" viewBox="0 0 700 460" width="100%" height="100%">
+                <path id="s6-curve-c" d="M 30 380 C 200 60 360 460 660 100"
+                      fill="none" stroke="#67e8f9" stroke-width="5" stroke-linecap="round"/>
+                <circle id="s6-cdot" cx="0" cy="0" r="9" fill="#67e8f9"/>
+              </svg>
+            </div>
+            <div class="s6-tag">precision: &infin; decimals</div>
+          </div>
+          <div id="s6-pane-d" class="s6-pane disc">
+            <div class="s6-eyebrow">&#9638;   Your Screen</div>
+            <div class="s6-title">Rigid, discrete<br/>grid.</div>
+            <div class="s6-canvas" id="s6-grid"></div>
+            <div class="s6-tag">precision: 1 pixel</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 7: Rasterization ===== -->
+      <div id="s7" class="scene">
+        <div class="s7-wrap">
+          <div class="s7-left">
+            <div id="s7-eyebrow" class="eyebrow s7-eyebrow">THIS PROCESS IS CALLED</div>
+            <div id="s7-title" class="s7-title"><span class="accent">Raster-</span><br/>ization.</div>
+            <div id="s7-arrow" class="s7-arrow">
+              <span class="label">smooth math</span>
+              <span class="arr">&#10230;</span>
+              <span class="label">pixel grid</span>
+            </div>
+          </div>
+          <div class="s7-canvas">
+            <svg id="s7-svg" viewBox="0 0 660 660" width="100%" height="100%" style="position:absolute; inset: 30px; z-index: 2;">
+              <path id="s7-curve" d="M 60 580 Q 330 60 600 580"
+                    fill="none" stroke="#ffb547" stroke-width="5" stroke-linecap="round" opacity="0"/>
+            </svg>
+            <div id="s7-grid" style="position:absolute; inset:30px; z-index: 1;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 8: Aliasing ===== -->
+      <div id="s8" class="scene">
+        <div class="s8-wrap">
+          <div id="s8-eyebrow" class="eyebrow s8-eyebrow">JAGGED EDGES &middot; STAIRCASE EFFECT</div>
+          <div id="s8-title" class="s8-title"><span class="accent">Aliasing.</span></div>
+          <div class="s8-stage">
+            <div id="s8-stage-inner" style="position:relative; width: 880px; height: 380px;">
+              <svg id="s8-ref" viewBox="0 0 880 380" preserveAspectRatio="none"
+                   style="position:absolute; inset:0; pointer-events:none; z-index:5; opacity:0;">
+                <line x1="0" y1="358.89" x2="880" y2="21.11" stroke="#ff6b5d" stroke-width="3" stroke-dasharray="8 8"/>
+              </svg>
+            </div>
+          </div>
+          <div id="s8-callout" class="s8-callout">// the curve fights the grid &mdash; and loses.</div>
+        </div>
+      </div>
+
+      <!-- ===== Scene 9: Anti-aliasing ===== -->
+      <div id="s9" class="scene">
+        <div class="s9-wrap">
+          <div class="s9-left">
+            <div id="s9-eyebrow" class="eyebrow s9-eyebrow">ENGINEERS CALL IT</div>
+            <div id="s9-title" class="s9-title"><span class="accent">Anti-</span><br/>aliasing.</div>
+            <div id="s9-explainer" class="s9-explainer">
+              if (curve covers <span class="pct">50%</span> of pixel)<br/>
+              &nbsp;&nbsp;pixel.color = <span class="pct">50%</span> gray
+            </div>
+            <div id="s9-trick" class="eyebrow" style="color:#7dd87d">// tricks the human eye</div>
+          </div>
+          <div class="s9-canvas">
+            <div id="s9-grid" style="position:absolute; inset: 30px; z-index: 1;"></div>
+            <svg id="s9-svg" viewBox="0 0 660 660" width="100%" height="100%" style="position:absolute; inset: 30px; z-index: 2; pointer-events:none;">
+              <path id="s9-curve" d="M 60 580 Q 330 60 600 580"
+                    fill="none" stroke="#7dd87d" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div id="s9-end-card" class="s9-end-card">
+          <div class="eyebrow end-eyebrow">// rendering text</div>
+          <div class="end-title">is a fight against math, physics, and human biology.</div>
+          <div class="eyebrow end-eyebrow" style="margin-top:14px">&mdash; FIN &mdash;</div>
+        </div>
+        <div id="s9-end-fade" class="s9-end-fade"></div>
+      </div>
+    </div>
+
+    <script>
+      // ============================================================
+      // PROCEDURAL CONTENT (deterministic, runs synchronously at load)
+      // ============================================================
+      (function () {
+        // --- Scene 4: 8x8 bitmap "A" (deterministic shape) ---
+        var bitmap = [
+          "00011000",
+          "00111100",
+          "01100110",
+          "01100110",
+          "01111110",
+          "11000011",
+          "11000011",
+          "11000011"
+        ];
+        var canvas4 = document.getElementById("s4-bitmap");
+        var cell = 60;
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 8; c++) {
+            if (bitmap[r][c] === "1") {
+              var p = document.createElement("div");
+              p.className = "pix";
+              p.style.left = (c * cell) + "px";
+              p.style.top = (r * cell) + "px";
+              p.style.width = cell + "px";
+              p.style.height = cell + "px";
+              canvas4.appendChild(p);
+            }
+          }
+        }
+
+        // --- Scene 6: discrete grid (right pane) ---
+        var grid6 = document.getElementById("s6-grid");
+        grid6.style.display = "grid";
+        var COLS6 = 14, ROWS6 = 9;
+        grid6.style.gridTemplateColumns = "repeat(" + COLS6 + ", 1fr)";
+        grid6.style.gridTemplateRows = "repeat(" + ROWS6 + ", 1fr)";
+        grid6.style.gap = "2px";
+        function curveY6(x) {
+          var t = x / (COLS6 - 1);
+          var y = (Math.sin((t - 0.15) * Math.PI * 1.6) * 0.5 + 0.45);
+          return y * (ROWS6 - 1);
+        }
+        for (var rr = 0; rr < ROWS6; rr++) {
+          for (var cc = 0; cc < COLS6; cc++) {
+            var d = document.createElement("div");
+            d.className = "s6-cell";
+            d.style.background = "#0b0d12";
+            d.style.border = "1px solid #1f242c";
+            d.style.borderRadius = "2px";
+            var yAtX = curveY6(cc);
+            if (Math.round(yAtX) === rr) d.dataset.hit = "1";
+            grid6.appendChild(d);
+          }
+        }
+
+        // --- Scene 7: rasterization grid (16x16) ---
+        function bezX(t) {
+          var u = 1 - t;
+          return u * u * 60 + 2 * u * t * 330 + t * t * 600;
+        }
+        function bezY(t) {
+          var u = 1 - t;
+          return u * u * 580 + 2 * u * t * 60 + t * t * 580;
+        }
+        var grid7 = document.getElementById("s7-grid");
+        grid7.style.display = "grid";
+        var N7 = 16;
+        grid7.style.gridTemplateColumns = "repeat(" + N7 + ", 1fr)";
+        grid7.style.gridTemplateRows = "repeat(" + N7 + ", 1fr)";
+        grid7.style.gap = "2px";
+        var cellSize7 = 660 / N7;
+        var hitMap7 = new Array(N7 * N7).fill(false);
+        for (var s = 0; s <= 1000; s++) {
+          var t7 = s / 1000;
+          var cx7 = Math.floor(bezX(t7) / cellSize7);
+          var cy7 = Math.floor(bezY(t7) / cellSize7);
+          if (cx7 >= 0 && cx7 < N7 && cy7 >= 0 && cy7 < N7) hitMap7[cy7 * N7 + cx7] = true;
+        }
+        for (var k = 0; k < N7 * N7; k++) {
+          var cell7 = document.createElement("div");
+          cell7.className = "s7-cell";
+          cell7.style.background = "#0b0d12";
+          cell7.style.border = "1px solid #161b23";
+          cell7.style.borderRadius = "2px";
+          if (hitMap7[k]) cell7.dataset.hit = "1";
+          grid7.appendChild(cell7);
+        }
+
+        // --- Scene 8: jagged staircase visualization ---
+        var s8stage = document.getElementById("s8-stage-inner");
+        var W8 = 880, H8 = 380;
+        var COLS8 = 22, ROWS8 = 9;
+        var cw = W8 / COLS8, ch = H8 / ROWS8;
+        for (var r8 = 0; r8 < ROWS8; r8++) {
+          for (var c8 = 0; c8 < COLS8; c8++) {
+            var threshold = ROWS8 - 1 - (c8 / (COLS8 - 1)) * (ROWS8 - 1);
+            var on = r8 >= Math.floor(threshold);
+            var px = document.createElement("div");
+            px.style.position = "absolute";
+            px.style.left = (c8 * cw + 1) + "px";
+            px.style.top = (r8 * ch + 1) + "px";
+            px.style.width = (cw - 2) + "px";
+            px.style.height = (ch - 2) + "px";
+            px.style.background = on ? "#e8eaed" : "#11141b";
+            px.style.borderRadius = "2px";
+            px.dataset.s8 = "1";
+            s8stage.appendChild(px);
+          }
+        }
+
+        // --- Scene 9: anti-aliased grid (same curve as s7, with coverage shading) ---
+        var grid9 = document.getElementById("s9-grid");
+        grid9.style.display = "grid";
+        var N9 = 16;
+        grid9.style.gridTemplateColumns = "repeat(" + N9 + ", 1fr)";
+        grid9.style.gridTemplateRows = "repeat(" + N9 + ", 1fr)";
+        grid9.style.gap = "2px";
+        var cellSize9 = 660 / N9;
+        var hitCount = new Array(N9 * N9).fill(0);
+        for (var ss = 0; ss <= 4000; ss++) {
+          var tt = ss / 4000;
+          var cxx = Math.floor(bezX(tt) / cellSize9);
+          var cyy = Math.floor(bezY(tt) / cellSize9);
+          if (cxx >= 0 && cxx < N9 && cyy >= 0 && cyy < N9) hitCount[cyy * N9 + cxx]++;
+        }
+        var maxHit = 0;
+        for (var hi = 0; hi < hitCount.length; hi++) if (hitCount[hi] > maxHit) maxHit = hitCount[hi];
+        for (var k9 = 0; k9 < N9 * N9; k9++) {
+          var cell9 = document.createElement("div");
+          cell9.className = "s9-cell";
+          var coverage = hitCount[k9] / Math.max(1, maxHit);
+          var brightness = Math.sqrt(coverage);
+          var grayValue = Math.round(brightness * 220 + (coverage > 0 ? 18 : 0));
+          if (coverage > 0) {
+            cell9.style.background = "rgb(" + grayValue + "," + grayValue + "," + grayValue + ")";
+          } else {
+            cell9.style.background = "#0b0d12";
+          }
+          cell9.style.border = "1px solid #161b23";
+          cell9.style.borderRadius = "2px";
+          if (coverage > 0.3 && coverage < 0.7) cell9.dataset.fifty = "1";
+          grid9.appendChild(cell9);
+        }
+      })();
+
+      // ============================================================
+      // TIMELINE
+      // ============================================================
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // Initial visibility
+      gsap.set("#s1", { opacity: 1 });
+      gsap.set(["#s2", "#s3", "#s4", "#s5", "#s6", "#s7", "#s8", "#s9"], { opacity: 0 });
+
+      // ============================================================
+      // SCENE 1 — Hook (0 → 14.4)
+      // ============================================================
+      tl.fromTo("#s1-editor",
+        { opacity: 0, y: 40, scale: 0.96 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" }, 0.25);
+      tl.to("#s1-cursor", { opacity: 0, duration: 0.5, repeat: 3, yoyo: true, ease: "steps(1)" }, 1.0);
+      tl.to({}, {
+        duration: 0.001,
+        onComplete: function () { document.getElementById("s1-typed").textContent = "E"; }
+      }, 2.38);
+      tl.fromTo("#s1-typed",
+        { scale: 0.4, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.32, ease: "back.out(2)" }, 2.38);
+
+      tl.to("#s1-editor", { y: -8, duration: 4.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.0);
+
+      tl.to("#s1-editor",
+        { scale: 0.85, opacity: 0.18, filter: "blur(8px)", y: 60, duration: 1.0, ease: "power2.inOut", overwrite: "auto" }, 8.4);
+
+      tl.fromTo("#s1-nightmare",
+        { opacity: 0, y: 40, scale: 0.94 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "expo.out" }, 12.3);
+
+      tl.fromTo("#s1 .glow",
+        { scale: 0.92, opacity: 0.6 },
+        { scale: 1.05, opacity: 1, duration: 6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+      // TRANSITION s1 -> s2 at 14.0
+      tl.to("#s1", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 14.0);
+      tl.fromTo("#s2", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 14.0);
+      tl.set("#s1", { visibility: "hidden" }, 14.5);
+
+      // ============================================================
+      // SCENE 2 — Easy vs Hard (14.4 → 27.3)
+      // ============================================================
+      tl.fromTo("#s2-easy-tag",   { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 14.5);
+      tl.fromTo("#s2-easy-title", { opacity: 0, y: 30 },  { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 14.7);
+      tl.fromTo("#s2-easy-rect",
+        { opacity: 0, scaleX: 0, transformOrigin: "left center" },
+        { opacity: 1, scaleX: 1, duration: 0.7, ease: "expo.out" }, 15.0);
+      tl.fromTo("#s2-easy-call",  { opacity: 0, y: 16 },   { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 16.74);
+
+      tl.fromTo("#s2-hard-tag",   { opacity: 0, x: 20 },  { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 19.4);
+      tl.fromTo("#s2-hard-title", { opacity: 0, y: 30 },  { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 19.6);
+      tl.fromTo("#s2-glyph",
+        { opacity: 0, scale: 0.6, rotation: -6 },
+        { opacity: 1, scale: 1, rotation: 0, duration: 0.7, ease: "back.out(1.5)" }, 19.9);
+      tl.to("#s2-overlay g", { opacity: 1, duration: 0.6, ease: "power2.out" }, 21.5);
+      tl.fromTo("#s2-hard-tags .tag",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.18 }, 22.1);
+
+      // TRANSITION s2 -> s3 at 26.9
+      tl.to("#s2", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 26.9);
+      tl.fromTo("#s3", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 26.9);
+      tl.set("#s2", { visibility: "hidden" }, 27.4);
+
+      // ============================================================
+      // SCENE 3 — 3 pillars (27.3 → 33.4)
+      // ============================================================
+      tl.fromTo("#s3-eyebrow",
+        { opacity: 0, letterSpacing: "0.04em" },
+        { opacity: 1, letterSpacing: "0.22em", duration: 0.7, ease: "expo.out" }, 27.5);
+
+      tl.fromTo("#s3-p1",
+        { opacity: 0, y: 60, scale: 0.85 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 30.7);
+      tl.fromTo("#s3-p2",
+        { opacity: 0, y: 60, scale: 0.85 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 31.15);
+      tl.fromTo("#s3-p3",
+        { opacity: 0, y: 60, scale: 0.85 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 32.0);
+
+      tl.to("#s3-p1", { y: -6, duration: 1.4, ease: "sine.inOut" }, 32.7);
+      tl.to("#s3-p2", { y: -10, duration: 1.4, ease: "sine.inOut" }, 32.85);
+      tl.to("#s3-p3", { y: -8, duration: 1.4, ease: "sine.inOut" }, 33.0);
+
+      // TRANSITION s3 -> s4 at 33.0
+      tl.to("#s3", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 33.0);
+      tl.fromTo("#s4", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 33.0);
+      tl.set("#s3", { visibility: "hidden" }, 33.5);
+
+      // ============================================================
+      // SCENE 4 — Bitmap fails (33.4 → 43.9)
+      // ============================================================
+      tl.fromTo("#s4-eyebrow",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 33.6);
+      tl.fromTo("#s4-eq",
+        { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 33.9);
+      tl.fromTo("#s4-sub",
+        { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 34.3);
+
+      tl.fromTo("#s4-bitmap",
+        { opacity: 0, scale: 0.45 },
+        { opacity: 1, scale: 0.45, duration: 0.5, ease: "power2.out" }, 34.6);
+      tl.fromTo("#s4-ruler",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 35.0);
+
+      tl.to("#s4-bitmap", { scale: 1.0, duration: 5.5, ease: "power1.inOut" }, 36.5);
+      tl.to("#s4-bitmap", { rotation: 1.2, duration: 0.18, repeat: 5, yoyo: true, ease: "sine.inOut" }, 39.46);
+      tl.to("#s4-bitmap", { scale: 1.65, filter: "blur(1.5px)", duration: 1.8, ease: "power2.inOut", overwrite: "auto" }, 41.4);
+
+      // TRANSITION s4 -> s5 at 43.5
+      tl.to("#s4", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 43.5);
+      tl.fromTo("#s5", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 43.5);
+      tl.set("#s4", { visibility: "hidden" }, 44.0);
+
+      // ============================================================
+      // SCENE 5 — Bezier construction (43.9 → 64.8)
+      // ============================================================
+      tl.fromTo("#s5-eyebrow", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 44.1);
+      tl.fromTo("#s5-title",   { opacity: 0, y: 24 },  { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 44.4);
+      tl.fromTo("#s5-eq",      { opacity: 0, y: 16 },  { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 49.4);
+
+      var s5path = document.getElementById("s5-curve");
+      var s5len = s5path.getTotalLength();
+      gsap.set(s5path, { strokeDasharray: s5len, strokeDashoffset: s5len });
+
+      tl.fromTo("#s5-pt0", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 58.5);
+      tl.fromTo("#s5-lbl0", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 58.7);
+      tl.set("#s5-row1", { className: "row active" }, 58.5);
+
+      tl.fromTo("#s5-poly1", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 60.0);
+
+      tl.fromTo("#s5-pt1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 62.84);
+      tl.fromTo("#s5-lbl1", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 63.0);
+      tl.set("#s5-row2", { className: "row active" }, 62.84);
+
+      tl.to(s5path, { strokeDashoffset: 0, duration: 4.0, ease: "power1.inOut" }, 60.5);
+
+      tl.fromTo("#s5-pt2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 63.7);
+      tl.fromTo("#s5-lbl2", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 63.9);
+      tl.fromTo("#s5-poly2", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 63.7);
+      tl.set("#s5-row3", { className: "row active" }, 63.7);
+
+      tl.to(s5path, { filter: "drop-shadow(0 0 12px rgba(255,181,71,0.6))", duration: 0.5, yoyo: true, repeat: 1 }, 64.3);
+
+      // TRANSITION s5 -> s6 at 64.4 (blur crossfade)
+      tl.to("#s5", { opacity: 0, filter: "blur(8px)", duration: 0.55, ease: "power2.inOut" }, 64.4);
+      tl.fromTo("#s6", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power2.inOut" }, 64.55);
+      tl.set("#s5", { visibility: "hidden" }, 65.1);
+
+      // ============================================================
+      // SCENE 6 — Continuous vs Discrete (64.8 → 79.5)
+      // ============================================================
+      tl.fromTo("#s6-pane-c",
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 65.0);
+
+      var s6c = document.getElementById("s6-curve-c");
+      var s6cLen = s6c.getTotalLength();
+      gsap.set(s6c, { strokeDasharray: s6cLen, strokeDashoffset: s6cLen });
+      tl.to(s6c, { strokeDashoffset: 0, duration: 4.5, ease: "power1.inOut" }, 65.5);
+
+      var s6dot = document.getElementById("s6-cdot");
+      var s6prog = { p: 0 };
+      tl.to(s6prog, {
+        p: 1, duration: 11, ease: "none",
+        onUpdate: function () {
+          var pt = s6c.getPointAtLength(s6c.getTotalLength() * s6prog.p);
+          s6dot.setAttribute("cx", pt.x);
+          s6dot.setAttribute("cy", pt.y);
+        }
+      }, 65.5);
+
+      tl.fromTo("#s6-pane-d",
+        { opacity: 0, x: 40 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 69.0);
+
+      var s6cells = document.querySelectorAll("#s6-grid .s6-cell");
+      tl.fromTo(s6cells,
+        { opacity: 0, scale: 0.6 },
+        { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out", stagger: 0.012 },
+        69.3);
+      var s6hits = document.querySelectorAll("#s6-grid .s6-cell[data-hit]");
+      tl.to(s6hits, { backgroundColor: "#ffb547", duration: 0.4, stagger: 0.04 }, 73.0);
+
+      tl.to(["#s6-pane-c", "#s6-pane-d"], { scale: 0.985, duration: 0.4, yoyo: true, repeat: 1, ease: "sine.inOut" }, 76.5);
+
+      // TRANSITION s6 -> s7 at 79.1
+      tl.to("#s6", { opacity: 0, duration: 0.5, ease: "power2.inOut", overwrite: "auto" }, 79.1);
+      tl.fromTo("#s7", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 79.1);
+      tl.set("#s6", { visibility: "hidden" }, 79.7);
+
+      // ============================================================
+      // SCENE 7 — Rasterization (79.5 → 91.5)
+      // ============================================================
+      tl.fromTo("#s7-eyebrow", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 79.7);
+      tl.fromTo("#s7-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 80.0);
+      tl.fromTo("#s7-arrow", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 80.5);
+
+      var s7path = document.getElementById("s7-curve");
+      var s7len = s7path.getTotalLength();
+      gsap.set(s7path, { strokeDasharray: s7len, strokeDashoffset: s7len, opacity: 1 });
+      tl.to(s7path, { strokeDashoffset: 0, duration: 1.6, ease: "power1.inOut" }, 80.4);
+
+      var s7cells = document.querySelectorAll("#s7-grid .s7-cell");
+      tl.fromTo(s7cells,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.6, ease: "power2.out" }, 82.0);
+
+      var s7hits = document.querySelectorAll("#s7-grid .s7-cell[data-hit]");
+      tl.to(s7hits,
+        { backgroundColor: "#ffb547", duration: 0.32, ease: "power2.out", stagger: 0.04 },
+        85.6);
+
+      tl.to(s7path, { opacity: 0.4, strokeWidth: 3, duration: 0.6 }, 87.0);
+
+      tl.to("#s7 .s7-canvas", { scale: 1.012, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 88.0);
+
+      // TRANSITION s7 -> s8 at 91.1
+      tl.to("#s7", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 91.1);
+      tl.fromTo("#s8", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 91.1);
+      tl.set("#s7", { visibility: "hidden" }, 91.5);
+
+      // ============================================================
+      // SCENE 8 — Aliasing / Staircase (91.5 → 96.4)
+      // ============================================================
+      tl.fromTo("#s8-eyebrow", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 91.7);
+      tl.fromTo("#s8-title", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.6)" }, 91.9);
+      var s8pix = document.querySelectorAll("#s8-stage-inner [data-s8]");
+      tl.fromTo(s8pix,
+        { opacity: 0, scale: 0.4 },
+        { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", stagger: 0.005 }, 92.3);
+      tl.to("#s8-ref", { opacity: 1, duration: 0.5, ease: "power2.out" }, 93.6);
+      tl.fromTo("#s8-callout", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 94.0);
+
+      // TRANSITION s8 -> s9 at 96.0
+      tl.to("#s8", { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 96.0);
+      tl.fromTo("#s9", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 96.0);
+      tl.set("#s8", { visibility: "hidden" }, 96.5);
+
+      // ============================================================
+      // SCENE 9 — Anti-aliasing (96.4 → 120, final)
+      // ============================================================
+      tl.fromTo("#s9-eyebrow", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 96.6);
+      tl.fromTo("#s9-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.65, ease: "expo.out" }, 96.9);
+
+      var s9cells = document.querySelectorAll("#s9-grid .s9-cell");
+      tl.fromTo(s9cells,
+        { opacity: 0, scale: 0.4 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out", stagger: 0.006 },
+        97.2);
+
+      tl.fromTo("#s9-curve", { opacity: 0 }, { opacity: 0.6, duration: 0.7, ease: "power2.out" }, 99.0);
+
+      tl.fromTo("#s9-explainer", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 104.5);
+
+      var s9fifty = document.querySelectorAll("#s9-grid .s9-cell[data-fifty]");
+      tl.to(s9fifty, { boxShadow: "0 0 0 2px #ffb547", duration: 0.5, stagger: 0.05 }, 108.86);
+
+      tl.fromTo("#s9-trick", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 113.2);
+
+      tl.to("#s9-curve", { opacity: 0, duration: 0.8 }, 114.5);
+
+      tl.to("#s9-end-fade", { opacity: 0.85, duration: 1.3, ease: "power2.inOut" }, 116.5);
+      tl.fromTo("#s9-end-card",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 117.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

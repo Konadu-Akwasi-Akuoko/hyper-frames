@@ -1,0 +1,101 @@
+{
+  "video_id": "YC50j-nozZs",
+  "title": "Database Indexes Explained In 6 Minutes",
+  "view_count": 2550,
+  "like_count": 209,
+  "comment_count_total": 7,
+  "comment_count_pulled": 7,
+  "comments": [
+    {
+      "id": "UgyGinrEsv0Vw_yDtWN4AaABAg",
+      "parent": "root",
+      "depth": 0,
+      "text": "Great work! I appreciate your videos a lot. Good luck with more subscribers.",
+      "like_count": 1,
+      "author": "@halimkbas2883",
+      "is_uploader": false,
+      "is_pinned": false,
+      "reply_count": 0,
+      "timestamps_cited": [],
+      "char_len": 76
+    },
+    {
+      "id": "UgxJ7DL37amNhIKv28d4AaABAg",
+      "parent": "root",
+      "depth": 0,
+      "text": "Sick video",
+      "like_count": 0,
+      "author": "@Ezi017",
+      "is_uploader": false,
+      "is_pinned": false,
+      "reply_count": 0,
+      "timestamps_cited": [],
+      "char_len": 10
+    },
+    {
+      "id": "UgyWBHLFM5M_Xv7XL2p4AaABAg",
+      "parent": "root",
+      "depth": 0,
+      "text": "Why 3 (max 4-5)? For a billion you need log2(N) for lookup with comparison, so 30, no?",
+      "like_count": 0,
+      "author": "@zimne5212",
+      "is_uploader": false,
+      "is_pinned": false,
+      "reply_count": 1,
+      "timestamps_cited": [],
+      "char_len": 86
+    },
+    {
+      "id": "UgyWBHLFM5M_Xv7XL2p4AaABAg.AW2NIr7KtG5AWK1nHn5uSW",
+      "parent": "UgyWBHLFM5M_Xv7XL2p4AaABAg",
+      "depth": 1,
+      "text": "because you have more than 2 branches for a given node, log2(N) is the depth of a binary tree with only 2 branches.",
+      "like_count": 4,
+      "author": "@mongolianstallion8274",
+      "is_uploader": false,
+      "is_pinned": false,
+      "reply_count": 1,
+      "timestamps_cited": [],
+      "char_len": 115
+    },
+    {
+      "id": "UgyWBHLFM5M_Xv7XL2p4AaABAg.AW2NIr7KtG5AWLEQO727ig",
+      "parent": "UgyWBHLFM5M_Xv7XL2p4AaABAg.AW2NIr7KtG5AWK1nHn5uSW",
+      "depth": 1,
+      "text": "Ah, I thought log2(N) is the efficiency limit for a decision tree (which it is). \nBut since the expensive part is disk read, we only care about the 3 page loads from disk so log₁₀₀₀(N) and we don't care about CPU cycles. Was confused about that.",
+      "like_count": 0,
+      "author": "@zimne5212",
+      "is_uploader": false,
+      "is_pinned": false,
+      "reply_count": 0,
+      "timestamps_cited": [],
+      "char_len": 245
+    },
+    {
+      "id": "Ugx-nHHajBq5wLAjskd4AaABAg",
+      "parent": "root",
+      "depth": 0,
+      "text": "FYI the plural of index is indices not indexes.",
+      "like_count": 0,
+      "author": "@Executive_Taxi",
+      "is_uploader": false,
+      "is_pinned": false,
+      "reply_count": 1,
+      "timestamps_cited": [],
+      "char_len": 47
+    },
+    {
+      "id": "Ugx-nHHajBq5wLAjskd4AaABAg.AWQ6l1zDgVyAWQXqGEBawn",
+      "parent": "Ugx-nHHajBq5wLAjskd4AaABAg",
+      "depth": 1,
+      "text": "☝️🤓",
+      "like_count": 1,
+      "author": "@kwinso",
+      "is_uploader": false,
+      "is_pinned": false,
+      "reply_count": 0,
+      "timestamps_cited": [],
+      "char_len": 3
+    }
+  ]
+}

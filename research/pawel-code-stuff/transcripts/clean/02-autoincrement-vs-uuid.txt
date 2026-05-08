@@ -1,0 +1,49 @@
+Every time you create a database table,you have to answer one fundamentalquestion.
+How do you identify a record?For decades, the default answer has beenthe auto incrementing integer.
+It'sbuiltin, it's easy, and it just works.But as your system scales, youinevitably encounter the advice that youshould drop integers and use UU IDsinstead.
+But swapping a sequentialinteger for a UU ID isn't just a simpleformat change in your application code.It completely alters how your databasestores, indexes, and retrieves data atthe disk level.
+Today we are going tolook at what actually happens under thehood when you choose one over the otherand why the UUID versus integer debateis missing a crucial third option.
+Let'sstart with auto incrementing integers.To understand their performance, we needto look at how relational databasesmanage indexes.
+Under the hood, yourprimary key is stored in a B tree datastructure.
+B trees store data in sortedorder across memory pages on your disk.When you use sequential integers 1 2 3and so on, every new record ispredictably larger than the last.Because of this, the database simplyappends the new record to the rightmostedge of the index.
+It fills up thecurrent memory page and when that pageis full, it neatly allocates a new one.It's incredibly fast, requires almostzero overhead and uses minimal space.
+Astandard integer takes up just fourbytes.
+A big one takes eight.
+Butsequential integers have two majorsystemic flaws.
+First, they arepredictable.
+If a user's profile islocated at / users/42,a malicious actor can easily guess that/ users/43exists.
+This is a classic securityvulnerability known as an insecuredirect object reference.
+Second, theyrely on a single source of truth.
+If youhave a distributed database spanningmultiple active servers, who decideswhat the next ID should be?
+If server Aand server B both insert a row at theexact same millisecond, they might bothtry to claim ID 100, causing acollision.
+So to prevent this, thedatabase needs a centralized lock, whichquickly becomes a massive performancebottleneck.
+This is exactly the problemUU IDs, universally unique identifiers,were designed to solve.
+A standard UUID, specifically the highly popularversion 4, is a 128 bit value generatedusing pure randomness.
+Because thenumber of possible combinations isastronomically large, the chance ofgenerating a duplicate is practicallyzero.
+This completely eliminates thedistributed system problem.
+Any serveror even a client device can generate aUU ID locally without needing to checkwith the central database authority.
+Italso solves a predictability problem.You simply cannot guess the next ID.
+Buthere is the catch and it's a significantone.
+Remember how B trees keep datasorted?
+A UID version 4 is completelyrandom.
+When the database tries toinsert a new UU ID into the primary keyindex, it doesn't go to the end of thetree.
+It goes somewhere completelyarbitrary in the middle.
+The databasehas to search for the exact memory pagewhere this random sequence belongs.
+Ifthat specific page is already full, thedatabase has to perform what is called apage split.
+It stops, divides the pagein two, moves half of the existing datato a new location on the disk, andupdates the parent nodes in the tree.Page splits are computationallyexpensive.
+They consume CPU, triggermassive amounts of disk operations, andleave your index heavily fragmented.
+Afragmented index means your database hasto read more blocks from the disk justto scan the table.
+Furthermore, a UUIDis 16 bytes.
+That is up to four timeslarger than an integer.
+Since yourprimary key is typically duplicated andstored inside every secondary index youcreate, that size penalty multipliesacross your entire database, it bloatsyour storage and more importantly pushesuseful data out of your fast RAM,forcing the database to rely on slowerdisk reads.
+So are you forced to choosebetween a secure, scalable, distributedsystem and a fast, unfragmenteddatabase?
+No.
+The industry has evolvedpast this binary choice.
+The modernsolution is the timeordered identifier.For this exact use case, the recentlystandardized UUID version 7 gives youthe best of both worlds.
+It works bycombining a Unix time stamp with a blockof random data because the first half ofthe identifier is based on the currenttime.
+These IDs are naturallysequential.
+From the database'sperspective, they append to the rightedge of the B tree index exactly like anauto incrementing integer.
+This entirelyeliminates page splits and indexfragmentation.But because the second half of theidentifier contains cryptographicallysecure randomness, they remainuniversally unique and completelyunpredictable.
+You get the decentralizedgeneration of a UID with the mechanicalsympathy of an integer.
+To summarize, ifyou are building a simple single nodeapplication where ids are strictlyinternal and never exposed to theclient, auto incrementing integers arestill the most efficient choice.
+But ifyou are building a distributed system orif your identifiers will ever be exposedin URLs or APIs, do not default torandom UIDV4.Adopt a timeordered identifier likeUIDV7.You will save your database from amassive amount of unnecessary work.

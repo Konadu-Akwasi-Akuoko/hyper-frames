@@ -1,0 +1,63 @@
+[00:00.080] Every time you generate an SSH key,create a TLS certificate, or encrypt afile, something strange has to happen.
+[00:07.359] Your computer, a machine that doesnothing but execute deterministicinstructions, needs to produce a numberthat nobody, not even itself, could havepredicted.
+[00:16.400] If an attacker can guess thatnumber, your encryption is worthless.The entire security of the internetrests on a problem that shouldn't evenbe solvable on a deterministic machine.
+[00:26.400] So how does a computer produce somethingtruly unpredictable? Today we are goingto answer that question. Let's startwith why this matters.
+[00:34.079] Cryptographydepends on randomness. When you generatean RSA key pair, you pick two massiveprime numbers at random.
+[00:40.320] When you starta TLS handshake, you generate a randomsession key. When your password managercreates a new password, it pulls randombites.
+[00:47.440] If any of these numbers can bepredicted, the cryptography built on topof them collapses instantly. And thisisn't theoretical.
+[00:54.719] In 2008, a maintainerpatching DBN's open SSL packageaccidentally removed the code that mixedunpredictable data into the randomnumber generator.
+[01:03.840] For 2 years, every DBNsystem generated SSH and SSL keys withonly about 32,000 possible values.
+[01:10.960] Attackers could brute force any keygenerated during that window in seconds.Every affected key on the internet hadto be revoked and regenerated.
+[01:19.040] In 2010,a group called Fail Overflow broke thesecurity of the PlayStation 3 becauseSony's code reused the same randomnumber for every cryptographicsignature.
+[01:28.560] Once that was discovered, theentire conso's chain of trust fellapart. When your randomness fails,everything fails.
+[01:35.680] So, the questionbecomes, where does this randomness comefrom? Let's start with what computerscan do on their own.
+[01:41.520] Every modernoperating system ships with a pseudorandom number generator, a P RNG. It'sjust an algorithm.
+[01:49.040] You feed it astarting value called a seed and itproduces a long statistically uniformsequence of bits.
+[01:55.680] Run it again with thesame seed and you get the exact samesequence. That's why it's called pseudorandom. It looks random, but it'scompletely deterministic.
+[02:04.640] PRNGs are great for simulations, games,or any situation where you just neednumbers that spread evenly.
+[02:11.039] But forcryptography, they have a fatalweakness. If an attacker can figure outthe seed, they can regenerate yourentire sequence.
+[02:18.160] And a 32-bit seed hasonly about 4 billion possible values,which sounds like a lot until yourealize a modern GPU can try billions ofvalues per second.
+[02:27.280] So, we don't justneed pseudo randomness. We need the seeditself to be unpredictable. And to getthat, we have to step outside thedeterministic world of the CPU andsample something from the physicalworld.
+[02:38.080] That's where entropy comes in. Ininformation theory, entropy is a measureof unpredictability. A coin flip has onebit of entropy because there are twoequally likely outcomes.
+[02:48.160] A roll of afair six-sided die has roughly 2.5D8bits. The more uncertain you are aboutan outcome, the more entropy it carries.
+[02:56.720] In the context of operating systems andcryptography, entropy means somethingmore concrete. It refers to datacollected from sources that aregenuinely hard to predict, even if theattacker knows everything about themachine software and hardware.
+[03:08.879] Theproblem is your CPU executinginstructions is not such a source. Giventhe same inputs, it will always producethe same output.
+[03:16.239] That's literally itsjob. In that case, you have to lookelsewhere. You have to look at thephysical world. And this is where yourmouse becomes a cryptographicinstrument.
+[03:26.239] When you move your mouse, the operatingsystem receives a stream of events. Eachevent contains a position and each eventarrives at a specific point in time.
+[03:35.440] Nowthe position itself has someunpredictability but the real gold is inthe timing. The kernel measures theinterval between mouse events down tothe nancond.
+[03:45.280] Those lowest few bits, themicroscond scale jitter between oneinterrupt and the next are determined bya cascade of tiny physical effects.
+[03:53.360] Theexact way your hand trembles, aircurrents, thermal variation in the mousesensor, the precise moment the USBcontroller decides to deliver thepacket.
+[04:02.720] Nobody, not even you, controlsthese bits. The kernel takes those loworder bits and feeds them into somethingcalled the entropy pool.
+[04:11.280] And mousemovements are just one source. Thekernel gathers bits from everywhere itcan. Keyboard input, not what keys youpress, but the exact timing betweenkeystrokes.
+[04:20.479] Disc IO, how long it tookthe hard drive head to seek to a givensector. Network interrupts, the arrivaltime of incoming packets.
+[04:28.000] And on modernhardware, dedicated CPU instructionslike RD RAND and RDSED on Intel chips,which sample thermal noise from a tinyonchip circuit specifically designed tobe unpredictable.
+[04:39.600] Each of these sources produces bits thatare only weakly random on their own. Amouse interrupt might yield only threeor four truly unpredictable bits, but ifyou mix enough of them together, youaccumulate real entropy.
+[04:52.960] Now, how doesthe kernel actually mix them? Theentropy pool is a fixedsiz buffer ofbits.
+[04:59.040] When new data arrives from asource, the kernel doesn't just appendit. It runs the input through acryptographic hash function togetherwith the existing pool content andwrites a result back.
+[05:09.840] This is called themixing function. Its job is to ensurethat even if an attacker knows some ofthe inputs, they can't deduce the pool'scurrent state.
+[05:18.000] On Linux, this wholemachinery is exposed through two specialfiles, dev random and dev urandom. Whena program needs cryptographicrandomness, it reads from one of these.
+[05:27.120] Behind the scenes, the kernel pullsbytes from the entropy pool, runs themthrough a cryptographically securepseudo random number generator,currently based on the chaache 20 streamcipher, and hands the output to theprogram.
+[05:39.120] You might be wondering whythere are two files. Historically, devrandom blocked. If the colonel thoughtthe entropy pool didn't contain enoughfresh bits, a read from dev random wouldjust pause until more entropy wasgathered.
+[05:51.600] Dev urandom on the other handnever blocked. It would keep producingoutput from the internal CSPRNGindefinitely even if no new entropy hadcome in.
+[06:01.280] For years this distinctioncaused massive confusion. People assumedD. Random was more secure because itblocked.
+[06:06.960] So they used it for keygeneration and their programs would hangfor minutes on headless servers with nomouse and no keyboard.
+[06:13.600] Modern Linux hasmostly unified these. Once the pool hasbeen seated with enough entropy at boot,usually a few hundred bits, the CSPRNGoutput is cryptographicallyindistinguishable from true randomness.
+[06:26.720] At that point, Devur random is exactlywhat you want for almost everything.This brings us to one of the mostfascinating failure modes in computing,the freshly booted virtual machineproblem.
+[06:38.080] When a VM first comes up, ithas no history, no mouse movements, nokeystrokes, no real disc seeks.
+[06:44.560] The discis virtual. The entropy pool is nearlyempty. If the VM tries to generatecryptographic keys in the first fewseconds of its life, those keys can beweak because the CSPRNG was seated fromonly a tiny amount of entropy.
+[06:58.000] In 2012,a group of researchers scanned theentire public IPv4 internet andcollected every TLS and SSH key theycould find.
+[07:06.000] They discovered that tens ofthousands of servers were using RSA keysthat could be factored and an evenlarger number shared keys with otherservers.
+[07:14.319] The common thread was that manyof these keys had been generated onfreshly provisioned VMs or embeddeddevices that simply didn't have enoughentropy when they booted.
+[07:24.560] Two machines starting from nearlyidentical empty pools had producednearly identical random primes. This isexactly why you'll see tools like GPGtell you to move your mouse and pressrandom keys while it generates a key.
+[07:36.720] It's not a gimmick. The program isexplicitly asking you to pump entropyinto the pool because it doesn't trustwhat's already in there.
+[07:43.759] Your physicalmovements are being converted bit by bitinto cryptographic seed material. Modernsystems have layered defenses againstentropy starvation.
+[07:52.800] The Linux kernel nowsupports something called jitterentropy, which exploits tinyunpredictable variations in how longsimple CPU operations take caused bycache effects, memory timing, and othermicroarchitectural details.
+[08:05.759] HardwareRNGs on modern CPUs provide a constantstream of entropy. Virtualizationplatforms now pass entropy from the hostinto the guest through a virtual devicecalled Verio RNG.
+[08:17.199] All of this means thatmy VM has no entropy problem is muchless common than it was 10 years ago.But the underlying principle hasn'tchanged.
+[08:25.039] Step back and look at what'sactually happening here. We have adeterministic machine. Every instructionit executes is perfectly predictablegiven its inputs.
+[08:33.599] And yet through achain of tiny couplings to the physicalworld, a mouse nudge, a thermalfluctuation, a packet arriving a fewnanconds late, it manages to producenumbers that no adversary can predict.
+[08:46.160] The deterministic world reaches out,grabs a handful of chaos from reality,hashes it, stirs it into a pool, anduses it to derive the keys that secureevery encrypted connection on theinternet.
+[08:57.120] Every SSH key you've evergenerated, every HTTPS session yourbrowser has negotiated, every encryptedmessage you've sent, somewhere in thelineage of the random numbers behind it,there is a bit that came from a tremorin somebody's hand, the jitter of a harddrive head or the thermal noise of a fewtransistors.
+[09:15.920] Cryptography doesn't workwithout that link to the physical world.The whole system is built on theassumption that reality contains moreunpredictability than any algorithm canfake.
+[09:26.320] And that's entropy in computerscience. Not just an abstract measurefrom the information theory, but aconcrete resource.
+[09:32.320] Something the kernelactively farms from every physical eventit can observe. So that when yourprogram asks for a random number, it hassomething real to give.

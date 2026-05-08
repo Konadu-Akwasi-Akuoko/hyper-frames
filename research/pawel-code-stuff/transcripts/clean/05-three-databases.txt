@@ -1,0 +1,76 @@
+Starting with ClickHouse.
+Let's say youbuilt an analytics dashboard.
+Users wantto see total revenue by country groupedby month over the last 2 years.
+Thisquery on a Postgres table with a millionrows is fine, but what about 2 billionrows?
+Now the query takes 45 seconds.The reason behind that comes down toarchitecture.
+Relational databases storedata row by row.
+If you want to sum upone column across a billion rows, thedatabase still has to read through everysingle row just to extract that onevalue.
+ClickHouse takes a completelydifferent approach.
+It's a columnardatabase, meaning it stores datavertically.
+A normal database reads leftto right line by line, loading a bunchof irrelevant data into memory just tofind the one number it needs.
+ClickHouseignores the rows entirely.
+It slices atable vertically and grabs the entirerevenue column top to bottom in onesingle swoop.
+So when you ask forrevenue, it reads only the revenuecolumn from the disk and completelyignores the rest.
+That same 2 billionrow query now takes 300 milliseconds.
+Asa side effect, this architecture is acheat code for storage.
+Because columnscontain repeating values, ClickHousecompresses them aggressively, oftenmaking your data 10 to 100 timessmaller.
+So if you have a million usersfrom the USA, a normal database writesUSA a million times.
+ClickHouse spotsthe repetition, stores the word USAexactly once in a dictionary, andreplaces the rest with tiny pointersreferencing that one word.
+Now let'stalk about time series data.
+The nextdatabase is InfluxDB, and it's built forone very specific thing.
+Data where timeis the most important column.
+Timeseries data is everywhere.
+Servermetrics like CPU, RAM, or disk, IoTsensor readings, or crypto prices.Basically, anywhere you need to trackhow a value changes over time.
+Areal-world example is Tesla.
+Every caron the road is streaming data back totheir servers.
+Speed, battery voltage,motor temperature, GPS, dozens ofsignals all the time.
+Millions of carseach generating thousands of data pointsper second.
+That's easily millions ofwrites per second.
+Relational databaseschoke on this kind of workload becauseevery single insert requires updating aB-tree index.
+When you're writing amillion data points per second, indexoverhead becomes a massive bottleneck.InfluxDB completely throws out thestandard index.
+Instead, it uses acustom storage engine calledtime-structured merge tree.
+You canthink of it as a physical timeline thatonly ever grows forward.
+Because thedata is strictly append-only andnatively sorted by time, the databasedoesn't have to constantly shuffle dataaround to keep an index balanced.
+Itjust writes a new data straight to thedisk, allowing it to absorb massivespikes in traffic instantly.
+In astandard relational database, everysingle row stores its exact timestamp,taking up 8 bytes for a 64-bit integer.If you have a billion records, that's 8GB of disk space burned strictly on timedata before you even store the actualmetrics.
+Now, imagine a sensortransmitting data exactly every 10seconds.
+In this scenario, timestampsare completely predictable, so insteadof wasting space saving full 8-bytetimestamps over and over, InfluxDB takesadvantage of this predictable gap usinga compression technique called delta ofdelta encoding.
+It stores the initialtimestamp, registers the 10-secondinterval, and from then on only uses atiny fraction of a byte to record minordeviations if a reading arrives a littlelate.
+This trick squashes billions ofrows that would require tens ofgigabytes in a standard setup down tojust a few megabytes.
+Finally, whatabout aging data?
+In a standarddatabase, running a delete query toclear out old rows forces the engine toscan the table row by row, write everydeletion to a transaction log, andfragment your hard drive.
+Influxcompletely avoids this mess.
+Instead ofdeleting individual rows, it groups datainto physical files based on timeperiods.
+Like one file per week.
+Whenyou set a retention rule to drop dataolder than 30 days, the engine doesn'tscan anything.
+It simply deletes theentire file from the hard drive in afraction of a second with zero impact ondatabase performance.But what if you still want to see yourserver's CPU trends from 6 months ago?If you delete the raw data, it's gone.If you keep it, your server runs out ofstorage.
+InfluxDB solves this with afeature called automatic downsampling.It works like a funnel.
+You keep themassive, ultra-precise per-second datafor the last 24 hours, so you can debugimmediate issues.
+But in the background,InfluxDB automatically calculates theaverage CPU usage for each hour andsaves that tiny summary into a newtable.Later, it turns those hourly averagesinto daily averages.
+The heavy granulardata gets dropped to save space, but thehistorical trend stays forever.
+Yourdashboards load instantly, your diskdoesn't fill up, and you didn't have towrite a single background script tomanage it.So far, we've looked at databases thatuse rows and columns.
+Now we're going totake a look at different approach, sothe next pick is Neo4j, which is a graphdatabase.
+Imagine building a socialnetwork.
+You need to write a query thatsays, "Find friends of my friends whowork at my company but live in adifferent city." In a standard SQLdatabase, this is not easy to do.
+Youare looking at multiple self-joins,nested subqueries, and massive tablescans.
+The deeper you go, say trying tocalculate six degrees of separation, thecomputational complexity explodes,performance drops off, and eventuallythe query just times out.
+The reasonbehind this comes down to architecture.Relational databases, despite theirname, are actually terrible at handlingdeep, complex relationships.
+To connectdata, they have to compute thoserelationships on the fly by scanningtables and cross-referencing indexes.This is where Neo4j steps in.
+Neo4j is agraph database.
+Instead of forcing datainto rigid tables, rows, and columns, itstores data exactly how it looks in thereal world, as a network.
+Data is brokendown into two concepts: nodes and edges.Nodes are the entities like people,companies, or cities.
+Edges are therelationships connecting them, likefriends with, works at, or lives in.That nightmare SQL query becomes onesimple, readable line of code, and itruns in milliseconds.
+The secret behindthis massive performance leap is aconcept called index-free adjacency.
+Ina relational database, finding connecteddata requires an index lookup.
+It's aheavy mathematical operation at runtime.Neo4j completely bypasses this.
+There isno lookup because the database alreadyknows the exact address.When a relationship is created in Neo4j,the connection is stored physically onthe disk as a direct memory pointer.Traversing a graph isn't a search.
+It isliterally just following physicalpointers in memory.The database simply hops from node tonode, completely ignoring the total sizeof the data set.
+Whether you have 10nodes or 10 billion, hopping across arelationship takes the exact same amountof time.
+This architecture is a cheatcode for highly connected data.
+TakeLinkedIn's "People You May Know"feature, which relies entirely onmapping professional networks.Or consider bank fraud detection.
+Ifaccount A sends money to B, B sends itto C, and C sends it back to A, thatcircular pattern is almost invisiblewhen scattered across millions of rowsin a tabular database.
+But in a graphdatabase, that fraud ring forms a closedloop that the engine can detectinstantly.
+Relational databases aregreat when you need to store andaggregate discrete records.
+But when therelationships between the data mattermore than the data itself, you need agraph.
+If you like my content, you canbuy me a coffee.
+Link is in thedescription.
