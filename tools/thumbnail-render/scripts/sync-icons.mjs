@@ -26,12 +26,13 @@ for (const name of TOPICS) {
   }
   // lucide exports each icon as [tag, attrs, children] — render to SVG body
   // (without the outer <svg> tag, so the skill can compose viewBox/styles).
+  // Lucide icons are canonically 24x24, so viewBox is fixed.
   const [, , children] = node;
   const body = children.map(([tag, attrs]) => {
     const a = Object.entries(attrs).map(([k, v]) => `${k}="${v}"`).join(' ');
     return `<${tag} ${a} />`;
   }).join('');
-  out[name] = body;
+  out[name] = { body, viewBox: '0 0 24 24' };
 }
 
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
