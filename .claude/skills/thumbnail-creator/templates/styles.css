@@ -161,3 +161,72 @@ html, body {
   border: 2px solid rgba(255, 64, 64, 0.6);
   pointer-events: none;
 }
+
+/* ---- Vertical mode (1080x1920 Shorts/TikTok cover) ----
+ * Activated by adding `vertical` to the .thumbnail wrapper class.
+ * Layout: icon top-centered (720x720), text bottom-anchored, three to
+ * five rows. Variant C gets a `.kicker` modifier on row 3 that scales
+ * the kicker to 0.6em of the dominant size. See the thumbnail-creator
+ * skill's reference/vertical-mode.md for the full layout spec.
+ */
+.thumbnail.vertical {
+  --canvas-w: 1080px;
+  --canvas-h: 1920px;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+}
+
+.thumbnail.vertical .thumbnail-text {
+  top: auto;
+  bottom: 120px;
+  left: 80px;
+  right: 80px;
+  transform: none;
+  text-align: center;
+  align-items: center;
+  white-space: normal;
+}
+
+.thumbnail.vertical .thumbnail-row.kicker {
+  font-size: 0.6em;
+}
+
+.thumbnail.vertical .thumbnail-icon {
+  top: 120px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: 720px;
+  height: 720px;
+}
+
+.thumbnail.vertical .thumbnail-icon svg {
+  width: 720px;
+  height: 720px;
+}
+
+/* Vertical-only grid markers: TikTok bottom UI band + profile-grid
+ * 1:1 crop outline. Only visible when ?grid is appended to the URL. */
+.thumbnail.vertical.with-grid .grid-overlay::before {
+  /* TikTok bottom UI band: y=1440 to y=1920 (bottom 25%) */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1440px;
+  height: 480px;
+  border-top: 2px dashed rgba(255, 64, 64, 0.6);
+  background: rgba(255, 64, 64, 0.06);
+}
+
+.thumbnail.vertical.with-grid .grid-overlay::after {
+  /* Profile-grid 1:1 crop: y=420 to y=1500 (centered square) */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 420px;
+  height: 1080px;
+  outline: 2px dashed rgba(255, 64, 64, 0.6);
+  outline-offset: -1px;
+}
