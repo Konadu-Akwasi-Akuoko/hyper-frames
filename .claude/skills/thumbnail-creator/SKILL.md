@@ -144,34 +144,62 @@ icon across all 3 variants in this round). Resolution order:
 
 1. **Lucide.** Read
    `<repo-root>/tools/thumbnail-render/icons/lucide.json`. Look up by
-   Lucide name (e.g. `Lock`, `Database`). Use the body string verbatim.
-2. **Iconify fallback.** If no Lucide entry fits, pick an Iconify name
-   in `<set>:<icon>` form (e.g. `ph:cursor-click`, `tabler:typography`).
-   Resolve and cache the body via:
+   Lucide name (e.g. `Lock`, `Database`). Each entry is
+   `{body, viewBox}` — capture both. Lucide is canonically 24×24, so
+   `viewBox` is always `"0 0 24 24"`.
+2. **Iconify line-icon fallback.** If no Lucide entry fits, pick an
+   Iconify name in `<set>:<icon>` form from the line-icon search order
+   below (e.g. `ph:cursor-click`, `tabler:typography`). Resolve via:
 
    ```bash
    node <repo-root>/tools/thumbnail-render/bin/icon.mjs <name>
    ```
 
-   The CLI prints the SVG body to stdout, fetches from
-   `api.iconify.design` on first use, caches to
-   `tools/thumbnail-render/icons/iconify-cache.json`. Capture the
-   stdout output as the body.
-3. **Stop.** If neither Lucide nor any acceptable Iconify set fits,
-   ask the user for an alternate icon name. Hand-coded SVG is no
-   longer a documented option — the visual signature requires real
-   icons from a curated set.
+   The CLI prints JSON `{"body": "...", "viewBox": "..."}` to stdout,
+   fetches from `api.iconify.design` on first use, caches to
+   `tools/thumbnail-render/icons/iconify-cache.json`. Parse the JSON
+   and capture both fields.
+3. **Brand exception.** When the topic noun *is* a specific brand
+   (Jenkins, Docker, React, Postgres, Kubernetes — the brand appears
+   in the working title or is the explicit subject), brand-icon sets
+   become eligible. Preference order:
+   `simple-icons` (monochrome silhouette) → `logos` (multi-color) →
+   `devicon`. Take the first that's recognizable at thumbnail size;
+   only escalate to multi-color when the brand collapses without its
+   colors (Google, Slack). Resolve via the same `icon.mjs` CLI.
+4. **Stop.** If none of the above fit, ask the user for an alternate
+   icon name. Hand-coded SVG is no longer a documented option — the
+   visual signature requires real icons from a curated set.
 
-Iconify icon-set search order (line-icon sets only):
+Iconify line-icon search order (default path, step 2):
 `lucide` → `ph` → `tabler` → `mynaui` → `heroicons` (outline) →
-`lineicons`. Never pick from filled, multi-color, or pictographic sets
-(`fluent-color`, `noto`, `twemoji`, `flat-color-icons`, etc.) — they
-break the visual signature.
+`lineicons`. Filled, multi-color, and pictographic sets
+(`fluent-color`, `noto`, `twemoji`, `flat-color-icons`, etc.) are
+reserved for the brand exception in step 3 — never use them for
+generic topic nouns.
 
-Apply the accent to one detail by inlining `stroke="#FFB627"` on
-exactly one element of the body string (or `fill="#FFB627"` for a
-filled detail). See `reference/icon-picking.md` for which element to
-accent on common Lucide icons.
+#### Choosing the `ICON_CLASS` token value
+
+Color and stroke handling is class-driven, not body-mutating. Body
+strings stay verbatim from the cache; pick the right class for the
+icon family:
+
+| Source | `ICON_CLASS` value | Effect |
+|---|---|---|
+| Lucide / line-icon Iconify (`ph`, `tabler`, etc.) | `""` (empty) | Default line-icon styling: cream stroke, no fill |
+| `simple-icons:*` (monochrome brand silhouette) | `"brand-silhouette"` | Filled cream silhouette, no stroke |
+| `simple-icons:*` with full-icon accent tint | `"brand-silhouette accent"` | Filled amber silhouette |
+| `logos:*` / `devicon:*` (multi-color brand) | `"brand-color"` | Path fills win, no stroke |
+
+For line icons, apply the accent to one detail by inlining
+`stroke="#FFB627"` on exactly one element of the body string (or
+`fill="#FFB627"` for a filled detail). See `reference/icon-picking.md`
+for which element to accent on common Lucide icons.
+
+For brand-silhouette icons, never inline accent — use the `accent`
+class modifier above (tints the whole logo amber). For `brand-color`,
+never tint at all — keep original brand colors. See
+`reference/icon-picking.md` "Brand exception" for the full rules.
 
 ### Step 7 — Compute the next round number and write the HTML
 
@@ -186,16 +214,33 @@ Create `<video-dir>/thumbnails/round-N/`. Read the templates from
 `templates/variant.html` and `templates/contact-sheet.html`. Substitute
 tokens (see those files' leading comments for the token list).
 
+**Substitution must be global.** Use a regex with the `g` flag in JS
+(`html.replace(/\{\{TOKEN\}\}/g, value)`), `re.sub(...)` in Python, or
+equivalent — never naive single-occurrence string replace. Token names
+appear in both the leading documentation comment AND the actual
+markup; first-occurrence replace will eat the comment occurrence and
+leave real tags unsubstituted.
+
+Token reference (for `variant.html`):
+- `STYLES_HREF` — absolute file:// URL to
+  `<repo-root>/.claude/skills/thumbnail-creator/templates/styles.css`
+  (never relative — round folders are deep enough that relative paths
+  are fragile)
+- `TITLE_PLAIN` — plain text title
+- `ROW_FONT_SIZE_PX` — autosized integer per variant
+- `TITLE_ROW_1`, `TITLE_ROW_2`, `TITLE_ROW_3` — row HTML with accent
+  spans
+- `ICON_VIEWBOX` — from the cache entry / CLI JSON; e.g.
+  `"0 0 24 24"`, `"0 0 256 417"`
+- `ICON_CLASS` — per the table in step 6 (`""`, `"brand-silhouette"`,
+  `"brand-silhouette accent"`, or `"brand-color"`)
+- `ICON_SVG_BODY` — the `body` field from the cache entry / CLI JSON
+
 Write:
 - `<video-dir>/thumbnails/round-N/a.html`
 - `<video-dir>/thumbnails/round-N/b.html`
 - `<video-dir>/thumbnails/round-N/c.html`
 - `<video-dir>/thumbnails/round-N/contact-sheet.html`
-
-For the `{{STYLES_HREF}}` token, use the absolute file:// URL to
-`<repo-root>/.claude/skills/thumbnail-creator/templates/styles.css`. Do
-NOT use a relative path; the round folder is deep enough that relative
-paths are fragile.
 
 #### The `{{VARIANTS_HTML}}` block shape
 

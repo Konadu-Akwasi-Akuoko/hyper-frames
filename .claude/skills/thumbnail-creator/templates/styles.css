@@ -85,6 +85,26 @@ html, body {
 .thumbnail-icon .accent-fill {
   fill: var(--accent);
 }
+.thumbnail-icon svg.brand-silhouette {
+  /* Single-region monochrome brand logos (simple-icons:*). Path bodies
+   * typically use fill="currentColor", so set both color and fill. */
+  color: var(--text);
+  fill: var(--text);
+  stroke: none;
+  stroke-width: 0;
+}
+.thumbnail-icon svg.brand-silhouette.accent {
+  color: var(--accent);
+  fill: var(--accent);
+}
+.thumbnail-icon svg.brand-color {
+  /* Multi-color brand marks (logos:*, devicon:*). Each path carries its
+   * own fill attribute; clear the cascading fill: none and stroke from
+   * the line-icon defaults so path attributes win. */
+  fill: initial;
+  stroke: none;
+  stroke-width: 0;
+}
 .thumbnail-icon .accent-stroke {
   stroke: var(--accent);
   stroke-width: 8;
