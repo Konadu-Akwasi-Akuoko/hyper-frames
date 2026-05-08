@@ -13,6 +13,11 @@
     {{TITLE_PLAIN}}     the rephrased thumbnail text, plain
     {{YOUTUBE_TITLE}}   the paired YouTube title (sentence case, search-friendly)
     {{THUMBNAIL_DIV}}   the .thumbnail markup, identical for full + grid wraps
+
+  In horizontal mode, {{VARIANTS_HTML}} uses .full-wrap + .grid-wrap.
+  In vertical mode, it uses .full-wrap-vertical + .shorts-wrap +
+  .profile-grid-wrap (defined in the inline <style> below). The
+  vertical per-variant block shape is in reference/vertical-mode.md §7.
 -->
 <!doctype html>
 <html lang="en">
@@ -65,6 +70,18 @@
     .full-wrap .thumbnail { transform: scale(0.4); transform-origin: top left; }
     .grid-wrap { width: 210px; height: 118px; overflow: hidden; }
     .grid-wrap .thumbnail { transform: scale(0.164); transform-origin: top left; }
+
+    /* Vertical wraps (1080x1920 source). Used by the vertical
+     * contact-sheet block defined in reference/vertical-mode.md §7. */
+    .full-wrap-vertical { width: 270px; height: 480px; overflow: hidden; }
+    .full-wrap-vertical .thumbnail.vertical { transform: scale(0.25); transform-origin: top left; }
+    .shorts-wrap { width: 140px; height: 249px; overflow: hidden; }
+    .shorts-wrap .thumbnail.vertical { transform: scale(0.1296); transform-origin: top left; }
+    /* Profile-grid: 1:1 crop of source y=420..1500. Scale 180/1080
+     * = 0.1667; translate -70px (= 420 * 0.1667) to bring the crop
+     * top to wrap top. */
+    .profile-grid-wrap { width: 180px; height: 180px; overflow: hidden; }
+    .profile-grid-wrap .thumbnail.vertical { transform: translateY(-70px) scale(0.1667); transform-origin: top left; }
     .variant-links {
       margin-top: 12px;
       font-size: 12px;
