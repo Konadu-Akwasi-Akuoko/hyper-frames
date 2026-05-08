@@ -19,6 +19,16 @@
                       "brand-silhouette" for simple-icons:*,
                       "brand-silhouette accent" for accent-tinted brand,
                       "brand-color" for logos:* / devicon:* multi-color
+
+  Required (added for vertical mode):
+    THUMBNAIL_CLASS   "" for horizontal (1280x720),
+                      "vertical" for 1080x1920 Shorts/TikTok cover.
+                      Drives layout via class-scoped CSS in styles.css.
+    ROW_3_CLASS       "" for horizontal mode and for vertical Variants
+                      A/B. "kicker" for vertical Variant C — scales
+                      row 3 to 0.6em via the .kicker CSS rule. See
+                      the thumbnail-creator skill's
+                      reference/vertical-mode.md for the rhythm spec.
 -->
 <!doctype html>
 <html lang="en">
@@ -28,11 +38,11 @@
   <link rel="stylesheet" href="{{STYLES_HREF}}">
 </head>
 <body>
-  <div class="thumbnail">
+  <div class="thumbnail {{THUMBNAIL_CLASS}}">
     <div class="thumbnail-text" style="font-size: {{ROW_FONT_SIZE_PX}}px;">
       <span class="thumbnail-row">{{TITLE_ROW_1}}</span>
       <span class="thumbnail-row">{{TITLE_ROW_2}}</span>
-      <span class="thumbnail-row">{{TITLE_ROW_3}}</span>
+      <span class="thumbnail-row {{ROW_3_CLASS}}">{{TITLE_ROW_3}}</span>
     </div>
     <div class="thumbnail-icon">
       <svg viewBox="{{ICON_VIEWBOX}}" class="{{ICON_CLASS}}" xmlns="http://www.w3.org/2000/svg">{{ICON_SVG_BODY}}</svg>
