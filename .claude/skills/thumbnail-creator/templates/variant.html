@@ -29,6 +29,11 @@
                       row 3 to 0.6em via the .kicker CSS rule. See
                       the thumbnail-creator skill's
                       reference/vertical-mode.md for the rhythm spec.
+    TITLE_ROW_4       "" by default. Used only by vertical Variant B
+                      (stacked staccato) which can run 4-5 rows. Empty
+                      rows are hidden by `.thumbnail-row:empty` CSS.
+    TITLE_ROW_5       "" by default. Used only by vertical Variant B
+                      when 5 rows are needed.
 -->
 <!doctype html>
 <html lang="en">
@@ -43,6 +48,8 @@
       <span class="thumbnail-row">{{TITLE_ROW_1}}</span>
       <span class="thumbnail-row">{{TITLE_ROW_2}}</span>
       <span class="thumbnail-row {{ROW_3_CLASS}}">{{TITLE_ROW_3}}</span>
+      <span class="thumbnail-row">{{TITLE_ROW_4}}</span>
+      <span class="thumbnail-row">{{TITLE_ROW_5}}</span>
     </div>
     <div class="thumbnail-icon">
       <svg viewBox="{{ICON_VIEWBOX}}" class="{{ICON_CLASS}}" xmlns="http://www.w3.org/2000/svg">{{ICON_SVG_BODY}}</svg>
