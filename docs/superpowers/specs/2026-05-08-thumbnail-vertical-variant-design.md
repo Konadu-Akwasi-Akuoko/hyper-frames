@@ -224,10 +224,12 @@ new `THUMBNAIL_CLASS` token and class-scoped CSS overrides.
 - New token: `THUMBNAIL_CLASS` — empty string for horizontal,
   `"vertical"` for vertical.
 - Rendered as `<div class="thumbnail {{THUMBNAIL_CLASS}}">`.
-- For Variant C only, the third row's `<span>` open tag is
-  substituted to add a `.kicker` class:
-  `<span class="thumbnail-row kicker">{{TITLE_ROW_3}}</span>`. Non-kicker
-  variants are unaffected; no new token is added for this.
+- New token: `ROW_3_CLASS` — empty string in horizontal mode and for
+  Variants A/B in vertical mode. `"kicker"` for Variant C in vertical
+  mode. Rendered as
+  `<span class="thumbnail-row {{ROW_3_CLASS}}">{{TITLE_ROW_3}}</span>`.
+  Rows 1 and 2 have no equivalent token because no current rhythm
+  pattern needs a per-row class on them.
 
 ### `templates/styles.css`
 
@@ -293,9 +295,9 @@ The horizontal block in the contact sheet is unchanged.
 
 ### Token substitution updates
 
-The token table in `SKILL.md` Step 7 grows by one entry
-(`THUMBNAIL_CLASS`). All existing tokens behave identically. Global
-replace (`/g` flag) is unchanged.
+The token table in `SKILL.md` Step 7 grows by two entries
+(`THUMBNAIL_CLASS` and `ROW_3_CLASS`). All existing tokens behave
+identically. Global replace (`/g` flag) is unchanged.
 
 ## Renderer changes
 
