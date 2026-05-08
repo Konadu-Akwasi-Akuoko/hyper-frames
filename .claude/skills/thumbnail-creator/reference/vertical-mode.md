@@ -36,6 +36,10 @@ cover.` after detection.
 - For Variant C, run the formula on rows 1-2 only. Row 3 inherits
   `font-size: 0.6em` from the `.kicker` CSS class. The computed
   kicker pixel size must still clear the 90 px floor.
+- Variant B can use 4 or 5 rows. Use the `TITLE_ROW_4` and
+  `TITLE_ROW_5` tokens for the extra rows. Variants A and C leave
+  these tokens empty; the `.thumbnail-row:empty` CSS rule hides
+  unused row spans.
 
 ## 3. Text rephrase rhythms (Step 3)
 

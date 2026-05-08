@@ -255,6 +255,10 @@ Token reference (for `variant.html`):
 - `ROW_FONT_SIZE_PX` — autosized integer per variant
 - `TITLE_ROW_1`, `TITLE_ROW_2`, `TITLE_ROW_3` — row HTML with accent
   spans
+- `TITLE_ROW_4`, `TITLE_ROW_5` — extra rows for vertical Variant B
+  (stacked staccato, 4-5 rows). Default to `""` for horizontal mode
+  and for vertical Variants A/C; empty rows are hidden by the
+  `.thumbnail-row:empty` CSS rule.
 - `ICON_VIEWBOX` — from the cache entry / CLI JSON; e.g.
   `"0 0 24 24"`, `"0 0 256 417"`
 - `ICON_CLASS` — per the table in step 6 (`""`, `"brand-silhouette"`,

@@ -49,6 +49,13 @@ html, body {
   display: block;
 }
 
+/* Hide unused row spans. Vertical Variant B uses 4-5 rows; Variants
+ * A/C use 3. The template always renders 5 row spans — empty ones
+ * collapse here so unused tokens leave no visual gap. */
+.thumbnail-row:empty {
+  display: none;
+}
+
 .thumbnail-text .accent,
 .thumbnail-row.accent {
   color: var(--accent);
