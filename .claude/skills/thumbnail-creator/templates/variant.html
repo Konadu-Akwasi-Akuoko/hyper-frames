@@ -1,11 +1,24 @@
 <!--
-  Tokens substituted by the thumbnail-creator skill:
-    {{STYLES_HREF}}        absolute file:// URL to templates/styles.css
-    {{TITLE_PLAIN}}        plain text title (for <title>)
-    {{ROW_FONT_SIZE_PX}}   integer pixel size, autosized per variant
-    {{TITLE_ROW_1..3}}     row HTML with accent <span> markup
-    {{ICON_SVG_BODY}}      SVG body (children of <svg>); from Lucide cache
-                           or Iconify on-demand fetch (never hand-coded)
+  Tokens substituted by the thumbnail-creator skill. Names are listed
+  WITHOUT brace syntax to avoid colliding with first-occurrence string
+  replacement. The skill must use global replacement (e.g. /g in JS,
+  re.sub in Python) when substituting.
+
+  Required:
+    STYLES_HREF       absolute file:// URL to templates/styles.css
+    TITLE_PLAIN       plain text title (for <title>)
+    ROW_FONT_SIZE_PX  integer pixel size, autosized per variant
+    TITLE_ROW_1..3    row HTML with accent <span> markup
+    ICON_SVG_BODY     SVG body (children of <svg>); from Lucide cache
+                      or Iconify on-demand fetch (never hand-coded)
+
+  Required (added for brand exception):
+    ICON_VIEWBOX      e.g. "0 0 24 24" for Lucide / Simple Icons,
+                      "0 0 256 417" for logos:jenkins, etc.
+    ICON_CLASS        "" for default line icons,
+                      "brand-silhouette" for simple-icons:*,
+                      "brand-silhouette accent" for accent-tinted brand,
+                      "brand-color" for logos:* / devicon:* multi-color
 -->
 <!doctype html>
 <html lang="en">
@@ -22,7 +35,7 @@
       <span class="thumbnail-row">{{TITLE_ROW_3}}</span>
     </div>
     <div class="thumbnail-icon">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">{{ICON_SVG_BODY}}</svg>
+      <svg viewBox="{{ICON_VIEWBOX}}" class="{{ICON_CLASS}}" xmlns="http://www.w3.org/2000/svg">{{ICON_SVG_BODY}}</svg>
     </div>
     <div class="grid-overlay" aria-hidden="true">
       <div class="grid-cell">1</div>
