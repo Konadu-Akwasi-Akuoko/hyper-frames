@@ -140,6 +140,33 @@ simulate the YouTube Shorts feed grid size. The `profile-grid-wrap` is
 exactly 180×180 and centers the inner thumbnail so only the y=420-1500
 region is visible — that's the TikTok profile-grid 1:1 crop.
 
+### Known constraint: 3-row variants get cropped on TikTok profile grid
+
+The 1080×1920 layout puts the icon at y=120-840 (top zone) and
+bottom-anchors text at y≈1467-1800 for a 3-row variant, leaving a
+large gap between them. The TikTok profile-grid 1:1 crop is centered
+at y=420-1500, which catches the icon's bottom half and only the
+top edge (~33 px) of row 1 of the text. No single 1080-tall centered
+crop can capture both the icon and bottom-anchored 3-row text.
+
+This is a layout/surface trade-off, not a bug. Tell the user when
+presenting the round:
+
+- Variant A (3 rows, wide recap): text mostly falls below the
+  TikTok profile-grid crop. Reads fully on YouTube Shorts feed
+  (which shows the full 9:16 frame), but on a TikTok profile grid
+  most of the rephrase is invisible.
+- Variant B (4-5 rows, stacked staccato): text stack is taller, so
+  more rows land inside the centered 1:1 crop. **Best variant for
+  TikTok profile-grid legibility.** Surface this when the user is
+  posting to TikTok rather than YouTube Shorts.
+- Variant C (3 rows + kicker): same constraint as A; the headline
+  may be partially visible but the kicker falls below the crop.
+
+The `profile-grid-wrap` preview in the contact sheet exists
+specifically to surface this. Always include it so the user can
+judge legibility per-surface before shipping.
+
 ## 8. Renderer invocation (Step 10)
 
 ```bash

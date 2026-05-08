@@ -68,7 +68,11 @@ Accent: `TEXT` (row 1) and `HARDER` (row 3). Two accent regions cap.
 ## Variant C — headline + kicker
 
 - Rows: exactly 3.
-- Rows 1-2: 1-3 words each, 5-8 chars each. Dominant font 200-220 px.
+- Rows 1-2: 1-3 words each, 4-9 chars each. Dominant font 170-220 px.
+  (4 chars hits the 220 px cap; 9 chars lands at 170 px. Anything
+  shorter still works visually but caps at 220 px so the variant
+  doesn't grow unbounded. Anything longer drops into Variant A
+  territory.)
 - Row 3 (kicker): 3-6 words, 14-18 chars. Rendered at 0.6em of the
   dominant size via the `.kicker` CSS class — the rephrase produces the
   text; the template applies the class.
