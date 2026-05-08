@@ -1,0 +1,143 @@
+/* thumbnail-creator — LOCKED visual signature (B: Terminal Scholar)
+ * Constants are documented in reference/visual-signature.md.
+ * Do NOT change these per video. Changing them is a rebrand exercise.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&display=swap');
+
+:root {
+  --bg: #1A1410;        /* espresso brown */
+  --text: #F5E6D3;      /* warm off-white */
+  --accent: #FFB627;    /* amber */
+  --canvas-w: 1280px;
+  --canvas-h: 720px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+}
+
+.thumbnail {
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  background: var(--bg);
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbnail-text {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 420px;
+  color: var(--text);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.thumbnail-row {
+  display: block;
+}
+
+.thumbnail-text .accent,
+.thumbnail-row.accent {
+  color: var(--accent);
+}
+
+.thumbnail-icon {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumbnail-icon svg {
+  width: 320px;
+  height: 320px;
+  /* Defaults so unclassed Lucide bodies render correctly. Hand-coded
+   * SVGs may opt out by setting class="stroke" / "accent-stroke" /
+   * "accent-fill" on individual children. */
+  stroke: var(--text);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.thumbnail-icon .stroke {
+  stroke: var(--text);
+  stroke-width: 8;
+  fill: none;
+}
+.thumbnail-icon .accent-fill {
+  fill: var(--accent);
+}
+.thumbnail-icon .accent-stroke {
+  stroke: var(--accent);
+  stroke-width: 8;
+  fill: none;
+}
+
+/* ---- Design grid overlay ----
+ * Toggled by adding ?grid to the variant URL. Hidden by default; never
+ * appears in rendered PNG output (the renderer does not pass query params
+ * to the file:// URL). 4×3 numbered cells + YouTube safe-area outline +
+ * duration-badge corner outline. Numbers + outlines render in red so they
+ * stand out against the espresso-brown background.
+ */
+.grid-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.thumbnail.with-grid .grid-overlay {
+  display: grid;
+}
+
+.grid-cell {
+  position: relative;
+  border: 1px solid rgba(255, 64, 64, 0.45);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(255, 64, 64, 0.75);
+  padding: 6px 0 0 8px;
+  box-sizing: border-box;
+}
+
+.grid-safe-area {
+  position: absolute;
+  top: 76px;
+  left: 76px;
+  right: 76px;
+  bottom: 76px;
+  border: 2px dashed rgba(255, 64, 64, 0.6);
+  pointer-events: none;
+}
+
+.grid-duration-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 140px;
+  height: 40px;
+  border: 2px solid rgba(255, 64, 64, 0.6);
+  pointer-events: none;
+}

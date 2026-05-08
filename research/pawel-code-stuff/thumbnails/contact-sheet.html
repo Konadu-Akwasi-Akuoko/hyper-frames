@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PawelCodeStuff — thumbnail contact sheet</title>
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --bg-card: #141418;
+      --border: #2a2a30;
+      --fg: #e8e8ec;
+      --fg-dim: #888892;
+      --accent: #ef4a4a;
+      --accent-dim: #6b2929;
+      --formula: #2c3a5a;
+      --rephrase: #1f4d2a;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    header {
+      padding: 32px 40px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      margin: 0 0 4px;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .sub {
+      color: var(--fg-dim);
+      font-size: 13px;
+    }
+    .controls {
+      padding: 16px 40px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      background: #0e0e12;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .controls label { color: var(--fg-dim); margin-right: 8px; }
+    button {
+      background: var(--bg-card);
+      color: var(--fg);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font: inherit;
+      cursor: pointer;
+    }
+    button:hover { border-color: #44444c; }
+    button.active { background: #1f1f25; border-color: #44444c; }
+    main {
+      padding: 28px 40px 60px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    @media (max-width: 1100px) { main { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .thumb-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .thumb-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .rank {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: rgba(0,0,0,0.75);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 4px 8px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .runtime {
+      position: absolute;
+      bottom: 10px; right: 10px;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      padding: 3px 6px;
+      font-size: 11px;
+      border-radius: 3px;
+    }
+    .meta {
+      padding: 16px 18px 18px;
+    }
+    .title {
+      font-weight: 600;
+      font-size: 16px;
+      margin: 0 0 6px;
+      color: var(--fg);
+      text-decoration: none;
+      display: block;
+    }
+    .title:hover { color: var(--accent); }
+    .thumb-text-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 10px 0 12px;
+      padding: 10px 12px;
+      background: #0a0a0d;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .thumb-text-row .label {
+      color: var(--fg-dim);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      min-width: 80px;
+    }
+    .thumb-text-row .text {
+      color: var(--fg);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+    .thumb-text-row .red { color: var(--accent); }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 8px 0 0;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .stat .k { color: var(--fg-dim); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .stat .v { color: var(--fg); font-size: 14px; font-weight: 600; margin-top: 2px; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .badge.formula { background: var(--formula); color: #cfd8ff; }
+    .badge.rephrase { background: var(--rephrase); color: #c4f4cd; }
+    .note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--fg-dim);
+      font-style: italic;
+    }
+    .legend {
+      display: flex;
+      gap: 14px;
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--fg-dim);
+    }
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend .swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PawelCodeStuff — thumbnail contact sheet</h1>
+    <div class="sub">All 8 videos as of 2026-05-07. Channel: <a style="color:var(--accent)" href="https://www.youtube.com/@pawel_code_stuff/videos" target="_blank">@pawel_code_stuff</a></div>
+  </header>
+
+  <div class="controls">
+    <label>Sort by</label>
+    <button id="btn-views" class="active">Views (highest first)</button>
+    <button id="btn-date">Upload date (oldest first)</button>
+    <button id="btn-likerate">Like rate</button>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--formula)"></span>"Explained in N min" formula</span>
+      <span><span class="swatch" style="background:var(--rephrase)"></span>Rephrased punchy claim</span>
+    </div>
+  </div>
+
+  <main id="grid"></main>
+
+  <script>
+    const VIDEOS = [
+      {
+        slug: "08-text-rendering",
+        id: "4soZ33MvlW4",
+        title: "Why is rendering text so complicated?",
+        thumbText: ["TEXT", " RENDERING / ", "IS INSANELY / ", "DIFFICULT"],
+        redTokens: ["TEXT", "DIFFICULT"],
+        type: "rephrase",
+        views: 125672, likes: 12952, comments: 651,
+        runtime: "5:19", date: "2026-05-01",
+        note: "Title = question; thumbnail = declarative + 'INSANELY' upgrade. Breakout video."
+      },
+      {
+        slug: "07-uuid-vs-autoinc",
+        id: "JbdvmQ_HgJo",
+        title: "Auto-Increment vs UUID Explained in 5 Minutes",
+        thumbText: ["AUTO-INCREMENT", " VS / ", "UUID", " EXPLAINED / IN 5 MINUTES"],
+        redTokens: ["AUTO-INCREMENT", "UUID"],
+        type: "formula",
+        views: 78291, likes: 4968, comments: 235,
+        runtime: "5:18", date: "2026-04-27",
+        note: "Pure formula. Heavy SEO topic likely drove the views; lower like rate (6.3%)."
+      },
+      {
+        slug: "06-mouse-keys",
+        id: "DB0dEPDCm24",
+        title: "Why Moving Your Mouse Generates Secure Keys",
+        thumbText: ["WHY YOUR ", "MOUSE / ", "SECURES", " THE / INTERNET"],
+        redTokens: ["MOUSE", "SECURES"],
+        type: "rephrase",
+        views: 14982, likes: 1533, comments: 87,
+        runtime: "9:41", date: "2026-04-25",
+        note: "Title is descriptive; thumbnail makes a much bigger claim ('SECURES THE INTERNET')."
+      },
+      {
+        slug: "05-password-hashing",
+        id: "lLDZ9O8E62Y",
+        title: "Why Good Password Hashing is Intentionally Slow",
+        thumbText: ["GOOD ", "PASSWORD", " / ", "HASHING", " MUST / BE SLOW"],
+        redTokens: ["PASSWORD", "HASHING"],
+        type: "rephrase",
+        views: 9214, likes: 917, comments: 77,
+        runtime: "5:55", date: "2026-04-21",
+        note: "Title 'is Intentionally Slow' → thumbnail 'MUST BE SLOW' (turns into imperative)."
+      },
+      {
+        slug: "04-three-databases",
+        id: "rZbJLJIESZg",
+        title: "3 Databases Built for Specific Problems",
+        thumbText: ["3 DATABASES BUILT", " / FOR SPECIFIC / PROBLEMS"],
+        redTokens: ["3 DATABASES BUILT"],
+        type: "rephrase",
+        views: 8307, likes: 571, comments: 30,
+        runtime: "7:26", date: "2026-04-19",
+        note: "First non-formula title. Numeric '3' anchor. Rephrasing kept minimal."
+      },
+      {
+        slug: "03-file-compression",
+        id: "jy148D4iB_Q",
+        title: "File Compression Explained In 4 Minutes",
+        thumbText: ["FILE ", "COMPRESSION", " / EXPLAINED IN / 4 MINUTES"],
+        redTokens: ["COMPRESSION"],
+        type: "formula",
+        views: 3612, likes: 260, comments: 41,
+        runtime: "3:51", date: "2026-04-14",
+        note: "Pure formula era. Red on the topic noun only."
+      },
+      {
+        slug: "02-database-indexes",
+        id: "YC50j-nozZs",
+        title: "Database Indexes Explained In 6 Minutes",
+        thumbText: ["DATABASE ", "INDEXES", " / EXPLAINED IN / 6 MINUTES"],
+        redTokens: ["INDEXES"],
+        type: "formula",
+        views: 2550, likes: 209, comments: 7,
+        runtime: "6:28", date: "2026-04-12",
+        note: "Same database icon as #07. Formula-era visual reuse."
+      },
+      {
+        slug: "01-load-balancing",
+        id: "kGTqxMaKEY0",
+        title: "Load Balancing Explained in 3 Minutes",
+        thumbText: ["LOAD BALANCING", " / EXPLAINED IN / 3 MINUTES"],
+        redTokens: ["LOAD BALANCING"],
+        type: "formula",
+        views: 1757, likes: 151, comments: 4,
+        runtime: "2:55", date: "2026-04-09",
+        note: "First upload. Diagrammatic icon (A/B/C nodes) — only thumbnail in the corpus with multi-element imagery."
+      }
+    ];
+
+    const fmt = n => n.toLocaleString();
+    const pct = (a, b) => (a / b * 100).toFixed(1);
+
+    function render(list) {
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
+      list.forEach((v, i) => {
+        const likeRate = pct(v.likes, v.views);
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="thumb-wrap">
+            <img src="${v.slug}.jpg" alt="${v.title}" loading="lazy">
+            <span class="rank">#${i + 1}</span>
+            <span class="runtime">${v.runtime}</span>
+          </div>
+          <div class="meta">
+            <span class="badge ${v.type}">${v.type === "formula" ? '"Explained in N min" formula' : "Rephrased punchy claim"}</span>
+            <a class="title" href="https://www.youtube.com/watch?v=${v.id}" target="_blank">${v.title}</a>
+            <div class="thumb-text-row">
+              <span class="label">Thumb&nbsp;text</span>
+              <span class="text">${v.thumbText.map(t => v.redTokens.includes(t.trim()) ? `<span class="red">${t}</span>` : t).join("")}</span>
+            </div>
+            <div class="note">${v.note}</div>
+            <div class="stats">
+              <div class="stat"><div class="k">Views</div><div class="v">${fmt(v.views)}</div></div>
+              <div class="stat"><div class="k">Likes</div><div class="v">${fmt(v.likes)}</div></div>
+              <div class="stat"><div class="k">Like rate</div><div class="v">${likeRate}%</div></div>
+              <div class="stat"><div class="k">Uploaded</div><div class="v">${v.date.slice(5)}</div></div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function setActive(id) {
+      ["btn-views", "btn-date", "btn-likerate"].forEach(b => {
+        document.getElementById(b).classList.toggle("active", b === id);
+      });
+    }
+
+    document.getElementById("btn-views").onclick = () => {
+      setActive("btn-views");
+      render([...VIDEOS].sort((a, b) => b.views - a.views));
+    };
+    document.getElementById("btn-date").onclick = () => {
+      setActive("btn-date");
+      render([...VIDEOS].sort((a, b) => a.date.localeCompare(b.date)));
+    };
+    document.getElementById("btn-likerate").onclick = () => {
+      setActive("btn-likerate");
+      render([...VIDEOS].sort((a, b) => (b.likes / b.views) - (a.likes / a.views)));
+    };
+
+    render([...VIDEOS].sort((a, b) => b.views - a.views));
+  </script>
+</body>
+</html>

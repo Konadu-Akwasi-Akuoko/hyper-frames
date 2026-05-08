@@ -1,0 +1,22 @@
+[project]
+name = "narration-map"
+version = "0.1.0"
+description = "Ingest a HyperFrames word-level transcript and emit a narration map: anchor words, pause windows, scene boundaries, emphatic words."
+readme = "README.md"
+authors = [
+    { name = "Akwasi Konadu Akuoko", email = "akwasikonadueverlasting@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+narration-map = "narration_map.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.11.10,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+extraPaths = ["src"]

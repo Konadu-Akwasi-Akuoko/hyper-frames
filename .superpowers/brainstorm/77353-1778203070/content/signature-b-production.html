@@ -1,0 +1,244 @@
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&display=swap" rel="stylesheet">
+
+<style>
+  .stage { display: flex; flex-direction: column; gap: 48px; margin-top: 12px; }
+
+  .example { display: flex; flex-direction: column; gap: 12px; }
+  .example-header {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .example-title { font: 700 18px/1.2 system-ui, sans-serif; color: #fff; }
+  .example-meta { font: 400 13px/1.4 system-ui, sans-serif; color: rgba(255,255,255,0.55); }
+  .example-meta code {
+    background: rgba(255,255,255,0.08); padding: 1px 6px; border-radius: 3px;
+    font-size: 12px;
+  }
+
+  .row { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+  .row-label {
+    font: 500 10px/1 system-ui, sans-serif; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+  }
+
+  /* All thumbs render at 1280×720 internally and CSS-scale down */
+  .thumb {
+    width: 1280px; height: 720px; transform-origin: top left;
+    position: relative; overflow: hidden;
+    background: #1A1410;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .full-wrap { width: 512px; height: 288px; overflow: hidden; }
+  .full-wrap .thumb { transform: scale(0.4); }
+  .grid-wrap { width: 210px; height: 118px; overflow: hidden; }
+  .grid-wrap .thumb { transform: scale(0.164); }
+
+  .thumb-text {
+    position: absolute; left: 80px; top: 100px; right: 380px;
+    color: #F5E6D3; font-weight: 800;
+    line-height: 1.05; letter-spacing: -0.02em;
+    text-transform: uppercase;
+    display: flex; flex-direction: column; gap: 16px;
+    white-space: nowrap;
+  }
+  .thumb-row { display: block; }
+  .accent { color: #FFB627; }
+
+  .thumb-icon {
+    position: absolute; right: 110px; top: 50%; transform: translateY(-50%);
+    width: 220px; height: 220px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .thumb-icon svg { width: 220px; height: 220px; }
+  /* Icon stroke styling — matches B candidate's "outlined badge with accent fill" */
+  .thumb-icon .stroke { stroke: #F5E6D3; stroke-width: 8; fill: none; }
+  .thumb-icon .accent-fill { fill: #FFB627; }
+  .thumb-icon .accent-stroke { stroke: #FFB627; stroke-width: 8; fill: none; }
+
+  /* Per-example font sizing — production renderer would compute this automatically.
+     I'm hard-coding it here for the demo. */
+  .ex1 .thumb-row { font-size: 96px; }   /* TEXT RENDERING / IS INSANELY / DIFFICULT */
+  .ex2 .thumb-row { font-size: 110px; }  /* GOOD PASSWORD / HASHING MUST / BE SLOW */
+  .ex3 .thumb-row { font-size: 100px; }  /* WHY YOUR MOUSE / SECURES THE / INTERNET */
+
+  .nicer-note {
+    margin-top: 8px; padding: 14px 18px;
+    background: rgba(255, 182, 39, 0.08); border: 1px solid rgba(255, 182, 39, 0.25);
+    border-radius: 8px; color: rgba(255, 230, 200, 0.92);
+    font: 400 13px/1.55 system-ui, sans-serif;
+  }
+  .nicer-note strong { color: #FFB627; }
+
+  .pawel-compare {
+    margin-top: 8px; padding: 14px 18px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; color: rgba(255,255,255,0.7);
+    font: 400 13px/1.5 system-ui, sans-serif;
+  }
+</style>
+
+<h2>Signature B at production quality</h2>
+<p class="subtitle">Three real example videos, each rendered the way the skill would actually produce them &mdash; font size autoscaled to fit the longest row, real SVG icons, no CSS-border hacks.</p>
+
+<div class="nicer-note">
+  <strong>What changed since the rough mockup:</strong> font is autosized per video so each row fits on one line, icons are real SVG (not styled text), spacing is tuned to JetBrains Mono's metrics. The skill's text-rephrase step will also treat "must fit in 3 rows at decent size" as a constraint, so wordy titles get rewritten shorter rather than shrunk into illegibility.
+</div>
+
+<div class="stage">
+
+  <!-- ============ EXAMPLE 1 — TEXT RENDERING ============ -->
+  <div class="example ex1">
+    <div class="example-header">
+      <span class="example-title">Example 1 &mdash; Text rendering</span>
+      <span class="example-meta">Title: <code>Why is rendering text so complicated?</code> &nbsp;&middot;&nbsp; Thumb: <code>TEXT RENDERING / IS INSANELY / DIFFICULT</code></span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-label">Full size (40% scale of 1280&times;720)</div>
+        <div class="full-wrap">
+          <div class="thumb">
+            <div class="thumb-text">
+              <span class="thumb-row"><span class="accent">TEXT</span> RENDERING</span>
+              <span class="thumb-row">IS INSANELY</span>
+              <span class="thumb-row accent">DIFFICULT</span>
+            </div>
+            <div class="thumb-icon">
+              <!-- Custom Aa glyph — fallback hand-coded SVG since "text rendering" has no clean Lucide match -->
+              <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <!-- Capital A (left) -->
+                <path class="stroke" d="M 18 180 L 60 30 L 102 180 M 35 130 L 85 130" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Lowercase a (right, accent) -->
+                <circle class="accent-stroke" cx="160" cy="135" r="38" />
+                <line class="accent-stroke" x1="198" y1="100" x2="198" y2="180" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row-label">YouTube feed grid</div>
+        <div class="grid-wrap">
+          <div class="thumb">
+            <div class="thumb-text">
+              <span class="thumb-row"><span class="accent">TEXT</span> RENDERING</span>
+              <span class="thumb-row">IS INSANELY</span>
+              <span class="thumb-row accent">DIFFICULT</span>
+            </div>
+            <div class="thumb-icon">
+              <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <path class="stroke" d="M 18 180 L 60 30 L 102 180 M 35 130 L 85 130" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle class="accent-stroke" cx="160" cy="135" r="38" />
+                <line class="accent-stroke" x1="198" y1="100" x2="198" y2="180" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EXAMPLE 2 — PASSWORD HASHING ============ -->
+  <div class="example ex2">
+    <div class="example-header">
+      <span class="example-title">Example 2 &mdash; Password hashing</span>
+      <span class="example-meta">Title: <code>Why Good Password Hashing is Intentionally Slow</code> &nbsp;&middot;&nbsp; Thumb: <code>GOOD PASSWORD / HASHING MUST / BE SLOW</code></span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-label">Full size (40% scale)</div>
+        <div class="full-wrap">
+          <div class="thumb">
+            <div class="thumb-text">
+              <span class="thumb-row">GOOD <span class="accent">PASSWORD</span></span>
+              <span class="thumb-row"><span class="accent">HASHING</span> MUST</span>
+              <span class="thumb-row">BE SLOW</span>
+            </div>
+            <div class="thumb-icon">
+              <!-- Real Lucide "lock" icon, restyled with our colors -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect class="accent-fill" x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path class="stroke" d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row-label">YouTube feed grid</div>
+        <div class="grid-wrap">
+          <div class="thumb">
+            <div class="thumb-text">
+              <span class="thumb-row">GOOD <span class="accent">PASSWORD</span></span>
+              <span class="thumb-row"><span class="accent">HASHING</span> MUST</span>
+              <span class="thumb-row">BE SLOW</span>
+            </div>
+            <div class="thumb-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect class="accent-fill" x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path class="stroke" d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EXAMPLE 3 — MOUSE KEYS ============ -->
+  <div class="example ex3">
+    <div class="example-header">
+      <span class="example-title">Example 3 &mdash; Mouse keys</span>
+      <span class="example-meta">Title: <code>Why Moving Your Mouse Generates Secure Keys</code> &nbsp;&middot;&nbsp; Thumb: <code>WHY YOUR MOUSE / SECURES THE / INTERNET</code></span>
+    </div>
+    <div class="row">
+      <div>
+        <div class="row-label">Full size (40% scale)</div>
+        <div class="full-wrap">
+          <div class="thumb">
+            <div class="thumb-text">
+              <span class="thumb-row">WHY YOUR <span class="accent">MOUSE</span></span>
+              <span class="thumb-row"><span class="accent">SECURES</span> THE</span>
+              <span class="thumb-row">INTERNET</span>
+            </div>
+            <div class="thumb-icon">
+              <!-- Real Lucide "key" icon -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle class="accent-fill" cx="7.5" cy="15.5" r="5.5"/>
+                <path class="stroke" d="m21 2-9.6 9.6 M15.5 7.5l3 3 L22 7l-3-3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="7.5" cy="15.5" r="2" fill="#1A1410"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row-label">YouTube feed grid</div>
+        <div class="grid-wrap">
+          <div class="thumb">
+            <div class="thumb-text">
+              <span class="thumb-row">WHY YOUR <span class="accent">MOUSE</span></span>
+              <span class="thumb-row"><span class="accent">SECURES</span> THE</span>
+              <span class="thumb-row">INTERNET</span>
+            </div>
+            <div class="thumb-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle class="accent-fill" cx="7.5" cy="15.5" r="5.5"/>
+                <path class="stroke" d="m21 2-9.6 9.6 M15.5 7.5l3 3 L22 7l-3-3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="7.5" cy="15.5" r="2" fill="#1A1410"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="pawel-compare">
+  Compare against Pawel's three actual thumbnails of these same topics in <code>research/pawel-code-stuff/thumbnails/</code> &mdash; <code>05-password-hashing.jpg</code>, <code>06-mouse-keys.jpg</code>, <code>08-text-rendering.jpg</code>. Side by side, the warm espresso + amber + monospace reads as clearly distinct from his cool black + coral + bitmap.
+</div>
+
+<p class="subtitle" style="margin-top: 32px; font-size: 13px;">
+  Tell me in the terminal: does this confirm B is the direction, or do you want to tweak something (background a touch warmer/darker, accent slightly more orange/yellow, font weight, icon stroke width)?
+</p>

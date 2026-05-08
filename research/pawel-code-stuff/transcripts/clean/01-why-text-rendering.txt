@@ -1,0 +1,51 @@
+You open a text editor, press the letterE, and it appears instantly.
+It feelslike the simplest, most fundamentalthing a computer can do.
+But under thehood, translating that keystroke intothe shape you see on your monitor is amathematical nightmare.
+Drawing arectangle is easy.
+You tell the GPU tofill a block of pixels with a color.
+Butdrawing text is arguably one of the mostcomplex, computationally expensive tasksyour operating system handles.
+Todaywe're going to look at why making textreadable is a fight against math,physics, and human biology.
+The root ofthe problem is that fonts are notpictures.
+If a font were just acollection of pixels, it would gethorribly pixelated and blurry the momentyou zoomed in or increase the font size.To be infinitely scalable, fonts arebuilt using mathematical formulas.Specifically, they are constructed fromvector graphics relying heavily onbasier curves.
+When you download a fontfile, you aren't downloading images ofletters.
+You are downloading a set ofmathematical instructions.
+The filesimply says start at this exactcoordinate, curve towards this controlpoint and end here.
+But here is wherethe nightmare begins.
+This mathrepresents infinite continuousprecision.
+But your screen is notcontinuous.
+Your screen is a rigiddiscrete grid of square pixels.
+Thefundamental problem of text rendering istaking a perfectly smooth mathematicalcurve and forcing it onto alowresolution grid of squares.
+Thistranslation process is calledrasterization.
+When you try to map acurve onto a pixel grid, you inevitablyget jagged edges.
+We call this thestaircase effect or aliasing.
+To fixthis, engineers use anti-aliasing.Instead of a pixel being purely black orpurely white, the rendering enginecalculates the coverage of themathematical curve over a specificpixel.
+If the curve only covers half thepixel, the engine colors it 50% gray.This creates a gradient along the edgeof the letter, which tricks your humaneye into seeing a perfectly smooth line.If you're rendering a massive 3D modelin a video game, anti-aliasing worksbrilliantly, but text is tiny.
+Alowercase E in a standard 12point fontmight only be 8 pixels tall.
+If youblindly apply mathematical anti-aliasingto something that small, it doesn't looksmooth.
+It turns into a smudgy, blurrymess.
+The critical stems of the lettersfall right between the pixels, washingout the contrast and making it illeible.To solve this, typographers and softwareengineers created hinting.
+Hinting isquite literally a programming languageembedded inside the font file itself.For every single character at variousspecific sizes, there are manuallywritten or algorithmically generatedinstructions.
+These instructions tellthe rendering engine, if this letter isbeing drawn at exactly 12 pixels tall,deliberately distort the mathematicalcurve so that the left vertical stemaligns perfectly with the physical pixelgrid.
+Let's repeat that one more time.Fonts contain executable bite code thatdistorts their own shapes just tosurvive the transition to alowresolution screen.
+But even withhinting, screens didn't have enoughpixels to make text truly crisp.
+Sosoftware engineers pulled off one of thegreatest hardware hacks in computerhistory.
+Sub pixel rendering.
+Lookextremely closely at a white pixel on anLCD monitor.
+It is not one white square.It is three vertical rectangles, a red,a green, and a blue sub pixel.
+Engineersrealized that if they stopped treatingthese as a single block of color andinstead controlled them as independentvertical light strips, they couldinstantly triple the horizontalresolution of the screen.
+By preciselymanipulating the brightness of the red,green, and blue sub pixels along theedge of a letter, the rendering enginecan shift a curve by 1/3 of a pixel.This is the technology behindMicrosoft's Clear Type and Apple'shistorical font smoothing.
+But this hackintroduces a new hell.
+If you do themath wrong, your crisp black textsuddenly has weird red and blue rainbowson the edges known as color fringing.The rendering engine has to applycomplex color filtering algorithms tosuppress the rainbows while keeping thesharpness.
+Furthermore, sub pixelrendering physically depends on thehardware.
+If you rotate your monitor 90°to code vertically, the RGB sub pixelsare no longer horizontal.
+They arevertical.
+The entire math algorithmbreaks.
+Your operating system actuallyhas to query the physical orientationand the specific RGB layout of yourmonitor hardware just to draw a lettercorrectly.
+Finally, doing all of this,parsing basier curves, executing hintingbite code, aligning to the grid, andcalculating subpixel RGB values isextremely slow.
+If your computer had todo this every time you scrolled a webpage, your system would grind to a halt.So, operating system has solution forthis scenario.
+Once it calculatesexactly how a 12ointe looks, it savesthat exact pixel arrangement as a tinyimage in a hidden cache on your GPUcalled a texture atlas.
+When you type asentence, the GPU isn't doing vectormath anymore.
+It is just rapidly pastingpre-calculated tiny images from thatatlas onto your screen.
+The next timeyou read a simple article online,remember what is happening.
+Yourcomputer is interpreting raw math,dynamically compiling bite code todistort perfect curves, and exploitingthe physical properties of microscopiccolored lights to trick your opticalsystem.
+All happening thousands of timesa second, completely invisibly.
