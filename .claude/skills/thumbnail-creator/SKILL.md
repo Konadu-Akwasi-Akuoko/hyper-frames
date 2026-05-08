@@ -1,6 +1,6 @@
 ---
 name: thumbnail-creator
-description: Guided generator that turns a hyper-frames video's working title into three production-ready 1280×720 YouTube thumbnail variants in the channel's locked visual style, with an iterative review loop. Use this skill whenever the user wants to create, draft, generate, design, or A/B test thumbnails for a hyper-frames video — phrases like "make a thumbnail for this video", "I need thumbnails", "generate thumbnail variants", "design a thumbnail", or any request that names a `videos/<slug>-<date>/` folder and asks for a thumbnail. Also triggers when the user runs the skill from inside a video folder after the script is drafted.
+description: Guided generator that turns a hyper-frames video's working title into three production-ready YouTube thumbnail variants (1280x720) or Shorts/TikTok cover variants (1080x1920) in the channel's locked visual style, with an iterative review loop. Use this skill whenever the user wants to create, draft, generate, design, or A/B test thumbnails for a hyper-frames video — phrases like "make a thumbnail for this video", "I need thumbnails", "generate thumbnail variants", "design a thumbnail", or any request that names a `videos/<slug>-<date>/` folder and asks for a thumbnail. Vertical/Shorts/TikTok mode activates when the invoking message contains any of: vertical, portrait, tiktok, shorts, reels, 9:16, 1080x1920. Also triggers when the user runs the skill from inside a video folder after the script is drafted.
 ---
 
 # thumbnail-creator
@@ -30,9 +30,9 @@ If both are present, continue.
 
 ## Workflow
 
-### Step 1 — Resolve the target video folder
+### Step 1 — Resolve the target video folder and orientation mode
 
-Resolve in this order:
+Resolve the **target folder** in this order:
 
 1. If the user's message contains a path like `videos/<slug>-<date>/`
    (relative or absolute), use that.
@@ -43,6 +43,31 @@ Resolve in this order:
 
 Convert the result to an absolute path. Use that absolute path for every
 subsequent file read and write — do not depend on CWD after this step.
+
+Resolve the **orientation mode** in this order (case-insensitive):
+
+1. If the invoking message contains any of `vertical`, `portrait`,
+   `tiktok`, `shorts`, `reels`, `9:16`, `1080x1920` → **vertical mode**.
+2. Otherwise → **horizontal mode** (default).
+
+Print a one-line confirmation:
+- Horizontal: `Mode: horizontal (1280×720) — YouTube thumbnail.`
+- Vertical: `Mode: vertical (1080×1920) — Shorts/TikTok cover.`
+
+If mode is vertical, **load `reference/vertical-mode.md` now** and
+apply its overrides to every subsequent step it names (Steps 3, 5, 7,
+10). Anything that doc doesn't override carries over from this file
+verbatim.
+
+Round folders are mode-tagged. When computing the next round number in
+Step 7:
+- Horizontal mode: scan `<video-dir>/thumbnails/round-(\d+)/` entries
+  (un-suffixed). The vertical rounds are excluded.
+- Vertical mode: scan `<video-dir>/thumbnails/round-(\d+)-vertical/`
+  entries. The horizontal rounds are excluded.
+
+Modes have independent counters; a single video can have
+`round-3/` (horizontal) and `round-1-vertical/` simultaneously.
 
 ### Step 2 — Read the title and topic context
 
@@ -235,6 +260,15 @@ Token reference (for `variant.html`):
 - `ICON_CLASS` — per the table in step 6 (`""`, `"brand-silhouette"`,
   `"brand-silhouette accent"`, or `"brand-color"`)
 - `ICON_SVG_BODY` — the `body` field from the cache entry / CLI JSON
+- `THUMBNAIL_CLASS` — `""` for horizontal (default); `"vertical"` for
+  vertical mode. Determines the `.thumbnail` wrapper class which
+  drives layout via class-scoped CSS in `templates/styles.css`. See
+  `reference/vertical-mode.md` for the full vertical layout spec.
+- `ROW_3_CLASS` — `""` for horizontal and for Variants A/B in vertical
+  mode. `"kicker"` for Variant C in vertical mode only. Scales row 3
+  to 0.6em via the `.thumbnail.vertical .thumbnail-row.kicker` CSS
+  rule. The kicker's computed pixel size (0.6 × dominant font size)
+  must clear the 90 px floor; if it doesn't, rephrase shorter.
 
 Write:
 - `<video-dir>/thumbnails/round-N/a.html`
@@ -245,7 +279,11 @@ Write:
 #### The `{{VARIANTS_HTML}}` block shape
 
 `templates/contact-sheet.html` has a single `{{VARIANTS_HTML}}` slot.
-Build it by concatenating three copies of this block (one per variant):
+In horizontal mode, build it by concatenating three copies of this block
+(one per variant). In vertical mode, use the alternative block defined
+in `reference/vertical-mode.md` §7 instead — same `{{VARIANTS_HTML}}`
+slot, different per-variant block shape (three preview wraps: full,
+Shorts feed, TikTok profile-grid 1:1 crop).
 
 ```html
 <div class="variant">
@@ -317,6 +355,8 @@ When the user signals approval ("ship it", "export", "done", "approved"),
 run the renderer to produce the final PNGs. Use absolute paths for both
 the renderer binary and the round directory:
 
+Horizontal mode:
+
 ```bash
 node <repo-root>/tools/thumbnail-render/bin/render.mjs \
   <video-dir>/thumbnails/round-N \
@@ -324,10 +364,25 @@ node <repo-root>/tools/thumbnail-render/bin/render.mjs \
   --out-dir <video-dir>
 ```
 
-This writes:
+Vertical mode:
+
+```bash
+node <repo-root>/tools/thumbnail-render/bin/render.mjs \
+  <video-dir>/thumbnails/round-N-vertical \
+  --variants \
+  --orientation vertical \
+  --out-dir <video-dir>
+```
+
+This writes (horizontal):
 - `<video-dir>/thumbnail-a.png`
 - `<video-dir>/thumbnail-b.png`
 - `<video-dir>/thumbnail-c.png`
+
+Or (vertical):
+- `<video-dir>/thumbnail-vertical-a.png`
+- `<video-dir>/thumbnail-vertical-b.png`
+- `<video-dir>/thumbnail-vertical-c.png`
 
 Print the three absolute paths so the user can drag them into YouTube's
 A/B test upload UI.
@@ -364,6 +419,13 @@ A/B test upload UI.
   at Step 6.
 - `reference/iteration-recipes.md` — feedback interpretation. Load at
   Step 9 (every iteration).
+- `reference/vertical-mode.md` — overrides applied when the user
+  invokes vertical mode (Shorts/TikTok cover). Load at Step 1 if mode
+  is vertical; not loaded otherwise.
+- `reference/text-rephrase-vertical.md` — vertical-mode rephrase
+  rhythms (Variants A/B/C correspond to wide-recap / stacked-staccato
+  / headline+kicker). Load at Step 3 in vertical mode; the horizontal
+  `text-rephrase-recipes.md` is not loaded in vertical mode.
 
 ## Things this skill does NOT do
 
