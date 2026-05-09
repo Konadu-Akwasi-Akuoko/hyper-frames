@@ -627,6 +627,31 @@
       pill.textContent = `${n} card${n === 1 ? '' : 's'} · ${synced}`;
     }
 
+    function kebabSlug(input) {
+      return String(input ?? '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s\-_]/g, '')
+        .replace(/[\s_]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    function computeSuggested(artifacts) {
+      const ordered = ['research', 'script', 'voiceover', 'compose', 'thumbnail', 'render'];
+      let suggested = 'idea';
+      for (const stage of ordered) {
+        if (artifacts?.[stage] === 'present') suggested = stage;
+      }
+      return suggested;
+    }
+
+    function hasDriftFor(card, suggestedStage) {
+      if (!card || !suggestedStage) return false;
+      if (card.stage === 'published') return false;
+      if (suggestedStage === 'idea') return false;
+      return suggestedStage !== card.stage;
+    }
+
     let state = {
       schemaVersion: 1,
       lastSyncedAt: null,
@@ -681,7 +706,78 @@
       updateStatusPill();
     }
 
-    render();
+    function runTests() {
+      const results = [];
+      const t = (name, fn) => {
+        try { fn(); results.push({ name, pass: true }); }
+        catch (e) { results.push({ name, pass: false, err: e.message }); }
+      };
+      const eq = (a, b) => {
+        if (JSON.stringify(a) !== JSON.stringify(b))
+          throw new Error(`expected ${JSON.stringify(b)}, got ${JSON.stringify(a)}`);
+      };
+
+      // kebabSlug
+      t('kebabSlug: words → kebab', () => eq(kebabSlug('Why Text Is Hard'), 'why-text-is-hard'));
+      t('kebabSlug: punctuation stripped', () => eq(kebabSlug('Hello, World!'), 'hello-world'));
+      t('kebabSlug: collapses hyphens', () => eq(kebabSlug('multi--hyphen'), 'multi-hyphen'));
+      t('kebabSlug: trims edges', () => eq(kebabSlug('  -hi-  '), 'hi'));
+      t('kebabSlug: empty', () => eq(kebabSlug(''), ''));
+      t('kebabSlug: numbers ok', () => eq(kebabSlug('123 Abc'), '123-abc'));
+      t('kebabSlug: underscores → hyphens', () => eq(kebabSlug('foo_bar'), 'foo-bar'));
+
+      const allMissing = { research: 'missing', script: 'missing', voiceover: 'missing',
+        compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' };
+      t('suggested: all missing → idea', () => eq(computeSuggested(allMissing), 'idea'));
+      t('suggested: research only → research',
+        () => eq(computeSuggested({ ...allMissing, research: 'present' }), 'research'));
+      t('suggested: through compose → compose',
+        () => eq(computeSuggested({ ...allMissing, research: 'present', script: 'present',
+          voiceover: 'present', compose: 'present' }), 'compose'));
+      t('suggested: gap mid-pipeline → rightmost present',
+        () => eq(computeSuggested({ ...allMissing, research: 'present', voiceover: 'present' }),
+          'voiceover'));
+      t('suggested: published present is ignored',
+        () => eq(computeSuggested({ ...allMissing, render: 'present', published: 'present' }),
+          'render'));
+      t('suggested: partial does not count as present',
+        () => eq(computeSuggested({ ...allMissing, research: 'present', script: 'present',
+          voiceover: 'partial' }), 'script'));
+
+      t('drift: stage matches → false',
+        () => eq(hasDriftFor({ stage: 'compose' }, 'compose'), false));
+      t('drift: published → false',
+        () => eq(hasDriftFor({ stage: 'published' }, 'compose'), false));
+      t('drift: idea suggestion → false',
+        () => eq(hasDriftFor({ stage: 'compose' }, 'idea'), false));
+      t('drift: real disagreement → true',
+        () => eq(hasDriftFor({ stage: 'render' }, 'compose'), true));
+
+      const passes = results.filter(r => r.pass).length;
+      const fails = results.length - passes;
+      setContent(document.body, `
+        <div style="font-family:'JetBrains Mono',monospace;padding:32px;color:#EDE7DC;background:#0F0E0C;min-height:100vh;">
+          <h1 style="font-family:'Fraunces',serif;font-style:italic;margin-bottom:24px;">
+            kanban.html test results
+          </h1>
+          <p style="color:${fails ? '#C4615A' : '#8FAF7E'};margin-bottom:16px;">
+            ${passes} passed · ${fails} failed
+          </p>
+          <ul style="list-style:none;padding:0;line-height:1.8;">
+            ${results.map(r => `
+              <li style="color:${r.pass ? '#8FAF7E' : '#C4615A'};">
+                ${r.pass ? '✓' : '✗'} ${escapeHtml(r.name)}${r.err ? ' — ' + escapeHtml(r.err) : ''}
+              </li>`).join('')}
+          </ul>
+        </div>
+      `);
+    }
+
+    if (new URL(location.href).searchParams.get('test') === '1') {
+      runTests();
+    } else {
+      render();
+    }
   })();
   </script>
 
