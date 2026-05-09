@@ -9,3 +9,5 @@
 # Persistent state (inbox.json) and the rendered dashboard (dashboard.html)
 # ARE committed — they're the source of truth and the viewable artifact, and
 # the daily scheduled task overwrites them in place.
+
+__pycache__
