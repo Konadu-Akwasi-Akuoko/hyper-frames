@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <!-- Espresso disk backdrop. Corners outside the disk stay transparent. -->
+  <circle cx="400" cy="400" r="400" fill="#1A1410"/>
+
+  <!-- Iceberg drawn in its native 24-unit space, rendered into a 560x560
+       inner area centered on the disk (70% of the circle's diameter). -->
+  <svg x="120" y="120" width="560" height="560" viewBox="2 2 20 20">
+    <defs>
+      <clipPath id="below-water">
+        <rect x="0" y="10" width="24" height="14"/>
+      </clipPath>
+    </defs>
+
+    <!-- Submerged mass: translucent amber, clipped below the waterline. -->
+    <path
+      d="m19 10l-2 9l-4 3l-3-5l-3-1l-2-6l2-5l3-2l3 3l4 1z"
+      fill="#FFB627"
+      fill-opacity="0.35"
+      stroke="none"
+      clip-path="url(#below-water)"/>
+
+    <!-- Iceberg outline: amber stroke around the full body. -->
+    <path
+      d="m19 10l-2 9l-4 3l-3-5l-3-1l-2-6l2-5l3-2l3 3l4 1z"
+      fill="none"
+      stroke="#FFB627"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"/>
+
+    <!-- Waterline: cream stroke. The only cream element in the mark. -->
+    <path
+      d="M3 10h18"
+      fill="none"
+      stroke="#F5E6D3"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"/>
+  </svg>
+</svg>
