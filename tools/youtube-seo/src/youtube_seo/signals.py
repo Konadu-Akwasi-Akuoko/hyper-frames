@@ -111,3 +111,29 @@ def compute_saturation_warnings(
     ]
     warnings.sort(key=lambda w: w["match_count"], reverse=True)
     return warnings[:SATURATION_MAX_WARNINGS]
+
+
+DEMAND_MIN_LETTER_HITS = 3
+DEMAND_MAX_PHRASES = 10
+
+
+def compute_demand_phrases(
+    expanded: dict[str, list[str]],
+) -> list[dict[str, Any]]:
+    """Phrases that appear in 3+ adjacent letter expansions.
+
+    Distinguishes recurring real demand from one-off completions.
+    Returned sorted by letter_hits desc, capped at DEMAND_MAX_PHRASES.
+    """
+    phrase_to_letters: dict[str, set[str]] = defaultdict(set)
+    for letter, suggestions in expanded.items():
+        for s in suggestions:
+            phrase_to_letters[s].add(letter)
+
+    phrases = [
+        {"phrase": phrase, "letter_hits": len(letters)}
+        for phrase, letters in phrase_to_letters.items()
+        if len(letters) >= DEMAND_MIN_LETTER_HITS
+    ]
+    phrases.sort(key=lambda p: p["letter_hits"], reverse=True)
+    return phrases[:DEMAND_MAX_PHRASES]
