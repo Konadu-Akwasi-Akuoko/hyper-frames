@@ -215,6 +215,144 @@
       justify-content: center;
       font-size: 12px;
     }
+
+    /* ============================== BOARD */
+    .board {
+      grid-area: board;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 18px 12px 18px 16px;
+      position: relative;
+    }
+
+    .columns {
+      display: flex;
+      gap: 6px;
+      height: 100%;
+      min-width: max-content;
+    }
+
+    .column {
+      width: 210px;
+      min-width: 210px;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    /* Subtle vertical glow on the leftmost edge of each column to imply column-ness without borders */
+    .column::before {
+      content: '';
+      position: absolute;
+      left: -3px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(180deg, transparent 0%, var(--border-subtle) 20%, var(--border-subtle) 80%, transparent 100%);
+      opacity: 0.5;
+    }
+    .column:first-child::before { display: none; }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 12px 14px;
+      position: sticky;
+      top: 0;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 70%, transparent 100%);
+      backdrop-filter: blur(6px);
+      z-index: 2;
+    }
+
+    .stage-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-fade);
+      padding: 1px 7px;
+      border-radius: 100px;
+      border: 1px solid var(--border-subtle);
+      min-width: 20px;
+      text-align: center;
+      background: var(--bg-subtle);
+    }
+
+    .count[data-active] {
+      color: var(--text-secondary);
+      border-color: var(--border);
+    }
+
+    .column-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 6px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    /* ============================== EMPTY COLUMN */
+    .empty {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 12px;
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius);
+      margin: 4px 2px;
+      min-height: 80px;
+    }
+
+    .empty-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 12px;
+      color: var(--text-fade);
+      text-align: center;
+      letter-spacing: -0.005em;
+      font-variation-settings: 'opsz' 14, 'SOFT' 80;
+      line-height: 1.4;
+    }
+
+    /* Scrollbars */
+    .board::-webkit-scrollbar,
+    .column-body::-webkit-scrollbar { width: 8px; height: 8px; }
+    .board::-webkit-scrollbar-thumb,
+    .column-body::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 100px;
+    }
+    .board::-webkit-scrollbar-thumb:hover,
+    .column-body::-webkit-scrollbar-thumb:hover { background: var(--border); }
+    .board::-webkit-scrollbar-track,
+    .column-body::-webkit-scrollbar-track { background: transparent; }
+
+    /* Subtle entrance — page-load reveal */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .column     { animation: fade-up 500ms ease both; }
+    .column:nth-child(1) { animation-delay: 60ms; }
+    .column:nth-child(2) { animation-delay: 120ms; }
+    .column:nth-child(3) { animation-delay: 180ms; }
+    .column:nth-child(4) { animation-delay: 240ms; }
+    .column:nth-child(5) { animation-delay: 300ms; }
+    .column:nth-child(6) { animation-delay: 360ms; }
+    .column:nth-child(7) { animation-delay: 420ms; }
+    .column:nth-child(8) { animation-delay: 480ms; }
   </style>
 </head>
 <body>
@@ -245,6 +383,70 @@
 
   <!-- ============================== SIDE PANEL -->
   <aside class="panel" hidden></aside>
+
+  <script>
+  (() => {
+    'use strict';
+
+    const STAGES = [
+      { id: 'idea',      label: 'Idea' },
+      { id: 'research',  label: 'Research' },
+      { id: 'script',    label: 'Script' },
+      { id: 'voiceover', label: 'Voiceover' },
+      { id: 'compose',   label: 'Compose' },
+      { id: 'thumbnail', label: 'Thumbnail' },
+      { id: 'render',    label: 'Render' },
+      { id: 'published', label: 'Published' },
+    ];
+
+    function escapeHtml(s) {
+      return String(s ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function frag(htmlStr) {
+      return document.createRange().createContextualFragment(htmlStr);
+    }
+
+    function setContent(el, htmlStr) {
+      el.replaceChildren(frag(htmlStr));
+    }
+
+    function renderColumn(stage, cards) {
+      const count = cards.length;
+      const countAttr = count > 0 ? 'data-active' : '';
+      const body = count === 0
+        ? `<div class="empty"><span class="empty-text">No cards in flight.</span></div>`
+        : cards.map(renderCard).join('');
+      return `
+        <div class="column" data-stage="${stage.id}">
+          <div class="column-header">
+            <span class="stage-name">${escapeHtml(stage.label)}</span>
+            <span class="count" ${countAttr}>${count}</span>
+          </div>
+          <div class="column-body">${body}</div>
+        </div>
+      `;
+    }
+
+    function renderCard() { return ''; } // filled in next task
+
+    function render() {
+      const board = document.querySelector('.board');
+      const cards = []; // empty for now
+      const cardsByStage = Object.fromEntries(STAGES.map(s => [s.id, []]));
+      setContent(board, `<div class="columns">${
+        STAGES.map(s => renderColumn(s, cardsByStage[s.id])).join('')
+      }</div>`);
+    }
+
+    render();
+  })();
+  </script>
 
 </body>
 </html>
