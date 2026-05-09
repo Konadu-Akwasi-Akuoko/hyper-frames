@@ -479,6 +479,42 @@
     .column:nth-child(6) { animation-delay: 360ms; }
     .column:nth-child(7) { animation-delay: 420ms; }
     .column:nth-child(8) { animation-delay: 480ms; }
+
+    /* ============================== DIALOGS */
+    .dialog {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      padding: 0;
+      max-width: 380px;
+      width: 90vw;
+      box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.7);
+    }
+    .dialog::backdrop { background: rgba(15, 14, 12, 0.7); backdrop-filter: blur(2px); }
+    .dialog-body { padding: 22px 24px 18px; display: flex; flex-direction: column; gap: 16px; }
+    .dialog-title {
+      font-family: var(--font-display); font-size: 20px; font-weight: 500;
+      letter-spacing: -0.012em;
+      font-variation-settings: 'opsz' 24, 'SOFT' 50;
+    }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field-label {
+      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.18em;
+    }
+    .field input, .field select {
+      background: var(--bg); border: 1px solid var(--border-subtle); color: var(--text);
+      font-family: var(--font-mono); font-size: 13px; padding: 9px 11px;
+      border-radius: var(--radius-sm); width: 100%;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--accent-muted); }
+    .field-hint { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); }
+    .field-hint.error { color: var(--red); }
+    .dialog-actions {
+      display: flex; justify-content: flex-end; gap: 8px;
+      padding-top: 14px; border-top: 1px solid var(--border-subtle);
+    }
   </style>
 </head>
 <body>
@@ -509,6 +545,43 @@
 
   <!-- ============================== SIDE PANEL -->
   <aside class="panel" hidden></aside>
+
+  <!-- ============================== ADD CARD DIALOG -->
+  <dialog id="add-dialog" class="dialog">
+    <form method="dialog" id="add-form" class="dialog-body">
+      <h2 class="dialog-title">Add a card</h2>
+      <label class="field">
+        <span class="field-label">Slug</span>
+        <input name="slug" id="add-slug" required autocomplete="off" placeholder="why-text-is-hard">
+        <span class="field-hint" id="add-slug-hint">Lowercase, hyphens only.</span>
+      </label>
+      <label class="field">
+        <span class="field-label">Working title</span>
+        <input name="title" id="add-title" autocomplete="off" placeholder="Why Text Is Hard">
+      </label>
+      <label class="field">
+        <span class="field-label">Date</span>
+        <input name="date" id="add-date" type="date" required>
+      </label>
+      <label class="field">
+        <span class="field-label">Stage</span>
+        <select name="stage" id="add-stage">
+          <option value="idea" selected>Idea</option>
+          <option value="research">Research</option>
+          <option value="script">Script</option>
+          <option value="voiceover">Voiceover</option>
+          <option value="compose">Compose</option>
+          <option value="thumbnail">Thumbnail</option>
+          <option value="render">Render</option>
+          <option value="published">Published</option>
+        </select>
+      </label>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="add-cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add card</button>
+      </div>
+    </form>
+  </dialog>
 
   <script>
   (() => {
@@ -756,6 +829,97 @@
       state = loadSampleState();
       persist();
     }
+
+    function uuid() {
+      return crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+            const r = (Math.random() * 16) | 0;
+            return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+          });
+    }
+
+    function todayISO() {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    }
+
+    function emptyArtifacts() {
+      return Object.fromEntries(ARTIFACTS.map(a => [a.id, 'missing']));
+    }
+
+    function titleCaseSlug(slug) {
+      return slug.split('-').filter(Boolean)
+        .map(w => w[0].toUpperCase() + w.slice(1))
+        .join(' ');
+    }
+
+    function openAddDialog() {
+      const dlg = document.getElementById('add-dialog');
+      document.getElementById('add-slug').value = '';
+      document.getElementById('add-title').value = '';
+      document.getElementById('add-date').value = todayISO();
+      document.getElementById('add-stage').value = 'idea';
+      const hint = document.getElementById('add-slug-hint');
+      hint.textContent = 'Lowercase, hyphens only.';
+      hint.classList.remove('error');
+      dlg.showModal();
+      document.getElementById('add-slug').focus();
+    }
+
+    function bindAddDialog() {
+      const dlg = document.getElementById('add-dialog');
+      const slugInput = document.getElementById('add-slug');
+      const hint = document.getElementById('add-slug-hint');
+
+      slugInput.addEventListener('input', () => {
+        const cur = slugInput.value;
+        const k = kebabSlug(cur);
+        if (k !== cur) {
+          const pos = slugInput.selectionStart;
+          slugInput.value = k;
+          slugInput.setSelectionRange(Math.min(pos, k.length), Math.min(pos, k.length));
+        }
+      });
+
+      document.getElementById('add-cancel').addEventListener('click', () => dlg.close('cancel'));
+
+      document.getElementById('add-form').addEventListener('submit', (e) => {
+        const slug = kebabSlug(slugInput.value);
+        const date = document.getElementById('add-date').value;
+        if (!slug) {
+          e.preventDefault();
+          hint.textContent = 'Slug is required.';
+          hint.classList.add('error');
+          return;
+        }
+        if (state.cards.some(c => c.slug === slug && c.date === date)) {
+          e.preventDefault();
+          hint.textContent = `A card with slug "${slug}" and date ${date} already exists.`;
+          hint.classList.add('error');
+          return;
+        }
+        const titleRaw = document.getElementById('add-title').value.trim();
+        const title = titleRaw || titleCaseSlug(slug);
+        const stage = document.getElementById('add-stage').value;
+        const now = new Date().toISOString();
+        mutate(() => {
+          state.cards.push({
+            id: uuid(), slug, title, date, stage,
+            artifacts: emptyArtifacts(), notes: '',
+            createdAt: now, updatedAt: now,
+            lastScannedAt: null, hasDrift: false,
+          });
+        });
+      });
+    }
+
+    function bindTopbar() {
+      document.getElementById('btn-add').addEventListener('click', openAddDialog);
+    }
+
+    bindAddDialog();
+    bindTopbar();
 
     function render() {
       const board = document.querySelector('.board');
