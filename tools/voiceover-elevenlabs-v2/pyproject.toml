@@ -1,0 +1,31 @@
+[project]
+name = "voiceover-elevenlabs-v2"
+version = "0.1.0"
+description = "Generate voiceover audio (ElevenLabs Multilingual v2) and word-level transcript (Scribe v2) from an annotated script."
+readme = "README.md"
+authors = [
+    { name = "Akwasi Konadu Akuoko", email = "akwasikonadueverlasting@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "elevenlabs>=1.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+voiceover-elevenlabs-v2 = "voiceover_elevenlabs_v2.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.10,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+extraPaths = ["src"]
