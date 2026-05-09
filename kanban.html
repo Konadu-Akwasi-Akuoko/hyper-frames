@@ -1511,6 +1511,109 @@
       return (await handle.requestPermission({ mode: 'read' })) === 'granted';
     }
 
+    const COMPOSE_THRESHOLD_BYTES = 8192;
+    const FOLDER_RE = /^(.+)-(\d{4}-\d{2}-\d{2})$/;
+
+    async function exists(dir, path) {
+      const parts = path.split('/').filter(Boolean);
+      try {
+        let cur = dir;
+        for (let i = 0; i < parts.length - 1; i++) {
+          cur = await cur.getDirectoryHandle(parts[i]);
+        }
+        await cur.getFileHandle(parts[parts.length - 1]);
+        return 'present';
+      } catch (e) {
+        if (e.name === 'NotFoundError') return 'missing';
+        return 'unknown';
+      }
+    }
+
+    async function voiceoverStatus(dir) {
+      const mp3 = await exists(dir, 'audio/voiceover.mp3');
+      const tx  = await exists(dir, 'transcript.json');
+      const nm  = await exists(dir, 'narration-map.json');
+      if (mp3 === 'missing' && tx === 'missing') return 'missing';
+      if (mp3 === 'present' && tx === 'present' && nm === 'present') return 'present';
+      return 'partial';
+    }
+
+    async function composeStatus(dir) {
+      try {
+        const fh = await dir.getFileHandle('index.html');
+        const file = await fh.getFile();
+        return file.size > COMPOSE_THRESHOLD_BYTES ? 'present' : 'partial';
+      } catch (e) {
+        if (e.name === 'NotFoundError') return 'missing';
+        return 'unknown';
+      }
+    }
+
+    async function thumbnailStatus(dir) {
+      let count = 0;
+      for (const name of ['thumbnail-a.png', 'thumbnail-b.png', 'thumbnail-c.png']) {
+        if ((await exists(dir, name)) === 'present') count++;
+      }
+      if (count === 0) return 'missing';
+      if (count === 3) return 'present';
+      return 'partial';
+    }
+
+    async function hasMp4InOutput(dir) {
+      try {
+        const out = await dir.getDirectoryHandle('output');
+        for await (const entry of out.values()) {
+          if (entry.kind === 'file' && entry.name.toLowerCase().endsWith('.mp4')) return 'present';
+        }
+        return 'missing';
+      } catch (e) {
+        if (e.name === 'NotFoundError') return 'missing';
+        return 'unknown';
+      }
+    }
+
+    async function readOutlineH1(dir) {
+      try {
+        const fh = await dir.getFileHandle('outline.md');
+        const file = await fh.getFile();
+        const text = await file.text();
+        const m = text.match(/^#\s+(.+?)(?:\s+—\s+9-beat outline)?\s*$/m);
+        return m ? m[1].trim() : null;
+      } catch {
+        return null;
+      }
+    }
+
+    async function scan(dirHandle) {
+      const results = [];
+      let errors = 0;
+      for await (const entry of dirHandle.values()) {
+        if (entry.kind !== 'directory') continue;
+        const m = entry.name.match(FOLDER_RE);
+        if (!m) continue;
+        const slug = m[1];
+        const date = m[2];
+        try {
+          const artifacts = {
+            research:  await exists(entry, 'seo/research.json'),
+            script:    await exists(entry, 'script.md'),
+            voiceover: await voiceoverStatus(entry),
+            compose:   await composeStatus(entry),
+            thumbnail: await thumbnailStatus(entry),
+            render:    await hasMp4InOutput(entry),
+            published: 'unknown',
+          };
+          const suggestedStage = computeSuggested(artifacts);
+          const title = await readOutlineH1(entry);
+          results.push({ slug, date, suggestedStage, artifacts, title });
+        } catch (e) {
+          errors++;
+          console.warn(`scan failed for ${entry.name}:`, e);
+        }
+      }
+      return { results, errors };
+    }
+
     bindAddDialog();
     bindTopbar();
     bindBoardEvents();
