@@ -1584,6 +1584,41 @@
       }
     }
 
+    function mergeScan(currentState, scanResults) {
+      const next = JSON.parse(JSON.stringify(currentState));
+      const now = new Date().toISOString();
+
+      for (const result of scanResults) {
+        const existing = next.cards.find(c => c.slug === result.slug && c.date === result.date);
+        if (existing) {
+          existing.artifacts = result.artifacts;
+          existing.lastScannedAt = now;
+          const suggested = computeSuggested(result.artifacts);
+          existing.hasDrift = hasDriftFor(existing, suggested);
+          if (existing.hasDrift) {
+            existing.suggestedLabel = STAGES.find(s => s.id === suggested)?.label || '';
+          } else {
+            delete existing.suggestedLabel;
+          }
+        } else {
+          next.cards.push({
+            id: uuid(),
+            slug: result.slug,
+            date: result.date,
+            title: result.title || titleCaseSlug(result.slug),
+            stage: result.suggestedStage,
+            artifacts: result.artifacts,
+            notes: '',
+            createdAt: now,
+            updatedAt: now,
+            lastScannedAt: now,
+            hasDrift: false,
+          });
+        }
+      }
+      return next;
+    }
+
     async function scan(dirHandle) {
       const results = [];
       let errors = 0;
@@ -1792,6 +1827,64 @@
         () => eq(hasDriftFor({ stage: 'compose' }, 'idea'), false));
       t('drift: real disagreement → true',
         () => eq(hasDriftFor({ stage: 'render' }, 'compose'), true));
+
+      const baseArts = { research: 'present', script: 'missing', voiceover: 'missing',
+        compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' };
+
+      t('mergeScan: existing card updates artifacts but not stage', () => {
+        const before = {
+          schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
+          cards: [{ id: '1', slug: 'foo', date: '2026-05-09', title: 'Foo', stage: 'idea',
+            artifacts: baseArts, notes: '', createdAt: '', updatedAt: '',
+            lastScannedAt: null, hasDrift: false }],
+        };
+        const results = [{ slug: 'foo', date: '2026-05-09', suggestedStage: 'research',
+          artifacts: { ...baseArts, research: 'present' }, title: null }];
+        const after = mergeScan(before, results);
+        if (after.cards.length !== 1) throw new Error('expected 1 card');
+        if (after.cards[0].stage !== 'idea') throw new Error('stage must not change');
+        if (after.cards[0].artifacts.research !== 'present') throw new Error('artifacts not updated');
+        if (after.cards[0].hasDrift !== true) throw new Error('drift not flagged');
+        if (after.cards[0].suggestedLabel !== 'Research') throw new Error('label missing');
+      });
+
+      t('mergeScan: new folder creates card at suggestedStage', () => {
+        const before = { schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null }, cards: [] };
+        const results = [{ slug: 'bar', date: '2026-05-09', suggestedStage: 'compose',
+          artifacts: { ...baseArts, research: 'present', script: 'present',
+            voiceover: 'present', compose: 'present' }, title: 'The Bar' }];
+        const after = mergeScan(before, results);
+        if (after.cards.length !== 1) throw new Error('expected 1 card');
+        if (after.cards[0].stage !== 'compose') throw new Error('stage wrong');
+        if (after.cards[0].title !== 'The Bar') throw new Error('title wrong');
+      });
+
+      t('mergeScan: orphan card untouched', () => {
+        const before = {
+          schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
+          cards: [{ id: '1', slug: 'orphan', date: '2026-05-09', title: 'Orphan', stage: 'idea',
+            artifacts: baseArts, notes: 'keep me', createdAt: '', updatedAt: '',
+            lastScannedAt: null, hasDrift: false }],
+        };
+        const after = mergeScan(before, []);
+        if (after.cards.length !== 1) throw new Error('card lost');
+        if (after.cards[0].notes !== 'keep me') throw new Error('notes mutated');
+      });
+
+      t('mergeScan: drift cleared when stage matches suggested', () => {
+        const before = {
+          schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
+          cards: [{ id: '1', slug: 'foo', date: '2026-05-09', title: 'Foo', stage: 'compose',
+            artifacts: baseArts, notes: '', createdAt: '', updatedAt: '',
+            lastScannedAt: null, hasDrift: true, suggestedLabel: 'Research' }],
+        };
+        const results = [{ slug: 'foo', date: '2026-05-09', suggestedStage: 'compose',
+          artifacts: { ...baseArts, research: 'present', script: 'present',
+            voiceover: 'present', compose: 'present' }, title: null }];
+        const after = mergeScan(before, results);
+        if (after.cards[0].hasDrift !== false) throw new Error('drift not cleared');
+        if (after.cards[0].suggestedLabel !== undefined) throw new Error('label not cleared');
+      });
 
       const passes = results.filter(r => r.pass).length;
       const fails = results.length - passes;
