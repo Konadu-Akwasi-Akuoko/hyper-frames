@@ -566,6 +566,21 @@
     }
     .panel-close:hover { color: var(--text); background: var(--surface-1); }
 
+    .panel-title.editing {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      background: var(--surface-1);
+      border: 1px solid var(--accent-muted);
+      border-radius: var(--radius-sm);
+      padding: 4px 8px;
+      color: var(--text);
+      width: 100%;
+      outline: none;
+      letter-spacing: -0.016em;
+      font-variation-settings: 'opsz' 36, 'SOFT' 30;
+    }
+
     .panel-body {
       flex: 1;
       overflow-y: auto;
@@ -1342,6 +1357,54 @@
           if (card) navigator.clipboard?.writeText(folderPath(card));
           return;
         }
+        if (e.target.id === 'panel-title') {
+          const titleEl = e.target;
+          const id = state.ui.panelOpenCardId;
+          if (!id) return;
+          const card = findCard(id);
+          if (!card) return;
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.value = card.title;
+          input.className = 'panel-title editing';
+          titleEl.replaceWith(input);
+          input.focus();
+          input.select();
+
+          let committed = false;
+          const commit = (save) => {
+            if (committed) return;
+            committed = true;
+            const value = input.value.trim();
+            if (save && value && value !== card.title) {
+              mutate(() => {
+                card.title = value;
+                card.updatedAt = new Date().toISOString();
+              });
+            } else {
+              render();
+            }
+          };
+          input.addEventListener('blur', () => commit(true));
+          input.addEventListener('keydown', (k) => {
+            if (k.key === 'Enter') { k.preventDefault(); input.blur(); }
+            if (k.key === 'Escape') { commit(false); }
+          });
+          return;
+        }
+      });
+
+      document.querySelector('.panel').addEventListener('change', (e) => {
+        if (e.target.id !== 'panel-stage') return;
+        const id = state.ui.panelOpenCardId;
+        if (!id) return;
+        const newStage = e.target.value;
+        mutate(() => {
+          const card = findCard(id);
+          if (!card) return;
+          card.stage = newStage;
+          card.updatedAt = new Date().toISOString();
+        });
       });
 
       document.addEventListener('click', (e) => {
