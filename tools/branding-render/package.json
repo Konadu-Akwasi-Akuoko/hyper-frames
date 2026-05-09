@@ -7,7 +7,8 @@
   "engines": { "node": ">=20" },
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "build:logo": "node scripts/build-logo-pngs.mjs"
+    "build:logo": "node scripts/build-logo-pngs.mjs",
+    "build:banner": "node scripts/build-banner-png.mjs"
   },
   "dependencies": {
     "playwright": "1.49.1"
