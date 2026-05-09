@@ -1,8 +1,8 @@
-# topic-pipeline inbox — 2026-05-08
+# topic-pipeline inbox — 2026-05-09
 
-61 unreviewed (21 judged, 40 awaiting judgment) · 61 total
+61 unreviewed (22 judged, 39 awaiting judgment) · 61 total
 
-## Top 21 unreviewed by composite
+## Top 22 unreviewed by composite
 
 ### 1. [77] building a web server in raw arm64 assembly
 - **Best angle:** Everything that happens between accept() and send() — a syscall-level tour of HTTP  _(syscall trace of an HTTP request)_
@@ -58,80 +58,86 @@
 - **Sources:** reddit  ·  first seen 2026-05-08
 - <https://labs.iximiuz.com/tutorials/oci-containers-explained>
 
-### 10. [58] Just Use Go
+### 10. [59] Why is rendering text so complicated?
+- **Best angle:** The microscopic trick that made LCD screens readable  _(sub-pixel rendering and ClearType history)_
+- **Axes:** demand 1/20 · evergreen 14/20 · yt-comp 0/20 · audience 20/20 · hook 18/20 · depth 18/20
+- **Sources:** youtube  ·  first seen 2026-05-08
+- <https://youtube.com/watch?v=4soZ33MvlW4>
+
+### 11. [58] Just Use Go
 - **Best angle:** Why Go's goroutines are basically free — the runtime trick behind 1M concurrent connections  _(M:N scheduler / work-stealing internals)_
 - **Axes:** demand 6/20 · evergreen 14/20 · yt-comp 10/20 · audience 8/20 · hook 14/20 · depth 18/20
 - **Sources:** hn, lobsters  ·  first seen 2026-05-08
 - <https://blainsmith.com/articles/just-fucking-use-go/>
 
-### 11. [58] Agents need control flow, not more prompts
+### 12. [58] Agents need control flow, not more prompts
 - **Best angle:** Why LLM agents fail — the missing 'if' statement  _(deterministic control vs prompt chains)_
 - **Axes:** demand 5/20 · evergreen 14/20 · yt-comp 14/20 · audience 8/20 · hook 16/20 · depth 12/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://bsuh.bearblog.dev/agents-need-control-flow/>
 
-### 12. [58] Copy Fail 2: Electric Boogaloo
+### 13. [58] Copy Fail 2: Electric Boogaloo
 - **Best angle:** Why Linux's 'fast paths' keep producing privilege escalations  _(kernel optimization vs security trade-offs)_
 - **Axes:** demand 6/20 · evergreen 14/20 · yt-comp 14/20 · audience 4/20 · hook 14/20 · depth 18/20
 - **Sources:** hn, lobsters  ·  first seen 2026-05-08
 - <https://github.com/0xdeadbeefnetwork/Copy_Fail2-Electric_Boogaloo>
 
-### 13. [57] 3 Women Who Fundamentally Shaped Modern Software
+### 14. [57] 3 Women Who Fundamentally Shaped Modern Software
 - **Best angle:** 3 Women Who Fundamentally Shaped Modern Software  _(computing history biographical reel)_
 - **Axes:** demand 12/20 · evergreen 14/20 · yt-comp 8/20 · audience 8/20 · hook 12/20 · depth 14/20
 - **Cooldown:** Tier C coverage 4d ago — −4
 - **Sources:** reddit  ·  first seen 2026-05-08
 - <https://i.redd.it/kgi9cp59hrzg1.png>
 
-### 14. [55] Maybe you shouldn't install new software for a bit
+### 15. [55] Maybe you shouldn't install new software for a bit
 - **Best angle:** How supply chain attacks slip in through dependency updates  _(npm/PyPI typosquatting + post-install hooks)_
 - **Axes:** demand 4/20 · evergreen 14/20 · yt-comp 12/20 · audience 8/20 · hook 14/20 · depth 14/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://xeiaso.net/blog/2026/abstain-from-install/>
 
-### 15. [54] Blaise – A modern self-hosting zero-legacy Object Pascal compiler targeting QBE
+### 16. [54] Blaise – A modern self-hosting zero-legacy Object Pascal compiler targeting QBE
 - **Best angle:** Why people are still writing new Pascal compilers in 2026  _(language ecosystem / why-this-language perspective)_
 - **Axes:** demand 7/20 · evergreen 14/20 · yt-comp 14/20 · audience 4/20 · hook 12/20 · depth 14/20
 - **Sources:** hn, lobsters  ·  first seen 2026-05-08
 - <https://github.com/graemeg/blaise>
 
-### 16. [53] Brazil's Pix payment system faces pressure from Visa and Mastercard
+### 17. [53] Brazil's Pix payment system faces pressure from Visa and Mastercard
 - **Best angle:** How Brazil built Pix — instant payments at country scale  _(distributed payment-rail architecture)_
 - **Axes:** demand 2/20 · evergreen 14/20 · yt-comp 12/20 · audience 8/20 · hook 14/20 · depth 14/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://www.elciudadano.com/en/brazils-pix-payment-system-faces-pressure-from-visa-and-mastercard/04/04/>
 
-### 17. [27] Canvas online again as ShinyHunters threatens to leak schools’ data
+### 18. [27] Canvas online again as ShinyHunters threatens to leak schools’ data
 - **Best angle:** Canvas online again as ShinyHunters threatens to leak schools' data  _(breach incident news)_
 - **Axes:** demand 2/20 · evergreen 14/20 · yt-comp 0/20 · audience 8/20 · hook 4/20 · depth 4/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://www.theverge.com/tech/926458/canvas-shinyhunters-breach>
 
-### 18. [19] Motherboard sales 'collapse' amid unprecedented shortages fueled by AI
+### 19. [19] Motherboard sales 'collapse' amid unprecedented shortages fueled by AI
 - **Best angle:** Motherboard sales 'collapse' amid AI-fueled component shortages  _(PC industry news)_
 - **Axes:** demand 1/20 · evergreen 14/20 · yt-comp 0/20 · audience 4/20 · hook 4/20 · depth 0/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://www.tomshardware.com/pc-components/motherboards/motherboard-sales-collapse-by-more-than-25-percent-as-chipmakers-strangle-enthusiast-pc-market-to-build-more-ai-chips-asus-projected-to-sell-5-million-fewer-boards-in-2025-gigabyte-msi-and-asrock-also-expected-to-see-reduced-sales-numbers>
 
-### 19. [18] I want to live like Costco people
+### 20. [18] I want to live like Costco people
 - **Best angle:** I want to live like Costco people  _(lifestyle essay)_
 - **Axes:** demand 7/20 · evergreen 14/20 · yt-comp 0/20 · audience 0/20 · hook 0/20 · depth 0/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://tastecooking.com/i-want-to-live-like-costco-people/>
 
-### 20. [16] Poland is now among the 20 largest economies
+### 21. [16] Poland is now among the 20 largest economies
 - **Best angle:** Poland is now among the 20 largest economies  _(macroeconomic news)_
 - **Axes:** demand 5/20 · evergreen 14/20 · yt-comp 0/20 · audience 0/20 · hook 0/20 · depth 0/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://apnews.com/article/poland-economy-growth-g20-gdp-26fe06e120398410f8d773ba5661e7aa>
 
-### 21. [12] Cloudflare to cut about 20% of its workforce
+### 22. [12] Cloudflare to cut about 20% of its workforce
 - **Best angle:** Cloudflare to cut about 20% of its workforce  _(tech business news)_
 - **Axes:** demand 1/20 · evergreen 14/20 · yt-comp 0/20 · audience 0/20 · hook 0/20 · depth 0/20
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://www.reuters.com/business/world-at-work/cloudflare-cut-over-1100-jobs-2026-05-07/>
 
-## Awaiting judgment (40)
+## Awaiting judgment (39)
 
 Score is the 3-axis floor (demand + evergreen + yt_competition / 1.2).
 
@@ -150,4 +156,4 @@ Score is the 3-axis floor (demand + evergreen + yt_competition / 1.2).
 - [24*] The surprisingly complex journey to text-selectable client-side generated PDFs  (lobsters)  <https://sdocs.dev/blogs/journey-to-pdf-generation>
 - [24*] hpke-ng: Faster, Smaller, Harder HPKE for Rust  (lobsters)  <https://symbolic.software/blog/2026-05-08-hpke-ng/>
 - [24*] Gambling ads on social media reach more than twice as many men as women: study  (hn)  <https://www.cam.ac.uk/research/news/gambling-ads-on-social-media-reach-more-than-twice-as-many-men-as-women>
-- _… and 25 more_
+- _… and 24 more_

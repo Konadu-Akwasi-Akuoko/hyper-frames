@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "last_updated": "2026-05-08T23:36:02.349504+00:00",
+  "last_updated": "2026-05-09T00:38:29.570858+00:00",
   "candidates": {
     "e3d2ac1cf3648174": {
       "id": "e3d2ac1cf3648174",
@@ -3957,21 +3957,93 @@
       "scores": {
         "aggregator_breadth": 1,
         "evergreen": 14,
-        "demand": 0,
+        "demand": 1,
         "demand_sub_caps": {
           "aggregator_breadth": 1,
           "cold_search": 0,
           "autocomplete": 0,
           "tier_b_hit": 0
         },
-        "yt_competition_raw": 10,
-        "yt_competition": 10,
+        "demand_sub_cap_sources": {
+          "cold_search": "title",
+          "autocomplete": "title",
+          "tier_b_hit": "title"
+        },
+        "yt_competition_raw": 0,
+        "yt_competition": 0,
         "cooldown_reason": null
       },
-      "angles": [],
-      "best_angle_index": null,
-      "best_composite": 21,
-      "pending_judgment": true
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Why is rendering text so complicated?",
+          "lens": "text rendering pipeline overview",
+          "scores": {
+            "audience_reach": 20,
+            "curiosity_hook": 14,
+            "computing_depth": 20
+          },
+          "notes": "Judged from title + YouTube metadata only (direct fetch 403). Direct framing covered by Pawel (@pawel_code_stuff, Tier B) at 137K views 8 days ago — 30-day cooldown will suppress. Angle 1 kept per rules.",
+          "raw_total": 69,
+          "composite": 58
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The 8-page algorithm inside every app that handles Arabic or Hebrew",
+          "lens": "Unicode bidirectional algorithm internals",
+          "scores": {
+            "audience_reach": 14,
+            "curiosity_hook": 18,
+            "computing_depth": 20
+          },
+          "notes": "Adjacent angle on the Unicode Bidi Algorithm (UBA) — the spec that governs how RTL and LTR characters mix. Hyper-claim + hidden-mechanism pattern. Meaningfully distinct from Pawel's overview; dives into a specific sub-system most developers have hit without knowing it.",
+          "raw_total": 67,
+          "composite": 56
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why fonts are programs, not pictures",
+          "lens": "OpenType bytecode and font hinting",
+          "scores": {
+            "audience_reach": 14,
+            "curiosity_hook": 20,
+            "computing_depth": 20
+          },
+          "notes": "Counterintuitive-twist: every font file ships a Turing-complete hinting program that a renderer executes at draw time. Adjacent to Pawel's overview but zooms into OpenType internals — rasterization, hinting instructions, the TrueType interpreter. High curiosity hook because the claim is genuinely surprising.",
+          "raw_total": 69,
+          "composite": 58
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The microscopic trick that made LCD screens readable",
+          "lens": "sub-pixel rendering and ClearType history",
+          "scores": {
+            "audience_reach": 20,
+            "curiosity_hook": 18,
+            "computing_depth": 18
+          },
+          "notes": "Hidden-mechanism reveal: sub-pixel / ClearType rendering exploits the RGB stripe layout of LCD panels to triple effective horizontal resolution. Every computer user has benefited from this without knowing it exists. Adjacent to Pawel's angle on rendering complexity but anchored in hardware + perceptual science, not the software pipeline.",
+          "raw_total": 71,
+          "composite": 59
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why the same font looks different on every OS — and why nobody fixed it",
+          "lens": "cross-platform font rendering divergence",
+          "scores": {
+            "audience_reach": 20,
+            "curiosity_hook": 16,
+            "computing_depth": 16
+          },
+          "notes": "Personal-stake angle: Windows/macOS/Linux render the same font file visibly differently. Gets into hinting philosophy (Windows trusts the font program, macOS overrides it, Linux splits the difference). Adjacent to Pawel's broad framing but anchored in something the user can verify immediately on their own machine.",
+          "raw_total": 67,
+          "composite": 56
+        }
+      ],
+      "best_angle_index": 3,
+      "best_composite": 59,
+      "pending_judgment": false,
+      "last_seen_at": "2026-05-09T00:38:29.570783+00:00"
     }
   }
 }
