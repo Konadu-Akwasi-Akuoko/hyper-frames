@@ -7,11 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
   <style>
-    [x-cloak] { display: none !important; }
-    .a-hidden { display: none !important; }
-
     :root {
       /* Warm dark palette — never pure black */
       --bg: #0F0E0C;
@@ -77,10 +73,9 @@
         "header header"
         "board panel";
       position: relative;
-      transition: grid-template-columns 240ms ease;
     }
 
-    body[data-panel-open="false"] {
+    body:has(.panel[hidden]) {
       grid-template-columns: 1fr 0;
     }
 
@@ -246,7 +241,7 @@
       position: relative;
     }
 
-    /* Subtle vertical glow on the leftmost edge of each column */
+    /* Subtle vertical glow on the leftmost edge of each column to imply column-ness without borders */
     .column::before {
       content: '';
       position: absolute;
@@ -324,7 +319,7 @@
       transform: translateY(-1px);
     }
 
-    /* Currently-open card — copper edge */
+    /* The currently-open card gets a copper edge */
     .card.is-open {
       border-color: var(--accent-muted);
       background: var(--surface-2);
@@ -497,6 +492,7 @@
     .column:nth-child(7) { animation-delay: 420ms; }
     .column:nth-child(8) { animation-delay: 480ms; }
     .topbar { animation: fade-up 400ms ease 0ms both; }
+    .panel:not([hidden]) { animation: fade-up 600ms ease 200ms both; }
 
     /* ============================== PANEL */
     .panel {
@@ -509,7 +505,7 @@
       position: relative;
     }
 
-    /* Subtle accent stripe at the top edge of the panel */
+    /* Subtle accent stripe at the top edge of the panel — echoes the topbar scan line */
     .panel::before {
       content: '';
       position: absolute;
@@ -589,7 +585,6 @@
       outline: none;
       letter-spacing: -0.016em;
       font-variation-settings: 'opsz' 36, 'SOFT' 30;
-      margin-bottom: 7px;
     }
 
     .panel-body {
@@ -642,10 +637,6 @@
     .copy-btn:hover {
       color: var(--accent);
       border-color: var(--accent-muted);
-    }
-    .copy-btn.copied {
-      color: var(--green);
-      border-color: var(--green);
     }
 
     /* Stage selector */
@@ -847,15 +838,6 @@
     .panel-body::-webkit-scrollbar-thumb:hover { background: var(--border); }
     .panel-body::-webkit-scrollbar-track { background: transparent; }
 
-    /* Panel inner wrapper — fills the panel and provides flex column layout */
-    .panel-inner {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      animation: fade-up 280ms ease both;
-    }
-
     /* ============================== DIALOGS */
     .dialog {
       background: var(--surface-1);
@@ -918,42 +900,9 @@
       padding-top: 12px;
     }
     .help-note code { color: var(--accent); }
-
-    /* Toast for transient messages (storage banner, sync errors) */
-    .toast {
-      position: fixed;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      z-index: 9999;
-      background: var(--red);
-      color: #fff;
-    }
-
-    /* Test mode page */
-    .test-page {
-      font-family: 'JetBrains Mono', monospace;
-      padding: 32px;
-      color: #EDE7DC;
-      background: #0F0E0C;
-      min-height: 100vh;
-    }
-    .test-page h1 {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      margin-bottom: 24px;
-    }
-    .test-page p { margin-bottom: 16px; }
-    .test-page ul { list-style: none; padding: 0; line-height: 1.8; }
-    .test-page .pass { color: #8FAF7E; }
-    .test-page .fail { color: #C4615A; }
   </style>
 </head>
-<body x-data="kanbanApp()" x-init="init()" :data-panel-open="!!openCard">
+<body>
 
   <!-- ============================== TOPBAR -->
   <header class="topbar">
@@ -969,200 +918,51 @@
       <span class="brand-section">Pipeline</span>
     </div>
     <div class="toolbar">
-      <span class="status-pill" x-text="statusPillText"></span>
-      <button class="btn" id="btn-add" @click="openAddDialog()"><span class="glyph">+</span>Add</button>
-      <button class="btn" id="btn-sync"
-              :disabled="!fsSupported || syncing"
-              :class="{ syncing: syncing }"
-              :title="fsSupported ? 'Scan videos/ folder' : 'Folder scanning needs a Chromium-based browser. Manual mode still works.'"
-              @click="doSync()">
-        <span class="glyph">↻</span>Sync
-      </button>
-      <button class="btn btn-icon" id="btn-help" aria-label="Help"
-              @click="openHelpDialog()">?</button>
+      <span class="status-pill">0 cards · never synced</span>
+      <button class="btn" id="btn-add"><span class="glyph">+</span>Add</button>
+      <button class="btn" id="btn-sync"><span class="glyph">↻</span>Sync</button>
+      <button class="btn btn-icon" id="btn-help" aria-label="Help">?</button>
     </div>
   </header>
 
   <!-- ============================== BOARD -->
-  <main class="board">
-    <div class="columns">
-      <template x-for="stage in stages" :key="stage.id">
-        <div class="column" :data-stage="stage.id">
-          <div class="column-header">
-            <span class="stage-name" x-text="stage.label"></span>
-            <span class="count"
-                  :data-active="cardsByStage[stage.id].length > 0 ? '' : null"
-                  x-text="cardsByStage[stage.id].length"></span>
-          </div>
-          <div class="column-body"
-               @dragover.prevent="onDragOver($event)"
-               @dragleave="onDragLeave($event)"
-               @drop.prevent="onDrop($event, stage.id)">
-            <template x-if="cardsByStage[stage.id].length === 0">
-              <div class="empty"><span class="empty-text">No cards in flight.</span></div>
-            </template>
-            <template x-for="card in cardsByStage[stage.id]" :key="card.id">
-              <article class="card"
-                       :class="{ 'is-open': card.id === ui.panelOpenCardId }"
-                       :data-card-id="card.id"
-                       draggable="true"
-                       @click="openPanel(card.id)"
-                       @dragstart="onDragStart($event, card.id)"
-                       @dragend="onDragEnd($event)">
-                <div class="card-meta">
-                  <span class="slug" x-text="card.slug"></span>
-                  <template x-if="card.hasDrift">
-                    <span class="drift" :title="'Scan suggests: ' + (card.suggestedLabel || '')">
-                      <svg width="11" height="10" viewBox="0 0 11 10" fill="none" aria-hidden="true">
-                        <path d="M5.5 1L10 9H1L5.5 1Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none"/>
-                        <circle cx="5.5" cy="6.5" r="0.7" fill="currentColor"/>
-                      </svg>
-                    </span>
-                  </template>
-                </div>
-                <h3 class="title" x-text="card.title"></h3>
-                <time class="date" x-text="card.date"></time>
-                <ol class="dots" aria-label="Pipeline progress">
-                  <template x-for="art in artifactDefs" :key="art.id">
-                    <li :class="dotClass(card.artifacts && card.artifacts[art.id] || 'missing')"
-                        :title="art.label"></li>
-                  </template>
-                </ol>
-              </article>
-            </template>
-          </div>
-        </div>
-      </template>
-    </div>
-  </main>
+  <main class="board"></main>
 
   <!-- ============================== SIDE PANEL -->
-  <aside class="panel" :class="{ 'a-hidden': !openCard }">
-    <template x-if="openCard">
-      <div class="panel-inner">
-        <header class="panel-header">
-          <div style="flex: 1; min-width: 0;">
-            <h2 class="panel-title"
-                :class="{ 'a-hidden': editingTitle }"
-                title="Click to edit"
-                @click="startTitleEdit()"
-                x-text="openCard.title"></h2>
-            <input class="panel-title editing" type="text"
-                   :class="{ 'a-hidden': !editingTitle }"
-                   x-ref="titleInput"
-                   x-model="titleDraft"
-                   @blur="commitTitleEdit()"
-                   @keydown.enter.prevent="$el.blur()"
-                   @keydown.escape.prevent="editingTitle = false">
-            <div class="panel-meta">
-              <span x-text="openCard.slug"></span>
-              <span class="dot-sep"></span>
-              <span x-text="openCard.date"></span>
-            </div>
-          </div>
-          <button class="panel-close" id="panel-close" aria-label="Close panel"
-                  @click="closePanel()">×</button>
-        </header>
-
-        <div class="panel-body">
-          <section>
-            <div class="panel-label">Folder</div>
-            <div class="folder-path">
-              <span x-text="folderPath(openCard)"></span>
-              <button class="copy-btn"
-                      id="copy-folder"
-                      :class="{ copied: folderCopied }"
-                      @click="copyFolderUI()"
-                      x-text="folderCopied ? 'Copied' : 'Copy'"></button>
-            </div>
-          </section>
-
-          <section>
-            <div class="panel-label">Stage</div>
-            <select class="stage-select"
-                    id="panel-stage"
-                    x-model="openCard.stage"
-                    @change="onStageChange()">
-              <template x-for="s in stages" :key="s.id">
-                <option :value="s.id" x-text="s.label"></option>
-              </template>
-            </select>
-          </section>
-
-          <section>
-            <div class="panel-label">Artifacts</div>
-            <ul class="artifacts">
-              <template x-for="art in artifactDefs" :key="art.id">
-                <li class="artifact"
-                    :class="{ missing: artifactIsMissing(openCard, art.id) }">
-                  <span class="artifact-status"
-                        :class="artifactStatusClass(openCard, art.id)"></span>
-                  <div class="artifact-name">
-                    <span class="artifact-label" x-text="art.label"></span>
-                    <span class="artifact-path" x-text="artifactPaths[art.id]"></span>
-                  </div>
-                  <template x-if="artifactHasFile(openCard, art.id)">
-                    <a href="#" class="artifact-link">Open</a>
-                  </template>
-                </li>
-              </template>
-            </ul>
-          </section>
-
-          <section>
-            <div class="panel-label">Notes</div>
-            <textarea class="notes-textarea"
-                      id="panel-notes"
-                      placeholder="Anything to remember about this video…"
-                      :value="openCard.notes || ''"
-                      @input.debounce.500ms="updateNotes($event.target.value)"
-                      @blur="updateNotes($event.target.value)"></textarea>
-            <div class="notes-status"
-                 id="panel-notes-status"
-                 :class="{ 'a-hidden': !notesLastSavedAt }"
-                 x-text="(_notesTick, 'Saved · ' + formatNotesAgo(notesLastSavedAt))"></div>
-          </section>
-        </div>
-
-        <footer class="panel-footer">
-          <button class="btn btn-primary" id="open-folder"><span class="glyph">↗</span>Open in Finder</button>
-          <button class="btn btn-danger" id="delete-card" @click="deleteCard()">Delete card</button>
-        </footer>
-      </div>
-    </template>
-  </aside>
+  <aside class="panel" hidden></aside>
 
   <!-- ============================== ADD CARD DIALOG -->
-  <dialog id="add-dialog" class="dialog"
-          x-data="addDialogData()"
-          @close="reset()">
-    <form method="dialog" id="add-form" class="dialog-body" @submit.prevent="submit()">
+  <dialog id="add-dialog" class="dialog">
+    <form method="dialog" id="add-form" class="dialog-body">
       <h2 class="dialog-title">Add a card</h2>
       <label class="field">
         <span class="field-label">Slug</span>
-        <input name="slug" id="add-slug" required autocomplete="off" placeholder="why-text-is-hard"
-               x-model="slug"
-               @input="onSlugInput($event)">
-        <span class="field-hint" id="add-slug-hint" :class="{ error: hintError }" x-text="hint"></span>
+        <input name="slug" id="add-slug" required autocomplete="off" placeholder="why-text-is-hard">
+        <span class="field-hint" id="add-slug-hint">Lowercase, hyphens only.</span>
       </label>
       <label class="field">
         <span class="field-label">Working title</span>
-        <input name="title" id="add-title" autocomplete="off" placeholder="Why Text Is Hard" x-model="title">
+        <input name="title" id="add-title" autocomplete="off" placeholder="Why Text Is Hard">
       </label>
       <label class="field">
         <span class="field-label">Date</span>
-        <input name="date" id="add-date" type="date" required x-model="date">
+        <input name="date" id="add-date" type="date" required>
       </label>
       <label class="field">
         <span class="field-label">Stage</span>
-        <select name="stage" id="add-stage" x-model="stage">
-          <template x-for="s in stages" :key="s.id">
-            <option :value="s.id" x-text="s.label"></option>
-          </template>
+        <select name="stage" id="add-stage">
+          <option value="idea" selected>Idea</option>
+          <option value="research">Research</option>
+          <option value="script">Script</option>
+          <option value="voiceover">Voiceover</option>
+          <option value="compose">Compose</option>
+          <option value="thumbnail">Thumbnail</option>
+          <option value="render">Render</option>
+          <option value="published">Published</option>
         </select>
       </label>
       <div class="dialog-actions">
-        <button type="button" class="btn" id="add-cancel" @click="document.getElementById('add-dialog').close('cancel')">Cancel</button>
+        <button type="button" class="btn" id="add-cancel">Cancel</button>
         <button type="submit" class="btn btn-primary">Add card</button>
       </div>
     </form>
@@ -1184,654 +984,377 @@
         (Chrome, Edge, Brave, Arc). Manual mode works in any browser.
       </p>
       <p class="help-note">
-        <button type="button" class="copy-btn" id="reset-folder" @click="resetFolderAccess()">Reset folder access</button>
+        <button type="button" class="copy-btn" id="reset-folder">Reset folder access</button>
         &nbsp;Clears the saved <code>videos/</code> directory handle.
       </p>
       <div class="dialog-actions">
-        <button type="button" class="btn" id="help-close" @click="closeHelpDialog()">Close</button>
+        <button type="button" class="btn" id="help-close">Close</button>
       </div>
     </div>
   </dialog>
 
-  <!-- Storage failure banner -->
-  <div class="toast" :class="{ 'a-hidden': !storageBanner }" x-text="storageBanner"></div>
-
   <script>
-  'use strict';
+  (() => {
+    'use strict';
 
-  /* ─────────── Constants ─────────── */
-  const STAGES = [
-    { id: 'idea',      label: 'Idea' },
-    { id: 'research',  label: 'Research' },
-    { id: 'script',    label: 'Script' },
-    { id: 'voiceover', label: 'Voiceover' },
-    { id: 'compose',   label: 'Compose' },
-    { id: 'thumbnail', label: 'Thumbnail' },
-    { id: 'render',    label: 'Render' },
-    { id: 'published', label: 'Published' },
-  ];
+    const STAGES = [
+      { id: 'idea',      label: 'Idea' },
+      { id: 'research',  label: 'Research' },
+      { id: 'script',    label: 'Script' },
+      { id: 'voiceover', label: 'Voiceover' },
+      { id: 'compose',   label: 'Compose' },
+      { id: 'thumbnail', label: 'Thumbnail' },
+      { id: 'render',    label: 'Render' },
+      { id: 'published', label: 'Published' },
+    ];
 
-  // Ordered for the 7 progress dots (left to right). 'idea' has no dot.
-  // 'voiceover' rolls in narration: 'partial' = mp3+transcript only;
-  // 'present' = +narration-map.json.
-  const ARTIFACTS = [
-    { id: 'research',  label: 'Research' },
-    { id: 'script',    label: 'Script' },
-    { id: 'voiceover', label: 'Voiceover' },
-    { id: 'compose',   label: 'Compose' },
-    { id: 'thumbnail', label: 'Thumbnail' },
-    { id: 'render',    label: 'Render' },
-    { id: 'published', label: 'Published' },
-  ];
+    // Ordered for the 7 progress dots (left to right). 'idea' has no dot.
+    // 'voiceover' rolls in narration: 'partial' = mp3+transcript only;
+    // 'present' = +narration-map.json.
+    const ARTIFACTS = [
+      { id: 'research',  label: 'Research' },
+      { id: 'script',    label: 'Script' },
+      { id: 'voiceover', label: 'Voiceover' },
+      { id: 'compose',   label: 'Compose' },
+      { id: 'thumbnail', label: 'Thumbnail' },
+      { id: 'render',    label: 'Render' },
+      { id: 'published', label: 'Published' },
+    ];
 
-  const ARTIFACT_PATHS = {
-    research:  'seo/research.json',
-    script:    'script.md',
-    voiceover: 'audio/voiceover.mp3 · transcript.json',
-    compose:   'index.html',
-    thumbnail: 'thumbnail-{a,b,c}.png',
-    render:    'output/*.mp4',
-    published: 'manual flag',
-  };
+    const DRIFT_SVG = `
+      <svg width="11" height="10" viewBox="0 0 11 10" fill="none" aria-hidden="true">
+        <path d="M5.5 1L10 9H1L5.5 1Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none"/>
+        <circle cx="5.5" cy="6.5" r="0.7" fill="currentColor"/>
+      </svg>`;
 
-  const STORAGE_KEY = 'hyper-frames:kanban:v1';
-  const SCHEMA_VERSION = 1;
-  const COMPOSE_THRESHOLD_BYTES = 8192;
-  const FOLDER_RE = /^(.+)-(\d{4}-\d{2}-\d{2})$/;
-  const IDB_NAME = 'hyper-frames-kanban';
-  const IDB_STORE = 'handles';
-  const FS_SUPPORTED = typeof window.showDirectoryPicker === 'function';
-
-  /* ─────────── Pure helpers ─────────── */
-  function kebabSlug(input) {
-    return String(input ?? '')
-      .toLowerCase()
-      .replace(/[^a-z0-9\s\-_]/g, '')
-      .replace(/[\s_]+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  }
-
-  function computeSuggested(artifacts) {
-    const ordered = ['research', 'script', 'voiceover', 'compose', 'thumbnail', 'render'];
-    let suggested = 'idea';
-    for (const stage of ordered) {
-      if (artifacts?.[stage] === 'present') suggested = stage;
+    function dotClass(status) {
+      if (status === 'present') return 'dot dot-present';
+      if (status === 'partial') return 'dot dot-partial';
+      return 'dot';
     }
-    return suggested;
-  }
 
-  function hasDriftFor(card, suggestedStage) {
-    if (!card || !suggestedStage) return false;
-    if (card.stage === 'published') return false;
-    if (suggestedStage === 'idea') return false;
-    return suggestedStage !== card.stage;
-  }
-
-  function uuid() {
-    return crypto.randomUUID
-      ? crypto.randomUUID()
-      : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-          const r = (Math.random() * 16) | 0;
-          return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
-        });
-  }
-
-  function todayISO() {
-    const d = new Date();
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  }
-
-  function emptyArtifacts() {
-    return Object.fromEntries(ARTIFACTS.map(a => [a.id, 'missing']));
-  }
-
-  function titleCaseSlug(slug) {
-    return slug.split('-').filter(Boolean)
-      .map(w => w[0].toUpperCase() + w.slice(1))
-      .join(' ');
-  }
-
-  function relativeTime(iso) {
-    if (!iso) return 'never';
-    const ms = Date.now() - new Date(iso).getTime();
-    const s = Math.floor(ms / 1000);
-    if (s < 60) return 'just now';
-    const m = Math.floor(s / 60);
-    if (m < 60) return `${m}m ago`;
-    const h = Math.floor(m / 60);
-    if (h < 24) return `${h}h ago`;
-    return `${Math.floor(h / 24)}d ago`;
-  }
-
-  function formatNotesAgo(ts) {
-    if (!ts) return '';
-    const sec = Math.floor((Date.now() - ts) / 1000);
-    if (sec < 5) return 'just now';
-    if (sec < 60) return `${sec}s ago`;
-    return `${Math.floor(sec / 60)}m ago`;
-  }
-
-  /* ─────────── State load / save ─────────── */
-  function emptyState() {
-    return {
-      schemaVersion: SCHEMA_VERSION,
-      cards: [],
-      ui: { panelOpenCardId: null },
-      lastSyncedAt: null,
+    const ARTIFACT_PATHS = {
+      research:  'seo/research.json',
+      script:    'script.md',
+      voiceover: 'audio/voiceover.mp3 · transcript.json',
+      compose:   'index.html',
+      thumbnail: 'thumbnail-{a,b,c}.png',
+      render:    'output/*.mp4',
+      published: 'manual flag',
     };
-  }
 
-  function loadState() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return emptyState();
-      const parsed = JSON.parse(raw);
-      if (parsed.schemaVersion !== SCHEMA_VERSION) {
-        console.warn('Schema mismatch; ignoring stored state.');
-        return emptyState();
+    function findCard(id) {
+      return state.cards.find(c => c.id === id) || null;
+    }
+
+    function folderPath(card) {
+      return `videos/${card.slug}-${card.date}/`;
+    }
+
+    function escapeHtml(s) {
+      return String(s ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function frag(htmlStr) {
+      return document.createRange().createContextualFragment(htmlStr);
+    }
+
+    function setContent(el, htmlStr) {
+      el.replaceChildren(frag(htmlStr));
+    }
+
+    function renderColumn(stage, cards) {
+      const count = cards.length;
+      const countAttr = count > 0 ? 'data-active' : '';
+      const body = count === 0
+        ? `<div class="empty"><span class="empty-text">No cards in flight.</span></div>`
+        : cards.map(renderCard).join('');
+      return `
+        <div class="column" data-stage="${stage.id}">
+          <div class="column-header">
+            <span class="stage-name">${escapeHtml(stage.label)}</span>
+            <span class="count" ${countAttr}>${count}</span>
+          </div>
+          <div class="column-body">${body}</div>
+        </div>
+      `;
+    }
+
+    function renderCard(card) {
+      const isOpen = card.id === state.ui.panelOpenCardId;
+      const drift = card.hasDrift
+        ? `<span class="drift" title="Scan suggests: ${escapeHtml(card.suggestedLabel || '')}">${DRIFT_SVG}</span>`
+        : '';
+      const dots = ARTIFACTS.map(a => {
+        const status = card.artifacts?.[a.id] || 'missing';
+        return `<li class="${dotClass(status)}" title="${escapeHtml(a.label)}"></li>`;
+      }).join('');
+      return `
+        <article class="card${isOpen ? ' is-open' : ''}" data-card-id="${escapeHtml(card.id)}" draggable="true">
+          <div class="card-meta">
+            <span class="slug">${escapeHtml(card.slug)}</span>
+            ${drift}
+          </div>
+          <h3 class="title">${escapeHtml(card.title)}</h3>
+          <time class="date">${escapeHtml(card.date)}</time>
+          <ol class="dots" aria-label="Pipeline progress">${dots}</ol>
+        </article>
+      `;
+    }
+
+    function relativeTime(iso) {
+      if (!iso) return 'never';
+      const ms = Date.now() - new Date(iso).getTime();
+      const s = Math.floor(ms / 1000);
+      if (s < 60) return 'just now';
+      const m = Math.floor(s / 60);
+      if (m < 60) return `${m}m ago`;
+      const h = Math.floor(m / 60);
+      if (h < 24) return `${h}h ago`;
+      return `${Math.floor(h / 24)}d ago`;
+    }
+
+    function updateStatusPill() {
+      const pill = document.querySelector('.status-pill');
+      if (!pill) return;
+      const n = state.cards.length;
+      const last = state.lastSyncedAt;
+      const synced = last ? `synced ${relativeTime(last)}` : 'never synced';
+      pill.textContent = `${n} card${n === 1 ? '' : 's'} · ${synced}`;
+    }
+
+    function kebabSlug(input) {
+      return String(input ?? '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s\-_]/g, '')
+        .replace(/[\s_]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    function computeSuggested(artifacts) {
+      const ordered = ['research', 'script', 'voiceover', 'compose', 'thumbnail', 'render'];
+      let suggested = 'idea';
+      for (const stage of ordered) {
+        if (artifacts?.[stage] === 'present') suggested = stage;
       }
+      return suggested;
+    }
+
+    function hasDriftFor(card, suggestedStage) {
+      if (!card || !suggestedStage) return false;
+      if (card.stage === 'published') return false;
+      if (suggestedStage === 'idea') return false;
+      return suggestedStage !== card.stage;
+    }
+
+    const STORAGE_KEY = 'hyper-frames:kanban:v1';
+    const SCHEMA_VERSION = 1;
+
+    function emptyState() {
       return {
         schemaVersion: SCHEMA_VERSION,
-        cards: Array.isArray(parsed.cards) ? parsed.cards : [],
-        ui: { panelOpenCardId: parsed.ui?.panelOpenCardId ?? null },
-        lastSyncedAt: parsed.lastSyncedAt ?? null,
+        cards: [],
+        ui: { panelOpenCardId: null },
+        lastSyncedAt: null,
       };
-    } catch (e) {
-      console.error('Failed to load state:', e);
-      return emptyState();
     }
-  }
 
-  function loadSampleState() {
-    return {
-      schemaVersion: SCHEMA_VERSION,
-      lastSyncedAt: null,
-      ui: { panelOpenCardId: null },
-      cards: [
-        { id: 'a', slug: 'font-rendering', title: 'The Pixel Olympics',
-          date: '2026-05-09', stage: 'idea',
-          artifacts: { research: 'missing', script: 'missing', voiceover: 'missing',
-            compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-05-09T09:00:00Z', updatedAt: '2026-05-09T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-        { id: 'b', slug: 'tcp-handshake', title: 'Three-Way Hello',
-          date: '2026-04-28', stage: 'research',
-          artifacts: { research: 'present', script: 'missing', voiceover: 'missing',
-            compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-04-28T09:00:00Z', updatedAt: '2026-04-28T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-        { id: 'c', slug: 'why-text-is-hard', title: 'Why Text Is Hard',
-          date: '2026-05-07', stage: 'compose',
-          artifacts: { research: 'present', script: 'present', voiceover: 'present',
-            compose: 'partial', thumbnail: 'present', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-05-07T09:00:00Z', updatedAt: '2026-05-07T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-        { id: 'd', slug: 'ssl-cert-magic', title: 'How TLS Trusts Anyone',
-          date: '2026-05-03', stage: 'voiceover',
-          artifacts: { research: 'present', script: 'present', voiceover: 'present',
-            compose: 'partial', thumbnail: 'missing', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-05-03T09:00:00Z', updatedAt: '2026-05-03T09:00:00Z',
-          lastScannedAt: null, hasDrift: true, suggestedLabel: 'Compose' },
-        { id: 'e', slug: 'color-spaces', title: 'Why RGB Lies',
-          date: '2026-04-15', stage: 'published',
-          artifacts: { research: 'present', script: 'present', voiceover: 'present',
-            compose: 'present', thumbnail: 'present', render: 'present', published: 'present' },
-          notes: '', createdAt: '2026-04-15T09:00:00Z', updatedAt: '2026-04-15T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-      ],
-    };
-  }
-
-  /* ─────────── IndexedDB (directory handle) ─────────── */
-  function idb() {
-    return new Promise((resolve, reject) => {
-      const req = indexedDB.open(IDB_NAME, 1);
-      req.onupgradeneeded = () => req.result.createObjectStore(IDB_STORE);
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
-    });
-  }
-  async function idbGet(key) {
-    const db = await idb();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(IDB_STORE, 'readonly');
-      const req = tx.objectStore(IDB_STORE).get(key);
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
-    });
-  }
-  async function idbSet(key, value) {
-    const db = await idb();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(IDB_STORE, 'readwrite');
-      tx.objectStore(IDB_STORE).put(value, key);
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
-    });
-  }
-  async function idbDelete(key) {
-    const db = await idb();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(IDB_STORE, 'readwrite');
-      tx.objectStore(IDB_STORE).delete(key);
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
-    });
-  }
-
-  async function getCachedDirHandle() {
-    if (!FS_SUPPORTED) return null;
-    return (await idbGet('videosDirHandle')) || null;
-  }
-  async function setCachedDirHandle(handle) { await idbSet('videosDirHandle', handle); }
-  async function clearCachedDirHandle() { await idbDelete('videosDirHandle'); }
-  async function pickDirHandle() {
-    const handle = await window.showDirectoryPicker({ mode: 'read' });
-    await setCachedDirHandle(handle);
-    return handle;
-  }
-  async function ensureReadPermission(handle) {
-    const has = await handle.queryPermission({ mode: 'read' });
-    if (has === 'granted') return true;
-    return (await handle.requestPermission({ mode: 'read' })) === 'granted';
-  }
-
-  /* ─────────── FS scan ─────────── */
-  async function exists(dir, path) {
-    const parts = path.split('/').filter(Boolean);
-    try {
-      let cur = dir;
-      for (let i = 0; i < parts.length - 1; i++) {
-        cur = await cur.getDirectoryHandle(parts[i]);
-      }
-      await cur.getFileHandle(parts[parts.length - 1]);
-      return 'present';
-    } catch (e) {
-      if (e.name === 'NotFoundError') return 'missing';
-      return 'unknown';
-    }
-  }
-
-  async function voiceoverStatus(dir) {
-    const mp3 = await exists(dir, 'audio/voiceover.mp3');
-    const tx  = await exists(dir, 'transcript.json');
-    const nm  = await exists(dir, 'narration-map.json');
-    if (mp3 === 'missing' && tx === 'missing') return 'missing';
-    if (mp3 === 'present' && tx === 'present' && nm === 'present') return 'present';
-    return 'partial';
-  }
-
-  async function composeStatus(dir) {
-    try {
-      const fh = await dir.getFileHandle('index.html');
-      const file = await fh.getFile();
-      return file.size > COMPOSE_THRESHOLD_BYTES ? 'present' : 'partial';
-    } catch (e) {
-      if (e.name === 'NotFoundError') return 'missing';
-      return 'unknown';
-    }
-  }
-
-  async function thumbnailStatus(dir) {
-    let count = 0;
-    for (const name of ['thumbnail-a.png', 'thumbnail-b.png', 'thumbnail-c.png']) {
-      if ((await exists(dir, name)) === 'present') count++;
-    }
-    if (count === 0) return 'missing';
-    if (count === 3) return 'present';
-    return 'partial';
-  }
-
-  async function hasMp4InOutput(dir) {
-    try {
-      const out = await dir.getDirectoryHandle('output');
-      for await (const entry of out.values()) {
-        if (entry.kind === 'file' && entry.name.toLowerCase().endsWith('.mp4')) return 'present';
-      }
-      return 'missing';
-    } catch (e) {
-      if (e.name === 'NotFoundError') return 'missing';
-      return 'unknown';
-    }
-  }
-
-  async function readOutlineH1(dir) {
-    try {
-      const fh = await dir.getFileHandle('outline.md');
-      const file = await fh.getFile();
-      const text = await file.text();
-      const m = text.match(/^#\s+(.+?)(?:\s+—\s+9-beat outline)?\s*$/m);
-      return m ? m[1].trim() : null;
-    } catch {
-      return null;
-    }
-  }
-
-  function mergeScan(currentState, scanResults) {
-    const next = JSON.parse(JSON.stringify(currentState));
-    const now = new Date().toISOString();
-
-    for (const result of scanResults) {
-      const existing = next.cards.find(c => c.slug === result.slug && c.date === result.date);
-      if (existing) {
-        existing.artifacts = result.artifacts;
-        existing.lastScannedAt = now;
-        const suggested = computeSuggested(result.artifacts);
-        existing.hasDrift = hasDriftFor(existing, suggested);
-        if (existing.hasDrift) {
-          existing.suggestedLabel = STAGES.find(s => s.id === suggested)?.label || '';
-        } else {
-          delete existing.suggestedLabel;
-        }
-      } else {
-        next.cards.push({
-          id: uuid(),
-          slug: result.slug,
-          date: result.date,
-          title: result.title || titleCaseSlug(result.slug),
-          stage: result.suggestedStage,
-          artifacts: result.artifacts,
-          notes: '',
-          createdAt: now,
-          updatedAt: now,
-          lastScannedAt: now,
-          hasDrift: false,
-        });
-      }
-    }
-    return next;
-  }
-
-  async function scan(dirHandle) {
-    const results = [];
-    let errors = 0;
-    for await (const entry of dirHandle.values()) {
-      if (entry.kind !== 'directory') continue;
-      const m = entry.name.match(FOLDER_RE);
-      if (!m) continue;
-      const slug = m[1];
-      const date = m[2];
+    function loadState() {
       try {
-        const artifacts = {
-          research:  await exists(entry, 'seo/research.json'),
-          script:    await exists(entry, 'script.md'),
-          voiceover: await voiceoverStatus(entry),
-          compose:   await composeStatus(entry),
-          thumbnail: await thumbnailStatus(entry),
-          render:    await hasMp4InOutput(entry),
-          published: 'unknown',
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return emptyState();
+        const parsed = JSON.parse(raw);
+        if (parsed.schemaVersion !== SCHEMA_VERSION) {
+          console.warn('Schema mismatch; ignoring stored state.');
+          return emptyState();
+        }
+        return {
+          schemaVersion: SCHEMA_VERSION,
+          cards: Array.isArray(parsed.cards) ? parsed.cards : [],
+          ui: { panelOpenCardId: parsed.ui?.panelOpenCardId ?? null },
+          lastSyncedAt: parsed.lastSyncedAt ?? null,
         };
-        const suggestedStage = computeSuggested(artifacts);
-        const title = await readOutlineH1(entry);
-        results.push({ slug, date, suggestedStage, artifacts, title });
       } catch (e) {
-        errors++;
-        console.warn(`scan failed for ${entry.name}:`, e);
+        console.error('Failed to load state:', e);
+        return emptyState();
       }
     }
-    return { results, errors };
-  }
 
-  /* ─────────── Alpine app ─────────── */
-  function kanbanApp() {
-    const initial = loadState();
-    const isSeed = new URL(location.href).searchParams.get('seed') === '1';
-    const seeded = isSeed ? loadSampleState() : initial;
+    let storageBannerShown = false;
+    function showStorageBanner() {
+      if (storageBannerShown) return;
+      storageBannerShown = true;
+      const div = document.createElement('div');
+      div.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);background:#C4615A;color:#fff;padding:8px 16px;border-radius:4px;font-family:"JetBrains Mono",monospace;font-size:12px;z-index:9999;';
+      div.textContent = 'localStorage unavailable. Changes will not persist.';
+      document.body.appendChild(div);
+    }
 
-    return {
-      // state
-      cards: seeded.cards,
-      ui: seeded.ui,
-      lastSyncedAt: seeded.lastSyncedAt,
-      syncing: false,
-      storageBanner: null,
+    function persist() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.error('Failed to persist state:', e);
+        showStorageBanner();
+      }
+    }
 
-      // panel-local UI state (lifted out of nested x-data because Alpine
-      // 3.x has reactivity issues with x-show inside x-data inside <template x-if>)
-      editingTitle: false,
-      titleDraft: '',
-      folderCopied: false,
-      notesLastSavedAt: null,
+    function mutate(fn) {
+      fn();
+      persist();
+      render();
+    }
 
-      // tick counters force re-eval of derived strings
-      _statusTick: 0,
-      _notesTick: 0,
+    function loadSampleState() {
+      return {
+        schemaVersion: SCHEMA_VERSION,
+        lastSyncedAt: null,
+        ui: { panelOpenCardId: null },
+        cards: [
+          { id: 'a', slug: 'font-rendering', title: 'The Pixel Olympics',
+            date: '2026-05-09', stage: 'idea',
+            artifacts: { research: 'missing', script: 'missing', voiceover: 'missing',
+              compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-05-09T09:00:00Z', updatedAt: '2026-05-09T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+          { id: 'b', slug: 'tcp-handshake', title: 'Three-Way Hello',
+            date: '2026-04-28', stage: 'research',
+            artifacts: { research: 'present', script: 'missing', voiceover: 'missing',
+              compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-04-28T09:00:00Z', updatedAt: '2026-04-28T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+          { id: 'c', slug: 'why-text-is-hard', title: 'Why Text Is Hard',
+            date: '2026-05-07', stage: 'compose',
+            artifacts: { research: 'present', script: 'present', voiceover: 'present',
+              compose: 'partial', thumbnail: 'present', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-05-07T09:00:00Z', updatedAt: '2026-05-07T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+          { id: 'd', slug: 'ssl-cert-magic', title: 'How TLS Trusts Anyone',
+            date: '2026-05-03', stage: 'voiceover',
+            artifacts: { research: 'present', script: 'present', voiceover: 'present',
+              compose: 'partial', thumbnail: 'missing', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-05-03T09:00:00Z', updatedAt: '2026-05-03T09:00:00Z',
+            lastScannedAt: null, hasDrift: true, suggestedLabel: 'Compose' },
+          { id: 'e', slug: 'color-spaces', title: 'Why RGB Lies',
+            date: '2026-04-15', stage: 'published',
+            artifacts: { research: 'present', script: 'present', voiceover: 'present',
+              compose: 'present', thumbnail: 'present', render: 'present', published: 'present' },
+            notes: '', createdAt: '2026-04-15T09:00:00Z', updatedAt: '2026-04-15T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+        ],
+      };
+    }
 
-      // exposed constants
-      stages: STAGES,
-      artifactDefs: ARTIFACTS,
-      artifactPaths: ARTIFACT_PATHS,
-      fsSupported: FS_SUPPORTED,
+    let state = loadState();
 
-      /* computed */
-      get openCard() {
-        const id = this.ui.panelOpenCardId;
-        if (!id) return null;
-        return this.cards.find(c => c.id === id) || null;
-      },
+    if (new URL(location.href).searchParams.get('seed') === '1') {
+      state = loadSampleState();
+      persist();
+    }
 
-      get cardsByStage() {
-        const m = Object.fromEntries(STAGES.map(s => [s.id, []]));
-        for (const c of this.cards) {
-          if (m[c.stage]) m[c.stage].push(c);
+    function uuid() {
+      return crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+            const r = (Math.random() * 16) | 0;
+            return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+          });
+    }
+
+    function todayISO() {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    }
+
+    function emptyArtifacts() {
+      return Object.fromEntries(ARTIFACTS.map(a => [a.id, 'missing']));
+    }
+
+    function titleCaseSlug(slug) {
+      return slug.split('-').filter(Boolean)
+        .map(w => w[0].toUpperCase() + w.slice(1))
+        .join(' ');
+    }
+
+    function openAddDialog() {
+      const dlg = document.getElementById('add-dialog');
+      document.getElementById('add-slug').value = '';
+      document.getElementById('add-title').value = '';
+      document.getElementById('add-date').value = todayISO();
+      document.getElementById('add-stage').value = 'idea';
+      const hint = document.getElementById('add-slug-hint');
+      hint.textContent = 'Lowercase, hyphens only.';
+      hint.classList.remove('error');
+      dlg.showModal();
+      document.getElementById('add-slug').focus();
+    }
+
+    function bindAddDialog() {
+      const dlg = document.getElementById('add-dialog');
+      const slugInput = document.getElementById('add-slug');
+      const hint = document.getElementById('add-slug-hint');
+
+      slugInput.addEventListener('input', () => {
+        const cur = slugInput.value;
+        const k = kebabSlug(cur);
+        if (k !== cur) {
+          const pos = slugInput.selectionStart;
+          slugInput.value = k;
+          slugInput.setSelectionRange(Math.min(pos, k.length), Math.min(pos, k.length));
         }
-        for (const arr of Object.values(m)) {
-          arr.sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+      });
+
+      document.getElementById('add-cancel').addEventListener('click', () => dlg.close('cancel'));
+
+      document.getElementById('add-form').addEventListener('submit', (e) => {
+        const slug = kebabSlug(slugInput.value);
+        const date = document.getElementById('add-date').value;
+        if (!slug) {
+          e.preventDefault();
+          hint.textContent = 'Slug is required.';
+          hint.classList.add('error');
+          return;
         }
-        return m;
-      },
-
-      get statusPillText() {
-        this._statusTick;
-        const n = this.cards.length;
-        const last = this.lastSyncedAt;
-        const synced = last ? `synced ${relativeTime(last)}` : 'never synced';
-        return `${n} card${n === 1 ? '' : 's'} · ${synced}`;
-      },
-
-      /* lifecycle */
-      init() {
-        if (isSeed) this.persist();
-
-        setInterval(() => { this._statusTick++; }, 30_000);
-        setInterval(() => { this._notesTick++; }, 5_000);
-
-        // Reset panel-local state when the open card changes identity.
-        this.$watch('ui.panelOpenCardId', () => {
-          this.editingTitle = false;
-          this.titleDraft = '';
-          this.folderCopied = false;
-          this.notesLastSavedAt = null;
-        });
-
-        this.bindKeyboard();
-        this.bindOutsideClick();
-      },
-
-      /* persistence */
-      persist() {
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify({
-            schemaVersion: SCHEMA_VERSION,
-            cards: this.cards,
-            ui: this.ui,
-            lastSyncedAt: this.lastSyncedAt,
-          }));
-        } catch (e) {
-          console.error('Failed to persist state:', e);
-          this.storageBanner = 'localStorage unavailable. Changes will not persist.';
+        if (state.cards.some(c => c.slug === slug && c.date === date)) {
+          e.preventDefault();
+          hint.textContent = `A card with slug "${slug}" and date ${date} already exists.`;
+          hint.classList.add('error');
+          return;
         }
-      },
-
-      /* helpers exposed to templates */
-      dotClass(status) {
-        if (status === 'present') return 'dot dot-present';
-        if (status === 'partial') return 'dot dot-partial';
-        return 'dot';
-      },
-      artifactStatusClass(card, artId) {
-        const status = card?.artifacts?.[artId];
-        if (status === 'present') return 'present';
-        if (status === 'partial') return 'partial';
-        return '';
-      },
-      artifactIsMissing(card, artId) {
-        const s = card?.artifacts?.[artId];
-        return !s || s === 'missing' || s === 'unknown';
-      },
-      artifactHasFile(card, artId) {
-        const s = card?.artifacts?.[artId];
-        return s === 'present' || s === 'partial';
-      },
-      folderPath(card) {
-        return `videos/${card.slug}-${card.date}/`;
-      },
-      formatNotesAgo: formatNotesAgo,
-
-      /* card actions */
-      openPanel(id) {
-        this.ui.panelOpenCardId = id;
-        this.persist();
-      },
-      closePanel() {
-        this.ui.panelOpenCardId = null;
-        this.persist();
-      },
-      startTitleEdit() {
-        if (!this.openCard) return;
-        this.titleDraft = this.openCard.title;
-        this.editingTitle = true;
-        this.$nextTick(() => {
-          const inp = document.querySelector('input.panel-title.editing');
-          if (inp) { inp.focus(); inp.select(); }
-        });
-      },
-      commitTitleEdit() {
-        const card = this.openCard;
-        if (!card) { this.editingTitle = false; return; }
-        const v = (this.titleDraft || '').trim();
-        if (v && v !== card.title) {
-          card.title = v;
-          card.updatedAt = new Date().toISOString();
-          this.persist();
-        }
-        this.editingTitle = false;
-      },
-      copyFolderUI() {
-        this.copyFolder().then(() => {
-          this.folderCopied = true;
-          setTimeout(() => { this.folderCopied = false; }, 1200);
-        });
-      },
-      updateNotes(value) {
-        const card = this.openCard;
-        if (!card) return;
-        if (card.notes === value) return;
-        card.notes = value;
-        card.updatedAt = new Date().toISOString();
-        this.notesLastSavedAt = Date.now();
-        this.persist();
-      },
-      onStageChange() {
-        const card = this.openCard;
-        if (!card) return;
-        card.updatedAt = new Date().toISOString();
-        this.persist();
-      },
-      async copyFolder() {
-        if (!this.openCard) return;
-        try {
-          await navigator.clipboard?.writeText(this.folderPath(this.openCard));
-        } catch (e) {
-          console.warn('clipboard write failed', e);
-        }
-      },
-      deleteCard() {
-        const card = this.openCard;
-        if (!card) return;
-        if (!confirm(`Delete "${card.title}" (${card.slug})?\n\nThis cannot be undone.`)) return;
-        this.cards = this.cards.filter(c => c.id !== card.id);
-        this.ui.panelOpenCardId = null;
-        this.persist();
-      },
-      moveCardToStage(id, stage) {
-        const card = this.cards.find(c => c.id === id);
-        if (!card || card.stage === stage) return;
-        card.stage = stage;
-        card.updatedAt = new Date().toISOString();
-        this.persist();
-      },
-      addCard({ slug, title, date, stage }) {
+        const titleRaw = document.getElementById('add-title').value.trim();
+        const title = titleRaw || titleCaseSlug(slug);
+        const stage = document.getElementById('add-stage').value;
         const now = new Date().toISOString();
-        this.cards.push({
-          id: uuid(), slug, title, date, stage,
-          artifacts: emptyArtifacts(),
-          notes: '',
-          createdAt: now, updatedAt: now,
-          lastScannedAt: null, hasDrift: false,
+        mutate(() => {
+          state.cards.push({
+            id: uuid(), slug, title, date, stage,
+            artifacts: emptyArtifacts(), notes: '',
+            createdAt: now, updatedAt: now,
+            lastScannedAt: null, hasDrift: false,
+          });
         });
-        this.persist();
-      },
+      });
+    }
 
-      /* drag and drop */
-      onDragStart(e, id) {
-        e.target.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', id);
-        if (this.ui.panelOpenCardId === id) {
-          this.ui.panelOpenCardId = null;
-        }
-      },
-      onDragEnd() {
-        document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
-        document.querySelectorAll('.drop-target').forEach(el => el.classList.remove('drop-target'));
-      },
-      onDragOver(e) {
-        const body = e.currentTarget;
-        e.dataTransfer.dropEffect = 'move';
-        body.classList.add('drop-target');
-      },
-      onDragLeave(e) {
-        const body = e.currentTarget;
-        if (body.contains(e.relatedTarget)) return;
-        body.classList.remove('drop-target');
-      },
-      onDrop(e, stageId) {
-        const id = e.dataTransfer.getData('text/plain');
-        if (!id) return;
-        this.moveCardToStage(id, stageId);
-      },
+    function bindTopbar() {
+      document.getElementById('btn-add').addEventListener('click', openAddDialog);
+      const syncBtn = document.getElementById('btn-sync');
 
-      /* dialogs */
-      openAddDialog() {
-        const dlg = document.getElementById('add-dialog');
-        if (!dlg) return;
-        const inner = Alpine.$data(dlg);
-        if (inner && typeof inner.reset === 'function') inner.reset();
-        dlg.showModal();
-        const slugInput = dlg.querySelector('#add-slug');
-        if (slugInput) slugInput.focus();
-      },
-      openHelpDialog() {
-        const dlg = document.getElementById('help-dialog');
-        if (dlg) dlg.showModal();
-      },
-      closeHelpDialog() {
-        const dlg = document.getElementById('help-dialog');
-        if (dlg) dlg.close();
-      },
-      resetFolderAccess() {
-        clearCachedDirHandle().then(() => {
-          this.closeHelpDialog();
-          alert('Folder access reset. Click Sync to pick a new directory.');
-        });
-      },
+      if (!FS_SUPPORTED) {
+        syncBtn.disabled = true;
+        syncBtn.title = 'Folder scanning needs a Chromium-based browser. Manual mode still works.';
+        return;
+      }
 
-      /* sync */
-      async doSync() {
-        if (!FS_SUPPORTED || this.syncing) return;
-        this.syncing = true;
+      syncBtn.addEventListener('click', async () => {
+        syncBtn.classList.add('syncing');
+        syncBtn.disabled = true;
         try {
           let handle = await getCachedDirHandle();
           if (handle) {
@@ -1849,264 +1372,687 @@
             handle = await pickDirHandle();
             scanResult = await scan(handle);
           }
-          const next = mergeScan({
-            schemaVersion: SCHEMA_VERSION,
-            cards: this.cards,
-            ui: this.ui,
-            lastSyncedAt: this.lastSyncedAt,
-          }, scanResult.results);
-          this.cards = next.cards;
-          this.lastSyncedAt = new Date().toISOString();
-          this.persist();
+          state = mergeScan(state, scanResult.results);
+          state.lastSyncedAt = new Date().toISOString();
+          persist();
+          render();
           if (scanResult.errors > 0) {
             console.warn(`Sync completed with ${scanResult.errors} errors.`);
           }
         } catch (e) {
           if (e.name !== 'AbortError') console.error('Sync failed:', e);
         } finally {
-          this.syncing = false;
+          syncBtn.classList.remove('syncing');
+          syncBtn.disabled = false;
         }
-      },
+      });
+    }
 
-      /* keyboard + outside-click */
-      bindKeyboard() {
-        document.addEventListener('keydown', (e) => {
-          const tag = document.activeElement?.tagName;
-          const isField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+    setInterval(() => updateStatusPill(), 30_000);
+
+    function bindBoardEvents() {
+      const board = document.querySelector('.board');
+
+      board.addEventListener('click', (e) => {
+        const cardEl = e.target.closest('[data-card-id]');
+        if (!cardEl) return;
+        if (cardEl.classList.contains('dragging')) return;
+        mutate(() => { state.ui.panelOpenCardId = cardEl.dataset.cardId; });
+      });
+
+      board.addEventListener('dragstart', (e) => {
+        const cardEl = e.target.closest('[data-card-id]');
+        if (!cardEl) return;
+        cardEl.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', cardEl.dataset.cardId);
+        if (state.ui.panelOpenCardId === cardEl.dataset.cardId) {
+          state.ui.panelOpenCardId = null;
+          persist();
+          // Defer the panel render until dragend so we don't kill the drag.
+        }
+      });
+
+      board.addEventListener('dragend', () => {
+        document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+        document.querySelectorAll('.drop-target').forEach(el => el.classList.remove('drop-target'));
+      });
+
+      board.addEventListener('dragover', (e) => {
+        const body = e.target.closest('.column-body');
+        if (!body) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        body.classList.add('drop-target');
+      });
+
+      board.addEventListener('dragleave', (e) => {
+        const body = e.target.closest('.column-body');
+        if (!body) return;
+        if (body.contains(e.relatedTarget)) return;
+        body.classList.remove('drop-target');
+      });
+
+      board.addEventListener('drop', (e) => {
+        const column = e.target.closest('.column');
+        const id = e.dataTransfer.getData('text/plain');
+        if (!column || !id) return;
+        e.preventDefault();
+        const stage = column.dataset.stage;
+        mutate(() => {
+          const card = findCard(id);
+          if (!card || card.stage === stage) return;
+          card.stage = stage;
+          card.updatedAt = new Date().toISOString();
+        });
+      });
+    }
+
+    function bindPanelEvents() {
+      document.querySelector('.panel').addEventListener('click', (e) => {
+        if (e.target.closest('#panel-close')) {
+          mutate(() => { state.ui.panelOpenCardId = null; });
+          return;
+        }
+        if (e.target.closest('#copy-folder')) {
+          const card = findCard(state.ui.panelOpenCardId);
+          if (card) navigator.clipboard?.writeText(folderPath(card));
+          return;
+        }
+        if (e.target.id === 'panel-title') {
+          const titleEl = e.target;
+          const id = state.ui.panelOpenCardId;
+          if (!id) return;
+          const card = findCard(id);
+          if (!card) return;
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.value = card.title;
+          input.className = 'panel-title editing';
+          titleEl.replaceWith(input);
+          input.focus();
+          input.select();
+
+          let committed = false;
+          const commit = (save) => {
+            if (committed) return;
+            committed = true;
+            const value = input.value.trim();
+            if (save && value && value !== card.title) {
+              mutate(() => {
+                card.title = value;
+                card.updatedAt = new Date().toISOString();
+              });
+            } else {
+              render();
+            }
+          };
+          input.addEventListener('blur', () => commit(true));
+          input.addEventListener('keydown', (k) => {
+            if (k.key === 'Enter') { k.preventDefault(); input.blur(); }
+            if (k.key === 'Escape') { commit(false); }
+          });
+          return;
+        }
+        if (e.target.closest('#delete-card')) {
+          const card = findCard(state.ui.panelOpenCardId);
+          if (!card) return;
+          if (!confirm(`Delete "${card.title}" (${card.slug})?\n\nThis cannot be undone.`)) return;
+          mutate(() => {
+            state.cards = state.cards.filter(c => c.id !== card.id);
+            state.ui.panelOpenCardId = null;
+          });
+          return;
+        }
+      });
+
+      document.querySelector('.panel').addEventListener('change', (e) => {
+        if (e.target.id !== 'panel-stage') return;
+        const id = state.ui.panelOpenCardId;
+        if (!id) return;
+        const newStage = e.target.value;
+        mutate(() => {
+          const card = findCard(id);
+          if (!card) return;
+          card.stage = newStage;
+          card.updatedAt = new Date().toISOString();
+        });
+      });
+
+      document.querySelector('.panel').addEventListener('input', (e) => {
+        if (e.target.id !== 'panel-notes') return;
+        clearTimeout(notesDebounceTimer);
+        const id = state.ui.panelOpenCardId;
+        const value = e.target.value;
+        notesDebounceTimer = setTimeout(() => saveNotesNow(id, value), 500);
+      });
+
+      document.querySelector('.panel').addEventListener('blur', (e) => {
+        if (e.target.id !== 'panel-notes') return;
+        clearTimeout(notesDebounceTimer);
+        saveNotesNow(state.ui.panelOpenCardId, e.target.value);
+      }, true);
+
+      document.addEventListener('click', (e) => {
+        if (!state.ui.panelOpenCardId) return;
+        if (e.target.closest('.panel')) return;
+        if (e.target.closest('[data-card-id]')) return;
+        if (e.target.closest('dialog')) return;
+        if (e.target.closest('.topbar')) return;
+        mutate(() => { state.ui.panelOpenCardId = null; });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && state.ui.panelOpenCardId) {
           const dlgOpen = document.querySelector('dialog[open]');
+          if (dlgOpen) return; // let the dialog handle Esc
+          mutate(() => { state.ui.panelOpenCardId = null; });
+        }
+      });
+    }
 
-          if (e.key === 'Escape' && this.ui.panelOpenCardId && !dlgOpen) {
-            this.closePanel();
-            return;
+    const IDB_NAME = 'hyper-frames-kanban';
+    const IDB_STORE = 'handles';
+
+    function idb() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open(IDB_NAME, 1);
+        req.onupgradeneeded = () => req.result.createObjectStore(IDB_STORE);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+    async function idbGet(key) {
+      const db = await idb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, 'readonly');
+        const req = tx.objectStore(IDB_STORE).get(key);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+    async function idbSet(key, value) {
+      const db = await idb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, 'readwrite');
+        tx.objectStore(IDB_STORE).put(value, key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+    async function idbDelete(key) {
+      const db = await idb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, 'readwrite');
+        tx.objectStore(IDB_STORE).delete(key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    const FS_SUPPORTED = typeof window.showDirectoryPicker === 'function';
+
+    async function getCachedDirHandle() {
+      if (!FS_SUPPORTED) return null;
+      return (await idbGet('videosDirHandle')) || null;
+    }
+    async function setCachedDirHandle(handle) {
+      await idbSet('videosDirHandle', handle);
+    }
+    async function clearCachedDirHandle() {
+      await idbDelete('videosDirHandle');
+    }
+    async function pickDirHandle() {
+      const handle = await window.showDirectoryPicker({ mode: 'read' });
+      await setCachedDirHandle(handle);
+      return handle;
+    }
+    async function ensureReadPermission(handle) {
+      const has = await handle.queryPermission({ mode: 'read' });
+      if (has === 'granted') return true;
+      return (await handle.requestPermission({ mode: 'read' })) === 'granted';
+    }
+
+    const COMPOSE_THRESHOLD_BYTES = 8192;
+    const FOLDER_RE = /^(.+)-(\d{4}-\d{2}-\d{2})$/;
+
+    async function exists(dir, path) {
+      const parts = path.split('/').filter(Boolean);
+      try {
+        let cur = dir;
+        for (let i = 0; i < parts.length - 1; i++) {
+          cur = await cur.getDirectoryHandle(parts[i]);
+        }
+        await cur.getFileHandle(parts[parts.length - 1]);
+        return 'present';
+      } catch (e) {
+        if (e.name === 'NotFoundError') return 'missing';
+        return 'unknown';
+      }
+    }
+
+    async function voiceoverStatus(dir) {
+      const mp3 = await exists(dir, 'audio/voiceover.mp3');
+      const tx  = await exists(dir, 'transcript.json');
+      const nm  = await exists(dir, 'narration-map.json');
+      if (mp3 === 'missing' && tx === 'missing') return 'missing';
+      if (mp3 === 'present' && tx === 'present' && nm === 'present') return 'present';
+      return 'partial';
+    }
+
+    async function composeStatus(dir) {
+      try {
+        const fh = await dir.getFileHandle('index.html');
+        const file = await fh.getFile();
+        return file.size > COMPOSE_THRESHOLD_BYTES ? 'present' : 'partial';
+      } catch (e) {
+        if (e.name === 'NotFoundError') return 'missing';
+        return 'unknown';
+      }
+    }
+
+    async function thumbnailStatus(dir) {
+      let count = 0;
+      for (const name of ['thumbnail-a.png', 'thumbnail-b.png', 'thumbnail-c.png']) {
+        if ((await exists(dir, name)) === 'present') count++;
+      }
+      if (count === 0) return 'missing';
+      if (count === 3) return 'present';
+      return 'partial';
+    }
+
+    async function hasMp4InOutput(dir) {
+      try {
+        const out = await dir.getDirectoryHandle('output');
+        for await (const entry of out.values()) {
+          if (entry.kind === 'file' && entry.name.toLowerCase().endsWith('.mp4')) return 'present';
+        }
+        return 'missing';
+      } catch (e) {
+        if (e.name === 'NotFoundError') return 'missing';
+        return 'unknown';
+      }
+    }
+
+    async function readOutlineH1(dir) {
+      try {
+        const fh = await dir.getFileHandle('outline.md');
+        const file = await fh.getFile();
+        const text = await file.text();
+        const m = text.match(/^#\s+(.+?)(?:\s+—\s+9-beat outline)?\s*$/m);
+        return m ? m[1].trim() : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function mergeScan(currentState, scanResults) {
+      const next = JSON.parse(JSON.stringify(currentState));
+      const now = new Date().toISOString();
+
+      for (const result of scanResults) {
+        const existing = next.cards.find(c => c.slug === result.slug && c.date === result.date);
+        if (existing) {
+          existing.artifacts = result.artifacts;
+          existing.lastScannedAt = now;
+          const suggested = computeSuggested(result.artifacts);
+          existing.hasDrift = hasDriftFor(existing, suggested);
+          if (existing.hasDrift) {
+            existing.suggestedLabel = STAGES.find(s => s.id === suggested)?.label || '';
+          } else {
+            delete existing.suggestedLabel;
           }
-          if (isField) return;
-          if (dlgOpen && e.key !== 'Escape') return;
-
-          if (e.key === 'n') { e.preventDefault(); this.openAddDialog(); }
-          else if (e.key === 's') { e.preventDefault(); this.doSync(); }
-          else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
-            e.preventDefault();
-            this.openHelpDialog();
-          }
-          else if (e.key === 'Delete' && this.ui.panelOpenCardId) {
-            this.deleteCard();
-          }
-        });
-      },
-
-      bindOutsideClick() {
-        document.addEventListener('click', (e) => {
-          if (!this.ui.panelOpenCardId) return;
-          if (e.target.closest('.panel')) return;
-          if (e.target.closest('[data-card-id]')) return;
-          if (e.target.closest('dialog')) return;
-          if (e.target.closest('.topbar')) return;
-          this.closePanel();
-        });
-      },
-    };
-  }
-
-  /* ─────────── Add-dialog data scope ─────────── */
-  function addDialogData() {
-    return {
-      slug: '',
-      title: '',
-      date: todayISO(),
-      stage: 'idea',
-      hint: 'Lowercase, hyphens only.',
-      hintError: false,
-
-      reset() {
-        this.slug = '';
-        this.title = '';
-        this.date = todayISO();
-        this.stage = 'idea';
-        this.hint = 'Lowercase, hyphens only.';
-        this.hintError = false;
-      },
-
-      onSlugInput(e) {
-        const cur = e.target.value;
-        const k = kebabSlug(cur);
-        if (k !== cur) {
-          const pos = e.target.selectionStart;
-          this.slug = k;
-          this.$nextTick(() => {
-            try {
-              e.target.setSelectionRange(Math.min(pos, k.length), Math.min(pos, k.length));
-            } catch {}
+        } else {
+          next.cards.push({
+            id: uuid(),
+            slug: result.slug,
+            date: result.date,
+            title: result.title || titleCaseSlug(result.slug),
+            stage: result.suggestedStage,
+            artifacts: result.artifacts,
+            notes: '',
+            createdAt: now,
+            updatedAt: now,
+            lastScannedAt: now,
+            hasDrift: false,
           });
         }
-      },
-
-      submit() {
-        const slug = kebabSlug(this.slug);
-        const date = this.date;
-        const app = Alpine.$data(document.body);
-        if (!slug) {
-          this.hint = 'Slug is required.';
-          this.hintError = true;
-          return;
-        }
-        if (app.cards.some(c => c.slug === slug && c.date === date)) {
-          this.hint = `A card with slug "${slug}" and date ${date} already exists.`;
-          this.hintError = true;
-          return;
-        }
-        const titleRaw = (this.title || '').trim();
-        const title = titleRaw || titleCaseSlug(slug);
-        app.addCard({ slug, title, date, stage: this.stage });
-        document.getElementById('add-dialog').close('ok');
-      },
-    };
-  }
-
-  // Expose globally so Alpine can resolve `x-data="kanbanApp()"` and `x-data="addDialogData()"`.
-  window.kanbanApp = kanbanApp;
-  window.addDialogData = addDialogData;
-
-  /* ─────────── Test mode ─────────── */
-  function runTests() {
-    const results = [];
-    const t = (name, fn) => {
-      try { fn(); results.push({ name, pass: true }); }
-      catch (e) { results.push({ name, pass: false, err: e.message }); }
-    };
-    const eq = (a, b) => {
-      if (JSON.stringify(a) !== JSON.stringify(b))
-        throw new Error(`expected ${JSON.stringify(b)}, got ${JSON.stringify(a)}`);
-    };
-
-    t('kebabSlug: words → kebab', () => eq(kebabSlug('Why Text Is Hard'), 'why-text-is-hard'));
-    t('kebabSlug: punctuation stripped', () => eq(kebabSlug('Hello, World!'), 'hello-world'));
-    t('kebabSlug: collapses hyphens', () => eq(kebabSlug('multi--hyphen'), 'multi-hyphen'));
-    t('kebabSlug: trims edges', () => eq(kebabSlug('  -hi-  '), 'hi'));
-    t('kebabSlug: empty', () => eq(kebabSlug(''), ''));
-    t('kebabSlug: numbers ok', () => eq(kebabSlug('123 Abc'), '123-abc'));
-    t('kebabSlug: underscores → hyphens', () => eq(kebabSlug('foo_bar'), 'foo-bar'));
-
-    const allMissing = { research: 'missing', script: 'missing', voiceover: 'missing',
-      compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' };
-    t('suggested: all missing → idea', () => eq(computeSuggested(allMissing), 'idea'));
-    t('suggested: research only → research',
-      () => eq(computeSuggested({ ...allMissing, research: 'present' }), 'research'));
-    t('suggested: through compose → compose',
-      () => eq(computeSuggested({ ...allMissing, research: 'present', script: 'present',
-        voiceover: 'present', compose: 'present' }), 'compose'));
-    t('suggested: gap mid-pipeline → rightmost present',
-      () => eq(computeSuggested({ ...allMissing, research: 'present', voiceover: 'present' }),
-        'voiceover'));
-    t('suggested: published present is ignored',
-      () => eq(computeSuggested({ ...allMissing, render: 'present', published: 'present' }),
-        'render'));
-    t('suggested: partial does not count as present',
-      () => eq(computeSuggested({ ...allMissing, research: 'present', script: 'present',
-        voiceover: 'partial' }), 'script'));
-
-    t('drift: stage matches → false',
-      () => eq(hasDriftFor({ stage: 'compose' }, 'compose'), false));
-    t('drift: published → false',
-      () => eq(hasDriftFor({ stage: 'published' }, 'compose'), false));
-    t('drift: idea suggestion → false',
-      () => eq(hasDriftFor({ stage: 'compose' }, 'idea'), false));
-    t('drift: real disagreement → true',
-      () => eq(hasDriftFor({ stage: 'render' }, 'compose'), true));
-
-    const baseArts = { research: 'present', script: 'missing', voiceover: 'missing',
-      compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' };
-
-    t('mergeScan: existing card updates artifacts but not stage', () => {
-      const before = {
-        schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
-        cards: [{ id: '1', slug: 'foo', date: '2026-05-09', title: 'Foo', stage: 'idea',
-          artifacts: baseArts, notes: '', createdAt: '', updatedAt: '',
-          lastScannedAt: null, hasDrift: false }],
-      };
-      const results = [{ slug: 'foo', date: '2026-05-09', suggestedStage: 'research',
-        artifacts: { ...baseArts, research: 'present' }, title: null }];
-      const after = mergeScan(before, results);
-      if (after.cards.length !== 1) throw new Error('expected 1 card');
-      if (after.cards[0].stage !== 'idea') throw new Error('stage must not change');
-      if (after.cards[0].artifacts.research !== 'present') throw new Error('artifacts not updated');
-      if (after.cards[0].hasDrift !== true) throw new Error('drift not flagged');
-      if (after.cards[0].suggestedLabel !== 'Research') throw new Error('label missing');
-    });
-
-    t('mergeScan: new folder creates card at suggestedStage', () => {
-      const before = { schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null }, cards: [] };
-      const results = [{ slug: 'bar', date: '2026-05-09', suggestedStage: 'compose',
-        artifacts: { ...baseArts, research: 'present', script: 'present',
-          voiceover: 'present', compose: 'present' }, title: 'The Bar' }];
-      const after = mergeScan(before, results);
-      if (after.cards.length !== 1) throw new Error('expected 1 card');
-      if (after.cards[0].stage !== 'compose') throw new Error('stage wrong');
-      if (after.cards[0].title !== 'The Bar') throw new Error('title wrong');
-    });
-
-    t('mergeScan: orphan card untouched', () => {
-      const before = {
-        schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
-        cards: [{ id: '1', slug: 'orphan', date: '2026-05-09', title: 'Orphan', stage: 'idea',
-          artifacts: baseArts, notes: 'keep me', createdAt: '', updatedAt: '',
-          lastScannedAt: null, hasDrift: false }],
-      };
-      const after = mergeScan(before, []);
-      if (after.cards.length !== 1) throw new Error('card lost');
-      if (after.cards[0].notes !== 'keep me') throw new Error('notes mutated');
-    });
-
-    t('mergeScan: drift cleared when stage matches suggested', () => {
-      const before = {
-        schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
-        cards: [{ id: '1', slug: 'foo', date: '2026-05-09', title: 'Foo', stage: 'compose',
-          artifacts: baseArts, notes: '', createdAt: '', updatedAt: '',
-          lastScannedAt: null, hasDrift: true, suggestedLabel: 'Research' }],
-      };
-      const results = [{ slug: 'foo', date: '2026-05-09', suggestedStage: 'compose',
-        artifacts: { ...baseArts, research: 'present', script: 'present',
-          voiceover: 'present', compose: 'present' }, title: null }];
-      const after = mergeScan(before, results);
-      if (after.cards[0].hasDrift !== false) throw new Error('drift not cleared');
-      if (after.cards[0].suggestedLabel !== undefined) throw new Error('label not cleared');
-    });
-
-    const passes = results.filter(r => r.pass).length;
-    const fails = results.length - passes;
-
-    // Build the test report using safe DOM construction (no innerHTML).
-    document.body.removeAttribute('x-data');
-    document.body.removeAttribute('x-init');
-    document.body.removeAttribute('style');
-    document.body.replaceChildren();
-
-    const page = document.createElement('div');
-    page.className = 'test-page';
-
-    const h1 = document.createElement('h1');
-    h1.textContent = 'kanban.html test results';
-    page.appendChild(h1);
-
-    const summary = document.createElement('p');
-    summary.className = fails ? 'fail' : 'pass';
-    summary.textContent = `${passes} passed · ${fails} failed`;
-    page.appendChild(summary);
-
-    const ul = document.createElement('ul');
-    for (const r of results) {
-      const li = document.createElement('li');
-      li.className = r.pass ? 'pass' : 'fail';
-      li.textContent = `${r.pass ? '✓' : '✗'} ${r.name}${r.err ? ' — ' + r.err : ''}`;
-      ul.appendChild(li);
+      }
+      return next;
     }
-    page.appendChild(ul);
 
-    document.body.appendChild(page);
-  }
+    async function scan(dirHandle) {
+      const results = [];
+      let errors = 0;
+      for await (const entry of dirHandle.values()) {
+        if (entry.kind !== 'directory') continue;
+        const m = entry.name.match(FOLDER_RE);
+        if (!m) continue;
+        const slug = m[1];
+        const date = m[2];
+        try {
+          const artifacts = {
+            research:  await exists(entry, 'seo/research.json'),
+            script:    await exists(entry, 'script.md'),
+            voiceover: await voiceoverStatus(entry),
+            compose:   await composeStatus(entry),
+            thumbnail: await thumbnailStatus(entry),
+            render:    await hasMp4InOutput(entry),
+            published: 'unknown',
+          };
+          const suggestedStage = computeSuggested(artifacts);
+          const title = await readOutlineH1(entry);
+          results.push({ slug, date, suggestedStage, artifacts, title });
+        } catch (e) {
+          errors++;
+          console.warn(`scan failed for ${entry.name}:`, e);
+        }
+      }
+      return { results, errors };
+    }
 
-  if (new URL(location.href).searchParams.get('test') === '1') {
-    document.addEventListener('DOMContentLoaded', runTests, { once: true });
-  }
+    function openHelpDialog() {
+      document.getElementById('help-dialog').showModal();
+    }
+
+    function bindHelpDialog() {
+      document.getElementById('btn-help').addEventListener('click', openHelpDialog);
+      document.getElementById('help-close').addEventListener('click', () =>
+        document.getElementById('help-dialog').close());
+      document.getElementById('reset-folder').addEventListener('click', async () => {
+        await clearCachedDirHandle();
+        document.getElementById('help-dialog').close();
+        alert('Folder access reset. Click Sync to pick a new directory.');
+      });
+    }
+
+    function bindKeyboard() {
+      document.addEventListener('keydown', (e) => {
+        const tag = document.activeElement?.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+        const dlgOpen = document.querySelector('dialog[open]');
+        if (dlgOpen && e.key !== 'Escape') return;
+
+        if (e.key === 'n') { e.preventDefault(); openAddDialog(); }
+        else if (e.key === 's') { e.preventDefault(); document.getElementById('btn-sync').click(); }
+        else if (e.key === '?' || (e.shiftKey && e.key === '/')) { e.preventDefault(); openHelpDialog(); }
+        else if (e.key === 'Delete' && state.ui.panelOpenCardId) {
+          const card = findCard(state.ui.panelOpenCardId);
+          if (!card) return;
+          if (!confirm(`Delete "${card.title}" (${card.slug})?`)) return;
+          mutate(() => {
+            state.cards = state.cards.filter(c => c.id !== card.id);
+            state.ui.panelOpenCardId = null;
+          });
+        }
+      });
+    }
+
+    bindAddDialog();
+    bindTopbar();
+    bindBoardEvents();
+    bindPanelEvents();
+    bindHelpDialog();
+    bindKeyboard();
+
+    function renderArtifactRow(artifactId, status) {
+      const label = ARTIFACTS.find(a => a.id === artifactId).label;
+      const path = ARTIFACT_PATHS[artifactId];
+      const cls = status === 'present' ? 'present'
+                : status === 'partial' ? 'partial' : '';
+      const missingClass = (status === 'missing' || status === 'unknown' || !status) ? ' missing' : '';
+      const link = (status === 'present' || status === 'partial')
+        ? `<a href="#" class="artifact-link">Open</a>`
+        : '';
+      return `
+        <li class="artifact${missingClass}">
+          <span class="artifact-status ${cls}"></span>
+          <div class="artifact-name">
+            <span class="artifact-label">${escapeHtml(label)}</span>
+            <span class="artifact-path">${escapeHtml(path)}</span>
+          </div>
+          ${link}
+        </li>
+      `;
+    }
+
+    let notesLastSavedAt = null;
+    let notesDebounceTimer = null;
+
+    function saveNotesNow(id, value) {
+      const card = findCard(id);
+      if (!card) return;
+      if (card.notes === value) return;
+      card.notes = value;
+      card.updatedAt = new Date().toISOString();
+      persist();
+      notesLastSavedAt = Date.now();
+      updateNotesStatus();
+    }
+
+    function updateNotesStatus() {
+      const el = document.getElementById('panel-notes-status');
+      if (!el) return;
+      if (!notesLastSavedAt) { el.hidden = true; return; }
+      const sec = Math.floor((Date.now() - notesLastSavedAt) / 1000);
+      const ago = sec < 5 ? 'just now'
+                : sec < 60 ? `${sec}s ago`
+                : `${Math.floor(sec / 60)}m ago`;
+      el.hidden = false;
+      el.textContent = `Saved · ${ago}`;
+    }
+
+    setInterval(updateNotesStatus, 5000);
+
+    function renderPanel(card) {
+      const aside = document.querySelector('.panel');
+      if (!card) {
+        aside.hidden = true;
+        aside.replaceChildren();
+        return;
+      }
+      // Reset transient notes status when switching cards
+      if (aside.dataset.openId !== card.id) {
+        notesLastSavedAt = null;
+      }
+      aside.dataset.openId = card.id;
+      aside.hidden = false;
+      const stageOptions = STAGES.map(s =>
+        `<option value="${s.id}"${s.id === card.stage ? ' selected' : ''}>${escapeHtml(s.label)}</option>`
+      ).join('');
+      const artifactRows = ARTIFACTS.map(a =>
+        renderArtifactRow(a.id, card.artifacts?.[a.id] || 'missing')
+      ).join('');
+
+      setContent(aside, `
+        <header class="panel-header">
+          <div>
+            <h2 class="panel-title" id="panel-title" title="Click to edit">${escapeHtml(card.title)}</h2>
+            <div class="panel-meta">
+              <span>${escapeHtml(card.slug)}</span>
+              <span class="dot-sep"></span>
+              <span>${escapeHtml(card.date)}</span>
+            </div>
+          </div>
+          <button class="panel-close" id="panel-close" aria-label="Close panel">×</button>
+        </header>
+        <div class="panel-body">
+          <section>
+            <div class="panel-label">Folder</div>
+            <div class="folder-path">
+              <span>${escapeHtml(folderPath(card))}</span>
+              <button class="copy-btn" id="copy-folder">Copy</button>
+            </div>
+          </section>
+          <section>
+            <div class="panel-label">Stage</div>
+            <select class="stage-select" id="panel-stage">${stageOptions}</select>
+          </section>
+          <section>
+            <div class="panel-label">Artifacts</div>
+            <ul class="artifacts">${artifactRows}</ul>
+          </section>
+          <section>
+            <div class="panel-label">Notes</div>
+            <textarea class="notes-textarea" id="panel-notes" placeholder="Anything to remember about this video…">${escapeHtml(card.notes || '')}</textarea>
+            <div class="notes-status" id="panel-notes-status" hidden>Saved · just now</div>
+          </section>
+        </div>
+        <footer class="panel-footer">
+          <button class="btn btn-primary" id="open-folder"><span class="glyph">↗</span>Open in Finder</button>
+          <button class="btn btn-danger" id="delete-card">Delete card</button>
+        </footer>
+      `);
+    }
+
+    function render() {
+      const board = document.querySelector('.board');
+      const cards = state.cards;
+      const cardsByStage = Object.fromEntries(STAGES.map(s => [s.id, []]));
+      for (const c of cards) {
+        if (cardsByStage[c.stage]) cardsByStage[c.stage].push(c);
+      }
+      for (const arr of Object.values(cardsByStage)) {
+        arr.sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+      }
+      setContent(board, `<div class="columns">${
+        STAGES.map(s => renderColumn(s, cardsByStage[s.id])).join('')
+      }</div>`);
+      updateStatusPill();
+      renderPanel(findCard(state.ui.panelOpenCardId));
+    }
+
+    function runTests() {
+      const results = [];
+      const t = (name, fn) => {
+        try { fn(); results.push({ name, pass: true }); }
+        catch (e) { results.push({ name, pass: false, err: e.message }); }
+      };
+      const eq = (a, b) => {
+        if (JSON.stringify(a) !== JSON.stringify(b))
+          throw new Error(`expected ${JSON.stringify(b)}, got ${JSON.stringify(a)}`);
+      };
+
+      // kebabSlug
+      t('kebabSlug: words → kebab', () => eq(kebabSlug('Why Text Is Hard'), 'why-text-is-hard'));
+      t('kebabSlug: punctuation stripped', () => eq(kebabSlug('Hello, World!'), 'hello-world'));
+      t('kebabSlug: collapses hyphens', () => eq(kebabSlug('multi--hyphen'), 'multi-hyphen'));
+      t('kebabSlug: trims edges', () => eq(kebabSlug('  -hi-  '), 'hi'));
+      t('kebabSlug: empty', () => eq(kebabSlug(''), ''));
+      t('kebabSlug: numbers ok', () => eq(kebabSlug('123 Abc'), '123-abc'));
+      t('kebabSlug: underscores → hyphens', () => eq(kebabSlug('foo_bar'), 'foo-bar'));
+
+      const allMissing = { research: 'missing', script: 'missing', voiceover: 'missing',
+        compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' };
+      t('suggested: all missing → idea', () => eq(computeSuggested(allMissing), 'idea'));
+      t('suggested: research only → research',
+        () => eq(computeSuggested({ ...allMissing, research: 'present' }), 'research'));
+      t('suggested: through compose → compose',
+        () => eq(computeSuggested({ ...allMissing, research: 'present', script: 'present',
+          voiceover: 'present', compose: 'present' }), 'compose'));
+      t('suggested: gap mid-pipeline → rightmost present',
+        () => eq(computeSuggested({ ...allMissing, research: 'present', voiceover: 'present' }),
+          'voiceover'));
+      t('suggested: published present is ignored',
+        () => eq(computeSuggested({ ...allMissing, render: 'present', published: 'present' }),
+          'render'));
+      t('suggested: partial does not count as present',
+        () => eq(computeSuggested({ ...allMissing, research: 'present', script: 'present',
+          voiceover: 'partial' }), 'script'));
+
+      t('drift: stage matches → false',
+        () => eq(hasDriftFor({ stage: 'compose' }, 'compose'), false));
+      t('drift: published → false',
+        () => eq(hasDriftFor({ stage: 'published' }, 'compose'), false));
+      t('drift: idea suggestion → false',
+        () => eq(hasDriftFor({ stage: 'compose' }, 'idea'), false));
+      t('drift: real disagreement → true',
+        () => eq(hasDriftFor({ stage: 'render' }, 'compose'), true));
+
+      const baseArts = { research: 'present', script: 'missing', voiceover: 'missing',
+        compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' };
+
+      t('mergeScan: existing card updates artifacts but not stage', () => {
+        const before = {
+          schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
+          cards: [{ id: '1', slug: 'foo', date: '2026-05-09', title: 'Foo', stage: 'idea',
+            artifacts: baseArts, notes: '', createdAt: '', updatedAt: '',
+            lastScannedAt: null, hasDrift: false }],
+        };
+        const results = [{ slug: 'foo', date: '2026-05-09', suggestedStage: 'research',
+          artifacts: { ...baseArts, research: 'present' }, title: null }];
+        const after = mergeScan(before, results);
+        if (after.cards.length !== 1) throw new Error('expected 1 card');
+        if (after.cards[0].stage !== 'idea') throw new Error('stage must not change');
+        if (after.cards[0].artifacts.research !== 'present') throw new Error('artifacts not updated');
+        if (after.cards[0].hasDrift !== true) throw new Error('drift not flagged');
+        if (after.cards[0].suggestedLabel !== 'Research') throw new Error('label missing');
+      });
+
+      t('mergeScan: new folder creates card at suggestedStage', () => {
+        const before = { schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null }, cards: [] };
+        const results = [{ slug: 'bar', date: '2026-05-09', suggestedStage: 'compose',
+          artifacts: { ...baseArts, research: 'present', script: 'present',
+            voiceover: 'present', compose: 'present' }, title: 'The Bar' }];
+        const after = mergeScan(before, results);
+        if (after.cards.length !== 1) throw new Error('expected 1 card');
+        if (after.cards[0].stage !== 'compose') throw new Error('stage wrong');
+        if (after.cards[0].title !== 'The Bar') throw new Error('title wrong');
+      });
+
+      t('mergeScan: orphan card untouched', () => {
+        const before = {
+          schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
+          cards: [{ id: '1', slug: 'orphan', date: '2026-05-09', title: 'Orphan', stage: 'idea',
+            artifacts: baseArts, notes: 'keep me', createdAt: '', updatedAt: '',
+            lastScannedAt: null, hasDrift: false }],
+        };
+        const after = mergeScan(before, []);
+        if (after.cards.length !== 1) throw new Error('card lost');
+        if (after.cards[0].notes !== 'keep me') throw new Error('notes mutated');
+      });
+
+      t('mergeScan: drift cleared when stage matches suggested', () => {
+        const before = {
+          schemaVersion: 1, lastSyncedAt: null, ui: { panelOpenCardId: null },
+          cards: [{ id: '1', slug: 'foo', date: '2026-05-09', title: 'Foo', stage: 'compose',
+            artifacts: baseArts, notes: '', createdAt: '', updatedAt: '',
+            lastScannedAt: null, hasDrift: true, suggestedLabel: 'Research' }],
+        };
+        const results = [{ slug: 'foo', date: '2026-05-09', suggestedStage: 'compose',
+          artifacts: { ...baseArts, research: 'present', script: 'present',
+            voiceover: 'present', compose: 'present' }, title: null }];
+        const after = mergeScan(before, results);
+        if (after.cards[0].hasDrift !== false) throw new Error('drift not cleared');
+        if (after.cards[0].suggestedLabel !== undefined) throw new Error('label not cleared');
+      });
+
+      const passes = results.filter(r => r.pass).length;
+      const fails = results.length - passes;
+      setContent(document.body, `
+        <div style="font-family:'JetBrains Mono',monospace;padding:32px;color:#EDE7DC;background:#0F0E0C;min-height:100vh;">
+          <h1 style="font-family:'Fraunces',serif;font-style:italic;margin-bottom:24px;">
+            kanban.html test results
+          </h1>
+          <p style="color:${fails ? '#C4615A' : '#8FAF7E'};margin-bottom:16px;">
+            ${passes} passed · ${fails} failed
+          </p>
+          <ul style="list-style:none;padding:0;line-height:1.8;">
+            ${results.map(r => `
+              <li style="color:${r.pass ? '#8FAF7E' : '#C4615A'};">
+                ${r.pass ? '✓' : '✗'} ${escapeHtml(r.name)}${r.err ? ' — ' + escapeHtml(r.err) : ''}
+              </li>`).join('')}
+          </ul>
+        </div>
+      `);
+    }
+
+    if (new URL(location.href).searchParams.get('test') === '1') {
+      runTests();
+    } else {
+      render();
+    }
+  })();
   </script>
 
 </body>
