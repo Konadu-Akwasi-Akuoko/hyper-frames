@@ -428,6 +428,14 @@
 
     .card:hover .dot { transform: scale(1.08); }
 
+    .card.dragging { opacity: 0.4; cursor: grabbing; }
+    .column-body.drop-target {
+      background: var(--accent-soft);
+      outline: 1px dashed var(--accent-muted);
+      outline-offset: -2px;
+      border-radius: var(--radius);
+    }
+
     /* ============================== EMPTY COLUMN */
     .empty {
       flex: 1;
@@ -1266,11 +1274,60 @@
     }
 
     function bindBoardEvents() {
-      document.querySelector('.board').addEventListener('click', (e) => {
+      const board = document.querySelector('.board');
+
+      board.addEventListener('click', (e) => {
         const cardEl = e.target.closest('[data-card-id]');
         if (!cardEl) return;
         if (cardEl.classList.contains('dragging')) return;
         mutate(() => { state.ui.panelOpenCardId = cardEl.dataset.cardId; });
+      });
+
+      board.addEventListener('dragstart', (e) => {
+        const cardEl = e.target.closest('[data-card-id]');
+        if (!cardEl) return;
+        cardEl.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', cardEl.dataset.cardId);
+        if (state.ui.panelOpenCardId === cardEl.dataset.cardId) {
+          state.ui.panelOpenCardId = null;
+          persist();
+          // Defer the panel render until dragend so we don't kill the drag.
+        }
+      });
+
+      board.addEventListener('dragend', () => {
+        document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+        document.querySelectorAll('.drop-target').forEach(el => el.classList.remove('drop-target'));
+      });
+
+      board.addEventListener('dragover', (e) => {
+        const body = e.target.closest('.column-body');
+        if (!body) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        body.classList.add('drop-target');
+      });
+
+      board.addEventListener('dragleave', (e) => {
+        const body = e.target.closest('.column-body');
+        if (!body) return;
+        if (body.contains(e.relatedTarget)) return;
+        body.classList.remove('drop-target');
+      });
+
+      board.addEventListener('drop', (e) => {
+        const column = e.target.closest('.column');
+        const id = e.dataTransfer.getData('text/plain');
+        if (!column || !id) return;
+        e.preventDefault();
+        const stage = column.dataset.stage;
+        mutate(() => {
+          const card = findCard(id);
+          if (!card || card.stage === stage) return;
+          card.stage = stage;
+          card.updatedAt = new Date().toISOString();
+        });
       });
     }
 
