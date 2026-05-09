@@ -99,3 +99,13 @@ For each of the 3 thumbnail variants:
 - **Generate descriptions, tags, chapters, or end screens.** Out of
   scope. Title and thumbnail are the click-pull surfaces; the rest is
   metadata.
+
+## Using SEO research
+
+When `<video-dir>/seo/research.json` is loaded (probed at Step 2 of thumbnail-creator), the per-variant title-writing routine has more to work with. Apply these rules in addition to the base routine above:
+
+- **Always carry a search anchor.** Include at least one of the top 3 entries from `signals.top_nouns` in the title. That's the literal noun viewers type into YouTube search; without it, you lose search reach regardless of how good the claim is.
+- **Avoid verbatim saturation patterns.** If `signals.saturation_warnings` lists `"how X works"` and your draft title is `"How text rendering works"`, you're competing head-on with 5+ recent >100K-view incumbents. Either rephrase (`"What text rendering really does"`, `"Inside the text rendering pipeline"`) or commit to the lane deliberately because your thumbnail claim is genuinely sharper.
+- **Prefer demand phrases when natural.** Entries in `signals.demand_phrases` are recurring autocomplete completions — real queries getting typed. If one fits the variant's claim shape without contortion, use it verbatim. Don't force-fit.
+- **Vary across variants.** With 3 variants, ideally each carries a different noun from the top-3 list. Don't make all three orbit the same noun — that wastes the A/B surface.
+- **Empty signals are informative, not blocking.** If `top_nouns` is empty (sparse niche) or `saturation_warnings` is empty (open lane), draft the paired titles from your own judgment per the base rules. Never skip Step 4 because the SEO data was thin.
