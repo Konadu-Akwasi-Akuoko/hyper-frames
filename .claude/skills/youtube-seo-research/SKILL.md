@@ -22,9 +22,27 @@ Resolve in this order:
 
 1. If the user's message contains a path like `videos/<slug>-<date>/` (relative or absolute), use that.
 2. If the current working directory matches `**/videos/<slug>-<date>/`, use that.
-3. Otherwise, ask: "Which video folder should I research?" — list existing `videos/*` directories.
+3. Otherwise, ask: "Which video folder should I research?" — list existing `videos/*` directories, **plus an option to create a new folder** (the user supplies a slug; date is today).
 
 Convert the result to an absolute path and use it for every subsequent file read/write.
+
+### Step 1.5 — Bootstrap the folder if it doesn't exist
+
+This skill is often the **first** stage of a new video. If the resolved folder doesn't exist on disk, scaffold it now using the project's canonical bootstrap from `CLAUDE.md`. The block is **idempotent** — when invoked later in the pipeline against an existing folder, it skips `mkdir` and `npx hyperframes init` entirely:
+
+```bash
+# from the repo root — skip if folder already exists
+if [ -d "videos/<slug>-<YYYY-MM-DD>" ]; then
+  cd videos/<slug>-<YYYY-MM-DD>
+  echo "Folder already exists. Skipping mkdir + hyperframes init."
+else
+  mkdir -p videos/<slug>-<YYYY-MM-DD>
+  cd videos/<slug>-<YYYY-MM-DD>
+  npx hyperframes init
+fi
+```
+
+Use today's date when constructing a new folder name. Never author SEO artifacts (`seo/research.json`) at the repo root — they always live inside the resolved video folder.
 
 ### Step 2 — Resolve the topic
 

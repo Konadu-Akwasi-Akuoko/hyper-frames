@@ -56,16 +56,23 @@ Prompt the user for, in order:
 
 Propose a kebab-case slug derived from the topic. Keep it short (3–5 words max — Pawel's slugs are like `password-hashing-slow`, not `why-good-password-hashing-is-intentionally-slow`). Confirm with the user.
 
-Once confirmed:
+Once confirmed, run the canonical bootstrap. It's **idempotent** — if the folder already exists (e.g. another skill scaffolded it earlier in the pipeline), skip `mkdir` and `npx hyperframes init` entirely:
 
 ```bash
-# from the repo root
-mkdir -p videos/<slug>-<YYYY-MM-DD>
-cd videos/<slug>-<YYYY-MM-DD>
-npx hyperframes init
+# from the repo root — skip if folder already exists
+if [ -d "videos/<slug>-<YYYY-MM-DD>" ]; then
+  cd videos/<slug>-<YYYY-MM-DD>
+  echo "Folder already exists. Skipping mkdir + hyperframes init."
+else
+  mkdir -p videos/<slug>-<YYYY-MM-DD>
+  cd videos/<slug>-<YYYY-MM-DD>
+  npx hyperframes init
+fi
 ```
 
 Use today's date. The project's `CLAUDE.md` is strict about this folder convention — never author files at the repo root. All subsequent writes go into the new folder.
+
+If the folder existed already, do not overwrite any files in it (`outline.md`, `script.md`, etc.) without asking the user first.
 
 ### Step 2.5 — SEO research checkpoint
 
