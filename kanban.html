@@ -436,6 +436,10 @@
       border-radius: var(--radius);
     }
 
+    .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+    .btn.syncing .glyph { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     /* ============================== EMPTY COLUMN */
     .empty {
       flex: 1;
@@ -1286,7 +1290,51 @@
 
     function bindTopbar() {
       document.getElementById('btn-add').addEventListener('click', openAddDialog);
+      const syncBtn = document.getElementById('btn-sync');
+
+      if (!FS_SUPPORTED) {
+        syncBtn.disabled = true;
+        syncBtn.title = 'Folder scanning needs a Chromium-based browser. Manual mode still works.';
+        return;
+      }
+
+      syncBtn.addEventListener('click', async () => {
+        syncBtn.classList.add('syncing');
+        syncBtn.disabled = true;
+        try {
+          let handle = await getCachedDirHandle();
+          if (handle) {
+            const ok = await ensureReadPermission(handle);
+            if (!ok) handle = await pickDirHandle();
+          } else {
+            handle = await pickDirHandle();
+          }
+          let scanResult;
+          try {
+            scanResult = await scan(handle);
+          } catch (e) {
+            console.warn('Scan failed, re-picking:', e);
+            await clearCachedDirHandle();
+            handle = await pickDirHandle();
+            scanResult = await scan(handle);
+          }
+          state = mergeScan(state, scanResult.results);
+          state.lastSyncedAt = new Date().toISOString();
+          persist();
+          render();
+          if (scanResult.errors > 0) {
+            console.warn(`Sync completed with ${scanResult.errors} errors.`);
+          }
+        } catch (e) {
+          if (e.name !== 'AbortError') console.error('Sync failed:', e);
+        } finally {
+          syncBtn.classList.remove('syncing');
+          syncBtn.disabled = false;
+        }
+      });
     }
+
+    setInterval(() => updateStatusPill(), 30_000);
 
     function bindBoardEvents() {
       const board = document.querySelector('.board');
