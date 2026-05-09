@@ -1392,6 +1392,16 @@
           });
           return;
         }
+        if (e.target.closest('#delete-card')) {
+          const card = findCard(state.ui.panelOpenCardId);
+          if (!card) return;
+          if (!confirm(`Delete "${card.title}" (${card.slug})?\n\nThis cannot be undone.`)) return;
+          mutate(() => {
+            state.cards = state.cards.filter(c => c.id !== card.id);
+            state.ui.panelOpenCardId = null;
+          });
+          return;
+        }
       });
 
       document.querySelector('.panel').addEventListener('change', (e) => {
