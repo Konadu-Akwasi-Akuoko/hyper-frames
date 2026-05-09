@@ -1,0 +1,3085 @@
+{
+  "generated_at": "2026-05-08T22:27:06+00:00",
+  "candidate_count": 60,
+  "tier_b_pool": 269,
+  "shape_counts": {
+    "opinion": 2,
+    "news": 7,
+    "exploit": 4,
+    "tool": 41,
+    "project": 3,
+    "primer": 3
+  },
+  "results": {
+    "e3d2ac1cf3648174": {
+      "id": "e3d2ac1cf3648174",
+      "title": "Just Use Go",
+      "candidate_shape": "opinion",
+      "topic_seed": "Just Use Go",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[counterintuitive-twist] Why Just Use Go is weirder than you think",
+          "lens": "counterintuitive twist on Just Use Go",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Just Use Go",
+          "inspired_by": []
+        },
+        {
+          "title": "[hidden-mechanism] Why Just Use Go actually works the way it does",
+          "lens": "hidden mechanism on Just Use Go",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Just Use Go",
+          "inspired_by": []
+        }
+      ]
+    },
+    "452468aa65344619": {
+      "id": "452468aa65344619",
+      "title": "Poland is now among the 20 largest economies",
+      "candidate_shape": "news",
+      "topic_seed": "Poland among 20",
+      "mood_board": [
+        {
+          "title": "The largest telescope that will ever be built*",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 2992690,
+          "upload_date": "20231002",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": []
+    },
+    "dca41dddca63dc89": {
+      "id": "dca41dddca63dc89",
+      "title": "Maybe you shouldn't install new software for a bit",
+      "candidate_shape": "opinion",
+      "topic_seed": "Maybe shouldn't install",
+      "mood_board": [
+        {
+          "title": "We Made A New Channel!",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 2070828,
+          "upload_date": "20260116",
+          "similarity": 0.143
+        },
+        {
+          "title": "We Made A New Journal",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 290625,
+          "upload_date": "20251230",
+          "similarity": 0.143
+        },
+        {
+          "title": "Why You Shouldn't Nest Your Code",
+          "channel": "CodeAesthetic",
+          "channel_handle": "CodeAesthetic",
+          "view_count": 3297979,
+          "upload_date": "20221206",
+          "similarity": 0.125
+        },
+        {
+          "title": "The New Hunt for the Colossal Squid",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 4056250,
+          "upload_date": "20260328",
+          "similarity": 0.111
+        },
+        {
+          "title": "How Terraform changed software engineering forever",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 17295,
+          "upload_date": "20260225",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[counterintuitive-twist] Why Maybe shouldn't install is weirder than you think",
+          "lens": "counterintuitive twist on Maybe shouldn't install",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Maybe shouldn't install",
+          "inspired_by": [
+            "We Made A New Channel!"
+          ]
+        },
+        {
+          "title": "[hidden-mechanism] Why Maybe shouldn't install actually works the way it does",
+          "lens": "hidden mechanism on Maybe shouldn't install",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Maybe shouldn't install",
+          "inspired_by": [
+            "We Made A New Channel!",
+            "We Made A New Journal"
+          ]
+        }
+      ]
+    },
+    "f13d116013ea6b3e": {
+      "id": "f13d116013ea6b3e",
+      "title": "Canvas online again as ShinyHunters threatens to leak schools’ data",
+      "candidate_shape": "news",
+      "topic_seed": "Canvas online again",
+      "mood_board": [
+        {
+          "title": "Why Can't I Vote Online?",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 922568,
+          "upload_date": "20241028",
+          "similarity": 0.1
+        },
+        {
+          "title": "Oversampling Data (Explained with Audio) - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 46163,
+          "upload_date": "20260409",
+          "similarity": 0.083
+        },
+        {
+          "title": "Digital Signal Processing With Audio Data - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 72619,
+          "upload_date": "20260210",
+          "similarity": 0.077
+        },
+        {
+          "title": "How does this SSD store 8TB of Data?  ||  Inside the Engineering of Solid-State Drive Architecture",
+          "channel": "Branch Education",
+          "channel_handle": "BranchEducation",
+          "view_count": 456361,
+          "upload_date": "20210321",
+          "similarity": 0.062
+        }
+      ],
+      "starter_angles": []
+    },
+    "b12f6eb90b14172a": {
+      "id": "b12f6eb90b14172a",
+      "title": "Cloudflare to cut about 20% of its workforce",
+      "candidate_shape": "news",
+      "topic_seed": "Cloudflare cut 20%",
+      "mood_board": [],
+      "starter_angles": []
+    },
+    "1201dac59b233e3f": {
+      "id": "1201dac59b233e3f",
+      "title": "Dirtyfrag: Universal Linux LPE",
+      "candidate_shape": "exploit",
+      "topic_seed": "Dirtyfrag Universal Linux",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Dirtyfrag Universal Linux actually works the way it does",
+          "lens": "hidden mechanism on Dirtyfrag Universal Linux",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Dirtyfrag Universal Linux",
+          "inspired_by": []
+        },
+        {
+          "title": "[mystery] The Dirtyfrag Universal Linux bug that nobody can fully explain",
+          "lens": "mystery on Dirtyfrag Universal Linux",
+          "source_pattern": "mystery",
+          "topic_seed": "Dirtyfrag Universal Linux",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Dirtyfrag Universal Linux is weirder than you think",
+          "lens": "counterintuitive twist on Dirtyfrag Universal Linux",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Dirtyfrag Universal Linux",
+          "inspired_by": []
+        }
+      ]
+    },
+    "e3dccfe4986344aa": {
+      "id": "e3dccfe4986344aa",
+      "title": "AI slop is killing online communities",
+      "candidate_shape": "tool",
+      "topic_seed": "AI slop online",
+      "mood_board": [
+        {
+          "title": "AI Slop Is Destroying The Internet",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 10076328,
+          "upload_date": "20251007",
+          "similarity": 0.286
+        },
+        {
+          "title": "The Problem with A.I. Slop! - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 664272,
+          "upload_date": "20251114",
+          "similarity": 0.143
+        },
+        {
+          "title": "Why Can't I Vote Online?",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 922568,
+          "upload_date": "20241028",
+          "similarity": 0.143
+        },
+        {
+          "title": "The Untold Story of Generative AI",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 31923,
+          "upload_date": "20260305",
+          "similarity": 0.125
+        },
+        {
+          "title": "Gen AI & Reinforcement Learning- Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 34236,
+          "upload_date": "20251219",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why AI slop online actually works the way it does",
+          "lens": "hidden mechanism on AI slop online",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "AI slop online",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why AI slop online is weirder than you think",
+          "lens": "counterintuitive twist on AI slop online",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "AI slop online",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet",
+            "The Problem with A.I. Slop! - Computerphile"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own AI slop online?",
+          "lens": "personal stake on AI slop online",
+          "source_pattern": "personal-stake",
+          "topic_seed": "AI slop online",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet",
+            "The Problem with A.I. Slop! - Computerphile",
+            "Why Can't I Vote Online?"
+          ]
+        }
+      ]
+    },
+    "959d6d0d6d67d3a2": {
+      "id": "959d6d0d6d67d3a2",
+      "title": "Brazil's Pix payment system faces pressure from Visa and Mastercard",
+      "candidate_shape": "news",
+      "topic_seed": "Brazil's Pix payment",
+      "mood_board": [
+        {
+          "title": "CDNs Explained in 6 Minutes | System Design Basics",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 41585,
+          "upload_date": "20260124",
+          "similarity": 0.077
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips:  The EUV Photolithography System",
+          "channel": "Branch Education",
+          "channel_handle": "BranchEducation",
+          "view_count": 1950437,
+          "upload_date": "20250830",
+          "similarity": 0.071
+        }
+      ],
+      "starter_angles": []
+    },
+    "6e1dc945909b0340": {
+      "id": "6e1dc945909b0340",
+      "title": "Agents need control flow, not more prompts",
+      "candidate_shape": "tool",
+      "topic_seed": "Agents control flow",
+      "mood_board": [
+        {
+          "title": "You Need To Quit Weed.",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 4137489,
+          "upload_date": "20251104",
+          "similarity": 0.143
+        },
+        {
+          "title": "AI Agents Explained - How They Actually Work",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 25071,
+          "upload_date": "20260103",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Agents control flow actually works the way it does",
+          "lens": "hidden mechanism on Agents control flow",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Agents control flow",
+          "inspired_by": [
+            "You Need To Quit Weed."
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Agents control flow is weirder than you think",
+          "lens": "counterintuitive twist on Agents control flow",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Agents control flow",
+          "inspired_by": [
+            "You Need To Quit Weed.",
+            "AI Agents Explained - How They Actually Work"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Agents control flow?",
+          "lens": "personal stake on Agents control flow",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Agents control flow",
+          "inspired_by": [
+            "You Need To Quit Weed.",
+            "AI Agents Explained - How They Actually Work"
+          ]
+        }
+      ]
+    },
+    "0ee2947879bb5888": {
+      "id": "0ee2947879bb5888",
+      "title": "Hardening Firefox with Claude Mythos Preview",
+      "candidate_shape": "tool",
+      "topic_seed": "Hardening Firefox Claude",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Hardening Firefox Claude actually works the way it does",
+          "lens": "hidden mechanism on Hardening Firefox Claude",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Hardening Firefox Claude",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Hardening Firefox Claude is weirder than you think",
+          "lens": "counterintuitive twist on Hardening Firefox Claude",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Hardening Firefox Claude",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Hardening Firefox Claude?",
+          "lens": "personal stake on Hardening Firefox Claude",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Hardening Firefox Claude",
+          "inspired_by": []
+        }
+      ]
+    },
+    "5b3937b8361e9010": {
+      "id": "5b3937b8361e9010",
+      "title": "DeepSeek 4 Flash local inference engine for Metal",
+      "candidate_shape": "tool",
+      "topic_seed": "DeepSeek Flash local",
+      "mood_board": [
+        {
+          "title": "How DeepSeek Rewrote the Transformer [MLA]",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 900646,
+          "upload_date": "20250305",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why DeepSeek Flash local actually works the way it does",
+          "lens": "hidden mechanism on DeepSeek Flash local",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "DeepSeek Flash local",
+          "inspired_by": [
+            "How DeepSeek Rewrote the Transformer [MLA]"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why DeepSeek Flash local is weirder than you think",
+          "lens": "counterintuitive twist on DeepSeek Flash local",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "DeepSeek Flash local",
+          "inspired_by": [
+            "How DeepSeek Rewrote the Transformer [MLA]"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own DeepSeek Flash local?",
+          "lens": "personal stake on DeepSeek Flash local",
+          "source_pattern": "personal-stake",
+          "topic_seed": "DeepSeek Flash local",
+          "inspired_by": [
+            "How DeepSeek Rewrote the Transformer [MLA]"
+          ]
+        }
+      ]
+    },
+    "c28d59a647863cf8": {
+      "id": "c28d59a647863cf8",
+      "title": "I want to live like Costco people",
+      "candidate_shape": "news",
+      "topic_seed": "Costco people",
+      "mood_board": [
+        {
+          "title": "People are going to be angry about pylons.",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 2080817,
+          "upload_date": "20231225",
+          "similarity": 0.143
+        },
+        {
+          "title": "These people walk towards mining disasters.",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 821249,
+          "upload_date": "20260420",
+          "similarity": 0.111
+        },
+        {
+          "title": "\"I feel like I've just destroyed evidence!\"",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 1138358,
+          "upload_date": "20260413",
+          "similarity": 0.111
+        },
+        {
+          "title": "This Paradox Splits Smart People 50/50",
+          "channel": "Veritasium",
+          "channel_handle": "veritasium",
+          "view_count": 7506143,
+          "upload_date": "20260309",
+          "similarity": 0.111
+        },
+        {
+          "title": "Why People Are So Confident When They're Wrong",
+          "channel": "Veritasium",
+          "channel_handle": "veritasium",
+          "view_count": 5870037,
+          "upload_date": "20251112",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": []
+    },
+    "d229756e0a541eab": {
+      "id": "d229756e0a541eab",
+      "title": "Serving a Website on a Raspberry Pi Zero Running in RAM",
+      "candidate_shape": "project",
+      "topic_seed": "Website Raspberry Pi",
+      "mood_board": [
+        {
+          "title": "Hacking on the PDP1 Raspberry Pi Emulator - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 15795,
+          "upload_date": "20260506",
+          "similarity": 0.182
+        },
+        {
+          "title": "The Shoe That Broke Running",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 9527065,
+          "upload_date": "20240727",
+          "similarity": 0.111
+        },
+        {
+          "title": "Why Gravity Is A Lie, explained in Zero G",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 2764995,
+          "upload_date": "20250715",
+          "similarity": 0.1
+        },
+        {
+          "title": "5 Wild Experiments In Zero Gravity (Bonus Episode)",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 552753,
+          "upload_date": "20250726",
+          "similarity": 0.083
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[personal-stake] How easy is it to build your own Website Raspberry Pi?",
+          "lens": "personal stake on Website Raspberry Pi",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Website Raspberry Pi",
+          "inspired_by": [
+            "Hacking on the PDP1 Raspberry Pi Emulator - Computerphile"
+          ]
+        },
+        {
+          "title": "[hidden-mechanism] Why Website Raspberry Pi actually works the way it does",
+          "lens": "hidden mechanism on Website Raspberry Pi",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Website Raspberry Pi",
+          "inspired_by": [
+            "Hacking on the PDP1 Raspberry Pi Emulator - Computerphile",
+            "The Shoe That Broke Running"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Website Raspberry Pi is weirder than you think",
+          "lens": "counterintuitive twist on Website Raspberry Pi",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Website Raspberry Pi",
+          "inspired_by": [
+            "Hacking on the PDP1 Raspberry Pi Emulator - Computerphile",
+            "The Shoe That Broke Running",
+            "Why Gravity Is A Lie, explained in Zero G"
+          ]
+        }
+      ]
+    },
+    "f5338cc4f655f537": {
+      "id": "f5338cc4f655f537",
+      "title": "Blaise – A modern self-hosting zero-legacy Object Pascal compiler targeting QBE",
+      "candidate_shape": "project",
+      "topic_seed": "Blaise modern self-hosting",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[personal-stake] How easy is it to build your own Blaise modern self-hosting?",
+          "lens": "personal stake on Blaise modern self-hosting",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Blaise modern self-hosting",
+          "inspired_by": []
+        },
+        {
+          "title": "[hidden-mechanism] Why Blaise modern self-hosting actually works the way it does",
+          "lens": "hidden mechanism on Blaise modern self-hosting",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Blaise modern self-hosting",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Blaise modern self-hosting is weirder than you think",
+          "lens": "counterintuitive twist on Blaise modern self-hosting",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Blaise modern self-hosting",
+          "inspired_by": []
+        }
+      ]
+    },
+    "79dc425f0df0f241": {
+      "id": "79dc425f0df0f241",
+      "title": "Motherboard sales 'collapse' amid unprecedented shortages fueled by AI",
+      "candidate_shape": "news",
+      "topic_seed": "Motherboard sales collapse",
+      "mood_board": [
+        {
+          "title": "AI Slop Is Destroying The Internet",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 10076328,
+          "upload_date": "20251007",
+          "similarity": 0.091
+        },
+        {
+          "title": "The Untold Story of Generative AI",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 31923,
+          "upload_date": "20260305",
+          "similarity": 0.091
+        },
+        {
+          "title": "Gen AI & Reinforcement Learning- Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 34236,
+          "upload_date": "20251219",
+          "similarity": 0.083
+        },
+        {
+          "title": "AI Agents Explained - How They Actually Work",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 25071,
+          "upload_date": "20260103",
+          "similarity": 0.083
+        },
+        {
+          "title": "Can humans make AI any better?",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 269765,
+          "upload_date": "20260131",
+          "similarity": 0.083
+        }
+      ],
+      "starter_angles": []
+    },
+    "55fe156debeb2e6b": {
+      "id": "55fe156debeb2e6b",
+      "title": "Natural Language Autoencoders: Turning Claude's Thoughts into Text",
+      "candidate_shape": "tool",
+      "topic_seed": "Natural Language Autoencoders",
+      "mood_board": [
+        {
+          "title": "This is the natural disaster to worry about",
+          "channel": "Veritasium",
+          "channel_handle": "veritasium",
+          "view_count": 9265773,
+          "upload_date": "20250822",
+          "similarity": 0.111
+        },
+        {
+          "title": "Why is rendering text so complicated?",
+          "channel": "PawelCodeStuff",
+          "channel_handle": "pawel_code_stuff",
+          "view_count": 137039,
+          "upload_date": "20260501",
+          "similarity": 0.1
+        },
+        {
+          "title": "Does the language you speak change how you think?",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 1508798,
+          "upload_date": "20231106",
+          "similarity": 0.1
+        },
+        {
+          "title": "The Rise and Fall of Sublime Text",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 25121,
+          "upload_date": "20260223",
+          "similarity": 0.1
+        },
+        {
+          "title": "Original Hello World in \"B\" Programming Language - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 98676,
+          "upload_date": "20260417",
+          "similarity": 0.083
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Natural Language Autoencoders actually works the way it does",
+          "lens": "hidden mechanism on Natural Language Autoencoders",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Natural Language Autoencoders",
+          "inspired_by": [
+            "This is the natural disaster to worry about"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Natural Language Autoencoders is weirder than you think",
+          "lens": "counterintuitive twist on Natural Language Autoencoders",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Natural Language Autoencoders",
+          "inspired_by": [
+            "This is the natural disaster to worry about",
+            "Why is rendering text so complicated?"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Natural Language Autoencoders?",
+          "lens": "personal stake on Natural Language Autoencoders",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Natural Language Autoencoders",
+          "inspired_by": [
+            "This is the natural disaster to worry about",
+            "Why is rendering text so complicated?",
+            "Does the language you speak change how you think?"
+          ]
+        }
+      ]
+    },
+    "0408840f560fd89f": {
+      "id": "0408840f560fd89f",
+      "title": "ChatGPT - Prompts for developers",
+      "candidate_shape": "tool",
+      "topic_seed": "ChatGPT Prompts developers",
+      "mood_board": [
+        {
+          "title": "ChatGPT is made from 100 million of these [The Perceptron]",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 789153,
+          "upload_date": "20250201",
+          "similarity": 0.167
+        },
+        {
+          "title": "99% of Developers Don't Get Docker",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 94296,
+          "upload_date": "20260325",
+          "similarity": 0.143
+        },
+        {
+          "title": "99% of Developers Don't Get gRPC",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 49128,
+          "upload_date": "20251230",
+          "similarity": 0.143
+        },
+        {
+          "title": "99% of Developers Don't Get Semaphores",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 30102,
+          "upload_date": "20251218",
+          "similarity": 0.143
+        },
+        {
+          "title": "99% of Developers Don't Get TLBs",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 37119,
+          "upload_date": "20251210",
+          "similarity": 0.143
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why ChatGPT Prompts developers actually works the way it does",
+          "lens": "hidden mechanism on ChatGPT Prompts developers",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "ChatGPT Prompts developers",
+          "inspired_by": [
+            "ChatGPT is made from 100 million of these [The Perceptron]"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why ChatGPT Prompts developers is weirder than you think",
+          "lens": "counterintuitive twist on ChatGPT Prompts developers",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "ChatGPT Prompts developers",
+          "inspired_by": [
+            "ChatGPT is made from 100 million of these [The Perceptron]",
+            "99% of Developers Don't Get Docker"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own ChatGPT Prompts developers?",
+          "lens": "personal stake on ChatGPT Prompts developers",
+          "source_pattern": "personal-stake",
+          "topic_seed": "ChatGPT Prompts developers",
+          "inspired_by": [
+            "ChatGPT is made from 100 million of these [The Perceptron]",
+            "99% of Developers Don't Get Docker",
+            "99% of Developers Don't Get gRPC"
+          ]
+        }
+      ]
+    },
+    "95c6e57b6ce0daea": {
+      "id": "95c6e57b6ce0daea",
+      "title": "Google Cloud Fraud Defence is just WEI repackaged",
+      "candidate_shape": "tool",
+      "topic_seed": "Google Cloud Fraud",
+      "mood_board": [
+        {
+          "title": "How Docker Took Over the Cloud",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 39969,
+          "upload_date": "20260220",
+          "similarity": 0.125
+        },
+        {
+          "title": "The Hardest Problem AI Ever Solved, with Google DeepMind CEO",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 1237247,
+          "upload_date": "20260407",
+          "similarity": 0.077
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Google Cloud Fraud actually works the way it does",
+          "lens": "hidden mechanism on Google Cloud Fraud",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Google Cloud Fraud",
+          "inspired_by": [
+            "How Docker Took Over the Cloud"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Google Cloud Fraud is weirder than you think",
+          "lens": "counterintuitive twist on Google Cloud Fraud",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Google Cloud Fraud",
+          "inspired_by": [
+            "How Docker Took Over the Cloud",
+            "The Hardest Problem AI Ever Solved, with Google DeepMind CEO"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Google Cloud Fraud?",
+          "lens": "personal stake on Google Cloud Fraud",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Google Cloud Fraud",
+          "inspired_by": [
+            "How Docker Took Over the Cloud",
+            "The Hardest Problem AI Ever Solved, with Google DeepMind CEO"
+          ]
+        }
+      ]
+    },
+    "dc6b6a949d4d50b2": {
+      "id": "dc6b6a949d4d50b2",
+      "title": "AlphaEvolve: Gemini-powered coding agent scaling impact across fields",
+      "candidate_shape": "tool",
+      "topic_seed": "AlphaEvolve Gemini-powered coding",
+      "mood_board": [
+        {
+          "title": "Coding a Guitar Sound in C - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 71288,
+          "upload_date": "20260305",
+          "similarity": 0.091
+        },
+        {
+          "title": "Meta's Manus is the most powerful general AI agent...",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 5109,
+          "upload_date": "20260204",
+          "similarity": 0.077
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why AlphaEvolve Gemini-powered coding actually works the way it does",
+          "lens": "hidden mechanism on AlphaEvolve Gemini-powered coding",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "AlphaEvolve Gemini-powered coding",
+          "inspired_by": [
+            "Coding a Guitar Sound in C - Computerphile"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why AlphaEvolve Gemini-powered coding is weirder than you think",
+          "lens": "counterintuitive twist on AlphaEvolve Gemini-powered coding",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "AlphaEvolve Gemini-powered coding",
+          "inspired_by": [
+            "Coding a Guitar Sound in C - Computerphile",
+            "Meta's Manus is the most powerful general AI agent..."
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own AlphaEvolve Gemini-powered coding?",
+          "lens": "personal stake on AlphaEvolve Gemini-powered coding",
+          "source_pattern": "personal-stake",
+          "topic_seed": "AlphaEvolve Gemini-powered coding",
+          "inspired_by": [
+            "Coding a Guitar Sound in C - Computerphile",
+            "Meta's Manus is the most powerful general AI agent..."
+          ]
+        }
+      ]
+    },
+    "2d0c306476379690": {
+      "id": "2d0c306476379690",
+      "title": "Copy Fail 2: Electric Boogaloo",
+      "candidate_shape": "tool",
+      "topic_seed": "Copy Fail Electric",
+      "mood_board": [
+        {
+          "title": "A robot just swapped my electric car's battery",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 2069129,
+          "upload_date": "20231211",
+          "similarity": 0.125
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Copy Fail Electric actually works the way it does",
+          "lens": "hidden mechanism on Copy Fail Electric",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Copy Fail Electric",
+          "inspired_by": [
+            "A robot just swapped my electric car's battery"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Copy Fail Electric is weirder than you think",
+          "lens": "counterintuitive twist on Copy Fail Electric",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Copy Fail Electric",
+          "inspired_by": [
+            "A robot just swapped my electric car's battery"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Copy Fail Electric?",
+          "lens": "personal stake on Copy Fail Electric",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Copy Fail Electric",
+          "inspired_by": [
+            "A robot just swapped my electric car's battery"
+          ]
+        }
+      ]
+    },
+    "ed092e9c137b5b99": {
+      "id": "ed092e9c137b5b99",
+      "title": "JavaScript Security: Simple Practices to Secure Your Frontend",
+      "candidate_shape": "tool",
+      "topic_seed": "JavaScript Security Simple",
+      "mood_board": [
+        {
+          "title": "Why Moving Your Mouse Generates Secure Keys",
+          "channel": "PawelCodeStuff",
+          "channel_handle": "pawel_code_stuff",
+          "view_count": 16943,
+          "upload_date": "20260425",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why JavaScript Security Simple actually works the way it does",
+          "lens": "hidden mechanism on JavaScript Security Simple",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "JavaScript Security Simple",
+          "inspired_by": [
+            "Why Moving Your Mouse Generates Secure Keys"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why JavaScript Security Simple is weirder than you think",
+          "lens": "counterintuitive twist on JavaScript Security Simple",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "JavaScript Security Simple",
+          "inspired_by": [
+            "Why Moving Your Mouse Generates Secure Keys"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own JavaScript Security Simple?",
+          "lens": "personal stake on JavaScript Security Simple",
+          "source_pattern": "personal-stake",
+          "topic_seed": "JavaScript Security Simple",
+          "inspired_by": [
+            "Why Moving Your Mouse Generates Secure Keys"
+          ]
+        }
+      ]
+    },
+    "79fa0cfcc9b87795": {
+      "id": "79fa0cfcc9b87795",
+      "title": "building a web server in raw arm64 assembly",
+      "candidate_shape": "project",
+      "topic_seed": "web server raw",
+      "mood_board": [
+        {
+          "title": "The Untold Story of Assembly",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 59804,
+          "upload_date": "20251010",
+          "similarity": 0.125
+        },
+        {
+          "title": "JSON Web Tokens (JWTs) Explained",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 63159,
+          "upload_date": "20251007",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[personal-stake] How easy is it to build your own web server raw?",
+          "lens": "personal stake on web server raw",
+          "source_pattern": "personal-stake",
+          "topic_seed": "web server raw",
+          "inspired_by": [
+            "The Untold Story of Assembly"
+          ]
+        },
+        {
+          "title": "[hidden-mechanism] Why web server raw actually works the way it does",
+          "lens": "hidden mechanism on web server raw",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "web server raw",
+          "inspired_by": [
+            "The Untold Story of Assembly",
+            "JSON Web Tokens (JWTs) Explained"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why web server raw is weirder than you think",
+          "lens": "counterintuitive twist on web server raw",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "web server raw",
+          "inspired_by": [
+            "The Untold Story of Assembly",
+            "JSON Web Tokens (JWTs) Explained"
+          ]
+        }
+      ]
+    },
+    "dd08e6386c03b943": {
+      "id": "dd08e6386c03b943",
+      "title": "The cuda-oxide Book",
+      "candidate_shape": "tool",
+      "topic_seed": "cuda-oxide Book",
+      "mood_board": [
+        {
+          "title": "This library has every book ever published.",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 2330784,
+          "upload_date": "20230911",
+          "similarity": 0.143
+        },
+        {
+          "title": "This book should have changed mathematics forever",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 289331,
+          "upload_date": "20240217",
+          "similarity": 0.143
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why cuda-oxide Book actually works the way it does",
+          "lens": "hidden mechanism on cuda-oxide Book",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "cuda-oxide Book",
+          "inspired_by": [
+            "This library has every book ever published."
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why cuda-oxide Book is weirder than you think",
+          "lens": "counterintuitive twist on cuda-oxide Book",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "cuda-oxide Book",
+          "inspired_by": [
+            "This library has every book ever published.",
+            "This book should have changed mathematics forever"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own cuda-oxide Book?",
+          "lens": "personal stake on cuda-oxide Book",
+          "source_pattern": "personal-stake",
+          "topic_seed": "cuda-oxide Book",
+          "inspired_by": [
+            "This library has every book ever published.",
+            "This book should have changed mathematics forever"
+          ]
+        }
+      ]
+    },
+    "a49c1f47a6cb999a": {
+      "id": "a49c1f47a6cb999a",
+      "title": "Tesla is recalling its cheaper Cybertruck because the wheels might fall off",
+      "candidate_shape": "news",
+      "topic_seed": "Tesla recalling cheaper",
+      "mood_board": [
+        {
+          "title": "How do Scroll Wheels Work? 🖱🛠🔬",
+          "channel": "Branch Education",
+          "channel_handle": "BranchEducation",
+          "view_count": 663490,
+          "upload_date": "20220208",
+          "similarity": 0.091
+        },
+        {
+          "title": "The Rise and Fall of Borland",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 68515,
+          "upload_date": "20260123",
+          "similarity": 0.091
+        },
+        {
+          "title": "Database Indexes - You Might Be Using Them Wrong",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 57222,
+          "upload_date": "20260225",
+          "similarity": 0.083
+        },
+        {
+          "title": "The Rise and Fall of Sublime Text",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 25121,
+          "upload_date": "20260223",
+          "similarity": 0.083
+        }
+      ],
+      "starter_angles": []
+    },
+    "1fed1b9e5f701948": {
+      "id": "1fed1b9e5f701948",
+      "title": "US Government releases first batch of UAP documents and videos",
+      "candidate_shape": "tool",
+      "topic_seed": "Government releases first",
+      "mood_board": [
+        {
+          "title": "Why the government drops flies on California",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 2188018,
+          "upload_date": "20231218",
+          "similarity": 0.1
+        },
+        {
+          "title": "After ten years, it's time to stop weekly videos.",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 12121873,
+          "upload_date": "20240101",
+          "similarity": 0.077
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Government releases first actually works the way it does",
+          "lens": "hidden mechanism on Government releases first",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Government releases first",
+          "inspired_by": [
+            "Why the government drops flies on California"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Government releases first is weirder than you think",
+          "lens": "counterintuitive twist on Government releases first",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Government releases first",
+          "inspired_by": [
+            "Why the government drops flies on California",
+            "After ten years, it's time to stop weekly videos."
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Government releases first?",
+          "lens": "personal stake on Government releases first",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Government releases first",
+          "inspired_by": [
+            "Why the government drops flies on California",
+            "After ten years, it's time to stop weekly videos."
+          ]
+        }
+      ]
+    },
+    "935331d9a93258ae": {
+      "id": "935331d9a93258ae",
+      "title": "A web page that shows you everything the browser told it without asking",
+      "candidate_shape": "tool",
+      "topic_seed": "web page shows",
+      "mood_board": [
+        {
+          "title": "Sam Altman Shows Me GPT 5... And What's Next",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 4611673,
+          "upload_date": "20250808",
+          "similarity": 0.083
+        },
+        {
+          "title": "Swift: The Story Apple Never Told",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 69860,
+          "upload_date": "20250926",
+          "similarity": 0.083
+        },
+        {
+          "title": "JSON Web Tokens (JWTs) Explained",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 63159,
+          "upload_date": "20251007",
+          "similarity": 0.083
+        },
+        {
+          "title": "Temporal Networks, Where Page Rank meets Lord of the Rings - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 29734,
+          "upload_date": "20260319",
+          "similarity": 0.067
+        },
+        {
+          "title": "I Built a Real App Without Writing a Single Line of Code",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 2690,
+          "upload_date": "20260107",
+          "similarity": 0.067
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why web page shows actually works the way it does",
+          "lens": "hidden mechanism on web page shows",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "web page shows",
+          "inspired_by": [
+            "Sam Altman Shows Me GPT 5... And What's Next"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why web page shows is weirder than you think",
+          "lens": "counterintuitive twist on web page shows",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "web page shows",
+          "inspired_by": [
+            "Sam Altman Shows Me GPT 5... And What's Next",
+            "Swift: The Story Apple Never Told"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own web page shows?",
+          "lens": "personal stake on web page shows",
+          "source_pattern": "personal-stake",
+          "topic_seed": "web page shows",
+          "inspired_by": [
+            "Sam Altman Shows Me GPT 5... And What's Next",
+            "Swift: The Story Apple Never Told",
+            "JSON Web Tokens (JWTs) Explained"
+          ]
+        }
+      ]
+    },
+    "0cb288ed1ee1e132": {
+      "id": "0cb288ed1ee1e132",
+      "title": "An Introduction to Meshtastic",
+      "candidate_shape": "primer",
+      "topic_seed": "Introduction Meshtastic",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Introduction Meshtastic actually works the way it does",
+          "lens": "hidden mechanism on Introduction Meshtastic",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Introduction Meshtastic",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Introduction Meshtastic?",
+          "lens": "personal stake on Introduction Meshtastic",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Introduction Meshtastic",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Introduction Meshtastic is weirder than you think",
+          "lens": "counterintuitive twist on Introduction Meshtastic",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Introduction Meshtastic",
+          "inspired_by": []
+        }
+      ]
+    },
+    "35a8ae6818798f2e": {
+      "id": "35a8ae6818798f2e",
+      "title": "California leaders report four to six weeks worth of gasoline and diesel supply",
+      "candidate_shape": "tool",
+      "topic_seed": "California leaders report",
+      "mood_board": [
+        {
+          "title": "Why the government drops flies on California",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 2188018,
+          "upload_date": "20231218",
+          "similarity": 0.077
+        },
+        {
+          "title": "This Common Substance Was Once Worth Millions",
+          "channel": "Veritasium",
+          "channel_handle": "veritasium",
+          "view_count": 7450824,
+          "upload_date": "20260203",
+          "similarity": 0.071
+        },
+        {
+          "title": "The Internet Was Weeks Away From Disaster and No One Knew",
+          "channel": "Veritasium",
+          "channel_handle": "veritasium",
+          "view_count": 13611150,
+          "upload_date": "20260225",
+          "similarity": 0.067
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why California leaders report actually works the way it does",
+          "lens": "hidden mechanism on California leaders report",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "California leaders report",
+          "inspired_by": [
+            "Why the government drops flies on California"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why California leaders report is weirder than you think",
+          "lens": "counterintuitive twist on California leaders report",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "California leaders report",
+          "inspired_by": [
+            "Why the government drops flies on California",
+            "This Common Substance Was Once Worth Millions"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own California leaders report?",
+          "lens": "personal stake on California leaders report",
+          "source_pattern": "personal-stake",
+          "topic_seed": "California leaders report",
+          "inspired_by": [
+            "Why the government drops flies on California",
+            "This Common Substance Was Once Worth Millions",
+            "The Internet Was Weeks Away From Disaster and No One Knew"
+          ]
+        }
+      ]
+    },
+    "20da0aa23b836318": {
+      "id": "20da0aa23b836318",
+      "title": "I switched from Mac to a Lenovo Chromebook",
+      "candidate_shape": "tool",
+      "topic_seed": "switched Mac Lenovo",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why switched Mac Lenovo actually works the way it does",
+          "lens": "hidden mechanism on switched Mac Lenovo",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "switched Mac Lenovo",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why switched Mac Lenovo is weirder than you think",
+          "lens": "counterintuitive twist on switched Mac Lenovo",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "switched Mac Lenovo",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own switched Mac Lenovo?",
+          "lens": "personal stake on switched Mac Lenovo",
+          "source_pattern": "personal-stake",
+          "topic_seed": "switched Mac Lenovo",
+          "inspired_by": []
+        }
+      ]
+    },
+    "bccef150b3012bf2": {
+      "id": "bccef150b3012bf2",
+      "title": "Nonprofit hospitals spend billions on consultants with no clear effect",
+      "candidate_shape": "tool",
+      "topic_seed": "Nonprofit hospitals spend",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Nonprofit hospitals spend actually works the way it does",
+          "lens": "hidden mechanism on Nonprofit hospitals spend",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Nonprofit hospitals spend",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Nonprofit hospitals spend is weirder than you think",
+          "lens": "counterintuitive twist on Nonprofit hospitals spend",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Nonprofit hospitals spend",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Nonprofit hospitals spend?",
+          "lens": "personal stake on Nonprofit hospitals spend",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Nonprofit hospitals spend",
+          "inspired_by": []
+        }
+      ]
+    },
+    "5065aaf93cf5b81c": {
+      "id": "5065aaf93cf5b81c",
+      "title": "Stop MITM on the first SSH connection, on any VPS or cloud provider",
+      "candidate_shape": "tool",
+      "topic_seed": "Stop MITM first",
+      "mood_board": [
+        {
+          "title": "How Docker Took Over the Cloud",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 39969,
+          "upload_date": "20260220",
+          "similarity": 0.091
+        },
+        {
+          "title": "Can Humanity Stop A Planet-Killing Asteroid?",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 7180524,
+          "upload_date": "20250916",
+          "similarity": 0.077
+        },
+        {
+          "title": "Stop Copying CORS Headers - CORS Explained",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 32396,
+          "upload_date": "20260415",
+          "similarity": 0.077
+        },
+        {
+          "title": "Can humans make AI any better?",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 269765,
+          "upload_date": "20260131",
+          "similarity": 0.077
+        },
+        {
+          "title": "After ten years, it's time to stop weekly videos.",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 12121873,
+          "upload_date": "20240101",
+          "similarity": 0.067
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Stop MITM first actually works the way it does",
+          "lens": "hidden mechanism on Stop MITM first",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Stop MITM first",
+          "inspired_by": [
+            "How Docker Took Over the Cloud"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Stop MITM first is weirder than you think",
+          "lens": "counterintuitive twist on Stop MITM first",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Stop MITM first",
+          "inspired_by": [
+            "How Docker Took Over the Cloud",
+            "Can Humanity Stop A Planet-Killing Asteroid?"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Stop MITM first?",
+          "lens": "personal stake on Stop MITM first",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Stop MITM first",
+          "inspired_by": [
+            "How Docker Took Over the Cloud",
+            "Can Humanity Stop A Planet-Killing Asteroid?",
+            "Stop Copying CORS Headers - CORS Explained"
+          ]
+        }
+      ]
+    },
+    "f1cc0035b37a0fb9": {
+      "id": "f1cc0035b37a0fb9",
+      "title": "Why Don’t Lowercase Letters Come Right After Uppercase Letters in ASCII?",
+      "candidate_shape": "primer",
+      "topic_seed": "Don’t Lowercase Letters",
+      "mood_board": [
+        {
+          "title": "Don't Write Comments",
+          "channel": "CodeAesthetic",
+          "channel_handle": "CodeAesthetic",
+          "view_count": 945648,
+          "upload_date": "20230116",
+          "similarity": 0.1
+        },
+        {
+          "title": "Why don't subtitles match dubbing?",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 1982453,
+          "upload_date": "20231204",
+          "similarity": 0.091
+        },
+        {
+          "title": "Containers Don't Exist  - Your Kernel Is Lying to You",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 276375,
+          "upload_date": "20260218",
+          "similarity": 0.083
+        },
+        {
+          "title": "99% of Developers Don't Get Docker",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 94296,
+          "upload_date": "20260325",
+          "similarity": 0.083
+        },
+        {
+          "title": "99% of Developers Don't Get gRPC",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 49128,
+          "upload_date": "20251230",
+          "similarity": 0.083
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Don’t Lowercase Letters actually works the way it does",
+          "lens": "hidden mechanism on Don’t Lowercase Letters",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Don’t Lowercase Letters",
+          "inspired_by": [
+            "Don't Write Comments"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Don’t Lowercase Letters?",
+          "lens": "personal stake on Don’t Lowercase Letters",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Don’t Lowercase Letters",
+          "inspired_by": [
+            "Don't Write Comments",
+            "Why don't subtitles match dubbing?"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Don’t Lowercase Letters is weirder than you think",
+          "lens": "counterintuitive twist on Don’t Lowercase Letters",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Don’t Lowercase Letters",
+          "inspired_by": [
+            "Don't Write Comments",
+            "Why don't subtitles match dubbing?",
+            "Containers Don't Exist  - Your Kernel Is Lying to You"
+          ]
+        }
+      ]
+    },
+    "d481c647b5f6c599": {
+      "id": "d481c647b5f6c599",
+      "title": "Ploopy Bean - external trackpoint",
+      "candidate_shape": "tool",
+      "topic_seed": "Ploopy Bean external",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Ploopy Bean external actually works the way it does",
+          "lens": "hidden mechanism on Ploopy Bean external",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Ploopy Bean external",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Ploopy Bean external is weirder than you think",
+          "lens": "counterintuitive twist on Ploopy Bean external",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Ploopy Bean external",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Ploopy Bean external?",
+          "lens": "personal stake on Ploopy Bean external",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Ploopy Bean external",
+          "inspired_by": []
+        }
+      ]
+    },
+    "133e94cbb60c2317": {
+      "id": "133e94cbb60c2317",
+      "title": "The `Sync` bound nobody asked for",
+      "candidate_shape": "tool",
+      "topic_seed": "`Sync` bound nobody",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why `Sync` bound nobody actually works the way it does",
+          "lens": "hidden mechanism on `Sync` bound nobody",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "`Sync` bound nobody",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why `Sync` bound nobody is weirder than you think",
+          "lens": "counterintuitive twist on `Sync` bound nobody",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "`Sync` bound nobody",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own `Sync` bound nobody?",
+          "lens": "personal stake on `Sync` bound nobody",
+          "source_pattern": "personal-stake",
+          "topic_seed": "`Sync` bound nobody",
+          "inspired_by": []
+        }
+      ]
+    },
+    "569603dace44814f": {
+      "id": "569603dace44814f",
+      "title": "Wii IP6 webserver",
+      "candidate_shape": "tool",
+      "topic_seed": "Wii IP6 webserver",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Wii IP6 webserver actually works the way it does",
+          "lens": "hidden mechanism on Wii IP6 webserver",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Wii IP6 webserver",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Wii IP6 webserver is weirder than you think",
+          "lens": "counterintuitive twist on Wii IP6 webserver",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Wii IP6 webserver",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Wii IP6 webserver?",
+          "lens": "personal stake on Wii IP6 webserver",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Wii IP6 webserver",
+          "inspired_by": []
+        }
+      ]
+    },
+    "82511da497f411e8": {
+      "id": "82511da497f411e8",
+      "title": "cuda-oxide: cuda-oxide is an experimental Rust-to-CUDA compiler",
+      "candidate_shape": "tool",
+      "topic_seed": "cuda-oxide cuda-oxide experimental",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why cuda-oxide cuda-oxide experimental actually works the way it does",
+          "lens": "hidden mechanism on cuda-oxide cuda-oxide experimental",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "cuda-oxide cuda-oxide experimental",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why cuda-oxide cuda-oxide experimental is weirder than you think",
+          "lens": "counterintuitive twist on cuda-oxide cuda-oxide experimental",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "cuda-oxide cuda-oxide experimental",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own cuda-oxide cuda-oxide experimental?",
+          "lens": "personal stake on cuda-oxide cuda-oxide experimental",
+          "source_pattern": "personal-stake",
+          "topic_seed": "cuda-oxide cuda-oxide experimental",
+          "inspired_by": []
+        }
+      ]
+    },
+    "e4cd6e495e6ed667": {
+      "id": "e4cd6e495e6ed667",
+      "title": "The surprisingly complex journey to text-selectable client-side generated PDFs",
+      "candidate_shape": "tool",
+      "topic_seed": "surprisingly complex journey",
+      "mood_board": [
+        {
+          "title": "The most complex model we actually understand",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 774168,
+          "upload_date": "20251220",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why surprisingly complex journey actually works the way it does",
+          "lens": "hidden mechanism on surprisingly complex journey",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "surprisingly complex journey",
+          "inspired_by": [
+            "The most complex model we actually understand"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why surprisingly complex journey is weirder than you think",
+          "lens": "counterintuitive twist on surprisingly complex journey",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "surprisingly complex journey",
+          "inspired_by": [
+            "The most complex model we actually understand"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own surprisingly complex journey?",
+          "lens": "personal stake on surprisingly complex journey",
+          "source_pattern": "personal-stake",
+          "topic_seed": "surprisingly complex journey",
+          "inspired_by": [
+            "The most complex model we actually understand"
+          ]
+        }
+      ]
+    },
+    "6abed253bf31ac14": {
+      "id": "6abed253bf31ac14",
+      "title": "Formatting an entire 25 million line codebase overnight: the rubyfmt story",
+      "candidate_shape": "tool",
+      "topic_seed": "Formatting entire 25",
+      "mood_board": [
+        {
+          "title": "The Untold Story of R",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 53790,
+          "upload_date": "20260329",
+          "similarity": 0.1
+        },
+        {
+          "title": "The Untold Story Of C#",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 112304,
+          "upload_date": "20251027",
+          "similarity": 0.1
+        },
+        {
+          "title": "The Untold Story of Notepad++",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 47196,
+          "upload_date": "20260129",
+          "similarity": 0.091
+        },
+        {
+          "title": "The Untold Story of Chromium",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 36197,
+          "upload_date": "20260115",
+          "similarity": 0.091
+        },
+        {
+          "title": "The Untold Story of COBOL",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 42119,
+          "upload_date": "20260113",
+          "similarity": 0.091
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Formatting entire 25 actually works the way it does",
+          "lens": "hidden mechanism on Formatting entire 25",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Formatting entire 25",
+          "inspired_by": [
+            "The Untold Story of R"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Formatting entire 25 is weirder than you think",
+          "lens": "counterintuitive twist on Formatting entire 25",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Formatting entire 25",
+          "inspired_by": [
+            "The Untold Story of R",
+            "The Untold Story Of C#"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Formatting entire 25?",
+          "lens": "personal stake on Formatting entire 25",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Formatting entire 25",
+          "inspired_by": [
+            "The Untold Story of R",
+            "The Untold Story Of C#",
+            "The Untold Story of Notepad++"
+          ]
+        }
+      ]
+    },
+    "e2cd7f9c3c9e0924": {
+      "id": "e2cd7f9c3c9e0924",
+      "title": "hpke-ng: Faster, Smaller, Harder HPKE for Rust",
+      "candidate_shape": "tool",
+      "topic_seed": "hpke-ng Faster Smaller",
+      "mood_board": [
+        {
+          "title": "There Is Something Faster Than Light",
+          "channel": "Veritasium",
+          "channel_handle": "veritasium",
+          "view_count": 13707374,
+          "upload_date": "20251219",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why hpke-ng Faster Smaller actually works the way it does",
+          "lens": "hidden mechanism on hpke-ng Faster Smaller",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "hpke-ng Faster Smaller",
+          "inspired_by": [
+            "There Is Something Faster Than Light"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why hpke-ng Faster Smaller is weirder than you think",
+          "lens": "counterintuitive twist on hpke-ng Faster Smaller",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "hpke-ng Faster Smaller",
+          "inspired_by": [
+            "There Is Something Faster Than Light"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own hpke-ng Faster Smaller?",
+          "lens": "personal stake on hpke-ng Faster Smaller",
+          "source_pattern": "personal-stake",
+          "topic_seed": "hpke-ng Faster Smaller",
+          "inspired_by": [
+            "There Is Something Faster Than Light"
+          ]
+        }
+      ]
+    },
+    "93fdf81f91b23d60": {
+      "id": "93fdf81f91b23d60",
+      "title": "What We Lost the Last Time Code Got Cheap",
+      "candidate_shape": "primer",
+      "topic_seed": "Lost Last Time",
+      "mood_board": [
+        {
+          "title": "Why You Shouldn't Nest Your Code",
+          "channel": "CodeAesthetic",
+          "channel_handle": "CodeAesthetic",
+          "view_count": 3297979,
+          "upload_date": "20221206",
+          "similarity": 0.125
+        },
+        {
+          "title": "Naming Things in Code",
+          "channel": "CodeAesthetic",
+          "channel_handle": "CodeAesthetic",
+          "view_count": 2853356,
+          "upload_date": "20221127",
+          "similarity": 0.125
+        },
+        {
+          "title": "Abstraction Can Make Your Code Worse",
+          "channel": "CodeAesthetic",
+          "channel_handle": "CodeAesthetic",
+          "view_count": 803124,
+          "upload_date": "20221120",
+          "similarity": 0.111
+        },
+        {
+          "title": "Code Optimisation via Memoization - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 142441,
+          "upload_date": "20251127",
+          "similarity": 0.1
+        },
+        {
+          "title": "Why Your Code Crashes (Stack vs Heap)",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 10173,
+          "upload_date": "20251224",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Lost Last Time actually works the way it does",
+          "lens": "hidden mechanism on Lost Last Time",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Lost Last Time",
+          "inspired_by": [
+            "Why You Shouldn't Nest Your Code"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Lost Last Time?",
+          "lens": "personal stake on Lost Last Time",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Lost Last Time",
+          "inspired_by": [
+            "Why You Shouldn't Nest Your Code",
+            "Naming Things in Code"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Lost Last Time is weirder than you think",
+          "lens": "counterintuitive twist on Lost Last Time",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Lost Last Time",
+          "inspired_by": [
+            "Why You Shouldn't Nest Your Code",
+            "Naming Things in Code",
+            "Abstraction Can Make Your Code Worse"
+          ]
+        }
+      ]
+    },
+    "e5d420ff8bffe542": {
+      "id": "e5d420ff8bffe542",
+      "title": "Getting peak TOPS on a Ryzen AI 7 350 NPU",
+      "candidate_shape": "tool",
+      "topic_seed": "Getting peak TOPS",
+      "mood_board": [
+        {
+          "title": "AI Slop Is Destroying The Internet",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 10076328,
+          "upload_date": "20251007",
+          "similarity": 0.1
+        },
+        {
+          "title": "The Untold Story of Generative AI",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 31923,
+          "upload_date": "20260305",
+          "similarity": 0.1
+        },
+        {
+          "title": "Gen AI & Reinforcement Learning- Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 34236,
+          "upload_date": "20251219",
+          "similarity": 0.091
+        },
+        {
+          "title": "AI Agents Explained - How They Actually Work",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 25071,
+          "upload_date": "20260103",
+          "similarity": 0.091
+        },
+        {
+          "title": "Can humans make AI any better?",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 269765,
+          "upload_date": "20260131",
+          "similarity": 0.091
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Getting peak TOPS actually works the way it does",
+          "lens": "hidden mechanism on Getting peak TOPS",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Getting peak TOPS",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Getting peak TOPS is weirder than you think",
+          "lens": "counterintuitive twist on Getting peak TOPS",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Getting peak TOPS",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet",
+            "The Untold Story of Generative AI"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Getting peak TOPS?",
+          "lens": "personal stake on Getting peak TOPS",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Getting peak TOPS",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet",
+            "The Untold Story of Generative AI",
+            "Gen AI & Reinforcement Learning- Computerphile"
+          ]
+        }
+      ]
+    },
+    "49324765c4ec30d2": {
+      "id": "49324765c4ec30d2",
+      "title": "A PHP license change is imminent",
+      "candidate_shape": "tool",
+      "topic_seed": "PHP license change",
+      "mood_board": [
+        {
+          "title": "Does the language you speak change how you think?",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 1508798,
+          "upload_date": "20231106",
+          "similarity": 0.143
+        },
+        {
+          "title": "You're More Stressed Than Ever - Let's Change That",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 4642726,
+          "upload_date": "20251111",
+          "similarity": 0.125
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why PHP license change actually works the way it does",
+          "lens": "hidden mechanism on PHP license change",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "PHP license change",
+          "inspired_by": [
+            "Does the language you speak change how you think?"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why PHP license change is weirder than you think",
+          "lens": "counterintuitive twist on PHP license change",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "PHP license change",
+          "inspired_by": [
+            "Does the language you speak change how you think?",
+            "You're More Stressed Than Ever - Let's Change That"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own PHP license change?",
+          "lens": "personal stake on PHP license change",
+          "source_pattern": "personal-stake",
+          "topic_seed": "PHP license change",
+          "inspired_by": [
+            "Does the language you speak change how you think?",
+            "You're More Stressed Than Ever - Let's Change That"
+          ]
+        }
+      ]
+    },
+    "f197653b8efeed98": {
+      "id": "f197653b8efeed98",
+      "title": "From Supabase to Clerk to Better Auth",
+      "candidate_shape": "tool",
+      "topic_seed": "Supabase Clerk Better",
+      "mood_board": [
+        {
+          "title": "Can humans make AI any better?",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 269765,
+          "upload_date": "20260131",
+          "similarity": 0.125
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Supabase Clerk Better actually works the way it does",
+          "lens": "hidden mechanism on Supabase Clerk Better",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Supabase Clerk Better",
+          "inspired_by": [
+            "Can humans make AI any better?"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Supabase Clerk Better is weirder than you think",
+          "lens": "counterintuitive twist on Supabase Clerk Better",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Supabase Clerk Better",
+          "inspired_by": [
+            "Can humans make AI any better?"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Supabase Clerk Better?",
+          "lens": "personal stake on Supabase Clerk Better",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Supabase Clerk Better",
+          "inspired_by": [
+            "Can humans make AI any better?"
+          ]
+        }
+      ]
+    },
+    "ace024ee985de518": {
+      "id": "ace024ee985de518",
+      "title": "GPT-5.5 Price Increase: What It Costs",
+      "candidate_shape": "tool",
+      "topic_seed": "GPT-5.5 Price Increase",
+      "mood_board": [
+        {
+          "title": "UTC vs Timezone - The Bug That Costs Developers Hours",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 33090,
+          "upload_date": "20260121",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why GPT-5.5 Price Increase actually works the way it does",
+          "lens": "hidden mechanism on GPT-5.5 Price Increase",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "GPT-5.5 Price Increase",
+          "inspired_by": [
+            "UTC vs Timezone - The Bug That Costs Developers Hours"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why GPT-5.5 Price Increase is weirder than you think",
+          "lens": "counterintuitive twist on GPT-5.5 Price Increase",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "GPT-5.5 Price Increase",
+          "inspired_by": [
+            "UTC vs Timezone - The Bug That Costs Developers Hours"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own GPT-5.5 Price Increase?",
+          "lens": "personal stake on GPT-5.5 Price Increase",
+          "source_pattern": "personal-stake",
+          "topic_seed": "GPT-5.5 Price Increase",
+          "inspired_by": [
+            "UTC vs Timezone - The Bug That Costs Developers Hours"
+          ]
+        }
+      ]
+    },
+    "6eb2815da950d39a": {
+      "id": "6eb2815da950d39a",
+      "title": "3 Women Who Fundamentally Shaped Modern Software",
+      "candidate_shape": "tool",
+      "topic_seed": "Women Fundamentally Shaped",
+      "mood_board": [
+        {
+          "title": "How Terraform changed software engineering forever",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 17295,
+          "upload_date": "20260225",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Women Fundamentally Shaped actually works the way it does",
+          "lens": "hidden mechanism on Women Fundamentally Shaped",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Women Fundamentally Shaped",
+          "inspired_by": [
+            "How Terraform changed software engineering forever"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Women Fundamentally Shaped is weirder than you think",
+          "lens": "counterintuitive twist on Women Fundamentally Shaped",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Women Fundamentally Shaped",
+          "inspired_by": [
+            "How Terraform changed software engineering forever"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Women Fundamentally Shaped?",
+          "lens": "personal stake on Women Fundamentally Shaped",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Women Fundamentally Shaped",
+          "inspired_by": [
+            "How Terraform changed software engineering forever"
+          ]
+        }
+      ]
+    },
+    "9b0bc5ac68537748": {
+      "id": "9b0bc5ac68537748",
+      "title": "Plasticity and language in the anaesthetized human hippocampus",
+      "candidate_shape": "tool",
+      "topic_seed": "Plasticity language anaesthetized",
+      "mood_board": [
+        {
+          "title": "Does the language you speak change how you think?",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 1508798,
+          "upload_date": "20231106",
+          "similarity": 0.125
+        },
+        {
+          "title": "All Of Human History In One Hour",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 3169392,
+          "upload_date": "20251205",
+          "similarity": 0.111
+        },
+        {
+          "title": "Original Hello World in \"B\" Programming Language - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 98676,
+          "upload_date": "20260417",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Plasticity language anaesthetized actually works the way it does",
+          "lens": "hidden mechanism on Plasticity language anaesthetized",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Plasticity language anaesthetized",
+          "inspired_by": [
+            "Does the language you speak change how you think?"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Plasticity language anaesthetized is weirder than you think",
+          "lens": "counterintuitive twist on Plasticity language anaesthetized",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Plasticity language anaesthetized",
+          "inspired_by": [
+            "Does the language you speak change how you think?",
+            "All Of Human History In One Hour"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Plasticity language anaesthetized?",
+          "lens": "personal stake on Plasticity language anaesthetized",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Plasticity language anaesthetized",
+          "inspired_by": [
+            "Does the language you speak change how you think?",
+            "All Of Human History In One Hour",
+            "Original Hello World in \"B\" Programming Language - Computerphile"
+          ]
+        }
+      ]
+    },
+    "b703fa597fe2516e": {
+      "id": "b703fa597fe2516e",
+      "title": "Cloudflare reduce workforce by more than 1,100 employees globally.",
+      "candidate_shape": "tool",
+      "topic_seed": "Cloudflare reduce workforce",
+      "mood_board": [
+        {
+          "title": "ChatGPT is made from 100 million of these [The Perceptron]",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 789153,
+          "upload_date": "20250201",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Cloudflare reduce workforce actually works the way it does",
+          "lens": "hidden mechanism on Cloudflare reduce workforce",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Cloudflare reduce workforce",
+          "inspired_by": [
+            "ChatGPT is made from 100 million of these [The Perceptron]"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Cloudflare reduce workforce is weirder than you think",
+          "lens": "counterintuitive twist on Cloudflare reduce workforce",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Cloudflare reduce workforce",
+          "inspired_by": [
+            "ChatGPT is made from 100 million of these [The Perceptron]"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Cloudflare reduce workforce?",
+          "lens": "personal stake on Cloudflare reduce workforce",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Cloudflare reduce workforce",
+          "inspired_by": [
+            "ChatGPT is made from 100 million of these [The Perceptron]"
+          ]
+        }
+      ]
+    },
+    "c44d37d50da44106": {
+      "id": "c44d37d50da44106",
+      "title": "GeoJSON",
+      "candidate_shape": "tool",
+      "topic_seed": "GeoJSON",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why GeoJSON actually works the way it does",
+          "lens": "hidden mechanism on GeoJSON",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "GeoJSON",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why GeoJSON is weirder than you think",
+          "lens": "counterintuitive twist on GeoJSON",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "GeoJSON",
+          "inspired_by": []
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own GeoJSON?",
+          "lens": "personal stake on GeoJSON",
+          "source_pattern": "personal-stake",
+          "topic_seed": "GeoJSON",
+          "inspired_by": []
+        }
+      ]
+    },
+    "cf4368737d222e36": {
+      "id": "cf4368737d222e36",
+      "title": "GNU IFUNC is the real culprit behind CVE-2024-3094",
+      "candidate_shape": "exploit",
+      "topic_seed": "GNU IFUNC real",
+      "mood_board": [
+        {
+          "title": "The Real Reason We Should Revive Extinct Animals",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 4544007,
+          "upload_date": "20251014",
+          "similarity": 0.091
+        },
+        {
+          "title": "Humanity’s Real Plan to Stop This Asteroid (Feat. Mark Rober)",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 4242493,
+          "upload_date": "20251115",
+          "similarity": 0.077
+        },
+        {
+          "title": "I Built a Real App Without Writing a Single Line of Code",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 2690,
+          "upload_date": "20260107",
+          "similarity": 0.077
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why GNU IFUNC real actually works the way it does",
+          "lens": "hidden mechanism on GNU IFUNC real",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "GNU IFUNC real",
+          "inspired_by": [
+            "The Real Reason We Should Revive Extinct Animals"
+          ]
+        },
+        {
+          "title": "[mystery] The GNU IFUNC real bug that nobody can fully explain",
+          "lens": "mystery on GNU IFUNC real",
+          "source_pattern": "mystery",
+          "topic_seed": "GNU IFUNC real",
+          "inspired_by": [
+            "The Real Reason We Should Revive Extinct Animals",
+            "Humanity’s Real Plan to Stop This Asteroid (Feat. Mark Rober)"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why GNU IFUNC real is weirder than you think",
+          "lens": "counterintuitive twist on GNU IFUNC real",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "GNU IFUNC real",
+          "inspired_by": [
+            "The Real Reason We Should Revive Extinct Animals",
+            "Humanity’s Real Plan to Stop This Asteroid (Feat. Mark Rober)",
+            "I Built a Real App Without Writing a Single Line of Code"
+          ]
+        }
+      ]
+    },
+    "2054e86fec1a1c85": {
+      "id": "2054e86fec1a1c85",
+      "title": "Gambling ads on social media reach more than twice as many men as women: study",
+      "candidate_shape": "tool",
+      "topic_seed": "Gambling ads social",
+      "mood_board": [
+        {
+          "title": "Why use many streetlights when one will do?",
+          "channel": "Tom Scott",
+          "channel_handle": "TomScottGo",
+          "view_count": 4104301,
+          "upload_date": "20231127",
+          "similarity": 0.077
+        },
+        {
+          "title": "Can you really reach anyone in 6 steps?",
+          "channel": "Veritasium",
+          "channel_handle": "veritasium",
+          "view_count": 10351373,
+          "upload_date": "20250930",
+          "similarity": 0.071
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Gambling ads social actually works the way it does",
+          "lens": "hidden mechanism on Gambling ads social",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Gambling ads social",
+          "inspired_by": [
+            "Why use many streetlights when one will do?"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Gambling ads social is weirder than you think",
+          "lens": "counterintuitive twist on Gambling ads social",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Gambling ads social",
+          "inspired_by": [
+            "Why use many streetlights when one will do?",
+            "Can you really reach anyone in 6 steps?"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Gambling ads social?",
+          "lens": "personal stake on Gambling ads social",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Gambling ads social",
+          "inspired_by": [
+            "Why use many streetlights when one will do?",
+            "Can you really reach anyone in 6 steps?"
+          ]
+        }
+      ]
+    },
+    "c6a021f805ce4074": {
+      "id": "c6a021f805ce4074",
+      "title": "ShinyHunters claims data theft from 8,800 schools (Instructure/Canvas)",
+      "candidate_shape": "tool",
+      "topic_seed": "ShinyHunters claims data",
+      "mood_board": [
+        {
+          "title": "Oversampling Data (Explained with Audio) - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 46163,
+          "upload_date": "20260409",
+          "similarity": 0.083
+        },
+        {
+          "title": "Digital Signal Processing With Audio Data - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 72619,
+          "upload_date": "20260210",
+          "similarity": 0.077
+        },
+        {
+          "title": "How does this SSD store 8TB of Data?  ||  Inside the Engineering of Solid-State Drive Architecture",
+          "channel": "Branch Education",
+          "channel_handle": "BranchEducation",
+          "view_count": 456361,
+          "upload_date": "20210321",
+          "similarity": 0.062
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why ShinyHunters claims data actually works the way it does",
+          "lens": "hidden mechanism on ShinyHunters claims data",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "ShinyHunters claims data",
+          "inspired_by": [
+            "Oversampling Data (Explained with Audio) - Computerphile"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why ShinyHunters claims data is weirder than you think",
+          "lens": "counterintuitive twist on ShinyHunters claims data",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "ShinyHunters claims data",
+          "inspired_by": [
+            "Oversampling Data (Explained with Audio) - Computerphile",
+            "Digital Signal Processing With Audio Data - Computerphile"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own ShinyHunters claims data?",
+          "lens": "personal stake on ShinyHunters claims data",
+          "source_pattern": "personal-stake",
+          "topic_seed": "ShinyHunters claims data",
+          "inspired_by": [
+            "Oversampling Data (Explained with Audio) - Computerphile",
+            "Digital Signal Processing With Audio Data - Computerphile",
+            "How does this SSD store 8TB of Data?  ||  Inside the Engineering of Solid-State Drive Architecture"
+          ]
+        }
+      ]
+    },
+    "64a84e7d648206b6": {
+      "id": "64a84e7d648206b6",
+      "title": "Two Home Affairs officials suspended after AI 'hallucinations' found",
+      "candidate_shape": "tool",
+      "topic_seed": "Two Home Affairs",
+      "mood_board": [
+        {
+          "title": "AI Slop Is Destroying The Internet",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 10076328,
+          "upload_date": "20251007",
+          "similarity": 0.083
+        },
+        {
+          "title": "This Game Took Us Two Years To Make",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 673599,
+          "upload_date": "20250910",
+          "similarity": 0.083
+        },
+        {
+          "title": "The Untold Story of Generative AI",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 31923,
+          "upload_date": "20260305",
+          "similarity": 0.083
+        },
+        {
+          "title": "Gen AI & Reinforcement Learning- Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 34236,
+          "upload_date": "20251219",
+          "similarity": 0.077
+        },
+        {
+          "title": "We Found a Loophole to Survive the End of the Universe",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 3838404,
+          "upload_date": "20250930",
+          "similarity": 0.077
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Two Home Affairs actually works the way it does",
+          "lens": "hidden mechanism on Two Home Affairs",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Two Home Affairs",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Two Home Affairs is weirder than you think",
+          "lens": "counterintuitive twist on Two Home Affairs",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Two Home Affairs",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet",
+            "This Game Took Us Two Years To Make"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Two Home Affairs?",
+          "lens": "personal stake on Two Home Affairs",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Two Home Affairs",
+          "inspired_by": [
+            "AI Slop Is Destroying The Internet",
+            "This Game Took Us Two Years To Make",
+            "The Untold Story of Generative AI"
+          ]
+        }
+      ]
+    },
+    "a1c642668a1533aa": {
+      "id": "a1c642668a1533aa",
+      "title": "Containers Aren’t Just Linux Processes",
+      "candidate_shape": "tool",
+      "topic_seed": "Containers Aren’t Linux",
+      "mood_board": [
+        {
+          "title": "Containers Don't Exist  - Your Kernel Is Lying to You",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 276375,
+          "upload_date": "20260218",
+          "similarity": 0.125
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Containers Aren’t Linux actually works the way it does",
+          "lens": "hidden mechanism on Containers Aren’t Linux",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Containers Aren’t Linux",
+          "inspired_by": [
+            "Containers Don't Exist  - Your Kernel Is Lying to You"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Containers Aren’t Linux is weirder than you think",
+          "lens": "counterintuitive twist on Containers Aren’t Linux",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Containers Aren’t Linux",
+          "inspired_by": [
+            "Containers Don't Exist  - Your Kernel Is Lying to You"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Containers Aren’t Linux?",
+          "lens": "personal stake on Containers Aren’t Linux",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Containers Aren’t Linux",
+          "inspired_by": [
+            "Containers Don't Exist  - Your Kernel Is Lying to You"
+          ]
+        }
+      ]
+    },
+    "d64390e204f58334": {
+      "id": "d64390e204f58334",
+      "title": "Docker vs Podman: A New Era in Secure Orchestration",
+      "candidate_shape": "tool",
+      "topic_seed": "Docker vs Podman",
+      "mood_board": [
+        {
+          "title": "We Made A New Channel!",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 2070828,
+          "upload_date": "20260116",
+          "similarity": 0.125
+        },
+        {
+          "title": "We Made A New Journal",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 290625,
+          "upload_date": "20251230",
+          "similarity": 0.125
+        },
+        {
+          "title": "How Docker Took Over the Cloud",
+          "channel": "CodeSource",
+          "channel_handle": "CodeSource",
+          "view_count": 39969,
+          "upload_date": "20260220",
+          "similarity": 0.111
+        },
+        {
+          "title": "The New Hunt for the Colossal Squid",
+          "channel": "Cleo Abram",
+          "channel_handle": "CleoAbram",
+          "view_count": 4056250,
+          "upload_date": "20260328",
+          "similarity": 0.1
+        },
+        {
+          "title": "Proxy vs Reverse Proxy — What's the Difference?",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 8910,
+          "upload_date": "20260128",
+          "similarity": 0.1
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Docker vs Podman actually works the way it does",
+          "lens": "hidden mechanism on Docker vs Podman",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Docker vs Podman",
+          "inspired_by": [
+            "We Made A New Channel!"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Docker vs Podman is weirder than you think",
+          "lens": "counterintuitive twist on Docker vs Podman",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Docker vs Podman",
+          "inspired_by": [
+            "We Made A New Channel!",
+            "We Made A New Journal"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Docker vs Podman?",
+          "lens": "personal stake on Docker vs Podman",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Docker vs Podman",
+          "inspired_by": [
+            "We Made A New Channel!",
+            "We Made A New Journal",
+            "How Docker Took Over the Cloud"
+          ]
+        }
+      ]
+    },
+    "e4e0232b5aa4e773": {
+      "id": "e4e0232b5aa4e773",
+      "title": "Mozilla says 271 vulnerabilities found by Mythos and \"almost no false positives\"",
+      "candidate_shape": "exploit",
+      "topic_seed": "Mozilla says 271",
+      "mood_board": [
+        {
+          "title": "We Found a Loophole to Survive the End of the Universe",
+          "channel": "Kurzgesagt – In a Nutshell",
+          "channel_handle": "kurzgesagt",
+          "view_count": 3838404,
+          "upload_date": "20250930",
+          "similarity": 0.077
+        },
+        {
+          "title": "The Misconception that Almost Stopped AI [How Models Learn Part 1]",
+          "channel": "Welch Labs",
+          "channel_handle": "WelchLabs",
+          "view_count": 628926,
+          "upload_date": "20250509",
+          "similarity": 0.067
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Mozilla says 271 actually works the way it does",
+          "lens": "hidden mechanism on Mozilla says 271",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Mozilla says 271",
+          "inspired_by": [
+            "We Found a Loophole to Survive the End of the Universe"
+          ]
+        },
+        {
+          "title": "[mystery] The Mozilla says 271 bug that nobody can fully explain",
+          "lens": "mystery on Mozilla says 271",
+          "source_pattern": "mystery",
+          "topic_seed": "Mozilla says 271",
+          "inspired_by": [
+            "We Found a Loophole to Survive the End of the Universe",
+            "The Misconception that Almost Stopped AI [How Models Learn Part 1]"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Mozilla says 271 is weirder than you think",
+          "lens": "counterintuitive twist on Mozilla says 271",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Mozilla says 271",
+          "inspired_by": [
+            "We Found a Loophole to Survive the End of the Universe",
+            "The Misconception that Almost Stopped AI [How Models Learn Part 1]"
+          ]
+        }
+      ]
+    },
+    "a3a8896e80511417": {
+      "id": "a3a8896e80511417",
+      "title": "Authorities say Flock cameras' data allegedly used for immigration enforcement",
+      "candidate_shape": "tool",
+      "topic_seed": "Authorities say Flock",
+      "mood_board": [
+        {
+          "title": "Oversampling Data (Explained with Audio) - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 46163,
+          "upload_date": "20260409",
+          "similarity": 0.077
+        },
+        {
+          "title": "Digital Signal Processing With Audio Data - Computerphile",
+          "channel": "Computerphile",
+          "channel_handle": "Computerphile",
+          "view_count": 72619,
+          "upload_date": "20260210",
+          "similarity": 0.071
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Authorities say Flock actually works the way it does",
+          "lens": "hidden mechanism on Authorities say Flock",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Authorities say Flock",
+          "inspired_by": [
+            "Oversampling Data (Explained with Audio) - Computerphile"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Authorities say Flock is weirder than you think",
+          "lens": "counterintuitive twist on Authorities say Flock",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Authorities say Flock",
+          "inspired_by": [
+            "Oversampling Data (Explained with Audio) - Computerphile",
+            "Digital Signal Processing With Audio Data - Computerphile"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Authorities say Flock?",
+          "lens": "personal stake on Authorities say Flock",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Authorities say Flock",
+          "inspired_by": [
+            "Oversampling Data (Explained with Audio) - Computerphile",
+            "Digital Signal Processing With Audio Data - Computerphile"
+          ]
+        }
+      ]
+    },
+    "97ed3e10e39a7e1d": {
+      "id": "97ed3e10e39a7e1d",
+      "title": "Bjarne Stroustrup: How do I deal with memory leaks? By writing code that doesn't have any.",
+      "candidate_shape": "tool",
+      "topic_seed": "Bjarne Stroustrup deal",
+      "mood_board": [
+        {
+          "title": "I Built a Real App Without Writing a Single Line of Code",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 2690,
+          "upload_date": "20260107",
+          "similarity": 0.125
+        },
+        {
+          "title": "Why You Shouldn't Nest Your Code",
+          "channel": "CodeAesthetic",
+          "channel_handle": "CodeAesthetic",
+          "view_count": 3297979,
+          "upload_date": "20221206",
+          "similarity": 0.083
+        },
+        {
+          "title": "Naming Things in Code",
+          "channel": "CodeAesthetic",
+          "channel_handle": "CodeAesthetic",
+          "view_count": 2853356,
+          "upload_date": "20221127",
+          "similarity": 0.083
+        },
+        {
+          "title": "How does Computer Memory Work? 💻🛠",
+          "channel": "Branch Education",
+          "channel_handle": "BranchEducation",
+          "view_count": 5222043,
+          "upload_date": "20221104",
+          "similarity": 0.083
+        },
+        {
+          "title": "Heap Memory Explained",
+          "channel": "The Coding Gopher",
+          "channel_handle": "TheCodingGopher",
+          "view_count": 12884,
+          "upload_date": "20260223",
+          "similarity": 0.083
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Bjarne Stroustrup deal actually works the way it does",
+          "lens": "hidden mechanism on Bjarne Stroustrup deal",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Bjarne Stroustrup deal",
+          "inspired_by": [
+            "I Built a Real App Without Writing a Single Line of Code"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Bjarne Stroustrup deal is weirder than you think",
+          "lens": "counterintuitive twist on Bjarne Stroustrup deal",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Bjarne Stroustrup deal",
+          "inspired_by": [
+            "I Built a Real App Without Writing a Single Line of Code",
+            "Why You Shouldn't Nest Your Code"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Bjarne Stroustrup deal?",
+          "lens": "personal stake on Bjarne Stroustrup deal",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Bjarne Stroustrup deal",
+          "inspired_by": [
+            "I Built a Real App Without Writing a Single Line of Code",
+            "Why You Shouldn't Nest Your Code",
+            "Naming Things in Code"
+          ]
+        }
+      ]
+    },
+    "536f83052ffbbbc2": {
+      "id": "536f83052ffbbbc2",
+      "title": "7 Practical Tips for Cheating at Design",
+      "candidate_shape": "tool",
+      "topic_seed": "Practical Tips Cheating",
+      "mood_board": [
+        {
+          "title": "CDNs Explained in 6 Minutes | System Design Basics",
+          "channel": "LearnThatStack",
+          "channel_handle": "LearnThatStack",
+          "view_count": 41585,
+          "upload_date": "20260124",
+          "similarity": 0.111
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Practical Tips Cheating actually works the way it does",
+          "lens": "hidden mechanism on Practical Tips Cheating",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Practical Tips Cheating",
+          "inspired_by": [
+            "CDNs Explained in 6 Minutes | System Design Basics"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why Practical Tips Cheating is weirder than you think",
+          "lens": "counterintuitive twist on Practical Tips Cheating",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Practical Tips Cheating",
+          "inspired_by": [
+            "CDNs Explained in 6 Minutes | System Design Basics"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own Practical Tips Cheating?",
+          "lens": "personal stake on Practical Tips Cheating",
+          "source_pattern": "personal-stake",
+          "topic_seed": "Practical Tips Cheating",
+          "inspired_by": [
+            "CDNs Explained in 6 Minutes | System Design Basics"
+          ]
+        }
+      ]
+    },
+    "fa3e3b20ad661bc8": {
+      "id": "fa3e3b20ad661bc8",
+      "title": "PC Engine CPU",
+      "candidate_shape": "tool",
+      "topic_seed": "PC Engine CPU",
+      "mood_board": [
+        {
+          "title": "How do Transistors Build into a CPU?  🖥️🤔  How do Transistors Work? 🖥️🤔",
+          "channel": "Branch Education",
+          "channel_handle": "BranchEducation",
+          "view_count": 2317913,
+          "upload_date": "20250621",
+          "similarity": 0.167
+        },
+        {
+          "title": "How are Microchips Made? 🖥️🛠️ CPU Manufacturing Process Steps",
+          "channel": "Branch Education",
+          "channel_handle": "BranchEducation",
+          "view_count": 11008660,
+          "upload_date": "20240517",
+          "similarity": 0.143
+        }
+      ],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why PC Engine CPU actually works the way it does",
+          "lens": "hidden mechanism on PC Engine CPU",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "PC Engine CPU",
+          "inspired_by": [
+            "How do Transistors Build into a CPU?  🖥️🤔  How do Transistors Work? 🖥️🤔"
+          ]
+        },
+        {
+          "title": "[counterintuitive-twist] Why PC Engine CPU is weirder than you think",
+          "lens": "counterintuitive twist on PC Engine CPU",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "PC Engine CPU",
+          "inspired_by": [
+            "How do Transistors Build into a CPU?  🖥️🤔  How do Transistors Work? 🖥️🤔",
+            "How are Microchips Made? 🖥️🛠️ CPU Manufacturing Process Steps"
+          ]
+        },
+        {
+          "title": "[personal-stake] How easy is it to build your own PC Engine CPU?",
+          "lens": "personal stake on PC Engine CPU",
+          "source_pattern": "personal-stake",
+          "topic_seed": "PC Engine CPU",
+          "inspired_by": [
+            "How do Transistors Build into a CPU?  🖥️🤔  How do Transistors Work? 🖥️🤔",
+            "How are Microchips Made? 🖥️🛠️ CPU Manufacturing Process Steps"
+          ]
+        }
+      ]
+    },
+    "49997bed7f8113f7": {
+      "id": "49997bed7f8113f7",
+      "title": "Hackers breach JDownloader's website to serve malware-laced downloads",
+      "candidate_shape": "exploit",
+      "topic_seed": "Hackers breach JDownloader's",
+      "mood_board": [],
+      "starter_angles": [
+        {
+          "title": "[hidden-mechanism] Why Hackers breach JDownloader's actually works the way it does",
+          "lens": "hidden mechanism on Hackers breach JDownloader's",
+          "source_pattern": "hidden-mechanism",
+          "topic_seed": "Hackers breach JDownloader's",
+          "inspired_by": []
+        },
+        {
+          "title": "[mystery] The Hackers breach JDownloader's bug that nobody can fully explain",
+          "lens": "mystery on Hackers breach JDownloader's",
+          "source_pattern": "mystery",
+          "topic_seed": "Hackers breach JDownloader's",
+          "inspired_by": []
+        },
+        {
+          "title": "[counterintuitive-twist] Why Hackers breach JDownloader's is weirder than you think",
+          "lens": "counterintuitive twist on Hackers breach JDownloader's",
+          "source_pattern": "counterintuitive-twist",
+          "topic_seed": "Hackers breach JDownloader's",
+          "inspired_by": []
+        }
+      ]
+    }
+  }
+}

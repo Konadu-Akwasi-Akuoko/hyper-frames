@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-05-08T23:44:23+00:00",
+  "threshold": 0.15,
+  "min_size": 2,
+  "comparisons": 1830,
+  "clusters": [
+    {
+      "id": 1,
+      "size": 3,
+      "members": [
+        {
+          "id": "b703fa597fe2516e",
+          "title": "Cloudflare reduce workforce by more than 1,100 employees globally.",
+          "sources": [
+            "reddit"
+          ],
+          "best_composite": 22,
+          "status": null,
+          "pending_judgment": true
+        },
+        {
+          "id": "452468aa65344619",
+          "title": "Poland is now among the 20 largest economies",
+          "sources": [
+            "hn"
+          ],
+          "best_composite": 16,
+          "status": null,
+          "pending_judgment": false
+        },
+        {
+          "id": "b12f6eb90b14172a",
+          "title": "Cloudflare to cut about 20% of its workforce",
+          "sources": [
+            "hn"
+          ],
+          "best_composite": 12,
+          "status": null,
+          "pending_judgment": false
+        }
+      ],
+      "shared_tokens": [
+        "news",
+        "20",
+        "workforce",
+        "cloudflare",
+        "among",
+        "economies"
+      ]
+    },
+    {
+      "id": 2,
+      "size": 2,
+      "members": [
+        {
+          "id": "f13d116013ea6b3e",
+          "title": "Canvas online again as ShinyHunters threatens to leak schools’ data",
+          "sources": [
+            "hn"
+          ],
+          "best_composite": 27,
+          "status": null,
+          "pending_judgment": false
+        },
+        {
+          "id": "c6a021f805ce4074",
+          "title": "ShinyHunters claims data theft from 8,800 schools (Instructure/Canvas)",
+          "sources": [
+            "hn"
+          ],
+          "best_composite": 21,
+          "status": null,
+          "pending_judgment": true
+        }
+      ],
+      "shared_tokens": [
+        "data",
+        "shinyhunters",
+        "canvas",
+        "schools",
+        "again",
+        "breach"
+      ]
+    }
+  ],
+  "singletons": 56
+}
