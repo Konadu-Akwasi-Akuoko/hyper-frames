@@ -85,6 +85,13 @@ If `script.md` is missing, warn the user but proceed — the rephrase
 step works on the title alone; icon and accent picks just have less
 context to draw from.
 
+Then probe `<video-dir>/seo/research.json`:
+
+- **Present** → load it for use at Step 4. Print: `Using SEO research from <date>.`
+- **Missing** → ask once per session: `"No SEO research found. Run it now via the youtube-seo-research skill (~25s)? [Y/n/skip]"`. On Y, invoke `youtube-seo-research` via the `Skill` tool and load the result. On n/skip, proceed without it (current behavior) and don't re-prompt during subsequent thumbnail iterations in the same session.
+
+Never block on missing data — the rephrase, icon, and accent picks all work fine without SEO context. The data only informs Step 4 (paired title).
+
 ### Step 3 — Generate three thumbnail-text rephrases
 
 Load `reference/text-rephrase-recipes.md`. Apply the recipes to produce
@@ -131,6 +138,20 @@ worst failure mode.
 Load `reference/youtube-title-pairing.md`. For each variant text from
 Step 3, write **one** paired YouTube title that the video would ship
 with if that variant won.
+
+If `seo/research.json` was loaded in Step 2, before producing the 3 paired titles, print this compressed digest (4 data lines — the hook-shape line is dropped because title pairing is not where hook shape applies):
+
+```
+SEO context — <topic> (n=<N> videos)
+  Top searchable nouns: <noun1> (<count>), <noun2> (<count>), <noun3> (<count>)
+  Demand phrases:       "<phrase1>", "<phrase2>"
+  Saturation warning:   <N> videos >100K views use "<pattern>" — differentiate
+  Top-performer ages:   median <X> months, freshest <Y> weeks
+```
+
+For ages: derive from `top_videos[].upload_date` (yt-dlp format `YYYYMMDD`) at print time. When a signal is empty, substitute `(none surfaced)` instead of dropping the line — empty is informative.
+
+Then produce the 3 paired titles informed by — but not slavishly conforming to — the digest. The "Using SEO research" section in `youtube-title-pairing.md` codifies what to do with each signal.
 
 The thumbnail and the YouTube title do **different jobs**: the
 thumbnail wins the click in the feed, the title wins search and the
