@@ -31,14 +31,17 @@ not replacements.
 
 The full skill set lives under `.claude/skills/` — `hyperframes`, `hyperframes-cli`,
 `hyperframes-media`, `hyperframes-registry`, `website-to-hyperframes`,
-`script-writer`, `voiceover-elevenlabs`, plus animation adapters (`gsap`, `waapi`,
+`script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`, plus animation adapters (`gsap`, `waapi`,
 `animejs`, `three`, `lottie`, `css-animations`, `tailwind`). Browse them when
 picking a tool for a scene; `hyperframes-registry` in particular governs
 `hyperframes add` and how blocks/components get wired into the project.
 
-For voiceover generation in this project, use `voiceover-elevenlabs` (ElevenLabs
-v3 + Scribe v2), not `hyperframes-media tts` (Kokoro). The Kokoro path stays
-parallel and untouched for any non-v3 use case.
+For voiceover generation in this project, default to `voiceover-elevenlabs-v2`
+(ElevenLabs Multilingual v2 + Scribe v2). It's the long-form stability champion
+(per the official models page) and matches the project's plain-prose house
+style. Use `voiceover-elevenlabs-v3` only when a video genuinely needs inline
+audio tags for per-beat emotional shifts. The `hyperframes-media tts` (Kokoro)
+path stays parallel and untouched for any non-ElevenLabs use case.
 
 Official docs: https://hyperframes.heygen.com/introduction (full text index at
 https://hyperframes.mintlify.app/llms.txt). Use these as the upstream source of
