@@ -871,6 +871,33 @@
       display: flex; justify-content: flex-end; gap: 8px;
       padding-top: 14px; border-top: 1px solid var(--border-subtle);
     }
+
+    .kbd-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 8px;
+      margin: 4px 0;
+    }
+    .kbd-list li {
+      display: grid; grid-template-columns: 64px 1fr;
+      align-items: center; gap: 12px;
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .kbd-list kbd {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--accent);
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2px 6px; text-align: center;
+    }
+    .help-note {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--text-muted); line-height: 1.5;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 12px;
+    }
+    .help-note code { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -937,6 +964,31 @@
         <button type="submit" class="btn btn-primary">Add card</button>
       </div>
     </form>
+  </dialog>
+
+  <!-- ============================== HELP DIALOG -->
+  <dialog id="help-dialog" class="dialog">
+    <div class="dialog-body">
+      <h2 class="dialog-title">Keyboard shortcuts</h2>
+      <ul class="kbd-list">
+        <li><kbd>n</kbd><span>Open Add Card</span></li>
+        <li><kbd>s</kbd><span>Trigger Sync</span></li>
+        <li><kbd>?</kbd><span>Open this help</span></li>
+        <li><kbd>Esc</kbd><span>Close panel / dialog</span></li>
+        <li><kbd>Delete</kbd><span>Delete card (when panel open)</span></li>
+      </ul>
+      <p class="help-note">
+        <strong>Folder sync</strong> requires a Chromium-based browser
+        (Chrome, Edge, Brave, Arc). Manual mode works in any browser.
+      </p>
+      <p class="help-note">
+        <button type="button" class="copy-btn" id="reset-folder">Reset folder access</button>
+        &nbsp;Clears the saved <code>videos/</code> directory handle.
+      </p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="help-close">Close</button>
+      </div>
+    </div>
   </dialog>
 
   <script>
@@ -1697,10 +1749,49 @@
       return { results, errors };
     }
 
+    function openHelpDialog() {
+      document.getElementById('help-dialog').showModal();
+    }
+
+    function bindHelpDialog() {
+      document.getElementById('btn-help').addEventListener('click', openHelpDialog);
+      document.getElementById('help-close').addEventListener('click', () =>
+        document.getElementById('help-dialog').close());
+      document.getElementById('reset-folder').addEventListener('click', async () => {
+        await clearCachedDirHandle();
+        document.getElementById('help-dialog').close();
+        alert('Folder access reset. Click Sync to pick a new directory.');
+      });
+    }
+
+    function bindKeyboard() {
+      document.addEventListener('keydown', (e) => {
+        const tag = document.activeElement?.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+        const dlgOpen = document.querySelector('dialog[open]');
+        if (dlgOpen && e.key !== 'Escape') return;
+
+        if (e.key === 'n') { e.preventDefault(); openAddDialog(); }
+        else if (e.key === 's') { e.preventDefault(); document.getElementById('btn-sync').click(); }
+        else if (e.key === '?' || (e.shiftKey && e.key === '/')) { e.preventDefault(); openHelpDialog(); }
+        else if (e.key === 'Delete' && state.ui.panelOpenCardId) {
+          const card = findCard(state.ui.panelOpenCardId);
+          if (!card) return;
+          if (!confirm(`Delete "${card.title}" (${card.slug})?`)) return;
+          mutate(() => {
+            state.cards = state.cards.filter(c => c.id !== card.id);
+            state.ui.panelOpenCardId = null;
+          });
+        }
+      });
+    }
+
     bindAddDialog();
     bindTopbar();
     bindBoardEvents();
     bindPanelEvents();
+    bindHelpDialog();
+    bindKeyboard();
 
     function renderArtifactRow(artifactId, status) {
       const label = ARTIFACTS.find(a => a.id === artifactId).label;
