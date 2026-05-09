@@ -11,6 +11,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from typing import Any
 import re
+import statistics
 
 # Lowercase stopwords stripped before noun-frequency counting.
 STOPWORDS: frozenset[str] = frozenset({
@@ -137,3 +138,82 @@ def compute_demand_phrases(
     ]
     phrases.sort(key=lambda p: p["letter_hits"], reverse=True)
     return phrases[:DEMAND_MAX_PHRASES]
+
+
+HOOK_MIN_VIDEOS_WITH_HEATMAP = 5
+
+
+def _intensity_at(heatmap: list[dict[str, Any]] | None, t: float) -> float | None:
+    """Return the heatmap value at timestamp t, or None if heatmap missing or t out of range."""
+    if not heatmap:
+        return None
+    for entry in heatmap:
+        start = entry.get("start_time")
+        end = entry.get("end_time")
+        value = entry.get("value")
+        if start is None or end is None or value is None:
+            continue
+        if start <= t < end:
+            return float(value)
+    return None
+
+
+def _peak_position(heatmap: list[dict[str, Any]] | None) -> float | None:
+    """Return the start_time of the heatmap entry with the highest value."""
+    if not heatmap:
+        return None
+    best = max(
+        (e for e in heatmap if e.get("value") is not None),
+        key=lambda e: e["value"],
+        default=None,
+    )
+    return float(best["start_time"]) if best else None
+
+
+def compute_hook_patterns(
+    videos: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    """Median peak position + intensities at 5/15/30s across videos with heatmaps."""
+    with_heatmap = [v for v in videos if v.get("heatmap")]
+    if len(with_heatmap) < HOOK_MIN_VIDEOS_WITH_HEATMAP:
+        return None
+
+    peaks = [
+        p
+        for v in with_heatmap
+        if (p := _peak_position(v.get("heatmap"))) is not None
+    ]
+    intensities_5 = [
+        i for v in with_heatmap
+        if (i := _intensity_at(v.get("heatmap"), 5.0)) is not None
+    ]
+    intensities_15 = [
+        i for v in with_heatmap
+        if (i := _intensity_at(v.get("heatmap"), 15.0)) is not None
+    ]
+    intensities_30 = [
+        i for v in with_heatmap
+        if (i := _intensity_at(v.get("heatmap"), 30.0)) is not None
+    ]
+
+    median_peak = statistics.median(peaks) if peaks else None
+    median_5 = statistics.median(intensities_5) if intensities_5 else None
+    median_15 = statistics.median(intensities_15) if intensities_15 else None
+    median_30 = statistics.median(intensities_30) if intensities_30 else None
+
+    note = (
+        f"Top performers' peak hook lives near {median_peak:.0f}s; "
+        f"viewer hold at 5/15/30s: "
+        f"{(median_5 or 0)*100:.0f}%/{(median_15 or 0)*100:.0f}%/{(median_30 or 0)*100:.0f}%."
+        if median_peak is not None
+        else "Heatmap available but peak undetermined."
+    )
+
+    return {
+        "median_peak_position_seconds": median_peak,
+        "median_intensity_at_5s": median_5,
+        "median_intensity_at_15s": median_15,
+        "median_intensity_at_30s": median_30,
+        "videos_with_heatmap": len(with_heatmap),
+        "note": note,
+    }
