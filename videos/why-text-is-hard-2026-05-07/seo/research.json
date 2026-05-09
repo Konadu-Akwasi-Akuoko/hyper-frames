@@ -1,0 +1,6545 @@
+{
+  "topic": "text rendering",
+  "generated_at": "2026-05-09T02:07:13+00:00",
+  "params": {
+    "n": 30,
+    "region": "us",
+    "hl": "en"
+  },
+  "autocomplete": {
+    "seed": [
+      "text rendering",
+      "text rendering opengl",
+      "vulkan text rendering",
+      "oled text rendering",
+      "opengl text rendering c++",
+      "msdf text rendering",
+      "sdf text rendering",
+      "sebastian lague text rendering",
+      "text wall",
+      "text shading"
+    ],
+    "expanded": {
+      "a": [
+        "text and display",
+        "text analysis with r",
+        "text mapping",
+        "text recognition flutter",
+        "text analysis using r"
+      ],
+      "b": [
+        "text shading",
+        "text wall",
+        "text wrap ms word",
+        "text rendering"
+      ],
+      "c": [
+        "opengl text rendering c++",
+        "display text copy",
+        "display text colour",
+        "my pc font has changed",
+        "text rendering",
+        "text clipping"
+      ],
+      "d": [
+        "text display dwin",
+        "text rendering",
+        "text recognition flutter",
+        "text finder"
+      ],
+      "e": [],
+      "f": [
+        "displaytext full hd video",
+        "text recognition flutter",
+        "text rendering",
+        "text flow in indesign"
+      ],
+      "g": [
+        "my pc font has changed",
+        "text recognition flutter",
+        "my laptop font has changed",
+        "text reveal blender"
+      ],
+      "h": [
+        "text in rhino",
+        "text recognition flutter",
+        "text rendering"
+      ],
+      "i": [
+        "text rendering in opengl",
+        "render text in blender",
+        "display text iphone",
+        "text rendering",
+        "text recognition flutter",
+        "text design ai"
+      ],
+      "j": [
+        "text mapping",
+        "text chunk",
+        "text recognition flutter",
+        "text justification c++"
+      ],
+      "k": [
+        "text mapping",
+        "text finder",
+        "text justification c++"
+      ],
+      "l": [
+        "font rendering linux",
+        "text led display",
+        "text media",
+        "text format",
+        "text wall",
+        "text mapping",
+        "text layer"
+      ],
+      "m": [
+        "text display minecraft",
+        "text display minecraft bedrock",
+        "text message display on lock screen",
+        "text message display",
+        "msdf text rendering",
+        "text recognition flutter",
+        "text mapping",
+        "text mockup",
+        "text wall"
+      ],
+      "n": [
+        "display text name",
+        "davinci resolve text not rendering"
+      ],
+      "o": [
+        "text rendering opengl",
+        "text display on screen",
+        "display text on the lock screen",
+        "display text on phone",
+        "display text on lcd using arduino",
+        "oled text rendering",
+        "opengl text rendering c++",
+        "text mapping",
+        "texthelp read and write",
+        "text rendering"
+      ],
+      "p": [
+        "text rendering",
+        "text recognition flutter"
+      ],
+      "q": [
+        "text mapping",
+        "text wall",
+        "text recognition flutter"
+      ],
+      "r": [
+        "text rendering"
+      ],
+      "s": [
+        "text display sound effect",
+        "display & text size iphone",
+        "display text style change",
+        "display text size",
+        "display text style",
+        "sdf text rendering"
+      ],
+      "t": [
+        "text display tutorial minecraft",
+        "text display tutorial",
+        "text designing",
+        "text rendering",
+        "text psd"
+      ],
+      "u": [
+        "text rendering",
+        "text mapping",
+        "text recognition flutter",
+        "text overlay in canva"
+      ],
+      "v": [
+        "vulkan text rendering"
+      ],
+      "w": [
+        "text rendering",
+        "text shading",
+        "text wall",
+        "text recognition flutter"
+      ],
+      "x": [
+        "text recognition flutter",
+        "text rendering"
+      ],
+      "y": [
+        "text mapping",
+        "text animator",
+        "text media",
+        "text chunk"
+      ],
+      "z": [
+        "text recognition flutter",
+        "text mapping",
+        "text rendering",
+        "text wall"
+      ]
+    }
+  },
+  "top_videos": [
+    {
+      "title": "A Brief look at Text Rendering",
+      "channel": "VoxelRifts",
+      "channel_id": "UC4Cqvm3LRHa2Fuv2m45sIEg",
+      "view_count": 105499,
+      "like_count": 6556,
+      "comment_count": 185,
+      "upload_date": "20241227",
+      "tags": [],
+      "categories": [
+        "People & Blogs"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 48.0
+        },
+        {
+          "start_time": 48.0,
+          "title": "Bitmap",
+          "end_time": 176.0
+        },
+        {
+          "start_time": 176.0,
+          "title": "Vector",
+          "end_time": 421.0
+        },
+        {
+          "start_time": 421.0,
+          "title": "SDF",
+          "end_time": 624.0
+        },
+        {
+          "start_time": 624.0,
+          "title": "MSDF",
+          "end_time": 729.0
+        },
+        {
+          "start_time": 729.0,
+          "title": "String Representation Intro",
+          "end_time": 747.0
+        },
+        {
+          "start_time": 747.0,
+          "title": "ASCII",
+          "end_time": 815.0
+        },
+        {
+          "start_time": 815.0,
+          "title": "Unicode",
+          "end_time": 938.0
+        },
+        {
+          "start_time": 938.0,
+          "title": "A Simple Drawing Procedure",
+          "end_time": 996.0
+        },
+        {
+          "start_time": 996.0,
+          "title": "Shaping Intro",
+          "end_time": 1033.0
+        },
+        {
+          "start_time": 1033.0,
+          "title": "Shaping Operations",
+          "end_time": 1204.0
+        },
+        {
+          "start_time": 1204.0,
+          "title": "Putting it all together",
+          "end_time": 1270.0
+        },
+        {
+          "start_time": 1270.0,
+          "title": "About Brilliant",
+          "end_time": 1347
+        }
+      ],
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 13.47,
+          "value": 0.5726126798402473
+        },
+        {
+          "start_time": 13.47,
+          "end_time": 26.94,
+          "value": 0.20071857737668217
+        },
+        {
+          "start_time": 26.94,
+          "end_time": 40.41,
+          "value": 0.1880692188822718
+        },
+        {
+          "start_time": 40.41,
+          "end_time": 53.88,
+          "value": 0.4485690143205998
+        },
+        {
+          "start_time": 53.88,
+          "end_time": 67.35,
+          "value": 0.3734541793906296
+        },
+        {
+          "start_time": 67.35,
+          "end_time": 80.82,
+          "value": 0.27902943433962396
+        },
+        {
+          "start_time": 80.82,
+          "end_time": 94.29,
+          "value": 0.18678939077345497
+        },
+        {
+          "start_time": 94.29,
+          "end_time": 107.76,
+          "value": 0.08457792646267286
+        },
+        {
+          "start_time": 107.76,
+          "end_time": 121.23,
+          "value": 0.13784851892932268
+        },
+        {
+          "start_time": 121.23,
+          "end_time": 134.7,
+          "value": 0.2090851802788376
+        },
+        {
+          "start_time": 134.7,
+          "end_time": 148.17,
+          "value": 0.24529058417659785
+        },
+        {
+          "start_time": 148.17,
+          "end_time": 161.64,
+          "value": 0.15762106563260567
+        },
+        {
+          "start_time": 161.64,
+          "end_time": 175.11,
+          "value": 0.12572179639502842
+        },
+        {
+          "start_time": 175.11,
+          "end_time": 188.58,
+          "value": 0.2528011821615353
+        },
+        {
+          "start_time": 188.58,
+          "end_time": 202.05,
+          "value": 0.3033740370836913
+        },
+        {
+          "start_time": 202.05,
+          "end_time": 215.52,
+          "value": 0.4152124222629181
+        },
+        {
+          "start_time": 215.52,
+          "end_time": 228.99,
+          "value": 0.35646454865897303
+        },
+        {
+          "start_time": 228.99,
+          "end_time": 242.46,
+          "value": 0.30326914161962465
+        },
+        {
+          "start_time": 242.46,
+          "end_time": 255.93,
+          "value": 0.24699584925338378
+        },
+        {
+          "start_time": 255.93,
+          "end_time": 269.4,
+          "value": 0.2833596928875982
+        },
+        {
+          "start_time": 269.4,
+          "end_time": 282.87,
+          "value": 0.23168905624485472
+        },
+        {
+          "start_time": 282.87,
+          "end_time": 296.34,
+          "value": 0.10364634943250778
+        },
+        {
+          "start_time": 296.34,
+          "end_time": 309.81,
+          "value": 0.11188076749838666
+        },
+        {
+          "start_time": 309.81,
+          "end_time": 323.28,
+          "value": 0.13927147658851688
+        },
+        {
+          "start_time": 323.28,
+          "end_time": 336.75,
+          "value": 0.1460080619095098
+        },
+        {
+          "start_time": 336.75,
+          "end_time": 350.22,
+          "value": 0.21650449645165232
+        },
+        {
+          "start_time": 350.22,
+          "end_time": 363.69,
+          "value": 0.2514219826693038
+        },
+        {
+          "start_time": 363.69,
+          "end_time": 377.16,
+          "value": 0.1829178585034465
+        },
+        {
+          "start_time": 377.16,
+          "end_time": 390.63,
+          "value": 0.07567554980559218
+        },
+        {
+          "start_time": 390.63,
+          "end_time": 404.1,
+          "value": 0.15435676844550789
+        },
+        {
+          "start_time": 404.1,
+          "end_time": 417.57,
+          "value": 0.1715083974974094
+        },
+        {
+          "start_time": 417.57,
+          "end_time": 431.04,
+          "value": 0.37872994537604915
+        },
+        {
+          "start_time": 431.04,
+          "end_time": 444.51,
+          "value": 0.5042446715043889
+        },
+        {
+          "start_time": 444.51,
+          "end_time": 457.98,
+          "value": 0.5259719772491876
+        },
+        {
+          "start_time": 457.98,
+          "end_time": 471.45,
+          "value": 0.49523748214100416
+        },
+        {
+          "start_time": 471.45,
+          "end_time": 484.92,
+          "value": 0.42070791010798037
+        },
+        {
+          "start_time": 484.92,
+          "end_time": 498.39,
+          "value": 0.36483814459206626
+        },
+        {
+          "start_time": 498.39,
+          "end_time": 511.86,
+          "value": 0.3179840097313198
+        },
+        {
+          "start_time": 511.86,
+          "end_time": 525.33,
+          "value": 0.2809070838358583
+        },
+        {
+          "start_time": 525.33,
+          "end_time": 538.8,
+          "value": 0.2858475567461961
+        },
+        {
+          "start_time": 538.8,
+          "end_time": 552.27,
+          "value": 0.2658697501022808
+        },
+        {
+          "start_time": 552.27,
+          "end_time": 565.74,
+          "value": 0.1938264488409253
+        },
+        {
+          "start_time": 565.74,
+          "end_time": 579.21,
+          "value": 0.12384611239565527
+        },
+        {
+          "start_time": 579.21,
+          "end_time": 592.68,
+          "value": 0.13343401297904472
+        },
+        {
+          "start_time": 592.68,
+          "end_time": 606.15,
+          "value": 0.10990759485469749
+        },
+        {
+          "start_time": 606.15,
+          "end_time": 619.62,
+          "value": 0.13798635198289513
+        },
+        {
+          "start_time": 619.62,
+          "end_time": 633.09,
+          "value": 0.3998721537394266
+        },
+        {
+          "start_time": 633.09,
+          "end_time": 646.56,
+          "value": 0.45076482603506246
+        },
+        {
+          "start_time": 646.56,
+          "end_time": 660.03,
+          "value": 0.7850756078539558
+        },
+        {
+          "start_time": 660.03,
+          "end_time": 673.5,
+          "value": 0.7679246408641549
+        },
+        {
+          "start_time": 673.5,
+          "end_time": 686.97,
+          "value": 0.27681396765654914
+        },
+        {
+          "start_time": 686.97,
+          "end_time": 700.44,
+          "value": 0.1976904708439799
+        },
+        {
+          "start_time": 700.44,
+          "end_time": 713.91,
+          "value": 0.3867083316139546
+        },
+        {
+          "start_time": 713.91,
+          "end_time": 727.38,
+          "value": 0.5289265948887213
+        },
+        {
+          "start_time": 727.38,
+          "end_time": 740.85,
+          "value": 0.36478137276693823
+        },
+        {
+          "start_time": 740.85,
+          "end_time": 754.32,
+          "value": 0.252470978688852
+        },
+        {
+          "start_time": 754.32,
+          "end_time": 767.79,
+          "value": 0.1634803566019576
+        },
+        {
+          "start_time": 767.79,
+          "end_time": 781.26,
+          "value": 0.45556361765586795
+        },
+        {
+          "start_time": 781.26,
+          "end_time": 794.73,
+          "value": 0.41314198855876
+        },
+        {
+          "start_time": 794.73,
+          "end_time": 808.2,
+          "value": 0.12039399646638836
+        },
+        {
+          "start_time": 808.2,
+          "end_time": 821.67,
+          "value": 0.25729045975030185
+        },
+        {
+          "start_time": 821.67,
+          "end_time": 835.14,
+          "value": 0.20203591544138713
+        },
+        {
+          "start_time": 835.14,
+          "end_time": 848.61,
+          "value": 0.26555829126282127
+        },
+        {
+          "start_time": 848.61,
+          "end_time": 862.08,
+          "value": 0.2560404451254535
+        },
+        {
+          "start_time": 862.08,
+          "end_time": 875.55,
+          "value": 0.1618962488895848
+        },
+        {
+          "start_time": 875.55,
+          "end_time": 889.02,
+          "value": 0.1943326160062885
+        },
+        {
+          "start_time": 889.02,
+          "end_time": 902.49,
+          "value": 0.3741994130426379
+        },
+        {
+          "start_time": 902.49,
+          "end_time": 915.96,
+          "value": 0.8915437176828998
+        },
+        {
+          "start_time": 915.96,
+          "end_time": 929.43,
+          "value": 1.0
+        },
+        {
+          "start_time": 929.43,
+          "end_time": 942.9,
+          "value": 0.5231630132717899
+        },
+        {
+          "start_time": 942.9,
+          "end_time": 956.37,
+          "value": 0.2480115766523759
+        },
+        {
+          "start_time": 956.37,
+          "end_time": 969.84,
+          "value": 0.2204725242728259
+        },
+        {
+          "start_time": 969.84,
+          "end_time": 983.31,
+          "value": 0.38334489062728927
+        },
+        {
+          "start_time": 983.31,
+          "end_time": 996.78,
+          "value": 0.497034484197607
+        },
+        {
+          "start_time": 996.78,
+          "end_time": 1010.25,
+          "value": 0.25153701595928624
+        },
+        {
+          "start_time": 1010.25,
+          "end_time": 1023.72,
+          "value": 0.30677231908840175
+        },
+        {
+          "start_time": 1023.72,
+          "end_time": 1037.19,
+          "value": 0.37947997897828695
+        },
+        {
+          "start_time": 1037.19,
+          "end_time": 1050.66,
+          "value": 0.4718953655539165
+        },
+        {
+          "start_time": 1050.66,
+          "end_time": 1064.13,
+          "value": 0.6596030881845304
+        },
+        {
+          "start_time": 1064.13,
+          "end_time": 1077.6,
+          "value": 0.2654905954130331
+        },
+        {
+          "start_time": 1077.6,
+          "end_time": 1091.07,
+          "value": 0.24085555430120076
+        },
+        {
+          "start_time": 1091.07,
+          "end_time": 1104.54,
+          "value": 0.21143388695966175
+        },
+        {
+          "start_time": 1104.54,
+          "end_time": 1118.01,
+          "value": 0.24038073163841367
+        },
+        {
+          "start_time": 1118.01,
+          "end_time": 1131.48,
+          "value": 0.1406839860801857
+        },
+        {
+          "start_time": 1131.48,
+          "end_time": 1144.95,
+          "value": 0.2765909354864034
+        },
+        {
+          "start_time": 1144.95,
+          "end_time": 1158.42,
+          "value": 0.29571319238079485
+        },
+        {
+          "start_time": 1158.42,
+          "end_time": 1171.89,
+          "value": 0.11913011991630831
+        },
+        {
+          "start_time": 1171.89,
+          "end_time": 1185.36,
+          "value": 0.2522336708046617
+        },
+        {
+          "start_time": 1185.36,
+          "end_time": 1198.83,
+          "value": 0.3996914521648391
+        },
+        {
+          "start_time": 1198.83,
+          "end_time": 1212.3,
+          "value": 0.36541769720339484
+        },
+        {
+          "start_time": 1212.3,
+          "end_time": 1225.77,
+          "value": 0.14169416870908513
+        },
+        {
+          "start_time": 1225.77,
+          "end_time": 1239.24,
+          "value": 0.06778544541091604
+        },
+        {
+          "start_time": 1239.24,
+          "end_time": 1252.71,
+          "value": 0.08305017678661518
+        },
+        {
+          "start_time": 1252.71,
+          "end_time": 1266.18,
+          "value": 0.09910892751536193
+        },
+        {
+          "start_time": 1266.18,
+          "end_time": 1279.65,
+          "value": 0.06585054823241884
+        },
+        {
+          "start_time": 1279.65,
+          "end_time": 1293.12,
+          "value": 0.0
+        },
+        {
+          "start_time": 1293.12,
+          "end_time": 1306.59,
+          "value": 0.024731381492192596
+        },
+        {
+          "start_time": 1306.59,
+          "end_time": 1320.06,
+          "value": 0.02727661716969714
+        },
+        {
+          "start_time": 1320.06,
+          "end_time": 1333.53,
+          "value": 0.008737057681612247
+        },
+        {
+          "start_time": 1333.53,
+          "end_time": 1347.0,
+          "value": 0.07133511205282089
+        }
+      ],
+      "duration_seconds": 1347,
+      "description_excerpt": "In this video, I go through most of the concepts required to render text to the screen. (Bitmaps, Vector, SDFs, MSDFs, String Representation and Shaping)\n\nThis video is sponsored by Brilliant.\nYou can try Brilliant for free for 30 days using the link https://brilliant.org/VoxelRifts . You will also get 20% off Brilliant\u2019s annual premium subscription!\n\nTimestamps:\n00:00 Intro\n00:48 Bitmap\n02:56 Vector\n07:01 SDF\n10:24 MSDF\n12:09 String Representation Intro\n12:27 ASCII\n13:35 Unicode\n15:38 A Simple "
+    },
+    {
+      "title": "Coding Adventure: Rendering Text",
+      "channel": "Sebastian Lague",
+      "channel_id": "UCmtyQOKKmrMVaKuRXz02jbQ",
+      "view_count": 1155594,
+      "like_count": 38356,
+      "comment_count": 1800,
+      "upload_date": "20240413",
+      "tags": [],
+      "categories": [
+        "Entertainment"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 118.0
+        },
+        {
+          "start_time": 118.0,
+          "title": "The Font Directory",
+          "end_time": 267.0
+        },
+        {
+          "start_time": 267.0,
+          "title": "Loading Simple Glyphs",
+          "end_time": 642.0
+        },
+        {
+          "start_time": 642.0,
+          "title": "B\u00e9zier Basics",
+          "end_time": 822.0
+        },
+        {
+          "start_time": 822.0,
+          "title": "The Character Map",
+          "end_time": 947.0
+        },
+        {
+          "start_time": 947.0,
+          "title": "Implied Points",
+          "end_time": 1091.0
+        },
+        {
+          "start_time": 1091.0,
+          "title": "Compound Glyphs",
+          "end_time": 1225.0
+        },
+        {
+          "start_time": 1225.0,
+          "title": "Size and Spacing",
+          "end_time": 1287.0
+        },
+        {
+          "start_time": 1287.0,
+          "title": "Rendering Glyphs with Lots of Triangles",
+          "end_time": 1337.0
+        },
+        {
+          "start_time": 1337.0,
+          "title": "Optimized Curve Rendering (Loop-Blinn)",
+          "end_time": 1700.0
+        },
+        {
+          "start_time": 1700.0,
+          "title": "A Brief Look at SDF Rendering",
+          "end_time": 1833.0
+        },
+        {
+          "start_time": 1833.0,
+          "title": "The Counting Method",
+          "end_time": 1908.0
+        },
+        {
+          "start_time": 1908.0,
+          "title": "Ray-B\u00e9zier Intersections",
+          "end_time": 2049.0
+        },
+        {
+          "start_time": 2049.0,
+          "title": "Point in Glyph Test",
+          "end_time": 2195.0
+        },
+        {
+          "start_time": 2195.0,
+          "title": "Shader Time",
+          "end_time": 2317.0
+        },
+        {
+          "start_time": 2317.0,
+          "title": "Floating Point Problems",
+          "end_time": 2482.0
+        },
+        {
+          "start_time": 2482.0,
+          "title": "The Evil Artifact Detector",
+          "end_time": 2736.0
+        },
+        {
+          "start_time": 2736.0,
+          "title": "The Closest Curve Method",
+          "end_time": 3048.0
+        },
+        {
+          "start_time": 3048.0,
+          "title": "Curve Splitting",
+          "end_time": 3271.0
+        },
+        {
+          "start_time": 3271.0,
+          "title": "Defeating the Evil Artifacts",
+          "end_time": 3538.0
+        },
+        {
+          "start_time": 3538.0,
+          "title": "Anti-Aliasing",
+          "end_time": 3767.0
+        },
+        {
+          "start_time": 3767.0,
+          "title": "Performance and Legibility",
+          "end_time": 3911.0
+        },
+        {
+          "start_time": 3911.0,
+          "title": "The Counting Method Returns",
+          "end_time": 4185.0
+        },
+        {
+          "start_time": 4185.0,
+          "title": "Outro",
+          "end_time": 4254
+        }
+      ],
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 42.54,
+          "value": 0.19111603105191546
+        },
+        {
+          "start_time": 42.54,
+          "end_time": 85.08,
+          "value": 0.09060621155503756
+        },
+        {
+          "start_time": 85.08,
+          "end_time": 127.62,
+          "value": 0.07754941833070132
+        },
+        {
+          "start_time": 127.62,
+          "end_time": 170.16,
+          "value": 0.09170399524937356
+        },
+        {
+          "start_time": 170.16,
+          "end_time": 212.7,
+          "value": 0.07135724628489229
+        },
+        {
+          "start_time": 212.7,
+          "end_time": 255.24,
+          "value": 0.05493819141955785
+        },
+        {
+          "start_time": 255.24,
+          "end_time": 297.78,
+          "value": 0.05085986232371922
+        },
+        {
+          "start_time": 297.78,
+          "end_time": 340.32,
+          "value": 0.05509068778420837
+        },
+        {
+          "start_time": 340.32,
+          "end_time": 382.86,
+          "value": 0.07402429098766897
+        },
+        {
+          "start_time": 382.86,
+          "end_time": 425.4,
+          "value": 0.03559563049703449
+        },
+        {
+          "start_time": 425.4,
+          "end_time": 467.94,
+          "value": 0.03775796487837524
+        },
+        {
+          "start_time": 467.94,
+          "end_time": 510.48,
+          "value": 0.03230033017032727
+        },
+        {
+          "start_time": 510.48,
+          "end_time": 553.02,
+          "value": 0.05220546359507987
+        },
+        {
+          "start_time": 553.02,
+          "end_time": 595.56,
+          "value": 0.0563614668568516
+        },
+        {
+          "start_time": 595.56,
+          "end_time": 638.1,
+          "value": 0.049655804904256404
+        },
+        {
+          "start_time": 638.1,
+          "end_time": 680.64,
+          "value": 0.036036734759727296
+        },
+        {
+          "start_time": 680.64,
+          "end_time": 723.18,
+          "value": 0.04063273185437956
+        },
+        {
+          "start_time": 723.18,
+          "end_time": 765.72,
+          "value": 0.03134334737844637
+        },
+        {
+          "start_time": 765.72,
+          "end_time": 808.26,
+          "value": 0.08672370955263903
+        },
+        {
+          "start_time": 808.26,
+          "end_time": 850.8,
+          "value": 0.045228976598846074
+        },
+        {
+          "start_time": 850.8,
+          "end_time": 893.34,
+          "value": 0.029907877184976863
+        },
+        {
+          "start_time": 893.34,
+          "end_time": 935.88,
+          "value": 0.04879347227364007
+        },
+        {
+          "start_time": 935.88,
+          "end_time": 978.42,
+          "value": 0.04619215063608315
+        },
+        {
+          "start_time": 978.42,
+          "end_time": 1020.96,
+          "value": 0.01746195616535177
+        },
+        {
+          "start_time": 1020.96,
+          "end_time": 1063.5,
+          "value": 0.026308682575725353
+        },
+        {
+          "start_time": 1063.5,
+          "end_time": 1106.04,
+          "value": 0.04242542092749337
+        },
+        {
+          "start_time": 1106.04,
+          "end_time": 1148.58,
+          "value": 0.02427601284390226
+        },
+        {
+          "start_time": 1148.58,
+          "end_time": 1191.12,
+          "value": 0.038635300294512745
+        },
+        {
+          "start_time": 1191.12,
+          "end_time": 1233.66,
+          "value": 0.0487465785830068
+        },
+        {
+          "start_time": 1233.66,
+          "end_time": 1276.2,
+          "value": 0.058443706495042574
+        },
+        {
+          "start_time": 1276.2,
+          "end_time": 1318.74,
+          "value": 0.07390953325922825
+        },
+        {
+          "start_time": 1318.74,
+          "end_time": 1361.28,
+          "value": 0.05173615121967394
+        },
+        {
+          "start_time": 1361.28,
+          "end_time": 1403.82,
+          "value": 0.01738684237894984
+        },
+        {
+          "start_time": 1403.82,
+          "end_time": 1446.36,
+          "value": 0.024811204064249803
+        },
+        {
+          "start_time": 1446.36,
+          "end_time": 1488.9,
+          "value": 0.025722998753734263
+        },
+        {
+          "start_time": 1488.9,
+          "end_time": 1531.44,
+          "value": 0.033137989689611264
+        },
+        {
+          "start_time": 1531.44,
+          "end_time": 1573.98,
+          "value": 0.043166165488017987
+        },
+        {
+          "start_time": 1573.98,
+          "end_time": 1616.52,
+          "value": 0.052345433672351685
+        },
+        {
+          "start_time": 1616.52,
+          "end_time": 1659.06,
+          "value": 0.029065160816260018
+        },
+        {
+          "start_time": 1659.06,
+          "end_time": 1701.6,
+          "value": 0.06993588014777935
+        },
+        {
+          "start_time": 1701.6,
+          "end_time": 1744.14,
+          "value": 0.038537957940106206
+        },
+        {
+          "start_time": 1744.14,
+          "end_time": 1786.68,
+          "value": 0.046430781203869606
+        },
+        {
+          "start_time": 1786.68,
+          "end_time": 1829.22,
+          "value": 0.02463580009178142
+        },
+        {
+          "start_time": 1829.22,
+          "end_time": 1871.76,
+          "value": 0.030020346149811705
+        },
+        {
+          "start_time": 1871.76,
+          "end_time": 1914.3,
+          "value": 0.019324326706361444
+        },
+        {
+          "start_time": 1914.3,
+          "end_time": 1956.84,
+          "value": 0.024429903237345875
+        },
+        {
+          "start_time": 1956.84,
+          "end_time": 1999.38,
+          "value": 0.03886073352381093
+        },
+        {
+          "start_time": 1999.38,
+          "end_time": 2041.92,
+          "value": 1.0
+        },
+        {
+          "start_time": 2041.92,
+          "end_time": 2084.46,
+          "value": 0.019826924015672574
+        },
+        {
+          "start_time": 2084.46,
+          "end_time": 2127.0,
+          "value": 0.11594753800714652
+        },
+        {
+          "start_time": 2127.0,
+          "end_time": 2169.54,
+          "value": 0.06524986634000005
+        },
+        {
+          "start_time": 2169.54,
+          "end_time": 2212.08,
+          "value": 0.05456228296764157
+        },
+        {
+          "start_time": 2212.08,
+          "end_time": 2254.62,
+          "value": 0.05493193626457219
+        },
+        {
+          "start_time": 2254.62,
+          "end_time": 2297.16,
+          "value": 0.02404675302553878
+        },
+        {
+          "start_time": 2297.16,
+          "end_time": 2339.7,
+          "value": 0.05306413739940829
+        },
+        {
+          "start_time": 2339.7,
+          "end_time": 2382.24,
+          "value": 0.02404934535988469
+        },
+        {
+          "start_time": 2382.24,
+          "end_time": 2424.78,
+          "value": 0.06217512613334291
+        },
+        {
+          "start_time": 2424.78,
+          "end_time": 2467.32,
+          "value": 0.043760533030915094
+        },
+        {
+          "start_time": 2467.32,
+          "end_time": 2509.86,
+          "value": 0.01720563061890217
+        },
+        {
+          "start_time": 2509.86,
+          "end_time": 2552.4,
+          "value": 0.024468340885128156
+        },
+        {
+          "start_time": 2552.4,
+          "end_time": 2594.94,
+          "value": 0.01928034889257334
+        },
+        {
+          "start_time": 2594.94,
+          "end_time": 2637.48,
+          "value": 0.008668051063746025
+        },
+        {
+          "start_time": 2637.48,
+          "end_time": 2680.02,
+          "value": 0.019838863133330397
+        },
+        {
+          "start_time": 2680.02,
+          "end_time": 2722.56,
+          "value": 0.004107607694845612
+        },
+        {
+          "start_time": 2722.56,
+          "end_time": 2765.1,
+          "value": 0.016969596379813476
+        },
+        {
+          "start_time": 2765.1,
+          "end_time": 2807.64,
+          "value": 0.020835965195119353
+        },
+        {
+          "start_time": 2807.64,
+          "end_time": 2850.18,
+          "value": 0.01763823889522555
+        },
+        {
+          "start_time": 2850.18,
+          "end_time": 2892.72,
+          "value": 0.010707974538515456
+        },
+        {
+          "start_time": 2892.72,
+          "end_time": 2935.26,
+          "value": 0.011001894924508527
+        },
+        {
+          "start_time": 2935.26,
+          "end_time": 2977.8,
+          "value": 0.017862290078786154
+        },
+        {
+          "start_time": 2977.8,
+          "end_time": 3020.34,
+          "value": 0.01536437821608484
+        },
+        {
+          "start_time": 3020.34,
+          "end_time": 3062.88,
+          "value": 0.05650211597393668
+        },
+        {
+          "start_time": 3062.88,
+          "end_time": 3105.42,
+          "value": 0.002143297300458449
+        },
+        {
+          "start_time": 3105.42,
+          "end_time": 3147.96,
+          "value": 0.005577724896198679
+        },
+        {
+          "start_time": 3147.96,
+          "end_time": 3190.5,
+          "value": 0.00736699480413514
+        },
+        {
+          "start_time": 3190.5,
+          "end_time": 3233.04,
+          "value": 0.012966237273710431
+        },
+        {
+          "start_time": 3233.04,
+          "end_time": 3275.58,
+          "value": 0.023198304761927663
+        },
+        {
+          "start_time": 3275.58,
+          "end_time": 3318.12,
+          "value": 0.02693626714854634
+        },
+        {
+          "start_time": 3318.12,
+          "end_time": 3360.66,
+          "value": 0.038828483127032985
+        },
+        {
+          "start_time": 3360.66,
+          "end_time": 3403.2,
+          "value": 0.04847713558510578
+        },
+        {
+          "start_time": 3403.2,
+          "end_time": 3445.74,
+          "value": 0.0064353162311777306
+        },
+        {
+          "start_time": 3445.74,
+          "end_time": 3488.28,
+          "value": 0.06033768434218351
+        },
+        {
+          "start_time": 3488.28,
+          "end_time": 3530.82,
+          "value": 0.03062920120684228
+        },
+        {
+          "start_time": 3530.82,
+          "end_time": 3573.36,
+          "value": 0.03572642954247548
+        },
+        {
+          "start_time": 3573.36,
+          "end_time": 3615.9,
+          "value": 0.019629027847977955
+        },
+        {
+          "start_time": 3615.9,
+          "end_time": 3658.44,
+          "value": 0.030259268305282673
+        },
+        {
+          "start_time": 3658.44,
+          "end_time": 3700.98,
+          "value": 0.050015312547506574
+        },
+        {
+          "start_time": 3700.98,
+          "end_time": 3743.52,
+          "value": 0.012436698061220304
+        },
+        {
+          "start_time": 3743.52,
+          "end_time": 3786.06,
+          "value": 0.04141860460202297
+        },
+        {
+          "start_time": 3786.06,
+          "end_time": 3828.6,
+          "value": 0.055759997356378176
+        },
+        {
+          "start_time": 3828.6,
+          "end_time": 3871.14,
+          "value": 0.03922850947537548
+        },
+        {
+          "start_time": 3871.14,
+          "end_time": 3913.68,
+          "value": 0.016146388425496365
+        },
+        {
+          "start_time": 3913.68,
+          "end_time": 3956.22,
+          "value": 0.015320739922203367
+        },
+        {
+          "start_time": 3956.22,
+          "end_time": 3998.76,
+          "value": 0.005025585640982567
+        },
+        {
+          "start_time": 3998.76,
+          "end_time": 4041.3,
+          "value": 0.0
+        },
+        {
+          "start_time": 4041.3,
+          "end_time": 4083.84,
+          "value": 0.03213387754033837
+        },
+        {
+          "start_time": 4083.84,
+          "end_time": 4126.38,
+          "value": 0.005993820522004347
+        },
+        {
+          "start_time": 4126.38,
+          "end_time": 4168.92,
+          "value": 0.02626053066426163
+        },
+        {
+          "start_time": 4168.92,
+          "end_time": 4211.46,
+          "value": 0.04122074837784678
+        },
+        {
+          "start_time": 4211.46,
+          "end_time": 4254.0,
+          "value": 0.025598007495872568
+        }
+      ],
+      "duration_seconds": 4254,
+      "description_excerpt": "This... is text! Let's figure out how to draw it.\nStarring: B\u00e9zier curves and (oh so many) floating point problems.\n\nSupport my work (and get early access to new videos and source code) on Patreon or Nebula\n* Patreon: https://www.patreon.com/SebastianLague\n* Nebula: https://go.nebula.tv/sebastianlague\n\nSource code:\n* GitHub: https://github.com/SebLague/Text-Rendering\n\nCredits and References:\n* Fonts and music: https://github.com/SebLague/Misc-Project-Info/blob/main/Coding-Adventures/TextRenderin"
+    },
+    {
+      "title": "Why is rendering text so complicated?",
+      "channel": "PawelCodeStuff",
+      "channel_id": "UCLvVXWEcwO68vBIfLl9VirQ",
+      "view_count": 138629,
+      "like_count": 13721,
+      "comment_count": 675,
+      "upload_date": "20260501",
+      "tags": [
+        "programming",
+        "coding",
+        "#softwareengineering"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "The mathematical nightmare behind a single keystroke",
+          "end_time": 33.0
+        },
+        {
+          "start_time": 33.0,
+          "title": "Fonts aren't pictures \u2014 they're B\u00e9zier curves",
+          "end_time": 64.0
+        },
+        {
+          "start_time": 64.0,
+          "title": "Rasterization: forcing smooth math onto a pixel grid",
+          "end_time": 140.0
+        },
+        {
+          "start_time": 140.0,
+          "title": "Hinting: fonts ship their own executable bytecode",
+          "end_time": 178.0
+        },
+        {
+          "start_time": 178.0,
+          "title": "Subpixel rendering, ClearType & color fringing",
+          "end_time": 262.0
+        },
+        {
+          "start_time": 262.0,
+          "title": "The texture atlas: how the GPU cheats to stay fast",
+          "end_time": 319
+        }
+      ],
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 3.2,
+          "value": 0.9319321038727943
+        },
+        {
+          "start_time": 3.2,
+          "end_time": 6.4,
+          "value": 0.44338785629772365
+        },
+        {
+          "start_time": 6.4,
+          "end_time": 9.6,
+          "value": 0.2587768196308266
+        },
+        {
+          "start_time": 9.6,
+          "end_time": 12.8,
+          "value": 0.07199406865511873
+        },
+        {
+          "start_time": 12.8,
+          "end_time": 16.0,
+          "value": 0.11420848907965113
+        },
+        {
+          "start_time": 16.0,
+          "end_time": 19.2,
+          "value": 0.1367661823942623
+        },
+        {
+          "start_time": 19.2,
+          "end_time": 22.4,
+          "value": 0.13476290256313297
+        },
+        {
+          "start_time": 22.4,
+          "end_time": 25.6,
+          "value": 0.1888333438623657
+        },
+        {
+          "start_time": 25.6,
+          "end_time": 28.8,
+          "value": 0.10938399933743698
+        },
+        {
+          "start_time": 28.8,
+          "end_time": 32.0,
+          "value": 0.3169993645631342
+        },
+        {
+          "start_time": 32.0,
+          "end_time": 35.2,
+          "value": 0.46207687371190204
+        },
+        {
+          "start_time": 35.2,
+          "end_time": 38.4,
+          "value": 0.3962372873199299
+        },
+        {
+          "start_time": 38.4,
+          "end_time": 41.6,
+          "value": 0.27844814619788233
+        },
+        {
+          "start_time": 41.6,
+          "end_time": 44.8,
+          "value": 0.21677634433738877
+        },
+        {
+          "start_time": 44.8,
+          "end_time": 48.0,
+          "value": 0.22100009345454968
+        },
+        {
+          "start_time": 48.0,
+          "end_time": 51.2,
+          "value": 0.4480484175675448
+        },
+        {
+          "start_time": 51.2,
+          "end_time": 54.4,
+          "value": 0.22865651740043508
+        },
+        {
+          "start_time": 54.4,
+          "end_time": 57.6,
+          "value": 0.2645802840820046
+        },
+        {
+          "start_time": 57.6,
+          "end_time": 60.8,
+          "value": 0.18401948829263223
+        },
+        {
+          "start_time": 60.8,
+          "end_time": 64.0,
+          "value": 0.3475464756144456
+        },
+        {
+          "start_time": 64.0,
+          "end_time": 67.2,
+          "value": 0.5278523847086728
+        },
+        {
+          "start_time": 67.2,
+          "end_time": 70.4,
+          "value": 0.23785579755707825
+        },
+        {
+          "start_time": 70.4,
+          "end_time": 73.6,
+          "value": 0.1344483833940007
+        },
+        {
+          "start_time": 73.6,
+          "end_time": 76.8,
+          "value": 0.17265290971236094
+        },
+        {
+          "start_time": 76.8,
+          "end_time": 80.0,
+          "value": 0.37674061351785365
+        },
+        {
+          "start_time": 80.0,
+          "end_time": 83.2,
+          "value": 0.39800949919986867
+        },
+        {
+          "start_time": 83.2,
+          "end_time": 86.4,
+          "value": 0.48129246290408617
+        },
+        {
+          "start_time": 86.4,
+          "end_time": 89.6,
+          "value": 0.4393408327079749
+        },
+        {
+          "start_time": 89.6,
+          "end_time": 92.8,
+          "value": 0.4093080371002847
+        },
+        {
+          "start_time": 92.8,
+          "end_time": 96.0,
+          "value": 0.413950213868529
+        },
+        {
+          "start_time": 96.0,
+          "end_time": 99.2,
+          "value": 0.4185091196590432
+        },
+        {
+          "start_time": 99.2,
+          "end_time": 102.4,
+          "value": 0.283918797098457
+        },
+        {
+          "start_time": 102.4,
+          "end_time": 105.6,
+          "value": 0.3209956505333353
+        },
+        {
+          "start_time": 105.6,
+          "end_time": 108.8,
+          "value": 0.39304919845826125
+        },
+        {
+          "start_time": 108.8,
+          "end_time": 112.0,
+          "value": 0.32224363375801834
+        },
+        {
+          "start_time": 112.0,
+          "end_time": 115.2,
+          "value": 0.4856940189899284
+        },
+        {
+          "start_time": 115.2,
+          "end_time": 118.4,
+          "value": 0.5792271534041563
+        },
+        {
+          "start_time": 118.4,
+          "end_time": 121.6,
+          "value": 0.5763862071899082
+        },
+        {
+          "start_time": 121.6,
+          "end_time": 124.8,
+          "value": 0.5011092433218524
+        },
+        {
+          "start_time": 124.8,
+          "end_time": 128.0,
+          "value": 0.5426755199456972
+        },
+        {
+          "start_time": 128.0,
+          "end_time": 131.2,
+          "value": 0.5243532012418911
+        },
+        {
+          "start_time": 131.2,
+          "end_time": 134.4,
+          "value": 0.43160519318911894
+        },
+        {
+          "start_time": 134.4,
+          "end_time": 137.6,
+          "value": 0.49880766594062903
+        },
+        {
+          "start_time": 137.6,
+          "end_time": 140.8,
+          "value": 0.49546970734306733
+        },
+        {
+          "start_time": 140.8,
+          "end_time": 144.0,
+          "value": 0.47852541517656827
+        },
+        {
+          "start_time": 144.0,
+          "end_time": 147.2,
+          "value": 0.3255251771693689
+        },
+        {
+          "start_time": 147.2,
+          "end_time": 150.4,
+          "value": 0.21171736207996483
+        },
+        {
+          "start_time": 150.4,
+          "end_time": 153.6,
+          "value": 0.20851972048708475
+        },
+        {
+          "start_time": 153.6,
+          "end_time": 156.8,
+          "value": 0.2067612969833286
+        },
+        {
+          "start_time": 156.8,
+          "end_time": 160.0,
+          "value": 0.2950901755296336
+        },
+        {
+          "start_time": 160.0,
+          "end_time": 163.2,
+          "value": 0.32635058721810317
+        },
+        {
+          "start_time": 163.2,
+          "end_time": 166.4,
+          "value": 0.6262194714762205
+        },
+        {
+          "start_time": 166.4,
+          "end_time": 169.6,
+          "value": 0.7272994437877192
+        },
+        {
+          "start_time": 169.6,
+          "end_time": 172.8,
+          "value": 0.6335125311556471
+        },
+        {
+          "start_time": 172.8,
+          "end_time": 176.0,
+          "value": 0.6531877328872508
+        },
+        {
+          "start_time": 176.0,
+          "end_time": 179.2,
+          "value": 0.5463862153007177
+        },
+        {
+          "start_time": 179.2,
+          "end_time": 182.4,
+          "value": 1.0
+        },
+        {
+          "start_time": 182.4,
+          "end_time": 185.6,
+          "value": 0.8841266320863805
+        },
+        {
+          "start_time": 185.6,
+          "end_time": 188.8,
+          "value": 0.740774742722869
+        },
+        {
+          "start_time": 188.8,
+          "end_time": 192.0,
+          "value": 0.689436382550116
+        },
+        {
+          "start_time": 192.0,
+          "end_time": 195.2,
+          "value": 0.5264093815751066
+        },
+        {
+          "start_time": 195.2,
+          "end_time": 198.4,
+          "value": 0.5655071783818448
+        },
+        {
+          "start_time": 198.4,
+          "end_time": 201.6,
+          "value": 0.6418195321450757
+        },
+        {
+          "start_time": 201.6,
+          "end_time": 204.8,
+          "value": 0.5968742922755443
+        },
+        {
+          "start_time": 204.8,
+          "end_time": 208.0,
+          "value": 0.6319313738999377
+        },
+        {
+          "start_time": 208.0,
+          "end_time": 211.2,
+          "value": 0.6694215181398705
+        },
+        {
+          "start_time": 211.2,
+          "end_time": 214.4,
+          "value": 0.7544867871758729
+        },
+        {
+          "start_time": 214.4,
+          "end_time": 217.6,
+          "value": 0.8573209473461566
+        },
+        {
+          "start_time": 217.6,
+          "end_time": 220.8,
+          "value": 0.780024932628462
+        },
+        {
+          "start_time": 220.8,
+          "end_time": 224.0,
+          "value": 0.7066440056656708
+        },
+        {
+          "start_time": 224.0,
+          "end_time": 227.2,
+          "value": 0.5085161246948646
+        },
+        {
+          "start_time": 227.2,
+          "end_time": 230.4,
+          "value": 0.19338873496875492
+        },
+        {
+          "start_time": 230.4,
+          "end_time": 233.6,
+          "value": 0.1472665265178862
+        },
+        {
+          "start_time": 233.6,
+          "end_time": 236.8,
+          "value": 0.10154535253768755
+        },
+        {
+          "start_time": 236.8,
+          "end_time": 240.0,
+          "value": 0.10107078006071031
+        },
+        {
+          "start_time": 240.0,
+          "end_time": 243.2,
+          "value": 0.095399431684589
+        },
+        {
+          "start_time": 243.2,
+          "end_time": 246.4,
+          "value": 0.08885508984388764
+        },
+        {
+          "start_time": 246.4,
+          "end_time": 249.6,
+          "value": 0.053098180538148604
+        },
+        {
+          "start_time": 249.6,
+          "end_time": 252.8,
+          "value": 0.0
+        },
+        {
+          "start_time": 252.8,
+          "end_time": 256.0,
+          "value": 0.010339119254403922
+        },
+        {
+          "start_time": 256.0,
+          "end_time": 259.2,
+          "value": 0.0019402408171442327
+        },
+        {
+          "start_time": 259.2,
+          "end_time": 262.4,
+          "value": 0.09827363221786571
+        },
+        {
+          "start_time": 262.4,
+          "end_time": 265.6,
+          "value": 0.11231641745904018
+        },
+        {
+          "start_time": 265.6,
+          "end_time": 268.8,
+          "value": 0.03376183040423464
+        },
+        {
+          "start_time": 268.8,
+          "end_time": 272.0,
+          "value": 0.04227151151153677
+        },
+        {
+          "start_time": 272.0,
+          "end_time": 275.2,
+          "value": 0.20415322112238643
+        },
+        {
+          "start_time": 275.2,
+          "end_time": 278.4,
+          "value": 0.21168771256516697
+        },
+        {
+          "start_time": 278.4,
+          "end_time": 281.6,
+          "value": 0.3131569136134801
+        },
+        {
+          "start_time": 281.6,
+          "end_time": 284.8,
+          "value": 0.3443017012062486
+        },
+        {
+          "start_time": 284.8,
+          "end_time": 288.0,
+          "value": 0.27281239526353956
+        },
+        {
+          "start_time": 288.0,
+          "end_time": 291.2,
+          "value": 0.23966396735921866
+        },
+        {
+          "start_time": 291.2,
+          "end_time": 294.4,
+          "value": 0.22227754595381904
+        },
+        {
+          "start_time": 294.4,
+          "end_time": 297.6,
+          "value": 0.08101680352456128
+        },
+        {
+          "start_time": 297.6,
+          "end_time": 300.8,
+          "value": 0.10620825693025866
+        },
+        {
+          "start_time": 300.8,
+          "end_time": 304.0,
+          "value": 0.09624097323225582
+        },
+        {
+          "start_time": 304.0,
+          "end_time": 307.2,
+          "value": 0.03523786255656501
+        },
+        {
+          "start_time": 307.2,
+          "end_time": 310.4,
+          "value": 0.1380882443458871
+        },
+        {
+          "start_time": 310.4,
+          "end_time": 313.6,
+          "value": 0.23576843566726682
+        },
+        {
+          "start_time": 313.6,
+          "end_time": 316.8,
+          "value": 0.5034399294972388
+        },
+        {
+          "start_time": 316.8,
+          "end_time": 320.0,
+          "value": 0.24801377539888736
+        }
+      ],
+      "duration_seconds": 319,
+      "description_excerpt": "Why rendering a single letter on your screen is one of the hardest problems your computer solves every day - a deep dive into B\u00e9zier curves, rasterization, hinting bytecode, subpixel rendering, and the GPU texture atlas cache. \n\n0:00 The mathematical nightmare behind a single keystroke\n0:33 Fonts aren't pictures \u2014 they're B\u00e9zier curves                              \n1:04 Rasterization: forcing smooth math onto a pixel grid\n2:20 Hinting: fonts ship their own executable bytecode                    "
+    },
+    {
+      "title": "Advanced Topics: Text Rendering/Text Generator | Tutorial",
+      "channel": "Scratch Team",
+      "channel_id": "UCjcQmKeifVUUH5s4E4OrMhg",
+      "view_count": 22815,
+      "like_count": 440,
+      "comment_count": 149,
+      "upload_date": "20250317",
+      "tags": [
+        "yt:cc=on"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 334,
+      "description_excerpt": "Do you want to create your own text generator to display changing text on the Scratch project stage without creating sprite costumes for each line of text? Text generators could be used in games, storytelling projects, informational projects, and more! Let\u2019s explore how to create a text generator that you can then customize.\n\nFind coding cards on this topic and more of our resources in the Scratch Foundation's Learning Library, available on our website: https://www.scratchfoundation.org/learn/le"
+    },
+    {
+      "title": "ALL OF THE UI! // Hazel Dev Log",
+      "channel": "The Cherno",
+      "channel_id": "UCQ-W1KE9EYfdxhL6S4twUNw",
+      "view_count": 40491,
+      "like_count": 1733,
+      "comment_count": 140,
+      "upload_date": "20210915",
+      "tags": [
+        "thecherno",
+        "thechernoproject",
+        "cherno",
+        "c++",
+        "programming",
+        "gamedev",
+        "game development",
+        "learn c++",
+        "c++ tutorial",
+        "game engine",
+        "how to make a game engine",
+        "game engine series",
+        "ui",
+        "user interface",
+        "hazel engine",
+        "hazel",
+        "font rendering",
+        "hazelnut",
+        "editor",
+        "imgui",
+        "imgui engine",
+        "imgui game engine"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "How font rendering works",
+          "end_time": 514.0
+        },
+        {
+          "start_time": 514.0,
+          "title": "Hazelnut's new UI",
+          "end_time": 565.0
+        },
+        {
+          "start_time": 565.0,
+          "title": "Text in Hazel",
+          "end_time": 1222
+        }
+      ],
+      "heatmap": null,
+      "duration_seconds": 1222,
+      "description_excerpt": "Patreon \u25ba https://patreon.com/thecherno\nInstagram \u25ba https://instagram.com/thecherno\n\nTwitter \u25ba https://twitter.com/thecherno\nDiscord \u25ba https://discord.gg/thecherno\n\nCheck out Jaroslav!\nLinkedIn \u25ba https://www.linkedin.com/in/jaroslav-pevno-91b37b103/\nWebsite \u25ba https://www.jaroslavpevno.com/\n\nmsdfgen \u25ba https://github.com/Chlumsky/msdfgen\n\nThumbnail was in fact fully created in Hazel!\n\n0:00 - How font rendering works\n8:34 - Hazelnut's new UI\n9:25 - Text in Hazel\n\n#Hazel"
+    },
+    {
+      "title": "39C3 - The art of text (rendering)",
+      "channel": "media.ccc.de",
+      "channel_id": "UC2TXq_t06Hjdr2g_KdKpHQg",
+      "view_count": 19238,
+      "like_count": 628,
+      "comment_count": 36,
+      "upload_date": "20251227",
+      "tags": [
+        "2025",
+        "39c3",
+        "39c3 Day 1",
+        "39c3 eng",
+        "39c3 ov",
+        "39c3-deu",
+        "39c3-eng",
+        "39c3-pol",
+        "Art & Beauty",
+        "Ground",
+        "Nicolas Rougier",
+        "ccc",
+        "chaos",
+        "communication",
+        "congress"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 2309,
+      "description_excerpt": "https://media.ccc.de/v/39c3-the-art-of-text-rendering\n\nTypography is the art of arranging type to make written language legible, readable, and appealing when displayed. However, for the neophyte, typography is mostly apprehended as the juxtaposition of characters displayed on the screen while for the expert, typography means typeface, scripts, unicode, glyphs, ascender, descender, tracking, hinting, kerning, shaping, weigth, slant, etc. Typography is actually much more than the mere rendering of"
+    },
+    {
+      "title": "He just crawled through hell to fix the browser\u2026",
+      "channel": "Fireship",
+      "channel_id": "UCsBjURrPoezykLs9EqgamOA",
+      "view_count": 1254784,
+      "like_count": 50257,
+      "comment_count": 1400,
+      "upload_date": "20260402",
+      "tags": [
+        "webdev",
+        "app development",
+        "lesson",
+        "tutorial",
+        "pretext",
+        "cheng lou",
+        "pretext javascript",
+        "pretext library",
+        "pretext typescript",
+        "typescript",
+        "javascript",
+        "web dev",
+        "coding",
+        "programming",
+        "tech"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 3.37,
+          "value": 0.6680636409930334
+        },
+        {
+          "start_time": 3.37,
+          "end_time": 6.74,
+          "value": 0.703594152019876
+        },
+        {
+          "start_time": 6.74,
+          "end_time": 10.11,
+          "value": 0.687371902277389
+        },
+        {
+          "start_time": 10.11,
+          "end_time": 13.48,
+          "value": 0.5413225097110911
+        },
+        {
+          "start_time": 13.48,
+          "end_time": 16.85,
+          "value": 0.488110021885137
+        },
+        {
+          "start_time": 16.85,
+          "end_time": 20.22,
+          "value": 0.42597352800711785
+        },
+        {
+          "start_time": 20.22,
+          "end_time": 23.59,
+          "value": 0.6167869916820815
+        },
+        {
+          "start_time": 23.59,
+          "end_time": 26.96,
+          "value": 0.8436047282860624
+        },
+        {
+          "start_time": 26.96,
+          "end_time": 30.33,
+          "value": 0.73105530806353
+        },
+        {
+          "start_time": 30.33,
+          "end_time": 33.7,
+          "value": 0.19469010087917457
+        },
+        {
+          "start_time": 33.7,
+          "end_time": 37.07,
+          "value": 0.09254059959695321
+        },
+        {
+          "start_time": 37.07,
+          "end_time": 40.44,
+          "value": 0.09220692998338831
+        },
+        {
+          "start_time": 40.44,
+          "end_time": 43.81,
+          "value": 0.1011856284826256
+        },
+        {
+          "start_time": 43.81,
+          "end_time": 47.18,
+          "value": 0.15884582620104337
+        },
+        {
+          "start_time": 47.18,
+          "end_time": 50.55,
+          "value": 0.20637499863350464
+        },
+        {
+          "start_time": 50.55,
+          "end_time": 53.92,
+          "value": 0.24499374022751863
+        },
+        {
+          "start_time": 53.92,
+          "end_time": 57.29,
+          "value": 0.23703850188380562
+        },
+        {
+          "start_time": 57.29,
+          "end_time": 60.66,
+          "value": 0.2656213752180886
+        },
+        {
+          "start_time": 60.66,
+          "end_time": 64.03,
+          "value": 0.3432758719994413
+        },
+        {
+          "start_time": 64.03,
+          "end_time": 67.4,
+          "value": 0.3756921115445281
+        },
+        {
+          "start_time": 67.4,
+          "end_time": 70.77,
+          "value": 0.4405170851079417
+        },
+        {
+          "start_time": 70.77,
+          "end_time": 74.14,
+          "value": 0.31486546261701076
+        },
+        {
+          "start_time": 74.14,
+          "end_time": 77.51,
+          "value": 0.40254564624788114
+        },
+        {
+          "start_time": 77.51,
+          "end_time": 80.88,
+          "value": 0.3577317776007996
+        },
+        {
+          "start_time": 80.88,
+          "end_time": 84.25,
+          "value": 0.24649236549239437
+        },
+        {
+          "start_time": 84.25,
+          "end_time": 87.62,
+          "value": 0.14883515040504555
+        },
+        {
+          "start_time": 87.62,
+          "end_time": 90.99,
+          "value": 0.20428007558391775
+        },
+        {
+          "start_time": 90.99,
+          "end_time": 94.36,
+          "value": 0.2046529371002593
+        },
+        {
+          "start_time": 94.36,
+          "end_time": 97.73,
+          "value": 0.17663650260727315
+        },
+        {
+          "start_time": 97.73,
+          "end_time": 101.1,
+          "value": 0.11572256114026573
+        },
+        {
+          "start_time": 101.1,
+          "end_time": 104.47,
+          "value": 0.15588270950168687
+        },
+        {
+          "start_time": 104.47,
+          "end_time": 107.84,
+          "value": 0.21528095878862102
+        },
+        {
+          "start_time": 107.84,
+          "end_time": 111.21,
+          "value": 0.2856104856777417
+        },
+        {
+          "start_time": 111.21,
+          "end_time": 114.58,
+          "value": 0.2908197781072595
+        },
+        {
+          "start_time": 114.58,
+          "end_time": 117.95,
+          "value": 0.209255326109427
+        },
+        {
+          "start_time": 117.95,
+          "end_time": 121.32,
+          "value": 0.16351419858024804
+        },
+        {
+          "start_time": 121.32,
+          "end_time": 124.69,
+          "value": 0.0947903322941442
+        },
+        {
+          "start_time": 124.69,
+          "end_time": 128.06,
+          "value": 0.09164969357055366
+        },
+        {
+          "start_time": 128.06,
+          "end_time": 131.43,
+          "value": 0.09327568436127233
+        },
+        {
+          "start_time": 131.43,
+          "end_time": 134.8,
+          "value": 0.11983000960870589
+        },
+        {
+          "start_time": 134.8,
+          "end_time": 138.17,
+          "value": 0.13334968232857988
+        },
+        {
+          "start_time": 138.17,
+          "end_time": 141.54,
+          "value": 0.18005637955905682
+        },
+        {
+          "start_time": 141.54,
+          "end_time": 144.91,
+          "value": 0.18851706618096117
+        },
+        {
+          "start_time": 144.91,
+          "end_time": 148.28,
+          "value": 0.20598474387471513
+        },
+        {
+          "start_time": 148.28,
+          "end_time": 151.65,
+          "value": 0.23098562087920066
+        },
+        {
+          "start_time": 151.65,
+          "end_time": 155.02,
+          "value": 0.25339895121684985
+        },
+        {
+          "start_time": 155.02,
+          "end_time": 158.39,
+          "value": 0.3054691305026729
+        },
+        {
+          "start_time": 158.39,
+          "end_time": 161.76,
+          "value": 0.31325771351959114
+        },
+        {
+          "start_time": 161.76,
+          "end_time": 165.13,
+          "value": 0.290000925137755
+        },
+        {
+          "start_time": 165.13,
+          "end_time": 168.5,
+          "value": 0.22900308493466195
+        },
+        {
+          "start_time": 168.5,
+          "end_time": 171.87,
+          "value": 0.279733005570243
+        },
+        {
+          "start_time": 171.87,
+          "end_time": 175.24,
+          "value": 0.3078476971983337
+        },
+        {
+          "start_time": 175.24,
+          "end_time": 178.61,
+          "value": 0.318981330328512
+        },
+        {
+          "start_time": 178.61,
+          "end_time": 181.98,
+          "value": 0.2900643631552386
+        },
+        {
+          "start_time": 181.98,
+          "end_time": 185.35,
+          "value": 0.23289107832718778
+        },
+        {
+          "start_time": 185.35,
+          "end_time": 188.72,
+          "value": 0.2713840207661609
+        },
+        {
+          "start_time": 188.72,
+          "end_time": 192.09,
+          "value": 0.29792917621785736
+        },
+        {
+          "start_time": 192.09,
+          "end_time": 195.46,
+          "value": 0.47926407331137477
+        },
+        {
+          "start_time": 195.46,
+          "end_time": 198.83,
+          "value": 0.7367265493487568
+        },
+        {
+          "start_time": 198.83,
+          "end_time": 202.2,
+          "value": 0.9652374022588699
+        },
+        {
+          "start_time": 202.2,
+          "end_time": 205.57,
+          "value": 1.0
+        },
+        {
+          "start_time": 205.57,
+          "end_time": 208.94,
+          "value": 0.6658145283176182
+        },
+        {
+          "start_time": 208.94,
+          "end_time": 212.31,
+          "value": 0.4308276458572674
+        },
+        {
+          "start_time": 212.31,
+          "end_time": 215.68,
+          "value": 0.286954007600488
+        },
+        {
+          "start_time": 215.68,
+          "end_time": 219.05,
+          "value": 0.2762573919240858
+        },
+        {
+          "start_time": 219.05,
+          "end_time": 222.42,
+          "value": 0.19316132297635905
+        },
+        {
+          "start_time": 222.42,
+          "end_time": 225.79,
+          "value": 0.193945585257318
+        },
+        {
+          "start_time": 225.79,
+          "end_time": 229.16,
+          "value": 0.19044977195435922
+        },
+        {
+          "start_time": 229.16,
+          "end_time": 232.53,
+          "value": 0.139333643017894
+        },
+        {
+          "start_time": 232.53,
+          "end_time": 235.9,
+          "value": 0.10729871686493495
+        },
+        {
+          "start_time": 235.9,
+          "end_time": 239.27,
+          "value": 0.10062512879728665
+        },
+        {
+          "start_time": 239.27,
+          "end_time": 242.64,
+          "value": 0.07988905526139874
+        },
+        {
+          "start_time": 242.64,
+          "end_time": 246.01,
+          "value": 0.08120715629133649
+        },
+        {
+          "start_time": 246.01,
+          "end_time": 249.38,
+          "value": 0.06375677394185533
+        },
+        {
+          "start_time": 249.38,
+          "end_time": 252.75,
+          "value": 0.041493325710328766
+        },
+        {
+          "start_time": 252.75,
+          "end_time": 256.12,
+          "value": 0.03665514894636273
+        },
+        {
+          "start_time": 256.12,
+          "end_time": 259.49,
+          "value": 0.037958581566393645
+        },
+        {
+          "start_time": 259.49,
+          "end_time": 262.86,
+          "value": 0.03128505876419544
+        },
+        {
+          "start_time": 262.86,
+          "end_time": 266.23,
+          "value": 0.051527333904732346
+        },
+        {
+          "start_time": 266.23,
+          "end_time": 269.6,
+          "value": 0.07983419965060141
+        },
+        {
+          "start_time": 269.6,
+          "end_time": 272.97,
+          "value": 0.13866166994380807
+        },
+        {
+          "start_time": 272.97,
+          "end_time": 276.34,
+          "value": 0.2281626291011789
+        },
+        {
+          "start_time": 276.34,
+          "end_time": 279.71,
+          "value": 0.2501362008361483
+        },
+        {
+          "start_time": 279.71,
+          "end_time": 283.08,
+          "value": 0.18116709962134617
+        },
+        {
+          "start_time": 283.08,
+          "end_time": 286.45,
+          "value": 0.13276164062330462
+        },
+        {
+          "start_time": 286.45,
+          "end_time": 289.82,
+          "value": 0.08948891768182995
+        },
+        {
+          "start_time": 289.82,
+          "end_time": 293.19,
+          "value": 0.047479962283096394
+        },
+        {
+          "start_time": 293.19,
+          "end_time": 296.56,
+          "value": 0.026917380629899703
+        },
+        {
+          "start_time": 296.56,
+          "end_time": 299.93,
+          "value": 0.0221807895389926
+        },
+        {
+          "start_time": 299.93,
+          "end_time": 303.3,
+          "value": 0.022075581633453894
+        },
+        {
+          "start_time": 303.3,
+          "end_time": 306.67,
+          "value": 0.02768779031907789
+        },
+        {
+          "start_time": 306.67,
+          "end_time": 310.04,
+          "value": 0.05320074004493853
+        },
+        {
+          "start_time": 310.04,
+          "end_time": 313.41,
+          "value": 0.08403628302166634
+        },
+        {
+          "start_time": 313.41,
+          "end_time": 316.78,
+          "value": 0.0827765293041055
+        },
+        {
+          "start_time": 316.78,
+          "end_time": 320.15,
+          "value": 0.02020416011768666
+        },
+        {
+          "start_time": 320.15,
+          "end_time": 323.52,
+          "value": 0.0
+        },
+        {
+          "start_time": 323.52,
+          "end_time": 326.89,
+          "value": 0.022130110917000786
+        },
+        {
+          "start_time": 326.89,
+          "end_time": 330.26,
+          "value": 0.018063763365752314
+        },
+        {
+          "start_time": 330.26,
+          "end_time": 333.63,
+          "value": 0.01647321171443037
+        },
+        {
+          "start_time": 333.63,
+          "end_time": 337.0,
+          "value": 0.04970629731643154
+        }
+      ],
+      "duration_seconds": 336,
+      "description_excerpt": "Try out the Junie CLI for free - https://jb.gg/fireship-junie-cli\n\nCheng Lou, a former React Core team member and engineer at Midjourney says he \"crawled through depths of hell\" to bring us Pretext \u2013 a fast, accurate, and comprehensive text measurement library that could change UI design forever. Let's run it.\n\n#coding #programming #typescript #javascript\n\n\ud83d\udd16 Topics Covered\n- Who is Cheng Lou?\n- Intro to Pretext\n- What makes dynamic text rendering so hard?\n- Pretext demo\n\nWant more Fireship?\n\n\ud83d\uddde\ufe0f "
+    },
+    {
+      "title": "Font rendering in 3 minutes! [v2]",
+      "channel": "RL Hugh",
+      "channel_id": "UCHPoNHk_aC5LmJDDVAH4w7Q",
+      "view_count": 4612,
+      "like_count": 264,
+      "comment_count": 21,
+      "upload_date": "20240527",
+      "tags": [
+        "font rendering",
+        "fonts",
+        "unity",
+        "c#",
+        "graphics",
+        "coding"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 174,
+      "description_excerpt": "How do fonts work? Why don't fonts pixelate when we zoom in?\n\nInspired by Sebastian Lague's video at https://youtu.be/SO83KQuuZvg?si=ryeOlAEtpIftKtyD\n\nThis video is version 2:\n- fixed pronunciation of 'glyph'\n- centered the letters, and added a border"
+    },
+    {
+      "title": "Why Fonts Look Better on Mac Than on Windows?",
+      "channel": "Bog",
+      "channel_id": "UCZXW8E1__d5tZb-wLFOt8TQ",
+      "view_count": 345868,
+      "like_count": 11635,
+      "comment_count": 626,
+      "upload_date": "20220605",
+      "tags": [
+        "Why fonts look better on mac",
+        "why fonts look better on mac than windows",
+        "why text looks better on mac"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": null,
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 1.81,
+          "value": 0.9807957921466445
+        },
+        {
+          "start_time": 1.81,
+          "end_time": 3.62,
+          "value": 0.5994879265244257
+        },
+        {
+          "start_time": 3.62,
+          "end_time": 5.43,
+          "value": 0.6356746303759299
+        },
+        {
+          "start_time": 5.43,
+          "end_time": 7.24,
+          "value": 0.7098434547943273
+        },
+        {
+          "start_time": 7.24,
+          "end_time": 9.05,
+          "value": 0.6037869723850497
+        },
+        {
+          "start_time": 9.05,
+          "end_time": 10.86,
+          "value": 0.44929511486773455
+        },
+        {
+          "start_time": 10.86,
+          "end_time": 12.67,
+          "value": 0.3372651017566267
+        },
+        {
+          "start_time": 12.67,
+          "end_time": 14.48,
+          "value": 0.22303900797197876
+        },
+        {
+          "start_time": 14.48,
+          "end_time": 16.29,
+          "value": 0.22735036811145765
+        },
+        {
+          "start_time": 16.29,
+          "end_time": 18.1,
+          "value": 0.20594889700245902
+        },
+        {
+          "start_time": 18.1,
+          "end_time": 19.91,
+          "value": 0.17950880346895548
+        },
+        {
+          "start_time": 19.91,
+          "end_time": 21.72,
+          "value": 0.17319476624638686
+        },
+        {
+          "start_time": 21.72,
+          "end_time": 23.53,
+          "value": 0.11031142566995236
+        },
+        {
+          "start_time": 23.53,
+          "end_time": 25.34,
+          "value": 0.06713316788409852
+        },
+        {
+          "start_time": 25.34,
+          "end_time": 27.15,
+          "value": 0.0859562372381556
+        },
+        {
+          "start_time": 27.15,
+          "end_time": 28.96,
+          "value": 0.06486195468455927
+        },
+        {
+          "start_time": 28.96,
+          "end_time": 30.77,
+          "value": 0.10936949902492892
+        },
+        {
+          "start_time": 30.77,
+          "end_time": 32.58,
+          "value": 0.14008992277186139
+        },
+        {
+          "start_time": 32.58,
+          "end_time": 34.39,
+          "value": 0.16736455935377648
+        },
+        {
+          "start_time": 34.39,
+          "end_time": 36.2,
+          "value": 0.19126037890933204
+        },
+        {
+          "start_time": 36.2,
+          "end_time": 38.01,
+          "value": 0.19424603880306393
+        },
+        {
+          "start_time": 38.01,
+          "end_time": 39.82,
+          "value": 0.08061300994306034
+        },
+        {
+          "start_time": 39.82,
+          "end_time": 41.63,
+          "value": 0.05294493343714519
+        },
+        {
+          "start_time": 41.63,
+          "end_time": 43.44,
+          "value": 0.03582681326759942
+        },
+        {
+          "start_time": 43.44,
+          "end_time": 45.25,
+          "value": 0.04059833924082368
+        },
+        {
+          "start_time": 45.25,
+          "end_time": 47.06,
+          "value": 0.05406397746039645
+        },
+        {
+          "start_time": 47.06,
+          "end_time": 48.87,
+          "value": 0.05257405255217478
+        },
+        {
+          "start_time": 48.87,
+          "end_time": 50.68,
+          "value": 0.036481655252971215
+        },
+        {
+          "start_time": 50.68,
+          "end_time": 52.49,
+          "value": 0.022614119076531405
+        },
+        {
+          "start_time": 52.49,
+          "end_time": 54.3,
+          "value": 0.029832214608521555
+        },
+        {
+          "start_time": 54.3,
+          "end_time": 56.11,
+          "value": 0.020354821677095007
+        },
+        {
+          "start_time": 56.11,
+          "end_time": 57.92,
+          "value": 0.007559039093940556
+        },
+        {
+          "start_time": 57.92,
+          "end_time": 59.73,
+          "value": 0.020017991444198444
+        },
+        {
+          "start_time": 59.73,
+          "end_time": 61.54,
+          "value": 0.0253917216450586
+        },
+        {
+          "start_time": 61.54,
+          "end_time": 63.35,
+          "value": 0.030743162744108245
+        },
+        {
+          "start_time": 63.35,
+          "end_time": 65.16,
+          "value": 0.0291649040944553
+        },
+        {
+          "start_time": 65.16,
+          "end_time": 66.97,
+          "value": 0.05631572947184971
+        },
+        {
+          "start_time": 66.97,
+          "end_time": 68.78,
+          "value": 0.03833368165946399
+        },
+        {
+          "start_time": 68.78,
+          "end_time": 70.59,
+          "value": 0.02389583240970886
+        },
+        {
+          "start_time": 70.59,
+          "end_time": 72.4,
+          "value": 0.07716336653205498
+        },
+        {
+          "start_time": 72.4,
+          "end_time": 74.21,
+          "value": 0.09520460772035615
+        },
+        {
+          "start_time": 74.21,
+          "end_time": 76.02,
+          "value": 0.1171176484221199
+        },
+        {
+          "start_time": 76.02,
+          "end_time": 77.83,
+          "value": 0.14700484024427674
+        },
+        {
+          "start_time": 77.83,
+          "end_time": 79.64,
+          "value": 0.12085424795124398
+        },
+        {
+          "start_time": 79.64,
+          "end_time": 81.45,
+          "value": 0.10648163352945215
+        },
+        {
+          "start_time": 81.45,
+          "end_time": 83.26,
+          "value": 0.10837602722519951
+        },
+        {
+          "start_time": 83.26,
+          "end_time": 85.07,
+          "value": 0.05771460841229522
+        },
+        {
+          "start_time": 85.07,
+          "end_time": 86.88,
+          "value": 0.04062863648013589
+        },
+        {
+          "start_time": 86.88,
+          "end_time": 88.69,
+          "value": 0.05284238300217157
+        },
+        {
+          "start_time": 88.69,
+          "end_time": 90.5,
+          "value": 0.08506900501539497
+        },
+        {
+          "start_time": 90.5,
+          "end_time": 92.31,
+          "value": 0.11141693426978583
+        },
+        {
+          "start_time": 92.31,
+          "end_time": 94.12,
+          "value": 0.11488575607750473
+        },
+        {
+          "start_time": 94.12,
+          "end_time": 95.93,
+          "value": 0.19330053870342495
+        },
+        {
+          "start_time": 95.93,
+          "end_time": 97.74,
+          "value": 0.2712507465210202
+        },
+        {
+          "start_time": 97.74,
+          "end_time": 99.55,
+          "value": 0.42188167913855884
+        },
+        {
+          "start_time": 99.55,
+          "end_time": 101.36,
+          "value": 0.4765763070678292
+        },
+        {
+          "start_time": 101.36,
+          "end_time": 103.17,
+          "value": 0.5927117310743513
+        },
+        {
+          "start_time": 103.17,
+          "end_time": 104.98,
+          "value": 0.6312691007094245
+        },
+        {
+          "start_time": 104.98,
+          "end_time": 106.79,
+          "value": 0.7816237718643845
+        },
+        {
+          "start_time": 106.79,
+          "end_time": 108.6,
+          "value": 0.7487171394336412
+        },
+        {
+          "start_time": 108.6,
+          "end_time": 110.41,
+          "value": 0.4915471280755827
+        },
+        {
+          "start_time": 110.41,
+          "end_time": 112.22,
+          "value": 0.5330195625945013
+        },
+        {
+          "start_time": 112.22,
+          "end_time": 114.03,
+          "value": 0.4747265944089292
+        },
+        {
+          "start_time": 114.03,
+          "end_time": 115.84,
+          "value": 0.455401249014938
+        },
+        {
+          "start_time": 115.84,
+          "end_time": 117.65,
+          "value": 0.38650309019629536
+        },
+        {
+          "start_time": 117.65,
+          "end_time": 119.46,
+          "value": 0.32332004218167526
+        },
+        {
+          "start_time": 119.46,
+          "end_time": 121.27,
+          "value": 0.2669930396173874
+        },
+        {
+          "start_time": 121.27,
+          "end_time": 123.08,
+          "value": 0.2598913255893144
+        },
+        {
+          "start_time": 123.08,
+          "end_time": 124.89,
+          "value": 0.20054310854328547
+        },
+        {
+          "start_time": 124.89,
+          "end_time": 126.7,
+          "value": 0.1272711441084653
+        },
+        {
+          "start_time": 126.7,
+          "end_time": 128.51,
+          "value": 0.10582391221374267
+        },
+        {
+          "start_time": 128.51,
+          "end_time": 130.32,
+          "value": 0.08663402388715585
+        },
+        {
+          "start_time": 130.32,
+          "end_time": 132.13,
+          "value": 0.11625418352879852
+        },
+        {
+          "start_time": 132.13,
+          "end_time": 133.94,
+          "value": 0.13145933575108817
+        },
+        {
+          "start_time": 133.94,
+          "end_time": 135.75,
+          "value": 0.13073891187561415
+        },
+        {
+          "start_time": 135.75,
+          "end_time": 137.56,
+          "value": 0.12344893591840811
+        },
+        {
+          "start_time": 137.56,
+          "end_time": 139.37,
+          "value": 0.13702176492229337
+        },
+        {
+          "start_time": 139.37,
+          "end_time": 141.18,
+          "value": 0.11221013836120626
+        },
+        {
+          "start_time": 141.18,
+          "end_time": 142.99,
+          "value": 0.08460153802257901
+        },
+        {
+          "start_time": 142.99,
+          "end_time": 144.8,
+          "value": 1.0
+        },
+        {
+          "start_time": 144.8,
+          "end_time": 146.61,
+          "value": 0.05324458945871765
+        },
+        {
+          "start_time": 146.61,
+          "end_time": 148.42,
+          "value": 0.07512611177660633
+        },
+        {
+          "start_time": 148.42,
+          "end_time": 150.23,
+          "value": 0.07733858149559539
+        },
+        {
+          "start_time": 150.23,
+          "end_time": 152.04,
+          "value": 0.0888533834323101
+        },
+        {
+          "start_time": 152.04,
+          "end_time": 153.85,
+          "value": 0.10980420078100035
+        },
+        {
+          "start_time": 153.85,
+          "end_time": 155.66,
+          "value": 0.16162268620259737
+        },
+        {
+          "start_time": 155.66,
+          "end_time": 157.47,
+          "value": 0.17650054597373405
+        },
+        {
+          "start_time": 157.47,
+          "end_time": 159.28,
+          "value": 0.2208172189918521
+        },
+        {
+          "start_time": 159.28,
+          "end_time": 161.09,
+          "value": 0.2129026083095134
+        },
+        {
+          "start_time": 161.09,
+          "end_time": 162.9,
+          "value": 0.2110580887285439
+        },
+        {
+          "start_time": 162.9,
+          "end_time": 164.71,
+          "value": 0.13782882579096392
+        },
+        {
+          "start_time": 164.71,
+          "end_time": 166.52,
+          "value": 0.061178378537769876
+        },
+        {
+          "start_time": 166.52,
+          "end_time": 168.33,
+          "value": 0.03623428992699573
+        },
+        {
+          "start_time": 168.33,
+          "end_time": 170.14,
+          "value": 0.0158608425817788
+        },
+        {
+          "start_time": 170.14,
+          "end_time": 171.95,
+          "value": 0.023277701886142615
+        },
+        {
+          "start_time": 171.95,
+          "end_time": 173.76,
+          "value": 0.014924494639284629
+        },
+        {
+          "start_time": 173.76,
+          "end_time": 175.57,
+          "value": 0.0
+        },
+        {
+          "start_time": 175.57,
+          "end_time": 177.38,
+          "value": 0.013221447869460726
+        },
+        {
+          "start_time": 177.38,
+          "end_time": 179.19,
+          "value": 0.021347612206699874
+        },
+        {
+          "start_time": 179.19,
+          "end_time": 181.0,
+          "value": 0.09398395161532168
+        }
+      ],
+      "duration_seconds": 181,
+      "description_excerpt": "If you've ever noticed that text looks better on Mac than on a Windows PC, there's a reason for that! Macs have higher quality fonts, higher screen resolutions, and better color reproduction, all of which come together to make text look its best. But there's also another reason why fonts look better on mac. It comes down to how these operating systems chose to render their fonts and the philosophy behind it which is what I want to explore in this video.\n\n\ud83c\udfac - My YouTube Video Course - https://sto"
+    },
+    {
+      "title": "How do computer fonts work?",
+      "channel": "Dougmantis",
+      "channel_id": "UCEEIFKBJVxWwUlM6OvTAwgA",
+      "view_count": 576270,
+      "like_count": 29172,
+      "comment_count": 1800,
+      "upload_date": "20220331",
+      "tags": [
+        "dougmantis"
+      ],
+      "categories": [
+        "Music"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 71.0
+        },
+        {
+          "start_time": 71.0,
+          "title": "bitmap fonts",
+          "end_time": 725.0
+        },
+        {
+          "start_time": 725.0,
+          "title": "pixel antialiasing",
+          "end_time": 833.0
+        },
+        {
+          "start_time": 833.0,
+          "title": "conclusion",
+          "end_time": 931
+        }
+      ],
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 9.31,
+          "value": 0.5601405518238123
+        },
+        {
+          "start_time": 9.31,
+          "end_time": 18.62,
+          "value": 0.31652416833672337
+        },
+        {
+          "start_time": 18.62,
+          "end_time": 27.93,
+          "value": 0.24618367583114426
+        },
+        {
+          "start_time": 27.93,
+          "end_time": 37.24,
+          "value": 0.17742205744132256
+        },
+        {
+          "start_time": 37.24,
+          "end_time": 46.55,
+          "value": 0.09041934324946647
+        },
+        {
+          "start_time": 46.55,
+          "end_time": 55.86,
+          "value": 0.12295522005543617
+        },
+        {
+          "start_time": 55.86,
+          "end_time": 65.17,
+          "value": 0.12481092682719161
+        },
+        {
+          "start_time": 65.17,
+          "end_time": 74.48,
+          "value": 0.18500853689170027
+        },
+        {
+          "start_time": 74.48,
+          "end_time": 83.79,
+          "value": 0.06264398624045617
+        },
+        {
+          "start_time": 83.79,
+          "end_time": 93.1,
+          "value": 0.1054308342272841
+        },
+        {
+          "start_time": 93.1,
+          "end_time": 102.41,
+          "value": 0.11693651185072067
+        },
+        {
+          "start_time": 102.41,
+          "end_time": 111.72,
+          "value": 0.22237580462548853
+        },
+        {
+          "start_time": 111.72,
+          "end_time": 121.03,
+          "value": 0.21985817955830878
+        },
+        {
+          "start_time": 121.03,
+          "end_time": 130.34,
+          "value": 0.10476080229602097
+        },
+        {
+          "start_time": 130.34,
+          "end_time": 139.65,
+          "value": 0.11015191912616865
+        },
+        {
+          "start_time": 139.65,
+          "end_time": 148.96,
+          "value": 0.19157095724379988
+        },
+        {
+          "start_time": 148.96,
+          "end_time": 158.27,
+          "value": 0.20543302195257504
+        },
+        {
+          "start_time": 158.27,
+          "end_time": 167.58,
+          "value": 0.09675440113007508
+        },
+        {
+          "start_time": 167.58,
+          "end_time": 176.89,
+          "value": 0.03880326630670811
+        },
+        {
+          "start_time": 176.89,
+          "end_time": 186.2,
+          "value": 0.19143502920695385
+        },
+        {
+          "start_time": 186.2,
+          "end_time": 195.51,
+          "value": 0.25006734810477127
+        },
+        {
+          "start_time": 195.51,
+          "end_time": 204.82,
+          "value": 0.13532775918886505
+        },
+        {
+          "start_time": 204.82,
+          "end_time": 214.13,
+          "value": 0.1524426691969823
+        },
+        {
+          "start_time": 214.13,
+          "end_time": 223.44,
+          "value": 0.18420318462506083
+        },
+        {
+          "start_time": 223.44,
+          "end_time": 232.75,
+          "value": 0.10340140695701242
+        },
+        {
+          "start_time": 232.75,
+          "end_time": 242.06,
+          "value": 0.037545307840048635
+        },
+        {
+          "start_time": 242.06,
+          "end_time": 251.37,
+          "value": 0.020156439439641433
+        },
+        {
+          "start_time": 251.37,
+          "end_time": 260.68,
+          "value": 0.0
+        },
+        {
+          "start_time": 260.68,
+          "end_time": 269.99,
+          "value": 0.06723968754421233
+        },
+        {
+          "start_time": 269.99,
+          "end_time": 279.3,
+          "value": 0.3362274267236032
+        },
+        {
+          "start_time": 279.3,
+          "end_time": 288.61,
+          "value": 0.41571553448214754
+        },
+        {
+          "start_time": 288.61,
+          "end_time": 297.92,
+          "value": 0.13699355103915473
+        },
+        {
+          "start_time": 297.92,
+          "end_time": 307.23,
+          "value": 0.12833848603956977
+        },
+        {
+          "start_time": 307.23,
+          "end_time": 316.54,
+          "value": 0.19483671209328224
+        },
+        {
+          "start_time": 316.54,
+          "end_time": 325.85,
+          "value": 0.17918406321619465
+        },
+        {
+          "start_time": 325.85,
+          "end_time": 335.16,
+          "value": 0.14931464906439104
+        },
+        {
+          "start_time": 335.16,
+          "end_time": 344.47,
+          "value": 0.2554408415922974
+        },
+        {
+          "start_time": 344.47,
+          "end_time": 353.78,
+          "value": 0.3417104378705891
+        },
+        {
+          "start_time": 353.78,
+          "end_time": 363.09,
+          "value": 0.10322453298059932
+        },
+        {
+          "start_time": 363.09,
+          "end_time": 372.4,
+          "value": 0.12676706858508932
+        },
+        {
+          "start_time": 372.4,
+          "end_time": 381.71,
+          "value": 0.2623298111503628
+        },
+        {
+          "start_time": 381.71,
+          "end_time": 391.02,
+          "value": 0.29828195567793386
+        },
+        {
+          "start_time": 391.02,
+          "end_time": 400.33,
+          "value": 0.2981264497991448
+        },
+        {
+          "start_time": 400.33,
+          "end_time": 409.64,
+          "value": 0.2778078361889116
+        },
+        {
+          "start_time": 409.64,
+          "end_time": 418.95,
+          "value": 0.6115261456659109
+        },
+        {
+          "start_time": 418.95,
+          "end_time": 428.26,
+          "value": 0.8976197121801014
+        },
+        {
+          "start_time": 428.26,
+          "end_time": 437.57,
+          "value": 0.6509025073072817
+        },
+        {
+          "start_time": 437.57,
+          "end_time": 446.88,
+          "value": 0.6543058983274709
+        },
+        {
+          "start_time": 446.88,
+          "end_time": 456.19,
+          "value": 0.7631163246714413
+        },
+        {
+          "start_time": 456.19,
+          "end_time": 465.5,
+          "value": 0.37134317693648755
+        },
+        {
+          "start_time": 465.5,
+          "end_time": 474.81,
+          "value": 0.5267329354717286
+        },
+        {
+          "start_time": 474.81,
+          "end_time": 484.12,
+          "value": 0.47552170267834404
+        },
+        {
+          "start_time": 484.12,
+          "end_time": 493.43,
+          "value": 0.16630059496601782
+        },
+        {
+          "start_time": 493.43,
+          "end_time": 502.74,
+          "value": 0.18841406307921546
+        },
+        {
+          "start_time": 502.74,
+          "end_time": 512.05,
+          "value": 0.38273127253771766
+        },
+        {
+          "start_time": 512.05,
+          "end_time": 521.36,
+          "value": 0.41453728345420404
+        },
+        {
+          "start_time": 521.36,
+          "end_time": 530.67,
+          "value": 0.42735029118262285
+        },
+        {
+          "start_time": 530.67,
+          "end_time": 539.98,
+          "value": 0.24980429549020797
+        },
+        {
+          "start_time": 539.98,
+          "end_time": 549.29,
+          "value": 0.427564530587241
+        },
+        {
+          "start_time": 549.29,
+          "end_time": 558.6,
+          "value": 0.37491324240301716
+        },
+        {
+          "start_time": 558.6,
+          "end_time": 567.91,
+          "value": 0.1387028510298027
+        },
+        {
+          "start_time": 567.91,
+          "end_time": 577.22,
+          "value": 0.07425271032391835
+        },
+        {
+          "start_time": 577.22,
+          "end_time": 586.53,
+          "value": 0.01970659253278114
+        },
+        {
+          "start_time": 586.53,
+          "end_time": 595.84,
+          "value": 0.060549567761653836
+        },
+        {
+          "start_time": 595.84,
+          "end_time": 605.15,
+          "value": 0.13493408360704262
+        },
+        {
+          "start_time": 605.15,
+          "end_time": 614.46,
+          "value": 0.12399323986315351
+        },
+        {
+          "start_time": 614.46,
+          "end_time": 623.77,
+          "value": 0.2023195209578006
+        },
+        {
+          "start_time": 623.77,
+          "end_time": 633.08,
+          "value": 0.24594217198220952
+        },
+        {
+          "start_time": 633.08,
+          "end_time": 642.39,
+          "value": 0.8527205595820249
+        },
+        {
+          "start_time": 642.39,
+          "end_time": 651.7,
+          "value": 1.0
+        },
+        {
+          "start_time": 651.7,
+          "end_time": 661.01,
+          "value": 0.19973087694048522
+        },
+        {
+          "start_time": 661.01,
+          "end_time": 670.32,
+          "value": 0.18474886769613047
+        },
+        {
+          "start_time": 670.32,
+          "end_time": 679.63,
+          "value": 0.06541485857686367
+        },
+        {
+          "start_time": 679.63,
+          "end_time": 688.94,
+          "value": 0.22409780064954418
+        },
+        {
+          "start_time": 688.94,
+          "end_time": 698.25,
+          "value": 0.24718756581037368
+        },
+        {
+          "start_time": 698.25,
+          "end_time": 707.56,
+          "value": 0.053221377860266046
+        },
+        {
+          "start_time": 707.56,
+          "end_time": 716.87,
+          "value": 0.03642317886405091
+        },
+        {
+          "start_time": 716.87,
+          "end_time": 726.18,
+          "value": 0.2115050107942563
+        },
+        {
+          "start_time": 726.18,
+          "end_time": 735.49,
+          "value": 0.2276117933372202
+        },
+        {
+          "start_time": 735.49,
+          "end_time": 744.8,
+          "value": 0.07156749104601158
+        },
+        {
+          "start_time": 744.8,
+          "end_time": 754.11,
+          "value": 0.15431399553894562
+        },
+        {
+          "start_time": 754.11,
+          "end_time": 763.42,
+          "value": 0.2084617732288713
+        },
+        {
+          "start_time": 763.42,
+          "end_time": 772.73,
+          "value": 0.28861319535378394
+        },
+        {
+          "start_time": 772.73,
+          "end_time": 782.04,
+          "value": 0.19778987844623808
+        },
+        {
+          "start_time": 782.04,
+          "end_time": 791.35,
+          "value": 0.1522210716772715
+        },
+        {
+          "start_time": 791.35,
+          "end_time": 800.66,
+          "value": 0.19487438958440415
+        },
+        {
+          "start_time": 800.66,
+          "end_time": 809.97,
+          "value": 0.17246935616065906
+        },
+        {
+          "start_time": 809.97,
+          "end_time": 819.28,
+          "value": 0.11736832480585827
+        },
+        {
+          "start_time": 819.28,
+          "end_time": 828.59,
+          "value": 0.1540091593422489
+        },
+        {
+          "start_time": 828.59,
+          "end_time": 837.9,
+          "value": 0.2049909437699086
+        },
+        {
+          "start_time": 837.9,
+          "end_time": 847.21,
+          "value": 0.25383309344454685
+        },
+        {
+          "start_time": 847.21,
+          "end_time": 856.52,
+          "value": 0.12676892453822655
+        },
+        {
+          "start_time": 856.52,
+          "end_time": 865.83,
+          "value": 0.07315812500642603
+        },
+        {
+          "start_time": 865.83,
+          "end_time": 875.14,
+          "value": 0.06914125114038466
+        },
+        {
+          "start_time": 875.14,
+          "end_time": 884.45,
+          "value": 0.1491560882538894
+        },
+        {
+          "start_time": 884.45,
+          "end_time": 893.76,
+          "value": 0.2820273538585545
+        },
+        {
+          "start_time": 893.76,
+          "end_time": 903.07,
+          "value": 0.36321370801074376
+        },
+        {
+          "start_time": 903.07,
+          "end_time": 912.38,
+          "value": 0.36605633839366897
+        },
+        {
+          "start_time": 912.38,
+          "end_time": 921.69,
+          "value": 0.27108087655779756
+        },
+        {
+          "start_time": 921.69,
+          "end_time": 931.0,
+          "value": 0.22594800525934416
+        }
+      ],
+      "duration_seconds": 931,
+      "description_excerpt": "Outro music unreleased and written by me.\n\nSources used:\nWikiped\nhttps://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=667294\nhttps://graphicdesign.stackexchange.com/questions/37099/small-anti-aliased-fonts-for-an-lcd-display\nhttps://www.prepressure.com/postscript/basics/history\nhttps://www.high-logic.com/font-editor/fontcreator/tutorials/the-difference-between-truetype-and-opentype-fonts\nhttps://www.canva.com/learn/kerning/\nhttp://designwithfontforge.com/en-US/Spacing_Metrics_and_Kerning.htm"
+    },
+    {
+      "title": "Text Rendering In OpenGL // OpenGL Tutorial #46.1",
+      "channel": "OGLDEV",
+      "channel_id": "UC7Z1FTCdSln_qFKK95AWplw",
+      "view_count": 12893,
+      "like_count": 223,
+      "comment_count": 61,
+      "upload_date": "20230911",
+      "tags": [
+        "opengl",
+        "opengl tutorials",
+        "modern opengl",
+        "learn opengl",
+        "freetypegl",
+        "opengl text",
+        "opengl fonts",
+        "opengl text rendering"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 105.0
+        },
+        {
+          "start_time": 105.0,
+          "title": "Download Freetype",
+          "end_time": 154.0
+        },
+        {
+          "start_time": 154.0,
+          "title": "Building Freetype",
+          "end_time": 223.0
+        },
+        {
+          "start_time": 223.0,
+          "title": "Clone FreetypeGL sources",
+          "end_time": 241.0
+        },
+        {
+          "start_time": 241.0,
+          "title": "Build FreetypeGL",
+          "end_time": 508.0
+        },
+        {
+          "start_time": 508.0,
+          "title": "FreetypeGL demos",
+          "end_time": 520.0
+        },
+        {
+          "start_time": 520.0,
+          "title": "Download GLFW",
+          "end_time": 561.0
+        },
+        {
+          "start_time": 561.0,
+          "title": "Build GLFW",
+          "end_time": 614.0
+        },
+        {
+          "start_time": 614.0,
+          "title": "Build FreetypeGL demos",
+          "end_time": 870.0
+        },
+        {
+          "start_time": 870.0,
+          "title": "Running the demos",
+          "end_time": 919.0
+        },
+        {
+          "start_time": 919.0,
+          "title": "Outro",
+          "end_time": 963
+        }
+      ],
+      "heatmap": null,
+      "duration_seconds": 963,
+      "description_excerpt": "This is the first of two videos on font and text rendering in OpenGL using the FreetypeGL library. In this video we learn how to build FreetypeGL and its dependencies on Windows. In the next one we will integrate it into an OpenGL application.\n\n\ud83d\udd25 See the list of the books that I'm using as background information for my tutorials: https://ogldev.org/books.html. I highly recommend them for learning more about OpenGL and Vulkan. These are affiliate links so if you use them to buy any of the books t"
+    },
+    {
+      "title": "Multilingual & Text Rendering with ChatGPT Images 2.0",
+      "channel": "OpenAI",
+      "channel_id": "UCXZCJLdBC09xxGZ6gcdrc6A",
+      "view_count": 11598,
+      "like_count": 395,
+      "comment_count": 24,
+      "upload_date": "20260421",
+      "tags": [],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 138,
+      "description_excerpt": "OpenAI researcher Boyuan Chen demonstrates ChatGPT Images 2.0\u2019s ability to render dense text across multiple languages while keeping stylistic choices intact. While text rendering in Latin-based languages has already been strong, the model has now expanded to handle a much wider range of languages."
+    },
+    {
+      "title": "Glyphs, shapes, fonts, signed distance fields.",
+      "channel": "Martin Donald",
+      "channel_id": "UC8bYucAICXmYet8pZ5Ja9Dw",
+      "view_count": 81754,
+      "like_count": 5186,
+      "comment_count": 133,
+      "upload_date": "20201213",
+      "tags": [],
+      "categories": [
+        "Education"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 50.0
+        },
+        {
+          "start_time": 50.0,
+          "title": "Signed distance fields",
+          "end_time": 156.0
+        },
+        {
+          "start_time": 156.0,
+          "title": "Distance field shader",
+          "end_time": 301.0
+        },
+        {
+          "start_time": 301.0,
+          "title": "Final result",
+          "end_time": 332.0
+        },
+        {
+          "start_time": 332.0,
+          "title": "Outro",
+          "end_time": 364
+        }
+      ],
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 3.65,
+          "value": 0.2319348797657229
+        },
+        {
+          "start_time": 3.65,
+          "end_time": 7.3,
+          "value": 0.17147350684112037
+        },
+        {
+          "start_time": 7.3,
+          "end_time": 10.95,
+          "value": 0.15006015145992319
+        },
+        {
+          "start_time": 10.95,
+          "end_time": 14.6,
+          "value": 0.08787286370460068
+        },
+        {
+          "start_time": 14.6,
+          "end_time": 18.25,
+          "value": 0.06591231755488047
+        },
+        {
+          "start_time": 18.25,
+          "end_time": 21.9,
+          "value": 0.05901328111094465
+        },
+        {
+          "start_time": 21.9,
+          "end_time": 25.55,
+          "value": 0.034317211386563094
+        },
+        {
+          "start_time": 25.55,
+          "end_time": 29.2,
+          "value": 0.046264601743381706
+        },
+        {
+          "start_time": 29.2,
+          "end_time": 32.85,
+          "value": 0.08967126367616697
+        },
+        {
+          "start_time": 32.85,
+          "end_time": 36.5,
+          "value": 0.10114745058632714
+        },
+        {
+          "start_time": 36.5,
+          "end_time": 40.15,
+          "value": 0.05952768145890535
+        },
+        {
+          "start_time": 40.15,
+          "end_time": 43.8,
+          "value": 0.05132216138922675
+        },
+        {
+          "start_time": 43.8,
+          "end_time": 47.45,
+          "value": 0.07214823103235771
+        },
+        {
+          "start_time": 47.45,
+          "end_time": 51.1,
+          "value": 0.17254415359709413
+        },
+        {
+          "start_time": 51.1,
+          "end_time": 54.75,
+          "value": 0.2583653796238145
+        },
+        {
+          "start_time": 54.75,
+          "end_time": 58.4,
+          "value": 0.3507571975523477
+        },
+        {
+          "start_time": 58.4,
+          "end_time": 62.05,
+          "value": 0.39857449625328667
+        },
+        {
+          "start_time": 62.05,
+          "end_time": 65.7,
+          "value": 0.409587234546186
+        },
+        {
+          "start_time": 65.7,
+          "end_time": 69.35,
+          "value": 0.39194364682549704
+        },
+        {
+          "start_time": 69.35,
+          "end_time": 73.0,
+          "value": 0.31904320734780794
+        },
+        {
+          "start_time": 73.0,
+          "end_time": 76.65,
+          "value": 0.22892044249476803
+        },
+        {
+          "start_time": 76.65,
+          "end_time": 80.3,
+          "value": 0.2154603400813891
+        },
+        {
+          "start_time": 80.3,
+          "end_time": 83.95,
+          "value": 0.2299575083378925
+        },
+        {
+          "start_time": 83.95,
+          "end_time": 87.6,
+          "value": 0.25449044647044394
+        },
+        {
+          "start_time": 87.6,
+          "end_time": 91.25,
+          "value": 0.27297427746103164
+        },
+        {
+          "start_time": 91.25,
+          "end_time": 94.9,
+          "value": 0.2912141165031935
+        },
+        {
+          "start_time": 94.9,
+          "end_time": 98.55,
+          "value": 0.30446272720799605
+        },
+        {
+          "start_time": 98.55,
+          "end_time": 102.2,
+          "value": 0.3160451402715555
+        },
+        {
+          "start_time": 102.2,
+          "end_time": 105.85,
+          "value": 0.3261022834580463
+        },
+        {
+          "start_time": 105.85,
+          "end_time": 109.5,
+          "value": 0.2979278175276435
+        },
+        {
+          "start_time": 109.5,
+          "end_time": 113.15,
+          "value": 0.2546771627498741
+        },
+        {
+          "start_time": 113.15,
+          "end_time": 116.8,
+          "value": 0.26574633618832466
+        },
+        {
+          "start_time": 116.8,
+          "end_time": 120.45,
+          "value": 0.3122482957486604
+        },
+        {
+          "start_time": 120.45,
+          "end_time": 124.1,
+          "value": 0.3201122330942818
+        },
+        {
+          "start_time": 124.1,
+          "end_time": 127.75,
+          "value": 0.2945444705144576
+        },
+        {
+          "start_time": 127.75,
+          "end_time": 131.4,
+          "value": 0.22979014411014603
+        },
+        {
+          "start_time": 131.4,
+          "end_time": 135.05,
+          "value": 0.1805906846547756
+        },
+        {
+          "start_time": 135.05,
+          "end_time": 138.7,
+          "value": 0.1800669985240008
+        },
+        {
+          "start_time": 138.7,
+          "end_time": 142.35,
+          "value": 0.18767817846241924
+        },
+        {
+          "start_time": 142.35,
+          "end_time": 146.0,
+          "value": 0.22464542018187247
+        },
+        {
+          "start_time": 146.0,
+          "end_time": 149.65,
+          "value": 0.2812635997193612
+        },
+        {
+          "start_time": 149.65,
+          "end_time": 153.3,
+          "value": 0.31230445071973023
+        },
+        {
+          "start_time": 153.3,
+          "end_time": 156.95,
+          "value": 0.3759954749419749
+        },
+        {
+          "start_time": 156.95,
+          "end_time": 160.6,
+          "value": 0.3284273314049057
+        },
+        {
+          "start_time": 160.6,
+          "end_time": 164.25,
+          "value": 0.37396845259353717
+        },
+        {
+          "start_time": 164.25,
+          "end_time": 167.9,
+          "value": 0.506240466312801
+        },
+        {
+          "start_time": 167.9,
+          "end_time": 171.55,
+          "value": 0.8158630068461435
+        },
+        {
+          "start_time": 171.55,
+          "end_time": 175.2,
+          "value": 1.0
+        },
+        {
+          "start_time": 175.2,
+          "end_time": 178.85,
+          "value": 0.8331300800886761
+        },
+        {
+          "start_time": 178.85,
+          "end_time": 182.5,
+          "value": 0.5858929106690483
+        },
+        {
+          "start_time": 182.5,
+          "end_time": 186.15,
+          "value": 0.42908213519051125
+        },
+        {
+          "start_time": 186.15,
+          "end_time": 189.8,
+          "value": 0.340687526564043
+        },
+        {
+          "start_time": 189.8,
+          "end_time": 193.45,
+          "value": 0.2612875594405172
+        },
+        {
+          "start_time": 193.45,
+          "end_time": 197.1,
+          "value": 0.20509838707153266
+        },
+        {
+          "start_time": 197.1,
+          "end_time": 200.75,
+          "value": 0.1633853098355532
+        },
+        {
+          "start_time": 200.75,
+          "end_time": 204.4,
+          "value": 0.13730939079621224
+        },
+        {
+          "start_time": 204.4,
+          "end_time": 208.05,
+          "value": 0.13577091269358907
+        },
+        {
+          "start_time": 208.05,
+          "end_time": 211.7,
+          "value": 0.12487734861762512
+        },
+        {
+          "start_time": 211.7,
+          "end_time": 215.35,
+          "value": 0.11585262838285171
+        },
+        {
+          "start_time": 215.35,
+          "end_time": 219.0,
+          "value": 0.1210133222565685
+        },
+        {
+          "start_time": 219.0,
+          "end_time": 222.65,
+          "value": 0.13479560531116358
+        },
+        {
+          "start_time": 222.65,
+          "end_time": 226.3,
+          "value": 0.19724997939716937
+        },
+        {
+          "start_time": 226.3,
+          "end_time": 229.95,
+          "value": 0.23925415791938587
+        },
+        {
+          "start_time": 229.95,
+          "end_time": 233.6,
+          "value": 0.20481757219125782
+        },
+        {
+          "start_time": 233.6,
+          "end_time": 237.25,
+          "value": 0.16322454972058398
+        },
+        {
+          "start_time": 237.25,
+          "end_time": 240.9,
+          "value": 0.13260340009344218
+        },
+        {
+          "start_time": 240.9,
+          "end_time": 244.55,
+          "value": 0.10540870432470525
+        },
+        {
+          "start_time": 244.55,
+          "end_time": 248.2,
+          "value": 0.12730147826860655
+        },
+        {
+          "start_time": 248.2,
+          "end_time": 251.85,
+          "value": 0.1614717181271809
+        },
+        {
+          "start_time": 251.85,
+          "end_time": 255.5,
+          "value": 0.16141422232109268
+        },
+        {
+          "start_time": 255.5,
+          "end_time": 259.15,
+          "value": 0.13481924002992104
+        },
+        {
+          "start_time": 259.15,
+          "end_time": 262.8,
+          "value": 0.0918031513305226
+        },
+        {
+          "start_time": 262.8,
+          "end_time": 266.45,
+          "value": 0.08631167145651626
+        },
+        {
+          "start_time": 266.45,
+          "end_time": 270.1,
+          "value": 0.09154933326278274
+        },
+        {
+          "start_time": 270.1,
+          "end_time": 273.75,
+          "value": 0.13449749966289007
+        },
+        {
+          "start_time": 273.75,
+          "end_time": 277.4,
+          "value": 0.23879058922734722
+        },
+        {
+          "start_time": 277.4,
+          "end_time": 281.05,
+          "value": 0.31844559517885357
+        },
+        {
+          "start_time": 281.05,
+          "end_time": 284.7,
+          "value": 0.2593857750852921
+        },
+        {
+          "start_time": 284.7,
+          "end_time": 288.35,
+          "value": 0.20832713780834153
+        },
+        {
+          "start_time": 288.35,
+          "end_time": 292.0,
+          "value": 0.22622904640093663
+        },
+        {
+          "start_time": 292.0,
+          "end_time": 295.65,
+          "value": 0.24634261232525168
+        },
+        {
+          "start_time": 295.65,
+          "end_time": 299.3,
+          "value": 0.24541475449250774
+        },
+        {
+          "start_time": 299.3,
+          "end_time": 302.95,
+          "value": 0.27073732437612846
+        },
+        {
+          "start_time": 302.95,
+          "end_time": 306.6,
+          "value": 0.21789215451814772
+        },
+        {
+          "start_time": 306.6,
+          "end_time": 310.25,
+          "value": 0.22980859560099648
+        },
+        {
+          "start_time": 310.25,
+          "end_time": 313.9,
+          "value": 0.27928060478943867
+        },
+        {
+          "start_time": 313.9,
+          "end_time": 317.55,
+          "value": 0.2735890603232069
+        },
+        {
+          "start_time": 317.55,
+          "end_time": 321.2,
+          "value": 0.21772114802214226
+        },
+        {
+          "start_time": 321.2,
+          "end_time": 324.85,
+          "value": 0.15915889779519093
+        },
+        {
+          "start_time": 324.85,
+          "end_time": 328.5,
+          "value": 0.11983270701662167
+        },
+        {
+          "start_time": 328.5,
+          "end_time": 332.15,
+          "value": 0.14182262145573776
+        },
+        {
+          "start_time": 332.15,
+          "end_time": 335.8,
+          "value": 0.1342664557780003
+        },
+        {
+          "start_time": 335.8,
+          "end_time": 339.45,
+          "value": 0.06333688367767912
+        },
+        {
+          "start_time": 339.45,
+          "end_time": 343.1,
+          "value": 0.018912708078082707
+        },
+        {
+          "start_time": 343.1,
+          "end_time": 346.75,
+          "value": 0.0
+        },
+        {
+          "start_time": 346.75,
+          "end_time": 350.4,
+          "value": 0.006829403079061516
+        },
+        {
+          "start_time": 350.4,
+          "end_time": 354.05,
+          "value": 0.015203928398449418
+        },
+        {
+          "start_time": 354.05,
+          "end_time": 357.7,
+          "value": 0.032557375431123484
+        },
+        {
+          "start_time": 357.7,
+          "end_time": 361.35,
+          "value": 0.03924168815371461
+        },
+        {
+          "start_time": 361.35,
+          "end_time": 365.0,
+          "value": 0.011648904471748826
+        }
+      ],
+      "duration_seconds": 364,
+      "description_excerpt": "Old but gold, in this video I explain how to generate and use signed distance field textures for rendering sharp vector-like shapes such as text and graphics.\n\nReferences:\nhttps://cdn.cloudflare.steamstatic.com/apps/valve/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf\nhttps://shaderbits.com/blog/various-distance-field-generation-techniques\n\nMe:\nPatreon https://www.patreon.com/bolddunkley\nTwitter https://twitter.com/bolddunkley\nitch.io https://bolddunkley.itch.io/\n\nSoftware used for this video:\nM"
+    },
+    {
+      "title": "Text Rendering with 4o Image Generation",
+      "channel": "OpenAI",
+      "channel_id": "UCXZCJLdBC09xxGZ6gcdrc6A",
+      "view_count": 53606,
+      "like_count": 1262,
+      "comment_count": 68,
+      "upload_date": "20250325",
+      "tags": [],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 0.75,
+          "value": 0.7577551569471692
+        },
+        {
+          "start_time": 0.75,
+          "end_time": 1.5,
+          "value": 0.08895420629639356
+        },
+        {
+          "start_time": 1.5,
+          "end_time": 2.25,
+          "value": 0.062437655584855825
+        },
+        {
+          "start_time": 2.25,
+          "end_time": 3.0,
+          "value": 0.06269461742924953
+        },
+        {
+          "start_time": 3.0,
+          "end_time": 3.75,
+          "value": 0.06435593462591467
+        },
+        {
+          "start_time": 3.75,
+          "end_time": 4.5,
+          "value": 0.07577615013420334
+        },
+        {
+          "start_time": 4.5,
+          "end_time": 5.25,
+          "value": 0.09082749277300008
+        },
+        {
+          "start_time": 5.25,
+          "end_time": 6.0,
+          "value": 0.12141645236787639
+        },
+        {
+          "start_time": 6.0,
+          "end_time": 6.75,
+          "value": 0.14011188797472038
+        },
+        {
+          "start_time": 6.75,
+          "end_time": 7.5,
+          "value": 0.1428797618319709
+        },
+        {
+          "start_time": 7.5,
+          "end_time": 8.25,
+          "value": 0.15024543804070903
+        },
+        {
+          "start_time": 8.25,
+          "end_time": 9.0,
+          "value": 0.15065253209370322
+        },
+        {
+          "start_time": 9.0,
+          "end_time": 9.75,
+          "value": 0.15739468449975402
+        },
+        {
+          "start_time": 9.75,
+          "end_time": 10.5,
+          "value": 0.17784458077720944
+        },
+        {
+          "start_time": 10.5,
+          "end_time": 11.25,
+          "value": 0.20242647892207788
+        },
+        {
+          "start_time": 11.25,
+          "end_time": 12.0,
+          "value": 0.2802533923604011
+        },
+        {
+          "start_time": 12.0,
+          "end_time": 12.75,
+          "value": 0.29389893899831093
+        },
+        {
+          "start_time": 12.75,
+          "end_time": 13.5,
+          "value": 0.28843622108670175
+        },
+        {
+          "start_time": 13.5,
+          "end_time": 14.25,
+          "value": 0.2686641499828244
+        },
+        {
+          "start_time": 14.25,
+          "end_time": 15.0,
+          "value": 0.24548455703642844
+        },
+        {
+          "start_time": 15.0,
+          "end_time": 15.75,
+          "value": 0.22687187561063069
+        },
+        {
+          "start_time": 15.75,
+          "end_time": 16.5,
+          "value": 0.2025667759333997
+        },
+        {
+          "start_time": 16.5,
+          "end_time": 17.25,
+          "value": 0.1783620506779734
+        },
+        {
+          "start_time": 17.25,
+          "end_time": 18.0,
+          "value": 0.18277007527915407
+        },
+        {
+          "start_time": 18.0,
+          "end_time": 18.75,
+          "value": 0.16892039981434473
+        },
+        {
+          "start_time": 18.75,
+          "end_time": 19.5,
+          "value": 0.15344963449497911
+        },
+        {
+          "start_time": 19.5,
+          "end_time": 20.25,
+          "value": 0.1595026858815577
+        },
+        {
+          "start_time": 20.25,
+          "end_time": 21.0,
+          "value": 0.16907139087115827
+        },
+        {
+          "start_time": 21.0,
+          "end_time": 21.75,
+          "value": 0.16814463823969583
+        },
+        {
+          "start_time": 21.75,
+          "end_time": 22.5,
+          "value": 0.20040112090219622
+        },
+        {
+          "start_time": 22.5,
+          "end_time": 23.25,
+          "value": 0.21784770809289625
+        },
+        {
+          "start_time": 23.25,
+          "end_time": 24.0,
+          "value": 0.3853695428542125
+        },
+        {
+          "start_time": 24.0,
+          "end_time": 24.75,
+          "value": 0.42490304642603755
+        },
+        {
+          "start_time": 24.75,
+          "end_time": 25.5,
+          "value": 0.42743548505378315
+        },
+        {
+          "start_time": 25.5,
+          "end_time": 26.25,
+          "value": 0.4534712192899082
+        },
+        {
+          "start_time": 26.25,
+          "end_time": 27.0,
+          "value": 0.499530473222872
+        },
+        {
+          "start_time": 27.0,
+          "end_time": 27.75,
+          "value": 0.5640380638203458
+        },
+        {
+          "start_time": 27.75,
+          "end_time": 28.5,
+          "value": 0.6012580519444144
+        },
+        {
+          "start_time": 28.5,
+          "end_time": 29.25,
+          "value": 0.5872695201168987
+        },
+        {
+          "start_time": 29.25,
+          "end_time": 30.0,
+          "value": 0.6979374316886676
+        },
+        {
+          "start_time": 30.0,
+          "end_time": 30.75,
+          "value": 0.7134758243786171
+        },
+        {
+          "start_time": 30.75,
+          "end_time": 31.5,
+          "value": 0.7716473315461349
+        },
+        {
+          "start_time": 31.5,
+          "end_time": 32.25,
+          "value": 0.8073233322213558
+        },
+        {
+          "start_time": 32.25,
+          "end_time": 33.0,
+          "value": 0.7490196178385877
+        },
+        {
+          "start_time": 33.0,
+          "end_time": 33.75,
+          "value": 0.6481591433548711
+        },
+        {
+          "start_time": 33.75,
+          "end_time": 34.5,
+          "value": 0.5196965063135179
+        },
+        {
+          "start_time": 34.5,
+          "end_time": 35.25,
+          "value": 0.48127335495728435
+        },
+        {
+          "start_time": 35.25,
+          "end_time": 36.0,
+          "value": 0.5666402076772552
+        },
+        {
+          "start_time": 36.0,
+          "end_time": 36.75,
+          "value": 0.5376187845951332
+        },
+        {
+          "start_time": 36.75,
+          "end_time": 37.5,
+          "value": 0.4959976703603697
+        },
+        {
+          "start_time": 37.5,
+          "end_time": 38.25,
+          "value": 0.4707966257682224
+        },
+        {
+          "start_time": 38.25,
+          "end_time": 39.0,
+          "value": 0.4677594614390035
+        },
+        {
+          "start_time": 39.0,
+          "end_time": 39.75,
+          "value": 0.480520228188767
+        },
+        {
+          "start_time": 39.75,
+          "end_time": 40.5,
+          "value": 0.4900761612742958
+        },
+        {
+          "start_time": 40.5,
+          "end_time": 41.25,
+          "value": 0.63491093868702
+        },
+        {
+          "start_time": 41.25,
+          "end_time": 42.0,
+          "value": 0.6764634558838625
+        },
+        {
+          "start_time": 42.0,
+          "end_time": 42.75,
+          "value": 0.6653151628017435
+        },
+        {
+          "start_time": 42.75,
+          "end_time": 43.5,
+          "value": 0.6555118814308512
+        },
+        {
+          "start_time": 43.5,
+          "end_time": 44.25,
+          "value": 0.6555626365897653
+        },
+        {
+          "start_time": 44.25,
+          "end_time": 45.0,
+          "value": 0.6637972732566607
+        },
+        {
+          "start_time": 45.0,
+          "end_time": 45.75,
+          "value": 0.6960040812467085
+        },
+        {
+          "start_time": 45.75,
+          "end_time": 46.5,
+          "value": 0.8595362058961703
+        },
+        {
+          "start_time": 46.5,
+          "end_time": 47.25,
+          "value": 1.0
+        },
+        {
+          "start_time": 47.25,
+          "end_time": 48.0,
+          "value": 0.9621071735629454
+        },
+        {
+          "start_time": 48.0,
+          "end_time": 48.75,
+          "value": 0.9230049780227668
+        },
+        {
+          "start_time": 48.75,
+          "end_time": 49.5,
+          "value": 0.9064231124587209
+        },
+        {
+          "start_time": 49.5,
+          "end_time": 50.25,
+          "value": 0.8188497401554732
+        },
+        {
+          "start_time": 50.25,
+          "end_time": 51.0,
+          "value": 0.6624605729797542
+        },
+        {
+          "start_time": 51.0,
+          "end_time": 51.75,
+          "value": 0.5059045676124515
+        },
+        {
+          "start_time": 51.75,
+          "end_time": 52.5,
+          "value": 0.4321922851438126
+        },
+        {
+          "start_time": 52.5,
+          "end_time": 53.25,
+          "value": 0.4300320325449171
+        },
+        {
+          "start_time": 53.25,
+          "end_time": 54.0,
+          "value": 0.38759113383838967
+        },
+        {
+          "start_time": 54.0,
+          "end_time": 54.75,
+          "value": 0.32676983059052767
+        },
+        {
+          "start_time": 54.75,
+          "end_time": 55.5,
+          "value": 0.3062436907555767
+        },
+        {
+          "start_time": 55.5,
+          "end_time": 56.25,
+          "value": 0.2810024188213206
+        },
+        {
+          "start_time": 56.25,
+          "end_time": 57.0,
+          "value": 0.2704749898829066
+        },
+        {
+          "start_time": 57.0,
+          "end_time": 57.75,
+          "value": 0.2503723453313413
+        },
+        {
+          "start_time": 57.75,
+          "end_time": 58.5,
+          "value": 0.2469315777515426
+        },
+        {
+          "start_time": 58.5,
+          "end_time": 59.25,
+          "value": 0.29999421247123514
+        },
+        {
+          "start_time": 59.25,
+          "end_time": 60.0,
+          "value": 0.2918224656573612
+        },
+        {
+          "start_time": 60.0,
+          "end_time": 60.75,
+          "value": 0.30490560523961685
+        },
+        {
+          "start_time": 60.75,
+          "end_time": 61.5,
+          "value": 0.32633730354851426
+        },
+        {
+          "start_time": 61.5,
+          "end_time": 62.25,
+          "value": 0.31389902045036727
+        },
+        {
+          "start_time": 62.25,
+          "end_time": 63.0,
+          "value": 0.3150088185703374
+        },
+        {
+          "start_time": 63.0,
+          "end_time": 63.75,
+          "value": 0.38592696304927465
+        },
+        {
+          "start_time": 63.75,
+          "end_time": 64.5,
+          "value": 0.36867491883122505
+        },
+        {
+          "start_time": 64.5,
+          "end_time": 65.25,
+          "value": 0.403546040206896
+        },
+        {
+          "start_time": 65.25,
+          "end_time": 66.0,
+          "value": 0.3530782906914734
+        },
+        {
+          "start_time": 66.0,
+          "end_time": 66.75,
+          "value": 0.2811355679991272
+        },
+        {
+          "start_time": 66.75,
+          "end_time": 67.5,
+          "value": 0.21855606393520982
+        },
+        {
+          "start_time": 67.5,
+          "end_time": 68.25,
+          "value": 0.1830511402830758
+        },
+        {
+          "start_time": 68.25,
+          "end_time": 69.0,
+          "value": 0.1511108245821087
+        },
+        {
+          "start_time": 69.0,
+          "end_time": 69.75,
+          "value": 0.14081135058231156
+        },
+        {
+          "start_time": 69.75,
+          "end_time": 70.5,
+          "value": 0.14058511334012083
+        },
+        {
+          "start_time": 70.5,
+          "end_time": 71.25,
+          "value": 0.1261187848583287
+        },
+        {
+          "start_time": 71.25,
+          "end_time": 72.0,
+          "value": 0.10345062217042414
+        },
+        {
+          "start_time": 72.0,
+          "end_time": 72.75,
+          "value": 0.10470556563840279
+        },
+        {
+          "start_time": 72.75,
+          "end_time": 73.5,
+          "value": 0.09629879916673992
+        },
+        {
+          "start_time": 73.5,
+          "end_time": 74.25,
+          "value": 0.032332116714812495
+        },
+        {
+          "start_time": 74.25,
+          "end_time": 75.0,
+          "value": 0.0
+        }
+      ],
+      "duration_seconds": 75,
+      "description_excerpt": "Speaker: Allan Jabri"
+    },
+    {
+      "title": "Handmade Hero Day 168 - Rendering Lines of Text",
+      "channel": "Molly Rocket",
+      "channel_id": "UCaTznQhurW5AaiYPbhEA-KA",
+      "view_count": 9070,
+      "like_count": 103,
+      "comment_count": null,
+      "upload_date": "20150814",
+      "tags": [
+        "Handmade Hero"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 5210,
+      "description_excerpt": "Day 168 of coding on Handmade Hero.  See http://handmadehero.org for details."
+    },
+    {
+      "title": "Improving Learn OpenGL's Text Rendering Example | Adventures in Coding",
+      "channel": "Whatever's Right Studios",
+      "channel_id": "UCNLtsvyP162Ud3Cq0KT-sKA",
+      "view_count": 11281,
+      "like_count": 317,
+      "comment_count": 44,
+      "upload_date": "20230622",
+      "tags": [
+        "GameDev",
+        "C++",
+        "OpenGL",
+        "Indie",
+        "Game Development",
+        "indepedent",
+        "video game development",
+        "devlog",
+        "game",
+        "game dev",
+        "indie dev",
+        "glsl",
+        "programming",
+        "menus",
+        "graphics",
+        "engine",
+        "engine programming",
+        "renderdoc",
+        "code with me",
+        "learn",
+        "learn opengl",
+        "optimize",
+        "performance"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 3765,
+      "description_excerpt": "Learn OpenGL is a massive resource for anyone starting or growing their knowledge of OpenGL. It's been instrumental for me. In this video, we go through and take Learn OpenGL's text rendering example as a starting point and improve its performance by over ten times!\n\nHuge credit to https://learnopengl.com/ without that website my game wouldn't exist.\n\nIf you'd like access to my finished example head to:\nhttps://github.com/johnWRS/LearnOpenGLTextRenderingImprovement\n\nAnd as always check out Redee"
+    },
+    {
+      "title": "How to Massively Improve Font Rendering on Hyprland",
+      "channel": "saneAspect",
+      "channel_id": "UC0qeRPC8H5c25yzGWQ-ffpw",
+      "view_count": 5403,
+      "like_count": 104,
+      "comment_count": 18,
+      "upload_date": "20251025",
+      "tags": [
+        "how to massively improve font rendering on hyprland",
+        "hyprland font rendering tutorial",
+        "hyprland font config guide",
+        "hyprland improve font clarity",
+        "hyprland sharp font tweaks",
+        "hyprland font polish",
+        "hyprland daily driver fonts",
+        "hyprland customization fonts",
+        "hyprland ricing font rendering",
+        "hyprland dotfiles font configs",
+        "hyprland polish workflows",
+        "hyprland productivity fonts",
+        "hyprland advanced font configs",
+        "hyprland workstation polish",
+        "hyprland clarity font polish"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 1217,
+      "description_excerpt": "Ready to learn to kickstart your own blazing-fast Hyprland setup from 3+ years of insights?\nDon't wait, click here: https://saneaspect.gumroad.com/l/hypraccelerator?utm_source=youtube&utm_medium=description&utm_campaign=hyprland-fonts\n\nSee you inside!\n\n---\n\nTags:\nhow to massively improve font rendering on hyprland, hyprland font rendering tutorial, hyprland font config polish, hyprland improve font clarity, hyprland sharp font tweaks, hyprland font polish, hyprland font rendering optimization, h"
+    },
+    {
+      "title": "Photorealism & Text Rendering Fixed? Qwen 2512 vs. Old Qwen (ComfyUI Workflow)",
+      "channel": "Veteran AI",
+      "channel_id": "UCW_HxXm6tMnVGSx_A6cE-rg",
+      "view_count": 2465,
+      "like_count": 65,
+      "comment_count": 11,
+      "upload_date": "20260102",
+      "tags": [],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 713,
+      "description_excerpt": "At the end of 2025, Alibaba released Qwen Image 2512, a model that claims to be the strongest open-source text-to-image model currently on the market. In this video, I conduct a detailed side-by-side comparison between the new 2512 version and the previous Qwen model inside ComfyUI.\nWe test everything from photorealism (getting rid of that oily \"AI texture\") to complex text rendering and layout accuracy. The results show a massive leap in how natural the images look and how well the model unders"
+    },
+    {
+      "title": "Handmade Hero Day 162 - Introduction to Fonts",
+      "channel": "Molly Rocket",
+      "channel_id": "UCaTznQhurW5AaiYPbhEA-KA",
+      "view_count": 17306,
+      "like_count": 285,
+      "comment_count": null,
+      "upload_date": "20150804",
+      "tags": [
+        "Handmade Hero"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 350.0
+        },
+        {
+          "start_time": 350.0,
+          "title": "What are Fonts",
+          "end_time": 560.0
+        },
+        {
+          "start_time": 560.0,
+          "title": "Outline Shapes",
+          "end_time": 755.0
+        },
+        {
+          "start_time": 755.0,
+          "title": "Encoding",
+          "end_time": 895.0
+        },
+        {
+          "start_time": 895.0,
+          "title": "Unicode",
+          "end_time": 1160.0
+        },
+        {
+          "start_time": 1160.0,
+          "title": "Code Points",
+          "end_time": 1240.0
+        },
+        {
+          "start_time": 1240.0,
+          "title": "Basic Typography",
+          "end_time": 1545.0
+        },
+        {
+          "start_time": 1545.0,
+          "title": "Proportional Fonts",
+          "end_time": 1895.0
+        },
+        {
+          "start_time": 1895.0,
+          "title": "What is a Font File",
+          "end_time": 2130.0
+        },
+        {
+          "start_time": 2130.0,
+          "title": "Using Font Files",
+          "end_time": 2490.0
+        },
+        {
+          "start_time": 2490.0,
+          "title": "PreRasterized Fonts",
+          "end_time": 2627.0
+        },
+        {
+          "start_time": 2627.0,
+          "title": "How to PreRaster Fonts",
+          "end_time": 2993.0
+        },
+        {
+          "start_time": 2993.0,
+          "title": "Licensing Concerns",
+          "end_time": 3356.0
+        },
+        {
+          "start_time": 3356.0,
+          "title": "Combining Unicode Characters",
+          "end_time": 4990
+        }
+      ],
+      "heatmap": null,
+      "duration_seconds": 4990,
+      "description_excerpt": "Day 162 of coding on Handmade Hero.  See http://handmadehero.org for details."
+    },
+    {
+      "title": "How To Make Glowing Text In Unreal Engine 5! (5.5 and later!)",
+      "channel": "Spacemarine658",
+      "channel_id": "UC0wsWmEHhv-PddR5rE5bhvA",
+      "view_count": 4429,
+      "like_count": 109,
+      "comment_count": 38,
+      "upload_date": "20251029",
+      "tags": [
+        "unreal engine",
+        "unreal engine 5",
+        "tutorial"
+      ],
+      "categories": [
+        "Gaming"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 50.0
+        },
+        {
+          "start_time": 50.0,
+          "title": "Setup",
+          "end_time": 120.0
+        },
+        {
+          "start_time": 120.0,
+          "title": "Material setup",
+          "end_time": 310.0
+        },
+        {
+          "start_time": 310.0,
+          "title": "Font change",
+          "end_time": 443
+        }
+      ],
+      "heatmap": null,
+      "duration_seconds": 443,
+      "description_excerpt": "After releasing distance-field text rendering, Unreal Engine has opened up new opportunities for devs to do fancy stuff with their text! In this video we'll use it to make our main screen text glow brightly.\n\nhttps://dev.epicgames.com/documentation/en-us/unreal-engine/using-signed-distance-field-text-rendering-in-unreal-engine\n\nTimestamps:\n00:00 Intro\n00:50 Setup\n02:00 Material setup\n05:10 Font change\n\nIf you enjoyed watching, please like and (if you aren't already) consider subscribing!\n\n#Unrea"
+    },
+    {
+      "title": "OpenGL Text Rendering for My Immediate UI Library \u2014 Offline Stream #02",
+      "channel": "Tsoding Daily",
+      "channel_id": "UCrqM0Ym_NbK1fqeQG2VIohg",
+      "view_count": 7146,
+      "like_count": 138,
+      "comment_count": 12,
+      "upload_date": "20210512",
+      "tags": [
+        "Programming",
+        "Coding",
+        "Problem Solving",
+        "Algorithms",
+        "Data Structures",
+        "Bitmap Font",
+        "Sprite Sheet",
+        "OpenGL",
+        "Computer Graphics",
+        "Rendering",
+        "Direct3D",
+        "Metal",
+        "Vulkan",
+        "ImGui",
+        "Immediate Mode UI",
+        "User Interfaces",
+        "C/C++",
+        "GLFW",
+        "GLEW",
+        "OpenGL 3"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 7240,
+      "description_excerpt": "References:\n- My Library Repo: https://github.com/tsoding/imhui\n- Original ImGui Repo: https://github.com/ocornut/imgui\n- Casey Muratori ImGui Talk: https://www.youtube.com/watch?v=Z1qyvQsjK5Y\n- Domsson Bitmap Fonts: https://opengameart.org/users/domsson\n- Rust Browser Game: https://github.com/tsoding/rust-browser-game\n- Domsson Font Compressing Tool: https://github.com/tsoding/domsson-fontgen/\n- RLE Algorithm: https://en.wikipedia.org/wiki/Run-length_encoding\n- STB Libraries: https://github.com"
+    },
+    {
+      "title": "Text rendering is finally working",
+      "channel": "John Burton",
+      "channel_id": "UCNugP__NC5Esz98v2drVOOQ",
+      "view_count": 12,
+      "like_count": null,
+      "comment_count": null,
+      "upload_date": "20251209",
+      "tags": [
+        "opengl freetype"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 10,
+      "description_excerpt": "After a long day of code, I finally got font loading and rendering to work using in this case opengl and freetype."
+    },
+    {
+      "title": "Legendary Font Rendering",
+      "channel": "Tsoding Daily",
+      "channel_id": "UCrqM0Ym_NbK1fqeQG2VIohg",
+      "view_count": 30056,
+      "like_count": 745,
+      "comment_count": 62,
+      "upload_date": "20230215",
+      "tags": [],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 4124,
+      "description_excerpt": "References:\n- Source Code: https://github.com/tsoding/ded\n- Pull Request: https://github.com/tsoding/ded/pull/60"
+    },
+    {
+      "title": "GPT Image 2.0 on Akool: Create Stunning AI Images in Seconds",
+      "channel": "Akool Inc",
+      "channel_id": "UCPtFRG12XXZZghCXyqFa2GA",
+      "view_count": 309111,
+      "like_count": 1,
+      "comment_count": null,
+      "upload_date": "20260505",
+      "tags": [],
+      "categories": [
+        "People & Blogs"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 40,
+      "description_excerpt": "Create high-quality, production-ready visuals in seconds with improved realism, better text rendering, and more precise control.\n\nGPT Image 2.0 allows you to:\n\u2022 Generate more detailed and accurate images\n\u2022 Create visuals with cleaner, more reliable text\n\u2022 Edit and refine outputs with greater control\n\nWhether you're building marketing creatives, social content, or concept visuals, it helps you go from idea to image faster than ever.\n\n\ud83d\ude80 Now live on Akool, try it today!"
+    },
+    {
+      "title": "Blender 5.0 Tutorial: How to Make 3D Text Poster Animation!",
+      "channel": "Artinvader",
+      "channel_id": "UCPcym_lIoiSxoGsd1Lsn_EA",
+      "view_count": 8546,
+      "like_count": 481,
+      "comment_count": 21,
+      "upload_date": "20251207",
+      "tags": [
+        "blender 5.0",
+        "blender 5.0 tutorial",
+        "blender 5",
+        "blender beginner",
+        "blender tutorial",
+        "3d blender",
+        "blender 3d animation",
+        "text in blender",
+        "text animation blender",
+        "blender 3d text",
+        "blender poster",
+        "Grafikonelu"
+      ],
+      "categories": [
+        "Education"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 36.0
+        },
+        {
+          "start_time": 36.0,
+          "title": "Step 1 \u2014 Custom Lettering",
+          "end_time": 86.0
+        },
+        {
+          "start_time": 86.0,
+          "title": "Step 2 \u2014 3D Objects",
+          "end_time": 299.0
+        },
+        {
+          "start_time": 299.0,
+          "title": "Step 3 \u2014 Lighting",
+          "end_time": 341.0
+        },
+        {
+          "start_time": 341.0,
+          "title": "Step 4 \u2014 Materials",
+          "end_time": 558.0
+        },
+        {
+          "start_time": 558.0,
+          "title": "Step 5 \u2014 Animation",
+          "end_time": 642.0
+        },
+        {
+          "start_time": 642.0,
+          "title": "Step 6 \u2014 Pro Rendersettings",
+          "end_time": 715
+        }
+      ],
+      "heatmap": null,
+      "duration_seconds": 715,
+      "description_excerpt": "Let\u2019s make these VIRAL 3D text posters in Blender 5.0 \u2014 just like Grafikonelu!\nIn this beginner-friendly Blender tutorial, I\u2019ll show you the easiest way to create custom fonts and turn it into 3D text and build a full poster-style animation completely from scratch.\n\nNo Adobe Illustrator. No experience needed. Just free software and a few simple tricks.\n\n\ud83d\udc47 All you need for the Project (Patreon)\nhttps://www.patreon.com/posts/all-you-need-145282247\n\n\ud83d\udc47 ADOBE PNG TO SVG CONVERTER\nhttps://www.adobe.co"
+    },
+    {
+      "title": "Can QD-OLED Text Rendering Be Fixed? - Improving the AW3423DW",
+      "channel": "Monitors Unboxed",
+      "channel_id": "UCDKLZBNM9XZ7pHPZF9D8xDQ",
+      "view_count": 146552,
+      "like_count": 4178,
+      "comment_count": 510,
+      "upload_date": "20220826",
+      "tags": [],
+      "categories": [
+        "People & Blogs"
+      ],
+      "chapters": null,
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 5.96,
+          "value": 0.4258462837179972
+        },
+        {
+          "start_time": 5.96,
+          "end_time": 11.92,
+          "value": 0.09457406732358054
+        },
+        {
+          "start_time": 11.92,
+          "end_time": 17.88,
+          "value": 0.06844025215180438
+        },
+        {
+          "start_time": 17.88,
+          "end_time": 23.84,
+          "value": 0.07355205774892558
+        },
+        {
+          "start_time": 23.84,
+          "end_time": 29.8,
+          "value": 0.10315256388148622
+        },
+        {
+          "start_time": 29.8,
+          "end_time": 35.76,
+          "value": 0.16904974576764797
+        },
+        {
+          "start_time": 35.76,
+          "end_time": 41.72,
+          "value": 0.19077431641487752
+        },
+        {
+          "start_time": 41.72,
+          "end_time": 47.68,
+          "value": 0.15245154799752172
+        },
+        {
+          "start_time": 47.68,
+          "end_time": 53.64,
+          "value": 0.13966710548491407
+        },
+        {
+          "start_time": 53.64,
+          "end_time": 59.6,
+          "value": 0.12363850214815682
+        },
+        {
+          "start_time": 59.6,
+          "end_time": 65.56,
+          "value": 0.20599795116032177
+        },
+        {
+          "start_time": 65.56,
+          "end_time": 71.52,
+          "value": 0.1536895600049584
+        },
+        {
+          "start_time": 71.52,
+          "end_time": 77.48,
+          "value": 0.05886846929480464
+        },
+        {
+          "start_time": 77.48,
+          "end_time": 83.44,
+          "value": 0.058049576773414116
+        },
+        {
+          "start_time": 83.44,
+          "end_time": 89.4,
+          "value": 0.09690607286695903
+        },
+        {
+          "start_time": 89.4,
+          "end_time": 95.36,
+          "value": 0.23443098400712556
+        },
+        {
+          "start_time": 95.36,
+          "end_time": 101.32,
+          "value": 0.6211463139669311
+        },
+        {
+          "start_time": 101.32,
+          "end_time": 107.28,
+          "value": 0.7180561320494061
+        },
+        {
+          "start_time": 107.28,
+          "end_time": 113.24,
+          "value": 0.35475731405550665
+        },
+        {
+          "start_time": 113.24,
+          "end_time": 119.2,
+          "value": 0.38490441486234783
+        },
+        {
+          "start_time": 119.2,
+          "end_time": 125.16,
+          "value": 0.4373026452365282
+        },
+        {
+          "start_time": 125.16,
+          "end_time": 131.12,
+          "value": 0.3083294167493161
+        },
+        {
+          "start_time": 131.12,
+          "end_time": 137.08,
+          "value": 0.2476017811142108
+        },
+        {
+          "start_time": 137.08,
+          "end_time": 143.04,
+          "value": 0.28419612108258785
+        },
+        {
+          "start_time": 143.04,
+          "end_time": 149.0,
+          "value": 0.3993692183953498
+        },
+        {
+          "start_time": 149.0,
+          "end_time": 154.96,
+          "value": 0.4263365622988455
+        },
+        {
+          "start_time": 154.96,
+          "end_time": 160.92,
+          "value": 0.32403280670931234
+        },
+        {
+          "start_time": 160.92,
+          "end_time": 166.88,
+          "value": 0.3004253576824423
+        },
+        {
+          "start_time": 166.88,
+          "end_time": 172.84,
+          "value": 0.2771654554647347
+        },
+        {
+          "start_time": 172.84,
+          "end_time": 178.8,
+          "value": 0.25802460101104735
+        },
+        {
+          "start_time": 178.8,
+          "end_time": 184.76,
+          "value": 0.25239303762137916
+        },
+        {
+          "start_time": 184.76,
+          "end_time": 190.72,
+          "value": 0.28507103099924075
+        },
+        {
+          "start_time": 190.72,
+          "end_time": 196.68,
+          "value": 0.2551465752129459
+        },
+        {
+          "start_time": 196.68,
+          "end_time": 202.64,
+          "value": 0.3510050676442215
+        },
+        {
+          "start_time": 202.64,
+          "end_time": 208.6,
+          "value": 0.5261581360958472
+        },
+        {
+          "start_time": 208.6,
+          "end_time": 214.56,
+          "value": 0.48571357671643167
+        },
+        {
+          "start_time": 214.56,
+          "end_time": 220.52,
+          "value": 0.33185658489880854
+        },
+        {
+          "start_time": 220.52,
+          "end_time": 226.48,
+          "value": 0.321074178358881
+        },
+        {
+          "start_time": 226.48,
+          "end_time": 232.44,
+          "value": 0.3344797062740057
+        },
+        {
+          "start_time": 232.44,
+          "end_time": 238.4,
+          "value": 0.324234680718654
+        },
+        {
+          "start_time": 238.4,
+          "end_time": 244.36,
+          "value": 0.32842132617621883
+        },
+        {
+          "start_time": 244.36,
+          "end_time": 250.32,
+          "value": 0.40162916874941623
+        },
+        {
+          "start_time": 250.32,
+          "end_time": 256.28,
+          "value": 0.706138626509991
+        },
+        {
+          "start_time": 256.28,
+          "end_time": 262.24,
+          "value": 1.0
+        },
+        {
+          "start_time": 262.24,
+          "end_time": 268.2,
+          "value": 0.959590457236819
+        },
+        {
+          "start_time": 268.2,
+          "end_time": 274.16,
+          "value": 0.9467700560599023
+        },
+        {
+          "start_time": 274.16,
+          "end_time": 280.12,
+          "value": 0.7440503173151078
+        },
+        {
+          "start_time": 280.12,
+          "end_time": 286.08,
+          "value": 0.5815413262129817
+        },
+        {
+          "start_time": 286.08,
+          "end_time": 292.04,
+          "value": 0.5984360623355509
+        },
+        {
+          "start_time": 292.04,
+          "end_time": 298.0,
+          "value": 0.49566509685460486
+        },
+        {
+          "start_time": 298.0,
+          "end_time": 303.96,
+          "value": 0.27587241406367485
+        },
+        {
+          "start_time": 303.96,
+          "end_time": 309.92,
+          "value": 0.29911108573453155
+        },
+        {
+          "start_time": 309.92,
+          "end_time": 315.88,
+          "value": 0.3061620168743787
+        },
+        {
+          "start_time": 315.88,
+          "end_time": 321.84,
+          "value": 0.2233945691388038
+        },
+        {
+          "start_time": 321.84,
+          "end_time": 327.8,
+          "value": 0.18706868989489156
+        },
+        {
+          "start_time": 327.8,
+          "end_time": 333.76,
+          "value": 0.1802770517433691
+        },
+        {
+          "start_time": 333.76,
+          "end_time": 339.72,
+          "value": 0.14143585818684007
+        },
+        {
+          "start_time": 339.72,
+          "end_time": 345.68,
+          "value": 0.12975885062782336
+        },
+        {
+          "start_time": 345.68,
+          "end_time": 351.64,
+          "value": 0.10185304302781603
+        },
+        {
+          "start_time": 351.64,
+          "end_time": 357.6,
+          "value": 0.09699411989675613
+        },
+        {
+          "start_time": 357.6,
+          "end_time": 363.56,
+          "value": 0.4813822694374675
+        },
+        {
+          "start_time": 363.56,
+          "end_time": 369.52,
+          "value": 0.5519371667720344
+        },
+        {
+          "start_time": 369.52,
+          "end_time": 375.48,
+          "value": 0.27626807425498645
+        },
+        {
+          "start_time": 375.48,
+          "end_time": 381.44,
+          "value": 0.13668108880997384
+        },
+        {
+          "start_time": 381.44,
+          "end_time": 387.4,
+          "value": 0.11799124561617354
+        },
+        {
+          "start_time": 387.4,
+          "end_time": 393.36,
+          "value": 0.10555301725935468
+        },
+        {
+          "start_time": 393.36,
+          "end_time": 399.32,
+          "value": 0.14398189245740017
+        },
+        {
+          "start_time": 399.32,
+          "end_time": 405.28,
+          "value": 0.13991833362264933
+        },
+        {
+          "start_time": 405.28,
+          "end_time": 411.24,
+          "value": 0.15742257484945324
+        },
+        {
+          "start_time": 411.24,
+          "end_time": 417.2,
+          "value": 0.13040105169327973
+        },
+        {
+          "start_time": 417.2,
+          "end_time": 423.16,
+          "value": 0.12500931995732292
+        },
+        {
+          "start_time": 423.16,
+          "end_time": 429.12,
+          "value": 0.23111947823403667
+        },
+        {
+          "start_time": 429.12,
+          "end_time": 435.08,
+          "value": 0.28726025881736894
+        },
+        {
+          "start_time": 435.08,
+          "end_time": 441.04,
+          "value": 0.25097844904191985
+        },
+        {
+          "start_time": 441.04,
+          "end_time": 447.0,
+          "value": 0.23912856417283182
+        },
+        {
+          "start_time": 447.0,
+          "end_time": 452.96,
+          "value": 0.49344769950136935
+        },
+        {
+          "start_time": 452.96,
+          "end_time": 458.92,
+          "value": 0.5062134159363975
+        },
+        {
+          "start_time": 458.92,
+          "end_time": 464.88,
+          "value": 0.393700984061121
+        },
+        {
+          "start_time": 464.88,
+          "end_time": 470.84,
+          "value": 0.11605641673173883
+        },
+        {
+          "start_time": 470.84,
+          "end_time": 476.8,
+          "value": 0.033910215236157094
+        },
+        {
+          "start_time": 476.8,
+          "end_time": 482.76,
+          "value": 0.03496506782344043
+        },
+        {
+          "start_time": 482.76,
+          "end_time": 488.72,
+          "value": 0.014161176843217582
+        },
+        {
+          "start_time": 488.72,
+          "end_time": 494.68,
+          "value": 0.013154632940732883
+        },
+        {
+          "start_time": 494.68,
+          "end_time": 500.64,
+          "value": 0.0055681934240678806
+        },
+        {
+          "start_time": 500.64,
+          "end_time": 506.6,
+          "value": 0.002234250823057063
+        },
+        {
+          "start_time": 506.6,
+          "end_time": 512.56,
+          "value": 0.01998898493056244
+        },
+        {
+          "start_time": 512.56,
+          "end_time": 518.52,
+          "value": 0.02844098281348172
+        },
+        {
+          "start_time": 518.52,
+          "end_time": 524.48,
+          "value": 0.04628055868965249
+        },
+        {
+          "start_time": 524.48,
+          "end_time": 530.44,
+          "value": 0.05716136329980599
+        },
+        {
+          "start_time": 530.44,
+          "end_time": 536.4,
+          "value": 0.04473500245104825
+        },
+        {
+          "start_time": 536.4,
+          "end_time": 542.36,
+          "value": 0.02512213595844603
+        },
+        {
+          "start_time": 542.36,
+          "end_time": 548.32,
+          "value": 0.06235855061997677
+        },
+        {
+          "start_time": 548.32,
+          "end_time": 554.28,
+          "value": 0.01869385264231273
+        },
+        {
+          "start_time": 554.28,
+          "end_time": 560.24,
+          "value": 0.09657065779885413
+        },
+        {
+          "start_time": 560.24,
+          "end_time": 566.2,
+          "value": 0.12730504516144003
+        },
+        {
+          "start_time": 566.2,
+          "end_time": 572.16,
+          "value": 0.17957421494940684
+        },
+        {
+          "start_time": 572.16,
+          "end_time": 578.12,
+          "value": 0.18445076127249557
+        },
+        {
+          "start_time": 578.12,
+          "end_time": 584.08,
+          "value": 0.11544891060756471
+        },
+        {
+          "start_time": 584.08,
+          "end_time": 590.04,
+          "value": 0.0
+        },
+        {
+          "start_time": 590.04,
+          "end_time": 596.0,
+          "value": 0.06963341348017948
+        }
+      ],
+      "duration_seconds": 595,
+      "description_excerpt": "Support us on Patreon: https://www.patreon.com/hardwareunboxed\nJoin us on Floatplane: https://www.floatplane.com/channel/HardwareUnboxed\n\nBuy relevant products from Amazon, Newegg and others below:\nAlienware AW3423DW - https://geni.us/ymsAf\nLG C2 OLED - https://geni.us/7zsSfzp\nSamsung Odyssey Neo G7 - https://geni.us/ztC1Q\nSamsung Odyssey Neo G8 - https://geni.us/VT22V\n\nHow we test response times: https://www.youtube.com/watch?v=-Zmxl-Btpgk\n\nTesting performed using Portrait CalMAN Ultimate: http"
+    },
+    {
+      "title": "Vulkan Engine: Text Rendering",
+      "channel": "Julia Risley",
+      "channel_id": "UCbqt-FR7-S2gTWMw0BCEkaw",
+      "view_count": 2189,
+      "like_count": 44,
+      "comment_count": 6,
+      "upload_date": "20220207",
+      "tags": [
+        "rust",
+        "rust lang",
+        "rust-lang",
+        "vulkan",
+        "gpu",
+        "graphics",
+        "rendering",
+        "game",
+        "game dev",
+        "game development",
+        "game engine",
+        "programming",
+        "dev log",
+        "graphics programming",
+        "text rendering",
+        "text layout",
+        "glyphs",
+        "caching"
+      ],
+      "categories": [
+        "Science & Technology"
+      ],
+      "chapters": [
+        {
+          "start_time": 0,
+          "end_time": 9.0,
+          "title": "<Untitled Chapter 1>"
+        },
+        {
+          "start_time": 9.0,
+          "title": "Text Layouts",
+          "end_time": 171.0
+        },
+        {
+          "start_time": 171.0,
+          "title": "System Libraries",
+          "end_time": 539.0
+        },
+        {
+          "start_time": 539.0,
+          "title": "Caching",
+          "end_time": 1008.0
+        },
+        {
+          "start_time": 1008.0,
+          "title": "Limitations",
+          "end_time": 1149.0
+        },
+        {
+          "start_time": 1149.0,
+          "title": "Alpha Transparency",
+          "end_time": 1232
+        }
+      ],
+      "heatmap": null,
+      "duration_seconds": 1232,
+      "description_excerpt": "I've been working away on integrating a text layout engine and getting text rendering up and running in my Vulkan game engine project :)\n\nPersonal Site: https://unpromptedtirade.com"
+    },
+    {
+      "title": "3D Meshes with Text Displays in Minecraft",
+      "channel": "Cymaera",
+      "channel_id": "UCW9KvoeUz2CsBwIGh3ux1ew",
+      "view_count": 398098,
+      "like_count": 25020,
+      "comment_count": 995,
+      "upload_date": "20250603",
+      "tags": [],
+      "categories": [
+        "Gaming"
+      ],
+      "chapters": [
+        {
+          "start_time": 0.0,
+          "title": "Intro",
+          "end_time": 16.0
+        },
+        {
+          "start_time": 16.0,
+          "title": "Unit Square",
+          "end_time": 35.0
+        },
+        {
+          "start_time": 35.0,
+          "title": "Unit Triangle",
+          "end_time": 51.0
+        },
+        {
+          "start_time": 51.0,
+          "title": "Fitted Triangle",
+          "end_time": 98.0
+        },
+        {
+          "start_time": 98.0,
+          "title": "Mountainray",
+          "end_time": 162.0
+        },
+        {
+          "start_time": 162.0,
+          "title": "Mountainray Juvenile",
+          "end_time": 172.0
+        },
+        {
+          "start_time": 172.0,
+          "title": "Utah Teapot",
+          "end_time": 187.0
+        },
+        {
+          "start_time": 187.0,
+          "title": "Blender Monkey (Suzanne)",
+          "end_time": 200.0
+        },
+        {
+          "start_time": 200.0,
+          "title": "3D Grapher",
+          "end_time": 277.0
+        },
+        {
+          "start_time": 277.0,
+          "title": "Marching Cubes",
+          "end_time": 335.0
+        },
+        {
+          "start_time": 335.0,
+          "title": "Mesh Optimization",
+          "end_time": 357.0
+        },
+        {
+          "start_time": 357.0,
+          "title": "Technical",
+          "end_time": 405.0
+        },
+        {
+          "start_time": 405.0,
+          "title": "Outro",
+          "end_time": 426
+        }
+      ],
+      "heatmap": [
+        {
+          "start_time": 0.0,
+          "end_time": 4.27,
+          "value": 0.21715387525351265
+        },
+        {
+          "start_time": 4.27,
+          "end_time": 8.54,
+          "value": 0.13965565133641664
+        },
+        {
+          "start_time": 8.54,
+          "end_time": 12.81,
+          "value": 0.15093058843819857
+        },
+        {
+          "start_time": 12.81,
+          "end_time": 17.08,
+          "value": 0.2012800046247426
+        },
+        {
+          "start_time": 17.08,
+          "end_time": 21.35,
+          "value": 0.1359071447705764
+        },
+        {
+          "start_time": 21.35,
+          "end_time": 25.62,
+          "value": 0.12879986951510575
+        },
+        {
+          "start_time": 25.62,
+          "end_time": 29.89,
+          "value": 0.140896936655925
+        },
+        {
+          "start_time": 29.89,
+          "end_time": 34.16,
+          "value": 0.13828801741100122
+        },
+        {
+          "start_time": 34.16,
+          "end_time": 38.43,
+          "value": 0.21972270402690935
+        },
+        {
+          "start_time": 38.43,
+          "end_time": 42.7,
+          "value": 0.34163279526672635
+        },
+        {
+          "start_time": 42.7,
+          "end_time": 46.97,
+          "value": 0.7184365092130648
+        },
+        {
+          "start_time": 46.97,
+          "end_time": 51.24,
+          "value": 1.0
+        },
+        {
+          "start_time": 51.24,
+          "end_time": 55.51,
+          "value": 0.7576065901138701
+        },
+        {
+          "start_time": 55.51,
+          "end_time": 59.78,
+          "value": 0.23560665899503558
+        },
+        {
+          "start_time": 59.78,
+          "end_time": 64.05,
+          "value": 0.15792925288994425
+        },
+        {
+          "start_time": 64.05,
+          "end_time": 68.32,
+          "value": 0.1200690915881825
+        },
+        {
+          "start_time": 68.32,
+          "end_time": 72.59,
+          "value": 0.11756198428918802
+        },
+        {
+          "start_time": 72.59,
+          "end_time": 76.86,
+          "value": 0.11825448024075781
+        },
+        {
+          "start_time": 76.86,
+          "end_time": 81.13,
+          "value": 0.12998940375223075
+        },
+        {
+          "start_time": 81.13,
+          "end_time": 85.4,
+          "value": 0.12524908057080436
+        },
+        {
+          "start_time": 85.4,
+          "end_time": 89.67,
+          "value": 0.10474186431916414
+        },
+        {
+          "start_time": 89.67,
+          "end_time": 93.94,
+          "value": 0.11106852434884153
+        },
+        {
+          "start_time": 93.94,
+          "end_time": 98.21,
+          "value": 0.1913146262887693
+        },
+        {
+          "start_time": 98.21,
+          "end_time": 102.48,
+          "value": 0.17978904302724574
+        },
+        {
+          "start_time": 102.48,
+          "end_time": 106.75,
+          "value": 0.09526166425004938
+        },
+        {
+          "start_time": 106.75,
+          "end_time": 111.02,
+          "value": 0.12770832998810855
+        },
+        {
+          "start_time": 111.02,
+          "end_time": 115.29,
+          "value": 0.18372223923572026
+        },
+        {
+          "start_time": 115.29,
+          "end_time": 119.56,
+          "value": 0.21657675098101772
+        },
+        {
+          "start_time": 119.56,
+          "end_time": 123.83,
+          "value": 0.17786885947175896
+        },
+        {
+          "start_time": 123.83,
+          "end_time": 128.1,
+          "value": 0.12250689991484051
+        },
+        {
+          "start_time": 128.1,
+          "end_time": 132.37,
+          "value": 0.15564360224110482
+        },
+        {
+          "start_time": 132.37,
+          "end_time": 136.64,
+          "value": 0.1938745291874063
+        },
+        {
+          "start_time": 136.64,
+          "end_time": 140.91,
+          "value": 0.13940489122933766
+        },
+        {
+          "start_time": 140.91,
+          "end_time": 145.18,
+          "value": 0.09859143334232219
+        },
+        {
+          "start_time": 145.18,
+          "end_time": 149.45,
+          "value": 0.10959264045293611
+        },
+        {
+          "start_time": 149.45,
+          "end_time": 153.72,
+          "value": 0.08960687570388
+        },
+        {
+          "start_time": 153.72,
+          "end_time": 157.99,
+          "value": 0.06555483375192679
+        },
+        {
+          "start_time": 157.99,
+          "end_time": 162.26,
+          "value": 0.13273982659893016
+        },
+        {
+          "start_time": 162.26,
+          "end_time": 166.53,
+          "value": 0.11946646210334232
+        },
+        {
+          "start_time": 166.53,
+          "end_time": 170.8,
+          "value": 0.05429684631657683
+        },
+        {
+          "start_time": 170.8,
+          "end_time": 175.07,
+          "value": 0.1595536861313186
+        },
+        {
+          "start_time": 175.07,
+          "end_time": 179.34,
+          "value": 0.12428294008856956
+        },
+        {
+          "start_time": 179.34,
+          "end_time": 183.61,
+          "value": 0.1481375492873273
+        },
+        {
+          "start_time": 183.61,
+          "end_time": 187.88,
+          "value": 0.20309250794642617
+        },
+        {
+          "start_time": 187.88,
+          "end_time": 192.15,
+          "value": 0.13567797768392675
+        },
+        {
+          "start_time": 192.15,
+          "end_time": 196.42,
+          "value": 0.1005114934548602
+        },
+        {
+          "start_time": 196.42,
+          "end_time": 200.69,
+          "value": 0.14959379625876137
+        },
+        {
+          "start_time": 200.69,
+          "end_time": 204.96,
+          "value": 0.14489907100350105
+        },
+        {
+          "start_time": 204.96,
+          "end_time": 209.23,
+          "value": 0.16334106773042076
+        },
+        {
+          "start_time": 209.23,
+          "end_time": 213.5,
+          "value": 0.1748997906758926
+        },
+        {
+          "start_time": 213.5,
+          "end_time": 217.77,
+          "value": 0.12441963891095326
+        },
+        {
+          "start_time": 217.77,
+          "end_time": 222.04,
+          "value": 0.12873755931279388
+        },
+        {
+          "start_time": 222.04,
+          "end_time": 226.31,
+          "value": 0.10841469086177583
+        },
+        {
+          "start_time": 226.31,
+          "end_time": 230.58,
+          "value": 0.05453472087892291
+        },
+        {
+          "start_time": 230.58,
+          "end_time": 234.85,
+          "value": 0.03111219998342636
+        },
+        {
+          "start_time": 234.85,
+          "end_time": 239.12,
+          "value": 0.025678773131297614
+        },
+        {
+          "start_time": 239.12,
+          "end_time": 243.39,
+          "value": 0.018169292261787894
+        },
+        {
+          "start_time": 243.39,
+          "end_time": 247.66,
+          "value": 0.06338638743517144
+        },
+        {
+          "start_time": 247.66,
+          "end_time": 251.93,
+          "value": 0.0492713509321894
+        },
+        {
+          "start_time": 251.93,
+          "end_time": 256.2,
+          "value": 0.022529477630176833
+        },
+        {
+          "start_time": 256.2,
+          "end_time": 260.47,
+          "value": 0.02583239313327897
+        },
+        {
+          "start_time": 260.47,
+          "end_time": 264.74,
+          "value": 0.027082281476757872
+        },
+        {
+          "start_time": 264.74,
+          "end_time": 269.01,
+          "value": 0.025836846575047374
+        },
+        {
+          "start_time": 269.01,
+          "end_time": 273.28,
+          "value": 0.04671498989662194
+        },
+        {
+          "start_time": 273.28,
+          "end_time": 277.55,
+          "value": 0.1899919255967187
+        },
+        {
+          "start_time": 277.55,
+          "end_time": 281.82,
+          "value": 0.2154376954143423
+        },
+        {
+          "start_time": 281.82,
+          "end_time": 286.09,
+          "value": 0.171557734262408
+        },
+        {
+          "start_time": 286.09,
+          "end_time": 290.36,
+          "value": 0.1408132423366356
+        },
+        {
+          "start_time": 290.36,
+          "end_time": 294.63,
+          "value": 0.14786527212471057
+        },
+        {
+          "start_time": 294.63,
+          "end_time": 298.9,
+          "value": 0.11152414277726713
+        },
+        {
+          "start_time": 298.9,
+          "end_time": 303.17,
+          "value": 0.07686800018539232
+        },
+        {
+          "start_time": 303.17,
+          "end_time": 307.44,
+          "value": 0.04260878364759234
+        },
+        {
+          "start_time": 307.44,
+          "end_time": 311.71,
+          "value": 0.03154250311173561
+        },
+        {
+          "start_time": 311.71,
+          "end_time": 315.98,
+          "value": 0.029945967976791055
+        },
+        {
+          "start_time": 315.98,
+          "end_time": 320.25,
+          "value": 0.03829291429782417
+        },
+        {
+          "start_time": 320.25,
+          "end_time": 324.52,
+          "value": 0.042734932845658984
+        },
+        {
+          "start_time": 324.52,
+          "end_time": 328.79,
+          "value": 0.05832185559212748
+        },
+        {
+          "start_time": 328.79,
+          "end_time": 333.06,
+          "value": 0.07396630275273883
+        },
+        {
+          "start_time": 333.06,
+          "end_time": 337.33,
+          "value": 0.12384234371745231
+        },
+        {
+          "start_time": 337.33,
+          "end_time": 341.6,
+          "value": 0.15271899189803095
+        },
+        {
+          "start_time": 341.6,
+          "end_time": 345.87,
+          "value": 0.15912437054659978
+        },
+        {
+          "start_time": 345.87,
+          "end_time": 350.14,
+          "value": 0.08193193380491515
+        },
+        {
+          "start_time": 350.14,
+          "end_time": 354.41,
+          "value": 0.04602185773908523
+        },
+        {
+          "start_time": 354.41,
+          "end_time": 358.68,
+          "value": 0.11366646666693318
+        },
+        {
+          "start_time": 358.68,
+          "end_time": 362.95,
+          "value": 0.06416375516185
+        },
+        {
+          "start_time": 362.95,
+          "end_time": 367.22,
+          "value": 0.046765174203116655
+        },
+        {
+          "start_time": 367.22,
+          "end_time": 371.49,
+          "value": 0.05954080723351371
+        },
+        {
+          "start_time": 371.49,
+          "end_time": 375.76,
+          "value": 0.09386478384137878
+        },
+        {
+          "start_time": 375.76,
+          "end_time": 380.03,
+          "value": 0.09721118924490585
+        },
+        {
+          "start_time": 380.03,
+          "end_time": 384.3,
+          "value": 0.09260429839552559
+        },
+        {
+          "start_time": 384.3,
+          "end_time": 388.57,
+          "value": 0.097523139072146
+        },
+        {
+          "start_time": 388.57,
+          "end_time": 392.84,
+          "value": 0.08682322771272931
+        },
+        {
+          "start_time": 392.84,
+          "end_time": 397.11,
+          "value": 0.04733513878458091
+        },
+        {
+          "start_time": 397.11,
+          "end_time": 401.38,
+          "value": 0.02670130804991315
+        },
+        {
+          "start_time": 401.38,
+          "end_time": 405.65,
+          "value": 0.07609113572612043
+        },
+        {
+          "start_time": 405.65,
+          "end_time": 409.92,
+          "value": 0.04133102568451798
+        },
+        {
+          "start_time": 409.92,
+          "end_time": 414.19,
+          "value": 0.006996594408450327
+        },
+        {
+          "start_time": 414.19,
+          "end_time": 418.46,
+          "value": 0.0
+        },
+        {
+          "start_time": 418.46,
+          "end_time": 422.73,
+          "value": 0.01541861778138514
+        },
+        {
+          "start_time": 422.73,
+          "end_time": 427.0,
+          "value": 0.017981445328347657
+        }
+      ],
+      "duration_seconds": 426,
+      "description_excerpt": "Rendering 3D meshes, 3D graphs, and marching cubes in Minecraft without resource packs.\n\nAll my links:\nhttps://heledron.com/links/\n\nWeb app for converting obj files to text displays:\nhttps://heledron.com/tools/text-display-mesher/\n\nSource Code:\nhttps://github.com/TheCymaera/minecraft-hologram\n\nWorld Download:\nStatic meshes (No plugin required): https://www.planetminecraft.com/project/static-3d-meshes/\nAmbertry Forest: https://www.planetminecraft.com/project/ambertry-forest/\n\nComplementary Shader"
+    },
+    {
+      "title": "Text Rendering | Monogame Tutorial Ep. 6",
+      "channel": "Coding with Sphere",
+      "channel_id": "UCpwl7jNE9PJc-lBTShNs5TQ",
+      "view_count": 5535,
+      "like_count": 118,
+      "comment_count": 10,
+      "upload_date": "20231222",
+      "tags": [
+        "monogame",
+        "monogame tutorial",
+        "text in monogame",
+        "drawinng text monogame",
+        "game dev",
+        "gaming",
+        "how to make games",
+        "how to code",
+        "how to code games",
+        "how to make games without unity",
+        "engineless game development",
+        "c#",
+        "c# tutorial",
+        "how to make games with C#",
+        "how to make games with monogame",
+        "monogame tutorial series",
+        "coding tutorial",
+        "programming",
+        "software engineer",
+        "game dev tutorial series"
+      ],
+      "categories": [
+        "Entertainment"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 401,
+      "description_excerpt": "Text Rendering | Monogame Tutorial Ep. 6\n\nThanks for watching!\n\nMonogame's Official Website:\nhttps://monogame.net\n\nJoin my Discord:\nhttps://discord.gg/cDbXzTJgKQ\n\nSupport me on Patreon:\nhttps://patreon.com/codingwithsphere"
+    },
+    {
+      "title": "Text Rendering in C with OpenGL (Fossil Engine demo 0010).",
+      "channel": "Lily Awertnex",
+      "channel_id": "UCqpVGokwMnXDQtsA8sEblPw",
+      "view_count": 39,
+      "like_count": null,
+      "comment_count": null,
+      "upload_date": "20250906",
+      "tags": [],
+      "categories": [
+        "People & Blogs"
+      ],
+      "chapters": null,
+      "heatmap": null,
+      "duration_seconds": 96,
+      "description_excerpt": "This is a C game engine project, OpenGL 3.3\nI just finished text rendering after crying for 2 days.\n\nI might make a tutorial on how to do this with stb_truetype.h, C, glad (or any OpenGL function loader of choice).\nI'm gonna show more of the source code in the future, this is just a demo for now.\n\nFont: DejaVu Sans Mono."
+    }
+  ],
+  "signals": {
+    "top_nouns": [
+      {
+        "noun": "text",
+        "count": 21
+      },
+      {
+        "noun": "rendering",
+        "count": 20
+      },
+      {
+        "noun": "opengl",
+        "count": 5
+      },
+      {
+        "noun": "tutorial",
+        "count": 4
+      },
+      {
+        "noun": "fonts",
+        "count": 4
+      },
+      {
+        "noun": "font",
+        "count": 3
+      },
+      {
+        "noun": "engine",
+        "count": 3
+      },
+      {
+        "noun": "look",
+        "count": 2
+      },
+      {
+        "noun": "coding",
+        "count": 2
+      },
+      {
+        "noun": "ui",
+        "count": 2
+      }
+    ],
+    "saturation_warnings": [],
+    "demand_phrases": [
+      {
+        "phrase": "text recognition flutter",
+        "letter_hits": 14
+      },
+      {
+        "phrase": "text rendering",
+        "letter_hits": 14
+      },
+      {
+        "phrase": "text mapping",
+        "letter_hits": 10
+      },
+      {
+        "phrase": "text wall",
+        "letter_hits": 6
+      }
+    ],
+    "hook_patterns": {
+      "median_peak_position_seconds": 190.7,
+      "median_intensity_at_5s": 0.43461707000786043,
+      "median_intensity_at_15s": 0.2009992910007124,
+      "median_intensity_at_30s": 0.18274563816179717,
+      "videos_with_heatmap": 10,
+      "note": "Top performers' peak hook lives near 191s; viewer hold at 5/15/30s: 43%/20%/18%."
+    }
+  }
+}
