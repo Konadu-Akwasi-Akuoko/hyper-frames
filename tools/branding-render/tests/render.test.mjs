@@ -42,3 +42,35 @@ test('renderSvgToPng rejects a non-positive size', async () => {
     /positive integer/i,
   );
 });
+
+test('renderSvgToPng accepts {width, height} for rectangular output', async () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'br-'));
+  const out = path.join(dir, 'rect.png');
+  try {
+    await renderSvgToPng(fixture, out, { width: 256, height: 128 });
+    assert.ok(existsSync(out), 'output PNG should exist');
+    const dims = readPngDims(out);
+    assert.equal(dims.width, 256);
+    assert.equal(dims.height, 128);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('renderSvgToPng rejects {width, height} with non-positive values', async () => {
+  await assert.rejects(
+    () => renderSvgToPng(fixture, '/tmp/x.png', { width: 0, height: 100 }),
+    /positive integer/i,
+  );
+  await assert.rejects(
+    () => renderSvgToPng(fixture, '/tmp/x.png', { width: 100, height: -5 }),
+    /positive integer/i,
+  );
+});
+
+test('renderSvgToPng rejects unrecognized dims', async () => {
+  await assert.rejects(
+    () => renderSvgToPng(fixture, '/tmp/x.png', 'big'),
+    /positive integer or \{width, height\}/i,
+  );
+});
