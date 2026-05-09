@@ -302,6 +302,132 @@
       gap: 7px;
     }
 
+    /* ============================== CARD */
+    .card {
+      position: relative;
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 12px 13px 13px;
+      cursor: grab;
+      transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+    }
+
+    .card:hover {
+      border-color: var(--border);
+      background: var(--surface-2);
+      transform: translateY(-1px);
+    }
+
+    /* The currently-open card gets a copper edge */
+    .card.is-open {
+      border-color: var(--accent-muted);
+      background: var(--surface-2);
+      box-shadow:
+        0 0 0 1px var(--accent-soft),
+        0 4px 12px -4px rgba(0, 0, 0, 0.5);
+    }
+    .card.is-open::after {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 5px;
+      min-height: 13px;
+    }
+
+    .slug {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.005em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    .drift {
+      flex-shrink: 0;
+      width: 13px;
+      height: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--amber);
+      cursor: help;
+    }
+
+    .drift svg {
+      filter: drop-shadow(0 0 3px rgba(224, 160, 80, 0.4));
+    }
+
+    .title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.22;
+      letter-spacing: -0.012em;
+      color: var(--text);
+      margin-bottom: 3px;
+      font-variation-settings: 'opsz' 14, 'SOFT' 50, 'WONK' 0;
+    }
+
+    .date {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-fade);
+      letter-spacing: 0.01em;
+      margin-bottom: 11px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 5px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid var(--text-fade);
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .dot-partial {
+      background: var(--amber);
+      border-color: var(--amber);
+      box-shadow: 0 0 0 2px var(--amber-soft);
+      animation: dot-breath 2.4s ease-in-out infinite;
+    }
+
+    .dot-present {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    @keyframes dot-breath {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+
+    .card:hover .dot { transform: scale(1.08); }
+
     /* ============================== EMPTY COLUMN */
     .empty {
       flex: 1;
@@ -399,6 +525,31 @@
       { id: 'published', label: 'Published' },
     ];
 
+    // Ordered for the 7 progress dots (left to right). 'idea' has no dot.
+    // 'voiceover' rolls in narration: 'partial' = mp3+transcript only;
+    // 'present' = +narration-map.json.
+    const ARTIFACTS = [
+      { id: 'research',  label: 'Research' },
+      { id: 'script',    label: 'Script' },
+      { id: 'voiceover', label: 'Voiceover' },
+      { id: 'compose',   label: 'Compose' },
+      { id: 'thumbnail', label: 'Thumbnail' },
+      { id: 'render',    label: 'Render' },
+      { id: 'published', label: 'Published' },
+    ];
+
+    const DRIFT_SVG = `
+      <svg width="11" height="10" viewBox="0 0 11 10" fill="none" aria-hidden="true">
+        <path d="M5.5 1L10 9H1L5.5 1Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none"/>
+        <circle cx="5.5" cy="6.5" r="0.7" fill="currentColor"/>
+      </svg>`;
+
+    function dotClass(status) {
+      if (status === 'present') return 'dot dot-present';
+      if (status === 'partial') return 'dot dot-partial';
+      return 'dot';
+    }
+
     function escapeHtml(s) {
       return String(s ?? '')
         .replaceAll('&', '&amp;')
@@ -433,15 +584,101 @@
       `;
     }
 
-    function renderCard() { return ''; } // filled in next task
+    function renderCard(card) {
+      const isOpen = card.id === state.ui.panelOpenCardId;
+      const drift = card.hasDrift
+        ? `<span class="drift" title="Scan suggests: ${escapeHtml(card.suggestedLabel || '')}">${DRIFT_SVG}</span>`
+        : '';
+      const dots = ARTIFACTS.map(a => {
+        const status = card.artifacts?.[a.id] || 'missing';
+        return `<li class="${dotClass(status)}" title="${escapeHtml(a.label)}"></li>`;
+      }).join('');
+      return `
+        <article class="card${isOpen ? ' is-open' : ''}" data-card-id="${escapeHtml(card.id)}" draggable="true">
+          <div class="card-meta">
+            <span class="slug">${escapeHtml(card.slug)}</span>
+            ${drift}
+          </div>
+          <h3 class="title">${escapeHtml(card.title)}</h3>
+          <time class="date">${escapeHtml(card.date)}</time>
+          <ol class="dots" aria-label="Pipeline progress">${dots}</ol>
+        </article>
+      `;
+    }
+
+    function relativeTime(iso) {
+      if (!iso) return 'never';
+      const ms = Date.now() - new Date(iso).getTime();
+      const s = Math.floor(ms / 1000);
+      if (s < 60) return 'just now';
+      const m = Math.floor(s / 60);
+      if (m < 60) return `${m}m ago`;
+      const h = Math.floor(m / 60);
+      if (h < 24) return `${h}h ago`;
+      return `${Math.floor(h / 24)}d ago`;
+    }
+
+    function updateStatusPill() {
+      const pill = document.querySelector('.status-pill');
+      if (!pill) return;
+      const n = state.cards.length;
+      const last = state.lastSyncedAt;
+      const synced = last ? `synced ${relativeTime(last)}` : 'never synced';
+      pill.textContent = `${n} card${n === 1 ? '' : 's'} · ${synced}`;
+    }
+
+    let state = {
+      schemaVersion: 1,
+      lastSyncedAt: null,
+      ui: { panelOpenCardId: null },
+      cards: [
+        { id: 'a', slug: 'font-rendering', title: 'The Pixel Olympics',
+          date: '2026-05-09', stage: 'idea',
+          artifacts: { research: 'missing', script: 'missing', voiceover: 'missing',
+            compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
+          notes: '', createdAt: '2026-05-09T09:00:00Z', updatedAt: '2026-05-09T09:00:00Z',
+          lastScannedAt: null, hasDrift: false },
+        { id: 'b', slug: 'tcp-handshake', title: 'Three-Way Hello',
+          date: '2026-04-28', stage: 'research',
+          artifacts: { research: 'present', script: 'missing', voiceover: 'missing',
+            compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
+          notes: '', createdAt: '2026-04-28T09:00:00Z', updatedAt: '2026-04-28T09:00:00Z',
+          lastScannedAt: null, hasDrift: false },
+        { id: 'c', slug: 'why-text-is-hard', title: 'Why Text Is Hard',
+          date: '2026-05-07', stage: 'compose',
+          artifacts: { research: 'present', script: 'present', voiceover: 'present',
+            compose: 'partial', thumbnail: 'present', render: 'missing', published: 'missing' },
+          notes: '', createdAt: '2026-05-07T09:00:00Z', updatedAt: '2026-05-07T09:00:00Z',
+          lastScannedAt: null, hasDrift: false },
+        { id: 'd', slug: 'ssl-cert-magic', title: 'How TLS Trusts Anyone',
+          date: '2026-05-03', stage: 'voiceover',
+          artifacts: { research: 'present', script: 'present', voiceover: 'present',
+            compose: 'partial', thumbnail: 'missing', render: 'missing', published: 'missing' },
+          notes: '', createdAt: '2026-05-03T09:00:00Z', updatedAt: '2026-05-03T09:00:00Z',
+          lastScannedAt: null, hasDrift: true, suggestedLabel: 'Compose' },
+        { id: 'e', slug: 'color-spaces', title: 'Why RGB Lies',
+          date: '2026-04-15', stage: 'published',
+          artifacts: { research: 'present', script: 'present', voiceover: 'present',
+            compose: 'present', thumbnail: 'present', render: 'present', published: 'present' },
+          notes: '', createdAt: '2026-04-15T09:00:00Z', updatedAt: '2026-04-15T09:00:00Z',
+          lastScannedAt: null, hasDrift: false },
+      ],
+    };
 
     function render() {
       const board = document.querySelector('.board');
-      const cards = []; // empty for now
+      const cards = state.cards;
       const cardsByStage = Object.fromEntries(STAGES.map(s => [s.id, []]));
+      for (const c of cards) {
+        if (cardsByStage[c.stage]) cardsByStage[c.stage].push(c);
+      }
+      for (const arr of Object.values(cardsByStage)) {
+        arr.sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+      }
       setContent(board, `<div class="columns">${
         STAGES.map(s => renderColumn(s, cardsByStage[s.id])).join('')
       }</div>`);
+      updateStatusPill();
     }
 
     render();
