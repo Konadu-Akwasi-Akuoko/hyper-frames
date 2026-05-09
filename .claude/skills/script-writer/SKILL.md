@@ -204,4 +204,4 @@ You're done when:
 - The script reads at the target runtime (count words / 170 to verify).
 - Any TTS gotchas surfaced during the session have been appended to `reference/tts-gotchas.md`.
 
-Tell the user the next step is theirs: generate the TTS audio with `npx hyperframes-media tts` (or whichever TTS the project standardizes on), drop it into `audio/`, then run the user's transcript pipeline to produce `transcript.json`, then run `narration-map` with `anchors.txt`. This skill stops at `script.md`.
+Once `script.md`, `outline.md`, and `anchors.txt` are written and approved, ask the user: *"Script is locked. Want me to generate the voiceover with ElevenLabs v3 now? (invokes the `voiceover-elevenlabs` skill)"* If yes, hand off to that skill — it produces both `audio/voiceover.mp3` and `transcript.json` in one run. If no, tell the user the next step is theirs (`uv run --project ../../tools/voiceover-elevenlabs voiceover-elevenlabs voiceover.txt`), then run `narration-map` with `anchors.txt`. This skill stops at `script.md`.
