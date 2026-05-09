@@ -1,0 +1,15 @@
+{
+  "name": "@hyper-frames/branding-render",
+  "version": "0.1.0",
+  "description": "Render branding/logo/iceberg.svg to square PNGs at YouTube avatar sizes via Playwright. Single channel-level tool; visual signature lives in the spec, not here.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build:logo": "node scripts/build-logo-pngs.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.49.1"
+  }
+}
