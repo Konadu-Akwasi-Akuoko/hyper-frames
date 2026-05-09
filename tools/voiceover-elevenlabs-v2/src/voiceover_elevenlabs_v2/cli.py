@@ -32,7 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("input_path", type=Path, help="Path to the annotated script (e.g. voiceover.txt).")
     parser.add_argument("-o", "--output-audio", type=Path, default=Path("audio/voiceover.mp3"))
     parser.add_argument("--output-transcript", type=Path, default=Path("transcript.json"))
-    parser.add_argument("--voice-id", default="IRHApOXLvnW57QJPQH2P")
+    parser.add_argument("--voice-id", default="JBFqnCBsd6RMkjVDRZzb")
     parser.add_argument("--model", default="eleven_multilingual_v2")
     parser.add_argument("--stability", type=float, default=0.4)
     parser.add_argument("--similarity-boost", type=float, default=0.75)
