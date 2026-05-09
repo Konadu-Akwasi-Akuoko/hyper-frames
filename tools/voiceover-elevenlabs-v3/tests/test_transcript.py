@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from voiceover_elevenlabs.transcript import to_transcript
+from voiceover_elevenlabs_v3.transcript import to_transcript
 
 
 def test_minimal_response_maps_to_project_shape(scribe_response_minimal):

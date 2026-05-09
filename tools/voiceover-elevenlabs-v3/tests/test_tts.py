@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from voiceover_elevenlabs.tts import V3_CHAR_LIMIT, synthesize
+from voiceover_elevenlabs_v3.tts import V3_CHAR_LIMIT, synthesize
 
 
 def _stub_convert_returns(audio_bytes: bytes):
@@ -13,7 +13,7 @@ def _stub_convert_returns(audio_bytes: bytes):
 
 def test_synthesize_calls_convert_with_expected_args():
     fake_audio = b"\xff\xfb\x90\x00fake-mp3-bytes"
-    with patch("voiceover_elevenlabs.tts.ElevenLabs") as mock_client_class:
+    with patch("voiceover_elevenlabs_v3.tts.ElevenLabs") as mock_client_class:
         mock_client = MagicMock()
         mock_client.text_to_speech.convert = _stub_convert_returns(fake_audio)
         mock_client_class.return_value = mock_client
@@ -34,7 +34,7 @@ def test_synthesize_calls_convert_with_expected_args():
 
 
 def test_synthesize_passes_voice_settings():
-    with patch("voiceover_elevenlabs.tts.ElevenLabs") as mock_client_class:
+    with patch("voiceover_elevenlabs_v3.tts.ElevenLabs") as mock_client_class:
         mock_client = MagicMock()
         mock_client.text_to_speech.convert = _stub_convert_returns(b"x")
         mock_client_class.return_value = mock_client
@@ -61,7 +61,7 @@ def test_synthesize_rejects_text_over_char_limit():
 
 def test_synthesize_concatenates_streamed_chunks():
     """The SDK's convert() returns an iterator of bytes chunks; we join them."""
-    with patch("voiceover_elevenlabs.tts.ElevenLabs") as mock_client_class:
+    with patch("voiceover_elevenlabs_v3.tts.ElevenLabs") as mock_client_class:
         mock_client = MagicMock()
         mock_client.text_to_speech.convert = MagicMock(return_value=iter([b"abc", b"def", b"ghi"]))
         mock_client_class.return_value = mock_client

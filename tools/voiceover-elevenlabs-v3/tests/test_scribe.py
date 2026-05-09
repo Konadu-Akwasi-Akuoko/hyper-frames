@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from voiceover_elevenlabs.scribe import RETRY_BACKOFF_SECS, transcribe
+from voiceover_elevenlabs_v3.scribe import RETRY_BACKOFF_SECS, transcribe
 
 
 @pytest.fixture
@@ -26,7 +26,7 @@ def _scribe_response():
 
 
 def test_transcribe_calls_convert_with_expected_args(fake_audio):
-    with patch("voiceover_elevenlabs.scribe.ElevenLabs") as mock_client_class:
+    with patch("voiceover_elevenlabs_v3.scribe.ElevenLabs") as mock_client_class:
         mock_client = MagicMock()
         mock_client.speech_to_text.convert = MagicMock(return_value=_scribe_response())
         mock_client_class.return_value = mock_client
@@ -42,7 +42,7 @@ def test_transcribe_calls_convert_with_expected_args(fake_audio):
 
 
 def test_transcribe_returns_response_object(fake_audio):
-    with patch("voiceover_elevenlabs.scribe.ElevenLabs") as mock_client_class:
+    with patch("voiceover_elevenlabs_v3.scribe.ElevenLabs") as mock_client_class:
         mock_client = MagicMock()
         expected = _scribe_response()
         mock_client.speech_to_text.convert = MagicMock(return_value=expected)
@@ -53,7 +53,7 @@ def test_transcribe_returns_response_object(fake_audio):
 
 
 def test_transcribe_rejects_multichannel_response(fake_audio):
-    with patch("voiceover_elevenlabs.scribe.ElevenLabs") as mock_client_class:
+    with patch("voiceover_elevenlabs_v3.scribe.ElevenLabs") as mock_client_class:
         mock_client = MagicMock()
         # Multichannel responses have a 'transcripts' attribute (list of chunks).
         bad = SimpleNamespace(transcripts=[_scribe_response()])
@@ -65,7 +65,7 @@ def test_transcribe_rejects_multichannel_response(fake_audio):
 
 
 def test_transcribe_rejects_webhook_response(fake_audio):
-    with patch("voiceover_elevenlabs.scribe.ElevenLabs") as mock_client_class:
+    with patch("voiceover_elevenlabs_v3.scribe.ElevenLabs") as mock_client_class:
         mock_client = MagicMock()
         # Webhook responses have a 'request_id' attribute (snake_case in the Python SDK).
         bad = SimpleNamespace(message="queued", request_id="req_123", transcription_id="tr_456")
