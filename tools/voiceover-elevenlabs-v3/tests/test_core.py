@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 import pytest
 
-from voiceover_elevenlabs.core import generate
+from voiceover_elevenlabs_v3.core import generate
 
 
 @pytest.fixture
@@ -36,8 +36,8 @@ def test_generate_writes_audio_and_transcript(temp_video_dir: Path):
     transcript_path = temp_video_dir / "transcript.json"
 
     with (
-        patch("voiceover_elevenlabs.core.synthesize") as mock_synth,
-        patch("voiceover_elevenlabs.core.transcribe") as mock_transcribe,
+        patch("voiceover_elevenlabs_v3.core.synthesize") as mock_synth,
+        patch("voiceover_elevenlabs_v3.core.transcribe") as mock_transcribe,
     ):
         mock_synth.return_value = b"\xff\xfb\x90\x00fake-mp3"
         mock_transcribe.return_value = _scribe_response()
@@ -64,8 +64,8 @@ def test_generate_skips_transcript_when_disabled(temp_video_dir: Path):
     transcript_path = temp_video_dir / "transcript.json"
 
     with (
-        patch("voiceover_elevenlabs.core.synthesize") as mock_synth,
-        patch("voiceover_elevenlabs.core.transcribe") as mock_transcribe,
+        patch("voiceover_elevenlabs_v3.core.synthesize") as mock_synth,
+        patch("voiceover_elevenlabs_v3.core.transcribe") as mock_transcribe,
     ):
         mock_synth.return_value = b"audio"
 
@@ -90,8 +90,8 @@ def test_generate_creates_audio_parent_dir(tmp_path: Path):
     transcript_path = tmp_path / "transcript.json"
 
     with (
-        patch("voiceover_elevenlabs.core.synthesize") as mock_synth,
-        patch("voiceover_elevenlabs.core.transcribe") as mock_transcribe,
+        patch("voiceover_elevenlabs_v3.core.synthesize") as mock_synth,
+        patch("voiceover_elevenlabs_v3.core.transcribe") as mock_transcribe,
     ):
         mock_synth.return_value = b"a"
         mock_transcribe.return_value = _scribe_response()
@@ -116,8 +116,8 @@ def test_generate_overwrites_existing_files(temp_video_dir: Path):
     transcript_path.write_text("{}")
 
     with (
-        patch("voiceover_elevenlabs.core.synthesize") as mock_synth,
-        patch("voiceover_elevenlabs.core.transcribe") as mock_transcribe,
+        patch("voiceover_elevenlabs_v3.core.synthesize") as mock_synth,
+        patch("voiceover_elevenlabs_v3.core.transcribe") as mock_transcribe,
     ):
         mock_synth.return_value = b"new-audio"
         mock_transcribe.return_value = _scribe_response()

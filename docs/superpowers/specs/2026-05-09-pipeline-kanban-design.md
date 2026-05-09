@@ -6,7 +6,7 @@
 
 ## Purpose
 
-A single-file HTML Kanban board, served from `kanban.html` at the repo root, that tracks every video in `videos/` through the production pipeline. The Kanban is **observability, not orchestration** — it tracks state, it does not run skills. Skills (`youtube-seo-research`, `script-writer`, `voiceover-elevenlabs`, `thumbnail-creator`, etc.) are invoked from the terminal as usual; the Kanban watches the resulting artifacts.
+A single-file HTML Kanban board, served from `kanban.html` at the repo root, that tracks every video in `videos/` through the production pipeline. The Kanban is **observability, not orchestration** — it tracks state, it does not run skills. Skills (`youtube-seo-research`, `script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`, `thumbnail-creator`, etc.) are invoked from the terminal as usual; the Kanban watches the resulting artifacts.
 
 State persists in `localStorage`, scoped under a versioned namespace. An optional file-system scan (Chromium-only) reads `videos/` to auto-suggest stages and surface drift, but the user's manual placement always wins.
 

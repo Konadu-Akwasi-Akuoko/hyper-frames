@@ -1,5 +1,7 @@
 # voiceover-elevenlabs Implementation Plan
 
+> **Note (2026-05-09):** The tool and skill described in this plan were renamed to `voiceover-elevenlabs-v3`. See [`../specs/2026-05-09-voiceover-elevenlabs-v2-and-rename-design.md`](../specs/2026-05-09-voiceover-elevenlabs-v2-and-rename-design.md) for the rename + the new v2 default.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a `voiceover-elevenlabs` tool + skill that turns an approved `script.md` into both `audio/voiceover.mp3` (via ElevenLabs v3 TTS) and `transcript.json` (via ElevenLabs Scribe v2 on the rendered audio) in one invocation, with an LLM-driven beat-aware annotation step behind a hard checkpoint before any API calls.

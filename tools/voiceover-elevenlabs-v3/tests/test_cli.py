@@ -2,7 +2,7 @@
 from pathlib import Path
 from unittest.mock import patch
 
-from voiceover_elevenlabs.cli import build_parser, main
+from voiceover_elevenlabs_v3.cli import build_parser, main
 
 
 def test_parser_accepts_required_input_path():
@@ -48,7 +48,7 @@ def test_main_dry_run_prints_cost_estimate(tmp_path: Path, capsys):
 
     with (
         patch.dict("os.environ", {"ELEVENLABS_API_KEY": "sk_test"}, clear=True),
-        patch("voiceover_elevenlabs.cli.load_dotenv"),
+        patch("voiceover_elevenlabs_v3.cli.load_dotenv"),
     ):
         exit_code = main([str(text_path), "--dry-run"])
 
@@ -65,7 +65,7 @@ def test_main_errors_when_api_key_missing(tmp_path: Path, capsys):
     # Patch load_dotenv so a real .env in the dev environment doesn't bleed in.
     with (
         patch.dict("os.environ", {}, clear=True),
-        patch("voiceover_elevenlabs.cli.load_dotenv"),
+        patch("voiceover_elevenlabs_v3.cli.load_dotenv"),
     ):
         exit_code = main([str(text_path)])
 
@@ -82,8 +82,8 @@ def test_main_invokes_generate_with_resolved_paths(tmp_path: Path):
 
     with (
         patch.dict("os.environ", {"ELEVENLABS_API_KEY": "sk_test"}, clear=True),
-        patch("voiceover_elevenlabs.cli.load_dotenv"),
-        patch("voiceover_elevenlabs.cli.generate") as mock_generate,
+        patch("voiceover_elevenlabs_v3.cli.load_dotenv"),
+        patch("voiceover_elevenlabs_v3.cli.generate") as mock_generate,
     ):
         exit_code = main([
             str(text_path),

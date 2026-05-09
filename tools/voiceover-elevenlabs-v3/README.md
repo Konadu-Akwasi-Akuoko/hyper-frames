@@ -1,4 +1,4 @@
-# voiceover-elevenlabs
+# voiceover-elevenlabs-v3
 
 Generate voiceover audio (ElevenLabs v3) and a word-level transcript
 (ElevenLabs Scribe v2 on the rendered audio) from an annotated script,
@@ -6,8 +6,14 @@ in a single command. Built for the hyper-frames video pipeline; produces
 the canonical `audio/voiceover.mp3` + `transcript.json` shape the rest
 of the project consumes.
 
+> **Renamed from `voiceover-elevenlabs` on 2026-05-09** so the engine
+> version is explicit. The companion `voiceover-elevenlabs-v2` tool is
+> the project default for YouTube videos; this v3 tool stays available
+> for content that genuinely benefits from per-beat audio tags.
+> See `docs/superpowers/specs/2026-05-09-voiceover-elevenlabs-v2-and-rename-design.md`.
+
 The transcript is generated from Scribe v2, **not** v3's native
-character alignment. See the spec at
+character alignment. See the original spec at
 `docs/superpowers/specs/2026-05-09-voiceover-elevenlabs-design.md` for
 why (timing-truth invariant, v3-derived alignment unverified).
 
@@ -26,8 +32,8 @@ both v3 and Scribe v2.
 
 ```bash
 # Inside a video folder, with voiceover.txt at the folder root:
-uv run --project /Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/tools/voiceover-elevenlabs \
-  voiceover-elevenlabs voiceover.txt
+uv run --project /Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/tools/voiceover-elevenlabs-v3 \
+  voiceover-elevenlabs-v3 voiceover.txt
 ```
 
 Writes `audio/voiceover.mp3` and `transcript.json` next to the input.
@@ -48,7 +54,7 @@ Writes `audio/voiceover.mp3` and `transcript.json` next to the input.
 ### Input format
 
 `voiceover.txt` is plain UTF-8 text — typically the LLM-annotated output
-from the `voiceover-elevenlabs` skill, with v3 audio tags (`[sighs]`),
+from the `voiceover-elevenlabs-v3` skill, with v3 audio tags (`[sighs]`),
 ellipses (`…`), and ALL-CAPS emphasis applied. The tool sends the file
 contents to v3 verbatim.
 
@@ -56,7 +62,7 @@ contents to v3 verbatim.
 
 ```python
 from pathlib import Path
-from voiceover_elevenlabs import generate
+from voiceover_elevenlabs_v3 import generate
 
 generate(
     text_path=Path("voiceover.txt"),

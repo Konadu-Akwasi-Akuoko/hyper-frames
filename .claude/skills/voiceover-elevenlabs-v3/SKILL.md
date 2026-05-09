@@ -1,9 +1,9 @@
 ---
-name: voiceover-elevenlabs
-description: Turn an approved script.md into a voiceover (ElevenLabs v3) and a word-level transcript (Scribe v2) in one run, with an LLM-driven beat-aware annotation step (curated audio tags, ellipses, anchor-driven ALL-CAPS) behind a hard checkpoint before any API credits are spent. Use when the user says "generate the voiceover", "voice this script", "tts the script", "make the audio", or after the script-writer skill's handoff prompt. Replaces the hyperframes-media (Kokoro) TTS path for this project; hyperframes-media stays untouched for any other use case. Outputs land at the canonical project locations: audio/voiceover.mp3 and transcript.json at the video folder root.
+name: voiceover-elevenlabs-v3
+description: Turn an approved script.md into a voiceover (ElevenLabs v3) and a word-level transcript (Scribe v2) in one run, with an LLM-driven beat-aware annotation step (curated audio tags, ellipses, anchor-driven ALL-CAPS) behind a hard checkpoint before any API credits are spent. Use when the user explicitly requests v3 (passes `with v3` to the script-writer hand-off) or when a video genuinely needs inline audio tags for per-beat emotional shifts. The project default for YouTube videos is `voiceover-elevenlabs-v2` — invoke that unless v3's tag-driven expressiveness is specifically wanted. Outputs land at audio/voiceover.mp3 and transcript.json at the video folder root.
 ---
 
-# voiceover-elevenlabs
+# voiceover-elevenlabs-v3
 
 You are turning an approved `script.md` into both `audio/voiceover.mp3`
 and `transcript.json` for a hyper-frames video, in one checkpointed flow.
@@ -14,7 +14,7 @@ fighting the project's plain-prose house style.
 
 The deterministic work — calling ElevenLabs v3, calling Scribe v2 on the
 rendered audio, mapping the response to the project's transcript schema —
-lives in `tools/voiceover-elevenlabs/`. This skill drives that tool.
+lives in `tools/voiceover-elevenlabs-v3/`. This skill drives that tool.
 
 ## What this skill does and doesn't do
 
@@ -27,7 +27,7 @@ lives in `tools/voiceover-elevenlabs/`. This skill drives that tool.
 - Run a hard checkpoint: show char count, cost estimate, annotation summary,
   and a list of additions. Wait for explicit `approve and generate` /
   `edit` / `regenerate` before any API call.
-- Invoke `tools/voiceover-elevenlabs/` to render audio and transcript.
+- Invoke `tools/voiceover-elevenlabs-v3/` to render audio and transcript.
 - Confirm both outputs exist and report duration + word count.
 
 **Does not:**
@@ -108,8 +108,8 @@ real (~150 credits per 5-minute video).
 Invoke the tool:
 
 ```bash
-uv run --project /Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/tools/voiceover-elevenlabs \
-  voiceover-elevenlabs <video-dir>/voiceover.txt \
+uv run --project /Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/tools/voiceover-elevenlabs-v3 \
+  voiceover-elevenlabs-v3 <video-dir>/voiceover.txt \
   -o <video-dir>/audio/voiceover.mp3 \
   --output-transcript <video-dir>/transcript.json
 ```

@@ -13,7 +13,7 @@
 **Reference patterns:**
 - `tools/narration-map/` — for tool layout, CLI style, README shape, `pyproject.toml` configuration.
 - `.claude/skills/script-writer/SKILL.md` — for skill frontmatter, step structure, reference-file conventions.
-- `.claude/skills/voiceover-elevenlabs/` — for skill-invokes-skill handoff pattern (commit `219eaae`).
+- `.claude/skills/voiceover-elevenlabs-v3/` — for skill-invokes-skill handoff pattern (commit `219eaae`; renamed from `voiceover-elevenlabs` on 2026-05-09).
 
 ---
 

@@ -1,5 +1,5 @@
 [project]
-name = "voiceover-elevenlabs"
+name = "voiceover-elevenlabs-v3"
 version = "0.1.0"
 description = "Generate voiceover audio (ElevenLabs v3) and word-level transcript (Scribe v2) from an annotated script."
 readme = "README.md"
@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-voiceover-elevenlabs = "voiceover_elevenlabs.cli:main"
+voiceover-elevenlabs-v3 = "voiceover_elevenlabs_v3.cli:main"
 
 [dependency-groups]
 dev = [

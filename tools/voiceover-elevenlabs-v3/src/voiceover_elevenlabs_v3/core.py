@@ -7,9 +7,9 @@ beyond what the wrappers do; no parallelism (Scribe needs the audio).
 import json
 from pathlib import Path
 
-from voiceover_elevenlabs.scribe import transcribe
-from voiceover_elevenlabs.transcript import to_transcript
-from voiceover_elevenlabs.tts import synthesize
+from voiceover_elevenlabs_v3.scribe import transcribe
+from voiceover_elevenlabs_v3.transcript import to_transcript
+from voiceover_elevenlabs_v3.tts import synthesize
 
 
 def generate(

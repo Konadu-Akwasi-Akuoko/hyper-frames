@@ -1,5 +1,7 @@
 # voiceover-elevenlabs skill + tool — design
 
+> **Note (2026-05-09):** The tool and skill described in this doc were renamed to `voiceover-elevenlabs-v3`. See [`2026-05-09-voiceover-elevenlabs-v2-and-rename-design.md`](2026-05-09-voiceover-elevenlabs-v2-and-rename-design.md) for the rename + the new v2 default.
+
 **Date:** 2026-05-09
 **Status:** spec, ready for implementation plan
 **Companion skill:** `script-writer` (this runs after the script is drafted)

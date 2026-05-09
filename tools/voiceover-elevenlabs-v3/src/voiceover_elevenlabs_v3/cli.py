@@ -12,7 +12,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from voiceover_elevenlabs.core import generate
+from voiceover_elevenlabs_v3.core import generate
 
 # v3 cost per 1k characters in credits. Used only for the dry-run estimate.
 V3_CREDITS_PER_1K_CHARS = 30
