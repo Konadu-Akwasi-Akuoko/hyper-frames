@@ -1,0 +1,11 @@
+# Per-day audit / intermediate files — regenerated on every run.
+# Layout: data/archive/YYYY-MM-DD/{shortlist,raw,judgment}.json
+# data/archive/
+
+# User-local decisions exported from the dashboard (machine-specific)
+# data/decisions.json
+# data/decisions-*.json
+
+# Persistent state (inbox.json) and the rendered dashboard (dashboard.html)
+# ARE committed — they're the source of truth and the viewable artifact, and
+# the daily scheduled task overwrites them in place.

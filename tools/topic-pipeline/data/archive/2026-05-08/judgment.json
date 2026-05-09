@@ -1,0 +1,447 @@
+{
+  "generated_at": "2026-05-08T22:15:00Z",
+  "_note": "v2 6-axis live test. Top-20 mechanical pre-rank judged + cooldown candidate (6eb2815) included so 30-day overlay fires. Bottom 39 fall through to pending_judgment fallback in merge.py.",
+  "candidates": {
+    "a1c642668a1533aa": {
+      "yt_competition": 12,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Containers Aren't Just Linux Processes",
+          "lens": "OCI runtime spec primer",
+          "scores": {"audience_reach": 8, "curiosity_hook": 12, "computing_depth": 18},
+          "notes": "Article is OCI-conceptual; intermediate audience. Strong depth, modest hook."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "What's actually inside a container? The OCI spec, demystified",
+          "lens": "OCI config.json walkthrough with diagrams",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Reframes the article as a hidden-mechanism reveal. Animatable: layered FS, namespaces, cgroups."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why containers can run on Windows, VMs, and even macOS — the standard you've never seen",
+          "lens": "cross-platform OCI runtime comparison",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 16},
+          "notes": "Counterintuitive twist on 'containers = lightweight Linux'. runc / Kata / Hyper-V comparison."
+        }
+      ]
+    },
+    "e3d2ac1cf3648174": {
+      "yt_competition": 10,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Just use Go",
+          "lens": "language-choice opinion",
+          "scores": {"audience_reach": 8, "curiosity_hook": 6, "computing_depth": 8},
+          "notes": "Opinion piece. Not a curiosity-hook fit; rant-shaped."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Go's goroutines are basically free — the runtime trick behind 1M concurrent connections",
+          "lens": "M:N scheduler / work-stealing internals",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Strong reframe: Go's M:N scheduler, goroutine stack growth, segmented stacks history. Visualizable."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Go's GC pauses for one millisecond — the design choices behind low-latency garbage collection",
+          "lens": "concurrent tri-color marking GC",
+          "scores": {"audience_reach": 4, "curiosity_hook": 12, "computing_depth": 18},
+          "notes": "Sub-ms GC pauses are famous; trade-offs (write barriers, throughput) make it animatable."
+        }
+      ]
+    },
+    "1201dac59b233e3f": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Dirtyfrag: Universal Linux LPE",
+          "lens": "specific kernel exploit disclosure",
+          "scores": {"audience_reach": 4, "curiosity_hook": 8, "computing_depth": 12},
+          "notes": "Disclosure is too specific/ephemeral as-is; better as a reframe entry-point."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why local privilege escalation keeps happening — the abstraction the kernel can't enforce",
+          "lens": "syscall surface / ring transitions",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Cite Dirty Pipe → Dirty Cow → Dirty Frag as a series. Strong systems topic."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Use-after-free for systems people — why this one bug class refuses to die",
+          "lens": "heap layout / allocator races",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 20},
+          "notes": "Classic systems topic. Animatable: heap layout, freelist races, why Rust's lifetimes fix it."
+        }
+      ]
+    },
+    "e3dccfe4986344aa": {
+      "yt_competition": 12,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "AI slop is killing online communities",
+          "lens": "essay on AI-generated content harm",
+          "scores": {"audience_reach": 14, "curiosity_hook": 14, "computing_depth": 4},
+          "notes": "Article framing is essay-shaped; broad audience but low depth as-is."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How forums detect AI-generated text — and why they keep losing",
+          "lens": "perplexity / stylometry / classifier arms race",
+          "scores": {"audience_reach": 14, "curiosity_hook": 16, "computing_depth": 16},
+          "notes": "Reframe as the technical cat-and-mouse: perplexity thresholds, classifier evasion, the impossibility result."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why every Q&A site feels worse — the moderation system that AI broke",
+          "lens": "trust + spam-detection systems at scale",
+          "scores": {"audience_reach": 14, "curiosity_hook": 16, "computing_depth": 14},
+          "notes": "StackOverflow/Reddit angle. Personal-stake question."
+        }
+      ]
+    },
+    "0ee2947879bb5888": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "How Mozilla used Claude to find 271 Firefox bugs",
+          "lens": "AI-driven security research at scale",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 14},
+          "notes": "Article framing. Strong news but specific."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why an AI found bugs that fuzzers couldn't — the limits of random testing",
+          "lens": "fuzzing vs hypothesis-driven testing",
+          "scores": {"audience_reach": 14, "curiosity_hook": 18, "computing_depth": 16},
+          "notes": "Counterintuitive twist. Fuzzing is well-known; the comparison is the hook."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "What 'sandbox escape' actually means inside your browser",
+          "lens": "browser process isolation / IPC",
+          "scores": {"audience_reach": 14, "curiosity_hook": 16, "computing_depth": 18},
+          "notes": "Hidden-mechanism reveal. Browser sandboxing is universal but invisible."
+        }
+      ]
+    },
+    "d229756e0a541eab": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Serving a website from RAM on a Raspberry Pi Zero",
+          "lens": "embedded engineering project log",
+          "scores": {"audience_reach": 8, "curiosity_hook": 12, "computing_depth": 12},
+          "notes": "Project framing — narrative-heavy; decent as-is."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why a tmpfs-only web server is a different kind of fast",
+          "lens": "page cache vs tmpfs / syscall overhead",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "OS-level reason for the speed: page cache promotion, fsync removal, write-through semantics."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How small can a usable web server be? A tour of HTTP, TCP, and the kernel doing the heavy lifting",
+          "lens": "minimal webserver / kernel-stack tour",
+          "scores": {"audience_reach": 8, "curiosity_hook": 16, "computing_depth": 18},
+          "notes": "Pi Zero as visual device; content is accept/recvmsg/sendfile syscall sequence. Maps to networking + OS internals."
+        }
+      ]
+    },
+    "f5338cc4f655f537": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Blaise: a modern self-hosting Object Pascal compiler",
+          "lens": "compiler project announcement",
+          "scores": {"audience_reach": 0, "curiosity_hook": 4, "computing_depth": 16},
+          "notes": "Niche. Pascal-specific audience."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why people are still writing new Pascal compilers in 2026",
+          "lens": "language ecosystem / why-this-language perspective",
+          "scores": {"audience_reach": 4, "curiosity_hook": 12, "computing_depth": 14},
+          "notes": "Personal-stake question reframe. Niche but defensible curiosity angle."
+        }
+      ]
+    },
+    "95c6e57b6ce0daea": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Google Cloud Fraud Defence is just WEI repackaged",
+          "lens": "device-attestation policy critique",
+          "scores": {"audience_reach": 14, "curiosity_hook": 14, "computing_depth": 12},
+          "notes": "Policy/news framing. Strong audience reach since WEI controversy is broadly known."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How CAPTCHAs actually work — and why Google wants to replace them",
+          "lens": "CAPTCHA internals + WEI/attestation as successor",
+          "scores": {"audience_reach": 20, "curiosity_hook": 18, "computing_depth": 16},
+          "notes": "Hidden-mechanism reveal + counterintuitive twist. CAPTCHA is universally experienced."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why every site can soon block 'unapproved' computers",
+          "lens": "device attestation / hardware trust roots",
+          "scores": {"audience_reach": 20, "curiosity_hook": 18, "computing_depth": 14},
+          "notes": "Personal-stake question. TPM, Play Integrity, the implications of pervasive attestation."
+        }
+      ]
+    },
+    "2d0c306476379690": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Copy Fail 2: Electric Boogaloo",
+          "lens": "xfrm/IPsec exploit writeup",
+          "scores": {"audience_reach": 4, "curiosity_hook": 8, "computing_depth": 14},
+          "notes": "Specific exploit framing. Good entry to deeper reframes."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Linux's 'fast paths' keep producing privilege escalations",
+          "lens": "kernel optimization vs security trade-offs",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Pattern across MSG_SPLICE_PAGES, sendfile, io_uring. Optimization-induced bug class."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "What 'no-COW' means and why it's a security minefield",
+          "lens": "copy-on-write / page sharing semantics",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Hidden-mechanism reveal. CoW is fundamental but invisible to most devs."
+        }
+      ]
+    },
+    "79fa0cfcc9b87795": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Building a web server in raw aarch64 assembly to give my life (a lack of) meaning",
+          "lens": "hand-written assembly project log",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 12},
+          "notes": "Article framing. Project narrative; build-log style."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why aarch64 assembly is actually readable — a tour of the ISA that runs your phone",
+          "lens": "ARM ISA tour / register conventions",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Wider explainer about ARM64 vs x86. More evergreen than the project itself."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Everything that happens between accept() and send() — a syscall-level tour of HTTP",
+          "lens": "syscall trace of an HTTP request",
+          "scores": {"audience_reach": 8, "curiosity_hook": 16, "computing_depth": 20},
+          "notes": "Deepest reframe. Assembly server as visual device; content is the syscall sequence."
+        }
+      ]
+    },
+    "dd08e6386c03b943": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "The cuda-oxide Book",
+          "lens": "Rust→CUDA compiler announcement",
+          "scores": {"audience_reach": 4, "curiosity_hook": 8, "computing_depth": 16},
+          "notes": "Project announcement. Niche but deep."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why writing GPU kernels in Rust is finally possible",
+          "lens": "PTX backend / safe SIMT in Rust",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Counterintuitive twist. Rust's borrow-checker meets GPU memory model."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How CUDA actually compiles down to a GPU — and why a Rust frontend matters",
+          "lens": "PTX / nvcc / CUDA toolchain internals",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Hidden-mechanism reveal. CUDA toolchain is invisible to most users."
+        }
+      ]
+    },
+    "452468aa65344619": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Poland is now among the 20 largest economies",
+          "lens": "macroeconomic news",
+          "scores": {"audience_reach": 0, "curiosity_hook": 0, "computing_depth": 0},
+          "notes": "Non-technical macro news. No video angle."
+        }
+      ]
+    },
+    "dca41dddca63dc89": {
+      "yt_competition": 12,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Maybe you shouldn't install new software for a bit",
+          "lens": "supply-chain risk advisory",
+          "scores": {"audience_reach": 8, "curiosity_hook": 12, "computing_depth": 8},
+          "notes": "Topical security advice. Article framing."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How supply chain attacks slip in through dependency updates",
+          "lens": "npm/PyPI typosquatting + post-install hooks",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 14},
+          "notes": "Hidden-mechanism reveal. Concrete examples (event-stream, ua-parser-js, xz)."
+        }
+      ]
+    },
+    "f13d116013ea6b3e": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Canvas online again as ShinyHunters threatens to leak schools' data",
+          "lens": "breach incident news",
+          "scores": {"audience_reach": 8, "curiosity_hook": 4, "computing_depth": 4},
+          "notes": "Incident news. Ephemeral; no video angle."
+        }
+      ]
+    },
+    "b12f6eb90b14172a": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Cloudflare to cut about 20% of its workforce",
+          "lens": "tech business news",
+          "scores": {"audience_reach": 0, "curiosity_hook": 0, "computing_depth": 0},
+          "notes": "Layoff news. No video angle."
+        }
+      ]
+    },
+    "959d6d0d6d67d3a2": {
+      "yt_competition": 12,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Brazil's Pix payment system faces pressure from Visa and Mastercard",
+          "lens": "fintech regulatory news",
+          "scores": {"audience_reach": 4, "curiosity_hook": 4, "computing_depth": 4},
+          "notes": "Article framing is policy/business news; low depth."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How Brazil built Pix — instant payments at country scale",
+          "lens": "distributed payment-rail architecture",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 14},
+          "notes": "Distributed-systems reframe. Settlement, idempotency, country-scale low-latency."
+        }
+      ]
+    },
+    "6e1dc945909b0340": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Agents need control flow, not more prompts",
+          "lens": "LLM agent design opinion",
+          "scores": {"audience_reach": 4, "curiosity_hook": 8, "computing_depth": 8},
+          "notes": "Opinion piece. Argument is sound but rant-shaped."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why LLM agents fail — the missing 'if' statement",
+          "lens": "deterministic control vs prompt chains",
+          "scores": {"audience_reach": 8, "curiosity_hook": 16, "computing_depth": 12},
+          "notes": "Counterintuitive twist. Why prompt chains can't substitute for state machines."
+        }
+      ]
+    },
+    "5b3937b8361e9010": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "DeepSeek 4 Flash local inference engine for Metal",
+          "lens": "antirez Metal-accelerated LLM runtime",
+          "scores": {"audience_reach": 4, "curiosity_hook": 12, "computing_depth": 18},
+          "notes": "Project announcement. Heavy technical depth (Metal kernels, KV cache, 2-bit MoE quant)."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How local LLMs hit 1M context — KV cache compression, demystified",
+          "lens": "KV cache layout + compression schemes",
+          "scores": {"audience_reach": 4, "curiosity_hook": 14, "computing_depth": 18},
+          "notes": "Hidden-mechanism reveal. KV cache is the hidden cost of LLM inference."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why running an LLM on your laptop is different from running one in the cloud",
+          "lens": "memory bandwidth / batch=1 vs batch=large",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 16},
+          "notes": "Personal-stake question. Memory-bound vs compute-bound regimes; quantization trade-offs."
+        }
+      ]
+    },
+    "c28d59a647863cf8": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "I want to live like Costco people",
+          "lens": "lifestyle essay",
+          "scores": {"audience_reach": 0, "curiosity_hook": 0, "computing_depth": 0},
+          "notes": "Lifestyle content. Not a computing topic."
+        }
+      ]
+    },
+    "79dc425f0df0f241": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Motherboard sales 'collapse' amid AI-fueled component shortages",
+          "lens": "PC industry news",
+          "scores": {"audience_reach": 4, "curiosity_hook": 4, "computing_depth": 0},
+          "notes": "Industry news. No technical angle."
+        }
+      ]
+    },
+    "6eb2815da950d39a": {
+      "yt_competition": 12,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "3 Women Who Fundamentally Shaped Modern Software",
+          "lens": "computing history biographical reel",
+          "scores": {"audience_reach": 8, "curiosity_hook": 12, "computing_depth": 14},
+          "notes": "Reddit image post; brief biographical content. Cooldown should fire (awesome-coding 4d ago covered adjacent topic)."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The bug that made Grace Hopper invent debugging — and three more origin stories",
+          "lens": "computing history with mechanism focus",
+          "scores": {"audience_reach": 8, "curiosity_hook": 14, "computing_depth": 12},
+          "notes": "Hyper-claim with story. Avoids direct duplication of the awesome-coding video."
+        }
+      ]
+    }
+  }
+}

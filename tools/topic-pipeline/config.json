@@ -1,0 +1,116 @@
+{
+  "sources": {
+    "hn": {
+      "enabled": true,
+      "min_points": 25,
+      "lookback_hours": 48,
+      "max_items": 80
+    },
+    "reddit": {
+      "enabled": true,
+      "subreddits": ["programming", "compsci", "webdev", "databases", "cpp", "rust", "golang"],
+      "window": "day",
+      "limit_per_sub": 15,
+      "min_score": 30
+    },
+    "lobsters": {
+      "enabled": true,
+      "rss_url": "https://lobste.rs/rss",
+      "max_items": 25
+    },
+    "dailydev": {
+      "enabled": true,
+      "ranking": "POPULARITY",
+      "max_items": 50,
+      "min_upvotes": 10
+    }
+  },
+
+  "filter": {
+    "_comment": "Only drop platform-admin items here (threads, hiring posts, comment-page links). All topic-relevance judgment happens in the LLM stage.",
+    "drop_url_patterns": [
+      "youtube\\.com",
+      "youtu\\.be",
+      "twitter\\.com",
+      "x\\.com",
+      "linkedin\\.com",
+      "stackoverflow\\.com/questions",
+      "news\\.ycombinator\\.com/item",
+      "reddit\\.com/r/.+/comments",
+      "lobste\\.rs/s/"
+    ],
+    "drop_title_patterns": [
+      "(?i)^(ask|tell|show|launch)\\s*hn:",
+      "(?i)^show\\s*lobsters:",
+      "(?i)who\\s*is\\s*hiring",
+      "(?i)who\\s*wants\\s*to\\s*be\\s*hired",
+      "(?i)freelancer\\?\\s*seeking",
+      "(?i)what\\s*are\\s*you\\s*(doing|working\\s+on)\\s*(this\\s+(weekend|week))?",
+      "(?i)^(weekly|daily|monthly)\\s+(thread|discussion|chat)"
+    ]
+  },
+
+  "mechanical_scoring": {
+    "_comment": "v2 demand axis is composed downstream in merge.py from aggregator_breadth (fetch.py, 0-4) + cold_search (0-5) + autocomplete (0-3) + tier_b_hit (0-8). The old v1 demand_axis_weights block (hn_points_div etc.) is gone — vote magnitudes no longer feed the composite.",
+    "evergreen": {
+      "ephemeral_keywords": [
+        "release", "released", "v1\\.", "v2\\.", "v3\\.", "v4\\.", "v5\\.",
+        "1\\.0", "2\\.0", "today", "yesterday", "this week", "announces",
+        "announcement", "launch", "launches", "launched", "raises",
+        "funding", "acquisition", "acquired", "ipo", "rebrand"
+      ],
+      "evergreen_keywords": [
+        "internals", "deep dive", "how .* works", "why .* is",
+        "explained", "anatomy of", "tour of", "guide to",
+        "from scratch", "under the hood"
+      ]
+    },
+    "yt_competition": {
+      "comment": "Mechanical pass: penalty if a strong YT result already exists. Filled in via WebFetch on YT search during LLM judgment phase. Defaults to 10 (neutral) until then."
+    }
+  },
+
+  "shortlist": {
+    "_comment": "Mechanical stage is engagement-based pre-ranking only. The LLM judgment stage is the actual relevance filter. We send a generous shortlist (60) and let the LLM downrank junk via curriculum-fit and Pawel-filter scores.",
+    "size": 60,
+    "min_mechanical_score": 12
+  },
+
+  "paths": {
+    "data_dir": "data",
+    "archive_dir": "data/archive",
+    "inbox_json": "data/inbox.json",
+    "inbox_md": "data/inbox.md",
+    "dashboard_html": "data/dashboard.html",
+    "decisions_json": "data/decisions.json",
+    "competitors_feed": "data/competitors/feed.json"
+  },
+
+  "reference_channels": {
+    "_comment": "Tier B = style-reference (imitate, drives demand + inspiration). Tier C = watchlist (monitor for cooldown only). See RUBRIC.md.",
+    "style_reference": [
+      {"handle": "pawel_code_stuff", "note": "closest house-style match"},
+      {"handle": "veritasium",       "note": "gold-standard curiosity hooks"},
+      {"handle": "CleoAbram",        "note": "optimistic-tech, AI/product"},
+      {"handle": "TomScottGo",       "note": "universal-curiosity title shapes"},
+      {"handle": "Computerphile",    "note": "depth ceiling"},
+      {"handle": "kurzgesagt",       "note": "universal-touch curiosity at scale"},
+      {"handle": "rabbithole",       "note": "small but exact-niche"},
+      {"handle": "CodeAesthetic",    "note": "systems-curiosity"},
+      {"handle": "BranchEducation",  "note": "computing internals visualized"},
+      {"handle": "WelchLabs",        "note": "visual math/computing"},
+      {"handle": "LearnThatStack",   "note": "closest direct comparable after Pawel"},
+      {"handle": "CodeSource",       "note": "software-history-as-curiosity"},
+      {"handle": "TheCodingGopher",  "note": "computing-deep explainer-format"}
+    ],
+    "watchlist": [
+      {"handle": "Shadeofcode",     "note": "bro-dev hot takes"},
+      {"handle": "awesome-coding",  "note": "industry commentary"},
+      {"handle": "TheCodingSloth",  "note": "career/lifestyle clickbait"},
+      {"handle": "devopstoolbox",   "note": "tooling comparison"},
+      {"handle": "Fireship",        "note": "high-velocity tech"}
+    ],
+    "videos_per_channel": 25,
+    "fetch_concurrency": 6
+  }
+}
