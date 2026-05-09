@@ -652,43 +652,110 @@
       return suggestedStage !== card.stage;
     }
 
-    let state = {
-      schemaVersion: 1,
-      lastSyncedAt: null,
-      ui: { panelOpenCardId: null },
-      cards: [
-        { id: 'a', slug: 'font-rendering', title: 'The Pixel Olympics',
-          date: '2026-05-09', stage: 'idea',
-          artifacts: { research: 'missing', script: 'missing', voiceover: 'missing',
-            compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-05-09T09:00:00Z', updatedAt: '2026-05-09T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-        { id: 'b', slug: 'tcp-handshake', title: 'Three-Way Hello',
-          date: '2026-04-28', stage: 'research',
-          artifacts: { research: 'present', script: 'missing', voiceover: 'missing',
-            compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-04-28T09:00:00Z', updatedAt: '2026-04-28T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-        { id: 'c', slug: 'why-text-is-hard', title: 'Why Text Is Hard',
-          date: '2026-05-07', stage: 'compose',
-          artifacts: { research: 'present', script: 'present', voiceover: 'present',
-            compose: 'partial', thumbnail: 'present', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-05-07T09:00:00Z', updatedAt: '2026-05-07T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-        { id: 'd', slug: 'ssl-cert-magic', title: 'How TLS Trusts Anyone',
-          date: '2026-05-03', stage: 'voiceover',
-          artifacts: { research: 'present', script: 'present', voiceover: 'present',
-            compose: 'partial', thumbnail: 'missing', render: 'missing', published: 'missing' },
-          notes: '', createdAt: '2026-05-03T09:00:00Z', updatedAt: '2026-05-03T09:00:00Z',
-          lastScannedAt: null, hasDrift: true, suggestedLabel: 'Compose' },
-        { id: 'e', slug: 'color-spaces', title: 'Why RGB Lies',
-          date: '2026-04-15', stage: 'published',
-          artifacts: { research: 'present', script: 'present', voiceover: 'present',
-            compose: 'present', thumbnail: 'present', render: 'present', published: 'present' },
-          notes: '', createdAt: '2026-04-15T09:00:00Z', updatedAt: '2026-04-15T09:00:00Z',
-          lastScannedAt: null, hasDrift: false },
-      ],
-    };
+    const STORAGE_KEY = 'hyper-frames:kanban:v1';
+    const SCHEMA_VERSION = 1;
+
+    function emptyState() {
+      return {
+        schemaVersion: SCHEMA_VERSION,
+        cards: [],
+        ui: { panelOpenCardId: null },
+        lastSyncedAt: null,
+      };
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return emptyState();
+        const parsed = JSON.parse(raw);
+        if (parsed.schemaVersion !== SCHEMA_VERSION) {
+          console.warn('Schema mismatch; ignoring stored state.');
+          return emptyState();
+        }
+        return {
+          schemaVersion: SCHEMA_VERSION,
+          cards: Array.isArray(parsed.cards) ? parsed.cards : [],
+          ui: { panelOpenCardId: parsed.ui?.panelOpenCardId ?? null },
+          lastSyncedAt: parsed.lastSyncedAt ?? null,
+        };
+      } catch (e) {
+        console.error('Failed to load state:', e);
+        return emptyState();
+      }
+    }
+
+    let storageBannerShown = false;
+    function showStorageBanner() {
+      if (storageBannerShown) return;
+      storageBannerShown = true;
+      const div = document.createElement('div');
+      div.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);background:#C4615A;color:#fff;padding:8px 16px;border-radius:4px;font-family:"JetBrains Mono",monospace;font-size:12px;z-index:9999;';
+      div.textContent = 'localStorage unavailable. Changes will not persist.';
+      document.body.appendChild(div);
+    }
+
+    function persist() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.error('Failed to persist state:', e);
+        showStorageBanner();
+      }
+    }
+
+    function mutate(fn) {
+      fn();
+      persist();
+      render();
+    }
+
+    function loadSampleState() {
+      return {
+        schemaVersion: SCHEMA_VERSION,
+        lastSyncedAt: null,
+        ui: { panelOpenCardId: null },
+        cards: [
+          { id: 'a', slug: 'font-rendering', title: 'The Pixel Olympics',
+            date: '2026-05-09', stage: 'idea',
+            artifacts: { research: 'missing', script: 'missing', voiceover: 'missing',
+              compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-05-09T09:00:00Z', updatedAt: '2026-05-09T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+          { id: 'b', slug: 'tcp-handshake', title: 'Three-Way Hello',
+            date: '2026-04-28', stage: 'research',
+            artifacts: { research: 'present', script: 'missing', voiceover: 'missing',
+              compose: 'missing', thumbnail: 'missing', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-04-28T09:00:00Z', updatedAt: '2026-04-28T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+          { id: 'c', slug: 'why-text-is-hard', title: 'Why Text Is Hard',
+            date: '2026-05-07', stage: 'compose',
+            artifacts: { research: 'present', script: 'present', voiceover: 'present',
+              compose: 'partial', thumbnail: 'present', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-05-07T09:00:00Z', updatedAt: '2026-05-07T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+          { id: 'd', slug: 'ssl-cert-magic', title: 'How TLS Trusts Anyone',
+            date: '2026-05-03', stage: 'voiceover',
+            artifacts: { research: 'present', script: 'present', voiceover: 'present',
+              compose: 'partial', thumbnail: 'missing', render: 'missing', published: 'missing' },
+            notes: '', createdAt: '2026-05-03T09:00:00Z', updatedAt: '2026-05-03T09:00:00Z',
+            lastScannedAt: null, hasDrift: true, suggestedLabel: 'Compose' },
+          { id: 'e', slug: 'color-spaces', title: 'Why RGB Lies',
+            date: '2026-04-15', stage: 'published',
+            artifacts: { research: 'present', script: 'present', voiceover: 'present',
+              compose: 'present', thumbnail: 'present', render: 'present', published: 'present' },
+            notes: '', createdAt: '2026-04-15T09:00:00Z', updatedAt: '2026-04-15T09:00:00Z',
+            lastScannedAt: null, hasDrift: false },
+        ],
+      };
+    }
+
+    let state = loadState();
+
+    if (new URL(location.href).searchParams.get('seed') === '1') {
+      state = loadSampleState();
+      persist();
+    }
 
     function render() {
       const board = document.querySelector('.board');
