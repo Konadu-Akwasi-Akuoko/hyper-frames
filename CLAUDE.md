@@ -79,6 +79,25 @@ uv run --project ../../tools/narration-map narration-map \
 Writes `narration-map.json` next to the transcript. See
 `tools/narration-map/README.md` for the full output shape and tunables.
 
+**YouTube SEO research is a shared per-video artifact.** The
+`youtube-seo-research` skill (backed by `tools/youtube-seo/`) generates
+`<video-dir>/seo/research.json` from one topic phrase using yt-dlp +
+YouTube autocomplete (free, no API key, ~25s). Multiple skills consume
+it: `script-writer` reads it at the outline step (Step 2.5),
+`thumbnail-creator` reads it at the paired-title step (Step 4). Run it
+once per video — both skills will probe for it and offer to invoke the
+`youtube-seo-research` skill if it's missing.
+
+```bash
+# From inside the video folder, after outline.md exists:
+uv run --project ../../tools/youtube-seo seo-research
+```
+
+Writes `<video-dir>/seo/research.json`. See the skill's
+`reference/signal-interpretation.md` for how to read the digest, and
+`reference/consumer-integration.md` for which fields each consumer skill
+uses.
+
 ### 2. Lint / inspect / preview before declaring done
 
 The HyperFrames CLI loop catches real bugs (overlapping tweens, contrast failures,
