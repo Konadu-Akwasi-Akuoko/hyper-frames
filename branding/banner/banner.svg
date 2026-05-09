@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 1152" width="2048" height="1152">
+  <defs>
+    <symbol id="ic-type" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2M9 20h6"/></symbol>
+    <symbol id="ic-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20a14.5 14.5 0 0 0 0-20M2 12h20"/></g></symbol>
+    <symbol id="ic-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></g></symbol>
+    <symbol id="ic-database" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></g></symbol>
+    <symbol id="ic-cpu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 20v2m0-20v2m5 16v2m0-20v2M2 12h2m-2 5h2M2 7h2m16 5h2m-2 5h2M20 7h2M7 20v2M7 2v2"/><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/></g></symbol>
+    <symbol id="ic-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></g></symbol>
+    <symbol id="ic-code" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 18l6-6l-6-6M8 6l-6 6l6 6"/></symbol>
+    <symbol id="ic-cookie" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 1 0 10 10a4 4 0 0 1-5-5a4 4 0 0 1-5-5M8.5 8.5v.01M16 15.5v.01M12 12v.01M11 17v.01M7 14v.01"/></symbol>
+    <symbol id="ic-terminal" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19h8M4 17l6-6l-6-6"/></symbol>
+    <symbol id="ic-wifi" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h.01M2 8.82a15 15 0 0 1 20 0M5 12.859a10 10 0 0 1 14 0m-10.5 3.57a5 5 0 0 1 7 0"/></symbol>
+    <symbol id="ic-hash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 9h16M4 15h16M10 3L8 21m8-18l-2 18"/></symbol>
+    <symbol id="ic-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></g></symbol>
+    <symbol id="ic-git" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 6a9 9 0 0 0-9 9V3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/></g></symbol>
+    <symbol id="ic-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></g></symbol>
+    <symbol id="ic-cog" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 10.27L7 3.34m4 10.39l-4 6.93M12 22v-2m0-18v2m2 8h8m-5 8.66l-1-1.73m1-15.59l-1 1.73M2 12h2m16.66 5l-1.73-1m1.73-9l-1.73 1m-15.59-1l1.73 1m-1.73 9l1.73-1"/><path d="M14 12a2 2 0 1 1-4 0a2 2 0 0 1 4 0"/><circle cx="12" cy="12" r="8"/></g></symbol>
+    <symbol id="ic-server" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></g></symbol>
+    <symbol id="ic-tip-iceberg" viewBox="2 2 20 20">
+      <path d="m19 10l-2 9l-4 3l-3-5l-3-1l-2-6l2-5l3-2l3 3l4 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+
+  <rect x="0" y="0" width="2048" height="1152" fill="#1A1410"/>
+
+  <line x1="0" y1="576" x2="380" y2="576" stroke="#F5E6D3" stroke-width="4" stroke-linecap="round"/>
+  <line x1="1668" y1="576" x2="2048" y2="576" stroke="#F5E6D3" stroke-width="4" stroke-linecap="round"/>
+
+  <use href="#ic-tip-iceberg" x="944" y="336" width="160" height="160" color="#F5E6D3"/>
+
+  <text x="1024" y="576"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-family="'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
+        font-weight="800"
+        font-size="100"
+        letter-spacing="-2"
+        fill="#F5E6D3">BELOW THE WATERLINE.</text>
+
+  <use href="#ic-type"     x="411" y="681" width="58" height="58" color="#FFB627" opacity="0.40"/>
+  <use href="#ic-globe"    x="562" y="684" width="56" height="56" color="#FFB627" opacity="0.32"/>
+  <use href="#ic-database" x="729" y="677" width="62" height="62" color="#FFB627" opacity="0.42"/>
+  <use href="#ic-cpu"      x="911" y="683" width="58" height="58" color="#FFB627" opacity="0.35"/>
+  <use href="#ic-image"    x="1079" y="679" width="62" height="62" color="#FFB627" opacity="0.40"/>
+  <use href="#ic-wifi"     x="1252" y="680" width="56" height="56" color="#FFB627" opacity="0.30"/>
+  <use href="#ic-hash"     x="1421" y="683" width="58" height="58" color="#FFB627" opacity="0.34"/>
+
+  <use href="#ic-key"       x="155" y="795" width="110" height="110" color="#FFB627" opacity="0.45"/>
+  <use href="#ic-code"      x="390" y="840" width="80" height="80" color="#FFB627" opacity="0.30"/>
+  <use href="#ic-cookie"    x="580" y="810" width="120" height="120" color="#FFB627" opacity="0.40"/>
+  <use href="#ic-terminal"  x="825" y="875" width="90" height="90" color="#FFB627" opacity="0.35"/>
+  <use href="#ic-layers"    x="1035" y="805" width="130" height="130" color="#FFB627" opacity="0.45"/>
+  <use href="#ic-git"       x="1296" y="856" width="88" height="88" color="#FFB627" opacity="0.32"/>
+  <use href="#ic-lock"      x="1530" y="820" width="100" height="100" color="#FFB627" opacity="0.40"/>
+
+  <use href="#ic-cog"    x="1745" y="885" width="110" height="110" color="#FFB627" opacity="0.32"/>
+  <use href="#ic-server" x="1860" y="970" width="80" height="80" color="#FFB627" opacity="0.28"/>
+</svg>
