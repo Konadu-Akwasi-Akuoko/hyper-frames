@@ -39,10 +39,36 @@ Resolve the **target folder** in this order:
 2. If the current working directory matches `**/videos/<slug>-<date>/`,
    use that.
 3. Otherwise, ask: "Which video folder should I work in?" — list existing
-   `videos/*` directories to make the choice concrete.
+   `videos/*` directories, **plus an option to create a new folder** (the
+   user supplies a slug; date is today).
 
 Convert the result to an absolute path. Use that absolute path for every
 subsequent file read and write — do not depend on CWD after this step.
+
+**Bootstrap the folder if it doesn't exist.** The skill can be invoked
+before later pipeline stages have run (e.g. designing thumbnails up
+front). If the resolved folder doesn't exist on disk, scaffold it now
+using the project's canonical bootstrap from `CLAUDE.md`. The block is
+**idempotent** — when invoked against an existing folder, it skips
+`mkdir` and `npx hyperframes init` entirely:
+
+```bash
+# from the repo root — skip if folder already exists
+if [ -d "videos/<slug>-<YYYY-MM-DD>" ]; then
+  cd videos/<slug>-<YYYY-MM-DD>
+  echo "Folder already exists. Skipping mkdir + hyperframes init."
+else
+  mkdir -p videos/<slug>-<YYYY-MM-DD>
+  cd videos/<slug>-<YYYY-MM-DD>
+  npx hyperframes init
+fi
+```
+
+Use today's date when constructing a new folder name. After this, Step 2
+will read `outline.md` and `script.md` — if those don't exist yet (the
+folder was just bootstrapped), the skill will halt at Step 2 with a
+clear "run script-writer first" message rather than fabricating a
+working title.
 
 Resolve the **orientation mode** in this order (case-insensitive):
 
