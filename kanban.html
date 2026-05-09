@@ -1407,6 +1407,20 @@
         });
       });
 
+      document.querySelector('.panel').addEventListener('input', (e) => {
+        if (e.target.id !== 'panel-notes') return;
+        clearTimeout(notesDebounceTimer);
+        const id = state.ui.panelOpenCardId;
+        const value = e.target.value;
+        notesDebounceTimer = setTimeout(() => saveNotesNow(id, value), 500);
+      });
+
+      document.querySelector('.panel').addEventListener('blur', (e) => {
+        if (e.target.id !== 'panel-notes') return;
+        clearTimeout(notesDebounceTimer);
+        saveNotesNow(state.ui.panelOpenCardId, e.target.value);
+      }, true);
+
       document.addEventListener('click', (e) => {
         if (!state.ui.panelOpenCardId) return;
         if (e.target.closest('.panel')) return;
@@ -1452,6 +1466,32 @@
     }
 
     let notesLastSavedAt = null;
+    let notesDebounceTimer = null;
+
+    function saveNotesNow(id, value) {
+      const card = findCard(id);
+      if (!card) return;
+      if (card.notes === value) return;
+      card.notes = value;
+      card.updatedAt = new Date().toISOString();
+      persist();
+      notesLastSavedAt = Date.now();
+      updateNotesStatus();
+    }
+
+    function updateNotesStatus() {
+      const el = document.getElementById('panel-notes-status');
+      if (!el) return;
+      if (!notesLastSavedAt) { el.hidden = true; return; }
+      const sec = Math.floor((Date.now() - notesLastSavedAt) / 1000);
+      const ago = sec < 5 ? 'just now'
+                : sec < 60 ? `${sec}s ago`
+                : `${Math.floor(sec / 60)}m ago`;
+      el.hidden = false;
+      el.textContent = `Saved · ${ago}`;
+    }
+
+    setInterval(updateNotesStatus, 5000);
 
     function renderPanel(card) {
       const aside = document.querySelector('.panel');
