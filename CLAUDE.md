@@ -30,10 +30,15 @@ compositions. The patterns below are project-specific overlays on top of those s
 not replacements.
 
 The full skill set lives under `.claude/skills/` — `hyperframes`, `hyperframes-cli`,
-`hyperframes-media`, `hyperframes-registry`, `website-to-hyperframes`, plus animation
-adapters (`gsap`, `waapi`, `animejs`, `three`, `lottie`, `css-animations`, `tailwind`).
-Browse them when picking a tool for a scene; `hyperframes-registry` in particular
-governs `hyperframes add` and how blocks/components get wired into the project.
+`hyperframes-media`, `hyperframes-registry`, `website-to-hyperframes`,
+`script-writer`, `voiceover-elevenlabs`, plus animation adapters (`gsap`, `waapi`,
+`animejs`, `three`, `lottie`, `css-animations`, `tailwind`). Browse them when
+picking a tool for a scene; `hyperframes-registry` in particular governs
+`hyperframes add` and how blocks/components get wired into the project.
+
+For voiceover generation in this project, use `voiceover-elevenlabs` (ElevenLabs
+v3 + Scribe v2), not `hyperframes-media tts` (Kokoro). The Kokoro path stays
+parallel and untouched for any non-v3 use case.
 
 Official docs: https://hyperframes.heygen.com/introduction (full text index at
 https://hyperframes.mintlify.app/llms.txt). Use these as the upstream source of
