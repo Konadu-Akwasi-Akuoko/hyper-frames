@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-05-09T00:40:00Z",
+  "candidates": {
+    "e103fbd442f84159": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Why is rendering text so complicated?",
+          "lens": "text rendering pipeline overview",
+          "scores": {
+            "audience_reach": 20,
+            "curiosity_hook": 14,
+            "computing_depth": 20
+          },
+          "notes": "Judged from title + YouTube metadata only (direct fetch 403). Direct framing covered by Pawel (@pawel_code_stuff, Tier B) at 137K views 8 days ago — 30-day cooldown will suppress. Angle 1 kept per rules."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The 8-page algorithm inside every app that handles Arabic or Hebrew",
+          "lens": "Unicode bidirectional algorithm internals",
+          "scores": {
+            "audience_reach": 14,
+            "curiosity_hook": 18,
+            "computing_depth": 20
+          },
+          "notes": "Adjacent angle on the Unicode Bidi Algorithm (UBA) — the spec that governs how RTL and LTR characters mix. Hyper-claim + hidden-mechanism pattern. Meaningfully distinct from Pawel's overview; dives into a specific sub-system most developers have hit without knowing it."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why fonts are programs, not pictures",
+          "lens": "OpenType bytecode and font hinting",
+          "scores": {
+            "audience_reach": 14,
+            "curiosity_hook": 20,
+            "computing_depth": 20
+          },
+          "notes": "Counterintuitive-twist: every font file ships a Turing-complete hinting program that a renderer executes at draw time. Adjacent to Pawel's overview but zooms into OpenType internals — rasterization, hinting instructions, the TrueType interpreter. High curiosity hook because the claim is genuinely surprising."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The microscopic trick that made LCD screens readable",
+          "lens": "sub-pixel rendering and ClearType history",
+          "scores": {
+            "audience_reach": 20,
+            "curiosity_hook": 18,
+            "computing_depth": 18
+          },
+          "notes": "Hidden-mechanism reveal: sub-pixel / ClearType rendering exploits the RGB stripe layout of LCD panels to triple effective horizontal resolution. Every computer user has benefited from this without knowing it exists. Adjacent to Pawel's angle on rendering complexity but anchored in hardware + perceptual science, not the software pipeline."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why the same font looks different on every OS — and why nobody fixed it",
+          "lens": "cross-platform font rendering divergence",
+          "scores": {
+            "audience_reach": 20,
+            "curiosity_hook": 16,
+            "computing_depth": 16
+          },
+          "notes": "Personal-stake angle: Windows/macOS/Linux render the same font file visibly differently. Gets into hinting philosophy (Windows trusts the font program, macOS overrides it, Linux splits the difference). Adjacent to Pawel's broad framing but anchored in something the user can verify immediately on their own machine."
+        }
+      ]
+    }
+  }
+}

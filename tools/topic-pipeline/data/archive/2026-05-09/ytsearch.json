@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-05-09T00:36:13+00:00",
+  "candidate_count": 1,
+  "fresh_count": 1,
+  "cached_count": 0,
+  "failed_count": 1,
+  "elapsed_seconds": 0.4,
+  "top_k": 10,
+  "top_k_for_demand": 5,
+  "results": {
+    "e103fbd442f84159": {
+      "id": "e103fbd442f84159",
+      "title": "Why is rendering text so complicated?",
+      "query": "Why is rendering text so complicated?",
+      "videos": [],
+      "error": "yt-dlp exit 1: ERROR: Unable to download API page: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1016) (caused by CertificateVerifyError('[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1016)')); please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
+      "demand_score": 0,
+      "median_views_top_k": 0,
+      "top_k_for_demand": 5,
+      "tier_b_hits": [],
+      "tier_c_hits": [],
+      "untracked_channels": []
+    }
+  }
+}
