@@ -67,9 +67,31 @@ npx hyperframes init
 
 Use today's date. The project's `CLAUDE.md` is strict about this folder convention — never author files at the repo root. All subsequent writes go into the new folder.
 
+### Step 2.5 — SEO research checkpoint
+
+Before drafting the outline, give the user the option to run SEO research on the topic. The data informs which searchable nouns the working title should anchor on, which framings are saturated by recent incumbents, and how much hook-time top performers have to play with in beat 1.
+
+Probe `<video-dir>/seo/research.json`:
+
+- **Present** → load it. Print one line: `Using existing seo/research.json (generated <date>, topic: '<topic>').` Continue to Step 3.
+- **Missing** → ask once: `"Want to run SEO research on '<topic>' before drafting the outline? Will surface searchable nouns, demand phrases, and what incumbents already cover, so the working title and framing can differentiate. (~25s, no API key) [Y/n/skip]"`
+  - **Y** → invoke the `youtube-seo-research` skill via the `Skill` tool. It runs the research and prints its 5-line digest. Continue to Step 3 with the JSON loaded.
+  - **n / skip** → continue to Step 3 without SEO data. Don't re-prompt later in this session.
+
+Never block on missing or declined research. The outline can be drafted without it; the SEO data only informs choices, never requires them.
+
 ### Step 3 — 9-beat outline checkpoint
 
 Load `reference/nine-beat-arc.md`. Draft a one-line outline for each of the 9 beats based on the topic + notes. Don't write prose yet — single declarative sentences only, naming what each beat does for *this* topic.
+
+If `seo/research.json` was loaded in Step 2.5, let it inform the outline:
+
+- **Working title H1** — bias the topic phrasing toward a top searchable noun from `signals.top_nouns`. The H1 becomes the file's identity and what `thumbnail-creator` later reads, so the searchable anchor pays off twice.
+- **Framing** — if `signals.saturation_warnings` flags a `"how X works"` pattern that matches your natural framing, lean on the iceberg arc's reframing strength to differentiate (open with the mundane action, not the explainer setup).
+- **Beat 1 hook budget** — if `signals.hook_patterns.median_peak_position_seconds` is, say, ~12s, that's the budget for the open + subversion combined before viewers drop off. Tightens the discipline already in `nine-beat-arc.md`.
+- **Coverage check** — read `top_videos[].chapters` titles for the top 5–10 videos. If you're about to retread a beat that incumbents already over-cover, flag it during outline review and ask whether to differentiate.
+
+If the SEO file was not loaded, draft the outline from topic + notes alone (current behavior).
 
 Format for `outline.md`:
 
