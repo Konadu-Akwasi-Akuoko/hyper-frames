@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hyper-frames pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Warm dark palette — never pure black */
+      --bg: #0F0E0C;
+      --bg-subtle: #131210;
+      --surface-1: #1A1815;
+      --surface-2: #221F1B;
+      --surface-3: #2B2723;
+
+      --border-subtle: #2A2723;
+      --border: #3A3631;
+      --border-strong: #4D4842;
+
+      --text: #EDE7DC;
+      --text-secondary: #B5AC9D;
+      --text-muted: #8A8278;
+      --text-dim: #5C544A;
+      --text-fade: #3F3934;
+
+      /* Copper — single strategic accent */
+      --accent: #D4A574;
+      --accent-muted: #8B6F4D;
+      --accent-soft: rgba(212, 165, 116, 0.10);
+
+      /* States */
+      --amber: #E0A050;
+      --amber-soft: rgba(224, 160, 80, 0.18);
+      --green: #8FAF7E;
+      --green-soft: rgba(143, 175, 126, 0.18);
+      --red: #C4615A;
+      --red-soft: rgba(196, 97, 90, 0.13);
+
+      /* Type */
+      --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+      /* Spatial */
+      --radius-sm: 3px;
+      --radius: 5px;
+      --radius-lg: 8px;
+      --header-h: 52px;
+      --panel-w: 400px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.4;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: var(--header-h) 1fr;
+      grid-template-columns: 1fr var(--panel-w);
+      grid-template-areas:
+        "header header"
+        "board panel";
+      position: relative;
+    }
+
+    body:has(.panel[hidden]) {
+      grid-template-columns: 1fr 0;
+    }
+
+    /* Subtle grain — gives the dark surface tooth */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      mix-blend-mode: overlay;
+    }
+
+    /* ============================== TOPBAR */
+    .topbar {
+      grid-area: header;
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Hairline copper scan-line at the very top edge */
+    .topbar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent-muted) 30%, var(--accent) 50%, var(--accent-muted) 70%, transparent 100%);
+      opacity: 0.5;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 16px;
+      height: 16px;
+      color: var(--accent);
+      align-self: center;
+      transform: translateY(-1px);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      font-variation-settings: 'opsz' 14, 'SOFT' 60, 'WONK' 0;
+    }
+
+    .brand-section {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .status-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      padding: 5px 10px 5px 8px;
+      margin-right: 8px;
+      letter-spacing: 0.02em;
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .status-pill::before {
+      content: '';
+      display: block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green-soft);
+    }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 6px 11px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 120ms ease;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .btn:hover {
+      background: var(--surface-1);
+      color: var(--text);
+      border-color: var(--border-subtle);
+    }
+
+    .btn .glyph {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .btn:hover .glyph { color: var(--accent); }
+
+    .btn-icon {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      justify-content: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================== TOPBAR -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="1" y="2.5" width="14" height="2" fill="currentColor" opacity="0.95"/>
+          <rect x="1" y="7" width="14" height="2" fill="currentColor" opacity="0.55"/>
+          <rect x="1" y="11.5" width="14" height="2" fill="currentColor" opacity="0.25"/>
+        </svg>
+      </span>
+      <span class="brand-name">hyper-frames</span>
+      <span class="brand-section">Pipeline</span>
+    </div>
+    <div class="toolbar">
+      <span class="status-pill">0 cards · never synced</span>
+      <button class="btn" id="btn-add"><span class="glyph">+</span>Add</button>
+      <button class="btn" id="btn-sync"><span class="glyph">↻</span>Sync</button>
+      <button class="btn btn-icon" id="btn-help" aria-label="Help">?</button>
+    </div>
+  </header>
+
+  <!-- ============================== BOARD -->
+  <main class="board"></main>
+
+  <!-- ============================== SIDE PANEL -->
+  <aside class="panel" hidden></aside>
+
+</body>
+</html>
