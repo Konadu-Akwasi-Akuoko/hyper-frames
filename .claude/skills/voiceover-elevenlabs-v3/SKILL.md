@@ -136,6 +136,14 @@ Tell the user the next step is theirs:
 
 This skill stops at `transcript.json`.
 
+### Step 5b — Anchor reconciliation (if narration-map flags misses)
+
+Scribe v2 normalizes numbers as words ("1950" → "nineteen fifty")
+and may render ambiguous proper-noun spellings differently across
+runs. When `narration-map` reports unmatched anchors, inspect
+`transcript.json` for the actual spelling and update `anchors.txt`
+— don't regenerate audio just to fix a lookup mismatch.
+
 ## Annotation taxonomy
 
 ### 3.1 Per-beat rubric
@@ -157,6 +165,12 @@ This skill stops at `transcript.json`.
 - **≤ 3 audio tags total in a 5-minute script. ≤ 5 in a 10-minute script.**
 - **ALL-CAPS only on terms that appear in `anchors.txt`.** No ad-hoc
   capitalization. If `anchors.txt` is missing, no ALL-CAPS at all.
+  **If a single word in the phrase is a short proper noun (≤3 letters
+  or initialism-shaped), demote that word to title case (`LUIS VON Ahn`,
+  not `LUIS VON AHN`) — short ALL-CAPS tokens get read
+  letter-by-letter. For phonetic respells, look up the IPA on Wikipedia
+  first; English orthography is unreliable (`AHN`/`AWN`/`OHN` map to
+  different vowels).**
 - **`…` is unbounded** but used only at structural transitions (between
   three-part list items, between escalation moves, before reframes), never
   mid-clause.

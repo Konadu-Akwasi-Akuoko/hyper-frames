@@ -27,6 +27,13 @@ v2 doesn't accept `<phoneme>` SSML. Pronunciation control is via:
 
 Don't reach for SSML phonemes — they silently fail.
 
+When you respell, look up the IPA first (Wikipedia is reliable for
+proper nouns; the article on "Luis von Ahn" gives `[ˈlwis fon ˈan]`).
+Don't guess from English orthography — `AHN`/`AWN`/`OHN` look
+interchangeable but map to three different English vowels (`/an/`,
+`/ɔn/`, `/oʊn/`). Match the IPA, then test on a 30-second slice
+before committing to a full regen.
+
 ## 3. SSML break tag bounds
 
 v2 supports `<break time="Xs"/>` up to ~3 seconds. Longer pauses fail
@@ -87,3 +94,22 @@ Professional Voice Clones are **fully supported** on v2 (unlike v3
 alpha, where PVC support is partial). If the user upgrades from an
 Instant Voice Clone to a Professional Voice Clone, no skill or tool
 change is needed — only the `--voice-id` flag value changes.
+
+## 9. Initialism trap on short ALL-CAPS proper nouns
+
+Short ALL-CAPS tokens (≤3 letters, or ≥3 consonants in a row, or any
+shape that looks like an acronym to a human reader) get read
+letter-by-letter. `AHN` becomes "A-H-N", `OHM` becomes "O-H-M",
+`LBJ` becomes "L-B-J" (which is what you want for that one — but
+not for proper nouns).
+
+**Mitigation:** When an anchor term is a short proper noun, drop it
+out of full ALL-CAPS but keep the surrounding emphasis. `LUIS VON Ahn`
+works — the first/middle words carry the emphasis, the surname
+renders naturally. Don't full-lowercase the whole phrase; you lose
+the anchor signal entirely.
+
+**Heuristic at annotation time:** before writing `WORD` into
+`voiceover.txt`, ask "would a human reader read this as an
+initialism?" If yes, demote that single word to title case and keep
+the rest of the phrase ALL-CAPS.
