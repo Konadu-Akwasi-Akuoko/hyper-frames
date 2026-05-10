@@ -1,0 +1,1668 @@
+{
+  "source": "transcript.json",
+  "audio_duration_secs": 387.6339375,
+  "language_code": "eng",
+  "word_count": 1023,
+  "config": {
+    "pause_threshold_secs": 0.4,
+    "scene_pause_threshold_secs": 0.6,
+    "emphatic_top_n": 15,
+    "anchor_phrase_count": 49
+  },
+  "anchors": [
+    {
+      "phrase": "I'm not a robot",
+      "matches": [
+        {
+          "word_index": 5,
+          "start": 1.62,
+          "end": 2.44,
+          "matched_text": "I'm not a robot,"
+        },
+        {
+          "word_index": 941,
+          "start": 356.7,
+          "end": 357.52,
+          "matched_text": "I'm not a robot,"
+        }
+      ]
+    },
+    {
+      "phrase": "checkbox",
+      "matches": [
+        {
+          "word_index": 3,
+          "start": 0.6,
+          "end": 1.1,
+          "matched_text": "checkbox"
+        },
+        {
+          "word_index": 43,
+          "start": 14.82,
+          "end": 15.42,
+          "matched_text": "checkbox."
+        },
+        {
+          "word_index": 90,
+          "start": 31.82,
+          "end": 32.34,
+          "matched_text": "checkbox,"
+        },
+        {
+          "word_index": 211,
+          "start": 73.82,
+          "end": 74.26,
+          "matched_text": "checkbox"
+        },
+        {
+          "word_index": 345,
+          "start": 124.16,
+          "end": 124.69,
+          "matched_text": "checkbox,"
+        },
+        {
+          "word_index": 890,
+          "start": 339.04,
+          "end": 339.56,
+          "matched_text": "checkbox"
+        },
+        {
+          "word_index": 981,
+          "start": 369.96,
+          "end": 370.44,
+          "matched_text": "checkbox"
+        }
+      ]
+    },
+    {
+      "phrase": "the test was never the checkbox",
+      "matches": [
+        {
+          "word_index": 38,
+          "start": 13.78,
+          "end": 15.42,
+          "matched_text": "the test was never the checkbox."
+        }
+      ]
+    },
+    {
+      "phrase": "the click was just the receipt",
+      "matches": [
+        {
+          "word_index": 96,
+          "start": 34.44,
+          "end": 35.8,
+          "matched_text": "The click was just the receipt."
+        }
+      ]
+    },
+    {
+      "phrase": "bad bots",
+      "matches": [
+        {
+          "word_index": 121,
+          "start": 44.14,
+          "end": 44.64,
+          "matched_text": "bad bots"
+        }
+      ]
+    },
+    {
+      "phrase": "Today we are going to look at",
+      "matches": [
+        {
+          "word_index": 173,
+          "start": 62.56,
+          "end": 63.7,
+          "matched_text": "Today we are going to look at"
+        }
+      ]
+    },
+    {
+      "phrase": "three generations of CAPTCHAs",
+      "matches": [
+        {
+          "word_index": 190,
+          "start": 67.92,
+          "end": 69.61,
+          "matched_text": "three generations of CAPTCHAs"
+        }
+      ]
+    },
+    {
+      "phrase": "Turing test",
+      "matches": [
+        {
+          "word_index": 218,
+          "start": 76.42,
+          "end": 78.04,
+          "matched_text": "Turing test."
+        },
+        {
+          "word_index": 288,
+          "start": 103.38,
+          "end": 104.18,
+          "matched_text": "Turing test"
+        }
+      ]
+    },
+    {
+      "phrase": "nineteen fifty",
+      "matches": [
+        {
+          "word_index": 221,
+          "start": 78.22,
+          "end": 78.95,
+          "matched_text": "nineteen fifty,"
+        }
+      ]
+    },
+    {
+      "phrase": "Completely Automated Public Turing test",
+      "matches": [
+        {
+          "word_index": 285,
+          "start": 101.78,
+          "end": 104.18,
+          "matched_text": "completely automated public Turing test"
+        }
+      ]
+    },
+    {
+      "phrase": "Luis von Ahn",
+      "matches": [
+        {
+          "word_index": 308,
+          "start": 110.1,
+          "end": 111.06,
+          "matched_text": "Luis von Ahn,"
+        }
+      ]
+    },
+    {
+      "phrase": "Duolingo",
+      "matches": [
+        {
+          "word_index": 317,
+          "start": 113.4,
+          "end": 114.08,
+          "matched_text": "Duolingo."
+        }
+      ]
+    },
+    {
+      "phrase": "nineteen ninety-seven",
+      "matches": [
+        {
+          "word_index": 360,
+          "start": 130.31,
+          "end": 131.28,
+          "matched_text": "nineteen ninety-seven,"
+        }
+      ]
+    },
+    {
+      "phrase": "PayPal",
+      "matches": [
+        {
+          "word_index": 394,
+          "start": 143.68,
+          "end": 144.08,
+          "matched_text": "PayPal"
+        }
+      ]
+    },
+    {
+      "phrase": "reCAPTCHA",
+      "matches": [
+        {
+          "word_index": 477,
+          "start": 175.34,
+          "end": 176.0,
+          "matched_text": "reCAPTCHA,"
+        },
+        {
+          "word_index": 694,
+          "start": 262.94,
+          "end": 263.52,
+          "matched_text": "reCAPTCHA"
+        },
+        {
+          "word_index": 770,
+          "start": 291.48,
+          "end": 292.0,
+          "matched_text": "reCAPTCHA"
+        }
+      ]
+    },
+    {
+      "phrase": "Jonathan Wilkins",
+      "matches": [
+        {
+          "word_index": 481,
+          "start": 177.5,
+          "end": 178.39,
+          "matched_text": "Jonathan Wilkins"
+        }
+      ]
+    },
+    {
+      "phrase": "eighteen percent",
+      "matches": [
+        {
+          "word_index": 491,
+          "start": 180.64,
+          "end": 181.34,
+          "matched_text": "eighteen percent"
+        }
+      ]
+    },
+    {
+      "phrase": "Chad Houck",
+      "matches": [
+        {
+          "word_index": 502,
+          "start": 184.16,
+          "end": 184.75,
+          "matched_text": "Chad Houck"
+        }
+      ]
+    },
+    {
+      "phrase": "DEF CON",
+      "matches": [
+        {
+          "word_index": 507,
+          "start": 185.66,
+          "end": 186.16,
+          "matched_text": "DEF CON"
+        }
+      ]
+    },
+    {
+      "phrase": "one in three",
+      "matches": [
+        {
+          "word_index": 514,
+          "start": 187.24,
+          "end": 187.9,
+          "matched_text": "one in three."
+        }
+      ]
+    },
+    {
+      "phrase": "two thousand and eighteen",
+      "matches": [
+        {
+          "word_index": 518,
+          "start": 188.82,
+          "end": 189.76,
+          "matched_text": "two thousand and eighteen,"
+        }
+      ]
+    },
+    {
+      "phrase": "two thousand and fourteen",
+      "matches": [
+        {
+          "word_index": 555,
+          "start": 203.3,
+          "end": 204.34,
+          "matched_text": "two thousand and fourteen,"
+        }
+      ]
+    },
+    {
+      "phrase": "version two",
+      "matches": [
+        {
+          "word_index": 563,
+          "start": 205.64,
+          "end": 206.98,
+          "matched_text": "version two."
+        }
+      ]
+    },
+    {
+      "phrase": "select all squares with crosswalks",
+      "matches": [
+        {
+          "word_index": 583,
+          "start": 215.74,
+          "end": 217.72,
+          "matched_text": "Select all squares with crosswalks."
+        }
+      ]
+    },
+    {
+      "phrase": "self-driving car project",
+      "matches": [
+        {
+          "word_index": 623,
+          "start": 232.34,
+          "end": 234.34,
+          "matched_text": "self-driving car project."
+        }
+      ]
+    },
+    {
+      "phrase": "labor pipeline",
+      "matches": [
+        {
+          "word_index": 646,
+          "start": 241.52,
+          "end": 242.329,
+          "matched_text": "labor pipeline."
+        }
+      ]
+    },
+    {
+      "phrase": "ETH Zurich",
+      "matches": [
+        {
+          "word_index": 662,
+          "start": 248.62,
+          "end": 249.32,
+          "matched_text": "ETH Zurich"
+        }
+      ]
+    },
+    {
+      "phrase": "YOLO",
+      "matches": [
+        {
+          "word_index": 671,
+          "start": 252.82,
+          "end": 253.42,
+          "matched_text": "YOLO"
+        },
+        {
+          "word_index": 722,
+          "start": 274.24,
+          "end": 274.5,
+          "matched_text": "YOLO"
+        }
+      ]
+    },
+    {
+      "phrase": "fourteen thousand",
+      "matches": [
+        {
+          "word_index": 673,
+          "start": 253.7,
+          "end": 254.44,
+          "matched_text": "fourteen thousand"
+        }
+      ]
+    },
+    {
+      "phrase": "one hundred percent",
+      "matches": [
+        {
+          "word_index": 687,
+          "start": 260.38,
+          "end": 261.18,
+          "matched_text": "one hundred percent"
+        }
+      ]
+    },
+    {
+      "phrase": "the visible test had stopped being the test",
+      "matches": [
+        {
+          "word_index": 754,
+          "start": 286.25,
+          "end": 288.54,
+          "matched_text": "The visible test had stopped being the test."
+        }
+      ]
+    },
+    {
+      "phrase": "two thousand and seventeen",
+      "matches": [
+        {
+          "word_index": 764,
+          "start": 289.38,
+          "end": 290.46,
+          "matched_text": "two thousand and seventeen,"
+        }
+      ]
+    },
+    {
+      "phrase": "reCAPTCHA version three",
+      "matches": [
+        {
+          "word_index": 770,
+          "start": 291.48,
+          "end": 292.86,
+          "matched_text": "reCAPTCHA version three."
+        }
+      ]
+    },
+    {
+      "phrase": "zero to one",
+      "matches": [
+        {
+          "word_index": 791,
+          "start": 300.46,
+          "end": 301.3,
+          "matched_text": "zero to one,"
+        }
+      ]
+    },
+    {
+      "phrase": "hCaptcha",
+      "matches": [
+        {
+          "word_index": 813,
+          "start": 308.02,
+          "end": 308.74,
+          "matched_text": "hCAPTCHA"
+        }
+      ]
+    },
+    {
+      "phrase": "Cloudflare Turnstile",
+      "matches": [
+        {
+          "word_index": 815,
+          "start": 308.96,
+          "end": 310.11,
+          "matched_text": "Cloudflare Turnstile"
+        }
+      ]
+    },
+    {
+      "phrase": "GPT-4",
+      "matches": [
+        {
+          "word_index": 850,
+          "start": 324.88,
+          "end": 326.04,
+          "matched_text": "GPT-4,"
+        }
+      ]
+    },
+    {
+      "phrase": "TaskRabbit",
+      "matches": [
+        {
+          "word_index": 857,
+          "start": 327.58,
+          "end": 328.22,
+          "matched_text": "Taskrabbit,"
+        }
+      ]
+    },
+    {
+      "phrase": "vision impairment",
+      "matches": [
+        {
+          "word_index": 862,
+          "start": 329.4,
+          "end": 330.23,
+          "matched_text": "vision impairment,"
+        }
+      ]
+    },
+    {
+      "phrase": "paid a human to take it",
+      "matches": [
+        {
+          "word_index": 883,
+          "start": 336.78,
+          "end": 337.94,
+          "matched_text": "paid a human to take it."
+        }
+      ]
+    },
+    {
+      "phrase": "Every checkbox you click",
+      "matches": [
+        {
+          "word_index": 889,
+          "start": 338.72,
+          "end": 340.06,
+          "matched_text": "Every checkbox you click,"
+        }
+      ]
+    },
+    {
+      "phrase": "every grid of crosswalks",
+      "matches": [
+        {
+          "word_index": 893,
+          "start": 340.44,
+          "end": 341.69,
+          "matched_text": "every grid of crosswalks"
+        }
+      ]
+    },
+    {
+      "phrase": "every hesitation your cursor makes",
+      "matches": [
+        {
+          "word_index": 899,
+          "start": 342.7,
+          "end": 344.58,
+          "matched_text": "every hesitation your cursor makes"
+        }
+      ]
+    },
+    {
+      "phrase": "The next time you click",
+      "matches": [
+        {
+          "word_index": 936,
+          "start": 355.48,
+          "end": 356.43,
+          "matched_text": "The next time you click,"
+        }
+      ]
+    },
+    {
+      "phrase": "The checkbox is the punctuation",
+      "matches": [
+        {
+          "word_index": 980,
+          "start": 369.81,
+          "end": 371.5,
+          "matched_text": "The checkbox is the punctuation."
+        }
+      ]
+    },
+    {
+      "phrase": "The sentence was already written",
+      "matches": [
+        {
+          "word_index": 985,
+          "start": 372.08,
+          "end": 373.4,
+          "matched_text": "The sentence was already written."
+        }
+      ]
+    },
+    {
+      "phrase": "eight hundred and nineteen million hours",
+      "matches": [
+        {
+          "word_index": 994,
+          "start": 375.68,
+          "end": 377.55,
+          "matched_text": "eight hundred and nineteen million hours,"
+        }
+      ]
+    },
+    {
+      "phrase": "six billion dollars",
+      "matches": [
+        {
+          "word_index": 1001,
+          "start": 378.44,
+          "end": 379.48,
+          "matched_text": "six billion dollars"
+        }
+      ]
+    },
+    {
+      "phrase": "learned how to pretend",
+      "matches": [
+        {
+          "word_index": 1019,
+          "start": 386.16,
+          "end": 387.3,
+          "matched_text": "learned how to pretend."
+        }
+      ]
+    }
+  ],
+  "pauses": [
+    {
+      "after_word_index": 14,
+      "after_word_text": "in.",
+      "gap_secs": 0.76,
+      "start_secs": 4.1,
+      "end_secs": 4.86
+    },
+    {
+      "after_word_index": 23,
+      "after_word_text": "day.",
+      "gap_secs": 0.48,
+      "start_secs": 7.04,
+      "end_secs": 7.52
+    },
+    {
+      "after_word_index": 28,
+      "after_word_text": "login,",
+      "gap_secs": 0.46,
+      "start_secs": 9.58,
+      "end_secs": 10.04
+    },
+    {
+      "after_word_index": 31,
+      "after_word_text": "queue,",
+      "gap_secs": 0.83,
+      "start_secs": 10.93,
+      "end_secs": 11.76
+    },
+    {
+      "after_word_index": 36,
+      "after_word_text": "thinking.",
+      "gap_secs": 0.68,
+      "start_secs": 12.96,
+      "end_secs": 13.64
+    },
+    {
+      "after_word_index": 43,
+      "after_word_text": "checkbox.",
+      "gap_secs": 0.76,
+      "start_secs": 15.42,
+      "end_secs": 16.18
+    },
+    {
+      "after_word_index": 54,
+      "after_word_text": "measured.",
+      "gap_secs": 0.54,
+      "start_secs": 19.3,
+      "end_secs": 19.84
+    },
+    {
+      "after_word_index": 62,
+      "after_word_text": "page,",
+      "gap_secs": 0.45,
+      "start_secs": 21.96,
+      "end_secs": 22.41
+    },
+    {
+      "after_word_index": 72,
+      "after_word_text": "box,",
+      "gap_secs": 0.68,
+      "start_secs": 25.76,
+      "end_secs": 26.44
+    },
+    {
+      "after_word_index": 76,
+      "after_word_text": "carry,",
+      "gap_secs": 0.62,
+      "start_secs": 27.42,
+      "end_secs": 28.04
+    },
+    {
+      "after_word_index": 82,
+      "after_word_text": "pixels.",
+      "gap_secs": 0.88,
+      "start_secs": 29.9,
+      "end_secs": 30.78
+    },
+    {
+      "after_word_index": 95,
+      "after_word_text": "in.",
+      "gap_secs": 0.64,
+      "start_secs": 33.8,
+      "end_secs": 34.44
+    },
+    {
+      "after_word_index": 101,
+      "after_word_text": "receipt.",
+      "gap_secs": 0.54,
+      "start_secs": 35.8,
+      "end_secs": 36.34
+    },
+    {
+      "after_word_index": 120,
+      "after_word_text": "estimates,",
+      "gap_secs": 0.42,
+      "start_secs": 43.72,
+      "end_secs": 44.14
+    },
+    {
+      "after_word_index": 131,
+      "after_word_text": "traffic.",
+      "gap_secs": 0.43,
+      "start_secs": 46.9,
+      "end_secs": 47.33
+    },
+    {
+      "after_word_index": 151,
+      "after_word_text": "day.",
+      "gap_secs": 0.69,
+      "start_secs": 54.73,
+      "end_secs": 55.42
+    },
+    {
+      "after_word_index": 155,
+      "after_word_text": "account,",
+      "gap_secs": 0.5,
+      "start_secs": 56.49,
+      "end_secs": 56.99
+    },
+    {
+      "after_word_index": 158,
+      "after_word_text": "ticket,",
+      "gap_secs": 0.66,
+      "start_secs": 57.82,
+      "end_secs": 58.48
+    },
+    {
+      "after_word_index": 165,
+      "after_word_text": "video,",
+      "gap_secs": 0.66,
+      "start_secs": 60.26,
+      "end_secs": 60.92
+    },
+    {
+      "after_word_index": 184,
+      "after_word_text": "computers",
+      "gap_secs": 0.43,
+      "start_secs": 65.47,
+      "end_secs": 65.9
+    },
+    {
+      "after_word_index": 188,
+      "after_word_text": "easier.",
+      "gap_secs": 0.5,
+      "start_secs": 67.2,
+      "end_secs": 67.7
+    },
+    {
+      "after_word_index": 198,
+      "after_word_text": "turn,",
+      "gap_secs": 0.52,
+      "start_secs": 70.86,
+      "end_secs": 71.38
+    },
+    {
+      "after_word_index": 228,
+      "after_word_text": "game.",
+      "gap_secs": 0.92,
+      "start_secs": 81.32,
+      "end_secs": 82.24
+    },
+    {
+      "after_word_index": 238,
+      "after_word_text": "keyboard.",
+      "gap_secs": 0.54,
+      "start_secs": 84.98,
+      "end_secs": 85.52
+    },
+    {
+      "after_word_index": 242,
+      "after_word_text": "person,",
+      "gap_secs": 0.45,
+      "start_secs": 86.27,
+      "end_secs": 86.72
+    },
+    {
+      "after_word_index": 258,
+      "after_word_text": "passed.",
+      "gap_secs": 0.67,
+      "start_secs": 91.65,
+      "end_secs": 92.32
+    },
+    {
+      "after_word_index": 266,
+      "after_word_text": "backwards.",
+      "gap_secs": 0.6,
+      "start_secs": 94.88,
+      "end_secs": 95.48
+    },
+    {
+      "after_word_index": 279,
+      "after_word_text": "in.",
+      "gap_secs": 0.7,
+      "start_secs": 99.24,
+      "end_secs": 99.94
+    },
+    {
+      "after_word_index": 284,
+      "after_word_text": "out:",
+      "gap_secs": 0.44,
+      "start_secs": 101.34,
+      "end_secs": 101.78
+    },
+    {
+      "after_word_index": 295,
+      "after_word_text": "apart.",
+      "gap_secs": 0.66,
+      "start_secs": 106.4,
+      "end_secs": 107.06
+    },
+    {
+      "after_word_index": 310,
+      "after_word_text": "Ahn,",
+      "gap_secs": 0.84,
+      "start_secs": 111.06,
+      "end_secs": 111.9
+    },
+    {
+      "after_word_index": 317,
+      "after_word_text": "Duolingo.",
+      "gap_secs": 0.8,
+      "start_secs": 114.08,
+      "end_secs": 114.88
+    },
+    {
+      "after_word_index": 324,
+      "after_word_text": "assumption:",
+      "gap_secs": 0.76,
+      "start_secs": 116.82,
+      "end_secs": 117.58
+    },
+    {
+      "after_word_index": 337,
+      "after_word_text": "machines.",
+      "gap_secs": 1.1,
+      "start_secs": 121.4,
+      "end_secs": 122.5
+    },
+    {
+      "after_word_index": 349,
+      "after_word_text": "out.",
+      "gap_secs": 0.76,
+      "start_secs": 125.82,
+      "end_secs": 126.58
+    },
+    {
+      "after_word_index": 358,
+      "after_word_text": "didn't.",
+      "gap_secs": 0.72,
+      "start_secs": 129.5,
+      "end_secs": 130.22
+    },
+    {
+      "after_word_index": 368,
+      "after_word_text": "trick.",
+      "gap_secs": 0.42,
+      "start_secs": 134.02,
+      "end_secs": 134.44
+    },
+    {
+      "after_word_index": 381,
+      "after_word_text": "back.",
+      "gap_secs": 0.8,
+      "start_secs": 137.42,
+      "end_secs": 138.22
+    },
+    {
+      "after_word_index": 388,
+      "after_word_text": "could.",
+      "gap_secs": 0.82,
+      "start_secs": 141.64,
+      "end_secs": 142.46
+    },
+    {
+      "after_word_index": 414,
+      "after_word_text": "door.",
+      "gap_secs": 0.8,
+      "start_secs": 151.5,
+      "end_secs": 152.3
+    },
+    {
+      "after_word_index": 426,
+      "after_word_text": "once:",
+      "gap_secs": 0.64,
+      "start_secs": 156.68,
+      "end_secs": 157.32
+    },
+    {
+      "after_word_index": 432,
+      "after_word_text": "warped,",
+      "gap_secs": 0.5,
+      "start_secs": 159.74,
+      "end_secs": 160.24
+    },
+    {
+      "after_word_index": 443,
+      "after_word_text": "meaning.",
+      "gap_secs": 0.72,
+      "start_secs": 164.18,
+      "end_secs": 164.9
+    },
+    {
+      "after_word_index": 452,
+      "after_word_text": "machine.",
+      "gap_secs": 0.42,
+      "start_secs": 167.44,
+      "end_secs": 167.86
+    },
+    {
+      "after_word_index": 459,
+      "after_word_text": "decade.",
+      "gap_secs": 0.55,
+      "start_secs": 169.7,
+      "end_secs": 170.25
+    },
+    {
+      "after_word_index": 462,
+      "after_word_text": "didn't.",
+      "gap_secs": 0.7,
+      "start_secs": 170.9,
+      "end_secs": 171.6
+    },
+    {
+      "after_word_index": 477,
+      "after_word_text": "reCAPTCHA,",
+      "gap_secs": 0.62,
+      "start_secs": 176.0,
+      "end_secs": 176.62
+    },
+    {
+      "after_word_index": 503,
+      "after_word_text": "Houck",
+      "gap_secs": 0.41,
+      "start_secs": 184.75,
+      "end_secs": 185.16
+    },
+    {
+      "after_word_index": 516,
+      "after_word_text": "three.",
+      "gap_secs": 0.76,
+      "start_secs": 187.9,
+      "end_secs": 188.66
+    },
+    {
+      "after_word_index": 548,
+      "after_word_text": "eBay.",
+      "gap_secs": 0.67,
+      "start_secs": 200.46,
+      "end_secs": 201.13
+    },
+    {
+      "after_word_index": 570,
+      "after_word_text": "out.",
+      "gap_secs": 0.68,
+      "start_secs": 208.74,
+      "end_secs": 209.42
+    },
+    {
+      "after_word_index": 577,
+      "after_word_text": "objects,",
+      "gap_secs": 0.6,
+      "start_secs": 212.28,
+      "end_secs": 212.88
+    },
+    {
+      "after_word_index": 582,
+      "after_word_text": "photographs.",
+      "gap_secs": 1.04,
+      "start_secs": 214.7,
+      "end_secs": 215.74
+    },
+    {
+      "after_word_index": 587,
+      "after_word_text": "crosswalks.",
+      "gap_secs": 0.6,
+      "start_secs": 217.72,
+      "end_secs": 218.32
+    },
+    {
+      "after_word_index": 593,
+      "after_word_text": "lights.",
+      "gap_secs": 0.42,
+      "start_secs": 220.18,
+      "end_secs": 220.6
+    },
+    {
+      "after_word_index": 599,
+      "after_word_text": "hydrants.",
+      "gap_secs": 0.68,
+      "start_secs": 222.64,
+      "end_secs": 223.32
+    },
+    {
+      "after_word_index": 604,
+      "after_word_text": "motive.",
+      "gap_secs": 0.62,
+      "start_secs": 224.48,
+      "end_secs": 225.1
+    },
+    {
+      "after_word_index": 613,
+      "after_word_text": "photographs,",
+      "gap_secs": 0.48,
+      "start_secs": 228.68,
+      "end_secs": 229.16
+    },
+    {
+      "after_word_index": 638,
+      "after_word_text": "Reddit.",
+      "gap_secs": 0.83,
+      "start_secs": 238.68,
+      "end_secs": 239.51
+    },
+    {
+      "after_word_index": 647,
+      "after_word_text": "pipeline.",
+      "gap_secs": 0.651,
+      "start_secs": 242.329,
+      "end_secs": 242.98
+    },
+    {
+      "after_word_index": 656,
+      "after_word_text": "stopped.",
+      "gap_secs": 0.691,
+      "start_secs": 245.829,
+      "end_secs": 246.52
+    },
+    {
+      "after_word_index": 663,
+      "after_word_text": "Zurich",
+      "gap_secs": 0.4,
+      "start_secs": 249.32,
+      "end_secs": 249.72
+    },
+    {
+      "after_word_index": 676,
+      "after_word_text": "photographs.",
+      "gap_secs": 0.57,
+      "start_secs": 255.49,
+      "end_secs": 256.06
+    },
+    {
+      "after_word_index": 692,
+      "after_word_text": "hydrants.",
+      "gap_secs": 0.6,
+      "start_secs": 262.16,
+      "end_secs": 262.76
+    },
+    {
+      "after_word_index": 697,
+      "after_word_text": "retry,",
+      "gap_secs": 0.5,
+      "start_secs": 264.52,
+      "end_secs": 265.02
+    },
+    {
+      "after_word_index": 708,
+      "after_word_text": "test.",
+      "gap_secs": 0.4,
+      "start_secs": 268.4,
+      "end_secs": 268.8
+    },
+    {
+      "after_word_index": 716,
+      "after_word_text": "percent.",
+      "gap_secs": 0.6,
+      "start_secs": 271.18,
+      "end_secs": 271.78
+    },
+    {
+      "after_word_index": 720,
+      "after_word_text": "again.",
+      "gap_secs": 0.74,
+      "start_secs": 273.38,
+      "end_secs": 274.12
+    },
+    {
+      "after_word_index": 727,
+      "after_word_text": "problem.",
+      "gap_secs": 0.48,
+      "start_secs": 276.54,
+      "end_secs": 277.02
+    },
+    {
+      "after_word_index": 744,
+      "after_word_text": "cookies,",
+      "gap_secs": 0.42,
+      "start_secs": 281.74,
+      "end_secs": 282.16
+    },
+    {
+      "after_word_index": 753,
+      "after_word_text": "movements.",
+      "gap_secs": 0.89,
+      "start_secs": 285.36,
+      "end_secs": 286.25
+    },
+    {
+      "after_word_index": 761,
+      "after_word_text": "test.",
+      "gap_secs": 0.58,
+      "start_secs": 288.54,
+      "end_secs": 289.12
+    },
+    {
+      "after_word_index": 772,
+      "after_word_text": "three.",
+      "gap_secs": 0.72,
+      "start_secs": 292.86,
+      "end_secs": 293.58
+    },
+    {
+      "after_word_index": 778,
+      "after_word_text": "checkboxes.",
+      "gap_secs": 0.72,
+      "start_secs": 295.88,
+      "end_secs": 296.6
+    },
+    {
+      "after_word_index": 796,
+      "after_word_text": "human,",
+      "gap_secs": 0.48,
+      "start_secs": 302.44,
+      "end_secs": 302.92
+    },
+    {
+      "after_word_index": 812,
+      "after_word_text": "arrived.",
+      "gap_secs": 0.6,
+      "start_secs": 307.42,
+      "end_secs": 308.02
+    },
+    {
+      "after_word_index": 820,
+      "after_word_text": "way,",
+      "gap_secs": 0.55,
+      "start_secs": 311.17,
+      "end_secs": 311.72
+    },
+    {
+      "after_word_index": 824,
+      "after_word_text": "now.",
+      "gap_secs": 0.69,
+      "start_secs": 313.09,
+      "end_secs": 313.78
+    },
+    {
+      "after_word_index": 839,
+      "after_word_text": "trusted.",
+      "gap_secs": 0.65,
+      "start_secs": 321.27,
+      "end_secs": 321.92
+    },
+    {
+      "after_word_index": 843,
+      "after_word_text": "twenty-three,",
+      "gap_secs": 0.44,
+      "start_secs": 323.14,
+      "end_secs": 323.58
+    },
+    {
+      "after_word_index": 857,
+      "after_word_text": "Taskrabbit,",
+      "gap_secs": 0.5,
+      "start_secs": 328.22,
+      "end_secs": 328.72
+    },
+    {
+      "after_word_index": 873,
+      "after_word_text": "behalf.",
+      "gap_secs": 0.7,
+      "start_secs": 333.08,
+      "end_secs": 333.78
+    },
+    {
+      "after_word_index": 888,
+      "after_word_text": "it.",
+      "gap_secs": 0.78,
+      "start_secs": 337.94,
+      "end_secs": 338.72
+    },
+    {
+      "after_word_index": 898,
+      "after_word_text": "sort,",
+      "gap_secs": 0.5,
+      "start_secs": 342.2,
+      "end_secs": 342.7
+    },
+    {
+      "after_word_index": 945,
+      "after_word_text": "remember.",
+      "gap_secs": 1.16,
+      "start_secs": 358.12,
+      "end_secs": 359.28
+    },
+    {
+      "after_word_index": 953,
+      "after_word_text": "human.",
+      "gap_secs": 0.6,
+      "start_secs": 361.02,
+      "end_secs": 361.62
+    },
+    {
+      "after_word_index": 979,
+      "after_word_text": "cursor.",
+      "gap_secs": 0.63,
+      "start_secs": 369.18,
+      "end_secs": 369.81
+    },
+    {
+      "after_word_index": 984,
+      "after_word_text": "punctuation.",
+      "gap_secs": 0.58,
+      "start_secs": 371.5,
+      "end_secs": 372.08
+    },
+    {
+      "after_word_index": 989,
+      "after_word_text": "written.",
+      "gap_secs": 0.62,
+      "start_secs": 373.4,
+      "end_secs": 374.02
+    },
+    {
+      "after_word_index": 999,
+      "after_word_text": "hours,",
+      "gap_secs": 0.59,
+      "start_secs": 377.55,
+      "end_secs": 378.14
+    },
+    {
+      "after_word_index": 1005,
+      "after_word_text": "wages,",
+      "gap_secs": 0.49,
+      "start_secs": 380.11,
+      "end_secs": 380.6
+    },
+    {
+      "after_word_index": 1014,
+      "after_word_text": "human.",
+      "gap_secs": 1.71,
+      "start_secs": 383.6,
+      "end_secs": 385.31
+    }
+  ],
+  "scene_boundaries": [
+    {
+      "after_word_index": 14,
+      "after_word_text": "in.",
+      "gap_secs": 0.76,
+      "start_secs": 4.1,
+      "end_secs": 4.86
+    },
+    {
+      "after_word_index": 36,
+      "after_word_text": "thinking.",
+      "gap_secs": 0.68,
+      "start_secs": 12.96,
+      "end_secs": 13.64
+    },
+    {
+      "after_word_index": 43,
+      "after_word_text": "checkbox.",
+      "gap_secs": 0.76,
+      "start_secs": 15.42,
+      "end_secs": 16.18
+    },
+    {
+      "after_word_index": 82,
+      "after_word_text": "pixels.",
+      "gap_secs": 0.88,
+      "start_secs": 29.9,
+      "end_secs": 30.78
+    },
+    {
+      "after_word_index": 95,
+      "after_word_text": "in.",
+      "gap_secs": 0.64,
+      "start_secs": 33.8,
+      "end_secs": 34.44
+    },
+    {
+      "after_word_index": 151,
+      "after_word_text": "day.",
+      "gap_secs": 0.69,
+      "start_secs": 54.73,
+      "end_secs": 55.42
+    },
+    {
+      "after_word_index": 228,
+      "after_word_text": "game.",
+      "gap_secs": 0.92,
+      "start_secs": 81.32,
+      "end_secs": 82.24
+    },
+    {
+      "after_word_index": 258,
+      "after_word_text": "passed.",
+      "gap_secs": 0.67,
+      "start_secs": 91.65,
+      "end_secs": 92.32
+    },
+    {
+      "after_word_index": 266,
+      "after_word_text": "backwards.",
+      "gap_secs": 0.6,
+      "start_secs": 94.88,
+      "end_secs": 95.48
+    },
+    {
+      "after_word_index": 279,
+      "after_word_text": "in.",
+      "gap_secs": 0.7,
+      "start_secs": 99.24,
+      "end_secs": 99.94
+    },
+    {
+      "after_word_index": 295,
+      "after_word_text": "apart.",
+      "gap_secs": 0.66,
+      "start_secs": 106.4,
+      "end_secs": 107.06
+    },
+    {
+      "after_word_index": 317,
+      "after_word_text": "Duolingo.",
+      "gap_secs": 0.8,
+      "start_secs": 114.08,
+      "end_secs": 114.88
+    },
+    {
+      "after_word_index": 337,
+      "after_word_text": "machines.",
+      "gap_secs": 1.1,
+      "start_secs": 121.4,
+      "end_secs": 122.5
+    },
+    {
+      "after_word_index": 349,
+      "after_word_text": "out.",
+      "gap_secs": 0.76,
+      "start_secs": 125.82,
+      "end_secs": 126.58
+    },
+    {
+      "after_word_index": 358,
+      "after_word_text": "didn't.",
+      "gap_secs": 0.72,
+      "start_secs": 129.5,
+      "end_secs": 130.22
+    },
+    {
+      "after_word_index": 381,
+      "after_word_text": "back.",
+      "gap_secs": 0.8,
+      "start_secs": 137.42,
+      "end_secs": 138.22
+    },
+    {
+      "after_word_index": 388,
+      "after_word_text": "could.",
+      "gap_secs": 0.82,
+      "start_secs": 141.64,
+      "end_secs": 142.46
+    },
+    {
+      "after_word_index": 414,
+      "after_word_text": "door.",
+      "gap_secs": 0.8,
+      "start_secs": 151.5,
+      "end_secs": 152.3
+    },
+    {
+      "after_word_index": 443,
+      "after_word_text": "meaning.",
+      "gap_secs": 0.72,
+      "start_secs": 164.18,
+      "end_secs": 164.9
+    },
+    {
+      "after_word_index": 462,
+      "after_word_text": "didn't.",
+      "gap_secs": 0.7,
+      "start_secs": 170.9,
+      "end_secs": 171.6
+    },
+    {
+      "after_word_index": 516,
+      "after_word_text": "three.",
+      "gap_secs": 0.76,
+      "start_secs": 187.9,
+      "end_secs": 188.66
+    },
+    {
+      "after_word_index": 548,
+      "after_word_text": "eBay.",
+      "gap_secs": 0.67,
+      "start_secs": 200.46,
+      "end_secs": 201.13
+    },
+    {
+      "after_word_index": 570,
+      "after_word_text": "out.",
+      "gap_secs": 0.68,
+      "start_secs": 208.74,
+      "end_secs": 209.42
+    },
+    {
+      "after_word_index": 582,
+      "after_word_text": "photographs.",
+      "gap_secs": 1.04,
+      "start_secs": 214.7,
+      "end_secs": 215.74
+    },
+    {
+      "after_word_index": 599,
+      "after_word_text": "hydrants.",
+      "gap_secs": 0.68,
+      "start_secs": 222.64,
+      "end_secs": 223.32
+    },
+    {
+      "after_word_index": 604,
+      "after_word_text": "motive.",
+      "gap_secs": 0.62,
+      "start_secs": 224.48,
+      "end_secs": 225.1
+    },
+    {
+      "after_word_index": 638,
+      "after_word_text": "Reddit.",
+      "gap_secs": 0.83,
+      "start_secs": 238.68,
+      "end_secs": 239.51
+    },
+    {
+      "after_word_index": 647,
+      "after_word_text": "pipeline.",
+      "gap_secs": 0.651,
+      "start_secs": 242.329,
+      "end_secs": 242.98
+    },
+    {
+      "after_word_index": 656,
+      "after_word_text": "stopped.",
+      "gap_secs": 0.691,
+      "start_secs": 245.829,
+      "end_secs": 246.52
+    },
+    {
+      "after_word_index": 720,
+      "after_word_text": "again.",
+      "gap_secs": 0.74,
+      "start_secs": 273.38,
+      "end_secs": 274.12
+    },
+    {
+      "after_word_index": 753,
+      "after_word_text": "movements.",
+      "gap_secs": 0.89,
+      "start_secs": 285.36,
+      "end_secs": 286.25
+    },
+    {
+      "after_word_index": 772,
+      "after_word_text": "three.",
+      "gap_secs": 0.72,
+      "start_secs": 292.86,
+      "end_secs": 293.58
+    },
+    {
+      "after_word_index": 778,
+      "after_word_text": "checkboxes.",
+      "gap_secs": 0.72,
+      "start_secs": 295.88,
+      "end_secs": 296.6
+    },
+    {
+      "after_word_index": 824,
+      "after_word_text": "now.",
+      "gap_secs": 0.69,
+      "start_secs": 313.09,
+      "end_secs": 313.78
+    },
+    {
+      "after_word_index": 839,
+      "after_word_text": "trusted.",
+      "gap_secs": 0.65,
+      "start_secs": 321.27,
+      "end_secs": 321.92
+    },
+    {
+      "after_word_index": 873,
+      "after_word_text": "behalf.",
+      "gap_secs": 0.7,
+      "start_secs": 333.08,
+      "end_secs": 333.78
+    },
+    {
+      "after_word_index": 888,
+      "after_word_text": "it.",
+      "gap_secs": 0.78,
+      "start_secs": 337.94,
+      "end_secs": 338.72
+    },
+    {
+      "after_word_index": 945,
+      "after_word_text": "remember.",
+      "gap_secs": 1.16,
+      "start_secs": 358.12,
+      "end_secs": 359.28
+    },
+    {
+      "after_word_index": 953,
+      "after_word_text": "human.",
+      "gap_secs": 0.6,
+      "start_secs": 361.02,
+      "end_secs": 361.62
+    },
+    {
+      "after_word_index": 979,
+      "after_word_text": "cursor.",
+      "gap_secs": 0.63,
+      "start_secs": 369.18,
+      "end_secs": 369.81
+    },
+    {
+      "after_word_index": 989,
+      "after_word_text": "written.",
+      "gap_secs": 0.62,
+      "start_secs": 373.4,
+      "end_secs": 374.02
+    },
+    {
+      "after_word_index": 1014,
+      "after_word_text": "human.",
+      "gap_secs": 1.71,
+      "start_secs": 383.6,
+      "end_secs": 385.31
+    }
+  ],
+  "emphatic_words": [
+    {
+      "word_index": 246,
+      "text": "program.",
+      "start": 87.06,
+      "end": 88.44,
+      "duration_secs": 1.38
+    },
+    {
+      "word_index": 219,
+      "text": "test.",
+      "start": 76.84,
+      "end": 78.04,
+      "duration_secs": 1.2
+    },
+    {
+      "word_index": 850,
+      "text": "GPT-4,",
+      "start": 324.88,
+      "end": 326.04,
+      "duration_secs": 1.16
+    },
+    {
+      "word_index": 213,
+      "text": "clicked.",
+      "start": 74.46,
+      "end": 75.56,
+      "duration_secs": 1.1
+    },
+    {
+      "word_index": 553,
+      "text": "again.",
+      "start": 201.96,
+      "end": 203.06,
+      "duration_secs": 1.1
+    },
+    {
+      "word_index": 117,
+      "text": "minutes.",
+      "start": 41.38,
+      "end": 42.46,
+      "duration_secs": 1.08
+    },
+    {
+      "word_index": 625,
+      "text": "project.",
+      "start": 233.28,
+      "end": 234.34,
+      "duration_secs": 1.06
+    },
+    {
+      "word_index": 830,
+      "text": "paths.",
+      "start": 315.96,
+      "end": 317.02,
+      "duration_secs": 1.06
+    },
+    {
+      "word_index": 910,
+      "text": "button,",
+      "start": 345.76,
+      "end": 346.76,
+      "duration_secs": 1.0
+    },
+    {
+      "word_index": 401,
+      "text": "sign-ups.",
+      "start": 146.34,
+      "end": 147.3,
+      "duration_secs": 0.96
+    },
+    {
+      "word_index": 271,
+      "text": "computer.",
+      "start": 96.12,
+      "end": 97.08,
+      "duration_secs": 0.96
+    },
+    {
+      "word_index": 495,
+      "text": "time.",
+      "start": 181.62,
+      "end": 182.5,
+      "duration_secs": 0.88
+    },
+    {
+      "word_index": 564,
+      "text": "two.",
+      "start": 206.1,
+      "end": 206.98,
+      "duration_secs": 0.88
+    },
+    {
+      "word_index": 659,
+      "text": "twenty-four,",
+      "start": 246.96,
+      "end": 247.829,
+      "duration_secs": 0.869
+    },
+    {
+      "word_index": 935,
+      "text": "up.",
+      "start": 354.58,
+      "end": 355.42,
+      "duration_secs": 0.84
+    }
+  ]
+}
