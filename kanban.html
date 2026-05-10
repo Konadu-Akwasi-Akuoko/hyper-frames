@@ -645,7 +645,6 @@
                     "SOFT" 30,
                     "WONK" 0;
                 margin-bottom: 7px;
-                cursor: pointer;
             }
 
             .panel-meta {
@@ -721,6 +720,10 @@
                 text-transform: uppercase;
                 letter-spacing: 0.18em;
                 margin-bottom: 9px;
+            }
+
+            .folder-path .editable {
+                cursor: pointer;
             }
 
             /* Folder path */
@@ -1288,6 +1291,18 @@
                     published: "manual flag",
                 };
 
+                // Concrete file (or trailing-slash directory) to open per artifact.
+                // Empty string falls back to the video folder root.
+                const ARTIFACT_PRIMARY = {
+                    research: "seo/research.json",
+                    script: "script.md",
+                    voiceover: "audio/voiceover.mp3",
+                    compose: "index.html",
+                    thumbnail: "",
+                    render: "output/",
+                    published: "",
+                };
+
                 function findCard(id) {
                     return state.cards.find((c) => c.id === id) || null;
                 }
@@ -1460,6 +1475,24 @@
                     div.textContent =
                         "localStorage unavailable. Changes will not persist.";
                     document.body.appendChild(div);
+                }
+
+                function showToast(message, kind = "info") {
+                    const palette = {
+                        info: { bg: "#221F1B", fg: "#EDE7DC", border: "#3A3631" },
+                        warn: { bg: "#E0A050", fg: "#0F0E0C", border: "transparent" },
+                        error: { bg: "#C4615A", fg: "#fff", border: "transparent" },
+                    };
+                    const c = palette[kind] || palette.info;
+                    const div = document.createElement("div");
+                    div.style.cssText = `position:fixed;top:60px;left:50%;transform:translateX(-50%);background:${c.bg};color:${c.fg};border:1px solid ${c.border};padding:9px 16px;border-radius:6px;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.5;letter-spacing:0.01em;z-index:9999;max-width:560px;box-shadow:0 8px 24px -4px rgba(0,0,0,0.5);opacity:0;transition:opacity 200ms ease;`;
+                    div.textContent = message;
+                    document.body.appendChild(div);
+                    requestAnimationFrame(() => (div.style.opacity = "1"));
+                    setTimeout(() => {
+                        div.style.opacity = "0";
+                        setTimeout(() => div.remove(), 250);
+                    }, 4500);
                 }
 
                 function persist() {
@@ -1759,18 +1792,59 @@
                                 handle = await pickDirHandle();
                                 scanResult = await scan(handle);
                             }
+                            const beforeIds = new Set(
+                                state.cards.map((c) => `${c.slug}|${c.date}`),
+                            );
                             state = mergeScan(state, scanResult.results);
                             state.lastSyncedAt = new Date().toISOString();
                             persist();
                             render();
+
+                            const found = scanResult.results.length;
+                            const added = scanResult.results.filter(
+                                (r) => !beforeIds.has(`${r.slug}|${r.date}`),
+                            ).length;
+                            const updated = found - added;
+
+                            if (found === 0) {
+                                showToast(
+                                    `No video folders found in "${handle.name}". Pick the videos/ directory (not a subfolder) and try again.`,
+                                    "warn",
+                                );
+                            } else {
+                                const parts = [];
+                                if (added > 0)
+                                    parts.push(
+                                        `${added} new card${added === 1 ? "" : "s"}`,
+                                    );
+                                if (updated > 0)
+                                    parts.push(
+                                        `${updated} updated`,
+                                    );
+                                const summary = parts.length
+                                    ? parts.join(", ")
+                                    : "no changes";
+                                showToast(
+                                    `Scanned ${found} folder${found === 1 ? "" : "s"} in "${handle.name}" — ${summary}.`,
+                                );
+                            }
                             if (scanResult.errors > 0) {
                                 console.warn(
                                     `Sync completed with ${scanResult.errors} errors.`,
                                 );
+                                showToast(
+                                    `${scanResult.errors} folder${scanResult.errors === 1 ? "" : "s"} failed to scan — see console.`,
+                                    "warn",
+                                );
                             }
                         } catch (e) {
-                            if (e.name !== "AbortError")
+                            if (e.name !== "AbortError") {
                                 console.error("Sync failed:", e);
+                                showToast(
+                                    `Sync failed: ${e.message || e.name}`,
+                                    "error",
+                                );
+                            }
                         } finally {
                             syncBtn.classList.remove("syncing");
                             syncBtn.disabled = false;
@@ -1851,6 +1925,14 @@
                     });
                 }
 
+                const liveKebab = (s) =>
+                    String(s)
+                        .toLowerCase()
+                        .replace(/[^a-z0-9\s\-_]/g, "")
+                        .replace(/[\s_]+/g, "-")
+                        .replace(/-+/g, "-")
+                        .replace(/^-+/, "");
+
                 function bindPanelEvents() {
                     document
                         .querySelector(".panel")
@@ -1869,47 +1951,184 @@
                                     );
                                 return;
                             }
-                            if (e.target.id === "panel-title") {
-                                const titleEl = e.target;
-                                const id = state.ui.panelOpenCardId;
-                                if (!id) return;
-                                const card = findCard(id);
+                            if (e.target.closest("#copy-title")) {
+                                const card = findCard(state.ui.panelOpenCardId);
+                                if (card)
+                                    navigator.clipboard?.writeText(card.title);
+                                return;
+                            }
+                            if (e.target.closest("#copy-slug")) {
+                                const card = findCard(state.ui.panelOpenCardId);
+                                if (card)
+                                    navigator.clipboard?.writeText(card.slug);
+                                return;
+                            }
+                            if (e.target.id === "edit-title") {
+                                e.stopPropagation();
+                                const card = findCard(state.ui.panelOpenCardId);
                                 if (!card) return;
-                                const input = document.createElement("input");
-                                input.type = "text";
-                                input.value = card.title;
-                                input.className = "panel-title editing";
-                                titleEl.replaceWith(input);
-                                input.focus();
-                                input.select();
-
-                                let committed = false;
-                                const commit = (save) => {
-                                    if (committed) return;
-                                    committed = true;
-                                    const value = input.value.trim();
-                                    if (save && value && value !== card.title) {
+                                startInlineEdit(
+                                    e.target,
+                                    card.title,
+                                    (value) => {
+                                        if (!value || value === card.title)
+                                            return false;
                                         mutate(() => {
                                             card.title = value;
                                             card.updatedAt =
                                                 new Date().toISOString();
                                         });
-                                    } else {
-                                        render();
-                                    }
-                                };
-                                input.addEventListener("blur", () =>
-                                    commit(true),
+                                        return true;
+                                    },
                                 );
-                                input.addEventListener("keydown", (k) => {
-                                    if (k.key === "Enter") {
-                                        k.preventDefault();
-                                        input.blur();
-                                    }
-                                    if (k.key === "Escape") {
-                                        commit(false);
-                                    }
-                                });
+                                return;
+                            }
+                            if (e.target.id === "edit-slug") {
+                                e.stopPropagation();
+                                const card = findCard(state.ui.panelOpenCardId);
+                                if (!card) return;
+                                startInlineEdit(
+                                    e.target,
+                                    card.slug,
+                                    (value) => {
+                                        const slug = kebabSlug(value);
+                                        if (!slug) return "Slug is required.";
+                                        if (slug === card.slug) return false;
+                                        if (
+                                            state.cards.some(
+                                                (c) =>
+                                                    c.id !== card.id &&
+                                                    c.slug === slug &&
+                                                    c.date === card.date,
+                                            )
+                                        ) {
+                                            return `A card with slug "${slug}" and date ${card.date} already exists.`;
+                                        }
+                                        mutate(() => {
+                                            card.slug = slug;
+                                            card.updatedAt =
+                                                new Date().toISOString();
+                                        });
+                                        return true;
+                                    },
+                                    { sanitize: liveKebab },
+                                );
+                                return;
+                            }
+                            if (e.target.id === "edit-folder") {
+                                e.stopPropagation();
+                                const card = findCard(state.ui.panelOpenCardId);
+                                if (!card) return;
+                                const editable = `${card.slug}-${card.date}`;
+                                startInlineEdit(
+                                    e.target,
+                                    editable,
+                                    (value) => {
+                                        const m = value.match(FOLDER_RE);
+                                        if (!m)
+                                            return "Folder must be <slug>-YYYY-MM-DD.";
+                                        const slug = kebabSlug(m[1]);
+                                        const date = m[2];
+                                        if (!slug)
+                                            return "Slug portion is required.";
+                                        if (
+                                            slug === card.slug &&
+                                            date === card.date
+                                        )
+                                            return false;
+                                        if (
+                                            state.cards.some(
+                                                (c) =>
+                                                    c.id !== card.id &&
+                                                    c.slug === slug &&
+                                                    c.date === date,
+                                            )
+                                        ) {
+                                            return `A card with slug "${slug}" and date ${date} already exists.`;
+                                        }
+                                        mutate(() => {
+                                            card.slug = slug;
+                                            card.date = date;
+                                            card.updatedAt =
+                                                new Date().toISOString();
+                                        });
+                                        return true;
+                                    },
+                                );
+                                return;
+                            }
+                            const artifactLink =
+                                e.target.closest(".artifact-link");
+                            if (artifactLink) {
+                                e.preventDefault();
+                                const card = findCard(state.ui.panelOpenCardId);
+                                if (!card) return;
+                                const artifactId = artifactLink.dataset.artifact;
+                                const primary =
+                                    ARTIFACT_PRIMARY[artifactId] ?? "";
+                                const rel = `${folderPath(card)}${primary}`;
+                                if (location.protocol === "file:") {
+                                    const here = decodeURIComponent(
+                                        location.pathname,
+                                    );
+                                    const repoRoot = here.replace(
+                                        /\/[^/]+$/,
+                                        "",
+                                    );
+                                    const url = `file://${repoRoot}/${rel}`;
+                                    window.open(url, "_blank");
+                                } else {
+                                    navigator.clipboard
+                                        ?.writeText(rel)
+                                        .then(
+                                            () =>
+                                                showToast(
+                                                    `Path copied: ${rel}`,
+                                                ),
+                                            () =>
+                                                showToast(
+                                                    `Path: ${rel}`,
+                                                    "warn",
+                                                ),
+                                        );
+                                }
+                                return;
+                            }
+                            if (e.target.closest("#open-folder")) {
+                                const card = findCard(state.ui.panelOpenCardId);
+                                if (!card) return;
+                                const rel = folderPath(card);
+                                let path = rel;
+                                if (location.protocol === "file:") {
+                                    const here = decodeURIComponent(
+                                        location.pathname,
+                                    );
+                                    const repoRoot = here.replace(
+                                        /\/[^/]+$/,
+                                        "",
+                                    );
+                                    path = `${repoRoot}/${rel}`;
+                                }
+                                const writer =
+                                    navigator.clipboard?.writeText(path);
+                                if (writer && writer.then) {
+                                    writer.then(
+                                        () =>
+                                            showToast(
+                                                `Path copied — in Finder press ⌘⇧G and paste.`,
+                                            ),
+                                        () =>
+                                            showToast(
+                                                `Couldn't copy. Path: ${path}`,
+                                                "warn",
+                                            ),
+                                    );
+                                } else {
+                                    showToast(
+                                        `Clipboard unavailable. Path: ${path}`,
+                                        "warn",
+                                    );
+                                }
                                 return;
                             }
                             if (e.target.closest("#delete-card")) {
@@ -2334,7 +2553,7 @@
                             : "";
                     const link =
                         status === "present" || status === "partial"
-                            ? `<a href="#" class="artifact-link">Open</a>`
+                            ? `<a href="#" class="artifact-link" data-artifact="${escapeHtml(artifactId)}">Open</a>`
                             : "";
                     return `
         <li class="artifact${missingClass}">
@@ -2384,6 +2603,57 @@
 
                 setInterval(updateNotesStatus, 5000);
 
+                function startInlineEdit(spanEl, initialValue, onCommit, options = {}) {
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.value = initialValue;
+                    input.className = "panel-title editing";
+                    input.style.fontSize = "14px";
+                    spanEl.replaceWith(input);
+                    input.focus();
+                    input.select();
+
+                    if (options.sanitize) {
+                        input.addEventListener("input", () => {
+                            const cur = input.value;
+                            const next = options.sanitize(cur);
+                            if (next !== cur) {
+                                const pos = input.selectionStart;
+                                input.value = next;
+                                input.setSelectionRange(
+                                    Math.min(pos, next.length),
+                                    Math.min(pos, next.length),
+                                );
+                            }
+                        });
+                    }
+
+                    let committed = false;
+                    const commit = (save) => {
+                        if (committed) return;
+                        committed = true;
+                        if (!save) {
+                            render();
+                            return;
+                        }
+                        const value = input.value.trim();
+                        const result = onCommit(value);
+                        if (result === true) return;
+                        if (typeof result === "string") alert(result);
+                        render();
+                    };
+                    input.addEventListener("blur", () => commit(true));
+                    input.addEventListener("keydown", (k) => {
+                        if (k.key === "Enter") {
+                            k.preventDefault();
+                            input.blur();
+                        } else if (k.key === "Escape") {
+                            k.stopPropagation();
+                            commit(false);
+                        }
+                    });
+                }
+
                 function renderPanel(card) {
                     const aside = document.querySelector(".panel");
                     if (!card) {
@@ -2413,7 +2683,7 @@
                         `
         <header class="panel-header">
           <div>
-            <h2 class="panel-title" id="panel-title" title="Click to edit">${escapeHtml(card.title)}</h2>
+            <h2 class="panel-title" id="panel-title">${escapeHtml(card.title)}</h2>
             <div class="panel-meta">
               <span>${escapeHtml(card.slug)}</span>
               <span class="dot-sep"></span>
@@ -2424,9 +2694,23 @@
         </header>
         <div class="panel-body">
           <section>
+            <div class="panel-label">Title</div>
+            <div class="folder-path">
+              <span class="editable" id="edit-title" title="Click to edit">${escapeHtml(card.title)}</span>
+              <button class="copy-btn" id="copy-title">Copy</button>
+            </div>
+          </section>
+          <section>
+            <div class="panel-label">Slug</div>
+            <div class="folder-path">
+              <span class="editable" id="edit-slug" title="Click to edit">${escapeHtml(card.slug)}</span>
+              <button class="copy-btn" id="copy-slug">Copy</button>
+            </div>
+          </section>
+          <section>
             <div class="panel-label">Folder</div>
             <div class="folder-path">
-              <span>${escapeHtml(folderPath(card))}</span>
+              <span class="editable" id="edit-folder" title="Click to edit">${escapeHtml(folderPath(card))}</span>
               <button class="copy-btn" id="copy-folder">Copy</button>
             </div>
           </section>
