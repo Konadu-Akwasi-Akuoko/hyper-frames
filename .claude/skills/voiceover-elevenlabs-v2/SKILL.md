@@ -125,13 +125,32 @@ Tell the user the next step:
 
 This skill stops at `transcript.json`.
 
+### Step 5b — Anchor reconciliation (if narration-map flags misses)
+
+Scribe v2 normalizes numbers as words ("1950" → "nineteen fifty",
+"2018" → "two thousand and eighteen") and may render ambiguous
+proper-noun spellings differently across runs ("Houck"↔"Hauck"). The
+first `narration-map` run will likely report some unmatched anchors.
+
+When that happens:
+
+1. Inspect `transcript.json` to see how Scribe spelled the missed
+   phrase. (Grep the `words[].text` stream.)
+2. Update the matching line in `anchors.txt` to the transcript
+   spelling.
+3. Re-run `narration-map`. Iterate until 100% matched.
+
+**Do not regenerate the audio just to fix an anchor mismatch** —
+the audio is correct; only the lookup table is stale. Audio regen
+costs credits; anchor-sync is a free text edit.
+
 ## Annotation taxonomy
 
 ### 3.1 Allowed elements
 
 | Element | Rule |
 |---|---|
-| ALL-CAPS on `anchors.txt` terms | Allowed; only on terms that appear in `anchors.txt`. No ad-hoc capitalization. If `anchors.txt` is missing, no ALL-CAPS at all. |
+| ALL-CAPS on `anchors.txt` terms | Allowed; only on terms that appear in `anchors.txt`. No ad-hoc capitalization. If `anchors.txt` is missing, no ALL-CAPS at all. **If a single word in the phrase is a short proper noun (≤3 letters or initialism-shaped), demote that word to title case (`LUIS VON Ahn`, not `LUIS VON AHN`) — see v2-quirks §9.** |
 | SSML `<break time="Xs"/>` | Allowed at hard structural pauses (before reframe, after thesis, between escalation cycles). Hard cap: ≤5 per 5-min script, ≤8 per 10-min. Durations: 0.3s, 0.5s, 0.8s, 1.5s, 2s, 3s. No values above 3s — v2's break ceiling. |
 | Ellipses `…` | Allowed but use sparingly. v2 may treat `…` as periods more often than v3 does. Prefer `<break>` for deliberate pauses. |
 
