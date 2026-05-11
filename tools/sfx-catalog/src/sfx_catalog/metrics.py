@@ -84,3 +84,45 @@ def measure_lufs(path: Path) -> float:
     audio = data[:, 0] if data.shape[1] == 1 else data
     meter = pyln.Meter(sr)
     return float(meter.integrated_loudness(audio))
+
+
+def measure_envelope_times(path: Path) -> tuple[float, float, float]:
+    """Return (onset_time_s, attack_time_s, tail_time_s).
+
+    - onset_time_s: time at which the signal first crosses 1% of its peak.
+    - attack_time_s: peak_time_s - onset_time_s.
+    - tail_time_s: time from the peak until a 10ms-windowed RMS envelope drops
+      below -20 dB relative to peak.
+    """
+    mono, sr = _load_mono(path)
+    if mono.size == 0:
+        return 0.0, 0.0, 0.0
+
+    abs_signal = np.abs(mono)
+    peak_idx = int(np.argmax(abs_signal))
+    peak_val = float(abs_signal[peak_idx])
+    if peak_val < 1e-9:
+        return 0.0, 0.0, 0.0
+
+    onset_threshold = 0.01 * peak_val
+    above = np.where(abs_signal >= onset_threshold)[0]
+    onset_idx = int(above[0]) if above.size else 0
+    onset_time_s = onset_idx / sr
+    peak_time_s = peak_idx / sr
+    attack_time_s = max(peak_time_s - onset_time_s, 0.0)
+
+    win = max(int(0.010 * sr), 1)
+    pad = np.concatenate([np.square(mono), np.zeros(win)])
+    csum = np.cumsum(pad)
+    window_energy = csum[win:] - csum[:-win]
+    rms_env = np.sqrt(np.maximum(window_energy / win, 0.0))
+    env_peak_idx = int(np.argmax(rms_env))
+    peak_env = float(rms_env[env_peak_idx])
+    if peak_env < 1e-9:
+        return onset_time_s, attack_time_s, 0.0
+    threshold = 0.1 * peak_env
+    after = rms_env[env_peak_idx:]
+    drop_rel = np.where(after < threshold)[0]
+    tail_samples = int(drop_rel[0]) if drop_rel.size else after.size
+    tail_time_s = tail_samples / sr
+    return onset_time_s, attack_time_s, tail_time_s
