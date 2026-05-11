@@ -4,7 +4,13 @@ from __future__ import annotations
 import math
 from pathlib import Path
 
-from sfx_catalog.metrics import basic_metadata, measure_lufs, measure_peak, measure_rms
+from sfx_catalog.metrics import (
+    basic_metadata,
+    measure_envelope_times,
+    measure_lufs,
+    measure_peak,
+    measure_rms,
+)
 
 
 def test_basic_metadata_reports_duration_and_format(sine_1k_wav: Path) -> None:
@@ -30,3 +36,16 @@ def test_rms_of_sine_at_neg20_dbfs(sine_1k_wav: Path) -> None:
 def test_lufs_of_known_sine(sine_1k_wav: Path) -> None:
     lufs = measure_lufs(sine_1k_wav)
     assert math.isclose(lufs, -23.0, abs_tol=1.0)
+
+
+def test_envelope_times_on_impulse(impulse_wav: Path) -> None:
+    onset, attack, tail = measure_envelope_times(impulse_wav)
+    assert math.isclose(onset, 0.083, abs_tol=0.02)
+    assert attack < 0.01
+    assert tail < 0.05
+
+
+def test_envelope_times_on_swell(swell_wav: Path) -> None:
+    onset, attack, tail = measure_envelope_times(swell_wav)
+    assert 0.4 < attack < 0.9
+    assert tail > 0.05
