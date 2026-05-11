@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-06-template">
+      <div data-composition-id="scene-06-distorted" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-06-distorted"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-06-distorted"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(50% 50% at 25% 30%, rgba(255, 181, 71, 0.12), transparent 70%),
+              radial-gradient(40% 50% at 80% 80%, rgba(255, 107, 93, 0.10), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-06-distorted"] .stage {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+          }
+          /* ---- A: 1997 hook ---- */
+          [data-composition-id="scene-06-distorted"] #s6-a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 140px;
+            gap: 60px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a .eyebrow {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a .year {
+            font: 800 220px/0.9 "Inter", sans-serif;
+            color: #ffb547;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 12px;
+            padding: 26px 40px;
+            background-image:
+              repeating-linear-gradient(0deg, transparent 0, transparent 6px, rgba(255, 255, 255, 0.02) 6px, rgba(255, 255, 255, 0.02) 7px);
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph span {
+            display: inline-block;
+            font: 800 96px/1 "JetBrains Mono", monospace;
+            color: #e8eaed;
+            text-shadow: 0 0 22px rgba(255, 181, 71, 0.25);
+            filter: blur(0.4px);
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(1) { transform: rotate(-12deg) skew(-5deg) translateY(-4px); }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(2) { transform: rotate(14deg) skew(8deg) translateY(8px); }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(3) { transform: rotate(-8deg) skew(-12deg) translateY(-2px); }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(4) { transform: rotate(18deg) skew(4deg) translateY(6px); }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(5) { transform: rotate(-16deg) skew(-8deg) translateY(-6px); }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(6) { transform: rotate(10deg) skew(10deg) translateY(4px); }
+          [data-composition-id="scene-06-distorted"] #s6-a .motto {
+            font: 500 30px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+          }
+          /* ---- B: PayPal/spread timeline ---- */
+          [data-composition-id="scene-06-distorted"] #s6-b {
+            padding: 120px 160px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .label {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .head {
+            font: 800 92px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 60px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .head .em { color: #ffb547; }
+          [data-composition-id="scene-06-distorted"] #s6-b .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .site {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 14px;
+            padding: 22px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-height: 220px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .site .logo {
+            font: 700 26px/1 "Inter", sans-serif;
+            color: #e8eaed;
+            letter-spacing: -0.02em;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .site .cap {
+            margin-top: auto;
+            background: #0e1117;
+            border: 1px solid #1f242c;
+            border-radius: 6px;
+            padding: 12px 14px;
+            font: 700 32px/1 "JetBrains Mono", monospace;
+            letter-spacing: 0.05em;
+            color: #e8eaed;
+            background-image:
+              repeating-linear-gradient(0deg, transparent 0, transparent 4px, rgba(255, 255, 255, 0.03) 4px, rgba(255, 255, 255, 0.03) 5px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .site .cap span:nth-child(odd) { transform: translateY(-3px) rotate(-8deg); display: inline-block; }
+          [data-composition-id="scene-06-distorted"] #s6-b .site .cap span:nth-child(even) { transform: translateY(3px) rotate(8deg); display: inline-block; }
+          [data-composition-id="scene-06-distorted"] #s6-b .site .yr {
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #67e8f9;
+            letter-spacing: 0.18em;
+          }
+          /* ---- C: three skills ---- */
+          [data-composition-id="scene-06-distorted"] #s6-c {
+            padding: 140px 160px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .label {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 60px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 14px;
+            padding: 32px 28px;
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill .n {
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #ffb547;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill .demo {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0e1117;
+            border-radius: 8px;
+            font: 800 64px/1 "JetBrains Mono", monospace;
+            color: #e8eaed;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill .demo .w { transform: rotate(-14deg) skew(-8deg); display: inline-block; }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill .demo .a { color: #ffb547; }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill .t {
+            font: 700 28px/1.1 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill .d {
+            font: 400 18px/1.4 "Inter", sans-serif;
+            color: #7a8493;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .verdict {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .verdict .v {
+            background: #0e1117;
+            border-left: 4px solid #7dd87d;
+            padding: 22px 28px;
+            border-radius: 6px;
+            font: 600 32px/1.2 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .verdict .v.bad {
+            border-left-color: #ff6b5d;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .verdict .v small {
+            display: block;
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+          }
+          /* ---- D: attack timeline ---- */
+          [data-composition-id="scene-06-distorted"] #s6-d {
+            padding: 110px 160px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 40px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .top .l {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #ff6b5d;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .top .h {
+            font: 800 80px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .top .h .em { color: #ff6b5d; font-style: italic; }
+          [data-composition-id="scene-06-distorted"] #s6-d .chart {
+            position: relative;
+            height: 420px;
+            background: #0e1117;
+            border: 1px solid #1f242c;
+            border-radius: 14px;
+            padding: 30px 30px 50px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .yax {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px 0 48px 10px;
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            font-variant-numeric: tabular-nums;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .gridlines {
+            position: absolute;
+            left: 60px;
+            right: 30px;
+            top: 30px;
+            bottom: 50px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .gridlines .gl {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #1f242c;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .marks {
+            position: absolute;
+            left: 60px;
+            right: 30px;
+            top: 30px;
+            bottom: 50px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            transform: translate(-50%, -100%);
+            opacity: 0;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .dot {
+            width: 18px;
+            height: 18px;
+            background: #ff6b5d;
+            border: 3px solid #0b0d12;
+            border-radius: 50%;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .pct {
+            font: 700 38px/1 "Inter", sans-serif;
+            color: #ff6b5d;
+            font-variant-numeric: tabular-nums;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .name {
+            font: 500 16px/1.2 "Inter", sans-serif;
+            color: #e8eaed;
+            text-align: center;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .yr {
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.18em;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .xax {
+            position: absolute;
+            left: 60px;
+            right: 30px;
+            bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            font-variant-numeric: tabular-nums;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .line {
+            position: absolute;
+            left: 60px;
+            right: 30px;
+            top: 30px;
+            bottom: 50px;
+            pointer-events: none;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .closer {
+            position: absolute;
+            left: 160px;
+            right: 160px;
+            bottom: 110px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .closer .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .closer .stat .n {
+            font: 800 96px/0.9 "Inter", sans-serif;
+            color: #ffb547;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.03em;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .closer .stat .u {
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .closer .punch {
+            font: 800 80px/1 "Inter", sans-serif;
+            color: #e8eaed;
+            letter-spacing: -0.02em;
+            text-align: right;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .closer .punch em {
+            color: #ff6b5d;
+            font-style: italic;
+          }
+        </style>
+
+        <div class="glow"></div>
+
+        <!-- A: 1997 hook -->
+        <div class="stage" id="s6-a">
+          <div class="eyebrow" id="s6-a-eb">cycle one · distorted text</div>
+          <div class="year" id="s6-a-yr">1997</div>
+          <div class="glyph" id="s6-a-glyph">
+            <span>q</span><span>b</span><span>Z</span><span>7</span><span>X</span><span>K</span>
+          </div>
+          <div class="motto" id="s6-a-motto">show. type. pass.</div>
+        </div>
+
+        <!-- B: PayPal + spread -->
+        <div class="stage" id="s6-b">
+          <div class="label" id="s6-b-lbl">spread · 2001 onward</div>
+          <div class="head"><span class="em">PayPal</span> went first. soon every front door.</div>
+          <div class="grid">
+            <div class="site" id="s6-b-1">
+              <div class="logo">PayPal</div>
+              <div class="yr">— 2001</div>
+              <div class="cap"><span>e</span><span>n</span><span>t</span><span>e</span><span>r</span></div>
+            </div>
+            <div class="site" id="s6-b-2">
+              <div class="logo">Yahoo!</div>
+              <div class="yr">— 2002</div>
+              <div class="cap"><span>p</span><span>r</span><span>v</span><span>k</span><span>3</span></div>
+            </div>
+            <div class="site" id="s6-b-3">
+              <div class="logo">Hotmail</div>
+              <div class="yr">— 2003</div>
+              <div class="cap"><span>r</span><span>8</span><span>x</span><span>q</span><span>m</span></div>
+            </div>
+            <div class="site" id="s6-b-4">
+              <div class="logo">eBay</div>
+              <div class="yr">— 2004</div>
+              <div class="cap"><span>k</span><span>2</span><span>w</span><span>p</span><span>z</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- C: three skills + verdicts -->
+        <div class="stage" id="s6-c">
+          <div class="label" id="s6-c-lbl">why it worked · the three skills required at once</div>
+          <div class="skills">
+            <div class="skill" id="s6-c-s1">
+              <div class="n">01 · invariant</div>
+              <div class="demo"><span class="w">A</span>&nbsp;<span class="w" style="transform:rotate(20deg)">A</span>&nbsp;<span class="w" style="transform:skew(20deg) scaleX(0.6)">A</span></div>
+              <div class="t">read letters no matter how warped</div>
+              <div class="d">rotation, skew, scale — still an A.</div>
+            </div>
+            <div class="skill" id="s6-c-s2">
+              <div class="n">02 · segment</div>
+              <div class="demo"><span class="w">cl</span><span class="a">|</span><span class="w">us</span><span class="a">|</span><span class="w">te</span><span class="a">|</span><span class="w">r</span></div>
+              <div class="t">separate letters that overlap</div>
+              <div class="d">find the breaks the smudge tried to hide.</div>
+            </div>
+            <div class="skill" id="s6-c-s3">
+              <div class="n">03 · parse</div>
+              <div class="demo">cluster<span class="a">?</span></div>
+              <div class="t">a word, not a string of marks</div>
+              <div class="d">meaning bridges the gaps.</div>
+            </div>
+          </div>
+          <div class="verdict">
+            <div class="v" id="s6-c-v1">
+              <small>for a human</small>
+              trivial.
+            </div>
+            <div class="v bad" id="s6-c-v2">
+              <small>for a machine</small>
+              a nightmare. wall held a decade.
+            </div>
+          </div>
+        </div>
+
+        <!-- D: attack timeline -->
+        <div class="stage" id="s6-d">
+          <div class="top">
+            <div>
+              <div class="l" id="s6-d-l">then it didn't · solve rate climbs</div>
+              <div class="h" style="margin-top:14px">the wall <span class="em">fell.</span></div>
+            </div>
+            <div>
+              <div class="l" style="text-align:right">distorted-text captcha</div>
+            </div>
+          </div>
+          <div class="chart" id="s6-d-chart">
+            <div class="yax"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+            <div class="gridlines">
+              <div class="gl" style="top:0%"></div>
+              <div class="gl" style="top:25%"></div>
+              <div class="gl" style="top:50%"></div>
+              <div class="gl" style="top:75%"></div>
+              <div class="gl" style="top:100%"></div>
+            </div>
+            <svg class="line" viewBox="0 0 1000 340" preserveAspectRatio="none">
+              <path
+                id="s6-d-path"
+                d="M 30 290 L 240 285 L 480 230 L 680 100 L 970 30"
+                fill="none"
+                stroke="#ffb547"
+                stroke-width="3"
+                stroke-linecap="round"
+                pathLength="1"
+                stroke-dasharray="1"
+                stroke-dashoffset="1"
+              />
+            </svg>
+            <div class="marks">
+              <div class="mark" id="s6-d-m0" style="left:3%; top:84%">
+                <div class="pct" style="color:#7a8493">~0%</div>
+                <div class="dot" style="background:#7a8493"></div>
+                <div class="name">no public attack</div>
+                <div class="yr">1997 → 2008</div>
+              </div>
+              <div class="mark" id="s6-d-m1" style="left:30%; top:65%">
+                <div class="pct">18%</div>
+                <div class="dot"></div>
+                <div class="name">Jonathan Wilkins<br />(reCAPTCHA paper)</div>
+                <div class="yr">late 2009</div>
+              </div>
+              <div class="mark" id="s6-d-m2" style="left:55%; top:30%">
+                <div class="pct">33%</div>
+                <div class="dot"></div>
+                <div class="name">Chad Houck<br />· DEF CON</div>
+                <div class="yr">summer 2010</div>
+              </div>
+              <div class="mark" id="s6-d-m3" style="left:90%; top:6%">
+                <div class="pct">≈100%</div>
+                <div class="dot"></div>
+                <div class="name">Ye et al.<br />· all 11 schemes</div>
+                <div class="yr">2018</div>
+              </div>
+            </div>
+            <div class="xax">
+              <span>1997</span><span>2008</span><span>2010</span><span>2014</span><span>2018</span>
+            </div>
+          </div>
+
+          <div class="closer" id="s6-d-closer">
+            <div class="stat" id="s6-d-stat1">
+              <span class="n" id="s6-d-n1">11</span>
+              <span class="u">distorted-text schemes · broken</span>
+            </div>
+            <div class="stat" id="s6-d-stat2">
+              <span class="n" id="s6-d-n2">32 / 50</span>
+              <span class="u">top 50 websites · vulnerable</span>
+            </div>
+            <div class="punch" id="s6-d-punch">the bots could<br /><em>read again.</em></div>
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            tl.fromTo(
+              '[data-composition-id="scene-06-distorted"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+
+            // STAGE A — 0-11.5s
+            tl.fromTo("#s6-a", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.1);
+            tl.fromTo("#s6-a-eb", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.25);
+            // anchor 0.09 (1997)
+            tl.fromTo(
+              "#s6-a-yr",
+              { opacity: 0, scale: 0.85, y: 30 },
+              { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.4)" },
+              0.4,
+            );
+            tl.fromTo(
+              "#s6-a-glyph span",
+              { opacity: 0, y: -40 },
+              { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", stagger: 0.08 },
+              2.4,
+            );
+            tl.fromTo(
+              "#s6-a-motto",
+              { opacity: 0, letterSpacing: "0.4em" },
+              { opacity: 1, letterSpacing: "0.2em", duration: 0.8, ease: "expo.out" },
+              4.6,
+            );
+            // ambient glyph wobble
+            tl.to(
+              "#s6-a-glyph",
+              { y: -6, duration: 4, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              4,
+            );
+            tl.to("#s6-a", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 11.7);
+
+            // STAGE B — 11.5-21
+            tl.fromTo("#s6-b", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 11.5);
+            tl.fromTo("#s6-b-lbl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 11.8);
+            tl.fromTo("#s6-b .head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 12.1);
+            tl.fromTo(
+              "#s6-b .site",
+              { opacity: 0, y: 40, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out", stagger: 0.35 },
+              13.3,
+            );
+            tl.to("#s6-b", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 21.4);
+
+            // STAGE C — 21-40
+            tl.fromTo("#s6-c", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 21.2);
+            tl.fromTo("#s6-c-lbl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 21.6);
+            tl.fromTo("#s6-c-s1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 22.2);
+            tl.fromTo("#s6-c-s2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 25.6);
+            tl.fromTo("#s6-c-s3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 29.2);
+            tl.fromTo("#s6-c-v1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 33.6);
+            tl.fromTo("#s6-c-v2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 35.0);
+            tl.to("#s6-c", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 39.6);
+
+            // STAGE D — 39.5-73
+            tl.fromTo("#s6-d", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 39.5);
+            // anchor 40.03: "Then it didn't."
+            tl.fromTo("#s6-d-l", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 39.9);
+            tl.fromTo("#s6-d .top .h", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 40.0);
+            tl.fromTo("#s6-d-chart", { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, 41.0);
+            // line draws across the 4 marks (reCAPTCHA anchor 45.12)
+            tl.to("#s6-d-path", { strokeDashoffset: 0, duration: 22, ease: "none" }, 44.5);
+
+            // baseline mark
+            tl.fromTo("#s6-d-m0", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 44.0);
+
+            // 47.28 Wilkins / 50.42 18%
+            tl.fromTo(
+              "#s6-d-m1",
+              { opacity: 0, y: -10, scale: 0.7 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" },
+              47.0,
+            );
+            // 53.94 Houck / 55.44 DEF CON / 57.02 one in three
+            tl.fromTo(
+              "#s6-d-m2",
+              { opacity: 0, y: -10, scale: 0.7 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" },
+              53.7,
+            );
+            // 58.60 2018
+            tl.fromTo(
+              "#s6-d-m3",
+              { opacity: 0, y: -10, scale: 0.7 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" },
+              58.3,
+            );
+
+            // closer stats (Microsoft, Wikipedia, eBay → emphasize 11 + 32/50)
+            tl.fromTo("#s6-d-stat1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 60.0);
+            tl.fromTo("#s6-d-stat2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 62.0);
+            tl.fromTo(
+              "#s6-d-punch",
+              { opacity: 0, y: 30, scale: 0.95 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.4)" },
+              71.0,
+            );
+
+            // ambient line shimmer at end
+            tl.to(
+              "#s6-d-path",
+              { strokeWidth: 4.5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              66,
+            );
+
+            window.__timelines["scene-06-distorted"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

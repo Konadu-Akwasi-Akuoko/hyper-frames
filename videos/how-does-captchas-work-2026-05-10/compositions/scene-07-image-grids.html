@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-07-template">
+      <div data-composition-id="scene-07-grids" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-07-grids"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-07-grids"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(60% 60% at 22% 22%, rgba(103, 232, 249, 0.10), transparent 70%),
+              radial-gradient(45% 50% at 80% 80%, rgba(255, 181, 71, 0.10), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-07-grids"] .stage {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+          }
+          /* ---- A: 2014 + grid demo ---- */
+          [data-composition-id="scene-07-grids"] #s7-a {
+            padding: 100px 160px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .eb {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .yr {
+            font: 800 180px/0.9 "Inter", sans-serif;
+            color: #67e8f9;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em;
+            margin-bottom: 28px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .head {
+            font: 800 72px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 40px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .head .em { color: #67e8f9; font-style: italic; }
+          [data-composition-id="scene-07-grids"] #s7-a .left .prompts {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .prompt {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font: 600 30px/1.1 "Inter", sans-serif;
+            color: #e8eaed;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .prompt b {
+            color: #67e8f9;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .prompt .tick {
+            color: #7dd87d;
+            font: 600 26px/1 "JetBrains Mono", monospace;
+            width: 28px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 14px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .pmt {
+            background: #4285f4;
+            color: #fff;
+            border-radius: 6px;
+            padding: 16px 20px;
+            font: 600 22px/1.2 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .pmt small {
+            display: block;
+            font: 500 12px/1 "Inter", sans-serif;
+            opacity: 0.8;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 4px;
+            aspect-ratio: 1;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .cell {
+            position: relative;
+            background: #1f242c;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: none;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .cell .obj {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 700 64px/1 "Inter", sans-serif;
+            color: #2c333d;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .cell.cw .obj { color: #3a4150; }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .cell.tl .obj { color: #3a4150; }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .cell.fh .obj { color: #3a4150; }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .cell .check {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 28px;
+            height: 28px;
+            background: #4285f4;
+            border-radius: 50%;
+            color: #fff;
+            font: 700 18px/28px "Inter", sans-serif;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.6);
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .btn {
+            background: #4285f4;
+            color: #fff;
+            border-radius: 6px;
+            padding: 14px 20px;
+            font: 600 22px/1 "Inter", sans-serif;
+            text-align: center;
+          }
+          /* ---- B: labor pipeline ---- */
+          [data-composition-id="scene-07-grids"] #s7-b {
+            padding: 100px 160px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .head {
+            font: 800 88px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 60px;
+            max-width: 1500px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .head .em { color: #ffb547; font-style: italic; }
+          [data-composition-id="scene-07-grids"] #s7-b .pipe {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr 60px 1fr;
+            gap: 14px;
+            align-items: stretch;
+            margin-bottom: 60px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .node {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 14px;
+            padding: 26px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .node .lbl {
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .node .n {
+            font: 700 52px/1 "Inter", sans-serif;
+            color: #e8eaed;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.02em;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .node .d {
+            font: 400 20px/1.3 "Inter", sans-serif;
+            color: #7a8493;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .arr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 700 56px/1 "JetBrains Mono", monospace;
+            color: #ffb547;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .pipeline-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 24px;
+            background: #11141b;
+            border: 2px solid #ffb547;
+            border-radius: 999px;
+            font: 700 36px/1 "Inter", sans-serif;
+            color: #ffb547;
+            letter-spacing: -0.01em;
+            gap: 14px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .pipeline-tag small {
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          /* ---- C: YOLO attack chart ---- */
+          [data-composition-id="scene-07-grids"] #s7-c {
+            padding: 80px 160px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 36px;
+            align-items: end;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top .l .eb {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #ff6b5d;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top .l .h {
+            font: 800 76px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top .l .h .em { color: #ff6b5d; font-style: italic; }
+          [data-composition-id="scene-07-grids"] #s7-c .top .l .h .yolo {
+            display: inline-block;
+            font: 800 60px/1 "JetBrains Mono", monospace;
+            background: #ff6b5d;
+            color: #0b0d12;
+            padding: 4px 14px;
+            border-radius: 6px;
+            letter-spacing: 0.02em;
+            transform: translateY(-8px);
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top .r {
+            display: flex;
+            gap: 18px;
+            justify-content: flex-end;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top .r .stat {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 12px;
+            padding: 18px 22px;
+            min-width: 220px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top .r .stat .lbl {
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .top .r .stat .n {
+            font: 700 40px/1 "Inter", sans-serif;
+            color: #ffb547;
+            font-variant-numeric: tabular-nums;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars {
+            background: #0e1117;
+            border: 1px solid #1f242c;
+            border-radius: 14px;
+            padding: 36px 40px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row {
+            display: grid;
+            grid-template-columns: 200px 1fr 100px;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 18px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row:last-child { margin-bottom: 0; }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row .name {
+            font: 600 26px/1 "Inter", sans-serif;
+            color: #e8eaed;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row .track {
+            position: relative;
+            height: 28px;
+            background: #1f242c;
+            border-radius: 4px;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row .track .fill {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #ffb547, #ff6b5d);
+            transform-origin: left center;
+            transform: scaleX(0);
+            border-radius: 4px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row .pct {
+            font: 700 32px/1 "JetBrains Mono", monospace;
+            color: #ffb547;
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .footer {
+            margin-top: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .footer .left {
+            font: 500 22px/1.4 "JetBrains Mono", monospace;
+            color: #7a8493;
+            max-width: 800px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .footer .left b { color: #e8eaed; font-weight: 600; }
+          [data-composition-id="scene-07-grids"] #s7-c .footer .punch {
+            font: 800 72px/1 "Inter", sans-serif;
+            text-align: right;
+            letter-spacing: -0.02em;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .footer .punch em {
+            color: #ff6b5d;
+            font-style: italic;
+          }
+        </style>
+
+        <div class="glow"></div>
+
+        <!-- A: 2014 + grid prompts -->
+        <div class="stage" id="s7-a">
+          <div class="left">
+            <div class="eb" id="s7-a-eb">cycle two · recognize objects</div>
+            <div class="yr" id="s7-a-yr">2014</div>
+            <div class="head" id="s7-a-head">turned the problem <span class="em">inside out.</span></div>
+            <div class="prompts">
+              <div class="prompt" id="s7-a-p1"><span class="tick">→</span> select all squares with <b>crosswalks</b></div>
+              <div class="prompt" id="s7-a-p2"><span class="tick">→</span> select all squares with <b>traffic lights</b></div>
+              <div class="prompt" id="s7-a-p3"><span class="tick">→</span> select all squares with <b>fire hydrants</b></div>
+            </div>
+          </div>
+
+          <div class="panel" id="s7-a-panel">
+            <div class="pmt">
+              <small>reCAPTCHA</small>
+              <span id="s7-a-pmt-text">Select all squares with crosswalks</span>
+            </div>
+            <div class="grid3" id="s7-a-grid">
+              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
+              <div class="cell"><div class="obj">·</div><div class="check">✓</div></div>
+              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
+              <div class="cell"><div class="obj">·</div><div class="check">✓</div></div>
+              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
+              <div class="cell tl"><div class="obj">●</div><div class="check">✓</div></div>
+              <div class="cell"><div class="obj">·</div><div class="check">✓</div></div>
+              <div class="cell fh"><div class="obj">⌀</div><div class="check">✓</div></div>
+              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
+            </div>
+            <div class="btn">VERIFY</div>
+          </div>
+        </div>
+
+        <!-- B: labor pipeline -->
+        <div class="stage" id="s7-b">
+          <div class="head" id="s7-b-head">the wall against bots was also a <span class="em">labor pipeline.</span></div>
+          <div class="pipe">
+            <div class="node" id="s7-b-n1">
+              <div class="lbl">every click</div>
+              <div class="n" id="s7-b-n1-n">0</div>
+              <div class="d">free training labels · per minute</div>
+            </div>
+            <div class="arr" id="s7-b-arr1">→</div>
+            <div class="node" id="s7-b-n2">
+              <div class="lbl">google · vision</div>
+              <div class="n">crosswalks<br /><span style="color:#7a8493;font-weight:500;font-size:32px">lights · signs</span></div>
+              <div class="d">supervised, by everyone trying to log in</div>
+            </div>
+            <div class="arr" id="s7-b-arr2">→</div>
+            <div class="node" id="s7-b-n3">
+              <div class="lbl">downstream · waymo</div>
+              <div class="n">self-driving<br /><span style="color:#7a8493;font-weight:500;font-size:32px">car project</span></div>
+              <div class="d">reddit logins · funding the future</div>
+            </div>
+          </div>
+          <div class="pipeline-tag" id="s7-b-tag">
+            <span>labor pipeline · disguised as a test</span>
+            <small>≈ a decade · 2014 → 2024</small>
+          </div>
+        </div>
+
+        <!-- C: YOLO attack -->
+        <div class="stage" id="s7-c">
+          <div class="top">
+            <div class="l">
+              <div class="eb" id="s7-c-eb">2024 · then it stopped</div>
+              <div class="h">
+                <span class="em">ETH Zurich</span><br />
+                fine-tuned <span class="yolo">YOLO</span>
+              </div>
+            </div>
+            <div class="r">
+              <div class="stat" id="s7-c-st1">
+                <div class="lbl">training set</div>
+                <div class="n" id="s7-c-n1">14 000</div>
+              </div>
+              <div class="stat" id="s7-c-st2">
+                <div class="lbl">prior best · attacks</div>
+                <div class="n" style="color:#7a8493">70 %</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bars" id="s7-c-bars">
+            <div class="row" id="s7-c-r1">
+              <div class="name">motorcycles</div>
+              <div class="track"><div class="fill" data-w="0.69"></div></div>
+              <div class="pct" data-tg="69">0%</div>
+            </div>
+            <div class="row" id="s7-c-r2">
+              <div class="name">bicycles</div>
+              <div class="track"><div class="fill" data-w="0.78"></div></div>
+              <div class="pct" data-tg="78">0%</div>
+            </div>
+            <div class="row" id="s7-c-r3">
+              <div class="name">crosswalks</div>
+              <div class="track"><div class="fill" data-w="0.86"></div></div>
+              <div class="pct" data-tg="86">0%</div>
+            </div>
+            <div class="row" id="s7-c-r4">
+              <div class="name">traffic lights</div>
+              <div class="track"><div class="fill" data-w="0.93"></div></div>
+              <div class="pct" data-tg="93">0%</div>
+            </div>
+            <div class="row" id="s7-c-r5">
+              <div class="name">fire hydrants</div>
+              <div class="track"><div class="fill" data-w="1.0"></div></div>
+              <div class="pct" data-tg="100" style="color:#ff6b5d">0%</div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="left" id="s7-c-foot">
+              <b>retry rule:</b> reCAPTCHA lets you try again.<br />
+              across a session, the bot passed <b>every single test.</b>
+            </div>
+            <div class="punch" id="s7-c-punch">the wall<br /><em>fell. again.</em></div>
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            tl.fromTo(
+              '[data-composition-id="scene-07-grids"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+
+            // STAGE A — 0-19s
+            tl.fromTo("#s7-a", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 0.1);
+            tl.fromTo("#s7-a-eb", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+            tl.fromTo(
+              "#s7-a-yr",
+              { opacity: 0, scale: 0.85, y: 30 },
+              { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "back.out(1.4)" },
+              0.4,
+            );
+            tl.fromTo(
+              "#s7-a-head",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              3.7,
+            );
+            tl.fromTo(
+              "#s7-a-panel",
+              { opacity: 0, x: 40, scale: 0.96 },
+              { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "expo.out" },
+              5.5,
+            );
+            // 9.52 — 3x3 grid (cells stagger in)
+            tl.fromTo(
+              "#s7-a-grid .cell",
+              { opacity: 0, scale: 0.6 },
+              { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)", stagger: { each: 0.05, from: "start" } },
+              8.6,
+            );
+            // Prompts and check sequences:
+            // 12.38 crosswalks
+            tl.fromTo("#s7-a-p1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 12.2);
+            tl.to("#s7-a-grid .cell.cw .check", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 }, 12.3);
+            tl.to("#s7-a-grid .cell.cw", { borderColor: "#4285f4", duration: 0.3 }, 12.3);
+            // 14.96 lights
+            tl.fromTo("#s7-a-p2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 14.8);
+            tl.to(
+              "#s7-a-pmt-text",
+              { opacity: 0, duration: 0.12, onComplete: () => { const el = document.getElementById("s7-a-pmt-text"); if (el) el.textContent = "Select all squares with traffic lights"; }, overwrite: "auto" },
+              14.8,
+            );
+            tl.to("#s7-a-pmt-text", { opacity: 1, duration: 0.15, overwrite: "auto" }, 14.96);
+            tl.to("#s7-a-grid .cell.tl .check", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 }, 14.95);
+            tl.to("#s7-a-grid .cell.tl", { borderColor: "#4285f4", duration: 0.3 }, 14.95);
+            // 17.24 hydrants
+            tl.fromTo("#s7-a-p3", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 17.0);
+            tl.to(
+              "#s7-a-pmt-text",
+              { opacity: 0, duration: 0.12, onComplete: () => { const el = document.getElementById("s7-a-pmt-text"); if (el) el.textContent = "Select all squares with fire hydrants"; }, overwrite: "auto" },
+              17.0,
+            );
+            tl.to("#s7-a-pmt-text", { opacity: 1, duration: 0.15, overwrite: "auto" }, 17.16);
+            tl.to("#s7-a-grid .cell.fh .check", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 }, 17.15);
+            tl.to("#s7-a-grid .cell.fh", { borderColor: "#4285f4", duration: 0.3 }, 17.15);
+            tl.to("#s7-a", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 19.5);
+
+            // STAGE B — 19.5-39s
+            tl.fromTo("#s7-b", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 19.3);
+            // 21.74 trained recognition
+            tl.fromTo("#s7-b-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 19.8);
+            tl.fromTo("#s7-b-n1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 22.0);
+            const labels = { v: 0 };
+            tl.to(
+              labels,
+              {
+                v: 1_200_000_000,
+                duration: 4,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const el = document.getElementById("s7-b-n1-n");
+                  if (!el) return;
+                  const v = labels.v;
+                  if (v < 1e6) el.textContent = (Math.round(v / 1e3) | 0) + " K";
+                  else if (v < 1e9) el.textContent = (v / 1e6).toFixed(1) + " M";
+                  else el.textContent = (v / 1e9).toFixed(1) + " B";
+                },
+              },
+              22.2,
+            );
+            tl.fromTo("#s7-b-arr1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 24.0);
+            tl.fromTo("#s7-b-n2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 25.6);
+            tl.fromTo("#s7-b-arr2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 27.4);
+            // 27.74 self-driving
+            tl.fromTo("#s7-b-n3", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 27.7);
+            // 36.15 labor pipeline
+            tl.fromTo(
+              "#s7-b-tag",
+              { opacity: 0, y: 30, scale: 0.95 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.65, ease: "back.out(1.4)" },
+              35.9,
+            );
+            tl.to("#s7-b", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 39.0);
+
+            // STAGE C — 39-70.5
+            tl.fromTo("#s7-c", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 38.8);
+            // 39.62 worked. Then it stopped.
+            tl.fromTo("#s7-c-eb", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 39.2);
+            // 43.16 ETH Zurich, 47.46 YOLO
+            tl.fromTo(
+              "#s7-c .top .l .h",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              43.0,
+            );
+            tl.fromTo(
+              "#s7-c-st1",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" },
+              49.8,
+            );
+            // 50.34 14k photographs — count up
+            const fourteen = { v: 0 };
+            tl.to(
+              fourteen,
+              {
+                v: 14000,
+                duration: 1.4,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const el = document.getElementById("s7-c-n1");
+                  if (!el) return;
+                  const v = Math.round(fourteen.v);
+                  el.textContent = (v < 1000 ? String(v) : Math.floor(v / 1000) + " " + String(v % 1000).padStart(3, "0"));
+                },
+              },
+              50.0,
+            );
+            tl.fromTo("#s7-c-st2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 51.8);
+
+            // 52.70 — accuracy ranged from 69% motorcycles ... to 100% fire hydrants
+            tl.fromTo("#s7-c-bars", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 52.0);
+            // animate bars and counters one at a time (hardcoded selectors — bundler can't handle template-literal selectors)
+            function animateRow(fillSel, pctSel, pct, t) {
+              tl.fromTo(fillSel, { scaleX: 0 }, { scaleX: pct / 100, duration: 0.7, ease: "expo.out" }, t);
+              const ctr = { v: 0 };
+              tl.to(
+                ctr,
+                {
+                  v: pct,
+                  duration: 0.7,
+                  ease: "power2.out",
+                  onUpdate: function () {
+                    const el = document.querySelector(pctSel);
+                    if (el) el.textContent = Math.round(ctr.v) + "%";
+                  },
+                },
+                t,
+              );
+            }
+            animateRow("#s7-c-r1 .fill", "#s7-c-r1 .pct", 69, 52.7);
+            animateRow("#s7-c-r2 .fill", "#s7-c-r2 .pct", 78, 53.6);
+            animateRow("#s7-c-r3 .fill", "#s7-c-r3 .pct", 86, 54.6);
+            animateRow("#s7-c-r4 .fill", "#s7-c-r4 .pct", 93, 55.6);
+            animateRow("#s7-c-r5 .fill", "#s7-c-r5 .pct", 100, 56.6);
+            // emphasize 100%
+            tl.to(
+              "#s7-c-r5 .pct",
+              { scale: 1.18, transformOrigin: "right center", duration: 0.35, yoyo: true, repeat: 1, ease: "power2.out" },
+              57.5,
+            );
+
+            // 59.4 retry rule, 65.4 70%
+            tl.fromTo("#s7-c-foot", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 59.0);
+            // 68.42 the wall fell. again.
+            tl.fromTo(
+              "#s7-c-punch",
+              { opacity: 0, y: 30, scale: 0.95 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.4)" },
+              68.0,
+            );
+
+            // ambient
+            tl.to(
+              "#s7-a-yr",
+              { y: -8, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              4,
+            );
+
+            window.__timelines["scene-07-grids"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

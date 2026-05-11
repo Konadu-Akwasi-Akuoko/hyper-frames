@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-04-template">
+      <div data-composition-id="scene-04-thesis" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-04-thesis"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-04-thesis"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(40% 50% at 25% 30%, rgba(255, 181, 71, 0.10), transparent 70%),
+              radial-gradient(50% 40% at 80% 75%, rgba(103, 232, 249, 0.08), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-04-thesis"] .head {
+            position: absolute;
+            top: 150px;
+            left: 160px;
+            right: 160px;
+          }
+          [data-composition-id="scene-04-thesis"] .kicker {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+          }
+          [data-composition-id="scene-04-thesis"] .title {
+            font: 900 140px/0.95 "Inter", sans-serif;
+            letter-spacing: -0.03em;
+          }
+          [data-composition-id="scene-04-thesis"] .title .em {
+            color: #ffb547;
+            font-style: italic;
+          }
+          [data-composition-id="scene-04-thesis"] .cards {
+            position: absolute;
+            left: 160px;
+            right: 160px;
+            bottom: 110px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+          }
+          [data-composition-id="scene-04-thesis"] .card {
+            position: relative;
+            background: #11141b;
+            border: 1px solid #1f242c;
+            border-radius: 16px;
+            padding: 38px 36px;
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-04-thesis"] .card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background: var(--ac, #ffb547);
+            transform-origin: left center;
+            transform: scaleX(0);
+          }
+          [data-composition-id="scene-04-thesis"] .num {
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-04-thesis"] .year {
+            font: 700 48px/1 "JetBrains Mono", monospace;
+            color: var(--ac, #ffb547);
+            font-variant-numeric: tabular-nums;
+            margin-top: 14px;
+          }
+          [data-composition-id="scene-04-thesis"] .glyph {
+            margin: 30px 0 18px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+          }
+          [data-composition-id="scene-04-thesis"] .glyph .word {
+            font: 800 84px/1 "JetBrains Mono", monospace;
+            color: #e8eaed;
+            letter-spacing: 0.04em;
+            transform: skew(-9deg, 4deg);
+          }
+          [data-composition-id="scene-04-thesis"] .glyph .word span {
+            display: inline-block;
+          }
+          [data-composition-id="scene-04-thesis"] .glyph .strike-line {
+            position: absolute;
+            left: 6%;
+            right: 6%;
+            height: 4px;
+            background: #ff6b5d;
+            transform-origin: left center;
+            transform: scaleX(0);
+            top: 64%;
+            border-radius: 2px;
+          }
+          [data-composition-id="scene-04-thesis"] .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+          }
+          [data-composition-id="scene-04-thesis"] .grid3 .cell {
+            aspect-ratio: 1;
+            background: #1f242c;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-04-thesis"] .grid3 .cell.on {
+            background: rgba(103, 232, 249, 0.2);
+            border: 2px solid #67e8f9;
+          }
+          [data-composition-id="scene-04-thesis"] .grid3 .cell.on::after {
+            content: "✓";
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            color: #67e8f9;
+            font: 600 14px/1 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-04-thesis"] .gauge {
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+          }
+          [data-composition-id="scene-04-thesis"] .gauge .ring {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: conic-gradient(#7dd87d 0deg, #7dd87d 0deg, #1f242c 0deg);
+          }
+          [data-composition-id="scene-04-thesis"] .gauge .inner {
+            position: absolute;
+            inset: 18px;
+            border-radius: 50%;
+            background: #11141b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 700 28px/1 "JetBrains Mono", monospace;
+            color: #e8eaed;
+            font-variant-numeric: tabular-nums;
+          }
+          [data-composition-id="scene-04-thesis"] .name {
+            font: 700 44px/1.1 "Inter", sans-serif;
+            color: #e8eaed;
+            letter-spacing: -0.01em;
+          }
+          [data-composition-id="scene-04-thesis"] .desc {
+            margin-top: 10px;
+            font: 400 20px/1.4 "Inter", sans-serif;
+            color: #7a8493;
+          }
+          [data-composition-id="scene-04-thesis"] .status {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #ff6b5d;
+          }
+          [data-composition-id="scene-04-thesis"] .status::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ff6b5d;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+          }
+          [data-composition-id="scene-04-thesis"] .card[data-c="1"] { --ac: #ffb547; }
+          [data-composition-id="scene-04-thesis"] .card[data-c="2"] { --ac: #67e8f9; }
+          [data-composition-id="scene-04-thesis"] .card[data-c="3"] { --ac: #ff6b5d; }
+        </style>
+
+        <div class="glow"></div>
+
+        <div class="head">
+          <div class="kicker" id="s4-kicker">what we're tracing · the next five minutes</div>
+          <div class="title">
+            <span id="s4-t1">three generations</span><br />
+            <span id="s4-t2">of <span class="em">CAPTCHA,</span> each broken in turn.</span>
+          </div>
+        </div>
+
+        <div class="cards" id="s4-cards">
+          <div class="card" id="s4-c1" data-c="1">
+            <div>
+              <div class="num">01 · distorted text</div>
+              <div class="year">1997</div>
+            </div>
+            <div class="glyph">
+              <div class="word"><span>w</span><span>a</span><span>r</span><span>p</span><span>e</span><span>d</span></div>
+              <div class="strike-line" id="s4-c1-strike"></div>
+            </div>
+            <div>
+              <div class="name">smudged words</div>
+              <div class="desc">if you can read it, you must be human.</div>
+            </div>
+            <div class="status">broken · 2018</div>
+          </div>
+
+          <div class="card" id="s4-c2" data-c="2">
+            <div>
+              <div class="num">02 · image grids</div>
+              <div class="year">2014</div>
+            </div>
+            <div class="glyph">
+              <div class="grid3" id="s4-c2-grid">
+                <div class="cell"></div>
+                <div class="cell on"></div>
+                <div class="cell"></div>
+                <div class="cell on"></div>
+                <div class="cell"></div>
+                <div class="cell on"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+              </div>
+            </div>
+            <div>
+              <div class="name">select crosswalks</div>
+              <div class="desc">recognize what a self-driving car needs to.</div>
+            </div>
+            <div class="status">broken · 2024</div>
+          </div>
+
+          <div class="card" id="s4-c3" data-c="3">
+            <div>
+              <div class="num">03 · behavioral</div>
+              <div class="year">2017</div>
+            </div>
+            <div class="glyph">
+              <div class="gauge">
+                <div class="ring" id="s4-c3-ring"></div>
+                <div class="inner" id="s4-c3-score">0.00</div>
+              </div>
+            </div>
+            <div>
+              <div class="name">invisible scoring</div>
+              <div class="desc">how you got there is the test.</div>
+            </div>
+            <div class="status" style="color:#ffb547">
+              <span style="background:#ffb547;display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle"></span>
+              under siege
+            </div>
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            tl.fromTo(
+              '[data-composition-id="scene-04-thesis"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+
+            // 0-1.14s — "Today we are going to look at"
+            tl.fromTo("#s4-kicker", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 0.2);
+            tl.fromTo("#s4-t1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.4);
+            tl.fromTo("#s4-t2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.0);
+
+            // 5.36-7.05s — "three generations of CAPTCHAs"
+            tl.fromTo(
+              "#s4-c1",
+              { opacity: 0, y: 60, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" },
+              5.2,
+            );
+            tl.fromTo(
+              "#s4-c2",
+              { opacity: 0, y: 60, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" },
+              5.5,
+            );
+            tl.fromTo(
+              "#s4-c3",
+              { opacity: 0, y: 60, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" },
+              5.8,
+            );
+
+            // 7.5s+ — animate inner glyphs
+            tl.fromTo(
+              "#s4-c1 .word span",
+              { opacity: 0, y: -20, rotation: 12 },
+              { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.6)", stagger: 0.05 },
+              7.5,
+            );
+            tl.fromTo("#s4-c1-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "expo.out" }, 8.5);
+
+            tl.fromTo(
+              "#s4-c2-grid .cell",
+              { opacity: 0, scale: 0.6 },
+              { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)", stagger: 0.04 },
+              7.6,
+            );
+
+            // score gauge fills to 0.92
+            const score = { v: 0, deg: 0 };
+            tl.to(
+              score,
+              {
+                v: 0.92,
+                deg: 331.2,
+                duration: 1.4,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const ring = document.getElementById("s4-c3-ring");
+                  const num = document.getElementById("s4-c3-score");
+                  if (ring) ring.style.background = `conic-gradient(#7dd87d 0deg, #7dd87d ${score.deg}deg, #1f242c ${score.deg}deg)`;
+                  if (num) num.textContent = score.v.toFixed(2);
+                },
+              },
+              7.9,
+            );
+
+            // Ambient
+            tl.to(
+              "#s4-cards .card",
+              { y: -6, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.3 },
+              4,
+            );
+
+            window.__timelines["scene-04-thesis"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

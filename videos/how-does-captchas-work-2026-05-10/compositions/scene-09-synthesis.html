@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-09-template">
+      <div data-composition-id="scene-09-synthesis" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-09-synthesis"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-09-synthesis"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(60% 60% at 50% 50%, rgba(255, 181, 71, 0.08), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-09-synthesis"] .grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+              linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(60% 60% at 50% 50%, #000 35%, transparent 80%);
+          }
+          [data-composition-id="scene-09-synthesis"] .lines {
+            position: absolute;
+            left: 160px;
+            top: 160px;
+            right: 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+          }
+          [data-composition-id="scene-09-synthesis"] .line {
+            display: flex;
+            align-items: baseline;
+            gap: 30px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-09-synthesis"] .line .lead {
+            font: 500 28px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            width: 200px;
+            flex-shrink: 0;
+            text-align: right;
+          }
+          [data-composition-id="scene-09-synthesis"] .line .copy {
+            font: 800 84px/1.05 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+            color: #e8eaed;
+          }
+          [data-composition-id="scene-09-synthesis"] .line .copy em {
+            color: #ffb547;
+            font-style: italic;
+          }
+          [data-composition-id="scene-09-synthesis"] .closing {
+            position: absolute;
+            left: 160px;
+            right: 160px;
+            bottom: 110px;
+            display: grid;
+            grid-template-columns: 1fr 540px;
+            gap: 60px;
+            align-items: end;
+          }
+          [data-composition-id="scene-09-synthesis"] .closing .text {
+            font: 600 48px/1.15 "Inter", sans-serif;
+            color: #e8eaed;
+            max-width: 1100px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-09-synthesis"] .closing .text em {
+            color: #ff6b5d;
+            font-style: italic;
+          }
+          [data-composition-id="scene-09-synthesis"] .gap-viz {
+            position: relative;
+            height: 200px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-09-synthesis"] .gap-viz svg {
+            width: 100%;
+            height: 100%;
+          }
+          [data-composition-id="scene-09-synthesis"] .gap-viz .lbl {
+            position: absolute;
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-09-synthesis"] .gap-viz .lbl.h { left: 10px; bottom: 0; color: #67e8f9; }
+          [data-composition-id="scene-09-synthesis"] .gap-viz .lbl.m { right: 10px; bottom: 0; color: #ff6b5d; }
+        </style>
+
+        <div class="glow"></div>
+        <div class="grid"></div>
+
+        <div class="lines">
+          <div class="line" id="s9-l1">
+            <div class="lead">every</div>
+            <div class="copy"><em>checkbox</em> you click,</div>
+          </div>
+          <div class="line" id="s9-l2">
+            <div class="lead">every</div>
+            <div class="copy">grid of <em>crosswalks</em> you sort,</div>
+          </div>
+          <div class="line" id="s9-l3">
+            <div class="lead">every</div>
+            <div class="copy"><em>hesitation</em> your cursor makes —</div>
+          </div>
+        </div>
+
+        <div class="closing">
+          <div class="text" id="s9-text">
+            somewhere a system is <em>watching</em>, scoring, and quietly conceding<br />
+            that the gap between human and machine is closing <em>faster than the test</em> can keep up.
+          </div>
+          <div class="gap-viz" id="s9-gap">
+            <svg viewBox="0 0 540 160" preserveAspectRatio="none">
+              <path id="s9-arc-h" d="M30 150 C 30 30, 270 30, 270 150" fill="none" stroke="#67e8f9" stroke-width="3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <path id="s9-arc-m" d="M510 150 C 510 50, 270 50, 270 150" fill="none" stroke="#ff6b5d" stroke-width="3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <circle id="s9-meet" cx="270" cy="50" r="6" fill="#ffb547" opacity="0" />
+            </svg>
+            <div class="lbl h">human</div>
+            <div class="lbl m">machine</div>
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            tl.fromTo(
+              '[data-composition-id="scene-09-synthesis"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+
+            // 0-1.34s — Every checkbox you click
+            tl.fromTo("#s9-l1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 0.0);
+            // 1.72-2.97 — every grid of crosswalks
+            tl.fromTo("#s9-l2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 1.7);
+            // 3.98-5.86 — every hesitation
+            tl.fromTo("#s9-l3", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 3.95);
+
+            // 6.5 — closing text + gap viz
+            tl.fromTo("#s9-text", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 6.5);
+            tl.fromTo("#s9-gap", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, 9.5);
+            tl.to("#s9-arc-h", { strokeDashoffset: 0, duration: 2.4, ease: "power1.inOut" }, 10.0);
+            tl.to("#s9-arc-m", { strokeDashoffset: 0, duration: 2.4, ease: "power1.inOut" }, 10.2);
+            tl.fromTo(
+              "#s9-meet",
+              { opacity: 0, scale: 0.3 },
+              { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" },
+              12.6,
+            );
+            tl.to(
+              "#s9-meet",
+              { scale: 1.4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              13.4,
+            );
+
+            // ambient
+            tl.to(
+              ".grid",
+              { opacity: 0.6, duration: 4, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              4,
+            );
+
+            window.__timelines["scene-09-synthesis"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

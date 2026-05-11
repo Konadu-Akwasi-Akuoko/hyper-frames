@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-11-template">
+      <div data-composition-id="scene-11-closer" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-11-closer"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-11-closer"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(50% 50% at 30% 35%, rgba(255, 181, 71, 0.12), transparent 70%),
+              radial-gradient(45% 50% at 75% 75%, rgba(255, 107, 93, 0.10), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-11-closer"] .eyebrow {
+            position: absolute;
+            top: 120px;
+            left: 160px;
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            opacity: 0;
+          }
+          [data-composition-id="scene-11-closer"] .stats {
+            position: absolute;
+            left: 160px;
+            top: 220px;
+            right: 160px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+          }
+          [data-composition-id="scene-11-closer"] .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-11-closer"] .stat .lbl {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-11-closer"] .stat .n {
+            font: 900 280px/0.85 "Inter", sans-serif;
+            color: #ffb547;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em;
+          }
+          [data-composition-id="scene-11-closer"] .stat .n .unit {
+            font: 800 96px/1 "Inter", sans-serif;
+            color: #ff6b5d;
+            letter-spacing: -0.02em;
+            margin-left: 8px;
+          }
+          [data-composition-id="scene-11-closer"] .stat .d {
+            font: 500 30px/1.3 "Inter", sans-serif;
+            color: #7a8493;
+          }
+          [data-composition-id="scene-11-closer"] .stat .d b {
+            color: #e8eaed;
+            font-weight: 600;
+          }
+          [data-composition-id="scene-11-closer"] .punch {
+            position: absolute;
+            left: 160px;
+            right: 160px;
+            bottom: 110px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+          }
+          [data-composition-id="scene-11-closer"] .punch .copy {
+            font: 800 120px/1 "Inter", sans-serif;
+            letter-spacing: -0.03em;
+            opacity: 0;
+          }
+          [data-composition-id="scene-11-closer"] .punch .copy em {
+            color: #ff6b5d;
+            font-style: italic;
+          }
+          [data-composition-id="scene-11-closer"] .punch .sig {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            opacity: 0;
+          }
+          [data-composition-id="scene-11-closer"] .punch .sig .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff6b5d;
+          }
+        </style>
+
+        <div class="glow"></div>
+
+        <div class="eyebrow" id="s11-eb">researchers · industry estimates · 2024</div>
+
+        <div class="stats">
+          <div class="stat" id="s11-st1">
+            <div class="lbl">human hours · spent proving humanity</div>
+            <div class="n"><span id="s11-n1">0</span><span class="unit">M</span></div>
+            <div class="d"><b>819 million hours</b> — clicking checkboxes and crosswalks · one year</div>
+          </div>
+          <div class="stat" id="s11-st2">
+            <div class="lbl">wages · at minimum value</div>
+            <div class="n">$<span id="s11-n2">0</span><span class="unit">B</span></div>
+            <div class="d"><b>over six billion dollars</b> · the price of being recognized</div>
+          </div>
+        </div>
+
+        <div class="punch">
+          <div class="copy" id="s11-copy">the bots have already<br /><em>learned how to pretend.</em></div>
+          <div class="sig" id="s11-sig"><span class="dot"></span> end · how does a CAPTCHA actually work</div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            tl.fromTo(
+              '[data-composition-id="scene-11-closer"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+            tl.fromTo("#s11-eb", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.15);
+
+            // 1.66s — "819 million hours"
+            tl.fromTo(
+              "#s11-st1",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              1.0,
+            );
+            const h = { v: 0 };
+            tl.to(
+              h,
+              {
+                v: 819,
+                duration: 2.0,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const el = document.getElementById("s11-n1");
+                  if (el) el.textContent = Math.round(h.v);
+                },
+              },
+              1.4,
+            );
+
+            // 4.42s — "six billion dollars"
+            tl.fromTo(
+              "#s11-st2",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              3.8,
+            );
+            const d = { v: 0 };
+            tl.to(
+              d,
+              {
+                v: 6,
+                duration: 1.4,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const el = document.getElementById("s11-n2");
+                  if (el) el.textContent = d.v.toFixed(d.v < 1 ? 1 : 0);
+                },
+              },
+              4.2,
+            );
+
+            // 12.14s — "learned how to pretend"
+            tl.fromTo(
+              "#s11-copy",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+              10.0,
+            );
+
+            tl.fromTo(
+              "#s11-sig",
+              { opacity: 0, x: 30 },
+              { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
+              12.0,
+            );
+
+            // final fade to black (only allowed exit — final scene)
+            tl.to(
+              '[data-composition-id="scene-11-closer"]',
+              { opacity: 0, duration: 0.8, ease: "power2.inOut" },
+              12.7,
+            );
+
+            // ambient
+            tl.to("#s11-st1 .n", { y: -10, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4);
+
+            window.__timelines["scene-11-closer"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

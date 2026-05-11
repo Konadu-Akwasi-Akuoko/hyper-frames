@@ -16,7 +16,25 @@
         width: 1920px;
         height: 1080px;
         overflow: hidden;
-        background: #000;
+        background: #0b0d12;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        background: #0b0d12;
+      }
+      /* Stack all scene-clip composition hosts in the same 1920x1080 frame.
+         Hosts use id^="sc" (sc1, sc2, …). The inner composition root
+         (the sub-comp's own <div data-composition-id="…">) keeps its own
+         relative positioning — we just stop the hosts from stacking in flow. */
+      #root > [id^="sc"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
       }
     </style>
   </head>
@@ -25,27 +43,136 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="10"
+      data-duration="387.7"
       data-width="1920"
       data-height="1080"
     >
-      
-      
+      <!-- Voiceover -->
+      <audio
+        id="vo"
+        class="clip"
+        data-start="0"
+        data-duration="387.63"
+        data-track-index="0"
+        data-volume="1"
+        src="audio/voiceover.mp3"
+        crossorigin="anonymous"
+      ></audio>
 
-      <!--
-        Add your clips here. Example:
-        <div id="title" class="clip" data-start="0" data-duration="5" data-track-index="1"
-             style="font-size: 64px; color: #fff; padding: 40px">
-          Hello World
-        </div>
-      -->
+      <!-- Scene 1: open (0 → 14.14) -->
+      <div
+        id="sc1"
+        data-composition-id="scene-01-open"
+        data-composition-src="compositions/scene-01-open.html"
+        data-start="0"
+        data-duration="14.14"
+        data-track-index="1"
+      ></div>
+
+      <!-- Scene 2: subversion (13.64 → 36.84) -->
+      <div
+        id="sc2"
+        data-composition-id="scene-02-subversion"
+        data-composition-src="compositions/scene-02-subversion.html"
+        data-start="13.64"
+        data-duration="23.20"
+        data-track-index="2"
+      ></div>
+
+      <!-- Scene 3: stakes (36.34 → 63.06) -->
+      <div
+        id="sc3"
+        data-composition-id="scene-03-stakes"
+        data-composition-src="compositions/scene-03-stakes.html"
+        data-start="36.34"
+        data-duration="26.72"
+        data-track-index="1"
+      ></div>
+
+      <!-- Scene 4: thesis (62.56 → 76.06) -->
+      <div
+        id="sc4"
+        data-composition-id="scene-04-thesis"
+        data-composition-src="compositions/scene-04-thesis.html"
+        data-start="62.56"
+        data-duration="13.50"
+        data-track-index="2"
+      ></div>
+
+      <!-- Scene 5: turing (75.56 → 130.72) -->
+      <div
+        id="sc5"
+        data-composition-id="scene-05-turing"
+        data-composition-src="compositions/scene-05-turing.html"
+        data-start="75.56"
+        data-duration="55.16"
+        data-track-index="1"
+      ></div>
+
+      <!-- Scene 6: distorted text (130.22 → 203.86) -->
+      <div
+        id="sc6"
+        data-composition-id="scene-06-distorted"
+        data-composition-src="compositions/scene-06-distorted-text.html"
+        data-start="130.22"
+        data-duration="73.64"
+        data-track-index="2"
+      ></div>
+
+      <!-- Scene 7: image grids (203.36 → 274.62) -->
+      <div
+        id="sc7"
+        data-composition-id="scene-07-grids"
+        data-composition-src="compositions/scene-07-image-grids.html"
+        data-start="203.36"
+        data-duration="71.26"
+        data-track-index="1"
+      ></div>
+
+      <!-- Scene 8: behavioral (274.12 → 339.22) -->
+      <div
+        id="sc8"
+        data-composition-id="scene-08-behavioral"
+        data-composition-src="compositions/scene-08-behavioral.html"
+        data-start="274.12"
+        data-duration="65.10"
+        data-track-index="2"
+      ></div>
+
+      <!-- Scene 9: synthesis (338.72 → 355.08) -->
+      <div
+        id="sc9"
+        data-composition-id="scene-09-synthesis"
+        data-composition-src="compositions/scene-09-synthesis.html"
+        data-start="338.72"
+        data-duration="16.36"
+        data-track-index="1"
+      ></div>
+
+      <!-- Scene 10: reframe (354.58 → 374.52) -->
+      <div
+        id="sc10"
+        data-composition-id="scene-10-reframe"
+        data-composition-src="compositions/scene-10-reframe.html"
+        data-start="354.58"
+        data-duration="19.94"
+        data-track-index="2"
+      ></div>
+
+      <!-- Scene 11: closer (374.02 → 387.63) -->
+      <div
+        id="sc11"
+        data-composition-id="scene-11-closer"
+        data-composition-src="compositions/scene-11-closer.html"
+        data-start="374.02"
+        data-duration="13.61"
+        data-track-index="1"
+      ></div>
     </div>
 
     <script>
       window.__timelines = window.__timelines || {};
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.from("#title", { opacity: 0, y: -50, duration: 1 }, 0);
-      window.__timelines["main"] = tl;
+      window.__timelines["main"] = gsap.timeline({ paused: true });
     </script>
   </body>
 </html>

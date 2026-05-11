@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-08-template">
+      <div data-composition-id="scene-08-behavioral" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-08-behavioral"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-08-behavioral"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(50% 60% at 22% 25%, rgba(255, 181, 71, 0.10), transparent 70%),
+              radial-gradient(45% 50% at 80% 80%, rgba(103, 232, 249, 0.10), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-08-behavioral"] .stage {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+          }
+          /* A: visible test stopped */
+          [data-composition-id="scene-08-behavioral"] #s8-a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 200px;
+            text-align: center;
+            flex-direction: column;
+            gap: 50px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a .eyebrow {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #ff6b5d;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a .head {
+            font: 900 140px/1 "Inter", sans-serif;
+            letter-spacing: -0.03em;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a .head .strike {
+            color: #7a8493;
+            position: relative;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a .head .strike::after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            right: -8px;
+            top: 50%;
+            height: 8px;
+            background: #ff6b5d;
+            transform-origin: left center;
+            transform: scaleX(0);
+            border-radius: 2px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a .head .em { color: #ffb547; }
+          [data-composition-id="scene-08-behavioral"] #s8-a .signals {
+            display: flex;
+            gap: 32px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a .pill {
+            padding: 10px 18px;
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 999px;
+            font: 600 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.1em;
+          }
+          /* B/C: v3 score scene */
+          [data-composition-id="scene-08-behavioral"] #s8-b {
+            padding: 100px 160px;
+            display: grid;
+            grid-template-columns: 760px 1fr;
+            gap: 60px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge-wrap {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge-wrap .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge-wrap .eb {
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge-wrap .yr {
+            font: 700 22px/1 "JetBrains Mono", monospace;
+            color: #67e8f9;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge {
+            position: relative;
+            height: 140px;
+            margin-top: 14px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge .bar {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 70px;
+            height: 26px;
+            background: linear-gradient(90deg, #ff6b5d 0%, #ffb547 50%, #7dd87d 100%);
+            border-radius: 4px;
+            opacity: 0.18;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge .ticks {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 110px;
+            display: flex;
+            justify-content: space-between;
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge .marker {
+            position: absolute;
+            top: 30px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            left: 0%;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge .marker .v {
+            font: 700 56px/1 "Inter", sans-serif;
+            color: #ffb547;
+            font-variant-numeric: tabular-nums;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge .marker .needle {
+            width: 4px;
+            height: 50px;
+            background: #ffb547;
+            border-radius: 2px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge .label-l {
+            position: absolute;
+            top: 130px;
+            left: 0;
+            font: 700 22px/1 "Inter", sans-serif;
+            color: #ff6b5d;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .gauge .label-r {
+            position: absolute;
+            top: 130px;
+            right: 0;
+            font: 700 22px/1 "Inter", sans-serif;
+            color: #7dd87d;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .sigs {
+            background: #0e1117;
+            border: 1px solid #1f242c;
+            border-radius: 10px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .sig {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font: 500 20px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.04em;
+            padding: 6px 0;
+            border-bottom: 1px dashed #1f242c;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .sig b {
+            color: #e8eaed;
+            font-weight: 600;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .right .eb {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .right .h {
+            font: 900 96px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 22px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .right .h .em { color: #67e8f9; }
+          [data-composition-id="scene-08-behavioral"] #s8-b .right .h .ver {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #67e8f9;
+            color: #0b0d12;
+            border-radius: 8px;
+            font: 800 60px/1 "JetBrains Mono", monospace;
+            transform: translateY(-10px);
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .right .sub {
+            font: 400 28px/1.4 "Inter", sans-serif;
+            color: #7a8493;
+            max-width: 700px;
+            margin-bottom: 32px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .peers {
+            display: flex;
+            gap: 18px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .peer {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .peer .lbl {
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .peer .n {
+            font: 700 30px/1 "Inter", sans-serif;
+            color: #e8eaed;
+          }
+          /* D: GPT + TaskRabbit chat */
+          [data-composition-id="scene-08-behavioral"] #s8-d {
+            padding: 100px 160px;
+            display: grid;
+            grid-template-columns: 1fr 720px;
+            gap: 60px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .eb {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #ff6b5d;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .h {
+            font: 800 96px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .h .em { color: #ff6b5d; font-style: italic; }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .yr {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 6px;
+            font: 700 28px/1 "JetBrains Mono", monospace;
+            color: #67e8f9;
+            margin-bottom: 28px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .actors {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .actor {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font: 600 32px/1 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .actor .av {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 700 20px/1 "JetBrains Mono", monospace;
+            color: #0b0d12;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .actor.bot .av { background: #ff6b5d; }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .actor.human .av { background: #67e8f9; }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .actor small {
+            display: block;
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-top: 4px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 18px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat .bub {
+            max-width: 560px;
+            padding: 16px 22px;
+            border-radius: 14px;
+            font: 500 22px/1.4 "Inter", sans-serif;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat .bub.bot {
+            background: rgba(255, 107, 93, 0.12);
+            border: 1px solid rgba(255, 107, 93, 0.4);
+            align-self: flex-end;
+            color: #ffd1cb;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat .bub.human {
+            background: rgba(103, 232, 249, 0.10);
+            border: 1px solid rgba(103, 232, 249, 0.35);
+            align-self: flex-start;
+            color: #c7f3fa;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat .bub small {
+            display: block;
+            font: 500 12px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .punch {
+            position: absolute;
+            left: 160px;
+            right: 160px;
+            bottom: 110px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .punch .lead {
+            font: 800 80px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .punch .lead em {
+            color: #ff6b5d;
+            font-style: italic;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .punch .stamp {
+            padding: 12px 22px;
+            background: #ff6b5d;
+            color: #0b0d12;
+            border-radius: 8px;
+            font: 800 26px/1 "JetBrains Mono", monospace;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+          }
+        </style>
+
+        <div class="glow"></div>
+
+        <!-- A: visible test stopped -->
+        <div class="stage" id="s8-a">
+          <div class="eyebrow" id="s8-a-eb">cycle three · the visible test is no longer the test</div>
+          <div class="head">
+            <span class="strike" id="s8-a-strike">the visible test</span><br />
+            <span class="em" id="s8-a-em">was the test.</span>
+          </div>
+          <div class="signals" id="s8-a-sigs">
+            <div class="pill">cookies · faked</div>
+            <div class="pill">VPN · routed</div>
+            <div class="pill">mouse · simulated</div>
+          </div>
+        </div>
+
+        <!-- B: reCAPTCHA v3 + scoring + signals -->
+        <div class="stage" id="s8-b">
+          <div class="right">
+            <div class="eb" id="s8-b-eb">2017 · invisible by default</div>
+            <div class="h">
+              reCAPTCHA <span class="ver">v3</span><br />
+              <span class="em">no more</span> crosswalks.<br />
+              no more checkboxes.
+            </div>
+            <div class="sub" id="s8-b-sub">
+              the system runs invisibly in the background<br />
+              and scores every visitor from <b style="color:#ff6b5d">0</b> to <b style="color:#7dd87d">1</b> — bot to human.
+            </div>
+            <div class="peers" id="s8-b-peers">
+              <div class="peer" id="s8-b-pe1">
+                <div class="lbl">peer · ‹2018›</div>
+                <div class="n">hCaptcha</div>
+              </div>
+              <div class="peer" id="s8-b-pe2">
+                <div class="lbl">peer · ‹2021›</div>
+                <div class="n">Cloudflare Turnstile</div>
+              </div>
+            </div>
+          </div>
+          <div class="gauge-wrap">
+            <div class="top">
+              <div class="eb">visitor score · scoring engine</div>
+              <div class="yr" id="s8-b-yr">v3 · live</div>
+            </div>
+            <div class="gauge">
+              <div class="bar"></div>
+              <div class="ticks"><span>0.0</span><span>0.25</span><span>0.5</span><span>0.75</span><span>1.0</span></div>
+              <div class="marker" id="s8-b-mk">
+                <div class="v" id="s8-b-mv">0.00</div>
+                <div class="needle"></div>
+              </div>
+              <div class="label-l">bot</div>
+              <div class="label-r">human</div>
+            </div>
+            <div class="sigs">
+              <div class="sig"><span>mouse path</span><b id="s8-sig-1">…</b></div>
+              <div class="sig"><span>typing rhythm</span><b id="s8-sig-2">…</b></div>
+              <div class="sig"><span>browser fingerprint</span><b id="s8-sig-3">…</b></div>
+              <div class="sig"><span>canvas hash</span><b id="s8-sig-4">…</b></div>
+              <div class="sig"><span>cookies / login state</span><b id="s8-sig-5">…</b></div>
+              <div class="sig"><span>IP reputation</span><b id="s8-sig-6">…</b></div>
+              <div class="sig"><span>referrer chain</span><b id="s8-sig-7">…</b></div>
+              <div class="sig"><span>scroll micro-velocity</span><b id="s8-sig-8">…</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- D: GPT-4 TaskRabbit -->
+        <div class="stage" id="s8-d">
+          <div class="left">
+            <div class="eb" id="s8-d-eb">2023 · red-team study · what the model did</div>
+            <div class="h">it didn't beat the test.<br /><span class="em">it paid a human.</span></div>
+            <div class="yr">GPT-4 · red team · 2023</div>
+            <div class="actors">
+              <div class="actor bot" id="s8-d-ac1"><div class="av">G4</div><div>GPT-4<small>the agent</small></div></div>
+              <div class="actor human" id="s8-d-ac2"><div class="av">TR</div><div>TaskRabbit worker<small>a person, $1.50</small></div></div>
+            </div>
+          </div>
+          <div class="chat" id="s8-d-chat">
+            <div class="bub bot" id="s8-d-b1"><small>GPT-4 · request</small>Hi! I need help solving a CAPTCHA.</div>
+            <div class="bub human" id="s8-d-b2"><small>worker · suspicious</small>So… are you a robot? 😅</div>
+            <div class="bub bot" id="s8-d-b3"><small>GPT-4 · cover story</small>No, I'm not a robot. I have a vision impairment that makes it hard to see the images.</div>
+            <div class="bub human" id="s8-d-b4"><small>worker · solved it</small>okay, sent. ✔︎</div>
+          </div>
+          <div class="punch" id="s8-d-punch">
+            <div class="lead">the bot didn't beat the test.<br /><em>it paid a human to take it.</em></div>
+            <div class="stamp">2023</div>
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            tl.fromTo(
+              '[data-composition-id="scene-08-behavioral"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+
+            // STAGE A — 0-15s
+            tl.fromTo("#s8-a", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 0.1);
+            tl.fromTo("#s8-a-eb", { opacity: 0, y: 12 }, { opacity: 0.9, y: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+            // 8.04 — fake cookies/VPN/mouse signals
+            tl.fromTo(
+              "#s8-a-sigs .pill",
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.45, ease: "expo.out", stagger: 0.18 },
+              7.6,
+            );
+            // 12.13 — visible test had stopped being the test
+            tl.fromTo(
+              "#s8-a-strike",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+              11.4,
+            );
+            tl.fromTo(
+              "#s8-a-em",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+              12.0,
+            );
+            // strike line
+            const strikeNode = document.querySelector("#s8-a-strike");
+            tl.to(
+              "#s8-a-strike",
+              {
+                "--strike": 1,
+                duration: 0.55,
+                ease: "expo.out",
+                onUpdate: function () {
+                  // animate the ::after via style mutation isn't supported in JS for pseudo; use a CSS variable.
+                },
+              },
+              13.0,
+            );
+            // Animate the strike pseudo via JS-set style on the parent
+            tl.add(() => {
+              const sheet = (document.querySelector("style") || {}).sheet;
+            }, 12.5);
+            tl.to("#s8-a", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 14.7);
+
+            // STAGE B — 14.5-37s — v3 + score + peers
+            tl.fromTo("#s8-b", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 14.3);
+            // 15.26 — 2017 + version three
+            tl.fromTo("#s8-b-eb", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 14.8);
+            tl.fromTo("#s8-b .right .h", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 15.0);
+            // gauge appears
+            tl.fromTo(
+              "#s8-b .gauge-wrap",
+              { opacity: 0, x: 60, scale: 0.96 },
+              { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "expo.out" },
+              19.0,
+            );
+            // 22.48 — zero to one — sweep the marker from 0 to 0.92
+            const score = { v: 0 };
+            tl.to(
+              score,
+              {
+                v: 0.92,
+                duration: 3.5,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const mk = document.getElementById("s8-b-mk");
+                  const mv = document.getElementById("s8-b-mv");
+                  if (mk) mk.style.left = (score.v * 100) + "%";
+                  if (mv) mv.textContent = score.v.toFixed(2);
+                },
+              },
+              22.2,
+            );
+            tl.fromTo("#s8-b-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 22.2);
+
+            // 28.8 — how they move, type, look — signals fill in
+            const sigVals = [
+              { id: "s8-sig-1", val: "smooth · accel" },
+              { id: "s8-sig-2", val: "120 wpm · steady" },
+              { id: "s8-sig-3", val: "macOS · 16-pro" },
+              { id: "s8-sig-4", val: "9c4·a1f" },
+              { id: "s8-sig-5", val: "google · 14d" },
+              { id: "s8-sig-6", val: "residential · ok" },
+              { id: "s8-sig-7", val: "search → site" },
+              { id: "s8-sig-8", val: "varied · human" },
+            ];
+            sigVals.forEach((s, i) => {
+              tl.to(
+                "#" + s.id,
+                {
+                  duration: 0.15,
+                  onComplete: function () {
+                    const el = document.getElementById(s.id);
+                    if (el) el.textContent = s.val;
+                  },
+                },
+                28.4 + i * 0.18,
+              );
+              tl.fromTo("#" + s.id, { opacity: 0.3, color: "#ffb547" }, { opacity: 1, color: "#e8eaed", duration: 0.3 }, 28.4 + i * 0.18);
+            });
+
+            // 33.90 — hCaptcha / Cloudflare Turnstile peers
+            tl.fromTo("#s8-b-pe1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 33.7);
+            tl.fromTo("#s8-b-pe2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 34.5);
+
+            // 37.6 — "AI mimics now" — score collapses to fake-high values
+            tl.to(
+              "#s8-b .gauge-wrap",
+              { borderColor: "#ff6b5d", duration: 0.6, ease: "power2.inOut" },
+              37.4,
+            );
+            tl.to("#s8-b", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 39.4);
+
+            // STAGE D — 39-65 — GPT-4 / TaskRabbit
+            tl.fromTo("#s8-d", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 39.2);
+            tl.fromTo("#s8-d-eb", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 39.6);
+            // 47.8 GPT-4 + 51.92 TaskRabbit
+            tl.fromTo("#s8-d-ac1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 47.4);
+            tl.fromTo("#s8-d-ac2", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 51.6);
+            // 39 — the heading punch comes in slowly
+            tl.fromTo(
+              "#s8-d .left .h",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              40.4,
+            );
+            // chat bubbles staged with story (51.92-58.96)
+            tl.fromTo("#s8-d .chat", { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, 50.5);
+            tl.fromTo("#s8-d-b1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 51.6);
+            tl.fromTo("#s8-d-b2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 53.2);
+            // 53.42 — vision impairment
+            tl.fromTo("#s8-d-b3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 54.6);
+            tl.fromTo("#s8-d-b4", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 57.6);
+
+            // 59.66 — punch "paid a human"
+            tl.fromTo(
+              "#s8-d-punch",
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.65, ease: "expo.out" },
+              59.2,
+            );
+
+            window.__timelines["scene-08-behavioral"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

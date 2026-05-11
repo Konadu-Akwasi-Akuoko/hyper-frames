@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-02-template">
+      <div data-composition-id="scene-02-subversion" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-02-subversion"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-02-subversion"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(50% 60% at 22% 35%, rgba(255, 107, 93, 0.10), transparent 70%),
+              radial-gradient(40% 50% at 78% 70%, rgba(103, 232, 249, 0.07), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-02-subversion"] .left {
+            position: absolute;
+            left: 160px;
+            top: 180px;
+            width: 760px;
+          }
+          [data-composition-id="scene-02-subversion"] .kicker {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #ff6b5d;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+          }
+          [data-composition-id="scene-02-subversion"] .head {
+            font: 900 112px/1.0 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+          }
+          [data-composition-id="scene-02-subversion"] .head .strike {
+            color: #7a8493;
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 107, 93, 0.7);
+            text-decoration-thickness: 8px;
+            text-underline-offset: 4px;
+          }
+          [data-composition-id="scene-02-subversion"] .head .em {
+            color: #ffb547;
+          }
+          [data-composition-id="scene-02-subversion"] .sub {
+            margin-top: 36px;
+            font: 400 28px/1.45 "JetBrains Mono", monospace;
+            color: #7a8493;
+            max-width: 560px;
+          }
+          [data-composition-id="scene-02-subversion"] .right {
+            position: absolute;
+            right: 160px;
+            top: 140px;
+            width: 720px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+          }
+          [data-composition-id="scene-02-subversion"] .panel {
+            position: relative;
+            background: #11141b;
+            border: 1px solid #1f242c;
+            border-radius: 12px;
+            padding: 18px 22px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
+            row-gap: 8px;
+            column-gap: 24px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-02-subversion"] .panel .lbl {
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-02-subversion"] .panel .v {
+            font: 600 28px/1 "Inter", sans-serif;
+            color: #e8eaed;
+            font-variant-numeric: tabular-nums;
+            justify-self: end;
+            text-align: right;
+          }
+          [data-composition-id="scene-02-subversion"] .panel .vis {
+            grid-column: 1 / -1;
+            height: 56px;
+            position: relative;
+          }
+          [data-composition-id="scene-02-subversion"] .panel .vis svg,
+          [data-composition-id="scene-02-subversion"] .panel .vis .row {
+            width: 100%;
+            height: 100%;
+          }
+          [data-composition-id="scene-02-subversion"] .panel.danger .v {
+            color: #ff6b5d;
+          }
+          [data-composition-id="scene-02-subversion"] .verdict {
+            position: absolute;
+            right: 160px;
+            top: 740px;
+            width: 720px;
+            padding: 24px 28px;
+            background: linear-gradient(180deg, rgba(255, 107, 93, 0.08), rgba(255, 107, 93, 0.02));
+            border: 1.5px solid rgba(255, 107, 93, 0.4);
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+          }
+          [data-composition-id="scene-02-subversion"] .verdict .l {
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #ff6b5d;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-02-subversion"] .verdict .r {
+            font: 700 56px/1 "Inter", sans-serif;
+            color: #ff6b5d;
+            letter-spacing: -0.01em;
+            font-variant-numeric: tabular-nums;
+          }
+          [data-composition-id="scene-02-subversion"] .receipt {
+            position: absolute;
+            left: 160px;
+            bottom: 110px;
+            width: 600px;
+            padding: 22px 28px;
+            background: #0e1117;
+            border: 1px dashed #3a4150;
+            border-radius: 4px;
+            color: #7a8493;
+            font: 500 22px/1.4 "JetBrains Mono", monospace;
+            opacity: 0;
+            transform: rotate(-1.2deg);
+          }
+          [data-composition-id="scene-02-subversion"] .receipt .top {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #1f242c;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            color: #e8eaed;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 18px;
+          }
+          [data-composition-id="scene-02-subversion"] .receipt .row {
+            display: flex;
+            justify-content: space-between;
+          }
+          [data-composition-id="scene-02-subversion"] .receipt .row b {
+            color: #e8eaed;
+            font-weight: 500;
+          }
+          [data-composition-id="scene-02-subversion"] .receipt .stamp {
+            position: absolute;
+            right: -18px;
+            top: -22px;
+            color: #ff6b5d;
+            border: 3px solid #ff6b5d;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            transform: rotate(-12deg);
+            font-size: 18px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-02-subversion"] .bar {
+            display: inline-block;
+            height: 6px;
+            background: #ffb547;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left center;
+          }
+          [data-composition-id="scene-02-subversion"] .cookie-pill {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #1f242c;
+            color: #67e8f9;
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            border-radius: 999px;
+            margin-right: 6px;
+            margin-bottom: 4px;
+            opacity: 0;
+          }
+        </style>
+
+        <div class="glow"></div>
+
+        <div class="left">
+          <div class="kicker" id="s2-kicker">overruled · before the click</div>
+          <div class="head">
+            <span class="strike" id="s2-strike">the test</span>
+            <span id="s2-was">was&nbsp;never</span><br />
+            <span id="s2-the">the</span> <span class="em" id="s2-cb">checkbox.</span>
+          </div>
+          <div class="sub" id="s2-sub">
+            &gt; in the seconds before you clicked,<br />
+            &gt; your browser was being measured.
+          </div>
+        </div>
+
+        <div class="right" id="s2-right">
+          <div class="panel" id="s2-p1">
+            <div class="lbl">cursor path</div>
+            <div class="v" id="s2-p1-v">4 372&nbsp;px</div>
+            <div class="vis">
+              <svg viewBox="0 0 660 56" preserveAspectRatio="none">
+                <path
+                  id="s2-path"
+                  d="M0 38 C 90 6, 160 50, 240 18 S 380 44, 460 14 S 580 40, 660 22"
+                  fill="none"
+                  stroke="#67e8f9"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  pathLength="1"
+                  stroke-dasharray="1"
+                  stroke-dashoffset="1"
+                />
+                <circle id="s2-dot" cx="660" cy="22" r="4" fill="#ffb547" opacity="0" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="panel" id="s2-p2">
+            <div class="lbl">time to reach</div>
+            <div class="v" id="s2-p2-v"><span id="s2-ms">0</span>&nbsp;ms</div>
+            <div class="vis">
+              <svg viewBox="0 0 660 56" preserveAspectRatio="none">
+                <g id="s2-bars" stroke="none">
+                  <rect x="0" y="20" width="14" height="20" fill="#1f242c" />
+                  <rect x="20" y="14" width="14" height="32" fill="#1f242c" />
+                  <rect x="40" y="22" width="14" height="16" fill="#1f242c" />
+                  <rect x="60" y="6" width="14" height="44" fill="#1f242c" />
+                  <rect x="80" y="18" width="14" height="24" fill="#1f242c" />
+                  <rect x="100" y="2" width="14" height="52" fill="#ffb547" />
+                  <rect x="120" y="12" width="14" height="34" fill="#1f242c" />
+                  <rect x="140" y="20" width="14" height="20" fill="#1f242c" />
+                  <rect x="160" y="14" width="14" height="32" fill="#1f242c" />
+                  <rect x="180" y="22" width="14" height="16" fill="#1f242c" />
+                </g>
+                <line x1="107" y1="0" x2="107" y2="56" stroke="#ffb547" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="panel" id="s2-p3">
+            <div class="lbl">cookies you carry</div>
+            <div class="v" id="s2-p3-v">17 / domain</div>
+            <div class="vis" style="height:auto">
+              <span class="cookie-pill">_ga</span>
+              <span class="cookie-pill">__cfruid</span>
+              <span class="cookie-pill">JSESSIONID</span>
+              <span class="cookie-pill">_gid</span>
+              <span class="cookie-pill">__Secure-3PSID</span>
+              <span class="cookie-pill">datadome</span>
+              <span class="cookie-pill">_recaptcha</span>
+              <span class="cookie-pill">accounts.google.*</span>
+            </div>
+          </div>
+
+          <div class="panel danger" id="s2-p4">
+            <div class="lbl">canvas pixel hash</div>
+            <div class="v" id="s2-p4-v">9c4·a1f·bb2</div>
+            <div class="vis">
+              <svg viewBox="0 0 660 56" preserveAspectRatio="none">
+                <g id="s2-pix">
+                  <!-- pixel grid simulating screen fingerprint -->
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="verdict" id="s2-verdict">
+          <div class="l">verdict</div>
+          <div class="r" id="s2-verdict-val">human · 0.92</div>
+        </div>
+
+        <div class="receipt" id="s2-receipt">
+          <div class="top"><span>web · receipt</span><span>n° 0001</span></div>
+          <div class="row"><span>checkbox</span><span><b>passed</b></span></div>
+          <div class="row"><span>verdict</span><span><b>already in</b></span></div>
+          <div class="row"><span>signature</span><span><b>your browser</b></span></div>
+          <div class="stamp" id="s2-stamp">click</div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            // Generate pixel grid
+            (function () {
+              const g = document.getElementById("s2-pix");
+              if (!g) return;
+              // deterministic seeded pattern
+              let s = 0xc0ffee;
+              const r = () => ((s = (s * 1664525 + 1013904223) >>> 0) / 0xffffffff);
+              for (let y = 0; y < 7; y++) {
+                for (let x = 0; x < 80; x++) {
+                  const v = r();
+                  const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                  rect.setAttribute("x", String(x * 8 + 2));
+                  rect.setAttribute("y", String(y * 8));
+                  rect.setAttribute("width", "6");
+                  rect.setAttribute("height", "6");
+                  rect.setAttribute("fill", v > 0.62 ? "#ff6b5d" : v > 0.4 ? "#1f242c" : "#0b0d12");
+                  rect.setAttribute("opacity", "0");
+                  g.appendChild(rect);
+                }
+              }
+            })();
+
+            tl.fromTo(
+              '[data-composition-id="scene-02-subversion"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+
+            // 0.14s — "the test was never the checkbox" hook
+            tl.fromTo("#s2-kicker", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 0.15);
+            tl.fromTo("#s2-strike", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.25);
+            tl.fromTo("#s2-was", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.55);
+            tl.fromTo("#s2-the", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.95);
+            // "checkbox" at local 1.18-1.78 — punch
+            tl.fromTo(
+              "#s2-cb",
+              { opacity: 0, scale: 0.7, rotation: -3 },
+              { opacity: 1, scale: 1, rotation: 0, duration: 0.55, ease: "back.out(2)" },
+              1.18,
+            );
+
+            // 2.5s: sub fades in (between sentences)
+            tl.fromTo(
+              "#s2-sub",
+              { opacity: 0, y: 16 },
+              { opacity: 0.9, y: 0, duration: 0.6, ease: "power2.out" },
+              2.55,
+            );
+
+            // Panel 1 — cursor path (anchor: "path your cursor took" at local 6.20)
+            tl.fromTo("#s2-p1", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 5.95);
+            tl.to(
+              "#s2-path",
+              { strokeDashoffset: 0, duration: 1.6, ease: "power1.inOut" },
+              6.1,
+            );
+            tl.fromTo(
+              "#s2-dot",
+              { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out" },
+              7.4,
+            );
+
+            // Panel 2 — millisecond (anchor: "millisecond" at local 8.77)
+            tl.fromTo("#s2-p2", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 8.55);
+            const ms = { v: 0 };
+            tl.to(
+              ms,
+              {
+                v: 847,
+                duration: 1.0,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const el = document.getElementById("s2-ms");
+                  if (el) el.textContent = Math.round(ms.v);
+                },
+              },
+              8.7,
+            );
+            tl.fromTo(
+              "#s2-bars rect",
+              { scaleY: 0, transformOrigin: "center 56px" },
+              { scaleY: 1, duration: 0.4, ease: "expo.out", stagger: 0.04 },
+              8.85,
+            );
+
+            // Panel 3 — cookies (anchor: "cookies you carry" at local 12.80)
+            tl.fromTo("#s2-p3", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 12.6);
+            tl.to(
+              "#s2-p3 .cookie-pill",
+              { opacity: 1, duration: 0.25, stagger: 0.07, ease: "power2.out" },
+              12.85,
+            );
+
+            // Panel 4 — pixel fingerprint (anchor: "pixels" at local 14.96)
+            tl.fromTo("#s2-p4", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 14.75);
+            tl.to(
+              "#s2-pix rect",
+              {
+                opacity: 1,
+                duration: 0.02,
+                stagger: { each: 0.003, from: "random" },
+                ease: "none",
+              },
+              14.95,
+            );
+
+            // 20.16s — verdict slides in on "already in"
+            tl.fromTo(
+              "#s2-verdict",
+              { opacity: 0, y: 30, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" },
+              19.6,
+            );
+            tl.fromTo(
+              "#s2-verdict-val",
+              { opacity: 0 },
+              { opacity: 1, duration: 0.25, ease: "none" },
+              19.95,
+            );
+            tl.to(
+              "#s2-verdict",
+              { boxShadow: "0 0 0 6px rgba(255,107,93,0.15)", duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 },
+              20.0,
+            );
+
+            // 20.80s — "click was just the receipt"
+            tl.fromTo(
+              "#s2-receipt",
+              { opacity: 0, y: 80, rotation: 4 },
+              { opacity: 0.95, y: 0, rotation: -1.2, duration: 0.65, ease: "back.out(1.4)" },
+              20.65,
+            );
+            tl.fromTo(
+              "#s2-stamp",
+              { opacity: 0, scale: 1.8, rotation: 8 },
+              { opacity: 1, scale: 1, rotation: -12, duration: 0.4, ease: "back.out(2)" },
+              21.2,
+            );
+
+            // Ambient: panel rim subtle pulse
+            tl.to(
+              "#s2-right .panel",
+              {
+                boxShadow: "inset 0 0 0 1px rgba(255,181,71,0.08)",
+                duration: 4,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: 1,
+              },
+              4,
+            );
+
+            window.__timelines["scene-02-subversion"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

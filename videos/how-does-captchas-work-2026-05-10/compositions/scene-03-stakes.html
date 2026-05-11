@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="scene-03-template">
+      <div data-composition-id="scene-03-stakes" data-width="1920" data-height="1080">
+        <style>
+          [data-composition-id="scene-03-stakes"] {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: #0b0d12;
+            color: #e8eaed;
+            font-family: "Inter", system-ui, sans-serif;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-03-stakes"] .glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(60% 60% at 18% 70%, rgba(255, 107, 93, 0.10), transparent 70%),
+              radial-gradient(40% 50% at 80% 30%, rgba(255, 181, 71, 0.07), transparent 70%);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-03-stakes"] .ghost {
+            position: absolute;
+            top: 70px;
+            left: -80px;
+            font: 900 480px/0.85 "Inter", sans-serif;
+            color: #11141b;
+            letter-spacing: -0.04em;
+            user-select: none;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm {
+            position: absolute;
+            inset: 80px 160px 360px 160px;
+            border: 1px solid #1f242c;
+            border-radius: 14px;
+            background: #0e1117;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .axis {
+            position: absolute;
+            inset: 0;
+            background-image:
+              linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 40px 40px;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .lblrow {
+            position: absolute;
+            top: 16px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .lbl {
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .legend {
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            display: flex;
+            gap: 18px;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .legend span::before {
+            content: "■";
+            margin-right: 6px;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .legend .b {
+            color: #ff6b5d;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .legend .h {
+            color: #67e8f9;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .dots {
+            position: absolute;
+            inset: 60px 24px 60px 24px;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .stat {
+            position: absolute;
+            right: 30px;
+            bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .stat .n {
+            font: 800 132px/0.9 "Inter", sans-serif;
+            color: #ff6b5d;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .stat .u {
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .ticker {
+            position: absolute;
+            left: 30px;
+            bottom: 24px;
+            font: 500 18px/1.3 "JetBrains Mono", monospace;
+            color: #7a8493;
+            max-width: 480px;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .ticker b {
+            color: #e8eaed;
+            font-weight: 600;
+          }
+          [data-composition-id="scene-03-stakes"] .attacks {
+            position: absolute;
+            left: 160px;
+            bottom: 110px;
+            display: flex;
+            gap: 22px;
+          }
+          [data-composition-id="scene-03-stakes"] .attack {
+            background: #11141b;
+            border: 1px solid #1f242c;
+            border-radius: 12px;
+            padding: 22px 26px;
+            width: 320px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-03-stakes"] .attack .ico {
+            width: 36px;
+            height: 36px;
+            margin-bottom: 14px;
+          }
+          [data-composition-id="scene-03-stakes"] .attack .t {
+            font: 700 30px/1 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-03-stakes"] .attack .d {
+            margin-top: 8px;
+            font: 400 18px/1.3 "Inter", sans-serif;
+            color: #7a8493;
+          }
+          [data-composition-id="scene-03-stakes"] .targets {
+            position: absolute;
+            right: 160px;
+            bottom: 110px;
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          }
+          [data-composition-id="scene-03-stakes"] .target {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font: 500 26px/1 "Inter", sans-serif;
+            opacity: 0;
+          }
+          [data-composition-id="scene-03-stakes"] .target .x {
+            color: #ff6b5d;
+            font: 700 22px/1 "JetBrains Mono", monospace;
+          }
+          [data-composition-id="scene-03-stakes"] .target b {
+            color: #ffb547;
+            font-weight: 600;
+          }
+        </style>
+
+        <div class="glow"></div>
+        <div class="ghost" id="s3-ghost">BOT</div>
+
+        <div class="swarm" id="s3-swarm">
+          <div class="axis"></div>
+          <div class="lblrow">
+            <div class="lbl">web traffic · share</div>
+            <div class="legend">
+              <span class="b">bad bots</span><span class="h">humans</span>
+            </div>
+          </div>
+          <div class="dots" id="s3-dots"></div>
+          <div class="ticker" id="s3-ticker">
+            measured across <b>billions of requests</b><br />
+            industry estimates · twenty&#8209;twenty&#8209;four
+          </div>
+          <div class="stat" id="s3-stat">
+            <span class="n" id="s3-pct">0%</span>
+            <span class="u">share · automated</span>
+          </div>
+        </div>
+
+        <div class="attacks" id="s3-attacks">
+          <div class="attack" id="s3-a1">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#ff6b5d" stroke-width="2" stroke-linecap="round">
+              <ellipse cx="12" cy="6" rx="8" ry="3" />
+              <path d="M4 6 v6 c0 1.7 3.6 3 8 3 s8 -1.3 8 -3 v-6" />
+              <path d="M4 12 v6 c0 1.7 3.6 3 8 3 s8 -1.3 8 -3 v-6" />
+            </svg>
+            <div class="t">scrape</div>
+            <div class="d">drain entire databases overnight</div>
+          </div>
+          <div class="attack" id="s3-a2">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#ffb547" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 7 L12 14 L21 7" />
+            </svg>
+            <div class="t">spam</div>
+            <div class="d">millions of messages per hour</div>
+          </div>
+          <div class="attack" id="s3-a3">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="11" width="16" height="10" rx="2" />
+              <path d="M8 11 V7 a4 4 0 0 1 8 0 v4" />
+              <circle cx="12" cy="16" r="1.4" fill="#67e8f9" />
+            </svg>
+            <div class="t">credential stuffing</div>
+            <div class="d">stolen passwords, every hour</div>
+          </div>
+        </div>
+
+        <div class="targets" id="s3-targets">
+          <div class="target" id="s3-t1"><span class="x">×</span> <span>the free <b>email account</b></span></div>
+          <div class="target" id="s3-t2"><span class="x">×</span> <span>the concert <b>ticket</b></span></div>
+          <div class="target" id="s3-t3"><span class="x">×</span> <span>the <b>comment box</b> under this video</span></div>
+        </div>
+
+        <script>
+          (function () {
+            window.__timelines = window.__timelines || {};
+            const tl = gsap.timeline({ paused: true });
+
+            // Generate dot grid: ~30 cols × ~10 rows = 300 dots, ~32% red, rest cyan
+            (function () {
+              const host = document.getElementById("s3-dots");
+              if (!host) return;
+              const cols = 38, rows = 10;
+              let s = 0xdeadbeef;
+              const r = () => ((s = (s * 1664525 + 1013904223) >>> 0) / 0xffffffff);
+              const total = cols * rows;
+              const botCount = Math.round(total * 0.32);
+              const flags = Array.from({ length: total }, (_, i) => i < botCount);
+              // fisher-yates with seeded rng
+              for (let i = total - 1; i > 0; i--) {
+                const j = Math.floor(r() * (i + 1));
+                [flags[i], flags[j]] = [flags[j], flags[i]];
+              }
+              const stepX = 100 / cols;
+              const stepY = 100 / rows;
+              for (let i = 0; i < total; i++) {
+                const cx = i % cols, cy = Math.floor(i / cols);
+                const el = document.createElement("div");
+                el.className = "dot";
+                el.style.left = (cx * stepX + stepX / 2) + "%";
+                el.style.top = (cy * stepY + stepY / 2) + "%";
+                el.style.background = flags[i] ? "#ff6b5d" : "#67e8f9";
+                el.dataset.bot = flags[i] ? "1" : "0";
+                host.appendChild(el);
+              }
+            })();
+
+            tl.fromTo(
+              '[data-composition-id="scene-03-stakes"]',
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5, ease: "power2.out" },
+              0,
+            );
+
+            // 0-6s: opening — swarm fills the panel, "drown in automated traffic within minutes"
+            tl.fromTo("#s3-swarm", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+            tl.fromTo("#s3-ghost", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, 0.4);
+
+            // dots flood in: humans first then bots ramp
+            tl.to(
+              '#s3-dots .dot[data-bot="0"]',
+              { opacity: 0.7, duration: 0.02, stagger: { each: 0.01, from: "start" }, ease: "none" },
+              0.7,
+            );
+            tl.to(
+              '#s3-dots .dot[data-bot="1"]',
+              { opacity: 0.95, duration: 0.02, stagger: { each: 0.012, from: "random" }, ease: "none" },
+              2.4,
+            );
+
+            // 7.8s — "bad bots" anchor: stat counts to 32, bot dots flash
+            const pct = { v: 0 };
+            tl.to(
+              pct,
+              {
+                v: 32,
+                duration: 1.4,
+                ease: "power2.out",
+                onUpdate: function () {
+                  const el = document.getElementById("s3-pct");
+                  if (el) el.textContent = Math.round(pct.v) + "%";
+                },
+              },
+              7.6,
+            );
+            tl.fromTo(
+              "#s3-stat",
+              { opacity: 0, x: 30 },
+              { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" },
+              7.5,
+            );
+            tl.to(
+              '#s3-dots .dot[data-bot="1"]',
+              { scale: 1.6, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1, stagger: { each: 0.004, from: "random" } },
+              7.7,
+            );
+
+            // 10.99s — scrape attack card
+            tl.fromTo("#s3-a1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 10.85);
+            // 12.8 — spam
+            tl.fromTo("#s3-a2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 12.7);
+            // 14.4 — passwords / credential stuffing
+            tl.fromTo("#s3-a3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 14.3);
+
+            // 19.08s — email / 20.65 ticket / 22.14 comment box
+            tl.fromTo("#s3-t1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 18.95);
+            tl.fromTo("#s3-t2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 20.5);
+            tl.fromTo("#s3-t3", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 21.95);
+
+            // 24.58s — final accent pulse on "every one of them is a target"
+            tl.to(
+              "#s3-targets .target .x",
+              { color: "#ffb547", duration: 0.4, yoyo: true, repeat: 1, ease: "power1.inOut", stagger: 0.08 },
+              24.4,
+            );
+
+            // ambient
+            tl.to(
+              "#s3-ghost",
+              { x: 30, duration: 18, ease: "sine.inOut", overwrite: "auto" },
+              1.7,
+            );
+            tl.to(
+              '#s3-dots .dot[data-bot="1"]',
+              { opacity: 0.6, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0 },
+              10,
+            );
+
+            window.__timelines["scene-03-stakes"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>
