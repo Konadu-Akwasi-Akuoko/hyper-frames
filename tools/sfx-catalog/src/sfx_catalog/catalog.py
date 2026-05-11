@@ -27,7 +27,9 @@ def sha256_file(path: Path, chunk_size: int = 1 << 20) -> str:
     return h.hexdigest()
 
 
-from sfx_catalog.core import Catalog, CatalogEntry
+import yaml
+
+from sfx_catalog.core import Catalog, CatalogEntry, CueRecipe
 from sfx_catalog.cues import default_cues
 from sfx_catalog.metrics import (
     basic_metadata,
@@ -135,4 +137,58 @@ def build_catalog(
         library_sha=library_digest(root),
         assets=assets,
         cues=default_cues(),
+    )
+
+
+def _catalog_to_dict(cat: Catalog) -> dict[str, object]:
+    return {
+        "version": cat.version,
+        "generated_at": cat.generated_at,
+        "library_sha": cat.library_sha,
+        "assets": {path: entry.to_dict() for path, entry in cat.assets.items()},
+        "cues": {name: cue.to_dict() for name, cue in cat.cues.items()},
+    }
+
+
+def dump_yaml(cat: Catalog, path: Path) -> None:
+    """Write `cat` to `path` as YAML with stable, human-readable ordering."""
+    data = _catalog_to_dict(cat)
+    path.write_text(
+        yaml.safe_dump(
+            data,
+            sort_keys=False,
+            allow_unicode=True,
+            default_flow_style=False,
+            width=120,
+        ),
+        encoding="utf-8",
+    )
+
+
+def load_yaml(path: Path) -> Catalog:
+    """Read a sfx-catalog.yml file back into a Catalog instance."""
+    raw = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if raw.get("version") != CATALOG_VERSION:
+        raise ValueError(
+            f"sfx-catalog.yml version {raw.get('version')!r} does not match "
+            f"sfx-catalog version {CATALOG_VERSION}. Rebuild required."
+        )
+    assets = {
+        rel: CatalogEntry(
+            path=rel,
+            tags=tuple(d.get("tags", [])),
+            **{k: v for k, v in d.items() if k not in ("path", "tags")},
+        )
+        for rel, d in (raw.get("assets") or {}).items()
+    }
+    cues = {
+        name: CueRecipe(name=name, **d)
+        for name, d in (raw.get("cues") or {}).items()
+    }
+    return Catalog(
+        version=raw["version"],
+        generated_at=raw["generated_at"],
+        library_sha=raw["library_sha"],
+        assets=assets,
+        cues=cues,
     )

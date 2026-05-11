@@ -6,7 +6,9 @@ from pathlib import Path
 from sfx_catalog.catalog import (
     build_catalog,
     build_entry,
+    dump_yaml,
     library_digest,
+    load_yaml,
     scan_audio_files,
     sha256_file,
 )
@@ -71,3 +73,24 @@ def test_incremental_short_circuits_unchanged_files(library_dir: Path) -> None:
     second = build_catalog(library_dir, previous=first)
     for path, entry in second.assets.items():
         assert entry.sha256 == first.assets[path].sha256
+
+
+def test_dump_then_load_roundtrip(library_dir: Path, tmp_path: Path) -> None:
+    cat = build_catalog(library_dir)
+    out = tmp_path / "sfx-catalog.yml"
+    dump_yaml(cat, out)
+    loaded = load_yaml(out)
+    assert loaded.version == cat.version
+    assert loaded.library_sha == cat.library_sha
+    assert set(loaded.assets.keys()) == set(cat.assets.keys())
+    assert set(loaded.cues.keys()) == set(cat.cues.keys())
+
+
+def test_dumped_yaml_has_stable_top_level_order(library_dir: Path, tmp_path: Path) -> None:
+    cat = build_catalog(library_dir)
+    out = tmp_path / "sfx-catalog.yml"
+    dump_yaml(cat, out)
+    text = out.read_text(encoding="utf-8")
+    lines = [line for line in text.splitlines() if line and not line.startswith(" ")]
+    keys = [line.split(":", 1)[0] for line in lines if ":" in line]
+    assert keys[:5] == ["version", "generated_at", "library_sha", "assets", "cues"]
