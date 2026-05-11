@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
@@ -26,7 +27,8 @@ def sha256_file(path: Path, chunk_size: int = 1 << 20) -> str:
     return h.hexdigest()
 
 
-from sfx_catalog.core import CatalogEntry
+from sfx_catalog.core import Catalog, CatalogEntry
+from sfx_catalog.cues import default_cues
 from sfx_catalog.metrics import (
     basic_metadata,
     brightness_for,
@@ -91,4 +93,46 @@ def build_entry(path: Path, root: Path) -> CatalogEntry:
         high_energy_pct=spectral["high_energy_pct"],
         tags=tags,
         auto_role=auto_role,
+    )
+
+
+CATALOG_VERSION = 1
+
+
+def library_digest(root: Path) -> str:
+    """SHA-256 over the sorted (path, sha256) pairs in `root`. Stable across runs."""
+    h = hashlib.sha256()
+    for path in scan_audio_files(root):
+        rel = path.relative_to(root).as_posix().encode("utf-8")
+        file_sha = sha256_file(path).encode("ascii")
+        h.update(rel)
+        h.update(b"\x00")
+        h.update(file_sha)
+        h.update(b"\n")
+    return h.hexdigest()
+
+
+def build_catalog(
+    root: Path,
+    *,
+    previous: Catalog | None = None,
+) -> Catalog:
+    """Walk `root`, build a Catalog. Reuses entries from `previous` whose sha matches."""
+    prev_assets = previous.assets if previous else {}
+    assets: dict[str, CatalogEntry] = {}
+    for path in scan_audio_files(root):
+        rel = path.relative_to(root).as_posix()
+        sha = sha256_file(path)
+        cached = prev_assets.get(rel)
+        if cached is not None and cached.sha256 == sha:
+            assets[rel] = cached
+            continue
+        assets[rel] = build_entry(path, root=root)
+
+    return Catalog(
+        version=CATALOG_VERSION,
+        generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        library_sha=library_digest(root),
+        assets=assets,
+        cues=default_cues(),
     )

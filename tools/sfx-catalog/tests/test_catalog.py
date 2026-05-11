@@ -3,7 +3,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from sfx_catalog.catalog import build_entry, scan_audio_files, sha256_file
+from sfx_catalog.catalog import (
+    build_catalog,
+    build_entry,
+    library_digest,
+    scan_audio_files,
+    sha256_file,
+)
 
 
 def test_scan_finds_wav_and_mp3_recursively(library_dir: Path) -> None:
@@ -45,3 +51,23 @@ def test_build_entry_for_impulse(library_dir: Path) -> None:
     assert "click" in entry.tags
     assert entry.auto_role in ("accent", "impact")
     assert len(entry.sha256) == 64
+
+
+def test_library_digest_is_stable_across_runs(library_dir: Path) -> None:
+    a = library_digest(library_dir)
+    b = library_digest(library_dir)
+    assert a == b
+
+
+def test_build_catalog_includes_all_assets_and_cues(library_dir: Path) -> None:
+    cat = build_catalog(library_dir)
+    assert cat.version == 1
+    assert len(cat.assets) == 3
+    assert set(cat.cues.keys()) == {"ui-tick", "whoosh", "boom", "riser", "pop"}
+
+
+def test_incremental_short_circuits_unchanged_files(library_dir: Path) -> None:
+    first = build_catalog(library_dir)
+    second = build_catalog(library_dir, previous=first)
+    for path, entry in second.assets.items():
+        assert entry.sha256 == first.assets[path].sha256
