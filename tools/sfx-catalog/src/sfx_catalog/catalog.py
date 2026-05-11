@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
@@ -129,7 +130,11 @@ def build_catalog(
         if cached is not None and cached.sha256 == sha:
             assets[rel] = cached
             continue
-        assets[rel] = build_entry(path, root=root)
+        try:
+            assets[rel] = build_entry(path, root=root)
+        except Exception as exc:
+            print(f"warning: skipping {rel} ({exc.__class__.__name__}: {exc})", file=sys.stderr)
+            continue
 
     return Catalog(
         version=CATALOG_VERSION,
