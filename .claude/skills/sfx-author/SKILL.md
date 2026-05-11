@@ -269,3 +269,34 @@ them in order:
 10. Run `tools/sfx-plan --report`.
 11. Run `npx hyperframes preview` and surface the URL.
 12. Wait for audit feedback; loop step 9 onward on refines.
+
+## Reference documents
+
+Read these before producing your first proposal in a fresh session — they
+encode the taste this skill is built on:
+
+- `reference/cue-vocabulary.md` — per-cue: when it earns a hit, when it doesn't.
+- `reference/worked-examples.md` — concrete annotated walkthroughs from
+  `videos/why-text-is-hard-2026-05-07/`. The "this is what good looks like"
+  reference.
+- `reference/anchor-discipline.md` — how to pick an anchor word, when to extend
+  `anchors.txt`, edge cases (homonyms, repeated words, anchors that don't appear
+  in the transcript).
+- `reference/proposal-template.md` — the exact proposal output format with
+  annotations.
+
+## When to invoke this skill
+
+Trigger on any of:
+
+- "add sound design", "score the video", "add SFX", "do the sound pass"
+- "add whooshes / ticks / cues to this composition"
+- The user signals visuals are done and asks "what's next?" right after a
+  `hyperframes preview` cycle. Confirm visuals are locked before starting.
+
+**Do not invoke** if:
+
+- Composition is unfinished (placeholder stubs, only Scene 1 built, etc.).
+- The user is asking about music or mastering — those are Phase B/C, out of
+  scope for this skill. Surface that politely.
+- `sound-effects/sfx-catalog.yml` is missing — point at the catalog tool first.
