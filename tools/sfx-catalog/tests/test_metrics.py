@@ -4,7 +4,7 @@ from __future__ import annotations
 import math
 from pathlib import Path
 
-from sfx_catalog.metrics import basic_metadata, measure_peak, measure_rms
+from sfx_catalog.metrics import basic_metadata, measure_lufs, measure_peak, measure_rms
 
 
 def test_basic_metadata_reports_duration_and_format(sine_1k_wav: Path) -> None:
@@ -25,3 +25,8 @@ def test_peak_detection_locates_known_impulse(impulse_wav: Path) -> None:
 def test_rms_of_sine_at_neg20_dbfs(sine_1k_wav: Path) -> None:
     rms_dbfs = measure_rms(sine_1k_wav)
     assert math.isclose(rms_dbfs, -23.0, abs_tol=0.1)
+
+
+def test_lufs_of_known_sine(sine_1k_wav: Path) -> None:
+    lufs = measure_lufs(sine_1k_wav)
+    assert math.isclose(lufs, -23.0, abs_tol=1.0)
