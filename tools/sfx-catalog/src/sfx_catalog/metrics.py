@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+import pyloudnorm as pyln
 import soundfile as sf
 
 _SUBTYPE_BIT_DEPTH: dict[str, int | None] = {
@@ -70,3 +71,16 @@ def measure_rms(path: Path) -> float:
         return -math.inf
     rms = float(np.sqrt(np.mean(np.square(mono))))
     return 20.0 * math.log10(max(rms, 1e-9))
+
+
+def measure_lufs(path: Path) -> float:
+    """Integrated loudness in LUFS (EBU R128) of the whole file.
+
+    Returns -inf for clips shorter than ~400ms (BS.1770 gating window).
+    """
+    data, sr = sf.read(path, dtype="float32", always_2d=True)
+    if data.shape[0] < int(0.4 * sr):
+        return -math.inf
+    audio = data[:, 0] if data.shape[1] == 1 else data
+    meter = pyln.Meter(sr)
+    return float(meter.integrated_loudness(audio))
