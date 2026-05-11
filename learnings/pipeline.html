@@ -1,0 +1,1355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>HyperFrames pipeline · reference</title>
+<style>
+  :root {
+    --bg:            #0a0a0c;
+    --surface:       #111115;
+    --surface-2:     #16161b;
+    --surface-3:     #1c1c22;
+    --border:        rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.11);
+    --border-amber:  rgba(245,158,11,0.22);
+    --fg:            #e8e8ed;
+    --fg-2:          #9a9aa6;
+    --fg-3:          #62626c;
+    --fg-4:          #3a3a42;
+    --amber:         #f59e0b;
+    --amber-dim:     #b87708;
+    --amber-soft:    rgba(245,158,11,0.10);
+    --warn:          #f4b860;
+    --green:         #6ec48a;
+    --shadow:        0 1px 0 rgba(255,255,255,0.02) inset;
+    --radius:        6px;
+    --radius-lg:     8px;
+    --font-sans:     -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+    --font-mono:     ui-monospace, "SF Mono", "JetBrains Mono", "Menlo", Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ─── ambient grid ────────────────────────────────────────── */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── layout shell ────────────────────────────────────────── */
+  .shell {
+    position: relative;
+    z-index: 1;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+  }
+
+  /* ─── masthead ────────────────────────────────────────────── */
+  .masthead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .mark-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 12px rgba(245,158,11,0.5);
+  }
+  .title-block h1 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 12px 0 6px;
+    color: var(--fg);
+  }
+  .title-block p {
+    font-size: 14px;
+    color: var(--fg-2);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .meta {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    line-height: 1.7;
+  }
+  .meta strong { color: var(--fg-2); font-weight: 500; }
+
+  /* ─── tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+  .tab {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: var(--fg-2);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 150ms cubic-bezier(0.25,1,0.5,1), color 150ms;
+  }
+  .tab:hover { color: var(--fg); }
+  .tab[aria-selected="true"] {
+    background: var(--surface-3);
+    color: var(--fg);
+  }
+  .tab-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    letter-spacing: 0.05em;
+  }
+  .tab[aria-selected="true"] .tab-num { color: var(--amber); }
+
+  /* ─── panels ──────────────────────────────────────────────── */
+  .panel { display: none; animation: fade 200ms cubic-bezier(0.25,1,0.5,1); }
+  .panel[data-active] { display: block; }
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── pipeline tab ────────────────────────────────────────── */
+  .lede {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .lede-cell {
+    background: var(--surface);
+    padding: 16px 20px;
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin-bottom: 6px;
+  }
+  .lede-value {
+    font-size: 16px;
+    color: var(--fg);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .lede-value .accent { color: var(--amber); }
+
+  /* ─── stage card ──────────────────────────────────────────── */
+  .stage-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .stage-list::before {
+    content: "";
+    position: absolute;
+    left: 23px;
+    top: 24px;
+    bottom: 24px;
+    width: 1px;
+    background: linear-gradient(180deg,
+      var(--border) 0%,
+      var(--border-strong) 50%,
+      var(--border) 100%);
+    z-index: 0;
+  }
+  .stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    z-index: 1;
+  }
+  .stage-bullet {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-2);
+    font-weight: 500;
+  }
+  .stage[data-iterative] .stage-bullet {
+    border-color: var(--border-amber);
+    color: var(--amber);
+  }
+  .stage-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+  .stage-title {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+  }
+  .stage-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border: 1px solid var(--border-amber);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .stage-tag.plain {
+    color: var(--fg-2);
+    background: var(--surface-2);
+    border-color: var(--border);
+  }
+  .stage-summary {
+    font-size: 13px;
+    color: var(--fg-2);
+    margin: 4px 0 16px;
+    max-width: 64ch;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin-bottom: 8px;
+  }
+
+  .artifact-list {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .artifact-list li {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .artifact-list li::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--fg-3);
+  }
+  .artifact-list li.primary::before { background: var(--amber); }
+
+  pre.code {
+    margin: 0 0 16px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  pre.code .code-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background: var(--surface-3);
+    border-bottom: 1px solid var(--border);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  pre.code .code-body {
+    padding: 12px 14px;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  pre.code .cmd { color: var(--amber); }
+  pre.code .comment { color: var(--fg-3); }
+
+  .pitfall {
+    display: flex;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(244,184,96,0.04);
+    border: 1px solid rgba(244,184,96,0.14);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    font-size: 12.5px;
+    color: var(--fg-2);
+  }
+  .pitfall:last-child { margin-bottom: 0; }
+  .pitfall::before {
+    content: "▲";
+    color: var(--warn);
+    font-size: 9px;
+    line-height: 1.8;
+    flex-shrink: 0;
+  }
+  .pitfall strong { color: var(--fg); font-weight: 500; }
+  .pitfall code {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+
+  .example-strip {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+  .example-strip strong {
+    color: var(--fg-2);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .example-strip .sep { color: var(--fg-4); }
+
+  /* ─── sound-design tab ────────────────────────────────────── */
+  .sfx-intro {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .sfx-intro h2 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+  }
+  .sfx-intro p {
+    margin: 0;
+    color: var(--fg-2);
+    max-width: 64ch;
+  }
+  .sfx-intro p + p { margin-top: 10px; }
+
+  .triptych {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .sfx-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sfx-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sfx-card-code {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border: 1px solid var(--border-amber);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .sfx-card-kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .sfx-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .sfx-card-path {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--fg-2);
+    word-break: break-all;
+  }
+  .sfx-card p {
+    font-size: 12.5px;
+    color: var(--fg-2);
+    margin: 0;
+  }
+  .sfx-card-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 8px;
+    font-size: 12px;
+    align-items: baseline;
+  }
+  .sfx-card-row .k {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .sfx-card-row .v {
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .sfx-card-row .v.muted { color: var(--fg-2); }
+
+  /* lifecycle diagram */
+  .lifecycle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+  }
+  .lifecycle h3 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .lifecycle-sub {
+    font-size: 12px;
+    color: var(--fg-2);
+    margin: 0 0 24px;
+  }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .flow-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+  .flow-rail {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    padding-top: 12px;
+  }
+  .flow-rail .when {
+    color: var(--fg-2);
+    display: block;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .flow-node {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: var(--fg);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .flow-node .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border: 1px solid var(--border-amber);
+    padding: 1px 6px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .flow-arrow {
+    grid-column: 2;
+    color: var(--fg-4);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding-left: 14px;
+  }
+  .flow-node.gate {
+    background: rgba(245,158,11,0.05);
+    border-color: var(--border-amber);
+  }
+  .flow-node.gate .label {
+    background: var(--amber);
+    color: var(--bg);
+    border-color: var(--amber);
+  }
+  .flow-loop {
+    grid-column: 2;
+    padding: 8px 14px;
+    font-size: 11.5px;
+    color: var(--fg-3);
+    font-style: italic;
+    border-left: 1px dashed var(--border-strong);
+    margin-left: 14px;
+  }
+
+  /* ─── smells tab ──────────────────────────────────────────── */
+  .smells-intro {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--warn);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    margin-bottom: 32px;
+  }
+  .smells-intro p {
+    margin: 0;
+    color: var(--fg-2);
+    font-size: 13px;
+    max-width: 64ch;
+  }
+  .smells-intro p strong { color: var(--fg); }
+
+  .smell-list {
+    list-style: none;
+    margin: 0 0 40px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .smell-list li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px 12px 36px;
+    position: relative;
+    font-size: 12.5px;
+    color: var(--fg);
+  }
+  .smell-list li::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 16px;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1.5px solid var(--warn);
+    background: transparent;
+  }
+  .smell-list li code {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--fg);
+  }
+
+  .rule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .rule {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .rule-num {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--amber);
+    font-weight: 500;
+    border-right: 1px solid var(--border);
+    padding-right: 16px;
+    height: 100%;
+  }
+  .rule h4 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    color: var(--fg);
+  }
+  .rule p {
+    margin: 0;
+    color: var(--fg-2);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .rule code {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--fg);
+  }
+
+  /* ─── footnote ────────────────────────────────────────────── */
+  .footnote {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footnote a {
+    color: var(--fg-2);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--fg-4);
+  }
+  .footnote a:hover { color: var(--amber); border-color: var(--amber-dim); }
+
+  /* ─── responsive ──────────────────────────────────────────── */
+  @media (max-width: 760px) {
+    .shell { padding: 32px 20px 64px; }
+    .masthead { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .meta { text-align: left; }
+    .title-block h1 { font-size: 26px; }
+    .lede { grid-template-columns: 1fr; }
+    .triptych { grid-template-columns: 1fr; }
+    .smell-list { grid-template-columns: 1fr; }
+    .flow-row { grid-template-columns: 100px 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ─── masthead ───────────────────────────────────────────── -->
+  <header class="masthead">
+    <div>
+      <div class="mark"><span class="mark-dot"></span>hyper-frames · pipeline</div>
+      <div class="title-block">
+        <h1>HyperFrames video pipeline</h1>
+        <p>The ten stages that take a topic to a published video, plus the sound-design subsystem and the failure smells worth watching for. Reference page — come back when the order blurs.</p>
+      </div>
+    </div>
+    <div class="meta">
+      <div><strong>Maiden</strong> · why-text-is-hard · 2026-05-07</div>
+      <div><strong>Second</strong> · how-does-captchas-work · 2026-05-10</div>
+      <div><strong>Updated</strong> · 2026-05-11</div>
+    </div>
+  </header>
+
+  <!-- ─── tabs ───────────────────────────────────────────────── -->
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-tab="pipeline">
+      <span class="tab-num">01</span><span>Main pipeline</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="sound">
+      <span class="tab-num">02</span><span>Sound design</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="smells">
+      <span class="tab-num">03</span><span>Smell tests</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL 1 — pipeline
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-pipeline" data-active>
+
+    <div class="lede">
+      <div class="lede-cell">
+        <div class="lede-label">Stages</div>
+        <div class="lede-value"><span class="accent">11</span> · from topic to publish</div>
+      </div>
+      <div class="lede-cell">
+        <div class="lede-label">Sequential one-shots</div>
+        <div class="lede-value">Stages <span class="accent">0–4</span></div>
+      </div>
+      <div class="lede-cell">
+        <div class="lede-label">Iterative authoring loop</div>
+        <div class="lede-value">Stages <span class="accent">5–7</span></div>
+      </div>
+    </div>
+
+    <ol class="stage-list">
+
+      <!-- 0 -->
+      <li class="stage" data-stage="0">
+        <div class="stage-bullet">00</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Pick topic + slug</div>
+            <div class="stage-tag plain">no command</div>
+          </div>
+          <p class="stage-summary">Decide working title, pick a kebab-case slug. The folder gets scaffolded by <code>/script-writer</code> at stage 2 — no manual <code>npx hyperframes init</code> at the root.</p>
+
+          <div class="section-label">Captchas</div>
+          <ul class="artifact-list">
+            <li>how-does-captchas-work</li>
+            <li>2026-05-10</li>
+          </ul>
+
+          <div class="pitfall">
+            <div><strong>Don't</strong> run <code>npx hyperframes init</code> at the repo root. The script-writer handles folder scaffold inside <code>videos/&lt;slug&gt;-&lt;date&gt;/</code>.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 1 -->
+      <li class="stage" data-stage="1">
+        <div class="stage-bullet">01</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">YouTube SEO research</div>
+            <div class="stage-tag">/youtube-seo-research</div>
+          </div>
+          <p class="stage-summary">yt-dlp + autocomplete; no API key, ~25s. Read by <code>/script-writer</code> at the outline step and <code>/thumbnail-creator</code> at the paired-title step.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">seo/research.json</li>
+          </ul>
+
+          <div class="section-label">Type</div>
+<pre class="code"><div class="code-head"><span>/youtube-seo-research</span></div><div class="code-body">Research SEO for a video about how CAPTCHAs actually work —
+the behavioral-scoring story, the three generations, why the
+checkbox isn't the test.</div></pre>
+
+          <div class="pitfall">
+            <div>Give the <strong>angle</strong>, not just the noun. Vague topic phrasing produces generic output.</div>
+          </div>
+
+          <div class="example-strip">
+            <strong>Captchas</strong>
+            <span>seo/research.json · 05:53</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- 2 -->
+      <li class="stage" data-stage="2">
+        <div class="stage-bullet">02</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Script writing</div>
+            <div class="stage-tag">/script-writer</div>
+          </div>
+          <p class="stage-summary">Auto-scaffolds the video folder and runs <code>npx hyperframes init</code> inside it. Reads <code>seo/research.json</code> at the outline step — accept its offer to re-run if missing.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li>outline.md</li>
+            <li class="primary">script.md</li>
+          </ul>
+
+          <div class="section-label">Type</div>
+<pre class="code"><div class="code-head"><span>/script-writer</span></div><div class="code-body">Write a script about how CAPTCHAs actually work.
+Topic angle: the test you think you're taking is not the
+test you're actually taking — behavioral signals, three
+generations of CAPTCHAs, each broken in turn, with the
+GPT-4 / TaskRabbit incident as climax.</div></pre>
+
+          <div class="pitfall">
+            <div>Review <strong>outline.md</strong> and push back if beats feel generic <em>before</em> moving to script.md. The script is much harder to course-correct than the outline.</div>
+          </div>
+          <div class="pitfall">
+            <div>Don't impersonate any creator. The skill encodes a writing <strong>style</strong>, not a person.</div>
+          </div>
+
+          <div class="example-strip">
+            <strong>Captchas</strong>
+            <span>outline.md · 05:54</span><span class="sep">/</span>
+            <span>script.md · 06:28</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- 3 -->
+      <li class="stage" data-stage="3">
+        <div class="stage-bullet">03</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Voiceover + transcript</div>
+            <div class="stage-tag">/voiceover-elevenlabs-v2</div>
+          </div>
+          <p class="stage-summary">Project default. Use <code>/voiceover-elevenlabs-v3</code> only when a video needs inline audio tags for per-beat emotional shifts. Hard checkpoint for annotation review before spending API credits.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li>audio/voiceover.mp3</li>
+            <li class="primary">transcript.json</li>
+            <li>voiceover.txt</li>
+          </ul>
+
+          <div class="section-label">Type</div>
+<pre class="code"><div class="code-head"><span>/voiceover-elevenlabs-v2</span></div><div class="code-body">Voice script.md.</div></pre>
+
+          <div class="pitfall">
+            <div>The annotation checkpoint matters. Verify ALL-CAPS anchors land on words you actually want emphasized.</div>
+          </div>
+          <div class="pitfall">
+            <div>Once the audio commits, re-generating costs credits.</div>
+          </div>
+
+          <div class="example-strip">
+            <strong>Captchas</strong>
+            <span>voiceover.mp3 · 06:50</span><span class="sep">/</span>
+            <span>transcript.json · 06:51</span><span class="sep">/</span>
+            <span>runtime 6:27</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- 4 -->
+      <li class="stage" data-stage="4">
+        <div class="stage-bullet">04</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Anchors + narration map</div>
+            <div class="stage-tag plain">tools/narration-map</div>
+          </div>
+          <p class="stage-summary">Write <code>anchors.txt</code> (phrases pulled from script.md's emphatic words and proper nouns), then run the tool from inside the video folder.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li>anchors.txt</li>
+            <li class="primary">narration-map.json</li>
+          </ul>
+
+          <div class="section-label">Run</div>
+<pre class="code"><div class="code-head"><span>from inside videos/&lt;slug&gt;-&lt;date&gt;/</span></div><div class="code-body"><span class="cmd">uv run</span> --project ../../tools/narration-map narration-map \
+  transcript.json --anchors anchors.txt</div></pre>
+
+          <div class="pitfall">
+            <div><strong>Don't grep transcript.json by hand</strong> for timestamps in stage 6 — that's what narration-map.json is for. Hand-rolled <code>python3 -c</code> searches are a code smell.</div>
+          </div>
+          <div class="pitfall">
+            <div>Anchors that don't match transcript words exactly get skipped silently. Sanity-check the output.</div>
+          </div>
+
+          <div class="example-strip">
+            <strong>Captchas</strong>
+            <span>anchors.txt · 06:51</span><span class="sep">/</span>
+            <span>narration-map.json · 35 KB</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- 5 -->
+      <li class="stage" data-stage="5">
+        <div class="stage-bullet">05</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">design.md — slim</div>
+            <div class="stage-tag plain">≤ ~50 lines</div>
+          </div>
+          <p class="stage-summary">Palette, typography, motion, don'ts. Copy the maiden video's design.md and tweak palette to taste — or write fresh, but keep it short. Pre-specifying atmosphere layers and component recipes closes the lexicon and kills invention.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">design.md</li>
+          </ul>
+
+          <div class="pitfall">
+            <div>Resist the urge to pre-specify atmosphere layers, transition tables, or component recipes. <strong>These close the lexicon and pre-empt invention.</strong></div>
+          </div>
+          <div class="pitfall">
+            <div>If the design picker emits a long file, trim it before stage 6.</div>
+          </div>
+          <div class="pitfall">
+            <div>Don't create <code>.hyperframes/expanded-prompt.md</code>. Stage 6 reads design.md + script.md + transcript.json directly.</div>
+          </div>
+
+          <div class="example-strip">
+            <strong>Captchas</strong>
+            <span>design.md · 20:48 · 43 lines</span><span class="sep">/</span>
+            <span>copied from why-text-is-hard</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- 6 -->
+      <li class="stage" data-stage="6" data-iterative>
+        <div class="stage-bullet">06</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">HyperFrames composition <span style="color:var(--amber);font-size:11px;font-family:var(--font-mono);">// authoring loop</span></div>
+            <div class="stage-tag">/hyperframes</div>
+          </div>
+          <p class="stage-summary">The iterative authoring loop. Two sentences do most of the work: <em>"Treat <code>videos/why-text-is-hard-2026-05-07/index.html</code> as the QUALITY BAR"</em> and <em>"Invent worldbuilding, NOT generic CSS primitives."</em></p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">index.html</li>
+            <li>compositions/*.html</li>
+          </ul>
+
+          <div class="section-label">Type</div>
+<pre class="code"><div class="code-head"><span>/hyperframes</span></div><div class="code-body">Build the composition using:
+- script.md (narrative)
+- transcript.json (timing source of truth — see narration-map.json
+  for anchor starts, pause windows, scene boundaries)
+- design.md (palette + tone)
+
+Treat `videos/why-text-is-hard-2026-05-07/index.html` as the
+QUALITY BAR. Invent worldbuilding (real-looking reCAPTCHA on a
+real-looking webpage, real-looking research paper, real-looking
+chat log) — NOT generic CSS primitives.
+
+Multi-composition split is fine, but commit to building every
+scene in this session. Do not leave PLACEHOLDER / TO BE BUILT
+stubs.
+
+Surface the studio URL after authoring.</div></pre>
+
+          <div class="pitfall">
+            <div><strong>Scene 1 sets the quality bar.</strong> Generic CSS checkbox in scene 1 → generic CSS everything-else. Real-looking widget in scene 1 → the model carries that worldbuilding forward.</div>
+          </div>
+          <div class="pitfall">
+            <div>Multi-composition split is neutral on creativity but carries a coordination tax. <strong>Either</strong> build all scenes in one session, <strong>or</strong> single-file composition for short videos (≤2–3 min).</div>
+          </div>
+
+          <div class="example-strip">
+            <strong>Captchas</strong>
+            <span>11 scenes · 22:35</span><span class="sep">/</span>
+            <span>real reCAPTCHA, kinetic typography, stat closer</span>
+          </div>
+        </div>
+      </li>
+
+      <!-- 7 -->
+      <li class="stage" data-stage="7" data-iterative>
+        <div class="stage-bullet">07</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Preview + lint iteration</div>
+            <div class="stage-tag plain">hyperframes preview / lint</div>
+          </div>
+          <p class="stage-summary">Scrub the timeline, watch each scene at its hold frame. Inspect at <code>t=mid</code>, not <code>t=0</code> — entrances haven't landed at 0.</p>
+
+          <div class="section-label">Run</div>
+<pre class="code"><div class="code-head"><span>from inside the video folder</span></div><div class="code-body"><span class="cmd">npx hyperframes preview</span>    <span class="comment"># studio URL</span>
+<span class="cmd">npm run check</span>              <span class="comment"># lint + validate + inspect</span>
+<span class="cmd">npx hyperframes lint --verbose</span></div></pre>
+
+          <div class="pitfall">
+            <div><strong>Don't skip preview.</strong> After any composition edit, run <code>npx hyperframes preview</code> and surface the studio URL.</div>
+          </div>
+          <div class="pitfall">
+            <div>If lint warns about something that "looks fine in preview," <strong>fix the lint finding anyway</strong>. Those have caught shippable-looking bugs.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 7.5 — SOUND -->
+      <li class="stage" data-stage="sound" data-iterative>
+        <div class="stage-bullet" style="border-color:var(--border-amber);color:var(--amber);">SFX</div>
+        <div class="stage-card" style="border-color:var(--border-amber);background:linear-gradient(180deg,var(--surface) 0%,rgba(245,158,11,0.025) 100%);">
+          <div class="stage-head">
+            <div class="stage-title">Sound design pass</div>
+            <div class="stage-tag">/sfx-author</div>
+          </div>
+          <p class="stage-summary">After visuals are settled in preview, run the editorial SFX pass: the skill proposes a cue plan, you approve, it writes <code>data-sfx-*</code> annotations and emits <code>compositions/sfx.html</code>. <a href="#" onclick="document.querySelector('[data-tab=&quot;sound&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">See the sound-design tab →</a></p>
+        </div>
+      </li>
+
+      <!-- 8 -->
+      <li class="stage" data-stage="8">
+        <div class="stage-bullet">08</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Thumbnails</div>
+            <div class="stage-tag">/thumbnail-creator</div>
+          </div>
+          <p class="stage-summary">Three variants at 1280×720 (YouTube) or 1080×1920 (Shorts/TikTok). Reads <code>seo/research.json</code> at the paired-title step. Can run any time after stage 2.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li>thumbnail-a.png</li>
+            <li>thumbnail-b.png</li>
+            <li>thumbnail-c.png</li>
+          </ul>
+
+          <div class="section-label">Type</div>
+<pre class="code"><div class="code-head"><span>/thumbnail-creator</span></div><div class="code-body">Generate three thumbnail variants for this video.
+
+<span class="comment"># for vertical/shorts: include the word "vertical"
+# (or "shorts", "tiktok", "9:16")</span></div></pre>
+
+          <div class="pitfall">
+            <div>Don't run before the script is approved — the thumbnail title needs to match the final script's framing.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 9 -->
+      <li class="stage" data-stage="9">
+        <div class="stage-bullet">09</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Render</div>
+            <div class="stage-tag plain">hyperframes render</div>
+          </div>
+          <p class="stage-summary">Run once after lint passes and preview looks right. Render is slow — not during iteration.</p>
+
+          <div class="section-label">Run</div>
+<pre class="code"><div class="code-head"><span>from inside the video folder</span></div><div class="code-body"><span class="cmd">npm run render</span>             <span class="comment"># via package.json</span>
+<span class="cmd">npx hyperframes render</span>     <span class="comment"># direct</span></div></pre>
+
+          <div class="pitfall">
+            <div>If you re-render after edits, delete the old MP4 first to avoid confusion.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 10 -->
+      <li class="stage" data-stage="10">
+        <div class="stage-bullet">10</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Publish</div>
+            <div class="stage-tag plain">hyperframes publish</div>
+          </div>
+          <p class="stage-summary">Shareable link. Download the rendered MP4 to your local edit folder; upload to YouTube with the thumbnail variant chosen at stage 8.</p>
+
+          <div class="section-label">Run</div>
+<pre class="code"><div class="code-head"><span>from inside the video folder</span></div><div class="code-body"><span class="cmd">npm run publish</span>            <span class="comment"># or: npx hyperframes publish</span></div></pre>
+        </div>
+      </li>
+    </ol>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL 2 — sound design
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-sound">
+
+    <div class="sfx-intro">
+      <h2>The editorial brain + two deterministic tools</h2>
+      <p>Sound design is the last authoring pass — runs only after visuals are settled in preview. Phase A separates concerns: a Python CLI builds a metadata catalog of the SFX library, a Claude skill decides which moments earn a hit and which cue type, and a second Python CLI deterministically picks files and emits a HyperFrames audio sub-composition.</p>
+      <p style="color:var(--fg-3);font-size:12px;"><strong style="color:var(--fg-2);">Phase A scope:</strong> SFX placement only. Music beds, ambient drone, sidechain ducking, and master loudness normalization to −14 LUFS / −1 dBTP are Phase B/C.</p>
+    </div>
+
+    <div class="triptych">
+
+      <!-- A1 -->
+      <div class="sfx-card">
+        <div class="sfx-card-head">
+          <span class="sfx-card-code">A1</span>
+          <span class="sfx-card-kind">Python CLI · repo-level</span>
+        </div>
+        <h3>sfx-catalog</h3>
+        <p class="sfx-card-path">tools/sfx-catalog/</p>
+        <p>Indexes the shared SFX library into a metadata catalog: per-asset duration, peak time, candidate cue tags. Runs rarely — only when <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">sound-effects/</code> changes.</p>
+        <div class="sfx-card-row"><span class="k">In</span><span class="v muted">sound-effects/</span></div>
+        <div class="sfx-card-row"><span class="k">Out</span><span class="v">sfx-catalog.yml</span></div>
+        <div class="sfx-card-row"><span class="k">When</span><span class="v muted">rare · library churn</span></div>
+      </div>
+
+      <!-- A2 -->
+      <div class="sfx-card">
+        <div class="sfx-card-head">
+          <span class="sfx-card-code">A2</span>
+          <span class="sfx-card-kind">Claude skill · per video</span>
+        </div>
+        <h3>sfx-author</h3>
+        <p class="sfx-card-path">.claude/skills/sfx-author/</p>
+        <p>The editorial brain. Reads HTML + narration-map + transcript + design.md + catalog. Proposes a cue plan, awaits human approval, then writes <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">data-sfx-*</code> annotations into HTML.</p>
+        <div class="sfx-card-row"><span class="k">In</span><span class="v muted">composition + transcript + catalog</span></div>
+        <div class="sfx-card-row"><span class="k">Out</span><span class="v">data-sfx-* attrs</span></div>
+        <div class="sfx-card-row"><span class="k">When</span><span class="v muted">after preview clean</span></div>
+      </div>
+
+      <!-- A3 -->
+      <div class="sfx-card">
+        <div class="sfx-card-head">
+          <span class="sfx-card-code">A3</span>
+          <span class="sfx-card-kind">Python CLI · per video</span>
+        </div>
+        <h3>sfx-plan</h3>
+        <p class="sfx-card-path">tools/sfx-plan/</p>
+        <p>Deterministic. Reads annotated HTML + narration-map + catalog. Picks file paths via sha256 seeding, stages assets into <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">assets/sfx/</code>, emits the audio sub-composition, and idempotently mounts it.</p>
+        <div class="sfx-card-row"><span class="k">In</span><span class="v muted">annotated HTML + catalog</span></div>
+        <div class="sfx-card-row"><span class="k">Out</span><span class="v">compositions/sfx.html</span></div>
+        <div class="sfx-card-row"><span class="k">When</span><span class="v muted">after skill writes attrs</span></div>
+      </div>
+    </div>
+
+    <div class="lifecycle">
+      <h3>Lifecycle</h3>
+      <p class="lifecycle-sub">Two cadences: catalog churn (rare) vs. per-video sound pass (every video).</p>
+
+      <div class="flow">
+
+        <div class="flow-row">
+          <div class="flow-rail">Once · per<span class="when">library state</span></div>
+          <div class="flow-node">
+            <span class="label">sound-effects/</span>
+            <span>shared SFX library, ~1416 assets</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-arrow">↓</div></div>
+        <div class="flow-row">
+          <div class="flow-rail"></div>
+          <div class="flow-node">
+            <span class="label">A1</span>
+            <span>sfx-catalog · indexes assets, emits metadata</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-arrow">↓</div></div>
+        <div class="flow-row">
+          <div class="flow-rail"></div>
+          <div class="flow-node">
+            <span class="label">OUT</span>
+            <span>sound-effects/sfx-catalog.yml · committed</span>
+          </div>
+        </div>
+
+        <div class="flow-row" style="margin-top:20px;">
+          <div class="flow-rail">Per video · after<span class="when">composition done<br/>+ previewed clean</span></div>
+          <div class="flow-node">
+            <span class="label">A2</span>
+            <span>user invokes /sfx-author</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-loop">reads HTML, narration-map, transcript, design.md, catalog</div></div>
+        <div class="flow-row"><div class="flow-loop">proposes cue plan: <em>"17 cues — 4 whooshes, 8 ticks, 3 booms, 2 risers"</em></div></div>
+        <div class="flow-row"><div class="flow-arrow">↓</div></div>
+        <div class="flow-row">
+          <div class="flow-rail"></div>
+          <div class="flow-node gate">
+            <span class="label">GATE</span>
+            <span>HUMAN REVIEW · approve / refine / abort</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-arrow">↓ on approve</div></div>
+        <div class="flow-row">
+          <div class="flow-rail"></div>
+          <div class="flow-node">
+            <span class="label">A2</span>
+            <span>writes data-sfx-* attrs into HTML, extends anchors.txt if needed</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-arrow">↓</div></div>
+        <div class="flow-row">
+          <div class="flow-rail"></div>
+          <div class="flow-node">
+            <span class="label">A3</span>
+            <span>sfx-plan · stages assets, emits compositions/sfx.html, mounts layer</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-arrow">↓</div></div>
+        <div class="flow-row">
+          <div class="flow-rail"></div>
+          <div class="flow-node">
+            <span class="label">OUT</span>
+            <span>npx hyperframes preview · studio URL surfaced</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-loop">user audits in preview → asks skill to refine specific cues → loop</div></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL 3 — smell tests
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-smells">
+
+    <div class="smells-intro">
+      <p><strong>If any of these are true mid-pipeline, you are heading toward the captchas-failure mode.</strong> Reset to maiden-video conditions and re-invoke <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">/hyperframes</code> with an explicit quality-bar reference.</p>
+    </div>
+
+    <div class="section-label" style="margin-bottom:12px;">Failure smells</div>
+    <ul class="smell-list">
+      <li><code>design.md</code> is over <strong>60 lines</strong></li>
+      <li><code>.hyperframes/expanded-prompt.md</code> exists and is over <strong>100 lines</strong></li>
+      <li><code>compositions/</code> contains files marked <code>PLACEHOLDER</code> or <code>[ TO BE BUILT ]</code></li>
+      <li>The Scene 1 thumbnail is a <strong>CSS primitive</strong>, not a real-looking artifact</li>
+      <li>The session is on turn <strong>7+</strong> and Scene 1 isn't built yet</li>
+      <li>An intermediate spec file <strong>cites a project rule then violates it</strong></li>
+    </ul>
+
+    <div class="section-label" style="margin-bottom:12px;">Rules going forward</div>
+    <div class="rule-list">
+
+      <div class="rule">
+        <div class="rule-num">01</div>
+        <div>
+          <h4>Keep design.md ≤ ~50 lines</h4>
+          <p>Palette · typography · motion · 5–6 don'ts. <strong>Not</strong>: atmosphere-layer recipes, transition tables, component formulas. Add those only after the <strong>third</strong> video proves you keep reaching for the same primitive — premature abstraction otherwise.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-num">02</div>
+        <div>
+          <h4>Skip expanded-prompt.md by default</h4>
+          <p>Heavy scaffolding that pre-decides every scene's depth layers, verbs, and transitions. Use only when runtime is 6+ minutes <strong>and</strong> beats genuinely need explicit per-scene timing locks <strong>and</strong> you'll treat the expansion as a constraint envelope (palette + anchor timings + transition out), not a scene script.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div>
+          <h4>Multi-composition split is fine — but build every scene</h4>
+          <p>Pre-scaffolding <code>compositions/scene-01.html</code>…<code>scene-11.html</code> is neutral on creativity but creates a coordination tax. <strong>Either</strong> build all scenes in one session, <strong>or</strong> single-file composition for short videos (≤2–3 min). Don't end with placeholder stubs.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-num">04</div>
+        <div>
+          <h4>The first scene sets the quality bar</h4>
+          <p>Generic CSS checkbox in scene 1 → generic CSS everything-else. Real-looking reCAPTCHA in scene 1 → the model carries that worldbuilding forward. When invoking <code>/hyperframes</code>, <strong>point at a known-good reference video</strong> as the explicit quality bar.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-num">05</div>
+        <div>
+          <h4>First-message specificity matters</h4>
+          <p>"What's next?" lets the skill machinery default to its heaviest path. Specificity anchors a small, concrete first step and lets the build grow iteratively. <strong>The first message should name one concrete artifact</strong>, not ask for direction.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-num">06</div>
+        <div>
+          <h4>Pipeline-emitted artifacts respect project CLAUDE.md</h4>
+          <p>Every intermediate artifact (<code>design.md</code>, <code>expanded-prompt.md</code>, per-scene spec) has to pass the same project rules the final composition does. The captchas <code>expanded-prompt.md</code> cited the no-chrome rule in its negative-prompt section, then prescribed <code>VERIFICATION · 1 / 1</code> in beat 1. A meta-check at the end of any spec-generating step catches this.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── footnote ─────────────────────────────────────────── -->
+  <footer class="footnote">
+    <div>learnings/pipeline.html · companion to <a href="pipeline.md">pipeline.md</a> &amp; <a href="composition-spec-over-restriction.md">composition-spec-over-restriction.md</a></div>
+    <div>hyper-frames · 2026</div>
+  </footer>
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const panels = {
+    pipeline: document.getElementById('panel-pipeline'),
+    sound:    document.getElementById('panel-sound'),
+    smells:   document.getElementById('panel-smells'),
+  };
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+      const target = tab.dataset.tab;
+      Object.entries(panels).forEach(([k, p]) => {
+        if (k === target) p.setAttribute('data-active', '');
+        else p.removeAttribute('data-active');
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
