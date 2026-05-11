@@ -83,3 +83,68 @@ Optional, per-video:
 4. Never edit `compositions/sfx.html` by hand. Always run `tools/sfx-plan`.
 5. If `sfx-catalog.yml` is missing, stop and direct the user to run
    `uv run --project tools/sfx-catalog sfx-catalog`. Do not proceed without it.
+
+## Playbook
+
+You operate from principles, technical floors, a cue character vocabulary, and
+worked examples. You **do not** consult a rigid CSS-class-to-cue mapping table.
+That kind of pre-decoding is what failed in
+`learnings/composition-spec-over-restriction.md` — it strips the editorial leap
+that distinguishes a real-looking moment from a generic one.
+
+### Placement principles
+
+- Score moments that *earn* a hit — the spoken payoff, the visual punchline,
+  the threshold cross between scenes, the reveal of the line that the line is
+  about.
+- Skip texture (typewriter chatter, decorative drift, ambient pulses) — they
+  belong to atmosphere, not punctuation.
+- Lead sound ahead of picture. The ear is faster than the eye; a cue that lands
+  exactly on the frame feels late.
+- Match cue character to what the moment is *doing*, not to what CSS class the
+  element wears.
+- When in doubt, score less. Silence is a tool, and an unused cue is cheaper
+  than a wrong one.
+- Read the script (`transcript.json`) first; only then look at the HTML.
+
+### Technical floors (mix-craft physics, not aesthetic preferences)
+
+These are not negotiable. Violating them produces an actually worse mix.
+
+- **Peak alignment.** A cue's *peak* (catalog `peak_time_s`) lands on the
+  anchor's `start`, not the cue's start. `tools/sfx-plan` does this math for
+  you — your job is to pick the anchor correctly.
+- **Default leads.** `-50ms` for `ui-tick`, `-150ms` for `whoosh`, `0ms` for
+  `boom`, `-(duration)` for `riser`. Override via `data-sfx-lead-ms` only when
+  you have a specific reason — keep a note in the proposal saying why.
+- **Same-cue cooldowns.** `ui-tick` ≥ 2s apart; `whoosh` ≥ 4s apart;
+  `boom` ≥ 30s apart. Two ticks 1.2s apart smear; the ear hears one event
+  smeared over both, not two.
+- **Density ceiling.** ≤ 1 cue per 3s rolling average across the whole video.
+  Above ~1 per 1.5s, the tool will hard-fail — and rightly so, because the
+  ducking math thrashes and VO intelligibility collapses.
+
+### Cue character library
+
+Pick by **intent**, not by element type. Five cues plus the option of silence.
+
+| Cue       | Character           | Best when the moment is…                                              |
+|-----------|---------------------|------------------------------------------------------------------------|
+| `whoosh`  | spatial motion      | crossing a threshold, entering/exiting a frame, scene transitions      |
+| `ui-tick` | discrete arrival    | a thing snapping into place, a label landing, a small reveal           |
+| `pop`     | playful arrival     | softer than tick — lighter or rhythmic reveals                         |
+| `boom`    | weight / finality   | scale, gravitas, the line that lands                                   |
+| `riser`   | build-to-payoff     | tension into a reveal, the climb before the hit                        |
+| *(none)*  | negative space      | the punchline is *the silence*; or the texture is texture              |
+
+Available cues are defined in `sfx-catalog.yml`'s `cues:` section. If you need
+a cue that isn't there, *stop and surface the gap* — don't author against an
+imaginary cue. Adding new cues is catalog work, outside this skill's scope.
+
+### Hook moment
+
+Each video has at most **one** "hook moment" — the largest emotional or
+informational beat. Mark it on its element with `data-sfx-hook="true"`. In
+Phase A this is a breadcrumb only (no audio change). Phase C will use it to
+mute music/ambience for ~500ms before the moment (pre-impact silence). Choose
+the hook carefully; if you can't identify a single clear hook, omit the tag.
