@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from sfx_catalog.catalog import scan_audio_files, sha256_file
+from sfx_catalog.catalog import build_entry, scan_audio_files, sha256_file
 
 
 def test_scan_finds_wav_and_mp3_recursively(library_dir: Path) -> None:
@@ -31,3 +31,17 @@ def test_sha256_is_stable_for_same_bytes(tmp_path: Path) -> None:
     h2 = sha256_file(p)
     assert h1 == h2
     assert len(h1) == 64
+
+
+def test_build_entry_for_impulse(library_dir: Path) -> None:
+    path = library_dir / "Mister Horse " / " Click" / "click-01.wav"
+    entry = build_entry(path, root=library_dir)
+    assert entry.path == "Mister Horse / Click/click-01.wav"
+    assert entry.library == "Mister Horse "
+    assert entry.category == " Click"
+    assert entry.format == "wav"
+    assert entry.duration_s > 0
+    assert entry.peak_time_s > 0
+    assert "click" in entry.tags
+    assert entry.auto_role in ("accent", "impact")
+    assert len(entry.sha256) == 64

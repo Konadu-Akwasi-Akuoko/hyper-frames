@@ -24,3 +24,71 @@ def sha256_file(path: Path, chunk_size: int = 1 << 20) -> str:
         while chunk := f.read(chunk_size):
             h.update(chunk)
     return h.hexdigest()
+
+
+from sfx_catalog.core import CatalogEntry
+from sfx_catalog.metrics import (
+    basic_metadata,
+    brightness_for,
+    measure_envelope_times,
+    measure_lufs,
+    measure_peak,
+    measure_rms,
+    measure_spectral,
+)
+from sfx_catalog.tagging import derive_auto_role, derive_tags
+
+
+def build_entry(path: Path, root: Path) -> CatalogEntry:
+    """Measure one audio file and return its CatalogEntry."""
+    rel = path.relative_to(root).as_posix()
+    parts = rel.split("/")
+    library = parts[0] if parts else ""
+    category = parts[-2] if len(parts) >= 2 else library
+
+    basic = basic_metadata(path)
+    peak_dbfs, peak_time_s = measure_peak(path)
+    rms_dbfs = measure_rms(path)
+    integrated_lufs = measure_lufs(path)
+    onset_time_s, attack_time_s, tail_time_s = measure_envelope_times(path)
+    spectral = measure_spectral(path)
+    brightness = brightness_for(spectral["spectral_centroid_hz"])
+    tags = derive_tags(
+        rel_path=rel,
+        duration_s=basic["duration_s"],
+        attack_time_s=attack_time_s,
+        brightness=brightness,
+    )
+    auto_role = derive_auto_role(
+        category=category,
+        duration_s=basic["duration_s"],
+        attack_time_s=attack_time_s,
+        low_energy_pct=spectral["low_energy_pct"],
+        peak_time_s=peak_time_s,
+    )
+
+    return CatalogEntry(
+        path=rel,
+        library=library,
+        category=category,
+        duration_s=round(basic["duration_s"], 4),
+        sample_rate=basic["sample_rate"],
+        channels=basic["channels"],
+        format=basic["format"],
+        bit_depth=basic["bit_depth"],
+        sha256=sha256_file(path),
+        peak_dbfs=round(peak_dbfs, 2),
+        peak_time_s=round(peak_time_s, 4),
+        integrated_lufs=round(integrated_lufs, 2) if integrated_lufs != float("-inf") else -999.0,
+        rms_dbfs=round(rms_dbfs, 2),
+        onset_time_s=round(onset_time_s, 4),
+        attack_time_s=round(attack_time_s, 4),
+        tail_time_s=round(tail_time_s, 4),
+        spectral_centroid_hz=round(spectral["spectral_centroid_hz"], 1),
+        brightness=brightness,
+        low_energy_pct=spectral["low_energy_pct"],
+        mid_energy_pct=spectral["mid_energy_pct"],
+        high_energy_pct=spectral["high_energy_pct"],
+        tags=tags,
+        auto_role=auto_role,
+    )
