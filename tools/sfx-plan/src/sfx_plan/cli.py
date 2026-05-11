@@ -7,7 +7,7 @@ from pathlib import Path
 
 from sfx_plan.annotations import scan_annotations
 from sfx_plan.catalog import load_catalog
-from sfx_plan.emit import ensure_mount, render_sfx_html
+from sfx_plan.emit import ensure_mount, render_sfx_html, stage_assets
 from sfx_plan.errors import SfxPlanError
 from sfx_plan.narration import load_narration_map
 from sfx_plan.plan import Cue, build_plan
@@ -108,17 +108,19 @@ def main(argv: list[str] | None = None) -> int:
 
     sfx_html_path = video_dir / "compositions" / "sfx.html"
     sfx_html_path.parent.mkdir(exist_ok=True)
+    staged = stage_assets(cues, sound_effects_root=sound_effects_root, video_dir=video_dir)
     sfx_html_path.write_text(
         render_sfx_html(
             cues=cues,
             sfx_html_path=sfx_html_path,
-            sound_effects_root=sound_effects_root,
+            video_dir=video_dir,
+            staged=staged,
             catalog_sha=catalog.get("library_sha", ""),
             total_duration_s=total_duration_s,
         ),
         encoding="utf-8",
     )
-    mounted = ensure_mount(video_dir / "index.html")
+    mounted = ensure_mount(video_dir / "index.html", total_duration_s=total_duration_s)
     note = " (mounted sfx-layer in index.html)" if mounted else ""
     print(f"{len(cues)} cues placed, {len(warnings)} warnings, wrote {sfx_html_path}{note}")
     return 0
