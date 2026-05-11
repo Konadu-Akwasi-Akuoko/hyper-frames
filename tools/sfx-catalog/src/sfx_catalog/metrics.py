@@ -42,3 +42,31 @@ def basic_metadata(path: Path) -> dict[str, Any]:
         "format": suffix,
         "bit_depth": bit_depth,
     }
+
+
+def _load_mono(path: Path) -> tuple[np.ndarray, int]:
+    """Load audio as float32 mono, downmixing if needed."""
+    data, sr = sf.read(path, dtype="float32", always_2d=True)
+    mono = data.mean(axis=1)
+    return mono, int(sr)
+
+
+def measure_peak(path: Path) -> tuple[float, float]:
+    """Return (peak_dbfs, peak_time_s) — the absolute peak and its time."""
+    mono, sr = _load_mono(path)
+    if mono.size == 0:
+        return -math.inf, 0.0
+    peak_idx = int(np.argmax(np.abs(mono)))
+    peak_sample = float(abs(mono[peak_idx]))
+    peak_dbfs = 20.0 * math.log10(max(peak_sample, 1e-9))
+    peak_time_s = peak_idx / sr
+    return peak_dbfs, peak_time_s
+
+
+def measure_rms(path: Path) -> float:
+    """Return integrated RMS in dBFS over the whole file (mono-summed)."""
+    mono, _sr = _load_mono(path)
+    if mono.size == 0:
+        return -math.inf
+    rms = float(np.sqrt(np.mean(np.square(mono))))
+    return 20.0 * math.log10(max(rms, 1e-9))
