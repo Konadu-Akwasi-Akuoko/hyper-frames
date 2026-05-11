@@ -148,3 +148,124 @@ informational beat. Mark it on its element with `data-sfx-hook="true"`. In
 Phase A this is a breadcrumb only (no audio change). Phase C will use it to
 mute music/ambience for ~500ms before the moment (pre-impact silence). Choose
 the hook carefully; if you can't identify a single clear hook, omit the tag.
+
+## The proposal you produce before any edit
+
+Before touching HTML, print a plan in the exact format below. The full template
+with annotations lives at `reference/proposal-template.md`; this is the
+inline version.
+
+```
+SFX CUE PLAN — <slug>
+Runtime <mm:ss> · <N> scenes detected
+Read design.md as: <one-line characterization>
+(informs cue character choice; no mechanical keyword-to-caps mapping)
+
+Scene 1 (00:00–<scene end>) "<scene title or first-line gist>"
+  ✗ skip   <element ref>                            (<reason in 6–10 words>)
+  ✓ <mm:ss.ms>  anchor="<word>" [idx=<N>]  <cue>  on <element ref>   (<one-line reason>)
+  ...
+
+Scene 2 ...
+
+TOTAL: <count> cues  (breakdown by type)
+DENSITY: 1 cue / <X.Xs> avg
+NEW ANCHORS NEEDED: <list — empty if none>
+NOTES:
+  • <anything the user should know — e.g. hook moment, design.md tone read>
+
+Approve to write annotations into HTML?  [yes / refine / abort]
+```
+
+Rules for the proposal:
+
+- Every line shows either `✓` (will write) or `✗ skip` (considered, deliberately
+  not scoring). Skips are as important as wrote-ins — they make your editorial
+  reasoning legible.
+- Reason fields stay short. The full thinking belongs in your own head; the
+  proposal is a contract surface.
+- `NEW ANCHORS NEEDED` lists any `data-sfx-anchor` values you intend to use that
+  don't yet appear in `narration-map.json`. If the list is non-empty, your first
+  write action is to extend `anchors.txt` and re-run `tools/narration-map` —
+  before any HTML edit.
+
+## Refine loop
+
+The user can respond with `refine` plus natural-language instructions. Treat
+each refine as a transformation on the current plan:
+
+- "drop the boom in scene 3" → remove that line, re-print plan.
+- "the hook is 02:48 not 03:41" → move the `data-sfx-hook` tag to the element
+  spoken at 02:48, re-print plan.
+- "score the Bézier markers after all — make them quieter" → add `ui-tick` cues
+  with `data-sfx-volume="0.5"` on those elements, re-print plan.
+- "the whoosh into scene 3 lands late" → after the plan is written, this is a
+  post-preview refine: add `data-sfx-lead-ms="-200"` to that element and re-run
+  `tools/sfx-plan`.
+
+Loop until the user types `yes`/`approve`/`go`. Then write.
+
+## After approval
+
+1. If `NEW ANCHORS NEEDED` is non-empty: append each anchor on its own line to
+   `anchors.txt` (preserve existing entries; add a `# sfx` comment block if
+   useful for legibility). Then run:
+
+   ```bash
+   uv run --project ../../tools/narration-map narration-map \
+       transcript.json --anchors anchors.txt
+   ```
+
+   from the video folder. Verify the new anchors appear in the regenerated
+   `narration-map.json` before continuing.
+
+2. Use the `Edit` tool to add `data-sfx-*` attributes to each scored element.
+   One element per Edit call. Never reformat surrounding HTML.
+
+3. From the video folder, run:
+
+   ```bash
+   uv run --project ../../tools/sfx-plan sfx-plan --report
+   ```
+
+   Report the cue count, warning count, and the studio URL.
+
+4. Run `npx hyperframes preview`. Surface the URL the user should open. Stop
+   and wait for their audit feedback.
+
+5. On feedback, loop back into the refine flow.
+
+## Failure modes you must handle gracefully
+
+- **`sfx-catalog.yml` missing** → instruct the user to build it
+  (`uv run --project tools/sfx-catalog sfx-catalog`) and stop.
+- **Anchor not resolvable after extending `anchors.txt`** → the anchor text
+  isn't a literal substring of the transcript. Surface the candidate words from
+  `transcript.json` that are nearby in time and ask the user to choose a real
+  anchor word.
+- **`tools/sfx-plan` raises `DensityViolationError`** → the plan was too dense
+  even though you tried to honor the ceiling. Drop the lowest-priority cues in
+  the densest window and re-run.
+- **Composition has placeholder stubs** (`[ TO BE BUILT ]` etc.) → stop. SFX is
+  the last pass; visuals must be done first.
+- **User asks for a cue not in `sfx-catalog.yml`'s `cues:` section** → don't
+  invent. Tell the user the available cues; suggest a similar one; offer to
+  open a catalog-revision task.
+
+## Skill's checklist when invoked
+
+When this skill is invoked, use `TaskCreate` to add these items and execute
+them in order:
+
+1. Verify visuals are settled (no placeholders; preview is clean).
+2. Load all inputs; verify `sfx-catalog.yml` version matches.
+3. Walk HTML + transcript + narration-map. Identify candidate moments.
+4. Apply placement principles. Pick cue character from the library.
+5. Apply technical floors (cooldowns, density ceiling).
+6. Produce the proposal in the exact format above.
+7. **WAIT for user approval. Hard gate.**
+8. If new anchors needed: extend `anchors.txt`, re-run `tools/narration-map`.
+9. Write `data-sfx-*` attributes via `Edit` (one element at a time).
+10. Run `tools/sfx-plan --report`.
+11. Run `npx hyperframes preview` and surface the URL.
+12. Wait for audit feedback; loop step 9 onward on refines.
