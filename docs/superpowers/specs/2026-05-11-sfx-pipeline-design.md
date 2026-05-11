@@ -265,7 +265,9 @@ Before writing any annotation, the skill prints a plan and waits for explicit ap
 
 ```
 SFX CUE PLAN — how-does-captchas-work-2026-05-10
-Runtime 4:12 · 4 scenes detected · design.md tone: "editorial restraint"
+Runtime 4:12 · 4 scenes detected
+Read design.md as: editorial / restrained (informs cue character choice;
+no mechanical keyword-to-caps mapping — see Playbook)
 
 Scene 1 (00:00–01:08) "Hook"
   ✗ skip   typewriter on #s1-typed             (texture, not punctuation)
