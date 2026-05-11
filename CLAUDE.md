@@ -101,6 +101,33 @@ Writes `<video-dir>/seo/research.json`. See the skill's
 `reference/consumer-integration.md` for which fields each consumer skill
 uses.
 
+### Sound design — the last authoring pass
+
+Sound design follows visuals, never drives them. Run it only after the
+composition is settled in `npx hyperframes preview`.
+
+The pipeline ships with:
+
+- A shared SFX library at `sound-effects/` (~1416 assets across 4 sub-libraries).
+- A repo-level metadata catalog at `sound-effects/sfx-catalog.yml` (committed;
+  rebuild only when the library changes via `uv run --project tools/sfx-catalog sfx-catalog`).
+- A Claude skill at `.claude/skills/sfx-author/` that proposes a cue plan,
+  awaits human approval, and writes `data-sfx-*` annotations into the HTML.
+- A deterministic placement tool at `tools/sfx-plan/` that resolves
+  annotations into a native HyperFrames audio sub-composition at
+  `compositions/sfx.html`.
+
+Invoke the skill when visuals are done and you want SFX:
+
+> "add sound design to this video" / "score this composition" / "do the sfx pass"
+
+The skill always proposes its full plan before writing anything. Treat the
+proposal as the contract — refine before approval, not after the fact.
+
+**Phase A scope, by design.** This pipeline handles SFX placement only. Music
+beds, ambient drone, sidechain ducking, and master loudness normalization to
+−14 LUFS / −1 dBTP are Phase B/C — explicit non-goals for now.
+
 ### 2. Lint / inspect / preview before declaring done
 
 The HyperFrames CLI loop catches real bugs (overlapping tweens, contrast failures,
