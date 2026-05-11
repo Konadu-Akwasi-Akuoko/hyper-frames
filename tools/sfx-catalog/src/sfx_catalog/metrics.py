@@ -5,6 +5,7 @@ import math
 from pathlib import Path
 from typing import Any
 
+import librosa
 import numpy as np
 import pyloudnorm as pyln
 import soundfile as sf
@@ -126,3 +127,63 @@ def measure_envelope_times(path: Path) -> tuple[float, float, float]:
     tail_samples = int(drop_rel[0]) if drop_rel.size else after.size
     tail_time_s = tail_samples / sr
     return onset_time_s, attack_time_s, tail_time_s
+
+
+def measure_spectral(path: Path) -> dict[str, Any]:
+    """Compute spectral centroid (Hz) and energy percentages in three bands.
+
+    Bands: low (<250 Hz), mid (250-2000 Hz), high (>2000 Hz). Percentages
+    are rounded to ints summing to ~100.
+    """
+    mono, sr = _load_mono(path)
+    if mono.size == 0:
+        return {
+            "spectral_centroid_hz": 0.0,
+            "low_energy_pct": 0,
+            "mid_energy_pct": 0,
+            "high_energy_pct": 0,
+        }
+
+    n_fft = min(2048, len(mono))
+    if n_fft < 32:
+        return {
+            "spectral_centroid_hz": 0.0,
+            "low_energy_pct": 33, "mid_energy_pct": 34, "high_energy_pct": 33,
+        }
+
+    centroid = float(np.mean(librosa.feature.spectral_centroid(y=mono, sr=sr, n_fft=n_fft)))
+
+    spec = np.abs(librosa.stft(mono, n_fft=n_fft, hop_length=n_fft // 4))
+    power = np.square(spec).sum(axis=1)
+    freqs = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
+    total = float(power.sum())
+    if total <= 0:
+        low = mid = high = 0.0
+    else:
+        low = float(power[freqs < 250].sum()) / total
+        mid = float(power[(freqs >= 250) & (freqs < 2000)].sum()) / total
+        high = float(power[freqs >= 2000].sum()) / total
+
+    raw = np.array([low, mid, high]) * 100
+    rounded = np.round(raw).astype(int)
+    drift = 100 - int(rounded.sum())
+    if drift != 0:
+        idx = int(np.argmax(raw - rounded))
+        rounded[idx] += drift
+    return {
+        "spectral_centroid_hz": centroid,
+        "low_energy_pct": int(rounded[0]),
+        "mid_energy_pct": int(rounded[1]),
+        "high_energy_pct": int(rounded[2]),
+    }
+
+
+def brightness_for(centroid_hz: float) -> str:
+    """Map spectral centroid to a coarse brightness enum."""
+    if centroid_hz < 1000:
+        return "dark"
+    if centroid_hz < 3000:
+        return "warm"
+    if centroid_hz < 6000:
+        return "bright"
+    return "airy"
