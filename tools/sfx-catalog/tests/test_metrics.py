@@ -6,10 +6,12 @@ from pathlib import Path
 
 from sfx_catalog.metrics import (
     basic_metadata,
+    brightness_for,
     measure_envelope_times,
     measure_lufs,
     measure_peak,
     measure_rms,
+    measure_spectral,
 )
 
 
@@ -49,3 +51,23 @@ def test_envelope_times_on_swell(swell_wav: Path) -> None:
     onset, attack, tail = measure_envelope_times(swell_wav)
     assert 0.4 < attack < 0.9
     assert tail > 0.05
+
+
+def test_spectral_centroid_near_sine_frequency(sine_1k_wav: Path, sine_4k_wav: Path) -> None:
+    s1 = measure_spectral(sine_1k_wav)
+    s4 = measure_spectral(sine_4k_wav)
+    assert math.isclose(s1["spectral_centroid_hz"], 1000.0, rel_tol=0.1)
+    assert math.isclose(s4["spectral_centroid_hz"], 4000.0, rel_tol=0.1)
+
+
+def test_band_energy_percents_sum_to_100(sine_1k_wav: Path) -> None:
+    s = measure_spectral(sine_1k_wav)
+    total = s["low_energy_pct"] + s["mid_energy_pct"] + s["high_energy_pct"]
+    assert abs(total - 100) <= 1
+
+
+def test_brightness_buckets_map_centroid_to_enum() -> None:
+    assert brightness_for(500.0) == "dark"
+    assert brightness_for(2000.0) == "warm"
+    assert brightness_for(4500.0) == "bright"
+    assert brightness_for(8000.0) == "airy"
