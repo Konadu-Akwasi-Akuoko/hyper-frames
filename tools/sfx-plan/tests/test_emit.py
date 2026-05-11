@@ -1,26 +1,70 @@
-"""Tests for sfx.html emission and index.html mount wiring."""
+"""Tests for sfx.html emission, asset staging, and index.html mount wiring."""
 from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from sfx_plan.plan import Cue
-from sfx_plan.emit import render_sfx_html, ensure_mount
+from sfx_plan.emit import (
+    SFX_LAYER_ID,
+    ensure_mount,
+    render_sfx_html,
+    stage_assets,
+)
 
 
-def _cue(start: float = 1.0, cue: str = "ui-tick") -> Cue:
+def _cue(start: float = 1.0, cue: str = "ui-tick", src: str = "Mister Horse/Click/click-bright-01.wav") -> Cue:
     return Cue(
         data_start=start, duration_s=0.4, volume=0.8, pan=0.0,
-        track_index=20, src="Mister Horse/Click/click-bright-01.wav",
+        track_index=20, src=src,
         cue=cue, anchor="foo", anchor_index=1,
         source="index.html:9", clamped=False,
     )
 
 
-def test_render_includes_generated_header() -> None:
+@pytest.fixture
+def staged_video(tmp_path: Path) -> tuple[Path, Path, dict[str, str]]:
+    """A scratch video folder + sound-effects root + staged-asset map."""
+    video = tmp_path / "videos" / "demo"
+    video.mkdir(parents=True)
+    (video / "compositions").mkdir()
+    sfx_root = tmp_path / "sound-effects"
+    asset_path = sfx_root / "Mister Horse" / "Click" / "click-bright-01.wav"
+    asset_path.parent.mkdir(parents=True)
+    asset_path.write_bytes(b"\x00\x01\x02")
+    cues = [_cue()]
+    staged = stage_assets(cues, sound_effects_root=sfx_root, video_dir=video)
+    return video, sfx_root, staged
+
+
+def test_stage_assets_copies_into_video_folder(staged_video) -> None:
+    video, _root, staged = staged_video
+    assert staged["Mister Horse/Click/click-bright-01.wav"] == "assets/sfx/click-bright-01.wav"
+    assert (video / "assets" / "sfx" / "click-bright-01.wav").exists()
+
+
+def test_stage_assets_handles_name_collisions(tmp_path: Path) -> None:
+    video = tmp_path / "v"; video.mkdir()
+    sfx_root = tmp_path / "sfx"
+    (sfx_root / "A" / "shared").mkdir(parents=True)
+    (sfx_root / "B" / "shared").mkdir(parents=True)
+    (sfx_root / "A" / "shared" / "x.wav").write_bytes(b"\x00")
+    (sfx_root / "B" / "shared" / "x.wav").write_bytes(b"\x00\x01\x02")
+    cues = [_cue(src="A/shared/x.wav"), _cue(src="B/shared/x.wav")]
+    staged = stage_assets(cues, sound_effects_root=sfx_root, video_dir=video)
+    assert staged["A/shared/x.wav"] != staged["B/shared/x.wav"]
+    assert (video / staged["A/shared/x.wav"]).exists()
+    assert (video / staged["B/shared/x.wav"]).exists()
+
+
+def test_render_includes_generated_header(staged_video) -> None:
+    video, _root, staged = staged_video
     text = render_sfx_html(
         cues=[_cue()],
-        sfx_html_path=Path("videos/demo/compositions/sfx.html"),
-        sound_effects_root=Path("sound-effects"),
+        sfx_html_path=video / "compositions" / "sfx.html",
+        video_dir=video,
+        staged=staged,
         catalog_sha="abc123",
         total_duration_s=60.0,
     )
@@ -28,26 +72,63 @@ def test_render_includes_generated_header() -> None:
     assert "do not edit" in text.lower()
 
 
-def test_render_emits_audio_tag_per_cue_with_relative_src() -> None:
+def test_render_wraps_in_template_and_composition_root(staged_video) -> None:
+    video, _root, staged = staged_video
     text = render_sfx_html(
         cues=[_cue()],
-        sfx_html_path=Path("videos/demo/compositions/sfx.html"),
-        sound_effects_root=Path("sound-effects"),
+        sfx_html_path=video / "compositions" / "sfx.html",
+        video_dir=video,
+        staged=staged,
         catalog_sha="abc",
         total_duration_s=60.0,
     )
-    assert 'src="../../../sound-effects/Mister Horse/Click/click-bright-01.wav"' in text
+    assert f'<template id="{SFX_LAYER_ID}-template">' in text
+    assert f'data-composition-id="{SFX_LAYER_ID}"' in text
+    assert 'data-width="1920"' in text
+    assert 'data-height="1080"' in text
+
+
+def test_render_registers_timeline(staged_video) -> None:
+    video, _root, staged = staged_video
+    text = render_sfx_html(
+        cues=[_cue()],
+        sfx_html_path=video / "compositions" / "sfx.html",
+        video_dir=video,
+        staged=staged,
+        catalog_sha="abc",
+        total_duration_s=60.0,
+    )
+    assert "window.__timelines" in text
+    assert f'window.__timelines["{SFX_LAYER_ID}"]' in text
+    assert "gsap.timeline" in text
+
+
+def test_render_emits_audio_with_id_clip_and_staged_src(staged_video) -> None:
+    video, _root, staged = staged_video
+    text = render_sfx_html(
+        cues=[_cue()],
+        sfx_html_path=video / "compositions" / "sfx.html",
+        video_dir=video,
+        staged=staged,
+        catalog_sha="abc",
+        total_duration_s=60.0,
+    )
+    assert 'id="sfx-001-ui-tick-foo"' in text
+    assert 'class="clip"' in text
+    assert 'src="../assets/sfx/click-bright-01.wav"' in text
     assert 'data-start="1.0"' in text
     assert 'data-duration="0.4"' in text
     assert 'data-volume="0.8"' in text
     assert 'data-track-index="20"' in text
 
 
-def test_render_includes_source_comment_per_cue() -> None:
+def test_render_includes_source_comment_per_cue(staged_video) -> None:
+    video, _root, staged = staged_video
     text = render_sfx_html(
         cues=[_cue()],
-        sfx_html_path=Path("videos/demo/compositions/sfx.html"),
-        sound_effects_root=Path("sound-effects"),
+        sfx_html_path=video / "compositions" / "sfx.html",
+        video_dir=video,
+        staged=staged,
         catalog_sha="abc",
         total_duration_s=60.0,
     )
@@ -56,17 +137,26 @@ def test_render_includes_source_comment_per_cue() -> None:
     assert "cue=ui-tick" in text
 
 
-def test_render_sorts_by_data_start() -> None:
+def test_render_sorts_by_data_start(staged_video) -> None:
+    video, _root, staged = staged_video
     text = render_sfx_html(
         cues=[_cue(start=5.0), _cue(start=1.0), _cue(start=3.0)],
-        sfx_html_path=Path("videos/demo/compositions/sfx.html"),
-        sound_effects_root=Path("sound-effects"),
+        sfx_html_path=video / "compositions" / "sfx.html",
+        video_dir=video,
+        staged=staged,
         catalog_sha="abc",
         total_duration_s=60.0,
     )
-    starts = [line for line in text.splitlines() if 'data-start="' in line]
-    extracted = [float(line.split('data-start="')[1].split('"')[0]) for line in starts]
-    assert extracted == sorted(extracted)
+    starts = [line for line in text.splitlines() if 'data-start="' in line and "audio" not in line]
+    # extract data-start values in order of appearance
+    extracted = []
+    for line in text.splitlines():
+        if 'data-start="' in line and 'audio' not in line:
+            continue
+    # Simpler: find all data-start occurrences in audio blocks
+    import re
+    starts_in_audio = [float(m) for m in re.findall(r'data-start="([0-9.]+)"', text)]
+    assert starts_in_audio == sorted(starts_in_audio)
 
 
 def test_ensure_mount_inserts_when_missing(tmp_path: Path) -> None:
@@ -75,19 +165,21 @@ def test_ensure_mount_inserts_when_missing(tmp_path: Path) -> None:
         '<html>\n<body>\n  <div id="root"></div>\n</body>\n</html>\n',
         encoding="utf-8",
     )
-    inserted = ensure_mount(idx)
+    inserted = ensure_mount(idx, total_duration_s=60.0)
     text = idx.read_text(encoding="utf-8")
     assert inserted is True
     assert 'data-composition-src="compositions/sfx.html"' in text
+    assert 'data-start="0"' in text
+    assert 'data-duration="60.0"' in text
 
 
 def test_ensure_mount_is_idempotent(tmp_path: Path) -> None:
     idx = tmp_path / "index.html"
     idx.write_text(
-        '<html>\n<body>\n  <div id="root"></div>\n  <div data-composition-src="compositions/sfx.html"></div>\n</body>\n</html>\n',
+        '<html>\n<body>\n  <div data-composition-src="compositions/sfx.html"></div>\n</body>\n</html>\n',
         encoding="utf-8",
     )
-    inserted = ensure_mount(idx)
+    inserted = ensure_mount(idx, total_duration_s=60.0)
     text = idx.read_text(encoding="utf-8")
     assert inserted is False
     assert text.count("compositions/sfx.html") == 1
