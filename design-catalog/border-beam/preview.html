@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Border beam preview</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #0a0d12;
+        color: #e6e9ef;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      .card {
+        width: min(520px, 100%);
+        background: #0e1117;
+        border: 1px solid #1f242c;
+        padding: 36px 40px;
+      }
+      .card h2 {
+        margin: 0 0 8px;
+        font: 600 22px/1.2 "Inter", sans-serif;
+        letter-spacing: -0.01em;
+      }
+      .card p {
+        margin: 0;
+        color: #7a8493;
+        font: 400 14px/1.5 "Inter", sans-serif;
+      }
+
+      /* --- snippet styles (kept in sync with snippet.html) --- */
+      .border-beam {
+        position: relative;
+        border-radius: var(--beam-radius, 14px);
+        --beam-angle: 0deg;
+        --beam-thickness: 1.5px;
+        --beam-color-a: rgba(255, 107, 93, 0.85);
+        --beam-color-b: rgba(255, 181, 71, 0.55);
+        --beam-arc-start: 40deg;
+        --beam-arc-mid: 70deg;
+        --beam-arc-end: 110deg;
+        --beam-glow-inner: rgba(255, 107, 93, 0.14);
+        --beam-glow-outer: rgba(255, 181, 71, 0.08);
+      }
+      .border-beam::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: var(--beam-thickness);
+        background: conic-gradient(
+          from var(--beam-angle),
+          transparent 0deg,
+          var(--beam-color-a) var(--beam-arc-start),
+          var(--beam-color-b) var(--beam-arc-mid),
+          transparent var(--beam-arc-end),
+          transparent 360deg
+        );
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+                mask-composite: exclude;
+        pointer-events: none;
+        z-index: 5;
+      }
+      .border-beam::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        box-shadow:
+          0 0 32px var(--beam-glow-inner),
+          0 0 64px var(--beam-glow-outer);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card border-beam" id="demo">
+      <h2>Rotating border beam</h2>
+      <p>Conic-gradient comet sweeping along a hollow border. Loops forever in this preview.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script type="module">
+      import { spinBorderBeam } from "./motion.js";
+
+      const tl = gsap.timeline({ repeat: -1 });
+      spinBorderBeam(tl, "#demo", { at: 0, duration: 9, repeat: 0 });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!-- Rotating border beam -->
+<!-- Markup: any element with class="border-beam" gets the comet sweep. -->
+<!-- The container's own background/padding/contents stay yours; the beam -->
+<!-- is purely decorative via ::before, hollowed out with mask-composite. -->
+
+<div class="border-beam">
+  <!-- your card contents go here -->
+</div>
+
+<style>
+  .border-beam {
+    position: relative;
+    border-radius: var(--beam-radius, 14px);
+    /* the angle is what GSAP (or any tween) animates */
+    --beam-angle: 0deg;
+    /* tunable knobs — override per host */
+    --beam-thickness: 1.5px;
+    --beam-color-a: rgba(255, 107, 93, 0.85);
+    --beam-color-b: rgba(255, 181, 71, 0.55);
+    --beam-arc-start: 40deg;
+    --beam-arc-mid: 70deg;
+    --beam-arc-end: 110deg;
+    --beam-glow-inner: rgba(255, 107, 93, 0.14);
+    --beam-glow-outer: rgba(255, 181, 71, 0.08);
+  }
+
+  .border-beam::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: var(--beam-thickness);
+    background: conic-gradient(
+      from var(--beam-angle),
+      transparent 0deg,
+      var(--beam-color-a) var(--beam-arc-start),
+      var(--beam-color-b) var(--beam-arc-mid),
+      transparent var(--beam-arc-end),
+      transparent 360deg
+    );
+    /* mask-composite hollow-border trick: subtracts the inside, leaving just the ring */
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .border-beam::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    box-shadow:
+      0 0 32px var(--beam-glow-inner),
+      0 0 64px var(--beam-glow-outer);
+    pointer-events: none;
+  }
+</style>
