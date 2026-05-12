@@ -1,4 +1,4 @@
-# topic-pipeline inbox — 2026-05-09
+# topic-pipeline inbox — 2026-05-12
 
 61 unreviewed (22 judged, 39 awaiting judgment) · 61 total
 
@@ -52,7 +52,7 @@
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://github.com/antirez/ds4>
 
-### 9. [59] Containers Aren’t Just Linux Processes
+### 9. [59] Containers Aren't Just Linux Processes
 - **Best angle:** What's actually inside a container? The OCI spec, demystified  _(OCI config.json walkthrough with diagrams)_
 - **Axes:** demand 1/20 · evergreen 18/20 · yt-comp 12/20 · audience 8/20 · hook 14/20 · depth 18/20
 - **Sources:** reddit  ·  first seen 2026-05-08
@@ -107,7 +107,7 @@
 - **Sources:** hn  ·  first seen 2026-05-08
 - <https://www.elciudadano.com/en/brazils-pix-payment-system-faces-pressure-from-visa-and-mastercard/04/04/>
 
-### 18. [27] Canvas online again as ShinyHunters threatens to leak schools’ data
+### 18. [27] Canvas online again as ShinyHunters threatens to leak schools' data
 - **Best angle:** Canvas online again as ShinyHunters threatens to leak schools' data  _(breach incident news)_
 - **Axes:** demand 2/20 · evergreen 14/20 · yt-comp 0/20 · audience 8/20 · hook 4/20 · depth 4/20
 - **Sources:** hn  ·  first seen 2026-05-08
