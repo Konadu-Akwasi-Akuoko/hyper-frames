@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design catalog</title>
+    <link rel="stylesheet" href="viewer/styles.css" />
+  </head>
+  <body>
+    <header class="dc-header">
+      <div class="dc-header__row">
+        <h1 class="dc-title">Design catalog</h1>
+        <input
+          id="dc-search"
+          class="dc-search"
+          type="search"
+          placeholder="Search effects, tags, descriptions…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <div id="dc-tagbar" class="dc-tagbar" hidden></div>
+    </header>
+
+    <main id="dc-grid" class="dc-grid" aria-live="polite"></main>
+
+    <aside id="dc-detail" class="dc-detail" hidden aria-hidden="true">
+      <!-- Backdrop must come BEFORE the panel so the panel paints on top -->
+      <!-- and receives clicks; otherwise the backdrop swallows every click. -->
+      <div class="dc-detail__backdrop" id="dc-detail-backdrop"></div>
+      <div class="dc-detail__panel">
+        <button class="dc-detail__close" id="dc-detail-close" aria-label="Close">×</button>
+        <header class="dc-detail__head">
+          <h2 id="dc-detail-name"></h2>
+          <p id="dc-detail-desc"></p>
+          <div class="dc-detail__chips" id="dc-detail-chips"></div>
+        </header>
+        <section class="dc-detail__preview">
+          <iframe
+            id="dc-detail-preview"
+            sandbox="allow-scripts allow-same-origin"
+            loading="lazy"
+            title="Live preview"
+          ></iframe>
+        </section>
+        <nav class="dc-tabs" id="dc-tabs" role="tablist"></nav>
+        <section class="dc-tabpane">
+          <div class="dc-tabpane__actions">
+            <button class="dc-btn" data-action="copy-snippet">Copy snippet</button>
+            <button class="dc-btn" data-action="copy-prompt">Copy AI prompt</button>
+          </div>
+          <pre><code id="dc-tab-content"></code></pre>
+        </section>
+      </div>
+    </aside>
+
+    <div id="dc-toast" class="dc-toast" role="status" hidden></div>
+
+    <script type="module" src="viewer/app.js"></script>
+  </body>
+</html>

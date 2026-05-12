@@ -1,0 +1,20 @@
+{
+  "slug": "border-beam",
+  "name": "Rotating border beam",
+  "description": "Conic-gradient comet sweeping along the border of a rounded card. Built with the mask-composite hollow-border trick; animated by tweening a CSS custom property.",
+  "tags": ["border", "glow", "gradient", "ambient", "card-decoration"],
+  "type": "animated",
+  "dependencies": ["gsap"],
+  "files": {
+    "preview": "preview.html",
+    "snippet": "snippet.html",
+    "motion": "motion.js"
+  },
+  "source": {
+    "video": "how-does-captchas-work-2026-05-10",
+    "file": "compositions/scene-07-image-grids.html",
+    "css_lines": "393-429",
+    "motion_lines": "984"
+  },
+  "created_at": "2026-05-12"
+}
