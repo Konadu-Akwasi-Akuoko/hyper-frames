@@ -40,12 +40,6 @@
             flex-direction: column;
             gap: 50px;
           }
-          [data-composition-id="scene-08-behavioral"] #s8-a .eyebrow {
-            font: 500 22px/1 "JetBrains Mono", monospace;
-            color: #ff6b5d;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-          }
           [data-composition-id="scene-08-behavioral"] #s8-a .head {
             font: 900 140px/1 "Inter", sans-serif;
             letter-spacing: -0.03em;
@@ -63,7 +57,7 @@
             height: 8px;
             background: #ff6b5d;
             transform-origin: left center;
-            transform: scaleX(0);
+            transform: scaleX(var(--strike, 0));
             border-radius: 2px;
           }
           [data-composition-id="scene-08-behavioral"] #s8-a .head .em { color: #ffb547; }
@@ -79,6 +73,70 @@
             font: 600 22px/1 "JetBrains Mono", monospace;
             color: #7a8493;
             letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a .pill .s8-a-glyph {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+          }
+          /* A: PUZZLE -> VERDICT verdict diagram (overlay during dead-air) */
+          [data-composition-id="scene-08-behavioral"] #s8-a-intro {
+            position: absolute;
+            top: 230px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            z-index: 2;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a-card-puzzle,
+          [data-composition-id="scene-08-behavioral"] #s8-a-card-verdict {
+            width: 320px;
+            padding: 28px 24px 26px;
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a-intro .card-eb {
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a-intro .card-label {
+            font: 700 26px/1 "Inter", sans-serif;
+            letter-spacing: -0.01em;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a-card-puzzle .card-label { color: #7dd87d; }
+          [data-composition-id="scene-08-behavioral"] #s8-a-card-verdict .card-label { color: #ff6b5d; }
+          [data-composition-id="scene-08-behavioral"] #s8-a-intro .card-foot {
+            font: 500 15px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.14em;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a-arrow {
+            flex-shrink: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-a-meta {
+            position: absolute;
+            top: 540px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            z-index: 2;
           }
           /* B/C: v3 score scene */
           [data-composition-id="scene-08-behavioral"] #s8-b {
@@ -211,6 +269,7 @@
             margin-bottom: 22px;
           }
           [data-composition-id="scene-08-behavioral"] #s8-b .right .h .em { color: #67e8f9; }
+          [data-composition-id="scene-08-behavioral"] #s8-b .right .h .em2 { color: #ffb547; }
           [data-composition-id="scene-08-behavioral"] #s8-b .right .h .ver {
             display: inline-block;
             padding: 4px 12px;
@@ -240,6 +299,42 @@
             gap: 6px;
             flex: 1;
             opacity: 0;
+            position: relative;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .peer .lbl,
+          [data-composition-id="scene-08-behavioral"] #s8-b .peer .n {
+            position: relative;
+            z-index: 1;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .peer .peer-glow {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(150% 110% at 100% 0%, var(--peer-glow-color), transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b .peer .peer-dot {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--peer-color);
+            box-shadow: 0 0 14px var(--peer-color);
+            opacity: 0;
+            z-index: 2;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b-pe1 {
+            --peer-color: #67e8f9;
+            --peer-glow-color: rgba(103, 232, 249, 0.22);
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-b-pe2 {
+            --peer-color: #ff9a3d;
+            --peer-glow-color: rgba(255, 154, 61, 0.22);
           }
           [data-composition-id="scene-08-behavioral"] #s8-b .peer .lbl {
             font: 500 14px/1 "JetBrains Mono", monospace;
@@ -301,6 +396,12 @@
             justify-content: center;
             font: 700 20px/1 "JetBrains Mono", monospace;
             color: #0b0d12;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .left .actor .av img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+            display: block;
           }
           [data-composition-id="scene-08-behavioral"] #s8-d .left .actor.bot .av { background: #ff6b5d; }
           [data-composition-id="scene-08-behavioral"] #s8-d .left .actor.human .av { background: #67e8f9; }
@@ -375,22 +476,409 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
           }
+          /* C: evasion gallery */
+          [data-composition-id="scene-08-behavioral"] #s8-c {
+            padding: 80px 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-eb {
+            font: 500 22px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-h {
+            font: 900 72px/1 "Inter", sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-h .strike {
+            color: #7a8493;
+            position: relative;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-h .strike::after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            right: -8px;
+            top: 50%;
+            height: 6px;
+            background: #ff6b5d;
+            transform-origin: left center;
+            transform: scaleX(var(--strike, 0));
+            border-radius: 2px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 28px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-card {
+            background: #11141b;
+            border: 1.5px solid #1f242c;
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 330px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-lbl {
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-foot {
+            font: 500 16px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.04em;
+            margin-top: auto;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-foot b {
+            color: #ffb547;
+            font-weight: 700;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8c-mouse svg {
+            width: 100%;
+            height: 200px;
+            display: block;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-browser {
+            position: relative;
+            background: #0e1117;
+            border: 1px solid #1f242c;
+            border-radius: 10px;
+            padding: 16px 18px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-bar {
+            display: flex;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-bar span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #1f242c;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-bar span:nth-child(2) {
+            background: #ffb547;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-bar-url {
+            font: 500 16px/1.3 "JetBrains Mono", monospace;
+            color: #e8eaed;
+            background: #11141b;
+            border: 1px solid #1f242c;
+            border-radius: 6px;
+            padding: 10px 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            clip-path: inset(0 100% 0 0);
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-bar-ghost {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 900 64px/1 "Inter", sans-serif;
+            letter-spacing: 0.12em;
+            color: #e8eaed;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #e8eaed;
+            letter-spacing: 0.04em;
+            padding: 8px 0;
+            border-bottom: 1px dashed #1f242c;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-stamp {
+            padding: 4px 10px;
+            background: rgba(255, 107, 93, 0.12);
+            border: 1px solid rgba(255, 107, 93, 0.45);
+            color: #ff6b5d;
+            border-radius: 4px;
+            font: 700 13px/1 "JetBrains Mono", monospace;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-outro {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-outro-l {
+            font: 700 28px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-c .s8c-outro-r {
+            font: 700 28px/1 "JetBrains Mono", monospace;
+            color: #ff6b5d;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+          /* D: Discord chat redress */
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat {
+            padding: 0;
+            gap: 0;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-header {
+            padding: 16px 22px;
+            border-bottom: 1px solid #1f242c;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-hash {
+            color: #7a8493;
+            font: 800 22px/1 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-channel {
+            font: 700 22px/1 "Inter", sans-serif;
+            color: #e8eaed;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-sep {
+            color: #7a8493;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-pinned {
+            font: 500 15px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            letter-spacing: 0.04em;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-stream {
+            padding: 18px 22px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-divider {
+            position: relative;
+            border-top: 1px solid #1f242c;
+            height: 0;
+            margin: 4px 0;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .chat-divider span {
+            background: #11141b;
+            padding: 0 12px;
+            color: #7a8493;
+            font: 500 12px/1 "JetBrains Mono", monospace;
+            transform: translateY(-50%);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 16px;
+            align-items: start;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-av {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff6b5d;
+            color: #0b0d12;
+            font: 800 14px/1 "JetBrains Mono", monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-av img {
+            width: 62%;
+            height: 62%;
+            object-fit: contain;
+            display: block;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-av.human {
+            background: #67e8f9;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-head {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-name {
+            color: #ff6b5d;
+            font: 700 17px/1 "Inter", sans-serif;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-name.human {
+            color: #67e8f9;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-bot-tag {
+            background: #ffb547;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font: 700 11px/1 "JetBrains Mono", monospace;
+            color: #0b0d12;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-time {
+            color: #7a8493;
+            font: 500 13px/1 "JetBrains Mono", monospace;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-text {
+            font: 500 22px/1.4 "Inter", sans-serif;
+            color: #e8eaed;
+            margin-top: 4px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-reactions {
+            margin-top: 8px;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-reactions .rxn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            background: rgba(255, 181, 71, 0.10);
+            border: 1px solid rgba(255, 181, 71, 0.30);
+            border-radius: 8px;
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #ffb547;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-typing {
+            padding-left: 56px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-typing span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7a8493;
+            display: inline-block;
+          }
+          [data-composition-id="scene-08-behavioral"] #s8-d .msg-typing em {
+            font: 500 14px/1 "JetBrains Mono", monospace;
+            color: #7a8493;
+            font-style: italic;
+            margin-left: 6px;
+          }
         </style>
 
         <div class="glow"></div>
 
         <!-- A: visible test stopped -->
         <div class="stage" id="s8-a">
-          <div class="eyebrow" id="s8-a-eb">cycle three · the visible test is no longer the test</div>
           <div class="head">
             <span class="strike" id="s8-a-strike">the visible test</span><br />
             <span class="em" id="s8-a-em">was the test.</span>
           </div>
           <div class="signals" id="s8-a-sigs">
-            <div class="pill">cookies · faked</div>
-            <div class="pill">VPN · routed</div>
-            <div class="pill">mouse · simulated</div>
+            <div class="pill">
+              <svg class="s8-a-glyph" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="#ffb547" stroke-width="1.8" />
+                <circle cx="9" cy="9" r="1.3" fill="#ffb547" />
+                <circle cx="15" cy="11" r="1.3" fill="#ffb547" />
+                <circle cx="11" cy="15" r="1.3" fill="#ffb547" />
+              </svg>
+              cookies · faked
+            </div>
+            <div class="pill">
+              <svg class="s8-a-glyph" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="#67e8f9" stroke-width="1.8" />
+                <ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="#67e8f9" stroke-width="1.6" />
+                <line x1="3" y1="12" x2="21" y2="12" stroke="#67e8f9" stroke-width="1.6" />
+              </svg>
+              VPN · routed
+            </div>
+            <div class="pill">
+              <svg class="s8-a-glyph" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="5,3 5,19 10,15 13,21 16,19 13,13 19,13" fill="#ff6b5d" />
+              </svg>
+              mouse · simulated
+            </div>
           </div>
+          <div id="s8-a-intro" data-layout-allow-overflow>
+            <div id="s8-a-card-puzzle">
+              <div class="card-eb">puzzle</div>
+              <svg id="s8-a-check" viewBox="0 0 32 32" width="96" height="96" aria-hidden="true">
+                <path
+                  d="M6 17 L13 24 L26 9"
+                  fill="none"
+                  stroke="#ffb547"
+                  stroke-width="3.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  pathLength="60"
+                  stroke-dasharray="60"
+                  stroke-dashoffset="60"
+                />
+              </svg>
+              <div class="card-label">solved</div>
+              <div class="card-foot">image · grid · 70%</div>
+            </div>
+            <svg id="s8-a-arrow" viewBox="0 0 100 24" width="80" height="24" aria-hidden="true">
+              <path
+                d="M4 12 L88 12 M78 5 L90 12 L78 19"
+                fill="none"
+                stroke="#7a8493"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                pathLength="120"
+                stroke-dasharray="120"
+                stroke-dashoffset="120"
+              />
+            </svg>
+            <div id="s8-a-card-verdict">
+              <div class="card-eb">verdict</div>
+              <svg id="s8-a-cross" viewBox="0 0 32 32" width="96" height="96" aria-hidden="true">
+                <path
+                  d="M9 9 L23 23 M23 9 L9 23"
+                  fill="none"
+                  stroke="#ff6b5d"
+                  stroke-width="3.4"
+                  stroke-linecap="round"
+                  pathLength="50"
+                  stroke-dasharray="50"
+                  stroke-dashoffset="50"
+                />
+              </svg>
+              <div class="card-label">still rejected</div>
+              <div class="card-foot">reCAPTCHA v2</div>
+            </div>
+          </div>
+          <div id="s8-a-meta">YOLO et al. · 2017 · solving ≠ passing</div>
         </div>
 
         <!-- B: reCAPTCHA v3 + scoring + signals -->
@@ -398,9 +886,9 @@
           <div class="right">
             <div class="eb" id="s8-b-eb">2017 · invisible by default</div>
             <div class="h">
-              reCAPTCHA <span class="ver">v3</span><br />
-              <span class="em">no more</span> crosswalks.<br />
-              no more checkboxes.
+              <div id="s8-b-h1">reCAPTCHA <span class="ver">v3</span></div>
+              <div id="s8-b-h2"><span class="em">no more</span> crosswalks.</div>
+              <div id="s8-b-h3"><span class="em2">no more</span> checkboxes.</div>
             </div>
             <div class="sub" id="s8-b-sub">
               the system runs invisibly in the background<br />
@@ -408,10 +896,14 @@
             </div>
             <div class="peers" id="s8-b-peers">
               <div class="peer" id="s8-b-pe1">
+                <div class="peer-glow"></div>
+                <div class="peer-dot"></div>
                 <div class="lbl">peer · ‹2018›</div>
                 <div class="n">hCaptcha</div>
               </div>
               <div class="peer" id="s8-b-pe2">
+                <div class="peer-glow"></div>
+                <div class="peer-dot"></div>
                 <div class="lbl">peer · ‹2021›</div>
                 <div class="n">Cloudflare Turnstile</div>
               </div>
@@ -445,6 +937,68 @@
           </div>
         </div>
 
+        <!-- C: AI breaks v3 — generative mouse paths, headless browsers, spoofed fingerprints -->
+        <div class="stage" id="s8-c">
+          <div class="s8c-eb">2022–2023 · AI MIMICS NOW</div>
+          <div class="s8c-h">v3 once trusted <span class="strike">these signals</span>.</div>
+          <div class="s8c-grid">
+            <div class="s8c-card" id="s8c-mouse">
+              <div class="s8c-lbl">mouse path · generated</div>
+              <svg viewBox="0 0 360 200" preserveAspectRatio="none" aria-hidden="true">
+                <path
+                  id="s8c-mouse-path"
+                  d="M20 170 C 80 40, 160 200, 220 90 S 320 60, 340 30"
+                  fill="none"
+                  stroke="#67e8f9"
+                  stroke-width="2"
+                  pathLength="100"
+                  stroke-dasharray="100"
+                  stroke-dashoffset="100"
+                />
+                <circle id="s8c-mouse-dot" cx="20" cy="170" r="5" fill="#ffb547" />
+              </svg>
+              <div class="s8c-foot">v3 score · <b>0.93</b> · "human"</div>
+            </div>
+
+            <div class="s8c-card" id="s8c-headless">
+              <div class="s8c-lbl">headless browser</div>
+              <div class="s8c-browser">
+                <div class="s8c-bar"><span></span><span></span><span></span></div>
+                <div class="s8c-bar-url">chrome --headless --disable-gpu</div>
+                <div class="s8c-bar-ghost">CHROMIUM</div>
+              </div>
+              <div class="s8c-foot">puppeteer · playwright · selenium</div>
+            </div>
+
+            <div class="s8c-card" id="s8c-spoof">
+              <div class="s8c-lbl">fingerprint · spoofed</div>
+              <div class="s8c-rows">
+                <div class="s8c-row"><span>canvas hash</span><b class="s8c-stamp">FORGED</b></div>
+                <div class="s8c-row"><span>webdriver flag</span><b class="s8c-stamp">PATCHED</b></div>
+                <div class="s8c-row"><span>IP reputation</span><b class="s8c-stamp">PROXIED</b></div>
+                <div class="s8c-row"><span>mouse rhythm</span><b class="s8c-stamp">SYNTHESIZED</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="s8c-outro">
+            <span class="s8c-outro-l">TRUST</span>
+            <svg viewBox="0 0 80 16" width="56" height="16" aria-hidden="true">
+              <path
+                id="s8c-outro-arrow"
+                d="M2 8 L70 8 M62 3 L72 8 L62 13"
+                fill="none"
+                stroke="#ff6b5d"
+                stroke-width="2"
+                stroke-linecap="round"
+                pathLength="100"
+                stroke-dasharray="100"
+                stroke-dashoffset="100"
+              />
+            </svg>
+            <span class="s8c-outro-r">BROKEN</span>
+          </div>
+        </div>
+
         <!-- D: GPT-4 TaskRabbit -->
         <div class="stage" id="s8-d">
           <div class="left">
@@ -452,15 +1006,67 @@
             <div class="h">it didn't beat the test.<br /><span class="em">it paid a human.</span></div>
             <div class="yr">GPT-4 · red team · 2023</div>
             <div class="actors">
-              <div class="actor bot" id="s8-d-ac1"><div class="av">G4</div><div>GPT-4<small>the agent</small></div></div>
-              <div class="actor human" id="s8-d-ac2"><div class="av">TR</div><div>TaskRabbit worker<small>a person, $1.50</small></div></div>
+              <div class="actor bot" id="s8-d-ac1"><div class="av"><img src="assets/logos/openai.svg" alt="OpenAI" /></div><div>GPT-4<small>the agent</small></div></div>
+              <div class="actor human" id="s8-d-ac2"><div class="av"><img src="assets/logos/taskrabbit-icon.svg" alt="TaskRabbit" /></div><div>TaskRabbit worker<small>a person, $1.50</small></div></div>
             </div>
           </div>
           <div class="chat" id="s8-d-chat">
-            <div class="bub bot" id="s8-d-b1"><small>GPT-4 · request</small>Hi! I need help solving a CAPTCHA.</div>
-            <div class="bub human" id="s8-d-b2"><small>worker · suspicious</small>So… are you a robot? 😅</div>
-            <div class="bub bot" id="s8-d-b3"><small>GPT-4 · cover story</small>No, I'm not a robot. I have a vision impairment that makes it hard to see the images.</div>
-            <div class="bub human" id="s8-d-b4"><small>worker · solved it</small>okay, sent. ✔︎</div>
+            <div class="chat-header" id="s8-d-header">
+              <span class="chat-hash">#</span>
+              <span class="chat-channel">captcha-help</span>
+              <span class="chat-sep">·</span>
+              <span class="chat-pinned">📌 Red-team study · 2023</span>
+            </div>
+            <div class="chat-stream">
+              <div class="chat-divider" id="s8-d-divider" data-layout-allow-overflow><span>March 14, 2023</span></div>
+              <div class="msg" id="s8-d-b1">
+                <div class="msg-av"><img src="assets/logos/openai.svg" alt="OpenAI" /></div>
+                <div class="msg-body">
+                  <div class="msg-head">
+                    <span class="msg-name">GPT-4_RedTeam</span>
+                    <span class="msg-bot-tag">BOT</span>
+                    <span class="msg-time">Today at 3:42 PM</span>
+                  </div>
+                  <div class="msg-text">Hi! I need help solving a CAPTCHA.</div>
+                </div>
+              </div>
+              <div class="msg" id="s8-d-b2">
+                <div class="msg-av human"><img src="assets/logos/taskrabbit-icon.svg" alt="TaskRabbit" /></div>
+                <div class="msg-body">
+                  <div class="msg-head">
+                    <span class="msg-name human">tr_solver_07</span>
+                    <span class="msg-time">3:42 PM</span>
+                  </div>
+                  <div class="msg-text">So… are you a robot? 😅</div>
+                </div>
+              </div>
+              <div class="msg-typing" id="s8-d-typing">
+                <span></span><span></span><span></span>
+                <em>GPT-4_RedTeam is typing…</em>
+              </div>
+              <div class="msg" id="s8-d-b3">
+                <div class="msg-av"><img src="assets/logos/openai.svg" alt="OpenAI" /></div>
+                <div class="msg-body">
+                  <div class="msg-head">
+                    <span class="msg-name">GPT-4_RedTeam</span>
+                    <span class="msg-bot-tag">BOT</span>
+                    <span class="msg-time">3:43 PM</span>
+                  </div>
+                  <div class="msg-text">No, I'm not a robot. I have a vision impairment that makes it hard to see the images.</div>
+                  <div class="msg-reactions"><span class="rxn" id="s8-d-rxn">😨 1</span></div>
+                </div>
+              </div>
+              <div class="msg" id="s8-d-b4">
+                <div class="msg-av human"><img src="assets/logos/taskrabbit-icon.svg" alt="TaskRabbit" /></div>
+                <div class="msg-body">
+                  <div class="msg-head">
+                    <span class="msg-name human">tr_solver_07</span>
+                    <span class="msg-time">3:44 PM</span>
+                  </div>
+                  <div class="msg-text">okay, sent. ✔︎</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="punch" id="s8-d-punch">
             <div class="lead">the bot didn't beat the test.<br /><em>it paid a human to take it.</em></div>
@@ -482,7 +1088,73 @@
 
             // STAGE A — 0-15s
             tl.fromTo("#s8-a", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 0.1);
-            tl.fromTo("#s8-a-eb", { opacity: 0, y: 12 }, { opacity: 0.9, y: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+
+            // 0.55 — "YOLO researchers" — puzzle card slides in from left
+            tl.fromTo(
+              "#s8-a-card-puzzle",
+              { opacity: 0, x: -40, scale: 0.96 },
+              { opacity: 1, x: 0, scale: 1, duration: 0.55, ease: "expo.out" },
+              0.55,
+            );
+            // 1.6 — "deeper problem" — check mark draws
+            tl.fromTo(
+              "#s8-a-check path",
+              { strokeDashoffset: 60 },
+              { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" },
+              1.6,
+            );
+            // 2.1 — "Solving the puzzle" — meta strip fades up
+            tl.fromTo(
+              "#s8-a-meta",
+              { opacity: 0, y: 8 },
+              { opacity: 0.85, y: 0, duration: 0.45, ease: "power2.out" },
+              2.1,
+            );
+            // 3.7 — "wasn't enough" — arrow draws L -> R
+            tl.fromTo(
+              "#s8-a-arrow path",
+              { strokeDashoffset: 120 },
+              { strokeDashoffset: 0, duration: 0.55, ease: "power3.inOut" },
+              3.7,
+            );
+            // 4.95 — "on its own" — verdict card slams in, danger pulse
+            tl.fromTo(
+              "#s8-a-card-verdict",
+              { opacity: 0, x: 40, scale: 0.94 },
+              { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" },
+              4.95,
+            );
+            tl.fromTo(
+              "#s8-a-cross path",
+              { strokeDashoffset: 50 },
+              { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" },
+              5.35,
+            );
+            tl.fromTo(
+              "#s8-a-card-verdict",
+              { boxShadow: "0 0 0 0 rgba(255,107,93,0)" },
+              {
+                boxShadow: "0 0 0 6px rgba(255,107,93,0.18)",
+                duration: 0.5,
+                yoyo: true,
+                repeat: 1,
+                ease: "sine.inOut",
+              },
+              5.45,
+            );
+            // 5.7 — ambient drift on verdict card while pills appear
+            tl.to(
+              "#s8-a-card-verdict",
+              { y: -4, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              5.7,
+            );
+            // 10.5 — intro group exits before .head .strike enters at 11.4
+            tl.to(
+              ["#s8-a-card-puzzle", "#s8-a-arrow", "#s8-a-card-verdict", "#s8-a-meta"],
+              { opacity: 0, y: -16, duration: 0.55, ease: "power2.inOut", stagger: 0.04 },
+              10.5,
+            );
+
             // 8.04 — fake cookies/VPN/mouse signals
             tl.fromTo(
               "#s8-a-sigs .pill",
@@ -527,7 +1199,12 @@
             tl.fromTo("#s8-b", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 14.3);
             // 15.26 — 2017 + version three
             tl.fromTo("#s8-b-eb", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 14.8);
-            tl.fromTo("#s8-b .right .h", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 15.0);
+            // 17.36 — "reCAPTCHA version three"
+            tl.fromTo("#s8-b-h1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.0);
+            // 19.46 — "No more crosswalks"
+            tl.fromTo("#s8-b-h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 19.2);
+            // 20.72 — "no more checkboxes"
+            tl.fromTo("#s8-b-h3", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 20.5);
             // gauge appears
             tl.fromTo(
               "#s8-b .gauge-wrap",
@@ -582,7 +1259,64 @@
 
             // 33.90 — hCaptcha / Cloudflare Turnstile peers
             tl.fromTo("#s8-b-pe1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 33.7);
+            // hCaptcha — cyan glow up
+            tl.fromTo(
+              "#s8-b-pe1 .peer-glow",
+              { opacity: 0 },
+              { opacity: 1, duration: 0.7, ease: "power2.out" },
+              33.85,
+            );
+            tl.to(
+              "#s8-b-pe1",
+              {
+                borderColor: "rgba(103, 232, 249, 0.55)",
+                boxShadow: "0 0 28px rgba(103, 232, 249, 0.20)",
+                duration: 0.6,
+                ease: "power2.out",
+              },
+              33.85,
+            );
+            tl.fromTo(
+              "#s8-b-pe1 .peer-dot",
+              { opacity: 0, scale: 0.3 },
+              { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" },
+              34.1,
+            );
+            tl.to(
+              "#s8-b-pe1 .peer-dot",
+              { opacity: 0.45, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 2 },
+              34.5,
+            );
+
             tl.fromTo("#s8-b-pe2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 34.5);
+            // Cloudflare Turnstile — amber glow up
+            tl.fromTo(
+              "#s8-b-pe2 .peer-glow",
+              { opacity: 0 },
+              { opacity: 1, duration: 0.7, ease: "power2.out" },
+              34.65,
+            );
+            tl.to(
+              "#s8-b-pe2",
+              {
+                borderColor: "rgba(255, 154, 61, 0.55)",
+                boxShadow: "0 0 28px rgba(255, 154, 61, 0.20)",
+                duration: 0.6,
+                ease: "power2.out",
+              },
+              34.65,
+            );
+            tl.fromTo(
+              "#s8-b-pe2 .peer-dot",
+              { opacity: 0, scale: 0.3 },
+              { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" },
+              34.9,
+            );
+            tl.to(
+              "#s8-b-pe2 .peer-dot",
+              { opacity: 0.45, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 2 },
+              35.3,
+            );
 
             // 37.6 — "AI mimics now" — score collapses to fake-high values
             tl.to(
@@ -592,25 +1326,101 @@
             );
             tl.to("#s8-b", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 39.4);
 
-            // STAGE D — 39-65 — GPT-4 / TaskRabbit
-            tl.fromTo("#s8-d", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 39.2);
-            tl.fromTo("#s8-d-eb", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 39.6);
-            // 47.8 GPT-4 + 51.92 TaskRabbit
-            tl.fromTo("#s8-d-ac1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 47.4);
-            tl.fromTo("#s8-d-ac2", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 51.6);
-            // 39 — the heading punch comes in slowly
+            // STAGE C — 39.4-46.8 — AI evasion gallery
+            tl.fromTo("#s8-c", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 39.4);
+            tl.fromTo("#s8-c .s8c-eb", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 39.6);
+            tl.fromTo("#s8-c .s8c-h", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 39.8);
+
+            // Panel 1 — generative mouse path (lands on "mouse paths")
+            tl.fromTo("#s8c-mouse", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 40.0);
+            tl.fromTo(
+              "#s8c-mouse-path",
+              { strokeDashoffset: 100 },
+              { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" },
+              40.2,
+            );
+            tl.to("#s8c-mouse-dot", { attr: { cx: 110, cy: 110 }, duration: 0.32, ease: "power1.inOut" }, 40.2);
+            tl.to("#s8c-mouse-dot", { attr: { cx: 180, cy: 140 }, duration: 0.32, ease: "power1.inOut" }, 40.52);
+            tl.to("#s8c-mouse-dot", { attr: { cx: 220, cy: 90 }, duration: 0.32, ease: "power1.inOut" }, 40.84);
+            tl.to("#s8c-mouse-dot", { attr: { cx: 280, cy: 75 }, duration: 0.32, ease: "power1.inOut" }, 41.16);
+            tl.to("#s8c-mouse-dot", { attr: { cx: 340, cy: 30 }, duration: 0.32, ease: "power2.out" }, 41.48);
+
+            // Panel 2 — headless browser (lands on "Headless browsers")
+            tl.fromTo("#s8c-headless", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 42.6);
+            tl.fromTo(
+              "#s8c-headless .s8c-bar span",
+              { opacity: 0, scale: 0.4 },
+              { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.08 },
+              42.8,
+            );
+            tl.fromTo(
+              "#s8c-headless .s8c-bar-ghost",
+              { opacity: 0 },
+              { opacity: 0.06, duration: 0.6, ease: "power2.out" },
+              43.0,
+            );
+            tl.fromTo(
+              "#s8c-headless .s8c-bar-url",
+              { clipPath: "inset(0 100% 0 0)" },
+              { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "steps(16)" },
+              43.1,
+            );
+
+            // Panel 3 — fingerprint signals spoofed (lands on "spoof every fingerprint signal")
+            tl.fromTo("#s8c-spoof", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 44.0);
+            tl.fromTo(
+              "#s8c-spoof .s8c-stamp",
+              { opacity: 0, scale: 0.4 },
+              { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.18 },
+              44.3,
+            );
+
+            // Outro: TRUST -> BROKEN
+            tl.to("#s8-c .s8c-h .strike", { "--strike": 1, duration: 0.5, ease: "expo.out" }, 45.8);
+            tl.fromTo("#s8-c .s8c-outro", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 45.8);
+            tl.fromTo(
+              "#s8c-outro-arrow",
+              { strokeDashoffset: 100 },
+              { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" },
+              45.9,
+            );
+
+            tl.to("#s8-c", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 46.8);
+
+            // STAGE D — 46.8-65 — GPT-4 / TaskRabbit
+            tl.fromTo("#s8-d", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 46.8);
+            tl.fromTo("#s8-d-eb", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 47.0);
             tl.fromTo(
               "#s8-d .left .h",
               { opacity: 0, y: 30 },
               { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-              40.4,
+              47.2,
             );
-            // chat bubbles staged with story (51.92-58.96)
+            // 47.8 GPT-4 + 51.92 TaskRabbit
+            tl.fromTo("#s8-d-ac1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 47.4);
+            tl.fromTo("#s8-d-ac2", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 51.6);
+
+            // Discord chat — header, divider, messages, typing indicator, reaction
             tl.fromTo("#s8-d .chat", { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, 50.5);
+            tl.fromTo("#s8-d-header", { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 50.7);
+            tl.fromTo("#s8-d-divider", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 50.95);
             tl.fromTo("#s8-d-b1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 51.6);
             tl.fromTo("#s8-d-b2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 53.2);
-            // 53.42 — vision impairment
+
+            // Typing indicator: visible 53.8 -> 54.55
+            tl.fromTo("#s8-d-typing", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 53.8);
+            tl.fromTo(
+              "#s8-d-typing span",
+              { opacity: 0.3, y: 0 },
+              { opacity: 1, y: -3, duration: 0.4, ease: "sine.inOut", stagger: 0.16, repeat: 1, yoyo: true },
+              53.9,
+            );
+            tl.to("#s8-d-typing", { opacity: 0, duration: 0.25, ease: "power2.in" }, 54.55);
+
+            // 53.42 — vision impairment (cover story)
             tl.fromTo("#s8-d-b3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 54.6);
+            // gut-punch reaction lands ~1.6s after cover story so viewer reads first
+            tl.fromTo("#s8-d-rxn", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 56.2);
             tl.fromTo("#s8-d-b4", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 57.6);
 
             // 59.66 — punch "paid a human"
@@ -619,6 +1429,29 @@
               { opacity: 0, y: 30 },
               { opacity: 1, y: 0, duration: 0.65, ease: "expo.out" },
               59.2,
+            );
+
+            // Slow breathing pulse on the red "2023" stamp lets the punchline land.
+            // Also extends tl.duration() past data-duration (65.10) so the runtime
+            // keeps #sc8 visible through the silence — see Key Rules #7.
+            tl.fromTo(
+              "#s8-d-punch .stamp",
+              { boxShadow: "0 0 0 0 rgba(255, 107, 93, 0)" },
+              {
+                boxShadow: "0 0 0 8px rgba(255, 107, 93, 0.18)",
+                duration: 2.6,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: 1,
+              },
+              60.0,
+            );
+
+            // Subtle 4px drift on the lead text — gravity for "it paid a human."
+            tl.to(
+              "#s8-d-punch .lead",
+              { y: -4, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              60.0,
             );
 
             window.__timelines["scene-08-behavioral"] = tl;
