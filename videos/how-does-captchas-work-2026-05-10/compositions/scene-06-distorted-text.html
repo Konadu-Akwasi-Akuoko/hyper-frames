@@ -75,6 +75,35 @@
           [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(4) { transform: rotate(18deg) skew(4deg) translateY(6px); }
           [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(5) { transform: rotate(-16deg) skew(-8deg) translateY(-6px); }
           [data-composition-id="scene-06-distorted"] #s6-a .glyph span:nth-child(6) { transform: rotate(10deg) skew(10deg) translateY(4px); }
+          [data-composition-id="scene-06-distorted"] #s6-a .glyph-wrap {
+            position: relative;
+            display: inline-flex;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a .aura {
+            position: absolute;
+            inset: 50% 50% auto auto;
+            transform: translate(50%, -50%);
+            width: 640px;
+            height: 280px;
+            background: radial-gradient(50% 50% at 50% 50%,
+              rgba(255, 181, 71, 0.55), rgba(255, 181, 71, 0.12) 45%, transparent 70%);
+            filter: blur(28px);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 0;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a-glyph {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-a-glyph .sweep {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 35%, rgba(255, 181, 71, 0.35) 50%, transparent 65%);
+            pointer-events: none;
+            opacity: 0;
+          }
           [data-composition-id="scene-06-distorted"] #s6-a .motto {
             font: 500 30px/1 "JetBrains Mono", monospace;
             color: #7a8493;
@@ -112,6 +141,20 @@
             flex-direction: column;
             gap: 14px;
             min-height: 220px;
+            position: relative;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-b .site > * { position: relative; z-index: 1; }
+          [data-composition-id="scene-06-distorted"] #s6-b .site .aura {
+            position: absolute;
+            inset: 50% 50% auto auto;
+            transform: translate(50%, -50%);
+            width: 140%; height: 140%;
+            background: radial-gradient(50% 50% at 50% 50%,
+              rgba(255, 181, 71, 0.45), rgba(255, 181, 71, 0.10) 45%, transparent 70%);
+            filter: blur(24px);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 0;
           }
           [data-composition-id="scene-06-distorted"] #s6-b .site .logo {
             font: 700 26px/1 "Inter", sans-serif;
@@ -166,6 +209,20 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            position: relative;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill > * { position: relative; z-index: 1; }
+          [data-composition-id="scene-06-distorted"] #s6-c .skill .aura {
+            position: absolute;
+            inset: 50% 50% auto auto;
+            transform: translate(50%, -50%);
+            width: 140%; height: 140%;
+            background: radial-gradient(50% 50% at 50% 50%,
+              rgba(255, 181, 71, 0.45), rgba(255, 181, 71, 0.10) 45%, transparent 70%);
+            filter: blur(24px);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 0;
           }
           [data-composition-id="scene-06-distorted"] #s6-c .skill .n {
             font: 500 18px/1 "JetBrains Mono", monospace;
@@ -179,6 +236,8 @@
             align-items: center;
             justify-content: center;
             background: #0e1117;
+            background-image:
+              repeating-linear-gradient(0deg, transparent 0, transparent 4px, rgba(255, 255, 255, 0.03) 4px, rgba(255, 255, 255, 0.03) 5px);
             border-radius: 8px;
             font: 800 64px/1 "JetBrains Mono", monospace;
             color: #e8eaed;
@@ -281,19 +340,41 @@
           }
           [data-composition-id="scene-06-distorted"] #s6-d .mark {
             position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            transform: translate(-50%, -100%);
+            width: 0;
+            height: 0;
             opacity: 0;
           }
           [data-composition-id="scene-06-distorted"] #s6-d .mark .dot {
+            position: absolute;
+            left: -12px;
+            top: -12px;
             width: 18px;
             height: 18px;
             background: #ff6b5d;
             border: 3px solid #0b0d12;
             border-radius: 50%;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .above {
+            position: absolute;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .below {
+            position: absolute;
+            left: 50%;
+            top: 18px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
           }
           [data-composition-id="scene-06-distorted"] #s6-d .mark .pct {
             font: 700 38px/1 "Inter", sans-serif;
@@ -321,13 +402,65 @@
             color: #7a8493;
             font-variant-numeric: tabular-nums;
           }
-          [data-composition-id="scene-06-distorted"] #s6-d .line {
+          [data-composition-id="scene-06-distorted"] #s6-d {
+            perspective: 1600px;
+            perspective-origin: 50% 40%;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d-chart {
+            transform-style: preserve-3d;
+            --beam-angle: 0deg;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d-chart::before {
+            content: "";
             position: absolute;
-            left: 60px;
-            right: 30px;
-            top: 30px;
-            bottom: 50px;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: conic-gradient(
+              from var(--beam-angle),
+              transparent 0deg,
+              rgba(255, 181, 71, 0.85) 40deg,
+              rgba(255, 107, 93, 0.6) 70deg,
+              transparent 110deg,
+              transparent 360deg
+            );
+            -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
             pointer-events: none;
+            opacity: 0.9;
+            z-index: 5;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d-chart::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            box-shadow: 0 0 32px rgba(255, 181, 71, 0.18), 0 0 64px rgba(255, 107, 93, 0.08);
+            pointer-events: none;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .portrait {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #11141b;
+            border: 2px solid #ffb547;
+            box-shadow: 0 0 0 4px rgba(255, 181, 71, 0.12), 0 0 24px rgba(255, 181, 71, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          }
+          [data-composition-id="scene-06-distorted"] #s6-d .mark .portrait .glyph {
+            font: 700 30px/1 "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
           }
           [data-composition-id="scene-06-distorted"] #s6-d .closer {
             position: absolute;
@@ -373,8 +506,12 @@
         <div class="stage" id="s6-a">
           <div class="eyebrow" id="s6-a-eb">cycle one · distorted text</div>
           <div class="year" id="s6-a-yr">1997</div>
-          <div class="glyph" id="s6-a-glyph">
-            <span>q</span><span>b</span><span>Z</span><span>7</span><span>X</span><span>K</span>
+          <div class="glyph-wrap">
+            <div class="aura"></div>
+            <div class="glyph" id="s6-a-glyph">
+              <div class="sweep"></div>
+              <span>q</span><span>b</span><span>Z</span><span>7</span><span>X</span><span>K</span>
+            </div>
           </div>
           <div class="motto" id="s6-a-motto">show. type. pass.</div>
         </div>
@@ -385,21 +522,25 @@
           <div class="head"><span class="em">PayPal</span> went first. soon every front door.</div>
           <div class="grid">
             <div class="site" id="s6-b-1">
+              <div class="aura"></div>
               <div class="logo">PayPal</div>
               <div class="yr">— 2001</div>
               <div class="cap"><span>e</span><span>n</span><span>t</span><span>e</span><span>r</span></div>
             </div>
             <div class="site" id="s6-b-2">
+              <div class="aura"></div>
               <div class="logo">Yahoo!</div>
               <div class="yr">— 2002</div>
               <div class="cap"><span>p</span><span>r</span><span>v</span><span>k</span><span>3</span></div>
             </div>
             <div class="site" id="s6-b-3">
+              <div class="aura"></div>
               <div class="logo">Hotmail</div>
               <div class="yr">— 2003</div>
               <div class="cap"><span>r</span><span>8</span><span>x</span><span>q</span><span>m</span></div>
             </div>
             <div class="site" id="s6-b-4">
+              <div class="aura"></div>
               <div class="logo">eBay</div>
               <div class="yr">— 2004</div>
               <div class="cap"><span>k</span><span>2</span><span>w</span><span>p</span><span>z</span></div>
@@ -412,20 +553,23 @@
           <div class="label" id="s6-c-lbl">why it worked · the three skills required at once</div>
           <div class="skills">
             <div class="skill" id="s6-c-s1">
+              <div class="aura"></div>
               <div class="n">01 · invariant</div>
               <div class="demo"><span class="w">A</span>&nbsp;<span class="w" style="transform:rotate(20deg)">A</span>&nbsp;<span class="w" style="transform:skew(20deg) scaleX(0.6)">A</span></div>
               <div class="t">read letters no matter how warped</div>
               <div class="d">rotation, skew, scale — still an A.</div>
             </div>
             <div class="skill" id="s6-c-s2">
+              <div class="aura"></div>
               <div class="n">02 · segment</div>
               <div class="demo"><span class="w">cl</span><span class="a">|</span><span class="w">us</span><span class="a">|</span><span class="w">te</span><span class="a">|</span><span class="w">r</span></div>
               <div class="t">separate letters that overlap</div>
               <div class="d">find the breaks the smudge tried to hide.</div>
             </div>
             <div class="skill" id="s6-c-s3">
+              <div class="aura"></div>
               <div class="n">03 · parse</div>
-              <div class="demo">cluster<span class="a">?</span></div>
+              <div class="demo"><span class="ch">c</span><span class="ch">l</span><span class="ch">u</span><span class="ch">s</span><span class="ch">t</span><span class="ch">e</span><span class="ch">r</span><span class="a">?</span></div>
               <div class="t">a word, not a string of marks</div>
               <div class="d">meaning bridges the gaps.</div>
             </div>
@@ -462,43 +606,44 @@
               <div class="gl" style="top:75%"></div>
               <div class="gl" style="top:100%"></div>
             </div>
-            <svg class="line" viewBox="0 0 1000 340" preserveAspectRatio="none">
-              <path
-                id="s6-d-path"
-                d="M 30 290 L 240 285 L 480 230 L 680 100 L 970 30"
-                fill="none"
-                stroke="#ffb547"
-                stroke-width="3"
-                stroke-linecap="round"
-                pathLength="1"
-                stroke-dasharray="1"
-                stroke-dashoffset="1"
-              />
-            </svg>
             <div class="marks">
-              <div class="mark" id="s6-d-m0" style="left:3%; top:84%">
-                <div class="pct" style="color:#7a8493">~0%</div>
+              <div class="mark" id="s6-d-m0" style="left:14%; top:100%">
                 <div class="dot" style="background:#7a8493"></div>
-                <div class="name">no public attack</div>
-                <div class="yr">1997 → 2008</div>
+                <div class="above">
+                  <div class="yr">1997 → 2008</div>
+                  <div class="name">no public attack</div>
+                  <div class="pct" style="color:#7a8493">~0%</div>
+                </div>
               </div>
-              <div class="mark" id="s6-d-m1" style="left:30%; top:65%">
-                <div class="pct">18%</div>
+              <div class="mark" id="s6-d-m1" style="left:30%; top:82%">
                 <div class="dot"></div>
-                <div class="name">Jonathan Wilkins<br />(reCAPTCHA paper)</div>
-                <div class="yr">late 2009</div>
+                <div class="above">
+                  <div class="portrait"><span class="glyph">🧑‍💻</span></div>
+                  <div class="pct">18%</div>
+                </div>
+                <div class="below">
+                  <div class="name">Jonathan Wilkins<br />(reCAPTCHA paper)</div>
+                  <div class="yr">late 2009</div>
+                </div>
               </div>
-              <div class="mark" id="s6-d-m2" style="left:55%; top:30%">
-                <div class="pct">33%</div>
+              <div class="mark" id="s6-d-m2" style="left:55%; top:67%">
                 <div class="dot"></div>
-                <div class="name">Chad Houck<br />· DEF CON</div>
-                <div class="yr">summer 2010</div>
+                <div class="above">
+                  <div class="portrait"><img src="assets/chad-houck.jpg" alt="Chad Houck" /></div>
+                  <div class="pct">33%</div>
+                </div>
+                <div class="below">
+                  <div class="name">Chad Houck<br />· DEF CON</div>
+                  <div class="yr">summer 2010</div>
+                </div>
               </div>
-              <div class="mark" id="s6-d-m3" style="left:90%; top:6%">
-                <div class="pct">≈100%</div>
+              <div class="mark" id="s6-d-m3" style="left:90%; top:5%">
                 <div class="dot"></div>
-                <div class="name">Ye et al.<br />· all 11 schemes</div>
-                <div class="yr">2018</div>
+                <div class="below">
+                  <div class="pct">≈100%</div>
+                  <div class="name">Ye et al.<br />· all 11 schemes</div>
+                  <div class="yr">2018</div>
+                </div>
               </div>
             </div>
             <div class="xax">
@@ -559,28 +704,145 @@
               { y: -6, duration: 4, ease: "sine.inOut", yoyo: true, repeat: 1 },
               4,
             );
+            // backlight aura — fade in on first glyph, then breathe
+            tl.fromTo(
+              "#s6-a .aura",
+              { opacity: 0, scale: 0.94 },
+              { opacity: 0.9, scale: 1, duration: 0.9, ease: "power2.out" },
+              2.6,
+            );
+            tl.to(
+              "#s6-a .aura",
+              { opacity: 0.55, scale: 1.04, duration: 3.6, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              3.6,
+            );
+            // border + box-shadow amber heartbeat
+            tl.to(
+              "#s6-a-glyph",
+              {
+                borderColor: "rgba(255, 181, 71, 0.55)",
+                boxShadow: "0 0 0 4px rgba(255, 181, 71, 0.10), 0 0 28px rgba(255, 181, 71, 0.45)",
+                duration: 1.4,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: 1,
+              },
+              3.3,
+            );
+            // diagonal scan sweep — lands on "show"
+            tl.fromTo(
+              "#s6-a-glyph .sweep",
+              { xPercent: -110, opacity: 0 },
+              { xPercent: 110, opacity: 1, duration: 0.95, ease: "power2.inOut" },
+              4.55,
+            );
+            tl.to("#s6-a-glyph .sweep", { opacity: 0, duration: 0.25 }, 5.5);
             tl.to("#s6-a", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 11.7);
 
             // STAGE B — 11.5-21
             tl.fromTo("#s6-b", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 11.5);
             tl.fromTo("#s6-b-lbl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 11.8);
             tl.fromTo("#s6-b .head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 12.1);
-            tl.fromTo(
-              "#s6-b .site",
+            // Card 1 — anchored to "PayPal" @ 13.68
+            tl.fromTo("#s6-b-1",
               { opacity: 0, y: 40, scale: 0.96 },
-              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out", stagger: 0.35 },
-              13.3,
-            );
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, 13.3);
+            tl.fromTo("#s6-b-1 .aura",
+              { opacity: 0, scale: 0.92 },
+              { opacity: 0.75, scale: 1, duration: 0.7, ease: "power2.out" }, 13.45);
+            tl.fromTo("#s6-b-1 .cap span",
+              { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.10 }, 13.7);
+
+            // Card 2 — anchored to "Soon" @ 17.38
+            tl.fromTo("#s6-b-2", { opacity: 0, y: 40, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, 17.3);
+            tl.fromTo("#s6-b-2 .aura", { opacity: 0, scale: 0.92 },
+              { opacity: 0.75, scale: 1, duration: 0.7, ease: "power2.out" }, 17.45);
+            tl.fromTo("#s6-b-2 .cap span", { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.10 }, 17.7);
+
+            // Card 3 — anchored to "major" @ 18.02
+            tl.fromTo("#s6-b-3", { opacity: 0, y: 40, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, 17.95);
+            tl.fromTo("#s6-b-3 .aura", { opacity: 0, scale: 0.92 },
+              { opacity: 0.75, scale: 1, duration: 0.7, ease: "power2.out" }, 18.1);
+            tl.fromTo("#s6-b-3 .cap span", { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.10 }, 18.35);
+
+            // Card 4 — anchored to "site" @ 18.38
+            tl.fromTo("#s6-b-4", { opacity: 0, y: 40, scale: 0.96 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, 18.6);
+            tl.fromTo("#s6-b-4 .aura", { opacity: 0, scale: 0.92 },
+              { opacity: 0.75, scale: 1, duration: 0.7, ease: "power2.out" }, 18.75);
+            tl.fromTo("#s6-b-4 .cap span", { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.10 }, 19.0);
+
+            // Ambient scanline drift across all four .cap boxes for the stage
+            tl.fromTo("#s6-b .cap",
+              { backgroundPosition: "0px 0px" },
+              { backgroundPosition: "0px 5px", duration: 8, ease: "none" }, 13.3);
             tl.to("#s6-b", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 21.4);
 
             // STAGE C — 21-40
             tl.fromTo("#s6-c", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 21.2);
             tl.fromTo("#s6-c-lbl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 21.6);
+            // Tightened mount cadence — all three cards arrive during "three skills at once"
             tl.fromTo("#s6-c-s1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 22.2);
-            tl.fromTo("#s6-c-s2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 25.6);
-            tl.fromTo("#s6-c-s3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 29.2);
-            tl.fromTo("#s6-c-v1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 33.6);
-            tl.fromTo("#s6-c-v2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 35.0);
+            tl.fromTo("#s6-c-s2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 23.8);
+            tl.fromTo("#s6-c-s3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 25.4);
+
+            // Ambient scanline drift across all three .demo boxes
+            tl.fromTo("#s6-c .skill .demo",
+              { backgroundPosition: "0px 0px" },
+              { backgroundPosition: "0px 5px", duration: 18, ease: "none" }, 21.5);
+
+            // Skill 1 focus — "recognizing" 27.10
+            tl.fromTo("#s6-c-s1 .aura", { opacity: 0, scale: 0.92 },
+              { opacity: 0.75, scale: 1, duration: 0.7, ease: "power2.out" }, 27.05);
+            tl.to(["#s6-c-s2", "#s6-c-s3"], { opacity: 0.55, duration: 0.4 }, 27.05);
+            tl.fromTo("#s6-c-s1 .demo > *", { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.10 }, 27.15);
+            tl.to("#s6-c-s1 .n", { color: "#ffd07a", scale: 1.06, duration: 0.18, ease: "power2.out" }, 27.05);
+            tl.to("#s6-c-s1 .n", { color: "#ffb547", scale: 1, duration: 0.4, ease: "power2.inOut" }, 27.4);
+
+            // Skill 2 focus — "separating" 30.02
+            tl.to("#s6-c-s2", { opacity: 1, duration: 0.3 }, 29.95);
+            tl.to("#s6-c-s1", { opacity: 0.55, duration: 0.4 }, 29.97);
+            tl.fromTo("#s6-c-s2 .aura", { opacity: 0, scale: 0.92 },
+              { opacity: 0.75, scale: 1, duration: 0.7, ease: "power2.out" }, 29.97);
+            tl.fromTo("#s6-c-s2 .demo > *", { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.08 }, 30.05);
+            tl.to("#s6-c-s2 .n", { color: "#ffd07a", scale: 1.06, duration: 0.18, ease: "power2.out" }, 29.97);
+            tl.to("#s6-c-s2 .n", { color: "#ffb547", scale: 1, duration: 0.4, ease: "power2.inOut" }, 30.32);
+
+            // Skill 3 focus — "passing" 32.16
+            tl.to("#s6-c-s3", { opacity: 1, duration: 0.3 }, 32.09);
+            tl.to("#s6-c-s2", { opacity: 0.55, duration: 0.4 }, 32.11);
+            tl.fromTo("#s6-c-s3 .aura", { opacity: 0, scale: 0.92 },
+              { opacity: 0.75, scale: 1, duration: 0.7, ease: "power2.out" }, 32.11);
+            tl.fromTo("#s6-c-s3 .demo .ch", { opacity: 0 },
+              { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.07 }, 32.2);
+            tl.fromTo("#s6-c-s3 .demo .a", { opacity: 0, scale: 0.6 },
+              { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 33.0);
+            tl.to("#s6-c-s3 .n", { color: "#ffd07a", scale: 1.06, duration: 0.18, ease: "power2.out" }, 32.11);
+            tl.to("#s6-c-s3 .n", { color: "#ffb547", scale: 1, duration: 0.4, ease: "power2.inOut" }, 32.46);
+
+            // Restore all three to full opacity before the verdict beat
+            tl.to(["#s6-c-s1", "#s6-c-s2", "#s6-c-s3"], { opacity: 1, duration: 0.4 }, 33.7);
+
+            // Verdicts re-anchored to narration
+            tl.fromTo("#s6-c-v1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 34.5);
+            tl.fromTo("#s6-c-v1",
+              { boxShadow: "-8px 0 0px rgba(125, 216, 125, 0)" },
+              { boxShadow: "-8px 0 18px rgba(125, 216, 125, 0.55)", duration: 0.2, ease: "power2.out" }, 34.7);
+            tl.to("#s6-c-v1", { boxShadow: "-8px 0 0px rgba(125, 216, 125, 0)", duration: 0.4, ease: "power2.inOut" }, 35.0);
+
+            tl.fromTo("#s6-c-v2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 35.95);
+            tl.fromTo("#s6-c-v2",
+              { boxShadow: "-8px 0 0px rgba(255, 107, 93, 0)" },
+              { boxShadow: "-8px 0 18px rgba(255, 107, 93, 0.55)", duration: 0.2, ease: "power2.out" }, 36.15);
+            tl.to("#s6-c-v2", { boxShadow: "-8px 0 0px rgba(255, 107, 93, 0)", duration: 0.4, ease: "power2.inOut" }, 36.45);
             tl.to("#s6-c", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 39.6);
 
             // STAGE D — 39.5-73
@@ -588,9 +850,25 @@
             // anchor 40.03: "Then it didn't."
             tl.fromTo("#s6-d-l", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 39.9);
             tl.fromTo("#s6-d .top .h", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 40.0);
-            tl.fromTo("#s6-d-chart", { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, 41.0);
-            // line draws across the 4 marks (reCAPTCHA anchor 45.12)
-            tl.to("#s6-d-path", { strokeDashoffset: 0, duration: 22, ease: "none" }, 44.5);
+            tl.fromTo(
+              "#s6-d-chart",
+              { opacity: 0, scale: 0.97, rotateX: 6 },
+              { opacity: 1, scale: 1, rotateX: 0, duration: 0.9, ease: "expo.out" },
+              41.0,
+            );
+            // continuous subtle 3D oscillation while the chart is on screen
+            tl.to(
+              "#s6-d-chart",
+              { rotateY: 2.5, duration: 14, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              42.0,
+            );
+            // border beam — sweeps an amber→coral arc around the card perimeter,
+            // one lap every 9s. Chart is on screen ~41.5–73 (≈31.5s) → 4 laps.
+            tl.to(
+              "#s6-d-chart",
+              { "--beam-angle": "360deg", duration: 9, ease: "none", repeat: 3 },
+              41.5,
+            );
 
             // baseline mark
             tl.fromTo("#s6-d-m0", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 44.0);
@@ -625,13 +903,6 @@
               { opacity: 0, y: 30, scale: 0.95 },
               { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.4)" },
               71.0,
-            );
-
-            // ambient line shimmer at end
-            tl.to(
-              "#s6-d-path",
-              { strokeWidth: 4.5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 },
-              66,
             );
 
             window.__timelines["scene-06-distorted"] = tl;

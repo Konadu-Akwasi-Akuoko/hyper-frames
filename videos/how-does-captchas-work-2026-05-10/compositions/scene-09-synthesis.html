@@ -33,6 +33,24 @@
             background-size: 60px 60px;
             mask-image: radial-gradient(60% 60% at 50% 50%, #000 35%, transparent 80%);
           }
+          [data-composition-id="scene-09-synthesis"] .scanline {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 120px;
+            pointer-events: none;
+            opacity: 0;
+            background: linear-gradient(
+              180deg,
+              rgba(255, 181, 71, 0) 0%,
+              rgba(255, 181, 71, 0.04) 50%,
+              rgba(255, 181, 71, 0.12) 85%,
+              rgba(255, 181, 71, 0.24) 100%
+            );
+            mix-blend-mode: screen;
+            z-index: 1;
+          }
           [data-composition-id="scene-09-synthesis"] .lines {
             position: absolute;
             left: 160px;
@@ -41,8 +59,10 @@
             display: flex;
             flex-direction: column;
             gap: 18px;
+            z-index: 2;
           }
           [data-composition-id="scene-09-synthesis"] .line {
+            position: relative;
             display: flex;
             align-items: baseline;
             gap: 30px;
@@ -66,6 +86,20 @@
             color: #ffb547;
             font-style: italic;
           }
+          [data-composition-id="scene-09-synthesis"] .ghost {
+            position: absolute;
+            left: 240px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            pointer-events: none;
+            color: #3a4150;
+            display: flex;
+            align-items: center;
+          }
+          [data-composition-id="scene-09-synthesis"] .ghost svg {
+            display: block;
+          }
           [data-composition-id="scene-09-synthesis"] .closing {
             position: absolute;
             left: 160px;
@@ -75,8 +109,10 @@
             grid-template-columns: 1fr 540px;
             gap: 60px;
             align-items: end;
+            z-index: 2;
           }
           [data-composition-id="scene-09-synthesis"] .closing .text {
+            position: relative;
             font: 600 48px/1.15 "Inter", sans-serif;
             color: #e8eaed;
             max-width: 1100px;
@@ -85,6 +121,18 @@
           [data-composition-id="scene-09-synthesis"] .closing .text em {
             color: #ff6b5d;
             font-style: italic;
+          }
+          [data-composition-id="scene-09-synthesis"] .closing .text .ul {
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            height: 3px;
+            width: 100%;
+            background: #ffb547;
+            transform-origin: left center;
+            transform: scaleX(0);
+            border-radius: 2px;
+            opacity: 0.6;
           }
           [data-composition-id="scene-09-synthesis"] .gap-viz {
             position: relative;
@@ -103,39 +151,129 @@
           }
           [data-composition-id="scene-09-synthesis"] .gap-viz .lbl.h { left: 10px; bottom: 0; color: #67e8f9; }
           [data-composition-id="scene-09-synthesis"] .gap-viz .lbl.m { right: 10px; bottom: 0; color: #ff6b5d; }
+          [data-composition-id="scene-09-synthesis"] .gap-viz .meet-ring {
+            position: absolute;
+            left: 50%;
+            top: 31%;
+            width: 24px;
+            height: 24px;
+            margin: -12px 0 0 -12px;
+            border: 2px solid #ffb547;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+          }
+          [data-composition-id="scene-09-synthesis"] .ticker {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 28px;
+            height: 28px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+          }
+          [data-composition-id="scene-09-synthesis"] .ticker-row {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            font: 500 22px/1.2 "JetBrains Mono", monospace;
+            color: rgba(122, 132, 147, 0.32);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+          }
+          [data-composition-id="scene-09-synthesis"] .ticker-row span {
+            padding: 0 36px;
+          }
+          [data-composition-id="scene-09-synthesis"] .ticker-row .hi {
+            color: rgba(255, 181, 71, 0.55);
+          }
         </style>
 
         <div class="glow"></div>
         <div class="grid"></div>
+        <div class="scanline" id="s9-scan"></div>
 
         <div class="lines">
           <div class="line" id="s9-l1">
             <div class="lead">every</div>
             <div class="copy"><em>checkbox</em> you click,</div>
+            <div class="ghost" id="s9-g1">
+              <svg width="48" height="48" viewBox="0 0 48 48">
+                <rect x="6" y="6" width="36" height="36" rx="6" fill="none" stroke="currentColor" stroke-width="2.5"/>
+              </svg>
+            </div>
           </div>
           <div class="line" id="s9-l2">
             <div class="lead">every</div>
             <div class="copy">grid of <em>crosswalks</em> you sort,</div>
+            <div class="ghost" id="s9-g2">
+              <svg width="56" height="56" viewBox="0 0 56 56">
+                <g fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="4" y="4"  width="14" height="14" rx="2"/>
+                  <rect x="21" y="4" width="14" height="14" rx="2"/>
+                  <rect x="38" y="4" width="14" height="14" rx="2"/>
+                  <rect x="4" y="21"  width="14" height="14" rx="2"/>
+                  <rect x="21" y="21" width="14" height="14" rx="2"/>
+                  <rect x="38" y="21" width="14" height="14" rx="2"/>
+                  <rect x="4" y="38"  width="14" height="14" rx="2"/>
+                  <rect x="21" y="38" width="14" height="14" rx="2"/>
+                  <rect x="38" y="38" width="14" height="14" rx="2"/>
+                </g>
+              </svg>
+            </div>
           </div>
           <div class="line" id="s9-l3">
             <div class="lead">every</div>
             <div class="copy"><em>hesitation</em> your cursor makes —</div>
+            <div class="ghost" id="s9-g3">
+              <svg width="110" height="36" viewBox="0 0 110 36">
+                <path d="M2 26 C 18 4, 32 30, 48 12 S 76 28, 92 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="92" cy="8" r="3" fill="currentColor"/>
+              </svg>
+            </div>
           </div>
         </div>
 
         <div class="closing">
           <div class="text" id="s9-text">
-            somewhere a system is <em>watching</em>, scoring, and quietly conceding<br />
+            somewhere a system is <em>watching</em>, scoring, and quietly conceding
             that the gap between human and machine is closing <em>faster than the test</em> can keep up.
+            <div class="ul" id="s9-text-ul"></div>
           </div>
           <div class="gap-viz" id="s9-gap">
             <svg viewBox="0 0 540 160" preserveAspectRatio="none">
               <path id="s9-arc-h" d="M30 150 C 30 30, 270 30, 270 150" fill="none" stroke="#67e8f9" stroke-width="3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
               <path id="s9-arc-m" d="M510 150 C 510 50, 270 50, 270 150" fill="none" stroke="#ff6b5d" stroke-width="3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <g id="s9-h-particles">
+                <circle cx="0" cy="0" r="2.4" fill="#67e8f9" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#67e8f9" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#67e8f9" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#67e8f9" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#67e8f9" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#67e8f9" opacity="0"/>
+              </g>
+              <g id="s9-m-particles">
+                <circle cx="0" cy="0" r="2.4" fill="#ff6b5d" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#ff6b5d" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#ff6b5d" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#ff6b5d" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#ff6b5d" opacity="0"/>
+                <circle cx="0" cy="0" r="2.4" fill="#ff6b5d" opacity="0"/>
+              </g>
               <circle id="s9-meet" cx="270" cy="50" r="6" fill="#ffb547" opacity="0" />
             </svg>
             <div class="lbl h">human</div>
             <div class="lbl m">machine</div>
+            <div class="meet-ring" id="s9-meet-r1"></div>
+            <div class="meet-ring" id="s9-meet-r2"></div>
+          </div>
+        </div>
+
+        <div class="ticker" data-layout-allow-overflow>
+          <div class="ticker-row" id="s9-ticker" data-layout-allow-overflow>
+            <span>mouse.path=312</span><span class="hi">cookie.gclid=eD3kT…</span><span>cursor.dwell=1.84s</span><span>viewport=1920×1080</span><span class="hi">fingerprint.fonts=47</span><span>scroll.delta=0px</span><span>referrer.chain=3</span><span class="hi">canvas.hash=8c41fa</span><span>trust.score=0.91</span><span>mouse.path=312</span><span class="hi">cookie.gclid=eD3kT…</span><span>cursor.dwell=1.84s</span><span>viewport=1920×1080</span><span class="hi">fingerprint.fonts=47</span><span>scroll.delta=0px</span><span>referrer.chain=3</span><span class="hi">canvas.hash=8c41fa</span><span>trust.score=0.91</span>
           </div>
         </div>
 
@@ -151,18 +289,64 @@
               0,
             );
 
-            // 0-1.34s — Every checkbox you click
-            tl.fromTo("#s9-l1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 0.0);
-            // 1.72-2.97 — every grid of crosswalks
-            tl.fromTo("#s9-l2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 1.7);
-            // 3.98-5.86 — every hesitation
-            tl.fromTo("#s9-l3", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 3.95);
+            // Ghosts fade in just before each line lands, then hold as ambient memory.
+            tl.fromTo("#s9-g1", { opacity: 0, x: -10 }, { opacity: 0.12, x: 0, duration: 0.6, ease: "power2.out" }, 0.02);
+            tl.fromTo("#s9-g2", { opacity: 0, x: -10 }, { opacity: 0.12, x: 0, duration: 0.6, ease: "power2.out" }, 2.14);
+            tl.fromTo("#s9-g3", { opacity: 0, x: -10 }, { opacity: 0.12, x: 0, duration: 0.6, ease: "power2.out" }, 3.94);
 
-            // 6.5 — closing text + gap viz
+            // 0.32s — "checkbox" lands
+            tl.fromTo("#s9-l1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 0.32);
+            // 2.44s — "crosswalks"
+            tl.fromTo("#s9-l2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 2.44);
+            // 4.24s — "hesitation" (after 500ms breath)
+            tl.fromTo("#s9-l3", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "back.out(1.4)" }, 4.24);
+
+            // 6.5 — closing text + ambient underline drawing through the speak window
             tl.fromTo("#s9-text", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 6.5);
+            // Underline draws under "watching, scoring, and quietly conceding" through ~9.3-12.3s
+            tl.to("#s9-text-ul", { scaleX: 1, duration: 2.8, ease: "power1.inOut" }, 9.3);
+
+            // 9.5 — gap viz enters
             tl.fromTo("#s9-gap", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, 9.5);
+
+            // 10.0–12.4 — arcs draw
             tl.to("#s9-arc-h", { strokeDashoffset: 0, duration: 2.4, ease: "power1.inOut" }, 10.0);
             tl.to("#s9-arc-m", { strokeDashoffset: 0, duration: 2.4, ease: "power1.inOut" }, 10.2);
+
+            // Particle trails — 6 dots pre-positioned along each arc, staggered reveal as arcs draw.
+            // Sampled points along the cubic Bézier curves (approx).
+            const hPts = [
+              { x: 30,  y: 150 },
+              { x: 78,  y: 78  },
+              { x: 130, y: 50  },
+              { x: 184, y: 42  },
+              { x: 232, y: 64  },
+              { x: 270, y: 150 },
+            ];
+            const mPts = [
+              { x: 510, y: 150 },
+              { x: 462, y: 90  },
+              { x: 410, y: 64  },
+              { x: 354, y: 58  },
+              { x: 302, y: 80  },
+              { x: 270, y: 150 },
+            ];
+            const hCircles = document.querySelectorAll("#s9-h-particles circle");
+            const mCircles = document.querySelectorAll("#s9-m-particles circle");
+            hCircles.forEach((c, i) => {
+              c.setAttribute("cx", String(hPts[i].x));
+              c.setAttribute("cy", String(hPts[i].y));
+              tl.fromTo(c, { opacity: 0 }, { opacity: 0.85, duration: 0.18, ease: "power2.out" }, 10.0 + i * 0.40);
+              tl.to(c, { opacity: 0.25, duration: 0.6, ease: "power1.in" }, 10.0 + i * 0.40 + 0.5);
+            });
+            mCircles.forEach((c, i) => {
+              c.setAttribute("cx", String(mPts[i].x));
+              c.setAttribute("cy", String(mPts[i].y));
+              tl.fromTo(c, { opacity: 0 }, { opacity: 0.85, duration: 0.18, ease: "power2.out" }, 10.2 + i * 0.40);
+              tl.to(c, { opacity: 0.25, duration: 0.6, ease: "power1.in" }, 10.2 + i * 0.40 + 0.5);
+            });
+
+            // 12.6 — collision marker + two expanding rings (mirror scene 1 ripple)
             tl.fromTo(
               "#s9-meet",
               { opacity: 0, scale: 0.3 },
@@ -174,12 +358,60 @@
               { scale: 1.4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 },
               13.4,
             );
+            tl.fromTo(
+              "#s9-meet-r1",
+              { opacity: 0.7, scale: 0.3 },
+              { opacity: 0, scale: 3.6, duration: 1.4, ease: "power2.out", immediateRender: false },
+              12.6,
+            );
+            tl.fromTo(
+              "#s9-meet-r2",
+              { opacity: 0.5, scale: 0.3 },
+              { opacity: 0, scale: 3.0, duration: 1.6, ease: "power2.out", immediateRender: false },
+              12.85,
+            );
 
-            // ambient
+            // CRT scanline drift — slow vertical sweep over the full scene (mirror scene 3),
+            // 6% opacity max, finite repeats.
+            const scanCycle = 8.2;
+            const scanRepeats = Math.ceil(16.36 / scanCycle) - 1;
+            tl.set("#s9-scan", { y: -120, opacity: 0.06 });
+            tl.to(
+              "#s9-scan",
+              {
+                y: 1080,
+                duration: scanCycle,
+                ease: "none",
+                repeat: scanRepeats,
+                immediateRender: false,
+              },
+              0,
+            );
+
+            // Data-stream ticker — drifts right-to-left across the scene's full duration.
+            // Translate by -50% so the duplicated content wraps without a visible seam.
+            const tickerCycle = 12.0;
+            const tickerRepeats = Math.ceil(16.36 / tickerCycle) - 1;
+            tl.fromTo(
+              "#s9-ticker",
+              { xPercent: 0 },
+              { xPercent: -50, duration: tickerCycle, ease: "none", repeat: tickerRepeats, immediateRender: false },
+              0,
+            );
+
+            // Ambient grid breath (existing)
             tl.to(
               ".grid",
               { opacity: 0.6, duration: 4, ease: "sine.inOut", yoyo: true, repeat: 1 },
               4,
+            );
+
+            // Slow breathing on the meeting indicator — extends past data-duration (16.36)
+            // so the host stays composited to scene boundary (Key Rule #7).
+            tl.to(
+              "#s9-meet",
+              { scale: 1.12, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              14.6,
             );
 
             window.__timelines["scene-09-synthesis"] = tl;

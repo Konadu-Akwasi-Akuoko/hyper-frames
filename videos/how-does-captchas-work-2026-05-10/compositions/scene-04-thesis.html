@@ -50,7 +50,7 @@
             position: absolute;
             left: 160px;
             right: 160px;
-            bottom: 110px;
+            bottom: 80px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 28px;
@@ -60,7 +60,7 @@
             background: #11141b;
             border: 1px solid #1f242c;
             border-radius: 16px;
-            padding: 38px 36px;
+            padding: 28px 32px;
             min-height: 360px;
             display: flex;
             flex-direction: column;
@@ -77,6 +77,17 @@
             background: var(--ac, #ffb547);
             transform-origin: left center;
             transform: scaleX(0);
+          }
+          [data-composition-id="scene-04-thesis"] .card .halo {
+            position: absolute;
+            inset: -1px;
+            border-radius: 16px;
+            pointer-events: none;
+            opacity: 0;
+            box-shadow:
+              inset 0 0 0 1px var(--ac, #ffb547),
+              inset 0 0 32px color-mix(in srgb, var(--ac, #ffb547) 18%, transparent),
+              0 0 28px color-mix(in srgb, var(--ac, #ffb547) 35%, transparent);
           }
           [data-composition-id="scene-04-thesis"] .num {
             font: 500 18px/1 "JetBrains Mono", monospace;
@@ -213,6 +224,7 @@
 
         <div class="cards" id="s4-cards">
           <div class="card" id="s4-c1" data-c="1">
+            <div class="halo" id="s4-c1-halo"></div>
             <div>
               <div class="num">01 · distorted text</div>
               <div class="year">1997</div>
@@ -229,6 +241,7 @@
           </div>
 
           <div class="card" id="s4-c2" data-c="2">
+            <div class="halo" id="s4-c2-halo"></div>
             <div>
               <div class="num">02 · image grids</div>
               <div class="year">2014</div>
@@ -254,6 +267,7 @@
           </div>
 
           <div class="card" id="s4-c3" data-c="3">
+            <div class="halo" id="s4-c3-halo"></div>
             <div>
               <div class="num">03 · behavioral</div>
               <div class="year">2017</div>
@@ -292,24 +306,36 @@
             tl.fromTo("#s4-t1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.4);
             tl.fromTo("#s4-t2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.0);
 
-            // 5.36-7.05s — "three generations of CAPTCHAs"
+            // 5.36-6.64s — "three generations of CAPTCHAs"
+            // Cards rise from just below the canvas. expo.out — pronounced
+            // fast-in / slow-settle curve. y: 280 keeps motion contained
+            // in the lower portion; cards never appear near the headline.
             tl.fromTo(
-              "#s4-c1",
-              { opacity: 0, y: 60, scale: 0.96 },
-              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" },
-              5.2,
+              ["#s4-c1", "#s4-c2", "#s4-c3"],
+              { opacity: 0, y: 280 },
+              { opacity: 1, y: 0, duration: 1.0, ease: "expo.out", stagger: 0.14 },
+              5.36,
             );
-            tl.fromTo(
-              "#s4-c2",
-              { opacity: 0, y: 60, scale: 0.96 },
-              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" },
-              5.5,
-            );
-            tl.fromTo(
-              "#s4-c3",
-              { opacity: 0, y: 60, scale: 0.96 },
-              { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" },
-              5.8,
+
+            // 7.05-9.30s — "were each broken in turn"
+            // Sequential accent-glow wave across cards. 0.7s stagger overlaps
+            // adjacent halos so the wave reads as continuous, not three strobes.
+            const haloCues = [
+              { sel: "#s4-c1-halo", start: 7.05 },
+              { sel: "#s4-c2-halo", start: 7.75 },
+              { sel: "#s4-c3-halo", start: 8.45 },
+            ];
+            haloCues.forEach((c) => {
+              tl.to(c.sel, { opacity: 1, duration: 0.55, ease: "power2.out" }, c.start);
+              tl.to(c.sel, { opacity: 0, duration: 0.5, ease: "power2.in" }, c.start + 1.35);
+            });
+
+            // Crossfade into scene-05 across the 0.5s overlap window
+            // (global 75.56 → 76.06). Mirrors scene-02 → scene-03 handoff.
+            tl.to(
+              '[data-composition-id="scene-04-thesis"]',
+              { opacity: 0, duration: 0.5, ease: "power2.in" },
+              13.0,
             );
 
             // 7.5s+ — animate inner glyphs
@@ -345,13 +371,6 @@
                 },
               },
               7.9,
-            );
-
-            // Ambient
-            tl.to(
-              "#s4-cards .card",
-              { y: -6, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.3 },
-              4,
             );
 
             window.__timelines["scene-04-thesis"] = tl;

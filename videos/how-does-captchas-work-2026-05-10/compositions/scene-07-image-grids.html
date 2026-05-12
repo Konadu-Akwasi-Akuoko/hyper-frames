@@ -44,19 +44,60 @@
             text-transform: uppercase;
             margin-bottom: 28px;
           }
+          [data-composition-id="scene-07-grids"] #s7-a .left .yr-row {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 28px;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .yr-aura {
+            position: absolute;
+            width: 360px;
+            height: 220px;
+            top: 50%;
+            left: 80px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(50% 50% at 50% 50%, rgba(103, 232, 249, 0.45), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            filter: blur(2px);
+          }
           [data-composition-id="scene-07-grids"] #s7-a .left .yr {
             font: 800 180px/0.9 "Inter", sans-serif;
             color: #67e8f9;
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.04em;
-            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .left .v2-chip {
+            display: inline-block;
+            background: #11141b;
+            border: 1.5px solid #67e8f9;
+            color: #67e8f9;
+            font: 700 28px/1 "JetBrains Mono", monospace;
+            padding: 8px 14px;
+            border-radius: 6px;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: scale(0.6);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 18px rgba(103, 232, 249, 0.2);
           }
           [data-composition-id="scene-07-grids"] #s7-a .left .head {
             font: 800 72px/1 "Inter", sans-serif;
             letter-spacing: -0.02em;
             margin-bottom: 40px;
           }
-          [data-composition-id="scene-07-grids"] #s7-a .left .head .em { color: #67e8f9; font-style: italic; }
+          [data-composition-id="scene-07-grids"] #s7-a .left .head .em {
+            color: #67e8f9;
+            font-style: italic;
+            display: inline-block;
+            transform-origin: center center;
+          }
           [data-composition-id="scene-07-grids"] #s7-a .left .prompts {
             display: flex;
             flex-direction: column;
@@ -78,6 +119,7 @@
             width: 28px;
           }
           [data-composition-id="scene-07-grids"] #s7-a .panel {
+            position: relative;
             background: #11141b;
             border: 1.5px solid #1f242c;
             border-radius: 14px;
@@ -85,6 +127,37 @@
             display: flex;
             flex-direction: column;
             gap: 18px;
+            --beam-angle: 0deg;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: conic-gradient(
+              from var(--beam-angle),
+              transparent 0deg,
+              rgba(103, 232, 249, 0.85) 40deg,
+              rgba(66, 133, 244, 0.6) 70deg,
+              transparent 110deg,
+              transparent 360deg
+            );
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 5;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            box-shadow:
+              0 0 32px rgba(103, 232, 249, 0.16),
+              0 0 64px rgba(66, 133, 244, 0.08);
+            pointer-events: none;
           }
           [data-composition-id="scene-07-grids"] #s7-a .panel .pmt {
             background: #4285f4;
@@ -92,6 +165,8 @@
             border-radius: 6px;
             padding: 16px 20px;
             font: 600 22px/1.2 "Inter", sans-serif;
+            position: relative;
+            z-index: 1;
           }
           [data-composition-id="scene-07-grids"] #s7-a .panel .pmt small {
             display: block;
@@ -102,31 +177,44 @@
             margin-bottom: 6px;
           }
           [data-composition-id="scene-07-grids"] #s7-a .panel .grid3 {
+            position: relative;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             gap: 4px;
             aspect-ratio: 1;
+            z-index: 1;
+            overflow: hidden;
+          }
+          [data-composition-id="scene-07-grids"] #s7-a .panel .grid3 .scan {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 30%;
+            left: 0;
+            background: linear-gradient(
+              90deg,
+              transparent,
+              rgba(103, 232, 249, 0.28),
+              transparent
+            );
+            pointer-events: none;
+            z-index: 10;
+            transform: translateX(-100%);
+            opacity: 0;
           }
           [data-composition-id="scene-07-grids"] #s7-a .panel .cell {
             position: relative;
-            background: #1f242c;
+            background-color: #1f242c;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             overflow: hidden;
             border: 3px solid transparent;
+            border-radius: 2px;
+            filter: brightness(0.55) saturate(0.85);
             transition: none;
           }
-          [data-composition-id="scene-07-grids"] #s7-a .panel .cell .obj {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font: 700 64px/1 "Inter", sans-serif;
-            color: #2c333d;
-          }
-          [data-composition-id="scene-07-grids"] #s7-a .panel .cell.cw .obj { color: #3a4150; }
-          [data-composition-id="scene-07-grids"] #s7-a .panel .cell.tl .obj { color: #3a4150; }
-          [data-composition-id="scene-07-grids"] #s7-a .panel .cell.fh .obj { color: #3a4150; }
           [data-composition-id="scene-07-grids"] #s7-a .panel .cell .check {
             position: absolute;
             top: 6px;
@@ -140,6 +228,8 @@
             text-align: center;
             opacity: 0;
             transform: scale(0.6);
+            z-index: 2;
+            box-shadow: 0 0 12px rgba(66, 133, 244, 0.45);
           }
           [data-composition-id="scene-07-grids"] #s7-a .panel .btn {
             background: #4285f4;
@@ -148,6 +238,8 @@
             padding: 14px 20px;
             font: 600 22px/1 "Inter", sans-serif;
             text-align: center;
+            position: relative;
+            z-index: 1;
           }
           /* ---- B: labor pipeline ---- */
           [data-composition-id="scene-07-grids"] #s7-b {
@@ -159,7 +251,10 @@
             margin-bottom: 60px;
             max-width: 1500px;
           }
-          [data-composition-id="scene-07-grids"] #s7-b .head .em { color: #ffb547; font-style: italic; }
+          [data-composition-id="scene-07-grids"] #s7-b .head .em {
+            color: #ffb547;
+            font-style: italic;
+          }
           [data-composition-id="scene-07-grids"] #s7-b .pipe {
             display: grid;
             grid-template-columns: 1fr 60px 1fr 60px 1fr;
@@ -168,6 +263,7 @@
             margin-bottom: 60px;
           }
           [data-composition-id="scene-07-grids"] #s7-b .node {
+            position: relative;
             background: #11141b;
             border: 1.5px solid #1f242c;
             border-radius: 14px;
@@ -193,11 +289,28 @@
             color: #7a8493;
           }
           [data-composition-id="scene-07-grids"] #s7-b .arr {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             font: 700 56px/1 "JetBrains Mono", monospace;
             color: #ffb547;
+            overflow: visible;
+          }
+          [data-composition-id="scene-07-grids"] #s7-b .arr .arr-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            margin-left: -6px;
+            margin-top: -6px;
+            border-radius: 50%;
+            background: #67e8f9;
+            box-shadow: 0 0 14px rgba(103, 232, 249, 0.75);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
           }
           [data-composition-id="scene-07-grids"] #s7-b .pipeline-tag {
             display: inline-flex;
@@ -239,7 +352,10 @@
             font: 800 76px/1 "Inter", sans-serif;
             letter-spacing: -0.02em;
           }
-          [data-composition-id="scene-07-grids"] #s7-c .top .l .h .em { color: #ff6b5d; font-style: italic; }
+          [data-composition-id="scene-07-grids"] #s7-c .top .l .h .em {
+            color: #ff6b5d;
+            font-style: italic;
+          }
           [data-composition-id="scene-07-grids"] #s7-c .top .l .h .yolo {
             display: inline-block;
             font: 800 60px/1 "JetBrains Mono", monospace;
@@ -248,7 +364,7 @@
             padding: 4px 14px;
             border-radius: 6px;
             letter-spacing: 0.02em;
-            transform: translateY(-8px);
+            transform-origin: center center;
           }
           [data-composition-id="scene-07-grids"] #s7-c .top .r {
             display: flex;
@@ -274,11 +390,89 @@
             color: #ffb547;
             font-variant-numeric: tabular-nums;
           }
+          [data-composition-id="scene-07-grids"] #s7-c .eth-card-wrap {
+            position: absolute;
+            top: 340px;
+            left: 160px;
+            width: 820px;
+            height: 460px;
+            perspective: 1400px;
+            pointer-events: none;
+            opacity: 0;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .eth-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #11141b;
+            border: 2.5px solid #ff6b5d;
+            box-shadow:
+              0 24px 60px rgba(0, 0, 0, 0.55),
+              0 0 0 1px rgba(255, 107, 93, 0.35),
+              0 0 36px rgba(255, 107, 93, 0.30);
+            transform-origin: 30% 50%;
+            will-change: transform, opacity;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .eth-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.92) saturate(0.95);
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .eth-card-tag {
+            position: absolute;
+            left: 18px;
+            bottom: 16px;
+            padding: 6px 12px;
+            background: rgba(11, 13, 18, 0.78);
+            border: 1px solid rgba(255, 107, 93, 0.55);
+            border-radius: 6px;
+            font: 500 18px/1 "JetBrains Mono", monospace;
+            color: #e8eaed;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+          }
           [data-composition-id="scene-07-grids"] #s7-c .bars {
+            position: relative;
             background: #0e1117;
             border: 1px solid #1f242c;
             border-radius: 14px;
             padding: 36px 40px;
+            --beam-angle: 0deg;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: conic-gradient(
+              from var(--beam-angle),
+              transparent 0deg,
+              rgba(255, 107, 93, 0.85) 40deg,
+              rgba(255, 181, 71, 0.55) 70deg,
+              transparent 110deg,
+              transparent 360deg
+            );
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 5;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            box-shadow:
+              0 0 32px rgba(255, 107, 93, 0.14),
+              0 0 64px rgba(255, 181, 71, 0.08);
+            pointer-events: none;
           }
           [data-composition-id="scene-07-grids"] #s7-c .bars .row {
             display: grid;
@@ -286,6 +480,9 @@
             align-items: center;
             gap: 22px;
             margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+            border-radius: 6px;
           }
           [data-composition-id="scene-07-grids"] #s7-c .bars .row:last-child { margin-bottom: 0; }
           [data-composition-id="scene-07-grids"] #s7-c .bars .row .name {
@@ -295,9 +492,13 @@
           [data-composition-id="scene-07-grids"] #s7-c .bars .row .track {
             position: relative;
             height: 28px;
-            background: #1f242c;
             border-radius: 4px;
             overflow: hidden;
+            background-color: #1f242c;
+            background-image:
+              linear-gradient(90deg, transparent calc(25% - 0.5px), #2a3038 calc(25% - 0.5px), #2a3038 calc(25% + 0.5px), transparent calc(25% + 0.5px)),
+              linear-gradient(90deg, transparent calc(50% - 0.5px), #2a3038 calc(50% - 0.5px), #2a3038 calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+              linear-gradient(90deg, transparent calc(75% - 0.5px), #2a3038 calc(75% - 0.5px), #2a3038 calc(75% + 0.5px), transparent calc(75% + 0.5px));
           }
           [data-composition-id="scene-07-grids"] #s7-c .bars .row .track .fill {
             position: absolute;
@@ -307,11 +508,34 @@
             transform: scaleX(0);
             border-radius: 4px;
           }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row .track .shim {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .bars .row .track .shim .sb {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            background: linear-gradient(
+              90deg,
+              transparent,
+              rgba(255, 255, 255, 0.55),
+              transparent
+            );
+            transform: translateX(-100px);
+            opacity: 0;
+          }
           [data-composition-id="scene-07-grids"] #s7-c .bars .row .pct {
             font: 700 32px/1 "JetBrains Mono", monospace;
             color: #ffb547;
             font-variant-numeric: tabular-nums;
             text-align: right;
+            padding: 4px 0;
           }
           [data-composition-id="scene-07-grids"] #s7-c .footer {
             margin-top: 36px;
@@ -331,8 +555,21 @@
             letter-spacing: -0.02em;
           }
           [data-composition-id="scene-07-grids"] #s7-c .footer .punch em {
+            position: relative;
             color: #ff6b5d;
             font-style: italic;
+          }
+          [data-composition-id="scene-07-grids"] #s7-c .footer .punch em .ul {
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            height: 5px;
+            width: 100%;
+            background: #ff6b5d;
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: left center;
+            box-shadow: 0 0 14px rgba(255, 107, 93, 0.6);
           }
         </style>
 
@@ -342,7 +579,11 @@
         <div class="stage" id="s7-a">
           <div class="left">
             <div class="eb" id="s7-a-eb">cycle two · recognize objects</div>
-            <div class="yr" id="s7-a-yr">2014</div>
+            <div class="yr-row">
+              <div class="yr-aura" id="s7-a-yr-aura"></div>
+              <div class="yr" id="s7-a-yr">2014</div>
+              <div class="v2-chip" id="s7-a-v2">v2</div>
+            </div>
             <div class="head" id="s7-a-head">turned the problem <span class="em">inside out.</span></div>
             <div class="prompts">
               <div class="prompt" id="s7-a-p1"><span class="tick">→</span> select all squares with <b>crosswalks</b></div>
@@ -357,15 +598,16 @@
               <span id="s7-a-pmt-text">Select all squares with crosswalks</span>
             </div>
             <div class="grid3" id="s7-a-grid">
-              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
-              <div class="cell"><div class="obj">·</div><div class="check">✓</div></div>
-              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
-              <div class="cell"><div class="obj">·</div><div class="check">✓</div></div>
-              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
-              <div class="cell tl"><div class="obj">●</div><div class="check">✓</div></div>
-              <div class="cell"><div class="obj">·</div><div class="check">✓</div></div>
-              <div class="cell fh"><div class="obj">⌀</div><div class="check">✓</div></div>
-              <div class="cell cw"><div class="obj">▦</div><div class="check">✓</div></div>
+              <div class="scan" id="s7-a-scan"></div>
+              <div class="cell cw" style="background-image:url(assets/grid/cw-1.jpg)"><div class="check">✓</div></div>
+              <div class="cell" style="background-image:url(assets/grid/empty-1.jpg)"><div class="check">✓</div></div>
+              <div class="cell cw" style="background-image:url(assets/grid/cw-2.jpg)"><div class="check">✓</div></div>
+              <div class="cell" style="background-image:url(assets/grid/empty-2.jpg)"><div class="check">✓</div></div>
+              <div class="cell cw" style="background-image:url(assets/grid/cw-3.jpg)"><div class="check">✓</div></div>
+              <div class="cell tl" style="background-image:url(assets/grid/tl-1.jpg)"><div class="check">✓</div></div>
+              <div class="cell cw" style="background-image:url(assets/grid/cw-4.jpg)"><div class="check">✓</div></div>
+              <div class="cell fh" style="background-image:url(assets/grid/fh-1.jpg)"><div class="check">✓</div></div>
+              <div class="cell cw" style="background-image:url(assets/grid/cw-5.jpg)"><div class="check">✓</div></div>
             </div>
             <div class="btn">VERIFY</div>
           </div>
@@ -380,13 +622,13 @@
               <div class="n" id="s7-b-n1-n">0</div>
               <div class="d">free training labels · per minute</div>
             </div>
-            <div class="arr" id="s7-b-arr1">→</div>
+            <div class="arr" id="s7-b-arr1">→<div class="arr-dot" id="s7-b-dot1"></div></div>
             <div class="node" id="s7-b-n2">
               <div class="lbl">google · vision</div>
               <div class="n">crosswalks<br /><span style="color:#7a8493;font-weight:500;font-size:32px">lights · signs</span></div>
               <div class="d">supervised, by everyone trying to log in</div>
             </div>
-            <div class="arr" id="s7-b-arr2">→</div>
+            <div class="arr" id="s7-b-arr2">→<div class="arr-dot" id="s7-b-dot2"></div></div>
             <div class="node" id="s7-b-n3">
               <div class="lbl">downstream · waymo</div>
               <div class="n">self-driving<br /><span style="color:#7a8493;font-weight:500;font-size:32px">car project</span></div>
@@ -421,30 +663,52 @@
             </div>
           </div>
 
+          <div class="eth-card-wrap" id="s7-c-eth-wrap">
+            <div class="eth-card" id="s7-c-eth">
+              <img src="assets/eth-zurich.jpg" alt="ETH Zurich main building" />
+              <div class="eth-card-tag">ETH Zürich · Zentrum</div>
+            </div>
+          </div>
+
           <div class="bars" id="s7-c-bars">
             <div class="row" id="s7-c-r1">
               <div class="name">motorcycles</div>
-              <div class="track"><div class="fill" data-w="0.69"></div></div>
+              <div class="track">
+                <div class="fill" data-w="0.69"></div>
+                <div class="shim"><div class="sb"></div></div>
+              </div>
               <div class="pct" data-tg="69">0%</div>
             </div>
             <div class="row" id="s7-c-r2">
               <div class="name">bicycles</div>
-              <div class="track"><div class="fill" data-w="0.78"></div></div>
+              <div class="track">
+                <div class="fill" data-w="0.78"></div>
+                <div class="shim"><div class="sb"></div></div>
+              </div>
               <div class="pct" data-tg="78">0%</div>
             </div>
             <div class="row" id="s7-c-r3">
               <div class="name">crosswalks</div>
-              <div class="track"><div class="fill" data-w="0.86"></div></div>
+              <div class="track">
+                <div class="fill" data-w="0.86"></div>
+                <div class="shim"><div class="sb"></div></div>
+              </div>
               <div class="pct" data-tg="86">0%</div>
             </div>
             <div class="row" id="s7-c-r4">
               <div class="name">traffic lights</div>
-              <div class="track"><div class="fill" data-w="0.93"></div></div>
+              <div class="track">
+                <div class="fill" data-w="0.93"></div>
+                <div class="shim"><div class="sb"></div></div>
+              </div>
               <div class="pct" data-tg="93">0%</div>
             </div>
             <div class="row" id="s7-c-r5">
               <div class="name">fire hydrants</div>
-              <div class="track"><div class="fill" data-w="1.0"></div></div>
+              <div class="track">
+                <div class="fill" data-w="1.0"></div>
+                <div class="shim"><div class="sb"></div></div>
+              </div>
               <div class="pct" data-tg="100" style="color:#ff6b5d">0%</div>
             </div>
           </div>
@@ -454,7 +718,7 @@
               <b>retry rule:</b> reCAPTCHA lets you try again.<br />
               across a session, the bot passed <b>every single test.</b>
             </div>
-            <div class="punch" id="s7-c-punch">the wall<br /><em>fell. again.</em></div>
+            <div class="punch" id="s7-c-punch">the wall<br /><em>fell. again.<span class="ul" id="s7-c-ul"></span></em></div>
           </div>
         </div>
 
@@ -470,72 +734,188 @@
               0,
             );
 
-            // STAGE A — 0-19s
+            // STAGE A — 0-19.5s
             tl.fromTo("#s7-a", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 0.1);
             tl.fromTo("#s7-a-eb", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+            // 0.54 — "fourteen" (year)
             tl.fromTo(
               "#s7-a-yr",
               { opacity: 0, scale: 0.85, y: 30 },
               { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "back.out(1.4)" },
-              0.4,
+              0.40,
             );
+            // year aura — fades in just behind the year, then breathes through the stage
+            tl.fromTo(
+              "#s7-a-yr-aura",
+              { opacity: 0, scale: 0.85 },
+              { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" },
+              0.50,
+            );
+            tl.to(
+              "#s7-a-yr-aura",
+              { opacity: 0.75, scale: 1.08, duration: 4.5, ease: "sine.inOut", yoyo: true, repeat: 1 },
+              2.0,
+            );
+            // 2.28 — "version two" — v2 chip pops in
+            tl.fromTo(
+              "#s7-a-v2",
+              { opacity: 0, scale: 0.6 },
+              { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" },
+              2.20,
+            );
+            // 4.62 — "inside" — head enters, em phrase Y-flips
             tl.fromTo(
               "#s7-a-head",
               { opacity: 0, y: 30 },
               { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-              3.7,
+              4.40,
             );
+            tl.fromTo(
+              "#s7-a-head .em",
+              { rotationY: 0 },
+              { rotationY: 360, duration: 1.2, ease: "power2.inOut", transformOrigin: "center center" },
+              4.55,
+            );
+            // 6.06 — "Instead of reading" — panel slides in, beam starts sweeping
             tl.fromTo(
               "#s7-a-panel",
               { opacity: 0, x: 40, scale: 0.96 },
               { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "expo.out" },
-              5.5,
+              6.00,
             );
-            // 9.52 — 3x3 grid (cells stagger in)
+            // panel on-screen 6.0 → 19.5 (13.5s). 8s/lap × repeat:1 = 2 laps.
+            tl.to("#s7-a-panel", { "--beam-angle": "360deg", duration: 8, ease: "none", repeat: 1 }, 6.20);
+            // 9.5 — "three-by-three grid" — cells stagger in
             tl.fromTo(
               "#s7-a-grid .cell",
               { opacity: 0, scale: 0.6 },
               { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)", stagger: { each: 0.05, from: "start" } },
-              8.6,
+              9.50,
             );
-            // Prompts and check sequences:
-            // 12.38 crosswalks
-            tl.fromTo("#s7-a-p1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 12.2);
-            tl.to("#s7-a-grid .cell.cw .check", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 }, 12.3);
-            tl.to("#s7-a-grid .cell.cw", { borderColor: "#4285f4", duration: 0.3 }, 12.3);
-            // 14.96 lights
-            tl.fromTo("#s7-a-p2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 14.8);
+            // grid scanline sweep
+            tl.set("#s7-a-scan", { opacity: 0.9 }, 9.50);
+            tl.fromTo(
+              "#s7-a-scan",
+              { x: "-100%" },
+              { x: "335%", duration: 1.4, ease: "power1.inOut" },
+              9.50,
+            );
+            tl.to("#s7-a-scan", { opacity: 0, duration: 0.25 }, 10.70);
+            // 12.38 prompt 1 / 13.72 "crosswalks"
+            tl.fromTo("#s7-a-p1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 12.30);
+            tl.to(
+              "#s7-a-grid .cell.cw",
+              {
+                filter: "brightness(1.05) saturate(1.2)",
+                borderColor: "#4285f4",
+                boxShadow: "0 0 0 2px rgba(66,133,244,0.55), 0 0 22px rgba(66,133,244,0.45)",
+                duration: 0.4,
+                ease: "power2.out",
+              },
+              13.65,
+            );
+            tl.to(
+              "#s7-a-grid .cell.cw .check",
+              { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 },
+              13.65,
+            );
+            // 14.95 prompt 2 / 16.12 "traffic lights"
+            tl.fromTo("#s7-a-p2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 14.95);
             tl.to(
               "#s7-a-pmt-text",
-              { opacity: 0, duration: 0.12, onComplete: () => { const el = document.getElementById("s7-a-pmt-text"); if (el) el.textContent = "Select all squares with traffic lights"; }, overwrite: "auto" },
-              14.8,
+              {
+                opacity: 0,
+                duration: 0.12,
+                onComplete: () => {
+                  const el = document.getElementById("s7-a-pmt-text");
+                  if (el) el.textContent = "Select all squares with traffic lights";
+                },
+                overwrite: "auto",
+              },
+              14.95,
             );
-            tl.to("#s7-a-pmt-text", { opacity: 1, duration: 0.15, overwrite: "auto" }, 14.96);
-            tl.to("#s7-a-grid .cell.tl .check", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 }, 14.95);
-            tl.to("#s7-a-grid .cell.tl", { borderColor: "#4285f4", duration: 0.3 }, 14.95);
-            // 17.24 hydrants
-            tl.fromTo("#s7-a-p3", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 17.0);
+            tl.to("#s7-a-pmt-text", { opacity: 1, duration: 0.15, overwrite: "auto" }, 15.10);
+            tl.to(
+              "#s7-a-grid .cell.tl",
+              {
+                filter: "brightness(1.05) saturate(1.2)",
+                borderColor: "#4285f4",
+                boxShadow: "0 0 0 2px rgba(66,133,244,0.55), 0 0 22px rgba(66,133,244,0.45)",
+                duration: 0.4,
+                ease: "power2.out",
+              },
+              16.05,
+            );
+            tl.to(
+              "#s7-a-grid .cell.tl .check",
+              { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 },
+              16.05,
+            );
+            // 17.20 prompt 3 / 18.46 "fire hydrants"
+            tl.fromTo("#s7-a-p3", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 17.20);
             tl.to(
               "#s7-a-pmt-text",
-              { opacity: 0, duration: 0.12, onComplete: () => { const el = document.getElementById("s7-a-pmt-text"); if (el) el.textContent = "Select all squares with fire hydrants"; }, overwrite: "auto" },
-              17.0,
+              {
+                opacity: 0,
+                duration: 0.12,
+                onComplete: () => {
+                  const el = document.getElementById("s7-a-pmt-text");
+                  if (el) el.textContent = "Select all squares with fire hydrants";
+                },
+                overwrite: "auto",
+              },
+              17.20,
             );
-            tl.to("#s7-a-pmt-text", { opacity: 1, duration: 0.15, overwrite: "auto" }, 17.16);
-            tl.to("#s7-a-grid .cell.fh .check", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 }, 17.15);
-            tl.to("#s7-a-grid .cell.fh", { borderColor: "#4285f4", duration: 0.3 }, 17.15);
-            tl.to("#s7-a", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 19.5);
+            tl.to("#s7-a-pmt-text", { opacity: 1, duration: 0.15, overwrite: "auto" }, 17.36);
+            tl.to(
+              "#s7-a-grid .cell.fh",
+              {
+                filter: "brightness(1.05) saturate(1.2)",
+                borderColor: "#4285f4",
+                boxShadow: "0 0 0 2px rgba(66,133,244,0.55), 0 0 22px rgba(66,133,244,0.45)",
+                duration: 0.4,
+                ease: "power2.out",
+              },
+              18.40,
+            );
+            tl.to(
+              "#s7-a-grid .cell.fh .check",
+              { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.06 },
+              18.40,
+            );
+            tl.to("#s7-a", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 19.50);
 
             // STAGE B — 19.5-39s
-            tl.fromTo("#s7-b", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 19.3);
-            // 21.74 trained recognition
-            tl.fromTo("#s7-b-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 19.8);
-            tl.fromTo("#s7-b-n1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 22.0);
+            tl.fromTo("#s7-b", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 19.30);
+            // 19.96 — "There was a second motive"
+            tl.fromTo("#s7-b-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 20.00);
+            // 21.74 — "Every click"
+            tl.fromTo("#s7-b-n1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 21.80);
+            tl.fromTo(
+              "#s7-b-n1",
+              { boxShadow: "0 0 0 0 rgba(255,181,71,0)" },
+              {
+                boxShadow: "0 0 28px rgba(255,181,71,0.20), inset 0 0 0 1px rgba(255,181,71,0.35)",
+                duration: 0.7,
+                ease: "power2.out",
+              },
+              21.80,
+            );
+            // arrow-1 traveling dot — 2 cycles across the stage
+            tl.fromTo(
+              "#s7-b-dot1",
+              { x: -40, opacity: 0 },
+              { x: 40, opacity: 1, duration: 1.4, ease: "power2.inOut", repeat: 1, repeatDelay: 6 },
+              22.0,
+            );
+            tl.to("#s7-b-dot1", { opacity: 0, duration: 0.2 }, 30.6);
+            // count-up to 1.2B — peaks on "Billions" (~33.8)
             const labels = { v: 0 };
             tl.to(
               labels,
               {
                 v: 1_200_000_000,
-                duration: 4,
+                duration: 1.7,
                 ease: "power2.out",
                 onUpdate: function () {
                   const el = document.getElementById("s7-b-n1-n");
@@ -546,40 +926,93 @@
                   else el.textContent = (v / 1e9).toFixed(1) + " B";
                 },
               },
-              22.2,
+              32.50,
             );
-            tl.fromTo("#s7-b-arr1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 24.0);
-            tl.fromTo("#s7-b-n2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 25.6);
-            tl.fromTo("#s7-b-arr2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 27.4);
-            // 27.74 self-driving
-            tl.fromTo("#s7-b-n3", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 27.7);
-            // 36.15 labor pipeline
+            // 25-ish — pipeline mid-phrase / 26.26 "crosswalks"
+            tl.fromTo("#s7-b-arr1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 25.00);
+            tl.fromTo("#s7-b-n2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 26.20);
+            tl.fromTo(
+              "#s7-b-n2",
+              { boxShadow: "0 0 0 0 rgba(255,181,71,0)" },
+              {
+                boxShadow: "0 0 28px rgba(255,181,71,0.20), inset 0 0 0 1px rgba(255,181,71,0.35)",
+                duration: 0.7,
+                ease: "power2.out",
+              },
+              26.20,
+            );
+            // arrow-2 traveling dot — 2 cycles
+            tl.fromTo(
+              "#s7-b-dot2",
+              { x: -40, opacity: 0 },
+              { x: 40, opacity: 1, duration: 1.4, ease: "power2.inOut", repeat: 1, repeatDelay: 6 },
+              27.5,
+            );
+            tl.to("#s7-b-dot2", { opacity: 0, duration: 0.2 }, 36.1);
+            tl.fromTo("#s7-b-arr2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 28.20);
+            // 28.98 — "self-driving car project"
+            tl.fromTo("#s7-b-n3", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.55, ease: "expo.out" }, 28.95);
+            tl.fromTo(
+              "#s7-b-n3",
+              { boxShadow: "0 0 0 0 rgba(255,181,71,0)" },
+              {
+                boxShadow: "0 0 28px rgba(255,181,71,0.20), inset 0 0 0 1px rgba(255,181,71,0.35)",
+                duration: 0.7,
+                ease: "power2.out",
+              },
+              28.95,
+            );
+            // 38.16 — "labor pipeline"
             tl.fromTo(
               "#s7-b-tag",
               { opacity: 0, y: 30, scale: 0.95 },
               { opacity: 1, y: 0, scale: 1, duration: 0.65, ease: "back.out(1.4)" },
-              35.9,
+              37.95,
             );
-            tl.to("#s7-b", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 39.0);
+            tl.fromTo(
+              "#s7-b-tag",
+              { borderColor: "#ffb547" },
+              { borderColor: "#67e8f9", duration: 0.3, yoyo: true, repeat: 1, ease: "power2.inOut" },
+              37.95,
+            );
+            tl.to("#s7-b", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 39.00);
 
-            // STAGE C — 39-70.5
-            tl.fromTo("#s7-c", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 38.8);
-            // 39.62 worked. Then it stopped.
-            tl.fromTo("#s7-c-eb", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 39.2);
-            // 43.16 ETH Zurich, 47.46 YOLO
+            // STAGE C — 39-71s
+            tl.fromTo("#s7-c", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 38.80);
+            // 39.62 — "For about a decade"
+            tl.fromTo("#s7-c-eb", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 39.55);
+            // 43.30 — "twenty twenty-four" — headline rises in
             tl.fromTo(
               "#s7-c .top .l .h",
               { opacity: 0, y: 30 },
               { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-              43.0,
+              43.20,
             );
+            // 49.46 — "YOLO" — badge slam
+            tl.fromTo(
+              ".yolo",
+              { scale: 1.6, filter: "brightness(1.5)" },
+              { scale: 1, filter: "brightness(1)", duration: 0.45, ease: "back.out(2)", immediateRender: false },
+              49.40,
+            );
+            tl.fromTo(
+              ".yolo",
+              { boxShadow: "0 0 0 0 rgba(255,107,93,0)" },
+              {
+                boxShadow: "0 0 0 6px rgba(255,107,93,0.35), 0 0 28px rgba(255,107,93,0.55)",
+                duration: 0.25,
+                ease: "power2.out",
+              },
+              49.40,
+            );
+            tl.to(".yolo", { boxShadow: "0 0 0 0 rgba(255,107,93,0)", duration: 0.6, ease: "power2.out" }, 49.85);
             tl.fromTo(
               "#s7-c-st1",
               { opacity: 0, y: 30 },
               { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" },
-              49.8,
+              49.80,
             );
-            // 50.34 14k photographs — count up
+            // 50.34 — "fourteen thousand"
             const fourteen = { v: 0 };
             tl.to(
               fourteen,
@@ -594,15 +1027,49 @@
                   el.textContent = (v < 1000 ? String(v) : Math.floor(v / 1000) + " " + String(v % 1000).padStart(3, "0"));
                 },
               },
-              50.0,
+              50.30,
             );
-            tl.fromTo("#s7-c-st2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 51.8);
+            tl.fromTo("#s7-c-st2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 51.80);
 
-            // 52.70 — accuracy ranged from 69% motorcycles ... to 100% fire hydrants
-            tl.fromTo("#s7-c-bars", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 52.0);
-            // animate bars and counters one at a time (hardcoded selectors — bundler can't handle template-literal selectors)
-            function animateRow(fillSel, pctSel, pct, t) {
-              tl.fromTo(fillSel, { scaleX: 0 }, { scaleX: pct / 100, duration: 0.7, ease: "expo.out" }, t);
+            // 46.36 — "fine-tuned" — ETH Zurich card slides in from bottom (fast, decelerating)
+            tl.fromTo(
+              "#s7-c-eth-wrap",
+              { opacity: 0, y: 540 },
+              { opacity: 1, y: 0, duration: 0.85, ease: "expo.out" },
+              46.36,
+            );
+            tl.fromTo(
+              "#s7-c-eth",
+              { scale: 0.94 },
+              { scale: 1, duration: 0.85, ease: "expo.out" },
+              46.36,
+            );
+            // 50.34 — "fourteen" — card turns away on Y axis and drifts left out of frame
+            tl.to(
+              "#s7-c-eth",
+              {
+                rotationY: -65,
+                rotationX: -8,
+                x: -1200,
+                scale: 0.88,
+                duration: 1.55,
+                ease: "power3.in",
+              },
+              50.34,
+            );
+            tl.to(
+              "#s7-c-eth-wrap",
+              { opacity: 0, duration: 0.45, ease: "power2.in" },
+              51.44,
+            );
+
+            // bars chart entrance + border beam
+            tl.fromTo("#s7-c-bars", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 52.20);
+            // bars visible 52.2 → ~71 (~18.8s). 9s/lap × repeat:1 = 2 laps.
+            tl.to("#s7-c-bars", { "--beam-angle": "360deg", duration: 9, ease: "none", repeat: 1 }, 52.40);
+
+            function animateRow(rowSel, pct, t) {
+              tl.fromTo(rowSel + " .fill", { scaleX: 0 }, { scaleX: pct / 100, duration: 0.7, ease: "expo.out" }, t);
               const ctr = { v: 0 };
               tl.to(
                 ctr,
@@ -611,40 +1078,60 @@
                   duration: 0.7,
                   ease: "power2.out",
                   onUpdate: function () {
-                    const el = document.querySelector(pctSel);
+                    const el = document.querySelector(rowSel + " .pct");
                     if (el) el.textContent = Math.round(ctr.v) + "%";
                   },
                 },
                 t,
               );
+              // shimmer sweep across the track during fill
+              tl.set(rowSel + " .sb", { opacity: 1 }, t);
+              tl.fromTo(
+                rowSel + " .sb",
+                { x: -100 },
+                { x: 1500, duration: 0.7, ease: "power2.out" },
+                t,
+              );
+              tl.to(rowSel + " .sb", { opacity: 0, duration: 0.2, ease: "power2.in" }, t + 0.55);
             }
-            animateRow("#s7-c-r1 .fill", "#s7-c-r1 .pct", 69, 52.7);
-            animateRow("#s7-c-r2 .fill", "#s7-c-r2 .pct", 78, 53.6);
-            animateRow("#s7-c-r3 .fill", "#s7-c-r3 .pct", 86, 54.6);
-            animateRow("#s7-c-r4 .fill", "#s7-c-r4 .pct", 93, 55.6);
-            animateRow("#s7-c-r5 .fill", "#s7-c-r5 .pct", 100, 56.6);
-            // emphasize 100%
+            animateRow("#s7-c-r1", 69, 53.30);
+            animateRow("#s7-c-r2", 78, 54.20);
+            animateRow("#s7-c-r3", 86, 55.10);
+            animateRow("#s7-c-r4", 93, 56.00);
+            animateRow("#s7-c-r5", 100, 57.00);
+            // 57.18 — "one hundred percent"
             tl.to(
               "#s7-c-r5 .pct",
               { scale: 1.18, transformOrigin: "right center", duration: 0.35, yoyo: true, repeat: 1, ease: "power2.out" },
-              57.5,
+              57.20,
             );
+            tl.fromTo(
+              "#s7-c-r5",
+              { boxShadow: "0 0 0 0 rgba(255,107,93,0)" },
+              {
+                boxShadow: "0 0 0 2px rgba(255,107,93,0.35), 0 0 32px rgba(255,107,93,0.45)",
+                duration: 0.35,
+                ease: "power2.out",
+              },
+              57.20,
+            );
+            tl.to("#s7-c-r5", { boxShadow: "0 0 0 0 rgba(255,107,93,0)", duration: 0.8, ease: "power2.out" }, 57.70);
 
-            // 59.4 retry rule, 65.4 70%
-            tl.fromTo("#s7-c-foot", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 59.0);
-            // 68.42 the wall fell. again.
+            // 59.4 — retry rule
+            tl.fromTo("#s7-c-foot", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 59.40);
+            // 68.56 — "wall fell, again"
             tl.fromTo(
               "#s7-c-punch",
               { opacity: 0, y: 30, scale: 0.95 },
               { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.4)" },
-              68.0,
+              68.40,
             );
-
-            // ambient
-            tl.to(
-              "#s7-a-yr",
-              { y: -8, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 1 },
-              4,
+            // 68.92 — "again." — underline sweeps under "fell. again."
+            tl.fromTo(
+              "#s7-c-ul",
+              { scaleX: 0 },
+              { scaleX: 1, duration: 0.5, ease: "power2.out" },
+              68.85,
             );
 
             window.__timelines["scene-07-grids"] = tl;

@@ -106,6 +106,25 @@
           [data-composition-id="scene-02-subversion"] .panel.danger .v {
             color: #ff6b5d;
           }
+          [data-composition-id="scene-02-subversion"] .panel .beam {
+            position: absolute;
+            inset: -4px;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 2;
+            overflow: visible;
+          }
+          [data-composition-id="scene-02-subversion"] .panel .beam rect {
+            vector-effect: non-scaling-stroke;
+          }
+          [data-composition-id="scene-02-subversion"] .panel.danger .beam .b1 { stroke: #ffd0c8; }
+          [data-composition-id="scene-02-subversion"] .panel.danger .beam .b2 { stroke: #ff9b8a; }
+          [data-composition-id="scene-02-subversion"] .panel.danger .beam .b3,
+          [data-composition-id="scene-02-subversion"] .panel.danger .beam .b4 { stroke: #ff6b5d; }
+          [data-composition-id="scene-02-subversion"] .panel.danger .beam .b5 { stroke: #ff4d3c; }
+          [data-composition-id="scene-02-subversion"] .panel.danger .beam .b6 { stroke: #d63828; }
           [data-composition-id="scene-02-subversion"] .verdict {
             position: absolute;
             right: 160px;
@@ -218,6 +237,14 @@
 
         <div class="right" id="s2-right">
           <div class="panel" id="s2-p1">
+            <svg class="beam" id="s2-p1-beam" preserveAspectRatio="none">
+              <rect class="b6" pathLength="100" fill="none" stroke-width="2"   stroke="#ffb547" stroke-dasharray="16 84"   stroke-dashoffset="0" opacity="0.06"/>
+              <rect class="b5" pathLength="100" fill="none" stroke-width="2"   stroke="#ff9a30" stroke-dasharray="10 90"   stroke-dashoffset="0" opacity="0.12"/>
+              <rect class="b4" pathLength="100" fill="none" stroke-width="1.6" stroke="#ffb547" stroke-dasharray="6 94"    stroke-dashoffset="0" opacity="0.22"/>
+              <rect class="b3" pathLength="100" fill="none" stroke-width="1.4" stroke="#ffb547" stroke-dasharray="3.5 96.5" stroke-dashoffset="0" opacity="0.40"/>
+              <rect class="b2" pathLength="100" fill="none" stroke-width="1.2" stroke="#ffd57a" stroke-dasharray="2 98"    stroke-dashoffset="0" opacity="0.65"/>
+              <rect class="b1" pathLength="100" fill="none" stroke-width="1.0" stroke="#fff5d0" stroke-dasharray="1 99"    stroke-dashoffset="0" opacity="1.00"/>
+            </svg>
             <div class="lbl">cursor path</div>
             <div class="v" id="s2-p1-v">4 372&nbsp;px</div>
             <div class="vis">
@@ -239,6 +266,14 @@
           </div>
 
           <div class="panel" id="s2-p2">
+            <svg class="beam" id="s2-p2-beam" preserveAspectRatio="none">
+              <rect class="b6" pathLength="100" fill="none" stroke-width="2"   stroke="#ffb547" stroke-dasharray="16 84"   stroke-dashoffset="0" opacity="0.06"/>
+              <rect class="b5" pathLength="100" fill="none" stroke-width="2"   stroke="#ff9a30" stroke-dasharray="10 90"   stroke-dashoffset="0" opacity="0.12"/>
+              <rect class="b4" pathLength="100" fill="none" stroke-width="1.6" stroke="#ffb547" stroke-dasharray="6 94"    stroke-dashoffset="0" opacity="0.22"/>
+              <rect class="b3" pathLength="100" fill="none" stroke-width="1.4" stroke="#ffb547" stroke-dasharray="3.5 96.5" stroke-dashoffset="0" opacity="0.40"/>
+              <rect class="b2" pathLength="100" fill="none" stroke-width="1.2" stroke="#ffd57a" stroke-dasharray="2 98"    stroke-dashoffset="0" opacity="0.65"/>
+              <rect class="b1" pathLength="100" fill="none" stroke-width="1.0" stroke="#fff5d0" stroke-dasharray="1 99"    stroke-dashoffset="0" opacity="1.00"/>
+            </svg>
             <div class="lbl">time to reach</div>
             <div class="v" id="s2-p2-v"><span id="s2-ms">0</span>&nbsp;ms</div>
             <div class="vis">
@@ -261,6 +296,14 @@
           </div>
 
           <div class="panel" id="s2-p3">
+            <svg class="beam" id="s2-p3-beam" preserveAspectRatio="none">
+              <rect class="b6" pathLength="100" fill="none" stroke-width="2"   stroke="#ffb547" stroke-dasharray="16 84"   stroke-dashoffset="0" opacity="0.06"/>
+              <rect class="b5" pathLength="100" fill="none" stroke-width="2"   stroke="#ff9a30" stroke-dasharray="10 90"   stroke-dashoffset="0" opacity="0.12"/>
+              <rect class="b4" pathLength="100" fill="none" stroke-width="1.6" stroke="#ffb547" stroke-dasharray="6 94"    stroke-dashoffset="0" opacity="0.22"/>
+              <rect class="b3" pathLength="100" fill="none" stroke-width="1.4" stroke="#ffb547" stroke-dasharray="3.5 96.5" stroke-dashoffset="0" opacity="0.40"/>
+              <rect class="b2" pathLength="100" fill="none" stroke-width="1.2" stroke="#ffd57a" stroke-dasharray="2 98"    stroke-dashoffset="0" opacity="0.65"/>
+              <rect class="b1" pathLength="100" fill="none" stroke-width="1.0" stroke="#fff5d0" stroke-dasharray="1 99"    stroke-dashoffset="0" opacity="1.00"/>
+            </svg>
             <div class="lbl">cookies you carry</div>
             <div class="v" id="s2-p3-v">17 / domain</div>
             <div class="vis" style="height:auto">
@@ -276,6 +319,14 @@
           </div>
 
           <div class="panel danger" id="s2-p4">
+            <svg class="beam" id="s2-p4-beam" preserveAspectRatio="none">
+              <rect class="b6" pathLength="100" fill="none" stroke-width="2"   stroke-dasharray="16 84"   stroke-dashoffset="0" opacity="0.06"/>
+              <rect class="b5" pathLength="100" fill="none" stroke-width="2"   stroke-dasharray="10 90"   stroke-dashoffset="0" opacity="0.12"/>
+              <rect class="b4" pathLength="100" fill="none" stroke-width="1.6" stroke-dasharray="6 94"    stroke-dashoffset="0" opacity="0.22"/>
+              <rect class="b3" pathLength="100" fill="none" stroke-width="1.4" stroke-dasharray="3.5 96.5" stroke-dashoffset="0" opacity="0.40"/>
+              <rect class="b2" pathLength="100" fill="none" stroke-width="1.2" stroke-dasharray="2 98"    stroke-dashoffset="0" opacity="0.65"/>
+              <rect class="b1" pathLength="100" fill="none" stroke-width="1.0" stroke-dasharray="1 99"    stroke-dashoffset="0" opacity="1.00"/>
+            </svg>
             <div class="lbl">canvas pixel hash</div>
             <div class="v" id="s2-p4-v">9c4·a1f·bb2</div>
             <div class="vis">
@@ -414,6 +465,64 @@
               14.95,
             );
 
+            // Border beam: active card gets a perimeter-tracing comet that
+            // moves counter-clockwise at constant perimeter speed and lands
+            // back on its starting pixel before fading. Then the next card's
+            // beam fades in.
+            //
+            // P1 · cursor path     : active 5.95 → 8.55  (2.60s)
+            // P2 · time to reach   : active 8.55 → 12.60 (4.05s)
+            // P3 · cookies         : active 12.60 → 14.75 (2.15s)
+            // P4 · canvas pixel    : active 14.75 → 19.60 (4.85s)
+            //
+            // Each beam's <rect> stack uses pathLength=100 so dasharray and
+            // dashoffset are perimeter-normalized regardless of panel size.
+            // <rect> path direction in SVG is CW from top-left, so animating
+            // stroke-dashoffset 0 → +100 shifts the dash backwards along the
+            // path => visual CCW.
+
+            // Size each beam to match its panel's actual layout box.
+            // Panels use opacity:0 for entrance (layout is intact), so
+            // offsetWidth/offsetHeight are valid at script-eval time.
+            ["s2-p1", "s2-p2", "s2-p3", "s2-p4"].forEach((id) => {
+              const panel = document.getElementById(id);
+              if (!panel) return;
+              const w = panel.offsetWidth;
+              const h = panel.offsetHeight;
+              const beam = panel.querySelector(".beam");
+              if (!beam) return;
+              beam.setAttribute("viewBox", `-4 -4 ${w + 8} ${h + 8}`);
+              beam.querySelectorAll("rect").forEach((r) => {
+                r.setAttribute("x", "-2");
+                r.setAttribute("y", "-2");
+                r.setAttribute("width", String(w + 4));
+                r.setAttribute("height", String(h + 4));
+                r.setAttribute("rx", "14");
+                r.setAttribute("ry", "14");
+              });
+            });
+
+            const beams = [
+              { sel: "#s2-p1-beam", start: 5.95, dur: 2.6 },
+              { sel: "#s2-p2-beam", start: 8.55, dur: 4.05 },
+              { sel: "#s2-p3-beam", start: 12.6, dur: 2.15 },
+              { sel: "#s2-p4-beam", start: 14.75, dur: 4.85 },
+            ];
+            beams.forEach((b) => {
+              tl.to(b.sel, { opacity: 1, duration: 0.45, ease: "power2.out" }, b.start);
+              tl.fromTo(
+                b.sel + " rect",
+                { attr: { "stroke-dashoffset": 0 } },
+                { attr: { "stroke-dashoffset": 100 }, duration: b.dur, ease: "none", immediateRender: false },
+                b.start,
+              );
+              tl.to(
+                b.sel,
+                { opacity: 0, duration: 0.3, ease: "power2.in" },
+                b.start + b.dur,
+              );
+            });
+
             // 20.16s — verdict slides in on "already in"
             tl.fromTo(
               "#s2-verdict",
@@ -433,18 +542,33 @@
               20.0,
             );
 
-            // 20.80s — "click was just the receipt"
+            // Receipt enters during the gap after the verdict pulse, ahead of
+            // the narration phrase "the click was just the receipt." (20.80 → 22.16).
+            // Stamp slams on the word "click" at 20.80; both are fully settled
+            // by 21.20, giving ~1.50s of clean visibility before scene-03's
+            // crossfade begins at scene-local 22.70.
             tl.fromTo(
               "#s2-receipt",
               { opacity: 0, y: 80, rotation: 4 },
               { opacity: 0.95, y: 0, rotation: -1.2, duration: 0.65, ease: "back.out(1.4)" },
-              20.65,
+              19.7,
             );
             tl.fromTo(
               "#s2-stamp",
               { opacity: 0, scale: 1.8, rotation: 8 },
               { opacity: 1, scale: 1, rotation: -12, duration: 0.4, ease: "back.out(2)" },
-              21.2,
+              20.8,
+            );
+
+            // Crossfade scene-02 out across the 0.5s overlap with scene-03.
+            // Scene-03 begins at global 36.34s = scene-02-local 22.70s and
+            // fades IN over 0.5s via its own opening tween. Mirroring that
+            // with a power2.in fade-OUT here produces a clean symmetric
+            // crossfade instead of a hard alpha cut at 23.20.
+            tl.to(
+              '[data-composition-id="scene-02-subversion"]',
+              { opacity: 0, duration: 0.5, ease: "power2.in" },
+              22.7,
             );
 
             // Ambient: panel rim subtle pulse

@@ -1,4 +1,4 @@
-# Design — Why Text is Hard
+# Design — How Does a CAPTCHA Actually Work?
 
 Technical / editorial dark mode. Feels like a Computerphile / Fireship explainer with
 a touch of editorial restraint. Every scene reads as a diagram, not a slide.

@@ -16,6 +16,7 @@
             color: #e8eaed;
             font-family: "Inter", system-ui, sans-serif;
             overflow: hidden;
+            perspective: 2400px;
           }
           [data-composition-id="scene-03-stakes"] .glow {
             position: absolute;
@@ -41,6 +42,37 @@
             border-radius: 14px;
             background: #0e1117;
             overflow: hidden;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50%;
+            will-change: transform;
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .rim {
+            position: absolute;
+            inset: -1px;
+            border-radius: 14px;
+            pointer-events: none;
+            opacity: 0;
+            box-shadow:
+              inset 0 0 0 1px rgba(103, 232, 249, 0.35),
+              inset 0 0 28px rgba(103, 232, 249, 0.10),
+              0 0 24px rgba(103, 232, 249, 0.08);
+          }
+          [data-composition-id="scene-03-stakes"] .swarm .scanline {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 64px;
+            pointer-events: none;
+            opacity: 0;
+            background: linear-gradient(
+              180deg,
+              rgba(103, 232, 249, 0) 0%,
+              rgba(103, 232, 249, 0.06) 50%,
+              rgba(103, 232, 249, 0.22) 80%,
+              rgba(103, 232, 249, 0.55) 100%
+            );
+            mix-blend-mode: screen;
           }
           [data-composition-id="scene-03-stakes"] .swarm .axis {
             position: absolute;
@@ -184,6 +216,8 @@
 
         <div class="swarm" id="s3-swarm">
           <div class="axis"></div>
+          <div class="rim" id="s3-rim"></div>
+          <div class="scanline" id="s3-scan"></div>
           <div class="lblrow">
             <div class="lbl">web traffic · share</div>
             <div class="legend">
@@ -280,6 +314,38 @@
             // 0-6s: opening — swarm fills the panel, "drown in automated traffic within minutes"
             tl.fromTo("#s3-swarm", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
             tl.fromTo("#s3-ghost", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, 0.4);
+
+            // Subtle 3D tilt on the swarm card — ambient, runs the full scene.
+            // X axis nod, 10s period, 2 yoyo repeats. ±3° feels like parallax, not skew.
+            tl.to(
+              "#s3-swarm",
+              { rotationX: 3, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 2 },
+              0.5,
+            );
+            // Y axis sway, 13s period, started 1.3s out of phase. -2.5° → +3.5°.
+            tl.fromTo(
+              "#s3-swarm",
+              { rotationY: -2.5 },
+              { rotationY: 3.5, duration: 6.5, ease: "sine.inOut", yoyo: true, repeat: 2 },
+              1.8,
+            );
+
+            // Rim halo — breathes through the swarm's active window (0.6 → 10.6).
+            tl.to("#s3-rim", { opacity: 1, duration: 0.7, ease: "power2.out" }, 0.6);
+            tl.fromTo(
+              "#s3-rim",
+              { opacity: 1 },
+              { opacity: 0.55, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false },
+              1.3,
+            );
+            tl.to("#s3-rim", { opacity: 0, duration: 0.8, ease: "power2.in" }, 10.6);
+
+            // Scanline — one downward sweep at 1.2s over ~3.2s, top-down CRT line refresh.
+            // Card inner height ≈ 640px (1080 - 80 top - 360 bottom = 640).
+            tl.set("#s3-scan", { y: -64 });
+            tl.to("#s3-scan", { opacity: 1, duration: 0.3, ease: "power1.out" }, 1.2);
+            tl.to("#s3-scan", { y: 640, duration: 3.2, ease: "power1.inOut" }, 1.2);
+            tl.to("#s3-scan", { opacity: 0, duration: 0.4, ease: "power1.in" }, 4.2);
 
             // dots flood in: humans first then bots ramp
             tl.to(
