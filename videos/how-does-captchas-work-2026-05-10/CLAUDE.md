@@ -79,3 +79,14 @@ Fix all errors before presenting the result. Inspect warnings should be reviewed
 4. Videos use `muted` with a separate `<audio>` element for the audio track
 5. Sub-compositions use `data-composition-src="compositions/file.html"` to reference other HTML files
 6. Only deterministic logic — no `Date.now()`, no `Math.random()`, no network fetches
+7. Inner GSAP timeline must span the full `data-duration` of its sub-comp host.
+   The HyperFrames runtime (v0.5.7) sets the host's visible window to
+   `min(data-duration, tl.duration())` and hides the host once `currentTime`
+   exceeds that minimum. If your last tween ends well before `data-duration`,
+   the canvas goes blank for the gap until the next scene mounts. Fix by
+   adding a real ambient tween (slow drift, breathing pulse, glow fade) that
+   ends at or past `data-duration`. Empty placeholder tweens
+   (`tl.to({}, { duration: N })`) are banned (see rule "Never create empty
+   tweens to set duration") — use motion that actually belongs in the beat.
+   Verify after every scene: `last tween end time ≥ data-duration` for each
+   composition mounted from `index.html`.

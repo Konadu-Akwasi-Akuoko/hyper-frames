@@ -49,32 +49,70 @@ truth when the local skills are silent or ambiguous.
 
 ### 1. Transcript-as-timing-truth
 
-Animations must land on the spoken word, not on round numbers. A word-level transcript
-(ElevenLabs-shaped — see any per-video `transcript.json` at the video folder root for the
-canonical shape) is the authoritative timing source. Each entry in `words[]` carries
-`text`, `type` ("word" or "spacing"), `start`, `end`, and `speaker_id`; pull `start`/`end`
-for the exact word an animation punctuates and key entrances/highlights/cuts to those
-timestamps. Round numbers ("at 4.0s, fade in") are a code smell — find the word and use
-its timestamp.
+Animations must land on the spoken word, not on round numbers. A word-level
+transcript (ElevenLabs Scribe v2-shaped) is the authoritative timing source.
+Pull `start`/`end` for the exact word an animation punctuates and key
+entrances/highlights/cuts to those timestamps. Round numbers ("at 4.0s, fade
+in") are a code smell — find the word and use its timestamp.
 
-The transcript is supplied by the user's own pipeline, not generated here. Don't run
-`hyperframes-media transcribe` or assume Whisper output — work from the
-`transcript.json` at the video folder root (e.g.
-`videos/why-text-is-hard-2026-05-07/transcript.json`) that the user has provided.
+The transcript is supplied by the user's own pipeline, not generated here. Don't
+run `hyperframes-media transcribe` or assume Whisper output — work from the
+`transcript.json` at the video folder root.
 
-This is the single biggest lever for the video feeling alive vs. merely synced. It
-matters more, not less, as runtime grows.
+This is the single biggest lever for the video feeling alive vs. merely synced.
+It matters more, not less, as runtime grows.
 
-**Don't hand-roll `python3 -c` to find word timestamps.** The repo ships a
-reusable narration-map tool at `tools/narration-map/`. Run it once per video,
-right after the transcript lands, and key animations off the resulting
-`narration-map.json` instead of grepping the raw transcript. The tool emits
-anchor-word starts (for any phrases you list in `anchors.txt`), pause windows
-(gaps > 400ms by default), scene-boundary candidates (pauses after `.!?`), and
-the top-N longest-duration words (often the emphatic moments).
+**`transcript.json` schema (Scribe v2):**
+
+```ts
+{
+  language_code: string,
+  language_probability: number,
+  text: string,                          // full concatenated text
+  words: Array<{
+    text: string,
+    type: "word" | "spacing",
+    start: number,                       // seconds, global to the audio
+    end: number,                         // seconds, global to the audio
+    speaker_id: string,
+  }>
+}
+```
+
+`start`/`end` are global audio timestamps. If you need scene-local time,
+subtract the scene's start offset (the offset is the global timestamp of the
+scene's first word).
+
+**Do not `Read` `transcript.json` directly.** It's ~1500+ word entries per
+video — reading it floods context with data you'll mostly discard. Run a
+filtered `python3 -c` against it instead and only the matching slice lands in
+context:
 
 ```bash
-# From inside the video folder, once transcript.json is in place:
+# Find every word in a time window (seconds, global). Adjust START/END/SCENE_START.
+python3 -c "
+import json
+t = json.load(open('transcript.json'))
+START, END, SCENE_START = 289.0, 305.0, 274.12
+for w in t['words']:
+    if w['type'] == 'word' and START <= w['start'] <= END:
+        print(f\"{w['start']:.2f}  (local {w['start']-SCENE_START:.2f})  {w['text']}\")
+"
+```
+
+Variations: filter by `w['text']` substring to locate a phrase, or print just
+`start` for the first match if you only need one timestamp. If the schema ever
+looks off, sanity-check with `head -c 500 transcript.json` (cheap — no full
+read).
+
+**`tools/narration-map/` is an optional planning aid, not the source of timing
+truth.** Run it once per video when you want a one-shot overview — pause
+windows (gaps > 400ms), scene-boundary candidates (pauses after `.!?`), and
+top-N longest-duration words (often the emphatic moments). For per-tween
+anchoring, the python filter above is more direct.
+
+```bash
+# From inside the video folder, when you want the planning overview:
 uv run --project ../../tools/narration-map narration-map \
   transcript.json --anchors anchors.txt
 ```
@@ -137,12 +175,14 @@ layout overflow, missing assets). Run it — don't skip to render:
 - `npx hyperframes inspect` — composition tree, timing, asset resolution
 - `npx hyperframes preview` — visual check before committing render time
 
-**After any composition edit, run `npx hyperframes preview` and surface the studio
-URL (`http://localhost:<port>/#project/<project-name>`) to the user before declaring
-the task done.** The `hyperframes` skill barely mentions preview — it lives in the
-`hyperframes-cli` skill, and Claude tends to skip it unless told. Treat preview as a
-hard step on every authoring/edit task, not an optional one. Skip it only for
-non-composition edits (CLAUDE.md tweaks, asset renames that don't touch HTML).
+**The user always has `npx hyperframes preview` running in another window.** Do
+not start, restart, or kill the preview server — they reload the open studio tab
+themselves after edits. After any composition change, tell the user the timestamp
+or scene to seek to so they can verify in the already-open preview. The
+`hyperframes` skill barely mentions preview — it lives in the `hyperframes-cli`
+skill, and Claude tends to skip the seek-to-verify step unless told. Treat
+"surface a seek target" as a hard step on every authoring/edit task. Skip it only
+for non-composition edits (CLAUDE.md tweaks, asset renames that don't touch HTML).
 
 Treat lint/inspect output as blocking. If something looks fine in preview but lint
 flags it, fix the lint finding — those warnings have caught shippable-looking bugs.
