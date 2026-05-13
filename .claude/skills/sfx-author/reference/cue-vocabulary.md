@@ -7,6 +7,9 @@ a moment that deserves one — never to scan for elements that "should have" one
 
 ## `ui-tick` — discrete arrival
 
+**Timing mode:** usually `at-scene-ms` (the tick scores the visual landing).
+Use `anchor` only when the tick punctuates a spoken label, not a visual entry.
+
 **Character:** sharp, bright, ≤ 0.5s, fast attack. The sound of a *thing
 landing*.
 
@@ -29,6 +32,10 @@ landing*.
 ---
 
 ## `whoosh` — spatial motion / threshold cross
+
+**Timing mode:** almost always `at-scene-ms` — a whoosh scores motion, and
+motion is a visual event. Anchor-mode whooshes are rare (only when the whoosh
+is tied to the *word* of a transition, not the visual cut).
 
 **Character:** 0.4–1.5s, swelling attack ≥ 0.1s, peaks toward the middle.
 The sound of *something passing through*.
@@ -53,6 +60,9 @@ The sound of *something passing through*.
 
 ## `pop` — playful arrival
 
+**Timing mode:** usually `at-scene-ms` (the pop scores the rhythmic arrival of
+a visual). Anchor-mode is fine when the pop genuinely lands on a spoken word.
+
 **Character:** ≤ 0.3s, warm-to-bright spectrum, soft attack. Lighter than tick,
 less authoritative.
 
@@ -68,6 +78,10 @@ less authoritative.
 ---
 
 ## `boom` — weight / finality
+
+**Timing mode:** follows the moment — `anchor` if the boom is the *word*
+landing, `at-scene-ms` if it's the *visual reveal* of the thing the word
+describes.
 
 **Character:** sub-bass-dominated, peak near the start (≤ 0.2s), 0.3–2s tail.
 The sound of *something landing with weight*.
@@ -90,6 +104,9 @@ The sound of *something landing with weight*.
 ---
 
 ## `riser` — build-to-payoff
+
+**Timing mode:** `at-scene-ms` is the safe default — risers are timed to end
+on a visual payoff, and visual timing is the source of truth for that math.
 
 **Character:** ≥ 1.5s, slow attack, ends on the payoff. The sound of *tension
 climbing toward release*.

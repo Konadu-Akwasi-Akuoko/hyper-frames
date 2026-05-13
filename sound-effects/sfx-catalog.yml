@@ -1,5 +1,5 @@
 version: 1
-generated_at: '2026-05-11T12:47:59Z'
+generated_at: '2026-05-12T17:26:01Z'
 library_sha: 50dacbea7f97a90b6400f6cb34618e282ad1d126369a73ff9ec623e4c3c84944
 assets:
   Anime SFX/Anime wow sound effect.mp3:
@@ -40346,6 +40346,14 @@ cues:
   ui-tick:
     filter:
       auto_role: accent
+      category_in:
+      - Click
+      - Tap _ Knock
+      - Pop
+      - Beep
+      - Doink
+      - Clink
+      - Blip
       duration_s_max: 0.5
       brightness_in:
       - bright
@@ -40382,3 +40390,37 @@ cues:
       - bright
     default_lead_ms: -50
     default_volume: 0.8
+  msg-ding:
+    filter:
+      auto_role: accent
+      category_in:
+      - Beep
+      duration_s_max: 0.6
+      brightness_in:
+      - airy
+      - bright
+    default_lead_ms: -50
+    default_volume: 0.7
+  card-tap:
+    filter:
+      auto_role: accent
+      category_in:
+      - Click
+      - Tap _ Knock
+      duration_s_max: 0.4
+    default_lead_ms: -50
+    default_volume: 0.8
+  card-blip:
+    filter:
+      auto_role: accent
+      category_in:
+      - Pop
+      - Blip
+      - Clink
+      duration_s_max: 0.4
+      brightness_in:
+      - airy
+      - bright
+      - warm
+    default_lead_ms: -50
+    default_volume: 0.65

@@ -6,9 +6,10 @@ import sys
 from pathlib import Path
 
 from sfx_plan.annotations import scan_annotations
-from sfx_plan.catalog import load_catalog
+from sfx_plan.catalog import apply_overrides, load_catalog
 from sfx_plan.emit import ensure_mount, render_sfx_html, stage_assets
 from sfx_plan.errors import SfxPlanError
+from sfx_plan.mounts import load_mount_offsets
 from sfx_plan.narration import load_narration_map
 from sfx_plan.plan import Cue, build_plan
 from sfx_plan.validate import validate_plan
@@ -68,7 +69,11 @@ def _print_report(cues: list[Cue], video_dir: Path) -> None:
     print(f"\nSFX PLAN — {video_dir.name}   {len(cues)} cues\n")
     for c in cues:
         clamp = " ⚠clamped" if c.clamped else ""
-        print(f"  {c.data_start:>7.2f}s  anchor={c.anchor!r:<20} cue={c.cue:<8} "
+        if c.at_scene_ms is not None:
+            mode = f"at-scene-ms({c.at_scene_ms})"
+        else:
+            mode = f"anchor({c.anchor!r}#{c.anchor_index})"
+        print(f"  {c.data_start:>7.2f}s  mode={mode:<26} cue={c.cue:<10} "
               f"vol={c.volume:.2f}  src={c.src}{clamp}")
 
 
@@ -81,15 +86,23 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         catalog = load_catalog(catalog_path)
+        overrides_path = video_dir / "sfx-overrides.yml"
+        catalog, touched = apply_overrides(catalog, overrides_path)
+        if touched:
+            print(
+                f"applied per-video overrides from sfx-overrides.yml "
+                f"({touched} cue{'s' if touched != 1 else ''} touched)"
+            )
         nm_path = video_dir / "narration-map.json"
         nm = load_narration_map(nm_path)
+        mount_offsets = load_mount_offsets(video_dir / "index.html")
 
         annotations = list(scan_annotations(video_dir))
         if not annotations:
             print("no data-sfx-* annotations found; nothing to emit.")
             return 0
 
-        cues = build_plan(annotations, nm=nm, catalog=catalog)
+        cues = build_plan(annotations, nm=nm, catalog=catalog, mount_offsets=mount_offsets)
         total_duration_s = float(max((c.data_start + c.duration_s for c in cues), default=0.0))
         warnings = validate_plan(cues, total_duration_s=total_duration_s)
         for w in warnings:

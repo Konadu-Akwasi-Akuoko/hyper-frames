@@ -5,9 +5,15 @@ from sfx_plan.errors import SfxPlanError
 from sfx_plan.plan import Cue
 
 
-DENSITY_WARN_PER_SEC = 1.0 / 3.0
-DENSITY_HARD_PER_SEC = 1.0 / 1.5
+DENSITY_WARN_PER_SEC = 0.5
+DENSITY_HARD_PER_SEC = 1.0
 DENSITY_WINDOW_S = 6.0
+
+# Anchor-mode cues with |lead_ms| ≥ this threshold are flagged: a large negative
+# lead used to reach a visual moment from a spoken anchor is the bug pattern
+# at-scene-ms exists to replace. Threshold tuned so default cue leads
+# (-50, -150) stay quiet; explicit large nudges warn.
+LARGE_LEAD_MS_THRESHOLD = 200
 
 
 class DensityViolationError(SfxPlanError):
@@ -60,10 +66,32 @@ def _density_check(cues: list[Cue]) -> list[str]:
     return warnings
 
 
+def _large_lead_warnings(cues: list[Cue]) -> list[str]:
+    """Flag anchor-mode cues whose |lead_ms| ≥ threshold.
+
+    A large negative lead used to reach a visual moment from a spoken anchor
+    causes SFX-before-visual desync. The correct fix is to switch the cue to
+    `data-sfx-at-scene-ms` set to the perceptual landing time of the tween.
+    """
+    out: list[str] = []
+    for c in cues:
+        if c.at_scene_ms is not None:
+            continue  # at-scene-ms cues are exempt
+        if abs(c.lead_ms) >= LARGE_LEAD_MS_THRESHOLD:
+            out.append(
+                f"large lead_ms={c.lead_ms} at {c.source} (cue={c.cue}, "
+                f'anchor="{c.anchor}"). If the moment you are scoring is a '
+                f"visual entry, switch to data-sfx-at-scene-ms — anchor + "
+                f"large negative lead is the SFX-before-visual bug pattern."
+            )
+    return out
+
+
 def validate_plan(cues: list[Cue], *, total_duration_s: float) -> list[str]:
     """Run all validations; return a list of warning strings. May raise on hard caps."""
     warnings = _overlap_warnings(cues)
     warnings.extend(_density_check(cues))
+    warnings.extend(_large_lead_warnings(cues))
     for c in cues:
         if c.clamped:
             warnings.append(

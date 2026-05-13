@@ -11,7 +11,7 @@ Read design.md as: <one-line characterization, e.g. "editorial / restrained">
 
 Scene <K> (<mm:ss>–<mm:ss>) "<scene gist>"
   ✗ skip   <element-ref-or-shorthand>                         (<reason, 6–10 words>)
-  ✓ <mm:ss.ms>  anchor="<word>"[ idx=<N>]  <cue-name>  on <element-ref>   (<reason>)
+  ✓ <mm:ss.ms>  mode=<anchor("word"#N) | at-scene-ms(N)>  cue=<name>  asset=<basename>  on <element-ref>   (<reason>)
   ✓ ...
 
 Scene <K+1> ...
@@ -28,6 +28,20 @@ Approve to write annotations into HTML?  [yes / refine / abort]
 
 ## Field rules
 
+- **`mode=`** is mandatory on every `✓` line. It shows whether the cue is
+  speech-anchored (`anchor("word"#N)`) or visual-anchored
+  (`at-scene-ms(N)`). This is the editorial intent — picking the wrong mode
+  is the SFX-before-visual bug pattern Rule 6 forbids, so the proposal
+  surfaces it for review. Example lines:
+    ```
+    ✓ 00:07.42  mode=at-scene-ms(7420)  cue=pop  asset=Hollow Pop 06.wav  on .target #1   (signup-forms card landing — 50% into 400ms fade)
+    ✓ 00:02.79  mode=anchor("and"#1)    cue=card-tap  asset=Mouse Click 04.wav  on #s1-cb       (checkbox click follows the spoken "and")
+    ```
+- **`asset=`** is **mandatory** on every `✓` line — it's the file the
+  cue resolves to via `data-sfx-asset`. Show just the basename; full
+  paths belong in the HTML. See SKILL.md "Asset selection" for how to
+  pick from a cue's pool. The resolver in `tools/sfx-plan` is a safety
+  net for un-pinned cues, not the intended path.
 - **`<element-ref>`** uses `#id` when the element has one, else a short
   CSS-y descriptor (`.scene > .headline:nth-of-type(2)` is fine, but
   `the second headline in scene 2` is also fine — prioritize legibility).
