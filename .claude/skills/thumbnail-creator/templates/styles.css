@@ -75,9 +75,11 @@ html, body {
 .thumbnail-icon svg {
   width: 320px;
   height: 320px;
-  /* Defaults so unclassed Lucide bodies render correctly. Hand-coded
-   * SVGs may opt out by setting class="stroke" / "accent-stroke" /
-   * "accent-fill" on individual children. */
+  /* Defaults so unclassed Lucide bodies render correctly. Iconify-fetched
+   * bodies bake stroke="currentColor" into a <g> wrapper, so `color` must
+   * also resolve to cream — otherwise currentColor falls back to the
+   * browser default (black) and the icon disappears into the dark bg. */
+  color: var(--text);
   stroke: var(--text);
   stroke-width: 2;
   stroke-linecap: round;
