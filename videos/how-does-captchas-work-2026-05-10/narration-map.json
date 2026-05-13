@@ -7,7 +7,7 @@
     "pause_threshold_secs": 0.4,
     "scene_pause_threshold_secs": 0.6,
     "emphatic_top_n": 15,
-    "anchor_phrase_count": 49
+    "anchor_phrase_count": 62
   },
   "anchors": [
     {
@@ -298,6 +298,23 @@
           "start": 188.82,
           "end": 189.76,
           "matched_text": "two thousand and eighteen,"
+        }
+      ]
+    },
+    {
+      "phrase": "again",
+      "matches": [
+        {
+          "word_index": 553,
+          "start": 201.96,
+          "end": 203.06,
+          "matched_text": "again."
+        },
+        {
+          "word_index": 720,
+          "start": 272.98,
+          "end": 273.38,
+          "matched_text": "again."
         }
       ]
     },
@@ -612,6 +629,444 @@
           "start": 386.16,
           "end": 387.3,
           "matched_text": "learned how to pretend."
+        }
+      ]
+    },
+    {
+      "phrase": "human",
+      "matches": [
+        {
+          "word_index": 230,
+          "start": 82.3,
+          "end": 82.62,
+          "matched_text": "human"
+        },
+        {
+          "word_index": 447,
+          "start": 165.56,
+          "end": 165.92,
+          "matched_text": "human,"
+        },
+        {
+          "word_index": 751,
+          "start": 284.22,
+          "end": 284.48,
+          "matched_text": "human"
+        },
+        {
+          "word_index": 796,
+          "start": 302.08,
+          "end": 302.44,
+          "matched_text": "human,"
+        },
+        {
+          "word_index": 885,
+          "start": 337.08,
+          "end": 337.38,
+          "matched_text": "human"
+        },
+        {
+          "word_index": 924,
+          "start": 351.28,
+          "end": 351.56,
+          "matched_text": "human"
+        },
+        {
+          "word_index": 953,
+          "start": 360.64,
+          "end": 361.02,
+          "matched_text": "human."
+        },
+        {
+          "word_index": 1014,
+          "start": 383.26,
+          "end": 383.6,
+          "matched_text": "human."
+        }
+      ]
+    },
+    {
+      "phrase": "backwards",
+      "matches": [
+        {
+          "word_index": 266,
+          "start": 94.36,
+          "end": 94.88,
+          "matched_text": "backwards."
+        }
+      ]
+    },
+    {
+      "phrase": "acronym",
+      "matches": [
+        {
+          "word_index": 281,
+          "start": 100.12,
+          "end": 100.52,
+          "matched_text": "acronym"
+        }
+      ]
+    },
+    {
+      "phrase": "Apart",
+      "matches": [
+        {
+          "word_index": 295,
+          "start": 105.9,
+          "end": 106.4,
+          "matched_text": "apart."
+        }
+      ]
+    },
+    {
+      "phrase": "distorted",
+      "matches": [
+        {
+          "word_index": 385,
+          "start": 139.42,
+          "end": 139.9,
+          "matched_text": "distorted"
+        },
+        {
+          "word_index": 420,
+          "start": 153.74,
+          "end": 154.26,
+          "matched_text": "distorted"
+        },
+        {
+          "word_index": 531,
+          "start": 192.4,
+          "end": 192.94,
+          "matched_text": "distorted"
+        }
+      ]
+    },
+    {
+      "phrase": "motive",
+      "matches": [
+        {
+          "word_index": 604,
+          "start": 224.08,
+          "end": 224.48,
+          "matched_text": "motive."
+        }
+      ]
+    },
+    {
+      "phrase": "and",
+      "matches": [
+        {
+          "word_index": 9,
+          "start": 2.84,
+          "end": 2.929,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 68,
+          "start": 24.68,
+          "end": 24.78,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 140,
+          "start": 50.72,
+          "end": 50.85,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 199,
+          "start": 71.38,
+          "end": 71.52,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 293,
+          "start": 105.36,
+          "end": 105.45,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 302,
+          "start": 108.3,
+          "end": 108.31,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 334,
+          "start": 120.2,
+          "end": 120.31,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 346,
+          "start": 124.82,
+          "end": 124.99,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 375,
+          "start": 136.14,
+          "end": 136.2,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 392,
+          "start": 143.109,
+          "end": 143.109,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 437,
+          "start": 162.16,
+          "end": 162.26,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 467,
+          "start": 172.52,
+          "end": 172.549,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 509,
+          "start": 186.18,
+          "end": 186.35,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 520,
+          "start": 189.29,
+          "end": 189.29,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 547,
+          "start": 199.82,
+          "end": 199.96,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 557,
+          "start": 203.769,
+          "end": 203.769,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 617,
+          "start": 230.98,
+          "end": 231.07,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 749,
+          "start": 283.54,
+          "end": 283.69,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 766,
+          "start": 289.81,
+          "end": 289.81,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 786,
+          "start": 298.94,
+          "end": 299.03,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 805,
+          "start": 305.48,
+          "end": 305.55,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 814,
+          "start": 308.78,
+          "end": 308.87,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 840,
+          "start": 321.92,
+          "end": 322.03,
+          "matched_text": "And"
+        },
+        {
+          "word_index": 864,
+          "start": 330.6,
+          "end": 330.73,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 917,
+          "start": 349.17,
+          "end": 349.32,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 925,
+          "start": 351.6,
+          "end": 351.68,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 971,
+          "start": 366.88,
+          "end": 366.969,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 996,
+          "start": 376.14,
+          "end": 376.19,
+          "matched_text": "and"
+        },
+        {
+          "word_index": 1008,
+          "start": 381.6,
+          "end": 381.67,
+          "matched_text": "and"
+        }
+      ]
+    },
+    {
+      "phrase": "every",
+      "matches": [
+        {
+          "word_index": 24,
+          "start": 7.52,
+          "end": 7.729,
+          "matched_text": "Every"
+        },
+        {
+          "word_index": 27,
+          "start": 8.9,
+          "end": 9.14,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 29,
+          "start": 10.04,
+          "end": 10.28,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 105,
+          "start": 37.66,
+          "end": 37.85,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 147,
+          "start": 53.44,
+          "end": 53.7,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 150,
+          "start": 54.16,
+          "end": 54.4,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 166,
+          "start": 60.92,
+          "end": 61.1,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 403,
+          "start": 147.74,
+          "end": 147.98,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 605,
+          "start": 225.1,
+          "end": 225.3,
+          "matched_text": "Every"
+        },
+        {
+          "word_index": 706,
+          "start": 267.44,
+          "end": 267.62,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 788,
+          "start": 299.56,
+          "end": 299.74,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 834,
+          "start": 318.7,
+          "end": 318.91,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 889,
+          "start": 338.72,
+          "end": 339.01,
+          "matched_text": "Every"
+        },
+        {
+          "word_index": 893,
+          "start": 340.44,
+          "end": 340.71,
+          "matched_text": "every"
+        },
+        {
+          "word_index": 899,
+          "start": 342.7,
+          "end": 342.93,
+          "matched_text": "every"
+        }
+      ]
+    },
+    {
+      "phrase": "path your cursor",
+      "matches": [
+        {
+          "word_index": 56,
+          "start": 20.0,
+          "end": 20.84,
+          "matched_text": "path your cursor"
+        }
+      ]
+    },
+    {
+      "phrase": "exact millisecond",
+      "matches": [
+        {
+          "word_index": 64,
+          "start": 22.58,
+          "end": 23.86,
+          "matched_text": "exact millisecond"
+        }
+      ]
+    },
+    {
+      "phrase": "cookies you carry",
+      "matches": [
+        {
+          "word_index": 74,
+          "start": 26.54,
+          "end": 27.42,
+          "matched_text": "cookies you carry,"
+        }
+      ]
+    },
+    {
+      "phrase": "rendered pixels",
+      "matches": [
+        {
+          "word_index": 81,
+          "start": 29.0,
+          "end": 29.9,
+          "matched_text": "rendered pixels."
         }
       ]
     }

@@ -214,7 +214,7 @@
         <div class="ghost" id="s1-ghost">check.</div>
         <div class="rule" id="s1-rule"></div>
 
-        <div class="stage" id="s1-stage">
+        <div class="stage" id="s1-stage" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Tap _ Knock/Single Tap 07.wav" data-sfx-at-scene-ms="1000">
           <svg class="beam" id="s1-beam" preserveAspectRatio="none">
             <rect class="b6" pathLength="100" fill="none" stroke-width="2"   stroke="#ffb547" stroke-dasharray="16 84"   stroke-dashoffset="0" opacity="0.06"/>
             <rect class="b5" pathLength="100" fill="none" stroke-width="2"   stroke="#ff9a30" stroke-dasharray="10 90"   stroke-dashoffset="0" opacity="0.12"/>
@@ -224,7 +224,7 @@
             <rect class="b1" pathLength="100" fill="none" stroke-width="1.0" stroke="#fff5d0" stroke-dasharray="1 99"    stroke-dashoffset="0" opacity="1.00"/>
           </svg>
           <div class="brandmark">reCAPTCHA</div>
-          <div class="cb" id="s1-cb">
+          <div class="cb" id="s1-cb" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Tap _ Knock/Single Tap 07.wav" data-sfx-at-scene-ms="2850">
             <div class="ring" id="s1-ring"></div>
             <svg viewBox="0 0 100 100" id="s1-check">
               <path
@@ -239,7 +239,7 @@
               />
             </svg>
           </div>
-          <div class="label" id="s1-label">I'm not a robot</div>
+          <div class="label" id="s1-label" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Beep/Single UI Beep 12.wav" data-sfx-at-scene-ms="1720">I'm not a robot</div>
           <div class="privacy">Privacy &nbsp;·&nbsp; Terms</div>
         </div>
 
@@ -262,9 +262,11 @@
         </div>
 
         <div class="targets" id="s1-targets">
-          <div class="target"><b>signup forms</b> &nbsp;·&nbsp; every one</div>
-          <div class="target"><b>logins</b> &nbsp;·&nbsp; every site</div>
-          <div class="target"><b>ticket queues</b> &nbsp;·&nbsp; every drop</div>
+          <!-- Targets stagger in at 7.30 / 8.35 / 9.40s (start 7.30, each: 1.05, duration 0.55, ease expo.out).
+               Perceptual landing ≈ start + 50% of the fade window. -->
+          <div class="target" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Hollow Pop 06.wav" data-sfx-at-scene-ms="7575"><b>signup forms</b> &nbsp;·&nbsp; every one</div>
+          <div class="target" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Hollow Pop 06.wav" data-sfx-at-scene-ms="8625"><b>logins</b> &nbsp;·&nbsp; every site</div>
+          <div class="target" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Hollow Pop 06.wav" data-sfx-at-scene-ms="9675"><b>ticket queues</b> &nbsp;·&nbsp; every drop</div>
         </div>
 
         <script>
