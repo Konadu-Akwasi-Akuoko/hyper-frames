@@ -1,0 +1,25 @@
+# Per-video cue overrides.
+# Loaded automatically by tools/sfx-plan. See tools/sfx-plan/README.md.
+
+cues:
+  card-blip:
+    default_volume: 0.35
+  card-tap:
+    default_volume: 0.35
+  msg-ding:
+    default_volume: 0.35
+  pop:
+    default_volume: 0.35
+  ui-tick:
+    default_volume: 0.35
+  whoosh:
+    default_volume: 0.35
+
+  # The four scene-02 "panel" reveals want a specific synthetic clang. Pinning
+  # the asset here (rather than via a global catalog cue) keeps the shared
+  # cue vocabulary clean.
+  panel-clang-05:
+    default_lead_ms: -50
+    default_volume: 0.35
+    filter:
+      path: Mister Horse Free SFX/Clang/Synthetic Clang 05.wav

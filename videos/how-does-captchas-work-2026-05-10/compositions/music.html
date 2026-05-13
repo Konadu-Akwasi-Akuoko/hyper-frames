@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <template id="music-layer-template">
+      <div
+        data-composition-id="music-layer"
+        data-width="1920"
+        data-height="1080"
+      >
+        <audio
+          id="music-bed"
+          class="clip"
+          data-start="0"
+          data-duration="387.61"
+          data-volume="0.14"
+          data-track-index="10"
+          src="../audio/music-bed.wav"
+        ></audio>
+        <script>
+          (() => {
+            window.__timelines = window.__timelines || {};
+            window.__timelines["music-layer"] = gsap.timeline({ paused: true });
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>
