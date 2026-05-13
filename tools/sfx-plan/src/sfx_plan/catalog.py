@@ -17,6 +17,7 @@ from sfx_plan.errors import (
     CatalogMissingError,
     CatalogVersionMismatchError,
     EmptyCueFilterError,
+    OverridesShapeError,
     UnknownCueError,
 )
 
@@ -66,6 +67,62 @@ def get_cue(cat: dict[str, Any], *, name: str, source: str) -> dict[str, Any]:
     if name not in cues:
         raise UnknownCueError(cue=name, known=list(cues.keys()), source=source)
     return cues[name]
+
+
+def apply_overrides(catalog: dict[str, Any], overrides_path: Path) -> tuple[dict[str, Any], int]:
+    """Apply per-video cue overrides to `catalog` (mutating, returning it).
+
+    Returns (catalog, touched_count). Missing file is a no-op (touched=0).
+
+    Per cue:
+      - Existing cue → shallow-replace each top-level field set in the override.
+        `filter` is replaced wholesale, not deep-merged.
+      - New cue → register the override as a new cue. Must include a non-empty
+        `filter`; `default_lead_ms` / `default_volume` are optional.
+
+    Validation: every resulting cue must still have a non-empty filter.
+    """
+    if not overrides_path.exists():
+        return catalog, 0
+    raw = yaml.safe_load(overrides_path.read_text(encoding="utf-8")) or {}
+    if not isinstance(raw, dict):
+        raise OverridesShapeError(message=f"top-level must be a mapping, got {type(raw).__name__}")
+    cues_in = raw.get("cues")
+    if cues_in is None:
+        return catalog, 0
+    if not isinstance(cues_in, dict):
+        raise OverridesShapeError(
+            message=f"`cues` must be a mapping, got {type(cues_in).__name__}",
+        )
+
+    cues = catalog.setdefault("cues", {})
+    touched = 0
+    for name, override in cues_in.items():
+        if not isinstance(override, dict):
+            raise OverridesShapeError(
+                message=f"cue {name!r} override must be a mapping, got {type(override).__name__}",
+            )
+        existing = cues.get(name)
+        if existing is None:
+            if "filter" not in override or not isinstance(override["filter"], dict) or not override["filter"]:
+                raise EmptyCueFilterError(cue=name)
+            cues[name] = {
+                "default_lead_ms": override.get("default_lead_ms"),
+                "default_volume": override.get("default_volume", 1.0),
+                "filter": dict(override["filter"]),
+            }
+        else:
+            for key, value in override.items():
+                if key == "filter":
+                    if not isinstance(value, dict) or not value:
+                        raise EmptyCueFilterError(cue=name)
+                    existing["filter"] = dict(value)
+                else:
+                    existing[key] = value
+            if not existing.get("filter"):
+                raise EmptyCueFilterError(cue=name)
+        touched += 1
+    return catalog, touched
 
 
 def filter_assets(

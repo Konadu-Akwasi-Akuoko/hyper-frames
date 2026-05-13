@@ -33,8 +33,44 @@ def test_cli_dry_run_does_not_write(video_dir: Path, catalog_path: Path) -> None
 def test_cli_report_prints_plan_table(video_dir: Path, catalog_path: Path, capsys) -> None:
     main([str(video_dir), "--catalog", str(catalog_path), "--report"])
     captured = capsys.readouterr()
-    assert "anchor=" in captured.out
+    assert "mode=" in captured.out
     assert "ui-tick" in captured.out
+
+
+def test_cli_runs_overrides_loader_when_file_present(
+    video_dir: Path, catalog_path: Path, capsys,
+) -> None:
+    (video_dir / "sfx-overrides.yml").write_text(
+        "cues:\n  ui-tick:\n    default_volume: 0.5\n    filter:\n      brightness_in: ['bright']\n",
+        encoding="utf-8",
+    )
+    rc = main([str(video_dir), "--catalog", str(catalog_path)])
+    captured = capsys.readouterr()
+    assert rc == 0
+    assert "applied per-video overrides" in captured.out
+
+
+def test_cli_passes_mount_offsets_to_at_scene_ms_annotations(
+    video_dir: Path, catalog_path: Path,
+) -> None:
+    # Add a mount in index.html with a non-zero data-start...
+    idx_path = video_dir / "index.html"
+    idx_path.write_text(
+        '<html><body>'
+        '<div data-composition-id="main" data-start="0" data-duration="60" data-width="1920" data-height="1080">'
+        '<audio id="vo" data-start="0" data-duration="60" data-track-index="9" src="audio/vo.mp3"></audio>'
+        '<div id="sc1" data-composition-src="compositions/visual.html" data-start="5.0" data-duration="10"></div>'
+        '</div></body></html>',
+        encoding="utf-8",
+    )
+    # ...and an at-scene-ms annotation inside that composition.
+    (video_dir / "compositions" / "visual.html").write_text(
+        '<html><body><div id="v" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1000"></div></body></html>',
+        encoding="utf-8",
+    )
+    rc = main([str(video_dir), "--catalog", str(catalog_path), "--dry-run"])
+    assert rc == 0
+    # Plan should resolve to roughly 5.0 + 1.0 - peak_time_s(0.05) = 5.95s
 
 
 def test_cli_returns_nonzero_on_unresolved_anchor(video_dir: Path, catalog_path: Path, capsys) -> None:

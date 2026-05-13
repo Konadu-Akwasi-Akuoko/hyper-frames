@@ -61,9 +61,16 @@ Optional, per-video:
 
 - It does not author or modify animations. SFX follows visuals; visuals are not
   retimed for SFX.
-- It does not pick assets directly. Asset filenames are picked by
-  `tools/sfx-plan`'s deterministic resolver — you decide *anchors* and *cues*,
-  never file paths.
+- It does not delegate asset choice. Every cue must declare its asset via
+  `data-sfx-asset` — picking the file is an editorial decision on par with
+  picking the cue and the timing. `tools/sfx-plan`'s deterministic resolver
+  still runs as a safety net for any cue that slipped through review without
+  a pinned asset, but the skill should never *rely* on it: falling through to
+  the resolver produces timbrally inconsistent scores across scenes (the same
+  cue family ends up sounding different in scene 1 vs. scene 4). See Hard
+  Rule 8 and the "Asset selection" subsection in the Playbook. For per-video
+  pool tweaks that should apply across many cues, the right surface is still
+  `sfx-overrides.yml`, not a one-off `data-sfx-asset` on every element.
 - It does not edit `compositions/sfx.html`. That file is generated. If the user
   has hand-edited it, mention that next run will overwrite their changes.
 - It does not run if visuals are unfinished. If `compositions/` contains stubs
@@ -83,6 +90,35 @@ Optional, per-video:
 4. Never edit `compositions/sfx.html` by hand. Always run `tools/sfx-plan`.
 5. If `sfx-catalog.yml` is missing, stop and direct the user to run
    `uv run --project tools/sfx-catalog sfx-catalog`. Do not proceed without it.
+6. **Visual-entry cues use `data-sfx-at-scene-ms`, never `data-sfx-anchor` +
+   negative lead.** If the moment being scored is a visual element entering,
+   exiting, or snapping into place (any tween on the cued element), the cue
+   MUST use `data-sfx-at-scene-ms` set to the perceptual landing time computed
+   from the element's GSAP tween: `start + fade_duration × 0.5–0.7` for fades;
+   `start + duration` for travel-and-settle slides/snaps. Using
+   `data-sfx-anchor` + negative `data-sfx-lead-ms` to *reach* a visual moment
+   from a spoken word is forbidden — it's the bug pattern that produces
+   SFX-before-visual desync. Anchors are for spoken-word cues only (label
+   spoken aloud, name said, payoff line landing). See
+   `reference/timing-modes.md` for the perceptual-landing formulas and a
+   worked before/after example.
+7. **`data-sfx-lead-ms` is a peak-tuning knob, not a timing-source knob.** Use
+   it for ±100 ms nudges to compensate for an asset's perceived attack vs. its
+   measured peak. Do not use it for ≥200 ms shifts to reach a different
+   moment — if you're using a large negative lead to land on a visual, you're
+   using the wrong reference; switch to `data-sfx-at-scene-ms`. `sfx-plan`
+   emits a `large lead_ms` warning at ≥200 ms on anchor cues; treat it as
+   blocking.
+8. **Every cue must pin its asset via `data-sfx-asset`.** Picking the asset is
+   an editorial decision, not a resolver job. Browse `sfx-catalog.yml`'s
+   `assets:` section (filtered by the cue's pool) and pick the one whose
+   character matches the moment. Prefer assets already used elsewhere in the
+   same video for cross-scene timbral consistency — e.g. if `Hollow Pop 06.wav`
+   carries the scene-01 pops, the scene-04 card pops should use it too unless
+   you have a specific reason to diverge. The proposal must show
+   `asset=<basename>` on every `✓` line. Cues without `data-sfx-asset` are a
+   skill bug — `tools/sfx-plan`'s resolver still runs as a safety net, but
+   relying on it produces timbrally inconsistent scores.
 
 ## Playbook
 
@@ -93,6 +129,26 @@ That kind of pre-decoding is what failed in
 that distinguishes a real-looking moment from a generic one.
 
 ### Placement principles
+
+**Mode decision — pick the timing mode *before* picking the cue.** For each
+candidate moment, ask: *is the trigger a spoken word, or a visual change?*
+
+- **Spoken word** (label spoken aloud, name said, line landing on a payoff
+  word) → `data-sfx-anchor` + index. The "lead sound ahead of picture"
+  principle below still applies via cue defaults.
+- **Visual change** (card entering, slide-in, glyph snapping, label
+  appearing) → `data-sfx-at-scene-ms`. Read the GSAP timeline at the bottom
+  of the scene file; find the tween whose target is the cued element;
+  compute scene-local ms = `tween_start_ms + (fade/slide_duration_ms ×
+  0.5–0.7)` for fades, or `tween_start_ms + duration_ms` for slides/snaps
+  that travel before settling. Drop `data-sfx-anchor`,
+  `data-sfx-anchor-index`, and `data-sfx-lead-ms` on these — they're for the
+  spoken-word path. See `reference/timing-modes.md` for full per-ease
+  formulas and the scene-01-open worked example.
+
+"Lead sound ahead of picture" (next principle) is about the asset's
+`peak_time_s` math inside whichever mode you've picked. It is *not* a license
+to use anchor + negative lead to reach a visual moment.
 
 - Score moments that *earn* a hit — the spoken payoff, the visual punchline,
   the threshold cross between scenes, the reveal of the line that the line is
@@ -141,6 +197,28 @@ Available cues are defined in `sfx-catalog.yml`'s `cues:` section. If you need
 a cue that isn't there, *stop and surface the gap* — don't author against an
 imaginary cue. Adding new cues is catalog work, outside this skill's scope.
 
+### Asset selection
+
+Picking the cue is half the decision; picking the *asset within the cue's
+pool* is the other half. The pool is defined in `sfx-catalog.yml` (or
+overridden per-video in `sfx-overrides.yml`). Browse it before proposing.
+
+Order of preference when picking:
+
+1. **Cross-scene consistency.** If the same cue is already scored elsewhere
+   in this video with a specific asset, reuse it unless the moment's
+   character explicitly diverges. The score reads as one piece when the
+   same cue family always sounds the same.
+2. **Character match.** Among assets in the pool, pick the one whose
+   timbre matches what the moment is doing — sharper for snaps, hollower
+   for soft arrivals, brighter for lifts.
+3. **Duration fit.** Avoid assets longer than the visual moment they
+   punctuate — a 600ms tail on a 200ms card landing smears.
+
+When the same cue is used three times in a row (the "rack" effect, as
+with the scene-04 thesis cards), use the *same* asset for all three —
+that's the point of the rack.
+
 ### Hook moment
 
 Each video has at most **one** "hook moment" — the largest emotional or
@@ -163,7 +241,7 @@ Read design.md as: <one-line characterization>
 
 Scene 1 (00:00–<scene end>) "<scene title or first-line gist>"
   ✗ skip   <element ref>                            (<reason in 6–10 words>)
-  ✓ <mm:ss.ms>  anchor="<word>" [idx=<N>]  <cue>  on <element ref>   (<one-line reason>)
+  ✓ <mm:ss.ms>  mode=<anchor("word"#N) | at-scene-ms(N)>  cue=<name>  asset=<basename>  on <element ref>   (<one-line reason>)
   ...
 
 Scene 2 ...
@@ -175,6 +253,15 @@ NOTES:
   • <anything the user should know — e.g. hook moment, design.md tone read>
 
 Approve to write annotations into HTML?  [yes / refine / abort]
+```
+
+The `mode=` column is mandatory and surfaces the editorial intent at review
+time — picking the wrong mode is the SFX-before-visual bug Rule 6 forbids,
+so the proposal makes it inspectable. Example lines:
+
+```
+✓ 00:07.42  mode=at-scene-ms(7420)  cue=pop  asset=Hollow Pop 06.wav  on .target #1   (signup-forms card landing — perceptual midpoint of 400ms fade-in)
+✓ 00:02.79  mode=anchor("and"#1)    cue=card-tap  asset=Mouse Click 04.wav  on #s1-cb   (checkbox click follows the spoken "and")
 ```
 
 Rules for the proposal:
@@ -251,6 +338,10 @@ Loop until the user types `yes`/`approve`/`go`. Then write.
 - **User asks for a cue not in `sfx-catalog.yml`'s `cues:` section** → don't
   invent. Tell the user the available cues; suggest a similar one; offer to
   open a catalog-revision task.
+- **User asks for a specific named SFX file** → use `data-sfx-asset` on the
+  element to pin it. Do NOT add a new cue to the global catalog.
+- **User asks for a per-video tweak to a cue's pool or defaults** → use
+  `sfx-overrides.yml` at the video folder root (see `tools/sfx-plan/README.md`).
 
 ## Skill's checklist when invoked
 
@@ -284,6 +375,10 @@ encode the taste this skill is built on:
   in the transcript).
 - `reference/proposal-template.md` — the exact proposal output format with
   annotations.
+- `reference/timing-modes.md` — when each timing mode is correct, how to read
+  a GSAP timeline to extract a tween's start/duration for a given target,
+  perceptual-landing math by motion type, and the scene-01-open
+  before/after worked example for anchor + negative lead → at-scene-ms.
 
 ## When to invoke this skill
 

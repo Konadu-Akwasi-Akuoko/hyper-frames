@@ -56,9 +56,14 @@ def stage_assets(
 
 
 def _audio_tag(*, cue: Cue, index: int, staged_rel: str, video_to_sfx_relpath: str) -> str:
-    audio_id = f"sfx-{index:03d}-{cue.cue}-{_slug(cue.anchor)}"
+    label = cue.anchor if cue.anchor is not None else f"scene-ms-{cue.at_scene_ms}"
+    audio_id = f"sfx-{index:03d}-{cue.cue}-{_slug(label)}"
+    if cue.anchor is not None:
+        ref = f'anchor="{cue.anchor}" idx={cue.anchor_index}'
+    else:
+        ref = f'at-scene-ms={cue.at_scene_ms}'
     comment = (
-        f'        <!-- from {cue.source}  anchor="{cue.anchor}" idx={cue.anchor_index}  '
+        f'        <!-- from {cue.source}  {ref}  '
         f'cue={cue.cue} -->'
     )
     pan = "" if cue.pan == 0.0 else f'\n          data-pan="{cue.pan}"'

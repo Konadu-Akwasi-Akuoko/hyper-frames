@@ -67,3 +67,53 @@ class CatalogVersionMismatchError(SfxPlanError):
         )
         self.found = found
         self.expected = expected
+
+
+class UnknownAssetError(SfxPlanError):
+    def __init__(self, *, asset: str, source: str, near: list[str] | None = None) -> None:
+        hint = ""
+        if near:
+            hint = " Did you mean one of: " + ", ".join(f'"{p}"' for p in near) + "?"
+        super().__init__(
+            f'unknown asset "{asset}" pinned via data-sfx-asset at {source}.{hint} '
+            f"The asset must be a path that exists in sfx-catalog.yml's assets section."
+        )
+        self.asset = asset
+        self.source = source
+        self.near = near or []
+
+
+class AmbiguousTimeReferenceError(SfxPlanError):
+    def __init__(self, *, source: str) -> None:
+        super().__init__(
+            f"element at {source} sets BOTH data-sfx-anchor and data-sfx-at-scene-ms. "
+            f"Pick one: anchor for spoken-word cues, at-scene-ms for visual-entry cues."
+        )
+        self.source = source
+
+
+class MissingTimeReferenceError(SfxPlanError):
+    def __init__(self, *, source: str) -> None:
+        super().__init__(
+            f"element at {source} has data-sfx-on-anchor but no timing reference. "
+            f"Set either data-sfx-anchor (spoken word) or data-sfx-at-scene-ms (visual moment)."
+        )
+        self.source = source
+
+
+class UnknownMountError(SfxPlanError):
+    def __init__(self, *, comp_path: str, source: str, known_mounts: list[str]) -> None:
+        known_str = ", ".join(sorted(known_mounts)) if known_mounts else "(none)"
+        super().__init__(
+            f'composition "{comp_path}" (containing the annotation at {source}) is not mounted in index.html. '
+            f"Known mounts: {known_str}. "
+            f"Add a [data-composition-src] in index.html or move the annotation to a mounted composition."
+        )
+        self.comp_path = comp_path
+        self.source = source
+        self.known_mounts = known_mounts
+
+
+class OverridesShapeError(SfxPlanError):
+    def __init__(self, *, message: str) -> None:
+        super().__init__(f"sfx-overrides.yml is malformed: {message}")
