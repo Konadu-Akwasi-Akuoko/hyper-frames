@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before-Live Checklist</title>
+<style>
+  :root {
+    --bg: #fdfdfc;
+    --fg: #111;
+    --muted: #6b6b6b;
+    --rule: #e6e4df;
+    --accent: #c14a1d;
+    --eyebrow: #888;
+    --code-bg: #f3f1ec;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111110;
+      --fg: #e8e6e1;
+      --muted: #8a8a85;
+      --rule: #2a2926;
+      --accent: #ff8a5b;
+      --eyebrow: #777;
+      --code-bg: #1c1b18;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin: 0.5rem 0 0;
+    max-width: 60ch;
+  }
+
+  section {
+    margin: 3rem 0 0;
+  }
+
+  .eyebrow {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--eyebrow);
+    margin: 0 0 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+    line-height: 1.25;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    position: relative;
+    padding: 0.55rem 0 0.55rem 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  li:first-child { border-top: none; }
+
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.95rem;
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--muted);
+    border-radius: 2px;
+  }
+
+  li strong {
+    font-weight: 600;
+  }
+
+  .why {
+    display: block;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+
+  code, kbd {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+
+  a:hover { text-decoration-thickness: 2px; }
+
+  .ctr-table {
+    margin-top: 0.5rem;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .ctr-table th,
+  .ctr-table td {
+    text-align: left;
+    padding: 0.35rem 1rem 0.35rem 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  .ctr-table th {
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  footer p { margin: 0.4rem 0; }
+
+  .refs {
+    margin-top: 1rem;
+  }
+
+  .refs li::before { display: none; }
+  .refs li { padding-left: 0; border-top: none; padding: 0.2rem 0; }
+
+  @media print {
+    :root {
+      --bg: #fff;
+      --fg: #000;
+      --muted: #444;
+      --rule: #ccc;
+      --accent: #000;
+      --eyebrow: #555;
+      --code-bg: #f0f0f0;
+    }
+    body { max-width: none; padding: 1rem; font-size: 11pt; }
+    a { color: #000; text-decoration: none; }
+    h2 { page-break-before: always; }
+    section:first-of-type h2 { page-break-before: auto; }
+    header { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Before-Live Checklist</h1>
+  <p>
+    Open this before you hit Publish on a YouTube video. Walk top to bottom for
+    everything pre-publish. The post-publish sections are time-windowed &mdash;
+    do them in the windows shown. The single biggest 2026 lever is &sect;3
+    (multi-language); don't skip it.
+  </p>
+</header>
+
+<section id="qc">
+  <span class="eyebrow">&sect;1 &middot; Pre-publish &middot; Content QC</span>
+  <h2>Quality-check the cut before YouTube ever sees it</h2>
+  <ul>
+    <li>
+      <strong>Preview the final cut on a phone.</strong>
+      <span class="why">Mobile-first text sizing &mdash; if any caption or on-screen text is hard to read at 360&thinsp;px wide, fix it before upload.</span>
+    </li>
+    <li>
+      <strong>Watch the first 30 seconds cold.</strong>
+      <span class="why">YouTube tests new videos with a small audience first. If they drop in 30&thinsp;s, the video never reaches the broader recommender. The hook has to land.</span>
+    </li>
+    <li>
+      <strong>Verify thumbnail/title alignment with the first 30 seconds.</strong>
+      <span class="why">Promise &rarr; proof &rarr; path. The thumbnail makes a promise; the open has to prove it; the rest of the video has to feel like the path the viewer expected.</span>
+    </li>
+    <li>
+      <strong>Confirm 60&thinsp;fps render.</strong>
+      <span class="why">Highest-liked production complaint from comments on competitor channels (93 likes on one comment) was about frame rate. See <code>research/pawel-code-stuff/analysis/comment-insights.md</code>.</span>
+    </li>
+    <li>
+      <strong>Test contrast at low brightness.</strong>
+      <span class="why">Avoid gray-on-dark in compositions. A lot of viewers watch at &lt;50% brightness on a phone.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="metadata">
+  <span class="eyebrow">&sect;2 &middot; Pre-publish &middot; Studio metadata</span>
+  <h2>Fill in every field YouTube Studio gives you</h2>
+  <ul>
+    <li>
+      <strong>Set upload default to Private.</strong>
+      <span class="why">Configure everything before flipping to Public. A half-configured Public video is a wasted first-hour test.</span>
+    </li>
+    <li>
+      <strong>Title &mdash; lead with the primary keyword, under ~60 characters.</strong>
+      <span class="why">First word does the most work. Pair the keyword with a curiosity hook (a stake, a number, or a contradiction).</span>
+    </li>
+    <li>
+      <strong>Description &mdash; primary keyword in the first 157 characters.</strong>
+      <span class="why">That's what shows above "Show more". Make those first ~25 words count for both the algorithm and the viewer.</span>
+    </li>
+    <li>
+      <strong>Description structure &mdash; three blocks.</strong>
+      <span class="why">Opening paragraph (hook + keyword) &rarr; chapters block (timestamps) &rarr; links/hashtags block. Same shape every video.</span>
+    </li>
+    <li>
+      <strong>Chapters &mdash; minimum 3, first one starts at <code>0:00</code>.</strong>
+      <span class="why">+11% average watch time per YouTube 2026 internal data. Also lets Google deep-link to chapters from search and AI Overviews.</span>
+    </li>
+    <li>
+      <strong>Tags &mdash; 3&ndash;5 keyword variants plus common misspellings.</strong>
+      <span class="why">Mostly useful when the topic has multiple spellings or synonyms (e.g. "captcha" / "CAPTCHA" / "recaptcha"). Don't tag-stuff &mdash; YouTube penalizes irrelevant tags.</span>
+    </li>
+    <li>
+      <strong>Hashtags &mdash; 2 to 4 total: one broad, one niche, one specific.</strong>
+      <span class="why">The first three render above the title in the watch page. Prime real estate.</span>
+    </li>
+    <li>
+      <strong>Category &mdash; set explicitly.</strong>
+      <span class="why">Don't leave the default. Pick the closest match (usually "Science &amp; Technology" or "Education" for this channel).</span>
+    </li>
+    <li>
+      <strong>Language &mdash; set explicitly.</strong>
+      <span class="why">Required before auto-dubbing will run. Set the audio language and the original-caption language.</span>
+    </li>
+    <li>
+      <strong>Captions &mdash; upload an SRT.</strong>
+      <span class="why">Don't rely on auto-captions alone. The transcript.json from the voiceover step is already word-aligned &mdash; convert it to SRT and upload. Better captions feed better auto-dubs.</span>
+    </li>
+    <li>
+      <strong>End screen &mdash; last 5 to 20 seconds.</strong>
+      <span class="why">Point to the next video plus a subscribe element. End screens are a session-time multiplier.</span>
+    </li>
+    <li>
+      <strong>Cards &mdash; placed at natural transition points.</strong>
+      <span class="why">Not mid-sentence. A card mid-thought feels like a hijack; a card on a beat-break feels like a guide.</span>
+    </li>
+    <li>
+      <strong>Custom thumbnail &mdash; uploaded and previewed at small size.</strong>
+      <span class="why">View it at 246&times;138 px (homepage size) and 480&times;270 px. If you can't read the text at homepage size, it doesn't work.</span>
+    </li>
+    <li>
+      <strong>"Made for kids" &mdash; toggle set correctly.</strong>
+      <span class="why">Almost always No for this channel. Getting this wrong loses comments, notifications, and personalized recommendations.</span>
+    </li>
+    <li>
+      <strong>"Altered content" disclosure &mdash; No (default for this channel).</strong>
+      <span class="why">Disclosure is for content that could mislead viewers into thinking something real happened: deepfakes of identifiable people, altered footage of real events, photorealistic synthetic scenes. Animations and stylized graphics are explicitly exempt, and a generic synthetic narrator that doesn't impersonate a real, identifiable person is also exempt. <strong>Flip to Yes</strong> if a specific video clones an identifiable person's voice, puts a real person's face on someone else, generates photorealistic "footage" of a real place or event, or puts words in a real person's mouth. See <a href="https://support.google.com/youtube/answer/14328491" target="_blank" rel="noopener">Disclosing use of altered or synthetic content</a>.</span>
+    </li>
+    <li>
+      <strong>Monetization &mdash; deliberate, not default.</strong>
+      <span class="why">Project rule: no sponsorships, ads, or commercial partnerships in the first 20 videos. Audience explicitly fears the "Fireship route" &mdash; see <code>research/pawel-code-stuff/analysis/comment-insights.md</code> &sect;11.</span>
+    </li>
+    <li>
+      <strong>Wait for the Content&nbsp;ID / copyright scan to clear.</strong>
+      <span class="why">Scheduling a video with an unresolved Content ID claim invites takedowns and demonetization mid-launch. Fix issues before going live. See <a href="https://support.google.com/youtube/answer/2797370" target="_blank" rel="noopener">Content&nbsp;ID basics</a>.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="multilang">
+  <span class="eyebrow">&sect;3 &middot; Pre-publish &middot; Multi-language</span>
+  <h2>The single biggest 2026 lever</h2>
+  <ul>
+    <li>
+      <strong>Enable auto-dubbing once, channel-wide.</strong>
+      <span class="why">YouTube Studio &rarr; Settings &rarr; Channel &rarr; <strong>Advanced settings</strong> &rarr; check <strong>"Allow automatic dubbing"</strong>. Rolled out to all creators in February 2026; 27 languages. See <a href="https://support.google.com/youtube/answer/15569972" target="_blank" rel="noopener">Use automatic dubbing</a>.</span>
+    </li>
+    <li>
+      <strong>For the first few videos, turn on manual review.</strong>
+      <span class="why">Check <strong>"Manually review dubs before publishing"</strong>. Catch pronunciation drift on names, jargon, and brand terms before it ships globally. Switch this off later if accuracy stays high.</span>
+    </li>
+    <li>
+      <strong>Add localized titles and descriptions for top-priority languages.</strong>
+      <span class="why">YouTube Studio &rarr; Subtitles &rarr; Add language. Spanish, Portuguese, Hindi, Indonesian, French, German are the typical top-of-list for technical-explainer channels. Localized title beats translated audio with English title.</span>
+    </li>
+    <li>
+      <strong>Upload a localized thumbnail per dubbed language.</strong>
+      <span class="why">Multi-language thumbnails rolled out broadly in late 2025 / early 2026. The thumbnail viewers see auto-matches their language. See <a href="https://support.google.com/youtube/answer/13338784" target="_blank" rel="noopener">Add multi-language features to your videos</a>.</span>
+    </li>
+    <li>
+      <strong>Expect 25%+ of watch time from non-primary languages.</strong>
+      <span class="why">Industry-reported figure for creators using multi-language audio. Some creators (with full audio + visual localization) have reported tripled view counts. Worth the 30-minute setup.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="schedule">
+  <span class="eyebrow">&sect;4 &middot; Pre-publish &middot; Schedule &amp; publish</span>
+  <h2>Publish into your audience's actual peak hour</h2>
+  <ul>
+    <li>
+      <strong>Pick the publish time from your own analytics, not a blog.</strong>
+      <span class="why">YouTube Studio &rarr; Analytics &rarr; Audience &rarr; <strong>"When your viewers are on YouTube"</strong>. Aim for the start of the peak block so the first-hour test cohort is real viewers.</span>
+    </li>
+    <li>
+      <strong>Schedule the publish (or go now if the window is hot).</strong>
+      <span class="why">"Hot window" = audience is already on platform <em>and</em> a related topic is trending. Otherwise schedule.</span>
+    </li>
+    <li>
+      <strong>Verify the public URL preview before the scheduled time.</strong>
+      <span class="why">Open the public watch URL in an incognito window: thumbnail, title, description first line, chapters all render correctly.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="first-hour">
+  <span class="eyebrow">&sect;5 &middot; Post-publish &middot; First hour</span>
+  <h2>Seed the early signal in the first 60 minutes</h2>
+  <ul>
+    <li>
+      <strong>Pin a seeded "aha moment" comment.</strong>
+      <span class="why">A short framing prompt that nudges the conversation in a productive direction (a question, a corollary, a "the part that surprised me was..."). Pinning is free signal to both algorithm and audience.</span>
+    </li>
+    <li>
+      <strong>Post a teaser to the Community tab.</strong>
+      <span class="why">One line + the video link. Community-tab clicks count as discovery surface signal.</span>
+    </li>
+    <li>
+      <strong>Share to personal channels.</strong>
+      <span class="why">Discord, X, email list, one relevant subreddit (not five). Distribution research shows breakout traffic comes from YouTube's own recommender, not external referrers (see <code>research/pawel-code-stuff/analysis/distribution-channels.md</code>) &mdash; but early external clicks feed the first-hour engagement signal.</span>
+    </li>
+    <li>
+      <strong>Watch real-time analytics for the first 30 minutes.</strong>
+      <span class="why">Target CTR &ge; 7% (9%+ is exceptional, &lt;4% is broken). If CTR is &lt;4% with &gt;100 impressions, the thumbnail/title is the most likely culprit &mdash; but don't change it yet, wait for the 1-week mark.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="viral-window">
+  <span class="eyebrow">&sect;6 &middot; Post-publish &middot; First 24-36 hours</span>
+  <h2>The viral window &mdash; engagement compounds</h2>
+  <ul>
+    <li>
+      <strong>Reply substantively to the top 5+ comments.</strong>
+      <span class="why">Creators who reply to 25%+ of comments in the first 24h see 45% higher engagement on subsequent videos. "Substantively" = adds information, asks a follow-up, or acknowledges a correction &mdash; not "thanks!".</span>
+    </li>
+    <li>
+      <strong>Acknowledge corrections explicitly.</strong>
+      <span class="why">If an expert lands a real correction, reply by name with a "you're right, here's why I said it that way / here's what I'll fix in the next one." Dodging expert pushback is the fastest way to lose technical credibility.</span>
+    </li>
+    <li>
+      <strong>Re-pin if a better comment lands organically.</strong>
+      <span class="why">A great organic comment beats a seeded one. Swap the pin when it shows up.</span>
+    </li>
+    <li>
+      <strong>Check CTR + average view duration at 4h, 12h, and 24h.</strong>
+      <span class="why">If CTR climbs steadily, the recommender is expanding the cohort. If it flatlines after the first batch, the title/thumbnail isn't pulling outside your subscriber base.</span>
+    </li>
+    <li>
+      <strong>Note retention drop-off timestamps for the next video, not this one.</strong>
+      <span class="why">Don't re-edit the live video. Drop-off points are debugging signal for the <em>next</em> script &mdash; was it a pacing dip, a jargon spike, a stale visual?</span>
+    </li>
+  </ul>
+</section>
+
+<section id="shorts">
+  <span class="eyebrow">&sect;7 &middot; Post-publish &middot; 24-48 hours</span>
+  <h2>Cut Shorts from the long-form</h2>
+  <ul>
+    <li>
+      <strong>Cut 1 or 2 Shorts from the long-form.</strong>
+      <span class="why">Reverse-repurposing (Shorts <em>after</em> the long-form, sourced from it) is reported to lift long-form watch time by ~40%. Pick the moments that are self-contained and would survive without the surrounding context.</span>
+    </li>
+    <li>
+      <strong>End each Short with a verbal cue to watch the full video.</strong>
+      <span class="why">Spoken, not just on-screen text &mdash; viewers who finished the Short have already proven they'll listen.</span>
+    </li>
+    <li>
+      <strong>Put the long-form URL in each Short's description.</strong>
+      <span class="why">YouTube recognizes this as cross-format engagement and rewards both videos with more promotion.</span>
+    </li>
+    <li>
+      <strong>Upload Shorts to the same channel, not a separate Shorts channel.</strong>
+      <span class="why">Separate-channel strategies don't get the cross-format signal. Same channel = the funnel works.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="one-week">
+  <span class="eyebrow">&sect;8 &middot; Post-publish &middot; One-week follow-up</span>
+  <h2>Iterate on the published artifact</h2>
+  <ul>
+    <li>
+      <strong>Audit CTR after the first ~1,000 impressions.</strong>
+      <span class="why">Use the table below. Change <em>one thing at a time</em>; give each change at least 48&thinsp;h before judging.</span>
+
+      <table class="ctr-table">
+        <thead>
+          <tr><th>CTR band</th><th>Read</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 4%</td><td>Broken</td><td>Retitle <em>or</em> rethumb (not both at once)</td></tr>
+          <tr><td>4&ndash;7%</td><td>Average</td><td>Leave it &mdash; channel-level work matters more than one video</td></tr>
+          <tr><td>&ge; 7%</td><td>Good</td><td>Leave it &mdash; carry what worked into the next thumbnail</td></tr>
+          <tr><td>&ge; 9%</td><td>Exceptional</td><td>Study it &mdash; document why the title/thumbnail worked</td></tr>
+        </tbody>
+      </table>
+    </li>
+    <li>
+      <strong>Check average view duration.</strong>
+      <span class="why">If it's &lt;30% of runtime, the hook or first act needs rework for the next video. If it's &gt;50%, you're in the top sixth of all YouTube videos &mdash; whatever you did, keep doing it.</span>
+    </li>
+    <li>
+      <strong>Update the previous video's end screen to point here.</strong>
+      <span class="why">Compounds session time across the back catalog. The chain only matters if every prior video forwards to the most recent one.</span>
+    </li>
+    <li>
+      <strong>Add this video to a playlist (or create one).</strong>
+      <span class="why">Playlists multiply session time and surface across recommendations as a unit. Don't leave videos un-playlisted.</span>
+    </li>
+    <li>
+      <strong>Log any follow-up topics from the comments.</strong>
+      <span class="why">Comments are the cheapest topic-research signal you have. Capture good follow-up questions into <code>research/</code> (or your idea backlog) the same day &mdash; you won't remember a week later.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="never">
+  <span class="eyebrow">&sect;9 &middot; Don't do these</span>
+  <h2>Channel-positioning guardrails</h2>
+  <ul>
+    <li>
+      <strong>Don't take sponsorships, ads, or commercial partnerships in the first 20 videos.</strong>
+      <span class="why">Audience for technical-explainer channels explicitly fears the "Fireship route". See <code>research/pawel-code-stuff/analysis/comment-insights.md</code> &sect;11.</span>
+    </li>
+    <li>
+      <strong>Don't simplify content for beginners.</strong>
+      <span class="why">Audience is mid-to-senior engineers. Match their level &mdash; condescension reads worse than complexity.</span>
+    </li>
+    <li>
+      <strong>Don't go silent in the comments.</strong>
+      <span class="why">Even when volume is small. An empty comment section signals an inactive channel to both algorithm and viewer.</span>
+    </li>
+    <li>
+      <strong>Don't copy competitor title or thumbnail formulas verbatim.</strong>
+      <span class="why">Visual identity has to be its own &mdash; see <code>research/pawel-code-stuff/analysis/thumbnail-patterns.md</code>.</span>
+    </li>
+    <li>
+      <strong>Don't condense the dense moments.</strong>
+      <span class="why">45+ seconds per technical concept inside an escalation cycle. Compressing the actual content to fit a 10-minute target is the wrong trade.</span>
+    </li>
+    <li>
+      <strong>Don't edit the live video to fix a retention drop.</strong>
+      <span class="why">Re-uploading wipes the early-engagement signal you've already earned. Note it for the next script instead.</span>
+    </li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>Last updated:</strong> 2026-05-12.</p>
+  <p>This is a living document. After each launch, fold the lessons (what moved CTR, what didn't, what surprised you in the comments) back into the relevant section. The checklist should get sharper, not longer, over time.</p>
+  <p class="refs"><strong>Local references:</strong></p>
+  <ul class="refs">
+    <li><code>research/pawel-code-stuff/analysis/comment-insights.md</code> &mdash; community + positioning rules (&sect;11 drop-in checklist)</li>
+    <li><code>research/pawel-code-stuff/analysis/distribution-channels.md</code> &mdash; why in-Studio metadata matters more than aggressive cross-posting</li>
+    <li><code>research/pawel-code-stuff/analysis/thumbnail-patterns.md</code> &mdash; thumbnail QC reference</li>
+    <li><code>research/pawel-code-stuff/analysis/script-patterns.md</code> &mdash; hook and retention beat patterns</li>
+  </ul>
+</footer>
+
+</body>
+</html>
