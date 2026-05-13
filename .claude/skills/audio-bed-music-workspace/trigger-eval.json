@@ -1,0 +1,22 @@
+[
+  {"query": "i finished the sfx pass on videos/how-llms-work-2026-06-12/ and now i want to add some music underneath the narration. the script has a 'reveal -> twist -> resolve' shape so probably 3 sections of music. how do we set this up?", "should_trigger": true},
+  {"query": "yo can you score my captcha video, the one in videos/how-does-captchas-work-2026-05-10/. i want like documentary-ish music under it", "should_trigger": true},
+  {"query": "I want to underscore my latest hyper-frames explainer with a music bed. The VO is mastered already and sfx is at 0.35. Walk me through how to lay music under all of it.", "should_trigger": true},
+  {"query": "ok so my voiceover is done, sfx is done, what's the right way to add a calm-build-quiet musical arc under the whole 6 minute video?", "should_trigger": true},
+  {"query": "I've got 3 envato tracks downloaded into audio/layer_a/, audio/layer_b/, audio/layer_c/ for my video at videos/foo-bar-2026-07-01/. ready to bake the bed", "should_trigger": true},
+  {"query": "the closer of my explainer should land on something quiet and emotional. can you set up a music bed that ends elegiac under the last beat?", "should_trigger": true},
+  {"query": "score this", "should_trigger": true},
+  {"query": "add background music to videos/why-text-is-hard-2026-05-07/", "should_trigger": true},
+  {"query": "I want the music to sit under the narration without competing — like Veritasium does. Can you set that up for my hyper-frames video?", "should_trigger": true},
+  {"query": "lay music under the whole video, single track top to tail, nothing fancy", "should_trigger": true},
+  {"query": "generate the voiceover for my script.md using elevenlabs v2, the project default", "should_trigger": false},
+  {"query": "add ticks and whooshes to my video, just sound design pass, no music", "should_trigger": false},
+  {"query": "find me a royalty-free song for my podcast intro, something around 30 seconds", "should_trigger": false},
+  {"query": "clean up the ums and stutters in audio/voiceover.mp3 for me", "should_trigger": false},
+  {"query": "drop the data-volume on my existing compositions/music.html from 0.18 to 0.14", "should_trigger": false},
+  {"query": "set all my sfx cue volumes to 0.5 across the board, edit sfx-overrides.yml", "should_trigger": false},
+  {"query": "what bpm should background music be for explainer videos? just doing some research, not building anything yet", "should_trigger": false},
+  {"query": "i'm building a remotion video, what's the best way to add background audio in remotion?", "should_trigger": false},
+  {"query": "make my voiceover sound studio-quality, denoise and dereverb it", "should_trigger": false},
+  {"query": "compose a 30-second cinematic intro track for me from scratch, no source files, just generate it", "should_trigger": false}
+]
