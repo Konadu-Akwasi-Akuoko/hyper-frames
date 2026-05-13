@@ -1,0 +1,475 @@
+1
+00:00:00,120 --> 00:00:04,100
+You click a checkbox labeled I'm not
+a robot, and the page lets you in.
+
+2
+00:00:04,860 --> 00:00:07,040
+It happens hundreds of
+millions of times a day.
+
+3
+00:00:07,520 --> 00:00:12,960
+Every sign-up form, every login, every
+ticket queue, you click it without thinking.
+
+4
+00:00:13,640 --> 00:00:15,420
+But the test was never the checkbox.
+
+5
+00:00:16,180 --> 00:00:19,300
+In the seconds before you clicked,
+your browser was being measured.
+
+6
+00:00:19,840 --> 00:00:24,640
+The path your cursor took across the page,
+the exact millisecond between arriving
+
+7
+00:00:24,680 --> 00:00:29,270
+and reaching for the box, the cookies
+you carry, the way your screen rendered
+
+8
+00:00:29,360 --> 00:00:33,800
+pixels. By the time you got to the
+checkbox, the verdict was already in.
+
+9
+00:00:34,440 --> 00:00:35,800
+The click was just the receipt.
+
+10
+00:00:36,340 --> 00:00:39,980
+Without that measurement, every sign-up
+form on the Internet would drown in
+
+11
+00:00:40,060 --> 00:00:42,460
+automated traffic within minutes.
+
+12
+00:00:42,500 --> 00:00:46,900
+By industry estimates, bad bots account
+for nearly a third of all web traffic.
+
+13
+00:00:47,330 --> 00:00:52,080
+They scrape databases, generate spam by
+the millions, and try stolen passwords
+
+14
+00:00:52,120 --> 00:00:54,730
+against login pages
+every hour of every day.
+
+15
+00:00:55,420 --> 00:01:00,260
+The free email account, the concert ticket,
+even the comment box under this video,
+
+16
+00:01:00,920 --> 00:01:02,200
+every one of them is a target.
+
+17
+00:01:02,560 --> 00:01:06,760
+Today we are going to look at why telling
+humans from computers got harder, not
+
+18
+00:01:06,820 --> 00:01:12,200
+easier. How three generations of CAPTCHAs
+were each broken in turn, and why the test
+
+19
+00:01:12,280 --> 00:01:15,560
+you passed had nothing to do
+with the checkbox you clicked.
+
+20
+00:01:15,620 --> 00:01:18,040
+Let's start with the Turing test.
+
+21
+00:01:18,080 --> 00:01:21,320
+In nineteen fifty, Alan Turing
+proposed a simple game.
+
+22
+00:01:22,240 --> 00:01:24,980
+A human judge talks to two
+strangers through a keyboard.
+
+23
+00:01:25,520 --> 00:01:28,440
+One is a person, one is a program.
+
+24
+00:01:28,480 --> 00:01:31,650
+If the judge can't tell which is
+which, the program has passed.
+
+25
+00:01:32,320 --> 00:01:34,880
+A CAPTCHA is the same test run backwards.
+
+26
+00:01:35,480 --> 00:01:37,080
+The judge is the computer.
+
+27
+00:01:37,120 --> 00:01:39,240
+The strangers are
+everybody trying to log in.
+
+28
+00:01:39,940 --> 00:01:45,320
+The acronym spells it out: completely
+automated public Turing test to tell computers
+
+29
+00:01:45,360 --> 00:01:50,420
+and humans apart. It was coined in two
+thousand and three by a researcher named Luis
+
+30
+00:01:50,460 --> 00:01:54,080
+von Ahn, the same person
+who later built Duolingo.
+
+31
+00:01:54,880 --> 00:01:59,780
+The whole game rests on one assumption:
+There exists some task that is easy for
+
+32
+00:01:59,790 --> 00:02:01,400
+humans and hard for machines.
+
+33
+00:02:02,500 --> 00:02:05,820
+Find that task, wrap it in a
+checkbox, and bots stay out.
+
+34
+00:02:06,580 --> 00:02:09,500
+For twenty years, that assumption
+held, until it didn't.
+
+35
+00:02:10,220 --> 00:02:14,020
+In nineteen ninety-seven, two teams
+independently invented the same trick.
+
+36
+00:02:14,440 --> 00:02:17,420
+Show the user a smudged word
+and ask them to type it back.
+
+37
+00:02:18,220 --> 00:02:20,480
+Computers couldn't read distorted images.
+
+38
+00:02:20,840 --> 00:02:26,240
+Humans could. By two thousand and one, PayPal
+was using CAPTCHAs to block fraudulent
+
+39
+00:02:26,340 --> 00:02:31,500
+sign-ups. Soon every major site had a
+small twisted image gating the front door.
+
+40
+00:02:32,300 --> 00:02:36,680
+The trick worked because reading distorted
+text required three skills at once:
+
+41
+00:02:37,320 --> 00:02:42,740
+recognizing letters, no matter how warped,
+separating ones that overlap, and passing
+
+42
+00:02:42,780 --> 00:02:44,180
+the whole word into meaning.
+
+43
+00:02:44,900 --> 00:02:47,440
+Trivial for a human, a
+nightmare for a machine.
+
+44
+00:02:47,860 --> 00:02:49,700
+The wall held for almost a decade.
+
+45
+00:02:50,250 --> 00:02:54,540
+Then it didn't. In late two thousand and
+nine, just after Google had acquired a
+
+46
+00:02:54,600 --> 00:02:59,350
+system called reCAPTCHA, a researcher
+named Jonathan Wilkins published a paper
+
+47
+00:02:59,500 --> 00:03:02,500
+showing he could solve it
+eighteen percent of the time.
+
+48
+00:03:02,560 --> 00:03:07,010
+The next summer, a hacker named Chad Houck
+stood up at DEF CON and pushed the number
+
+49
+00:03:07,040 --> 00:03:08,240
+to one in three.
+
+50
+00:03:08,660 --> 00:03:12,380
+By two thousand and eighteen, a single
+research paper had broken eleven of the
+
+51
+00:03:12,400 --> 00:03:17,260
+distorted text schemes still in use across
+thirty-two of the top fifty websites,
+
+52
+00:03:17,580 --> 00:03:20,460
+including Microsoft, Wikipedia, and eBay.
+
+53
+00:03:21,130 --> 00:03:23,060
+The bots could read again.
+
+54
+00:03:23,120 --> 00:03:26,980
+By two thousand and fourteen,
+Google was ready with version two.
+
+55
+00:03:27,000 --> 00:03:28,740
+It turned the problem inside out.
+
+56
+00:03:29,420 --> 00:03:34,020
+Instead of reading characters, you
+recognized objects, a three-by-three grid of
+
+57
+00:03:34,040 --> 00:03:37,720
+photographs. Select all
+squares with crosswalks.
+
+58
+00:03:38,320 --> 00:03:40,180
+Select all squares with traffic lights.
+
+59
+00:03:40,600 --> 00:03:42,640
+Select all squares with fire hydrants.
+
+60
+00:03:43,320 --> 00:03:44,520
+There was a second motive.
+
+61
+00:03:45,100 --> 00:03:49,600
+Every click trained Google's image
+recognition on real photographs, labeling
+
+62
+00:03:49,620 --> 00:03:54,340
+crosswalks, lights, and signs that
+fed into the self-driving car project.
+
+63
+00:03:54,480 --> 00:03:58,680
+Billions of free training images, courtesy
+of everyone trying to log into Reddit.
+
+64
+00:03:59,510 --> 00:04:02,329
+The wall against bots was
+also a labor pipeline.
+
+65
+00:04:02,980 --> 00:04:05,100
+For about a decade, this worked.
+
+66
+00:04:05,140 --> 00:04:10,420
+Then it stopped. In twenty twenty-four,
+researchers at ETH Zurich fine-tuned an
+
+67
+00:04:10,540 --> 00:04:14,840
+open-source object detection model
+called YOLO on fourteen thousand traffic
+
+68
+00:04:14,920 --> 00:04:20,340
+photographs. Per image, accuracy ranged
+from sixty-nine percent on motorcycles to
+
+69
+00:04:20,380 --> 00:04:22,160
+one hundred percent on fire hydrants.
+
+70
+00:04:22,760 --> 00:04:27,620
+But reCAPTCHA lets you retry, so across
+an average session, the bot passed every
+
+71
+00:04:27,720 --> 00:04:31,180
+single test. Earlier attacks had
+topped out at seventy percent.
+
+72
+00:04:31,780 --> 00:04:33,380
+The wall fell, again.
+
+73
+00:04:34,120 --> 00:04:36,540
+The YOLO researchers
+exposed a deeper problem.
+
+74
+00:04:37,020 --> 00:04:39,580
+Solving the puzzle wasn't
+enough on its own.
+
+75
+00:04:39,640 --> 00:04:44,480
+To pass, their bot also had to fake cookies,
+route through a VPN, and simulate human
+
+76
+00:04:44,560 --> 00:04:48,540
+mouse movements. The visible
+test had stopped being the test.
+
+77
+00:04:49,120 --> 00:04:52,860
+So in two thousand and seventeen, Google
+released reCAPTCHA version three.
+
+78
+00:04:53,580 --> 00:04:55,880
+No more crosswalks, no more checkboxes.
+
+79
+00:04:56,600 --> 00:05:00,920
+The system runs invisibly in the background
+and scores every visitor from zero to
+
+80
+00:05:01,020 --> 00:05:06,380
+one, bot to human, based on how they move,
+how they type, and what they looked like
+
+81
+00:05:06,420 --> 00:05:12,260
+before they arrived. hCAPTCHA and Cloudflare
+Turnstile work the same way, but AI
+
+82
+00:05:12,380 --> 00:05:17,020
+mimics now. Generative models
+paint believable mouse paths.
+
+83
+00:05:17,060 --> 00:05:21,270
+Headless browsers spoof every
+fingerprint signal V3 once trusted.
+
+84
+00:05:21,920 --> 00:05:26,940
+And in twenty twenty-three, during a red
+team study of GPT-4, the model hired a
+
+85
+00:05:26,980 --> 00:05:31,640
+worker on Taskrabbit, claimed to have a
+vision impairment, and asked them to solve
+
+86
+00:05:31,680 --> 00:05:33,080
+the CAPTCHA on its behalf.
+
+87
+00:05:33,780 --> 00:05:36,600
+They did. The bot didn't beat the test.
+
+88
+00:05:36,640 --> 00:05:37,940
+It paid a human to take it.
+
+89
+00:05:38,720 --> 00:05:43,850
+Every checkbox you click, every grid of
+crosswalks you sort, every hesitation your
+
+90
+00:05:43,880 --> 00:05:48,180
+cursor makes on its way to the login
+button, somewhere a system is watching,
+
+91
+00:05:48,390 --> 00:05:53,130
+scoring, and quietly conceding that the
+gap between human and machine is closing
+
+92
+00:05:53,140 --> 00:05:55,420
+faster than the test can keep up.
+
+93
+00:05:55,480 --> 00:05:58,120
+The next time you click,
+I'm not a robot, remember.
+
+94
+00:05:59,280 --> 00:06:01,020
+The box doesn't know
+whether you are human.
+
+95
+00:06:01,620 --> 00:06:06,020
+The system behind it watched how you got
+there, how fast you clicked, what cookies
+
+96
+00:06:06,060 --> 00:06:09,180
+you carried, and what the page
+rendered like under your cursor.
+
+97
+00:06:09,810 --> 00:06:11,500
+The checkbox is the punctuation.
+
+98
+00:06:12,080 --> 00:06:13,400
+The sentence was already written.
+
+99
+00:06:14,020 --> 00:06:18,620
+Researchers estimate we've spent eight
+hundred and nineteen million hours, over six
+
+100
+00:06:18,780 --> 00:06:23,600
+billion dollars in wages, clicking crosswalks
+and checkboxes to prove we are human.
+
+101
+00:06:25,310 --> 00:06:27,300
+The bots have already
+learned how to pretend.

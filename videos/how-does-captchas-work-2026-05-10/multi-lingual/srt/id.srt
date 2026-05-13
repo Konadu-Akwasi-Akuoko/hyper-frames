@@ -1,0 +1,475 @@
+1
+00:00:00,120 --> 00:00:04,100
+Anda mengklik kotak centang bertuliskan
+"Saya bukan robot", dan halaman pun mengizinkan Anda masuk.
+
+2
+00:00:04,860 --> 00:00:07,040
+Itu terjadi ratusan
+juta kali sehari.
+
+3
+00:00:07,520 --> 00:00:12,960
+Setiap formulir pendaftaran, setiap login,
+setiap antrean tiket — Anda mengkliknya tanpa berpikir.
+
+4
+00:00:13,640 --> 00:00:15,420
+Tapi tesnya tidak pernah kotak itu.
+
+5
+00:00:16,180 --> 00:00:19,300
+Dalam detik sebelum Anda mengklik,
+browser Anda sedang diukur.
+
+6
+00:00:19,840 --> 00:00:24,640
+Jalur kursor Anda di halaman,
+milidetik tepat antara tiba
+
+7
+00:00:24,680 --> 00:00:29,270
+dan meraih kotak, cookie yang Anda bawa,
+cara layar Anda merender
+
+8
+00:00:29,360 --> 00:00:33,800
+piksel. Saat Anda sampai di kotak centang,
+keputusan sudah dibuat.
+
+9
+00:00:34,440 --> 00:00:35,800
+Klik itu hanya tanda terima.
+
+10
+00:00:36,340 --> 00:00:39,980
+Tanpa pengukuran itu, setiap formulir
+pendaftaran di Internet akan tenggelam dalam
+
+11
+00:00:40,060 --> 00:00:42,460
+lalu lintas otomatis dalam hitungan menit.
+
+12
+00:00:42,500 --> 00:00:46,900
+Menurut perkiraan industri, bot jahat
+menyumbang hampir sepertiga lalu lintas web.
+
+13
+00:00:47,330 --> 00:00:52,080
+Mereka menggali database, menghasilkan spam
+jutaan, dan mencoba kata sandi curian
+
+14
+00:00:52,120 --> 00:00:54,730
+melawan halaman login,
+setiap jam setiap hari.
+
+15
+00:00:55,420 --> 00:01:00,260
+Akun email gratis, tiket konser,
+bahkan kolom komentar di bawah video ini —
+
+16
+00:01:00,920 --> 00:01:02,200
+setiap satu dari mereka adalah target.
+
+17
+00:01:02,560 --> 00:01:06,760
+Hari ini kita akan melihat mengapa membedakan
+manusia dari komputer menjadi lebih sulit, bukan
+
+18
+00:01:06,820 --> 00:01:12,200
+lebih mudah. Bagaimana tiga generasi CAPTCHA
+dipatahkan satu per satu, dan mengapa tes
+
+19
+00:01:12,280 --> 00:01:15,560
+yang Anda lewati tidak ada hubungannya
+dengan kotak yang Anda klik.
+
+20
+00:01:15,620 --> 00:01:18,040
+Mari kita mulai dengan tes Turing.
+
+21
+00:01:18,080 --> 00:01:21,320
+Pada 1950, Alan Turing
+mengusulkan permainan sederhana.
+
+22
+00:01:22,240 --> 00:01:24,980
+Seorang juri manusia berbicara dengan
+dua orang asing lewat keyboard.
+
+23
+00:01:25,520 --> 00:01:28,440
+Satu adalah orang, satu adalah program.
+
+24
+00:01:28,480 --> 00:01:31,650
+Jika juri tidak bisa membedakan mana yang mana,
+program telah lulus.
+
+25
+00:01:32,320 --> 00:01:34,880
+CAPTCHA adalah tes yang sama dijalankan terbalik.
+
+26
+00:01:35,480 --> 00:01:37,080
+Jurinya adalah komputer.
+
+27
+00:01:37,120 --> 00:01:39,240
+Orang asingnya adalah semua
+yang mencoba masuk.
+
+28
+00:01:39,940 --> 00:01:45,320
+Akronimnya menjelaskan: tes Turing
+publik sepenuhnya otomatis untuk membedakan
+
+29
+00:01:45,360 --> 00:01:50,420
+komputer dan manusia. Istilah ini diciptakan
+pada 2003 oleh peneliti bernama Luis
+
+30
+00:01:50,460 --> 00:01:54,080
+von Ahn, orang yang sama
+yang kemudian membangun Duolingo.
+
+31
+00:01:54,880 --> 00:01:59,780
+Seluruh permainan bertumpu pada satu asumsi:
+ada tugas tertentu yang mudah bagi
+
+32
+00:01:59,790 --> 00:02:01,400
+manusia dan sulit bagi mesin.
+
+33
+00:02:02,500 --> 00:02:05,820
+Temukan tugas itu, bungkus dalam
+kotak, dan bot tetap di luar.
+
+34
+00:02:06,580 --> 00:02:09,500
+Selama dua puluh tahun, asumsi itu
+bertahan, sampai tidak lagi.
+
+35
+00:02:10,220 --> 00:02:14,020
+Pada 1997, dua tim secara independen
+menemukan trik yang sama.
+
+36
+00:02:14,440 --> 00:02:17,420
+Tunjukkan kepada pengguna sebuah kata
+yang kabur dan minta mereka mengetik ulang.
+
+37
+00:02:18,220 --> 00:02:20,480
+Komputer tidak bisa membaca gambar yang terdistorsi.
+
+38
+00:02:20,840 --> 00:02:26,240
+Manusia bisa. Pada 2001, PayPal
+menggunakan CAPTCHA untuk memblokir pendaftaran
+
+39
+00:02:26,340 --> 00:02:31,500
+yang menipu. Segera setiap situs besar memiliki
+gambar bengkok kecil yang menjaga pintu depan.
+
+40
+00:02:32,300 --> 00:02:36,680
+Trik itu berhasil karena membaca teks
+terdistorsi memerlukan tiga keterampilan sekaligus:
+
+41
+00:02:37,320 --> 00:02:42,740
+mengenali huruf, betapa pun melengkungnya,
+memisahkan yang tumpang tindih, dan mengubah
+
+42
+00:02:42,780 --> 00:02:44,180
+seluruh kata menjadi makna.
+
+43
+00:02:44,900 --> 00:02:47,440
+Sepele bagi manusia, mimpi
+buruk bagi mesin.
+
+44
+00:02:47,860 --> 00:02:49,700
+Tembok bertahan hampir satu dekade.
+
+45
+00:02:50,250 --> 00:02:54,540
+Lalu tidak. Di akhir 2009,
+tepat setelah Google mengakuisisi
+
+46
+00:02:54,600 --> 00:02:59,350
+sistem bernama reCAPTCHA, seorang peneliti
+bernama Jonathan Wilkins menerbitkan makalah
+
+47
+00:02:59,500 --> 00:03:02,500
+yang menunjukkan dia bisa memecahkannya
+18% dari waktu.
+
+48
+00:03:02,560 --> 00:03:07,010
+Musim panas berikutnya, peretas bernama Chad Houck
+naik panggung di DEF CON dan mendorong angka itu
+
+49
+00:03:07,040 --> 00:03:08,240
+menjadi satu dari tiga.
+
+50
+00:03:08,660 --> 00:03:12,380
+Pada 2018, satu makalah
+penelitian telah memecahkan sebelas dari
+
+51
+00:03:12,400 --> 00:03:17,260
+skema teks terdistorsi yang masih digunakan
+di 32 dari 50 situs web teratas,
+
+52
+00:03:17,580 --> 00:03:20,460
+termasuk Microsoft, Wikipedia, dan eBay.
+
+53
+00:03:21,130 --> 00:03:23,060
+Bot bisa membaca lagi.
+
+54
+00:03:23,120 --> 00:03:26,980
+Pada 2014, Google sudah
+siap dengan versi dua.
+
+55
+00:03:27,000 --> 00:03:28,740
+Itu membalik masalah dari dalam ke luar.
+
+56
+00:03:29,420 --> 00:03:34,020
+Alih-alih membaca karakter, Anda
+mengenali objek: kisi tiga kali tiga dari
+
+57
+00:03:34,040 --> 00:03:37,720
+foto. Pilih semua
+kotak dengan penyeberangan.
+
+58
+00:03:38,320 --> 00:03:40,180
+Pilih semua kotak dengan lampu lalu lintas.
+
+59
+00:03:40,600 --> 00:03:42,640
+Pilih semua kotak dengan hidran kebakaran.
+
+60
+00:03:43,320 --> 00:03:44,520
+Ada motif kedua.
+
+61
+00:03:45,100 --> 00:03:49,600
+Setiap klik melatih pengenalan gambar
+Google pada foto nyata, melabeli
+
+62
+00:03:49,620 --> 00:03:54,340
+penyeberangan, lampu, dan rambu yang
+disalurkan ke proyek mobil swakemudi.
+
+63
+00:03:54,480 --> 00:03:58,680
+Miliaran gambar pelatihan gratis,
+atas izin semua orang yang mencoba masuk ke Reddit.
+
+64
+00:03:59,510 --> 00:04:02,329
+Tembok melawan bot juga
+merupakan saluran kerja.
+
+65
+00:04:02,980 --> 00:04:05,100
+Selama sekitar satu dekade, ini berhasil.
+
+66
+00:04:05,140 --> 00:04:10,420
+Kemudian berhenti. Pada 2024, peneliti
+di ETH Zurich menyetel ulang
+
+67
+00:04:10,540 --> 00:04:14,840
+model deteksi objek sumber terbuka
+bernama YOLO pada 14.000 foto
+
+68
+00:04:14,920 --> 00:04:20,340
+lalu lintas. Per gambar, akurasi berkisar
+dari 69% pada sepeda motor hingga
+
+69
+00:04:20,380 --> 00:04:22,160
+100% pada hidran kebakaran.
+
+70
+00:04:22,760 --> 00:04:27,620
+Tapi reCAPTCHA memungkinkan Anda mencoba lagi, jadi
+dalam sesi rata-rata, bot melewati setiap
+
+71
+00:04:27,720 --> 00:04:31,180
+tes. Serangan sebelumnya
+mentok di 70%.
+
+72
+00:04:31,780 --> 00:04:33,380
+Tembok runtuh, lagi.
+
+73
+00:04:34,120 --> 00:04:36,540
+Para peneliti YOLO mengungkap
+masalah yang lebih dalam.
+
+74
+00:04:37,020 --> 00:04:39,580
+Menyelesaikan teka-teki tidak
+cukup dengan sendirinya.
+
+75
+00:04:39,640 --> 00:04:44,480
+Untuk lewat, bot mereka juga harus memalsukan
+cookie, melewati VPN, dan mensimulasikan
+
+76
+00:04:44,560 --> 00:04:48,540
+gerakan mouse manusia. Tes
+yang terlihat sudah bukan lagi tesnya.
+
+77
+00:04:49,120 --> 00:04:52,860
+Jadi pada 2017, Google
+merilis reCAPTCHA versi tiga.
+
+78
+00:04:53,580 --> 00:04:55,880
+Tidak ada lagi penyeberangan,
+tidak ada lagi kotak centang.
+
+79
+00:04:56,600 --> 00:05:00,920
+Sistem berjalan tak terlihat di latar belakang
+dan memberi skor setiap pengunjung dari nol hingga
+
+80
+00:05:01,020 --> 00:05:06,380
+satu, dari bot ke manusia, berdasarkan cara
+mereka bergerak, cara mengetik, dan seperti apa mereka
+
+81
+00:05:06,420 --> 00:05:12,260
+sebelum tiba. hCAPTCHA dan Cloudflare
+Turnstile bekerja dengan cara yang sama, tapi AI
+
+82
+00:05:12,380 --> 00:05:17,020
+kini meniru. Model generatif
+menggambar jalur mouse yang meyakinkan.
+
+83
+00:05:17,060 --> 00:05:21,270
+Browser headless memalsukan setiap
+sinyal sidik jari yang dulu dipercaya V3.
+
+84
+00:05:21,920 --> 00:05:26,940
+Dan pada 2023, selama studi red
+team GPT-4, model itu menyewa
+
+85
+00:05:26,980 --> 00:05:31,640
+pekerja di TaskRabbit, mengaku memiliki
+gangguan penglihatan, dan memintanya menyelesaikan
+
+86
+00:05:31,680 --> 00:05:33,080
+CAPTCHA atas namanya.
+
+87
+00:05:33,780 --> 00:05:36,600
+Pekerja itu mau. Bot tidak mengalahkan tes.
+
+88
+00:05:36,640 --> 00:05:37,940
+Ia membayar manusia untuk mengerjakannya.
+
+89
+00:05:38,720 --> 00:05:43,850
+Setiap kotak yang Anda klik, setiap kisi
+penyeberangan yang Anda sortir, setiap keraguan yang
+
+90
+00:05:43,880 --> 00:05:48,180
+kursor Anda buat menuju tombol login,
+di suatu tempat sistem sedang menonton,
+
+91
+00:05:48,390 --> 00:05:53,130
+menilai, dan diam-diam mengakui bahwa
+jurang antara manusia dan mesin menutup
+
+92
+00:05:53,140 --> 00:05:55,420
+lebih cepat dari yang bisa diikuti tesnya.
+
+93
+00:05:55,480 --> 00:05:58,120
+Lain kali Anda mengklik
+"Saya bukan robot", ingatlah:
+
+94
+00:05:59,280 --> 00:06:01,020
+Kotak itu tidak tahu apakah Anda manusia.
+
+95
+00:06:01,620 --> 00:06:06,020
+Sistem di baliknya melihat bagaimana Anda
+sampai di sana, seberapa cepat Anda mengklik, cookie apa
+
+96
+00:06:06,060 --> 00:06:09,180
+yang Anda bawa, dan bagaimana
+halaman dirender di bawah kursor Anda.
+
+97
+00:06:09,810 --> 00:06:11,500
+Kotak centang adalah tanda baca.
+
+98
+00:06:12,080 --> 00:06:13,400
+Kalimatnya sudah ditulis.
+
+99
+00:06:14,020 --> 00:06:18,620
+Peneliti memperkirakan kita telah menghabiskan
+819 juta jam, lebih dari 6
+
+100
+00:06:18,780 --> 00:06:23,600
+miliar dolar dalam upah, mengklik penyeberangan
+dan kotak centang untuk membuktikan kita manusia.
+
+101
+00:06:25,310 --> 00:06:27,300
+Bot sudah belajar
+cara berpura-pura.

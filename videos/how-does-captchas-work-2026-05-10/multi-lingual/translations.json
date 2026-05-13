@@ -1,0 +1,291 @@
+{
+  "_about": "Localized thumbnail content for the captchas video. Source: thumbnails/round-2 (current shipped variants). round-1 fields are kept for the thumbnail-title.txt files; only round-2 is rendered to images. Each variant has rows[3] (each row is plain text; accent regions are wrapped in [[ and ]]) plus a YouTube title under ~60 chars. Accents are language-specific judgement calls based on visual punch and content emphasis.",
+  "languages": {
+    "ar": {
+      "name": "Arabic",
+      "round_1": {
+        "A": {"overlay": "كابتشا لم يختبر النقر على المربع", "yt_title": "كيف يقرر CAPTCHA أنك إنسان قبل أن تنقر"},
+        "B": {"overlay": "كل كابتشا يراقب مؤشرك", "yt_title": "كيف يقرأ reCAPTCHA مؤشرك قبل أن تنقر"},
+        "C": {"overlay": "كابتشا يقيّمك أنت، لا نقرتك", "yt_title": "كيف يميّز CAPTCHA البشر من الروبوتات في 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["الاختبار لم يكن", "النقر على", "[[المربع]]"],
+          "yt_title": "كيف يقرر CAPTCHA أنك إنسان قبل أن تنقر"
+        },
+        "B": {
+          "rows": ["كل [[CAPTCHA]]", "يراقب", "[[مؤشرك]]"],
+          "yt_title": "كيف يقرأ reCAPTCHA مؤشرك قبل أن تنقر"
+        },
+        "C": {
+          "rows": ["[[كابتشا]]", "[[يقيّمك]] أنت", "لا نقرتك"],
+          "yt_title": "كيف يميّز CAPTCHA البشر من الروبوتات في 2026"
+        }
+      }
+    },
+    "de": {
+      "name": "German",
+      "round_1": {
+        "A": {"overlay": "DAS CAPTCHA HAT DAS KÄSTCHEN NIE GETESTET", "yt_title": "Wie ein CAPTCHA entscheidet, dass du ein Mensch bist"},
+        "B": {"overlay": "JEDES CAPTCHA BEOBACHTET DEINEN CURSOR", "yt_title": "Wie reCAPTCHA deinen Cursor liest, bevor du klickst"},
+        "C": {"overlay": "DAS CAPTCHA HAT DICH BEWERTET, NICHT DEINEN KLICK", "yt_title": "Wie CAPTCHAs Menschen 2026 von Bots unterscheiden"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["DER TEST WAR NICHT", "DAS ANKLICKEN", "DES [[KÄSTCHENS]]"],
+          "yt_title": "Wie ein CAPTCHA entscheidet, dass du ein Mensch bist"
+        },
+        "B": {
+          "rows": ["JEDES [[CAPTCHA]]", "BEOBACHTET", "DEINEN [[CURSOR]]"],
+          "yt_title": "Wie reCAPTCHA deinen Cursor liest, bevor du klickst"
+        },
+        "C": {
+          "rows": ["DAS [[CAPTCHA]]", "[[BEWERTET]] DICH", "NICHT DEN KLICK"],
+          "yt_title": "Wie CAPTCHAs Menschen 2026 von Bots unterscheiden"
+        }
+      }
+    },
+    "es": {
+      "name": "Spanish",
+      "round_1": {
+        "A": {"overlay": "EL CAPTCHA NUNCA PROBÓ LA CASILLA", "yt_title": "Cómo un CAPTCHA decide que eres humano antes del clic"},
+        "B": {"overlay": "CADA CAPTCHA VIGILA TU CURSOR", "yt_title": "Cómo reCAPTCHA lee tu cursor antes de que hagas clic"},
+        "C": {"overlay": "EL CAPTCHA TE PUNTUÓ A TI, NO TU CLIC", "yt_title": "Cómo los CAPTCHA distinguen humanos de bots en 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["LA PRUEBA NO ERA", "HACER CLIC", "EN LA [[CASILLA]]"],
+          "yt_title": "Cómo un CAPTCHA decide que eres humano antes del clic"
+        },
+        "B": {
+          "rows": ["CADA [[CAPTCHA]]", "VIGILA", "TU [[CURSOR]]"],
+          "yt_title": "Cómo reCAPTCHA lee tu cursor antes de que hagas clic"
+        },
+        "C": {
+          "rows": ["EL [[CAPTCHA]]", "TE [[PUNTUÓ]] A TI", "NO TU CLIC"],
+          "yt_title": "Cómo los CAPTCHA distinguen humanos de bots en 2026"
+        }
+      }
+    },
+    "fr": {
+      "name": "French",
+      "round_1": {
+        "A": {"overlay": "LE CAPTCHA N'A JAMAIS TESTÉ LA CASE", "yt_title": "Comment un CAPTCHA décide que vous êtes humain"},
+        "B": {"overlay": "CHAQUE CAPTCHA OBSERVE VOTRE CURSEUR", "yt_title": "Comment reCAPTCHA lit votre curseur avant le clic"},
+        "C": {"overlay": "LE CAPTCHA VOUS NOTE, PAS VOTRE CLIC", "yt_title": "Comment les CAPTCHA distinguent humains et bots en 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["LE TEST N'ÉTAIT PAS", "DE CLIQUER", "SUR LA [[CASE]]"],
+          "yt_title": "Comment un CAPTCHA décide que vous êtes humain"
+        },
+        "B": {
+          "rows": ["CHAQUE [[CAPTCHA]]", "OBSERVE", "VOTRE [[CURSEUR]]"],
+          "yt_title": "Comment reCAPTCHA lit votre curseur avant le clic"
+        },
+        "C": {
+          "rows": ["LE [[CAPTCHA]]", "VOUS [[NOTE]]", "PAS VOTRE CLIC"],
+          "yt_title": "Comment les CAPTCHA distinguent humains et bots en 2026"
+        }
+      }
+    },
+    "hi": {
+      "name": "Hindi",
+      "round_1": {
+        "A": {"overlay": "CAPTCHA ने चेकबॉक्स को कभी टेस्ट नहीं किया", "yt_title": "CAPTCHA कैसे तय करता है कि आप इंसान हैं"},
+        "B": {"overlay": "हर CAPTCHA आपके कर्सर को देख रहा है", "yt_title": "reCAPTCHA क्लिक से पहले आपका कर्सर कैसे पढ़ता है"},
+        "C": {"overlay": "CAPTCHA ने आपको आँका, आपके क्लिक को नहीं", "yt_title": "CAPTCHA 2026 में इंसान और बॉट कैसे पहचानते हैं"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["टेस्ट चेकबॉक्स पर", "क्लिक करना", "[[नहीं था]]"],
+          "yt_title": "CAPTCHA कैसे तय करता है कि आप इंसान हैं"
+        },
+        "B": {
+          "rows": ["हर [[CAPTCHA]]", "देख रहा है", "आपका [[कर्सर]]"],
+          "yt_title": "reCAPTCHA क्लिक से पहले आपका कर्सर कैसे पढ़ता है"
+        },
+        "C": {
+          "rows": ["[[CAPTCHA]] ने", "आपको [[आँका]]", "क्लिक को नहीं"],
+          "yt_title": "CAPTCHA 2026 में इंसान और बॉट कैसे पहचानते हैं"
+        }
+      }
+    },
+    "id": {
+      "name": "Indonesian",
+      "round_1": {
+        "A": {"overlay": "CAPTCHA TIDAK PERNAH MENGUJI KOTAK CENTANG", "yt_title": "Cara CAPTCHA memutuskan kamu manusia sebelum klik"},
+        "B": {"overlay": "SETIAP CAPTCHA MENGAMATI KURSOR ANDA", "yt_title": "Cara reCAPTCHA membaca kursor sebelum kamu klik"},
+        "C": {"overlay": "CAPTCHA MENILAI ANDA, BUKAN KLIK ANDA", "yt_title": "Cara CAPTCHA membedakan manusia dari bot di 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["TES BUKAN", "MENGEKLIK", "[[KOTAKNYA]]"],
+          "yt_title": "Cara CAPTCHA memutuskan kamu manusia sebelum klik"
+        },
+        "B": {
+          "rows": ["SETIAP [[CAPTCHA]]", "MENGAMATI", "[[KURSOR]] ANDA"],
+          "yt_title": "Cara reCAPTCHA membaca kursor sebelum kamu klik"
+        },
+        "C": {
+          "rows": ["[[CAPTCHA]]", "[[MENILAI]] ANDA", "BUKAN KLIK ANDA"],
+          "yt_title": "Cara CAPTCHA membedakan manusia dari bot di 2026"
+        }
+      }
+    },
+    "it": {
+      "name": "Italian",
+      "round_1": {
+        "A": {"overlay": "IL CAPTCHA NON HA MAI TESTATO LA CASELLA", "yt_title": "Come un CAPTCHA decide che sei umano prima del clic"},
+        "B": {"overlay": "OGNI CAPTCHA GUARDA IL TUO CURSORE", "yt_title": "Come reCAPTCHA legge il tuo cursore prima del clic"},
+        "C": {"overlay": "IL CAPTCHA VALUTA TE, NON IL TUO CLIC", "yt_title": "Come i CAPTCHA distinguono umani e bot nel 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["IL TEST NON ERA", "CLICCARE", "LA [[CASELLA]]"],
+          "yt_title": "Come un CAPTCHA decide che sei umano prima del clic"
+        },
+        "B": {
+          "rows": ["OGNI [[CAPTCHA]]", "GUARDA", "IL TUO [[CURSORE]]"],
+          "yt_title": "Come reCAPTCHA legge il tuo cursore prima del clic"
+        },
+        "C": {
+          "rows": ["IL [[CAPTCHA]]", "[[VALUTA]] TE", "NON IL CLIC"],
+          "yt_title": "Come i CAPTCHA distinguono umani e bot nel 2026"
+        }
+      }
+    },
+    "ja": {
+      "name": "Japanese",
+      "round_1": {
+        "A": {"overlay": "CAPTCHAはチェックボックスを試していなかった", "yt_title": "CAPTCHAはクリック前にあなたを人間と判断する"},
+        "B": {"overlay": "すべてのCAPTCHAがあなたのカーソルを見ている", "yt_title": "reCAPTCHAはクリック前にカーソルをどう読むか"},
+        "C": {"overlay": "CAPTCHAが採点したのはクリックではなくあなた", "yt_title": "2026年、CAPTCHAは人間とボットをどう見分けるか"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["テストは", "チェックボックスへの", "[[クリック]]ではない"],
+          "yt_title": "CAPTCHAはクリック前にあなたを人間と判断する"
+        },
+        "B": {
+          "rows": ["すべての[[CAPTCHA]]は", "あなたの", "[[カーソル]]を見ている"],
+          "yt_title": "reCAPTCHAはクリック前にカーソルをどう読むか"
+        },
+        "C": {
+          "rows": ["[[CAPTCHA]]は", "クリックではなく", "あなたを[[採点]]"],
+          "yt_title": "2026年、CAPTCHAは人間とボットをどう見分けるか"
+        }
+      }
+    },
+    "pl": {
+      "name": "Polish",
+      "round_1": {
+        "A": {"overlay": "CAPTCHA NIGDY NIE TESTOWAŁA POLA WYBORU", "yt_title": "Jak CAPTCHA decyduje, że jesteś człowiekiem"},
+        "B": {"overlay": "KAŻDA CAPTCHA OBSERWUJE TWÓJ KURSOR", "yt_title": "Jak reCAPTCHA czyta twój kursor przed kliknięciem"},
+        "C": {"overlay": "CAPTCHA OCENIŁA CIEBIE, NIE TWOJE KLIKNIĘCIE", "yt_title": "Jak CAPTCHA odróżniają ludzi od botów w 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["TEST NIE POLEGAŁ", "NA KLIKNIĘCIU", "W [[POLE]]"],
+          "yt_title": "Jak CAPTCHA decyduje, że jesteś człowiekiem"
+        },
+        "B": {
+          "rows": ["KAŻDA [[CAPTCHA]]", "OBSERWUJE", "TWÓJ [[KURSOR]]"],
+          "yt_title": "Jak reCAPTCHA czyta twój kursor przed kliknięciem"
+        },
+        "C": {
+          "rows": ["[[CAPTCHA]]", "[[OCENIA]] CIEBIE", "NIE KLIKNIĘCIE"],
+          "yt_title": "Jak CAPTCHA odróżniają ludzi od botów w 2026"
+        }
+      }
+    },
+    "pt": {
+      "name": "Portuguese",
+      "round_1": {
+        "A": {"overlay": "O CAPTCHA NUNCA TESTOU A CAIXA", "yt_title": "Como um CAPTCHA decide que você é humano antes do clique"},
+        "B": {"overlay": "TODO CAPTCHA OBSERVA SEU CURSOR", "yt_title": "Como o reCAPTCHA lê seu cursor antes do clique"},
+        "C": {"overlay": "O CAPTCHA PONTUOU VOCÊ, NÃO O CLIQUE", "yt_title": "Como CAPTCHAs distinguem humanos de bots em 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["O TESTE NÃO ERA", "CLICAR", "NA [[CAIXA]]"],
+          "yt_title": "Como um CAPTCHA decide que você é humano antes do clique"
+        },
+        "B": {
+          "rows": ["TODO [[CAPTCHA]]", "OBSERVA", "SEU [[CURSOR]]"],
+          "yt_title": "Como o reCAPTCHA lê seu cursor antes do clique"
+        },
+        "C": {
+          "rows": ["O [[CAPTCHA]]", "[[PONTUOU]] VOCÊ", "NÃO O CLIQUE"],
+          "yt_title": "Como CAPTCHAs distinguem humanos de bots em 2026"
+        }
+      }
+    },
+    "ru": {
+      "name": "Russian",
+      "round_1": {
+        "A": {"overlay": "CAPTCHA НИКОГДА НЕ ПРОВЕРЯЛА ГАЛОЧКУ", "yt_title": "Как CAPTCHA решает, что вы человек, до клика"},
+        "B": {"overlay": "КАЖДАЯ CAPTCHA СЛЕДИТ ЗА ВАШИМ КУРСОРОМ", "yt_title": "Как reCAPTCHA читает ваш курсор до клика"},
+        "C": {"overlay": "CAPTCHA ОЦЕНИЛА ВАС, А НЕ ВАШ КЛИК", "yt_title": "Как CAPTCHA отличают людей от ботов в 2026"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["ТЕСТ БЫЛ НЕ", "В НАЖАТИИ", "[[ГАЛОЧКИ]]"],
+          "yt_title": "Как CAPTCHA решает, что вы человек, до клика"
+        },
+        "B": {
+          "rows": ["КАЖДАЯ [[CAPTCHA]]", "СЛЕДИТ ЗА", "ВАШИМ [[КУРСОРОМ]]"],
+          "yt_title": "Как reCAPTCHA читает ваш курсор до клика"
+        },
+        "C": {
+          "rows": ["[[CAPTCHA]]", "[[ОЦЕНИЛА]] ВАС", "А НЕ КЛИК"],
+          "yt_title": "Как CAPTCHA отличают людей от ботов в 2026"
+        }
+      }
+    },
+    "tr": {
+      "name": "Turkish",
+      "round_1": {
+        "A": {"overlay": "CAPTCHA ONAY KUTUSUNU HİÇ TEST ETMEDİ", "yt_title": "CAPTCHA tıklamadan önce nasıl insan olduğunuza karar verir"},
+        "B": {"overlay": "HER CAPTCHA İMLECİNİZİ İZLİYOR", "yt_title": "reCAPTCHA tıklamadan önce imlecinizi nasıl okur"},
+        "C": {"overlay": "CAPTCHA SİZİ PUANLADI, TIKLAMANIZI DEĞİL", "yt_title": "CAPTCHA'lar 2026'da insanı bottan nasıl ayırır"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["TEST KUTUYA", "TIKLAMAK", "[[DEĞİLDİ]]"],
+          "yt_title": "CAPTCHA tıklamadan önce nasıl insan olduğunuza karar verir"
+        },
+        "B": {
+          "rows": ["HER [[CAPTCHA]]", "[[İMLECİNİZİ]]", "İZLİYOR"],
+          "yt_title": "reCAPTCHA tıklamadan önce imlecinizi nasıl okur"
+        },
+        "C": {
+          "rows": ["[[CAPTCHA]]", "SİZİ [[PUANLADI]]", "TIKLAMANIZI DEĞİL"],
+          "yt_title": "CAPTCHA'lar 2026'da insanı bottan nasıl ayırır"
+        }
+      }
+    },
+    "vi": {
+      "name": "Vietnamese",
+      "round_1": {
+        "A": {"overlay": "CAPTCHA CHƯA BAO GIỜ KIỂM TRA Ô CHECKBOX", "yt_title": "CAPTCHA quyết định bạn là người trước khi bạn nhấp như thế nào"},
+        "B": {"overlay": "MỌI CAPTCHA ĐANG THEO DÕI CON TRỎ CỦA BẠN", "yt_title": "reCAPTCHA đọc con trỏ của bạn trước khi nhấp ra sao"},
+        "C": {"overlay": "CAPTCHA CHẤM ĐIỂM BẠN, KHÔNG PHẢI CÚ NHẤP", "yt_title": "CAPTCHA phân biệt người và bot năm 2026 thế nào"}
+      },
+      "round_2": {
+        "A": {
+          "rows": ["BÀI TEST KHÔNG PHẢI", "VIỆC NHẤP VÀO", "[[Ô CHECKBOX]]"],
+          "yt_title": "CAPTCHA quyết định bạn là người trước khi bạn nhấp như thế nào"
+        },
+        "B": {
+          "rows": ["MỌI [[CAPTCHA]]", "ĐANG THEO DÕI", "[[CON TRỎ]] CỦA BẠN"],
+          "yt_title": "reCAPTCHA đọc con trỏ của bạn trước khi nhấp ra sao"
+        },
+        "C": {
+          "rows": ["[[CAPTCHA]]", "[[CHẤM ĐIỂM]] BẠN", "KHÔNG PHẢI CÚ NHẤP"],
+          "yt_title": "CAPTCHA phân biệt người và bot năm 2026 thế nào"
+        }
+      }
+    }
+  }
+}

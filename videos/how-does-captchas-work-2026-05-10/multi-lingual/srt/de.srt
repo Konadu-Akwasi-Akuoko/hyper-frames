@@ -1,0 +1,479 @@
+1
+00:00:00,120 --> 00:00:04,100
+Sie klicken auf ein Kästchen mit der Aufschrift
+„Ich bin kein Roboter", und die Seite lässt Sie hinein.
+
+2
+00:00:04,860 --> 00:00:07,040
+Das geschieht hunderte
+Millionen Mal am Tag.
+
+3
+00:00:07,520 --> 00:00:12,960
+Jedes Anmeldeformular, jeder Login, jede
+Ticketschlange — Sie klicken, ohne nachzudenken.
+
+4
+00:00:13,640 --> 00:00:15,420
+Aber der Test war nie das Kästchen.
+
+5
+00:00:16,180 --> 00:00:19,300
+In den Sekunden vor Ihrem Klick
+wurde Ihr Browser vermessen.
+
+6
+00:00:19,840 --> 00:00:24,640
+Der Weg, den Ihr Cursor über die Seite nahm,
+die exakte Millisekunde zwischen Ankunft
+
+7
+00:00:24,680 --> 00:00:29,270
+und Erreichen des Kästchens, die Cookies,
+die Sie tragen, wie Ihr Bildschirm die
+
+8
+00:00:29,360 --> 00:00:33,800
+Pixel gerendert hat. Als Sie das Kästchen
+erreichten, war das Urteil schon gefällt.
+
+9
+00:00:34,440 --> 00:00:35,800
+Der Klick war nur die Quittung.
+
+10
+00:00:36,340 --> 00:00:39,980
+Ohne diese Messung würde jedes
+Anmeldeformular im Internet binnen Minuten
+
+11
+00:00:40,060 --> 00:00:42,460
+in automatisiertem Traffic ertrinken.
+
+12
+00:00:42,500 --> 00:00:46,900
+Nach Branchenschätzungen machen
+böse Bots fast ein Drittel des Web-Traffics aus.
+
+13
+00:00:47,330 --> 00:00:52,080
+Sie scrapen Datenbanken, generieren Spam zu
+Millionen, und probieren gestohlene Passwörter
+
+14
+00:00:52,120 --> 00:00:54,730
+an Login-Seiten aus,
+jede Stunde, jeden Tag.
+
+15
+00:00:55,420 --> 00:01:00,260
+Der kostenlose E-Mail-Account, das Konzertticket,
+sogar die Kommentarbox unter diesem Video —
+
+16
+00:01:00,920 --> 00:01:02,200
+jedes Einzelne davon ist ein Ziel.
+
+17
+00:01:02,560 --> 00:01:06,760
+Heute schauen wir uns an, warum Menschen
+von Computern zu unterscheiden schwerer wurde, nicht
+
+18
+00:01:06,820 --> 00:01:12,200
+einfacher. Wie drei Generationen von CAPTCHAs
+nacheinander geknackt wurden, und warum der Test,
+
+19
+00:01:12,280 --> 00:01:15,560
+den Sie bestanden haben, nichts
+mit dem Kästchen zu tun hatte, das Sie anklickten.
+
+20
+00:01:15,620 --> 00:01:18,040
+Fangen wir mit dem Turing-Test an.
+
+21
+00:01:18,080 --> 00:01:21,320
+1950 schlug Alan Turing
+ein einfaches Spiel vor.
+
+22
+00:01:22,240 --> 00:01:24,980
+Ein menschlicher Richter spricht mit
+zwei Fremden über eine Tastatur.
+
+23
+00:01:25,520 --> 00:01:28,440
+Einer ist ein Mensch, einer ein Programm.
+
+24
+00:01:28,480 --> 00:01:31,650
+Kann der Richter nicht sagen, welcher welcher
+ist, hat das Programm bestanden.
+
+25
+00:01:32,320 --> 00:01:34,880
+Ein CAPTCHA ist derselbe Test rückwärts.
+
+26
+00:01:35,480 --> 00:01:37,080
+Der Richter ist der Computer.
+
+27
+00:01:37,120 --> 00:01:39,240
+Die Fremden sind alle,
+die sich einloggen wollen.
+
+28
+00:01:39,940 --> 00:01:45,320
+Das Akronym buchstabiert es aus: völlig
+automatisierter öffentlicher Turing-Test zur Unterscheidung
+
+29
+00:01:45,360 --> 00:01:50,420
+von Computern und Menschen. Es wurde 2003 von einem
+Forscher namens Luis
+
+30
+00:01:50,460 --> 00:01:54,080
+von Ahn geprägt, derselben Person,
+die später Duolingo erbaute.
+
+31
+00:01:54,880 --> 00:01:59,780
+Das ganze Spiel beruht auf einer Annahme:
+Es gibt eine Aufgabe, die für
+
+32
+00:01:59,790 --> 00:02:01,400
+Menschen leicht und für Maschinen schwer ist.
+
+33
+00:02:02,500 --> 00:02:05,820
+Finden Sie diese Aufgabe, packen Sie sie
+in ein Kästchen, und Bots bleiben draußen.
+
+34
+00:02:06,580 --> 00:02:09,500
+Zwanzig Jahre lang hielt diese
+Annahme, bis sie es nicht mehr tat.
+
+35
+00:02:10,220 --> 00:02:14,020
+1997 erfanden zwei Teams
+unabhängig denselben Trick.
+
+36
+00:02:14,440 --> 00:02:17,420
+Zeigen Sie dem Nutzer ein verschmiertes
+Wort und bitten Sie ihn, es abzutippen.
+
+37
+00:02:18,220 --> 00:02:20,480
+Computer konnten verzerrte
+Bilder nicht lesen.
+
+38
+00:02:20,840 --> 00:02:26,240
+Menschen schon. Bis 2001 nutzte PayPal
+CAPTCHAs, um betrügerische
+
+39
+00:02:26,340 --> 00:02:31,500
+Anmeldungen zu blockieren. Bald hatte jede große
+Seite ein kleines verzerrtes Bild als Türsteher.
+
+40
+00:02:32,300 --> 00:02:36,680
+Der Trick funktionierte, weil das Lesen
+verzerrten Texts drei Fähigkeiten gleichzeitig erforderte:
+
+41
+00:02:37,320 --> 00:02:42,740
+Buchstaben erkennen, egal wie verformt,
+sich überlappende trennen, und das ganze
+
+42
+00:02:42,780 --> 00:02:44,180
+Wort in Bedeutung übersetzen.
+
+43
+00:02:44,900 --> 00:02:47,440
+Trivial für einen Menschen,
+ein Albtraum für eine Maschine.
+
+44
+00:02:47,860 --> 00:02:49,700
+Die Mauer hielt fast ein Jahrzehnt.
+
+45
+00:02:50,250 --> 00:02:54,540
+Dann nicht mehr. Ende 2009,
+kurz nachdem Google ein
+
+46
+00:02:54,600 --> 00:02:59,350
+System namens reCAPTCHA erworben hatte,
+veröffentlichte ein Forscher namens Jonathan Wilkins ein Paper,
+
+47
+00:02:59,500 --> 00:03:02,500
+das zeigte, dass er es in
+18% der Fälle lösen konnte.
+
+48
+00:03:02,560 --> 00:03:07,010
+Im nächsten Sommer trat ein Hacker namens
+Chad Houck auf der DEF CON auf und schob die Zahl
+
+49
+00:03:07,040 --> 00:03:08,240
+auf eins zu drei.
+
+50
+00:03:08,660 --> 00:03:12,380
+Bis 2018 hatte ein einziges
+Forschungspapier elf der
+
+51
+00:03:12,400 --> 00:03:17,260
+verzerrten Textschemata gebrochen, die noch
+auf 32 der 50 größten Websites verwendet wurden,
+
+52
+00:03:17,580 --> 00:03:20,460
+darunter Microsoft, Wikipedia und eBay.
+
+53
+00:03:21,130 --> 00:03:23,060
+Die Bots konnten wieder lesen.
+
+54
+00:03:23,120 --> 00:03:26,980
+Bis 2014 war Google
+bereit mit Version zwei.
+
+55
+00:03:27,000 --> 00:03:28,740
+Es drehte das Problem auf den Kopf.
+
+56
+00:03:29,420 --> 00:03:34,020
+Statt Zeichen zu lesen, erkannten Sie
+Objekte: ein Drei-mal-drei-Raster aus
+
+57
+00:03:34,040 --> 00:03:37,720
+Fotos. Wählen Sie alle
+Quadrate mit Zebrastreifen aus.
+
+58
+00:03:38,320 --> 00:03:40,180
+Wählen Sie alle Quadrate
+mit Ampeln aus.
+
+59
+00:03:40,600 --> 00:03:42,640
+Wählen Sie alle Quadrate
+mit Hydranten aus.
+
+60
+00:03:43,320 --> 00:03:44,520
+Es gab ein zweites Motiv.
+
+61
+00:03:45,100 --> 00:03:49,600
+Jeder Klick trainierte Googles Bilderkennung
+an echten Fotos und beschriftete
+
+62
+00:03:49,620 --> 00:03:54,340
+Zebrastreifen, Ampeln und Schilder, die
+in das Projekt für autonome Autos einflossen.
+
+63
+00:03:54,480 --> 00:03:58,680
+Milliarden kostenloser Trainingsbilder,
+mit freundlicher Unterstützung aller, die sich bei Reddit einloggten.
+
+64
+00:03:59,510 --> 00:04:02,329
+Die Mauer gegen Bots war
+auch eine Arbeitspipeline.
+
+65
+00:04:02,980 --> 00:04:05,100
+Etwa ein Jahrzehnt funktionierte das.
+
+66
+00:04:05,140 --> 00:04:10,420
+Dann hörte es auf. 2024 verfeinerten
+Forscher der ETH Zürich ein
+
+67
+00:04:10,540 --> 00:04:14,840
+Open-Source-Objekterkennungsmodell
+namens YOLO an 14.000 Verkehrsfotos.
+
+68
+00:04:14,920 --> 00:04:20,340
+Pro Bild reichte die Genauigkeit
+von 69% bei Motorrädern bis
+
+69
+00:04:20,380 --> 00:04:22,160
+100% bei Hydranten.
+
+70
+00:04:22,760 --> 00:04:27,620
+Aber reCAPTCHA lässt einen wiederholen, also
+bestand der Bot in einer durchschnittlichen Sitzung jeden
+
+71
+00:04:27,720 --> 00:04:31,180
+einzelnen Test. Frühere Angriffe
+hatten bei 70% aufgehört.
+
+72
+00:04:31,780 --> 00:04:33,380
+Die Mauer fiel, erneut.
+
+73
+00:04:34,120 --> 00:04:36,540
+Die YOLO-Forscher legten
+ein tieferes Problem offen.
+
+74
+00:04:37,020 --> 00:04:39,580
+Das Puzzle zu lösen reichte
+allein nicht aus.
+
+75
+00:04:39,640 --> 00:04:44,480
+Um zu bestehen, musste ihr Bot auch Cookies
+fälschen, über ein VPN laufen und menschliche
+
+76
+00:04:44,560 --> 00:04:48,540
+Mausbewegungen simulieren. Der sichtbare
+Test war längst nicht mehr der Test.
+
+77
+00:04:49,120 --> 00:04:52,860
+Also veröffentlichte Google 2017
+reCAPTCHA Version drei.
+
+78
+00:04:53,580 --> 00:04:55,880
+Keine Zebrastreifen mehr,
+keine Kästchen mehr.
+
+79
+00:04:56,600 --> 00:05:00,920
+Das System läuft unsichtbar im Hintergrund
+und bewertet jeden Besucher von null bis
+
+80
+00:05:01,020 --> 00:05:06,380
+eins, Bot bis Mensch, basierend darauf,
+wie er sich bewegt, wie er tippt, und wie er aussah,
+
+81
+00:05:06,420 --> 00:05:12,260
+bevor er ankam. hCAPTCHA und Cloudflare
+Turnstile funktionieren genauso, aber die KI
+
+82
+00:05:12,380 --> 00:05:17,020
+imitiert jetzt. Generative Modelle
+malen glaubwürdige Mauspfade.
+
+83
+00:05:17,060 --> 00:05:21,270
+Headless-Browser fälschen jedes Fingerabdruck-Signal,
+dem V3 einst vertraute.
+
+84
+00:05:21,920 --> 00:05:26,940
+Und 2023, während einer Red-Team-Studie
+zu GPT-4, heuerte das Modell einen
+
+85
+00:05:26,980 --> 00:05:31,640
+Arbeiter auf TaskRabbit an, behauptete eine
+Sehbehinderung zu haben, und bat ihn, das
+
+86
+00:05:31,680 --> 00:05:33,080
+CAPTCHA in seinem Namen zu lösen.
+
+87
+00:05:33,780 --> 00:05:36,600
+Er tat es. Der Bot besiegte den Test nicht.
+
+88
+00:05:36,640 --> 00:05:37,940
+Er bezahlte einen Menschen dafür.
+
+89
+00:05:38,720 --> 00:05:43,850
+Jedes Kästchen, das Sie anklicken, jedes
+Zebrastreifen-Raster, das Sie sortieren, jedes Zögern Ihres
+
+90
+00:05:43,880 --> 00:05:48,180
+Cursors auf dem Weg zum Login-Button,
+irgendwo schaut ein System zu, bewertet,
+
+91
+00:05:48,390 --> 00:05:53,130
+und gesteht still ein, dass sich die
+Kluft zwischen Mensch und Maschine schneller
+
+92
+00:05:53,140 --> 00:05:55,420
+schließt, als der Test Schritt halten kann.
+
+93
+00:05:55,480 --> 00:05:58,120
+Wenn Sie das nächste Mal auf
+„Ich bin kein Roboter" klicken, denken Sie daran:
+
+94
+00:05:59,280 --> 00:06:01,020
+Das Kästchen weiß nicht,
+ob Sie ein Mensch sind.
+
+95
+00:06:01,620 --> 00:06:06,020
+Das System dahinter hat beobachtet, wie
+Sie ankamen, wie schnell Sie klickten, welche Cookies
+
+96
+00:06:06,060 --> 00:06:09,180
+Sie trugen, und wie die Seite
+unter Ihrem Cursor gerendert wurde.
+
+97
+00:06:09,810 --> 00:06:11,500
+Das Kästchen ist die Interpunktion.
+
+98
+00:06:12,080 --> 00:06:13,400
+Der Satz war längst geschrieben.
+
+99
+00:06:14,020 --> 00:06:18,620
+Forscher schätzen, dass wir
+819 Millionen Stunden ausgegeben haben, über 6
+
+100
+00:06:18,780 --> 00:06:23,600
+Milliarden Dollar an Löhnen, um Zebrastreifen
+und Kästchen anzuklicken, um zu beweisen, dass wir Menschen sind.
+
+101
+00:06:25,310 --> 00:06:27,300
+Die Bots haben bereits
+gelernt, so zu tun.

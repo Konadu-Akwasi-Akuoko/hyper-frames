@@ -1,0 +1,474 @@
+1
+00:00:00,120 --> 00:00:04,100
+"Ben robot değilim" yazılı bir kutuyu
+tıklarsınız ve sayfa sizi içeri alır.
+
+2
+00:00:04,860 --> 00:00:07,040
+Bu, günde yüz milyonlarca kez yaşanıyor.
+
+3
+00:00:07,520 --> 00:00:12,960
+Her kayıt formu, her giriş, her bilet
+kuyruğu — düşünmeden tıklarsınız.
+
+4
+00:00:13,640 --> 00:00:15,420
+Ama test hiçbir zaman kutu değildi.
+
+5
+00:00:16,180 --> 00:00:19,300
+Tıklamadan önceki saniyelerde
+tarayıcınız ölçülüyordu.
+
+6
+00:00:19,840 --> 00:00:24,640
+İmlecinizin sayfada izlediği yol,
+varışla kutuya uzanma arasındaki
+
+7
+00:00:24,680 --> 00:00:29,270
+tam milisaniye, taşıdığınız çerezler,
+ekranınızın pikselleri nasıl
+
+8
+00:00:29,360 --> 00:00:33,800
+render ettiği. Siz kutuya ulaştığınızda,
+karar çoktan verilmişti.
+
+9
+00:00:34,440 --> 00:00:35,800
+Tıklama sadece makbuzdu.
+
+10
+00:00:36,340 --> 00:00:39,980
+Bu ölçüm olmadan, İnternet'teki her kayıt
+formu dakikalar içinde
+
+11
+00:00:40,060 --> 00:00:42,460
+otomatik trafikte boğulurdu.
+
+12
+00:00:42,500 --> 00:00:46,900
+Sektör tahminlerine göre, kötü botlar
+tüm web trafiğinin yaklaşık üçte birini oluşturuyor.
+
+13
+00:00:47,330 --> 00:00:52,080
+Veritabanlarını kazıyor, milyonlarca
+spam üretiyor ve çalınmış şifreleri
+
+14
+00:00:52,120 --> 00:00:54,730
+her gün, her saat
+giriş sayfalarında deniyorlar.
+
+15
+00:00:55,420 --> 00:01:00,260
+Ücretsiz e-posta hesabı, konser bileti,
+hatta bu videonun altındaki yorum kutusu —
+
+16
+00:01:00,920 --> 00:01:02,200
+her biri bir hedef.
+
+17
+00:01:02,560 --> 00:01:06,760
+Bugün, insanları bilgisayarlardan ayırt
+etmenin neden daha kolay değil, daha zor
+
+18
+00:01:06,820 --> 00:01:12,200
+hale geldiğine bakacağız. Üç nesil CAPTCHA'nın
+sırayla nasıl kırıldığını ve geçtiğiniz testin
+
+19
+00:01:12,280 --> 00:01:15,560
+tıkladığınız kutuyla
+hiçbir ilgisinin olmadığını.
+
+20
+00:01:15,620 --> 00:01:18,040
+Turing testiyle başlayalım.
+
+21
+00:01:18,080 --> 00:01:21,320
+1950'de Alan Turing
+basit bir oyun önerdi.
+
+22
+00:01:22,240 --> 00:01:24,980
+İnsan bir hakem, klavye üzerinden
+iki yabancıyla konuşur.
+
+23
+00:01:25,520 --> 00:01:28,440
+Biri insan, diğeri programdır.
+
+24
+00:01:28,480 --> 00:01:31,650
+Hakem hangisinin hangisi olduğunu söyleyemezse,
+program geçmiştir.
+
+25
+00:01:32,320 --> 00:01:34,880
+Bir CAPTCHA, aynı testin tersten çalıştırılmış halidir.
+
+26
+00:01:35,480 --> 00:01:37,080
+Hakem bilgisayardır.
+
+27
+00:01:37,120 --> 00:01:39,240
+Yabancılar, giriş yapmaya
+çalışan herkestir.
+
+28
+00:01:39,940 --> 00:01:45,320
+Kısaltma açıkça söylüyor: bilgisayarları ve
+insanları ayırt etmek için tamamen
+
+29
+00:01:45,360 --> 00:01:50,420
+otomatik kamuya açık Turing testi. Terim 2003'te
+Luis von Ahn adlı bir araştırmacı
+
+30
+00:01:50,460 --> 00:01:54,080
+tarafından üretildi; daha sonra
+Duolingo'yu kuran kişiyle aynı.
+
+31
+00:01:54,880 --> 00:01:59,780
+Oyunun tamamı tek bir varsayıma dayanır:
+insanlar için kolay, makineler için
+
+32
+00:01:59,790 --> 00:02:01,400
+zor olan bir görev vardır.
+
+33
+00:02:02,500 --> 00:02:05,820
+O görevi bul, bir kutuya sar
+ve botlar dışarıda kalsın.
+
+34
+00:02:06,580 --> 00:02:09,500
+Yirmi yıl boyunca bu varsayım
+geçerliydi, ta ki olmayana kadar.
+
+35
+00:02:10,220 --> 00:02:14,020
+1997'de, iki ekip bağımsız olarak
+aynı hileyi icat etti.
+
+36
+00:02:14,440 --> 00:02:17,420
+Kullanıcıya bulanık bir kelime gösterip
+yeniden yazmasını istemek.
+
+37
+00:02:18,220 --> 00:02:20,480
+Bilgisayarlar bozuk görüntüleri okuyamıyordu.
+
+38
+00:02:20,840 --> 00:02:26,240
+İnsanlar okuyabiliyordu. 2001 itibarıyla, PayPal
+sahte kayıtları engellemek için
+
+39
+00:02:26,340 --> 00:02:31,500
+CAPTCHA kullanıyordu. Kısa sürede her büyük
+sitenin ön kapısında küçük çarpık bir resim vardı.
+
+40
+00:02:32,300 --> 00:02:36,680
+Hile işe yaradı çünkü bozuk metin
+okumak aynı anda üç beceri gerektiriyordu:
+
+41
+00:02:37,320 --> 00:02:42,740
+ne kadar çarpıtılırsa çarpıtılsın harfleri tanımak,
+örtüşenleri ayırmak ve kelimenin
+
+42
+00:02:42,780 --> 00:02:44,180
+tamamını anlama dönüştürmek.
+
+43
+00:02:44,900 --> 00:02:47,440
+İnsan için sıradan,
+makine için kâbus.
+
+44
+00:02:47,860 --> 00:02:49,700
+Duvar neredeyse on yıl dayandı.
+
+45
+00:02:50,250 --> 00:02:54,540
+Sonra dayanmadı. 2009 sonlarında,
+Google'ın reCAPTCHA adlı bir sistemi
+
+46
+00:02:54,600 --> 00:02:59,350
+satın almasının hemen ardından, Jonathan
+Wilkins adlı bir araştırmacı bir makale yayımladı.
+
+47
+00:02:59,500 --> 00:03:02,500
+Onu %18 oranında
+çözebildiğini gösteriyordu.
+
+48
+00:03:02,560 --> 00:03:07,010
+Sonraki yaz, Chad Houck adlı bir hacker
+DEF CON sahnesine çıktı ve bu rakamı
+
+49
+00:03:07,040 --> 00:03:08,240
+üçte bire çıkardı.
+
+50
+00:03:08,660 --> 00:03:12,380
+2018'e gelindiğinde, tek bir
+araştırma makalesi, en büyük 50 web sitesinin
+
+51
+00:03:12,400 --> 00:03:17,260
+32'sinde hâlâ kullanılan onbir
+bozuk metin şemasını kırmıştı,
+
+52
+00:03:17,580 --> 00:03:20,460
+Microsoft, Wikipedia ve eBay dahil.
+
+53
+00:03:21,130 --> 00:03:23,060
+Botlar yine okuyabiliyordu.
+
+54
+00:03:23,120 --> 00:03:26,980
+2014'te, Google ikinci
+sürümle hazırdı.
+
+55
+00:03:27,000 --> 00:03:28,740
+Problemi tersine çevirdi.
+
+56
+00:03:29,420 --> 00:03:34,020
+Karakter okumak yerine, nesneleri
+tanıyordunuz: üçe üç bir
+
+57
+00:03:34,040 --> 00:03:37,720
+fotoğraf ızgarası. Yaya geçidi
+olan tüm kareleri seçin.
+
+58
+00:03:38,320 --> 00:03:40,180
+Trafik ışığı olan tüm kareleri seçin.
+
+59
+00:03:40,600 --> 00:03:42,640
+Yangın musluğu olan tüm kareleri seçin.
+
+60
+00:03:43,320 --> 00:03:44,520
+İkinci bir amaç vardı.
+
+61
+00:03:45,100 --> 00:03:49,600
+Her tıklama Google'ın görüntü tanıma
+sistemini gerçek fotoğraflarda eğitti; yaya geçitleri,
+
+62
+00:03:49,620 --> 00:03:54,340
+ışıklar ve tabelalar etiketlendi ve bu veri
+sürücüsüz araba projesine aktı.
+
+63
+00:03:54,480 --> 00:03:58,680
+Milyarlarca ücretsiz eğitim görüntüsü —
+Reddit'e giriş yapmaya çalışan herkesin armağanı.
+
+64
+00:03:59,510 --> 00:04:02,329
+Botlara karşı duvar
+aynı zamanda bir emek hattıydı.
+
+65
+00:04:02,980 --> 00:04:05,100
+Yaklaşık bir on yıl, bu işe yaradı.
+
+66
+00:04:05,140 --> 00:04:10,420
+Sonra durdu. 2024'te, ETH Zürih'teki
+araştırmacılar açık kaynak
+
+67
+00:04:10,540 --> 00:04:14,840
+bir nesne tespit modeli olan YOLO'yu
+14 bin trafik
+
+68
+00:04:14,920 --> 00:04:20,340
+fotoğrafı üzerinde ince ayarladı. Görüntü
+başına doğruluk, motosikletlerde %69'dan
+
+69
+00:04:20,380 --> 00:04:22,160
+yangın musluklarında %100'e kadar değişti.
+
+70
+00:04:22,760 --> 00:04:27,620
+Ama reCAPTCHA tekrar denemenize izin verdiği için,
+ortalama bir oturumda bot her
+
+71
+00:04:27,720 --> 00:04:31,180
+testi geçti. Önceki saldırılar
+%70'te tıkanıyordu.
+
+72
+00:04:31,780 --> 00:04:33,380
+Duvar yeniden yıkıldı.
+
+73
+00:04:34,120 --> 00:04:36,540
+YOLO araştırmacıları
+daha derin bir sorunu ortaya çıkardı.
+
+74
+00:04:37,020 --> 00:04:39,580
+Bulmacayı çözmek
+tek başına yeterli değildi.
+
+75
+00:04:39,640 --> 00:04:44,480
+Geçmek için botlarının ayrıca çerezleri
+sahte yapması, VPN üzerinden geçmesi ve insan
+
+76
+00:04:44,560 --> 00:04:48,540
+fare hareketlerini taklit etmesi gerekti. Görünen
+test, artık test olmaktan çıkmıştı.
+
+77
+00:04:49,120 --> 00:04:52,860
+Bu yüzden 2017'de Google
+reCAPTCHA versiyon üçü yayımladı.
+
+78
+00:04:53,580 --> 00:04:55,880
+Artık yaya geçidi yok,
+artık kutu yok.
+
+79
+00:04:56,600 --> 00:05:00,920
+Sistem arka planda görünmez biçimde çalışır
+ve her ziyaretçiyi sıfırdan bire
+
+80
+00:05:01,020 --> 00:05:06,380
+puanlar, bottan insana, nasıl hareket ettiğine,
+nasıl yazdığına ve siteye gelmeden
+
+81
+00:05:06,420 --> 00:05:12,260
+önce neye benzediğine göre. hCAPTCHA ve Cloudflare
+Turnstile aynı şekilde çalışır, ama yapay zekâ
+
+82
+00:05:12,380 --> 00:05:17,020
+artık taklit ediyor. Üretici
+modeller inandırıcı fare yolları çiziyor.
+
+83
+00:05:17,060 --> 00:05:21,270
+Headless tarayıcılar, V3'ün bir zamanlar
+güvendiği her parmak izi sinyalini taklit ediyor.
+
+84
+00:05:21,920 --> 00:05:26,940
+Ve 2023'te, GPT-4'ün red team
+çalışması sırasında, model TaskRabbit'te bir
+
+85
+00:05:26,980 --> 00:05:31,640
+işçi kiraladı, görme engelli olduğunu iddia etti
+ve kendisi adına CAPTCHA'yı
+
+86
+00:05:31,680 --> 00:05:33,080
+çözmesini istedi.
+
+87
+00:05:33,780 --> 00:05:36,600
+Çözdüler. Bot testi yenmedi.
+
+88
+00:05:36,640 --> 00:05:37,940
+Bir insana ödeme yapıp çözdürdü.
+
+89
+00:05:38,720 --> 00:05:43,850
+İşaretlediğiniz her kutu, sıraladığınız her yaya
+geçidi ızgarası, giriş düğmesine
+
+90
+00:05:43,880 --> 00:05:48,180
+giderken imlecinizin yaptığı her tereddüt —
+bir yerde bir sistem izliyor,
+
+91
+00:05:48,390 --> 00:05:53,130
+puanlıyor ve sessizce kabul ediyor ki
+insan ile makine arasındaki uçurum
+
+92
+00:05:53,140 --> 00:05:55,420
+testin yetişebileceğinden hızlı kapanıyor.
+
+93
+00:05:55,480 --> 00:05:58,120
+Bir dahaki sefere "Ben robot değilim"e
+tıkladığınızda, unutmayın:
+
+94
+00:05:59,280 --> 00:06:01,020
+Kutu insan olup olmadığınızı bilmiyor.
+
+95
+00:06:01,620 --> 00:06:06,020
+Arkasındaki sistem nasıl ulaştığınızı,
+ne kadar hızlı tıkladığınızı, hangi çerezleri
+
+96
+00:06:06,060 --> 00:06:09,180
+taşıdığınızı ve sayfanın imlecinizin
+altında nasıl göründüğünü izledi.
+
+97
+00:06:09,810 --> 00:06:11,500
+Kutu, noktalama işaretidir.
+
+98
+00:06:12,080 --> 00:06:13,400
+Cümle çoktan yazılmıştı.
+
+99
+00:06:14,020 --> 00:06:18,620
+Araştırmacılar, 819 milyon saat,
+6 milyar dolardan fazla
+
+100
+00:06:18,780 --> 00:06:23,600
+ücret harcadığımızı tahmin ediyor; yaya geçitleri
+ve kutuları tıklayarak insan olduğumuzu kanıtlamak için.
+
+101
+00:06:25,310 --> 00:06:27,300
+Botlar çoktan
+nasıl rol yapacağını öğrendi.
