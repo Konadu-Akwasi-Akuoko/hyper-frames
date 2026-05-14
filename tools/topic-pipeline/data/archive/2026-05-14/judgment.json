@@ -1,0 +1,677 @@
+{
+  "generated_at": "2026-05-14T00:30:00+00:00",
+  "notes": "All article fetches failed (HTTP 403 sandbox block). All candidates judged from title + metadata only.",
+  "candidates": {
+    "55fe156debeb2e6b": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Natural Language Autoencoders: Turning Claude's Thoughts into Text",
+          "lens": "LLM interpretability via autoencoder compression",
+          "scores": { "audience_reach": 14, "curiosity_hook": 14, "computing_depth": 20 },
+          "notes": "Judged from title only. Article framing is jargon-heavy for general audience."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "What Is Claude Actually Thinking? New Research Can Now Read AI Thoughts",
+          "lens": "AI interpretability for general audience",
+          "scores": { "audience_reach": 20, "curiosity_hook": 18, "computing_depth": 18 },
+          "notes": "Personal-stake + hidden-mechanism. Extremely broad hook: everyone using AI wants to know what it 'thinks'."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Surprising Way AI Models Compress Language — And What It Reveals",
+          "lens": "autoencoders as a window into neural representation",
+          "scores": { "audience_reach": 14, "curiosity_hook": 16, "computing_depth": 20 },
+          "notes": "Hidden-mechanism angle; ties autoencoder math to the mystery of LLM internals."
+        }
+      ]
+    },
+    "0408840f560fd89f": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "ChatGPT Prompts for Developers",
+          "lens": "developer productivity prompt catalog",
+          "scores": { "audience_reach": 8, "curiosity_hook": 4, "computing_depth": 4 },
+          "notes": "Judged from title only (daily.dev API redirect). Saturated listicle genre; no computing depth, no curiosity hook."
+        }
+      ]
+    },
+    "dc6b6a949d4d50b2": {
+      "yt_competition": 12,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "AlphaEvolve: How AI Is Discovering Better Algorithms Than Humans Can Write",
+          "lens": "evolutionary algorithm + LLM for algorithm discovery",
+          "scores": { "audience_reach": 14, "curiosity_hook": 16, "computing_depth": 20 },
+          "notes": "Judged from title only. High-profile DeepMind research; some YouTube coverage already but depth is thin."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How an AI Rewrote a 50-Year-Old Matrix Algorithm — And Why That Matters",
+          "lens": "AI-discovered matrix multiplication breakthrough",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Counterintuitive-twist. Matrix multiplication is CS 101 — the idea that AI improved it is viscerally surprising."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The AI That Invents Code by Evolving It — Not by Learning From Humans",
+          "lens": "evolutionary program synthesis vs. training-data approach",
+          "scores": { "audience_reach": 14, "curiosity_hook": 16, "computing_depth": 20 },
+          "notes": "Hidden-mechanism on AlphaEvolve's evolutionary search vs. typical LLM pre-training distinction."
+        }
+      ]
+    },
+    "ed092e9c137b5b99": {
+      "yt_competition": 2,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "JavaScript Security: Simple Practices to Secure Your Frontend",
+          "lens": "JS security best practices",
+          "scores": { "audience_reach": 8, "curiosity_hook": 6, "computing_depth": 12 },
+          "notes": "Judged from title only. Extremely saturated genre on YouTube. Listicle format; no strong curiosity hook."
+        }
+      ]
+    },
+    "a49c1f47a6cb999a": {
+      "yt_competition": 2,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Tesla Cybertruck Wheel Recall",
+          "lens": "automotive news",
+          "scores": { "audience_reach": 14, "curiosity_hook": 6, "computing_depth": 0 },
+          "notes": "Judged from title only. News/automotive; no computing angle. Junk filter applies."
+        }
+      ]
+    },
+    "1fed1b9e5f701948": {
+      "yt_competition": 4,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "US Government Releases First Batch of UAP Documents",
+          "lens": "government transparency / UAP disclosure",
+          "scores": { "audience_reach": 20, "curiosity_hook": 16, "computing_depth": 0 },
+          "notes": "Judged from title only. Mystery genre with massive reach but zero computing depth. Off-brand."
+        }
+      ]
+    },
+    "935331d9a93258ae": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Everything Your Browser Reveals About You Without Asking",
+          "lens": "browser fingerprinting demo / privacy",
+          "scores": { "audience_reach": 20, "curiosity_hook": 18, "computing_depth": 16 },
+          "notes": "Judged from title only. Personal-stake + hidden-mechanism. Everyone uses a browser; the data leakage is viscerally surprising."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Hidden Data Your Browser Leaks to Every Website You Visit",
+          "lens": "browser fingerprinting APIs and tracking mechanisms",
+          "scores": { "audience_reach": 20, "curiosity_hook": 20, "computing_depth": 18 },
+          "notes": "Hidden-mechanism + personal-stake. Covers Canvas fingerprinting, WebGL, AudioContext, navigator APIs — rich computing content."
+        }
+      ]
+    },
+    "0cb288ed1ee1e132": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "An Introduction to Meshtastic",
+          "lens": "LoRa mesh networking protocol overview",
+          "scores": { "audience_reach": 8, "curiosity_hook": 10, "computing_depth": 16 },
+          "notes": "Judged from title only. Good computing depth but limited curiosity hook without reframing."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How to Text Anyone Without the Internet — For Free, Forever",
+          "lens": "LoRa mesh for off-grid communication",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 16 },
+          "notes": "Personal-stake + counterintuitive. The impossible-sounding premise ('text without internet') is the hook. Covers RF propagation, mesh routing, packet protocols."
+        }
+      ]
+    },
+    "35a8ae6818798f2e": {
+      "yt_competition": 2,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "California Gasoline Supply: 4-6 Weeks Remaining",
+          "lens": "energy supply chain news",
+          "scores": { "audience_reach": 14, "curiosity_hook": 8, "computing_depth": 0 },
+          "notes": "Judged from title only. Local news; no computing angle. Junk filter applies."
+        }
+      ]
+    },
+    "20da0aa23b836318": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "I Switched from Mac to a Lenovo Chromebook",
+          "lens": "OS migration opinion piece",
+          "scores": { "audience_reach": 14, "curiosity_hook": 10, "computing_depth": 8 },
+          "notes": "Judged from title only. Saturated genre (Mac vs. X comparison). Opinion piece; low computing depth."
+        }
+      ]
+    },
+    "bccef150b3012bf2": {
+      "yt_competition": 10,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Nonprofit Hospitals Spend Billions on Consultants With No Clear Benefit",
+          "lens": "healthcare economics / management consulting",
+          "scores": { "audience_reach": 14, "curiosity_hook": 10, "computing_depth": 2 },
+          "notes": "Judged from title only. No meaningful computing angle. Junk filter applies."
+        }
+      ]
+    },
+    "5065aaf93cf5b81c": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Stop MITM on the First SSH Connection",
+          "lens": "SSH TOFU vulnerability and cloud provider key verification",
+          "scores": { "audience_reach": 8, "curiosity_hook": 14, "computing_depth": 20 },
+          "notes": "Judged from title only. Hidden-mechanism: developers unknowingly accept unverified host keys every time they SSH to a new server."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Security Hole Every Developer Ignores When They First SSH Into a Server",
+          "lens": "SSH trust on first use — a silent vulnerability",
+          "scores": { "audience_reach": 8, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Personal-stake + hidden-mechanism. Every developer has typed 'yes' without thinking about MITM. Covers PKI, SSH protocol, cloud metadata APIs."
+        }
+      ]
+    },
+    "f1cc0035b37a0fb9": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Why Don't Lowercase Letters Come Right After Uppercase in Sorted Lists?",
+          "lens": "Unicode collation and character encoding history",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 18 },
+          "notes": "Judged from title only. Classic counterintuitive-twist: something basic every developer has noticed but never investigated."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Counterintuitive Truth About How Computers Sort Text — And Why It's Broken",
+          "lens": "Unicode collation algorithms and locale-sensitive sorting",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Broader angle: moves from ASCII oddity to Unicode collation (ICU, CLDR, locale rules). Every computer user has sorted a list and been surprised."
+        }
+      ]
+    },
+    "d481c647b5f6c599": {
+      "yt_competition": 18,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Ploopy Bean: An Open-Source External TrackPoint",
+          "lens": "open-source ergonomic input device hardware",
+          "scores": { "audience_reach": 4, "curiosity_hook": 10, "computing_depth": 12 },
+          "notes": "Judged from title only. Very niche hardware enthusiast audience; limited curiosity hook for general viewers."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why the IBM ThinkPad's Weird Red Nub Was Better Than Every Mouse",
+          "lens": "TrackPoint ergonomics and input device engineering",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 14 },
+          "notes": "Counterintuitive-twist. ThinkPad TrackPoint has nostalgia + genuine engineering story. Still niche."
+        }
+      ]
+    },
+    "133e94cbb60c2317": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "The `Sync` Bound Nobody Asked For",
+          "lens": "Rust async Send/Sync propagation edge case",
+          "scores": { "audience_reach": 4, "curiosity_hook": 14, "computing_depth": 20 },
+          "notes": "Judged from title only. Very niche (Rust async developers). Deep computing but narrow reach."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Rust's Type System Makes You Prove Thread Safety Without Realizing It",
+          "lens": "Rust's implicit safety proofs via Send/Sync",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 20 },
+          "notes": "Counterintuitive-twist. The idea that Rust enforces concurrency correctness at compile time surprises most developers."
+        }
+      ]
+    },
+    "569603dace44814f": {
+      "yt_competition": 18,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Running a Real Web Server on a 2006 Nintendo Wii Using IPv6",
+          "lens": "retro hardware networking hack",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 16 },
+          "notes": "Judged from title only. Hyper-claim + hidden-mechanism. The Wii's IP6 stack and web server reveal surprising embedded networking depth."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "What Happens When You Try to Host a Website on a Nintendo Wii?",
+          "lens": "Wii embedded Linux + IPv6 + web serving",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 16 },
+          "notes": "Personal-stake phrasing is more YouTube-natural. Covers IPv6 addressing, embedded OS, TCP/IP stack."
+        }
+      ]
+    },
+    "82511da497f411e8": {
+      "yt_competition": 18,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "cuda-oxide: Compiling Rust Directly to CUDA GPU Code",
+          "lens": "experimental Rust-to-CUDA compiler from NVIDIA Labs",
+          "scores": { "audience_reach": 4, "curiosity_hook": 12, "computing_depth": 20 },
+          "notes": "Judged from title only. Extremely niche intersection (Rust + CUDA). High computing depth but audience too narrow."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Writing Memory-Safe GPU Code Seems Impossible — And Why It Isn't",
+          "lens": "Rust's ownership model applied to GPU parallel execution",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 20 },
+          "notes": "Counterintuitive-twist. GPU programming and memory safety feel contradictory; the tension is the hook."
+        }
+      ]
+    },
+    "e4cd6e495e6ed667": {
+      "yt_competition": 18,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "The Surprisingly Complex Journey to Text-Selectable Client-Side PDFs",
+          "lens": "PDF spec, font subsetting, and text layout in the browser",
+          "scores": { "audience_reach": 8, "curiosity_hook": 14, "computing_depth": 18 },
+          "notes": "Judged from title only. Good computing depth. The 'surprisingly complex' framing is honest and works."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Is Selecting Text in a PDF Still So Broken in 2026?",
+          "lens": "PDF text layer, font encoding, and browser rendering gaps",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 18 },
+          "notes": "Personal-stake + counterintuitive. Everyone has struggled with PDF text selection; the computing reasons are genuinely surprising."
+        }
+      ]
+    },
+    "6abed253bf31ac14": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Formatting 25 Million Lines of Ruby Overnight: The rubyfmt Story",
+          "lens": "Stripe's codebase-wide auto-formatting operation",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 18 },
+          "notes": "Judged from title only. Hyper-claim is the hook. AST-based formatting, atomic commits, CI coordination at scale."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Engineering Problem of Changing 25 Million Lines of Code in One Commit",
+          "lens": "large-scale automated refactoring safety and rollout",
+          "scores": { "audience_reach": 8, "curiosity_hook": 18, "computing_depth": 18 },
+          "notes": "Personal-stake for any developer who's done risky refactors. The stakes (breaking production at Stripe) are visceral."
+        }
+      ]
+    },
+    "e2cd7f9c3c9e0924": {
+      "yt_competition": 18,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "hpke-ng: Faster, Smaller HPKE Encryption for Rust",
+          "lens": "optimized hybrid public key encryption implementation",
+          "scores": { "audience_reach": 4, "curiosity_hook": 8, "computing_depth": 20 },
+          "notes": "Judged from title only. Very niche (Rust cryptography implementers). Hard to make into a curiosity video without broad reframe."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The New Encryption Standard Quietly Replacing TLS in Your Apps",
+          "lens": "HPKE as modern hybrid encryption replacing RSA-based schemes",
+          "scores": { "audience_reach": 14, "curiosity_hook": 14, "computing_depth": 20 },
+          "notes": "Hidden-mechanism angle. HPKE underpins iMessage, WhatsApp, TLS 1.3 extensions — broad relevance when framed correctly."
+        }
+      ]
+    },
+    "93fdf81f91b23d60": {
+      "yt_competition": 10,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "What We Lost the Last Time Code Got Cheap",
+          "lens": "software craftsmanship decline when code becomes abundant",
+          "scores": { "audience_reach": 8, "curiosity_hook": 14, "computing_depth": 12 },
+          "notes": "Judged from title only. Reflective opinion essay; computing angle is real but not deep. Good curiosity hook."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why AI Making Code Cheap Might Actually Destroy Software Quality",
+          "lens": "software economics: abundance vs. quality tradeoffs",
+          "scores": { "audience_reach": 14, "curiosity_hook": 16, "computing_depth": 12 },
+          "notes": "Counterintuitive-twist. Cheap code sounds good; the thesis that it degrades quality is genuinely counterintuitive."
+        }
+      ]
+    },
+    "e5d420ff8bffe542": {
+      "yt_competition": 18,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Getting Peak TOPS on a Ryzen AI 7 350 NPU",
+          "lens": "AMD Ryzen AI NPU optimization for ML inference",
+          "scores": { "audience_reach": 4, "curiosity_hook": 10, "computing_depth": 20 },
+          "notes": "Judged from title only. Very niche hardware optimization; strong computing depth but tiny audience."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Secret AI Chip Inside Your Laptop — And Why Nobody Is Using It",
+          "lens": "NPU as underutilized local AI acceleration silicon",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Hidden-mechanism + personal-stake. Most laptop buyers don't know about the NPU; the waste of this silicon is compelling."
+        }
+      ]
+    },
+    "49324765c4ec30d2": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "A PHP License Change Is Imminent",
+          "lens": "open source licensing shift for PHP ecosystem",
+          "scores": { "audience_reach": 8, "curiosity_hook": 10, "computing_depth": 10 },
+          "notes": "Judged from title only. News-adjacent. License changes matter to PHP developers but limited broader curiosity."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why the License on Your Favorite Open Source Tool Can Delete Your Business",
+          "lens": "open source license changes and commercial risk",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 10 },
+          "notes": "Personal-stake. Broader frame: HashiCorp, Redis, Elasticsearch relicensing as context. Computing depth is low but the business risk is visceral."
+        }
+      ]
+    },
+    "f197653b8efeed98": {
+      "yt_competition": 6,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "From Supabase to Clerk to Better Auth: One Team's Auth Journey",
+          "lens": "auth service evaluation and migration story",
+          "scores": { "audience_reach": 8, "curiosity_hook": 10, "computing_depth": 14 },
+          "notes": "Judged from title only. Useful for devs but standard auth comparison content; not differentiated enough."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Authentication Is the One Problem Every Developer Gets Wrong Twice",
+          "lens": "auth abstraction failures and why building your own always loses",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 14 },
+          "notes": "Counterintuitive-twist. The paradox: everyone rolls their own auth, everyone regrets it, nobody learns."
+        }
+      ]
+    },
+    "ace024ee985de518": {
+      "yt_competition": 2,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "GPT-5.5 Price Increase: What It Costs",
+          "lens": "AI API pricing analysis",
+          "scores": { "audience_reach": 14, "curiosity_hook": 8, "computing_depth": 6 },
+          "notes": "Judged from title only. Saturated news genre. Low computing depth; pricing analysis is transient."
+        }
+      ]
+    },
+    "9b0bc5ac68537748": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Language Processing in the Anaesthetized Brain: What It Reveals About Consciousness",
+          "lens": "hippocampal language plasticity during unconsciousness",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 8 },
+          "notes": "Judged from title only. Strong curiosity hook (mystery of consciousness) but computing angle is weak — neuroscience not CS."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Your Brain Is Still 'Reading' While You're Under Anesthesia — Here's the Computing Model",
+          "lens": "unconscious language processing as a neural computation story",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 12 },
+          "notes": "Adds a computing lens: how does the brain 'run' language without consciousness? Bridges neuroscience and computation."
+        }
+      ]
+    },
+    "b703fa597fe2516e": {
+      "yt_competition": 4,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Cloudflare Lays Off 1,100+ Employees",
+          "lens": "tech layoff news",
+          "scores": { "audience_reach": 14, "curiosity_hook": 6, "computing_depth": 4 },
+          "notes": "Judged from title only. Business/news; no computing depth. Junk filter applies."
+        }
+      ]
+    },
+    "c44d37d50da44106": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "GeoJSON: The Standard That Powers Every Map You've Ever Seen",
+          "lens": "GeoJSON RFC 7946 spec and geographic data modeling",
+          "scores": { "audience_reach": 8, "curiosity_hook": 12, "computing_depth": 16 },
+          "notes": "Judged from title only. Spec page as article framing; needs reframe to become curiosity video."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Hidden Data Format That Powers Every Map on the Internet",
+          "lens": "GeoJSON as the invisible infrastructure of geospatial apps",
+          "scores": { "audience_reach": 14, "curiosity_hook": 16, "computing_depth": 16 },
+          "notes": "Hidden-mechanism. Every Google Maps, Apple Maps, Leaflet.js user is consuming GeoJSON without knowing it."
+        }
+      ]
+    },
+    "cf4368737d222e36": {
+      "yt_competition": 14,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "GNU IFUNC: The Obscure Linux Feature That Made the XZ Backdoor Possible",
+          "lens": "GNU indirect function mechanism as XZ CVE-2024-3094 enabler",
+          "scores": { "audience_reach": 8, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Judged from title only. XZ backdoor got heavy coverage but the IFUNC technical angle is novel and under-covered."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Linker Feature Nobody Knew Existed That Hid the Most Sophisticated Backdoor Ever",
+          "lens": "GNU IFUNC dynamic dispatch as a covert execution vector",
+          "scores": { "audience_reach": 8, "curiosity_hook": 20, "computing_depth": 20 },
+          "notes": "Hidden-mechanism + hyper-claim. IFUNC lets code redirect function calls at runtime without touching the binary — the backdoor used this to intercept SSH auth. Extremely strong computing story."
+        }
+      ]
+    },
+    "2054e86fec1a1c85": {
+      "yt_competition": 8,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Gambling Ads on Social Media Reach 2x More Men Than Women",
+          "lens": "social media advertising bias research",
+          "scores": { "audience_reach": 14, "curiosity_hook": 8, "computing_depth": 4 },
+          "notes": "Judged from title only. Social science research; no computing depth. Junk filter applies."
+        }
+      ]
+    },
+    "c6a021f805ce4074": {
+      "yt_competition": 10,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "ShinyHunters Breached 8,800 Schools via Instructure",
+          "lens": "education sector data breach news",
+          "scores": { "audience_reach": 14, "curiosity_hook": 12, "computing_depth": 10 },
+          "notes": "Judged from title only. Personal-stake (your school) but transient news. Computing angle is real but shallow."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why Education Data Is the Easiest Target for Hackers — And Nobody Fixes It",
+          "lens": "structural security failures in ed-tech platforms",
+          "scores": { "audience_reach": 14, "curiosity_hook": 14, "computing_depth": 14 },
+          "notes": "Counterintuitive: schools have the most sensitive data and the worst security budgets. Covers API security, shared infrastructure risk."
+        }
+      ]
+    },
+    "64a84e7d648206b6": {
+      "yt_competition": 10,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Government Officials Suspended After Acting on AI Hallucinations",
+          "lens": "AI reliability failure in high-stakes government decision-making",
+          "scores": { "audience_reach": 14, "curiosity_hook": 14, "computing_depth": 12 },
+          "notes": "Judged from title only. News but with a durable computing angle: when does AI failure become institutional failure?"
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why AI Hallucinations Are Actually a Human Problem, Not a Technical One",
+          "lens": "over-trust in AI systems vs. calibration and verification",
+          "scores": { "audience_reach": 14, "curiosity_hook": 16, "computing_depth": 14 },
+          "notes": "Counterintuitive-twist. The hallucination problem gets blamed on the model; the harder problem is human judgment."
+        }
+      ]
+    },
+    "d64390e204f58334": {
+      "yt_competition": 2,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Docker vs Podman: A New Era in Secure Orchestration",
+          "lens": "container runtime comparison",
+          "scores": { "audience_reach": 8, "curiosity_hook": 6, "computing_depth": 14 },
+          "notes": "Judged from title only. Saturated comparison genre. No original insight signaled in title."
+        }
+      ]
+    },
+    "e4e0232b5aa4e773": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Mythos Found 271 Browser Vulnerabilities — With Almost No False Positives",
+          "lens": "automated vulnerability discovery in Firefox via formal analysis",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Judged from title only. Hyper-claim + hidden-mechanism. The near-zero false positive rate is the computing story: formal verification at browser scale."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The AI That Found 271 Bugs in Firefox That Humans Missed — And How It Works",
+          "lens": "symbolic execution and formal verification for browser security",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Hidden-mechanism: how does Mythos achieve such precision? Covers fuzzing, symbolic execution, property-based testing distinctions."
+        }
+      ]
+    },
+    "a3a8896e80511417": {
+      "yt_competition": 8,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "How Flock License Plate Cameras Became an Immigration Enforcement Tool",
+          "lens": "surveillance infrastructure repurposing and data governance",
+          "scores": { "audience_reach": 14, "curiosity_hook": 14, "computing_depth": 10 },
+          "notes": "Judged from title only. Compelling personal-stake + hidden-mechanism (infrastructure built for one purpose used for another). Computing angle is surveillance tech."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Surveillance Network You Didn't Know Was Watching Your Car",
+          "lens": "ALPR infrastructure, data aggregation, and consent architecture",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 14 },
+          "notes": "Hidden-mechanism + personal-stake. Every driver is photographed by Flock without realizing it. Covers ALPR systems, centralized data fusion, API-based law enforcement access."
+        }
+      ]
+    },
+    "97ed3e10e39a7e1d": {
+      "yt_competition": 10,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Bjarne Stroustrup on Memory Leaks: Write Better C++",
+          "lens": "C++ RAII and ownership as the solution to memory leaks",
+          "scores": { "audience_reach": 8, "curiosity_hook": 12, "computing_depth": 20 },
+          "notes": "Judged from title only. Stroustrup's FAQ page. Interesting computing framing but the article framing is a bit dry."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "Why the Creator of C++ Thinks Rust's Memory Safety Argument Is Wrong",
+          "lens": "Stroustrup's RAII vs. Rust ownership comparison",
+          "scores": { "audience_reach": 8, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Counterintuitive-twist + personal-stake (for the C++ vs. Rust debate). Placing Stroustrup against Rust orthodoxy creates intellectual tension."
+        }
+      ]
+    },
+    "536f83052ffbbbc2": {
+      "yt_competition": 0,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "7 Practical Tips for Cheating at Design",
+          "lens": "UI design shortcut tips",
+          "scores": { "audience_reach": 8, "curiosity_hook": 8, "computing_depth": 6 },
+          "notes": "Judged from title only. Saturated design-tips genre. Low computing depth."
+        }
+      ]
+    },
+    "fa3e3b20ad661bc8": {
+      "yt_competition": 16,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Inside the PC Engine CPU: The Chip That Beat the NES",
+          "lens": "HuC6280 CPU architecture and retro console engineering",
+          "scores": { "audience_reach": 8, "curiosity_hook": 16, "computing_depth": 20 },
+          "notes": "Judged from title only. Computer history + hardware architecture. Strong computing depth; limited but passionate audience."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "The Forgotten Console CPU That Was Genuinely Ahead of Its Time — And Lost Anyway",
+          "lens": "PC Engine's 65C02-based CPU vs. NES rivalry and market failure",
+          "scores": { "audience_reach": 8, "curiosity_hook": 18, "computing_depth": 20 },
+          "notes": "Mystery + counterintuitive: technically superior hardware losing is a great story structure. Covers CPU design, timing, custom sound hardware."
+        }
+      ]
+    },
+    "49997bed7f8113f7": {
+      "yt_competition": 12,
+      "angles": [
+        {
+          "is_original_article_framing": true,
+          "title": "Hackers Breached JDownloader's Website to Serve Malware-Laced Installers",
+          "lens": "supply chain attack via website compromise",
+          "scores": { "audience_reach": 14, "curiosity_hook": 14, "computing_depth": 16 },
+          "notes": "Judged from title only. Personal-stake (did you download it?). Supply chain integrity is a rich computing topic."
+        },
+        {
+          "is_original_article_framing": false,
+          "title": "How Hackers Turn Any Software Download Into Malware — Without Touching the Code",
+          "lens": "website integrity attacks and software distribution security",
+          "scores": { "audience_reach": 14, "curiosity_hook": 18, "computing_depth": 18 },
+          "notes": "Hidden-mechanism + personal-stake. Covers code signing, HTTPS MITM, hash verification, CDN trust — why the file you download isn't always the file you think."
+        }
+      ]
+    }
+  }
+}
