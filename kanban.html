@@ -589,6 +589,12 @@
             .column:nth-child(8) {
                 animation-delay: 480ms;
             }
+            .column:nth-child(9) {
+                animation-delay: 540ms;
+            }
+            .column:nth-child(10) {
+                animation-delay: 600ms;
+            }
             .topbar {
                 animation: fade-up 400ms ease 0ms both;
             }
@@ -1191,7 +1197,9 @@
                         <option value="script">Script</option>
                         <option value="voiceover">Voiceover</option>
                         <option value="compose">Compose</option>
+                        <option value="review">Review</option>
                         <option value="thumbnail">Thumbnail</option>
+                        <option value="translate">Translate</option>
                         <option value="render">Render</option>
                         <option value="published">Published</option>
                     </select>
@@ -1251,20 +1259,24 @@
                     { id: "script", label: "Script 🤖" },
                     { id: "voiceover", label: "Voiceover 🤖" },
                     { id: "compose", label: "Compose 🤖" },
+                    { id: "review", label: "Review 👨" },
                     { id: "thumbnail", label: "Thumbnail 🤖" },
+                    { id: "translate", label: "Translate 🤖" },
                     { id: "render", label: "Render 🤖" },
                     { id: "published", label: "Published 👨" },
                 ];
 
-                // Ordered for the 7 progress dots (left to right). 'idea' has no dot.
+                // Ordered for the progress dots (left to right). 'idea' has no dot.
                 // 'voiceover' rolls in narration: 'partial' = mp3+transcript only;
-                // 'present' = +narration-map.json.
+                // 'present' = +narration-map.json. 'published' is derived from stage.
                 const ARTIFACTS = [
                     { id: "research", label: "Research" },
                     { id: "script", label: "Script" },
                     { id: "voiceover", label: "Voiceover" },
                     { id: "compose", label: "Compose" },
+                    { id: "review", label: "Review" },
                     { id: "thumbnail", label: "Thumbnail" },
+                    { id: "translate", label: "Translate" },
                     { id: "render", label: "Render" },
                     { id: "published", label: "Published" },
                 ];
@@ -1281,14 +1293,27 @@
                     return "dot";
                 }
 
+                // 'published' is derived from stage, not scanned — if the card
+                // is in the published column it is, by definition, published.
+                function effectiveArtifactStatus(card, artifactId) {
+                    if (artifactId === "published") {
+                        return card.stage === "published"
+                            ? "present"
+                            : "missing";
+                    }
+                    return card.artifacts?.[artifactId] || "missing";
+                }
+
                 const ARTIFACT_PATHS = {
                     research: "seo/research.json",
                     script: "script.md",
                     voiceover: "audio/voiceover.mp3 · transcript.json",
                     compose: "index.html",
+                    review: "compositions/sfx.html · music.html",
                     thumbnail: "thumbnail-{a,b,c}.png",
-                    render: "output/*.mp4",
-                    published: "manual flag",
+                    translate: "multi-lingual/srt/",
+                    render: "renders/*.mp4",
+                    published: "stage flag",
                 };
 
                 // Concrete file (or trailing-slash directory) to open per artifact.
@@ -1298,8 +1323,10 @@
                     script: "script.md",
                     voiceover: "audio/voiceover.mp3",
                     compose: "index.html",
+                    review: "compositions/sfx.html",
                     thumbnail: "",
-                    render: "output/",
+                    translate: "multi-lingual/srt/",
+                    render: "renders/",
                     published: "",
                 };
 
@@ -1354,7 +1381,7 @@
                         ? `<span class="drift" title="Scan suggests: ${escapeHtml(card.suggestedLabel || "")}">${DRIFT_SVG}</span>`
                         : "";
                     const dots = ARTIFACTS.map((a) => {
-                        const status = card.artifacts?.[a.id] || "missing";
+                        const status = effectiveArtifactStatus(card, a.id);
                         return `<li class="${dotClass(status)}" title="${escapeHtml(a.label)}"></li>`;
                     }).join("");
                     return `
@@ -1408,7 +1435,9 @@
                         "script",
                         "voiceover",
                         "compose",
+                        "review",
                         "thumbnail",
+                        "translate",
                         "render",
                     ];
                     let suggested = "idea";
@@ -2283,7 +2312,6 @@
                     );
                 }
 
-                const COMPOSE_THRESHOLD_BYTES = 8192;
                 const FOLDER_RE = /^(.+)-(\d{4}-\d{2}-\d{2})$/;
 
                 async function exists(dir, path) {
@@ -2316,16 +2344,21 @@
                 }
 
                 async function composeStatus(dir) {
-                    try {
-                        const fh = await dir.getFileHandle("index.html");
-                        const file = await fh.getFile();
-                        return file.size > COMPOSE_THRESHOLD_BYTES
-                            ? "present"
-                            : "partial";
-                    } catch (e) {
-                        if (e.name === "NotFoundError") return "missing";
+                    const has = await exists(dir, "index.html");
+                    return has;
+                }
+
+                async function reviewStatus(dir) {
+                    const sfx = await exists(dir, "compositions/sfx.html");
+                    const music = await exists(
+                        dir,
+                        "compositions/music.html",
+                    );
+                    if (sfx === "present" || music === "present")
+                        return "present";
+                    if (sfx === "unknown" || music === "unknown")
                         return "unknown";
-                    }
+                    return "missing";
                 }
 
                 async function thumbnailStatus(dir) {
@@ -2342,21 +2375,36 @@
                     return "partial";
                 }
 
-                async function hasMp4InOutput(dir) {
+                async function translateStatus(dir) {
                     try {
-                        const out = await dir.getDirectoryHandle("output");
-                        for await (const entry of out.values()) {
-                            if (
-                                entry.kind === "file" &&
-                                entry.name.toLowerCase().endsWith(".mp4")
-                            )
-                                return "present";
+                        const ml = await dir.getDirectoryHandle("multi-lingual");
+                        const srt = await ml.getDirectoryHandle("srt");
+                        for await (const entry of srt.values()) {
+                            if (entry.kind === "file") return "present";
                         }
                         return "missing";
                     } catch (e) {
                         if (e.name === "NotFoundError") return "missing";
                         return "unknown";
                     }
+                }
+
+                async function renderStatus(dir) {
+                    for (const folder of ["renders", "output"]) {
+                        try {
+                            const out = await dir.getDirectoryHandle(folder);
+                            for await (const entry of out.values()) {
+                                if (
+                                    entry.kind === "file" &&
+                                    entry.name.toLowerCase().endsWith(".mp4")
+                                )
+                                    return "present";
+                            }
+                        } catch (e) {
+                            if (e.name !== "NotFoundError") return "unknown";
+                        }
+                    }
+                    return "missing";
                 }
 
                 async function readOutlineH1(dir) {
@@ -2438,9 +2486,10 @@
                                 script: await exists(entry, "script.md"),
                                 voiceover: await voiceoverStatus(entry),
                                 compose: await composeStatus(entry),
+                                review: await reviewStatus(entry),
                                 thumbnail: await thumbnailStatus(entry),
-                                render: await hasMp4InOutput(entry),
-                                published: "unknown",
+                                translate: await translateStatus(entry),
+                                render: await renderStatus(entry),
                             };
                             const suggestedStage = computeSuggested(artifacts);
                             const title = await readOutlineH1(entry);
@@ -2674,7 +2723,7 @@
                     const artifactRows = ARTIFACTS.map((a) =>
                         renderArtifactRow(
                             a.id,
-                            card.artifacts?.[a.id] || "missing",
+                            effectiveArtifactStatus(card, a.id),
                         ),
                     ).join("");
 
