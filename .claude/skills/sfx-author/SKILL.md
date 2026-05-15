@@ -39,6 +39,12 @@ Optional, per-video:
 - `sfx-overrides.yml` at the video folder root — override cue recipes for this
   video specifically (e.g. swap `ui-tick`'s candidate pool to sharper variants).
   Absence means "use repo defaults."
+- `story-spine.md` at the video folder root — if present, a 3–4 line note of
+  where the script's hook, climax, and landing landed. Optional *orientation*,
+  not an instruction: it can confirm that your `data-sfx-hook="true"` beat and
+  any climax `boom` agree with the motion and music layers, so all four point at
+  the same moment. It never tells you which cue to use or how densely to score.
+  Absence changes nothing — identify the hook from transcript and visuals as usual.
 
 ## What this skill does
 
@@ -223,9 +229,13 @@ that's the point of the rack.
 
 Each video has at most **one** "hook moment" — the largest emotional or
 informational beat. Mark it on its element with `data-sfx-hook="true"`. In
-Phase A this is a breadcrumb only (no audio change). Phase C will use it to
+Phase A the *tag* is a breadcrumb only (no audio change). Phase C will use it to
 mute music/ambience for ~500ms before the moment (pre-impact silence). Choose
 the hook carefully; if you can't identify a single clear hook, omit the tag.
+
+The beat the tag points at still gets scored like any other moment — for how to
+score it (one decisive cue, or silence into the hit; never a stack), see the
+"hook moment" section of `reference/cue-vocabulary.md`.
 
 ## The proposal you produce before any edit
 
@@ -367,6 +377,11 @@ Read these before producing your first proposal in a fresh session — they
 encode the taste this skill is built on:
 
 - `reference/cue-vocabulary.md` — per-cue: when it earns a hit, when it doesn't.
+  Now also covers scoring the `data-sfx-hook` moment with restraint.
+- `reference/density-as-narrative.md` — cue density as a deliberate *shape* inside
+  the unchanged 1-per-3s ceiling: spending the cue budget so frequency tracks the
+  story's energy. Density shapes to consider, not a required curve. Read when
+  planning how cues are distributed across the whole video.
 - `reference/worked-examples.md` — concrete annotated walkthroughs from
   `videos/why-text-is-hard-2026-05-07/`. The "this is what good looks like"
   reference.
