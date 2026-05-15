@@ -41,6 +41,12 @@ From the video folder (`videos/<slug>-<YYYY-MM-DD>/`):
   `compositions/music.html`.
 - `design.md`, `script.md` — taste context for the brainstorm (tone,
   intended audience). Read for context, not as a mechanical filter.
+- `story-spine.md` at the video folder root — optional, if present. A 3–4
+  line note of where the script's hook, climax, and landing landed. Use it
+  as *orientation* for where a layer crossfade or a bed-pullback might
+  coincide with a narrative turn — the Phase 1 brainstorm and the human
+  still decide layer count, register, and intensity. It prescribes nothing.
+  Most videos will not have one; that changes nothing about Phase 1.
 
 ## Phases
 
@@ -49,7 +55,7 @@ From the video folder (`videos/<slug>-<YYYY-MM-DD>/`):
 Hand off to the `superpowers:brainstorming` skill. The user has opinions; your
 job here is to surface them, not to recommend them.
 
-Two questions need answers before track curation can begin:
+Two questions need answers before track curation can begin, plus one optional question worth surfacing:
 
 1. **Emotional register.** What does the bed feel like under the narration?
    The brainstorming flow will explore this in the user's own language —
@@ -71,6 +77,19 @@ Two questions need answers before track curation can begin:
    The brainstorm should also surface *where* in the narration each
    boundary lives — by beat or by quote, not by timestamp. The skill snaps
    to real pauses later; the human just describes intent.
+
+3. **Intensity direction (optional).** Should the bed's intensity rise,
+   fall, or stay flat across the layers? A taste question with no right
+   answer — a rising bed suits a video building to a climax, a falling one
+   a video that opens loud and resolves quiet, a flat one an even-toned
+   explainer. Surface it in the user's own language; don't answer it for
+   them. If they have no strong feeling, that is itself an answer — not
+   every bed wants an intensity arc.
+
+Whether the bed should ever *pull back to silence* — under a payoff line,
+before a reveal, on the landing — is another taste dimension worth
+surfacing here. See `reference/silence-strategy.md` for where pullbacks
+tend to land; the human still decides whether the bed has any.
 
 Record the answers in your working memory before moving on. Do not write
 them to disk — they're inputs to the planning phase, not artifacts.
@@ -105,7 +124,11 @@ Once the layer folders are populated:
    exact Python snippets. For each boundary, the human's Phase-1 intent
    ("after the Turing setup", "right before the closer") narrows the search
    window; within that window, pick the largest gap as the crossfade
-   midpoint candidate.
+   midpoint candidate. A boundary lands hardest when it coincides with a
+   *narrative turn*, not just a convenient pause — prefer a slightly
+   shorter gap on a real turn over a longer gap mid-thought. If a
+   `story-spine.md` exists at the video folder root, it names those turns;
+   it is optional, and absent it the Phase-1 intent is the guide as before.
 4. **Check source-length constraints.** Each layer must be long enough to
    cover (boundary_out − boundary_in + 2s) when using a 2s crossfade on
    each side. If the longest single file in a layer is shorter than the
@@ -208,6 +231,11 @@ hand-off message.
 
 - `reference/transcript-pause-finder.md` — Python snippets for locating
   pauses and validating source-length constraints.
+- `reference/silence-strategy.md` — when the bed should pull back to
+  silence (payoff lines, high-weight beats, pre-reveal, the landing) so VO
+  and SFX carry. Describes when pulling back tends to land; prescribes no
+  fixed silence points. Read it during the Phase 1 brainstorm and Phase 3
+  planning.
 - `reference/ffmpeg-recipe.md` — the bake invocation, with annotations
   for what each filter does and how to extend it to N layers.
 - `reference/composition-template.md` — the `compositions/music.html`
