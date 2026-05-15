@@ -37,7 +37,7 @@ You get this backwards constantly. Ease-in for entrances feels sluggish. Ease-ou
 Every scene has three phases. You dump everything in the build and leave nothing for breathe or resolve.
 
 - **Build (0-30%)** — elements enter, staggered. Don't dump everything at once.
-- **Breathe (30-70%)** — content visible, alive with ONE ambient motion.
+- **Breathe (30-70%)** — content visible, alive with ONE ambient motion. A long silence in `transcript.json` (>600ms gap between words) is the narration breathing — that span is a breathe phase, not an empty slot to fill with new motion.
 - **Resolve (70-100%)** — exit or decisive end. Exits are faster than entrances.
 
 ### Transitions are meaning
