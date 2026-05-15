@@ -135,3 +135,32 @@ The absence of sound is itself a tool. Use it when:
 
 If you're tempted to add a cue but can't say *what the moment is doing*, leave
 it silent.
+
+---
+
+## The hook moment — score it with restraint
+
+`SKILL.md` has you mark the video's single largest beat with `data-sfx-hook="true"`.
+That tag is a breadcrumb; this section is about how to *score* the beat it points at.
+
+The hook moment earns **restraint**, not volume. The instinct is to pile on — a tick
+for the reveal, a whoosh for the motion, a boom for the weight. Resist it. The hook is
+the one place a stack of cues actively hurts: the ear cannot parse three hits at once,
+so it hears mud where you wanted impact.
+
+Score the hook one of two ways:
+
+- **One decisive cue.** A single `boom` on the payoff word, or a single `riser`
+  resolving into the reveal. One hit, chosen precisely, lands harder than three
+  competing ones.
+- **Silence into the hit.** The beat *before* the hook runs silent (see "Silence — the
+  unused cue" above — "the moment immediately precedes a big payoff"), so the single
+  hook cue lands out of negative space. This is the strongest version when the visuals
+  carry enough weight on their own.
+
+**Doesn't earn a hook cue:**
+- A stack — tick + whoosh + boom on the same moment. Pick one.
+- A cue that competes with the visual's own loudest moment instead of marking it.
+
+The density shape *around* the hook matters as much as the cue itself — see
+`density-as-narrative.md` for spending the cue budget so the hook lands as the peak.
