@@ -32,14 +32,16 @@ Read this whole file before you start. Then load the reference files only when t
 
 ```
 reference/
-├── sentence-rhythm.md      voice moves (1-in-5 short, "But", three-part lists, max-22-word, personification)
-├── tts-gotchas.md          living list of TTS landmines + rewrites (the only file you append to during a session)
-└── example-passages.md     real excerpts grouped by move type — read for cadence references
+├── sentence-rhythm.md            voice moves (1-in-5 short, "But", three-part lists, max-22-word, personification)
+├── tts-gotchas.md                living list of TTS landmines + rewrites (the only file you append to during a session)
+├── example-passages.md           real excerpts grouped by move type — read for cadence references
+├── rhythm-and-retention.md       why the voice moves hold attention — read to reason about retention deliberately
+└── personal-context-bridges.md   tactics for finding the Move 10 "you've done this" bridge
 ```
 
-There is **no** loadable beat arc, escalation-cycle template, or per-beat scaffold. That kind of structural preset was deliberately removed — see `learnings/script-writer-spec-over-restriction.md` for why. If you want the historical analysis of the 9-beat "iceberg" arc that earlier videos drew on, it lives at `research/pawel-code-stuff/analysis/script-patterns.md` as research, not as a skill preset.
+There is **no** loadable beat arc, escalation-cycle template, or per-beat scaffold. That kind of structural preset was deliberately removed — see `learnings/script-writer-spec-over-restriction.md` for why. If you want the historical analysis of the 9-beat "iceberg" arc that earlier videos drew on, it lives at `research/pawel-code-stuff/analysis/script-patterns.md` as research, not as a skill preset. `rhythm-and-retention.md` is explanation, not a preset — it explains the *why* behind moves the other files already define, and adds no moves of its own.
 
-Load `sentence-rhythm.md` and `tts-gotchas.md` once before any prose drafting starts and keep them in mind for the rest of the session. Load `example-passages.md` whenever you want a concrete cadence reference for a specific move (openings, transitions, synthesis-style sentences, landings).
+Load `sentence-rhythm.md` and `tts-gotchas.md` once before any prose drafting starts and keep them in mind for the rest of the session. Load `example-passages.md` whenever you want a concrete cadence reference for a specific move (openings, transitions, synthesis-style sentences, landings). Load `rhythm-and-retention.md` when you want to reason about *why* a move holds attention rather than apply it on feel, and `personal-context-bridges.md` when hunting the Move 10 bridge — both are optional, never required for a draft, and neither changes what gets written.
 
 ## The flow
 
@@ -142,6 +144,7 @@ The model has in context:
 - `sentence-rhythm.md` (voice moves).
 - `tts-gotchas.md` (TTS landmines).
 - `reference/example-passages.md` for cadence references when needed.
+- `reference/rhythm-and-retention.md` when you want to reason about *why* a move holds attention — optional, explanation only, adds no moves.
 
 The explicit drafting instruction:
 
@@ -156,6 +159,13 @@ After the body is drafted, show the **full body** to the user. Single approval g
 ### Step 4b — Hook carved from body
 
 Read the approved body. Pick the body's strongest concrete moment — usually a specific dated incident, a counterintuitive fact, or a named system whose existence makes the topic feel urgent. Write a hook (1–3 sentences, opening sentence 8–14 words) that makes that moment feel inevitable when the body reaches it.
+
+These heuristics sharpen *which* moment to pick and *how* to shape the opening — they are selection logic for the decision this step already asks for, not a hook template:
+
+- **Specificity over scale.** A specific, verifiable detail beats a big abstract claim. "This 8-pixel-tall letter" pulls harder than "text rendering is incredibly complex." A number the viewer can picture beats a superlative they can't.
+- **Anchor to the viewer's familiar frame.** The strongest hooks start from something the viewer already knows or does, then turn it strange. An everyday object made unfamiliar is sharper than a fact introduced cold.
+- **The gap between expectation and reality.** The moment that hooks is usually the one where what's true contradicts what the viewer assumes. Pick the beat with the widest gap between "what you'd think" and "what actually happens."
+- **The compression test.** A working hook compresses to 8–12 words and still makes the viewer want the rest. If the strongest moment can't be said that short, it isn't a hook yet — it's a setup. This is the selection logic behind the 8–14 word opening sentence the step already asks for.
 
 The hook is carved from the body, not written before it. This is the 2026 YouTube scripting best practice: write the body first, then find the strongest beat inside it and shape an opening that pays it off.
 
@@ -187,6 +197,8 @@ Show, approve. Assemble the final `script.md`:
 ```
 
 The HTML comments are anchors for downstream tools, not voiceover text. The script reads as one continuous piece of writing from open to close.
+
+**Optional — story spine.** The script is now approved end-to-end: you have the hook (Step 4b carved it from the body's strongest concrete moment), the body, and the landing. If this video is going through the full pipeline (motion, SFX, music), you may offer the user a `story-spine.md`: *"Want me to drop a 3–4 line `story-spine.md` in the folder? It records where the hook beat, the climax, and the landing landed — the motion, SFX, and music skills can read it later so all three point at the same beat. It's optional; nothing downstream requires it."* If the user says yes, load `reference/story-spine.md` and write the file in the strict shape it defines — 3–4 lines, quoted script phrases, descriptive glosses, never a per-scene list. If the user declines or doesn't reply, skip it; the video is not broken without one. Never write it unprompted, and never before the script is approved.
 
 ### Step 5 — Anchor extraction
 
@@ -249,6 +261,8 @@ You're done when:
 - The fact-verifier has run and the user has been told whether to revise before voiceover.
 - Any TTS gotchas surfaced during the session have been appended to `reference/tts-gotchas.md`.
 
+`story-spine.md` is **not** in this list. It is an optional artifact offered in Step 4c — its absence is never a gap, and the skill is done whether or not the user accepted the offer.
+
 Once the script is locked and the fact-check report has been surfaced, ask the user: *"Want me to generate the voiceover with ElevenLabs v2 now? (invokes the `voiceover-elevenlabs-v2` skill — long-form stable, our project default. Pass `with v3` if you need the audio-tag path instead.)"* If the user replies affirmatively, hand off to `voiceover-elevenlabs-v2`. If they reply `with v3`, hand off to `voiceover-elevenlabs-v3` instead. Both skills produce `audio/voiceover.mp3` and `transcript.json` in one run. If the user declines both, tell them the next step is theirs (`uv run --project ../../tools/voiceover-elevenlabs-v2 voiceover-elevenlabs-v2 voiceover.txt`), then run `narration-map` with `anchors.txt`. This skill stops at the script + fact-check pair.
 
 ## Voice the house style favors
@@ -272,4 +286,4 @@ The research found three recurring criticisms. Bake the mitigations into your dr
 
 1. **Pacing too fast on dense moments.** Budget at least 45 seconds of script per technical concept the viewer hasn't seen before. If a complex idea is condensed into 15 seconds, expand it.
 2. **Strong general claims without qualifiers.** "X is a vulnerability" gets corrected. "X is a vulnerability *when paired with Y*" doesn't. Add the qualifier proactively when the claim could be expert-pushed-back-on.
-3. **No personal context bridge.** At least once per video, connect to something the viewer has done themselves ("you've moved your mouse to generate a key in VeraCrypt — that's why"). One bridge in the hook or the landing is usually enough.
+3. **No personal context bridge.** At least once per video, connect to something the viewer has done themselves ("you've moved your mouse to generate a key in VeraCrypt — that's why"). One bridge in the hook or the landing is usually enough. When hunting that bridge, `reference/personal-context-bridges.md` has tactics for finding it.
