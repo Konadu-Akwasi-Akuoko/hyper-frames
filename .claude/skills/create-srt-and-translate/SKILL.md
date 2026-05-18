@@ -1,20 +1,21 @@
 ---
 name: create-srt-and-translate
-description: Generate a video's English captions.srt from its Scribe v2 transcript and translate everything into the 13 languages YouTube auto-dubs (Arabic, German, Spanish, French, Hindi, Indonesian, Italian, Japanese, Polish, Portuguese, Russian, Turkish, Vietnamese). Also translates the 3 thumbnail variant titles (overlay text + YouTube title) from every contact-sheet.html under thumbnails/. Use this skill whenever the user says "create the SRT", "translate the captions", "generate captions for this video", "translate the thumbnails", "localize the titles", "make the multilingual subtitles", or anything similar after the voiceover step has run and a transcript.json exists. Also use after a thumbnail round is created when the user wants the titles localized. Triggers on phrases like "translate my video to all languages", "do the localization", "prep this for multi-language upload". Always run from inside or against a `videos/<slug>-<date>/` folder.
+description: Generate a video's English captions.srt from its Scribe v2 transcript and translate it into the 13 languages YouTube auto-dubs (Arabic, German, Spanish, French, Hindi, Indonesian, Italian, Japanese, Polish, Portuguese, Russian, Turkish, Vietnamese). Use this skill whenever the user says "create the SRT", "translate the captions", "generate captions for this video", "make the multilingual subtitles", or anything similar after the voiceover step has run and a transcript.json exists. Triggers on phrases like "translate my video to all languages", "do the localization", "prep this for multi-language upload". Always run from inside or against a `videos/<slug>-<date>/` folder.
 ---
 
 # create-srt-and-translate
 
 Generate a video's English captions.srt and the full set of YouTube
-multi-language subtitle + thumbnail-title localizations from one invocation.
+multi-language subtitle localizations from one invocation.
+
+Thumbnail-title localization is intentionally out of scope. Thumbnails ship
+in English; if titles ever need to be localized, that's a separate manual
+pass through the thumbnail-creator pipeline.
 
 ## When to invoke
 
-After:
-- The voiceover step (`voiceover-elevenlabs-v2` or v3) has produced
-  `transcript.json` at the video folder root.
-- (Optional) The thumbnail-creator skill has produced at least one
-  `thumbnails/<round>/contact-sheet.html`.
+After the voiceover step (`voiceover-elevenlabs-v2` or v3) has produced
+`transcript.json` at the video folder root.
 
 The skill is safe to re-run — it overwrites the same output paths. Each
 language file is independent, so partial re-runs are fine.
@@ -25,19 +26,14 @@ language file is independent, so partial re-runs are fine.
 videos/<slug>-<date>/
 ├── captions.srt                          ← English source SRT
 └── multi-lingual/
-    ├── srt/
-    │   ├── ar.srt   de.srt   es.srt   fr.srt   hi.srt
-    │   ├── id.srt   it.srt   ja.srt   pl.srt   pt.srt
-    │   └── ru.srt   tr.srt   vi.srt
-    └── thumbnail-title/
-        ├── ar.txt   de.txt   es.txt   fr.txt   hi.txt
-        ├── id.txt   it.txt   ja.txt   pl.txt   pt.txt
-        └── ru.txt   tr.txt   vi.txt
+    └── srt/
+        ├── ar.srt   de.srt   es.srt   fr.srt   hi.srt
+        ├── id.srt   it.srt   ja.srt   pl.srt   pt.srt
+        └── ru.srt   tr.srt   vi.srt
 ```
 
 Each `<lang>.srt` mirrors the English `captions.srt` block-for-block with
-identical timestamps. Each `<lang>.txt` contains the translated overlay
-text and YouTube title for every thumbnail variant across every round.
+identical timestamps.
 
 ## Target languages
 
@@ -75,11 +71,7 @@ folder (looks for `transcript.json` and either `hyperframes.json` or
 `package.json` at the root). Otherwise the user must pass the path
 explicitly (e.g. "create the SRTs for `videos/why-text-is-hard-2026-05-07/`").
 
-Verify these exist before starting:
-
-- `<video-folder>/transcript.json` — required
-- `<video-folder>/thumbnails/<round>/contact-sheet.html` — optional;
-  skip the thumbnail-title step if no contact sheets are found.
+Verify `<video-folder>/transcript.json` exists before starting.
 
 `voiceover.txt` is **not** required by the script. If present, it can be
 referenced for cleaner casing/spelling on a manual pass, but the chunker
@@ -130,90 +122,19 @@ done
 
 Every file should report the same count.
 
-### Step 4 — Extract thumbnail variant titles
-
-Only if `<video-folder>/thumbnails/` exists. Run:
-
-```bash
-python3 .claude/skills/create-srt-and-translate/scripts/extract_titles.py \
-  <video-folder> --pretty
-```
-
-The script walks every round subdirectory (including any `-vertical`
-variants), parses the contact-sheet.html, and prints JSON of the form:
-
-```json
-[
-  {
-    "round": "round-1",
-    "path": "thumbnails/round-1/contact-sheet.html",
-    "variants": [
-      {"letter": "A", "overlay": "THE TEST WASN'T CLICKING THE CHECKBOX",
-       "yt_title": "How a CAPTCHA decides you're human before you click"},
-      {"letter": "B", "overlay": "…", "yt_title": "…"},
-      {"letter": "C", "overlay": "…", "yt_title": "…"}
-    ]
-  },
-  {
-    "round": "round-1-vertical",
-    "variants": [ … ]
-  },
-  { "round": "round-2", "variants": [ … ] }
-]
-```
-
-Capture this JSON in memory — it's the source for the next step.
-
-### Step 5 — Translate the titles into 13 languages
-
-Create `<video-folder>/multi-lingual/thumbnail-title/` if it doesn't exist.
-For each of the 13 language codes, write `<lang>.txt` with this layout:
-
-```
-# <Language name> thumbnail titles
-# Source: <video-folder>/thumbnails/
-
-=== round-1 ===
-[A] OVERLAY:  <translated overlay text>
-    YT TITLE: <translated YouTube title>
-[B] OVERLAY:  <translated overlay text>
-    YT TITLE: <translated YouTube title>
-[C] OVERLAY:  <translated overlay text>
-    YT TITLE: <translated YouTube title>
-
-=== round-1-vertical ===
-[A] OVERLAY:  …
-    YT TITLE: …
-…
-```
-
-Sections are in the same order the JSON returned (sorted by round directory
-name). Translate every variant of every round — vertical rounds count.
-
-Style guidance for titles is in `references/translation-style.md` —
-particularly the sections on **thumbnail overlay text** (visual fit, casing
-for non-Latin scripts) and **YouTube title** (lead with keyword, keep
-under ~60 chars).
-
-### Step 6 — Report
+### Step 4 — Report
 
 Summarize for the user:
 
 - The number of SRT blocks per language (should all match captions.srt).
-- The number of thumbnail rounds × variants translated per language.
 - A reminder of the Studio upload path:
-  `Studio → Subtitles → Add language → Upload file → With timing`
-  and that the translated thumbnail-title text is plain copy-paste material
-  for the Studio "translated titles & descriptions" pane plus for any
-  re-rendered localized thumbnail images.
+  `Studio → Subtitles → Add language → Upload file → With timing`.
 
-## Things this skill does NOT do (yet)
+## Things this skill does NOT do
 
-- **Does not re-render localized thumbnail images.** The `<lang>.txt`
-  files contain the translated TEXT; using that text to render the actual
-  localized thumbnail PNG/JPG is a separate step that goes through the
-  thumbnail-creator pipeline with text overrides. Flag this to the user
-  on completion if they want full image localization.
+- **Does not translate thumbnail titles.** Thumbnails ship in English. If
+  the user wants localized thumbnail text, that is a separate manual pass
+  through the thumbnail-creator pipeline with explicit text overrides.
 - **Does not align voiceover.txt against transcript.json.** Captions
   use Scribe v2's transcribed text verbatim. If the script's exact
   casing/spelling matters (e.g. brand names that Scribe misheard), a
@@ -228,6 +149,5 @@ Summarize for the user:
 ## Files referenced
 
 - `scripts/transcript_to_srt.py` — Scribe v2 → SRT chunker.
-- `scripts/extract_titles.py` — contact-sheet.html → variant titles JSON.
 - `references/translation-style.md` — terminology, numbers, scripts, register.
 - `references/srt-chunking-rules.md` — block-size heuristic parameters.
