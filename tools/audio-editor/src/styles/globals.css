@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0d10;
+  --color-panel: #14171c;
+  --color-panel-2: #1a1e24;
+  --color-panel-3: #1f242c;
+  --color-border: #262b33;
+  --color-border-2: #2f3540;
+  --color-text: #e6e9ef;
+  --color-muted: #8b94a3;
+  --color-muted-2: #5a6271;
+  --color-accent: #6ea8ff;
+  --color-accent-dim: #2f4a7a;
+  --color-cut: #ff5470;
+  --color-keep: #4ade80;
+  --color-filler: #ffb84a;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 1200px 600px at 50% -10%, rgba(110, 168, 255, 0.06), transparent 70%),
+    radial-gradient(ellipse 800px 400px at 100% 100%, rgba(255, 84, 112, 0.025), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-2) transparent;
+}
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-2);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-muted-2);
+  background-clip: padding-box;
+}
+
+input[type="range"].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 16px;
+}
+input[type="range"].slider::-webkit-slider-runnable-track {
+  background: var(--color-panel-3);
+  border-radius: 999px;
+  height: 3px;
+}
+input[type="range"].slider::-moz-range-track {
+  background: var(--color-panel-3);
+  border-radius: 999px;
+  height: 3px;
+}
+input[type="range"].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--color-accent);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: -4.5px;
+  box-shadow: 0 0 0 0 rgba(110, 168, 255, 0.4);
+  transition: box-shadow 0.15s ease;
+}
+input[type="range"].slider::-moz-range-thumb {
+  background: var(--color-accent);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+}
+input[type="range"].slider:hover::-webkit-slider-thumb,
+input[type="range"].slider:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 6px rgba(110, 168, 255, 0.18);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.45; }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 1.6s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out both;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Wavesurfer regions plugin styling — element parts shipped by the plugin */
+[part="region"] {
+  border-left: 1px solid rgba(255, 84, 112, 0.7) !important;
+  border-right: 1px solid rgba(255, 84, 112, 0.7) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 84, 112, 0.25);
+  transition: background-color 0.12s ease;
+}
+[part="region"]:hover {
+  background: rgba(255, 84, 112, 0.4) !important;
+}
+
+/* Pending region — diagonal animated hatch + pulsing edges. The anchor flag
+   and floating duration badge live in PendingOverlay as a sibling, not here. */
+[part="region"].region--pending {
+  border: none !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 84, 112, 0.18) 25%,
+    rgba(255, 84, 112, 0.36) 25%,
+    rgba(255, 84, 112, 0.36) 50%,
+    rgba(255, 84, 112, 0.18) 50%,
+    rgba(255, 84, 112, 0.18) 75%,
+    rgba(255, 84, 112, 0.36) 75%
+  ) !important;
+  background-size: 14px 14px !important;
+  animation: pending-hatch 0.9s linear infinite;
+  box-shadow:
+    inset 1px 0 0 rgba(255, 84, 112, 0.95),
+    inset -1px 0 0 rgba(255, 84, 112, 0.95);
+  pointer-events: none;
+  overflow: visible;
+}
+[part="region"].region--pending[data-direction="backward"] {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 84, 112, 0.18) 25%,
+    rgba(255, 84, 112, 0.36) 25%,
+    rgba(255, 84, 112, 0.36) 50%,
+    rgba(255, 84, 112, 0.18) 50%,
+    rgba(255, 84, 112, 0.18) 75%,
+    rgba(255, 84, 112, 0.36) 75%
+  ) !important;
+  animation-direction: reverse;
+}
+[part="region"].region--pending::before,
+[part="region"].region--pending::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-cut);
+  animation: pulse-edge 1.2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(255, 84, 112, 0.6);
+}
+[part="region"].region--pending::before { left: -1px; }
+[part="region"].region--pending::after  { right: -1px; }
+[part="region"].region--pending [part="region-content"] {
+  display: none !important;
+}
+
+[part="region-handle-left"],
+[part="region-handle-right"] {
+  background-color: var(--color-cut) !important;
+  opacity: 0.6 !important;
+  width: 4px !important;
+  transition: opacity 0.12s ease;
+}
+[part="region-handle-left"]:hover,
+[part="region-handle-right"]:hover {
+  opacity: 1 !important;
+}
+
+/* Region content is built as an HTMLElement (region-chrome wrapper) so we can
+   pin a hover-× delete button next to the label without a side trip to the
+   RegionList. The plugin tags our root with part="region-content". */
+[part="region-content"] {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 4px 0 0 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  pointer-events: auto;
+}
+.region-chrome__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-cut);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1px 4px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+.region-chrome__x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--color-cut);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.12s ease, transform 0.12s ease, background-color 0.12s ease,
+    color 0.12s ease;
+  pointer-events: auto;
+  padding: 0;
+}
+[part="region"]:hover .region-chrome__x,
+.region-chrome__x:focus-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.region-chrome__x:hover {
+  background: var(--color-cut);
+  color: var(--color-bg);
+}
+
+@keyframes pending-hatch {
+  from { background-position: 0 0; }
+  to   { background-position: 28px 0; }
+}
+@keyframes pulse-edge {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1.0; }
+}
+
+/* PendingOverlay — sibling of the wavesurfer container that draws the anchor
+   flag (fixed at pendingCutStart) and the floating duration badge. */
+.pending-overlay__anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  will-change: transform;
+}
+.pending-overlay__anchor-line {
+  position: absolute;
+  left: -0.5px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-cut);
+  box-shadow: 0 0 6px rgba(255, 84, 112, 0.55);
+  opacity: 0.85;
+}
+.pending-overlay__flag {
+  position: absolute;
+  top: -2px;
+  left: -1px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+.pending-overlay__badge {
+  position: absolute;
+  top: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-bg);
+  background: var(--color-cut);
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  will-change: transform;
+}
+
+/* Cursor hint when Shift is held over the waveform — paint mode armed. */
+.ws-paint-armed {
+  cursor: crosshair !important;
+}
+.ws-paint-armed * {
+  cursor: crosshair !important;
+}
+
+/* Live transcript word styling */
+.transcript-word {
+  cursor: pointer;
+  padding: 0 2px;
+  border-radius: 3px;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+.transcript-word:hover {
+  background: rgba(110, 168, 255, 0.12);
+}
+.transcript-word--active {
+  background: transparent;
+  color: var(--color-text);
+  position: relative;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.transcript-word--active::before {
+  content: "▾";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: var(--color-accent);
+  line-height: 1;
+  pointer-events: none;
+}
+.transcript-word--cut {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 84, 112, 0.65);
+  text-decoration-thickness: 1px;
+}
+.transcript-word--active.transcript-word--cut {
+  color: var(--color-text);
+}
+.transcript-word--active.transcript-word--cut::before {
+  display: none;
+}
+.transcript-word--lowconf {
+  opacity: 0.55;
+  text-decoration: underline dotted rgba(139, 148, 163, 0.55);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Paragraph-grouped transcript layout */
+.transcript-paragraph {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(38, 43, 51, 0.5);
+}
+.transcript-paragraph:first-of-type {
+  border-top: none;
+  padding-top: 4px;
+}
+.transcript-paragraph__gutter {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-muted-2);
+  font-variant-numeric: tabular-nums;
+  padding-top: 5px;
+  text-align: right;
+}
+.transcript-paragraph__body {
+  min-width: 0;
+}
+
+.speaker-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+  vertical-align: middle;
+  padding: 2px 8px 2px 2px;
+  border-radius: 999px;
+  background: var(--speaker-bg, rgba(139, 148, 163, 0.15));
+  color: var(--speaker-fg, var(--color-muted));
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.speaker-chip__avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--speaker-fg, var(--color-muted));
+  color: var(--color-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
