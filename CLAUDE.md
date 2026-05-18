@@ -66,18 +66,31 @@ It matters more, not less, as runtime grows.
 
 ```ts
 {
+  audio_duration_secs?: number,          // present on most Scribe v2 outputs
   language_code: string,
   language_probability: number,
   text: string,                          // full concatenated text
-  words: Array<{
-    text: string,
-    type: "word" | "spacing",
-    start: number,                       // seconds, global to the audio
-    end: number,                         // seconds, global to the audio
-    speaker_id: string,
-  }>
+  words: Array<                          // discriminated on `type`
+    | {
+        text: string,
+        type: "word",
+        start: number,                   // seconds, global to the audio
+        end: number,                     // seconds, global to the audio
+        speaker_id: string,
+        logprob?: number,
+      }
+    | {
+        text: string,
+        type: "spacing",
+        start: number,                   // seconds, global to the audio
+        end: number,                     // seconds, global to the audio
+      }
+  >
 }
 ```
+
+`speaker_id` and `logprob` only appear on `"word"` rows; `"spacing"` rows are
+bare timing markers between words. Discriminate on `type` when reading.
 
 `start`/`end` are global audio timestamps. If you need scene-local time,
 subtract the scene's start offset (the offset is the global timestamp of the
