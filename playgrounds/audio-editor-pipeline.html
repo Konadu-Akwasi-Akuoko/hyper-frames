@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Audio Editor — Pipeline Playground</title>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --panel: #14171c;
+    --panel-2: #1a1e24;
+    --border: #262b33;
+    --text: #e6e9ef;
+    --muted: #8b94a3;
+    --accent: #6ea8ff;
+    --accent-dim: #2f4a7a;
+    --cut: #ff5470;
+    --cut-bg: rgba(255, 84, 112, 0.18);
+    --cut-border: rgba(255, 84, 112, 0.55);
+    --keep: #4ade80;
+    --filler: #ffb84a;
+    --filler-bg: rgba(255, 184, 74, 0.18);
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 14px; line-height: 1.5;
+  }
+  body { padding: 24px 28px 96px; max-width: 1480px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+  h2 { font-size: 11px; font-weight: 600; margin: 0 0 10px; color: var(--muted);
+       text-transform: uppercase; letter-spacing: 0.08em; }
+  .sub { color: var(--muted); margin: 0 0 24px; font-size: 13px; }
+  code { font-family: var(--mono); font-size: 0.92em; color: var(--accent); }
+  .row { display: grid; gap: 12px; margin-bottom: 20px; }
+  .row-3 { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .card-title {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .card-title h3 {
+    font-size: 12px; font-weight: 600; margin: 0;
+    font-family: var(--mono); color: var(--text);
+  }
+  .card-title .meta { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  pre.code {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px 12px; margin: 0;
+    font-family: var(--mono); font-size: 11.5px; line-height: 1.5;
+    color: var(--text); overflow: auto; max-height: 240px;
+    white-space: pre; tab-size: 2;
+  }
+  pre.code .empty { color: var(--muted); font-style: italic; }
+  .presets {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 18px;
+  }
+  .presets-label {
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-right: 4px;
+  }
+  button {
+    background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: 12px;
+    font-family: var(--sans); transition: all 0.12s ease;
+  }
+  button:hover { border-color: var(--accent); background: var(--panel); }
+  button.active { background: var(--accent-dim); border-color: var(--accent); color: #fff; }
+  button.danger { color: var(--cut); border-color: rgba(255,84,112,0.3); }
+  button.danger:hover { border-color: var(--cut); background: rgba(255,84,112,0.08); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .toggles {
+    display: flex; gap: 16px; flex-wrap: wrap; margin-left: auto; align-items: center;
+  }
+  .toggle { display: flex; align-items: center; gap: 6px; font-size: 12px;
+            color: var(--muted); cursor: pointer; user-select: none; }
+  .toggle input { cursor: pointer; accent-color: var(--accent); }
+
+  .editor-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px; margin-bottom: 20px;
+  }
+  .editor-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px; gap: 12px; flex-wrap: wrap;
+  }
+  .editor-head h2 { margin: 0; }
+  .editor-controls { display: flex; gap: 8px; align-items: center; }
+  .zoom-control {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--panel-2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 10px;
+  }
+  .zoom-control label {
+    font-size: 11px; color: var(--muted); font-family: var(--mono);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .zoom-control input[type=range] { accent-color: var(--accent); width: 120px; }
+  .zoom-control .zoom-val {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    min-width: 32px; text-align: right;
+  }
+
+  .wave-scroll {
+    position: relative; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px;
+    overflow-x: auto; overflow-y: hidden;
+  }
+  .wave-inner { position: relative; height: 140px; }
+  canvas#waveform { display: block; height: 140px; }
+  .cut-overlay-layer { position: absolute; inset: 0; pointer-events: none; }
+  .cut-overlay {
+    position: absolute; top: 0; bottom: 0;
+    background: var(--cut-bg);
+    border-left: 1px solid var(--cut-border);
+    border-right: 1px solid var(--cut-border);
+    pointer-events: auto;
+  }
+  .cut-handle {
+    position: absolute; top: 0; bottom: 0; width: 8px;
+    background: var(--cut); opacity: 0.35;
+    cursor: col-resize; pointer-events: auto;
+    transition: opacity 0.12s ease;
+  }
+  .cut-handle:hover, .cut-handle.dragging { opacity: 1; }
+  .cut-handle.left { left: -4px; border-radius: 2px 0 0 2px; }
+  .cut-handle.right { right: -4px; border-radius: 0 2px 2px 0; }
+  .cut-handle::after {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%); width: 2px; height: 30px;
+    background: rgba(255,255,255,0.7); border-radius: 1px;
+  }
+  .cut-label {
+    position: absolute; top: 4px; left: 6px;
+    font-size: 9px; font-family: var(--mono); color: var(--cut);
+    background: rgba(0,0,0,0.55); padding: 1px 4px; border-radius: 3px;
+    text-transform: uppercase; letter-spacing: 0.05em; pointer-events: none;
+  }
+  .playhead {
+    position: absolute; top: 0; bottom: 0; width: 1px;
+    background: var(--accent); pointer-events: none;
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .time-strip {
+    display: flex; justify-content: space-between;
+    padding: 4px 8px; font-family: var(--mono); font-size: 10px;
+    color: var(--muted); border-top: 1px solid var(--border);
+    position: sticky; bottom: 0; background: var(--bg);
+  }
+  .drag-tooltip {
+    position: fixed; pointer-events: none;
+    background: var(--accent); color: #fff;
+    font-family: var(--mono); font-size: 11px;
+    padding: 3px 7px; border-radius: 4px;
+    transform: translate(-50%, -130%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 1000; white-space: nowrap;
+  }
+  .drag-tooltip .snap-tag {
+    font-size: 9px; opacity: 0.8; margin-left: 4px;
+  }
+
+  .words-wrap { margin-top: 14px; }
+  .words-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .words-head .legend { display: flex; gap: 14px; font-size: 11px; color: var(--muted);
+                        flex-wrap: wrap; }
+  .legend-dot { display: inline-block; width: 8px; height: 8px;
+                border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+  .words {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    padding: 12px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px;
+    min-height: 60px; max-height: 180px; overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  .word {
+    padding: 4px 8px; border-radius: 4px; font-size: 13px;
+    cursor: pointer; border: 1px solid transparent; user-select: none;
+    font-family: var(--sans); transition: all 0.12s ease;
+    background: var(--panel-2);
+    position: relative;
+  }
+  .word:hover { border-color: var(--accent); }
+  .word.cut {
+    background: var(--cut-bg); color: var(--cut);
+    text-decoration: line-through; border-color: var(--cut-border);
+  }
+  .word.filler { background: var(--filler-bg); color: var(--filler);
+                 border-color: rgba(255,184,74,0.4); }
+  .word.filler.cut { background: var(--cut-bg); color: var(--cut); }
+  .word.duplicate-suggest {
+    background: rgba(110,168,255,0.1); border-color: rgba(110,168,255,0.35);
+    color: var(--accent);
+  }
+  .word.duplicate-suggest.cut { background: var(--cut-bg); color: var(--cut);
+                                border-color: var(--cut-border); }
+  .word.active {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    transform: scale(1.05);
+    box-shadow: 0 0 16px rgba(110,168,255,0.4);
+    z-index: 2;
+  }
+  .word .ts {
+    font-family: var(--mono); font-size: 9px; color: var(--muted);
+    display: block; line-height: 1;
+  }
+  .word.cut .ts, .word.duplicate-suggest .ts { color: inherit; opacity: 0.7; }
+
+  .notes {
+    margin-top: 10px; padding: 10px 12px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    font-size: 12px; color: var(--muted); min-height: 36px;
+  }
+  .note-item { margin: 2px 0; }
+  .note-item.suggest { color: var(--accent); }
+  .note-item.filler { color: var(--filler); }
+  .note-item.empty { color: var(--muted); font-style: italic; }
+  .note-item.tip { color: var(--keep); }
+
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    margin-bottom: 10px; font-family: var(--mono); font-size: 11px;
+  }
+  .stat { background: var(--bg); border: 1px solid var(--border);
+          border-radius: 4px; padding: 6px 8px; }
+  .stat-label { color: var(--muted); font-size: 9px; text-transform: uppercase;
+                letter-spacing: 0.05em; }
+  .stat-val { color: var(--text); font-size: 13px; margin-top: 2px; }
+  .wav-mini { background: var(--bg); border: 1px solid var(--border);
+              border-radius: 4px; height: 50px; position: relative; overflow: hidden; }
+  .wav-mini canvas { display: block; width: 100%; height: 100%; }
+  .card-hint { font-size: 11px; color: var(--muted); margin: 8px 0 0; }
+
+  .prompt-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px;
+    position: sticky; bottom: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .prompt-head { display: flex; justify-content: space-between;
+                 align-items: center; margin-bottom: 10px; }
+  .prompt-text {
+    font-family: var(--mono); font-size: 12px; line-height: 1.6;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px 14px;
+    white-space: pre-wrap; color: var(--text);
+    max-height: 220px; overflow-y: auto;
+  }
+  #copyBtn.copied { background: var(--keep); border-color: var(--keep); color: #0b0d10; }
+
+  @media (max-width: 1100px) {
+    .row-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Audio Editor — Pipeline Playground</h1>
+  <p class="sub">
+    Flow: <code>voiceover.mp3</code> + <code>transcript.json</code> →
+    <strong>agent generates <code>cuts.json</code></strong> →
+    you fine-tune in the editor → cleaned audio + cleaned transcript.
+    Click words to toggle cuts. Drag the red edges to adjust boundaries (snaps to word borders).
+  </p>
+</header>
+
+<section class="presets">
+  <span class="presets-label">Preset</span>
+  <button data-preset="clean">Clean take</button>
+  <button data-preset="false-start" class="active">Agent's first pass</button>
+  <button data-preset="messy">Agent + filler pass</button>
+  <button data-preset="resume">Resume prior session</button>
+
+  <span class="toggles">
+    <label class="toggle">
+      <input type="checkbox" id="optDuplicate" checked>
+      duplicate-take detection
+    </label>
+    <label class="toggle">
+      <input type="checkbox" id="optFiller" checked>
+      filler-word detection
+    </label>
+    <label class="toggle">
+      <input type="checkbox" id="optManual" checked>
+      manual word cuts
+    </label>
+  </span>
+</section>
+
+<h2>Inputs <span style="color:#444">— what the tool reads from <code>videos/&lt;slug&gt;/</code></span></h2>
+<div class="row row-3">
+  <div class="card">
+    <div class="card-title">
+      <h3>audio/voiceover.mp3</h3>
+      <span class="meta" id="inMp3Meta">7.10s</span>
+    </div>
+    <div class="wav-mini"><canvas id="inputWave"></canvas></div>
+    <p class="card-hint">Raw recording. Includes false starts, fillers, retakes.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <h3>transcript.json</h3>
+      <span class="meta" id="inJsonMeta">20 words</span>
+    </div>
+    <pre class="code" id="inputJson"></pre>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <h3>cuts.json <span style="color:var(--muted);font-weight:400">(agent's output)</span></h3>
+      <span class="meta" id="inCutsMeta">none</span>
+    </div>
+    <pre class="code" id="inputCuts"></pre>
+    <p class="card-hint">Agent writes this. Editor opens with these cuts pre-loaded for review.</p>
+  </div>
+</div>
+
+<div class="editor-card">
+  <div class="editor-head">
+    <h2 style="margin:0">Editor <span style="color:#444">— scrub, zoom, drag edges</span></h2>
+    <div class="editor-controls">
+      <div class="zoom-control">
+        <label>Zoom</label>
+        <input type="range" id="zoomSlider" min="1" max="8" step="0.5" value="1">
+        <span class="zoom-val" id="zoomVal">1.0x</span>
+      </div>
+      <button id="btnPlay">&#9654; Play</button>
+      <button id="btnAuto">Re-run agent</button>
+      <button id="btnClear" class="danger">Clear all cuts</button>
+    </div>
+  </div>
+  <div class="wave-scroll" id="waveScroll">
+    <div class="wave-inner" id="waveInner">
+      <canvas id="waveform"></canvas>
+      <div class="cut-overlay-layer" id="cutLayer"></div>
+      <div class="playhead" id="playhead" style="left:0;display:none"></div>
+    </div>
+    <div class="time-strip">
+      <span>0:00</span>
+      <span id="durLabel">0:07</span>
+    </div>
+  </div>
+
+  <div class="words-wrap">
+    <div class="words-head">
+      <span style="font-size:11px;color:var(--muted)">
+        Click a word to toggle cut. Drag the red edges of cut regions to adjust. Active word highlights during playback.
+      </span>
+      <span class="legend">
+        <span><span class="legend-dot" style="background:var(--panel-2);border:1px solid var(--border)"></span>keep</span>
+        <span><span class="legend-dot" style="background:var(--filler)"></span>filler</span>
+        <span><span class="legend-dot" style="background:var(--accent)"></span>duplicate suggestion</span>
+        <span><span class="legend-dot" style="background:var(--cut)"></span>cut</span>
+      </span>
+    </div>
+    <div class="words" id="words"></div>
+    <div class="notes" id="notes"></div>
+  </div>
+</div>
+
+<h2>Outputs <span style="color:#444">— what gets written when you hit save / splice</span></h2>
+<div class="row row-3">
+  <div class="card">
+    <div class="card-title">
+      <h3>cuts.json (final)</h3>
+      <span class="meta" id="outCutsMeta">0 regions</span>
+    </div>
+    <pre class="code" id="outputCuts"></pre>
+    <p class="card-hint">Overwritten by the editor next to <code>transcript.json</code> on save.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <h3>audio/voiceover-cleaned.wav</h3>
+      <span class="meta" id="outWavMeta">7.10s</span>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-label">duration</div>
+        <div class="stat-val" id="statDur">7.10s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">saved</div>
+        <div class="stat-val" id="statSaved">0.00s</div>
+      </div>
+    </div>
+    <div class="wav-mini"><canvas id="outputWave"></canvas></div>
+    <p class="card-hint">Spliced by <code>tools/audio-splice</code> via ffmpeg concat from cut regions.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <h3>transcript-cleaned.json</h3>
+      <span class="meta" id="outJsonMeta">20 words</span>
+    </div>
+    <pre class="code" id="outputJson"></pre>
+    <p class="card-hint">Same schema, cut words dropped, timestamps re-numbered. Feeds the hyperframes pipeline.</p>
+  </div>
+</div>
+
+<div class="prompt-card">
+  <div class="prompt-head">
+    <h2 style="margin:0">Prompt to build this tool</h2>
+    <button id="copyBtn" class="primary">Copy prompt</button>
+  </div>
+  <div class="prompt-text" id="prompt"></div>
+</div>
+
+<div id="dragTooltip" class="drag-tooltip" style="display:none"></div>
+
+<script>
+const SAMPLE = [
+  { text: "The",          start: 0.20, end: 0.40, type: "word" },
+  { text: "relationship", start: 0.42, end: 1.00, type: "word" },
+  { text: "between",      start: 1.02, end: 1.30, type: "word" },
+  { text: "letters",      start: 1.32, end: 1.70, type: "word" },
+  { text: "is",           start: 1.72, end: 1.85, type: "word" },
+  { text: "let",          start: 2.10, end: 2.25, type: "word" },
+  { text: "me",           start: 2.27, end: 2.37, type: "word" },
+  { text: "try",          start: 2.39, end: 2.55, type: "word" },
+  { text: "that",         start: 2.57, end: 2.70, type: "word" },
+  { text: "again",        start: 2.72, end: 3.00, type: "word" },
+  { text: "The",          start: 3.50, end: 3.70, type: "word" },
+  { text: "relationship", start: 3.72, end: 4.30, type: "word" },
+  { text: "between",      start: 4.32, end: 4.60, type: "word" },
+  { text: "letters",      start: 4.62, end: 5.00, type: "word" },
+  { text: "is",           start: 5.02, end: 5.15, type: "word" },
+  { text: "uh",           start: 5.30, end: 5.45, type: "word" },
+  { text: "the",          start: 5.65, end: 5.80, type: "word" },
+  { text: "foundation",   start: 5.82, end: 6.30, type: "word" },
+  { text: "of",           start: 6.32, end: 6.45, type: "word" },
+  { text: "typography",   start: 6.47, end: 7.10, type: "word" },
+];
+const FILLERS = new Set(["uh", "um", "er", "ah", "like"]);
+const TOTAL_DUR = 7.10;
+const SNAP_MS = 120; // snap-to-word threshold
+
+const state = {
+  preset: "false-start",
+  cutWords: new Set(),
+  optDuplicate: true,
+  optFiller: true,
+  optManual: true,
+  isPlaying: false,
+  playheadTime: 0,
+  activeWordIdx: -1,
+  resumeCuts: false,
+  zoom: 1.0,
+};
+
+function detectDuplicates(words) {
+  const N = words.length;
+  const flagged = new Set();
+  const ranges = [];
+  for (let i = 0; i < N; i++) {
+    if (flagged.has(i)) continue;
+    let bestK = 0, bestJ = -1;
+    for (let j = i + 3; j < N; j++) {
+      let k = 0;
+      while (i + k < j && j + k < N &&
+             words[i + k].text.toLowerCase() === words[j + k].text.toLowerCase()) k++;
+      if (k > bestK && k >= 3) { bestK = k; bestJ = j; }
+    }
+    if (bestK >= 3) {
+      for (let k = 0; k < bestK; k++) flagged.add(i + k);
+      for (let g = i + bestK; g < bestJ; g++) flagged.add(g);
+      ranges.push({ firstStart: i, firstEnd: i + bestK - 1,
+                    gapEnd: bestJ - 1, secondStart: bestJ,
+                    secondEnd: bestJ + bestK - 1, len: bestK });
+    }
+  }
+  return { flagged, ranges };
+}
+
+function detectFillers(words) {
+  const flagged = new Set();
+  words.forEach((w, i) => {
+    if (FILLERS.has(w.text.toLowerCase())) flagged.add(i);
+  });
+  return flagged;
+}
+
+function applyPreset(name) {
+  state.preset = name;
+  state.cutWords = new Set();
+  state.resumeCuts = false;
+  if (name === "false-start") {
+    if (state.optDuplicate) detectDuplicates(SAMPLE).flagged.forEach(i => state.cutWords.add(i));
+  } else if (name === "messy") {
+    if (state.optDuplicate) detectDuplicates(SAMPLE).flagged.forEach(i => state.cutWords.add(i));
+    if (state.optFiller) detectFillers(SAMPLE).forEach(i => state.cutWords.add(i));
+  } else if (name === "resume") {
+    if (state.optDuplicate) detectDuplicates(SAMPLE).flagged.forEach(i => state.cutWords.add(i));
+    state.resumeCuts = true;
+  }
+  document.querySelectorAll("[data-preset]").forEach(b =>
+    b.classList.toggle("active", b.dataset.preset === name));
+  renderAll();
+}
+
+function runAutoDetect() {
+  if (state.optDuplicate) detectDuplicates(SAMPLE).flagged.forEach(i => state.cutWords.add(i));
+  if (state.optFiller) detectFillers(SAMPLE).forEach(i => state.cutWords.add(i));
+  renderAll();
+}
+
+function buildRegionsWithIndices() {
+  const regions = [];
+  let cur = null;
+  for (let i = 0; i < SAMPLE.length; i++) {
+    if (state.cutWords.has(i)) {
+      if (!cur) cur = { startIdx: i, endIdx: i, indices: [i] };
+      else { cur.endIdx = i; cur.indices.push(i); }
+    } else {
+      if (cur) { regions.push(finalizeRegion(cur)); cur = null; }
+    }
+  }
+  if (cur) regions.push(finalizeRegion(cur));
+  return regions;
+}
+function buildCutRegions() {
+  return buildRegionsWithIndices().map(r => ({
+    start: r.start, end: r.end, reason: r.reason
+  }));
+}
+function finalizeRegion(r) {
+  const startWord = SAMPLE[r.startIdx];
+  const endWord = SAMPLE[r.endIdx];
+  const prev = SAMPLE[r.startIdx - 1];
+  const next = SAMPLE[r.endIdx + 1];
+  const start = Math.max(prev ? (prev.end + 0.05) : 0, startWord.start - 0.05);
+  const end = Math.min(next ? (next.start - 0.05) : TOTAL_DUR, endWord.end + 0.05);
+  let reason = "manual";
+  let allFiller = true;
+  for (let i = r.startIdx; i <= r.endIdx; i++) {
+    if (!FILLERS.has(SAMPLE[i].text.toLowerCase())) { allFiller = false; break; }
+  }
+  if (allFiller) reason = "filler";
+  else if (r.endIdx - r.startIdx >= 2) reason = "duplicate take";
+  return { ...r, start: round2(start), end: round2(end), reason };
+}
+const round2 = n => Math.round(n * 100) / 100;
+
+// ---------- Snap to word boundary ----------
+function snapToBoundary(time) {
+  const boundaries = [{ t: 0, label: "start" }, { t: TOTAL_DUR, label: "end" }];
+  SAMPLE.forEach((w, i) => {
+    boundaries.push({ t: w.start, label: `before "${w.text}"`, idx: i, edge: "start" });
+    boundaries.push({ t: w.end, label: `after "${w.text}"`, idx: i, edge: "end" });
+  });
+  let best = boundaries[0], bestDist = Infinity;
+  for (const b of boundaries) {
+    const d = Math.abs(time - b.t);
+    if (d < bestDist) { bestDist = d; best = b; }
+  }
+  return (bestDist * 1000 <= SNAP_MS) ? best : { t: time, label: "free" };
+}
+
+// ---------- Drag handles for cut region edges ----------
+let dragCtx = null;
+function attachEdgeDrag(handleEl, region, edge) {
+  handleEl.addEventListener("mousedown", e => {
+    e.preventDefault(); e.stopPropagation();
+    handleEl.classList.add("dragging");
+    const wfWidth = document.getElementById("waveform").clientWidth;
+    const pxPerSec = wfWidth / TOTAL_DUR;
+    const initialTime = edge === "left" ? region.start : region.end;
+    dragCtx = {
+      startClientX: e.clientX, initialTime, pxPerSec,
+      regionStartIdx: region.startIdx, regionEndIdx: region.endIdx, edge,
+      handleEl, region,
+    };
+    document.addEventListener("mousemove", onDragMove);
+    document.addEventListener("mouseup", onDragEnd);
+  });
+}
+function onDragMove(e) {
+  if (!dragCtx) return;
+  const dx = e.clientX - dragCtx.startClientX;
+  const dt = dx / dragCtx.pxPerSec;
+  const rawTime = Math.max(0, Math.min(TOTAL_DUR, dragCtx.initialTime + dt));
+  const snap = snapToBoundary(rawTime);
+  // live update region overlay width
+  const region = dragCtx.region;
+  const wfWidth = document.getElementById("waveform").clientWidth;
+  let newStart = region.start, newEnd = region.end;
+  if (dragCtx.edge === "left") newStart = snap.t;
+  else newEnd = snap.t;
+  if (newStart > newEnd) { const tmp = newStart; newStart = newEnd; newEnd = tmp; }
+  const overlay = dragCtx.handleEl.parentElement;
+  overlay.style.left = (newStart / TOTAL_DUR) * wfWidth + "px";
+  overlay.style.width = ((newEnd - newStart) / TOTAL_DUR) * wfWidth + "px";
+  // tooltip
+  const tt = document.getElementById("dragTooltip");
+  tt.style.display = "block";
+  tt.style.left = e.clientX + "px";
+  tt.style.top = e.clientY + "px";
+  tt.textContent = "";
+  const timeSpan = document.createElement("span");
+  timeSpan.textContent = snap.t.toFixed(2) + "s";
+  tt.appendChild(timeSpan);
+  if (snap.label !== "free") {
+    const tag = document.createElement("span");
+    tag.className = "snap-tag";
+    tag.textContent = "snap: " + snap.label;
+    tt.appendChild(tag);
+  }
+}
+function onDragEnd(e) {
+  if (!dragCtx) return;
+  const dx = e.clientX - dragCtx.startClientX;
+  const dt = dx / dragCtx.pxPerSec;
+  const rawTime = Math.max(0, Math.min(TOTAL_DUR, dragCtx.initialTime + dt));
+  const snap = snapToBoundary(rawTime);
+  const region = dragCtx.region;
+  let newStart = region.start, newEnd = region.end;
+  if (dragCtx.edge === "left") newStart = snap.t;
+  else newEnd = snap.t;
+  if (newStart > newEnd) { const tmp = newStart; newStart = newEnd; newEnd = tmp; }
+  // Recompute cutWords: remove words in this region, then add back all words
+  // whose midpoint falls inside the new boundaries.
+  dragCtx.region.indices.forEach(i => state.cutWords.delete(i));
+  SAMPLE.forEach((w, i) => {
+    const mid = (w.start + w.end) / 2;
+    if (mid >= newStart && mid <= newEnd) state.cutWords.add(i);
+  });
+  dragCtx.handleEl.classList.remove("dragging");
+  document.getElementById("dragTooltip").style.display = "none";
+  document.removeEventListener("mousemove", onDragMove);
+  document.removeEventListener("mouseup", onDragEnd);
+  dragCtx = null;
+  renderAll();
+}
+
+// ---------- Rendering ----------
+function renderAll() {
+  renderInputs();
+  renderWaveform();
+  renderCutOverlays();
+  renderWords();
+  renderNotes();
+  renderOutputs();
+  renderPrompt();
+}
+
+function renderInputs() {
+  drawWaveform(document.getElementById("inputWave"), SAMPLE, null, 0.35,
+               document.getElementById("inputWave").clientWidth);
+  const preview = SAMPLE.slice(0, 5).map(w =>
+    `    { "text": "${w.text}", "start": ${w.start}, "end": ${w.end}, "type": "word" }`
+  ).join(",\n");
+  const jsonText = `{\n  "language_code": "eng",\n  "words": [\n${preview},\n    // ... ${SAMPLE.length - 5} more words\n  ]\n}`;
+  document.getElementById("inputJson").textContent = jsonText;
+  document.getElementById("inJsonMeta").textContent = `${SAMPLE.length} words`;
+
+  const cutsEl = document.getElementById("inputCuts");
+  const cutsMeta = document.getElementById("inCutsMeta");
+  cutsEl.textContent = "";
+  // Show what the agent's first pass looks like (matches the false-start preset)
+  if (state.resumeCuts) {
+    cutsEl.textContent = `[\n  { "start": 0.15, "end": 3.45, "reason": "duplicate take" }\n]\n// session resumed`;
+    cutsMeta.textContent = "1 region · resumed";
+  } else if (state.preset === "clean") {
+    const span = document.createElement("span");
+    span.className = "empty";
+    span.textContent = "// agent found nothing to cut — clean take";
+    cutsEl.appendChild(span);
+    cutsMeta.textContent = "0 regions";
+  } else {
+    const previewRegions = state.preset === "messy"
+      ? `[\n  { "start": 0.15, "end": 3.45, "reason": "duplicate take" },\n  { "start": 5.20, "end": 5.60, "reason": "filler" }\n]`
+      : `[\n  { "start": 0.15, "end": 3.45, "reason": "duplicate take" }\n]`;
+    cutsEl.textContent = previewRegions + "\n// generated by cut-decider agent";
+    cutsMeta.textContent = state.preset === "messy" ? "2 regions · agent" : "1 region · agent";
+  }
+}
+
+function drawWaveform(canvas, words, cuts, ampScale, widthOverride) {
+  if (ampScale === undefined) ampScale = 1.0;
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  const w = widthOverride || canvas.clientWidth;
+  const h = canvas.clientHeight;
+  canvas.style.width = w + "px";
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+
+  const barW = 2, gap = 1;
+  const nBars = Math.floor(w / (barW + gap));
+  const seed = 42;
+  const rand = (i) => {
+    const x = Math.sin(i * 12.9898 + seed) * 43758.5453;
+    return x - Math.floor(x);
+  };
+  for (let i = 0; i < nBars; i++) {
+    const t = (i / nBars) * TOTAL_DUR;
+    const inWord = words.find(wd => t >= wd.start && t <= wd.end);
+    const cutWord = cuts ? cuts.find(c => t >= c.start && t <= c.end) : null;
+    let amp;
+    if (inWord) amp = (0.4 + rand(i) * 0.6) * ampScale;
+    else amp = (0.05 + rand(i) * 0.10) * ampScale;
+    const barH = amp * h * 0.85;
+    ctx.fillStyle = cutWord ? "rgba(255,84,112,0.25)" : "rgba(110,168,255,0.55)";
+    ctx.fillRect(i * (barW + gap), (h - barH) / 2, barW, barH);
+  }
+}
+
+function renderWaveform() {
+  const scroll = document.getElementById("waveScroll");
+  const inner = document.getElementById("waveInner");
+  const baseW = scroll.clientWidth;
+  const targetW = Math.round(baseW * state.zoom);
+  inner.style.width = targetW + "px";
+  drawWaveform(document.getElementById("waveform"), SAMPLE, null, 1.0, targetW);
+  document.getElementById("durLabel").textContent = fmtTime(TOTAL_DUR);
+}
+
+function renderCutOverlays() {
+  const layer = document.getElementById("cutLayer");
+  while (layer.firstChild) layer.removeChild(layer.firstChild);
+  const w = document.getElementById("waveform").clientWidth;
+  const regions = buildRegionsWithIndices();
+  regions.forEach(r => {
+    const left = (r.start / TOTAL_DUR) * w;
+    const width = ((r.end - r.start) / TOTAL_DUR) * w;
+    const div = document.createElement("div");
+    div.className = "cut-overlay";
+    div.style.left = left + "px";
+    div.style.width = width + "px";
+    const label = document.createElement("div");
+    label.className = "cut-label";
+    label.textContent = r.reason;
+    div.appendChild(label);
+    const leftH = document.createElement("div");
+    leftH.className = "cut-handle left";
+    leftH.title = "Drag to adjust cut start (snaps to word boundaries)";
+    attachEdgeDrag(leftH, r, "left");
+    div.appendChild(leftH);
+    const rightH = document.createElement("div");
+    rightH.className = "cut-handle right";
+    rightH.title = "Drag to adjust cut end (snaps to word boundaries)";
+    attachEdgeDrag(rightH, r, "right");
+    div.appendChild(rightH);
+    layer.appendChild(div);
+  });
+}
+
+function renderWords() {
+  const wrap = document.getElementById("words");
+  while (wrap.firstChild) wrap.removeChild(wrap.firstChild);
+  const dupFlagged = state.optDuplicate ? detectDuplicates(SAMPLE).flagged : new Set();
+  const fillerFlagged = state.optFiller ? detectFillers(SAMPLE) : new Set();
+
+  SAMPLE.forEach((w, i) => {
+    const el = document.createElement("div");
+    el.className = "word";
+    el.dataset.idx = String(i);
+    if (fillerFlagged.has(i)) el.classList.add("filler");
+    if (dupFlagged.has(i)) el.classList.add("duplicate-suggest");
+    if (state.cutWords.has(i)) el.classList.add("cut");
+    if (state.activeWordIdx === i) el.classList.add("active");
+    el.appendChild(document.createTextNode(w.text));
+    const ts = document.createElement("span");
+    ts.className = "ts";
+    ts.textContent = w.start.toFixed(2);
+    el.appendChild(ts);
+    el.title = `${w.text} · ${w.start.toFixed(2)}s -> ${w.end.toFixed(2)}s` +
+               (state.cutWords.has(i) ? " · CUT (click to keep)" : " · click to cut");
+    el.addEventListener("click", () => {
+      if (!state.optManual && !state.cutWords.has(i)) return;
+      if (state.cutWords.has(i)) state.cutWords.delete(i);
+      else state.cutWords.add(i);
+      renderAll();
+    });
+    wrap.appendChild(el);
+  });
+}
+
+function setActiveWord(idx) {
+  if (state.activeWordIdx === idx) return;
+  state.activeWordIdx = idx;
+  const wrap = document.getElementById("words");
+  Array.from(wrap.children).forEach((c, i) => {
+    c.classList.toggle("active", i === idx);
+  });
+  if (idx >= 0) {
+    const el = wrap.children[idx];
+    if (el) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+}
+
+function renderNotes() {
+  const el = document.getElementById("notes");
+  while (el.firstChild) el.removeChild(el.firstChild);
+  const notes = [];
+  if (state.optDuplicate) {
+    const { ranges } = detectDuplicates(SAMPLE);
+    ranges.forEach(r => {
+      const phrase = SAMPLE.slice(r.firstStart, r.firstEnd + 1).map(w => w.text).join(" ");
+      notes.push({
+        cls: "suggest",
+        text: `Agent detected duplicate take: "${phrase}" repeats at ${SAMPLE[r.secondStart].start.toFixed(2)}s — flagged indices ${r.firstStart}..${r.gapEnd} for cut`
+      });
+    });
+  }
+  if (state.optFiller) {
+    const fil = detectFillers(SAMPLE);
+    if (fil.size > 0) {
+      const list = [...fil].map(i => `"${SAMPLE[i].text}" @ ${SAMPLE[i].start.toFixed(2)}s`).join(", ");
+      notes.push({ cls: "filler", text: `Filler words found: ${list}` });
+    }
+  }
+  notes.push({ cls: "tip", text: "Tip: drag the red handles on cut region edges to fine-tune. Edges snap to word boundaries within 120ms." });
+  if (state.zoom > 1) {
+    notes.push({ cls: "tip", text: `Waveform zoomed ${state.zoom.toFixed(1)}x — scroll horizontally to navigate, or zoom out to see the whole take.` });
+  }
+  notes.forEach(n => {
+    const d = document.createElement("div");
+    d.className = "note-item " + n.cls;
+    d.textContent = "-> " + n.text;
+    el.appendChild(d);
+  });
+}
+
+function renderOutputs() {
+  const regions = buildCutRegions();
+
+  const cutsLines = regions.map(r =>
+    `  { "start": ${r.start.toFixed(2)}, "end": ${r.end.toFixed(2)}, "reason": "${r.reason}" }`
+  ).join(",\n");
+  document.getElementById("outputCuts").textContent =
+    regions.length ? `[\n${cutsLines}\n]` : `[]`;
+  document.getElementById("outCutsMeta").textContent =
+    `${regions.length} region${regions.length === 1 ? "" : "s"}`;
+
+  const cutDur = regions.reduce((s, r) => s + (r.end - r.start), 0);
+  const remaining = Math.max(0, TOTAL_DUR - cutDur);
+  document.getElementById("statDur").textContent = fmtTime(remaining);
+  document.getElementById("statSaved").textContent = "-" + fmtTime(cutDur);
+  document.getElementById("outWavMeta").textContent = fmtTime(remaining);
+  drawWaveform(document.getElementById("outputWave"), SAMPLE, regions, 0.35,
+               document.getElementById("outputWave").clientWidth);
+
+  const kept = [];
+  let cumCut = 0;
+  let regionIdx = 0;
+  SAMPLE.forEach((w, i) => {
+    while (regionIdx < regions.length && w.start > regions[regionIdx].end) {
+      cumCut += regions[regionIdx].end - regions[regionIdx].start;
+      regionIdx++;
+    }
+    if (!state.cutWords.has(i)) {
+      kept.push({ text: w.text,
+                  start: round2(w.start - cumCut),
+                  end: round2(w.end - cumCut) });
+    }
+  });
+  const preview = kept.slice(0, 6).map(w =>
+    `    { "text": "${w.text}", "start": ${w.start}, "end": ${w.end} }`
+  ).join(",\n");
+  const more = kept.length > 6 ? `,\n    // ... ${kept.length - 6} more` : "";
+  document.getElementById("outputJson").textContent =
+    `{\n  "words": [\n${preview}${more}\n  ]\n}`;
+  document.getElementById("outJsonMeta").textContent = `${kept.length} words`;
+}
+
+function renderPrompt() {
+  const regions = buildCutRegions();
+  const cutDur = regions.reduce((s, r) => s + (r.end - r.start), 0);
+  const features = [];
+  if (state.optDuplicate) features.push("agent generates initial cuts.json (cut-decider subagent reads transcript.json, identifies duplicate takes by semantic + lexical match, off-topic tangents, fragments)");
+  if (state.optFiller) features.push("agent also flags filler words (uh, um, er, ah, like) in its cuts.json");
+  if (state.optManual) features.push("manual word-level cuts (click any word chip to toggle cut/keep)");
+
+  const lines = [];
+  lines.push(`Build a local web tool at tools/audio-editor/ using Vite + React + wavesurfer.js v7 + pnpm.`);
+  lines.push(``);
+  lines.push(`Flow: agent generates initial cuts.json, then human opens editor to fine-tune.`);
+  lines.push(``);
+  lines.push(`Inputs (read from videos/<slug>/):`);
+  lines.push(`  - audio/voiceover.mp3`);
+  lines.push(`  - transcript.json (Scribe v2 schema: { words: [{ text, start, end, type }] })`);
+  lines.push(`  - cuts.json (agent-generated first pass, pre-loaded into the editor)`);
+  lines.push(``);
+  lines.push(`Editor UI:`);
+  lines.push(`  - wavesurfer.js v7 waveform with the regions plugin for cut markers`);
+  lines.push(`  - zoom slider (1x-8x or use scroll-wheel + Cmd) — wavesurfer.zoom(pxPerSec)`);
+  lines.push(`  - horizontal scroll on the zoomed waveform; minimap plugin for overview`);
+  lines.push(`  - draggable + resizable region edges (regions plugin: drag: true, resize: true)`);
+  lines.push(`  - snap-to-word boundaries on drag: on the region 'update' event, find the nearest`);
+  lines.push(`    word.start or word.end in transcript.json and snap if within ~120ms`);
+  lines.push(`  - word chips strip below the waveform — clicking toggles cut state`);
+  lines.push(`  - karaoke-style active word highlight during playback (lit chip, auto-scrolled into view)`);
+  lines.push(`  - playback skips over cut regions so you can preview cleaned audio without exporting`);
+  lines.push(`  - auto-pan waveform horizontally so the playhead stays in view at any zoom level`);
+  if (features.length) {
+    lines.push(``);
+    lines.push(`Features to include:`);
+    features.forEach(f => lines.push(`  - ${f}`));
+  }
+  lines.push(``);
+  lines.push(`Outputs (written next to the inputs):`);
+  lines.push(`  - cuts.json — array of { start, end, reason } regions (regions extend ~50ms into surrounding silence)`);
+  lines.push(`  - audio/voiceover-cleaned.wav — spliced by sibling tools/audio-splice/ via ffmpeg concat`);
+  lines.push(`  - transcript-cleaned.json — same schema, cut words dropped, kept-word timestamps re-numbered`);
+  if (regions.length) {
+    lines.push(``);
+    lines.push(`Reference scenario from the playground:`);
+    lines.push(`  - sample input: ${SAMPLE.length} words across ${fmtTime(TOTAL_DUR)}`);
+    lines.push(`  - resulting cuts: ${regions.length} region${regions.length === 1 ? "" : "s"} totaling ${fmtTime(cutDur)} removed`);
+    lines.push(`  - cleaned duration: ${fmtTime(TOTAL_DUR - cutDur)}`);
+  }
+  lines.push(``);
+  lines.push(`Backend: a small Node script in tools/audio-editor/server.ts that serves the Vite build and exposes /api/load?slug=... and /api/save endpoints. One process, one \`pnpm dev\`.`);
+  lines.push(``);
+  lines.push(`Agent integration: tools/cut-decider/ (port from learn-motion-canvas/skills/clean-audio) — reads transcript.json, calls Claude with a cut-policy prompt, writes cuts.json. The editor invokes it on demand via a 'Re-run agent' button.`);
+  document.getElementById("prompt").textContent = lines.join("\n");
+}
+
+function fmtTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = (s - m * 60).toFixed(2);
+  return `${m}:${sec.padStart(5, "0")}`;
+}
+
+let playRaf = null;
+function togglePlay() {
+  const btn = document.getElementById("btnPlay");
+  if (state.isPlaying) {
+    state.isPlaying = false;
+    btn.textContent = "▶ Play";
+    document.getElementById("playhead").style.display = "none";
+    setActiveWord(-1);
+    cancelAnimationFrame(playRaf);
+    return;
+  }
+  state.isPlaying = true;
+  btn.textContent = "■ Stop";
+  const ph = document.getElementById("playhead");
+  ph.style.display = "block";
+  state.playheadTime = 0;
+  const regions = buildCutRegions();
+  const start = performance.now();
+  const step = (now) => {
+    if (!state.isPlaying) return;
+    let t = (now - start) / 1000;
+    for (const r of regions) {
+      if (t >= r.start && t < r.end) t = r.end + (t - r.start);
+    }
+    if (t >= TOTAL_DUR) { togglePlay(); return; }
+    state.playheadTime = t;
+    const wfWidth = document.getElementById("waveform").clientWidth;
+    const x = (t / TOTAL_DUR) * wfWidth;
+    ph.style.left = x + "px";
+    // auto-pan: keep playhead visible
+    const scroll = document.getElementById("waveScroll");
+    const viewLeft = scroll.scrollLeft;
+    const viewRight = viewLeft + scroll.clientWidth;
+    if (x < viewLeft + 50) scroll.scrollLeft = Math.max(0, x - 50);
+    else if (x > viewRight - 80) scroll.scrollLeft = x - scroll.clientWidth + 80;
+    // active word
+    let activeIdx = -1;
+    for (let i = 0; i < SAMPLE.length; i++) {
+      if (t >= SAMPLE[i].start && t <= SAMPLE[i].end) { activeIdx = i; break; }
+    }
+    setActiveWord(activeIdx);
+    playRaf = requestAnimationFrame(step);
+  };
+  playRaf = requestAnimationFrame(step);
+}
+
+document.querySelectorAll("[data-preset]").forEach(btn => {
+  btn.addEventListener("click", () => applyPreset(btn.dataset.preset));
+});
+document.getElementById("btnPlay").addEventListener("click", togglePlay);
+document.getElementById("btnAuto").addEventListener("click", runAutoDetect);
+document.getElementById("btnClear").addEventListener("click", () => {
+  state.cutWords = new Set();
+  renderAll();
+});
+["optDuplicate", "optFiller", "optManual"].forEach(id => {
+  document.getElementById(id).addEventListener("change", e => {
+    state[id] = e.target.checked;
+    renderAll();
+  });
+});
+document.getElementById("zoomSlider").addEventListener("input", e => {
+  state.zoom = parseFloat(e.target.value);
+  document.getElementById("zoomVal").textContent = state.zoom.toFixed(1) + "x";
+  renderWaveform();
+  renderCutOverlays();
+});
+document.getElementById("copyBtn").addEventListener("click", () => {
+  navigator.clipboard.writeText(document.getElementById("prompt").textContent);
+  const b = document.getElementById("copyBtn");
+  const original = b.textContent;
+  b.textContent = "Copied!";
+  b.classList.add("copied");
+  setTimeout(() => { b.textContent = original; b.classList.remove("copied"); }, 1400);
+});
+window.addEventListener("resize", () => {
+  renderWaveform(); renderCutOverlays(); renderInputs(); renderOutputs();
+});
+
+applyPreset("false-start");
+</script>
+</body>
+</html>
