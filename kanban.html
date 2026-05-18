@@ -1295,11 +1295,28 @@
 
                 // 'published' is derived from stage, not scanned — if the card
                 // is in the published column it is, by definition, published.
+                // 'translate' is likewise stage-derived: partial while the card
+                // sits in the Translate column (work in progress), present once
+                // the human has moved it past Translate. We deliberately do not
+                // probe `multi-lingual/srt/` — SRT files on disk are not a
+                // sufficient signal that the localization stage is done.
                 function effectiveArtifactStatus(card, artifactId) {
                     if (artifactId === "published") {
                         return card.stage === "published"
                             ? "present"
                             : "missing";
+                    }
+                    if (artifactId === "translate") {
+                        const stageIdx = STAGES.findIndex(
+                            (s) => s.id === card.stage,
+                        );
+                        const translateIdx = STAGES.findIndex(
+                            (s) => s.id === "translate",
+                        );
+                        if (stageIdx < 0 || stageIdx < translateIdx)
+                            return "missing";
+                        if (stageIdx === translateIdx) return "partial";
+                        return "present";
                     }
                     return card.artifacts?.[artifactId] || "missing";
                 }
@@ -2375,19 +2392,9 @@
                     return "partial";
                 }
 
-                async function translateStatus(dir) {
-                    try {
-                        const ml = await dir.getDirectoryHandle("multi-lingual");
-                        const srt = await ml.getDirectoryHandle("srt");
-                        for await (const entry of srt.values()) {
-                            if (entry.kind === "file") return "present";
-                        }
-                        return "missing";
-                    } catch (e) {
-                        if (e.name === "NotFoundError") return "missing";
-                        return "unknown";
-                    }
-                }
+                // Translate's status is stage-derived (see effectiveArtifactStatus).
+                // We deliberately do not scan multi-lingual/srt/ — SRT files
+                // alone are not a sufficient "done" signal for this stage.
 
                 async function renderStatus(dir) {
                     for (const folder of ["renders", "output"]) {
@@ -2488,7 +2495,6 @@
                                 compose: await composeStatus(entry),
                                 review: await reviewStatus(entry),
                                 thumbnail: await thumbnailStatus(entry),
-                                translate: await translateStatus(entry),
                                 render: await renderStatus(entry),
                             };
                             const suggestedStage = computeSuggested(artifacts);
