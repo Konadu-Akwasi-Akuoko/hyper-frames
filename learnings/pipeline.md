@@ -13,7 +13,12 @@ End-to-end pipeline used to produce `videos/how-does-captchas-work-2026-05-10/`.
         ↓
 2. /script-writer                 → outline.md, script.md
         ↓
-3. /voiceover-elevenlabs-v2       → audio/voiceover.mp3, transcript.json, voiceover.txt
+3a. /transcribe-and-plan-cuts     → transcript.json, cuts.json
+    (record your own voice —        (then edit in tools/audio-editor →
+     DEFAULT)                        render audio/voiceover.mp3)
+        — or —
+3b. /voiceover-elevenlabs-v2      → audio/voiceover.mp3, transcript.json,
+    (TTS — alternative)             voiceover.txt
         ↓
 4. write anchors.txt + run narration-map tool
                                   → narration-map.json
@@ -31,7 +36,7 @@ End-to-end pipeline used to produce `videos/how-does-captchas-work-2026-05-10/`.
 10. publish                       → shareable link
 ```
 
-Stages 1–4 are sequential and one-shot. Stage 6 is the iterative authoring loop. Stage 8 (thumbnails) can run any time after stage 2.
+Stages 1–4 are sequential and one-shot (Stage 3 is one of two paths — see below). Stage 6 is the iterative authoring loop. Stage 8 (thumbnails) can run any time after stage 2.
 
 ---
 
@@ -106,7 +111,38 @@ each broken in turn, and the GPT-4 / TaskRabbit incident as climax.
 
 ## Stage 3 — Voiceover + transcript
 
-**Skill:** `/voiceover-elevenlabs-v2` (project default)
+Two paths. **Recording your own voice is the default.** TTS is for when you need clean repeatable narration without a mic, faster iteration, or multi-language coverage.
+
+### Stage 3a — Record your voice (DEFAULT)
+
+**Skill:** `/transcribe-and-plan-cuts`
+**Editor:** `tools/audio-editor` (Bun + Vite, runs on `:5173`)
+
+**What it produces:**
+- `audio/raw.mp3` — your recording (user-provided; the skill expects it here)
+- `transcript.json` — word-level Scribe v2 transcript of the raw recording
+- `cuts.json` — first-pass cut plan in the audio-editor schema (the `audio-cut-decider` agent writes this)
+
+**What to type:**
+
+1. Drop the recording at `<video-dir>/audio/raw.mp3`.
+2. Invoke the skill:
+   ```
+   /transcribe-and-plan-cuts
+   ```
+3. Approve the cost checkpoint (ffprobe shows duration; Scribe is ~$0.40/hour).
+4. Open `http://localhost:5173/#/edit/<slug>-<date>` (`bun dev` from `tools/audio-editor/` must already be running). Scrub the proposed cuts, drag region edges to refine, delete cuts you disagree with, add ones the agent missed. Click **Save cuts**.
+5. Render the final `audio/voiceover.mp3` from `audio/raw.mp3` + `cuts.json`. **Phase A leaves this manual** — use ffmpeg's concat demuxer to splice the kept segments. A future `apply-recording-cuts` skill will automate this.
+
+**Pitfalls:**
+- The skill never modifies `audio/raw.mp3`. That's the source of truth — re-runs are non-destructive on the audio.
+- `bun dev` for the audio-editor must already be running (see `tools/audio-editor/CLAUDE.md`). The skill doesn't start it.
+- Re-running the skill clobbers `cuts.json`, which destroys any manual edits the editor has saved. The skill warns at the checkpoint when an existing `cuts.json` is about to be overwritten — heed it.
+- Audio events in the transcript (`[cough]`, `[breath]`, `[mouth_noise]`) are first-class — the cut-decider uses them. The audio-editor's transcript schema was extended in 2026-05-19 to accept `audio_event` rows; pre-patch loads will Zod-fail.
+
+### Stage 3b — TTS (alternative)
+
+**Skill:** `/voiceover-elevenlabs-v2` (project default for the TTS path)
 
 When to use `v3` instead: only when the video genuinely needs **inline audio tags for per-beat emotional shifts**. Long-form prose videos = v2.
 
@@ -124,7 +160,7 @@ Voice script.md.
 
 The skill runs a **hard checkpoint** for annotation review before spending API credits. Approve the annotated `voiceover.txt`, then it generates the audio + transcript.
 
-**Captchas example:**
+**Captchas example (TTS path):**
 - `audio/voiceover.mp3` at 06:50 (6:27 runtime)
 - `transcript.json` at 06:51
 - `voiceover.txt` at 12:45 (overwritten later — that's fine)
@@ -335,8 +371,8 @@ npm run publish     # or: npx hyperframes publish
 | 1 | YouTube SEO research | `seo/research.json` | 05:53 |
 | 2 | Script writing | `outline.md` | 05:54 |
 | 2 | Script writing | `script.md` | 06:28 |
-| 3 | Voiceover + transcript | `audio/voiceover.mp3` | 06:50 |
-| 3 | Voiceover + transcript | `transcript.json` | 06:51 |
+| 3b | Voiceover + transcript (TTS path) | `audio/voiceover.mp3` | 06:50 |
+| 3b | Voiceover + transcript (TTS path) | `transcript.json` | 06:51 |
 | 4 | Anchors + narration map | `anchors.txt` | 06:51 |
 | 4 | Anchors + narration map | `narration-map.json` | 06:51 |
 | 5 | Design.md (slim, take 2) | `design.md` | 20:48 |
