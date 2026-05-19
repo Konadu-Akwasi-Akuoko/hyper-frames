@@ -15,6 +15,7 @@ from __future__ import annotations
 import datetime as dt
 from typing import Any
 
+from googleapiclient.errors import HttpError
 from mcp.server.fastmcp import FastMCP
 
 from .. import auth, cache, clients
@@ -189,8 +190,16 @@ def register(app: FastMCP) -> None:
         Args:
             days: Window size.
             video_id: Optional — restrict to one video.
-            detail: If True, also returns the per-source detail breakdown
-                (capped 25, sort required).
+            detail: If True, additionally issue one filtered query per
+                source type (capped at 25 detail rows per type) and
+                collect into ``by_detail`` keyed by source type. The
+                ``insightTrafficSourceDetail`` dimension is rejected
+                by the Analytics API without a matching
+                ``insightTrafficSourceType==<TYPE>`` filter, which is
+                why this is fanned out rather than asked for once.
+                Source types that don't support a detail breakdown
+                surface as ``{"error": "http_error", ...}`` entries
+                inside ``by_detail`` rather than failing the whole call.
         """
         start, end = _date_window(days)
         filt = f"video=={video_id}" if video_id else None
@@ -200,21 +209,48 @@ def register(app: FastMCP) -> None:
             filters=filt,
             start=start, end=end,
         )
+        by_type_rows = _rows_with_headers(top)
         out: dict[str, Any] = {
             "window": {"start": start, "end": end, "days": days},
             "video_id": video_id,
-            "by_type": _rows_with_headers(top),
+            "by_type": by_type_rows,
         }
         if detail:
-            det = _query(
-                metrics="views,estimatedMinutesWatched",
-                dimensions="insightTrafficSourceDetail",
-                filters=filt,
-                start=start, end=end,
-                sort="-views",
-                max_results=25,
-            )
-            out["by_detail"] = _rows_with_headers(det)
+            by_detail: dict[str, Any] = {}
+            for row in by_type_rows:
+                src = row.get("insightTrafficSourceType")
+                if not src:
+                    continue
+                type_filt = f"insightTrafficSourceType=={src}"
+                combined = f"{filt};{type_filt}" if filt else type_filt
+                try:
+                    det = _query(
+                        metrics="views,estimatedMinutesWatched",
+                        dimensions="insightTrafficSourceDetail",
+                        filters=combined,
+                        start=start, end=end,
+                        sort="-views",
+                        max_results=25,
+                    )
+                    by_detail[src] = _rows_with_headers(det)
+                except HttpError as e:
+                    status = getattr(e.resp, "status", 0) or 0
+                    if status == 400:
+                        # Either the source type fundamentally doesn't expose
+                        # a detail dimension (e.g. NO_LINK_OTHER) or the
+                        # sample is below YouTube's privacy threshold.
+                        # Either way: collapse to a compact marker so the
+                        # payload stays readable.
+                        by_detail[src] = {
+                            "detail_unavailable": True,
+                            "http_status": 400,
+                            "reason": ("Source type does not support a detail "
+                                       "breakdown, or the sample is below "
+                                       "YouTube's privacy threshold."),
+                        }
+                    else:
+                        by_detail[src] = clients.http_error_payload(e)
+            out["by_detail"] = by_detail
         return out
 
     @app.tool()
@@ -315,7 +351,10 @@ def register(app: FastMCP) -> None:
         """Compare a small set of videos on chosen metrics over a window.
 
         Args:
-            video_ids: 2-50 video IDs.
+            video_ids: 1-200 video IDs. A single-ID call is permitted —
+                the underlying ``reports.query`` returns a one-row table
+                for that video, which is useful as a degenerate case
+                even if "compare" of one is technically a misnomer.
             metrics: List of metric names.
             days: Window size.
         """
