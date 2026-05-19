@@ -62,6 +62,7 @@ def _read_image_dimensions(path: Path) -> tuple[int, int] | None:
 
 def register(app: FastMCP) -> None:
     @app.tool()
+    @clients.http_safe
     def video_update_metadata(video_id: str,
                               title: str | None = None,
                               description: str | None = None,
@@ -160,6 +161,7 @@ def register(app: FastMCP) -> None:
                 "previous_privacy": prev_privacy}
 
     @app.tool()
+    @clients.http_safe
     def video_set_thumbnail(video_id: str, path: str) -> dict:
         """Upload a custom thumbnail for a video.
 

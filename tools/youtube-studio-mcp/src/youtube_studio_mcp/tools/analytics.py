@@ -77,6 +77,7 @@ def _rows_with_headers(resp: dict) -> list[dict]:
 
 def register(app: FastMCP) -> None:
     @app.tool()
+    @clients.http_safe
     def analytics_query(metrics: str, start_date: str, end_date: str,
                         dimensions: str | None = None,
                         filters: str | None = None,
@@ -112,6 +113,7 @@ def register(app: FastMCP) -> None:
         }
 
     @app.tool()
+    @clients.http_safe
     def top_videos(metric: str = "estimatedMinutesWatched", days: int = 28,
                    n: int = 10) -> dict:
         """Top N videos for the channel by a chosen metric, hydrated with titles.
@@ -162,6 +164,7 @@ def register(app: FastMCP) -> None:
                 "metric": metric, "rows": rows}
 
     @app.tool()
+    @clients.http_safe
     def retention_curve(video_id: str) -> dict:
         """Audience-retention curve for one video (lifetime).
 
@@ -183,6 +186,7 @@ def register(app: FastMCP) -> None:
         return {"video_id": video_id, "rows": _rows_with_headers(resp)}
 
     @app.tool()
+    @clients.http_safe
     def traffic_sources(days: int = 28, video_id: str | None = None,
                         detail: bool = False) -> dict:
         """Traffic-source breakdown for the channel or one video.
@@ -254,6 +258,7 @@ def register(app: FastMCP) -> None:
         return out
 
     @app.tool()
+    @clients.http_safe
     def geo_breakdown(metric: str = "views", days: int = 28,
                       level: str = "country") -> dict:
         """Geographic breakdown by country, province, or city.
@@ -278,6 +283,7 @@ def register(app: FastMCP) -> None:
                 "rows": _rows_with_headers(resp)}
 
     @app.tool()
+    @clients.http_safe
     def device_breakdown(days: int = 28) -> dict:
         """Views + watch time split by device type and operating system."""
         start, end = _date_window(days)
@@ -291,6 +297,7 @@ def register(app: FastMCP) -> None:
                 "rows": _rows_with_headers(resp)}
 
     @app.tool()
+    @clients.http_safe
     def demographics(days: int = 28) -> dict:
         """Viewer percentage by age group × gender."""
         start, end = _date_window(days)
@@ -303,6 +310,7 @@ def register(app: FastMCP) -> None:
                 "rows": _rows_with_headers(resp)}
 
     @app.tool()
+    @clients.http_safe
     def subs_delta(days: int = 28, granularity: str = "day") -> dict:
         """Subscribers gained vs lost over time.
 
@@ -323,6 +331,7 @@ def register(app: FastMCP) -> None:
                 "rows": _rows_with_headers(resp)}
 
     @app.tool()
+    @clients.http_safe
     def revenue_summary(days: int = 28, currency: str = "USD") -> dict:
         """Estimated revenue, ad impressions, CPM for the window.
 
@@ -346,6 +355,7 @@ def register(app: FastMCP) -> None:
                 "rows": _rows_with_headers(resp)}
 
     @app.tool()
+    @clients.http_safe
     def compare_videos(video_ids: list[str], metrics: list[str],
                        days: int = 28) -> dict:
         """Compare a small set of videos on chosen metrics over a window.
@@ -373,6 +383,7 @@ def register(app: FastMCP) -> None:
     # ---- groups CRUD -------------------------------------------------------
 
     @app.tool()
+    @clients.http_safe
     def group_list() -> dict:
         """List Analytics groups defined for the channel.
 
@@ -387,6 +398,7 @@ def register(app: FastMCP) -> None:
         return {"items": resp.get("items") or []}
 
     @app.tool()
+    @clients.http_safe
     def group_create(name: str, item_ids: list[str],
                      item_type: str = "video") -> dict:
         """Create a new Analytics group and populate it with items.
@@ -428,6 +440,7 @@ def register(app: FastMCP) -> None:
         return {"group": group, "items_added": len(added)}
 
     @app.tool()
+    @clients.http_safe
     def group_items(group_id: str) -> dict:
         """List items in an Analytics group."""
         resp = clients.run(
@@ -437,6 +450,7 @@ def register(app: FastMCP) -> None:
         return {"items": resp.get("items") or []}
 
     @app.tool()
+    @clients.http_safe
     def group_delete(group_id: str) -> dict:
         """Delete an Analytics group (does not affect the videos themselves)."""
         clients.run(
