@@ -168,6 +168,11 @@ The pipeline ships with:
   annotations into a native HyperFrames audio sub-composition at
   `compositions/sfx.html`.
 
+Assets staged into `videos/<slug>/assets/sfx/` are **relative symlinks** into
+`sound-effects/`, not copies. `sound-effects/` must stay at the repo root —
+moving it, or shipping a video folder to a machine without the library,
+breaks playback in both preview and render.
+
 Invoke the skill when visuals are done and you want SFX:
 
 > "add sound design to this video" / "score this composition" / "do the sfx pass"
