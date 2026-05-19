@@ -107,9 +107,20 @@ def _conn() -> Iterator[sqlite3.Connection]:
         conn.close()
 
 
+def _cost_of(endpoint: str) -> tuple[int, bool]:
+    """Internal: return (units, is_unknown).
+
+    Unknown endpoints default to 1 unit but flag the caller so
+    `cost_preview` can surface a warning instead of under-reporting silently.
+    """
+    if endpoint in COSTS:
+        return COSTS[endpoint], False
+    return 1, True
+
+
 def cost_of(endpoint: str) -> int:
     """Look up the per-call quota cost for an endpoint. Unknown → 1."""
-    return COSTS.get(endpoint, 1)
+    return _cost_of(endpoint)[0]
 
 
 def record(endpoint: str, multiplier: int = 1) -> int:
@@ -148,9 +159,10 @@ def status(cap: int = DAILY_CAP_DEFAULT) -> dict:
 
 
 def preview(endpoint: str, multiplier: int = 1, cap: int = DAILY_CAP_DEFAULT) -> dict:
-    cost = cost_of(endpoint) * multiplier
+    cost_per, unknown = _cost_of(endpoint)
+    cost = cost_per * multiplier
     rem = remaining(cap)
-    return {
+    out = {
         "endpoint": endpoint,
         "multiplier": multiplier,
         "estimated_cost": cost,
@@ -158,3 +170,10 @@ def preview(endpoint: str, multiplier: int = 1, cap: int = DAILY_CAP_DEFAULT) ->
         "remaining_after": max(0, rem - cost),
         "would_exceed_cap": cost > rem,
     }
+    if unknown:
+        out["endpoint_unknown"] = True
+        out["warning"] = (
+            f"Unknown endpoint {endpoint!r}; defaulted cost to 1 unit. "
+            "Check spelling against the YouTube Data API v3 endpoint list."
+        )
+    return out
