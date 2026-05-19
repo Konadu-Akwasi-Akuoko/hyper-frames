@@ -732,7 +732,8 @@
     <div class="meta">
       <div><strong>Maiden</strong> · why-text-is-hard · 2026-05-07</div>
       <div><strong>Second</strong> · how-does-captchas-work · 2026-05-10</div>
-      <div><strong>Updated</strong> · 2026-05-11</div>
+      <div><strong>Stage 3 default</strong> · recording (since 2026-05-19)</div>
+      <div><strong>Updated</strong> · 2026-05-19</div>
     </div>
   </header>
 
@@ -862,15 +863,60 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
         </div>
       </li>
 
-      <!-- 3 -->
-      <li class="stage" data-stage="3">
-        <div class="stage-bullet">03</div>
+      <!-- 3a — record your voice — DEFAULT -->
+      <li class="stage" data-stage="3a">
+        <div class="stage-bullet">3a</div>
         <div class="stage-card">
           <div class="stage-head">
-            <div class="stage-title">Voiceover + transcript</div>
-            <div class="stage-tag">/voiceover-elevenlabs-v2</div>
+            <div class="stage-title">Voiceover + transcript · record your voice <span style="color:var(--amber);font-size:11px;font-family:var(--font-mono);">// default</span></div>
+            <div class="stage-tag">/transcribe-and-plan-cuts</div>
           </div>
-          <p class="stage-summary">Project default. Use <code>/voiceover-elevenlabs-v3</code> only when a video needs inline audio tags for per-beat emotional shifts. Hard checkpoint for annotation review before spending API credits.</p>
+          <p class="stage-summary">Drop your recording at <code>audio/raw.mp3</code>. The skill transcribes it (Scribe v2), dispatches the <code>audio-cut-decider</code> agent to plan first-pass cuts, and hands you the <code>tools/audio-editor</code> URL to refine and save. <strong>Two paths exist for Stage 3</strong>; recording is the default — TTS (3b) below.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li>audio/raw.mp3 <em>(user-recorded)</em></li>
+            <li class="primary">transcript.json</li>
+            <li class="primary">cuts.json</li>
+          </ul>
+
+          <div class="section-label">Type</div>
+<pre class="code"><div class="code-head"><span>/transcribe-and-plan-cuts</span></div><div class="code-body"><span class="comment"># after dropping audio/raw.mp3 in the video folder</span>
+/transcribe-and-plan-cuts</div></pre>
+
+          <div class="section-label">Then</div>
+          <p style="font-size:12.5px;color:var(--fg-2);margin:0 0 16px;">
+            Approve the cost checkpoint, open
+            <code>http://localhost:5173/#/edit/&lt;slug&gt;-&lt;date&gt;</code>
+            (<code>bun dev</code> from <code>tools/audio-editor/</code> must be running),
+            scrub the proposed cuts, drag region edges, click <strong>Save cuts</strong>.
+            Then render the final <code>audio/voiceover.mp3</code> from
+            <code>audio/raw.mp3</code> + <code>cuts.json</code> —
+            <strong>Phase A leaves this manual</strong> (ffmpeg concat); a future
+            <code>apply-recording-cuts</code> skill will automate it.
+          </p>
+
+          <div class="pitfall">
+            <div>The skill never modifies <code>audio/raw.mp3</code>. That's the source of truth — re-runs are non-destructive on audio.</div>
+          </div>
+          <div class="pitfall">
+            <div>Re-running clobbers <code>cuts.json</code> and destroys any editor saves. The cost checkpoint surfaces this — heed the warning.</div>
+          </div>
+          <div class="pitfall">
+            <div><strong>Audio events</strong> (<code>[cough]</code>, <code>[breath]</code>, <code>[mouth_noise]</code>) are first-class — the cut-decider needs them. The audio-editor's transcript schema was extended on 2026-05-19 to accept <code>audio_event</code> rows; pre-patch loads will Zod-fail.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 3b — TTS — alternative -->
+      <li class="stage" data-stage="3b">
+        <div class="stage-bullet">3b</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Voiceover + transcript · TTS <span style="color:var(--fg-3);font-size:11px;font-family:var(--font-mono);">// alternative</span></div>
+            <div class="stage-tag plain">/voiceover-elevenlabs-v2</div>
+          </div>
+          <p class="stage-summary">Use TTS when you need clean repeatable narration without a mic, faster iteration, or multi-language coverage. Project default for the TTS path. Use <code>/voiceover-elevenlabs-v3</code> only when a video needs inline audio tags for per-beat emotional shifts. Hard checkpoint for annotation review before spending API credits.</p>
 
           <div class="section-label">Produces</div>
           <ul class="artifact-list">
@@ -890,7 +936,7 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
           </div>
 
           <div class="example-strip">
-            <strong>Captchas</strong>
+            <strong>Captchas (TTS path)</strong>
             <span>voiceover.mp3 · 06:50</span><span class="sep">/</span>
             <span>transcript.json · 06:51</span><span class="sep">/</span>
             <span>runtime 6:27</span>
