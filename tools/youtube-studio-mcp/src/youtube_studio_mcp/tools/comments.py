@@ -54,6 +54,7 @@ def register(app: FastMCP) -> None:
     # -------- reads --------------------------------------------------------
 
     @app.tool()
+    @clients.http_safe
     def comments_inbox(filter: str = "published", video_id: str | None = None,
                        page_token: str | None = None,
                        page_size: int = 50) -> dict:
@@ -94,6 +95,7 @@ def register(app: FastMCP) -> None:
         }
 
     @app.tool()
+    @clients.http_safe
     def comment_thread(thread_id: str, include_replies: bool = True) -> dict:
         """Fetch one comment thread by ID, optionally with replies.
 
@@ -110,6 +112,7 @@ def register(app: FastMCP) -> None:
         return {"item": items[0] if items else None}
 
     @app.tool()
+    @clients.http_safe
     def comment_replies(parent_id: str, page_token: str | None = None) -> dict:
         """List replies under a given parent comment.
 
@@ -128,6 +131,7 @@ def register(app: FastMCP) -> None:
                 "nextPageToken": resp.get("nextPageToken")}
 
     @app.tool()
+    @clients.http_safe
     def comments_search(query: str, video_id: str | None = None,
                         max_pages: int = 4) -> dict:
         """Paginate the inbox and filter client-side by case-insensitive substring.
@@ -177,6 +181,7 @@ def register(app: FastMCP) -> None:
     # -------- writes -------------------------------------------------------
 
     @app.tool()
+    @clients.http_safe
     def comment_reply(parent_id: str, text: str) -> dict:
         """Post a reply under an existing comment thread.
 
@@ -193,6 +198,7 @@ def register(app: FastMCP) -> None:
         return resp
 
     @app.tool()
+    @clients.http_safe
     def comment_update(comment_id: str, text: str) -> dict:
         """Edit one of your own comments.
 
@@ -209,6 +215,7 @@ def register(app: FastMCP) -> None:
         return resp
 
     @app.tool()
+    @clients.http_safe
     def comment_moderate(comment_ids: list[str], status: str,
                          ban_author: bool = False,
                          confirm: bool = False) -> dict:
@@ -251,6 +258,7 @@ def register(app: FastMCP) -> None:
                 "quota_units_spent": len(comment_ids) * 50}
 
     @app.tool()
+    @clients.http_safe
     def comment_delete(comment_ids: list[str], confirm: bool = False) -> dict:
         """Permanently delete comments.
 

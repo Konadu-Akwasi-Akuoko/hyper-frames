@@ -22,6 +22,7 @@ _DEFAULT_VIDEO_PARTS = ["snippet", "contentDetails", "statistics", "status"]
 
 def register(app: FastMCP) -> None:
     @app.tool()
+    @clients.http_safe
     def my_channel() -> dict:
         """Fetch the authenticated channel's full profile.
 
@@ -46,6 +47,7 @@ def register(app: FastMCP) -> None:
         return out
 
     @app.tool()
+    @clients.http_safe
     def list_uploads(page_token: str | None = None, page_size: int = 50) -> dict:
         """Enumerate the authenticated channel's uploaded videos.
 
@@ -83,6 +85,7 @@ def register(app: FastMCP) -> None:
         }
 
     @app.tool()
+    @clients.http_safe
     def videos_get(video_ids: list[str], parts: list[str] | None = None) -> dict:
         """Batched ``videos.list`` for one or more video IDs.
 
@@ -114,6 +117,7 @@ def register(app: FastMCP) -> None:
         return {"items": all_items}
 
     @app.tool()
+    @clients.http_safe
     def playlists_list(page_token: str | None = None) -> dict:
         """List the authenticated channel's playlists (50/page).
 
@@ -137,6 +141,7 @@ def register(app: FastMCP) -> None:
         }
 
     @app.tool()
+    @clients.http_safe
     def playlist_items(playlist_id: str, page_token: str | None = None,
                        page_size: int = 50) -> dict:
         """List items in a playlist.
@@ -166,6 +171,7 @@ def register(app: FastMCP) -> None:
         }
 
     @app.tool()
+    @clients.http_safe
     def subscriptions_list(page_token: str | None = None) -> dict:
         """List channels the authenticated user subscribes to.
 
@@ -194,6 +200,7 @@ def register(app: FastMCP) -> None:
         return out
 
     @app.tool()
+    @clients.http_safe
     def search_external(query: str, type: str = "video", max_results: int = 10,
                         channel_id: str | None = None,
                         published_after: str | None = None,
