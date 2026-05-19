@@ -19,9 +19,21 @@ export const transcriptSpacingEntrySchema = z.object({
   end: z.number(),
 });
 
+// Scribe v2 with tag_audio_events=true emits bracketed labels for non-speech
+// sounds (`[cough]`, `[breath]`, `[laughter]`, `[mouth_noise]`,
+// `[throat_clear]`). They share the spacing-row shape — no speaker_id, no
+// logprob — but carry the original label in `text`.
+export const transcriptAudioEventEntrySchema = z.object({
+  text: z.string(),
+  type: z.literal("audio_event"),
+  start: z.number(),
+  end: z.number(),
+});
+
 export const transcriptEntrySchema = z.discriminatedUnion("type", [
   transcriptWordEntrySchema,
   transcriptSpacingEntrySchema,
+  transcriptAudioEventEntrySchema,
 ]);
 
 export const transcriptSchema = z.object({
