@@ -8,8 +8,8 @@ media element with `class="clip"` and a stable `id`.
 from __future__ import annotations
 
 import hashlib
+import os
 import re
-import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -32,10 +32,12 @@ def stage_assets(
     sound_effects_root: Path,
     video_dir: Path,
 ) -> dict[str, str]:
-    """Copy each unique cue source into `video_dir/assets/sfx/`.
+    """Stage each unique cue source as a relative symlink under `video_dir/assets/sfx/`.
 
     Returns a map from original `cue.src` (catalog-relative) to staged path
     (video-folder-relative). Files with name collisions get an 8-char hash prefix.
+    Links are relative so the video folder stays portable across clones as long
+    as `sound-effects/` lives at the repo root.
     """
     sfx_dir = video_dir / "assets" / "sfx"
     sfx_dir.mkdir(parents=True, exist_ok=True)
@@ -49,8 +51,11 @@ def stage_assets(
         if dest.exists() and dest.stat().st_size != source.stat().st_size:
             h = hashlib.sha256(cue.src.encode("utf-8")).hexdigest()[:8]
             dest = sfx_dir / f"{h}-{basename}"
+        if dest.is_symlink() and not dest.exists():
+            dest.unlink()
         if not dest.exists():
-            shutil.copy2(source, dest)
+            rel_target = os.path.relpath(source, start=dest.parent)
+            dest.symlink_to(rel_target)
         staged[cue.src] = dest.relative_to(video_dir).as_posix()
     return staged
 

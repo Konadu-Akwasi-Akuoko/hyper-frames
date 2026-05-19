@@ -1,6 +1,7 @@
 """Tests for sfx.html emission, asset staging, and index.html mount wiring."""
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import pytest
@@ -38,10 +39,20 @@ def staged_video(tmp_path: Path) -> tuple[Path, Path, dict[str, str]]:
     return video, sfx_root, staged
 
 
-def test_stage_assets_copies_into_video_folder(staged_video) -> None:
+def test_stage_assets_symlinks_into_video_folder(staged_video) -> None:
     video, _root, staged = staged_video
     assert staged["Mister Horse/Click/click-bright-01.wav"] == "assets/sfx/click-bright-01.wav"
-    assert (video / "assets" / "sfx" / "click-bright-01.wav").exists()
+    dest = video / "assets" / "sfx" / "click-bright-01.wav"
+    assert dest.exists()
+    assert dest.is_symlink()
+    assert dest.read_bytes() == b"\x00\x01\x02"
+
+
+def test_stage_assets_uses_relative_symlink_target(staged_video) -> None:
+    video, _root, _staged = staged_video
+    dest = video / "assets" / "sfx" / "click-bright-01.wav"
+    target = os.readlink(dest)
+    assert not os.path.isabs(target), f"symlink target must be relative for portability, got {target!r}"
 
 
 def test_stage_assets_handles_name_collisions(tmp_path: Path) -> None:
@@ -54,8 +65,26 @@ def test_stage_assets_handles_name_collisions(tmp_path: Path) -> None:
     cues = [_cue(src="A/shared/x.wav"), _cue(src="B/shared/x.wav")]
     staged = stage_assets(cues, sound_effects_root=sfx_root, video_dir=video)
     assert staged["A/shared/x.wav"] != staged["B/shared/x.wav"]
-    assert (video / staged["A/shared/x.wav"]).exists()
-    assert (video / staged["B/shared/x.wav"]).exists()
+    dest_a = video / staged["A/shared/x.wav"]
+    dest_b = video / staged["B/shared/x.wav"]
+    assert dest_a.exists() and dest_a.is_symlink()
+    assert dest_b.exists() and dest_b.is_symlink()
+
+
+def test_stage_assets_replaces_dangling_symlink(tmp_path: Path) -> None:
+    video = tmp_path / "videos" / "demo"
+    (video / "assets" / "sfx").mkdir(parents=True)
+    sfx_root = tmp_path / "sound-effects"
+    asset_path = sfx_root / "Mister Horse" / "Click" / "click-bright-01.wav"
+    asset_path.parent.mkdir(parents=True)
+    asset_path.write_bytes(b"\x00\x01\x02")
+    dangling = video / "assets" / "sfx" / "click-bright-01.wav"
+    dangling.symlink_to("../../../nonexistent/path.wav")
+    assert dangling.is_symlink() and not dangling.exists()
+    staged = stage_assets([_cue()], sound_effects_root=sfx_root, video_dir=video)
+    dest = video / staged["Mister Horse/Click/click-bright-01.wav"]
+    assert dest.is_symlink()
+    assert dest.read_bytes() == b"\x00\x01\x02"
 
 
 def test_render_includes_generated_header(staged_video) -> None:
