@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "youtube-studio": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "tools/youtube-studio-mcp",
+        "run",
+        "youtube-studio-mcp",
+        "serve"
+      ]
+    }
+  }
+}
