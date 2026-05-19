@@ -1,0 +1,30 @@
+[project]
+name = "transcribe-elevenlabs"
+version = "0.1.0"
+description = "Transcribe an audio file to the project's word-level transcript.json shape using ElevenLabs Scribe v2."
+readme = "README.md"
+authors = [
+    { name = "Akwasi Konadu Akuoko", email = "akwasikonadueverlasting@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "elevenlabs>=1.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+transcribe-elevenlabs = "transcribe_elevenlabs.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.10,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+extraPaths = ["src"]
