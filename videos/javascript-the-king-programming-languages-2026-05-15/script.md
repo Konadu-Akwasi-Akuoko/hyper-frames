@@ -18,7 +18,7 @@ But in November 2009, that was when an engineer, Ryan Dahl walked onto a stage i
 
 But he chose it for a very specific reason. Every other language already had I/O baked in, and it was built around blocking. Developers who wanted async had to bolt it on. Ruby had EventMachine. Python had Twisted. But those libraries were fighting their own language's defaults. The second a normal blocking call slipped in, the whole thing stalled. JavaScript had no I/O library at all. No legacy, no defaults to fight. And JavaScript developers were the only programmers on Earth who already thought in events — because that's how the browser works, and that's where they'd spent their whole careers. He took V8 the Javascript engine powering Google Chrome, wrapped it in an event loop, and turned it into a server runtime. He called it Node.js. The audience gave him a standing ovation — the first in the conference's history.
 
-Within months, tens of thousands of engineers were running it. Within months, tens of thousands of engineers were running it. The people who centre divs for a living got to touch a database, and the database has never been the same.
+Within months, tens of thousands of engineers were running it. The people who centre divs for a living got to touch a database, and the database has never been the same.
 
 JavaScript had escaped the browser.
 
