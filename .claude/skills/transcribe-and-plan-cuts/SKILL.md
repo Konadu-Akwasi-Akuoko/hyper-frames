@@ -1,6 +1,6 @@
 ---
 name: transcribe-and-plan-cuts
-description: Take a raw voice recording at `videos/<slug>/audio/raw.mp3`, transcribe it with ElevenLabs Scribe v2, dispatch the audio-cut-decider sub-agent to plan first-pass cuts, and write both `transcript.json` and `cuts.json` so the user can preview and refine in `tools/audio-editor`. Use when the user says "transcribe my recording", "plan cuts for this audio", "prep this recording for the editor", or hands you a path to a raw recording and asks to clean it up. This skill does NOT render the final `audio/voiceover.mp3` — that's a downstream step the user does (today: by saving cuts in the editor; later: by a sibling render skill).
+description: Take a raw voice recording at `videos/<slug>/audio/raw.mp3`, transcribe it with ElevenLabs Scribe v2, dispatch the audio-cut-decider sub-agent to plan first-pass cuts, and write both `transcript.json` and `cuts.json` so the user can preview and refine in `tools/audio-editor`. Use when the user says "transcribe my recording", "plan cuts for this audio", "prep this recording for the editor", or hands you a path to a raw recording and asks to clean it up. This skill does NOT render the final `audio/voiceover.mp3` — saving cuts in the editor only writes `cuts.json`; rendering (apply cuts → cut audio) is a separate manual ffmpeg step. The inverse flow (re-transcribing an already-rendered `voiceover.mp3`) is documented under "After the cuts are applied".
 ---
 
 # transcribe-and-plan-cuts
@@ -28,9 +28,11 @@ hands off to the editor.
 
 **Does not:**
 - Render `audio/voiceover.mp3` (i.e., apply the cuts to produce the final
-  audio). That's downstream — the editor's save action writes back
-  `cuts.json` after the user finalizes; a future `apply-recording-cuts`
-  skill (or an audio-editor render button) consumes that.
+  audio). The editor's **Save cuts** only PUTs `cuts.json` — it does not
+  render. Rendering is a separate manual step today: ffmpeg `atrim` + `concat`
+  of the kept (inverse-of-cuts) segments from `raw.mp3`, leaving `raw.mp3`
+  untouched. See "After the cuts are applied" below for the re-transcribe that
+  follows a render.
 - Start, restart, or kill `bun dev` for the audio-editor. The user already
   has it running on `:5173` / `:3001` (per `tools/audio-editor/CLAUDE.md`).
 - Touch the raw recording. `audio/raw.mp3` is the source of truth and is
@@ -160,11 +162,35 @@ user at the editor:
 This skill stops here. Rendering the cleaned `audio/voiceover.mp3` from
 `audio/raw.mp3` + approved cuts is a separate concern.
 
+## After the cuts are applied — re-transcribing the cut audio
+
+This is the **inverse** of the main flow, for when `voiceover.mp3` has already
+been rendered (cuts applied) and you need timing truth that matches the *cut*
+audio the composition actually uses.
+
+Once `voiceover.mp3` is rendered, the original `transcript.json` is stale: its
+timestamps run on the raw timeline (full length), but the narration is now
+shorter with the cut regions gone. Animations key off the transcript
+(transcript-as-timing-truth), so it must match `voiceover.mp3`. To refresh it:
+
+1. **Back up first** — copy `transcript.json` → `transcript.raw.json`. This
+   preserves the raw-aligned transcript: `cuts.json` timestamps reference *that*
+   timeline, and the audio-editor prefers `transcript.raw.json` (+ `raw.mp3`)
+   so cuts stay re-editable after a render.
+2. **Transcribe `voiceover.mp3`** — run Steps 2–3 but point the tool at
+   `audio/voiceover.mp3` and write `transcript.json`. This is the **one
+   sanctioned exception** to "do not transcribe `voiceover.mp3`" (see Edge
+   cases). Sanity-check that the new `audio_duration_secs` is shorter than the
+   raw, by roughly the total removable seconds from `cuts.json`.
+3. **Skip Steps 4–5 entirely.** The cuts are already applied — do not run the
+   `audio-cut-decider`, and never overwrite the finalized `cuts.json`.
+
 ## Edge cases
 
 - **`audio/raw.mp3` missing** — stop, tell the user the expected location.
   Do not transcribe whatever else is in `audio/` (e.g. `voiceover.mp3`) —
-  that's the cleaned output, not the source.
+  that's the cleaned output, not the source. The one exception is the
+  deliberate post-render re-transcribe (see "After the cuts are applied").
 - **`ELEVENLABS_API_KEY` missing** — the tool will error. Tell the user to
   add `ELEVENLABS_API_KEY=…` to `.env` at the repo root.
 - **`transcript.json` already exists** — surface this in the checkpoint;
