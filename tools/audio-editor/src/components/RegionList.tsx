@@ -11,7 +11,7 @@ export default function RegionList({ cuts, onJump, onRemove }: Props) {
   const totalCut = cuts.reduce((sum, c) => sum + (c.end - c.start), 0);
 
   return (
-    <div className="flex flex-col h-full min-h-[260px] lg:min-h-0 bg-[color:var(--color-panel)] border border-[color:var(--color-border)] rounded-[10px] overflow-hidden">
+    <div className="flex flex-col h-full min-h-[260px] lg:min-h-0 lg:max-h-[60vh] bg-[color:var(--color-panel)] border border-[color:var(--color-border)] rounded-[10px] overflow-hidden">
       <div className="px-4 py-3 border-b border-[color:var(--color-border)] flex items-center justify-between gap-3">
         <div className="flex items-baseline gap-2">
           <h3 className="font-mono text-[10px] uppercase tracking-[0.14em] text-[color:var(--color-muted)]">
