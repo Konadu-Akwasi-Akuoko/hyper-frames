@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import path from "node:path";
 import { readdir } from "node:fs/promises";
 import { ApiError, ok } from "../lib/response";
-import { VIDEOS_ROOT, SLUG_RE, resolveSlug } from "../lib/paths";
+import { VIDEOS_ROOT, SLUG_RE, resolveSlug, firstExisting } from "../lib/paths";
 
 const app = new Hono();
 
@@ -15,8 +15,8 @@ app.get("/", async (c) => {
         const slug = e.name;
         const dir = path.join(VIDEOS_ROOT, slug);
         const [hasAudio, hasTranscript, hasCuts] = await Promise.all([
-          Bun.file(path.join(dir, "audio/voiceover.mp3")).exists(),
-          Bun.file(path.join(dir, "transcript.json")).exists(),
+          firstExisting(dir, ["audio/raw.mp3", "audio/voiceover.mp3"]).then(Boolean),
+          firstExisting(dir, ["transcript.raw.json", "transcript.json"]).then(Boolean),
           Bun.file(path.join(dir, "cuts.json")).exists(),
         ]);
         return { slug, hasAudio, hasTranscript, hasCuts };
@@ -29,13 +29,14 @@ app.get("/", async (c) => {
 app.get("/:slug/audio", async (c) => {
   const slug = c.req.param("slug");
   const dir = await resolveSlug(slug);
-  const audioPath = path.join(dir, "audio/voiceover.mp3");
-  const file = Bun.file(audioPath);
-  if (!(await file.exists())) {
-    throw new ApiError("NOT_FOUND", "voiceover.mp3 not found", 404);
+  // Prefer raw.mp3 so the waveform stays on the same timeline as cuts.json;
+  // fall back to voiceover.mp3 for videos that only have the cleaned output.
+  const audioPath = await firstExisting(dir, ["audio/raw.mp3", "audio/voiceover.mp3"]);
+  if (!audioPath) {
+    throw new ApiError("NOT_FOUND", "no audio (raw.mp3 / voiceover.mp3) found", 404);
   }
   // Raw audio stream — intentionally bypasses the ApiResponse envelope.
-  return new Response(file, {
+  return new Response(Bun.file(audioPath), {
     headers: { "Content-Type": "audio/mpeg" },
   });
 });
