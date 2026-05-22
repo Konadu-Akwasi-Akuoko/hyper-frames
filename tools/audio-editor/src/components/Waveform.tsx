@@ -42,6 +42,76 @@ const MIN_ZOOM = 6;
 const MAX_ZOOM = 800;
 const SHIFT_DRAG_PAINT_MIN_SECONDS = 0.05;
 
+// Region content (the .region-chrome label + × button built in
+// buildRegionContent) is appended into WaveSurfer's shadow root, which
+// document-level CSS cannot reach. We inject this stylesheet into the shadow
+// tree so the chrome is styled. Selectors use [part~="region"] because the
+// band's part is multi-token ("region <id>"). The --color-* / --font-* custom
+// properties are inherited through the shadow boundary, so they resolve here.
+const REGION_SHADOW_CSS = `
+[part="region-content"] {
+  position: relative;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 4px 0 0 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  pointer-events: auto;
+}
+.region-chrome__label {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 3px);
+  z-index: 6;
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-cut);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1px 4px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+.region-chrome__x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--color-cut);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.12s ease, transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+  pointer-events: auto;
+  padding: 0;
+}
+[part~="region"]:hover .region-chrome__label {
+  opacity: 1;
+}
+[part~="region"]:hover .region-chrome__x,
+.region-chrome__x:focus-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.region-chrome__x:hover {
+  background: var(--color-cut);
+  color: var(--color-bg);
+}
+`;
+
 function buildRegionContent(
   cutId: string,
   label: string,
@@ -49,6 +119,9 @@ function buildRegionContent(
 ): HTMLElement {
   const root = document.createElement("div");
   root.className = "region-chrome";
+  // Native tooltip backstop: the hover chip is clipped at the card's right
+  // edge, so a title keeps the full reason reachable.
+  root.title = label;
 
   const labelEl = document.createElement("span");
   labelEl.className = "region-chrome__label";
@@ -127,6 +200,11 @@ const Waveform = forwardRef<WaveformHandle, Props>(function Waveform(
   const [scrollLeft, setScrollLeft] = useState(0);
   const [pxPerSec, setPxPerSec] = useState(24);
   const [containerWidth, setContainerWidth] = useState(0);
+  // Gates the cuts→regions sync. The regions plugin clamps a region's
+  // start/end against the duration known at construction time; before "ready"
+  // that duration is 0, so every region collapses to start===end===0 (a marker
+  // pinned at left:0%) and never recovers. Only add regions once ready.
+  const [isReady, setIsReady] = useState(false);
 
   const cbRef = useRef({
     onCutChange,
@@ -199,14 +277,25 @@ const Waveform = forwardRef<WaveformHandle, Props>(function Waveform(
     regionMapRef.current = new Map();
     pendingRegionRef.current = null;
 
+    // Region chrome lives in WaveSurfer's shadow root, out of reach of document
+    // CSS — inject its stylesheet into the shadow tree. ws.destroy() disposes
+    // the shadow tree, so no explicit teardown is needed.
+    const shadowRoot = ws.getWrapper().getRootNode();
+    if (shadowRoot instanceof ShadowRoot) {
+      const styleEl = document.createElement("style");
+      styleEl.textContent = REGION_SHADOW_CSS;
+      shadowRoot.appendChild(styleEl);
+    }
+
     const subs: Array<() => void> = [];
     subs.push(
-      ws.on("ready", (duration) =>
+      ws.on("ready", (duration) => {
+        setIsReady(true);
         cbRef.current.onReady?.({
           duration,
           containerWidth: container.clientWidth,
-        }),
-      ),
+        });
+      }),
     );
     subs.push(ws.on("play", () => cbRef.current.onPlayStateChange?.(true)));
     subs.push(ws.on("pause", () => cbRef.current.onPlayStateChange?.(false)));
@@ -381,13 +470,17 @@ const Waveform = forwardRef<WaveformHandle, Props>(function Waveform(
       regionMapRef.current = new Map();
       pendingRegionRef.current = null;
       openDragIds.clear();
+      setIsReady(false);
     };
   }, [audioUrl]);
 
   // Sync cuts → regions plugin (committed cuts only; pending lives separately).
+  // Gated on isReady so regions are never constructed against a 0 duration
+  // (which would clamp every start/end to 0 — see isReady declaration).
   useEffect(() => {
     const regions = regionsRef.current;
-    if (!regions) return;
+    const ws = wsRef.current;
+    if (!regions || !ws || ws.getDuration() <= 0) return;
     const map = regionMapRef.current;
     const cutIds = new Set(cuts.map((c) => c.id));
 
@@ -428,7 +521,7 @@ const Waveform = forwardRef<WaveformHandle, Props>(function Waveform(
         });
       }
     }
-  }, [cuts]);
+  }, [cuts, isReady]);
 
   // Sync the pending overlay (two-click in-progress region).
   useEffect(() => {

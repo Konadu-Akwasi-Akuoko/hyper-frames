@@ -199,56 +199,10 @@ input[type="range"].slider:focus::-webkit-slider-thumb {
   opacity: 1 !important;
 }
 
-/* Region content is built as an HTMLElement (region-chrome wrapper) so we can
-   pin a hover-× delete button next to the label without a side trip to the
-   RegionList. The plugin tags our root with part="region-content". */
-[part="region-content"] {
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 4px 0 0 6px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 4px !important;
-  pointer-events: auto;
-}
-.region-chrome__label {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--color-cut);
-  background: rgba(0, 0, 0, 0.55);
-  padding: 1px 4px;
-  border-radius: 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.4;
-}
-.region-chrome__x {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.65);
-  color: var(--color-cut);
-  border: none;
-  cursor: pointer;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.12s ease, transform 0.12s ease, background-color 0.12s ease,
-    color 0.12s ease;
-  pointer-events: auto;
-  padding: 0;
-}
-[part="region"]:hover .region-chrome__x,
-.region-chrome__x:focus-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-.region-chrome__x:hover {
-  background: var(--color-cut);
-  color: var(--color-bg);
-}
+/* Region content chrome — the .region-chrome label + × delete button — lives
+   inside WaveSurfer's shadow root, which document-level styles cannot reach.
+   Those rules are injected directly into the shadow tree from Waveform.tsx
+   (see REGION_SHADOW_CSS). Do not re-add them here; they would be dead. */
 
 @keyframes pending-hatch {
   from { background-position: 0 0; }
