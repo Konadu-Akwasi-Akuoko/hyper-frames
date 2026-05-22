@@ -24,3 +24,17 @@ export async function resolveSlug(slug: string): Promise<string> {
   }
   return resolved;
 }
+
+/**
+ * Return the absolute path of the first name in `names` that exists under `dir`,
+ * or null if none do. Used to prefer raw-timeline artifacts (raw.mp3,
+ * transcript.raw.json) over their cut counterparts so the editor stays aligned
+ * with cuts.json after a render.
+ */
+export async function firstExisting(dir: string, names: string[]): Promise<string | null> {
+  for (const name of names) {
+    const p = path.join(dir, name);
+    if (await Bun.file(p).exists()) return p;
+  }
+  return null;
+}

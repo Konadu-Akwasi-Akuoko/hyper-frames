@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import path from "node:path";
 import { rename } from "node:fs/promises";
 import { ApiError, ok } from "../lib/response";
-import { resolveSlug } from "../lib/paths";
+import { resolveSlug, firstExisting } from "../lib/paths";
 import { transcriptSchema, cutsFileSchema } from "../lib/schemas";
 
 const app = new Hono();
@@ -11,11 +11,11 @@ app.get("/:slug", async (c) => {
   const slug = c.req.param("slug");
   const dir = await resolveSlug(slug);
 
-  const transcriptFile = Bun.file(path.join(dir, "transcript.json"));
-  if (!(await transcriptFile.exists())) {
-    throw new ApiError("NOT_FOUND", "transcript.json not found", 404);
+  const transcriptPath = await firstExisting(dir, ["transcript.raw.json", "transcript.json"]);
+  if (!transcriptPath) {
+    throw new ApiError("NOT_FOUND", "no transcript (transcript.raw.json / transcript.json) found", 404);
   }
-  const transcript = transcriptSchema.parse(await transcriptFile.json());
+  const transcript = transcriptSchema.parse(await Bun.file(transcriptPath).json());
 
   const cutsFile = Bun.file(path.join(dir, "cuts.json"));
   const cuts = (await cutsFile.exists())
