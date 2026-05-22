@@ -250,39 +250,40 @@ function EditorView({ session }: { session: Session }) {
         canAct={ready}
       />
 
-      {/* Main: waveform card + region list */}
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-4 items-stretch">
-        <div className="relative p-3 rounded-[10px] border border-[color:var(--color-border)] bg-[color:var(--color-panel)] flex flex-col gap-3 min-w-0">
-          <Waveform
-            ref={waveformRef}
-            audioUrl={session.audioUrl}
-            cuts={editor.cuts}
-            pendingCutStart={pendingCutStart}
+      {/* Main: left column stacks the waveform timeline + transcript directly
+          beneath it; right column is the cut-regions sidebar. */}
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-4 items-start">
+        <div className="flex flex-col gap-4 min-w-0">
+          <div className="relative p-3 rounded-[10px] border border-[color:var(--color-border)] bg-[color:var(--color-panel)] flex flex-col gap-3 min-w-0">
+            <Waveform
+              ref={waveformRef}
+              audioUrl={session.audioUrl}
+              cuts={editor.cuts}
+              pendingCutStart={pendingCutStart}
+              currentTime={currentTime}
+              skipCuts={skipCuts}
+              onCutChange={onCutChange}
+              onCutCreate={onCutCreate}
+              onCutRemove={editor.remove}
+              onCutChangeBegin={editor.beginUpdate}
+              onCutChangeEnd={editor.commitUpdate}
+              onReady={onReady}
+              onPlayStateChange={setIsPlaying}
+              onTimeUpdate={setCurrentTime}
+              onZoomChange={onWaveformZoomChange}
+            />
+            {!ready && <DecodingOverlay />}
+            <KeyHints />
+          </div>
+          <TranscriptPanel
+            transcript={session.transcript}
             currentTime={currentTime}
-            skipCuts={skipCuts}
-            onCutChange={onCutChange}
-            onCutCreate={onCutCreate}
-            onCutRemove={editor.remove}
-            onCutChangeBegin={editor.beginUpdate}
-            onCutChangeEnd={editor.commitUpdate}
-            onReady={onReady}
-            onPlayStateChange={setIsPlaying}
-            onTimeUpdate={setCurrentTime}
-            onZoomChange={onWaveformZoomChange}
+            cuts={editor.cuts}
+            onSeek={onTranscriptSeek}
           />
-          {!ready && <DecodingOverlay />}
-          <KeyHints />
         </div>
         <RegionList cuts={editor.cuts} onJump={onJump} onRemove={editor.remove} />
       </div>
-
-      {/* Transcript panel — full width below the waveform */}
-      <TranscriptPanel
-        transcript={session.transcript}
-        currentTime={currentTime}
-        cuts={editor.cuts}
-        onSeek={onTranscriptSeek}
-      />
     </div>
   );
 }
