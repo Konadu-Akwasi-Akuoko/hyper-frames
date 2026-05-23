@@ -71,6 +71,12 @@ npm run check
 
 Fix all errors before presenting the result. Inspect warnings should be reviewed before rendering.
 
+## Design constraints
+
+- **No eyebrows.** Do not add eyebrow / section-eyebrow / overline labels (small
+  uppercase mono kickers above headlines). This video uses none, by design. See
+  `design.md` and the repo-root "No editorial chrome" rule.
+
 ## Key Rules
 
 1. Every timed element needs `data-start`, `data-duration`, and `data-track-index`
