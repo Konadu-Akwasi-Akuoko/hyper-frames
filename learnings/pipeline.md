@@ -25,8 +25,6 @@ End-to-end pipeline used to produce `videos/how-does-captchas-work-2026-05-10/`.
         ↓
 5. Write a slim design.md         → design.md (≤ ~50 lines)
         ↓
-5.5 Draft storyboard (optional)   → storyboard.md (per-beat build spec)
-        ↓
 6. /hyperframes                   → index.html (+ compositions/*.html)
         ↓
 7. preview + lint iteration       → fix issues
@@ -246,20 +244,6 @@ Writes `narration-map.json` next to `transcript.json`.
 - Resist the urge to pre-specify atmosphere layers, transition tables, or component recipes. Those close the lexicon and pre-empt invention.
 - If the design picker (visual chooser at `.hyperframes/pick-design.html`) emits a long file, trim it before stage 6.
 - Don't create `.hyperframes/expanded-prompt.md`. Stage 6 reads `design.md` + `script.md` + `transcript.json` directly.
-
----
-
-## Stage 5.5 — Storyboard (optional bridge)
-
-**What it produces:** `storyboard.md` at the video folder root — a per-beat build spec that sits between `script.md` + `transcript.json` + `design.md` and the HTML. For each beat: the spoken anchor + its word timestamp, what's on screen, the **adapter or catalog item** that drives it, the transition, depth layers, and SFX intent. Beat decomposition = block decomposition (each beat → a `compositions/*.html` block).
-
-**What to type:** nothing — copy `../../learnings/storyboard-template.md` to `storyboard.md` and fill it in. Two passes: draft in script order, then enrich each beat with the real timestamps from `transcript.json`.
-
-**When to bother:** skip it for a short single-scene video; it earns its keep on longer, multi-block ones. It's the natural home for the Stage 4 anchoring and the place to pick tools per beat (`three` / `lottie` / `css-animations` / caption components / shader transitions) instead of defaulting to GSAP. See the `### Storyboard` subsection in the project `CLAUDE.md` for the rationale.
-
-**Pitfalls:**
-- It consumes the transcript — don't write it before Stages 3–4 produce `transcript.json`.
-- Keep it a plan of intent and candidate tools, not a locked recipe (see [composition-spec-over-restriction.md](./composition-spec-over-restriction.md)).
 
 ---
 
