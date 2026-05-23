@@ -1,0 +1,2316 @@
+{
+  "source": "transcript.json",
+  "audio_duration_secs": 530.617,
+  "language_code": "eng",
+  "word_count": 1162,
+  "config": {
+    "pause_threshold_secs": 0.4,
+    "scene_pause_threshold_secs": 0.6,
+    "emphatic_top_n": 15,
+    "anchor_phrase_count": 37
+  },
+  "anchors": [
+    {
+      "phrase": "escaped the browser",
+      "matches": [
+        {
+          "word_index": 4,
+          "start": 1.92,
+          "end": 3.13,
+          "matched_text": "escaped the browser"
+        },
+        {
+          "word_index": 580,
+          "start": 268.6,
+          "end": 269.8,
+          "matched_text": "escaped the browser."
+        }
+      ]
+    },
+    {
+      "phrase": "2014",
+      "matches": [
+        {
+          "word_index": 21,
+          "start": 10.14,
+          "end": 10.9,
+          "matched_text": "2014."
+        },
+        {
+          "word_index": 593,
+          "start": 274.14,
+          "end": 274.82,
+          "matched_text": "2014"
+        }
+      ]
+    },
+    {
+      "phrase": "2026",
+      "matches": [
+        {
+          "word_index": 34,
+          "start": 16.6,
+          "end": 17.38,
+          "matched_text": "2026,"
+        },
+        {
+          "word_index": 1000,
+          "start": 462.072,
+          "end": 462.892,
+          "matched_text": "2026,"
+        }
+      ]
+    },
+    {
+      "phrase": "May 1995",
+      "matches": [
+        {
+          "word_index": 60,
+          "start": 31.12,
+          "end": 32.42,
+          "matched_text": "May 1995,"
+        }
+      ]
+    },
+    {
+      "phrase": "Brendan Eich",
+      "matches": [
+        {
+          "word_index": 116,
+          "start": 62.06,
+          "end": 63.08,
+          "matched_text": "Brendan Eich"
+        }
+      ]
+    },
+    {
+      "phrase": "ten days",
+      "matches": []
+    },
+    {
+      "phrase": "Mocha",
+      "matches": [
+        {
+          "word_index": 137,
+          "start": 71.76,
+          "end": 72.14,
+          "matched_text": "Mocha."
+        },
+        {
+          "word_index": 231,
+          "start": 113.92,
+          "end": 114.32,
+          "matched_text": "Mocha."
+        }
+      ]
+    },
+    {
+      "phrase": "JavaScript",
+      "matches": [
+        {
+          "word_index": 19,
+          "start": 9.26,
+          "end": 9.75,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 24,
+          "start": 12.36,
+          "end": 12.87,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 55,
+          "start": 28.38,
+          "end": 28.98,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 155,
+          "start": 81.2,
+          "end": 81.84,
+          "matched_text": "JavaScript."
+        },
+        {
+          "word_index": 241,
+          "start": 117.74,
+          "end": 118.38,
+          "matched_text": "JavaScript."
+        },
+        {
+          "word_index": 242,
+          "start": 119.58,
+          "end": 120.48,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 270,
+          "start": 133.8,
+          "end": 134.36,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 290,
+          "start": 144.48,
+          "end": 145.02,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 368,
+          "start": 178.58,
+          "end": 179.22,
+          "matched_text": "JavaScript."
+        },
+        {
+          "word_index": 466,
+          "start": 222.24,
+          "end": 222.92,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 480,
+          "start": 228.88,
+          "end": 229.24,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 511,
+          "start": 240.88,
+          "end": 241.34,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 578,
+          "start": 267.06,
+          "end": 267.74,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 629,
+          "start": 289.86,
+          "end": 290.66,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 678,
+          "start": 313.16,
+          "end": 313.76,
+          "matched_text": "JavaScript."
+        },
+        {
+          "word_index": 807,
+          "start": 370.792,
+          "end": 371.232,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 838,
+          "start": 385.492,
+          "end": 386.052,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 924,
+          "start": 426.972,
+          "end": 427.632,
+          "matched_text": "JavaScript."
+        },
+        {
+          "word_index": 971,
+          "start": 451.032,
+          "end": 451.492,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 1016,
+          "start": 467.632,
+          "end": 468.072,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 1076,
+          "start": 495.372,
+          "end": 495.972,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 1098,
+          "start": 505.552,
+          "end": 506.052,
+          "matched_text": "JavaScript"
+        },
+        {
+          "word_index": 1145,
+          "start": 522.672,
+          "end": 523.332,
+          "matched_text": "JavaScript,"
+        }
+      ]
+    },
+    {
+      "phrase": "November 2009",
+      "matches": [
+        {
+          "word_index": 307,
+          "start": 151.31,
+          "end": 152.68,
+          "matched_text": "November 2009,"
+        }
+      ]
+    },
+    {
+      "phrase": "Ryan Dahl",
+      "matches": [
+        {
+          "word_index": 314,
+          "start": 155.3,
+          "end": 155.96,
+          "matched_text": "Ryan Dahl,"
+        }
+      ]
+    },
+    {
+      "phrase": "150 people",
+      "matches": [
+        {
+          "word_index": 325,
+          "start": 159.62,
+          "end": 160.98,
+          "matched_text": "150 people."
+        }
+      ]
+    },
+    {
+      "phrase": "Apache choke",
+      "matches": [
+        {
+          "word_index": 330,
+          "start": 162.42,
+          "end": 163.16,
+          "matched_text": "Apache choke"
+        }
+      ]
+    },
+    {
+      "phrase": "no I/O library",
+      "matches": [
+        {
+          "word_index": 468,
+          "start": 223.56,
+          "end": 224.36,
+          "matched_text": "no I/O library"
+        }
+      ]
+    },
+    {
+      "phrase": "thought in events",
+      "matches": [
+        {
+          "word_index": 490,
+          "start": 232.49,
+          "end": 233.53,
+          "matched_text": "thought in events"
+        }
+      ]
+    },
+    {
+      "phrase": "Node.js",
+      "matches": [
+        {
+          "word_index": 532,
+          "start": 249.1,
+          "end": 250.46,
+          "matched_text": "Node.js."
+        },
+        {
+          "word_index": 614,
+          "start": 282.8,
+          "end": 283.78,
+          "matched_text": "Node.js.\""
+        },
+        {
+          "word_index": 648,
+          "start": 300.14,
+          "end": 300.68,
+          "matched_text": "Node.js"
+        }
+      ]
+    },
+    {
+      "phrase": "standing ovation",
+      "matches": [
+        {
+          "word_index": 538,
+          "start": 251.98,
+          "end": 252.82,
+          "matched_text": "standing ovation,"
+        }
+      ]
+    },
+    {
+      "phrase": "escaped the browser",
+      "matches": [
+        {
+          "word_index": 4,
+          "start": 1.92,
+          "end": 3.13,
+          "matched_text": "escaped the browser"
+        },
+        {
+          "word_index": 580,
+          "start": 268.6,
+          "end": 269.8,
+          "matched_text": "escaped the browser."
+        }
+      ]
+    },
+    {
+      "phrase": "Cheng Zhao",
+      "matches": []
+    },
+    {
+      "phrase": "Atom",
+      "matches": [
+        {
+          "word_index": 660,
+          "start": 305.36,
+          "end": 305.72,
+          "matched_text": "Atom,"
+        },
+        {
+          "word_index": 680,
+          "start": 314.72,
+          "end": 315.02,
+          "matched_text": "Atom"
+        },
+        {
+          "word_index": 693,
+          "start": 318.64,
+          "end": 319.0,
+          "matched_text": "Atom"
+        }
+      ]
+    },
+    {
+      "phrase": "Electron",
+      "matches": [
+        {
+          "word_index": 702,
+          "start": 322.68,
+          "end": 323.38,
+          "matched_text": "Electron."
+        },
+        {
+          "word_index": 848,
+          "start": 389.952,
+          "end": 390.572,
+          "matched_text": "Electron."
+        },
+        {
+          "word_index": 851,
+          "start": 391.812,
+          "end": 392.432,
+          "matched_text": "Electron."
+        },
+        {
+          "word_index": 858,
+          "start": 397.392,
+          "end": 398.492,
+          "matched_text": "Electron."
+        }
+      ]
+    },
+    {
+      "phrase": "biggest mistake",
+      "matches": [
+        {
+          "word_index": 753,
+          "start": 343.34,
+          "end": 344.14,
+          "matched_text": "biggest mistake"
+        }
+      ]
+    },
+    {
+      "phrase": "Jordan Walke",
+      "matches": [
+        {
+          "word_index": 782,
+          "start": 357.72,
+          "end": 358.6,
+          "matched_text": "Jordan Walke"
+        }
+      ]
+    },
+    {
+      "phrase": "March 2015",
+      "matches": [
+        {
+          "word_index": 821,
+          "start": 377.752,
+          "end": 378.772,
+          "matched_text": "March 2015"
+        }
+      ]
+    },
+    {
+      "phrase": "React Native",
+      "matches": [
+        {
+          "word_index": 826,
+          "start": 379.972,
+          "end": 381.232,
+          "matched_text": "React Native."
+        },
+        {
+          "word_index": 899,
+          "start": 414.692,
+          "end": 415.792,
+          "matched_text": "React Native."
+        },
+        {
+          "word_index": 965,
+          "start": 447.452,
+          "end": 448.392,
+          "matched_text": "React Native"
+        }
+      ]
+    },
+    {
+      "phrase": "browsers wearing app costumes",
+      "matches": []
+    },
+    {
+      "phrase": "2024",
+      "matches": [
+        {
+          "word_index": 881,
+          "start": 406.072,
+          "end": 406.812,
+          "matched_text": "2024,"
+        }
+      ]
+    },
+    {
+      "phrase": "Windows 11 Start menu",
+      "matches": [
+        {
+          "word_index": 892,
+          "start": 412.132,
+          "end": 413.492,
+          "matched_text": "Windows 11 Start menu"
+        }
+      ]
+    },
+    {
+      "phrase": "React Native for Windows",
+      "matches": [
+        {
+          "word_index": 965,
+          "start": 447.452,
+          "end": 449.032,
+          "matched_text": "React Native for Windows,"
+        }
+      ]
+    },
+    {
+      "phrase": "drawing the Start menu of Windows",
+      "matches": []
+    },
+    {
+      "phrase": "substrate is still compounding",
+      "matches": []
+    },
+    {
+      "phrase": "forty-nine thousand engineers",
+      "matches": []
+    },
+    {
+      "phrase": "Sixty-six percent",
+      "matches": []
+    },
+    {
+      "phrase": "didn't win on quality",
+      "matches": [
+        {
+          "word_index": 1099,
+          "start": 506.072,
+          "end": 507.422,
+          "matched_text": "didn't win on quality,"
+        }
+      ]
+    },
+    {
+      "phrase": "won on supply",
+      "matches": [
+        {
+          "word_index": 1104,
+          "start": 508.112,
+          "end": 509.312,
+          "matched_text": "won on supply."
+        }
+      ]
+    },
+    {
+      "phrase": "writes the world",
+      "matches": [
+        {
+          "word_index": 1120,
+          "start": 513.712,
+          "end": 514.832,
+          "matched_text": "writes the world."
+        }
+      ]
+    },
+    {
+      "phrase": "The next time you",
+      "matches": [
+        {
+          "word_index": 1123,
+          "start": 515.181,
+          "end": 515.702,
+          "matched_text": "The next time you"
+        }
+      ]
+    },
+    {
+      "phrase": "Because it was already there",
+      "matches": [
+        {
+          "word_index": 1151,
+          "start": 525.632,
+          "end": 527.512,
+          "matched_text": "because it was already there"
+        }
+      ]
+    }
+  ],
+  "pauses": [
+    {
+      "after_word_index": 10,
+      "after_word_text": "servers.\"",
+      "gap_secs": 1.06,
+      "start_secs": 4.92,
+      "end_secs": 5.98
+    },
+    {
+      "after_word_index": 21,
+      "after_word_text": "2014.",
+      "gap_secs": 0.76,
+      "start_secs": 10.9,
+      "end_secs": 11.66
+    },
+    {
+      "after_word_index": 31,
+      "after_word_text": "language,",
+      "gap_secs": 0.799,
+      "start_secs": 15.26,
+      "end_secs": 16.059
+    },
+    {
+      "after_word_index": 34,
+      "after_word_text": "2026,",
+      "gap_secs": 0.56,
+      "start_secs": 17.38,
+      "end_secs": 17.94
+    },
+    {
+      "after_word_index": 40,
+      "after_word_text": "infrastructure.",
+      "gap_secs": 0.94,
+      "start_secs": 20.76,
+      "end_secs": 21.7
+    },
+    {
+      "after_word_index": 58,
+      "after_word_text": "be.",
+      "gap_secs": 1.24,
+      "start_secs": 29.74,
+      "end_secs": 30.98
+    },
+    {
+      "after_word_index": 61,
+      "after_word_text": "1995,",
+      "gap_secs": 0.66,
+      "start_secs": 32.42,
+      "end_secs": 33.08
+    },
+    {
+      "after_word_index": 69,
+      "after_word_text": "browser.",
+      "gap_secs": 0.76,
+      "start_secs": 35.94,
+      "end_secs": 36.7
+    },
+    {
+      "after_word_index": 73,
+      "after_word_text": "heavy.",
+      "gap_secs": 0.62,
+      "start_secs": 38.14,
+      "end_secs": 38.76
+    },
+    {
+      "after_word_index": 78,
+      "after_word_text": "machine,",
+      "gap_secs": 0.68,
+      "start_secs": 40.5,
+      "end_secs": 41.18
+    },
+    {
+      "after_word_index": 82,
+      "after_word_text": "format,",
+      "gap_secs": 0.76,
+      "start_secs": 42.58,
+      "end_secs": 43.34
+    },
+    {
+      "after_word_index": 86,
+      "after_word_text": "download.",
+      "gap_secs": 0.8,
+      "start_secs": 45.3,
+      "end_secs": 46.1
+    },
+    {
+      "after_word_index": 89,
+      "after_word_text": "unthinkable",
+      "gap_secs": 0.42,
+      "start_secs": 47.98,
+      "end_secs": 48.4
+    },
+    {
+      "after_word_index": 93,
+      "after_word_text": "level.",
+      "gap_secs": 0.84,
+      "start_secs": 49.48,
+      "end_secs": 50.32
+    },
+    {
+      "after_word_index": 99,
+      "after_word_text": "author,",
+      "gap_secs": 0.54,
+      "start_secs": 52.78,
+      "end_secs": 53.32
+    },
+    {
+      "after_word_index": 101,
+      "after_word_text": "designer,",
+      "gap_secs": 0.46,
+      "start_secs": 53.98,
+      "end_secs": 54.44
+    },
+    {
+      "after_word_index": 103,
+      "after_word_text": "marketer,",
+      "gap_secs": 0.44,
+      "start_secs": 55.06,
+      "end_secs": 55.5
+    },
+    {
+      "after_word_index": 108,
+      "after_word_text": "write.",
+      "gap_secs": 0.66,
+      "start_secs": 57.76,
+      "end_secs": 58.42
+    },
+    {
+      "after_word_index": 114,
+      "after_word_text": "engineer",
+      "gap_secs": 0.62,
+      "start_secs": 60.66,
+      "end_secs": 61.28
+    },
+    {
+      "after_word_index": 115,
+      "after_word_text": "named",
+      "gap_secs": 0.4,
+      "start_secs": 61.66,
+      "end_secs": 62.06
+    },
+    {
+      "after_word_index": 117,
+      "after_word_text": "Eich",
+      "gap_secs": 0.6,
+      "start_secs": 63.08,
+      "end_secs": 63.68
+    },
+    {
+      "after_word_index": 122,
+      "after_word_text": "deadline,",
+      "gap_secs": 0.54,
+      "start_secs": 65.34,
+      "end_secs": 65.88
+    },
+    {
+      "after_word_index": 124,
+      "after_word_text": "days.",
+      "gap_secs": 0.64,
+      "start_secs": 66.58,
+      "end_secs": 67.22
+    },
+    {
+      "after_word_index": 133,
+      "after_word_text": "days.",
+      "gap_secs": 0.72,
+      "start_secs": 69.96,
+      "end_secs": 70.68
+    },
+    {
+      "after_word_index": 136,
+      "after_word_text": "it",
+      "gap_secs": 0.5,
+      "start_secs": 71.26,
+      "end_secs": 71.76
+    },
+    {
+      "after_word_index": 137,
+      "after_word_text": "Mocha.",
+      "gap_secs": 0.86,
+      "start_secs": 72.14,
+      "end_secs": 73.0
+    },
+    {
+      "after_word_index": 141,
+      "after_word_text": "1995,",
+      "gap_secs": 0.5,
+      "start_secs": 74.72,
+      "end_secs": 75.22
+    },
+    {
+      "after_word_index": 144,
+      "after_word_text": "called",
+      "gap_secs": 0.53,
+      "start_secs": 75.83,
+      "end_secs": 76.36
+    },
+    {
+      "after_word_index": 145,
+      "after_word_text": "LiveScript.",
+      "gap_secs": 0.74,
+      "start_secs": 77.0,
+      "end_secs": 77.74
+    },
+    {
+      "after_word_index": 150,
+      "after_word_text": "year,",
+      "gap_secs": 0.6,
+      "start_secs": 79.26,
+      "end_secs": 79.86
+    },
+    {
+      "after_word_index": 154,
+      "after_word_text": "to",
+      "gap_secs": 0.44,
+      "start_secs": 80.76,
+      "end_secs": 81.2
+    },
+    {
+      "after_word_index": 155,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.88,
+      "start_secs": 81.84,
+      "end_secs": 82.72
+    },
+    {
+      "after_word_index": 158,
+      "after_word_text": "point,",
+      "gap_secs": 0.45,
+      "start_secs": 83.44,
+      "end_secs": 83.89
+    },
+    {
+      "after_word_index": 167,
+      "after_word_text": "file,",
+      "gap_secs": 0.7,
+      "start_secs": 87.34,
+      "end_secs": 88.04
+    },
+    {
+      "after_word_index": 174,
+      "after_word_text": "move.",
+      "gap_secs": 0.7,
+      "start_secs": 90.36,
+      "end_secs": 91.06
+    },
+    {
+      "after_word_index": 185,
+      "after_word_text": "Java.",
+      "gap_secs": 0.78,
+      "start_secs": 95.86,
+      "end_secs": 96.64
+    },
+    {
+      "after_word_index": 194,
+      "after_word_text": "then,",
+      "gap_secs": 0.61,
+      "start_secs": 99.09,
+      "end_secs": 99.7
+    },
+    {
+      "after_word_index": 203,
+      "after_word_text": "cool.",
+      "gap_secs": 0.66,
+      "start_secs": 102.32,
+      "end_secs": 102.98
+    },
+    {
+      "after_word_index": 223,
+      "after_word_text": "genius.",
+      "gap_secs": 0.76,
+      "start_secs": 110.52,
+      "end_secs": 111.28
+    },
+    {
+      "after_word_index": 226,
+      "after_word_text": "time,",
+      "gap_secs": 0.58,
+      "start_secs": 111.96,
+      "end_secs": 112.54
+    },
+    {
+      "after_word_index": 241,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 1.2,
+      "start_secs": 118.38,
+      "end_secs": 119.58
+    },
+    {
+      "after_word_index": 246,
+      "after_word_text": "win.",
+      "gap_secs": 0.8,
+      "start_secs": 122.44,
+      "end_secs": 123.24
+    },
+    {
+      "after_word_index": 252,
+      "after_word_text": "available,",
+      "gap_secs": 0.56,
+      "start_secs": 125.02,
+      "end_secs": 125.58
+    },
+    {
+      "after_word_index": 259,
+      "after_word_text": "things.",
+      "gap_secs": 0.62,
+      "start_secs": 129.38,
+      "end_secs": 130.0
+    },
+    {
+      "after_word_index": 261,
+      "after_word_text": "guys,",
+      "gap_secs": 0.52,
+      "start_secs": 130.56,
+      "end_secs": 131.08
+    },
+    {
+      "after_word_index": 265,
+      "after_word_text": "question,",
+      "gap_secs": 0.611,
+      "start_secs": 132.109,
+      "end_secs": 132.72
+    },
+    {
+      "after_word_index": 274,
+      "after_word_text": "server?",
+      "gap_secs": 1.051,
+      "start_secs": 135.329,
+      "end_secs": 136.38
+    },
+    {
+      "after_word_index": 279,
+      "after_word_text": "didn't.",
+      "gap_secs": 0.58,
+      "start_secs": 138.52,
+      "end_secs": 139.1
+    },
+    {
+      "after_word_index": 283,
+      "after_word_text": "Perl,",
+      "gap_secs": 0.61,
+      "start_secs": 140.17,
+      "end_secs": 140.78
+    },
+    {
+      "after_word_index": 285,
+      "after_word_text": "PHP,",
+      "gap_secs": 0.7,
+      "start_secs": 141.38,
+      "end_secs": 142.08
+    },
+    {
+      "after_word_index": 287,
+      "after_word_text": "Python,",
+      "gap_secs": 0.46,
+      "start_secs": 142.84,
+      "end_secs": 143.3
+    },
+    {
+      "after_word_index": 289,
+      "after_word_text": "Ruby.",
+      "gap_secs": 0.66,
+      "start_secs": 143.82,
+      "end_secs": 144.48
+    },
+    {
+      "after_word_index": 296,
+      "after_word_text": "browser,",
+      "gap_secs": 0.66,
+      "start_secs": 147.42,
+      "end_secs": 148.08
+    },
+    {
+      "after_word_index": 304,
+      "after_word_text": "there.",
+      "gap_secs": 0.77,
+      "start_secs": 149.91,
+      "end_secs": 150.68
+    },
+    {
+      "after_word_index": 308,
+      "after_word_text": "2009,",
+      "gap_secs": 0.78,
+      "start_secs": 152.68,
+      "end_secs": 153.46
+    },
+    {
+      "after_word_index": 313,
+      "after_word_text": "engineer,",
+      "gap_secs": 0.54,
+      "start_secs": 154.76,
+      "end_secs": 155.3
+    },
+    {
+      "after_word_index": 315,
+      "after_word_text": "Dahl,",
+      "gap_secs": 0.54,
+      "start_secs": 155.96,
+      "end_secs": 156.5
+    },
+    {
+      "after_word_index": 326,
+      "after_word_text": "people.",
+      "gap_secs": 0.68,
+      "start_secs": 160.98,
+      "end_secs": 161.66
+    },
+    {
+      "after_word_index": 334,
+      "after_word_text": "connections.",
+      "gap_secs": 0.7,
+      "start_secs": 164.76,
+      "end_secs": 165.46
+    },
+    {
+      "after_word_index": 340,
+      "after_word_text": "thread.",
+      "gap_secs": 0.5,
+      "start_secs": 167.24,
+      "end_secs": 167.74
+    },
+    {
+      "after_word_index": 344,
+      "after_word_text": "memory.",
+      "gap_secs": 0.621,
+      "start_secs": 169.019,
+      "end_secs": 169.64
+    },
+    {
+      "after_word_index": 355,
+      "after_word_text": "once.",
+      "gap_secs": 0.58,
+      "start_secs": 172.66,
+      "end_secs": 173.24
+    },
+    {
+      "after_word_index": 359,
+      "after_word_text": "different,",
+      "gap_secs": 0.56,
+      "start_secs": 174.78,
+      "end_secs": 175.34
+    },
+    {
+      "after_word_index": 368,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.62,
+      "start_secs": 179.22,
+      "end_secs": 179.84
+    },
+    {
+      "after_word_index": 380,
+      "after_word_text": "Apache,",
+      "gap_secs": 0.78,
+      "start_secs": 184.52,
+      "end_secs": 185.3
+    },
+    {
+      "after_word_index": 405,
+      "after_word_text": "Twitter.",
+      "gap_secs": 1.14,
+      "start_secs": 192.94,
+      "end_secs": 194.08
+    },
+    {
+      "after_word_index": 406,
+      "after_word_text": "But",
+      "gap_secs": 0.44,
+      "start_secs": 194.28,
+      "end_secs": 194.72
+    },
+    {
+      "after_word_index": 414,
+      "after_word_text": "reason.",
+      "gap_secs": 0.94,
+      "start_secs": 196.64,
+      "end_secs": 197.58
+    },
+    {
+      "after_word_index": 422,
+      "after_word_text": "in,",
+      "gap_secs": 0.78,
+      "start_secs": 200.42,
+      "end_secs": 201.2
+    },
+    {
+      "after_word_index": 437,
+      "after_word_text": "on.",
+      "gap_secs": 0.7,
+      "start_secs": 206.7,
+      "end_secs": 207.4
+    },
+    {
+      "after_word_index": 444,
+      "after_word_text": "Twisted.",
+      "gap_secs": 0.74,
+      "start_secs": 211.64,
+      "end_secs": 212.38
+    },
+    {
+      "after_word_index": 453,
+      "after_word_text": "defaults.",
+      "gap_secs": 0.72,
+      "start_secs": 216.5,
+      "end_secs": 217.22
+    },
+    {
+      "after_word_index": 461,
+      "after_word_text": "in,",
+      "gap_secs": 0.69,
+      "start_secs": 219.54,
+      "end_secs": 220.23
+    },
+    {
+      "after_word_index": 465,
+      "after_word_text": "stalled.",
+      "gap_secs": 0.78,
+      "start_secs": 221.46,
+      "end_secs": 222.24
+    },
+    {
+      "after_word_index": 472,
+      "after_word_text": "all,",
+      "gap_secs": 0.68,
+      "start_secs": 224.88,
+      "end_secs": 225.56
+    },
+    {
+      "after_word_index": 474,
+      "after_word_text": "legacy,",
+      "gap_secs": 0.68,
+      "start_secs": 226.26,
+      "end_secs": 226.94
+    },
+    {
+      "after_word_index": 478,
+      "after_word_text": "fight,",
+      "gap_secs": 0.6,
+      "start_secs": 228.08,
+      "end_secs": 228.68
+    },
+    {
+      "after_word_index": 492,
+      "after_word_text": "events",
+      "gap_secs": 0.71,
+      "start_secs": 233.53,
+      "end_secs": 234.24
+    },
+    {
+      "after_word_index": 498,
+      "after_word_text": "works,",
+      "gap_secs": 0.48,
+      "start_secs": 235.88,
+      "end_secs": 236.36
+    },
+    {
+      "after_word_index": 509,
+      "after_word_text": "V8,",
+      "gap_secs": 0.56,
+      "start_secs": 240.16,
+      "end_secs": 240.72
+    },
+    {
+      "after_word_index": 515,
+      "after_word_text": "Chrome,",
+      "gap_secs": 0.62,
+      "start_secs": 242.92,
+      "end_secs": 243.54
+    },
+    {
+      "after_word_index": 521,
+      "after_word_text": "loop,",
+      "gap_secs": 0.4,
+      "start_secs": 244.78,
+      "end_secs": 245.18
+    },
+    {
+      "after_word_index": 528,
+      "after_word_text": "runtime.",
+      "gap_secs": 0.5,
+      "start_secs": 247.58,
+      "end_secs": 248.08
+    },
+    {
+      "after_word_index": 531,
+      "after_word_text": "it",
+      "gap_secs": 0.48,
+      "start_secs": 248.62,
+      "end_secs": 249.1
+    },
+    {
+      "after_word_index": 532,
+      "after_word_text": "Node.js.",
+      "gap_secs": 0.6,
+      "start_secs": 250.46,
+      "end_secs": 251.06
+    },
+    {
+      "after_word_index": 539,
+      "after_word_text": "ovation,",
+      "gap_secs": 0.62,
+      "start_secs": 252.82,
+      "end_secs": 253.44
+    },
+    {
+      "after_word_index": 556,
+      "after_word_text": "it.",
+      "gap_secs": 0.629,
+      "start_secs": 259.2,
+      "end_secs": 259.829
+    },
+    {
+      "after_word_index": 569,
+      "after_word_text": "database,",
+      "gap_secs": 0.42,
+      "start_secs": 263.78,
+      "end_secs": 264.2
+    },
+    {
+      "after_word_index": 577,
+      "after_word_text": "same.",
+      "gap_secs": 0.6,
+      "start_secs": 266.46,
+      "end_secs": 267.06
+    },
+    {
+      "after_word_index": 578,
+      "after_word_text": "JavaScript",
+      "gap_secs": 0.52,
+      "start_secs": 267.74,
+      "end_secs": 268.26
+    },
+    {
+      "after_word_index": 582,
+      "after_word_text": "browser.",
+      "gap_secs": 0.82,
+      "start_secs": 269.8,
+      "end_secs": 270.62
+    },
+    {
+      "after_word_index": 586,
+      "after_word_text": "line.",
+      "gap_secs": 0.54,
+      "start_secs": 271.54,
+      "end_secs": 272.08
+    },
+    {
+      "after_word_index": 590,
+      "after_word_text": "commenter",
+      "gap_secs": 0.44,
+      "start_secs": 273.14,
+      "end_secs": 273.58
+    },
+    {
+      "after_word_index": 593,
+      "after_word_text": "2014",
+      "gap_secs": 0.58,
+      "start_secs": 274.82,
+      "end_secs": 275.4
+    },
+    {
+      "after_word_index": 614,
+      "after_word_text": "Node.js.\"",
+      "gap_secs": 0.48,
+      "start_secs": 283.78,
+      "end_secs": 284.26
+    },
+    {
+      "after_word_index": 620,
+      "after_word_text": "escape,",
+      "gap_secs": 0.651,
+      "start_secs": 285.969,
+      "end_secs": 286.62
+    },
+    {
+      "after_word_index": 628,
+      "after_word_text": "next.",
+      "gap_secs": 0.9,
+      "start_secs": 288.96,
+      "end_secs": 289.86
+    },
+    {
+      "after_word_index": 635,
+      "after_word_text": "How?",
+      "gap_secs": 0.74,
+      "start_secs": 293.24,
+      "end_secs": 293.98
+    },
+    {
+      "after_word_index": 637,
+      "after_word_text": "2013,",
+      "gap_secs": 0.48,
+      "start_secs": 294.86,
+      "end_secs": 295.34
+    },
+    {
+      "after_word_index": 644,
+      "after_word_text": "Zhou",
+      "gap_secs": 0.8,
+      "start_secs": 298.16,
+      "end_secs": 298.96
+    },
+    {
+      "after_word_index": 652,
+      "after_word_text": "runtime.",
+      "gap_secs": 0.66,
+      "start_secs": 302.18,
+      "end_secs": 302.84
+    },
+    {
+      "after_word_index": 660,
+      "after_word_text": "Atom,",
+      "gap_secs": 0.58,
+      "start_secs": 305.72,
+      "end_secs": 306.3
+    },
+    {
+      "after_word_index": 667,
+      "after_word_text": "editor,",
+      "gap_secs": 0.62,
+      "start_secs": 308.72,
+      "end_secs": 309.34
+    },
+    {
+      "after_word_index": 677,
+      "after_word_text": "day,",
+      "gap_secs": 0.48,
+      "start_secs": 312.68,
+      "end_secs": 313.16
+    },
+    {
+      "after_word_index": 678,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.72,
+      "start_secs": 313.76,
+      "end_secs": 314.48
+    },
+    {
+      "after_word_index": 688,
+      "after_word_text": "it.",
+      "gap_secs": 0.52,
+      "start_secs": 316.76,
+      "end_secs": 317.28
+    },
+    {
+      "after_word_index": 694,
+      "after_word_text": "Shell.",
+      "gap_secs": 0.64,
+      "start_secs": 319.44,
+      "end_secs": 320.08
+    },
+    {
+      "after_word_index": 697,
+      "after_word_text": "later,",
+      "gap_secs": 0.46,
+      "start_secs": 321.02,
+      "end_secs": 321.48
+    },
+    {
+      "after_word_index": 702,
+      "after_word_text": "Electron.",
+      "gap_secs": 0.5,
+      "start_secs": 323.38,
+      "end_secs": 323.88
+    },
+    {
+      "after_word_index": 705,
+      "after_word_text": "Jen,",
+      "gap_secs": 0.66,
+      "start_secs": 324.58,
+      "end_secs": 325.24
+    },
+    {
+      "after_word_index": 713,
+      "after_word_text": "browser",
+      "gap_secs": 0.56,
+      "start_secs": 327.5,
+      "end_secs": 328.06
+    },
+    {
+      "after_word_index": 719,
+      "after_word_text": "up.",
+      "gap_secs": 0.8,
+      "start_secs": 329.34,
+      "end_secs": 330.14
+    },
+    {
+      "after_word_index": 736,
+      "after_word_text": "job.",
+      "gap_secs": 1.12,
+      "start_secs": 334.54,
+      "end_secs": 335.66
+    },
+    {
+      "after_word_index": 741,
+      "after_word_text": "bet.",
+      "gap_secs": 0.8,
+      "start_secs": 336.74,
+      "end_secs": 337.54
+    },
+    {
+      "after_word_index": 743,
+      "after_word_text": "2012,",
+      "gap_secs": 0.48,
+      "start_secs": 338.52,
+      "end_secs": 339.0
+    },
+    {
+      "after_word_index": 759,
+      "after_word_text": "company.\"",
+      "gap_secs": 0.4,
+      "start_secs": 345.58,
+      "end_secs": 345.98
+    },
+    {
+      "after_word_index": 762,
+      "after_word_text": "it",
+      "gap_secs": 0.4,
+      "start_secs": 346.78,
+      "end_secs": 347.18
+    },
+    {
+      "after_word_index": 765,
+      "after_word_text": "native",
+      "gap_secs": 0.88,
+      "start_secs": 348.78,
+      "end_secs": 349.66
+    },
+    {
+      "after_word_index": 769,
+      "after_word_text": "separately,",
+      "gap_secs": 0.52,
+      "start_secs": 351.72,
+      "end_secs": 352.24
+    },
+    {
+      "after_word_index": 775,
+      "after_word_text": "cost.",
+      "gap_secs": 0.66,
+      "start_secs": 353.72,
+      "end_secs": 354.38
+    },
+    {
+      "after_word_index": 778,
+      "after_word_text": "2013,",
+      "gap_secs": 0.54,
+      "start_secs": 356.06,
+      "end_secs": 356.6
+    },
+    {
+      "after_word_index": 789,
+      "after_word_text": "that",
+      "gap_secs": 0.48,
+      "start_secs": 360.84,
+      "end_secs": 361.32
+    },
+    {
+      "after_word_index": 799,
+      "after_word_text": "iOS,",
+      "gap_secs": 0.52,
+      "start_secs": 365.98,
+      "end_secs": 366.5
+    },
+    {
+      "after_word_index": 805,
+      "after_word_text": "widgets.",
+      "gap_secs": 0.48,
+      "start_secs": 369.712,
+      "end_secs": 370.192
+    },
+    {
+      "after_word_index": 808,
+      "after_word_text": "code,",
+      "gap_secs": 0.44,
+      "start_secs": 371.572,
+      "end_secs": 372.012
+    },
+    {
+      "after_word_index": 814,
+      "after_word_text": "iOS.",
+      "gap_secs": 0.52,
+      "start_secs": 374.452,
+      "end_secs": 374.972
+    },
+    {
+      "after_word_index": 822,
+      "after_word_text": "2015",
+      "gap_secs": 0.4,
+      "start_secs": 378.772,
+      "end_secs": 379.172
+    },
+    {
+      "after_word_index": 826,
+      "after_word_text": "React",
+      "gap_secs": 0.42,
+      "start_secs": 380.352,
+      "end_secs": 380.772
+    },
+    {
+      "after_word_index": 827,
+      "after_word_text": "Native.",
+      "gap_secs": 0.7,
+      "start_secs": 381.232,
+      "end_secs": 381.932
+    },
+    {
+      "after_word_index": 838,
+      "after_word_text": "JavaScript",
+      "gap_secs": 0.62,
+      "start_secs": 386.052,
+      "end_secs": 386.672
+    },
+    {
+      "after_word_index": 844,
+      "after_word_text": "language.",
+      "gap_secs": 0.64,
+      "start_secs": 388.492,
+      "end_secs": 389.132
+    },
+    {
+      "after_word_index": 848,
+      "after_word_text": "Electron.",
+      "gap_secs": 0.5,
+      "start_secs": 390.572,
+      "end_secs": 391.072
+    },
+    {
+      "after_word_index": 856,
+      "after_word_text": "Obsidian,",
+      "gap_secs": 0.61,
+      "start_secs": 396.182,
+      "end_secs": 396.792
+    },
+    {
+      "after_word_index": 864,
+      "after_word_text": "browser.",
+      "gap_secs": 0.54,
+      "start_secs": 400.012,
+      "end_secs": 400.552
+    },
+    {
+      "after_word_index": 870,
+      "after_word_text": "browser.",
+      "gap_secs": 0.52,
+      "start_secs": 402.232,
+      "end_secs": 402.752
+    },
+    {
+      "after_word_index": 878,
+      "after_word_text": "too.",
+      "gap_secs": 0.74,
+      "start_secs": 404.512,
+      "end_secs": 405.252
+    },
+    {
+      "after_word_index": 881,
+      "after_word_text": "2024,",
+      "gap_secs": 0.62,
+      "start_secs": 406.812,
+      "end_secs": 407.432
+    },
+    {
+      "after_word_index": 885,
+      "after_word_text": "happened.",
+      "gap_secs": 0.76,
+      "start_secs": 408.952,
+      "end_secs": 409.712
+    },
+    {
+      "after_word_index": 900,
+      "after_word_text": "Native.",
+      "gap_secs": 0.5,
+      "start_secs": 415.792,
+      "end_secs": 416.292
+    },
+    {
+      "after_word_index": 909,
+      "after_word_text": "underneath,",
+      "gap_secs": 0.54,
+      "start_secs": 420.532,
+      "end_secs": 421.072
+    },
+    {
+      "after_word_index": 917,
+      "after_word_text": "native,",
+      "gap_secs": 0.54,
+      "start_secs": 423.052,
+      "end_secs": 423.592
+    },
+    {
+      "after_word_index": 924,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.6,
+      "start_secs": 427.632,
+      "end_secs": 428.232
+    },
+    {
+      "after_word_index": 931,
+      "after_word_text": "purpose.",
+      "gap_secs": 0.76,
+      "start_secs": 430.492,
+      "end_secs": 431.252
+    },
+    {
+      "after_word_index": 934,
+      "after_word_text": "section",
+      "gap_secs": 0.52,
+      "start_secs": 432.732,
+      "end_secs": 433.252
+    },
+    {
+      "after_word_index": 937,
+      "after_word_text": "files,",
+      "gap_secs": 0.46,
+      "start_secs": 434.652,
+      "end_secs": 435.112
+    },
+    {
+      "after_word_index": 939,
+      "after_word_text": "apps,",
+      "gap_secs": 0.5,
+      "start_secs": 435.932,
+      "end_secs": 436.432
+    },
+    {
+      "after_word_index": 942,
+      "after_word_text": "content.",
+      "gap_secs": 0.74,
+      "start_secs": 437.872,
+      "end_secs": 438.612
+    },
+    {
+      "after_word_index": 950,
+      "after_word_text": "fast,",
+      "gap_secs": 0.62,
+      "start_secs": 440.872,
+      "end_secs": 441.492
+    },
+    {
+      "after_word_index": 956,
+      "after_word_text": "allow.",
+      "gap_secs": 0.7,
+      "start_secs": 443.632,
+      "end_secs": 444.332
+    },
+    {
+      "after_word_index": 964,
+      "after_word_text": "fork,",
+      "gap_secs": 0.48,
+      "start_secs": 446.972,
+      "end_secs": 447.452
+    },
+    {
+      "after_word_index": 968,
+      "after_word_text": "Windows,",
+      "gap_secs": 0.7,
+      "start_secs": 449.032,
+      "end_secs": 449.732
+    },
+    {
+      "after_word_index": 969,
+      "after_word_text": "specifically",
+      "gap_secs": 0.48,
+      "start_secs": 450.372,
+      "end_secs": 450.852
+    },
+    {
+      "after_word_index": 976,
+      "after_word_text": "widgets.",
+      "gap_secs": 0.69,
+      "start_secs": 453.712,
+      "end_secs": 454.402
+    },
+    {
+      "after_word_index": 998,
+      "after_word_text": "days.",
+      "gap_secs": 0.58,
+      "start_secs": 461.252,
+      "end_secs": 461.832
+    },
+    {
+      "after_word_index": 1017,
+      "after_word_text": "dominates.",
+      "gap_secs": 0.58,
+      "start_secs": 468.912,
+      "end_secs": 469.492
+    },
+    {
+      "after_word_index": 1022,
+      "after_word_text": "repos,",
+      "gap_secs": 0.82,
+      "start_secs": 471.712,
+      "end_secs": 472.532
+    },
+    {
+      "after_word_index": 1025,
+      "after_word_text": "package,",
+      "gap_secs": 0.52,
+      "start_secs": 473.872,
+      "end_secs": 474.392
+    },
+    {
+      "after_word_index": 1042,
+      "after_word_text": "generated.",
+      "gap_secs": 0.52,
+      "start_secs": 480.632,
+      "end_secs": 481.152
+    },
+    {
+      "after_word_index": 1049,
+      "after_word_text": "shipped,",
+      "gap_secs": 0.48,
+      "start_secs": 482.892,
+      "end_secs": 483.372
+    },
+    {
+      "after_word_index": 1063,
+      "after_word_text": "that.",
+      "gap_secs": 0.48,
+      "start_secs": 487.452,
+      "end_secs": 487.932
+    },
+    {
+      "after_word_index": 1068,
+      "after_word_text": "Survey",
+      "gap_secs": 0.68,
+      "start_secs": 490.792,
+      "end_secs": 491.472
+    },
+    {
+      "after_word_index": 1075,
+      "after_word_text": "use.",
+      "gap_secs": 0.62,
+      "start_secs": 494.752,
+      "end_secs": 495.372
+    },
+    {
+      "after_word_index": 1079,
+      "after_word_text": "first,",
+      "gap_secs": 0.72,
+      "start_secs": 496.852,
+      "end_secs": 497.572
+    },
+    {
+      "after_word_index": 1088,
+      "after_word_text": "decade,",
+      "gap_secs": 0.72,
+      "start_secs": 500.032,
+      "end_secs": 500.752
+    },
+    {
+      "after_word_index": 1089,
+      "after_word_text": "66%,",
+      "gap_secs": 0.54,
+      "start_secs": 501.892,
+      "end_secs": 502.432
+    },
+    {
+      "after_word_index": 1097,
+      "after_word_text": "planet.",
+      "gap_secs": 0.76,
+      "start_secs": 504.792,
+      "end_secs": 505.552
+    },
+    {
+      "after_word_index": 1102,
+      "after_word_text": "quality,",
+      "gap_secs": 0.45,
+      "start_secs": 507.422,
+      "end_secs": 507.872
+    },
+    {
+      "after_word_index": 1106,
+      "after_word_text": "supply.",
+      "gap_secs": 0.61,
+      "start_secs": 509.312,
+      "end_secs": 509.922
+    },
+    {
+      "after_word_index": 1118,
+      "after_word_text": "days",
+      "gap_secs": 0.42,
+      "start_secs": 513.012,
+      "end_secs": 513.432
+    },
+    {
+      "after_word_index": 1130,
+      "after_word_text": "editor,",
+      "gap_secs": 0.44,
+      "start_secs": 516.712,
+      "end_secs": 517.152
+    },
+    {
+      "after_word_index": 1140,
+      "after_word_text": "Windows,",
+      "gap_secs": 0.5,
+      "start_secs": 520.232,
+      "end_secs": 520.732
+    },
+    {
+      "after_word_index": 1145,
+      "after_word_text": "JavaScript,",
+      "gap_secs": 0.5,
+      "start_secs": 523.332,
+      "end_secs": 523.832
+    },
+    {
+      "after_word_index": 1150,
+      "after_word_text": "won,",
+      "gap_secs": 0.42,
+      "start_secs": 525.212,
+      "end_secs": 525.632
+    }
+  ],
+  "scene_boundaries": [
+    {
+      "after_word_index": 10,
+      "after_word_text": "servers.\"",
+      "gap_secs": 1.06,
+      "start_secs": 4.92,
+      "end_secs": 5.98
+    },
+    {
+      "after_word_index": 21,
+      "after_word_text": "2014.",
+      "gap_secs": 0.76,
+      "start_secs": 10.9,
+      "end_secs": 11.66
+    },
+    {
+      "after_word_index": 40,
+      "after_word_text": "infrastructure.",
+      "gap_secs": 0.94,
+      "start_secs": 20.76,
+      "end_secs": 21.7
+    },
+    {
+      "after_word_index": 58,
+      "after_word_text": "be.",
+      "gap_secs": 1.24,
+      "start_secs": 29.74,
+      "end_secs": 30.98
+    },
+    {
+      "after_word_index": 69,
+      "after_word_text": "browser.",
+      "gap_secs": 0.76,
+      "start_secs": 35.94,
+      "end_secs": 36.7
+    },
+    {
+      "after_word_index": 73,
+      "after_word_text": "heavy.",
+      "gap_secs": 0.62,
+      "start_secs": 38.14,
+      "end_secs": 38.76
+    },
+    {
+      "after_word_index": 86,
+      "after_word_text": "download.",
+      "gap_secs": 0.8,
+      "start_secs": 45.3,
+      "end_secs": 46.1
+    },
+    {
+      "after_word_index": 93,
+      "after_word_text": "level.",
+      "gap_secs": 0.84,
+      "start_secs": 49.48,
+      "end_secs": 50.32
+    },
+    {
+      "after_word_index": 108,
+      "after_word_text": "write.",
+      "gap_secs": 0.66,
+      "start_secs": 57.76,
+      "end_secs": 58.42
+    },
+    {
+      "after_word_index": 124,
+      "after_word_text": "days.",
+      "gap_secs": 0.64,
+      "start_secs": 66.58,
+      "end_secs": 67.22
+    },
+    {
+      "after_word_index": 133,
+      "after_word_text": "days.",
+      "gap_secs": 0.72,
+      "start_secs": 69.96,
+      "end_secs": 70.68
+    },
+    {
+      "after_word_index": 137,
+      "after_word_text": "Mocha.",
+      "gap_secs": 0.86,
+      "start_secs": 72.14,
+      "end_secs": 73.0
+    },
+    {
+      "after_word_index": 145,
+      "after_word_text": "LiveScript.",
+      "gap_secs": 0.74,
+      "start_secs": 77.0,
+      "end_secs": 77.74
+    },
+    {
+      "after_word_index": 155,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.88,
+      "start_secs": 81.84,
+      "end_secs": 82.72
+    },
+    {
+      "after_word_index": 174,
+      "after_word_text": "move.",
+      "gap_secs": 0.7,
+      "start_secs": 90.36,
+      "end_secs": 91.06
+    },
+    {
+      "after_word_index": 185,
+      "after_word_text": "Java.",
+      "gap_secs": 0.78,
+      "start_secs": 95.86,
+      "end_secs": 96.64
+    },
+    {
+      "after_word_index": 203,
+      "after_word_text": "cool.",
+      "gap_secs": 0.66,
+      "start_secs": 102.32,
+      "end_secs": 102.98
+    },
+    {
+      "after_word_index": 223,
+      "after_word_text": "genius.",
+      "gap_secs": 0.76,
+      "start_secs": 110.52,
+      "end_secs": 111.28
+    },
+    {
+      "after_word_index": 241,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 1.2,
+      "start_secs": 118.38,
+      "end_secs": 119.58
+    },
+    {
+      "after_word_index": 246,
+      "after_word_text": "win.",
+      "gap_secs": 0.8,
+      "start_secs": 122.44,
+      "end_secs": 123.24
+    },
+    {
+      "after_word_index": 259,
+      "after_word_text": "things.",
+      "gap_secs": 0.62,
+      "start_secs": 129.38,
+      "end_secs": 130.0
+    },
+    {
+      "after_word_index": 274,
+      "after_word_text": "server?",
+      "gap_secs": 1.051,
+      "start_secs": 135.329,
+      "end_secs": 136.38
+    },
+    {
+      "after_word_index": 289,
+      "after_word_text": "Ruby.",
+      "gap_secs": 0.66,
+      "start_secs": 143.82,
+      "end_secs": 144.48
+    },
+    {
+      "after_word_index": 304,
+      "after_word_text": "there.",
+      "gap_secs": 0.77,
+      "start_secs": 149.91,
+      "end_secs": 150.68
+    },
+    {
+      "after_word_index": 326,
+      "after_word_text": "people.",
+      "gap_secs": 0.68,
+      "start_secs": 160.98,
+      "end_secs": 161.66
+    },
+    {
+      "after_word_index": 334,
+      "after_word_text": "connections.",
+      "gap_secs": 0.7,
+      "start_secs": 164.76,
+      "end_secs": 165.46
+    },
+    {
+      "after_word_index": 344,
+      "after_word_text": "memory.",
+      "gap_secs": 0.621,
+      "start_secs": 169.019,
+      "end_secs": 169.64
+    },
+    {
+      "after_word_index": 368,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.62,
+      "start_secs": 179.22,
+      "end_secs": 179.84
+    },
+    {
+      "after_word_index": 405,
+      "after_word_text": "Twitter.",
+      "gap_secs": 1.14,
+      "start_secs": 192.94,
+      "end_secs": 194.08
+    },
+    {
+      "after_word_index": 414,
+      "after_word_text": "reason.",
+      "gap_secs": 0.94,
+      "start_secs": 196.64,
+      "end_secs": 197.58
+    },
+    {
+      "after_word_index": 437,
+      "after_word_text": "on.",
+      "gap_secs": 0.7,
+      "start_secs": 206.7,
+      "end_secs": 207.4
+    },
+    {
+      "after_word_index": 444,
+      "after_word_text": "Twisted.",
+      "gap_secs": 0.74,
+      "start_secs": 211.64,
+      "end_secs": 212.38
+    },
+    {
+      "after_word_index": 453,
+      "after_word_text": "defaults.",
+      "gap_secs": 0.72,
+      "start_secs": 216.5,
+      "end_secs": 217.22
+    },
+    {
+      "after_word_index": 465,
+      "after_word_text": "stalled.",
+      "gap_secs": 0.78,
+      "start_secs": 221.46,
+      "end_secs": 222.24
+    },
+    {
+      "after_word_index": 556,
+      "after_word_text": "it.",
+      "gap_secs": 0.629,
+      "start_secs": 259.2,
+      "end_secs": 259.829
+    },
+    {
+      "after_word_index": 577,
+      "after_word_text": "same.",
+      "gap_secs": 0.6,
+      "start_secs": 266.46,
+      "end_secs": 267.06
+    },
+    {
+      "after_word_index": 582,
+      "after_word_text": "browser.",
+      "gap_secs": 0.82,
+      "start_secs": 269.8,
+      "end_secs": 270.62
+    },
+    {
+      "after_word_index": 628,
+      "after_word_text": "next.",
+      "gap_secs": 0.9,
+      "start_secs": 288.96,
+      "end_secs": 289.86
+    },
+    {
+      "after_word_index": 635,
+      "after_word_text": "How?",
+      "gap_secs": 0.74,
+      "start_secs": 293.24,
+      "end_secs": 293.98
+    },
+    {
+      "after_word_index": 652,
+      "after_word_text": "runtime.",
+      "gap_secs": 0.66,
+      "start_secs": 302.18,
+      "end_secs": 302.84
+    },
+    {
+      "after_word_index": 678,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.72,
+      "start_secs": 313.76,
+      "end_secs": 314.48
+    },
+    {
+      "after_word_index": 694,
+      "after_word_text": "Shell.",
+      "gap_secs": 0.64,
+      "start_secs": 319.44,
+      "end_secs": 320.08
+    },
+    {
+      "after_word_index": 719,
+      "after_word_text": "up.",
+      "gap_secs": 0.8,
+      "start_secs": 329.34,
+      "end_secs": 330.14
+    },
+    {
+      "after_word_index": 736,
+      "after_word_text": "job.",
+      "gap_secs": 1.12,
+      "start_secs": 334.54,
+      "end_secs": 335.66
+    },
+    {
+      "after_word_index": 741,
+      "after_word_text": "bet.",
+      "gap_secs": 0.8,
+      "start_secs": 336.74,
+      "end_secs": 337.54
+    },
+    {
+      "after_word_index": 775,
+      "after_word_text": "cost.",
+      "gap_secs": 0.66,
+      "start_secs": 353.72,
+      "end_secs": 354.38
+    },
+    {
+      "after_word_index": 827,
+      "after_word_text": "Native.",
+      "gap_secs": 0.7,
+      "start_secs": 381.232,
+      "end_secs": 381.932
+    },
+    {
+      "after_word_index": 844,
+      "after_word_text": "language.",
+      "gap_secs": 0.64,
+      "start_secs": 388.492,
+      "end_secs": 389.132
+    },
+    {
+      "after_word_index": 878,
+      "after_word_text": "too.",
+      "gap_secs": 0.74,
+      "start_secs": 404.512,
+      "end_secs": 405.252
+    },
+    {
+      "after_word_index": 885,
+      "after_word_text": "happened.",
+      "gap_secs": 0.76,
+      "start_secs": 408.952,
+      "end_secs": 409.712
+    },
+    {
+      "after_word_index": 924,
+      "after_word_text": "JavaScript.",
+      "gap_secs": 0.6,
+      "start_secs": 427.632,
+      "end_secs": 428.232
+    },
+    {
+      "after_word_index": 931,
+      "after_word_text": "purpose.",
+      "gap_secs": 0.76,
+      "start_secs": 430.492,
+      "end_secs": 431.252
+    },
+    {
+      "after_word_index": 942,
+      "after_word_text": "content.",
+      "gap_secs": 0.74,
+      "start_secs": 437.872,
+      "end_secs": 438.612
+    },
+    {
+      "after_word_index": 956,
+      "after_word_text": "allow.",
+      "gap_secs": 0.7,
+      "start_secs": 443.632,
+      "end_secs": 444.332
+    },
+    {
+      "after_word_index": 976,
+      "after_word_text": "widgets.",
+      "gap_secs": 0.69,
+      "start_secs": 453.712,
+      "end_secs": 454.402
+    },
+    {
+      "after_word_index": 1075,
+      "after_word_text": "use.",
+      "gap_secs": 0.62,
+      "start_secs": 494.752,
+      "end_secs": 495.372
+    },
+    {
+      "after_word_index": 1097,
+      "after_word_text": "planet.",
+      "gap_secs": 0.76,
+      "start_secs": 504.792,
+      "end_secs": 505.552
+    },
+    {
+      "after_word_index": 1106,
+      "after_word_text": "supply.",
+      "gap_secs": 0.61,
+      "start_secs": 509.312,
+      "end_secs": 509.922
+    }
+  ],
+  "emphatic_words": [
+    {
+      "word_index": 45,
+      "text": "happen?",
+      "start": 22.92,
+      "end": 24.3,
+      "duration_secs": 1.38
+    },
+    {
+      "word_index": 532,
+      "text": "Node.js.",
+      "start": 249.1,
+      "end": 250.46,
+      "duration_secs": 1.36
+    },
+    {
+      "word_index": 254,
+      "text": "available.",
+      "start": 126.14,
+      "end": 127.48,
+      "duration_secs": 1.34
+    },
+    {
+      "word_index": 16,
+      "text": "commenter",
+      "start": 7.32,
+      "end": 8.62,
+      "duration_secs": 1.3
+    },
+    {
+      "word_index": 803,
+      "text": "view.Actual",
+      "start": 367.1,
+      "end": 368.352,
+      "duration_secs": 1.252
+    },
+    {
+      "word_index": 506,
+      "text": "careers.",
+      "start": 238.06,
+      "end": 239.24,
+      "duration_secs": 1.18
+    },
+    {
+      "word_index": 1089,
+      "text": "66%,",
+      "start": 500.752,
+      "end": 501.892,
+      "duration_secs": 1.14
+    },
+    {
+      "word_index": 858,
+      "text": "Electron.",
+      "start": 397.392,
+      "end": 398.492,
+      "duration_secs": 1.1
+    },
+    {
+      "word_index": 52,
+      "text": "first.",
+      "start": 26.5,
+      "end": 27.58,
+      "duration_secs": 1.08
+    },
+    {
+      "word_index": 441,
+      "text": "Machine.",
+      "start": 208.86,
+      "end": 209.92,
+      "duration_secs": 1.06
+    },
+    {
+      "word_index": 61,
+      "text": "1995,",
+      "start": 31.38,
+      "end": 32.42,
+      "duration_secs": 1.04
+    },
+    {
+      "word_index": 141,
+      "text": "1995,",
+      "start": 73.72,
+      "end": 74.72,
+      "duration_secs": 1.0
+    },
+    {
+      "word_index": 308,
+      "text": "2009,",
+      "start": 151.7,
+      "end": 152.68,
+      "duration_secs": 0.98
+    },
+    {
+      "word_index": 887,
+      "text": "confirmed",
+      "start": 410.252,
+      "end": 411.232,
+      "duration_secs": 0.98
+    },
+    {
+      "word_index": 1033,
+      "text": "question.",
+      "start": 476.452,
+      "end": 477.432,
+      "duration_secs": 0.98
+    }
+  ]
+}
