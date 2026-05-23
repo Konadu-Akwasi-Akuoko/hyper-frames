@@ -29,12 +29,23 @@ Always invoke the `hyperframes` skill (and `hyperframes-cli`) before authoring o
 compositions. The patterns below are project-specific overlays on top of those skills,
 not replacements.
 
-The full skill set lives under `.claude/skills/` — `hyperframes`, `hyperframes-cli`,
-`hyperframes-media`, `hyperframes-registry`, `website-to-hyperframes`,
-`script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`, plus animation adapters (`gsap`, `waapi`,
-`animejs`, `three`, `lottie`, `css-animations`, `tailwind`). Browse them when
+The HyperFrames-origin skills now come from the official **`hyperframes` Claude
+Code plugin** (marketplace `heygen-com/hyperframes`), which keeps them current
+with upstream — install with `/plugin marketplace add heygen-com/hyperframes`
+then `/plugin install hyperframes@hyperframes`. That plugin supplies
+`hyperframes`, `hyperframes-cli`, `hyperframes-media`, `hyperframes-registry`,
+`website-to-hyperframes`, the animation adapters (`gsap`, `waapi`, `animejs`,
+`three`, `lottie`, `css-animations`, `tailwind`), and a few extras
+(`contribute-catalog`, `remotion-to-hyperframes`, `typegpu`). Browse them when
 picking a tool for a scene; `hyperframes-registry` in particular governs
 `hyperframes add` and how blocks/components get wired into the project.
+
+The project's **custom skills stay local under `.claude/skills/`** —
+`script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`,
+`transcribe-and-plan-cuts`, `thumbnail-creator`, `description-writer`,
+`create-srt-and-translate`, `youtube-seo-research`, `youtube-studio`,
+`sfx-author`, `audio-bed-music`, and `design-catalog-add`. These are not part of
+the plugin; do not delete them when refreshing the plugin.
 
 For voiceover in this project, the **default is recording your own voice**: drop
 the recording at `audio/raw.mp3`, run the `transcribe-and-plan-cuts` skill (Scribe
