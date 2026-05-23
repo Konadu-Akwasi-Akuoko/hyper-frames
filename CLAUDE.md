@@ -24,7 +24,7 @@ of this layout.
 
 ## Authoring workflow
 
-This project is a HyperFrames pipeline: voiceover → transcript → storyboard → composition → render.
+This project is a HyperFrames pipeline: voiceover → transcript → composition → render.
 Always invoke the `hyperframes` skill (and `hyperframes-cli`) before authoring or editing
 compositions. The patterns below are project-specific overlays on top of those skills,
 not replacements.
@@ -150,33 +150,6 @@ uv run --project ../../tools/narration-map narration-map \
 Writes `narration-map.json` next to the transcript. See
 `tools/narration-map/README.md` for the full output shape and tunables.
 
-### Storyboard — the bridge from script to composition
-
-Once the voiceover is recorded and `transcript.json` exists, draft a
-`storyboard.md` at the video folder root **before** authoring any composition.
-It's the synthesis layer between `script.md` + `transcript.json` + `design.md`
-and the HTML: a per-beat build spec — for each beat, the spoken anchor and its
-word timestamp, what's on screen, the adapter or catalog item that drives it, the
-transition, depth layers, and SFX intent. It *references* `design.md` for
-palette/type/motion; it doesn't restate them.
-
-Why it sits here: the storyboard **consumes** the transcript's word timestamps, so
-it can't be written until the recording is cut and transcribed. Work it in two
-passes — a script-order draft, then enrich each beat with the real timestamps from
-`transcript.json`. Beat decomposition is block decomposition: each storyboard beat
-maps to a `compositions/*.html` block, which is why this dovetails with
-multi-block-from-scene-one.
-
-It's optional on a short single-scene video; it earns its keep on longer,
-multi-block ones. Keep it a plan of **intent and candidate tools, not a locked
-recipe** — the spec-over-restriction failures in `learnings/` came from pre-closing
-the lexicon. Leave room to invent during authoring.
-
-Copy `learnings/storyboard-template.md` to start; it carries the per-beat fields
-and the adapter + catalog "tooling menu" so beats reach for the right tool
-(`three`, `lottie`, `css-animations`, a caption component, a shader transition)
-instead of defaulting everything to GSAP.
-
 **YouTube SEO research is a shared per-video artifact.** The
 `youtube-seo-research` skill (backed by `tools/youtube-seo/`) generates
 `<video-dir>/seo/research.json` from one topic phrase using yt-dlp +
@@ -283,8 +256,7 @@ shimmer), social overlays, flowchart, logo outro. Browse it visually at
 https://hyperframes.heygen.com/catalog/. The **caption components are
 word-timeable** — a direct fit for transcript-as-timing-truth, usually better than
 hand-rolling text emphasis. And don't default every beat to GSAP: `three`,
-`lottie`, `css-animations`, `waapi`, and `animejs` each own a lane (see the adapter
-menu in `learnings/storyboard-template.md`).
+`lottie`, `css-animations`, `waapi`, and `animejs` each own a lane.
 
 ### Author missing primitives as parametrized local blocks
 
