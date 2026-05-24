@@ -71,19 +71,6 @@ npm run check
 
 Fix all errors before presenting the result. Inspect warnings should be reviewed before rendering.
 
-## Autonomous build mode (survives compaction)
-
-The user has explicitly delegated the full video build and gone to sleep. Do NOT
-use AskUserQuestion or ask clarifying questions at any point. Make all decisions
-independently, applying the design system and the sentence-level animation standard
-established in scene 1 Movement A. If genuinely ambiguous, pick the option that
-produces richer visuals and explain the choice in a comment in the code.
-
-Goal: every sentence in the voiceover must have a detailed, on-screen visual
-explanation — not just text animations. Think "what does this sentence SHOW?" and
-build that visual. The bar is scene 1 Movement A (HN escape + 2026→2014 timeline).
-Every beat should hit that standard.
-
 ## Design constraints
 
 - **No eyebrows.** Do not add eyebrow / section-eyebrow / overline labels (small
