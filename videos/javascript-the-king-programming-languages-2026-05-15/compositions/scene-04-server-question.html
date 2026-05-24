@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 04 — Server Question</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --border: #1f242c;
+      --fg: #e8eaed;
+      --soft: #c2c9d4;
+      --muted: #7a8493;
+      --dim: #3a4150;
+      --accent: #f7df1e;
+      --accent-2: #67e8f9;
+      --danger: #ff6b5d;
+      --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden; background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-04-server-question {
+      position: absolute; inset: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 160px;
+      box-sizing: border-box;
+    }
+
+    /* ---- Movement A: the confrontational question ---- */
+    #mvA { opacity: 0; gap: 0; }
+
+    .q-preamble {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 36px; opacity: 0;
+    }
+    .q-how-the {
+      font-size: 84px; font-weight: 700;
+      color: var(--soft); text-align: center;
+      margin-bottom: 10px; opacity: 0;
+    }
+    .q-hell {
+      font-size: 220px; font-weight: 900;
+      color: var(--danger); letter-spacing: -0.03em;
+      line-height: 0.88; text-align: center;
+      text-shadow: 0 0 100px rgba(255,107,93,0.45);
+      margin-bottom: 18px; opacity: 0;
+    }
+    .q-rest {
+      font-size: 72px; font-weight: 700;
+      color: var(--fg); text-align: center;
+      max-width: 1400px; opacity: 0;
+    }
+    .q-js-span { color: var(--accent); text-shadow: 0 0 32px rgba(247,223,30,0.25); }
+    .q-server-span { display: inline-block; }
+
+    /* ---- Movement B: server exclusion ---- */
+    #mvB {
+      opacity: 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 120px;
+    }
+
+    .years-block {
+      display: flex; flex-direction: column;
+      align-items: flex-start; flex-shrink: 0;
+    }
+    .years-num {
+      font-size: 260px; font-weight: 900;
+      color: var(--danger); line-height: 0.82;
+      letter-spacing: -0.05em;
+      font-variant-numeric: tabular-nums;
+      opacity: 0;
+    }
+    .years-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 38px; color: var(--muted);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-top: 14px; opacity: 0;
+    }
+    .years-verdict {
+      font-size: 52px; font-weight: 700;
+      color: var(--soft); margin-top: 28px; opacity: 0;
+    }
+
+    /* server rack */
+    .server-side {
+      display: flex; flex-direction: column;
+      flex-shrink: 0;
+    }
+    .rack-frame {
+      width: 700px;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      display: flex; flex-direction: column; gap: 10px;
+      opacity: 0;
+    }
+    .rack-header {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px; color: var(--muted);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2px;
+    }
+    .rack-slot {
+      height: 62px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      display: flex; align-items: center;
+      padding: 0 20px; gap: 18px;
+      opacity: 0;
+    }
+    .slot-led {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--ok); box-shadow: 0 0 8px var(--ok);
+      flex-shrink: 0;
+    }
+    .slot-lang {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px; font-weight: 700;
+      color: var(--fg); letter-spacing: 0.02em;
+    }
+
+    /* JS locked out — dashed row below the rack */
+    .js-locked {
+      margin-top: 14px; height: 60px;
+      border: 2px dashed var(--dim);
+      border-radius: 5px;
+      display: flex; align-items: center;
+      padding: 0 20px; gap: 16px;
+      opacity: 0;
+    }
+    .js-mini-badge {
+      width: 34px; height: 34px;
+      background: var(--accent); border-radius: 4px;
+      display: flex; align-items: flex-end; justify-content: flex-end;
+      padding: 2px 3px; flex-shrink: 0;
+    }
+    .js-mini-text {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 13px; font-weight: 900;
+      color: #000; line-height: 1; letter-spacing: -0.04em;
+    }
+    .js-locked-lang {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px; color: var(--dim);
+    }
+    .js-locked-tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--danger);
+      border: 1px solid rgba(255,107,93,0.4);
+      border-radius: 4px; padding: 3px 10px;
+      margin-left: auto; white-space: nowrap;
+    }
+
+    /* ---- Movement C: JS trapped in browser ---- */
+    #mvC { opacity: 0; gap: 40px; }
+
+    .browser-wrap {
+      width: 780px; height: 480px;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      display: flex; flex-direction: column;
+      flex-shrink: 0;
+      opacity: 0;
+    }
+    .browser-chrome {
+      height: 46px; background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 16px; gap: 10px; flex-shrink: 0;
+    }
+    .bc-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .bc-r { background: var(--danger); }
+    .bc-y { background: var(--accent); opacity: 0.5; }
+    .bc-g { background: var(--ok); opacity: 0.5; }
+    .bc-url {
+      flex: 1; height: 24px;
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 5px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px; color: var(--muted);
+      display: flex; align-items: center;
+      padding: 0 10px; max-width: 290px; margin-left: 8px;
+    }
+    .browser-body {
+      flex: 1; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .js-logo-big {
+      width: 180px; height: 180px;
+      background: var(--accent); border-radius: 8px;
+      position: relative;
+    }
+    .js-logo-big-text {
+      position: absolute; right: 8px; bottom: 6px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 80px; font-weight: 900;
+      color: #000; line-height: 1; letter-spacing: -0.04em;
+    }
+    .trap-text {
+      font-size: 44px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 1100px; line-height: 1.3;
+      opacity: 0;
+    }
+    .trap-die-text {
+      font-size: 36px; color: var(--muted);
+      text-align: center; max-width: 900px;
+      line-height: 1.4; opacity: 0;
+    }
+    .die-word { color: var(--danger); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="scene-04-server-question" data-composition-id="scene-04-server-question" data-width="1920" data-height="1080">
+
+    <!-- Movement A: the confrontational question -->
+    <div id="mvA" class="movement">
+      <div class="q-preamble" id="q-preamble">that begs the question,</div>
+      <div class="q-how-the" id="q-how-the">how the</div>
+      <div class="q-hell" id="q-hell">HELL</div>
+      <div class="q-rest" id="q-rest">did <span class="q-js-span">JavaScript</span> get to the <span class="q-server-span" id="q-server-span">server?</span></div>
+    </div>
+
+    <!-- Movement B: server exclusion -->
+    <div id="mvB" class="movement">
+      <div class="years-block">
+        <div class="years-num" id="years-num">14</div>
+        <div class="years-label" id="years-label">years</div>
+        <div class="years-verdict" id="years-verdict">it didn't.</div>
+      </div>
+      <div class="server-side">
+        <div class="rack-frame" id="rack-frame">
+          <div class="rack-header">SERVER</div>
+          <div class="rack-slot" id="slot-perl">
+            <div class="slot-led"></div>
+            <div class="slot-lang">Perl</div>
+          </div>
+          <div class="rack-slot" id="slot-php">
+            <div class="slot-led"></div>
+            <div class="slot-lang">PHP</div>
+          </div>
+          <div class="rack-slot" id="slot-python">
+            <div class="slot-led"></div>
+            <div class="slot-lang">Python</div>
+          </div>
+          <div class="rack-slot" id="slot-ruby">
+            <div class="slot-led"></div>
+            <div class="slot-lang">Ruby</div>
+          </div>
+        </div>
+        <div class="js-locked" id="js-locked">
+          <div class="js-mini-badge"><span class="js-mini-text">JS</span></div>
+          <div class="js-locked-lang">JavaScript</div>
+          <div class="js-locked-tag">BROWSER ONLY</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement C: JS trapped in browser -->
+    <div id="mvC" class="movement">
+      <div class="browser-wrap" id="browser-wrap">
+        <div class="browser-chrome">
+          <div class="bc-dot bc-r"></div>
+          <div class="bc-dot bc-y"></div>
+          <div class="bc-dot bc-g"></div>
+          <div class="bc-url">about:javascript</div>
+        </div>
+        <div class="browser-body">
+          <div class="js-logo-big">
+            <div class="js-logo-big-text">JS</div>
+          </div>
+        </div>
+      </div>
+      <div class="trap-text" id="trap-text">
+        JavaScript has always lived inside the browser.
+      </div>
+      <div class="trap-die-text" id="trap-die-text">
+        Most people thought it would <span class="die-word">die</span> there.
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance crossfade from scene-03
+      tl.fromTo("#scene-04-server-question", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // ---- Movement A: confrontational question (0–6.1s) ----
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      // preamble at "question" (1.74)
+      tl.fromTo("#q-preamble", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.6);
+      // "how the" at word "how" (2.72)
+      tl.fromTo("#q-how-the", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.65);
+      // "HELL" slams in at word "hell" (3.16)
+      tl.fromTo("#q-hell", { opacity: 0, scale: 0.55, y: 28 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2.8)", transformOrigin: "center center" }, 3.1);
+      // rest at word "JavaScript" (3.80)
+      tl.fromTo("#q-rest", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.75);
+      // "server?" pulse at word "server?" (5.02)
+      tl.fromTo("#q-server-span", { scale: 1 }, { scale: 1.07, duration: 0.22, yoyo: true, repeat: 1, ease: "back.out(2)", transformOrigin: "center center" }, 5.0);
+
+      // ---- Crossfade A → B at 6.1s ----
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.1);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 6.1);
+
+      // ---- Movement B: server exclusion (6.1–14.3s) ----
+      // Empty rack frame + locked JS appear early to establish the visual
+      tl.fromTo("#rack-frame", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.45);
+      tl.fromTo("#js-locked", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.95);
+
+      // "14" pops at word "14" (6.54)
+      tl.fromTo("#years-num", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2.5)", transformOrigin: "left center" }, 6.5);
+      // "years" fades at word "years" (7.18)
+      tl.fromTo("#years-label", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.1);
+      // "it didn't." fades at word "didn't" (8.07)
+      tl.fromTo("#years-verdict", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 8.0);
+
+      // Language slots slide in on their word beats
+      tl.fromTo("#slot-perl",   { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.8);
+      tl.fromTo("#slot-php",    { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.0);
+      tl.fromTo("#slot-python", { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 12.3);
+      tl.fromTo("#slot-ruby",   { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 13.5);
+
+      // ---- Crossfade B → C at 14.3s ----
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 14.3);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 14.3);
+
+      // ---- Movement C: browser trap (14.3–20.68s) ----
+      // Browser frame pops in with scale
+      tl.fromTo("#browser-wrap", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.8)", transformOrigin: "center center" }, 14.4);
+      // "JavaScript has always lived inside the browser." at word "browser" (17.04)
+      tl.fromTo("#trap-text", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 16.9);
+      // "Most people thought it would die there." at word "die" (19.46)
+      tl.fromTo("#trap-die-text", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 19.4);
+
+      window.__timelines["scene-04-server-question"] = tl;
+    </script>
+  </div>
+</body>
+</html>
