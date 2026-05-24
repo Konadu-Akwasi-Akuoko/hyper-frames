@@ -496,8 +496,10 @@
       tl.fromTo("#srow-native", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.32, ease: "power2.out" }, 33.36);
       // "NOT A WEBVIEW" at "not" (36.07)
       tl.fromTo("#not-wv-badge", { opacity: 0, scale: 0.72 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)", transformOrigin: "left center" }, 36.05);
-      // Movement C dead zone: 36.05→43.0s
-      // "native" (39.59): native-row pulse — "actual native UI controls"
+      // "actual" (38.59): srow-native pulse — "not a web view, ACTUAL native"
+      tl.to("#srow-native", { scale: 1.04, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 38.59);
+      tl.to("#srow-native", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 38.77);
+      // "native" (39.59): native-row second pulse — the emphasis doubles
       tl.to("#srow-native", { scale: 1.03, duration: 0.18, ease: "back.out(2)", transformOrigin: "center" }, 39.57);
       tl.to("#srow-native", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 39.75);
       // "JavaScript" (41.97): srow-js glows — "described in JavaScript"
@@ -532,6 +534,9 @@
       tl.to("#iter-compare", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 60.25);
       // React Native for Windows at "React" (62.45)
       tl.fromTo("#rnw-badge", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 62.43);
+      // "specifically" (64.73): rnw-badge breathes — "specifically so JS can drive it"
+      tl.to("#rnw-badge", { scale: 1.015, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 64.73);
+      tl.to("#rnw-badge", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 64.92);
       // "JavaScript" (66.03): rnw-badge pulse — "specifically so JavaScript can drive"
       tl.to("#rnw-badge", { scale: 1.02, duration: 0.19, ease: "back.out(2)", transformOrigin: "center" }, 66.01);
       tl.to("#rnw-badge", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 66.20);

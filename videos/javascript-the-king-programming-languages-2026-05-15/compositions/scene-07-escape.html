@@ -346,6 +346,9 @@
       // "touch" (5.72): counter scale pulse before db-moment enters
       tl.to("#adoption-counter", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 5.72);
       tl.to("#adoption-counter", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 5.87);
+      // "never" (8.40): db-moment pulse — "the database has never been the same"
+      tl.to("#db-moment", { scale: 1.03, duration: 0.20, ease: "power2.out", transformOrigin: "center" }, 8.40);
+      tl.to("#db-moment", { scale: 1, duration: 0.32, ease: "power2.in", transformOrigin: "center" }, 8.60);
 
       // ---- Crossfade A → B at 9.8s ----
       tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 9.8);
@@ -387,8 +390,14 @@
       tl.to("#hl-escape", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 22.18);
       // "infiltrate our servers" at word "infiltrate" (23.74)
       tl.to("#hl-infil", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 23.72);
+      // "Node.js." (25.80): the name lands — card subtle pulse
+      tl.to("#hn-card", { scale: 1.015, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 25.80);
+      tl.to("#hn-card", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 25.98);
       // Response text at word "right" (27.72)
       tl.fromTo("#hn-response", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 27.7);
+      // "escape," (28.60): hn-card bounce — escape word echoes the whole scene
+      tl.to("#hn-card", { scale: 1.012, duration: 0.16, ease: "power2.out", transformOrigin: "center" }, 28.60);
+      tl.to("#hn-card", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 28.76);
 
       // ---- Crossfade C → D at 31.5s ----
       tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 31.5);

@@ -303,6 +303,9 @@
       tl.to(".js-dom", { scale: 1, duration: 0.32, ease: "power2.inOut" }, 5.83);
 
       // Movement C: 25.91→33.35s — so-card showing
+      // "Survey" (28.31): so-card breathes as the narrator names it
+      tl.to("#so-card", { scale: 1.015, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 28.31);
+      tl.to("#so-card", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 28.49);
       // "49,000" (29.85): so-card pulse — emphasize the survey sample size
       tl.to("#so-card", { scale: 1.02, duration: 0.20, ease: "back.out(2)", transformOrigin: "center" }, 29.83);
       tl.to("#so-card", { scale: 1, duration: 0.32, ease: "power2.inOut" }, 30.03);

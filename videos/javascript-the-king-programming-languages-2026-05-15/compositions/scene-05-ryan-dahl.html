@@ -441,6 +441,12 @@
       tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
       // "November 2009" at word "November" (0.63)
       tl.fromTo("#rd-date", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.6);
+      // "that was when" (2.78): rd-date breathes while only date is on screen
+      tl.to("#rd-date", { scale: 1.03, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 2.78);
+      tl.to("#rd-date", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 2.96);
+      // "engineer" (3.52): punctuates the pause before Ryan Dahl's name enters
+      tl.to("#rd-date", { scale: 1.04, duration: 0.16, ease: "power2.out", transformOrigin: "center" }, 3.52);
+      tl.to("#rd-date", { scale: 1, duration: 0.26, ease: "power2.in", transformOrigin: "center" }, 3.68);
       // "Ryan Dahl" at word "Ryan" (4.62)
       tl.fromTo("#rd-name", { opacity: 0, scale: 0.88, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center center" }, 4.55);
       // Context at word "Berlin" (7.16)
@@ -561,6 +567,12 @@
       tl.fromTo("#io-others", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 47.3);
       // JS row (blank slate) at word "and" (50.52)
       tl.fromTo("#io-js", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 50.5);
+      // "blocking." (52.26): io-others pulse — the problem the others had
+      tl.to("#io-others", { scale: 1.03, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 52.26);
+      tl.to("#io-others", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 52.44);
+      // "Developers" (53.26): io-js pulse — this was JS's opening
+      tl.to("#io-js", { scale: 1.03, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 53.26);
+      tl.to("#io-js", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 53.44);
       // Conclusion at word "async" (54.42)
       tl.fromTo("#io-conclusion", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 54.4);
 
