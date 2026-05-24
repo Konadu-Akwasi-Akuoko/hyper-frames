@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 07 — Escape</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --border: #1f242c;
+      --fg: #e8eaed;
+      --soft: #c2c9d4;
+      --muted: #7a8493;
+      --dim: #3a4150;
+      --accent: #f7df1e;
+      --accent-2: #67e8f9;
+      --danger: #ff6b5d;
+      --ok: #7dd87d;
+    }
+    @font-face {
+      font-family: "Excalifont";
+      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: block;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden; background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-07-escape {
+      position: absolute; inset: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 160px;
+      box-sizing: border-box;
+    }
+
+    /* ---- Movement A: adoption wave ---- */
+    #mvA { opacity: 0; gap: 36px; }
+
+    .adoption-counter {
+      display: flex; align-items: center; gap: 36px;
+      opacity: 0;
+    }
+    .ac-num {
+      font-size: 120px; font-weight: 900;
+      color: var(--ok); letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+    }
+    .ac-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 28px; color: var(--muted);
+      letter-spacing: 0.04em; text-transform: uppercase;
+      line-height: 1.4;
+    }
+    .ac-sub {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px; color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .db-moment {
+      font-size: 44px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 1200px; line-height: 1.35;
+      opacity: 0;
+    }
+    .db-moment .db-word { color: var(--accent-2); }
+    .db-moment .never-word { color: var(--ok); }
+
+    /* ---- Movement B: escape moment ---- */
+    #mvB { opacity: 0; gap: 48px; }
+
+    .escape-visual {
+      display: flex; align-items: center; gap: 48px;
+      opacity: 0;
+    }
+    .escape-browser {
+      width: 300px; height: 190px;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      display: flex; flex-direction: column;
+      flex-shrink: 0;
+    }
+    .eb-chrome {
+      height: 34px; background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 12px; gap: 8px; flex-shrink: 0;
+    }
+    .eb-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .eb-dot-r { background: #ff6b5d; }
+    .eb-dot-y { background: var(--accent); opacity: 0.5; }
+    .eb-dot-g { background: var(--ok); opacity: 0.5; }
+    .eb-body {
+      flex: 1; display: flex; align-items: center;
+      justify-content: center;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px; color: var(--muted);
+    }
+    .escape-path {
+      display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+    }
+    .escape-dash {
+      width: 80px; height: 2px;
+      background: repeating-linear-gradient(90deg, var(--accent) 0, var(--accent) 8px, transparent 8px, transparent 14px);
+      flex-shrink: 0;
+    }
+    .escape-arrow {
+      font-size: 40px; color: var(--accent); flex-shrink: 0;
+    }
+    .escape-js {
+      width: 130px; height: 130px;
+      background: var(--accent); border-radius: 8px;
+      position: relative; flex-shrink: 0;
+      box-shadow: 0 0 60px rgba(247,223,30,0.35);
+    }
+    .escape-js-text {
+      position: absolute; right: 7px; bottom: 5px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 58px; font-weight: 900;
+      color: #000; line-height: 1; letter-spacing: -0.04em;
+    }
+    .escape-headline {
+      font-size: 72px; font-weight: 900;
+      color: var(--fg); text-align: center;
+      max-width: 1400px; line-height: 1.1;
+      opacity: 0;
+    }
+    .escape-headline .escaped-word { color: var(--accent-2); }
+    .escape-theline {
+      font-size: 32px; color: var(--muted);
+      text-align: center; font-style: italic;
+      opacity: 0;
+    }
+
+    /* ---- Movement C: HN callback ---- */
+    #mvC { opacity: 0; gap: 44px; }
+
+    .hn-card {
+      width: 1100px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0;
+    }
+    .hn-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 24px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .hn-dot-orange {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #ff6314; flex-shrink: 0;
+    }
+    .hn-header-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .hn-header-year {
+      margin-left: auto;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--muted);
+    }
+    .hn-body { padding: 28px 32px; }
+    .hn-meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 14px; color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .hn-score { color: var(--ok); }
+    .hn-quote {
+      font-family: "Excalifont", serif;
+      font-size: 34px; color: var(--soft);
+      line-height: 1.5;
+      position: relative;
+    }
+    /* Highlight spans — real DOM spans, not ::after */
+    .hl-wrap { position: relative; display: inline; }
+    .hl-bg {
+      position: absolute;
+      left: -3px; right: -3px;
+      top: 0; bottom: 0;
+      background: rgba(255,107,93,0.22);
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+    .hn-response {
+      font-size: 36px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 1100px; line-height: 1.4;
+      opacity: 0;
+    }
+    .hn-response .right-word { color: var(--ok); }
+    .hn-response .coming-word { color: var(--accent); }
+
+    /* ---- Movement D: next frontier ---- */
+    #mvD { opacity: 0; gap: 40px; }
+
+    .went-to-row {
+      display: flex; align-items: center; gap: 32px;
+      opacity: 0;
+    }
+    .went-label {
+      font-size: 56px; font-weight: 700;
+      color: var(--soft);
+    }
+    .platform-chip {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px; font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      background: var(--panel);
+    }
+    .mobile-chip { color: var(--accent-2); border-color: rgba(103,232,249,0.4); }
+    .desktop-chip { color: var(--accent); border-color: rgba(247,223,30,0.4); }
+    .how-text {
+      font-size: 80px; font-weight: 900;
+      color: var(--fg); letter-spacing: -0.02em;
+      opacity: 0;
+    }
+    .next-setup {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 24px; color: var(--muted);
+      text-align: center; letter-spacing: 0.03em;
+      opacity: 0;
+    }
+    .next-setup .github-word { color: var(--soft); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="scene-07-escape" data-composition-id="scene-07-escape" data-width="1920" data-height="1080">
+
+    <!-- Movement A: adoption wave + database touch -->
+    <div id="mvA" class="movement">
+      <div class="adoption-counter" id="adoption-counter">
+        <div class="ac-num">10,000+</div>
+        <div>
+          <div class="ac-label">engineers</div>
+          <div class="ac-label">ran to Node.js</div>
+          <div class="ac-sub">within months</div>
+        </div>
+      </div>
+      <div class="db-moment" id="db-moment">
+        The people who centred JS for a living finally got to touch a <span class="db-word">database</span> — and the database has <span class="never-word">never been the same</span>.
+      </div>
+    </div>
+
+    <!-- Movement B: escape moment + HN callback setup -->
+    <div id="mvB" class="movement">
+      <div class="escape-visual" id="escape-visual">
+        <div class="escape-browser">
+          <div class="eb-chrome">
+            <div class="eb-dot eb-dot-r"></div>
+            <div class="eb-dot eb-dot-y"></div>
+            <div class="eb-dot eb-dot-g"></div>
+          </div>
+          <div class="eb-body">empty</div>
+        </div>
+        <div class="escape-path">
+          <div class="escape-dash"></div>
+          <div class="escape-arrow">&#x2192;</div>
+        </div>
+        <div class="escape-js">
+          <div class="escape-js-text">JS</div>
+        </div>
+      </div>
+      <div class="escape-headline" id="escape-headline">
+        JavaScript had <span class="escaped-word">escaped</span> the browser.
+      </div>
+      <div class="escape-theline" id="escape-theline">And there's the line.</div>
+    </div>
+
+    <!-- Movement C: HN callback quote -->
+    <div id="mvC" class="movement">
+      <div class="hn-card" id="hn-card">
+        <div class="hn-header">
+          <div class="hn-dot-orange"></div>
+          <div class="hn-header-label">Hacker News</div>
+          <div class="hn-header-year">2014</div>
+        </div>
+        <div class="hn-body">
+          <div class="hn-meta">throwaway90210 · <span class="hn-score">&#x2191; 847</span></div>
+          <div class="hn-quote">
+            "We allowed this
+            <span class="hl-wrap"><span class="hl-bg" id="hl-awful"></span>awful language</span>
+            to
+            <span class="hl-wrap"><span class="hl-bg" id="hl-escape"></span>escape the browser</span>
+            and
+            <span class="hl-wrap"><span class="hl-bg" id="hl-infil"></span>infiltrate our servers</span>
+            in form of Node.js."
+          </div>
+        </div>
+      </div>
+      <div class="hn-response" id="hn-response">
+        He was <span class="right-word">right</span> about the escape — but he didn't know what was <span class="coming-word">coming next</span>.
+      </div>
+    </div>
+
+    <!-- Movement D: next frontier -->
+    <div id="mvD" class="movement">
+      <div class="went-to-row" id="went-to-row">
+        <div class="went-label">JavaScript went to</div>
+        <div class="platform-chip mobile-chip" id="chip-mobile">MOBILE</div>
+        <div class="went-label">and</div>
+        <div class="platform-chip desktop-chip" id="chip-desktop">DESKTOP</div>
+      </div>
+      <div class="how-text" id="how-text">How?</div>
+      <div class="next-setup" id="next-setup">In 2013, an engineer at <span class="github-word">GitHub</span>...</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance crossfade from scene-06
+      tl.fromTo("#scene-07-escape", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // ---- Movement A: adoption wave (0–9.8s) ----
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      // Counter at word "thousands" (0.26)
+      tl.fromTo("#adoption-counter", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center" }, 0.24);
+      // "database" moment at word "database" (6.10)
+      tl.fromTo("#db-moment", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 6.08);
+
+      // ---- Crossfade A → B at 9.8s ----
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 9.8);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 9.8);
+
+      // ---- Movement B: escape moment (9.8–19.8s) ----
+      // Escape visual at word "JavaScript" (10.06)
+      tl.fromTo("#escape-visual", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out" }, 10.04);
+      // JS badge slides out of browser on word "escaped" (11.60)
+      tl.fromTo("#escape-visual .escape-js", { x: -180, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "back.out(2)", transformOrigin: "center" }, 11.58);
+      // Headline at word "escaped" (11.60)
+      tl.fromTo("#escape-headline", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 12.0);
+      // "And there's the line." at word "line" (14.18)
+      tl.fromTo("#escape-theline", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 14.16);
+
+      // ---- Crossfade B → C at 19.8s ----
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 19.8);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 19.8);
+
+      // ---- Movement C: HN callback quote (19.8–31.5s) ----
+      // HN card slides in at word "Hacker" (15.12 — but we're in mvC now at ~20s)
+      // The HN card appears as mvC crossfades in
+      tl.fromTo("#hn-card", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 20.0);
+      // Highlight sweeps on the key fragments (as quote words are spoken at 20.31–25.80)
+      // "awful language" at word "awful" (21.22)
+      tl.to("#hl-awful", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 21.2);
+      // "escape the browser" at word "escape" (22.20)
+      tl.to("#hl-escape", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 22.18);
+      // "infiltrate our servers" at word "infiltrate" (23.74)
+      tl.to("#hl-infil", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 23.72);
+      // Response text at word "right" (27.72)
+      tl.fromTo("#hn-response", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 27.7);
+
+      // ---- Crossfade C → D at 31.5s ----
+      tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 31.5);
+      tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 31.5);
+
+      // ---- Movement D: next frontier (31.5–38.0s) ----
+      // "went to mobile and desktop" at word "went" (33.82)
+      tl.fromTo("#went-to-row", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 33.8);
+      // Mobile chip at word "mobile" (34.42)
+      tl.fromTo("#chip-mobile", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.5)", transformOrigin: "center" }, 34.4);
+      // Desktop chip at word "desktop" (35.20)
+      tl.fromTo("#chip-desktop", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.5)", transformOrigin: "center" }, 35.18);
+      // "How?" at word "How?" (35.94)
+      tl.fromTo("#how-text", { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", transformOrigin: "center" }, 35.92);
+      // Setup at word "2013" (37.12)
+      tl.fromTo("#next-setup", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 37.1);
+
+      window.__timelines["scene-07-escape"] = tl;
+    </script>
+  </div>
+</body>
+</html>
