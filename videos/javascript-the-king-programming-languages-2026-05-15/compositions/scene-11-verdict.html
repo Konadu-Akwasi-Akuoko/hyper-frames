@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 11 — Verdict</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent; font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-11-verdict {
+      position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 80px 160px; box-sizing: border-box; opacity: 0;
+    }
+
+    /* === Movement A: LLM training data === */
+    #mvA { gap: 48px; }
+
+    .corpus-hdr {
+      font-size: 46px; font-weight: 700; color: var(--soft);
+      text-align: center; max-width: 1400px; line-height: 1.3; opacity: 0;
+    }
+    .corpus-hdr .js-dom { color: var(--accent); }
+
+    .src-row { display: flex; gap: 28px; }
+    .src-card {
+      width: 286px; background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 22px 20px;
+      display: flex; flex-direction: column; gap: 12px; opacity: 0;
+    }
+    .src-abbr {
+      font-size: 28px; font-weight: 900; color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+    }
+    .src-name { font-size: 18px; font-weight: 700; color: var(--soft); }
+    .src-note { font-size: 13px; color: var(--muted); }
+
+    /* === Movement B: Flywheel === */
+    #mvB { gap: 0; justify-content: center; }
+
+    .flywheel-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .fw-forward { display: flex; align-items: center; }
+    .fw-node {
+      width: 250px; background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px 16px; text-align: center;
+      display: flex; flex-direction: column; gap: 8px; opacity: 0;
+    }
+    .fw-node.n-trained  { border-color: rgba(97,218,251,0.35); }
+    .fw-node.n-generated { border-color: rgba(125,216,125,0.35); }
+    .fw-node.n-shipped  { border-color: rgba(232,234,237,0.2); }
+    .fw-node.n-corpus   { border-color: rgba(97,218,251,0.35); }
+    .fw-step {
+      font-size: 11px; color: var(--muted); letter-spacing: 0.1em;
+      text-transform: uppercase; font-family: "JetBrains Mono", monospace;
+    }
+    .fw-lbl { font-size: 20px; font-weight: 800; }
+    .n-trained .fw-lbl   { color: var(--accent-2); }
+    .n-generated .fw-lbl { color: var(--ok); }
+    .n-shipped .fw-lbl   { color: var(--soft); }
+    .n-corpus .fw-lbl    { color: var(--accent-2); }
+
+    .fw-arr {
+      width: 72px; text-align: center; font-size: 28px; color: var(--muted);
+      flex-shrink: 0; opacity: 0;
+    }
+    .fw-return-wrap { display: flex; align-items: flex-end; width: 100%; padding: 0 126px; }
+    .fw-return-line {
+      flex: 1; height: 1px; background: var(--border); opacity: 0;
+    }
+    .fw-return-arrow {
+      font-size: 22px; color: var(--muted); opacity: 0;
+      margin-right: 4px;
+    }
+
+    /* === Movement C: Stack Overflow 66% === */
+    #mvC { gap: 44px; }
+
+    .so-card {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 40px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0;
+    }
+    .so-survey-title {
+      font-size: 22px; font-weight: 700; color: var(--soft);
+      font-family: "JetBrains Mono", monospace;
+    }
+    .so-survey-sub { font-size: 15px; color: var(--muted); }
+
+    .so-stat { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .so-label { font-size: 44px; font-weight: 800; color: var(--fg); opacity: 0; }
+    .so-streak {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px; color: var(--muted); letter-spacing: 0.06em; opacity: 0;
+    }
+    .so-num {
+      font-size: 180px; font-weight: 900; line-height: 0.85;
+      letter-spacing: -0.05em; color: var(--accent);
+      font-variant-numeric: tabular-nums; opacity: 0;
+    }
+
+    /* === Movement D: Supply thesis + 10-days payoff === */
+    #mvD { gap: 44px; }
+
+    .supply-stmt {
+      font-size: 60px; font-weight: 900; letter-spacing: -0.02em;
+      color: var(--soft); text-align: center; max-width: 1200px;
+      line-height: 1.2; opacity: 0;
+    }
+    .supply-qual { color: var(--muted); text-decoration: line-through; }
+    .supply-supp { color: var(--accent-2); }
+
+    .tendays-world {
+      font-size: 44px; font-weight: 700; color: var(--soft);
+      text-align: center; max-width: 1300px; line-height: 1.35; opacity: 0;
+    }
+    .tendays-world .td-num { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-11-verdict" data-composition-id="scene-11-verdict" data-width="1920" data-height="1080">
+
+    <!-- Movement A: LLM training corpus dominance (0–15s) -->
+    <div id="mvA" class="movement">
+      <div class="corpus-hdr" id="corpus-hdr">
+        In 2026, every large language model is trained on code where
+        <span class="js-dom">JavaScript dominates.</span>
+      </div>
+      <div class="src-row">
+        <div class="src-card" id="src-github">
+          <div class="src-abbr">GH</div>
+          <div class="src-name">GitHub repos</div>
+          <div class="src-note">most popular language by repo count</div>
+        </div>
+        <div class="src-card" id="src-npm">
+          <div class="src-abbr">NPM</div>
+          <div class="src-name">NPM packages</div>
+          <div class="src-note">3.3M+ packages, largest registry</div>
+        </div>
+        <div class="src-card" id="src-blogs">
+          <div class="src-abbr">WR</div>
+          <div class="src-name">Blog posts</div>
+          <div class="src-note">dominant tutorial subject</div>
+        </div>
+        <div class="src-card" id="src-so">
+          <div class="src-abbr">SO</div>
+          <div class="src-name">Stack Overflow</div>
+          <div class="src-note">most asked language, 13+ years</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement B: Self-reinforcing flywheel (15–25.5s) -->
+    <div id="mvB" class="movement">
+      <div class="flywheel-wrap">
+        <div class="fw-forward">
+          <div class="fw-node n-trained" id="fw-trained">
+            <div class="fw-step">step 1</div>
+            <div class="fw-lbl">Most trained on</div>
+          </div>
+          <div class="fw-arr" id="fw-a1">&#x2192;</div>
+          <div class="fw-node n-generated" id="fw-generated">
+            <div class="fw-step">step 2</div>
+            <div class="fw-lbl">Most generated</div>
+          </div>
+          <div class="fw-arr" id="fw-a2">&#x2192;</div>
+          <div class="fw-node n-shipped" id="fw-shipped">
+            <div class="fw-step">step 3</div>
+            <div class="fw-lbl">Most shipped</div>
+          </div>
+          <div class="fw-arr" id="fw-a3">&#x2192;</div>
+          <div class="fw-node n-corpus" id="fw-corpus">
+            <div class="fw-step">step 4</div>
+            <div class="fw-lbl">Next training data</div>
+          </div>
+        </div>
+        <div class="fw-return-wrap">
+          <div class="fw-return-arrow" id="fw-ret-arr">&#x2190;</div>
+          <div class="fw-return-line" id="fw-ret-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement C: Stack Overflow 66% (25.5–43s) -->
+    <div id="mvC" class="movement">
+      <div class="so-card" id="so-card">
+        <div class="so-survey-title">Stack Overflow Developer Survey · 2025</div>
+        <div class="so-survey-sub">49,000 engineers asked what they actually use</div>
+      </div>
+      <div class="so-stat">
+        <div class="so-label" id="so-label">JavaScript</div>
+        <div class="so-streak" id="so-streak">#1 for 13+ consecutive years</div>
+        <div class="so-num" id="so-num">66%</div>
+      </div>
+    </div>
+
+    <!-- Movement D: Won on supply + 10-days payoff (43–53s) -->
+    <div id="mvD" class="movement">
+      <div class="supply-stmt" id="supply-stmt">
+        JavaScript didn't win on <span class="supply-qual">quality</span>,
+        it won on <span class="supply-supp">supply</span>.
+      </div>
+      <div class="tendays-world" id="tendays-world">
+        The kid Netscape hired to write a scripting language in <span class="td-num">10 days</span> now writes the world.
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance crossfade from scene-10
+      tl.fromTo("#scene-11-verdict", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // === Movement A: LLM training dominance (0–15s) ===
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      // Header: "In 2026... JavaScript dominates." at "2026" (0.07)
+      tl.fromTo("#corpus-hdr", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.05);
+      // GitHub at "GitHub's" (8.55)
+      tl.fromTo("#src-github", { opacity: 0, y: 18, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2.2)", transformOrigin: "center" }, 8.53);
+      // NPM at "NPM" (10.89)
+      tl.fromTo("#src-npm", { opacity: 0, y: 18, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2.2)", transformOrigin: "center" }, 10.87);
+      // Blogs at "blog" (12.67)
+      tl.fromTo("#src-blogs", { opacity: 0, y: 18, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "expo.out" }, 12.65);
+      // Stack Overflow at "Stack" (13.83)
+      tl.fromTo("#src-so", { opacity: 0, y: 18, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "expo.out" }, 13.81);
+
+      // === Crossfade A → B at 15.0s ===
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 15.0);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 15.0);
+
+      // === Movement B: Flywheel (15–25.5s) ===
+      // "trained on language becomes" at "trained" (15.89)
+      tl.fromTo("#fw-trained", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 15.87);
+      tl.fromTo("#fw-a1",      { opacity: 0 },           { opacity: 1, duration: 0.3, ease: "power2.out" }, 16.5);
+      // "most generated" at "generated." (17.99)
+      tl.fromTo("#fw-generated", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 17.97);
+      tl.fromTo("#fw-a2",        { opacity: 0 },          { opacity: 1, duration: 0.3, ease: "power2.out" }, 18.7);
+      // "most shipped" at "shipped," (20.57)
+      tl.fromTo("#fw-shipped", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 20.55);
+      tl.fromTo("#fw-a3",      { opacity: 0 },          { opacity: 1, duration: 0.3, ease: "power2.out" }, 21.2);
+      // "next training corpus" at "training" (23.11)
+      tl.fromTo("#fw-corpus", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 23.09);
+      // Loop return line at "after" (24.87)
+      tl.fromTo("#fw-ret-line", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out", transformOrigin: "right center" }, 24.85);
+      tl.fromTo("#fw-ret-arr",  { opacity: 0 }, { opacity: 1, duration: 0.25 }, 25.25);
+
+      // === Crossfade B → C at 25.5s ===
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 25.5);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 25.5);
+
+      // === Movement C: Stack Overflow 66% (25.5–43s) ===
+      // Survey card at "Stack Overflow's" (25.93)
+      tl.fromTo("#so-card", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 25.91);
+      // "JavaScript came in first" — label appears at "JavaScript" (33.37)
+      tl.fromTo("#so-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 33.35);
+      // "every year for over a decade" — streak badge at "decade," (37.61)
+      tl.fromTo("#so-streak", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 37.59);
+      // "66%" — big reveal at "66%," (38.75)
+      tl.fromTo("#so-num", { opacity: 0, scale: 0.72 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(2.5)", transformOrigin: "center" }, 38.73);
+
+      // === Crossfade C → D at 43.0s ===
+      tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 43.0);
+      tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 43.0);
+
+      // === Movement D: Supply thesis + 10-days payoff (43–53s) ===
+      // "JavaScript didn't win on quality, it won on supply." at "JavaScript" (43.55)
+      tl.fromTo("#supply-stmt", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 43.53);
+      // "The kid Netscape hired... 10 days now writes the world." at "The" (47.92)
+      tl.fromTo("#tendays-world", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 47.90);
+
+      window.__timelines["scene-11-verdict"] = tl;
+    </script>
+  </div>
+</body>
+</html>
