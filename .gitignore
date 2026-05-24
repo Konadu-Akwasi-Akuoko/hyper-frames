@@ -12,3 +12,7 @@ __pycache__/
 
 # Claude Code scheduled task runtime lock
 .claude/scheduled_tasks.lock
+
+# HyperFrames build caches (generated per-video, not source)
+.hyperframes/
+.thumbnails/
