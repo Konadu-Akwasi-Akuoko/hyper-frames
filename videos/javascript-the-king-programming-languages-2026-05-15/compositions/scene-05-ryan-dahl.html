@@ -531,6 +531,18 @@
       tl.to("#ap-panel", { scale: 1, duration: 0.32, ease: "power2.inOut" }, 33.78);
       // Joke text fades in at word "say" (35.82)
       tl.fromTo("#joke-text", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 35.75);
+
+      // ---- Gap (35.75–41.72): narrating the joke, elements fully visible ----
+      // "switched" (36.08): choice-arrow scale pulse (he switched stacks)
+      tl.to("#choice-arrow", { scale: 1.15, duration: 0.16, ease: "power2.out", transformOrigin: "center" }, 36.08);
+      tl.to("#choice-arrow", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 36.25);
+      // "JS" (38.90): js-panel scale pulse (JS framework mentioned)
+      tl.to("#js-panel", { scale: 1.04, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 38.90);
+      tl.to("#js-panel", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 39.09);
+      // "shinier" (40.62): joke-text scale (the shinier framework)
+      tl.to("#joke-text", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 40.62);
+      tl.to("#joke-text", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 40.78);
+
       // "Twitter" (41.74): twitter-word bounce while narrator reads the joke
       tl.to("#twitter-word", { scale: 1.18, duration: 0.16, ease: "back.out(2.5)", transformOrigin: "center" }, 41.72);
       tl.to("#twitter-word", { scale: 1, duration: 0.26, ease: "power2.inOut" }, 41.88);

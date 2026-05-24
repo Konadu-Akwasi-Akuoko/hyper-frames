@@ -357,6 +357,18 @@
       // JS label at word "JavaScript" (15.24)
       // js-adv-label moves to 10.22 ("The second") to fill the 10→15s empty mvB gap
       tl.fromTo("#js-adv-label", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.2)", transformOrigin: "center" }, 10.22);
+
+      // ---- Gap (10.72–16.55): only js-adv-label visible; narrator explains the stall ----
+      // "blocking" (11.26): label scale pulse (the blocking-call problem)
+      tl.to("#js-adv-label", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 11.26);
+      tl.to("#js-adv-label", { scale: 1.0, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 11.42);
+      // "stalled" (14.00): stronger pulse — the whole thing stalled
+      tl.to("#js-adv-label", { scale: 1.06, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 14.00);
+      tl.to("#js-adv-label", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 14.19);
+      // "JavaScript" (15.24): JS label reacts when its name is spoken
+      tl.to("#js-adv-label", { scale: 1.08, duration: 0.20, ease: "back.out(2)", transformOrigin: "center" }, 15.24);
+      tl.to("#js-adv-label", { scale: 1.0, duration: 0.32, ease: "power2.in", transformOrigin: "center" }, 15.58);
+
       // Chip 1: "No I/O" at word "no" (16.56) / "I/O" (16.86)
       tl.fromTo("#adv-1", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.55);
       // Chip 2: "No legacy" at word "no" (18.76) / "legacy" (18.76)
