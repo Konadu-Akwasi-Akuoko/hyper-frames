@@ -170,8 +170,8 @@
       text-align: center; max-width: 1320px;
       line-height: 1.2; opacity: 0;
     }
-    .thesis-quote .t-not { color: var(--danger); }
-    .thesis-quote .t-yes { color: var(--ok); }
+    .thesis-quote .t-not { color: var(--danger); display: inline-block; }
+    .thesis-quote .t-yes { color: var(--ok); display: inline-block; }
     .thesis-split {
       display: flex; gap: 48px; opacity: 0;
     }
@@ -346,8 +346,28 @@
       tl.to("#neq-sub", { opacity: 1, duration: 0.35 }, 12.9);
       // "neq-row" wrapper (already visible via children)
       tl.to("#neq-row", { opacity: 1, duration: 0.01 }, 11.6);
+      // Movement B dead zone: 12.9→22.0s
+      // "Java" (15.18): Java box pulses — "Java was a cool name back then"
+      tl.to("#box-java", { scale: 1.04, duration: 0.20, ease: "back.out(2)", transformOrigin: "center" }, 15.16);
+      tl.to("#box-java", { scale: 1, duration: 0.32, ease: "power2.inOut" }, 15.36);
+      // "associating" (17.92): neq-sym pulses — "associating with Java meant..."
+      tl.to("#neq-sym", { scale: 1.1, duration: 0.18, ease: "back.out(2.5)", transformOrigin: "center" }, 17.90);
+      tl.to("#neq-sym", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 18.08);
+      // "also cool" (19.78): JS box pulses — JS rides on Java's brand
+      tl.to("#box-js", { scale: 1.04, duration: 0.20, ease: "back.out(2)", transformOrigin: "center" }, 19.76);
+      tl.to("#box-js", { scale: 1, duration: 0.32, ease: "power2.inOut" }, 19.96);
       // AI callout slides in on "slapping AI" (local 22.08s)
       tl.fromTo("#ai-callout", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 22.0);
+      // Movement B dead zone: 22.0→28.8s
+      // "startup today" (23.36): ai-callout micro-bounce — "slapping AI on your startup today"
+      tl.to("#ai-callout", { scale: 1.02, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 23.34);
+      tl.to("#ai-callout", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 23.52);
+      // "nothing different" (25.04): ai-stamp bounce — "you did nothing different"
+      tl.to(".ai-stamp", { scale: 1.12, duration: 0.16, ease: "back.out(2.8)", transformOrigin: "center" }, 25.02);
+      tl.to(".ai-stamp", { scale: 1, duration: 0.26, ease: "power2.inOut" }, 25.18);
+      // "adjacent to genius" (27.38): ai-stamp slam — the punchline
+      tl.to(".ai-stamp", { scale: 1.15, rotation: -6, duration: 0.18, ease: "back.out(3)", transformOrigin: "center" }, 27.36);
+      tl.to(".ai-stamp", { scale: 1, rotation: -4, duration: 0.30, ease: "power2.inOut" }, 27.54);
 
       // ----------------------------------------------------------------
       // Crossfade B → C (local 29.28s, "So with time")
@@ -385,6 +405,13 @@
       // Movement D: WIN vs AVAILABLE (local 37.58–48s)
       // ----------------------------------------------------------------
       tl.fromTo("#thesis-q", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 37.7);
+      // Movement D dead zone: 37.7→42.3s
+      // "win" (40.10): pulse the danger-red word — "wasn't designed to WIN"
+      tl.to(".t-not", { scale: 1.2, duration: 0.18, ease: "back.out(2.5)", transformOrigin: "center" }, 40.08);
+      tl.to(".t-not", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 40.26);
+      // "available" (42.16): pulse the ok-green word — "designed to be AVAILABLE"
+      tl.to(".t-yes", { scale: 1.15, duration: 0.18, ease: "back.out(2.5)", transformOrigin: "center" }, 42.14);
+      tl.to(".t-yes", { scale: 1, duration: 0.26, ease: "power2.inOut" }, 42.32);
       // Split cards slide in on "designed to be available" (local 42.40s)
       tl.fromTo("#thesis-split", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 42.3);
       // "Those two are different things." (local 45.52s)
