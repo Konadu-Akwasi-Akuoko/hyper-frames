@@ -216,14 +216,14 @@
       font-size: 38px; color: var(--soft);
       line-height: 1.4;
     }
-    .bloat-quote .thumbs-word { color: var(--accent); font-weight: 700; }
+    .bloat-quote .thumbs-word { color: var(--accent); font-weight: 700; display: inline-block; }
     .memory-line {
       font-size: 38px; font-weight: 600;
       color: var(--soft); text-align: center;
       max-width: 1100px; line-height: 1.4;
       opacity: 0;
     }
-    .memory-line .free-word { color: var(--danger); }
+    .memory-line .free-word { color: var(--danger); display: inline-block; }
     .facebook-setup {
       font-size: 56px; font-weight: 800;
       color: var(--fg); text-align: center;
@@ -323,6 +323,17 @@
       // Formula at word "Chromium" (4.28)
       tl.fromTo("#wrap-formula", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 4.25);
 
+      // ---- Gap 1 micro-animations (0.48–4.25) ----
+      // "GitHub" (1.16): role label flashes accent-2
+      tl.to(".cz-role", { color: "#a0e8f8", duration: 0.20, ease: "power2.out" }, 1.16);
+      tl.to(".cz-role", { color: "#7a8493", duration: 0.40, ease: "power2.in" }, 1.36);
+      // "Zhou" (2.90): intro card scale bounce
+      tl.to("#cz-intro", { scale: 1.03, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 2.90);
+      tl.to("#cz-intro", { scale: 1.0, duration: 0.25, ease: "power2.in", transformOrigin: "center" }, 3.05);
+      // "wrapped" (3.96): scale pulse just before formula enters
+      tl.to("#cz-intro", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 3.96);
+      tl.to("#cz-intro", { scale: 1.0, duration: 0.22, ease: "power2.in", transformOrigin: "center" }, 4.11);
+
       // ---- Crossfade A → B at 7.2s ----
       tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 7.2);
       tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 7.2);
@@ -332,6 +343,18 @@
       tl.fromTo("#atom-editor", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.55, ease: "power3.out", transformOrigin: "center" }, 10.33);
       // "the hackable editor" at word "hackable" (12.76)
       tl.fromTo("#atom-pitch", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 12.73);
+
+      // ---- Gap 2 micro-animations (12.73–18.13) ----
+      // "customizable" (14.34): pitch scale pulse
+      tl.to("#atom-pitch", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 14.34);
+      tl.to("#atom-pitch", { scale: 1.0, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 14.49);
+      // "language" (15.66): editor scale micro-pulse (the editor IS the language)
+      tl.to("#atom-editor", { scale: 1.01, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 15.66);
+      tl.to("#atom-editor", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 15.81);
+      // "wrote every day" (16.66): editor glow (JS written inside this editor)
+      tl.to("#atom-editor", { boxShadow: "0 0 40px rgba(103,232,249,0.15)", duration: 0.35, ease: "power2.out" }, 16.66);
+      tl.to("#atom-editor", { boxShadow: "0 0 0px rgba(103,232,249,0)", duration: 0.60, ease: "power2.in" }, 17.01);
+
       // JS line at word "JavaScript" (18.16)
       tl.fromTo("#atom-js-line", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 18.13);
 
@@ -344,6 +367,18 @@
       tl.fromTo("#nested-boxes", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.5)", transformOrigin: "center" }, 21.1);
       // Rename row at word "runtime" (22.44)
       tl.fromTo("#rename-row", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 22.4);
+
+      // ---- Gap 3 micro-animations (22.44–26.80) ----
+      // "Shell" (24.08): rename-row scale pulse (Atom Shell sitting there)
+      tl.to("#rename-row", { scale: 1.03, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 24.08);
+      tl.to("#rename-row", { scale: 1.0, duration: 0.25, ease: "power2.in", transformOrigin: "center" }, 24.23);
+      // "years later" (25.68): nested-boxes scale (time passing)
+      tl.to("#nested-boxes", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 25.68);
+      tl.to("#nested-boxes", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 25.83);
+      // "GitHub renamed" (26.48): rename-row bounce (approaching the rename)
+      tl.to("#rename-row", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 26.48);
+      tl.to("#rename-row", { scale: 1.0, duration: 0.25, ease: "power2.in", transformOrigin: "center" }, 26.63);
+
       // Strike Atom Shell at word "renamed" (26.82)
       tl.to("#atom-shell-strike", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 26.8);
       // Electron name pops at word "Electron" (27.68)
@@ -356,8 +391,26 @@
       // ---- Movement D: consequence + Facebook bet (28.5–45.0s) ----
       // Bloat callout at word "messaging" (30.34)
       tl.fromTo("#bloat-callout", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 30.3);
+      // Pulse "thumbs up" at word "thumbs" (33.82)
+      tl.to(".thumbs-word", { scale: 1.22, duration: 0.18, ease: "back.out(2)", transformOrigin: "center" }, 33.80);
+      tl.to(".thumbs-word", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 33.98);
       // Memory line at word "touching" (35.43)
       tl.fromTo("#memory-line", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 35.4);
+      // Pulse "free" at word "free" (36.72)
+      tl.to(".free-word", { scale: 1.28, duration: 0.16, ease: "back.out(2)", transformOrigin: "center" }, 36.70);
+      tl.to(".free-word", { scale: 1, duration: 0.25, ease: "power2.inOut" }, 36.86);
+
+      // ---- Gap 4 micro-animations (36.86–41.40) ----
+      // "AI" (37.76): memory-line scale pulse (AI — memory — irony)
+      tl.to("#memory-line", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 37.76);
+      tl.to("#memory-line", { scale: 1.0, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 37.91);
+      // "finish the job" (39.28): free-word color flare
+      tl.to(".free-word", { color: "#ff9088", duration: 0.18, ease: "power2.out" }, 39.28);
+      tl.to(".free-word", { color: "#ff6b5d", duration: 0.35, ease: "power2.in" }, 39.46);
+      // "Facebook" (40.66): bloat-callout pulse (Facebook Messenger = that messaging app)
+      tl.to("#bloat-callout", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 40.66);
+      tl.to("#bloat-callout", { scale: 1.0, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 40.81);
+
       // "Facebook then made a bet" at word "bet" (41.44)
       tl.fromTo("#facebook-setup", { opacity: 0, scale: 0.88, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center" }, 41.4);
 
