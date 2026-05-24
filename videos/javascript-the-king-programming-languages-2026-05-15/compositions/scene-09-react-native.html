@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 09 — React Native</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --border: #1f242c;
+      --fg: #e8eaed;
+      --soft: #c2c9d4;
+      --muted: #7a8493;
+      --dim: #3a4150;
+      --accent: #f7df1e;
+      --accent-2: #67e8f9;
+      --danger: #ff6b5d;
+      --ok: #7dd87d;
+    }
+    @font-face {
+      font-family: "Excalifont";
+      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: block;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden; background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-09-react-native {
+      position: absolute; inset: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 160px;
+      box-sizing: border-box;
+    }
+
+    /* ---- Movement A: Zuckerberg "biggest mistake" ---- */
+    #mvA { opacity: 0; gap: 40px; }
+
+    .zuck-intro {
+      display: flex; align-items: center; gap: 32px;
+      opacity: 0;
+    }
+    .zuck-avatar {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: var(--panel); border: 2px solid rgba(24,119,242,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 800; color: #4e9ef5;
+      font-family: "JetBrains Mono", monospace; flex-shrink: 0;
+    }
+    .zuck-meta { display: flex; flex-direction: column; gap: 5px; }
+    .zuck-name { font-size: 36px; font-weight: 700; color: var(--fg); }
+    .zuck-role {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px; color: var(--muted); letter-spacing: 0.04em;
+    }
+
+    .mistake-card {
+      width: 1000px; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 32px 40px; opacity: 0;
+    }
+    .mistake-context {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 14px; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .mistake-quote {
+      font-family: "Excalifont", serif;
+      font-size: 40px; color: var(--soft); line-height: 1.4;
+    }
+    .hl-mistake-wrap { position: relative; display: inline; }
+    .hl-mistake-bg {
+      position: absolute; left: -3px; right: -3px;
+      top: 0; bottom: 0;
+      background: rgba(255,107,93,0.22); border-radius: 3px;
+      transform: scaleX(0); transform-origin: left center;
+    }
+
+    /* ---- Movement B: two codebases, double cost ---- */
+    #mvB { opacity: 0; gap: 44px; }
+
+    .scrapped-badge {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px;
+      background: rgba(255,107,93,0.1);
+      color: #ff6b5d;
+      border: 1px solid rgba(255,107,93,0.3);
+      border-radius: 6px; padding: 8px 20px;
+      letter-spacing: 0.06em;
+      opacity: 0;
+    }
+    .platforms-row {
+      display: flex; align-items: flex-start; gap: 64px;
+    }
+    .platform-col {
+      width: 420px; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 24px 28px; display: flex; flex-direction: column; gap: 14px;
+      opacity: 0;
+    }
+    .plat-icon-label {
+      font-size: 36px; font-weight: 800;
+    }
+    .plat-ios { color: var(--accent-2); }
+    .plat-android { color: var(--ok); }
+    .plat-lang {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px; color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .plat-team {
+      font-size: 15px; color: var(--muted);
+    }
+    .cost-verdict {
+      font-size: 48px; font-weight: 800;
+      color: var(--danger); text-align: center;
+      opacity: 0;
+    }
+
+    /* ---- Movement C: Jordan Walke hackathon ---- */
+    #mvC { opacity: 0; gap: 40px; }
+
+    .jw-intro {
+      display: flex; align-items: center; gap: 32px;
+      opacity: 0;
+    }
+    .jw-avatar {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: var(--panel); border: 2px solid rgba(97,218,251,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 800; color: var(--accent-2);
+      font-family: "JetBrains Mono", monospace; flex-shrink: 0;
+    }
+    .jw-meta { display: flex; flex-direction: column; gap: 5px; }
+    .jw-name { font-size: 36px; font-weight: 700; color: var(--fg); }
+    .jw-role {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px; color: var(--muted); letter-spacing: 0.04em;
+    }
+
+    .bridge-diagram {
+      display: flex; align-items: center; gap: 40px; opacity: 0;
+    }
+    .bridge-box {
+      width: 320px; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 20px 24px; flex-shrink: 0;
+    }
+    .bridge-box.react-box { border-color: rgba(97,218,251,0.3); }
+    .bridge-box.native-box { border-color: rgba(125,216,125,0.4); }
+    .bb-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .bb-code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 17px; color: var(--fg); line-height: 1.6;
+    }
+    .bb-kw { color: var(--accent-2); }
+    .bb-comp { color: var(--accent); }
+    .bb-prop { color: var(--ok); }
+    .native-widget {
+      width: 100%; height: 80px;
+      background: rgba(125,216,125,0.08);
+      border: 1px solid rgba(125,216,125,0.3);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--ok); font-weight: 600;
+    }
+    .not-webview-badge {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 14px; color: var(--ok);
+      background: rgba(125,216,125,0.1);
+      border: 1px solid rgba(125,216,125,0.3);
+      border-radius: 5px; padding: 4px 12px;
+      margin-top: 8px; display: inline-block;
+    }
+    .bridge-arrow { font-size: 44px; color: var(--muted); flex-shrink: 0; }
+
+    .same-code-line {
+      font-size: 44px; font-weight: 700;
+      color: var(--soft); text-align: center;
+      max-width: 1200px; opacity: 0;
+    }
+    .same-code-line .js-span { color: var(--accent); }
+    .same-code-line .platforms-span { color: var(--accent-2); }
+
+    /* ---- Movement D: React Native launch + terror reign ---- */
+    #mvD { opacity: 0; gap: 36px; }
+
+    .rn-reveal {
+      font-size: 130px; font-weight: 900;
+      letter-spacing: -0.04em; line-height: 0.9;
+      text-align: center; opacity: 0;
+    }
+    .rn-react { color: var(--accent-2); }
+    .rn-native { color: var(--accent); }
+    .rn-timestamp {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 24px; color: var(--muted);
+      letter-spacing: 0.08em; text-align: center;
+      opacity: 0;
+    }
+    .terror-line {
+      font-size: 44px; font-weight: 700;
+      color: var(--soft); text-align: center;
+      max-width: 1100px; line-height: 1.3;
+      opacity: 0;
+    }
+    .terror-line .terror-word { color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div id="scene-09-react-native" data-composition-id="scene-09-react-native" data-width="1920" data-height="1080">
+
+    <!-- Movement A: Zuckerberg biggest mistake -->
+    <div id="mvA" class="movement">
+      <div class="zuck-intro" id="zuck-intro">
+        <div class="zuck-avatar">MZ</div>
+        <div class="zuck-meta">
+          <div class="zuck-name">Mark Zuckerberg</div>
+          <div class="zuck-role">Facebook CEO · TechCrunch 2012</div>
+        </div>
+      </div>
+      <div class="mistake-card" id="mistake-card">
+        <div class="mistake-context">On Facebook's HTML5 mobile bet</div>
+        <div class="mistake-quote">
+          "The <span class="hl-mistake-wrap"><span class="hl-mistake-bg" id="hl-mistake"></span>biggest mistake we've made as a company</span>."
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement B: scrapped HTML5, two codebases -->
+    <div id="mvB" class="movement">
+      <div class="scrapped-badge" id="scrapped-badge">HTML5 app — SCRAPPED</div>
+      <div class="platforms-row">
+        <div class="platform-col" id="col-ios">
+          <div class="plat-icon-label plat-ios">iOS</div>
+          <div class="plat-lang">Objective-C / Swift</div>
+          <div class="plat-team">Team A</div>
+        </div>
+        <div class="platform-col" id="col-android">
+          <div class="plat-icon-label plat-android">Android</div>
+          <div class="plat-lang">Java / Kotlin</div>
+          <div class="plat-team">Team B</div>
+        </div>
+      </div>
+      <div class="cost-verdict" id="cost-verdict">2 code bases · 2&times; the cost</div>
+    </div>
+
+    <!-- Movement C: Jordan Walke's hackathon breakthrough -->
+    <div id="mvC" class="movement">
+      <div class="jw-intro" id="jw-intro">
+        <div class="jw-avatar">JW</div>
+        <div class="jw-meta">
+          <div class="jw-name">Jordan Walke</div>
+          <div class="jw-role">Facebook Engineer · Internal Hackathon · 2013</div>
+        </div>
+      </div>
+      <div class="bridge-diagram" id="bridge-diagram">
+        <div class="bridge-box react-box">
+          <div class="bb-label">React component (JavaScript)</div>
+          <div class="bb-code">
+            <span class="bb-kw">&lt;</span><span class="bb-comp">View</span><span class="bb-kw">&gt;</span><br>
+            &nbsp;&nbsp;<span class="bb-kw">&lt;</span><span class="bb-comp">Text</span><span class="bb-kw">&gt;</span><span class="bb-prop">Hello!</span><span class="bb-kw">&lt;/</span><span class="bb-comp">Text</span><span class="bb-kw">&gt;</span><br>
+            <span class="bb-kw">&lt;/</span><span class="bb-comp">View</span><span class="bb-kw">&gt;</span>
+          </div>
+        </div>
+        <div class="bridge-arrow" id="bridge-arrow">&#x2192;</div>
+        <div class="bridge-box native-box" id="native-box">
+          <div class="bb-label">Native iOS / Android</div>
+          <div class="native-widget">UIView · Android View</div>
+          <div class="not-webview-badge" id="not-webview">NOT A WEBVIEW</div>
+        </div>
+      </div>
+      <div class="same-code-line" id="same-code-line">
+        Same <span class="js-span">JavaScript</span> code — <span class="platforms-span">two mobile platforms</span>.
+      </div>
+    </div>
+
+    <!-- Movement D: React Native launch + terror reign -->
+    <div id="mvD" class="movement">
+      <div class="rn-reveal" id="rn-reveal">
+        <span class="rn-react">React</span> <span class="rn-native">Native</span>
+      </div>
+      <div class="rn-timestamp" id="rn-timestamp">F8 · March 2015 · Open-sourced</div>
+      <div class="terror-line" id="terror-line">
+        The beginning of a <span class="terror-word">terror reign</span> by JavaScript as the world's most dominant language.
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance crossfade from scene-08
+      tl.fromTo("#scene-09-react-native", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // ---- Movement A: Zuckerberg mistake (0–5.8s) ----
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      // Person card at word "Zuckerberg" (0.16 — early local; scene starts mid-Zuckerberg)
+      tl.fromTo("#zuck-intro", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.14);
+      // Mistake card at word "HTML5" (1.34)
+      tl.fromTo("#mistake-card", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.32);
+      // Highlight on "biggest mistake we've made" at word "biggest" (3.34)
+      tl.to("#hl-mistake", { scaleX: 1, duration: 0.45, ease: "power2.out" }, 3.32);
+
+      // ---- Crossfade A → B at 5.8s ----
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 5.8);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 5.8);
+
+      // ---- Movement B: two codebases (5.8–15.0s) ----
+      // "SCRAPPED" badge at word "scraped" (6.18)
+      tl.fromTo("#scrapped-badge", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "center" }, 6.16);
+      // iOS column at word "iOS" (9.66)
+      tl.fromTo("#col-ios", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 9.63);
+      // Android column at word "Android" (10.36)
+      tl.fromTo("#col-android", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 10.33);
+      // "twice the cost" at word "cost" (13.40)
+      tl.fromTo("#cost-verdict", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", transformOrigin: "center" }, 13.38);
+
+      // ---- Crossfade B → C at 15.0s ----
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 15.0);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 15.0);
+
+      // ---- Movement C: Jordan Walke hackathon (15.0–33.5s) ----
+      // Person card at word "Jordan" (17.72)
+      tl.fromTo("#jw-intro", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 17.7);
+      // Bridge diagram at word "React's" (21.32)
+      tl.fromTo("#bridge-diagram", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 21.3);
+      // Arrow pops in at "native UI" (24.24)
+      tl.fromTo("#bridge-arrow", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)", transformOrigin: "center" }, 24.2);
+      // Native box pops in
+      tl.fromTo("#native-box", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 24.4);
+      // "NOT A WEBVIEW" badge at "not a web view" (26.50)
+      tl.fromTo("#not-webview", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.5)", transformOrigin: "center" }, 26.48);
+      // "Same JavaScript code, two mobile platforms" at word "Same" (30.19)
+      tl.fromTo("#same-code-line", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 30.17);
+
+      // ---- Crossfade C → D at 33.5s ----
+      tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 33.5);
+      tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 33.5);
+
+      // ---- Movement D: React Native reveal + terror reign (33.5–45.0s) ----
+      // Timestamp at word "F8" (36.87)
+      tl.fromTo("#rn-timestamp", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 36.85);
+      // "React Native" big reveal at word "React" (39.97)
+      tl.fromTo("#rn-reveal", { opacity: 0, scale: 0.78 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2.5)", transformOrigin: "center" }, 39.95);
+      // "terror reign" at word "terror" (44.19)
+      tl.fromTo("#terror-line", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 44.17);
+
+      window.__timelines["scene-09-react-native"] = tl;
+    </script>
+  </div>
+</body>
+</html>
