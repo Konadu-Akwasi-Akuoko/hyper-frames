@@ -57,7 +57,9 @@
     .bolt-card-lang {
       font-size: 52px; font-weight: 800;
       letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 14px;
     }
+    .bolt-card-lang img { width: 44px; height: 44px; object-fit: contain; flex-shrink: 0; }
     .bolt-card-lang.ruby-lang { color: #e06666; }
     .bolt-card-lang.python-lang { color: #4b8bbe; }
     .bolt-card-lib {
@@ -243,12 +245,12 @@
     <div id="mvA" class="movement">
       <div class="bolt-on-row">
         <div class="bolt-card" id="card-ruby">
-          <div class="bolt-card-lang ruby-lang">Ruby</div>
+          <div class="bolt-card-lang ruby-lang"><img src="../assets/icons/ruby.svg" alt="">Ruby</div>
           <div class="bolt-card-lib" id="lib-ruby">had <span class="bolt-card-lib-name">EventMachine</span></div>
           <div class="bolt-card-badge" id="badge-ruby">BOLT-ON ASYNC</div>
         </div>
         <div class="bolt-card" id="card-python">
-          <div class="bolt-card-lang python-lang">Python</div>
+          <div class="bolt-card-lang python-lang"><img src="../assets/icons/python.svg" alt="">Python</div>
           <div class="bolt-card-lib" id="lib-python">had <span class="bolt-card-lib-name">Twisted</span></div>
           <div class="bolt-card-badge" id="badge-python">BOLT-ON ASYNC</div>
         </div>
@@ -298,6 +300,7 @@
         </div>
         <div class="formula-op" id="op-eq">=</div>
         <div class="formula-block node-block" id="blk-node">
+          <img src="../assets/icons/nodejs.svg" width="48" height="48" alt="Node.js">
           <div class="fb-title">result</div>
           <div class="fb-name node-name">node.js</div>
           <div class="fb-sub">server runtime</div>

@@ -36,9 +36,32 @@
       border-radius: 12px; padding: 22px 16px;
       display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0;
     }
-    .chip-abbr {
-      font-size: 40px; font-weight: 900; color: var(--soft);
-      font-family: "JetBrains Mono", monospace;
+    .chip-icon {
+      width: 72px; height: 72px; display: flex; align-items: center; justify-content: center;
+    }
+    .chip-icon img { width: 72px; height: 72px; object-fit: contain; }
+    .brand-discord {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #5865F2; display: flex; align-items: center; justify-content: center;
+      font-size: 38px; font-weight: 900; color: #fff; font-family: "Inter", system-ui, sans-serif;
+    }
+    .brand-notion {
+      width: 72px; height: 72px; border-radius: 10px;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 48px; font-weight: 900; color: #000; font-family: "Inter", system-ui, sans-serif;
+    }
+    .brand-1p {
+      width: 72px; height: 72px; border-radius: 16px;
+      background: linear-gradient(135deg, #0094F5 0%, #0055B3 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 900; color: #fff; font-family: "Inter", system-ui, sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .brand-obsidian {
+      width: 72px; height: 72px; border-radius: 12px;
+      background: linear-gradient(150deg, #7c3aed 0%, #4c1d95 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px; color: rgba(255,255,255,0.92);
     }
     .chip-name { font-size: 14px; font-weight: 600; color: var(--muted); text-align: center; }
     .chip-tag {
@@ -216,39 +239,39 @@
       <div class="app-grid">
         <div class="app-row">
           <div class="app-chip" id="chip-vscode">
-            <div class="chip-abbr">VS</div>
+            <div class="chip-icon"><img src="../assets/icons/vscode.svg" width="72" height="72" alt="VS Code"></div>
             <div class="chip-name">Visual Studio Code</div>
             <div class="chip-tag">Electron</div>
           </div>
           <div class="app-chip" id="chip-slack">
-            <div class="chip-abbr">Sl</div>
+            <div class="chip-icon"><img src="../assets/icons/slack.svg" width="72" height="72" alt="Slack"></div>
             <div class="chip-name">Slack</div>
             <div class="chip-tag">Electron</div>
           </div>
           <div class="app-chip" id="chip-discord">
-            <div class="chip-abbr">Di</div>
+            <div class="chip-icon"><div class="brand-discord">D</div></div>
             <div class="chip-name">Discord</div>
             <div class="chip-tag">Electron</div>
           </div>
           <div class="app-chip" id="chip-figma">
-            <div class="chip-abbr">Fg</div>
+            <div class="chip-icon"><img src="../assets/icons/figma.svg" width="72" height="72" alt="Figma"></div>
             <div class="chip-name">Figma</div>
             <div class="chip-tag">Electron</div>
           </div>
         </div>
         <div class="app-row">
           <div class="app-chip" id="chip-notion">
-            <div class="chip-abbr">Nt</div>
+            <div class="chip-icon"><div class="brand-notion">N</div></div>
             <div class="chip-name">Notion</div>
             <div class="chip-tag">Electron</div>
           </div>
           <div class="app-chip" id="chip-1p">
-            <div class="chip-abbr">1P</div>
+            <div class="chip-icon"><div class="brand-1p">1P</div></div>
             <div class="chip-name">1Password</div>
             <div class="chip-tag">Electron</div>
           </div>
           <div class="app-chip" id="chip-obsidian">
-            <div class="chip-abbr">Ob</div>
+            <div class="chip-icon"><div class="brand-obsidian">◆</div></div>
             <div class="chip-name">Obsidian</div>
             <div class="chip-tag">Electron</div>
           </div>

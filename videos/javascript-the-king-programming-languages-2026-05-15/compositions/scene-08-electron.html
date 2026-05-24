@@ -74,8 +74,9 @@
       border-radius: 8px;
       font-family: "JetBrains Mono", monospace;
       font-size: 28px; font-weight: 700; color: var(--soft);
-      text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
+    .wf-block img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
     .wf-block.chromium { border-color: rgba(103,232,249,0.35); color: var(--accent-2); }
     .wf-block.nodejs { border-color: rgba(125,216,125,0.35); color: var(--ok); }
     .wf-block.runtime { border-color: rgba(247,223,30,0.35); color: var(--accent); }
@@ -244,9 +245,9 @@
         </div>
       </div>
       <div class="wrap-formula" id="wrap-formula">
-        <div class="wf-block chromium">Chromium</div>
+        <div class="wf-block chromium"><img src="../assets/icons/chrome.svg" alt="">Chromium</div>
         <div class="wf-op">+</div>
-        <div class="wf-block nodejs">Node.js</div>
+        <div class="wf-block nodejs"><img src="../assets/icons/nodejs.svg" alt="">Node.js</div>
         <div class="wf-op">=</div>
         <div class="wf-block runtime">single runtime</div>
       </div>
@@ -294,7 +295,7 @@
           <div class="old-name-strike" id="atom-shell-strike"></div>
         </div>
         <div class="rename-arrow">&#x2192;</div>
-        <div class="new-name" id="electron-name">Electron</div>
+        <div class="new-name" id="electron-name" style="display:flex; align-items:center; gap:14px;"><img src="../assets/icons/electron.svg" width="60" height="60" alt="">Electron</div>
       </div>
     </div>
 

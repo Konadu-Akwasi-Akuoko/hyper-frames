@@ -134,6 +134,9 @@
       background: var(--ok); box-shadow: 0 0 8px var(--ok);
       flex-shrink: 0;
     }
+    .slot-icon {
+      width: 30px; height: 30px; flex-shrink: 0; object-fit: contain;
+    }
     .slot-lang {
       font-family: "JetBrains Mono", monospace;
       font-size: 26px; font-weight: 700;
@@ -255,18 +258,22 @@
           <div class="rack-header">SERVER</div>
           <div class="rack-slot" id="slot-perl">
             <div class="slot-led"></div>
+            <img class="slot-icon" src="../assets/icons/perl.svg" alt="Perl">
             <div class="slot-lang">Perl</div>
           </div>
           <div class="rack-slot" id="slot-php">
             <div class="slot-led"></div>
+            <img class="slot-icon" src="../assets/icons/php.svg" alt="PHP">
             <div class="slot-lang">PHP</div>
           </div>
           <div class="rack-slot" id="slot-python">
             <div class="slot-led"></div>
+            <img class="slot-icon" src="../assets/icons/python.svg" alt="Python">
             <div class="slot-lang">Python</div>
           </div>
           <div class="rack-slot" id="slot-ruby">
             <div class="slot-led"></div>
+            <img class="slot-icon" src="../assets/icons/ruby.svg" alt="Ruby">
             <div class="slot-lang">Ruby</div>
           </div>
         </div>

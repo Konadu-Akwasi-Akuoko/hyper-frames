@@ -41,8 +41,16 @@
       border-radius: 10px; padding: 22px 20px;
       display: flex; flex-direction: column; gap: 12px; opacity: 0;
     }
-    .src-abbr {
-      font-size: 28px; font-weight: 900; color: var(--muted);
+    .src-icon {
+      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+    }
+    .src-icon img { width: 48px; height: 48px; object-fit: contain; }
+    .src-icon img.icon-invert { filter: brightness(0) invert(0.85); }
+    .brand-blog {
+      width: 48px; height: 48px; border-radius: 8px;
+      background: rgba(97,218,251,0.12); border: 1px solid rgba(97,218,251,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: var(--accent-2);
       font-family: "JetBrains Mono", monospace;
     }
     .src-name { font-size: 18px; font-weight: 700; color: var(--soft); }
@@ -141,22 +149,22 @@
       </div>
       <div class="src-row">
         <div class="src-card" id="src-github">
-          <div class="src-abbr">GH</div>
+          <div class="src-icon"><img src="../assets/icons/github.svg" width="48" height="48" alt="GitHub" class="icon-invert"></div>
           <div class="src-name">GitHub repos</div>
           <div class="src-note">most popular language by repo count</div>
         </div>
         <div class="src-card" id="src-npm">
-          <div class="src-abbr">NPM</div>
+          <div class="src-icon"><img src="../assets/icons/npm.svg" width="48" height="48" alt="NPM"></div>
           <div class="src-name">NPM packages</div>
           <div class="src-note">3.3M+ packages, largest registry</div>
         </div>
         <div class="src-card" id="src-blogs">
-          <div class="src-abbr">WR</div>
+          <div class="src-icon"><div class="brand-blog">&lt;/&gt;</div></div>
           <div class="src-name">Blog posts</div>
           <div class="src-note">dominant tutorial subject</div>
         </div>
         <div class="src-card" id="src-so">
-          <div class="src-abbr">SO</div>
+          <div class="src-icon"><img src="../assets/icons/stackoverflow.svg" width="48" height="48" alt="Stack Overflow"></div>
           <div class="src-name">Stack Overflow</div>
           <div class="src-note">most asked language, 13+ years</div>
         </div>

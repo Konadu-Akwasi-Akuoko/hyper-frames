@@ -281,6 +281,10 @@
       color: var(--soft); flex: 1;
     }
     .io-langs.js-lang { color: var(--accent); }
+    .io-lang-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .io-lang-item { display: flex; align-items: center; gap: 5px; }
+    .io-lang-item img { width: 24px; height: 24px; object-fit: contain; flex-shrink: 0; }
+    .io-sep { color: var(--muted); }
     .io-tag {
       font-family: "JetBrains Mono", monospace;
       font-size: 16px; letter-spacing: 0.06em;
@@ -339,6 +343,7 @@
           <div class="ap-arr" id="arr-4">&#x2192;</div>
         </div>
         <div class="ap-srv" id="ap-srv">
+          <img src="../assets/icons/apache.svg" width="64" height="64" alt="Apache" style="filter: brightness(0) invert(0.75);">
           <div class="ap-srv-label">APACHE</div>
           <div class="ap-srv-sub">web server</div>
         </div>
@@ -403,7 +408,15 @@
       <div class="io-reason-title" id="io-reason-title">A very specific reason</div>
       <div class="io-grid">
         <div class="io-row" id="io-others">
-          <div class="io-langs">Python · Ruby · PHP · Perl</div>
+          <div class="io-langs io-lang-row">
+            <span class="io-lang-item"><img src="../assets/icons/python.svg" width="24" height="24" alt="">Python</span>
+            <span class="io-sep">·</span>
+            <span class="io-lang-item"><img src="../assets/icons/ruby.svg" width="24" height="24" alt="">Ruby</span>
+            <span class="io-sep">·</span>
+            <span class="io-lang-item"><img src="../assets/icons/php.svg" width="24" height="24" alt="">PHP</span>
+            <span class="io-sep">·</span>
+            <span class="io-lang-item"><img src="../assets/icons/perl.svg" width="24" height="24" alt="">Perl</span>
+          </div>
           <div class="io-tag blocking-tag">BLOCKING I/O — built in from day one</div>
         </div>
         <div class="io-row js-row" id="io-js">
