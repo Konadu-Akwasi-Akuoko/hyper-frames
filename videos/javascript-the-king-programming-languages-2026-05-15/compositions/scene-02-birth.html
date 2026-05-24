@@ -396,6 +396,17 @@
       tl.fromTo("#uc-intern",   { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 31.3);  // "intern" (31.36)
       tl.fromTo("#could-write", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center" }, 32.4); // "could actually write" (32.48)
 
+      // ---- Gap 1 micro-animations (32.40–37.00) ----
+      // "they" (34.20): could-write scale pulse
+      tl.to("#could-write", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 34.20);
+      tl.to("#could-write", { scale: 1.0, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 34.36);
+      // "hired" (34.42): intern chip bounce (they literally hired someone)
+      tl.to("#uc-intern", { scale: 1.08, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 34.42);
+      tl.to("#uc-intern", { scale: 1.0, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 34.58);
+      // "engineer" (35.72): needed panel scale
+      tl.to("#ph-needed", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 35.72);
+      tl.to("#ph-needed", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 35.88);
+
       // ── B → C crossfade (local 37.0s) ─────────────────────────────
       tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 37.0);
       tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 37.0);
@@ -417,9 +428,25 @@
       tl.to("#strike-mocha", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 47.9);
       tl.to("#arrow-1", { opacity: 1, duration: 0.2 }, 48.2);
 
+      // ---- Gap 2 micro-animations (48.20–51.80) ----
+      // "September" (48.78): name-row-mocha scale pulse
+      tl.to("#name-row-mocha", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 48.78);
+      tl.to("#name-row-mocha", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 48.94);
+      // "called" (51.10): struck Mocha color flash (referenced by narrator)
+      tl.to("#name-mocha", { color: "#e8eaed", duration: 0.15, ease: "power2.out" }, 51.10);
+      tl.to("#name-mocha", { color: "#c2c9d4", duration: 0.35, ease: "power2.in" }, 51.26);
+
       tl.fromTo("#name-row-live", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 51.8);
       tl.to("#strike-live", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 52.5);
       tl.to("#arrow-2", { opacity: 1, duration: 0.2 }, 52.9);
+
+      // ---- Gap 3 micro-animations (52.90–56.60) ----
+      // "December" (53.50): name-row-live scale pulse
+      tl.to("#name-row-live", { scale: 1.02, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 53.50);
+      tl.to("#name-row-live", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 53.66);
+      // "renamed" (55.60): struck LiveScript color flash
+      tl.to("#name-live", { color: "#e8eaed", duration: 0.15, ease: "power2.out" }, 55.60);
+      tl.to("#name-live", { color: "#c2c9d4", duration: 0.35, ease: "power2.in" }, 55.76);
 
       tl.fromTo("#name-row-js", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 56.6);
       tl.fromTo("#final-chip", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", transformOrigin: "left center" }, 57.1);
