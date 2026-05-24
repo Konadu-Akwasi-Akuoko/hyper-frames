@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 08 — Electron</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --border: #1f242c;
+      --fg: #e8eaed;
+      --soft: #c2c9d4;
+      --muted: #7a8493;
+      --dim: #3a4150;
+      --accent: #f7df1e;
+      --accent-2: #67e8f9;
+      --danger: #ff6b5d;
+      --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden; background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-08-electron {
+      position: absolute; inset: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 160px;
+      box-sizing: border-box;
+    }
+
+    /* ---- Movement A: Cheng Zhou + the wrap ---- */
+    #mvA { opacity: 0; gap: 48px; }
+
+    .cz-intro {
+      display: flex; align-items: center; gap: 36px;
+      opacity: 0;
+    }
+    .cz-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 800; color: var(--soft);
+      flex-shrink: 0;
+      font-family: "JetBrains Mono", monospace;
+    }
+    .cz-meta { display: flex; flex-direction: column; gap: 6px; }
+    .cz-name { font-size: 40px; font-weight: 700; color: var(--fg); }
+    .cz-role {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px; color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .wrap-formula {
+      display: flex; align-items: center; gap: 28px;
+      opacity: 0;
+    }
+    .wf-block {
+      padding: 20px 36px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 28px; font-weight: 700; color: var(--soft);
+      text-align: center;
+    }
+    .wf-block.chromium { border-color: rgba(103,232,249,0.35); color: var(--accent-2); }
+    .wf-block.nodejs { border-color: rgba(125,216,125,0.35); color: var(--ok); }
+    .wf-block.runtime { border-color: rgba(247,223,30,0.35); color: var(--accent); }
+    .wf-op {
+      font-size: 40px; color: var(--muted); flex-shrink: 0;
+    }
+
+    /* ---- Movement B: Atom hackable editor ---- */
+    #mvB { opacity: 0; gap: 44px; }
+
+    .atom-editor {
+      width: 1000px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      opacity: 0;
+    }
+    .ae-titlebar {
+      height: 38px; background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; padding: 0 14px; gap: 8px;
+    }
+    .ae-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+    .ae-dot-r { background: #ff6b5d; }
+    .ae-dot-y { background: var(--accent); opacity: 0.5; }
+    .ae-dot-g { background: var(--ok); opacity: 0.5; }
+    .ae-title {
+      margin-left: 16px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--muted);
+    }
+    .ae-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 6px; }
+    .ae-line {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px; line-height: 1.6;
+    }
+    .ae-ln { color: var(--muted); margin-right: 20px; font-size: 15px; }
+    .ae-keyword { color: var(--accent-2); }
+    .ae-string { color: var(--ok); }
+    .ae-fn { color: var(--accent); }
+    .ae-comment { color: var(--muted); font-style: italic; }
+    .ae-text { color: var(--fg); }
+
+    .atom-pitch {
+      font-size: 56px; font-weight: 800;
+      color: var(--fg); text-align: center;
+      opacity: 0;
+    }
+    .atom-pitch .hackable-word { color: var(--accent); }
+    .atom-js-line {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px; color: var(--muted);
+      text-align: center; opacity: 0;
+    }
+    .atom-js-line .js-span { color: var(--accent); font-weight: 700; }
+
+    /* ---- Movement C: Atom Shell → Electron ---- */
+    #mvC { opacity: 0; gap: 52px; }
+
+    .nested-boxes {
+      display: flex; flex-direction: column;
+      align-items: center;
+      opacity: 0;
+    }
+    .nest-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .app-box {
+      width: 660px; padding: 20px;
+      border: 2px solid var(--border); border-radius: 10px;
+      background: var(--panel); text-align: center;
+    }
+    .app-box-label {
+      font-size: 22px; font-weight: 700; color: var(--soft);
+      margin-bottom: 14px;
+    }
+    .browser-box {
+      width: 100%; padding: 16px;
+      border: 2px solid rgba(103,232,249,0.3); border-radius: 8px;
+      background: var(--bg); text-align: center;
+    }
+    .browser-box-label {
+      font-size: 18px; font-weight: 700; color: var(--accent-2);
+      margin-bottom: 10px;
+    }
+    .node-box {
+      width: 100%; padding: 10px;
+      border: 1px solid rgba(125,216,125,0.25); border-radius: 6px;
+      background: rgba(125,216,125,0.04);
+    }
+    .node-box-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px; color: var(--ok); letter-spacing: 0.04em;
+    }
+
+    .rename-row {
+      display: flex; align-items: center; gap: 48px;
+      opacity: 0;
+    }
+    .old-name {
+      font-size: 60px; font-weight: 700; color: var(--muted);
+      position: relative;
+    }
+    .old-name-strike {
+      position: absolute;
+      left: -4px; right: -4px;
+      top: 48%; height: 4px;
+      background: #ff6b5d; border-radius: 2px;
+      transform: scaleX(0); transform-origin: left center;
+    }
+    .rename-arrow { font-size: 48px; color: var(--muted); }
+    .new-name {
+      font-size: 80px; font-weight: 900;
+      color: var(--accent-2); letter-spacing: -0.02em;
+    }
+
+    /* ---- Movement D: consequence + Facebook bet ---- */
+    #mvD { opacity: 0; gap: 44px; }
+
+    .bloat-callout {
+      width: 900px;
+      background: var(--panel);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 28px 40px;
+      opacity: 0;
+    }
+    .bloat-top {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .bloat-quote {
+      font-size: 38px; color: var(--soft);
+      line-height: 1.4;
+    }
+    .bloat-quote .thumbs-word { color: var(--accent); font-weight: 700; }
+    .memory-line {
+      font-size: 38px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 1100px; line-height: 1.4;
+      opacity: 0;
+    }
+    .memory-line .free-word { color: var(--danger); }
+    .facebook-setup {
+      font-size: 56px; font-weight: 800;
+      color: var(--fg); text-align: center;
+      opacity: 0;
+    }
+    .facebook-setup .bet-word { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-08-electron" data-composition-id="scene-08-electron" data-width="1920" data-height="1080">
+
+    <!-- Movement A: Cheng Zhou + Chromium+Node formula -->
+    <div id="mvA" class="movement">
+      <div class="cz-intro" id="cz-intro">
+        <div class="cz-avatar">CZ</div>
+        <div class="cz-meta">
+          <div class="cz-name">Chen Zhou</div>
+          <div class="cz-role">GitHub Engineer · 2013</div>
+        </div>
+      </div>
+      <div class="wrap-formula" id="wrap-formula">
+        <div class="wf-block chromium">Chromium</div>
+        <div class="wf-op">+</div>
+        <div class="wf-block nodejs">Node.js</div>
+        <div class="wf-op">=</div>
+        <div class="wf-block runtime">single runtime</div>
+      </div>
+    </div>
+
+    <!-- Movement B: Atom hackable editor -->
+    <div id="mvB" class="movement">
+      <div class="atom-editor" id="atom-editor">
+        <div class="ae-titlebar">
+          <div class="ae-dot ae-dot-r"></div>
+          <div class="ae-dot ae-dot-y"></div>
+          <div class="ae-dot ae-dot-g"></div>
+          <div class="ae-title">init.js — Atom config</div>
+        </div>
+        <div class="ae-body">
+          <div class="ae-line"><span class="ae-ln">1</span><span class="ae-comment">// Atom: hackable to the core</span></div>
+          <div class="ae-line"><span class="ae-ln">2</span><span class="ae-keyword">atom</span><span class="ae-text">.commands.add(</span><span class="ae-string">'atom-workspace'</span><span class="ae-text">, {</span></div>
+          <div class="ae-line"><span class="ae-ln">3</span><span class="ae-text">  </span><span class="ae-string">'my-pkg:hello'</span><span class="ae-text">: () </span><span class="ae-keyword">=></span><span class="ae-text"> {</span></div>
+          <div class="ae-line"><span class="ae-ln">4</span><span class="ae-text">    </span><span class="ae-fn">atom.notifications.addSuccess</span><span class="ae-text">(</span><span class="ae-string">'Hello from JS!'</span><span class="ae-text">);</span></div>
+          <div class="ae-line"><span class="ae-ln">5</span><span class="ae-text">  }</span></div>
+          <div class="ae-line"><span class="ae-ln">6</span><span class="ae-text">});</span></div>
+        </div>
+      </div>
+      <div class="atom-pitch" id="atom-pitch">The <span class="hackable-word">hackable</span> editor</div>
+      <div class="atom-js-line" id="atom-js-line">customizable in the same language its users wrote every day — <span class="js-span">JavaScript</span></div>
+    </div>
+
+    <!-- Movement C: Atom Shell → Electron -->
+    <div id="mvC" class="movement">
+      <div class="nested-boxes" id="nested-boxes">
+        <div class="nest-label">Atom ships with a browser inside it</div>
+        <div class="app-box">
+          <div class="app-box-label">Atom (desktop app)</div>
+          <div class="browser-box">
+            <div class="browser-box-label">Chromium (full browser)</div>
+            <div class="node-box">
+              <div class="node-box-label">Node.js + your JavaScript code</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rename-row" id="rename-row">
+        <div class="old-name">
+          Atom Shell
+          <div class="old-name-strike" id="atom-shell-strike"></div>
+        </div>
+        <div class="rename-arrow">&#x2192;</div>
+        <div class="new-name" id="electron-name">Electron</div>
+      </div>
+    </div>
+
+    <!-- Movement D: consequence + Facebook bet setup -->
+    <div id="mvD" class="movement">
+      <div class="bloat-callout" id="bloat-callout">
+        <div class="bloat-top">the consequence</div>
+        <div class="bloat-quote">Your messaging app ships an entire browser just to render a <span class="thumbs-word">thumbs up</span>.</div>
+      </div>
+      <div class="memory-line" id="memory-line">Touching memory like it was <span class="free-word">free</span> — before AI even showed up to finish the job.</div>
+      <div class="facebook-setup" id="facebook-setup">Then Facebook made a <span class="bet-word">bet</span>.</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance crossfade from scene-07
+      tl.fromTo("#scene-08-electron", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // ---- Movement A: Chen Zhou + wrap formula (0–7.2s) ----
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      // Person intro at word "engineer" (0.50)
+      tl.fromTo("#cz-intro", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.48);
+      // Formula at word "Chromium" (4.28)
+      tl.fromTo("#wrap-formula", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 4.25);
+
+      // ---- Crossfade A → B at 7.2s ----
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 7.2);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 7.2);
+
+      // ---- Movement B: Atom hackable editor (7.2–19.4s) ----
+      // Editor at word "Atom" (10.36)
+      tl.fromTo("#atom-editor", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.55, ease: "power3.out", transformOrigin: "center" }, 10.33);
+      // "the hackable editor" at word "hackable" (12.76)
+      tl.fromTo("#atom-pitch", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 12.73);
+      // JS line at word "JavaScript" (18.16)
+      tl.fromTo("#atom-js-line", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 18.13);
+
+      // ---- Crossfade B → C at 19.4s ----
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 19.4);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 19.4);
+
+      // ---- Movement C: Atom Shell → Electron (19.4–28.5s) ----
+      // Nested boxes at word "browser inside it" (21.14)
+      tl.fromTo("#nested-boxes", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.5)", transformOrigin: "center" }, 21.1);
+      // Rename row at word "runtime" (22.44)
+      tl.fromTo("#rename-row", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 22.4);
+      // Strike Atom Shell at word "renamed" (26.82)
+      tl.to("#atom-shell-strike", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 26.8);
+      // Electron name pops at word "Electron" (27.68)
+      tl.fromTo("#electron-name", { scale: 0.8, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.5)", transformOrigin: "center" }, 27.65);
+
+      // ---- Crossfade C → D at 28.5s ----
+      tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 28.5);
+      tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 28.5);
+
+      // ---- Movement D: consequence + Facebook bet (28.5–45.0s) ----
+      // Bloat callout at word "messaging" (30.34)
+      tl.fromTo("#bloat-callout", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 30.3);
+      // Memory line at word "touching" (35.43)
+      tl.fromTo("#memory-line", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 35.4);
+      // "Facebook then made a bet" at word "bet" (41.44)
+      tl.fromTo("#facebook-setup", { opacity: 0, scale: 0.88, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center" }, 41.4);
+
+      window.__timelines["scene-08-electron"] = tl;
+    </script>
+  </div>
+</body>
+</html>
