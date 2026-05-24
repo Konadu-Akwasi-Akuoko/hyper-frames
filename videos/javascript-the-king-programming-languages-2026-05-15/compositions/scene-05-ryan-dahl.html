@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 05 — Ryan Dahl</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --border: #1f242c;
+      --fg: #e8eaed;
+      --soft: #c2c9d4;
+      --muted: #7a8493;
+      --dim: #3a4150;
+      --accent: #f7df1e;
+      --accent-2: #67e8f9;
+      --danger: #ff6b5d;
+      --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden; background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-05-ryan-dahl {
+      position: absolute; inset: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 160px;
+      box-sizing: border-box;
+    }
+
+    /* ---- Movement A: Ryan Dahl intro ---- */
+    #mvA { opacity: 0; gap: 32px; }
+
+    .rd-date {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 36px; color: var(--accent-2);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0;
+    }
+    .rd-name {
+      font-size: 180px; font-weight: 900;
+      color: var(--fg); letter-spacing: -0.03em;
+      line-height: 0.9; text-align: center;
+      text-shadow: 0 0 80px rgba(232,234,237,0.08);
+      opacity: 0;
+    }
+    .rd-context {
+      display: flex; align-items: center; gap: 18px;
+      flex-wrap: nowrap; opacity: 0;
+    }
+    .rd-ctx-item {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 28px; color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .rd-ctx-sep { font-size: 20px; color: var(--dim); }
+    .rd-people-num {
+      color: var(--soft); font-weight: 700;
+    }
+
+    /* ---- Movement B: Apache choking diagram ---- */
+    #mvB { opacity: 0; gap: 48px; align-items: center; }
+
+    .ap-diagram {
+      display: flex; align-items: center; gap: 0;
+      width: 1200px;
+    }
+    /* Request queue column */
+    .req-col {
+      display: flex; flex-direction: column; gap: 10px;
+      flex-shrink: 0; width: 140px;
+    }
+    .req-chip {
+      height: 52px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px; color: var(--muted);
+      letter-spacing: 0.1em;
+      opacity: 0;
+    }
+    /* Arrow channel */
+    .ap-arrow-col {
+      display: flex; flex-direction: column; gap: 10px;
+      flex-shrink: 0; width: 60px; align-items: center;
+    }
+    .ap-arr {
+      height: 52px; display: flex; align-items: center;
+      justify-content: center;
+      font-size: 22px; color: var(--dim);
+      opacity: 0;
+    }
+    /* Apache server block */
+    .ap-srv {
+      flex-shrink: 0; width: 220px; height: 272px;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      opacity: 0;
+      transition: border-color 0.0s;
+    }
+    .ap-srv-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 28px; font-weight: 700;
+      color: var(--soft); letter-spacing: 0.06em;
+    }
+    .ap-srv-sub {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    /* Thread stack column */
+    .thr-col {
+      display: flex; flex-direction: column; gap: 10px;
+      flex-shrink: 0; flex: 1;
+    }
+    .thr-row {
+      height: 52px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      display: flex; align-items: center;
+      padding: 0 16px; gap: 16px;
+      opacity: 0;
+    }
+    .thr-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px; color: var(--muted);
+      letter-spacing: 0.04em;
+      flex-shrink: 0; width: 80px;
+    }
+    .thr-mem {
+      flex: 1; height: 8px;
+      background: var(--border);
+      border-radius: 4px; overflow: hidden;
+    }
+    .thr-fill {
+      height: 100%;
+      background: var(--ok);
+      border-radius: 4px;
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+    .thr-mem-val {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--muted);
+      flex-shrink: 0; width: 40px; text-align: right;
+    }
+    /* Collapse indicator */
+    .collapse-badge {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 64px; font-weight: 900;
+      color: #ff6b5d;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-shadow: 0 0 60px rgba(255,107,93,0.5);
+      opacity: 0;
+    }
+
+    /* ---- Movement C: he chose JavaScript ---- */
+    #mvC { opacity: 0; gap: 52px; }
+
+    .choice-row {
+      display: flex; align-items: center; gap: 60px;
+    }
+    .choice-panel {
+      width: 380px; height: 200px;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px; position: relative;
+      opacity: 0;
+    }
+    .choice-panel.js-panel {
+      border-color: rgba(247,223,30,0.4);
+      box-shadow: 0 0 48px rgba(247,223,30,0.12);
+    }
+    .cp-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .ap-panel-name {
+      font-size: 52px; font-weight: 700;
+      color: var(--soft); letter-spacing: -0.01em;
+    }
+    /* Apache strikethrough — DOM span */
+    .ap-panel-strike {
+      position: absolute;
+      left: 16px; right: 16px;
+      top: 50%; height: 5px;
+      background: #ff6b5d;
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+    /* JS badge inside the panel */
+    .js-badge-panel {
+      width: 100px; height: 100px;
+      background: var(--accent);
+      border-radius: 8px; position: relative;
+    }
+    .js-badge-panel-text {
+      position: absolute; right: 6px; bottom: 4px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 44px; font-weight: 900;
+      color: #000; line-height: 1; letter-spacing: -0.04em;
+    }
+    /* Choice arrow */
+    .choice-arrow {
+      font-size: 64px; color: var(--dim);
+      flex-shrink: 0; opacity: 0;
+    }
+    /* Age comparison row */
+    .age-compare {
+      display: flex; align-items: center; gap: 32px;
+      opacity: 0;
+    }
+    .age-chip {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px; color: var(--muted);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px; padding: 10px 22px;
+    }
+    .age-chip.js-age { color: var(--accent); border-color: rgba(247,223,30,0.3); }
+    .age-chip.ap-age { color: var(--soft); }
+    .age-vs {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px; color: var(--dim);
+    }
+    /* Joke text */
+    .joke-text {
+      font-size: 28px; color: var(--muted);
+      text-align: center; max-width: 1200px;
+      line-height: 1.5; opacity: 0; font-style: italic;
+    }
+
+    /* ---- Movement D: blocking I/O reason ---- */
+    #mvD { opacity: 0; gap: 48px; }
+
+    .io-reason-title {
+      font-size: 32px; color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      opacity: 0;
+    }
+    .io-grid {
+      width: 1200px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .io-row {
+      height: 80px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center;
+      padding: 0 28px; gap: 24px;
+      opacity: 0;
+    }
+    .io-row.js-row {
+      border-color: rgba(247,223,30,0.3);
+    }
+    .io-langs {
+      font-size: 30px; font-weight: 600;
+      color: var(--soft); flex: 1;
+    }
+    .io-langs.js-lang { color: var(--accent); }
+    .io-tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 16px; letter-spacing: 0.06em;
+      border-radius: 6px; padding: 8px 18px;
+      flex-shrink: 0; white-space: nowrap;
+    }
+    .blocking-tag {
+      background: rgba(255,107,93,0.12);
+      color: #ff6b5d;
+      border: 1px solid rgba(255,107,93,0.3);
+    }
+    .clean-tag {
+      background: rgba(125,216,125,0.1);
+      color: var(--ok);
+      border: 1px solid rgba(125,216,125,0.3);
+    }
+    .io-conclusion {
+      font-size: 36px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 1100px; line-height: 1.4;
+      opacity: 0;
+    }
+    .io-conclusion .async-word { color: var(--accent-2); }
+    .io-conclusion .bolt-word { color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div id="scene-05-ryan-dahl" data-composition-id="scene-05-ryan-dahl" data-width="1920" data-height="1080">
+
+    <!-- Movement A: Ryan Dahl intro -->
+    <div id="mvA" class="movement">
+      <div class="rd-date" id="rd-date">November 2009</div>
+      <div class="rd-name" id="rd-name">Ryan Dahl</div>
+      <div class="rd-context" id="rd-context">
+        <span class="rd-ctx-item">Berlin</span>
+        <span class="rd-ctx-sep">·</span>
+        <span class="rd-ctx-item">JSConf EU</span>
+        <span class="rd-ctx-sep">·</span>
+        <span class="rd-ctx-item"><span class="rd-people-num" id="rd-people-num">150</span> people</span>
+      </div>
+    </div>
+
+    <!-- Movement B: Apache choking -->
+    <div id="mvB" class="movement">
+      <div class="ap-diagram" id="ap-diagram">
+        <div class="req-col">
+          <div class="req-chip" id="req-1">REQ</div>
+          <div class="req-chip" id="req-2">REQ</div>
+          <div class="req-chip" id="req-3">REQ</div>
+          <div class="req-chip" id="req-4">REQ</div>
+        </div>
+        <div class="ap-arrow-col">
+          <div class="ap-arr" id="arr-1">&#x2192;</div>
+          <div class="ap-arr" id="arr-2">&#x2192;</div>
+          <div class="ap-arr" id="arr-3">&#x2192;</div>
+          <div class="ap-arr" id="arr-4">&#x2192;</div>
+        </div>
+        <div class="ap-srv" id="ap-srv">
+          <div class="ap-srv-label">APACHE</div>
+          <div class="ap-srv-sub">web server</div>
+        </div>
+        <div class="ap-arrow-col">
+          <div class="ap-arr" id="arr-r1">&#x2192;</div>
+          <div class="ap-arr" id="arr-r2">&#x2192;</div>
+          <div class="ap-arr" id="arr-r3">&#x2192;</div>
+          <div class="ap-arr" id="arr-r4">&#x2192;</div>
+        </div>
+        <div class="thr-col">
+          <div class="thr-row" id="thr-1">
+            <span class="thr-label">Thread</span>
+            <div class="thr-mem"><div class="thr-fill" id="fill-1"></div></div>
+            <span class="thr-mem-val">2MB</span>
+          </div>
+          <div class="thr-row" id="thr-2">
+            <span class="thr-label">Thread</span>
+            <div class="thr-mem"><div class="thr-fill" id="fill-2"></div></div>
+            <span class="thr-mem-val">2MB</span>
+          </div>
+          <div class="thr-row" id="thr-3">
+            <span class="thr-label">Thread</span>
+            <div class="thr-mem"><div class="thr-fill" id="fill-3"></div></div>
+            <span class="thr-mem-val">2MB</span>
+          </div>
+          <div class="thr-row" id="thr-4">
+            <span class="thr-label">Thread</span>
+            <div class="thr-mem"><div class="thr-fill" id="fill-4"></div></div>
+            <span class="thr-mem-val">2MB</span>
+          </div>
+        </div>
+      </div>
+      <div class="collapse-badge" id="collapse-badge">COLLAPSED</div>
+    </div>
+
+    <!-- Movement C: he chose JavaScript -->
+    <div id="mvC" class="movement">
+      <div class="choice-row">
+        <div class="choice-panel" id="ap-panel">
+          <div class="cp-label">old guard</div>
+          <div class="ap-panel-name">Apache</div>
+          <div class="ap-panel-strike" id="ap-panel-strike"></div>
+        </div>
+        <div class="choice-arrow" id="choice-arrow">&#x2192;</div>
+        <div class="choice-panel js-panel" id="js-panel">
+          <div class="cp-label">chosen</div>
+          <div class="js-badge-panel">
+            <div class="js-badge-panel-text">JS</div>
+          </div>
+        </div>
+      </div>
+      <div class="age-compare" id="age-compare">
+        <div class="age-chip js-age">10-day-old language</div>
+        <span class="age-vs">vs</span>
+        <div class="age-chip ap-age">battle-tested Apache</div>
+      </div>
+      <div class="joke-text" id="joke-text">...switched stacks about as fast as when you abandon a JS framework the second a shinier one trends on Twitter.</div>
+    </div>
+
+    <!-- Movement D: blocking I/O reason -->
+    <div id="mvD" class="movement">
+      <div class="io-reason-title" id="io-reason-title">A very specific reason</div>
+      <div class="io-grid">
+        <div class="io-row" id="io-others">
+          <div class="io-langs">Python · Ruby · PHP · Perl</div>
+          <div class="io-tag blocking-tag">BLOCKING I/O — built in from day one</div>
+        </div>
+        <div class="io-row js-row" id="io-js">
+          <div class="io-langs js-lang">JavaScript</div>
+          <div class="io-tag clean-tag">NO BUILT-IN I/O — blank slate</div>
+        </div>
+      </div>
+      <div class="io-conclusion" id="io-conclusion">
+        Devs who wanted <span class="async-word">async</span> had to <span class="bolt-word">bolt it on</span>. JavaScript had no defaults to fight.
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance crossfade from scene-04
+      tl.fromTo("#scene-05-ryan-dahl", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // ---- Movement A: Ryan Dahl intro (0–10.4s) ----
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      // "November 2009" at word "November" (0.63)
+      tl.fromTo("#rd-date", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.6);
+      // "Ryan Dahl" at word "Ryan" (4.62)
+      tl.fromTo("#rd-name", { opacity: 0, scale: 0.88, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center center" }, 4.55);
+      // Context at word "Berlin" (7.16)
+      tl.fromTo("#rd-context", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 7.1);
+      // "150" pulse at word "150" (8.94)
+      tl.fromTo("#rd-people-num", { scale: 1 }, { scale: 1.14, duration: 0.25, yoyo: true, repeat: 1, ease: "back.out(2)", transformOrigin: "center" }, 8.9);
+
+      // ---- Crossfade A → B at 10.4s ----
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 10.4);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 10.4);
+
+      // ---- Movement B: Apache choking (10.4–27.3s) ----
+      // Apache server block appears at word "Apache" (11.74)
+      tl.fromTo("#ap-srv", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out", transformOrigin: "center" }, 11.7);
+      // "choke" (12.22): Apache border flashes --danger
+      tl.to("#ap-srv", { borderColor: "#ff6b5d", duration: 0.2, ease: "power2.out" }, 12.2);
+      tl.to("#ap-srv", { borderColor: "#1f242c", duration: 0.4, ease: "power2.in" }, 12.5);
+
+      // Thread 1 pair at word "request" (15.10)
+      tl.fromTo("#req-1", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 15.1);
+      tl.fromTo("#arr-1", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 15.2);
+      tl.fromTo("#arr-r1", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 15.2);
+      tl.fromTo("#thr-1", { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 15.3);
+      tl.fromTo("#fill-1", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 15.5);
+
+      // Thread 2 pair at word "opened" (15.52) / "thread" (16.18)
+      tl.fromTo("#req-2", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 15.9);
+      tl.fromTo("#arr-2", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 16.0);
+      tl.fromTo("#arr-r2", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 16.0);
+      tl.fromTo("#thr-2", { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 16.1);
+      tl.fromTo("#fill-2", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 16.3);
+
+      // Thread 3 pair at word "Every" (17.06) / "thread" (17.36)
+      tl.fromTo("#req-3", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 17.05);
+      tl.fromTo("#arr-3", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 17.15);
+      tl.fromTo("#arr-r3", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 17.15);
+      tl.fromTo("#thr-3", { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 17.25);
+      tl.fromTo("#fill-3", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 17.5);
+
+      // Thread 4 pair at word "memory" (17.92)
+      tl.fromTo("#req-4", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 17.9);
+      tl.fromTo("#arr-4", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 18.0);
+      tl.fromTo("#arr-r4", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 18.0);
+      tl.fromTo("#thr-4", { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 18.1);
+      tl.fromTo("#fill-4", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 18.3);
+
+      // "collapsed" (19.40): all threads + fills turn --danger
+      tl.to(["#thr-1", "#thr-2", "#thr-3", "#thr-4"], { borderColor: "#ff6b5d", backgroundColor: "rgba(255,107,93,0.07)", duration: 0.3 }, 19.4);
+      tl.to(["#fill-1", "#fill-2", "#fill-3", "#fill-4"], { backgroundColor: "#ff6b5d", duration: 0.3 }, 19.4);
+      tl.to("#ap-srv", { borderColor: "#ff6b5d", duration: 0.3 }, 19.4);
+      // "COLLAPSED" badge slams in
+      tl.fromTo("#collapse-badge", { opacity: 0, scale: 0.6, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2.8)", transformOrigin: "center" }, 19.9);
+
+      // ---- Crossfade B → C at 27.3s ----
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 27.3);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 27.3);
+
+      // ---- Movement C: he chose JavaScript (27.3–45.1s) ----
+      // Apache panel enters
+      tl.fromTo("#ap-panel", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 27.35);
+      // Arrow
+      tl.fromTo("#choice-arrow", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "center" }, 27.6);
+      // JS panel pops in at word "JavaScript" (27.90)
+      tl.fromTo("#js-panel", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.5)", transformOrigin: "center" }, 27.85);
+      // Apache strike drawn at word "reaching" (29.48)
+      tl.to("#ap-panel-strike", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 29.45);
+      // Age comparison fades in at word "10-day-old" (30.02)
+      tl.fromTo("#age-compare", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 30.0);
+      // Joke text fades in at word "say" (35.82)
+      tl.fromTo("#joke-text", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 35.75);
+
+      // ---- Crossfade C → D at 45.1s ----
+      tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 45.1);
+      tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 45.1);
+
+      // ---- Movement D: blocking I/O reason (45.1–55.86s) ----
+      // Title at word "reason" (45.62)
+      tl.fromTo("#io-reason-title", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 45.55);
+      // "Every other language had I/O" row at word "Every" (47.32)
+      tl.fromTo("#io-others", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 47.3);
+      // JS row (blank slate) at word "and" (50.52)
+      tl.fromTo("#io-js", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 50.5);
+      // Conclusion at word "async" (54.42)
+      tl.fromTo("#io-conclusion", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 54.4);
+
+      window.__timelines["scene-05-ryan-dahl"] = tl;
+    </script>
+  </div>
+</body>
+</html>
