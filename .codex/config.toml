@@ -1,0 +1,9 @@
+[mcp_servers.youtube-studio]
+args = [
+    "--directory",
+    "tools/youtube-studio-mcp",
+    "run",
+    "youtube-studio-mcp",
+    "serve",
+]
+command = "uv"

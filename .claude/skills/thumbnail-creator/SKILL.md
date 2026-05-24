@@ -1,6 +1,17 @@
 ---
 name: thumbnail-creator
-description: Guided generator that turns a hyper-frames video's working title into three production-ready YouTube thumbnail variants (1280x720) or Shorts/TikTok cover variants (1080x1920) in the channel's locked visual style, with an iterative review loop. Use this skill whenever the user wants to create, draft, generate, design, or A/B test thumbnails for a hyper-frames video — phrases like "make a thumbnail for this video", "I need thumbnails", "generate thumbnail variants", "design a thumbnail", or any request that names a `videos/<slug>-<date>/` folder and asks for a thumbnail. Vertical/Shorts/TikTok mode activates when the invoking message contains any of: vertical, portrait, tiktok, shorts, reels, 9:16, 1080x1920. Also triggers when the user runs the skill from inside a video folder after the script is drafted.
+description: >-
+  Guided generator that turns a hyper-frames video's working title into three
+  production-ready YouTube thumbnail variants (1280x720) or Shorts/TikTok cover
+  variants (1080x1920) in the channel's locked visual style, with an iterative
+  review loop. Use this skill whenever the user wants to create, draft,
+  generate, design, or A/B test thumbnails for a hyper-frames video — phrases
+  like "make a thumbnail for this video", "I need thumbnails", "generate
+  thumbnail variants", "design a thumbnail", or any request that names a
+  `videos/<slug>-<date>/` folder and asks for a thumbnail. Vertical/Shorts/TikTok
+  mode activates when the invoking message contains any of: vertical, portrait,
+  tiktok, shorts, reels, 9:16, 1080x1920. Also triggers when the user runs the
+  skill from inside a video folder after the script is drafted.
 ---
 
 # thumbnail-creator
