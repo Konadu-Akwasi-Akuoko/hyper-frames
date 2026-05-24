@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 02 — Birth of JavaScript</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --border: #1f242c;
+      --fg: #e8eaed;
+      --soft: #c2c9d4;
+      --muted: #7a8493;
+      --dim: #3a4150;
+      --accent: #f7df1e;
+      --accent-2: #67e8f9;
+      --danger: #ff6b5d;
+      --ok: #7dd87d;
+    }
+    @font-face {
+      font-family: "Excalifont";
+      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden; background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-02-birth {
+      position: absolute; inset: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 160px;
+      box-sizing: border-box;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Movement A — chapter question                                         */
+    /* ------------------------------------------------------------------ */
+    #mvA { opacity: 0; gap: 40px; }
+    .chapter-q {
+      font-size: 112px;
+      font-weight: 800;
+      color: var(--fg);
+      text-align: center;
+      line-height: 1.1;
+      max-width: 1400px;
+      text-shadow: 0 0 48px rgba(232,234,237,0.14);
+    }
+    .chapter-q .js-word {
+      color: var(--accent);
+      text-shadow: 0 0 32px rgba(247,223,30,0.32);
+      display: inline-block;
+    }
+    .chapter-preamble {
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Movement B — May 1995: the language gap                               */
+    /* ------------------------------------------------------------------ */
+    #mvB { opacity: 0; gap: 0; flex-direction: column; }
+    .ctx-header {
+      display: flex; align-items: center; gap: 24px;
+      margin-bottom: 56px;
+      opacity: 0;
+    }
+    .year-chip {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px; font-weight: 600;
+      color: var(--accent-2);
+      background: rgba(103,232,249,0.08);
+      border: 1px solid rgba(103,232,249,0.22);
+      border-radius: 8px; padding: 8px 20px;
+      letter-spacing: 0.08em;
+    }
+    .ctx-title {
+      font-size: 42px; font-weight: 600;
+      color: var(--soft);
+    }
+    .lang-grid {
+      display: flex; gap: 32px;
+      width: 1220px;
+    }
+    .lang-col {
+      flex: 1;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px;
+      opacity: 0;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .lang-name {
+      font-size: 52px; font-weight: 800;
+      color: var(--soft);
+    }
+    .lang-verdict {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px; font-weight: 600;
+      letter-spacing: 0.1em;
+      border-radius: 6px; padding: 8px 16px;
+      display: inline-block; width: fit-content;
+    }
+    .lang-verdict.rejected {
+      color: var(--danger);
+      background: rgba(255,107,93,0.1);
+      border: 1px solid rgba(255,107,93,0.25);
+    }
+    .lang-verdict.needed {
+      color: var(--ok);
+      background: rgba(125,216,125,0.1);
+      border: 1px solid rgba(125,216,125,0.25);
+    }
+    .lang-reasons {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 12px;
+      padding: 0;
+    }
+    .lang-reason {
+      font-size: 26px; font-weight: 400;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+      opacity: 0;
+    }
+    .lang-reason::before {
+      content: "·";
+      position: absolute; left: 0;
+      color: var(--dim);
+    }
+    .lang-reason.highlight {
+      color: var(--soft);
+    }
+    /* Needed column has a different accent */
+    .col-needed .lang-name {
+      color: var(--accent);
+      text-shadow: 0 0 28px rgba(247,223,30,0.22);
+    }
+    .col-needed .lang-reason { color: var(--soft); }
+
+    /* ------------------------------------------------------------------ */
+    /* Movement C — Brendan Eich + 10 days                                   */
+    /* ------------------------------------------------------------------ */
+    #mvC { opacity: 0; flex-direction: row; gap: 80px; align-items: center; justify-content: center; }
+    .eich-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 52px 56px;
+      display: flex; flex-direction: column; gap: 20px;
+      width: 560px;
+      opacity: 0;
+    }
+    .eich-avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--dim);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .eich-initials {
+      font-size: 44px; font-weight: 800;
+      color: var(--muted);
+    }
+    .eich-name {
+      font-size: 52px; font-weight: 700;
+      color: var(--fg);
+      line-height: 1.1;
+    }
+    .eich-meta {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .eich-role, .eich-year {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px;
+      color: var(--muted);
+    }
+    /* Deadline panel */
+    .deadline-panel {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 24px;
+      opacity: 0;
+    }
+    .deadline-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 24px; font-weight: 600;
+      color: var(--muted); letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .deadline-num {
+      font-size: 200px; font-weight: 900;
+      color: var(--fg); line-height: 0.9;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 0 60px rgba(232,234,237,0.16);
+    }
+    .deadline-unit {
+      font-size: 48px; font-weight: 500;
+      color: var(--soft); letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .shipped-badge {
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(125,216,125,0.1);
+      border: 1px solid rgba(125,216,125,0.3);
+      border-radius: 12px; padding: 16px 32px;
+      opacity: 0;
+    }
+    .shipped-check {
+      font-size: 40px; color: var(--ok);
+    }
+    .shipped-text {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 28px; font-weight: 700;
+      color: var(--ok); letter-spacing: 0.1em;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Movement D — naming parade                                            */
+    /* ------------------------------------------------------------------ */
+    #mvD { opacity: 0; gap: 16px; }
+    .name-row {
+      display: flex; align-items: center; gap: 32px;
+      opacity: 0;
+    }
+    .name-date {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px; color: var(--muted);
+      letter-spacing: 0.05em; width: 220px;
+      text-align: right; flex-shrink: 0;
+    }
+    .name-wrap { position: relative; display: inline-block; }
+    .name-word {
+      font-size: 80px; font-weight: 700;
+      color: var(--soft);
+    }
+    /* Real DOM span for the strikethrough — GSAP can't target ::after */
+    .name-strike {
+      position: absolute;
+      left: -6px; right: -6px;
+      top: 46%; height: 5px;
+      background: var(--danger);
+      border-radius: 3px;
+      transform-origin: left center;
+      /* scaleX initialized to 0 via gsap.set in script */
+    }
+    .name-word.accepted {
+      color: var(--accent);
+      text-shadow: 0 0 32px rgba(247,223,30,0.28);
+    }
+    .name-final-chip {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px; color: var(--ok);
+      background: rgba(125,216,125,0.1);
+      border: 1px solid rgba(125,216,125,0.3);
+      border-radius: 6px; padding: 6px 14px;
+      opacity: 0;
+    }
+    .name-arrow {
+      font-size: 36px; color: var(--dim); flex-shrink: 0;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-02-birth" data-composition-id="scene-02-birth" data-width="1920" data-height="1080">
+
+    <!-- Movement A — chapter question -->
+    <div id="mvA" class="movement">
+      <div class="chapter-preamble" id="chap-preamble">The question</div>
+      <div class="chapter-q" id="chap-q">
+        How did <span class="js-word" id="js-word">JavaScript</span> come to be?
+      </div>
+    </div>
+
+    <!-- Movement B — May 1995: the language gap -->
+    <div id="mvB" class="movement">
+      <div class="ctx-header" id="ctx-header">
+        <span class="year-chip" id="year-chip">May 1995</span>
+        <span class="ctx-title">Netscape needed a scripting language</span>
+      </div>
+      <div class="lang-grid" id="lang-grid">
+        <!-- Java: too heavy -->
+        <div class="lang-col" id="col-java">
+          <div class="lang-name">Java</div>
+          <div class="lang-verdict rejected">TOO HEAVY</div>
+          <ul class="lang-reasons">
+            <li class="lang-reason" id="java-r1">virtual machine</li>
+            <li class="lang-reason" id="java-r2">class file format</li>
+            <li class="lang-reason" id="java-r3">separate runtime</li>
+          </ul>
+        </div>
+        <!-- C: too low level -->
+        <div class="lang-col" id="col-c">
+          <div class="lang-name">C</div>
+          <div class="lang-verdict rejected">TOO LOW LEVEL</div>
+          <ul class="lang-reasons">
+            <li class="lang-reason" id="c-r1">manual memory</li>
+            <li class="lang-reason" id="c-r2">raw pointers</li>
+            <li class="lang-reason" id="c-r3">no web abstractions</li>
+          </ul>
+        </div>
+        <!-- ??? needed -->
+        <div class="lang-col col-needed" id="col-needed">
+          <div class="lang-name" id="col-needed-name">???</div>
+          <div class="lang-verdict needed">NEEDED</div>
+          <ul class="lang-reasons">
+            <li class="lang-reason" id="need-r1">a designer</li>
+            <li class="lang-reason" id="need-r2">a marketer</li>
+            <li class="lang-reason" id="need-r3">an intern</li>
+            <li class="lang-reason" id="need-r4" style="color:var(--accent-2);margin-top:4px">could actually write it</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement C — Brendan Eich + 10 days deadline -->
+    <div id="mvC" class="movement">
+      <div class="eich-card" id="eich-card">
+        <div class="eich-avatar"><span class="eich-initials">BE</span></div>
+        <div class="eich-name">Brendan Eich</div>
+        <div class="eich-meta">
+          <span class="eich-role">Netscape Engineer</span>
+          <span class="eich-year">1995 · Age 33</span>
+        </div>
+      </div>
+      <div class="deadline-panel" id="deadline-panel">
+        <div class="deadline-label">Deadline</div>
+        <div class="deadline-num" id="deadline-num">10</div>
+        <div class="deadline-unit">Days</div>
+        <div class="shipped-badge" id="shipped-badge">
+          <span class="shipped-check">✓</span>
+          <span class="shipped-text">SHIPPED</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement D — naming parade: Mocha → LiveScript → JavaScript -->
+    <div id="mvD" class="movement">
+      <div class="name-row" id="name-row-mocha">
+        <span class="name-date">May 1995</span>
+        <span class="name-wrap">
+          <span class="name-word" id="name-mocha">Mocha</span>
+          <span class="name-strike" id="strike-mocha"></span>
+        </span>
+        <span class="name-arrow" id="arrow-1">→</span>
+      </div>
+      <div class="name-row" id="name-row-live">
+        <span class="name-date">Sep 1995</span>
+        <span class="name-wrap">
+          <span class="name-word" id="name-live">LiveScript</span>
+          <span class="name-strike" id="strike-live"></span>
+        </span>
+        <span class="name-arrow" id="arrow-2">→</span>
+      </div>
+      <div class="name-row" id="name-row-js">
+        <span class="name-date">Dec 1995</span>
+        <span class="name-word accepted" id="name-js">JavaScript</span>
+        <span class="name-final-chip" id="final-chip">THE NAME STICKS</span>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance: fade in from 0 (crossfade from scene-01).
+      tl.fromTo("#scene-02-birth", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // ----------------------------------------------------------------
+      // Movement A: chapter question (local 0–6.58s)
+      // ----------------------------------------------------------------
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      tl.fromTo("#chap-preamble", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out" }, 0.3);
+      tl.fromTo("#chap-q", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.9);
+      // "JavaScript" ignites on "JavaScript" word (local 3.98s)
+      tl.fromTo("#js-word", { scale: 1 }, { scale: 1.08, duration: 0.3, yoyo: true, repeat: 1, ease: "back.out(2)", transformOrigin: "center" }, 3.98);
+
+      // ----------------------------------------------------------------
+      // Crossfade A → B (at local 6.58s, "In May 1995")
+      // ----------------------------------------------------------------
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.1);
+      tl.set("#mvA", { visibility: "hidden" }, 6.62);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 6.1);
+
+      // ----------------------------------------------------------------
+      // Movement B: language gap (local 6.58–37.4s)
+      // ----------------------------------------------------------------
+      // Context header: "May 1995 · Netscape needed a scripting language"
+      tl.fromTo("#ctx-header", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 6.7);
+
+      // Java card enters at "Java" (local 12.30s)
+      tl.fromTo("#col-java", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 12.1);
+      // Java reasons stagger in as "virtual machine, class file, separate runtime" spoken
+      tl.to("#java-r1", { opacity: 1, duration: 0.3, ease: "power2.out" }, 14.5);  // "virtual machine"
+      tl.to("#java-r2", { opacity: 1, duration: 0.3, ease: "power2.out" }, 16.8);  // "class file format"
+      tl.to("#java-r3", { opacity: 1, duration: 0.3, ease: "power2.out" }, 19.0);  // "separate runtime"
+
+      // C card enters at "C was" (local 21.70s)
+      tl.fromTo("#col-c", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 21.5);
+      tl.to("#c-r1", { opacity: 1, duration: 0.3 }, 22.0);
+      tl.to("#c-r2", { opacity: 1, duration: 0.3 }, 22.5);
+      tl.to("#c-r3", { opacity: 1, duration: 0.3 }, 23.0);
+
+      // Needed ??? column enters at "They needed something" (local 25.92s)
+      tl.fromTo("#col-needed", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 25.7);
+      // User types stagger in on "designer, marketer, intern"
+      tl.to("#need-r1", { opacity: 1, duration: 0.3, ease: "power2.out" }, 28.8);  // "designer"
+      tl.to("#need-r2", { opacity: 1, duration: 0.3, ease: "power2.out" }, 30.0);  // "marketer"
+      tl.to("#need-r3", { opacity: 1, duration: 0.3, ease: "power2.out" }, 31.2);  // "intern"
+      tl.to("#need-r4", { opacity: 1, duration: 0.4, ease: "power2.out" }, 32.7);  // "could actually write it"
+
+      // ----------------------------------------------------------------
+      // Crossfade B → C (at local 37.4s, "Brendan Eich")
+      // ----------------------------------------------------------------
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 37.0);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 37.0);
+
+      // ----------------------------------------------------------------
+      // Movement C: Brendan Eich + 10 days (local 37.4–47.36s)
+      // ----------------------------------------------------------------
+      // Card slides in with name
+      tl.fromTo("#eich-card", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 37.3);
+      // Deadline panel enters at "gave him a deadline" (local 40.40s "deadline")
+      tl.fromTo("#deadline-panel", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 40.2);
+      // "10" number pops on "10" spoken (local 41.48s)
+      tl.fromTo("#deadline-num", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.5)", transformOrigin: "center" }, 41.3);
+      // "SHIPPED" badge pops on "prototype" / "shipped" (local 43.52s "shipped")
+      tl.fromTo("#shipped-badge", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)", transformOrigin: "center" }, 43.4);
+
+      // ----------------------------------------------------------------
+      // Crossfade C → D (at local 47.36s, "Mocha")
+      // ----------------------------------------------------------------
+      tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 46.9);
+      tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 46.9);
+
+      // ----------------------------------------------------------------
+      // Movement D: naming parade (local 47.36–57.6s)
+      // ----------------------------------------------------------------
+      // Pre-collapse all strikethrough spans.
+      gsap.set(".name-strike", { scaleX: 0, transformOrigin: "left center" });
+
+      // "Mocha" slides in on "Mocha" (local 47.36s)
+      tl.fromTo("#name-row-mocha", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 47.2);
+      // Strikethrough draws across "Mocha" just after it lands.
+      tl.to("#strike-mocha", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 47.9);
+      tl.to("#arrow-1", { opacity: 1, duration: 0.2 }, 48.2);
+
+      // "LiveScript" enters at "LiveScript" (local 51.96s)
+      tl.fromTo("#name-row-live", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 51.8);
+      tl.to("#strike-live", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 52.5);
+      tl.to("#arrow-2", { opacity: 1, duration: 0.2 }, 52.9);
+
+      // "JavaScript" enters on "JavaScript" (local 56.80s)
+      tl.fromTo("#name-row-js", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 56.6);
+      // Final chip pops on landing
+      tl.fromTo("#final-chip", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", transformOrigin: "left center" }, 57.1);
+      // Gentle glow pulse on the JS name — it's the one that sticks
+      tl.fromTo("#name-js", { scale: 1 }, { scale: 1.04, duration: 0.35, yoyo: true, repeat: 1, ease: "sine.inOut", transformOrigin: "center" }, 57.2);
+
+      window.__timelines["scene-02-birth"] = tl;
+    </script>
+  </div>
+</body>
+</html>

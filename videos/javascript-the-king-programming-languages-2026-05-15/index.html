@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=1920, height=1080" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      @font-face {
-        font-family: "Excalifont";
-        src: url("fonts/Excalifont-Regular.woff2") format("woff2");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
+      :root {
+        --bg: #0b0d12;
+        --panel: #11141b;
+        --border: #1f242c;
+        --fg: #e8eaed;
+        --soft: #c2c9d4;
+        --muted: #7a8493;
+        --dim: #3a4150;
+        --accent: #f7df1e;
+        --accent-2: #67e8f9;
+        --danger: #ff6b5d;
+        --ok: #7dd87d;
       }
       * {
         margin: 0;
@@ -23,8 +29,8 @@
         width: 1920px;
         height: 1080px;
         overflow: hidden;
-        background: #000;
-        font-family: "Excalifont", sans-serif;
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
       }
     </style>
   </head>
@@ -33,19 +39,61 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="10"
+      data-duration="530.617"
       data-width="1920"
       data-height="1080"
     >
+      <!-- Persistent background for the whole video. Sits behind every scene
+           (track-index 0). Spans the full audio length. -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="530.617"
+        data-track-index="0"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
 
+      <!-- Voiceover — the timing source of truth for every scene. -->
+      <audio
+        id="voiceover"
+        src="audio/voiceover.mp3"
+        data-start="0"
+        data-duration="530.617"
+        data-track-index="9"
+        data-volume="1"
+      ></audio>
 
-      <!--
-        Add your clips here. Example:
-        <div id="title" class="clip" data-start="0" data-duration="5" data-track-index="1"
-             style="font-size: 64px; color: #fff; padding: 40px">
-          Hello World
-        </div>
-      -->
+      <!-- Scene 1 — the hook (HN quote → reframe → payoff). Ends ~24.3s. -->
+      <div
+        id="scene-01"
+        data-composition-id="scene-01-hook"
+        data-composition-src="compositions/scene-01-hook.html"
+        data-start="0"
+        data-duration="24.4"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 2 — Birth of JavaScript: chapter question → May 1995 language gap → Brendan Eich 10 days → naming parade. -->
+      <div
+        id="scene-02"
+        data-composition-id="scene-02-birth"
+        data-composition-src="compositions/scene-02-birth.html"
+        data-start="24.4"
+        data-duration="57.6"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Later scenes mount here at track-index >= 1 and z-index >= 1. -->
     </div>
 
     <script>
