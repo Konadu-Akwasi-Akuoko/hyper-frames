@@ -1,6 +1,6 @@
 version: 1
-generated_at: '2026-05-12T17:26:01Z'
-library_sha: 50dacbea7f97a90b6400f6cb34618e282ad1d126369a73ff9ec623e4c3c84944
+generated_at: '2026-05-24T12:20:22Z'
+library_sha: 8857a82bd2f882b3ada4aeb00869ac7e179526dae8792e1c05199e147c33392c
 assets:
   Anime SFX/Anime wow sound effect.mp3:
     path: Anime SFX/Anime wow sound effect.mp3
@@ -40340,6 +40340,62 @@ assets:
     - whooshes
     - short
     - warm
+    - snappy
+    auto_role: accent
+  custom_sfx/RelayClicksSharpRapidTicking_icrwI_02.wav:
+    path: custom_sfx/RelayClicksSharpRapidTicking_icrwI_02.wav
+    library: custom_sfx
+    category: custom_sfx
+    duration_s: 37.984
+    sample_rate: 44100
+    channels: 1
+    format: wav
+    bit_depth: 16
+    sha256: f378b8b09830e15902a81c8c8fef906d20e207f753e6992cc443b04c1bfed059
+    peak_dbfs: -3.92
+    peak_time_s: 28.3567
+    integrated_lufs: -24.51
+    rms_dbfs: -27.77
+    onset_time_s: 0.0
+    attack_time_s: 28.3566
+    tail_time_s: 0.0116
+    spectral_centroid_hz: 7915.3
+    brightness: airy
+    low_energy_pct: 0
+    mid_energy_pct: 1
+    high_energy_pct: 99
+    tags:
+    - custom
+    - long
+    - airy
+    - swelling
+    auto_role: ambience
+  custom_sfx/RelayClicks_Rewind.wav:
+    path: custom_sfx/RelayClicks_Rewind.wav
+    library: custom_sfx
+    category: custom_sfx
+    duration_s: 2.75
+    sample_rate: 44100
+    channels: 1
+    format: wav
+    bit_depth: 16
+    sha256: 5dadeca1fd0255952a652de54d63f1a928beea797c5492b9d01c104f6b9bce83
+    peak_dbfs: -0.0
+    peak_time_s: 0.0381
+    integrated_lufs: -22.53
+    rms_dbfs: -25.77
+    onset_time_s: 0.0
+    attack_time_s: 0.038
+    tail_time_s: 0.0236
+    spectral_centroid_hz: 8838.1
+    brightness: airy
+    low_energy_pct: 0
+    mid_energy_pct: 1
+    high_energy_pct: 99
+    tags:
+    - custom
+    - long
+    - airy
     - snappy
     auto_role: accent
 cues:

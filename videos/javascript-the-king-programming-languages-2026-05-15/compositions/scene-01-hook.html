@@ -441,12 +441,36 @@
         padding: 90px 200px;
       }
       /* Stage 1 — popularity chart */
+      @property --chart-beam {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+      }
       .chart-panel {
         width: 1040px;
         background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 16px;
         padding: 52px 64px;
+        position: relative;
+        z-index: 0;
+      }
+      .chart-panel::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 18px;
+        background: conic-gradient(from var(--chart-beam), transparent 0deg 320deg, rgba(247,223,30,0.6) 332deg 348deg, transparent 360deg);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        padding: 2px;
+        animation: chart-beam-spin 3s linear infinite;
+        pointer-events: none;
+        z-index: -1;
+      }
+      @keyframes chart-beam-spin {
+        to { --chart-beam: 360deg; }
       }
       .chart-source {
         font-family: "JetBrains Mono", monospace;
@@ -477,8 +501,14 @@
       .cr-lang img { width: 24px; height: 24px; object-fit: contain; flex-shrink: 0; filter: brightness(0) invert(0.8); }
       .cr-js-icon {
         width: 24px; height: 24px; border-radius: 4px; flex-shrink: 0;
-        background: var(--dim); display: flex; align-items: center; justify-content: center;
-        font-size: 10px; font-weight: 900; color: var(--muted);
+        background: var(--accent); display: flex; align-items: center; justify-content: center;
+        font-size: 10px; font-weight: 900; color: var(--bg);
+        font-family: "JetBrains Mono", monospace;
+      }
+      .cr-ts-icon {
+        width: 24px; height: 24px; border-radius: 4px; flex-shrink: 0;
+        background: #3178c6; display: flex; align-items: center; justify-content: center;
+        font-size: 9px; font-weight: 900; color: #fff;
         font-family: "JetBrains Mono", monospace;
       }
       .cr-track {
@@ -513,9 +543,9 @@
         height: 20px;
         margin-bottom: 12px;
       }
-      /* JS is de-emphasized — not most loved */
+      /* JS is de-emphasized — not most loved, but gets its brand yellow */
       .cr-row-js .cr-lang { color: var(--muted); }
-      .cr-row-js .cr-bar  { background: var(--dim); opacity: 0.8; }
+      .cr-row-js .cr-bar  { background: var(--accent); }
       .cr-row-js .cr-val  { color: var(--muted); }
       /* Stage 2 — dominance stat */
       #mvb-s2 { opacity: 0; }
@@ -622,9 +652,15 @@
             <line id="eb-trail-line" x1="0" y1="8" x2="372" y2="8" stroke="#3a4150" stroke-width="2" stroke-linecap="round" />
           </svg>
 
-          <div id="eb-js" class="eb-js"></div>
+          <div id="eb-js" class="eb-js"
+               data-sfx-on-anchor="whoosh"
+               data-sfx-at-scene-ms="2430"
+               data-sfx-asset="Mister Horse Free SFX/Slide/Soft Slide 04 - Fast 01.wav"></div>
 
-          <div id="eb-server" class="eb-server">
+          <div id="eb-server" class="eb-server"
+               data-sfx-on-anchor="boom"
+               data-sfx-at-scene-ms="4620"
+               data-sfx-asset="Mister Horse Free SFX/Blast/Sci-fi Pulse Gun Blast 07.wav">
             <div class="eb-unit"><span class="eb-slots"></span><span class="eb-leds"><span class="eb-led"></span><span class="eb-led"></span></span></div>
             <div class="eb-unit"><span class="eb-slots"></span><span class="eb-leds"><span class="eb-led"></span><span class="eb-led"></span></span></div>
             <div class="eb-unit"><span class="eb-slots"></span><span class="eb-leds"><span class="eb-led"></span><span class="eb-led"></span></span></div>
@@ -636,7 +672,9 @@
              off-viewport year ticks overflow by design. -->
         <div id="timeline-stage" class="tl-stage" data-layout-allow-overflow>
           <div class="tl-viewport" data-layout-allow-overflow>
-            <div id="tl-track" class="tl-track" data-layout-allow-overflow></div>
+            <div id="tl-track" class="tl-track" data-layout-allow-overflow
+                 data-sfx-on-anchor="relay-ticking"
+                 data-sfx-at-scene-ms="7500"></div>
           </div>
           <div class="tl-axis"></div>
           <div class="tl-playhead"></div>
@@ -679,12 +717,15 @@
               <span class="cr-val">67.3%</span>
             </div>
             <div class="chart-row cr-row-ts" id="cr-ts">
-              <span class="cr-lang"><img src="../assets/icons/typescript.svg" alt="">TypeScript</span>
+              <span class="cr-lang"><span class="cr-ts-icon">TS</span>TypeScript</span>
               <div class="cr-track"><div class="cr-bar" style="width:66.8%"></div></div>
               <span class="cr-val">66.8%</span>
             </div>
             <div class="chart-row cr-row-more" id="cr-more">⋯</div>
-            <div class="chart-row cr-row-js" id="cr-js">
+            <div class="chart-row cr-row-js" id="cr-js"
+                 data-sfx-on-anchor="msg-ding"
+                 data-sfx-at-scene-ms="13940"
+                 data-sfx-asset="Mister Horse Free SFX/Beep/Single UI Beep 05.wav">
               <span class="cr-lang"><span class="cr-js-icon">JS</span>JavaScript</span>
               <div class="cr-track"><div class="cr-bar" style="width:62.8%"></div></div>
               <span class="cr-val">62.8%</span>
