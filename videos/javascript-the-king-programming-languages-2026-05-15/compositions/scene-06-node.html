@@ -136,8 +136,8 @@
       max-width: 1100px; line-height: 1.4;
       opacity: 0;
     }
-    .event-mindset .events-word { color: var(--accent-2); }
-    .event-mindset .browser-word { color: var(--muted); }
+    .event-mindset .events-word { color: var(--accent-2); display: inline-block; }
+    .event-mindset .browser-word { color: var(--muted); display: inline-block; }
 
     /* ---- Movement C: V8 + Event Loop = Node.js ---- */
     #mvC { opacity: 0; gap: 56px; }
@@ -355,7 +355,8 @@
 
       // ---- Movement B: JS advantage (10.0–32.0s) ----
       // JS label at word "JavaScript" (15.24)
-      tl.fromTo("#js-adv-label", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.2)", transformOrigin: "center" }, 15.22);
+      // js-adv-label moves to 10.22 ("The second") to fill the 10→15s empty mvB gap
+      tl.fromTo("#js-adv-label", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.2)", transformOrigin: "center" }, 10.22);
       // Chip 1: "No I/O" at word "no" (16.56) / "I/O" (16.86)
       tl.fromTo("#adv-1", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.55);
       // Chip 2: "No legacy" at word "no" (18.76) / "legacy" (18.76)
@@ -396,6 +397,39 @@
       tl.fromTo("#ovation-sub", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 46.62);
       // Adoption row at word "Within" (49.00)
       tl.fromTo("#adoption-row", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 48.98);
+
+      // Dead zone micro-animations (word-level timing)
+      // Movement B 20.1→25.1s: adv-chips visible, waiting for event-mindset
+      // "JavaScript developers" (21.88): js-adv-label pulse
+      tl.to("#js-adv-label", { scale: 1.06, duration: 0.18, ease: "back.out(2)", transformOrigin: "center" }, 21.86);
+      tl.to("#js-adv-label", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 22.04);
+      // "only programmers on Earth" (23.26): adv-3 pulse — "only ones without defaults"
+      tl.to("#adv-3", { scale: 1.03, duration: 0.18, ease: "back.out(2)", transformOrigin: "center" }, 23.24);
+      tl.to("#adv-3", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 23.55);
+
+      // Movement B 25.1→32.0s: event-mindset visible
+      // "browser works" (28.24): browser-word pulse — "that's how the browser works"
+      tl.to(".browser-word", { scale: 1.14, duration: 0.20, ease: "back.out(2.5)", transformOrigin: "center" }, 28.22);
+      tl.to(".browser-word", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 28.55);
+      // "careers" (31.06): events-word pulse — "spent their whole careers in events"
+      tl.to(".events-word", { scale: 1.12, duration: 0.18, ease: "back.out(2.5)", transformOrigin: "center" }, 31.04);
+      tl.to(".events-word", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 31.37);
+
+      // Movement C 33.0→37.15s: blk-v8 + plus visible
+      // "JavaScript engine" (33.88): blk-v8 pulse — "the JavaScript engine"
+      tl.to("#blk-v8", { scale: 1.04, duration: 0.20, ease: "back.out(2)", transformOrigin: "center" }, 33.86);
+      tl.to("#blk-v8", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 34.20);
+      // "Google Chrome" (35.22): blk-v8 glow — "powering Google Chrome"
+      tl.to("#blk-v8", { boxShadow: "0 0 30px rgba(97,218,251,0.3)", duration: 0.28 }, 35.20);
+      tl.to("#blk-v8", { boxShadow: "none", duration: 0.45 }, 35.48);
+
+      // Movement C 37.65→42.08s: full formula visible (v8 + loop + =)
+      // "server runtime" (39.40): blk-loop pulse — "turned into a server runtime"
+      tl.to("#blk-loop", { scale: 1.04, duration: 0.20, ease: "back.out(2)", transformOrigin: "center" }, 39.38);
+      tl.to("#blk-loop", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 39.58);
+      // "called it" (41.22): op-eq pulse — "He called it..."
+      tl.to("#op-eq", { scale: 1.15, duration: 0.18, ease: "back.out(3)", transformOrigin: "center" }, 41.20);
+      tl.to("#op-eq", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 41.53);
 
       window.__timelines["scene-06-node"] = tl;
     </script>
