@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 06 — Node.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #11141b;
+      --border: #1f242c;
+      --fg: #e8eaed;
+      --soft: #c2c9d4;
+      --muted: #7a8493;
+      --dim: #3a4150;
+      --accent: #f7df1e;
+      --accent-2: #67e8f9;
+      --danger: #ff6b5d;
+      --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden; background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-06-node {
+      position: absolute; inset: 0;
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+    }
+    .movement {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 160px;
+      box-sizing: border-box;
+    }
+
+    /* ---- Movement A: EventMachine / Twisted fail ---- */
+    #mvA { opacity: 0; gap: 48px; }
+
+    .bolt-on-row {
+      display: flex; gap: 60px;
+      align-items: flex-start;
+    }
+    .bolt-card {
+      width: 500px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 36px;
+      display: flex; flex-direction: column; gap: 20px;
+      opacity: 0;
+    }
+    .bolt-card-lang {
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .bolt-card-lang.ruby-lang { color: #e06666; }
+    .bolt-card-lang.python-lang { color: #4b8bbe; }
+    .bolt-card-lib {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px; color: var(--muted);
+      letter-spacing: 0.04em;
+      opacity: 0;
+    }
+    .bolt-card-lib-name {
+      color: var(--soft);
+      font-weight: 700;
+    }
+    .bolt-card-badge {
+      display: inline-flex; align-items: center;
+      gap: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px;
+      background: rgba(255,107,93,0.1);
+      color: #ff6b5d;
+      border: 1px solid rgba(255,107,93,0.3);
+      border-radius: 6px; padding: 7px 16px;
+      opacity: 0; align-self: flex-start;
+    }
+    .bolt-verdict {
+      font-size: 36px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 1100px; line-height: 1.4;
+      opacity: 0;
+    }
+    .bolt-verdict .fighting-word { color: #ff6b5d; }
+    .bolt-verdict .defaults-word { color: var(--muted); }
+
+    /* ---- Movement B: JS advantage ---- */
+    #mvB { opacity: 0; gap: 44px; }
+
+    .js-advantage-wrap {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 28px;
+    }
+    .js-advantage-label {
+      font-size: 96px; font-weight: 900;
+      color: var(--accent); letter-spacing: -0.03em;
+      text-shadow: 0 0 60px rgba(247,223,30,0.25);
+      opacity: 0;
+    }
+    .advantage-chips {
+      display: flex; flex-direction: column; gap: 16px;
+      align-items: center;
+    }
+    .adv-chip {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 32px;
+      opacity: 0;
+    }
+    .adv-chip-icon {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 18px; color: var(--ok);
+      flex-shrink: 0;
+    }
+    .adv-chip-text {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px; color: var(--soft);
+      letter-spacing: 0.02em;
+    }
+    .adv-chip-text .no-word {
+      color: var(--ok); font-weight: 700;
+    }
+    .event-mindset {
+      font-size: 34px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 1100px; line-height: 1.4;
+      opacity: 0;
+    }
+    .event-mindset .events-word { color: var(--accent-2); }
+    .event-mindset .browser-word { color: var(--muted); }
+
+    /* ---- Movement C: V8 + Event Loop = Node.js ---- */
+    #mvC { opacity: 0; gap: 56px; }
+
+    .formula-row {
+      display: flex; align-items: center; gap: 32px;
+    }
+    .formula-block {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; border-radius: 12px;
+      padding: 28px 36px; border: 2px solid var(--border);
+      background: var(--panel);
+      opacity: 0;
+    }
+    .formula-block.v8-block {
+      width: 240px; min-height: 160px;
+      border-color: rgba(103,232,249,0.3);
+    }
+    .formula-block.loop-block {
+      width: 300px; min-height: 160px;
+      border-color: rgba(125,216,125,0.25);
+    }
+    .formula-block.node-block {
+      width: 300px; min-height: 160px;
+      border-color: rgba(125,216,125,0.5);
+      box-shadow: 0 0 60px rgba(125,216,125,0.15);
+    }
+    .fb-title {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px; color: var(--muted);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .fb-name {
+      font-size: 56px; font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .fb-name.v8-name { color: var(--accent-2); }
+    .fb-name.loop-name { color: var(--ok); font-size: 32px; font-weight: 700; letter-spacing: 0; }
+    .fb-name.node-name {
+      color: var(--ok);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 42px;
+    }
+    .fb-sub {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 14px; color: var(--muted);
+      letter-spacing: 0.05em; text-align: center;
+    }
+    .formula-op {
+      font-size: 56px; color: var(--dim);
+      flex-shrink: 0; opacity: 0;
+    }
+    .formula-label {
+      font-size: 36px; font-weight: 600;
+      color: var(--soft); text-align: center;
+      max-width: 900px; line-height: 1.4;
+      opacity: 0;
+    }
+    .formula-label .node-word { color: var(--ok); font-weight: 700; }
+
+    /* ---- Movement D: standing ovation ---- */
+    #mvD { opacity: 0; gap: 36px; }
+
+    .ovation-title {
+      font-size: 120px; font-weight: 900;
+      color: var(--fg); letter-spacing: -0.03em;
+      text-align: center; line-height: 0.95;
+      text-shadow: 0 0 80px rgba(232,234,237,0.1);
+      opacity: 0;
+    }
+    .ovation-sub {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      opacity: 0;
+    }
+    .adoption-row {
+      display: flex; align-items: center; gap: 40px;
+      opacity: 0;
+    }
+    .adoption-chip {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 26px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 28px;
+    }
+    .adoption-chip.start-chip { color: var(--muted); }
+    .adoption-chip.end-chip { color: var(--ok); border-color: rgba(125,216,125,0.3); }
+    .adoption-arrow {
+      font-size: 36px; color: var(--muted);
+    }
+    .adoption-label {
+      font-size: 22px; color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-06-node" data-composition-id="scene-06-node" data-width="1920" data-height="1080">
+
+    <!-- Movement A: EventMachine / Twisted fail -->
+    <div id="mvA" class="movement">
+      <div class="bolt-on-row">
+        <div class="bolt-card" id="card-ruby">
+          <div class="bolt-card-lang ruby-lang">Ruby</div>
+          <div class="bolt-card-lib" id="lib-ruby">had <span class="bolt-card-lib-name">EventMachine</span></div>
+          <div class="bolt-card-badge" id="badge-ruby">BOLT-ON ASYNC</div>
+        </div>
+        <div class="bolt-card" id="card-python">
+          <div class="bolt-card-lang python-lang">Python</div>
+          <div class="bolt-card-lib" id="lib-python">had <span class="bolt-card-lib-name">Twisted</span></div>
+          <div class="bolt-card-badge" id="badge-python">BOLT-ON ASYNC</div>
+        </div>
+      </div>
+      <div class="bolt-verdict" id="bolt-verdict">
+        Both were <span class="fighting-word">fighting</span> their own language's <span class="defaults-word">defaults</span>. One blocking call and the whole thing stalled.
+      </div>
+    </div>
+
+    <!-- Movement B: JS advantage (no I/O, event mindset) -->
+    <div id="mvB" class="movement">
+      <div class="js-advantage-wrap">
+        <div class="js-advantage-label" id="js-adv-label">JavaScript</div>
+        <div class="advantage-chips">
+          <div class="adv-chip" id="adv-1">
+            <span class="adv-chip-icon">&#x2713;</span>
+            <span class="adv-chip-text"><span class="no-word">No</span> I/O library — blank slate</span>
+          </div>
+          <div class="adv-chip" id="adv-2">
+            <span class="adv-chip-icon">&#x2713;</span>
+            <span class="adv-chip-text"><span class="no-word">No</span> legacy to drag along</span>
+          </div>
+          <div class="adv-chip" id="adv-3">
+            <span class="adv-chip-icon">&#x2713;</span>
+            <span class="adv-chip-text"><span class="no-word">No</span> defaults to fight</span>
+          </div>
+        </div>
+      </div>
+      <div class="event-mindset" id="event-mindset">
+        JS devs were the only programmers on Earth who already thought in <span class="events-word">events</span> — because that's how the <span class="browser-word">browser</span> works.
+      </div>
+    </div>
+
+    <!-- Movement C: V8 + Event Loop = Node.js -->
+    <div id="mvC" class="movement">
+      <div class="formula-row">
+        <div class="formula-block v8-block" id="blk-v8">
+          <div class="fb-title">engine</div>
+          <div class="fb-name v8-name">V8</div>
+          <div class="fb-sub">powers Google Chrome</div>
+        </div>
+        <div class="formula-op" id="op-plus">+</div>
+        <div class="formula-block loop-block" id="blk-loop">
+          <div class="fb-title">architecture</div>
+          <div class="fb-name loop-name">EVENT LOOP</div>
+          <div class="fb-sub">non-blocking I/O</div>
+        </div>
+        <div class="formula-op" id="op-eq">=</div>
+        <div class="formula-block node-block" id="blk-node">
+          <div class="fb-title">result</div>
+          <div class="fb-name node-name">node.js</div>
+          <div class="fb-sub">server runtime</div>
+        </div>
+      </div>
+      <div class="formula-label" id="formula-label">
+        He called it <span class="node-word">Node.js</span>.
+      </div>
+    </div>
+
+    <!-- Movement D: standing ovation + adoption -->
+    <div id="mvD" class="movement">
+      <div class="ovation-title" id="ovation-title">STANDING OVATION</div>
+      <div class="ovation-sub" id="ovation-sub">First in JSConf history</div>
+      <div class="adoption-row" id="adoption-row">
+        <div class="adoption-chip start-chip">150 people in the room</div>
+        <div class="adoption-arrow">&#x2192;</div>
+        <div class="adoption-chip end-chip">tens of thousands within months</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene entrance crossfade from scene-05
+      tl.fromTo("#scene-06-node", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+      // ---- Movement A: EventMachine / Twisted fail (0–10.0s) ----
+      tl.to("#mvA", { opacity: 1, duration: 0.01 }, 0);
+      // Ruby card at word "Ruby" (0.40)
+      tl.fromTo("#card-ruby", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.38);
+      // EventMachine label at word "Event" (1.40)
+      tl.fromTo("#lib-ruby", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 1.38);
+      // Ruby bolt-on badge appears at "Machine" (1.86)
+      tl.fromTo("#badge-ruby", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", transformOrigin: "left center" }, 1.84);
+      // Python card at word "Python" (2.94)
+      tl.fromTo("#card-python", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.92);
+      // Twisted label at word "Twisted" (4.12)
+      tl.fromTo("#lib-python", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 4.1);
+      // Python bolt-on badge
+      tl.fromTo("#badge-python", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", transformOrigin: "left center" }, 4.5);
+      // Both cards border flash red at "fighting" (6.82)
+      tl.to(["#card-ruby", "#card-python"], { borderColor: "#ff6b5d", duration: 0.25, ease: "power2.out" }, 6.8);
+      tl.to(["#card-ruby", "#card-python"], { borderColor: "#1f242c", duration: 0.5, ease: "power2.in" }, 7.15);
+      // Verdict text at "defaults" (8.88)
+      tl.fromTo("#bolt-verdict", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.85);
+
+      // ---- Crossfade A → B at 10.0s ----
+      tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 10.0);
+      tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 10.0);
+
+      // ---- Movement B: JS advantage (10.0–32.0s) ----
+      // JS label at word "JavaScript" (15.24)
+      tl.fromTo("#js-adv-label", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.2)", transformOrigin: "center" }, 15.22);
+      // Chip 1: "No I/O" at word "no" (16.56) / "I/O" (16.86)
+      tl.fromTo("#adv-1", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.55);
+      // Chip 2: "No legacy" at word "no" (18.76) / "legacy" (18.76)
+      tl.fromTo("#adv-2", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 18.74);
+      // Chip 3: "No defaults" at word "no" (20.12) / "defaults" (20.12)
+      tl.fromTo("#adv-3", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 20.1);
+      // "Already thought in events" at word "already" (25.12)
+      tl.fromTo("#event-mindset", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 25.1);
+
+      // ---- Crossfade B → C at 32.0s ----
+      tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 32.0);
+      tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 32.0);
+
+      // ---- Movement C: building Node.js (32.0–43.5s) ----
+      // V8 block at word "V8" (32.58)
+      tl.fromTo("#blk-v8", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 32.55);
+      // "+" operator fades in
+      tl.fromTo("#op-plus", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", transformOrigin: "center" }, 33.0);
+      // Event loop block at word "event" (37.18)
+      tl.fromTo("#blk-loop", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 37.15);
+      // "=" operator
+      tl.fromTo("#op-eq", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", transformOrigin: "center" }, 37.65);
+      // Node.js block at word "Node.js" (42.10) — the big reveal
+      tl.fromTo("#blk-node", { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2.8)", transformOrigin: "center" }, 42.08);
+      // "He called it Node.js." label fades in right after
+      tl.fromTo("#formula-label", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 42.5);
+      // Node block extra glow pulse
+      tl.fromTo("#blk-node", { boxShadow: "0 0 60px rgba(125,216,125,0.15)" }, { boxShadow: "0 0 120px rgba(125,216,125,0.5)", duration: 0.4, yoyo: true, repeat: 1, ease: "power2.inOut" }, 42.5);
+
+      // ---- Crossfade C → D at 43.5s ----
+      tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 43.5);
+      tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 43.5);
+
+      // ---- Movement D: standing ovation (43.5–50.0s) ----
+      // "STANDING OVATION" at word "standing" (44.98)
+      tl.fromTo("#ovation-title", { opacity: 0, scale: 0.85, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(2.2)", transformOrigin: "center" }, 44.95);
+      // "First in JSConf history" at word "first" (46.64)
+      tl.fromTo("#ovation-sub", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 46.62);
+      // Adoption row at word "Within" (49.00)
+      tl.fromTo("#adoption-row", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 48.98);
+
+      window.__timelines["scene-06-node"] = tl;
+    </script>
+  </div>
+</body>
+</html>
