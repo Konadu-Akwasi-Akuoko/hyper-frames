@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>Scene 01 — Hook</title>
+    <!-- JetBrains Mono is a built-in font the compiler embeds; no @font-face or CDN link needed. -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #0b0d12;
+        --panel: #11141b;
+        --border: #1f242c;
+        --fg: #e8eaed;
+        --soft: #c2c9d4;
+        --muted: #7a8493;
+        --dim: #3a4150;
+        --accent: #f7df1e;
+        --accent-2: #67e8f9;
+        --danger: #ff6b5d;
+        --ok: #7dd87d;
+      }
+      @font-face {
+        font-family: "Excalifont";
+        src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: block;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: transparent;
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      #scene-01-hook {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+
+      .movement {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 110px 160px;
+        box-sizing: border-box;
+      }
+
+      /* ---------- Movement A: Hacker News comment + escape stage ---------- */
+      /* Top-anchored (not centered) so the card lifts and frees the lower third
+         for the browser -> server animation. B and C keep the centered default. */
+      #mvA {
+        opacity: 0;
+        justify-content: flex-start;
+        padding: 78px 160px 70px;
+        gap: 50px;
+      }
+      .hn-card {
+        width: 1120px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 36px 48px 40px;
+      }
+      .hn-head {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        margin-bottom: 26px;
+      }
+      .hn-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: #ff6600; /* HN brand cue — the one palette exception */
+        color: #ffffff;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        font-size: 25px;
+        border-radius: 4px;
+      }
+      .hn-wordmark {
+        font-family: "Inter", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 23px;
+        color: var(--fg);
+        letter-spacing: 0.01em;
+      }
+      .hn-comment {
+        display: flex;
+        gap: 18px;
+      }
+      .hn-vote {
+        color: var(--muted);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 24px;
+        line-height: 1.3;
+        flex: 0 0 auto;
+      }
+      .hn-meta {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 23px;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .hn-dot {
+        color: var(--muted);
+        padding: 0 6px;
+      }
+      .hn-body {
+        font-family: "Excalifont", sans-serif;
+        font-size: 50px;
+        line-height: 1.4;
+        color: var(--muted);
+        max-width: 900px;
+      }
+      .hn-reply {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 21px;
+        color: var(--muted);
+        margin-top: 22px;
+      }
+
+      /* Damning fragments — danger-red marker sweep + brighten on the beat */
+      .frag {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+      }
+      .frag-text {
+        position: relative;
+        z-index: 1;
+        color: var(--muted);
+      }
+      /* Translucent marker bar swept in behind the words (scaleX 0 -> 1). The
+         slight skew + rounded ends read as a hand-pulled highlighter stroke. */
+      .mh-mark {
+        position: absolute;
+        left: -10px;
+        right: -10px;
+        top: 16px;
+        bottom: 14px;
+        background: var(--danger);
+        opacity: 0.32;
+        border-radius: 6px;
+        transform-origin: left center;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* ---------- Movement A: lower band (escape stage <-> timeline) ---------- */
+      /* Both beats occupy the same band and crossfade — escape (0–5s), then the
+         2026 -> 2014 timeline (6–11s). Absolute siblings so #mvA layout stays put. */
+      .lower-band {
+        position: relative;
+        width: 1120px;
+        height: 332px;
+      }
+      .escape-stage {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+
+      /* Browser window (left) — flat line-art chrome, "diagram not illustration" */
+      .eb-browser {
+        position: absolute;
+        left: 0;
+        top: 26px;
+        width: 432px;
+        height: 280px;
+        background: var(--panel);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .eb-chrome {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        height: 46px;
+        padding: 0 18px;
+        border-bottom: 1px solid var(--border);
+      }
+      .eb-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--dim);
+      }
+      .eb-urlbar {
+        flex: 1;
+        height: 18px;
+        margin-left: 12px;
+        border-radius: 9px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+      }
+      .eb-viewport {
+        position: relative;
+        height: calc(100% - 46px);
+        padding: 26px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+      }
+      .eb-line {
+        height: 9px;
+        border-radius: 5px;
+        background: var(--dim);
+      }
+      .eb-line.w70 { width: 70%; }
+      .eb-line.w45 { width: 45%; }
+      .eb-line.w55 { width: 55%; }
+
+      /* The JS logo mark — official-style #f7df1e square, black "JS" bottom-right.
+         Built in code so it stays crisp and animatable. */
+      .eb-js {
+        position: absolute;
+        left: 174px;
+        top: 150px;
+        width: 84px;
+        height: 84px;
+        background: var(--accent);
+        border-radius: 8px;
+        z-index: 5;
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+      }
+      .eb-js::after {
+        content: "JS";
+        position: absolute;
+        right: 9px;
+        bottom: 3px;
+        font-family: "Inter", system-ui, sans-serif;
+        font-weight: 900;
+        font-size: 35px;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--bg);
+      }
+
+      /* Travel trail — a thin line the badge "draws" as it crosses */
+      .eb-trail {
+        position: absolute;
+        left: 432px;
+        top: 184px;
+        width: 372px;
+        height: 16px;
+        overflow: visible;
+      }
+
+      /* Server rack (right) — stacked line-art units with LED dots */
+      .eb-server {
+        position: absolute;
+        right: 0;
+        top: 26px;
+        width: 320px;
+        height: 280px;
+        background: var(--panel);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .eb-unit {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      .eb-unit:last-child {
+        border-bottom: none;
+      }
+      .eb-slots {
+        width: 132px;
+        height: 9px;
+        border-radius: 3px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--dim) 0 20px,
+          transparent 20px 30px
+        );
+      }
+      .eb-leds {
+        display: flex;
+        gap: 11px;
+      }
+      .eb-led {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--dim);
+      }
+
+      /* ---------- Movement A: 2026 -> 2014 timeline ---------- */
+      .tl-stage {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+      .tl-axis {
+        position: absolute;
+        left: 40px;
+        right: 40px;
+        top: 170px;
+        height: 0;
+        border-top: 1.5px solid var(--border);
+        transform-origin: center;
+      }
+      .tl-viewport {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 150px;
+        height: 86px;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 15%, #000 85%, transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 15%, #000 85%, transparent 100%);
+      }
+      .tl-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 86px;
+        width: 1560px;
+      }
+      .tl-tick {
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(-50%);
+      }
+      .tl-mark {
+        margin-top: 10px;
+        width: 1.5px;
+        height: 20px;
+        background: var(--dim);
+      }
+      .tl-tick.major .tl-mark {
+        margin-top: 6px;
+        width: 2px;
+        height: 28px;
+        background: var(--muted);
+      }
+      .tl-year {
+        margin-top: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 26px;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+      .tl-tick.major .tl-year {
+        color: var(--soft);
+        font-weight: 600;
+      }
+      /* Fixed center playhead — caret pointing at the year under it */
+      .tl-playhead {
+        position: absolute;
+        left: 560px;
+        top: 144px;
+        width: 0;
+        height: 52px;
+        transform: translateX(-50%);
+        border-left: 1.5px solid var(--muted);
+      }
+      .tl-playhead::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: -9px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 9px solid var(--muted);
+      }
+      /* The commenter — line-art everyman, HN-orange ring. Swap the inline SVG for
+         an <img src="../assets/..."> to use a supplied portrait instead. */
+      .tl-avatar {
+        position: absolute;
+        left: 560px;
+        top: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+        opacity: 0;
+      }
+      .tl-face {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        background: var(--panel);
+        border: 2.5px solid #ff6600; /* HN brand cue — ties to the card above */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .tl-face svg {
+        width: 78px;
+        height: 78px;
+      }
+      .tl-name {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 21px;
+        color: var(--muted);
+      }
+
+      /* ---------- Movement B: "not most loved" chart → dominance stat ---------- */
+      #mvB {
+        opacity: 0;
+        gap: 0;
+      }
+      .mvb-stage {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 90px 200px;
+      }
+      /* Stage 1 — popularity chart */
+      .chart-panel {
+        width: 1040px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 52px 64px;
+      }
+      .chart-source {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 19px;
+        color: var(--muted);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 42px;
+      }
+      .chart-row {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 24px;
+        opacity: 0;
+      }
+      .cr-lang {
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--soft);
+        width: 190px;
+        flex-shrink: 0;
+      }
+      .cr-track {
+        flex: 1;
+        height: 14px;
+        background: var(--border);
+        border-radius: 7px;
+        overflow: hidden;
+      }
+      .cr-bar {
+        height: 100%;
+        border-radius: 7px;
+        transform-origin: left center;
+        /* scaleX animated from 0 via GSAP */
+      }
+      .cr-val {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 23px;
+        color: var(--muted);
+        width: 68px;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .cr-row-rust   .cr-bar { background: var(--ok); }
+      .cr-row-elixir .cr-bar { background: var(--accent-2); }
+      .cr-row-python .cr-bar { background: #c084fc; }
+      .cr-row-ts     .cr-bar { background: #60a5fa; }
+      .cr-row-more {
+        font-size: 30px;
+        color: var(--dim);
+        justify-content: center;
+        height: 20px;
+        margin-bottom: 12px;
+      }
+      /* JS is de-emphasized — not most loved */
+      .cr-row-js .cr-lang { color: var(--muted); }
+      .cr-row-js .cr-bar  { background: var(--dim); opacity: 0.8; }
+      .cr-row-js .cr-val  { color: var(--muted); }
+      /* Stage 2 — dominance stat */
+      #mvb-s2 { opacity: 0; }
+      .infra-stat { text-align: center; }
+      .infra-pct {
+        font-size: 230px;
+        font-weight: 900;
+        color: var(--accent);
+        line-height: 0.88;
+        text-shadow: 0 0 80px rgba(247, 223, 30, 0.25);
+        font-variant-numeric: tabular-nums;
+      }
+      .infra-desc {
+        font-size: 62px;
+        font-weight: 600;
+        color: var(--fg);
+        margin-top: 32px;
+        text-shadow: 0 0 30px rgba(232, 234, 237, 0.12);
+      }
+      .infra-streak {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        color: var(--muted);
+        margin-top: 22px;
+        letter-spacing: 0.04em;
+        opacity: 0;
+      }
+
+      /* ---------- Movement C: payoff question ---------- */
+      #mvC {
+        opacity: 0;
+      }
+      .payoff {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+      }
+      .payoff-setup {
+        font-size: 58px;
+        font-weight: 500;
+        color: var(--soft);
+        opacity: 0;
+      }
+      .payoff-q {
+        font-size: 144px;
+        font-weight: 900;
+        color: var(--fg);
+        line-height: 1.0;
+        text-shadow: 0 0 50px rgba(232, 234, 237, 0.18);
+        display: inline-block;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scene-01-hook" data-composition-id="scene-01-hook" data-width="1920" data-height="1080">
+      <!-- Movement A — the damning Hacker News comment + browser->server escape -->
+      <div style="background-image:linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.04) 100%)" id="mvA" class="movement">
+        <div id="hn-card" class="hn-card">
+          <div id="hn-head" class="hn-head">
+            <span class="hn-logo">Y</span>
+            <span class="hn-wordmark">Hacker News</span>
+          </div>
+          <div class="hn-comment">
+            <span class="hn-vote">▲</span>
+            <div class="hn-comment-main">
+              <div id="hn-meta" class="hn-meta">
+                <span class="hn-user">danbruc</span><span class="hn-dot">·</span><span id="hn-date">Dec 2014</span>
+              </div>
+              <p id="hn-body" class="hn-body">This
+                <span class="frag" id="frag-awful"><span class="mh-mark"></span><span class="frag-text">awful language</span></span>
+                has escaped the
+                <span class="frag" id="frag-browser"><span class="mh-mark"></span><span class="frag-text">browser</span></span>
+                and
+                <span class="frag" id="frag-infiltrated"><span class="mh-mark"></span><span class="frag-text">infiltrated</span></span>
+                <span class="frag" id="frag-servers"><span class="mh-mark"></span><span class="frag-text">our servers</span></span>.
+              </p>
+              <div class="hn-reply">reply</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower band — escape stage (beat 1) crossfades to the timeline (beat 2).
+             allow-overflow: the timeline track lives partly off-canvas and scrolls
+             in behind a mask. The escape stage inside fits the band (verified). -->
+        <div class="lower-band" data-layout-allow-overflow>
+        <!-- Escape stage: JS breaks out of the browser and into the server rack -->
+        <div id="escape-stage" class="escape-stage">
+          <div id="eb-browser" class="eb-browser">
+            <div class="eb-chrome">
+              <span class="eb-dot"></span><span class="eb-dot"></span><span class="eb-dot"></span>
+              <span class="eb-urlbar"></span>
+            </div>
+            <div class="eb-viewport">
+              <span class="eb-line w70"></span>
+              <span class="eb-line w45"></span>
+              <span class="eb-line w55"></span>
+            </div>
+          </div>
+
+          <svg id="eb-trail" class="eb-trail" viewBox="0 0 372 16" preserveAspectRatio="none">
+            <line id="eb-trail-line" x1="0" y1="8" x2="372" y2="8" stroke="#3a4150" stroke-width="2" stroke-linecap="round" />
+          </svg>
+
+          <div id="eb-js" class="eb-js"></div>
+
+          <div id="eb-server" class="eb-server">
+            <div class="eb-unit"><span class="eb-slots"></span><span class="eb-leds"><span class="eb-led"></span><span class="eb-led"></span></span></div>
+            <div class="eb-unit"><span class="eb-slots"></span><span class="eb-leds"><span class="eb-led"></span><span class="eb-led"></span></span></div>
+            <div class="eb-unit"><span class="eb-slots"></span><span class="eb-leds"><span class="eb-led"></span><span class="eb-led"></span></span></div>
+          </div>
+        </div>
+
+        <!-- Timeline: scrolls 2026 -> 2014, lands on the commenter (danbruc, 2014) -->
+        <!-- The track is wider than its viewport and scrolls behind a mask, so the
+             off-viewport year ticks overflow by design. -->
+        <div id="timeline-stage" class="tl-stage" data-layout-allow-overflow>
+          <div class="tl-viewport" data-layout-allow-overflow>
+            <div id="tl-track" class="tl-track" data-layout-allow-overflow></div>
+          </div>
+          <div class="tl-axis"></div>
+          <div class="tl-playhead"></div>
+          <div id="tl-avatar" class="tl-avatar">
+            <div class="tl-face">
+              <svg viewBox="0 0 100 100" fill="none">
+                <circle cx="38" cy="46" r="3.2" fill="#c2c9d4" />
+                <circle cx="62" cy="46" r="3.2" fill="#c2c9d4" />
+                <path d="M30,39 Q38,34 46,39" stroke="#c2c9d4" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M54,39 Q62,34 70,39" stroke="#c2c9d4" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M50,48 L46,59 Q50,61 54,59" stroke="#c2c9d4" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M40,71 Q50,74 60,71" stroke="#c2c9d4" stroke-width="2.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="tl-name">danbruc</div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <!-- Movement B — "not most loved" chart (s1) → dominance stat (s2) -->
+      <div id="mvB" class="movement">
+        <!-- Stage 1: Most-Loved chart — JS is NOT at the top -->
+        <div id="mvb-s1" class="mvb-stage">
+          <div class="chart-panel">
+            <div class="chart-source">Stack Overflow 2025 · Most Loved Languages</div>
+            <div class="chart-row cr-row-rust" id="cr-rust">
+              <span class="cr-lang">Rust</span>
+              <div class="cr-track"><div class="cr-bar" style="width:84.7%"></div></div>
+              <span class="cr-val">84.7%</span>
+            </div>
+            <div class="chart-row cr-row-elixir" id="cr-elixir">
+              <span class="cr-lang">Elixir</span>
+              <div class="cr-track"><div class="cr-bar" style="width:73.1%"></div></div>
+              <span class="cr-val">73.1%</span>
+            </div>
+            <div class="chart-row cr-row-python" id="cr-python">
+              <span class="cr-lang">Python</span>
+              <div class="cr-track"><div class="cr-bar" style="width:67.3%"></div></div>
+              <span class="cr-val">67.3%</span>
+            </div>
+            <div class="chart-row cr-row-ts" id="cr-ts">
+              <span class="cr-lang">TypeScript</span>
+              <div class="cr-track"><div class="cr-bar" style="width:66.8%"></div></div>
+              <span class="cr-val">66.8%</span>
+            </div>
+            <div class="chart-row cr-row-more" id="cr-more">⋯</div>
+            <div class="chart-row cr-row-js" id="cr-js">
+              <span class="cr-lang">JavaScript</span>
+              <div class="cr-track"><div class="cr-bar" style="width:62.8%"></div></div>
+              <span class="cr-val">62.8%</span>
+            </div>
+          </div>
+        </div>
+        <!-- Stage 2: Dominance stat — JS runs the world's infrastructure -->
+        <div id="mvb-s2" class="mvb-stage">
+          <div class="infra-stat">
+            <div class="infra-pct">66%</div>
+            <div class="infra-desc" id="infra-desc">of developers use JavaScript</div>
+            <div class="infra-streak" id="infra-streak">#1 FOR 13 CONSECUTIVE YEARS · STACK OVERFLOW 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Movement C — the payoff question -->
+      <div id="mvC" class="movement">
+        <div class="payoff">
+          <span class="payoff-setup" id="payoff-setup">So how did</span>
+          <span class="payoff-q" id="payoff-q">that happen?</span>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // ---- Initial states for swept-in elements ----
+        // Marker bars start collapsed (scaleX 0) with a slight hand-drawn skew.
+        gsap.set("#scene-01-hook .mh-mark", { scaleX: 0, skewX: -3, transformOrigin: "left center" });
+        // Travel trail starts undrawn.
+        const trail = document.querySelector("#eb-trail-line");
+        const trailLen = trail.getTotalLength ? trail.getTotalLength() : 372;
+        gsap.set(trail, { strokeDasharray: trailLen, strokeDashoffset: trailLen });
+
+        // ---- Build the 2026 -> 2014 timeline ticks (deterministic, safe DOM) ----
+        const TL_BASE = 2014, TL_END = 2026, TL_SP = 130, TL_CENTER = 560;
+        (function buildTimeline() {
+          const track = document.getElementById("tl-track");
+          if (!track) return;
+          for (let y = TL_BASE; y <= TL_END; y++) {
+            const tick = document.createElement("div");
+            tick.className = "tl-tick" + (y === TL_BASE || y === TL_END ? " major" : "");
+            tick.style.left = (y - TL_BASE) * TL_SP + "px";
+            tick.setAttribute("data-year", String(y));
+            const mark = document.createElement("span");
+            mark.className = "tl-mark";
+            const year = document.createElement("span");
+            year.className = "tl-year";
+            year.textContent = String(y);
+            tick.appendChild(mark);
+            tick.appendChild(year);
+            track.appendChild(tick);
+          }
+        })();
+        // Start with "now" (2026) centered under the playhead; axis undrawn.
+        gsap.set("#tl-track", { x: TL_CENTER - (TL_END - TL_BASE) * TL_SP });
+        gsap.set("#scene-01-hook .tl-axis", { scaleX: 0 });
+        // Avatar centered on the playhead via gsap (not CSS) so scale tweens keep it put.
+        gsap.set("#tl-avatar", { xPercent: -50 });
+
+        // ---- Movement A: HN card entrance (staggered, varied eases) ----
+        tl.fromTo(
+          "#hn-card",
+          { opacity: 0, y: 30, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" },
+          0.15,
+        );
+        tl.fromTo("#mvA", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.15);
+        tl.fromTo("#hn-head", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 0.32);
+        tl.fromTo("#hn-meta", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.42);
+        tl.fromTo("#hn-body", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.4);
+        // Escape stage fades up just after the card so the lower third has presence.
+        tl.fromTo("#escape-stage", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.62);
+
+        // ---- Damning fragments ignite on their spoken word-start ----
+        // Marker sweeps in behind the words while the text brightens muted -> fg.
+        function lightFragment(fragId, t) {
+          tl.fromTo(
+            "#" + fragId + " .frag-text",
+            { color: "#7a8493" },
+            { color: "#e8eaed", duration: 0.3, ease: "power1.out" },
+            t,
+          );
+          tl.to(
+            "#" + fragId + " .mh-mark",
+            { scaleX: 1, duration: 0.44, ease: "power2.out" },
+            t,
+          );
+        }
+        lightFragment("frag-awful", 0.55); // "awful language"
+        lightFragment("frag-browser", 2.46); // "browser"
+        lightFragment("frag-infiltrated", 3.42); // "infiltrated"
+        lightFragment("frag-servers", 4.46); // "our servers"
+
+        // ---- Escape choreography: JS leaves the browser and enters the server ----
+        // Restless float while it's still "trapped" in the browser.
+        tl.to("#eb-js", { y: -7, duration: 0.6, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.95);
+
+        // "escaped" (1.92) — browser frame flashes danger; JS squeezes through.
+        tl.to("#eb-browser", { borderColor: "#ff6b5d", duration: 0.14, yoyo: true, repeat: 1, ease: "sine.inOut" }, 1.92);
+        tl.to("#eb-js", { scaleX: 1.18, scaleY: 0.82, duration: 0.1, ease: "power2.in" }, 1.92);
+        tl.to("#eb-js", { scaleX: 1, scaleY: 1, duration: 0.16, ease: "back.out(2.2)" }, 2.04);
+
+        // "the browser…and" (2.3–3.4) — JS travels right; trail draws under it.
+        tl.to("#eb-js", { x: 543, duration: 1.1, ease: "power1.inOut" }, 2.3);
+        tl.to("#eb-trail-line", { strokeDashoffset: 0, duration: 1.05, ease: "power1.inOut" }, 2.32);
+
+        // "infiltrated" (3.42) — the rack units flicker/jitter as JS reaches the door.
+        tl.fromTo(
+          "#eb-server .eb-unit",
+          { x: 0 },
+          { x: 3, duration: 0.06, yoyo: true, repeat: 5, ease: "none", stagger: 0.05 },
+          3.42,
+        );
+        tl.fromTo(
+          "#eb-server .eb-unit",
+          { borderColor: "#1f242c" },
+          { borderColor: "#ff6b5d", duration: 0.1, yoyo: true, repeat: 1, ease: "sine.inOut", stagger: 0.05 },
+          3.42,
+        );
+
+        // "our servers" (4.46) — JS pushes the last bit IN, shrinking as it's absorbed;
+        // the rack's LEDs ignite and it settles to a faint JS-yellow glow (the thesis).
+        tl.to("#eb-js", { x: 745, scale: 0.34, opacity: 0, duration: 0.46, ease: "power2.in" }, 4.46);
+        tl.fromTo(
+          "#eb-server .eb-led",
+          { backgroundColor: "#3a4150", boxShadow: "0 0 0px rgba(247,223,30,0)" },
+          { backgroundColor: "#f7df1e", boxShadow: "0 0 11px rgba(247,223,30,0.75)", duration: 0.4, ease: "power2.out", stagger: 0.05 },
+          4.62,
+        );
+        tl.to("#eb-server", { borderColor: "#5a5326", boxShadow: "0 0 34px rgba(247,223,30,0.16)", duration: 0.5, ease: "power2.out" }, 4.7);
+        // Browser goes quiet now that JS has left it.
+        tl.to("#eb-browser", { opacity: 0.5, duration: 0.6, ease: "power2.out" }, 4.74);
+
+        // ---- Beat 2: "That was a Hacker News commenter… in 2014" ----
+        // The lit server holds a beat, then the lower band crossfades from the
+        // escape stage to a timeline that rewinds 2026 -> 2014.
+        tl.to("#escape-stage", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 5.4);
+        tl.set("#escape-stage", { visibility: "hidden" }, 6.1);
+
+        // Timeline fades in at "That was…"; the axis draws out from center.
+        tl.fromTo("#timeline-stage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 5.92);
+        tl.to("#scene-01-hook .tl-axis", { scaleX: 1, duration: 0.6, ease: "power2.out" }, 6.0);
+
+        // Rewind the years, landing 2014 under the playhead exactly on the spoken
+        // "2014" (10.14). Track travels from 2026-centered to 2014-centered.
+        tl.to("#tl-track", { x: TL_CENTER, duration: 2.64, ease: "power2.inOut" }, 7.5);
+
+        // 2014 lands — the commenter avatar pops up and the year ignites.
+        tl.to(
+          "#scene-01-hook .tl-tick[data-year='2014'] .tl-year",
+          { color: "#e8eaed", scale: 1.14, duration: 0.4, ease: "back.out(2)", transformOrigin: "center" },
+          10.14,
+        );
+        tl.fromTo(
+          "#tl-avatar",
+          { opacity: 0, scale: 0.6, y: 12 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)", transformOrigin: "center bottom" },
+          10.14,
+        );
+
+        // "...in 2014" — the date in the meta line brightens briefly.
+        tl.fromTo(
+          "#hn-date",
+          { color: "#7a8493" },
+          { color: "#e8eaed", duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" },
+          10.14,
+        );
+
+        // ---- Crossfade A -> B (lands in the 10.9–11.66s pause) ----
+        tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 11.1);
+        tl.set("#mvA", { visibility: "hidden" }, 11.62);
+        tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 11.1);
+
+        // ---- Movement B: initial states ----
+        // Chart bars draw left-to-right; start collapsed.
+        gsap.set("#mvB .cr-bar", { scaleX: 0, transformOrigin: "left center" });
+        // Stage 2 children are hidden until their own tweens fire (prevents flash
+        // when the parent #mvb-s2 fades in before the per-element tweens start).
+        gsap.set(["#mvb-s2 .infra-pct", "#infra-desc"], { opacity: 0 });
+
+        // ---- Movement B Stage 1: chart rows stagger in on narration ----
+        // Panel fades in first, then rows appear one by one on the word beats.
+        // Chart source label slides up first
+        tl.fromTo("#mvb-s1 .chart-source", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 11.5);
+        // Rows appear in sequence: Rust → Elixir → Python → TS → JS
+        tl.to("#cr-rust",   { opacity: 1, duration: 0.3, ease: "power2.out" }, 11.8);
+        tl.to("#cr-rust .cr-bar",   { scaleX: 1, duration: 0.55, ease: "power2.out" }, 11.9);
+        tl.to("#cr-elixir", { opacity: 1, duration: 0.3, ease: "power2.out" }, 12.25);
+        tl.to("#cr-elixir .cr-bar", { scaleX: 1, duration: 0.5,  ease: "power2.out" }, 12.35);
+        tl.to("#cr-python", { opacity: 1, duration: 0.3, ease: "power2.out" }, 12.7);
+        tl.to("#cr-python .cr-bar", { scaleX: 1, duration: 0.5,  ease: "power2.out" }, 12.8);
+        tl.to("#cr-ts",     { opacity: 1, duration: 0.3, ease: "power2.out" }, 13.1);
+        tl.to("#cr-ts .cr-bar",     { scaleX: 1, duration: 0.5,  ease: "power2.out" }, 13.2);
+        tl.to("#cr-more",   { opacity: 1, duration: 0.25 }, 13.5);
+        // JS row lands on "most loved" (13.84s) — enters muted, signaling "not #1"
+        tl.to("#cr-js",     { opacity: 1, duration: 0.4, ease: "power3.out" }, 13.7);
+        tl.to("#cr-js .cr-bar",     { scaleX: 1, duration: 0.6,  ease: "power2.inOut" }, 13.8);
+
+        // ---- Movement B Stage 2: crossfade to dominance stat at "but" (16.06s) ----
+        tl.to("#mvb-s1",  { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 15.9);
+        tl.to("#mvb-s2",  { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 15.9);
+        // "66%" pops in on "2026" (16.6s)
+        tl.fromTo("#mvb-s2 .infra-pct", { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center" }, 16.3);
+        // "of developers use JavaScript" slides up on "still" (17.94s)
+        tl.fromTo("#infra-desc", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.7);
+        // Streak line appears on "infrastructure" (19.52s)
+        tl.to("#infra-streak", { opacity: 1, duration: 0.4, ease: "power2.out" }, 19.3);
+
+        // ---- Crossfade B -> C (lands in the 20.76–21.70s pause) ----
+        tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 21.3);
+        tl.fromTo("#mvC", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 21.3);
+
+        // ---- Movement C: payoff question — two-beat reveal ----
+        // "So how did" (setup) slides in smaller/softer
+        tl.fromTo("#payoff-setup", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.6);
+        // "that happen?" drops in big, with a back-out bounce on "happen?" (22.92s)
+        gsap.set("#payoff-q", { transformOrigin: "center center" });
+        tl.fromTo("#payoff-q", { opacity: 0, y: 24, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(2.2)" }, 22.4);
+        // No exit — held to the block's end; the scene-2 crossfade will retire it.
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene-01-hook"] = tl;
+      </script>
+    </div>
+  </body>
+</html>
