@@ -236,13 +236,13 @@
   </style>
 </head>
 <body>
-  <div id="scene-04-server-question" data-composition-id="scene-04-server-question" data-width="1920" data-height="1080">
+  <div id="scene-04-server-question" data-composition-id="scene-04-server-question" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
 
     <!-- Movement A: the confrontational question -->
     <div id="mvA" class="movement">
       <div class="q-preamble" id="q-preamble">that begs the question,</div>
       <div class="q-how-the" id="q-how-the">how the</div>
-      <div class="q-hell" id="q-hell">HELL</div>
+      <div class="q-hell" id="q-hell" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3600">HELL</div>
       <div class="q-rest" id="q-rest">did <span class="q-js-span">JavaScript</span> get to the <span class="q-server-span" id="q-server-span">server?</span></div>
     </div>
 
@@ -251,27 +251,27 @@
       <div class="years-block">
         <div class="years-num" id="years-num">14</div>
         <div class="years-label" id="years-label">years</div>
-        <div class="years-verdict" id="years-verdict">it didn't.</div>
+        <div class="years-verdict" id="years-verdict" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="8270">it didn't.</div>
       </div>
       <div class="server-side">
-        <div class="rack-frame" id="rack-frame">
+        <div class="rack-frame" id="rack-frame" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6950">
           <div class="rack-header">SERVER</div>
-          <div class="rack-slot" id="slot-perl">
+          <div class="rack-slot" id="slot-perl" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="10200">
             <div class="slot-led"></div>
             <img class="slot-icon" src="../assets/icons/perl.svg" alt="Perl">
             <div class="slot-lang">Perl</div>
           </div>
-          <div class="rack-slot" id="slot-php">
+          <div class="rack-slot" id="slot-php" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="11400">
             <div class="slot-led"></div>
             <img class="slot-icon" src="../assets/icons/php.svg" alt="PHP">
             <div class="slot-lang">PHP</div>
           </div>
-          <div class="rack-slot" id="slot-python">
+          <div class="rack-slot" id="slot-python" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="12700">
             <div class="slot-led"></div>
             <img class="slot-icon" src="../assets/icons/python.svg" alt="Python">
             <div class="slot-lang">Python</div>
           </div>
-          <div class="rack-slot" id="slot-ruby">
+          <div class="rack-slot" id="slot-ruby" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="13900">
             <div class="slot-led"></div>
             <img class="slot-icon" src="../assets/icons/ruby.svg" alt="Ruby">
             <div class="slot-lang">Ruby</div>
@@ -303,7 +303,7 @@
       <div class="trap-text" id="trap-text">
         JavaScript has always lived inside the browser.
       </div>
-      <div class="trap-die-text" id="trap-die-text">
+      <div class="trap-die-text" id="trap-die-text" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="19640">
         Most people thought it would <span class="die-word">die</span> there.
       </div>
     </div>
@@ -359,6 +359,10 @@
       tl.fromTo("#browser-wrap", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.8)", transformOrigin: "center center" }, 14.4);
       // "JavaScript has always lived inside the browser." at word "browser" (17.04)
       tl.fromTo("#trap-text", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 16.9);
+      // Dead-zone breath: keep trapped JS logo alive on word "browser" (local 17.42)
+      tl.to("#js-logo-big", { scale: 1.03, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 17.42);
+      tl.to("#js-logo-big", { scale: 1.0,  duration: 0.30, ease: "power2.in",  transformOrigin: "center" }, 17.58);
+
       // "Most people thought it would die there." at word "die" (19.46)
       tl.fromTo("#trap-die-text", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 19.4);
 

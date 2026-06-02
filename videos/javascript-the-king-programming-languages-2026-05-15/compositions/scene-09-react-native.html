@@ -223,7 +223,7 @@
   </style>
 </head>
 <body>
-  <div id="scene-09-react-native" data-composition-id="scene-09-react-native" data-width="1920" data-height="1080">
+  <div id="scene-09-react-native" data-composition-id="scene-09-react-native" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
 
     <!-- Movement A: Zuckerberg biggest mistake -->
     <div id="mvA" class="movement">
@@ -234,19 +234,19 @@
           <div class="zuck-role">Facebook CEO · TechCrunch 2012</div>
         </div>
       </div>
-      <div class="mistake-card" id="mistake-card">
+      <div class="mistake-card" id="mistake-card" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1620">
         <div class="mistake-context">On Facebook's HTML5 mobile bet</div>
         <div class="mistake-quote">
-          "The <span class="hl-mistake-wrap"><span class="hl-mistake-bg" id="hl-mistake"></span>biggest mistake we've made as a company</span>."
+          "The <span class="hl-mistake-wrap"><span class="hl-mistake-bg" id="hl-mistake" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3770"></span>biggest mistake we've made as a company</span>."
         </div>
       </div>
     </div>
 
     <!-- Movement B: scrapped HTML5, two codebases -->
-    <div id="mvB" class="movement">
+    <div id="mvB" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="6100">
       <div class="scrapped-badge" id="scrapped-badge">HTML5 app — SCRAPPED</div>
       <div class="platforms-row">
-        <div class="platform-col" id="col-ios">
+        <div class="platform-col" id="col-ios" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="10080">
           <img src="../assets/icons/apple.svg" width="44" height="44" alt="iOS" style="filter: brightness(0) invert(0.8); flex-shrink:0;">
           <div class="plat-icon-label plat-ios">iOS</div>
           <div class="plat-lang">Objective-C / Swift</div>
@@ -259,19 +259,19 @@
           <div class="plat-team">Team B</div>
         </div>
       </div>
-      <div class="cost-verdict" id="cost-verdict">2 code bases · 2&times; the cost</div>
+      <div class="cost-verdict" id="cost-verdict" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="13830">2 code bases · 2&times; the cost</div>
     </div>
 
     <!-- Movement C: Jordan Walke's hackathon breakthrough -->
-    <div id="mvC" class="movement">
-      <div class="jw-intro" id="jw-intro">
+    <div id="mvC" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="15300">
+      <div class="jw-intro" id="jw-intro" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="18000">
         <div class="jw-avatar">JW</div>
         <div class="jw-meta">
           <div class="jw-name">Jordan Walke</div>
           <div class="jw-role">Facebook Engineer · Internal Hackathon · 2013</div>
         </div>
       </div>
-      <div class="bridge-diagram" id="bridge-diagram">
+      <div class="bridge-diagram" id="bridge-diagram" data-sfx-on-anchor="riser" data-sfx-at-scene-ms="21850">
         <div class="bridge-box react-box">
           <div class="bb-label">React component (JavaScript)</div>
           <div class="bb-code">
@@ -281,25 +281,25 @@
           </div>
         </div>
         <div class="bridge-arrow" id="bridge-arrow">&#x2192;</div>
-        <div class="bridge-box native-box" id="native-box">
+        <div class="bridge-box native-box" id="native-box" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="24850">
           <div class="bb-label">Native iOS / Android</div>
           <div class="native-widget">UIView · Android View</div>
-          <div class="not-webview-badge" id="not-webview">NOT A WEBVIEW</div>
+          <div class="not-webview-badge" id="not-webview" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="26830">NOT A WEBVIEW</div>
         </div>
       </div>
-      <div class="same-code-line" id="same-code-line">
+      <div class="same-code-line" id="same-code-line" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="30620">
         Same <span class="js-span">JavaScript</span> code — <span class="platforms-span">two mobile platforms</span>.
       </div>
     </div>
 
     <!-- Movement D: React Native launch + terror reign -->
-    <div id="mvD" class="movement">
-      <div class="rn-reveal" id="rn-reveal" style="display:flex; align-items:center; justify-content:center; gap:24px;">
+    <div id="mvD" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="33800">
+      <div class="rn-reveal" id="rn-reveal" style="display:flex; align-items:center; justify-content:center; gap:24px;" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="40550">
         <img src="../assets/icons/react.svg" width="90" height="90" alt="">
         <span><span class="rn-react">React</span> <span class="rn-native">Native</span></span>
       </div>
-      <div class="rn-timestamp" id="rn-timestamp">F8 · March 2015 · Open-sourced</div>
-      <div class="terror-line" id="terror-line">
+      <div class="rn-timestamp" id="rn-timestamp" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="37090">F8 · March 2015 · Open-sourced</div>
+      <div class="terror-line" id="terror-line" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="44470">
         The beginning of a <span class="terror-word">terror reign</span> by JavaScript as the world's most dominant language.
       </div>
     </div>
@@ -331,8 +331,20 @@
       tl.fromTo("#col-ios", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 9.63);
       // Android column at word "Android" (10.36)
       tl.fromTo("#col-android", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 10.33);
+      // ---- Gap (6.51–9.63) micro-animation ----
+      // "native" (8.20): scrapped-badge scale pulse (keeps the badge alive)
+      tl.to("#scrapped-badge", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 8.20);
+      tl.to("#scrapped-badge", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 8.36);
+
       // "twice the cost" at word "cost" (13.40)
       tl.fromTo("#cost-verdict", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", transformOrigin: "center" }, 13.38);
+
+      // ---- Gap (10.78–13.38) micro-animation ----
+      // "code" (12.46): synchronized scale pulse on both platform columns
+      tl.to("#col-ios", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 12.46);
+      tl.to("#col-ios", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 12.62);
+      tl.to("#col-android", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 12.46);
+      tl.to("#col-android", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 12.62);
 
       // ---- Crossfade B → C at 15.0s ----
       tl.to("#mvB", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 15.0);
@@ -373,11 +385,21 @@
       // "Same JavaScript code, two mobile platforms" at word "Same" (30.19)
       tl.fromTo("#same-code-line", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 30.17);
 
+      // ---- Gap (30.62–33.5) micro-animation ----
+      // "platforms" (32.53): same-code-line scale pulse before the C->D crossfade
+      tl.to("#same-code-line", { scale: 1.03, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 32.53);
+      tl.to("#same-code-line", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 32.69);
+
       // ---- Crossfade C → D at 33.5s ----
       tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 33.5);
       tl.fromTo("#mvD", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 33.5);
 
       // ---- Movement D: React Native reveal + terror reign (33.5–45.0s) ----
+      // ---- Gap (34.0–36.85) micro-animation ----
+      // "open-sourced" (35.51): rn-reveal scale pulse (mvD on-screen but motionless until timestamp)
+      tl.to("#rn-reveal", { scale: 1.03, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 35.51);
+      tl.to("#rn-reveal", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 35.67);
+
       // Timestamp at word "F8" (36.87)
       tl.fromTo("#rn-timestamp", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 36.85);
       // "React Native" big reveal at word "React" (39.97)

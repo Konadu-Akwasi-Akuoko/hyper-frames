@@ -202,7 +202,7 @@
   </style>
 </head>
 <body>
-  <div id="scene-03-name" data-composition-id="scene-03-name" data-width="1920" data-height="1080">
+  <div id="scene-03-name" data-composition-id="scene-03-name" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
 
     <!-- Movement A: more aliases than your bashrc file -->
     <div id="mvA" class="movement">
@@ -215,20 +215,20 @@
         </div>
         <div class="term-body">
           <div class="term-prompt" id="tp-1"><span class="prompt-sym">$</span> grep alias ~/.bashrc</div>
-          <div class="term-line" id="tl-1"><span class="tl-key">alias</span> <span class="tl-eq">js=</span><span class="tl-val">"mocha"</span></div>
+          <div class="term-line" id="tl-1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3450"><span class="tl-key">alias</span> <span class="tl-eq">js=</span><span class="tl-val">"mocha"</span></div>
           <div class="term-line tl-comment" id="tl-2"># oops</div>
-          <div class="term-line" id="tl-3"><span class="tl-key">alias</span> <span class="tl-eq">js=</span><span class="tl-val">"livescript"</span></div>
+          <div class="term-line" id="tl-3" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4710"><span class="tl-key">alias</span> <span class="tl-eq">js=</span><span class="tl-val">"livescript"</span></div>
           <div class="term-line tl-comment" id="tl-4"># wait no</div>
           <div class="term-line" id="tl-5"><span class="tl-key">alias</span> <span class="tl-eq">js=</span><span class="tl-val">"javascript"</span></div>
         </div>
       </div>
-      <div class="mktg-note" id="mktg-note">
+      <div class="mktg-note" id="mktg-note" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7900">
         The name was a <em>marketing move</em> — not a technical one.
       </div>
     </div>
 
     <!-- Movement B: Java ≠ JavaScript + AI callout -->
-    <div id="mvB" class="movement">
+    <div id="mvB" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="11400">
       <div class="not-equal-row" id="neq-row">
         <div class="lang-box" id="box-java">
           <img class="java-icon" src="../assets/icons/java.svg" alt="Java">
@@ -236,7 +236,7 @@
           <div class="java-sublabel">1995 · Sun Microsystems</div>
         </div>
         <div>
-          <div class="neq-sym" id="neq-sym">≠</div>
+          <div class="neq-sym" id="neq-sym" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="12650">≠</div>
           <div class="neq-sub" id="neq-sub">no technical relationship</div>
         </div>
         <div class="lang-box" id="box-js">
@@ -247,8 +247,8 @@
           <div class="java-sublabel">1995 · Netscape</div>
         </div>
       </div>
-      <div class="ai-callout" id="ai-callout">
-        <span class="ai-stamp">AI POWERED™</span>
+      <div class="ai-callout" id="ai-callout" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="22330">
+        <span class="ai-stamp" id="ai-stamp" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="27540">AI POWERED™</span>
         <div class="ai-text">
           Same energy as slapping 'AI' on your startup today.<br>
           <em>You did nothing different, but suddenly you're adjacent to genius.</em>
@@ -257,35 +257,35 @@
     </div>
 
     <!-- Movement C: self-correction — "shipped with Mocha... no... LiveScript... sorry... JavaScript" -->
-    <div id="mvC" class="movement">
+    <div id="mvC" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="29100">
       <div class="correction-wrap" id="corr-wrap">
         <div class="corr-setup">every browser shipped with…</div>
         <div class="corr-row" id="corr-row-mocha">
           <span class="corr-word" id="cw-mocha">Mocha
-            <span class="corr-strike" id="cs-mocha"></span>
+            <span class="corr-strike" id="cs-mocha" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="33050"></span>
           </span>
           <span class="corr-nope" id="cn-mocha">Hey, no…</span>
         </div>
         <div class="corr-row" id="corr-row-live">
           <span class="corr-word" id="cw-live">LiveScript
-            <span class="corr-strike" id="cs-live"></span>
+            <span class="corr-strike" id="cs-live" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="34350"></span>
           </span>
           <span class="corr-nope" id="cn-live">Hey, sorry, guys…</span>
         </div>
-        <div class="corr-row final" id="corr-row-js">
+        <div class="corr-row final" id="corr-row-js" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="35840">
           <span class="corr-word" id="cw-js">JavaScript</span>
-          <span class="corr-check" id="cc-js">✓</span>
+          <span class="corr-check" id="cc-js" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="36200">✓</span>
         </div>
       </div>
     </div>
 
     <!-- Movement D: designed to WIN vs designed to be AVAILABLE -->
-    <div id="mvD" class="movement">
+    <div id="mvD" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="37400">
       <div class="thesis-quote" id="thesis-q">
         JavaScript wasn't designed to <span class="t-not">win</span>.<br>
         It was designed to be <span class="t-yes">available</span>.
       </div>
-      <div class="thesis-split" id="thesis-split">
+      <div class="thesis-split" id="thesis-split" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="42850">
         <div class="thesis-col col-win">
           <div class="thesis-col-label">Win</div>
           <div class="thesis-col-val">—</div>
@@ -297,7 +297,7 @@
           <div class="thesis-col-sub">already there</div>
         </div>
       </div>
-      <div class="thesis-note" id="thesis-note">Those two are different things.</div>
+      <div class="thesis-note" id="thesis-note" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="45640">Those two are different things.</div>
     </div>
 
     <script>
@@ -328,6 +328,9 @@
       tl.to("#tl-5",  { opacity: 1, duration: 0.35, ease: "back.out(1.5)" }, 5.6);
       // Marketing note appears on "marketing move" (local 7.48s)
       tl.fromTo("#mktg-note", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 7.6);
+      // Dead-zone bridge (8.1→11.1): pulse #mktg-note on "awful language" (local 10.14)
+      tl.to("#mktg-note", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 10.14);
+      tl.to("#mktg-note", { scale: 1.0,  duration: 0.30, ease: "power2.in",  transformOrigin: "center" }, 10.30);
 
       // ----------------------------------------------------------------
       // Crossfade A → B (local 11.6s, "nothing to do with Java")
@@ -414,6 +417,9 @@
       tl.to(".t-yes", { scale: 1, duration: 0.26, ease: "power2.inOut" }, 42.32);
       // Split cards slide in on "designed to be available" (local 42.40s)
       tl.fromTo("#thesis-split", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 42.3);
+      // Dead-zone bridge (42.85→45.4): pulse the green checkmark on "available" (local 44.14)
+      tl.to(".col-avail .thesis-col-val", { scale: 1.05, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 44.14);
+      tl.to(".col-avail .thesis-col-val", { scale: 1.0,  duration: 0.30, ease: "power2.in",  transformOrigin: "center" }, 44.30);
       // "Those two are different things." (local 45.52s)
       tl.fromTo("#thesis-note", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 45.4);
 

@@ -86,24 +86,24 @@
   </style>
 </head>
 <body>
-  <div id="scene-12-landing" data-composition-id="scene-12-landing" data-width="1920" data-height="1080">
+  <div id="scene-12-landing" data-composition-id="scene-12-landing" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
     <div class="landing">
 
       <!-- Callback chips: "your code editor / password manager / Start menu of Windows" -->
       <div class="recall-row" id="recall-row">
-        <div class="recall-chip rc-editor" id="rc-editor">
+        <div class="recall-chip rc-editor" id="rc-editor" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1530">
           <div class="rc-dot"></div>your code editor
         </div>
         <div class="recall-chip rc-pwmgr" id="rc-pwmgr">
           <div class="rc-dot"></div>your password manager
         </div>
-        <div class="recall-chip rc-win" id="rc-win">
+        <div class="recall-chip rc-win" id="rc-win" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4330">
           <div class="rc-dot"></div>the Windows Start menu
         </div>
       </div>
 
       <!-- "you are running" -->
-      <div class="running-line" id="running-line">you are running</div>
+      <div class="running-line" id="running-line" data-sfx-on-anchor="riser" data-sfx-at-scene-ms="7270">you are running</div>
 
       <!-- Big JS reveal -->
       <div class="js-reveal-row" id="js-reveal-row">
@@ -114,12 +114,12 @@
       </div>
 
       <!-- Qualifier -->
-      <div class="verdict-not" id="verdict-not">
+      <div class="verdict-not" id="verdict-not" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9080">
         not because it has <span class="not-won">won</span>,
       </div>
 
       <!-- Truth -->
-      <div class="verdict-truth" id="verdict-truth">
+      <div class="verdict-truth" id="verdict-truth" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="10940">
         because it was already there — and it was built for <span class="mobility-word">mobility</span>.
       </div>
 
@@ -141,6 +141,10 @@
       // Start menu at "Start" (3.95)
       tl.fromTo("#rc-win", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.93);
 
+      // Dead-zone fill (4.33->6.99): settle pulse on the recall chips at "remember" (5.73)
+      tl.to("#recall-row", { scale: 1.03, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 5.73);
+      tl.to("#recall-row", { scale: 1.0,  duration: 0.30, ease: "power2.in",  transformOrigin: "center" }, 5.89);
+
       // "you are running" at "running" (7.01)
       tl.fromTo("#running-line", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.99);
 
@@ -152,6 +156,10 @@
 
       // "because it was already there and it was built for mobility." at "because" (10.63)
       tl.fromTo("#verdict-truth", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 10.61);
+
+      // Dead-zone fill (11.16->13.8): pulse the cyan 'mobility' payoff word at "mobility" (13.65)
+      tl.to(".mobility-word", { scale: 1.05, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 13.65);
+      tl.to(".mobility-word", { scale: 1.0,  duration: 0.30, ease: "power2.in",  transformOrigin: "center" }, 13.81);
 
       // FINAL EXIT — fade to black after "mobility." (13.65). ONLY SCENE WHERE EXIT ANIMATIONS ARE ALLOWED.
       tl.to("#scene-12-landing", { opacity: 0, duration: 1.8, ease: "power1.inOut" }, 13.8);

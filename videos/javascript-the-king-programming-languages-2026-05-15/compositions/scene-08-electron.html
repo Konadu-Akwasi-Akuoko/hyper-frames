@@ -233,10 +233,10 @@
   </style>
 </head>
 <body>
-  <div id="scene-08-electron" data-composition-id="scene-08-electron" data-width="1920" data-height="1080">
+  <div id="scene-08-electron" data-composition-id="scene-08-electron" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
 
     <!-- Movement A: Cheng Zhou + Chromium+Node formula -->
-    <div id="mvA" class="movement">
+    <div id="mvA" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="7700">
       <div class="cz-intro" id="cz-intro">
         <div class="cz-avatar">CZ</div>
         <div class="cz-meta">
@@ -244,7 +244,7 @@
           <div class="cz-role">GitHub Engineer · 2013</div>
         </div>
       </div>
-      <div class="wrap-formula" id="wrap-formula">
+      <div class="wrap-formula" id="wrap-formula" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4580">
         <div class="wf-block chromium"><img src="../assets/icons/chrome.svg" alt="">Chromium</div>
         <div class="wf-op">+</div>
         <div class="wf-block nodejs"><img src="../assets/icons/nodejs.svg" alt="">Node.js</div>
@@ -254,8 +254,8 @@
     </div>
 
     <!-- Movement B: Atom hackable editor -->
-    <div id="mvB" class="movement">
-      <div class="atom-editor" id="atom-editor">
+    <div id="mvB" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="19900">
+      <div class="atom-editor" id="atom-editor" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="10880">
         <div class="ae-titlebar">
           <div class="ae-dot ae-dot-r"></div>
           <div class="ae-dot ae-dot-y"></div>
@@ -271,13 +271,13 @@
           <div class="ae-line"><span class="ae-ln">6</span><span class="ae-text">});</span></div>
         </div>
       </div>
-      <div class="atom-pitch" id="atom-pitch">The <span class="hackable-word">hackable</span> editor</div>
-      <div class="atom-js-line" id="atom-js-line">customizable in the same language its users wrote every day — <span class="js-span">JavaScript</span></div>
+      <div class="atom-pitch" id="atom-pitch" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="13000">The <span class="hackable-word">hackable</span> editor</div>
+      <div class="atom-js-line" id="atom-js-line" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="18370">customizable in the same language its users wrote every day — <span class="js-span">JavaScript</span></div>
     </div>
 
     <!-- Movement C: Atom Shell → Electron -->
-    <div id="mvC" class="movement">
-      <div class="nested-boxes" id="nested-boxes">
+    <div id="mvC" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="29000">
+      <div class="nested-boxes" id="nested-boxes" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="21650">
         <div class="nest-label">Atom ships with a browser inside it</div>
         <div class="app-box">
           <div class="app-box-label">Atom (desktop app)</div>
@@ -301,12 +301,12 @@
 
     <!-- Movement D: consequence + Facebook bet setup -->
     <div id="mvD" class="movement">
-      <div class="bloat-callout" id="bloat-callout">
+      <div class="bloat-callout" id="bloat-callout" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="30630">
         <div class="bloat-top">the consequence</div>
-        <div class="bloat-quote">Your messaging app ships an entire browser just to render a <span class="thumbs-word">thumbs up</span>.</div>
+        <div class="bloat-quote">Your messaging app ships an entire browser just to render a <span class="thumbs-word" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="33980">thumbs up</span>.</div>
       </div>
-      <div class="memory-line" id="memory-line">Touching memory like it was <span class="free-word">free</span> — before AI even showed up to finish the job.</div>
-      <div class="facebook-setup" id="facebook-setup">Then Facebook made a <span class="bet-word">bet</span>.</div>
+      <div class="memory-line" id="memory-line" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="35670">Touching memory like it was <span class="free-word" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="36860">free</span> — before AI even showed up to finish the job.</div>
+      <div class="facebook-setup" id="facebook-setup" data-sfx-on-anchor="riser" data-sfx-at-scene-ms="41730">Then Facebook made a <span class="bet-word">bet</span>.</div>
     </div>
 
     <script>
@@ -334,9 +334,16 @@
       tl.to("#cz-intro", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 3.96);
       tl.to("#cz-intro", { scale: 1.0, duration: 0.22, ease: "power2.in", transformOrigin: "center" }, 4.11);
 
+      // Dead-zone 1 patch: "runtime" (local 6.62) — single-runtime payoff pulse
+      tl.to("#wrap-formula", { scale: 1.025, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 6.62);
+      tl.to("#wrap-formula", { scale: 1.0,   duration: 0.30, ease: "power2.in",  transformOrigin: "center" }, 6.78);
+
       // ---- Crossfade A → B at 7.2s ----
       tl.to("#mvA", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 7.2);
       tl.fromTo("#mvB", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 7.2);
+
+      // Dead-zone 2 patch: "GitHub" (local 7.84) — soft scale settle on mvB to bridge the seam before the editor lands
+      tl.fromTo("#mvB", { scale: 0.97 }, { scale: 1.0, duration: 0.45, ease: "power2.out", transformOrigin: "center" }, 7.84);
 
       // ---- Movement B: Atom hackable editor (7.2–19.4s) ----
       // Editor at word "Atom" (10.36)
@@ -413,6 +420,14 @@
 
       // "Facebook then made a bet" at word "bet" (41.44)
       tl.fromTo("#facebook-setup", { opacity: 0, scale: 0.88, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2.2)", transformOrigin: "center" }, 41.4);
+
+      // Dead-zone 3 patch: carry the hold from 41.95 to scene end (45.0) into scene-09.
+      // First pulse keyed after #facebook-setup entrance settles (41.95) to avoid conflict with the entrance tween,
+      // second beat near "In 2012" (local 42.74).
+      tl.to("#facebook-setup", { scale: 1.02, duration: 0.20, ease: "power2.out", transformOrigin: "center" }, 42.10);
+      tl.to("#facebook-setup", { scale: 1.0,  duration: 0.35, ease: "power2.in",  transformOrigin: "center" }, 42.31);
+      tl.to("#facebook-setup", { scale: 1.02, duration: 0.20, ease: "power2.out", transformOrigin: "center" }, 42.74);
+      tl.to("#facebook-setup", { scale: 1.0,  duration: 0.40, ease: "power2.in",  transformOrigin: "center" }, 42.95);
 
       window.__timelines["scene-08-electron"] = tl;
     </script>

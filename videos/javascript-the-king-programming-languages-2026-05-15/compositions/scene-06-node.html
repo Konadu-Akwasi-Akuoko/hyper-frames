@@ -244,15 +244,15 @@
     <!-- Movement A: EventMachine / Twisted fail -->
     <div id="mvA" class="movement">
       <div class="bolt-on-row">
-        <div class="bolt-card" id="card-ruby">
+        <div class="bolt-card" id="card-ruby" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="880">
           <div class="bolt-card-lang ruby-lang"><img src="../assets/icons/ruby.svg" alt="">Ruby</div>
           <div class="bolt-card-lib" id="lib-ruby">had <span class="bolt-card-lib-name">EventMachine</span></div>
-          <div class="bolt-card-badge" id="badge-ruby">BOLT-ON ASYNC</div>
+          <div class="bolt-card-badge" id="badge-ruby" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2140">BOLT-ON ASYNC</div>
         </div>
-        <div class="bolt-card" id="card-python">
+        <div class="bolt-card" id="card-python" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3420">
           <div class="bolt-card-lang python-lang"><img src="../assets/icons/python.svg" alt="">Python</div>
           <div class="bolt-card-lib" id="lib-python">had <span class="bolt-card-lib-name">Twisted</span></div>
-          <div class="bolt-card-badge" id="badge-python">BOLT-ON ASYNC</div>
+          <div class="bolt-card-badge" id="badge-python" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4800">BOLT-ON ASYNC</div>
         </div>
       </div>
       <div class="bolt-verdict" id="bolt-verdict">
@@ -261,31 +261,31 @@
     </div>
 
     <!-- Movement B: JS advantage (no I/O, event mindset) -->
-    <div id="mvB" class="movement">
+    <div id="mvB" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="10300">
       <div class="js-advantage-wrap">
         <div class="js-advantage-label" id="js-adv-label">JavaScript</div>
         <div class="advantage-chips">
-          <div class="adv-chip" id="adv-1">
+          <div class="adv-chip" id="adv-1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="16950">
             <span class="adv-chip-icon">&#x2713;</span>
             <span class="adv-chip-text"><span class="no-word">No</span> I/O library — blank slate</span>
           </div>
-          <div class="adv-chip" id="adv-2">
+          <div class="adv-chip" id="adv-2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="19140">
             <span class="adv-chip-icon">&#x2713;</span>
             <span class="adv-chip-text"><span class="no-word">No</span> legacy to drag along</span>
           </div>
-          <div class="adv-chip" id="adv-3">
+          <div class="adv-chip" id="adv-3" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="20500">
             <span class="adv-chip-icon">&#x2713;</span>
             <span class="adv-chip-text"><span class="no-word">No</span> defaults to fight</span>
           </div>
         </div>
       </div>
-      <div class="event-mindset" id="event-mindset">
+      <div class="event-mindset" id="event-mindset" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="25400">
         JS devs were the only programmers on Earth who already thought in <span class="events-word">events</span> — because that's how the <span class="browser-word">browser</span> works.
       </div>
     </div>
 
     <!-- Movement C: V8 + Event Loop = Node.js -->
-    <div id="mvC" class="movement">
+    <div id="mvC" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="32300">
       <div class="formula-row">
         <div class="formula-block v8-block" id="blk-v8">
           <div class="fb-title">engine</div>
@@ -293,13 +293,13 @@
           <div class="fb-sub">powers Google Chrome</div>
         </div>
         <div class="formula-op" id="op-plus">+</div>
-        <div class="formula-block loop-block" id="blk-loop">
+        <div class="formula-block loop-block" id="blk-loop" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="37650">
           <div class="fb-title">architecture</div>
           <div class="fb-name loop-name">EVENT LOOP</div>
           <div class="fb-sub">non-blocking I/O</div>
         </div>
         <div class="formula-op" id="op-eq">=</div>
-        <div class="formula-block node-block" id="blk-node">
+        <div class="formula-block node-block" id="blk-node" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="42410" data-sfx-hook="true">
           <img src="../assets/icons/nodejs.svg" width="48" height="48" alt="Node.js">
           <div class="fb-title">result</div>
           <div class="fb-name node-name">node.js</div>
@@ -312,10 +312,10 @@
     </div>
 
     <!-- Movement D: standing ovation + adoption -->
-    <div id="mvD" class="movement">
-      <div class="ovation-title" id="ovation-title">STANDING OVATION</div>
+    <div id="mvD" class="movement" data-sfx-on-anchor="riser" data-sfx-at-scene-ms="43500">
+      <div class="ovation-title" id="ovation-title" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="45310">STANDING OVATION</div>
       <div class="ovation-sub" id="ovation-sub">First in JSConf history</div>
-      <div class="adoption-row" id="adoption-row">
+      <div class="adoption-row" id="adoption-row" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="49430">
         <div class="adoption-chip start-chip">150 people in the room</div>
         <div class="adoption-arrow">&#x2192;</div>
         <div class="adoption-chip end-chip">tens of thousands within months</div>
@@ -362,6 +362,9 @@
       // "blocking" (11.26): label scale pulse (the blocking-call problem)
       tl.to("#js-adv-label", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 11.26);
       tl.to("#js-adv-label", { scale: 1.0, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 11.42);
+      // Dead-zone bridge (11.7→14.0): "slipped in" (12.40) — soft pulse so js-adv-label stays alive
+      tl.to("#js-adv-label", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 12.40);
+      tl.to("#js-adv-label", { scale: 1.0,  duration: 0.30, ease: "power2.in",  transformOrigin: "center" }, 12.56);
       // "stalled" (14.00): stronger pulse — the whole thing stalled
       tl.to("#js-adv-label", { scale: 1.06, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 14.00);
       tl.to("#js-adv-label", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 14.19);
@@ -420,6 +423,9 @@
       tl.to("#adv-3", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 23.55);
 
       // Movement B 25.1→32.0s: event-mindset visible
+      // Dead-zone bridge (25.6→28.22): "events" (26.00) — events-word reacts when first spoken
+      tl.to(".events-word", { scale: 1.10, duration: 0.18, ease: "back.out(2.5)", transformOrigin: "center" }, 26.00);
+      tl.to(".events-word", { scale: 1.0,  duration: 0.30, ease: "power2.in",     transformOrigin: "center" }, 26.18);
       // "browser works" (28.24): browser-word pulse — "that's how the browser works"
       tl.to(".browser-word", { scale: 1.14, duration: 0.20, ease: "back.out(2.5)", transformOrigin: "center" }, 28.22);
       tl.to(".browser-word", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 28.55);
@@ -433,12 +439,12 @@
       tl.to("#blk-v8", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 34.20);
       // "Google Chrome" (35.22): blk-v8 glow — "powering Google Chrome"
       tl.to("#blk-v8", { boxShadow: "0 0 30px rgba(97,218,251,0.3)", duration: 0.28 }, 35.20);
-      tl.to("#blk-v8", { boxShadow: "none", duration: 0.45 }, 35.48);
+      tl.to("#blk-v8", { boxShadow: "none", duration: 0.45 }, 35.49);
 
       // Movement C 37.65→42.08s: full formula visible (v8 + loop + =)
       // "server runtime" (39.40): blk-loop pulse — "turned into a server runtime"
       tl.to("#blk-loop", { scale: 1.04, duration: 0.20, ease: "back.out(2)", transformOrigin: "center" }, 39.38);
-      tl.to("#blk-loop", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 39.58);
+      tl.to("#blk-loop", { scale: 1, duration: 0.30, ease: "power2.inOut" }, 39.59);
       // "called it" (41.22): op-eq pulse — "He called it..."
       tl.to("#op-eq", { scale: 1.15, duration: 0.18, ease: "back.out(3)", transformOrigin: "center" }, 41.20);
       tl.to("#op-eq", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 41.53);

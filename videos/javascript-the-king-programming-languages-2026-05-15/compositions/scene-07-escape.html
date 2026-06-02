@@ -242,7 +242,7 @@
   </style>
 </head>
 <body>
-  <div id="scene-07-escape" data-composition-id="scene-07-escape" data-width="1920" data-height="1080">
+  <div id="scene-07-escape" data-composition-id="scene-07-escape" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
 
     <!-- Movement A: adoption wave + database touch -->
     <div id="mvA" class="movement">
@@ -254,14 +254,14 @@
           <div class="ac-sub">within months</div>
         </div>
       </div>
-      <div class="db-moment" id="db-moment">
+      <div class="db-moment" id="db-moment" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6380">
         The people who centred JS for a living finally got to touch a <span class="db-word">database</span> — and the database has <span class="never-word">never been the same</span>.
       </div>
     </div>
 
     <!-- Movement B: escape moment + HN callback setup -->
-    <div id="mvB" class="movement">
-      <div class="escape-visual" id="escape-visual">
+    <div id="mvB" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="10100">
+      <div class="escape-visual" id="escape-visual" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="12180">
         <div class="escape-browser">
           <div class="eb-chrome">
             <div class="eb-dot eb-dot-r"></div>
@@ -281,12 +281,12 @@
       <div class="escape-headline" id="escape-headline">
         JavaScript had <span class="escaped-word">escaped</span> the browser.
       </div>
-      <div class="escape-theline" id="escape-theline">And there's the line.</div>
+      <div class="escape-theline" id="escape-theline" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="14400">And there's the line.</div>
     </div>
 
     <!-- Movement C: HN callback quote -->
-    <div id="mvC" class="movement">
-      <div class="hn-card" id="hn-card">
+    <div id="mvC" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="20100">
+      <div class="hn-card" id="hn-card" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="25980">
         <div class="hn-header">
           <div class="hn-dot-orange"></div>
           <div class="hn-header-label">Hacker News</div>
@@ -296,30 +296,30 @@
           <div class="hn-meta">throwaway90210 · <span class="hn-score">&#x2191; 847</span></div>
           <div class="hn-quote">
             "We allowed this
-            <span class="hl-wrap"><span class="hl-bg" id="hl-awful"></span>awful language</span>
+            <span class="hl-wrap"><span class="hl-bg" id="hl-awful" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="21600"></span>awful language</span>
             to
             <span class="hl-wrap"><span class="hl-bg" id="hl-escape"></span>escape the browser</span>
             and
-            <span class="hl-wrap"><span class="hl-bg" id="hl-infil"></span>infiltrate our servers</span>
+            <span class="hl-wrap"><span class="hl-bg" id="hl-infil" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="24120"></span>infiltrate our servers</span>
             in form of Node.js."
           </div>
         </div>
       </div>
-      <div class="hn-response" id="hn-response">
+      <div class="hn-response" id="hn-response" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="28000">
         He was <span class="right-word">right</span> about the escape — but he didn't know what was <span class="coming-word">coming next</span>.
       </div>
     </div>
 
     <!-- Movement D: next frontier -->
-    <div id="mvD" class="movement">
+    <div id="mvD" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="31800">
       <div class="went-to-row" id="went-to-row">
         <div class="went-label">JavaScript went to</div>
         <div class="platform-chip mobile-chip" id="chip-mobile">MOBILE</div>
         <div class="went-label">and</div>
-        <div class="platform-chip desktop-chip" id="chip-desktop">DESKTOP</div>
+        <div class="platform-chip desktop-chip" id="chip-desktop" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="35530">DESKTOP</div>
       </div>
       <div class="how-text" id="how-text">How?</div>
-      <div class="next-setup" id="next-setup">In 2013, an engineer at <span class="github-word"><img src="../assets/icons/github.svg" width="22" height="22" alt="" style="vertical-align:middle; margin-right:4px; filter:brightness(0) invert(0.8);">GitHub</span>...</div>
+      <div class="next-setup" id="next-setup" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="37340">In 2013, an engineer at <span class="github-word"><img src="../assets/icons/github.svg" width="22" height="22" alt="" style="vertical-align:middle; margin-right:4px; filter:brightness(0) invert(0.8);">GitHub</span>...</div>
     </div>
 
     <script>
@@ -398,6 +398,11 @@
       // "escape," (28.60): hn-card bounce — escape word echoes the whole scene
       tl.to("#hn-card", { scale: 1.012, duration: 0.16, ease: "power2.out", transformOrigin: "center" }, 28.60);
       tl.to("#hn-card", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 28.76);
+
+      // ---- Dead-zone patch (29.04–31.5): resolved response breathes ----
+      // pause ending at local 29.62 ("...what was coming next"): hn-response scale pulse
+      tl.to("#hn-response", { scale: 1.025, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 29.62);
+      tl.to("#hn-response", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 29.78);
 
       // ---- Crossfade C → D at 31.5s ----
       tl.to("#mvC", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 31.5);

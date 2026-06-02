@@ -139,7 +139,7 @@
   </style>
 </head>
 <body>
-  <div id="scene-11-verdict" data-composition-id="scene-11-verdict" data-width="1920" data-height="1080">
+  <div id="scene-11-verdict" data-composition-id="scene-11-verdict" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
 
     <!-- Movement A: LLM training corpus dominance (0–15s) -->
     <div id="mvA" class="movement">
@@ -148,17 +148,17 @@
         <span class="js-dom">JavaScript dominates.</span>
       </div>
       <div class="src-row">
-        <div class="src-card" id="src-github">
+        <div class="src-card" id="src-github" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="8930">
           <div class="src-icon"><img src="../assets/icons/github.svg" width="48" height="48" alt="GitHub" class="icon-invert"></div>
           <div class="src-name">GitHub repos</div>
           <div class="src-note">most popular language by repo count</div>
         </div>
-        <div class="src-card" id="src-npm">
+        <div class="src-card" id="src-npm" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="11270">
           <div class="src-icon"><img src="../assets/icons/npm.svg" width="48" height="48" alt="NPM"></div>
           <div class="src-name">NPM packages</div>
           <div class="src-note">3.3M+ packages, largest registry</div>
         </div>
-        <div class="src-card" id="src-blogs">
+        <div class="src-card" id="src-blogs" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="13000">
           <div class="src-icon"><div class="brand-blog">&lt;/&gt;</div></div>
           <div class="src-name">Blog posts</div>
           <div class="src-note">dominant tutorial subject</div>
@@ -172,7 +172,7 @@
     </div>
 
     <!-- Movement B: Self-reinforcing flywheel (15–25.5s) -->
-    <div id="mvB" class="movement">
+    <div id="mvB" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="15300">
       <div class="flywheel-wrap">
         <div class="fw-forward">
           <div class="fw-node n-trained" id="fw-trained">
@@ -180,17 +180,17 @@
             <div class="fw-lbl">Most trained on</div>
           </div>
           <div class="fw-arr" id="fw-a1">&#x2192;</div>
-          <div class="fw-node n-generated" id="fw-generated">
+          <div class="fw-node n-generated" id="fw-generated" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="18370">
             <div class="fw-step">step 2</div>
             <div class="fw-lbl">Most generated</div>
           </div>
           <div class="fw-arr" id="fw-a2">&#x2192;</div>
-          <div class="fw-node n-shipped" id="fw-shipped">
+          <div class="fw-node n-shipped" id="fw-shipped" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="20950">
             <div class="fw-step">step 3</div>
             <div class="fw-lbl">Most shipped</div>
           </div>
           <div class="fw-arr" id="fw-a3">&#x2192;</div>
-          <div class="fw-node n-corpus" id="fw-corpus">
+          <div class="fw-node n-corpus" id="fw-corpus" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="23490">
             <div class="fw-step">step 4</div>
             <div class="fw-lbl">Next training data</div>
           </div>
@@ -203,25 +203,25 @@
     </div>
 
     <!-- Movement C: Stack Overflow 66% (25.5–43s) -->
-    <div id="mvC" class="movement">
+    <div id="mvC" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="25800">
       <div class="so-card" id="so-card">
         <div class="so-survey-title">Stack Overflow Developer Survey · 2025</div>
         <div class="so-survey-sub">49,000 engineers asked what they actually use</div>
       </div>
       <div class="so-stat">
-        <div class="so-label" id="so-label">JavaScript</div>
-        <div class="so-streak" id="so-streak">#1 for 13+ consecutive years</div>
-        <div class="so-num" id="so-num">66%</div>
+        <div class="so-label" id="so-label" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="33800">JavaScript</div>
+        <div class="so-streak" id="so-streak" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="37830">#1 for 13+ consecutive years</div>
+        <div class="so-num" id="so-num" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="39430">66%</div>
       </div>
     </div>
 
     <!-- Movement D: Won on supply + 10-days payoff (43–53s) -->
-    <div id="mvD" class="movement">
+    <div id="mvD" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="43300">
       <div class="supply-stmt" id="supply-stmt">
         JavaScript didn't win on <span class="supply-qual">quality</span>,
-        it won on <span class="supply-supp">supply</span>.
+        it won on <span class="supply-supp" id="supply-supp" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="46970">supply</span>.
       </div>
-      <div class="tendays-world" id="tendays-world">
+      <div class="tendays-world" id="tendays-world" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="48450">
         The kid Netscape hired to write a scripting language in <span class="td-num">10 days</span> now writes the world.
       </div>
     </div>
@@ -333,6 +333,24 @@
       // "supply" (46.77): supply-supp slam — the real answer
       tl.to(".supply-supp", { scale: 1.15, duration: 0.22, ease: "back.out(3)", transformOrigin: "center" }, 46.75);
       tl.to(".supply-supp", { scale: 1, duration: 0.32, ease: "power2.inOut" }, 46.97);
+
+      // Movement A: 6.15→8.53s — corpus-hdr holds before first source card
+      // "means" (7.79): bridge pulse on corpus-hdr into the source cards
+      tl.to("#corpus-hdr", { scale: 1.015, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 7.79);
+      tl.to("#corpus-hdr", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 7.95);
+
+      // Movement C: 30.35→33.35s — so-card holds before JavaScript label
+      // "actually" (31.95): so-card breathes while the survey card holds
+      tl.to("#so-card", { scale: 1.015, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 31.95);
+      tl.to("#so-card", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 32.11);
+
+      // Movement D: 48.45→53s — tendays-world holds to scene end
+      // "10 days" (50.43): td-num pulse
+      tl.to(".td-num", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 50.43);
+      tl.to(".td-num", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 50.59);
+      // "world" (52.37): final soft scale so the closing line is not frozen
+      tl.to("#tendays-world", { scale: 1.03, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 52.37);
+      tl.to("#tendays-world", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 52.53);
 
       window.__timelines["scene-11-verdict"] = tl;
     </script>

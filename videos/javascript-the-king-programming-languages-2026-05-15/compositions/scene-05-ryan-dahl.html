@@ -313,13 +313,13 @@
   </style>
 </head>
 <body>
-  <div id="scene-05-ryan-dahl" data-composition-id="scene-05-ryan-dahl" data-width="1920" data-height="1080">
+  <div id="scene-05-ryan-dahl" data-composition-id="scene-05-ryan-dahl" data-width="1920" data-height="1080" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="300">
 
     <!-- Movement A: Ryan Dahl intro -->
     <div id="mvA" class="movement">
       <div class="rd-date" id="rd-date">November 2009</div>
-      <div class="rd-name" id="rd-name">Ryan Dahl</div>
-      <div class="rd-context" id="rd-context">
+      <div class="rd-name" id="rd-name" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5100">Ryan Dahl</div>
+      <div class="rd-context" id="rd-context" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="7370">
         <span class="rd-ctx-item">Berlin</span>
         <span class="rd-ctx-sep">·</span>
         <span class="rd-ctx-item">JSConf EU</span>
@@ -329,7 +329,7 @@
     </div>
 
     <!-- Movement B: Apache choking -->
-    <div id="mvB" class="movement">
+    <div id="mvB" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="10700">
       <div class="ap-diagram" id="ap-diagram">
         <div class="req-col">
           <div class="req-chip" id="req-1">REQ</div>
@@ -343,7 +343,7 @@
           <div class="ap-arr" id="arr-3">&#x2192;</div>
           <div class="ap-arr" id="arr-4">&#x2192;</div>
         </div>
-        <div class="ap-srv" id="ap-srv">
+        <div class="ap-srv" id="ap-srv" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="12200">
           <img src="../assets/icons/apache.svg" width="64" height="64" alt="Apache" style="filter: brightness(0) invert(0.75);">
           <div class="ap-srv-label">APACHE</div>
           <div class="ap-srv-sub">web server</div>
@@ -355,7 +355,7 @@
           <div class="ap-arr" id="arr-r4">&#x2192;</div>
         </div>
         <div class="thr-col">
-          <div class="thr-row" id="thr-1">
+          <div class="thr-row" id="thr-1" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="15400">
             <span class="thr-label">Thread</span>
             <div class="thr-mem"><div class="thr-fill" id="fill-1"></div></div>
             <span class="thr-mem-val">2MB</span>
@@ -370,23 +370,23 @@
             <div class="thr-mem"><div class="thr-fill" id="fill-3"></div></div>
             <span class="thr-mem-val">2MB</span>
           </div>
-          <div class="thr-row" id="thr-4">
+          <div class="thr-row" id="thr-4" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="18400">
             <span class="thr-label">Thread</span>
             <div class="thr-mem"><div class="thr-fill" id="fill-4"></div></div>
             <span class="thr-mem-val">2MB</span>
           </div>
         </div>
       </div>
-      <div class="collapse-badge" id="collapse-badge">COLLAPSED</div>
+      <div class="collapse-badge" id="collapse-badge" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="20350">COLLAPSED</div>
     </div>
 
     <!-- Movement C: he chose JavaScript -->
-    <div id="mvC" class="movement">
+    <div id="mvC" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="27600">
       <div class="choice-row">
         <div class="choice-panel" id="ap-panel">
           <div class="cp-label">old guard</div>
           <div class="ap-panel-name">Apache</div>
-          <div class="ap-panel-strike" id="ap-panel-strike"></div>
+          <div class="ap-panel-strike" id="ap-panel-strike" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="29800"></div>
         </div>
         <div class="choice-arrow" id="choice-arrow">&#x2192;</div>
         <div class="choice-panel js-panel" id="js-panel">
@@ -401,14 +401,14 @@
         <span class="age-vs">vs</span>
         <div class="age-chip ap-age">battle-tested Apache</div>
       </div>
-      <div class="joke-text" id="joke-text">...switched stacks about as fast as when you abandon a JS framework the second a shinier one trends on <span id="twitter-word">Twitter</span>.</div>
+      <div class="joke-text" id="joke-text" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="36050">...switched stacks about as fast as when you abandon a JS framework the second a shinier one trends on <span id="twitter-word" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="41880">Twitter</span>.</div>
     </div>
 
     <!-- Movement D: blocking I/O reason -->
-    <div id="mvD" class="movement">
+    <div id="mvD" class="movement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="45400">
       <div class="io-reason-title" id="io-reason-title">A very specific reason</div>
       <div class="io-grid">
-        <div class="io-row" id="io-others">
+        <div class="io-row" id="io-others" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="47800">
           <div class="io-langs io-lang-row">
             <span class="io-lang-item"><img src="../assets/icons/python.svg" width="24" height="24" alt="">Python</span>
             <span class="io-sep">·</span>
@@ -420,12 +420,12 @@
           </div>
           <div class="io-tag blocking-tag">BLOCKING I/O — built in from day one</div>
         </div>
-        <div class="io-row js-row" id="io-js">
+        <div class="io-row js-row" id="io-js" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="51000">
           <div class="io-langs js-lang">JavaScript</div>
           <div class="io-tag clean-tag">NO BUILT-IN I/O — blank slate</div>
         </div>
       </div>
-      <div class="io-conclusion" id="io-conclusion">
+      <div class="io-conclusion" id="io-conclusion" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="54670">
         Devs who wanted <span class="async-word">async</span> had to <span class="bolt-word">bolt it on</span>. JavaScript had no defaults to fight.
       </div>
     </div>
@@ -464,6 +464,10 @@
       // "choke" (12.22): Apache border flashes --danger
       tl.to("#ap-srv", { borderColor: "#ff6b5d", duration: 0.2, ease: "power2.out" }, 12.2);
       tl.to("#ap-srv", { borderColor: "#1f242c", duration: 0.4, ease: "power2.in" }, 12.5);
+
+      // Dead-zone bridge: "connections." (13.40) — ap-srv breathes alone before the thread cluster
+      tl.to("#ap-srv", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 13.40);
+      tl.to("#ap-srv", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 13.56);
 
       // Thread 1 pair at word "request" (15.10)
       tl.fromTo("#req-1", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 15.1);
@@ -504,6 +508,9 @@
       // "once." (21.58): badge bounce — collapse is final
       tl.to("#collapse-badge", { scale: 1.08, duration: 0.14, ease: "back.out(3)", transformOrigin: "center" }, 21.56);
       tl.to("#collapse-badge", { scale: 1, duration: 0.22, ease: "power2.inOut" }, 21.70);
+      // Dead-zone bridge: "different," (24.10) — badge pulse before the ap-srv pulse
+      tl.to("#collapse-badge", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 24.10);
+      tl.to("#collapse-badge", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 24.26);
       // "server" (24.82): ap-srv pulses — "a server that didn't block"
       tl.to("#ap-srv", { scale: 1.04, duration: 0.16, ease: "power2.out", transformOrigin: "center" }, 24.80);
       tl.to("#ap-srv", { scale: 1, duration: 0.28, ease: "power2.inOut" }, 24.96);
@@ -526,6 +533,9 @@
       tl.to("#ap-panel-strike", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 29.45);
       // Age comparison fades in at word "10-day-old" (30.02)
       tl.fromTo("#age-compare", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 30.0);
+      // Dead-zone bridge: "10-day-old language" (31.4) — js-age chip pulse carries the contrast
+      tl.to(".js-age", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 31.40);
+      tl.to(".js-age", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 31.56);
       // "over" (32.66): choice arrow pulses toward JS — "choosing a 10-day-old language over"
       tl.to("#choice-arrow", { scale: 1.12, duration: 0.16, ease: "back.out(2.5)", transformOrigin: "center" }, 32.64);
       tl.to("#choice-arrow", { scale: 1, duration: 0.25, ease: "power2.inOut" }, 32.80);
@@ -542,6 +552,9 @@
       // "switched" (36.08): choice-arrow scale pulse (he switched stacks)
       tl.to("#choice-arrow", { scale: 1.15, duration: 0.16, ease: "power2.out", transformOrigin: "center" }, 36.08);
       tl.to("#choice-arrow", { scale: 1, duration: 0.28, ease: "power2.in", transformOrigin: "center" }, 36.25);
+      // Dead-zone bridge: mid "switched stacks" (37.5) — ap-panel pulse before the js-panel pulse
+      tl.to("#ap-panel", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 37.50);
+      tl.to("#ap-panel", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 37.66);
       // "JS" (38.90): js-panel scale pulse (JS framework mentioned)
       tl.to("#js-panel", { scale: 1.04, duration: 0.18, ease: "power2.out", transformOrigin: "center" }, 38.90);
       tl.to("#js-panel", { scale: 1, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 39.09);
@@ -565,6 +578,9 @@
       tl.fromTo("#io-reason-title", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 45.55);
       // "Every other language had I/O" row at word "Every" (47.32)
       tl.fromTo("#io-others", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 47.3);
+      // Dead-zone bridge: "blocking" (48.8) — blocking-tag pulse before the JS row enters
+      tl.to(".blocking-tag", { scale: 1.04, duration: 0.15, ease: "power2.out", transformOrigin: "center" }, 48.80);
+      tl.to(".blocking-tag", { scale: 1.0, duration: 0.30, ease: "power2.in", transformOrigin: "center" }, 48.96);
       // JS row (blank slate) at word "and" (50.52)
       tl.fromTo("#io-js", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 50.5);
       // "blocking." (52.26): io-others pulse — the problem the others had
