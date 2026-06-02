@@ -1,0 +1,132 @@
+{
+  "candidates": [
+    {
+      "span": "He'd been watching Apache choke under con...",
+      "start": 15.0,
+      "end": 17.52,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker truncates 'con...' mid-word and restarts the full sentence at 19.22; cut the abandoned first attempt."
+    },
+    {
+      "span": "[silence 17.52 -> 19.22]",
+      "start": 17.52,
+      "end": 19.22,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.7s gap sits entirely inside the false_start cut span; no separate cut needed."
+    },
+    {
+      "span": "The server collapsed too...",
+      "start": 27.049,
+      "end": 28.21,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker abandons 'too...' and restarts as 'The server collapsed when too many users showed up at once'; cut the abandoned attempt."
+    },
+    {
+      "span": "[silence 28.21 -> 29.72]",
+      "start": 28.21,
+      "end": 29.72,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.51s gap is inside the false_start cut span; subsumed by cut_0002."
+    },
+    {
+      "span": "and he chose JavaScript. And he chose JavaScript.",
+      "start": 38.1,
+      "end": 42.62,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Sentence-spanning rhetorical repetition for emphasis (capping a list of choices), not a re-take. The 1.46s pause between the two sentences reinforces the deliberate cadence."
+    },
+    {
+      "span": "[silence 39.68 -> 41.14]",
+      "start": 39.68,
+      "end": 41.14,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.46s beat is the rhetorical pause carrying the 'And he chose JavaScript' callback; cutting it would kill the emphasis."
+    },
+    {
+      "span": "[silence 56.36 -> 57.5]",
+      "start": 56.36,
+      "end": 57.5,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.14s sentence break between the Twitter punchline and 'But he chose it for a very specific reason' — only just over 1.0s and serves as a landing beat."
+    },
+    {
+      "span": "re... and it was",
+      "start": 65.32,
+      "end": 67.07,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "'re...' is an abandoned word; speaker then restarts 'and it was built around blocking'. Cut the partial word plus the duplicated 'and it was' so the clean clause stands."
+    },
+    {
+      "span": "Developers who wanted async had to b-bolt it on.",
+      "start": 69.58,
+      "end": 72.42,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "First take contains the 'b-bolt' stutter; speaker immediately re-delivers the same sentence cleanly at 73.8. Keep the clean second take, cut the stuttered first take."
+    },
+    {
+      "span": "b-bolt",
+      "start": 71.58,
+      "end": 72.04,
+      "category": "stutter",
+      "verdict": "keep",
+      "rationale": "Already subsumed by the duplicate_take cut of the entire first sentence (cut_0004); no separate stutter cut needed."
+    },
+    {
+      "span": "[silence 72.42 -> 73.8]",
+      "start": 72.42,
+      "end": 73.8,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.38s gap sits at the edge of the duplicate_take cut span; cut-snap will absorb any trailing tail around the splice."
+    },
+    {
+      "span": "built (logprob -0.61)",
+      "start": 63.44,
+      "end": 63.58,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Threshold is logprob < -7.0; -0.61 is well above. Word reads correctly in context ('I/O built in')."
+    },
+    {
+      "span": "and (logprob -0.58)",
+      "start": 66.52,
+      "end": 66.7,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Above the -7.0 threshold; also inside the false_start cut span anyway."
+    },
+    {
+      "span": "EventMachine (logprob -0.35)",
+      "start": 78.26,
+      "end": 79.16,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Above -7.0 threshold; transcription is correct (Ruby's EventMachine library)."
+    },
+    {
+      "span": "a (logprob -0.39)",
+      "start": 87.6,
+      "end": 87.7,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Above -7.0 threshold; reads naturally in 'The second a normal blocking call slipped in'."
+    },
+    {
+      "span": "async (logprob -0.10)",
+      "start": 70.8,
+      "end": 71.2,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Above -7.0 threshold; also inside the duplicate_take cut span."
+    }
+  ]
+}

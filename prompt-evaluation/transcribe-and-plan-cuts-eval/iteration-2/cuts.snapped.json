@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "cuts": [
+    {
+      "id": "cut_0001",
+      "start": 14.68,
+      "end": 18.92,
+      "reason": "false_start: He'd been watching Apache choke under con... (abandoned mid-word, restarted cleanly)"
+    },
+    {
+      "id": "cut_0002",
+      "start": 26.7945,
+      "end": 29.42,
+      "reason": "false_start: The server collapsed too... (abandoned, restarted as 'The server collapsed when too many users')"
+    },
+    {
+      "id": "cut_0003",
+      "start": 65.25,
+      "end": 67.075,
+      "reason": "false_start: re... and it was (abandoned 're-', restarted 'and it was built around blocking')"
+    },
+    {
+      "id": "cut_0004",
+      "start": 68.95,
+      "end": 73.5,
+      "reason": "duplicate_take: Developers who wanted async had to b-bolt it on (stuttered take; clean retake follows)"
+    }
+  ]
+}

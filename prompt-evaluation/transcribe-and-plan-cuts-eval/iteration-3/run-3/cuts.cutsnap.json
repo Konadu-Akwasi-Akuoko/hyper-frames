@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "cuts": [
+    {
+      "id": "cut_0001",
+      "start": 17.142187,
+      "end": 18.895,
+      "reason": "false_start: choke under con..."
+    },
+    {
+      "id": "cut_0002",
+      "start": 18.895,
+      "end": 19.219,
+      "reason": "long_silence: 1.70s between false start and restart"
+    },
+    {
+      "id": "cut_0003",
+      "start": 26.8345,
+      "end": 29.355375,
+      "reason": "false_start: The server collapsed too..."
+    },
+    {
+      "id": "cut_0004",
+      "start": 29.355375,
+      "end": 29.719,
+      "reason": "long_silence: 1.51s between false start and restart"
+    },
+    {
+      "id": "cut_0005",
+      "start": 40.339875,
+      "end": 42.92525,
+      "reason": "duplicate_take: second 'And he chose JavaScript.' \u2014 keep first clean take"
+    },
+    {
+      "id": "cut_0006",
+      "start": 65.25275,
+      "end": 66.710375,
+      "reason": "false_start: it was re... and (abandoned partial word, restart follows)"
+    },
+    {
+      "id": "cut_0007",
+      "start": 69.035313,
+      "end": 73.435063,
+      "reason": "duplicate_take: first take with 'b-bolt' stutter \u2014 keep clean restart 'Developers who wanted async had to bolt it on.'"
+    },
+    {
+      "id": "cut_0008",
+      "start": 73.435063,
+      "end": 73.799,
+      "reason": "long_silence: 1.38s gap before clean restart"
+    }
+  ]
+}

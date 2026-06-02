@@ -1,0 +1,196 @@
+{
+  "candidates": [
+    {
+      "span": "He'd been watching Apache choke under con...",
+      "start": 15.00,
+      "end": 17.52,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "Abandoned first take ending in fragment 'con...'; speaker restarts the full sentence at 19.22. Cutting the first take (and trailing silence to 19.22) keeps the clean second read."
+    },
+    {
+      "span": "He'd been watching Apache choke under concurrent connections.",
+      "start": 19.22,
+      "end": 22.32,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean second take of the abandoned line — this is the version that completes the sentence."
+    },
+    {
+      "span": "The server collapsed too...",
+      "start": 27.049,
+      "end": 28.21,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "Abandoned first take ending in fragment 'too...'; speaker restarts cleanly at 29.72 with the completed sentence."
+    },
+    {
+      "span": "The server collapsed when too many users showed up at once.",
+      "start": 29.72,
+      "end": 32.74,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean second take that completes the abandoned line."
+    },
+    {
+      "span": "and he chose JavaScript.",
+      "start": 38.10,
+      "end": 39.68,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "First (cleanest) attempt — policy says keep the first when judging re-takes."
+    },
+    {
+      "span": "And he chose JavaScript.",
+      "start": 41.14,
+      "end": 42.62,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "Second occurrence of the same sentence within 3 seconds — this is a re-take, not rhetorical (no new framing or emphasis), so drop per policy."
+    },
+    {
+      "span": "Every other language already had I/O built in,",
+      "start": 61.02,
+      "end": 63.86,
+      "category": "discretionary",
+      "verdict": "keep",
+      "rationale": "'built' has logprob -0.605 (above the -7.0 threshold); audible in context, no cut needed."
+    },
+    {
+      "span": "and it was re... and it was",
+      "start": 64.74,
+      "end": 67.07,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker truncates 're...' and restarts 'and it was'. Cutting 'was re... and it was' (65.04–67.07) leaves 'and it' → 'built around blocking', a clean restart. (Implemented as 65.32–67.07 to preserve the leading 'and it was'.)"
+    },
+    {
+      "span": "and it was",
+      "start": 64.74,
+      "end": 65.18,
+      "category": "false_start",
+      "verdict": "keep",
+      "rationale": "Leading 'and it was' is preserved; only the abandoned 're...' fragment and the restart 'and it was' are removed."
+    },
+    {
+      "span": "Developers who wanted async had to b-bolt it on.",
+      "start": 69.58,
+      "end": 72.42,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "First take contains the stutter 'b-bolt'; speaker re-records the line cleanly at 73.80. Drop the broken first take (plus the silence up to the clean restart) and keep take two."
+    },
+    {
+      "span": "b-bolt",
+      "start": 71.58,
+      "end": 72.04,
+      "category": "stutter",
+      "verdict": "cut",
+      "rationale": "Stutter 'b-bolt'; subsumed by the duplicate-take cut that removes the entire first take."
+    },
+    {
+      "span": "Developers who wanted async had to bolt it on.",
+      "start": 73.80,
+      "end": 76.58,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean second take — the read that should survive."
+    },
+    {
+      "span": "silence after 'Twitter.' before 'But he chose it'",
+      "start": 56.36,
+      "end": 57.50,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.14s pause — slightly over threshold but lands on a rhetorical pivot from the snark callback back to the main argument; reads as deliberate beat, not dead air."
+    },
+    {
+      "span": "silence between 'reason.' and 'Every other language'",
+      "start": 60.06,
+      "end": 61.02,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.96s — under the 1.0s threshold, natural sentence-boundary breath."
+    },
+    {
+      "span": "silence between 'defaults.' and 'The second a normal'",
+      "start": 86.38,
+      "end": 87.08,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.70s — natural paragraph break, well under threshold."
+    },
+    {
+      "span": "I/O (logprob -0.158)",
+      "start": 62.90,
+      "end": 63.40,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "logprob -0.158 is far above the -7.0 threshold; word is correct and central to the argument."
+    },
+    {
+      "span": "built (logprob -0.605)",
+      "start": 63.44,
+      "end": 63.58,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "logprob -0.605 above threshold; word is correct in context ('I/O built in')."
+    },
+    {
+      "span": "re... (logprob -0.089)",
+      "start": 65.32,
+      "end": 66.48,
+      "category": "low_confidence",
+      "verdict": "cut",
+      "rationale": "Above the -7.0 threshold, but already covered by the false_start cut at 65.32–67.07."
+    },
+    {
+      "span": "and (logprob -0.576)",
+      "start": 66.52,
+      "end": 66.70,
+      "category": "low_confidence",
+      "verdict": "cut",
+      "rationale": "Above the -7.0 threshold, but covered by the false_start cut at 65.32–67.07."
+    },
+    {
+      "span": "async (logprob -0.102)",
+      "start": 70.80,
+      "end": 71.20,
+      "category": "low_confidence",
+      "verdict": "cut",
+      "rationale": "Above the -7.0 threshold, but covered by the duplicate_take cut at 69.58–73.80 (first take dropped)."
+    },
+    {
+      "span": "EventMachine (logprob -0.351)",
+      "start": 78.26,
+      "end": 79.16,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Above the -7.0 threshold; the technical noun is correct and load-bearing to the example."
+    },
+    {
+      "span": "a (logprob -0.388)",
+      "start": 87.60,
+      "end": 87.70,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Above the -7.0 threshold; trivial determiner inside an intact sentence."
+    },
+    {
+      "span": "Every request opened a new thread. Every thread ate memory.",
+      "start": 23.04,
+      "end": 26.54,
+      "category": "discretionary",
+      "verdict": "keep",
+      "rationale": "Anaphoric repetition ('Every request… Every thread…') is rhetorical parallelism, not a re-take."
+    },
+    {
+      "span": "Ruby had EventMachine. Python had Twisted.",
+      "start": 77.28,
+      "end": 81.52,
+      "category": "discretionary",
+      "verdict": "keep",
+      "rationale": "Parallel structure ('X had Y. Z had W.') is intentional rhetorical pairing, not duplication."
+    }
+  ]
+}

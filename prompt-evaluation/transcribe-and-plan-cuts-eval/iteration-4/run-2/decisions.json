@@ -1,0 +1,124 @@
+{
+  "candidates": [
+    {
+      "span": "He'd been watching Apache choke under con...",
+      "start": 15.0,
+      "end": 17.52,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker abandons mid-word ('con...') and restarts the same sentence cleanly at 19.22. Cut the broken first take."
+    },
+    {
+      "span": "He'd been watching Apache choke under concurrent connections.",
+      "start": 19.22,
+      "end": 22.32,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "This is the clean retake of the abandoned attempt above — keep it as the intended line."
+    },
+    {
+      "span": "The server collapsed too...",
+      "start": 27.049,
+      "end": 28.21,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Abandoned mid-word ('too...'), then restarts cleanly at 29.72 with 'The server collapsed when too many users...'. Cut the broken take."
+    },
+    {
+      "span": "The server collapsed when too many users showed up at once.",
+      "start": 29.72,
+      "end": 32.74,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean retake of the abandoned 'collapsed too...' line — keep it."
+    },
+    {
+      "span": "and he chose JavaScript. And he chose JavaScript.",
+      "start": 38.1,
+      "end": 42.62,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Rhetorical repetition across a sentence boundary with a deliberate 1.46s pause between them — emphatic punchline, not a re-take. Keep both."
+    },
+    {
+      "span": "(pause) between 'JavaScript.' and 'And he chose JavaScript.'",
+      "start": 39.68,
+      "end": 41.14,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.46s gap, just over threshold, but it powers the rhetorical doubling of 'And he chose JavaScript.' Cutting would flatten the emphasis."
+    },
+    {
+      "span": "(pause) between 'Twitter.' and 'But he chose it for a very specific reason.'",
+      "start": 56.36,
+      "end": 57.5,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.14s, only marginally over threshold and functions as a natural paragraph break before the 'But' pivot. Keep."
+    },
+    {
+      "span": "and it was re...",
+      "start": 64.74,
+      "end": 66.48,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker abandons mid-word ('re...') and restarts as 'and it was built around blocking' at 66.52. Cut the broken attempt."
+    },
+    {
+      "span": "and it was built around blocking.",
+      "start": 66.52,
+      "end": 68.65,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean retake of the abandoned 'and it was re...' — this is the intended line."
+    },
+    {
+      "span": "b-bolt",
+      "start": 71.58,
+      "end": 72.04,
+      "category": "stutter",
+      "verdict": "cut",
+      "rationale": "Partial-word stutter inside the first 'Developers who wanted async had to b-bolt it on' take. Subsumed by the larger duplicate_take cut below — flagged here for traceability."
+    },
+    {
+      "span": "Developers who wanted async had to b-bolt it on.",
+      "start": 69.58,
+      "end": 72.42,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "First take contains the 'b-bolt' stutter; speaker immediately performs a clean retake at 73.8. Cut the flawed first take, keep the clean retake."
+    },
+    {
+      "span": "Developers who wanted async had to bolt it on.",
+      "start": 73.8,
+      "end": 76.58,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean retake without the stutter — this is the intended delivery."
+    },
+    {
+      "span": "(no fillers found: no 'um' or 'uh' anywhere in transcript)",
+      "start": 0.0,
+      "end": 90.0,
+      "category": "filler",
+      "verdict": "keep",
+      "rationale": "Scanned full transcript — no sentence-internal filler tokens. Nothing to cut in this category."
+    },
+    {
+      "span": "(no audio events: no [breath], [cough], [laughter] etc. in words[])",
+      "start": 0.0,
+      "end": 90.0,
+      "category": "audio_event",
+      "verdict": "keep",
+      "rationale": "No type=='audio_event' entries in transcript. Nothing to evaluate."
+    },
+    {
+      "span": "(no low-confidence words: min logprob ≈ -0.61 on 'built', well above -7.0 trigger)",
+      "start": 0.0,
+      "end": 90.0,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Highest-magnitude negative logprob in transcript is about -0.61; threshold is logprob < -7.0. No candidates qualify."
+    }
+  ]
+}
