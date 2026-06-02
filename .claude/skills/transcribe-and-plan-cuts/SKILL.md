@@ -9,10 +9,23 @@ You're turning a raw self-recording into the two files the `tools/audio-editor`
 web app needs (`transcript.json` and `cuts.json`) so the user can scrub the
 waveform, drag the proposed regions, and finalize their cuts visually.
 
-The deterministic Scribe v2 call lives in `tools/transcribe-elevenlabs/`.
-The cut planning lives in the `audio-cut-decider` sub-agent at
-`.claude/agents/audio-cut-decider.md`. This skill orchestrates the two and
-hands off to the editor.
+Four pieces do the work, and this skill orchestrates them before handing off
+to the editor:
+
+1. The deterministic Scribe v2 call lives in `tools/transcribe-elevenlabs/`.
+2. The cut planning (which word-spans to remove, and why) lives in the
+   `audio-cut-decider` sub-agent at `.claude/agents/audio-cut-decider.md`.
+3. Duplicate-take recovery (catching lines spoken twice near-verbatim) lives in
+   `tools/dup-detect/` — deterministic transcript string-matching, not the
+   agent. The agent *detects* repeats reliably but its judgment on them
+   (rhetorical vs re-take, and which take to keep) varies run to run, so this
+   step adds any identical-repeat cut the agent missed and picks the keeper by
+   delivery tightness. Flagged for human verification.
+4. Boundary precision (snapping each cut onto the true acoustic silence around
+   the span) lives in `tools/cut-snap/` — deterministic waveform DSP, not the
+   agent. The agent decides *which* words to cut; cut-snap decides the *exact*
+   edges. They are split deliberately: an LLM can't reliably place sub-word
+   boundaries from a transcript, but it's excellent at the editorial judgment.
 
 ## What this skill does and doesn't do
 
@@ -24,6 +37,10 @@ hands off to the editor.
   to the recording.
 - Dispatch the `audio-cut-decider` sub-agent to produce `cuts.json` in the
   schema the audio-editor expects.
+- Run `tools/dup-detect` to recover any duplicate take the agent missed
+  (deterministic transcript matching) and merge it into `cuts.json`, flagged.
+- Run `tools/cut-snap` to refine every cut boundary onto the true acoustic
+  silence around its span (waveform RMS analysis + breath padding).
 - Tell the user the exact `http://localhost:5173/#/edit/<slug>` URL to open.
 
 **Does not:**
@@ -146,7 +163,55 @@ print(f\"{len(c['cuts'])} cuts · {total:.2f}s removable\")
 If the script fails, tell the user the agent produced invalid cuts and stop.
 Don't try to silently fix the file.
 
-### Step 5 — Hand off to the audio editor
+### Step 5 — Recover missed duplicate takes (dup-detect)
+
+The agent reliably *notices* repeated takes, but its judgment on them is unstable
+run to run — it may classify the same near-verbatim repeat as rhetorical and keep
+both, or cut the wrong copy. `tools/dup-detect` makes that recall deterministic:
+it scans the transcript for textually-identical word-runs spoken twice within a
+short window, keeps the tighter-delivered take (defaulting to the later one — the
+completed attempt — unless the earlier is clearly tighter), and merges any cut
+the agent missed into `cuts.json`. Cuts it adds are flagged
+`duplicate_or_rhetorical` so the user verifies them in the editor. Pure
+transcript analysis — no audio, no model, zero variance. It only touches
+identical repeats; non-verbatim re-takes stay the agent's job. Run it before
+cut-snap so boundary refinement covers the recovered cuts too.
+
+```bash
+uv run --project /Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/tools/dup-detect \
+  dup-detect <video-dir>/transcript.json \
+  --cuts <video-dir>/cuts.json \
+  -o <video-dir>/cuts.json
+```
+
+It prints each duplicate it found, marking it `add` (merged in) or `skip
+(already cut)` (the agent already covered that span), and re-numbers all ids.
+Re-run the Step 4 invariant check on the merged `cuts.json`. If dup-detect finds
+nothing, `cuts.json` is unchanged — that's fine, proceed.
+
+### Step 6 — Refine boundaries onto silence (cut-snap)
+
+The agent brackets each cut at word edges; `tools/cut-snap` then refines every
+boundary onto the true acoustic silence around the span — it reads the waveform,
+finds the real word edges (more accurate than the transcript's labels), and
+leaves a natural ~0.3s breath on each side of the splice so nothing is clipped
+and no dead air is left. This is deterministic DSP, not LLM guesswork; it
+overwrites `cuts.json` in place. Requires `ffmpeg`.
+
+```bash
+uv run --project /Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/tools/cut-snap \
+  cut-snap <video-dir>/transcript.json <video-dir>/cuts.json <video-dir>/audio/raw.mp3 \
+  -o <video-dir>/cuts.json
+```
+
+It prints a `before → after` table per cut — surface the total Δ so the user
+sees the refinement happened. Then re-run the Step 4 invariant check on the
+refined `cuts.json` (cut-snap sorts and de-overlaps, but verify it still parses
+and passes). If cut-snap errors (e.g. `ffmpeg` missing, or the audio/transcript
+timelines don't match), report it and hand off the agent's unrefined `cuts.json`
+rather than blocking — the user can still refine by ear in the editor.
+
+### Step 7 — Hand off to the audio editor
 
 Report the count of proposed cuts + total removable seconds. Then point the
 user at the editor:
@@ -182,8 +247,9 @@ shorter with the cut regions gone. Animations key off the transcript
    sanctioned exception** to "do not transcribe `voiceover.mp3`" (see Edge
    cases). Sanity-check that the new `audio_duration_secs` is shorter than the
    raw, by roughly the total removable seconds from `cuts.json`.
-3. **Skip Steps 4–5 entirely.** The cuts are already applied — do not run the
-   `audio-cut-decider`, and never overwrite the finalized `cuts.json`.
+3. **Skip Steps 4–7 entirely.** The cuts are already applied — do not run the
+   `audio-cut-decider`, `dup-detect`, or `cut-snap`, and never overwrite the
+   finalized `cuts.json`.
 
 ## Edge cases
 
@@ -195,8 +261,10 @@ shorter with the cut regions gone. Animations key off the transcript
   add `ELEVENLABS_API_KEY=…` to `.env` at the repo root.
 - **`transcript.json` already exists** — surface this in the checkpoint;
   proceeding overwrites it. If the user wants to skip the transcribe step
-  (transcript already good), they should run the agent directly via the
-  Agent tool with `subagent_type: "audio-cut-decider"`.
+  (transcript already good), skip Steps 2–3 and start at **Step 4** (dispatch
+  the agent), then continue through **Step 5** (dup-detect) and **Step 6**
+  (cut-snap) exactly as normal — the post-agent refinement still applies, so
+  don't stop after the agent.
 - **`cuts.json` already exists** — same: surface in the checkpoint, overwrite
   on approval. The editor saves cuts back to this same file, so re-running
   the skill on an already-edited video clobbers the user's manual work.
