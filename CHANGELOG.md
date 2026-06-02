@@ -60,3 +60,7 @@ videos.
 - Drop the storyboard stage from the pipeline.
 - audio-editor: prefer raw-timeline artifacts when present.
 - mcp: apply the `http_safe` decorator to every tool registration.
+
+[0.4.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.1.0...v0.3.0
+[0.1.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/releases/tag/v0.1.0
