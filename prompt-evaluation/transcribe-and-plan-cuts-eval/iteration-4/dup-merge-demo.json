@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "cuts": [
+    {
+      "id": "cut_0001",
+      "start": 15.0,
+      "end": 17.52,
+      "reason": "false_start: He'd been watching Apache choke under con..."
+    },
+    {
+      "id": "cut_0002",
+      "start": 27.049,
+      "end": 28.21,
+      "reason": "false_start: The server collapsed too..."
+    },
+    {
+      "start": 38.1,
+      "end": 41.14,
+      "reason": "flag: duplicate_or_rhetorical: \"and he chose JavaScript.\" \u2014 kept last take (tighter by 320ms)",
+      "id": "cut_0003"
+    },
+    {
+      "id": "cut_0004",
+      "start": 65.32,
+      "end": 67.07,
+      "reason": "false_start: re... and it was (restart of 'and it was built around blocking')"
+    },
+    {
+      "id": "cut_0005",
+      "start": 69.58,
+      "end": 72.42,
+      "reason": "duplicate_take: first take with 'b-bolt' stutter; clean retake follows"
+    }
+  ]
+}

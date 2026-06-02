@@ -1,0 +1,164 @@
+{
+  "candidates": [
+    {
+      "span": "He'd been watching Apache choke under con...",
+      "start": 15.0,
+      "end": 17.52,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "Speaker abandons mid-word ('con...') and restarts the same sentence cleanly at 19.22; cut the abandoned first take."
+    },
+    {
+      "span": "<silence between abandoned take and restart>",
+      "start": 17.52,
+      "end": 19.22,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.70s dead air between abandoned take and clean restart — pure splice gap, no rhetorical value."
+    },
+    {
+      "span": "The server collapsed too...",
+      "start": 27.049,
+      "end": 28.21,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "Speaker abandons mid-word ('too...') and restarts as 'The server collapsed when too many users showed up at once.' Cut the first take."
+    },
+    {
+      "span": "<silence between abandoned take and restart>",
+      "start": 28.21,
+      "end": 29.72,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.51s dead air between abandoned take and restart."
+    },
+    {
+      "span": "And he chose JavaScript.",
+      "start": 41.14,
+      "end": 42.62,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Preceded by 'and he chose JavaScript' (38.10-39.68) and a 1.46s beat. This is rhetorical doubling for emphasis — the punchline reveal that he picked a 10-day-old language — not a re-take. Keep."
+    },
+    {
+      "span": "<dramatic pause before rhetorical repeat 'And he chose JavaScript.'>",
+      "start": 39.68,
+      "end": 41.14,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.46s pause is the setup beat for the rhetorical doubling. Removing it destroys the emphasis. Keep."
+    },
+    {
+      "span": "<pause between 'Twitter.' and 'But he chose it for a very specific reason.'>",
+      "start": 56.36,
+      "end": 57.5,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.14s transition pause between the Twitter quip and the explanation. Slightly long; propose trimming so user can decide."
+    },
+    {
+      "span": "and it was re...",
+      "start": 64.74,
+      "end": 66.48,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker abandons 're...' (likely 'really' or similar) and restarts 'and it was built around blocking.' Cut the abandoned attempt; the restart that follows is clean."
+    },
+    {
+      "span": "Developers who wanted async had to b-bolt it on.",
+      "start": 69.58,
+      "end": 72.42,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "First take contains the stutter 'b-bolt'. Clean restart at 73.80 with 'Developers who wanted async had to bolt it on.' Cut the first take to preserve the cleaner second."
+    },
+    {
+      "span": "<silence between abandoned take and clean restart>",
+      "start": 72.42,
+      "end": 73.8,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.38s dead air between the stutter-marred take and the clean restart."
+    },
+    {
+      "span": "<pause between 'connections.' and 'Every request'>",
+      "start": 22.32,
+      "end": 23.04,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.72s, under the 1.0s threshold. Natural sentence-break beat."
+    },
+    {
+      "span": "<pause between 'memory.' and 'The server'>",
+      "start": 26.54,
+      "end": 27.049,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.51s, under threshold. Natural beat between sentences."
+    },
+    {
+      "span": "<pause between 'once.' and 'He wanted'>",
+      "start": 32.74,
+      "end": 33.34,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.60s, under threshold."
+    },
+    {
+      "span": "<pause between 'JavaScript.' and 'He was reaching'>",
+      "start": 42.62,
+      "end": 43.26,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.64s, under threshold. Natural beat after the rhetorical doubling lands."
+    },
+    {
+      "span": "<pause between 'blocking.' and 'Developers'>",
+      "start": 68.65,
+      "end": 69.58,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.93s, just under threshold."
+    },
+    {
+      "span": "<pause between 'reason.' and 'Every other language'>",
+      "start": 60.06,
+      "end": 61.02,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.96s, under threshold. Natural sentence-break beat."
+    },
+    {
+      "span": "<pause between 'defaults.' and 'The second'>",
+      "start": 86.38,
+      "end": 87.08,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "0.70s, under threshold."
+    },
+    {
+      "span": "The second a normal blocking call",
+      "start": 87.08,
+      "end": 88.86,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Lowest logprob in the file is -0.605 on 'built' and -0.387 on 'a' — none fall below the -7.0 trigger. No low-confidence cuts warranted."
+    },
+    {
+      "span": "EventMachine",
+      "start": 78.26,
+      "end": 79.16,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "logprob -0.351 — well above -7.0 threshold. The word is correct (Ruby's EventMachine library)."
+    },
+    {
+      "span": "I/O",
+      "start": 62.9,
+      "end": 63.4,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "logprob -0.158 — above threshold. Correct transcription of I/O."
+    }
+  ]
+}

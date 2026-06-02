@@ -1,0 +1,108 @@
+{
+  "candidates": [
+    {
+      "span": "He'd been watching Apache choke under con...",
+      "start": 15.0,
+      "end": 17.52,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker abandons mid-word ('con...') then restarts the entire sentence at 19.22 with a clean take. Cut the abandoned first attempt."
+    },
+    {
+      "span": "He'd been watching Apache choke under concurrent connections.",
+      "start": 19.22,
+      "end": 22.32,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "This is the clean retake that completes the abandoned first attempt; keep as the kept version."
+    },
+    {
+      "span": "The server collapsed too...",
+      "start": 27.049,
+      "end": 28.21,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker trails off on 'too...' then restarts the sentence cleanly at 29.72. Cut the abandoned attempt."
+    },
+    {
+      "span": "The server collapsed when too many users showed up at once.",
+      "start": 29.72,
+      "end": 32.74,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean retake that completes the abandoned first attempt; this is the kept version."
+    },
+    {
+      "span": "and he chose JavaScript. And he chose JavaScript.",
+      "start": 38.1,
+      "end": 42.62,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Two adjacent statements of the same clause, but the second begins with capital 'And' after a sentence-ending period and a ~1.5s deliberate pause — this reads as rhetorical emphasis (sentence-spanning repeat per policy), not a re-take. Keep both."
+    },
+    {
+      "span": "(silence between 'JavaScript.' and 'And he chose JavaScript.')",
+      "start": 39.68,
+      "end": 41.14,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.46s gap, but it's the deliberate beat that makes the rhetorical repetition land. Cutting it would flatten the emphasis."
+    },
+    {
+      "span": "(silence between 'Twitter.' and 'But he chose it for a very specific reason.')",
+      "start": 56.36,
+      "end": 57.5,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.14s gap between the comedic aside and the pivot to the real explanation. Functions as a deliberate paragraph break; cutting would feel rushed."
+    },
+    {
+      "span": "re... and",
+      "start": 65.32,
+      "end": 66.7,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker starts a word ('re...' — probably 'really' or 'reliant'), abandons it, and restarts with 'and it was built around blocking'. Cut the abandoned fragment plus the connecting 'and' so the kept clause begins at 'it was built around blocking'."
+    },
+    {
+      "span": "Developers who wanted async had to b-bolt it on.",
+      "start": 69.58,
+      "end": 72.42,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "First take contains a 'b-bolt' stutter. Clean retake follows at 73.80 ('Developers who wanted async had to bolt it on.'). Cut the first take entirely per policy (prefer cleanest version)."
+    },
+    {
+      "span": "Developers who wanted async had to bolt it on.",
+      "start": 73.8,
+      "end": 76.58,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean retake of the previous stuttered take; this is the kept version."
+    },
+    {
+      "span": "(silence between 'b-bolt it on.' and 'Developers who wanted async...')",
+      "start": 72.42,
+      "end": 73.8,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.38s gap, but it sits entirely inside the duplicate_take cut (69.58-72.42 → 73.80) and is consumed by that splice. No separate cut needed."
+    },
+    {
+      "span": "low-confidence word scan",
+      "start": 0.28,
+      "end": 89.44,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "Scanned every word-type entry; lowest logprob is -0.605 ('built' at 63.44). No word crosses the -7.0 threshold, so no low_confidence flags."
+    },
+    {
+      "span": "filler/audio-event scan",
+      "start": 0.28,
+      "end": 89.44,
+      "category": "filler",
+      "verdict": "keep",
+      "rationale": "No 'um'/'uh' fillers and no audio_event entries (no [cough], [breath], [laughter], etc.) appear in the transcript."
+    }
+  ]
+}

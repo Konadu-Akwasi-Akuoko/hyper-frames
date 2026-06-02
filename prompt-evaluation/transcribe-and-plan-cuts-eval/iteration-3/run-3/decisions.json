@@ -1,0 +1,140 @@
+{
+  "candidates": [
+    {
+      "span": "con...",
+      "start": 17.16,
+      "end": 17.52,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Abandoned partial word mid-sentence; speaker restarts the clause from 'He'd been watching Apache choke under concurrent connections.'"
+    },
+    {
+      "span": "[silence 17.52 -> 19.22]",
+      "start": 17.52,
+      "end": 19.219,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.70s dead air between abandoned partial and restart — exceeds 1.0s threshold; cut-snap will leave breath."
+    },
+    {
+      "span": "He'd been watching Apache choke under",
+      "start": 19.22,
+      "end": 21.02,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "This is the SECOND occurrence of the clause but it is the clean completing take — the first take was abandoned at 'con...'. Keep the clean restart, not the partial."
+    },
+    {
+      "span": "The server collapsed too...",
+      "start": 27.049,
+      "end": 28.21,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Speaker trails off on partial 'too...' and restarts with the full sentence 'The server collapsed when too many users showed up at once.'"
+    },
+    {
+      "span": "[silence 28.21 -> 29.72]",
+      "start": 28.21,
+      "end": 29.719,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.51s dead air between abandoned take and restart."
+    },
+    {
+      "span": "The server collapsed when too many users showed up at once.",
+      "start": 29.72,
+      "end": 32.74,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean second-take completion of the abandoned 'The server collapsed too...' — keep the clean version."
+    },
+    {
+      "span": "Every request opened a new thread. Every thread ate memory.",
+      "start": 23.04,
+      "end": 26.54,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "'Every X ... Every Y ...' is rhetorical anaphora, not a re-take. Parallel structure is the whole point."
+    },
+    {
+      "span": "And he chose JavaScript.",
+      "start": 41.14,
+      "end": 42.62,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "Exact repeat of 'and he chose JavaScript.' from 38.10-39.68 within ~3s. Per policy cut the second occurrence to preserve the cleanest first attempt."
+    },
+    {
+      "span": "[silence 39.68 -> 41.14]",
+      "start": 39.68,
+      "end": 41.14,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.46s gap is folded into the duplicate_take cut (39.68-42.62) — bundled, not separately listed."
+    },
+    {
+      "span": "[silence 56.36 -> 57.50]",
+      "start": 56.36,
+      "end": 57.50,
+      "category": "long_silence",
+      "verdict": "keep",
+      "rationale": "1.14s pause before 'But he chose it for a very specific reason.' is a rhetorical beat marking the pivot. Just over the 1.0s threshold but load-bearing."
+    },
+    {
+      "span": "it was re... and",
+      "start": 65.32,
+      "end": 66.7,
+      "category": "false_start",
+      "verdict": "cut",
+      "rationale": "Partial word 're...' abandoned; speaker restarts with 'and it was built around blocking.' Cut the abandoned partial plus the conjunction that re-launches the sentence."
+    },
+    {
+      "span": "Developers who wanted async had to b-bolt it on.",
+      "start": 69.58,
+      "end": 72.42,
+      "category": "duplicate_take",
+      "verdict": "cut",
+      "rationale": "First take contains the 'b-bolt' stutter; speaker immediately delivers a clean second take 'Developers who wanted async had to bolt it on.' Cut the flubbed first attempt, keep the clean restart."
+    },
+    {
+      "span": "[silence 72.42 -> 73.80]",
+      "start": 72.42,
+      "end": 73.799,
+      "category": "long_silence",
+      "verdict": "cut",
+      "rationale": "1.38s dead air between the flubbed take and the clean restart."
+    },
+    {
+      "span": "Developers who wanted async had to bolt it on.",
+      "start": 73.80,
+      "end": 76.58,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Clean second take — the version retained after cutting the b-bolt flub."
+    },
+    {
+      "span": "Ruby had EventMachine. Python had Twisted.",
+      "start": 77.28,
+      "end": 81.52,
+      "category": "duplicate_take",
+      "verdict": "keep",
+      "rationale": "Parallel rhetorical structure listing examples — not a re-take. Each sentence names a distinct language/library."
+    },
+    {
+      "span": "I/O",
+      "start": 62.9,
+      "end": 63.4,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "logprob -0.158 — well above the -7.0 threshold. No low-confidence words anywhere in this transcript (max negative logprob is -0.605 on 'built')."
+    },
+    {
+      "span": "built",
+      "start": 63.44,
+      "end": 63.58,
+      "category": "low_confidence",
+      "verdict": "keep",
+      "rationale": "logprob -0.605 — the strongest negative in the transcript but still far above -7.0 threshold."
+    }
+  ]
+}
