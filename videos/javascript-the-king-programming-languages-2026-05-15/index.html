@@ -43,20 +43,6 @@
       data-width="1920"
       data-height="1080"
     >
-      <!-- Persistent background for the whole video. Sits behind every scene
-           (track-index 0). Spans the full audio length. -->
-      <div
-        id="substrate-layer"
-        data-composition-id="substrate"
-        data-composition-src="compositions/substrate.html"
-        data-start="0"
-        data-duration="530.617"
-        data-track-index="7"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 0"
-      ></div>
-
       <!-- Voiceover — the timing source of truth for every scene. -->
       <audio
         id="voiceover"
@@ -67,177 +53,13 @@
         data-volume="1"
       ></audio>
 
-      <!-- Scene 1 — the hook (HN quote → reframe → payoff). Ends ~24.3s. -->
-      <div
-        id="scene-01"
-        data-composition-id="scene-01-hook"
-        data-composition-src="compositions/scene-01-hook.html"
-        data-start="0"
-        data-duration="24.4"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 2 — Birth of JavaScript: chapter question → May 1995 language gap → Brendan Eich 10 days → naming parade. -->
-      <div
-        id="scene-02"
-        data-composition-id="scene-02-birth"
-        data-composition-src="compositions/scene-02-birth.html"
-        data-start="24.4"
-        data-duration="57.6"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 3 — Name game: bashrc aliases → Java≠JS → self-correction → designed to be available. -->
-      <div
-        id="scene-03"
-        data-composition-id="scene-03-name"
-        data-composition-src="compositions/scene-03-name-game.html"
-        data-start="82.0"
-        data-duration="48.0"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 4 — Server question: "how the HELL did JS get to the server?" + 14-year exclusion + browser trap. -->
-      <div
-        id="scene-04"
-        data-composition-id="scene-04-server-question"
-        data-composition-src="compositions/scene-04-server-question.html"
-        data-start="130.0"
-        data-duration="20.68"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 5 — Ryan Dahl: November 2009, Apache choking, he chose JavaScript, blocking I/O reason. -->
-      <div
-        id="scene-05"
-        data-composition-id="scene-05-ryan-dahl"
-        data-composition-src="compositions/scene-05-ryan-dahl.html"
-        data-start="150.68"
-        data-duration="56.32"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 6 — Node.js: EventMachine/Twisted fail, JS blank-slate advantage, V8+event-loop formula, standing ovation. -->
-      <div
-        id="scene-06"
-        data-composition-id="scene-06-node"
-        data-composition-src="compositions/scene-06-node.html"
-        data-start="207.0"
-        data-duration="50.0"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 7 — Escape: adoption wave, JS escapes browser, HN callback quote, next frontier teaser. -->
-      <div
-        id="scene-07"
-        data-composition-id="scene-07-escape"
-        data-composition-src="compositions/scene-07-escape.html"
-        data-start="257.0"
-        data-duration="38.0"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 8 — Electron: Chen Zhou wraps Chromium+Node, Atom hackable editor, Atom Shell→Electron rename, bloat callout. -->
-      <div
-        id="scene-08"
-        data-composition-id="scene-08-electron"
-        data-composition-src="compositions/scene-08-electron.html"
-        data-start="295.0"
-        data-duration="45.0"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 9 — React Native: Zuckerberg "biggest mistake", scrapped HTML5, Jordan Walke hackathon bridge, terror reign. -->
-      <div
-        id="scene-09"
-        data-composition-id="scene-09-react-native"
-        data-composition-src="compositions/scene-09-react-native.html"
-        data-start="340.0"
-        data-duration="45.0"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 10 — Terror reign: Electron hall of fame, everything-is-a-browser, Windows 11 React Native, 10-days callback. -->
-      <div
-        id="scene-10"
-        data-composition-id="scene-10-terror-reign"
-        data-composition-src="compositions/scene-10-terror-reign.html"
-        data-start="385.0"
-        data-duration="77.0"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 11 — Verdict: LLM training corpus, self-reinforcing flywheel, Stack Overflow 66%, won on supply. -->
-      <div
-        id="scene-11"
-        data-composition-id="scene-11-verdict"
-        data-composition-src="compositions/scene-11-verdict.html"
-        data-start="462.0"
-        data-duration="53.0"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
-
-      <!-- Scene 12 — Landing: callback recall, JS reveal, "built for mobility" — final fade to black. -->
-      <div
-        id="scene-12"
-        data-composition-id="scene-12-landing"
-        data-composition-src="compositions/scene-12-landing.html"
-        data-start="515.0"
-        data-duration="15.617"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-        style="position: absolute; inset: 0; z-index: 1"
-      ></div>
+      <!-- greenfield: no scenes authored yet. frontier = 0. -->
     </div>
 
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      // Example: tl.from("#title", { opacity: 0, y: -50, duration: 1 }, 0);
       window.__timelines["main"] = tl;
     </script>
-        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
-      <div
-        id="sfx-layer"
-        data-composition-id="sfx-layer"
-        data-composition-src="compositions/sfx.html"
-        data-start="0"
-        data-duration="530.617"
-        data-track-index="19"
-      ></div>
-</body>
+  </body>
 </html>
