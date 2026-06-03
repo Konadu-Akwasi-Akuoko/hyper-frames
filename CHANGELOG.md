@@ -7,6 +7,22 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.5.0] — 2026-06-03
+
+### Added
+- **video-director** — composition-authoring orchestrator skill. Carries the
+  project's authoring policy (transcript-as-timing-truth, registry-then-local
+  structure, the lint/inspect/snapshot visual-QA loop, no-editorial-chrome,
+  sound-design hand-off), extracted out of CLAUDE.md, and directs the
+  hyperframes / hyperframes-cli / hyperframes-registry plugin skills.
+- **image-prep** — image preprocessing CLI plus an image-sourcer agent, for the
+  image-asset step of the video pipeline.
+- **prompt-evaluation** — video-director eval workspace (reference study of an
+  external video's motion patterns plus four graded iterations).
+
+### Changed
+- js-king: reset the composition to greenfield to re-author from scratch.
+
 ## [0.4.0] — 2026-06-02
 
 ### Added
@@ -61,6 +77,7 @@ videos.
 - audio-editor: prefer raw-timeline artifacts when present.
 - mcp: apply the `http_safe` decorator to every tool registration.
 
+[0.5.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.1.0...v0.3.0
 [0.1.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/releases/tag/v0.1.0
