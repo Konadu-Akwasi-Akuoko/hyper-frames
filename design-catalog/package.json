@@ -1,7 +1,7 @@
 {
   "name": "design-catalog-viewer",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Static viewer for the design catalog. Run `npm start` and open the printed URL.",
   "scripts": {
     "start": "python3 -m http.server 8000"
