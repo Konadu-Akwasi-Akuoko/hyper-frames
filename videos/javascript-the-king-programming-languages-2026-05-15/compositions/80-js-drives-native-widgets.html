@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 80 — specifically so JavaScript can drive native Windows widgets.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-80 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-80 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1480px; text-align: center; line-height: 1.25;
+      font-size: 46px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-80 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-80 .cap .js { color: var(--accent); font-weight: 800; }
+    #scene-80 .cap .drv { color: var(--accent-2); font-weight: 800; }
+    #scene-80 .cap .nw { color: var(--win); font-weight: 800; }
+
+    #scene-80 .rig {
+      position: absolute; left: 50%; top: 668px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 56px;
+    }
+
+    /* the JS code card */
+    #scene-80 .code {
+      width: 460px; padding: 24px 26px; border-radius: 16px;
+      background: rgba(17,20,27,0.97); border: 1px solid rgba(247,223,30,0.32);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 12px;
+      font-family: "JetBrains Mono", monospace; font-size: 21px; line-height: 1.3;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-80 .code .cl { color: var(--soft); white-space: nowrap; }
+    #scene-80 .code .cm { color: var(--muted); }
+    #scene-80 .code .tg { color: var(--accent); }
+    #scene-80 .code .at { color: var(--accent-2); }
+
+    /* the drive beam */
+    #scene-80 .beam {
+      position: relative; width: 150px; height: 60px; display: flex; align-items: center; justify-content: center;
+    }
+    #scene-80 .beam .line {
+      position: absolute; left: 0; top: 50%; height: 4px; width: 0; background: var(--accent-2); border-radius: 2px;
+      transform: translateY(-50%); will-change: width;
+    }
+    #scene-80 .beam .arr {
+      position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+      width: 0; height: 0; border-left: 14px solid var(--accent-2); border-top: 9px solid transparent; border-bottom: 9px solid transparent;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-80 .beam .dl {
+      position: absolute; left: 50%; top: -26px; transform: translateX(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 700; color: var(--accent-2);
+      white-space: nowrap; opacity: 0; will-change: opacity;
+    }
+
+    /* the native Windows widgets */
+    #scene-80 .widgets {
+      width: 430px; padding: 24px 28px; border-radius: 16px;
+      background: rgba(24,28,36,0.96); border: 1px solid rgba(76,194,255,0.4);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 22px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-80 .widgets .wg { display: flex; align-items: center; gap: 16px; }
+    #scene-80 .widgets .wl { font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700; color: var(--muted); }
+
+    #scene-80 .widgets .sw {
+      width: 70px; height: 36px; border-radius: 999px; background: var(--dim); position: relative; flex: none; will-change: background-color;
+    }
+    #scene-80 .widgets .sw .knob { position: absolute; top: 4px; left: 4px; width: 28px; height: 28px; border-radius: 50%; background: #fff; will-change: transform; }
+
+    #scene-80 .widgets .sl { width: 150px; height: 8px; border-radius: 4px; background: var(--dim); position: relative; flex: none; }
+    #scene-80 .widgets .sl .slf { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 4px; background: var(--win); will-change: width; }
+    #scene-80 .widgets .sl .slk { position: absolute; top: 50%; left: 0; width: 18px; height: 18px; border-radius: 50%; background: #fff; transform: translate(-50%,-50%); box-shadow: 0 1px 4px rgba(0,0,0,0.4); will-change: left; }
+
+    #scene-80 .widgets .bt {
+      padding: 9px 26px; border-radius: 10px; background: rgba(76,194,255,0.16); border: 1px solid rgba(76,194,255,0.5);
+      font-family: "Inter", sans-serif; font-size: 17px; font-weight: 700; color: var(--win); will-change: background-color, box-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-80" data-composition-id="scene-80" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">specifically</span> <span class="w">so</span> <span class="w js">JavaScript</span>
+      <span class="w">can</span> <span class="w drv">drive</span>
+      <span class="w nw">native</span> <span class="w nw">Windows</span> <span class="w nw">widgets.</span>
+    </div>
+
+    <div class="rig">
+      <div class="code">
+        <div class="cl"><span class="cm">// React Native for Windows</span></div>
+        <div class="cl">&lt;<span class="tg">Switch</span> <span class="at">on</span> /&gt;</div>
+        <div class="cl">&lt;<span class="tg">Slider</span> <span class="at">value=70</span> /&gt;</div>
+        <div class="cl">&lt;<span class="tg">Button</span>&gt;OK&lt;/<span class="tg">Button</span>&gt;</div>
+      </div>
+
+      <div class="beam">
+        <span class="line"></span><span class="arr"></span>
+        <span class="dl">drives</span>
+      </div>
+
+      <div class="widgets" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3300">
+        <div class="wg"><span class="sw" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3770" data-sfx-volume="0.42"><span class="knob"></span></span><span class="wl">native Switch</span></div>
+        <div class="wg"><span class="sl"><span class="slf"></span><span class="slk"></span></span><span class="wl">native Slider</span></div>
+        <div class="wg"><span class="bt">OK</span><span class="wl">native Button</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(449.23).
+    // "specifically so JavaScript can drive native Windows widgets."
+    // (specifically 0.50, JavaScript 1.80, drive 2.58, native 3.18, Windows 3.58, widgets 4.00).
+    const cw = [0.50, 1.62, 1.80, 2.30, 2.58, 3.18, 3.58, 4.00];
+    gsap.utils.toArray("#scene-80 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "JavaScript" — the JS code card appears (JavaScript 1.80).
+    tl.fromTo("#scene-80 .code",
+      { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 1.80);
+
+    // "drive" — the beam fires from code toward the widgets (drive 2.58).
+    tl.to("#scene-80 .beam .dl", { opacity: 1, duration: 0.25 }, 2.5);
+    tl.to("#scene-80 .beam .line", { width: 130, duration: 0.4, ease: "power2.inOut" }, 2.58);
+    tl.to("#scene-80 .beam .arr", { opacity: 1, duration: 0.14 }, 2.94);
+
+    // "native" — the native widget panel materializes (native 3.18).
+    tl.fromTo("#scene-80 .widgets",
+      { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.42, ease: "power2.out" }, 3.18);
+
+    // "Windows widgets" — the widgets react as JS drives them (Windows 3.58).
+    tl.to("#scene-80 .widgets .sw", { backgroundColor: "#4cc2ff", duration: 0.3, ease: "power2.out" }, 3.62);
+    tl.to("#scene-80 .widgets .sw .knob", { x: 34, duration: 0.3, ease: "back.out(2)" }, 3.62);
+    tl.to("#scene-80 .widgets .sl .slf", { width: "70%", duration: 0.5, ease: "power2.out" }, 3.86);
+    tl.to("#scene-80 .widgets .sl .slk", { left: "70%", duration: 0.5, ease: "power2.out" }, 3.86);
+    tl.fromTo("#scene-80 .widgets .bt",
+      { boxShadow: "0 0 0 rgba(76,194,255,0)" }, { boxShadow: "0 0 22px rgba(76,194,255,0.5)", duration: 0.3, ease: "power2.out" }, 4.10);
+
+    // Seam clear — fade out across the trailing overlap with scene 81 (local 4.67-5.17).
+    tl.to("#scene-80 .cap, #scene-80 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.67);
+
+    window.__timelines["scene-80"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 74 — The interface rendered into the native XAML layer underneath.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff; --react: #61dafb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-74 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-74 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1500px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-74 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-74 .cap .iface { color: var(--react); font-weight: 800; }
+    #scene-74 .cap .nx { color: var(--win); font-weight: 800; }
+
+    /* the two-layer stack */
+    #scene-74 .stack {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+    }
+    #scene-74 .layer {
+      border-radius: 16px; background: rgba(17,20,27,0.96); border: 1px solid var(--border);
+      padding: 22px 30px; display: flex; align-items: center; gap: 26px;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity, border-color, box-shadow;
+    }
+    #scene-74 .layer .lmeta { display: flex; flex-direction: column; gap: 9px; min-width: 320px; }
+    #scene-74 .layer .badge {
+      align-self: flex-start; font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 800;
+      padding: 6px 16px; border-radius: 999px; letter-spacing: 0.2px;
+    }
+    #scene-74 .layer .ltag { font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 600; color: var(--muted); }
+
+    #scene-74 .top { width: 620px; }
+    #scene-74 .top .badge { color: var(--react); background: rgba(97,218,251,0.12); border: 1px solid rgba(97,218,251,0.45); }
+    #scene-74 .bot { width: 760px; }
+    #scene-74 .bot .badge { color: var(--win); background: rgba(76,194,255,0.12); border: 1px solid rgba(76,194,255,0.45); }
+
+    /* a representative UI control, rendered in each layer's register */
+    #scene-74 .ctrl { display: flex; align-items: center; gap: 14px; }
+    #scene-74 .ctrl .sw {
+      width: 78px; height: 40px; border-radius: 999px; position: relative; flex: none;
+    }
+    #scene-74 .ctrl .sw::after {
+      content: ""; position: absolute; top: 5px; right: 6px; width: 30px; height: 30px; border-radius: 50%; background: #fff;
+    }
+    #scene-74 .top .ctrl .sw { background: rgba(97,218,251,0.85); }
+    #scene-74 .bot .ctrl .sw { background: var(--win); box-shadow: 0 2px 8px rgba(76,194,255,0.4); }
+    #scene-74 .ctrl .btn {
+      font-family: "Inter", sans-serif; font-size: 16px; font-weight: 700; color: var(--fg);
+      padding: 9px 20px; border-radius: 10px;
+    }
+    #scene-74 .top .ctrl .btn { background: rgba(97,218,251,0.16); border: 1px solid rgba(97,218,251,0.4); }
+    #scene-74 .bot .ctrl .btn { background: rgba(76,194,255,0.18); border: 1px solid rgba(76,194,255,0.5); }
+
+    /* the downward "renders into" flow between layers */
+    #scene-74 .flow {
+      position: relative; height: 88px; display: flex; align-items: center; justify-content: center;
+    }
+    #scene-74 .flow svg { width: 30px; height: 88px; overflow: visible; }
+    #scene-74 .flow svg line, #scene-74 .flow svg path { stroke: var(--accent-2); stroke-width: 3; fill: none; }
+    #scene-74 .flow .flbl {
+      position: absolute; left: 50%; margin-left: 32px; top: 50%; transform: translateY(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 700; color: var(--accent-2);
+      white-space: nowrap; opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-74" data-composition-id="scene-74" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w iface">interface</span> <span class="w">rendered</span>
+      <span class="w">into</span> <span class="w">the</span> <span class="w nx">native</span>
+      <span class="w nx">XAML</span> <span class="w nx">layer</span> <span class="w">underneath.</span>
+    </div>
+
+    <div class="stack">
+      <div class="layer top">
+        <div class="lmeta">
+          <span class="badge">React Native interface</span>
+          <span class="ltag">described in JavaScript</span>
+        </div>
+        <div class="ctrl"><span class="sw"></span><span class="btn">Button</span></div>
+      </div>
+
+      <div class="flow" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="1880">
+        <svg viewBox="0 0 30 88" preserveAspectRatio="none">
+          <line class="stem" x1="15" y1="2" x2="15" y2="74"></line>
+          <path class="head" d="M5 64 L15 78 L25 64"></path>
+        </svg>
+        <span class="flbl">renders into</span>
+      </div>
+
+      <div class="layer bot" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3410" data-sfx-volume="0.35">
+        <div class="lmeta">
+          <span class="badge">Native XAML layer</span>
+          <span class="ltag">actual Windows controls</span>
+        </div>
+        <div class="ctrl"><span class="sw"></span><span class="btn">Button</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(415.79).
+    // "The interface rendered into the native XAML layer underneath."
+    // (The 0.50, interface 0.70, rendered 1.38, into 1.90, native 2.30, XAML 2.86, layer 3.92, underneath 4.20).
+    const cw = [0.50, 0.70, 1.38, 1.90, 2.10, 2.30, 2.86, 3.92, 4.20];
+    gsap.utils.toArray("#scene-74 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "interface" — the JS interface layer slides in on top (interface 0.70).
+    tl.fromTo("#scene-74 .top",
+      { opacity: 0, y: -26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.70);
+
+    // "rendered into" — the downward flow draws between layers (rendered 1.38).
+    const stem = document.querySelector("#scene-74 .flow .stem");
+    const head = document.querySelector("#scene-74 .flow .head");
+    tl.set("#scene-74 .flow .stem", { attr: { y2: 2 } }, 0);
+    tl.set("#scene-74 .flow .head", { opacity: 0 }, 0);
+    tl.to("#scene-74 .flow .stem", { attr: { y2: 74 }, duration: 0.5, ease: "power2.inOut" }, 1.38);
+    tl.to("#scene-74 .flow .head", { opacity: 1, duration: 0.16 }, 1.84);
+    tl.to("#scene-74 .flow .flbl", { opacity: 1, duration: 0.3 }, 1.55);
+
+    // "native XAML layer" — the native layer reveals underneath, wider, the foundation (XAML 2.86).
+    tl.fromTo("#scene-74 .bot",
+      { opacity: 0, y: 30, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 2.86);
+
+    // "underneath" — the native layer settles with a faint win-blue glow (underneath 4.20).
+    tl.to("#scene-74 .bot",
+      { borderColor: "rgba(76,194,255,0.5)", boxShadow: "0 0 34px rgba(76,194,255,0.2)", duration: 0.5, ease: "power2.out" }, 4.20);
+
+    // Subtle life — the stack holds with a faint breath.
+    tl.to("#scene-74 .stack", { y: "-=4", duration: 1.3, ease: "sine.inOut" }, 3.4);
+
+    // Seam clear — fade out across the trailing overlap with scene 75 (local 4.78-5.28).
+    tl.to("#scene-74 .cap, #scene-74 .stack",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.78);
+
+    window.__timelines["scene-74"] = tl;
+  </script>
+</body>
+</html>

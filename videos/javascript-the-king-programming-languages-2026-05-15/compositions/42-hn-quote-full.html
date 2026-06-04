@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 42 — the full Hacker News quote (callback)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --node: #8cc84b;
+    }
+    @font-face {
+      font-family: "Excalifont";
+      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-weight: 400; font-display: block;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-42 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-42 .card {
+      position: absolute; left: 50%; top: 50%;
+      width: 1380px; transform: translate(-50%, -50%);
+      padding: 76px 96px 60px;
+      background: linear-gradient(180deg, rgba(20,24,32,0.92) 0%, rgba(14,17,23,0.94) 100%);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-42 .quote-mark {
+      position: absolute; left: 50px; top: 8px;
+      font-family: "Excalifont", "Inter", sans-serif;
+      font-size: 170px; line-height: 1; color: var(--dim);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-42 .quote {
+      font-family: "Excalifont", "Inter", sans-serif;
+      font-size: 56px; line-height: 1.36; color: var(--fg); letter-spacing: 0.2px;
+    }
+    #scene-42 .quote .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-42 .quote .ignite { color: var(--muted); will-change: color, text-shadow; }
+    #scene-42 .quote .node { color: var(--fg); font-weight: 700; will-change: color, text-shadow; }
+
+    #scene-42 .attrib {
+      display: flex; align-items: center; gap: 18px;
+      margin-top: 44px; padding-top: 30px; border-top: 1px solid var(--border);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-42 .attrib .hn {
+      width: 46px; height: 46px; border-radius: 8px; flex: none; display: block;
+      box-shadow: 0 4px 16px rgba(251,101,30,0.35);
+    }
+    #scene-42 .attrib .who { font-size: 30px; font-weight: 500; color: var(--soft); letter-spacing: 0.2px; }
+    #scene-42 .attrib .meta {
+      font-family: "JetBrains Mono", monospace; font-size: 24px; color: var(--muted);
+      margin-left: auto; font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-42" data-composition-id="scene-42" data-width="1920" data-height="1080">
+    <div class="card">
+      <div class="quote-mark" data-layout-allow-overflow>&ldquo;</div>
+      <div class="quote">
+        <span class="w">We</span> <span class="w">allowed</span> <span class="w">this</span>
+        <span class="w">awful</span> <span class="w">language</span> <span class="w">to</span>
+        <span class="w ignite" data-key="escape" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2410">escape</span> <span class="w">the</span>
+        <span class="w">browser</span> <span class="w">and</span>
+        <span class="w ignite" data-key="infiltrate">infiltrate</span> <span class="w">our</span>
+        <span class="w">servers</span> <span class="w">in</span> <span class="w">form</span>
+        <span class="w">of</span> <span class="w node" data-key="node" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6050" data-sfx-volume="0.35">Node.js.</span>
+      </div>
+      <div class="attrib">
+        <svg class="hn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#fb651e" d="M0 0h256v256H0z"/><path fill="#fff" d="M119.374 144.746L75.433 62.432h20.081l25.848 52.092q.597 1.392 1.392 2.883t1.391 3.082q.398.596.597 1.094q.199.496.398.894a66 66 0 0 1 1.79 3.877q.795 1.89 1.39 3.48q1.591-3.381 3.48-7.257q1.89-3.878 3.877-8.053l26.246-52.092h18.69l-44.34 83.308v53.087h-16.9z"/></svg>
+        <span class="who">A Hacker News commenter, on JavaScript</span>
+        <span class="meta">2014</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(276.81).
+    // Entrance — the same card returns (callback to scene 01).
+    tl.fromTo("#scene-42 .card",
+      { opacity: 0, y: 24, scale: 0.985 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 0.10);
+    tl.fromTo("#scene-42 .quote-mark",
+      { opacity: 0, y: 12, scale: 0.9 },
+      { opacity: 0.9, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 0.20);
+    // attribution is present from the start — we already know who said it (scene 41).
+    tl.fromTo("#scene-42 .attrib",
+      { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.35);
+
+    // The full quote reveals word-by-word on the spoken word.
+    const words = [0.50, 0.79, 1.17, 1.41, 1.83, 2.23, 2.39, 2.69, 2.83, 3.67, 3.93, 4.57, 4.75, 5.13, 5.37, 5.63, 5.99];
+    gsap.utils.toArray("#scene-42 .quote .w").forEach((el, i) => {
+      tl.fromTo(el,
+        { opacity: 0, y: 14, rotateZ: -1.5 },
+        { opacity: 1, y: 0, rotateZ: 0, duration: 0.3, ease: "power2.out" }, words[i]);
+    });
+
+    // "escape" ignites danger-red on its word — the verb the narration just called out (escape 2.39).
+    tl.to('#scene-42 .quote .ignite[data-key="escape"]',
+      { color: "#ff6b5d", textShadow: "0 0 26px rgba(255,107,93,0.55)", duration: 0.3, ease: "power2.out" }, 2.41);
+    // "infiltrate" ignites on its word (infiltrate 3.93).
+    tl.to('#scene-42 .quote .ignite[data-key="infiltrate"]',
+      { color: "#ff6b5d", textShadow: "0 0 26px rgba(255,107,93,0.55)", duration: 0.3, ease: "power2.out" }, 3.95);
+    // "Node.js" resolves node-green — the irony: the thing he feared is the hero (Node.js 5.99).
+    tl.to('#scene-42 .quote .node[data-key="node"]',
+      { color: "#8cc84b", textShadow: "0 0 28px rgba(140,200,75,0.5)", duration: 0.4, ease: "power2.out" }, 6.05);
+
+    // Constant subtle life — the card breathes.
+    tl.to("#scene-42 .card", { y: "-=6", duration: 5, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    // Seam clear — fade out across the trailing overlap with scene 43 (local 6.95-7.45).
+    tl.to("#scene-42 .card",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.95);
+
+    window.__timelines["scene-42"] = tl;
+  </script>
+</body>
+</html>

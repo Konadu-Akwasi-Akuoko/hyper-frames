@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 30 — JavaScript had no baggage: a clean slate</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-30 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-30 .head {
+      position: absolute; left: 50%; top: 286px; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 26px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-30 .head img { width: 96px; height: 96px; }
+    #scene-30 .head .wm {
+      font-size: 84px; font-weight: 900; color: var(--accent); letter-spacing: -2px; will-change: text-shadow;
+    }
+
+    #scene-30 .list {
+      position: absolute; left: 50%; top: 470px; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 26px;
+    }
+    #scene-30 .chip {
+      display: flex; align-items: center; gap: 22px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+      padding: 20px 34px; min-width: 560px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-30 .chip .badge {
+      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 800; letter-spacing: 2px;
+      color: var(--accent-2); border: 1px solid rgba(103,232,249,0.45); border-radius: 8px; padding: 6px 14px;
+    }
+    #scene-30 .chip .item {
+      position: relative; font-family: "JetBrains Mono", monospace; font-size: 40px; font-weight: 600;
+      color: var(--muted); letter-spacing: -0.5px;
+    }
+    #scene-30 .chip .item .strike {
+      position: absolute; left: -4px; top: 52%; height: 4px; width: calc(100% + 8px); border-radius: 2px;
+      background: var(--accent-2); transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-30" data-composition-id="scene-30" data-width="1920" data-height="1080">
+    <div class="head">
+      <img src="assets/icons/javascript.svg" alt="JavaScript">
+      <span class="wm">JavaScript</span>
+    </div>
+
+    <div class="list">
+      <div class="chip" data-c="0">
+        <span class="badge">NONE</span>
+        <span class="item">I/O library<span class="strike" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2860" data-sfx-volume="0.35"></span></span>
+      </div>
+      <div class="chip" data-c="1">
+        <span class="badge">NONE</span>
+        <span class="item">legacy<span class="strike" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4360"></span></span>
+      </div>
+      <div class="chip" data-c="2">
+        <span class="badge">NONE</span>
+        <span class="item">defaults to fight<span class="strike" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="5940" data-sfx-volume="0.42"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(221.74).
+    // "JavaScript" — the clean subject arrives (JavaScript 0.50).
+    tl.fromTo("#scene-30 .head",
+      { opacity: 0, y: 18, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.6)" }, 0.50);
+    tl.fromTo("#scene-30 .head .wm",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 30px rgba(247,223,30,0.4)", duration: 0.5, ease: "power2.out" }, 0.9);
+
+    // Each baggage item reveals as it is named, then a clean cyan line strikes it out — the absence is the advantage.
+    // "no I/O library at all" (I/O 2.12), "no legacy" (legacy 4.02), "no defaults to fight" (defaults 5.38).
+    const reveal = [2.12, 3.82, 5.20];
+    const strike = [2.66, 4.16, 5.74];
+    gsap.utils.toArray("#scene-30 .chip").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, x: -34 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, reveal[i]);
+      tl.to(el.querySelector(".strike"), { scaleX: 1, duration: 0.34, ease: "power2.out" }, strike[i]);
+    });
+
+    // "fight" — the wordmark pulses clean as the last burden is struck (fight 5.92).
+    tl.fromTo("#scene-30 .head .wm",
+      { textShadow: "0 0 12px rgba(247,223,30,0.3)" },
+      { textShadow: "0 0 40px rgba(247,223,30,0.55)", duration: 0.45, ease: "power2.out", yoyo: true, repeat: 1 }, 5.92);
+
+    // Subtle life — the cleared list settles with a faint drift.
+    tl.to("#scene-30 .list", { y: "-=5", duration: 3.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.0);
+
+    // Seam clear — fade out across the trailing overlap with scene 31 (local 6.44-6.94).
+    tl.to("#scene-30 .head, #scene-30 .list",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.44);
+
+    window.__timelines["scene-30"] = tl;
+  </script>
+</body>
+</html>

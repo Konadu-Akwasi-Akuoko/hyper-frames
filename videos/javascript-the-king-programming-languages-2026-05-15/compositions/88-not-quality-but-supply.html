@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 88 — JavaScript didn't win on quality. It won on supply.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-88 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-88 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1480px; text-align: center; line-height: 1.25;
+      font-size: 46px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-88 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-88 .cap .qual { color: var(--muted); font-weight: 800; }
+    #scene-88 .cap .sup { color: var(--accent); font-weight: 800; }
+
+    #scene-88 .contrast {
+      position: absolute; left: 50%; top: 610px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 44px;
+    }
+    #scene-88 .wrong { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; will-change: transform, opacity; }
+    #scene-88 .wrong .line { display: flex; align-items: center; gap: 16px; }
+    #scene-88 .wrong .mk { font-family: "JetBrains Mono", monospace; font-size: 44px; font-weight: 800; color: var(--danger); }
+    #scene-88 .wrong .word { position: relative; font-family: "JetBrains Mono", monospace; font-size: 60px; font-weight: 800; color: var(--muted); }
+    #scene-88 .wrong .word .strikeline {
+      position: absolute; left: -8px; right: -8px; top: 54%; height: 5px; border-radius: 3px;
+      background: var(--danger); transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    #scene-88 .wrong .sb { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 600; color: var(--dim); letter-spacing: 0.3px; }
+
+    #scene-88 .right { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; will-change: transform, opacity; }
+    #scene-88 .right .line { display: flex; align-items: center; gap: 20px; }
+    #scene-88 .right .mk { font-family: "JetBrains Mono", monospace; font-size: 56px; font-weight: 800; color: var(--ok); }
+    #scene-88 .right .word {
+      font-family: "JetBrains Mono", monospace; font-size: 104px; font-weight: 900; color: var(--accent);
+      letter-spacing: -2px; line-height: 0.9; text-shadow: 0 0 40px rgba(247,223,30,0.25);
+    }
+    #scene-88 .right .sb { font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 700; color: var(--soft); letter-spacing: 0.3px; }
+  </style>
+</head>
+<body>
+  <div id="scene-88" data-composition-id="scene-88" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">JavaScript</span> <span class="w">didn&rsquo;t</span> <span class="w">win</span> <span class="w">on</span> <span class="w qual">quality.</span>
+      <span class="w">It</span> <span class="w">won</span> <span class="w">on</span> <span class="w sup">supply.</span>
+    </div>
+
+    <div class="contrast">
+      <div class="wrong">
+        <div class="line">
+          <span class="mk">&#10007;</span>
+          <span class="word">quality<span class="strikeline" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2350"></span></span>
+        </div>
+        <span class="sb">not because it was the better language</span>
+      </div>
+      <div class="right" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3870">
+        <div class="line">
+          <span class="mk">&#10003;</span>
+          <span class="word">supply</span>
+        </div>
+        <span class="sb">because it was already everywhere</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(505.05).
+    // "JavaScript didn't win on quality. It won on supply."
+    // (quality 1.86, won 3.06, supply 3.72).
+    const cw = [0.50, 1.02, 1.38, 1.64, 1.86, 2.82, 3.06, 3.58, 3.72];
+    gsap.utils.toArray("#scene-88 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "quality" — the rejected reason appears, then gets struck out (quality 1.86).
+    tl.fromTo("#scene-88 .wrong",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.70);
+    tl.to("#scene-88 .wrong .strikeline", { scaleX: 1, duration: 0.34, ease: "power2.inOut" }, 2.05);
+
+    // "supply" — the real reason slams in as the hero (supply 3.72).
+    tl.fromTo("#scene-88 .right",
+      { opacity: 0, y: 20, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 3.62);
+    tl.to("#scene-88 .right .word", { textShadow: "0 0 64px rgba(247,223,30,0.4)",
+      duration: 0.9, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.2);
+
+    // Seam clear — fade out across the trailing overlap with scene 89 (local 4.37-4.87).
+    tl.to("#scene-88 .cap, #scene-88 .contrast",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.37);
+
+    window.__timelines["scene-88"] = tl;
+  </script>
+</body>
+</html>

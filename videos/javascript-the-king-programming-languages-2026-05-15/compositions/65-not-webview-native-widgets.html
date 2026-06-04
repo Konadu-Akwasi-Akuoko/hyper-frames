@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 65 — Not a webview. Actual native widgets.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-65 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-65 .cap {
+      position: absolute; left: 50%; top: 188px; transform: translateX(-50%);
+      width: 1360px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-65 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-65 .cap .no { color: var(--danger); font-weight: 800; }
+    #scene-65 .cap .ac { color: var(--ok); font-weight: 800; }
+
+    #scene-65 .rig {
+      position: absolute; left: 50%; top: 626px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 56px;
+    }
+    #scene-65 .side { position: relative; display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none; }
+    #scene-65 .side .tag { font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 700; }
+    #scene-65 .side.bad .tag { color: var(--danger); }
+    #scene-65 .side.good .tag { color: var(--ok); }
+
+    /* the rejected webview */
+    #scene-65 .webview {
+      width: 360px; height: 224px; border-radius: 14px; background: var(--panel); border: 1px solid var(--border);
+      display: flex; flex-direction: column; overflow: hidden;
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-65 .webview .bar { height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-bottom: 1px solid var(--border); }
+    #scene-65 .webview .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--dim); }
+    #scene-65 .webview .bar .url {
+      margin-left: 8px; flex: 1; height: 18px; border-radius: 9px; background: #1b212b;
+      display: flex; align-items: center; padding: 0 10px;
+      font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted);
+    }
+    #scene-65 .webview .doc { flex: 1; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+    #scene-65 .webview .doc .ln { height: 12px; border-radius: 4px; background: #232a35; }
+    #scene-65 .webview .doc .ln.w70 { width: 70%; } #scene-65 .webview .doc .ln.w90 { width: 90%; } #scene-65 .webview .doc .ln.w50 { width: 50%; }
+
+    /* the red cross over the webview — sibling of .webview so its own box isn't clipped */
+    #scene-65 .side.bad .cross {
+      position: absolute; left: 50%; top: 37px; transform: translateX(-50%) scale(1.5);
+      font-size: 150px; font-weight: 900; color: var(--danger); line-height: 1;
+      text-shadow: 0 0 30px rgba(255,107,93,0.5); opacity: 0; will-change: transform, opacity; pointer-events: none;
+    }
+
+    /* the affirmed native widgets cluster */
+    #scene-65 .native {
+      position: relative; width: 360px; height: 224px; border-radius: 14px; background: var(--panel); border: 1px solid var(--border);
+      padding: 26px 28px; display: flex; flex-direction: column; gap: 22px; justify-content: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-65 .native .switch { width: 60px; height: 34px; border-radius: 17px; background: var(--ok); position: relative; }
+    #scene-65 .native .switch i { position: absolute; top: 3px; right: 3px; width: 28px; height: 28px; border-radius: 50%; background: #fff; }
+    #scene-65 .native .seg { display: flex; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    #scene-65 .native .seg span { flex: 1; text-align: center; padding: 8px 0; font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--muted); }
+    #scene-65 .native .seg span.on { background: #2563eb; color: #fff; font-weight: 700; }
+    #scene-65 .native .slider { height: 6px; border-radius: 3px; background: #232a35; position: relative; }
+    #scene-65 .native .slider .fill { position: absolute; left: 0; top: 0; height: 100%; width: 62%; border-radius: 3px; background: var(--accent-2); }
+    #scene-65 .native .slider .knob { position: absolute; left: 62%; top: 50%; transform: translate(-50%,-50%); width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+    #scene-65 .native .row1 { display: flex; align-items: center; justify-content: space-between; }
+    #scene-65 .native .row1 .nm { font-family: "JetBrains Mono", monospace; font-size: 15px; color: var(--muted); }
+
+    /* the green check over the native widgets */
+    #scene-65 .check {
+      position: absolute; right: -18px; top: -22px;
+      width: 60px; height: 60px; border-radius: 50%; background: var(--ok);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; font-weight: 900; color: #0b0d12; line-height: 1;
+      box-shadow: 0 0 26px rgba(125,216,125,0.45); opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-65" data-composition-id="scene-65" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w no">Not</span> <span class="w">a</span> <span class="w no">webview.</span>
+      <span class="w ac">Actual</span> <span class="w ac">native</span> <span class="w ac">widgets.</span>
+    </div>
+
+    <div class="rig">
+      <div class="side bad">
+        <div class="webview">
+          <div class="bar"><i></i><i></i><i></i><span class="url">about:webview</span></div>
+          <div class="doc">
+            <div class="ln w90"></div><div class="ln w70"></div><div class="ln w50"></div><div class="ln w70"></div>
+          </div>
+        </div>
+        <div class="cross">&times;</div>
+        <span class="tag">webview</span>
+      </div>
+
+      <div class="side good">
+        <div class="native">
+          <div class="row1"><span class="nm">Wi-Fi</span><div class="switch"><i></i></div></div>
+          <div class="seg"><span class="on">Native</span><span>Web</span></div>
+          <div class="slider"><div class="fill"></div><div class="knob"></div></div>
+          <div class="check" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3410">&check;</div>
+        </div>
+        <span class="tag">native widgets</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(366.00).
+    // "Not a webview. Actual native widgets." (not 0.50, webview 1.10, Actual ~1.60, native 2.69, widgets 3.21).
+    const cw = [0.50, 0.78, 0.90, 1.60, 2.69, 3.21];
+    gsap.utils.toArray("#scene-65 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // the webview frames in (not 0.50).
+    tl.fromTo("#scene-65 .webview",
+      { opacity: 0, x: -24, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.45);
+
+    // "Not a webview" — the red cross slams over it and it dims (webview 1.10).
+    tl.fromTo("#scene-65 .cross",
+      { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 1.10);
+    tl.to("#scene-65 .webview", { filter: "grayscale(0.7) brightness(0.55)", duration: 0.45, ease: "power2.out" }, 1.20);
+
+    // "Actual native widgets" — the native control cluster lands (native 2.69).
+    tl.fromTo("#scene-65 .native",
+      { opacity: 0, x: 24, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 2.00);
+
+    // "widgets" — the green check confirms the native side (widgets 3.21).
+    tl.fromTo("#scene-65 .check",
+      { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 3.21);
+
+    // Subtle life — the native card holds with a faint breath.
+    tl.to("#scene-65 .native", { y: "-=5", duration: 1.2, ease: "sine.inOut" }, 3.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 66 (local 3.69-4.19).
+    tl.to("#scene-65 .cap, #scene-65 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.69);
+
+    window.__timelines["scene-65"] = tl;
+  </script>
+</body>
+</html>

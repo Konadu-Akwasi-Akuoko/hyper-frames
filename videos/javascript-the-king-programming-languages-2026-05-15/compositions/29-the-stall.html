@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 29 — a blocking call slips in, the whole thing stalled</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-29 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-29 .cap {
+      position: absolute; left: 50%; top: 226px; transform: translateX(-50%);
+      width: 1560px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
+    }
+    #scene-29 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-29 .cap .blk { color: var(--danger); font-weight: 800; }
+    #scene-29 .cap .stall { color: var(--danger); font-weight: 800; will-change: text-shadow; }
+
+    /* the async flow lane */
+    #scene-29 .flow {
+      position: absolute; left: 50%; top: 600px; transform: translate(-50%, -50%);
+      width: 1320px; height: 200px;
+    }
+    #scene-29 .lane { position: absolute; inset: 0; will-change: filter; }
+    #scene-29 .track {
+      position: absolute; left: 0; top: 70px; width: 1320px; height: 92px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+      will-change: box-shadow, border-color;
+    }
+    #scene-29 .task {
+      position: absolute; left: 0; top: 84px; width: 60px; height: 60px; border-radius: 13px;
+      background: rgba(103,232,249,0.16); border: 2px solid var(--accent-2);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-29 .blocker {
+      position: absolute; top: 48px; width: 30px; height: 138px; border-radius: 8px;
+      background: var(--danger); box-shadow: 0 0 26px rgba(255,107,93,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-29 .stamp {
+      position: absolute; left: 50%; top: 44px;
+      font-family: "JetBrains Mono", monospace; font-size: 64px; font-weight: 800; letter-spacing: 4px;
+      color: var(--danger); border: 4px solid var(--danger); border-radius: 14px; padding: 10px 32px;
+      background: rgba(11,13,18,0.72); white-space: nowrap;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-29" data-composition-id="scene-29" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w">second</span> <span class="w">the</span>
+      <span class="w">normal</span> <span class="w blk">blocking</span> <span class="w">call</span>
+      <span class="w">slipped</span> <span class="w">in,</span> <span class="w">the</span>
+      <span class="w">whole</span> <span class="w">thing</span> <span class="w stall">stalled.</span>
+    </div>
+
+    <div class="flow">
+      <div class="lane">
+        <div class="track"></div>
+        <div class="task" data-t="0"></div>
+        <div class="task" data-t="1"></div>
+        <div class="task" data-t="2"></div>
+        <div class="task" data-t="3"></div>
+        <div class="task" data-t="4"></div>
+        <div class="blocker" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="2640"></div>
+      </div>
+      <div class="stamp" data-sfx-on-anchor="boom" data-sfx-asset="Anime SFX/Hollow Hit 01.mp3" data-sfx-at-scene-ms="4340" data-sfx-volume="0.35">STALLED</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(216.72).
+    // "The second the normal blocking call slipped in, the whole thing stalled." (The 0.50 ... stalled 4.28).
+    const cw = [0.50, 0.64, 1.00, 1.16, 1.54, 2.04, 2.36, 2.68, 3.51, 3.68, 4.06, 4.28];
+    gsap.utils.toArray("#scene-29 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // The async flow works first — two tasks glide all the way across and exit, handled cleanly.
+    tl.set("#scene-29 .task[data-t='0']", { x: -80 });
+    tl.to("#scene-29 .task[data-t='0']", { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.40);
+    tl.to("#scene-29 .task[data-t='0']", { x: 1360, duration: 1.5, ease: "none" }, 0.40);
+    tl.to("#scene-29 .task[data-t='0']", { opacity: 0, duration: 0.25, ease: "power1.in" }, 1.70);
+    tl.set("#scene-29 .task[data-t='1']", { x: -80 });
+    tl.to("#scene-29 .task[data-t='1']", { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.78);
+    tl.to("#scene-29 .task[data-t='1']", { x: 1360, duration: 1.5, ease: "none" }, 0.78);
+    tl.to("#scene-29 .task[data-t='1']", { opacity: 0, duration: 0.25, ease: "power1.in" }, 2.08);
+
+    // "blocking call slipped in" — the red blocker slams down across the lane centre (slipped 2.36).
+    tl.fromTo("#scene-29 .blocker",
+      { opacity: 0, x: 660, y: -120 },
+      { opacity: 1, x: 660, y: 0, duration: 0.34, ease: "power3.in" }, 2.30);
+    tl.to("#scene-29 .track",
+      { x: "+=6", duration: 0.06, repeat: 5, yoyo: true, ease: "none" }, 2.62);
+
+    // the following tasks jam up behind the blocker — the flow piles into a queue.
+    tl.fromTo("#scene-29 .task[data-t='2']",
+      { opacity: 0, x: -80 }, { opacity: 1, x: 590, duration: 0.9, ease: "power2.out" }, 2.30);
+    tl.fromTo("#scene-29 .task[data-t='3']",
+      { opacity: 0, x: -80 }, { opacity: 1, x: 524, duration: 0.9, ease: "power2.out" }, 2.78);
+    tl.fromTo("#scene-29 .task[data-t='4']",
+      { opacity: 0, x: -80 }, { opacity: 1, x: 458, duration: 0.9, ease: "power2.out" }, 3.26);
+
+    // "the whole thing stalled" — the lane freezes mid-motion and desaturates to a dead grey,
+    // then the alarm-red STALLED stamp slams over it (stalled 4.28). The stamp stays full colour
+    // (it is a sibling of the greyed .lane) so it pops against the frozen pipeline.
+    tl.to("#scene-29 .lane", { filter: "grayscale(0.92) brightness(0.62)", duration: 0.3, ease: "power2.out" }, 4.28);
+    tl.fromTo("#scene-29 .stamp",
+      { opacity: 0, scale: 1.5, rotation: -7, xPercent: -50 },
+      { opacity: 1, scale: 1, rotation: -7, xPercent: -50, duration: 0.34, ease: "back.out(2.2)" }, 4.34);
+    tl.fromTo("#scene-29 .cap .stall",
+      { textShadow: "0 0 0 rgba(255,107,93,0)" },
+      { textShadow: "0 0 28px rgba(255,107,93,0.6)", duration: 0.4, ease: "power2.out" }, 4.32);
+
+    // Seam clear — fade out across the trailing overlap with scene 30 (local 5.02-5.52).
+    tl.to("#scene-29 .cap, #scene-29 .flow",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.02);
+
+    window.__timelines["scene-29"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 38 — within months, tens of thousands were running it</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --node: #8cc84b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-38 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-38 .cap {
+      position: absolute; left: 50%; top: 206px; transform: translateX(-50%);
+      width: 1480px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
+    }
+    #scene-38 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-38 .cap .big { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    /* the multiplying field of Node installs */
+    #scene-38 .field {
+      position: absolute; left: 50%; top: 640px; transform: translate(-50%, -50%);
+      display: grid; grid-template-columns: repeat(16, 22px); gap: 14px;
+      justify-content: center; will-change: filter;
+    }
+    #scene-38 .node {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: var(--node); opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-38 .tag {
+      position: absolute; left: 50%; top: 858px; transform: translateX(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--node);
+      letter-spacing: 0.5px; opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-38" data-composition-id="scene-38" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Within</span> <span class="w">months,</span>
+      <span class="w big">tens</span> <span class="w big">of</span> <span class="w big">thousands</span>
+      <span class="w">of</span> <span class="w">engineers</span>
+      <span class="w">were</span> <span class="w">running</span> <span class="w">it.</span>
+    </div>
+
+    <div class="field" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1900" data-sfx-volume="0.42"></div>
+
+    <div class="tag">running Node.js</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // A dense grid of Node installs.
+    const field = document.querySelector("#scene-38 .field");
+    const COLS = 16, ROWS = 8;
+    for (let i = 0; i < COLS * ROWS; i++) {
+      const n = document.createElement("div");
+      n.className = "node";
+      field.appendChild(n);
+    }
+
+    // Scene-local = global - data_start(255.50).
+    // "Within months, tens of thousands of engineers were running it." (Within 0.50 ... it 3.44).
+    const cw = [0.50, 0.86, 1.38, 1.60, 1.76, 2.06, 2.20, 2.74, 2.98, 3.44];
+    gsap.utils.toArray("#scene-38 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // "tens of thousands" — installs multiply and flood the frame from the centre outward (tens 1.38).
+    const nodes = gsap.utils.toArray("#scene-38 .node");
+    const cx = (COLS - 1) / 2, cy = (ROWS - 1) / 2;
+    // order nodes by distance from centre so the flood radiates outward.
+    const ordered = nodes
+      .map((el, i) => ({ el, d: Math.abs((i % COLS) - cx) + Math.abs(Math.floor(i / COLS) - cy) }))
+      .sort((a, b) => a.d - b.d);
+    ordered.forEach((o, k) => {
+      tl.fromTo(o.el,
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" },
+        1.40 + k * 0.0085);
+    });
+
+    // "running it" — the whole field is alive: it brightens and pulses green (running 2.98).
+    tl.fromTo("#scene-38 .field",
+      { filter: "drop-shadow(0 0 0 rgba(140,200,75,0))" },
+      { filter: "drop-shadow(0 0 18px rgba(140,200,75,0.45))", duration: 0.5, ease: "power2.out" }, 2.98);
+    tl.to("#scene-38 .field", { scale: 1.04, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 2.98);
+    tl.fromTo("#scene-38 .tag",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.02);
+
+    // Subtle life — the field breathes after it fills.
+    tl.to("#scene-38 .field", { y: "-=4", duration: 1.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 39 (local 3.83-4.33).
+    tl.to("#scene-38 .cap, #scene-38 .field, #scene-38 .tag",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.83);
+
+    window.__timelines["scene-38"] = tl;
+  </script>
+</body>
+</html>

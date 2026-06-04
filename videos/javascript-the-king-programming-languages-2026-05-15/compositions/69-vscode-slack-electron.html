@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 69 — VS Code is Electron. Slack is Electron.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --electron: #9feaf9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-69 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-69 .cap {
+      position: absolute; left: 50%; top: 208px; transform: translateX(-50%);
+      width: 1280px; text-align: center;
+      font-size: 52px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-69 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-69 .cap .el { color: var(--accent-2); font-weight: 800; }
+
+    #scene-69 .rows {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; gap: 30px;
+    }
+    #scene-69 .row { display: flex; align-items: center; gap: 30px; opacity: 0; will-change: transform, opacity; }
+
+    #scene-69 .app {
+      display: flex; align-items: center; gap: 18px; width: 340px;
+      padding: 20px 28px; border-radius: 16px; background: var(--panel); border: 1px solid var(--border);
+    }
+    #scene-69 .app img { width: 56px; height: 56px; flex: none; }
+    #scene-69 .app .nm { font-family: "JetBrains Mono", monospace; font-size: 28px; font-weight: 800; color: var(--soft); }
+
+    #scene-69 .eq {
+      font-family: "JetBrains Mono", monospace; font-size: 52px; font-weight: 800; color: var(--muted);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-69 .elec {
+      display: flex; align-items: center; gap: 16px; width: 300px;
+      padding: 20px 26px; border-radius: 16px; background: rgba(103,232,249,0.08); border: 1px solid rgba(103,232,249,0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-69 .elec img { width: 52px; height: 52px; flex: none; }
+    #scene-69 .elec .nm { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 800; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-69" data-composition-id="scene-69" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">VS</span> <span class="w">Code</span> <span class="w">is</span> <span class="w el">Electron.</span>
+      <span class="w">Slack</span> <span class="w">is</span> <span class="w el">Electron.</span>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-row="vscode">
+        <div class="app"><img src="assets/icons/vscode.svg" alt="VS Code"><span class="nm">VS Code</span></div>
+        <span class="eq">=</span>
+        <div class="elec" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1500" data-sfx-volume="0.35"><img src="assets/icons/electron.svg" alt="Electron"><span class="nm">Electron</span></div>
+      </div>
+      <div class="row" data-row="slack">
+        <div class="app"><img src="assets/icons/slack.svg" alt="Slack"><span class="nm">Slack</span></div>
+        <span class="eq">=</span>
+        <div class="elec" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3360" data-sfx-volume="0.35"><img src="assets/icons/electron.svg" alt="Electron"><span class="nm">Electron</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(388.63).
+    // "VS Code is Electron. Slack is Electron."
+    // (VS 0.50, Electron 1.32, Slack 2.44, Electron 3.18).
+    const cw = [0.50, 0.86, 1.14, 1.32, 2.44, 2.96, 3.18];
+    gsap.utils.toArray("#scene-69 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "VS Code" — the app row appears (VS 0.50).
+    tl.fromTo("#scene-69 .row[data-row='vscode']",
+      { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.50);
+    // "is Electron" — the equation resolves (Electron 1.32).
+    tl.fromTo("#scene-69 .row[data-row='vscode'] .eq",
+      { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.10);
+    tl.fromTo("#scene-69 .row[data-row='vscode'] .elec",
+      { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.6)" }, 1.32);
+
+    // "Slack" — the second app row appears (Slack 2.44).
+    tl.fromTo("#scene-69 .row[data-row='slack']",
+      { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.44);
+    // "is Electron" — the second equation resolves (Electron 3.18).
+    tl.fromTo("#scene-69 .row[data-row='slack'] .eq",
+      { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.96);
+    tl.fromTo("#scene-69 .row[data-row='slack'] .elec",
+      { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.6)" }, 3.18);
+
+    // Seam clear — fade out across the trailing overlap with scene 70 (local 3.70-4.20).
+    tl.to("#scene-69 .cap, #scene-69 .rows",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.70);
+
+    window.__timelines["scene-69"] = tl;
+  </script>
+</body>
+</html>

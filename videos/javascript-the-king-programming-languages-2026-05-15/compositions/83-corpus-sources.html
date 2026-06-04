@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 83 — That means GitHub's public repos, every npm package, every blog post and answered Stack Overflow question.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-83 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-83 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1540px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-83 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-83 .cap .brand { color: var(--accent-2); font-weight: 800; }
+
+    #scene-83 .cards {
+      position: absolute; left: 50%; top: 668px; transform: translate(-50%, -50%);
+      display: flex; align-items: stretch; gap: 40px;
+    }
+    #scene-83 .src {
+      width: 360px; padding: 34px 30px; border-radius: 18px;
+      background: rgba(17,20,27,0.96); border: 1px solid var(--border);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-83 .src .logo { height: 72px; display: flex; align-items: center; justify-content: center; }
+    #scene-83 .src .logo img { height: 72px; width: auto; }
+    #scene-83 .src .logo.gh img { filter: invert(1); }
+    #scene-83 .src .nm { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 800; color: var(--fg); letter-spacing: -0.2px; }
+    #scene-83 .src .sb { font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 600; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div id="scene-83" data-composition-id="scene-83" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">That</span> <span class="w">means</span> <span class="w brand">GitHub&rsquo;s</span> <span class="w">public</span> <span class="w">repos,</span>
+      <span class="w">every</span> <span class="w brand">npm</span> <span class="w">package,</span>
+      <span class="w">every</span> <span class="w">blog</span> <span class="w">post</span> <span class="w">and</span> <span class="w">answered</span>
+      <span class="w brand">Stack</span> <span class="w brand">Overflow</span> <span class="w">question.</span>
+    </div>
+
+    <div class="cards">
+      <div class="src github" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="1770" data-sfx-volume="0.35">
+        <div class="logo gh"><img src="assets/icons/github.svg" alt="GitHub"></div>
+        <span class="nm">GitHub</span>
+        <span class="sb">every public repo</span>
+      </div>
+      <div class="src npm" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="3750">
+        <div class="logo"><img src="assets/icons/npm.svg" alt="npm"></div>
+        <span class="nm">npm</span>
+        <span class="sb">every package</span>
+      </div>
+      <div class="src so" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="5610" data-sfx-volume="0.42">
+        <div class="logo"><img src="assets/icons/stackoverflow.svg" alt="Stack Overflow"></div>
+        <span class="nm">Stack Overflow</span>
+        <span class="sb">blog posts &amp; answered questions</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(468.99).
+    // "That means GitHub's public repos, every npm package, every blog post and answered Stack Overflow question."
+    // (GitHub's 1.56, npm 3.90, blog 5.68, Stack 6.84, question 7.46).
+    const cw = [0.50, 0.80, 1.56, 2.05, 2.40, 3.54, 3.90, 4.40, 5.40, 5.68, 5.98, 6.28, 6.54, 6.84, 7.02, 7.46];
+    gsap.utils.toArray("#scene-83 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // each source card lands as it is named (GitHub 1.56, npm 3.54, Stack Overflow 5.40).
+    const cards = [
+      { sel: ".github", at: 1.56 },
+      { sel: ".npm",    at: 3.54 },
+      { sel: ".so",     at: 5.40 },
+    ];
+    cards.forEach((c) => {
+      tl.fromTo(`#scene-83 .src${c.sel}`,
+        { opacity: 0, y: 24, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.6)" }, c.at);
+    });
+
+    // Seam clear — fade out across the trailing overlap with scene 84 (local 8.00-8.50).
+    tl.to("#scene-83 .cap, #scene-83 .cards",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.00);
+
+    window.__timelines["scene-83"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 19 — Ryan Dahl, Berlin, November 2009</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-19 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    /* photo cutout — the named protagonist */
+    #scene-19 .photo {
+      position: absolute; left: 196px; top: 50%; transform: translateY(-50%);
+      width: 512px; height: 712px; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--panel);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-19 .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;
+      filter: grayscale(0.45) contrast(1.06); }
+    #scene-19 .photo::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(103,232,249,0.10), rgba(11,13,18,0.55));
+      mix-blend-mode: multiply;
+    }
+    /* placeholder face — only shown until a real photo is dropped in */
+    #scene-19 .photo .ph {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px; padding: 30px; text-align: center;
+      background: var(--panel);
+    }
+    #scene-19 .photo .ph .k { font-family: "JetBrains Mono", monospace; font-size: 18px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    #scene-19 .photo .ph .d { font-size: 24px; color: var(--soft); line-height: 1.35; }
+
+    /* fact stack */
+    #scene-19 .facts {
+      position: absolute; left: 800px; top: 50%; transform: translateY(-50%);
+      width: 940px;
+    }
+    #scene-19 .facts .item { opacity: 0; will-change: transform, opacity; }
+
+    #scene-19 .date {
+      display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 30px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(247,223,30,0.4); border-radius: 10px; padding: 10px 22px;
+      margin-bottom: 30px;
+    }
+    #scene-19 .role { font-size: 36px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+    #scene-19 .name {
+      font-size: 104px; font-weight: 900; color: var(--fg); letter-spacing: -3px;
+      line-height: 0.98; margin-bottom: 34px;
+    }
+    #scene-19 .loc {
+      font-size: 44px; font-weight: 500; color: var(--soft); margin-bottom: 44px;
+    }
+    #scene-19 .loc .city { color: var(--accent-2); font-weight: 700; }
+
+    #scene-19 .aud { display: flex; align-items: baseline; gap: 20px; }
+    #scene-19 .aud .num {
+      font-size: 96px; font-weight: 900; color: var(--accent-2); letter-spacing: -3px;
+      font-variant-numeric: tabular-nums; line-height: 0.9;
+    }
+    #scene-19 .aud .lbl { font-size: 40px; font-weight: 600; color: var(--soft); }
+  </style>
+</head>
+<body>
+  <div id="scene-19" data-composition-id="scene-19" data-width="1920" data-height="1080">
+    <div class="photo"
+         data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="5720" data-sfx-volume="0.42"
+         data-asset
+         data-asset-class="photo"
+         data-asset-desc="Photo of Ryan Dahl (creator of Node.js) presenting at JSConf EU, Berlin, November 2009 — ideally the original talk; grayscale/duotone documentary treatment, head-and-shoulders, head in upper third.">
+      <img src="assets/images/ryan-dahl.png" alt="Ryan Dahl">
+      <div class="ph">
+        <div class="k">photo</div>
+        <div class="d">Ryan Dahl<br>JSConf EU &middot; Berlin<br>Nov 2009</div>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div class="item date"
+           data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="1380" data-sfx-volume="0.35">November 2009</div>
+      <div class="item role">an engineer&hellip;</div>
+      <div class="item name">Ryan Dahl</div>
+      <div class="item loc">walked onto a stage in <span class="city">Berlin</span></div>
+      <div class="item aud">
+        <span class="num" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="9680" data-sfx-volume="0.42">150</span>
+        <span class="lbl">people in the room</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(150.18).
+    // "But in November 2009" — the date stamp lands (November 1.13, 2009 1.52).
+    tl.fromTo("#scene-19 .date",
+      { opacity: 0, y: 14, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 1.13);
+
+    // "an engineer" — the role label (engineer 4.02).
+    tl.fromTo("#scene-19 .role",
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.02);
+
+    // "Ryan Dahl" — the name punches and the photo cuts in (Ryan 5.12, Dahl 5.44).
+    tl.fromTo("#scene-19 .name",
+      { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.12);
+    tl.fromTo("#scene-19 .photo",
+      { opacity: 0, x: -40, scale: 0.97 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 5.12);
+
+    // "walked onto a stage in Berlin" — location (walked 6.32, Berlin 7.66).
+    tl.fromTo("#scene-19 .loc",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 6.32);
+    tl.fromTo("#scene-19 .loc .city",
+      { textShadow: "0 0 0 rgba(103,232,249,0)" },
+      { textShadow: "0 0 26px rgba(103,232,249,0.5)", duration: 0.4, ease: "power2.out" }, 7.70);
+
+    // "in front of 150 people" — the audience stat punches (150 9.44, people 10.38).
+    tl.fromTo("#scene-19 .aud",
+      { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 9.30);
+    tl.fromTo("#scene-19 .aud .num",
+      { scale: 1.35 }, { scale: 1, duration: 0.5, ease: "back.out(2.2)" }, 9.44);
+
+    // Subtle life — the photo breathes a hair.
+    tl.to("#scene-19 .photo", { y: "-=6", duration: 4.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.2);
+
+    // Seam clear — both columns fade across the trailing overlap with scene 20 (local 10.98-11.48).
+    tl.to(["#scene-19 .facts", "#scene-19 .photo"], { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 10.98);
+
+    window.__timelines["scene-19"] = tl;
+  </script>
+</body>
+</html>

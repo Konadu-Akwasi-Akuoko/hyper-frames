@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 71 — Your code editor is a browser. Your password manager is a browser. Your chat app too.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-71 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-71 .cap {
+      position: absolute; left: 50%; top: 152px; transform: translateX(-50%);
+      width: 1480px; text-align: center;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-71 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-71 .cap .br { color: var(--accent-2); font-weight: 800; }
+
+    #scene-71 .stack {
+      position: absolute; left: 50%; top: 648px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    #scene-71 .win {
+      width: 660px; border-radius: 14px; background: var(--panel); border: 1px solid var(--border); overflow: hidden;
+      opacity: 0; will-change: transform, opacity, border-color, box-shadow;
+    }
+    #scene-71 .win .chrome {
+      height: 46px; display: flex; align-items: center; gap: 10px; padding: 0 16px; border-bottom: 1px solid var(--border);
+    }
+    #scene-71 .win .chrome i { width: 11px; height: 11px; border-radius: 50%; background: var(--dim); flex: none; }
+    #scene-71 .win .chrome i:nth-child(1) { background: #ff5f57; }
+    #scene-71 .win .chrome i:nth-child(2) { background: #febc2e; }
+    #scene-71 .win .chrome i:nth-child(3) { background: #28c840; }
+    #scene-71 .win .chrome .urlbar {
+      margin-left: 8px; flex: 1; height: 26px; border-radius: 13px; background: #1b212b;
+      display: flex; align-items: center; gap: 9px; padding: 0 12px;
+    }
+    #scene-71 .win .chrome .urlbar img { width: 17px; height: 17px; flex: none; }
+    #scene-71 .win .chrome .urlbar .u { font-family: "JetBrains Mono", monospace; font-size: 15px; color: var(--muted); }
+    #scene-71 .win .body {
+      padding: 16px 22px; display: flex; align-items: center; gap: 14px;
+    }
+    #scene-71 .win .body .tool { font-size: 26px; font-weight: 800; color: var(--fg); letter-spacing: -0.3px; }
+    #scene-71 .win .body .real {
+      margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700; color: var(--accent-2);
+      padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(103,232,249,0.4); opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-71" data-composition-id="scene-71" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Your</span> <span class="w">code</span> <span class="w">editor</span> <span class="w">is</span> <span class="w">a</span> <span class="w br">browser.</span>
+      <span class="w">Your</span> <span class="w">password</span> <span class="w">manager</span> <span class="w">is</span> <span class="w">a</span> <span class="w br">browser.</span>
+      <span class="w">Your</span> <span class="w">favorite</span> <span class="w">chat</span> <span class="w">app</span> <span class="w">is</span> <span class="w">a</span> <span class="w br">browser</span> <span class="w">too.</span>
+    </div>
+
+    <div class="stack">
+      <div class="win" data-row="1">
+        <div class="chrome"><i></i><i></i><i></i>
+          <div class="urlbar"><img src="assets/icons/chrome.svg" alt=""><span class="u">your-code-editor.app</span></div>
+        </div>
+        <div class="body"><span class="tool">Code editor</span><span class="real" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1820" data-sfx-volume="0.42">a browser</span></div>
+      </div>
+      <div class="win" data-row="2">
+        <div class="chrome"><i></i><i></i><i></i>
+          <div class="urlbar"><img src="assets/icons/chrome.svg" alt=""><span class="u">your-password-manager.app</span></div>
+        </div>
+        <div class="body"><span class="tool">Password manager</span><span class="real" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3980" data-sfx-volume="0.35">a browser</span></div>
+      </div>
+      <div class="win" data-row="3">
+        <div class="chrome"><i></i><i></i><i></i>
+          <div class="urlbar"><img src="assets/icons/chrome.svg" alt=""><span class="u">your-chat-app.app</span></div>
+        </div>
+        <div class="body"><span class="tool">Chat app</span><span class="real" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6080" data-sfx-volume="0.35">a browser</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(398.05).
+    // "Your code editor is a browser. Your password manager is a browser. Your favorite chat app is a browser too."
+    // (browser1 1.58, Your2 2.50, browser2 3.74, Your3 4.70, browser3 5.84, too 6.22).
+    const cw = [0.50, 0.62, 0.88, 1.32, 1.43, 1.58,
+                2.50, 2.66, 3.00, 3.50, 3.60, 3.74,
+                4.70, 4.84, 5.08, 5.30, 5.60, 5.74, 5.84, 6.22];
+    gsap.utils.toArray("#scene-71 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // each browser window slides in on its line, then reveals it is "a browser" on the word.
+    const rows = [
+      { sel: "[data-row='1']", in: 0.50, br: 1.58 },
+      { sel: "[data-row='2']", in: 2.50, br: 3.74 },
+      { sel: "[data-row='3']", in: 4.70, br: 5.84 },
+    ];
+    rows.forEach((r) => {
+      tl.fromTo(`#scene-71 .win${r.sel}`,
+        { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, r.in);
+      // "is a browser" — the window border glows browser-cyan and the verdict tag appears.
+      tl.to(`#scene-71 .win${r.sel}`,
+        { borderColor: "rgba(103,232,249,0.55)", boxShadow: "0 0 24px rgba(103,232,249,0.18)", duration: 0.4, ease: "power2.out" }, r.br);
+      tl.to(`#scene-71 .win${r.sel} .real`, { opacity: 1, duration: 0.3 }, r.br);
+    });
+
+    // Seam clear — fade out across the trailing overlap with scene 72 (local 6.70-7.20).
+    tl.to("#scene-71 .cap, #scene-71 .stack",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.70);
+
+    window.__timelines["scene-71"] = tl;
+  </script>
+</body>
+</html>

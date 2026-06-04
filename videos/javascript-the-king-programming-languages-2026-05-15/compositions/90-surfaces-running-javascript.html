@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 90 — The next time you open your code editor, password manager, or the Start menu of Windows, remember you're running JavaScript.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-90 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-90 .cap {
+      position: absolute; left: 50%; top: 140px; transform: translateX(-50%);
+      width: 1560px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.7px;
+    }
+    #scene-90 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-90 .cap .js { color: var(--accent); font-weight: 800; }
+
+    #scene-90 .surfaces {
+      position: absolute; left: 50%; top: 500px; transform: translate(-50%, -50%);
+      display: flex; align-items: stretch; gap: 50px;
+    }
+    #scene-90 .surf {
+      position: relative; width: 268px; padding: 28px 24px; border-radius: 18px;
+      background: rgba(17,20,27,0.94); border: 1.5px solid var(--border);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-90 .surf .ic { height: 72px; display: flex; align-items: center; justify-content: center; }
+    #scene-90 .surf .ic img { height: 66px; width: auto; }
+    #scene-90 .surf .lbl { font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 800; color: var(--fg); }
+    #scene-90 .surf .sb { font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 600; color: var(--muted); }
+    #scene-90 .surf .jstag {
+      position: absolute; top: -14px; right: -14px;
+      width: 44px; height: 44px; border-radius: 10px; background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 900; color: #0b0d12;
+      opacity: 0; transform: scale(0.5); will-change: transform, opacity; box-shadow: 0 6px 18px rgba(247,223,30,0.35);
+    }
+
+    /* Windows 4-square mark */
+    #scene-90 .winmark { width: 64px; height: 64px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; }
+    #scene-90 .winmark span { background: var(--win); border-radius: 3px; }
+    /* lock glyph */
+    #scene-90 .lock svg { width: 60px; height: 66px; }
+    #scene-90 .lock svg path, #scene-90 .lock svg rect { fill: none; stroke: var(--accent-2); stroke-width: 4; }
+
+    #scene-90 .jsmark {
+      position: absolute; left: 50%; top: 800px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-90 .jsmark .sq {
+      width: 116px; height: 116px; border-radius: 22px; background: var(--accent);
+      display: flex; align-items: flex-end; justify-content: flex-end; padding: 0 14px 10px 0;
+      font-family: "JetBrains Mono", monospace; font-size: 52px; font-weight: 900; color: #0b0d12;
+      box-shadow: 0 0 60px rgba(247,223,30,0.3);
+    }
+    #scene-90 .jsmark .lbl { font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 900; color: var(--accent-2); letter-spacing: -0.3px; }
+  </style>
+</head>
+<body>
+  <div id="scene-90" data-composition-id="scene-90" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w">next</span> <span class="w">time</span> <span class="w">you</span> <span class="w">open</span> <span class="w">your</span> <span class="w">code</span> <span class="w">editor,</span>
+      <span class="w">your</span> <span class="w">password</span> <span class="w">manager,</span>
+      <span class="w">or</span> <span class="w">even</span> <span class="w">the</span> <span class="w">Start</span> <span class="w">menu</span> <span class="w">of</span> <span class="w">Windows</span>&nbsp;&mdash;
+      <span class="w">remember</span> <span class="w">you&rsquo;re</span> <span class="w">running</span> <span class="w js">JavaScript.</span>
+    </div>
+
+    <div class="surfaces">
+      <div class="surf" data-k="editor" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1880">
+        <span class="jstag">JS</span>
+        <div class="ic"><img src="assets/icons/vscode.svg" alt="VS Code"></div>
+        <span class="lbl">code editor</span>
+        <span class="sb">VS Code &middot; Electron</span>
+      </div>
+      <div class="surf" data-k="pw">
+        <span class="jstag">JS</span>
+        <div class="ic lock">
+          <svg viewBox="0 0 60 66">
+            <rect x="8" y="28" width="44" height="34" rx="6"></rect>
+            <path d="M18 28 V20 a12 12 0 0 1 24 0 V28"></path>
+          </svg>
+        </div>
+        <span class="lbl">password manager</span>
+        <span class="sb">a browser inside</span>
+      </div>
+      <div class="surf" data-k="win" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4610" data-sfx-volume="0.42">
+        <span class="jstag">JS</span>
+        <div class="ic"><div class="winmark"><span></span><span></span><span></span><span></span></div></div>
+        <span class="lbl">Start menu</span>
+        <span class="sb">React Native for Windows</span>
+      </div>
+    </div>
+
+    <div class="jsmark" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="8300">
+      <div class="sq">JS</div>
+      <span class="lbl">you&rsquo;re running JavaScript</span>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(514.68).
+    // "The next time you open your code editor, your password manager, or even the Start menu of Windows, remember you're running JavaScript."
+    // (editor 1.67, password 2.61, Start 4.27, Windows 5.13, remember 6.05, running 7.33, JavaScript 7.99).
+    const cw = [0.50, 0.63, 0.81, 0.97, 1.09, 1.33, 1.47, 1.67, 2.47, 2.61, 3.01, 3.79, 3.93, 4.13, 4.27, 4.63, 4.97, 5.13, 6.05, 6.95, 7.33, 7.99];
+    gsap.utils.toArray("#scene-90 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // each surface chip lands as it is named (editor 1.67, password 2.61, Start menu 4.27).
+    const surfs = [
+      { sel: '[data-k="editor"]', at: 1.67 },
+      { sel: '[data-k="pw"]',     at: 2.61 },
+      { sel: '[data-k="win"]',    at: 4.40 },
+    ];
+    surfs.forEach((s) => {
+      tl.fromTo(`#scene-90 .surf${s.sel}`,
+        { opacity: 0, y: 22, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.5)" }, s.at);
+    });
+
+    // "remember you're running JavaScript" — the JS mark blooms (running 7.33).
+    tl.fromTo("#scene-90 .jsmark",
+      { opacity: 0, y: 22, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.7)" }, 7.33);
+
+    // "JavaScript" — every surface is revealed as JavaScript: borders flash gold, JS tags pop (JavaScript 7.99).
+    tl.to("#scene-90 .surf", { borderColor: "rgba(247,223,30,0.65)", duration: 0.4, ease: "power2.out" }, 7.99);
+    tl.to("#scene-90 .surf .jstag", { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.1 }, 8.05);
+    tl.to("#scene-90 .jsmark .sq", { boxShadow: "0 0 90px rgba(247,223,30,0.45)",
+      duration: 0.9, ease: "sine.inOut", repeat: 1, yoyo: true }, 8.4);
+
+    // Seam clear — fade out across the trailing overlap with scene 91 (local 8.65-9.15).
+    tl.to("#scene-90 .cap, #scene-90 .surfaces, #scene-90 .jsmark",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.65);
+
+    window.__timelines["scene-90"] = tl;
+  </script>
+</body>
+</html>

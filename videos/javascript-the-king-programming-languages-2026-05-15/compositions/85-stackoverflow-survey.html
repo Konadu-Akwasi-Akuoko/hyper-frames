@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 85 — Stack Overflow's 2025 Developer Survey asked 49,000 engineers what they actually use.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-85 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-85 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1500px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-85 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-85 .cap .brand { color: var(--accent-2); font-weight: 800; }
+    #scene-85 .cap .num { color: var(--accent); font-weight: 800; }
+
+    #scene-85 .survey {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+    }
+    #scene-85 .shead {
+      display: flex; align-items: center; gap: 16px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-85 .shead img { height: 46px; width: auto; }
+    #scene-85 .shead .t { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 800; color: var(--soft); letter-spacing: 0.3px; }
+
+    #scene-85 .big {
+      display: flex; flex-direction: column; align-items: center; gap: 4px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-85 .big .n {
+      font-family: "JetBrains Mono", monospace; font-size: 150px; font-weight: 900; color: var(--accent); line-height: 0.95; letter-spacing: -2px;
+    }
+    #scene-85 .big .nl { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+
+    #scene-85 .q {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 26px; border-radius: 999px; background: rgba(103,232,249,0.08); border: 1px solid rgba(103,232,249,0.35);
+      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent-2);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-85" data-composition-id="scene-85" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w brand">Stack</span> <span class="w brand">Overflow&rsquo;s</span> <span class="w brand">2025</span>
+      <span class="w">developer</span> <span class="w">survey</span> <span class="w">asked</span>
+      <span class="w num">49,000</span> <span class="w">engineers</span>
+      <span class="w">what</span> <span class="w">they</span> <span class="w">actually</span> <span class="w">use.</span>
+    </div>
+
+    <div class="survey">
+      <div class="shead" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="1110" data-sfx-volume="0.42">
+        <img src="assets/icons/stackoverflow.svg" alt="Stack Overflow">
+        <span class="t">2025 Developer Survey</span>
+      </div>
+      <div class="big" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4980">
+        <span class="n">0</span>
+        <span class="nl">engineers asked</span>
+      </div>
+      <div class="q">&ldquo;what do you actually use?&rdquo;</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(487.43).
+    // "Stack Overflow's 2025 developer survey asked 49,000 engineers what they actually use."
+    // (Stack 0.50, 2025 1.64, asked 4.04, 49,000 4.42, engineers 5.44, what 6.12, use 7.04).
+    const cw = [0.50, 0.84, 1.64, 2.31, 2.88, 4.04, 4.42, 5.44, 6.12, 6.34, 6.52, 7.04];
+    gsap.utils.toArray("#scene-85 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Stack Overflow's 2025 Developer Survey" — the survey header appears (Stack 0.50).
+    tl.fromTo("#scene-85 .shead",
+      { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.84);
+
+    // "49,000" — the big number counts up (49,000 4.42).
+    const counter = { v: 0 };
+    const numEl = document.querySelector("#scene-85 .big .n");
+    tl.fromTo("#scene-85 .big",
+      { opacity: 0, y: 16, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 4.42);
+    tl.to(counter, {
+      v: 49000, duration: 0.8, ease: "power2.out",
+      onUpdate: () => { numEl.textContent = Math.round(counter.v).toLocaleString("en-US"); }
+    }, 4.42);
+
+    // "what they actually use" — the question appears (what 6.12).
+    tl.fromTo("#scene-85 .q",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.12);
+
+    // Seam clear — fade out across the trailing overlap with scene 86 (local 7.44-7.94).
+    tl.to("#scene-85 .cap, #scene-85 .survey",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 7.44);
+
+    window.__timelines["scene-85"] = tl;
+  </script>
+</body>
+</html>

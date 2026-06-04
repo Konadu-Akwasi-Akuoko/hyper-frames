@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 86 — JavaScript came in first, as it has every year for over a decade.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-86 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-86 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1520px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-86 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-86 .cap .js { color: var(--accent); font-weight: 800; }
+    #scene-86 .cap .fst { color: var(--accent); font-weight: 800; }
+    #scene-86 .cap .ev { color: var(--accent-2); font-weight: 800; }
+    #scene-86 .cap .dec { color: var(--accent-2); font-weight: 800; }
+
+    #scene-86 .hero {
+      position: absolute; left: 50%; top: 560px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 30px 56px; border-radius: 26px;
+      background: radial-gradient(circle at 50% 0%, rgba(247,223,30,0.16), rgba(17,20,27,0.96));
+      border: 2px solid rgba(247,223,30,0.6); box-shadow: 0 0 60px rgba(247,223,30,0.18), 0 18px 44px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-86 .hero .rank { font-family: "JetBrains Mono", monospace; font-size: 96px; font-weight: 900; color: var(--accent); line-height: 0.9; letter-spacing: -2px; }
+    #scene-86 .hero .nm { font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 800; color: var(--fg); letter-spacing: -0.3px; }
+    #scene-86 .hero .sb { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 600; color: var(--muted); letter-spacing: 0.3px; }
+
+    #scene-86 .streak {
+      position: absolute; left: 50%; top: 800px; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+    }
+    #scene-86 .streak .row { display: flex; align-items: center; gap: 18px; }
+    #scene-86 .yr {
+      width: 64px; height: 64px; border-radius: 14px;
+      background: rgba(247,223,30,0.1); border: 1.5px solid rgba(247,223,30,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 900; color: var(--accent);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-86 .streak .lbl {
+      font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 700; color: var(--accent-2);
+      letter-spacing: 0.5px; opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-86" data-composition-id="scene-86" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w js">JavaScript</span> <span class="w">came</span> <span class="w">in</span> <span class="w fst">first,</span>
+      <span class="w">as</span> <span class="w">it</span> <span class="w">has</span>
+      <span class="w ev">every</span> <span class="w ev">year</span>
+      <span class="w">for</span> <span class="w">over</span> <span class="w">a</span> <span class="w dec">decade.</span>
+    </div>
+
+    <div class="hero" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="1850">
+      <span class="rank">#1</span>
+      <span class="nm">JavaScript</span>
+      <span class="sb">most-used language</span>
+    </div>
+
+    <div class="streak" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="2740" data-sfx-volume="0.35">
+      <div class="row">
+        <div class="yr">#1</div>
+        <div class="yr">#1</div>
+        <div class="yr">#1</div>
+        <div class="yr">#1</div>
+        <div class="yr">#1</div>
+        <div class="yr">#1</div>
+      </div>
+      <span class="lbl">first &mdash; every year, a decade running</span>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(494.87).
+    // "JavaScript came in first, as it has every year for over a decade."
+    // (first 1.60, every 3.54, year 3.84, decade 4.74).
+    const cw = [0.50, 1.16, 1.42, 1.60, 2.70, 2.92, 3.08, 3.54, 3.84, 4.18, 4.32, 4.56, 4.74];
+    gsap.utils.toArray("#scene-86 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "came in first" — the #1 medallion slams in (first 1.60).
+    tl.fromTo("#scene-86 .hero",
+      { opacity: 0, y: 22, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 1.60);
+
+    // "every year for over a decade" — the streak of #1s sweeps in left to right (every 3.54 -> decade 4.74).
+    const chipStart = 2.74, chipStep = 0.30;
+    gsap.utils.toArray("#scene-86 .streak .yr").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 14, scale: 0.7 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, chipStart + i * chipStep);
+    });
+    tl.to("#scene-86 .streak .lbl", { opacity: 1, duration: 0.35, ease: "power2.out" }, 4.74);
+
+    // gentle idle glow on the hero so it never sits perfectly still.
+    tl.to("#scene-86 .hero", { boxShadow: "0 0 80px rgba(247,223,30,0.28), 0 18px 44px rgba(0,0,0,0.5)",
+      duration: 1.1, ease: "sine.inOut", repeat: 1, yoyo: true }, 5.0);
+
+    // Seam clear — fade out across the trailing overlap with scene 87 (local 5.38-5.88).
+    tl.to("#scene-86 .cap, #scene-86 .hero, #scene-86 .streak",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.38);
+
+    window.__timelines["scene-86"] = tl;
+  </script>
+</body>
+</html>

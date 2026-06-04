@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 58 — In 2012, Mark Zuckerberg called Facebook's HTML5 mobile bet</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --fb: #3b82f6; --html5: #e34f26;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-58 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-58 .cap {
+      position: absolute; left: 50%; top: 184px; transform: translateX(-50%);
+      width: 1460px; text-align: center;
+      font-size: 48px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-58 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-58 .cap .zk { color: var(--soft); font-weight: 800; }
+    #scene-58 .cap .h5 { color: var(--html5); font-weight: 800; will-change: text-shadow; }
+
+    #scene-58 .stage {
+      position: absolute; left: 50%; top: 626px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+    }
+    #scene-58 .row { position: relative; display: flex; align-items: center; justify-content: center; width: 168px; height: 168px; }
+
+    /* the 2012 marker */
+    #scene-58 .year {
+      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent-2);
+      padding: 8px 20px; border-radius: 999px; border: 1px solid rgba(103,232,249,0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the bet chip revealing HTML5 */
+    #scene-58 .chip {
+      position: relative; width: 168px; height: 168px; border-radius: 50%; flex: none;
+      background: radial-gradient(circle at 50% 40%, #1a2030, #0f1320);
+      border: 8px dashed rgba(247,223,30,0.5);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.5); will-change: transform;
+    }
+    #scene-58 .chip .q {
+      font-family: "JetBrains Mono", monospace; font-size: 64px; font-weight: 800; color: var(--accent);
+      will-change: opacity;
+    }
+    /* the HTML5 shield that the bet turns out to be */
+    #scene-58 .h5badge {
+      position: absolute; inset: 0; margin: auto; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 132px; height: 144px; background: var(--html5);
+      border-radius: 14px 14px 24px 24px; gap: 2px;
+      box-shadow: 0 0 0 rgba(227,79,38,0); opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+    #scene-58 .h5badge .five { font-family: "JetBrains Mono", monospace; font-size: 60px; font-weight: 900; color: #fff; line-height: 1; }
+    #scene-58 .h5badge .wm { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 800; color: #ffd9cc; letter-spacing: 1px; }
+
+    /* the mobile context tag */
+    #scene-58 .tags { display: flex; gap: 14px; opacity: 0; will-change: opacity; }
+    #scene-58 .tags .t {
+      font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 700; color: var(--muted);
+      padding: 7px 18px; border-radius: 999px; border: 1px solid var(--border);
+    }
+    #scene-58 .tags .t.fb { color: var(--fb); border-color: rgba(59,130,246,0.4); }
+  </style>
+</head>
+<body>
+  <div id="scene-58" data-composition-id="scene-58" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">In</span> <span class="w">2012,</span> <span class="w zk">Mark</span>
+      <span class="w zk">Zuckerberg</span> <span class="w">had</span> <span class="w">called</span>
+      <span class="w">Facebook&rsquo;s</span> <span class="w h5">HTML5</span> <span class="w">mobile</span>
+      <span class="w">bet</span>
+    </div>
+
+    <div class="stage">
+      <div class="year">2012</div>
+      <div class="row">
+        <div class="chip"><span class="q">?</span></div>
+        <div class="h5badge" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4560">
+          <span class="five">5</span>
+          <span class="wm">HTML</span>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="t fb">Facebook</span>
+        <span class="t">mobile</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(337.04).
+    // "In 2012, Mark Zuckerberg had called Facebook's HTML5 mobile bet"
+    // (2012 0.70, Mark 1.96, HTML5 4.30, mobile 5.04, bet 5.36).
+    const cw = [0.50, 0.70, 1.96, 2.24, 3.12, 3.36, 3.84, 4.30, 5.04, 5.36];
+    gsap.utils.toArray("#scene-58 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // "2012" — the year marker (2012 0.70).
+    tl.fromTo("#scene-58 .year",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 0.70);
+
+    // the bet chip carries over from the previous scene, still "?" (Mark 1.96).
+    tl.fromTo("#scene-58 .chip",
+      { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 1.90);
+
+    // "HTML5" — the bet is revealed: it was HTML5 all along (HTML5 4.30).
+    tl.to("#scene-58 .chip", { opacity: 0, scale: 0.5, duration: 0.25, ease: "power2.in" }, 4.16);
+    tl.fromTo("#scene-58 .h5badge",
+      { opacity: 0, scale: 0.5 },
+      { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 4.34);
+    tl.to("#scene-58 .h5badge",
+      { boxShadow: "0 0 38px rgba(227,79,38,0.5)", duration: 0.45, ease: "power2.out" }, 4.55);
+
+    // "mobile bet" — the context tags appear (mobile 5.04).
+    tl.fromTo("#scene-58 .tags",
+      { opacity: 0 }, { opacity: 1, duration: 0.35 }, 5.00);
+
+    // Subtle life — the badge holds with a soft breath.
+    tl.to("#scene-58 .h5badge", { y: "-=5", duration: 1.4, ease: "sine.inOut" }, 5.2);
+
+    // Seam clear — fade out across the trailing overlap with scene 59 (local 5.44-5.94).
+    tl.to("#scene-58 .cap, #scene-58 .stage",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.44);
+
+    window.__timelines["scene-58"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 24 — framework churn / trends on Twitter</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-24 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-24 .setup {
+      position: absolute; left: 50%; top: 300px; transform: translateX(-50%);
+      font-size: 52px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the trending pill */
+    #scene-24 .trend {
+      position: absolute; left: 50%; top: 408px; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 12px;
+      font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 700; letter-spacing: 1px;
+      color: var(--accent-2);
+      border: 1px solid rgba(103,232,249,0.4); border-radius: 999px; padding: 10px 22px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-24 .trend .tw { color: var(--muted); opacity: 0; }
+
+    /* the hot-seat arena */
+    #scene-24 .arena {
+      position: absolute; left: 50%; top: 600px; transform: translateX(-50%);
+      width: 1400px; height: 300px;
+    }
+    #scene-24 .fw {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+      width: 320px; padding: 36px 28px; border-radius: 22px;
+      background: var(--panel); border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-24 .fw img {
+      width: 132px; height: 132px; padding: 16px; border-radius: 24px;
+      background: #f5f7fa;
+    }
+    #scene-24 .fw .nm { font-size: 44px; font-weight: 800; color: var(--fg); letter-spacing: -1px; }
+  </style>
+</head>
+<body>
+  <div id="scene-24" data-composition-id="scene-24" data-width="1920" data-height="1080">
+    <div class="setup">switching stacks like&hellip;</div>
+
+    <div class="trend">&#9650; trending <span class="tw">&middot; on Twitter</span></div>
+
+    <div class="arena">
+      <div class="fw" data-fw="0" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="4520" data-sfx-volume="0.42"><img src="assets/icons/jquery.svg" alt="jQuery"><span class="nm">jQuery</span></div>
+      <div class="fw" data-fw="1"><img src="assets/icons/angular.svg" alt="Angular"><span class="nm">Angular</span></div>
+      <div class="fw" data-fw="2" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="6320"><img src="assets/icons/react.svg" alt="React"><span class="nm">React</span></div>
+      <div class="fw" data-fw="3" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="7220" data-sfx-volume="0.42"><img src="assets/icons/nextjs.svg" alt="Next.js"><span class="nm">Next.js</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(184.80).
+    // "which is to say he switched stacks…" — the setup line (switched 1.96, stacks 2.26).
+    tl.fromTo("#scene-24 .setup",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.10);
+
+    // The trending pill appears as the churn begins ("abandon a JS framework" 4.06).
+    tl.fromTo("#scene-24 .trend",
+      { opacity: 0, y: 10, scale: 0.9 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 3.90);
+
+    // The framework churn — each "shinier one" trends in and shoves the last aside, accelerating.
+    // jQuery 4.1, Angular 5.0, React 5.9, Next.js 6.8.
+    const enter = [4.10, 5.00, 5.90, 6.80];
+    const cards = gsap.utils.toArray("#scene-24 .fw");
+    cards.forEach((el, i) => {
+      // slide in from the right into the hot seat
+      tl.fromTo(el,
+        { opacity: 0, x: 620, scale: 0.9 },
+        { opacity: 1, x: 0, scale: 1, duration: 0.42, ease: "power3.out" }, enter[i]);
+      // the trending pill pulses each time a new one trends
+      tl.fromTo("#scene-24 .trend",
+        { scale: 1 }, { scale: 1.08, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, enter[i]);
+      // discard the previous one to the left just before the next arrives, so it clears the hot seat first
+      if (i < cards.length - 1) {
+        tl.to(el,
+          { x: -640, opacity: 0, scale: 0.82, filter: "grayscale(1)", duration: 0.42, ease: "power2.out" },
+          enter[i + 1] - 0.10);
+      }
+    });
+
+    // "trends on Twitter" — the punchline tag completes, the survivor settles (trends 7.14, Twitter 7.78).
+    tl.to("#scene-24 .trend .tw", { opacity: 1, duration: 0.4, ease: "power2.out" }, 7.14);
+    tl.fromTo("#scene-24 .fw[data-fw='3'] .nm",
+      { textShadow: "0 0 0 rgba(103,232,249,0)" },
+      { textShadow: "0 0 26px rgba(103,232,249,0.45)", duration: 0.4, ease: "power2.out" }, 7.20);
+
+    // Subtle life — the survivor breathes.
+    tl.to("#scene-24 .fw[data-fw='3']", { y: "-=5", duration: 2.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 7.6);
+
+    // Seam clear — everything fades across the trailing overlap with scene 25 (local 8.78-9.28).
+    tl.to(["#scene-24 .setup", "#scene-24 .trend", "#scene-24 .arena"],
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.78);
+
+    window.__timelines["scene-24"] = tl;
+  </script>
+</body>
+</html>

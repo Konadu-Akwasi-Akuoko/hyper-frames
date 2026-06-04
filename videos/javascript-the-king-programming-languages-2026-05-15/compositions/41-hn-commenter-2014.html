@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 41 — a Hacker News commenter, writing in 2014</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --hn: #fb651e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-41 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-41 .cap {
+      position: absolute; left: 50%; top: 178px; transform: translateX(-50%);
+      width: 1460px; text-align: center;
+      font-size: 48px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px; line-height: 1.34;
+    }
+    #scene-41 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-41 .cap .hn { color: var(--hn); font-weight: 800; }
+    #scene-41 .cap .yr { color: var(--accent-2); font-weight: 800; }
+    #scene-41 .cap .vb { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    #scene-41 .lockup {
+      position: absolute; left: 50%; top: 656px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 34px;
+    }
+    #scene-41 .brand {
+      display: flex; align-items: center; gap: 30px;
+    }
+    #scene-41 .brand .mark {
+      width: 132px; height: 132px; border-radius: 18px; display: block;
+      box-shadow: 0 10px 36px rgba(251,101,30,0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-41 .brand .nm {
+      font-size: 70px; font-weight: 800; color: var(--fg); letter-spacing: -1.5px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-41 .year {
+      display: flex; align-items: center; gap: 12px;
+      font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700; letter-spacing: 1px;
+      color: var(--accent-2); border: 1px solid rgba(103,232,249,0.4); border-radius: 999px; padding: 10px 28px;
+      background: rgba(103,232,249,0.05);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-41" data-composition-id="scene-41" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">And</span> <span class="w">there&rsquo;s</span> <span class="w">the</span>
+      <span class="w">line.</span> <span class="w">A</span> <span class="w hn">Hacker</span>
+      <span class="w hn">News</span> <span class="w">commenter,</span> <span class="w">writing</span>
+      <span class="w">in</span> <span class="w yr">2014,</span> <span class="w">used</span>
+      <span class="w">exactly</span> <span class="w vb">that</span> <span class="w vb">verb.</span>
+    </div>
+
+    <div class="lockup">
+      <div class="brand">
+        <svg class="mark" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2200" data-sfx-volume="0.35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#fb651e" d="M0 0h256v256H0z"/><path fill="#fff" d="M119.374 144.746L75.433 62.432h20.081l25.848 52.092q.597 1.392 1.392 2.883t1.391 3.082q.398.596.597 1.094q.199.496.398.894a66 66 0 0 1 1.79 3.877q.795 1.89 1.39 3.48q1.591-3.381 3.48-7.257q1.89-3.878 3.877-8.053l26.246-52.092h18.69l-44.34 83.308v53.087h-16.9z"/></svg>
+        <span class="nm">Hacker News</span>
+      </div>
+      <div class="year" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4250" data-sfx-volume="0.42">&middot; 2014</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(270.12).
+    // "And there's the line. A Hacker News commenter, writing in 2014, used exactly that verb."
+    const cw = [0.50, 0.68, 0.89, 1.06, 1.96, 2.00, 2.32, 2.54, 3.46, 3.84, 4.02, 5.28, 5.60, 6.20, 6.44];
+    gsap.utils.toArray("#scene-41 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Hacker News" — the mark and wordmark land (Hacker 2.00, News 2.32).
+    tl.fromTo("#scene-41 .brand .mark",
+      { opacity: 0, scale: 0.7, rotateZ: -8 },
+      { opacity: 1, scale: 1, rotateZ: 0, duration: 0.5, ease: "back.out(2)" }, 2.00);
+    tl.fromTo("#scene-41 .brand .nm",
+      { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.20);
+
+    // "2014" — the year badge stamps in (2014 4.02).
+    tl.fromTo("#scene-41 .year",
+      { opacity: 0, y: 16, scale: 0.9 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 4.02);
+
+    // "that verb" — the caption emphasis blooms (that 6.20, verb 6.44).
+    tl.fromTo("#scene-41 .cap .vb",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 24px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 6.48);
+
+    // Subtle life — the mark breathes.
+    tl.to("#scene-41 .brand .mark", { y: "-=6", duration: 2.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.0);
+
+    // Seam clear — fade out across the trailing overlap with scene 42 (local 6.69-7.19).
+    tl.to("#scene-41 .cap, #scene-41 .lockup",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.69);
+
+    window.__timelines["scene-41"] = tl;
+  </script>
+</body>
+</html>

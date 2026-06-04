@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 55 — We were torching memory like it was free</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --heat: #ff7a45;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-55 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-55 .cap {
+      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
+      width: 1380px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-55 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-55 .cap .tc { color: var(--heat); font-weight: 800; will-change: text-shadow; }
+
+    #scene-55 .gauge {
+      position: absolute; left: 50%; top: 612px; transform: translate(-50%, -50%);
+      width: 900px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-55 .gauge .head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
+    #scene-55 .gauge .name {
+      font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 700; color: var(--soft); letter-spacing: 1px;
+    }
+    #scene-55 .gauge .pct {
+      font-family: "JetBrains Mono", monospace; font-size: 52px; font-weight: 800; color: var(--soft); letter-spacing: -1px;
+      will-change: color;
+    }
+    /* the memory bar */
+    #scene-55 .gauge .track {
+      position: relative; height: 56px; border-radius: 12px; background: #14181f; border: 1px solid var(--border);
+      overflow: visible;
+    }
+    #scene-55 .gauge .fill {
+      position: absolute; top: 0; left: 0; height: 100%; width: 100%; border-radius: 11px;
+      background: var(--ok); transform: scaleX(0.34); transform-origin: left center;
+      will-change: transform, background, box-shadow;
+    }
+    /* the part that bursts past the limit */
+    #scene-55 .gauge .over {
+      position: absolute; top: 0; right: -96px; height: 100%; width: 96px; border-radius: 0 12px 12px 0;
+      background: var(--danger); opacity: 0; will-change: opacity, box-shadow;
+    }
+    #scene-55 .gauge .limit {
+      position: absolute; top: -10px; bottom: -10px; right: 0; width: 3px; background: var(--muted); border-radius: 2px;
+    }
+    #scene-55 .gauge .warn {
+      margin-top: 18px; font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--danger);
+      letter-spacing: 0.5px; opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-55" data-composition-id="scene-55" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">We</span> <span class="w">were</span> <span class="w tc">torching</span>
+      <span class="w">memory</span> <span class="w">like</span> <span class="w">it</span>
+      <span class="w">was</span> <span class="w">free,</span>
+    </div>
+
+    <div class="gauge">
+      <div class="head">
+        <span class="name">MEMORY</span>
+        <span class="pct">34%</span>
+      </div>
+      <div class="track">
+        <div class="fill" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="1520" data-sfx-volume="0.35"></div>
+        <div class="over"></div>
+        <div class="limit"></div>
+      </div>
+      <div class="warn">&#9650; over capacity &mdash; who's counting?</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(329.64).
+    // "We were torching memory like it was free," (torching 0.79, memory 1.22, like 1.49, free 2.08).
+    const cw = [0.50, 0.60, 0.79, 1.22, 1.49, 1.72, 1.84, 2.08];
+    gsap.utils.toArray("#scene-55 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // the gauge settles in (We 0.50).
+    tl.fromTo("#scene-55 .gauge",
+      { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.45);
+
+    // "torching memory" — the bar floods to full and ignites red (torching 0.79, memory 1.22).
+    tl.to("#scene-55 .gauge .fill",
+      { scaleX: 1, background: "var(--heat)", duration: 0.7, ease: "power2.in" }, 0.82);
+    tl.to("#scene-55 .gauge .fill",
+      { boxShadow: "0 0 36px rgba(255,122,69,0.55)", duration: 0.5, ease: "power2.out" }, 1.10);
+
+    // "like it was free" — it bursts past the limit, careless (like 1.49, free 2.08).
+    tl.to("#scene-55 .gauge .fill", { background: "var(--danger)", duration: 0.4 }, 1.55);
+    tl.to("#scene-55 .gauge .over",
+      { opacity: 1, boxShadow: "0 0 30px rgba(255,107,93,0.6)", duration: 0.4, ease: "power2.out" }, 1.58);
+    tl.fromTo("#scene-55 .gauge .warn",
+      { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.00);
+
+    // the readout climbs past 100% — count up via a stepped proxy on the limit pulse.
+    tl.to("#scene-55 .gauge .pct", { color: "var(--danger)", duration: 0.4 }, 1.55);
+
+    // Subtle life — the over-bar pulses with heat.
+    tl.to("#scene-55 .gauge .over", { opacity: 0.65, duration: 0.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.2);
+
+    // Seam clear — fade out across the trailing overlap with scene 56 (local 2.18-2.68).
+    tl.to("#scene-55 .cap, #scene-55 .gauge",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 2.18);
+
+    window.__timelines["scene-55"] = tl;
+
+    // count the readout up from 34% to 147% as the bar floods (deterministic stepped tween).
+    const pctEl = document.querySelector("#scene-55 .gauge .pct");
+    const counter = { v: 34 };
+    tl.to(counter, {
+      v: 147, duration: 1.2, ease: "power2.in",
+      onUpdate: () => { pctEl.textContent = Math.round(counter.v) + "%"; }
+    }, 0.82);
+  </script>
+</body>
+</html>

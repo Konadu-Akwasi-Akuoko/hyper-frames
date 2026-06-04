@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 79 — So Microsoft builds and maintains its own fork, React Native for Windows.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff; --react: #61dafb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-79 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-79 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1500px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-79 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-79 .cap .frk { color: var(--accent-2); font-weight: 800; }
+    #scene-79 .cap .rnw { color: var(--win); font-weight: 800; }
+
+    /* the fork graph */
+    #scene-79 .graph {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      width: 900px; height: 300px;
+    }
+    #scene-79 .graph svg { position: absolute; inset: 0; width: 900px; height: 300px; overflow: visible; }
+    #scene-79 .graph .branch { stroke: var(--win); stroke-width: 4; fill: none; stroke-linecap: round; }
+
+    #scene-79 .node {
+      position: absolute; display: flex; align-items: center; gap: 14px;
+      padding: 16px 22px; border-radius: 14px; background: rgba(17,20,27,0.96);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-79 .node .dot { width: 16px; height: 16px; border-radius: 50%; flex: none; }
+    #scene-79 .node .nm { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 800; letter-spacing: 0.2px; }
+    #scene-79 .node .sub { font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 600; color: var(--muted); }
+
+    #scene-79 .node.trunk { top: 12px; left: 40px; border: 1px solid rgba(97,218,251,0.45); }
+    #scene-79 .node.trunk .dot { background: var(--react); }
+    #scene-79 .node.trunk .nm { color: var(--react); }
+
+    #scene-79 .node.fork { top: 184px; left: 392px; border: 1px solid rgba(76,194,255,0.5); flex-direction: row; }
+    #scene-79 .node.fork .mk { display: grid; grid-template: 1fr 1fr / 1fr 1fr; gap: 3px; width: 28px; height: 28px; flex: none; }
+    #scene-79 .node.fork .mk span { background: var(--win); border-radius: 3px; }
+    #scene-79 .node.fork .meta { display: flex; flex-direction: column; gap: 4px; }
+    #scene-79 .node.fork .nm { color: var(--win); }
+
+    #scene-79 .graph .commit {
+      position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--win);
+      top: 209px; opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-79" data-composition-id="scene-79" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">So</span> <span class="w">Microsoft</span> <span class="w">builds</span> <span class="w">and</span>
+      <span class="w">maintains</span> <span class="w">its</span> <span class="w">own</span> <span class="w frk">fork,</span>
+      <span class="w rnw">React</span> <span class="w rnw">Native</span> <span class="w rnw">for</span> <span class="w rnw">Windows.</span>
+    </div>
+
+    <div class="graph">
+      <svg viewBox="0 0 900 300" preserveAspectRatio="none" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="3100">
+        <path class="branch" d="M150 74 L150 176 Q150 216 190 216 L392 216"></path>
+      </svg>
+      <div class="commit" style="left: 250px"></div>
+      <div class="commit" style="left: 312px"></div>
+      <div class="commit" style="left: 374px"></div>
+
+      <div class="node trunk">
+        <span class="dot"></span><span class="nm">React Native</span>
+      </div>
+      <div class="node fork" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3870" data-sfx-volume="0.35">
+        <div class="mk"><span></span><span></span><span></span><span></span></div>
+        <div class="meta">
+          <span class="nm">React Native for Windows</span>
+          <span class="sub">Microsoft &middot; builds &amp; maintains</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(443.83).
+    // "So Microsoft builds and maintains its own fork, React Native for Windows."
+    // (builds 1.26, maintains 1.76, fork 2.86, React 3.62, Native 4.24, Windows 4.76).
+    const cw = [0.50, 0.68, 1.26, 1.62, 1.76, 2.30, 2.54, 2.86, 3.62, 4.24, 4.60, 4.76];
+    gsap.utils.toArray("#scene-79 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "builds" — the upstream React Native node appears (builds 1.26).
+    tl.fromTo("#scene-79 .node.trunk",
+      { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.26);
+
+    // "fork" — the branch draws down and out (fork 2.86).
+    const path = document.querySelector("#scene-79 .graph .branch");
+    const len = path.getTotalLength();
+    tl.set("#scene-79 .graph .branch", { strokeDasharray: len, strokeDashoffset: len }, 0);
+    tl.to("#scene-79 .graph .branch", { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 2.86);
+
+    // "React Native for Windows" — the fork node reveals (React 3.62).
+    tl.fromTo("#scene-79 .node.fork",
+      { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 3.62);
+
+    // commit dots pop along the branch — the "builds and maintains" cadence (deterministic).
+    gsap.utils.toArray("#scene-79 .graph .commit").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.26, ease: "back.out(2)" }, 3.2 + i * 0.22);
+    });
+
+    // Seam clear — fade out across the trailing overlap with scene 80 (local 5.40-5.90).
+    tl.to("#scene-79 .cap, #scene-79 .graph",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.40);
+
+    window.__timelines["scene-79"] = tl;
+  </script>
+</body>
+</html>

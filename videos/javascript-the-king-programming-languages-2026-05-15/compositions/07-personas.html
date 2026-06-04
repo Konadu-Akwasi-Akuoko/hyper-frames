@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 07 — something anyone could write</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-07 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-07 .stage {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 1500px; text-align: center;
+    }
+    #scene-07 .lead {
+      font-size: 50px; font-weight: 500; color: var(--soft); margin-bottom: 46px;
+    }
+    #scene-07 .lead .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+
+    #scene-07 .people {
+      display: flex; justify-content: center; gap: 26px; margin-bottom: 50px;
+    }
+    #scene-07 .person {
+      font-size: 40px; font-weight: 700; color: var(--fg);
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 16px; padding: 26px 40px; white-space: nowrap;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-07 .payoff {
+      font-size: 64px; font-weight: 800; color: var(--fg); letter-spacing: -1px;
+    }
+    #scene-07 .payoff .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-07 .payoff .write { display: inline-block; color: var(--ok); will-change: text-shadow; }
+  </style>
+</head>
+<body>
+  <div id="scene-07" data-composition-id="scene-07" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="lead">
+        <span class="w">They</span> <span class="w">needed</span> <span class="w">something</span>
+        <span class="w">a&nbsp;webpage&nbsp;author</span> <span class="w">could&nbsp;write:</span>
+      </div>
+      <div class="people">
+        <span class="person" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="3800">a designer</span>
+        <span class="person" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="4940">a marketer</span>
+        <span class="person" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="6140">an intern</span>
+      </div>
+      <div class="payoff">
+        <span class="w">could</span> <span class="w">actually</span>
+        <span class="w"><span class="write">write.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(49.82). Entrance at local 0.
+    tl.fromTo("#scene-07 .stage",
+      { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+
+    // Lead reveals: They 50.32(0.50) needed 0.84 something 1.24 webpage-author 2.06 could-write 2.64(author end)
+    const lead = [0.50, 0.84, 1.24, 2.06, 2.64];
+    gsap.utils.toArray("#scene-07 .lead .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, lead[i]);
+    });
+
+    // Persona chips tap in on their words: designer 53.42(3.60), marketer 54.56(4.74), intern 55.76(5.94).
+    const ppl = [3.60, 4.74, 5.94];
+    gsap.utils.toArray("#scene-07 .people .person").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 22, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.8)" }, ppl[i]);
+    });
+
+    // Payoff "could actually write": could 56.66(6.84) actually 7.06 write 57.32(7.50).
+    const pay = [6.84, 7.06, 7.50];
+    gsap.utils.toArray("#scene-07 .payoff .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, pay[i]);
+    });
+    // "write" lands in resolved-green with a bloom (57.32 -> 7.50).
+    tl.to("#scene-07 .payoff .write",
+      { textShadow: "0 0 34px rgba(125,216,125,0.7)", duration: 0.42, ease: "power2.out" }, 7.56);
+
+    // Subtle life.
+    tl.to("#scene-07 .people", { y: "-=5", duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.2);
+
+    // Seam clear — foreground fades out across the trailing overlap with scene 08 (local 8.15-8.55)
+    // so scene 08's incoming content never shares the frame with this scene's text.
+    tl.to("#scene-07 .stage", { opacity: 0, duration: 0.32, ease: "power2.inOut" }, 8.00);
+
+    window.__timelines["scene-07"] = tl;
+  </script>
+</body>
+</html>

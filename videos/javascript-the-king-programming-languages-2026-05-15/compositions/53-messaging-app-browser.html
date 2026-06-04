@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 53 — your messaging app now ships an entire browser</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --chrome: #4a8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-53 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-53 .cap {
+      position: absolute; left: 50%; top: 180px; transform: translateX(-50%);
+      width: 1480px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-53 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-53 .cap .ch { color: var(--accent-2); font-weight: 800; }
+    #scene-53 .cap .br { color: var(--chrome); font-weight: 800; }
+
+    #scene-53 .rig {
+      position: absolute; left: 50%; top: 620px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 44px;
+    }
+
+    /* the tiny messaging app */
+    #scene-53 .app {
+      width: 300px; border-radius: 14px; overflow: hidden; flex: none;
+      background: var(--panel); border: 1px solid var(--border); box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-53 .app .top {
+      padding: 12px 16px; background: #0f1219; border-bottom: 1px solid var(--border);
+      font-size: 17px; font-weight: 700; color: var(--soft);
+    }
+    #scene-53 .app .msgs { padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; min-height: 132px; }
+    #scene-53 .app .b { max-width: 70%; padding: 11px 15px; border-radius: 14px; font-size: 16px; color: var(--soft); }
+    #scene-53 .app .b.them { background: #1b2130; align-self: flex-start; }
+    #scene-53 .app .b.me { background: rgba(74,140,255,0.25); align-self: flex-end; color: #dce8ff; }
+    #scene-53 .app .lbl, #scene-53 .engine .lbl {
+      font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--muted); letter-spacing: 0.3px;
+    }
+
+    /* the disproportion connector */
+    #scene-53 .conn { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: none; opacity: 0; will-change: opacity; }
+    #scene-53 .conn .ships { font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--muted); }
+    #scene-53 .conn .arr { font-size: 40px; color: var(--dim); line-height: 1; }
+
+    /* the enormous browser it secretly carries */
+    #scene-53 .engine {
+      width: 660px; border-radius: 16px; overflow: hidden; flex: none;
+      background: #0d1018; border: 1px solid rgba(74,140,255,0.5); box-shadow: 0 0 0 rgba(74,140,255,0);
+      opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+    #scene-53 .engine .tabs { display: flex; align-items: flex-end; gap: 8px; padding: 12px 14px 0; background: #0a0c12; }
+    #scene-53 .engine .tab {
+      padding: 9px 20px; border-radius: 8px 8px 0 0; background: #141925; border: 1px solid rgba(74,140,255,0.3); border-bottom: none;
+      font-size: 17px; color: var(--chrome); font-family: "JetBrains Mono", monospace; font-weight: 600;
+    }
+    #scene-53 .engine .addr { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #141925; border-bottom: 1px solid var(--border); }
+    #scene-53 .engine .addr .dots { display: flex; gap: 7px; }
+    #scene-53 .engine .addr .dots b { width: 10px; height: 10px; border-radius: 50%; background: var(--dim); }
+    #scene-53 .engine .addr .url {
+      flex: 1; height: 30px; border-radius: 15px; background: #0a0c12; border: 1px solid var(--border);
+      display: flex; align-items: center; padding: 0 16px; font-family: "JetBrains Mono", monospace; font-size: 15px; color: var(--muted);
+    }
+    #scene-53 .engine .view { height: 150px; background: #0a0c12; display: flex; align-items: center; justify-content: center; }
+    #scene-53 .engine .view .tag {
+      padding: 9px 22px; border-radius: 999px; background: rgba(74,140,255,0.14); border: 1px solid rgba(74,140,255,0.5);
+      font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--chrome);
+    }
+
+    #scene-53 .colwrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  </style>
+</head>
+<body>
+  <div id="scene-53" data-composition-id="scene-53" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Thanks</span> <span class="w">to</span> <span class="w ch">Cheng,</span>
+      <span class="w">your</span> <span class="w">messaging</span> <span class="w">app</span>
+      <span class="w">now</span> <span class="w">ships</span> <span class="w">an</span>
+      <span class="w">entire</span> <span class="w br">browser</span>
+    </div>
+
+    <div class="rig">
+      <div class="colwrap">
+        <div class="app">
+          <div class="top">Messages</div>
+          <div class="msgs">
+            <div class="b them">you up? 👀</div>
+            <div class="b me">yeah lol</div>
+          </div>
+        </div>
+        <div class="lbl">your messaging app</div>
+      </div>
+
+      <div class="conn">
+        <div class="ships">ships</div>
+        <div class="arr">&rarr;</div>
+      </div>
+
+      <div class="colwrap">
+        <div class="engine" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="3700" data-sfx-volume="0.35">
+          <div class="tabs"><div class="tab">Chromium</div></div>
+          <div class="addr">
+            <div class="dots"><b></b><b></b><b></b></div>
+            <div class="url">chrome://gpu &middot; renderer &middot; v8 &middot; blink</div>
+          </div>
+          <div class="view"><div class="tag">an entire browser</div></div>
+        </div>
+        <div class="lbl">~200&nbsp;MB, every install</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(323.38).
+    // "Thanks to Cheng, your messaging app now ships an entire browser"
+    // (Cheng 0.92, messaging 1.96, app 2.32, ships 2.70, entire 3.14, browser 3.72).
+    const cw = [0.50, 0.78, 0.92, 1.86, 1.96, 2.32, 2.48, 2.70, 2.96, 3.14, 3.72];
+    gsap.utils.toArray("#scene-53 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // "your messaging app" — the tiny, familiar chat app appears on the left (messaging 1.96).
+    tl.fromTo("#scene-53 .app",
+      { opacity: 0, x: -30, scale: 0.9 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.96);
+    tl.fromTo("#scene-53 .colwrap:first-child .lbl",
+      { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.32);
+
+    // "ships" — the connector appears (ships 2.70).
+    tl.fromTo("#scene-53 .conn",
+      { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 2.66);
+
+    // "an entire browser" — the enormous browser it secretly carries expands in, dwarfing the app (entire 3.14, browser 3.72).
+    tl.fromTo("#scene-53 .engine",
+      { opacity: 0, x: 40, scale: 0.82 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 3.10);
+    tl.to("#scene-53 .engine",
+      { boxShadow: "0 0 44px rgba(74,140,255,0.35)", duration: 0.5, ease: "power2.out" }, 3.62);
+    tl.fromTo("#scene-53 .colwrap:last-child .lbl",
+      { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.80);
+
+    // Subtle life — the oversized engine looms.
+    tl.to("#scene-53 .engine", { y: "-=5", duration: 1.4, ease: "sine.inOut" }, 3.9);
+
+    // Seam clear — fade out across the trailing overlap with scene 54 (local 4.18-4.68).
+    tl.to("#scene-53 .cap, #scene-53 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.18);
+
+    window.__timelines["scene-53"] = tl;
+  </script>
+</body>
+</html>

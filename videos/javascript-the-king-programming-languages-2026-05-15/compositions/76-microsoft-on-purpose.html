@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 76 — And Microsoft made this choice on purpose.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-76 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    /* the Windows 4-square mark, anchoring the "who" */
+    #scene-76 .mark {
+      position: absolute; left: 50%; top: 348px; transform: translateX(-50%);
+      display: grid; grid-template: 1fr 1fr / 1fr 1fr; gap: 5px; width: 52px; height: 52px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-76 .mark span { background: var(--win); border-radius: 4px; }
+
+    /* the lead line */
+    #scene-76 .lead {
+      position: absolute; left: 50%; top: 446px; transform: translateX(-50%);
+      width: 1400px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.6px;
+    }
+    #scene-76 .lead .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-76 .lead .ms { color: var(--win); font-weight: 800; }
+
+    /* the hero payoff */
+    #scene-76 .hero {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      font-size: 150px; font-weight: 900; color: var(--win); letter-spacing: -3px; line-height: 1.0;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the BY DESIGN stamp */
+    #scene-76 .stamp {
+      position: absolute; left: 50%; top: 760px; margin-left: 250px; transform: translate(-50%, -50%) rotate(-9deg) scale(1.6);
+      font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 800; color: var(--ok); letter-spacing: 2px;
+      padding: 10px 22px; border: 3px solid var(--ok); border-radius: 10px;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-76" data-composition-id="scene-76" data-width="1920" data-height="1080">
+    <div class="mark"><span></span><span></span><span></span><span></span></div>
+
+    <div class="lead">
+      <span class="w">And</span> <span class="w ms">Microsoft</span> <span class="w">made</span>
+      <span class="w">this</span> <span class="w">choice</span>
+    </div>
+
+    <div class="hero">on purpose.</div>
+    <div class="stamp" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="2450" data-sfx-volume="0.35">BY&nbsp;DESIGN</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(427.73).
+    // "And Microsoft made this choice on purpose."
+    // (And 0.50, Microsoft 0.68, made 1.56, this 1.76, choice 1.88, on 2.10, purpose 2.30).
+    const cw = [0.50, 0.68, 1.56, 1.76, 1.88];
+    gsap.utils.toArray("#scene-76 .lead .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Microsoft" — the Windows mark fades in with the name (Microsoft 0.68).
+    tl.fromTo("#scene-76 .mark",
+      { opacity: 0, y: -10, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.68);
+
+    // "on purpose" — the hero payoff slams in (on 2.10).
+    tl.fromTo("#scene-76 .hero",
+      { opacity: 0, y: 24, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(1.7)" }, 2.10);
+
+    // "purpose" — the BY DESIGN stamp slams down at an angle (purpose 2.30).
+    tl.fromTo("#scene-76 .stamp",
+      { opacity: 0, rotate: -9, scale: 1.6 }, { opacity: 1, rotate: -9, scale: 1, duration: 0.34, ease: "back.out(2.2)" }, 2.30);
+
+    // Subtle life — the hero holds with a faint breath.
+    tl.to("#scene-76 .hero", { y: "-=4", duration: 1.0, ease: "sine.inOut" }, 2.7);
+
+    // Seam clear — fade out across the trailing overlap with scene 77 (local 3.02-3.52).
+    tl.to("#scene-76 .mark, #scene-76 .lead, #scene-76 .hero, #scene-76 .stamp",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.02);
+
+    window.__timelines["scene-76"] = tl;
+  </script>
+</body>
+</html>

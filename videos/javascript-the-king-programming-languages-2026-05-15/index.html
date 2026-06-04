@@ -43,6 +43,19 @@
       data-width="1920"
       data-height="1080"
     >
+      <!-- Persistent subject-toned background behind every scene (no logo). -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="530.617"
+        data-track-index="7"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
+
       <!-- Voiceover — the timing source of truth for every scene. -->
       <audio
         id="voiceover"
@@ -53,7 +66,1172 @@
         data-volume="1"
       ></audio>
 
-      <!-- greenfield: no scenes authored yet. frontier = 0. -->
+      <!-- Scene 01 — Hacker News quote (chunk 0.28–10.90s). -->
+      <div
+        id="scene-01"
+        data-composition-id="scene-01"
+        data-composition-src="compositions/01-hn-quote.html"
+        data-start="0"
+        data-duration="11.66"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 02 — never loved, but runs the world (chunk 11.66–20.76s). -->
+      <div
+        id="scene-02"
+        data-composition-id="scene-02"
+        data-composition-src="compositions/02-loved-vs-infra.html"
+        data-start="11.16"
+        data-duration="10.54"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 2"
+      ></div>
+
+      <!-- Scene 03 — so how did that happen? (chunk 21.70–24.30s). -->
+      <div
+        id="scene-03"
+        data-composition-id="scene-03"
+        data-composition-src="compositions/03-how-did-that-happen.html"
+        data-start="21.20"
+        data-duration="3.20"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 3"
+      ></div>
+
+      <!-- Scene 04 — how did JavaScript come to be? (chunk 24.40–29.74s). -->
+      <div
+        id="scene-04"
+        data-composition-id="scene-04"
+        data-composition-src="compositions/04-origin-question.html"
+        data-start="23.90"
+        data-duration="7.08"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 4"
+      ></div>
+
+      <!-- Scene 05 — Netscape, May 1995 (chunk 30.98–35.94s). -->
+      <div
+        id="scene-05"
+        data-composition-id="scene-05"
+        data-composition-src="compositions/05-netscape-1995.html"
+        data-start="30.48"
+        data-duration="6.22"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 5"
+      ></div>
+
+      <!-- Scene 06 — Java too heavy, C too low-level (chunk 36.70–49.48s). -->
+      <div
+        id="scene-06"
+        data-composition-id="scene-06"
+        data-composition-src="compositions/06-java-c-rejected.html"
+        data-start="36.20"
+        data-duration="14.12"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 6"
+      ></div>
+
+      <!-- Scene 07 — something anyone could write (chunk 50.32–57.76s). -->
+      <div
+        id="scene-07"
+        data-composition-id="scene-07"
+        data-composition-src="compositions/07-personas.html"
+        data-start="49.82"
+        data-duration="8.60"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 7"
+      ></div>
+
+      <!-- Scene 08 — Brendan Eich, 10 days (chunk 58.42–69.96s). -->
+      <div
+        id="scene-08"
+        data-composition-id="scene-08"
+        data-composition-src="compositions/08-brendan-eich-10-days.html"
+        data-start="57.92"
+        data-duration="12.76"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 8"
+      ></div>
+
+      <!-- Scene 09 — Mocha, LiveScript, JavaScript (chunk 70.68–81.84s). -->
+      <div
+        id="scene-09"
+        data-composition-id="scene-09"
+        data-composition-src="compositions/09-naming-timeline.html"
+        data-start="70.18"
+        data-duration="12.54"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 9"
+      ></div>
+
+      <!-- Scene 10 — more aliases than your bashrc (chunk 82.72–90.36s). -->
+      <div
+        id="scene-10"
+        data-composition-id="scene-10"
+        data-composition-src="compositions/10-bashrc-aliases.html"
+        data-start="82.22"
+        data-duration="8.84"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 10"
+      ></div>
+
+      <!-- Scene 11 — JavaScript is not Java (chunk 91.06–95.86s). -->
+      <div
+        id="scene-11"
+        data-composition-id="scene-11"
+        data-composition-src="compositions/11-js-not-java.html"
+        data-start="90.56"
+        data-duration="6.08"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 11"
+      ></div>
+
+      <!-- Scene 12 — Java was a cool name, borrow the cool (chunk 96.64–102.32s). -->
+      <div
+        id="scene-12"
+        data-composition-id="scene-12"
+        data-composition-src="compositions/12-borrowed-cool.html"
+        data-start="96.14"
+        data-duration="6.84"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 12"
+      ></div>
+
+      <!-- Scene 13 — slap AI on it, adjacent to genius (chunk 102.98–110.52s). -->
+      <div
+        id="scene-13"
+        data-composition-id="scene-13"
+        data-composition-src="compositions/13-ai-startup.html"
+        data-start="102.48"
+        data-duration="8.80"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 13"
+      ></div>
+
+      <!-- Scene 14 — Mocha, no LiveScript, no JavaScript (chunk 111.28–118.38s). -->
+      <div
+        id="scene-14"
+        data-composition-id="scene-14"
+        data-composition-src="compositions/14-ship-fumble.html"
+        data-start="110.78"
+        data-duration="8.80"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 14"
+      ></div>
+
+      <!-- Scene 15 — designed to be available, not to win (chunk 119.58–129.38s). -->
+      <div
+        id="scene-15"
+        data-composition-id="scene-15"
+        data-composition-src="compositions/15-available-not-win.html"
+        data-start="119.08"
+        data-duration="10.92"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 15"
+      ></div>
+
+      <!-- Scene 16 — how the hell did JavaScript get to the server? (chunk 130.00–135.33s). -->
+      <div
+        id="scene-16"
+        data-composition-id="scene-16"
+        data-composition-src="compositions/16-server-question.html"
+        data-start="129.50"
+        data-duration="6.88"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 16"
+      ></div>
+
+      <!-- Scene 17 — for 14 years the server ran Perl/PHP/Python/Ruby (chunk 136.38–143.82s). -->
+      <div
+        id="scene-17"
+        data-composition-id="scene-17"
+        data-composition-src="compositions/17-14-years-server.html"
+        data-start="135.88"
+        data-duration="8.60"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 17"
+      ></div>
+
+      <!-- Scene 18 — JS lived in the browser, thought it'd die there (chunk 144.48–149.91s). -->
+      <div
+        id="scene-18"
+        data-composition-id="scene-18"
+        data-composition-src="compositions/18-browser-confined.html"
+        data-start="143.98"
+        data-duration="6.70"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 18"
+      ></div>
+
+      <!-- Scene 19 — Ryan Dahl, Berlin, Nov 2009, 150 people (chunk 150.68–160.98s). -->
+      <div
+        id="scene-19"
+        data-composition-id="scene-19"
+        data-composition-src="compositions/19-ryan-dahl-berlin.html"
+        data-start="150.18"
+        data-duration="11.48"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 19"
+      ></div>
+
+      <!-- Scene 20 — Apache choking under concurrent connections (chunk 161.66–164.76s). -->
+      <div
+        id="scene-20"
+        data-composition-id="scene-20"
+        data-composition-src="compositions/20-apache-choke.html"
+        data-start="161.16"
+        data-duration="4.30"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 20"
+      ></div>
+
+      <!-- Scene 21 — thread-per-request collapse (chunk 165.46–172.72s). -->
+      <div
+        id="scene-21"
+        data-composition-id="scene-21"
+        data-composition-src="compositions/21-thread-collapse.html"
+        data-start="164.96"
+        data-duration="8.28"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 21"
+      ></div>
+
+      <!-- Scene 22 — he wanted non-blocking, chose JavaScript (chunk 173.24–179.22s). -->
+      <div
+        id="scene-22"
+        data-composition-id="scene-22"
+        data-composition-src="compositions/22-chose-javascript.html"
+        data-start="172.74"
+        data-duration="7.10"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 22"
+      ></div>
+
+      <!-- Scene 23 — 10-day-old JS vs battle-tested Apache (chunk 179.84–184.52s). -->
+      <div
+        id="scene-23"
+        data-composition-id="scene-23"
+        data-composition-src="compositions/23-david-goliath.html"
+        data-start="179.34"
+        data-duration="5.96"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 23"
+      ></div>
+
+      <!-- Scene 24 — framework churn, trends on Twitter (chunk 185.30–193.0s). -->
+      <div
+        id="scene-24"
+        data-composition-id="scene-24"
+        data-composition-src="compositions/24-framework-churn.html"
+        data-start="184.80"
+        data-duration="9.28"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 24"
+      ></div>
+
+      <!-- Scene 25 — but he chose it for a specific reason (chunk 194.08–196.76s). -->
+      <div
+        id="scene-25"
+        data-composition-id="scene-25"
+        data-composition-src="compositions/25-specific-reason.html"
+        data-start="193.58"
+        data-duration="4.00"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 25"
+      ></div>
+
+      <!-- Scene 26 — every other language had I/O built in, around blocking (chunk 197.58–203.4s). -->
+      <div
+        id="scene-26"
+        data-composition-id="scene-26"
+        data-composition-src="compositions/26-blocking-io.html"
+        data-start="197.08"
+        data-duration="6.86"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 26"
+      ></div>
+
+      <!-- Scene 27 — async had to be bolted on: Ruby/EventMachine, Python/Twisted (chunk 203.94–211.64s). -->
+      <div
+        id="scene-27"
+        data-composition-id="scene-27"
+        data-composition-src="compositions/27-bolt-on-async.html"
+        data-start="203.44"
+        data-duration="8.94"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 27"
+      ></div>
+
+      <!-- Scene 28 — libraries fighting their own language's defaults (chunk 212.38–216.50s). -->
+      <div
+        id="scene-28"
+        data-composition-id="scene-28"
+        data-composition-src="compositions/28-fighting-defaults.html"
+        data-start="211.88"
+        data-duration="5.34"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 28"
+      ></div>
+
+      <!-- Scene 29 — a blocking call slips in, the whole thing stalled (chunk 217.22–221.46s). -->
+      <div
+        id="scene-29"
+        data-composition-id="scene-29"
+        data-composition-src="compositions/29-the-stall.html"
+        data-start="216.72"
+        data-duration="5.52"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 29"
+      ></div>
+
+      <!-- Scene 30 — JavaScript had no baggage: a clean slate (chunk 222.24–228.08s). -->
+      <div
+        id="scene-30"
+        data-composition-id="scene-30"
+        data-composition-src="compositions/30-clean-slate.html"
+        data-start="221.74"
+        data-duration="6.94"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 30"
+      ></div>
+
+      <!-- Scene 31 — JS devs: the only programmers on Earth (chunk 228.68–231.84s). -->
+      <div
+        id="scene-31"
+        data-composition-id="scene-31"
+        data-composition-src="compositions/31-only-on-earth.html"
+        data-start="228.18"
+        data-duration="3.70"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 31"
+      ></div>
+
+      <!-- Scene 32 — thought in events, because that's how the browser works (chunk 231.88–235.88s). -->
+      <div
+        id="scene-32"
+        data-composition-id="scene-32"
+        data-composition-src="compositions/32-thought-in-events.html"
+        data-start="231.38"
+        data-duration="4.98"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 32"
+      ></div>
+
+      <!-- Scene 33 — and that's where they spent their whole careers (chunk 236.36–239.24s). -->
+      <div
+        id="scene-33"
+        data-composition-id="scene-33"
+        data-composition-src="compositions/33-whole-careers.html"
+        data-start="235.86"
+        data-duration="3.42"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 33"
+      ></div>
+
+      <!-- Scene 34 — he took V8, the JS engine powering Google Chrome (chunk 239.28–242.92s). -->
+      <div
+        id="scene-34"
+        data-composition-id="scene-34"
+        data-composition-src="compositions/34-took-v8.html"
+        data-start="238.78"
+        data-duration="4.76"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 34"
+      ></div>
+
+      <!-- Scene 35 — wrapped in an event loop, turned into a server runtime (chunk 243.54–247.58s). -->
+      <div
+        id="scene-35"
+        data-composition-id="scene-35"
+        data-composition-src="compositions/35-server-runtime.html"
+        data-start="243.04"
+        data-duration="5.04"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 35"
+      ></div>
+
+      <!-- Scene 36 — he called it Node.js (chunk 248.08–250.46s). -->
+      <div
+        id="scene-36"
+        data-composition-id="scene-36"
+        data-composition-src="compositions/36-node-js.html"
+        data-start="247.58"
+        data-duration="3.48"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 36"
+      ></div>
+
+      <!-- Scene 37 — a standing ovation, first in conference history (chunk 251.06–255.62s). -->
+      <div
+        id="scene-37"
+        data-composition-id="scene-37"
+        data-composition-src="compositions/37-standing-ovation.html"
+        data-start="250.56"
+        data-duration="5.44"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 37"
+      ></div>
+
+      <!-- Scene 38 — within months, tens of thousands were running it (chunk 256.00–259.20s). -->
+      <div
+        id="scene-38"
+        data-composition-id="scene-38"
+        data-composition-src="compositions/38-tens-of-thousands.html"
+        data-start="255.50"
+        data-duration="4.33"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 38"
+      ></div>
+
+      <!-- Scene 39 — centered divs got to touch a database (chunk 259.83–266.46s). -->
+      <div
+        id="scene-39"
+        data-composition-id="scene-39"
+        data-composition-src="compositions/39-centered-divs-database.html"
+        data-start="259.33"
+        data-duration="7.73"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 39"
+      ></div>
+
+      <!-- Scene 40 — JavaScript had escaped the browser (chunk 267.06–269.80s). -->
+      <div
+        id="scene-40"
+        data-composition-id="scene-40"
+        data-composition-src="compositions/40-escaped-the-browser.html"
+        data-start="266.56"
+        data-duration="4.06"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 40"
+      ></div>
+
+      <!-- Scene 41 — a Hacker News commenter, writing in 2014 (chunk 270.62–277.30s). -->
+      <div
+        id="scene-41"
+        data-composition-id="scene-41"
+        data-composition-src="compositions/41-hn-commenter-2014.html"
+        data-start="270.12"
+        data-duration="7.19"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 41"
+      ></div>
+
+      <!-- Scene 42 — the full Hacker News quote, callback to cold open (chunk 277.31–283.78s). -->
+      <div
+        id="scene-42"
+        data-composition-id="scene-42"
+        data-composition-src="compositions/42-hn-quote-full.html"
+        data-start="276.81"
+        data-duration="7.45"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 42"
+      ></div>
+
+      <!-- Scene 43 — he didn't know what was coming next (chunk 284.26–288.96s). -->
+      <div
+        id="scene-43"
+        data-composition-id="scene-43"
+        data-composition-src="compositions/43-what-was-coming-next.html"
+        data-start="283.76"
+        data-duration="6.10"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 43"
+      ></div>
+
+      <!-- Scene 44 — JavaScript went to mobile and desktop. How? (chunk 289.86–293.24s). -->
+      <div
+        id="scene-44"
+        data-composition-id="scene-44"
+        data-composition-src="compositions/44-mobile-and-desktop.html"
+        data-start="289.36"
+        data-duration="4.62"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 44"
+      ></div>
+
+      <!-- Scene 45 — an engineer at GitHub named Cheng Zhao (chunk 293.98–298.16s). -->
+      <div
+        id="scene-45"
+        data-composition-id="scene-45"
+        data-composition-src="compositions/45-cheng-zhao.html"
+        data-start="293.48"
+        data-duration="5.48"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 45"
+      ></div>
+
+      <!-- Scene 46 — wrapped Chromium and Node.js into a single runtime (chunk 298.96–302.18s). -->
+      <div
+        id="scene-46"
+        data-composition-id="scene-46"
+        data-composition-src="compositions/46-single-runtime.html"
+        data-start="298.46"
+        data-duration="4.38"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 46"
+      ></div>
+
+      <!-- Scene 47 — GitHub was building a text editor called Atom (chunk 302.84–305.72s). -->
+      <div
+        id="scene-47"
+        data-composition-id="scene-47"
+        data-composition-src="compositions/47-atom-editor.html"
+        data-start="302.34"
+        data-duration="3.96"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 47"
+      ></div>
+
+      <!-- Scene 48 — and Atom's pitch was the hackable editor (chunk 306.30–308.72s). -->
+      <div
+        id="scene-48"
+        data-composition-id="scene-48"
+        data-composition-src="compositions/48-hackable-editor.html"
+        data-start="305.80"
+        data-duration="3.54"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 48"
+      ></div>
+
+      <!-- Scene 49 — customizable in the same language its users wrote every day, JavaScript (chunk 309.34–313.76s). -->
+      <div
+        id="scene-49"
+        data-composition-id="scene-49"
+        data-composition-src="compositions/49-same-language.html"
+        data-start="308.84"
+        data-duration="5.64"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 49"
+      ></div>
+
+      <!-- Scene 50 — So Atom had to ship with a browser inside it (chunk 314.48–316.76s). -->
+      <div
+        id="scene-50"
+        data-composition-id="scene-50"
+        data-composition-src="compositions/50-browser-inside.html"
+        data-start="313.98"
+        data-duration="3.30"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 50"
+      ></div>
+
+      <!-- Scene 51 — The runtime was called Atom Shell (chunk 317.28–319.44s). -->
+      <div
+        id="scene-51"
+        data-composition-id="scene-51"
+        data-composition-src="compositions/51-atom-shell.html"
+        data-start="316.78"
+        data-duration="3.30"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 51"
+      ></div>
+
+      <!-- Scene 52 — Two years later, GitHub renamed it to Electron (chunk 320.08–323.88s). -->
+      <div
+        id="scene-52"
+        data-composition-id="scene-52"
+        data-composition-src="compositions/52-electron-rename.html"
+        data-start="319.58"
+        data-duration="4.30"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 52"
+      ></div>
+
+      <!-- Scene 53 — Thanks to Cheng, your messaging app now ships an entire browser (chunk 323.88–327.6s). -->
+      <div
+        id="scene-53"
+        data-composition-id="scene-53"
+        data-composition-src="compositions/53-messaging-app-browser.html"
+        data-start="323.38"
+        data-duration="4.68"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 53"
+      ></div>
+
+      <!-- Scene 54 — just to render a thumbs-up (chunk 328.06–329.6s). -->
+      <div
+        id="scene-54"
+        data-composition-id="scene-54"
+        data-composition-src="compositions/54-render-thumbsup.html"
+        data-start="327.56"
+        data-duration="2.58"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 54"
+      ></div>
+
+      <!-- Scene 55 — We were torching memory like it was free (chunk 330.14–332.0s). -->
+      <div
+        id="scene-55"
+        data-composition-id="scene-55"
+        data-composition-src="compositions/55-torching-memory.html"
+        data-start="329.64"
+        data-duration="2.68"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 55"
+      ></div>
+
+      <!-- Scene 56 — before AI even showed up to finish the job (chunk 332.32–334.6s). -->
+      <div
+        id="scene-56"
+        data-composition-id="scene-56"
+        data-composition-src="compositions/56-ai-finish-job.html"
+        data-start="331.82"
+        data-duration="3.84"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 56"
+      ></div>
+
+      <!-- Scene 57 — Facebook then made a bet (chunk 335.66–336.8s). -->
+      <div
+        id="scene-57"
+        data-composition-id="scene-57"
+        data-composition-src="compositions/57-facebook-bet.html"
+        data-start="335.16"
+        data-duration="2.38"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 57"
+      ></div>
+
+      <!-- Scene 58 — In 2012, Mark Zuckerberg called Facebook's HTML5 mobile bet (chunk 337.54–342.4s). -->
+      <div
+        id="scene-58"
+        data-composition-id="scene-58"
+        data-composition-src="compositions/58-html5-bet-reveal.html"
+        data-start="337.04"
+        data-duration="5.94"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 58"
+      ></div>
+
+      <!-- Scene 59 — "the biggest mistake we've made as a company" (Zuckerberg quote, chunk 342.98–345.5s). -->
+      <div
+        id="scene-59"
+        data-composition-id="scene-59"
+        data-composition-src="compositions/59-zuckerberg-quote.html"
+        data-start="342.48"
+        data-duration="3.50"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 59"
+      ></div>
+
+      <!-- Scene 60 — "They scrapped it and rebuilt native — iOS and Android, separately." (chunk 345.98–352.24s). -->
+      <div
+        id="scene-60"
+        data-composition-id="scene-60"
+        data-composition-src="compositions/60-scrapped-rebuilt-native.html"
+        data-start="345.48"
+        data-duration="6.76"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 60"
+      ></div>
+
+      <!-- Scene 61 — "Two codebases, twice the cost." (chunk 352.24–354.38s). -->
+      <div
+        id="scene-61"
+        data-composition-id="scene-61"
+        data-composition-src="compositions/61-two-codebases-twice-cost.html"
+        data-start="351.74"
+        data-duration="2.64"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 61"
+      ></div>
+
+      <!-- Scene 62 — "Then in 2013, an engineer named Jordan Walke" (chunk 354.38–358.98s). -->
+      <div
+        id="scene-62"
+        data-composition-id="scene-62"
+        data-composition-src="compositions/62-jordan-walke.html"
+        data-start="353.88"
+        data-duration="5.10"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 62"
+      ></div>
+
+      <!-- Scene 63 — "proved at an internal hackathon" (chunk 358.98–360.58s). -->
+      <div
+        id="scene-63"
+        data-composition-id="scene-63"
+        data-composition-src="compositions/63-internal-hackathon.html"
+        data-start="358.48"
+        data-duration="2.10"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 63"
+      ></div>
+
+      <!-- Scene 64 — "that React's component model could drive real native UI on iOS" (chunk 360.58–366.50s). -->
+      <div
+        id="scene-64"
+        data-composition-id="scene-64"
+        data-composition-src="compositions/64-react-drives-native.html"
+        data-start="360.08"
+        data-duration="6.42"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 64"
+      ></div>
+
+      <!-- Scene 65 — "Not a webview. Actual native widgets." (chunk 366.50–370.19s). -->
+      <div
+        id="scene-65"
+        data-composition-id="scene-65"
+        data-composition-src="compositions/65-not-webview-native-widgets.html"
+        data-start="366.00"
+        data-duration="4.19"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 65"
+      ></div>
+
+      <!-- Scene 66 — "Same JavaScript code, two mobile platforms, Android and iOS." (chunk 370.19–374.97s). -->
+      <div
+        id="scene-66"
+        data-composition-id="scene-66"
+        data-composition-src="compositions/66-same-code-two-platforms.html"
+        data-start="369.69"
+        data-duration="5.28"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 66"
+      ></div>
+
+      <!-- Scene 67 — "Facebook open-sourced it at F8 in March 2015 and called it React Native." (chunk 374.97–381.93s). -->
+      <div
+        id="scene-67"
+        data-composition-id="scene-67"
+        data-composition-src="compositions/67-react-native-reveal.html"
+        data-start="374.47"
+        data-duration="7.46"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 67"
+      ></div>
+
+      <!-- Scene 68 — "And that was the beginning of a terror reign by JavaScript, as the world's most dominant language." (chunk 381.93–389.13s). -->
+      <div
+        id="scene-68"
+        data-composition-id="scene-68"
+        data-composition-src="compositions/68-terror-reign-coronation.html"
+        data-start="381.43"
+        data-duration="7.70"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 68"
+      ></div>
+
+      <!-- Scene 69 — "VS Code is Electron. Slack is Electron." (chunk 389.13–392.83s). -->
+      <div
+        id="scene-69"
+        data-composition-id="scene-69"
+        data-composition-src="compositions/69-vscode-slack-electron.html"
+        data-start="388.63"
+        data-duration="4.20"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 69"
+      ></div>
+
+      <!-- Scene 70 — "Discord, Figma, Notion, 1Password, Obsidian — all Electron." (chunk 392.83–398.55s). -->
+      <div
+        id="scene-70"
+        data-composition-id="scene-70"
+        data-composition-src="compositions/70-all-electron-grid.html"
+        data-start="392.33"
+        data-duration="6.22"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 70"
+      ></div>
+
+      <!-- Scene 71 — "Your code editor is a browser. Your password manager is a browser. Your favorite chat app is a browser too." (chunk 398.55–405.25s). -->
+      <div
+        id="scene-71"
+        data-composition-id="scene-71"
+        data-composition-src="compositions/71-everything-is-a-browser.html"
+        data-start="398.05"
+        data-duration="7.20"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 71"
+      ></div>
+
+      <!-- Scene 72 — "Now, in 2024, something strange also happened." (chunk 405.25–409.71s). -->
+      <div
+        id="scene-72"
+        data-composition-id="scene-72"
+        data-composition-src="compositions/72-2024-something-strange.html"
+        data-start="404.75"
+        data-duration="4.96"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 72"
+      ></div>
+
+      <!-- Scene 73 — "Microsoft confirmed that part of the Windows 11 Start menu was built with React Native." (chunk 409.71–416.29s). -->
+      <div
+        id="scene-73"
+        data-composition-id="scene-73"
+        data-composition-src="compositions/73-windows-start-menu-react-native.html"
+        data-start="409.21"
+        data-duration="7.08"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 73"
+      ></div>
+
+      <div
+        id="scene-74"
+        data-composition-id="scene-74"
+        data-composition-src="compositions/74-xaml-layer-underneath.html"
+        data-start="415.79"
+        data-duration="5.28"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 74"
+      ></div>
+
+      <div
+        id="scene-75"
+        data-composition-id="scene-75"
+        data-composition-src="compositions/75-not-webview-actual-native.html"
+        data-start="420.57"
+        data-duration="7.66"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 75"
+      ></div>
+
+      <div
+        id="scene-76"
+        data-composition-id="scene-76"
+        data-composition-src="compositions/76-microsoft-on-purpose.html"
+        data-start="427.73"
+        data-duration="3.52"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 76"
+      ></div>
+
+      <div
+        id="scene-77"
+        data-composition-id="scene-77"
+        data-composition-src="compositions/77-recommended-dynamic-content.html"
+        data-start="430.75"
+        data-duration="7.86"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 77"
+      ></div>
+
+      <div
+        id="scene-78"
+        data-composition-id="scene-78"
+        data-composition-src="compositions/78-ship-fast-iterate-fast.html"
+        data-start="438.11"
+        data-duration="6.22"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 78"
+      ></div>
+
+      <div
+        id="scene-79"
+        data-composition-id="scene-79"
+        data-composition-src="compositions/79-react-native-windows-fork.html"
+        data-start="443.83"
+        data-duration="5.90"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 79"
+      ></div>
+
+      <div
+        id="scene-80"
+        data-composition-id="scene-80"
+        data-composition-src="compositions/80-js-drives-native-widgets.html"
+        data-start="449.23"
+        data-duration="5.17"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 80"
+      ></div>
+
+      <div
+        id="scene-81"
+        data-composition-id="scene-81"
+        data-composition-src="compositions/81-most-deployed-ten-days.html"
+        data-start="453.90"
+        data-duration="7.93"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 81"
+      ></div>
+
+      <div
+        id="scene-82"
+        data-composition-id="scene-82"
+        data-composition-src="compositions/82-llm-trained-on-js.html"
+        data-start="461.33"
+        data-duration="8.16"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 82"
+      ></div>
+
+      <div
+        id="scene-83"
+        data-composition-id="scene-83"
+        data-composition-src="compositions/83-corpus-sources.html"
+        data-start="468.99"
+        data-duration="8.50"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 83"
+      ></div>
+
+      <div
+        id="scene-84"
+        data-composition-id="scene-84"
+        data-composition-src="compositions/84-feedback-loop-flywheel.html"
+        data-start="476.99"
+        data-duration="10.94"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 84"
+      ></div>
+
+      <div
+        id="scene-85"
+        data-composition-id="scene-85"
+        data-composition-src="compositions/85-stackoverflow-survey.html"
+        data-start="487.43"
+        data-duration="7.94"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 85"
+      ></div>
+
+      <div
+        id="scene-86"
+        data-composition-id="scene-86"
+        data-composition-src="compositions/86-first-every-year-decade.html"
+        data-start="494.87"
+        data-duration="5.88"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 86"
+      ></div>
+
+      <div
+        id="scene-87"
+        data-composition-id="scene-87"
+        data-composition-src="compositions/87-66-percent-most-used.html"
+        data-start="500.25"
+        data-duration="5.30"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 87"
+      ></div>
+
+      <div
+        id="scene-88"
+        data-composition-id="scene-88"
+        data-composition-src="compositions/88-not-quality-but-supply.html"
+        data-start="505.05"
+        data-duration="4.87"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 88"
+      ></div>
+
+      <div
+        id="scene-89"
+        data-composition-id="scene-89"
+        data-composition-src="compositions/89-ten-days-writes-the-world.html"
+        data-start="509.42"
+        data-duration="5.76"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 89"
+      ></div>
+
+      <div
+        id="scene-90"
+        data-composition-id="scene-90"
+        data-composition-src="compositions/90-surfaces-running-javascript.html"
+        data-start="514.68"
+        data-duration="9.15"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 90"
+      ></div>
+
+      <div
+        id="scene-91"
+        data-composition-id="scene-91"
+        data-composition-src="compositions/91-finale-already-there.html"
+        data-start="523.33"
+        data-duration="7.287"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 91"
+      ></div>
+
+      <!-- director: covered through 529.20s / "...and it was built for mobility." (END OF NARRATION) -->
     </div>
 
     <script>
@@ -61,5 +1239,14 @@
       const tl = gsap.timeline({ paused: true });
       window.__timelines["main"] = tl;
     </script>
-  </body>
+        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div
+        id="sfx-layer"
+        data-composition-id="sfx-layer"
+        data-composition-src="compositions/sfx.html"
+        data-start="0"
+        data-duration="530.617"
+        data-track-index="19"
+      ></div>
+</body>
 </html>

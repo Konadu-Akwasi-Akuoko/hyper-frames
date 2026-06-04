@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 27 — async had to be bolted on</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-27 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    /* concept line */
+    #scene-27 .concept {
+      position: absolute; left: 50%; top: 232px; transform: translateX(-50%);
+      width: 1500px; text-align: center;
+      font-size: 52px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
+    }
+    #scene-27 .concept .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-27 .concept .bolt-em { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    /* the two bolt-on assemblies */
+    #scene-27 .rows {
+      position: absolute; left: 50%; top: 460px; transform: translateX(-50%);
+      display: flex; flex-direction: column; gap: 56px;
+    }
+    #scene-27 .row { display: flex; align-items: center; gap: 0; }
+
+    /* the language — solid, native */
+    #scene-27 .lang {
+      display: flex; align-items: center; gap: 22px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
+      padding: 26px 38px; min-width: 340px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-27 .lang img { width: 76px; height: 76px; }
+    #scene-27 .lang .nm { font-size: 46px; font-weight: 800; color: var(--fg); letter-spacing: -1px; }
+
+    /* the bolt connector — a bar with a screw head */
+    #scene-27 .bolt {
+      position: relative; width: 92px; height: 10px; background: var(--dim); border-radius: 4px;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-27 .bolt .head {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 38px; height: 38px; border-radius: 50%;
+      background: #2a313d; border: 2px solid var(--muted);
+      will-change: transform;
+    }
+    #scene-27 .bolt .head::before,
+    #scene-27 .bolt .head::after {
+      content: ""; position: absolute; left: 50%; top: 50%; background: var(--muted);
+    }
+    #scene-27 .bolt .head::before { width: 20px; height: 3px; transform: translate(-50%, -50%); }
+    #scene-27 .bolt .head::after { width: 3px; height: 20px; transform: translate(-50%, -50%); }
+
+    /* the bolted-on library — dashed, an afterthought */
+    #scene-27 .lib {
+      background: rgba(103,232,249,0.05); border: 2px dashed rgba(103,232,249,0.5); border-radius: 18px;
+      padding: 24px 36px; min-width: 320px; text-align: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-27 .lib .ln {
+      font-family: "JetBrains Mono", monospace; font-size: 40px; font-weight: 700; color: var(--accent-2); letter-spacing: -0.5px;
+    }
+    #scene-27 .lib .tag {
+      display: block; margin-top: 6px; font-size: 20px; font-weight: 600; color: var(--muted); letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-27" data-composition-id="scene-27" data-width="1920" data-height="1080">
+    <div class="concept">
+      <span class="w">Developers</span> <span class="w">who</span> <span class="w">wanted</span>
+      <span class="w">async</span> <span class="w">had</span> <span class="w">to</span>
+      <span class="w bolt-em">bolt</span> <span class="w bolt-em">it</span> <span class="w bolt-em">on.</span>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-row="0">
+        <div class="lang"><img src="assets/icons/ruby.svg" alt="Ruby"><span class="nm">Ruby</span></div>
+        <div class="bolt" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="5460" data-sfx-volume="0.50"><span class="head"></span></div>
+        <div class="lib"><span class="ln">EventMachine</span><span class="tag">bolted on</span></div>
+      </div>
+      <div class="row" data-row="1">
+        <div class="lang"><img src="assets/icons/python.svg" alt="Python"><span class="nm">Python</span></div>
+        <div class="bolt" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="7960" data-sfx-volume="0.50"><span class="head"></span></div>
+        <div class="lib"><span class="ln">Twisted</span><span class="tag">bolted on</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(203.44).
+    // "Developers who wanted async had to bolt it on." (Developers 0.50 ... on 3.10).
+    const cw = [0.50, 1.16, 1.28, 1.66, 2.35, 2.54, 2.70, 2.94, 3.10];
+    gsap.utils.toArray("#scene-27 .concept .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, cw[i]);
+    });
+    // "bolt it on" ignites (bolt 2.70).
+    tl.fromTo("#scene-27 .concept .bolt-em",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 26px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out", stagger: 0.08 }, 2.74);
+
+    // Row 1 — "Ruby had EventMachine" (Ruby 3.96, Event 4.96, Machine 5.42).
+    tl.fromTo("#scene-27 .row[data-row='0'] .lang",
+      { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, 3.96);
+    // EventMachine slides in from the right and clamps on.
+    tl.fromTo("#scene-27 .row[data-row='0'] .lib",
+      { opacity: 0, x: 80, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.44, ease: "power3.out" }, 4.80);
+    tl.fromTo("#scene-27 .row[data-row='0'] .bolt",
+      { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, 5.20);
+    // the bolt tightens with a quarter-turn snap as it lands.
+    tl.fromTo("#scene-27 .row[data-row='0'] .bolt .head",
+      { rotation: -90, scale: 0.6 }, { rotation: 0, scale: 1, duration: 0.32, ease: "back.out(2.2)" }, 5.30);
+
+    // Row 2 — "Python had Twisted" (Python 6.50, Twisted 7.68).
+    tl.fromTo("#scene-27 .row[data-row='1'] .lang",
+      { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, 6.50);
+    tl.fromTo("#scene-27 .row[data-row='1'] .lib",
+      { opacity: 0, x: 80, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.44, ease: "power3.out" }, 7.30);
+    tl.fromTo("#scene-27 .row[data-row='1'] .bolt",
+      { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, 7.70);
+    tl.fromTo("#scene-27 .row[data-row='1'] .bolt .head",
+      { rotation: -90, scale: 0.6 }, { rotation: 0, scale: 1, duration: 0.32, ease: "back.out(2.2)" }, 7.80);
+
+    // Subtle life — the assemblies settle with a faint drift.
+    tl.to("#scene-27 .rows", { y: "-=5", duration: 3.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.0);
+
+    // Seam clear — everything fades across the trailing overlap with scene 28 (local 8.44-8.94).
+    tl.to(["#scene-27 .concept", "#scene-27 .rows"],
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.44);
+
+    window.__timelines["scene-27"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 64 — React's component model could drive real native UI on iOS</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --react: #61dafb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-64 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-64 .cap {
+      position: absolute; left: 50%; top: 174px; transform: translateX(-50%);
+      width: 1460px; text-align: center;
+      font-size: 48px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-64 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-64 .cap .rc { color: var(--react); font-weight: 800; }
+    #scene-64 .cap .dr { color: var(--accent); font-weight: 800; }
+    #scene-64 .cap .nu { color: var(--accent-2); font-weight: 800; }
+
+    #scene-64 .rig {
+      position: absolute; left: 50%; top: 636px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 36px;
+    }
+
+    /* React — the component model */
+    #scene-64 .react { display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none; opacity: 0; will-change: transform, opacity; }
+    #scene-64 .react img { width: 132px; height: 132px; filter: drop-shadow(0 0 22px rgba(97,218,251,0.35)); }
+    #scene-64 .react .lbl { font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--react); }
+
+    /* the drive beam + its label, stacked so the label stays inside its own box */
+    #scene-64 .drive { display: flex; flex-direction: column; align-items: center; gap: 12px; flex: none; }
+    #scene-64 .drive .dtag {
+      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--accent);
+      white-space: nowrap; opacity: 0; will-change: opacity;
+    }
+    #scene-64 .beam {
+      position: relative; width: 150px; height: 4px; border-radius: 2px;
+      background: linear-gradient(90deg, rgba(97,218,251,0.7), rgba(103,232,249,0.9));
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    #scene-64 .beam::after {
+      content: ""; position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+      border-left: 12px solid var(--accent-2); border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+    }
+
+    /* the iOS frame rendering real native widgets */
+    #scene-64 .ios {
+      width: 290px; border-radius: 24px; background: #0e1118; border: 2px solid var(--border);
+      padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 16px; flex: none;
+      box-shadow: 0 16px 44px rgba(0,0,0,0.5); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-64 .ios .head { display: flex; align-items: center; gap: 12px; }
+    #scene-64 .ios .head img { width: 26px; height: 26px; filter: invert(1); }
+    #scene-64 .ios .head .t { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--soft); }
+    #scene-64 .ios .head .t small { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+
+    /* a native iOS toggle (on) */
+    #scene-64 .ctrl { display: flex; align-items: center; justify-content: space-between; }
+    #scene-64 .ctrl .name { font-family: "JetBrains Mono", monospace; font-size: 16px; color: var(--muted); }
+    #scene-64 .toggle { width: 58px; height: 34px; border-radius: 17px; background: var(--ok); position: relative; flex: none; }
+    #scene-64 .toggle i { position: absolute; top: 3px; right: 3px; width: 28px; height: 28px; border-radius: 50%; background: #fff; }
+    /* a native iOS button */
+    #scene-64 .btn {
+      height: 44px; border-radius: 12px; background: #2563eb; display: flex; align-items: center; justify-content: center;
+      font-family: "Inter", sans-serif; font-size: 17px; font-weight: 700; color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-64" data-composition-id="scene-64" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">that</span> <span class="w rc">React&rsquo;s</span> <span class="w rc">component</span>
+      <span class="w rc">model</span> <span class="w">could</span> <span class="w dr">drive</span>
+      <span class="w">real</span> <span class="w nu">native</span> <span class="w nu">UI</span>
+      <span class="w">on</span> <span class="w">iOS</span>
+    </div>
+
+    <div class="rig">
+      <div class="react">
+        <img src="assets/icons/react.svg" alt="React">
+        <span class="lbl">component model</span>
+      </div>
+
+      <div class="drive">
+        <span class="dtag">drive</span>
+        <div class="beam" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="3640" data-sfx-volume="0.35"></div>
+      </div>
+
+      <div class="ios" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4350" data-sfx-volume="0.35">
+        <div class="head">
+          <img src="assets/icons/apple.svg" alt="iOS">
+          <span class="t">Native UI<small>iOS</small></span>
+        </div>
+        <div class="ctrl"><span class="name">enabled</span><div class="toggle"><i></i></div></div>
+        <div class="btn">Continue</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(360.08).
+    // "that React's component model could drive real native UI on iOS"
+    // (React's 1.24, model 2.16, could 2.94, drive 3.14, real 3.58, native 4.16, UI 4.66, iOS 5.40).
+    const cw = [0.50, 1.24, 1.54, 2.16, 2.94, 3.14, 3.58, 4.16, 4.66, 5.18, 5.40];
+    gsap.utils.toArray("#scene-64 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "React's component model" — the React mark lands (React's 1.24).
+    tl.fromTo("#scene-64 .react",
+      { opacity: 0, x: -28, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.24);
+
+    // "drive" — the beam draws across toward the target (drive 3.14).
+    tl.fromTo("#scene-64 .beam",
+      { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 3.14);
+    tl.to("#scene-64 .drive .dtag", { opacity: 1, duration: 0.3 }, 3.20);
+
+    // "real native UI on iOS" — the iOS frame renders real native widgets (native 4.16).
+    tl.fromTo("#scene-64 .ios",
+      { opacity: 0, x: 28, scale: 0.94 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 4.10);
+
+    // Subtle life — the iOS frame holds with a faint breath.
+    tl.to("#scene-64 .ios", { y: "-=5", duration: 1.4, ease: "sine.inOut" }, 5.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 65 (local 5.92-6.42).
+    tl.to("#scene-64 .cap, #scene-64 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.92);
+
+    window.__timelines["scene-64"] = tl;
+  </script>
+</body>
+</html>

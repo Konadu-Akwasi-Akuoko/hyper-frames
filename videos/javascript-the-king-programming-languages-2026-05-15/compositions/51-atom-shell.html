@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 51 — The runtime was called Atom Shell</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --atom: #a48bff; --node: #8cc84b; --chrome: #4a8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-51 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-51 .cap {
+      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
+      width: 1380px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-51 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+
+    /* the nameplate */
+    #scene-51 .plate {
+      position: absolute; left: 50%; top: 612px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 26px;
+      padding: 50px 78px; border-radius: 20px;
+      background: var(--panel); border: 1px solid var(--border);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    /* the bundled runtime contents — a callback to the single runtime */
+    #scene-51 .bundle { display: flex; align-items: center; gap: 14px; opacity: 0; will-change: transform, opacity; }
+    #scene-51 .bundle .mod {
+      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 600; color: var(--muted);
+      padding: 7px 16px; border-radius: 999px; border: 1px solid var(--border);
+    }
+    #scene-51 .bundle .mod.cr { color: var(--chrome); border-color: rgba(74,140,255,0.4); }
+    #scene-51 .bundle .mod.nd { color: var(--node); border-color: rgba(140,200,75,0.4); }
+    #scene-51 .bundle .plus { color: var(--dim); font-size: 24px; }
+
+    #scene-51 .name {
+      font-family: "JetBrains Mono", monospace; font-size: 92px; font-weight: 800; letter-spacing: -2px; line-height: 1;
+      color: var(--soft); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-51 .name .at { color: var(--atom); }
+    #scene-51 .tag {
+      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; letter-spacing: 1px;
+      color: var(--muted); padding: 7px 22px; border-radius: 999px; border: 1px solid var(--dim);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-51" data-composition-id="scene-51" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w">runtime</span> <span class="w">was</span>
+      <span class="w">called</span> <span class="w">Atom</span> <span class="w">Shell.</span>
+    </div>
+
+    <div class="plate">
+      <div class="bundle">
+        <span class="mod cr">Chromium</span>
+        <span class="plus">+</span>
+        <span class="mod nd">Node.js</span>
+      </div>
+      <div class="name" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2430" data-sfx-volume="0.35"><span class="at">Atom</span> Shell</div>
+      <div class="tag">runtime</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(316.78).
+    // "The runtime was called Atom Shell." (runtime 0.66, called 1.30, Atom 1.86, Shell 2.30).
+    const cw = [0.50, 0.66, 1.08, 1.30, 1.86, 2.30];
+    gsap.utils.toArray("#scene-51 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // "runtime" — the plate settles and the bundled runtime appears (runtime 0.66).
+    tl.fromTo("#scene-51 .plate",
+      { opacity: 0, y: 26, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.62);
+    tl.fromTo("#scene-51 .bundle",
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.78);
+
+    // "called Atom Shell" — the name stamps on (Atom 1.86, Shell 2.30).
+    tl.fromTo("#scene-51 .name",
+      { opacity: 0, scale: 1.2 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 2.18);
+    tl.fromTo("#scene-51 .tag",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 2.44);
+
+    // Subtle life — the plate breathes once named.
+    tl.to("#scene-51 .plate", { y: "-=5", duration: 1.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.7);
+
+    // Seam clear — fade out across the trailing overlap with scene 52 (local 2.80-3.30).
+    tl.to("#scene-51 .cap, #scene-51 .plate",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 2.80);
+
+    window.__timelines["scene-51"] = tl;
+  </script>
+</body>
+</html>

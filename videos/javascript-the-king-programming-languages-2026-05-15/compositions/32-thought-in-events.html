@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 32 — thought in events, because that's how the browser works</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-32 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-32 .cap {
+      position: absolute; left: 50%; top: 188px; transform: translateX(-50%);
+      width: 1500px; text-align: center;
+      font-size: 48px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
+    }
+    #scene-32 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-32 .cap .ev { color: var(--accent-2); font-weight: 800; }
+    #scene-32 .cap .br { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    /* the browser — the JS-native home where events fire */
+    #scene-32 .browser {
+      position: absolute; left: 50%; top: 376px; transform: translateX(-50%);
+      width: 880px; border-radius: 18px; overflow: hidden;
+      background: var(--panel); border: 1px solid var(--border);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+    #scene-32 .chrome {
+      display: flex; align-items: center; gap: 16px; padding: 18px 24px;
+      background: #0e1118; border-bottom: 1px solid var(--border);
+    }
+    #scene-32 .dots { display: flex; gap: 10px; }
+    #scene-32 .dots i { width: 16px; height: 16px; border-radius: 50%; background: var(--dim); }
+    #scene-32 .url {
+      flex: 1; height: 36px; border-radius: 10px; background: #161b24; border: 1px solid var(--border);
+      display: flex; align-items: center; padding: 0 16px;
+      font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--muted);
+    }
+    #scene-32 .viewport {
+      position: relative; height: 380px; padding: 40px;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 26px;
+    }
+    #scene-32 .event {
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 14px; background: rgba(103,232,249,0.06); border: 1.5px solid rgba(103,232,249,0.45);
+      font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color: var(--accent-2);
+      opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-32" data-composition-id="scene-32" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">&hellip;who</span> <span class="w">already</span> <span class="w">thought</span>
+      <span class="w">in</span> <span class="w ev">events</span> <span class="w">&mdash; because</span>
+      <span class="w">that&rsquo;s</span> <span class="w">how</span> <span class="w">the</span>
+      <span class="w br">browser</span> <span class="w">works.</span>
+    </div>
+
+    <div class="browser" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4100" data-sfx-volume="0.42">
+      <div class="chrome">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url">developer &middot; the browser</div>
+      </div>
+      <div class="viewport">
+        <div class="event" data-e="0" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="1780" data-sfx-volume="0.42">onclick</div>
+        <div class="event" data-e="1">onscroll</div>
+        <div class="event" data-e="2">onkeydown</div>
+        <div class="event" data-e="3" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3100" data-sfx-volume="0.35">onload</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(231.38).
+    // "...who already thought in events — because that's how the browser works." (who 0.50 ... works 4.22).
+    const cw = [0.50, 0.74, 1.11, 1.44, 1.62, 2.86, 3.38, 3.60, 3.74, 3.86, 4.22];
+    gsap.utils.toArray("#scene-32 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // The browser settles in — the native home.
+    tl.fromTo("#scene-32 .browser",
+      { opacity: 0, y: 24, scale: 0.97 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.40);
+
+    // "thought in events" — the events start firing, one after another, each popping in and pulsing (events 1.62).
+    const fire = [1.62, 2.10, 2.52, 2.94];
+    gsap.utils.toArray("#scene-32 .event").forEach((el, i) => {
+      tl.fromTo(el,
+        { opacity: 0, scale: 0.7 },
+        { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2)" }, fire[i]);
+      // each fired event flashes a glow — a handler running.
+      tl.fromTo(el,
+        { boxShadow: "0 0 0 rgba(103,232,249,0)" },
+        { boxShadow: "0 0 26px rgba(103,232,249,0.45)", duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1 },
+        fire[i] + 0.2);
+    });
+
+    // "the browser works" — the browser frame itself lights up: this is the source of it all (browser 3.86).
+    tl.to("#scene-32 .browser",
+      { boxShadow: "0 30px 70px rgba(0,0,0,0.5), 0 0 60px rgba(247,223,30,0.42)", borderColor: "rgba(247,223,30,0.45)", duration: 0.4, ease: "power2.out" }, 3.86);
+    tl.fromTo("#scene-32 .cap .br",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 24px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 3.88);
+
+    // Subtle life — the browser breathes.
+    tl.to("#scene-32 .browser", { y: "-=5", duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
+
+    // Seam clear — fade out across the trailing overlap with scene 33 (local 4.48-4.98).
+    tl.to("#scene-32 .cap, #scene-32 .browser",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.48);
+
+    window.__timelines["scene-32"] = tl;
+  </script>
+</body>
+</html>

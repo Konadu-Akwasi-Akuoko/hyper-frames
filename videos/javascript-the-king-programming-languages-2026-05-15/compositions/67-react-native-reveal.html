@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 67 — Facebook open-sourced it at F8 in March 2015 and called it React Native</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --fb: #3b82f6; --react: #61dafb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-67 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-67 .cap {
+      position: absolute; left: 50%; top: 172px; transform: translateX(-50%);
+      width: 1480px; text-align: center;
+      font-size: 46px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-67 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-67 .cap .os { color: var(--accent); font-weight: 800; }
+    #scene-67 .cap .rn { color: var(--react); font-weight: 800; }
+
+    /* context strip */
+    #scene-67 .context {
+      position: absolute; left: 50%; top: 442px; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 18px;
+    }
+    #scene-67 .context img { width: 44px; height: 44px; opacity: 0; will-change: transform, opacity; }
+    #scene-67 .context .os {
+      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent); opacity: 0; will-change: opacity;
+    }
+    #scene-67 .context .pill {
+      font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--accent-2);
+      padding: 8px 20px; border-radius: 999px; border: 1px solid rgba(103,232,249,0.4); opacity: 0; will-change: transform, opacity;
+    }
+
+    /* hero reveal */
+    #scene-67 .hero {
+      position: absolute; left: 50%; top: 680px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 34px;
+    }
+    #scene-67 .hero img {
+      width: 150px; height: 150px; opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-67 .hero .wordmark {
+      font-size: 92px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-67 .hero .wordmark .r { color: var(--react); }
+    #scene-67 .hero .wordmark .n { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <div id="scene-67" data-composition-id="scene-67" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Facebook</span> <span class="w os">open-sourced</span> <span class="w">it</span>
+      <span class="w">at</span> <span class="w">F8</span> <span class="w">in</span>
+      <span class="w">March</span> <span class="w">2015</span> <span class="w">and</span>
+      <span class="w">called</span> <span class="w">it</span> <span class="w rn">React</span> <span class="w rn">Native.</span>
+    </div>
+
+    <div class="context">
+      <img src="assets/icons/facebook.svg" alt="Facebook">
+      <span class="os">open-sourced</span>
+      <span class="pill">F8 &middot; March 2015</span>
+    </div>
+
+    <div class="hero">
+      <img src="assets/icons/react.svg" alt="React">
+      <div class="wordmark" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="5750" data-sfx-volume="0.35"><span class="r">React</span> <span class="n">Native</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(374.47).
+    // "Facebook open-sourced it at F8 in March 2015 and called it React Native."
+    // (Facebook 0.50, open-sourced 1.04, F8 2.40, March 3.28, 2015 3.70, called 4.94, React 5.50, Native 6.30).
+    const cw = [0.50, 1.04, 1.68, 1.94, 2.40, 3.06, 3.28, 3.70, 4.70, 4.94, 5.18, 5.50, 6.30];
+    gsap.utils.toArray("#scene-67 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Facebook open-sourced it" — the context source appears (Facebook 0.50).
+    tl.fromTo("#scene-67 .context img",
+      { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.50);
+    tl.to("#scene-67 .context .os", { opacity: 1, duration: 0.35 }, 1.04);
+
+    // "at F8 in March 2015" — the date marker lands (F8 2.40).
+    tl.fromTo("#scene-67 .context .pill",
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 2.40);
+
+    // "called it" — the React logo eases in, dim, ahead of the name (called 4.94).
+    tl.fromTo("#scene-67 .hero img",
+      { opacity: 0, rotation: -110, scale: 0.7 },
+      { opacity: 0.5, rotation: 0, scale: 1, duration: 0.52, ease: "power2.out" }, 4.94);
+
+    // "React Native" — the wordmark reveals and the logo ignites (React 5.50, Native 6.30).
+    tl.fromTo("#scene-67 .hero .wordmark",
+      { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.50);
+    tl.to("#scene-67 .hero img",
+      { opacity: 1, filter: "drop-shadow(0 0 28px rgba(97,218,251,0.55))", duration: 0.5, ease: "power2.out" }, 5.50);
+
+    // Subtle life — the logo holds with a faint breath.
+    tl.to("#scene-67 .hero img", { y: "-=5", duration: 1.4, ease: "sine.inOut" }, 6.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 68 (local 6.96-7.46).
+    tl.to("#scene-67 .cap, #scene-67 .context, #scene-67 .hero",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.96);
+
+    window.__timelines["scene-67"] = tl;
+  </script>
+</body>
+</html>

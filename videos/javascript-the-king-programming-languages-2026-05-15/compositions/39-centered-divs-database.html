@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 39 — the people who centered divs got to touch a database</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --node: #8cc84b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-39 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-39 .cap {
+      position: absolute; left: 50%; top: 168px; transform: translateX(-50%);
+      width: 1500px; text-align: center;
+      font-size: 46px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px; line-height: 1.34;
+    }
+    #scene-39 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-39 .cap .div { color: var(--accent); font-weight: 800; }
+    #scene-39 .cap .db { color: var(--accent-2); font-weight: 800; }
+
+    #scene-39 .rig {
+      position: absolute; left: 50%; top: 686px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 70px;
+    }
+
+    /* the CSS-centering meme, rendered as the artifact itself */
+    #scene-39 .code {
+      width: 420px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.4);
+      opacity: 0; will-change: transform, opacity;
+      font-family: "JetBrains Mono", monospace;
+    }
+    #scene-39 .code .bar {
+      display: flex; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--border);
+    }
+    #scene-39 .code .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--dim); }
+    #scene-39 .code .src { padding: 18px 22px; font-size: 21px; line-height: 1.55; }
+    #scene-39 .code .src .k { color: #c792ea; }
+    #scene-39 .code .src .p { color: var(--accent-2); }
+    #scene-39 .code .src .v { color: var(--node); }
+    #scene-39 .code .src .s { color: var(--muted); }
+    /* the live demo: a box that snaps to centre */
+    #scene-39 .demo {
+      margin: 4px 22px 20px; height: 96px; border: 1px dashed var(--border); border-radius: 10px;
+      position: relative;
+    }
+    #scene-39 .demo .box {
+      position: absolute; left: 12px; top: 12px; width: 40px; height: 40px; border-radius: 8px;
+      background: var(--accent); will-change: transform;
+    }
+
+    #scene-39 .link {
+      position: relative; width: 150px; height: 6px; opacity: 0; will-change: opacity;
+    }
+    #scene-39 .link .line {
+      position: absolute; top: 50%; left: 0; height: 3px; width: 100%; transform: translateY(-50%);
+      background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform-origin: left center;
+    }
+    #scene-39 .link .pulse {
+      position: absolute; top: 50%; left: 0; width: 18px; height: 18px; border-radius: 50%; transform: translate(-50%, -50%);
+      background: var(--accent-2); box-shadow: 0 0 18px rgba(103,232,249,0.8); opacity: 0;
+    }
+
+    /* the database */
+    #scene-39 .dbwrap {
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-39 .cyl {
+      position: relative; width: 158px; height: 188px;
+      border: 2px solid var(--accent-2); border-radius: 79px / 26px;
+      background: rgba(103,232,249,0.06); will-change: border-color, transform, box-shadow;
+    }
+    #scene-39 .cyl .lid {
+      position: absolute; top: -2px; left: -2px; right: -2px; height: 52px;
+      border: 2px solid var(--accent-2); border-radius: 50%; background: var(--panel);
+    }
+    #scene-39 .cyl .band {
+      position: absolute; left: -2px; right: -2px; height: 26px;
+      border: 2px solid rgba(103,232,249,0.4); border-radius: 50%; background: transparent;
+    }
+    #scene-39 .cyl .b1 { top: 58px; }
+    #scene-39 .cyl .b2 { top: 104px; }
+    #scene-39 .dbwrap .nm {
+      font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 700; color: var(--accent-2); letter-spacing: 0.5px;
+      will-change: color;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-39" data-composition-id="scene-39" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w">people</span> <span class="w">who</span>
+      <span class="w div">centered</span> <span class="w div">divs</span> <span class="w">for</span>
+      <span class="w">a</span> <span class="w">living</span> <span class="w">got</span>
+      <span class="w">to</span> <span class="w">touch</span> <span class="w">a</span>
+      <span class="w db">database</span> <span class="w">&mdash; and</span> <span class="w">the</span>
+      <span class="w db">database</span> <span class="w">has</span> <span class="w">never</span>
+      <span class="w">been</span> <span class="w">the</span> <span class="w">same.</span>
+    </div>
+
+    <div class="rig">
+      <div class="code">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="src"><span class="s">.div</span> {<br>
+          &nbsp;&nbsp;<span class="p">display</span>: <span class="v">flex</span>;<br>
+          &nbsp;&nbsp;<span class="p">align-items</span>: <span class="v">center</span>;<br>
+          &nbsp;&nbsp;<span class="p">justify-content</span>: <span class="v">center</span>;<br>
+        }</div>
+        <div class="demo"><div class="box" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2300" data-sfx-volume="0.42"></div></div>
+      </div>
+
+      <div class="link">
+        <div class="line"></div>
+        <div class="pulse"></div>
+      </div>
+
+      <div class="dbwrap" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="3800" data-sfx-volume="0.42">
+        <div class="cyl" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="6350">
+          <div class="band b2"></div>
+          <div class="band b1"></div>
+          <div class="lid"></div>
+        </div>
+        <div class="nm">database</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(259.33).
+    // "The people who centered divs for a living got to touch a database — and the database has never been the same."
+    const cw = [0.50, 0.71, 1.14, 1.39, 1.77, 1.97, 2.11, 2.23, 3.09, 3.23, 3.39, 3.67, 3.77, 4.87, 4.99, 5.11, 5.77, 6.07, 6.43, 6.60, 6.81];
+    gsap.utils.toArray("#scene-39 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "centered divs" — the code card lands and the box snaps to centre (centered 1.39, divs 1.77).
+    tl.fromTo("#scene-39 .code",
+      { opacity: 0, x: -50, scale: 0.94 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.30);
+    // the demo box obediently centres itself — the thing they do for a living.
+    tl.to("#scene-39 .demo .box",
+      { left: "50%", top: "50%", xPercent: -50, yPercent: -50, duration: 0.55, ease: "back.out(1.7)" }, 1.85);
+
+    // "got to touch a database" — the link draws and the database materialises (touch 3.39, database 3.77).
+    tl.fromTo("#scene-39 .dbwrap",
+      { opacity: 0, x: 50, scale: 0.92 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 3.30);
+    tl.to("#scene-39 .link", { opacity: 1, duration: 0.2 }, 3.30);
+    tl.fromTo("#scene-39 .link .line",
+      { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 3.35);
+    // a pulse runs from the frontend code across into the database — they "touch" it.
+    tl.fromTo("#scene-39 .link .pulse",
+      { left: "0%", opacity: 0 },
+      { left: "100%", opacity: 1, duration: 0.55, ease: "power2.in" }, 3.55);
+    tl.to("#scene-39 .link .pulse", { opacity: 0, duration: 0.2 }, 4.10);
+
+    // "never been the same" — the database is changed: its colour shifts off-cyan and it wobbles (never 6.07, same 6.81).
+    tl.to("#scene-39 .cyl",
+      { borderColor: "var(--node)", boxShadow: "0 0 34px rgba(140,200,75,0.4)", duration: 0.5, ease: "power2.out" }, 6.07);
+    tl.to("#scene-39 .cyl",
+      { rotation: -3, duration: 0.22, ease: "power1.inOut", yoyo: true, repeat: 3 }, 6.10);
+    tl.to("#scene-39 .dbwrap .nm",
+      { color: "var(--node)", duration: 0.5, ease: "power2.out" }, 6.20);
+
+    // Subtle life — the code card hums while the database arrives.
+    tl.to("#scene-39 .code", { y: "-=5", duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.4);
+
+    // Seam clear — fade out across the trailing overlap with scene 40 (local 7.23-7.73).
+    tl.to("#scene-39 .cap, #scene-39 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 7.23);
+
+    window.__timelines["scene-39"] = tl;
+  </script>
+</body>
+</html>

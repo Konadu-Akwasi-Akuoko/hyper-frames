@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Substrate — persistent background</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --accent: #f7df1e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: var(--bg);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #substrate { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* Rationed JS-yellow presence — two soft glows that drift, never a logo. */
+    #substrate .glow {
+      position: absolute; border-radius: 50%;
+      filter: blur(120px); will-change: transform, opacity;
+    }
+    #substrate .glow-warm {
+      width: 1100px; height: 1100px; left: -180px; top: -260px;
+      background: radial-gradient(circle, rgba(247,223,30,0.10) 0%, rgba(247,223,30,0) 70%);
+    }
+    #substrate .glow-cool {
+      width: 900px; height: 900px; right: -160px; bottom: -220px;
+      background: radial-gradient(circle, rgba(103,232,249,0.05) 0%, rgba(103,232,249,0) 70%);
+    }
+
+    /* A hair of texture — faint grid as ONE ingredient, not the gesture. */
+    #substrate .grid {
+      position: absolute; inset: 0; opacity: 0.35;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 96px 96px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 85%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 85%);
+    }
+
+    /* Vignette so foreground content always wins contrast. */
+    #substrate .vignette {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 75% 75% at 50% 48%, transparent 55%, rgba(0,0,0,0.55) 100%);
+    }
+  </style>
+</head>
+<body>
+  <div id="substrate" data-composition-id="substrate" data-width="1920" data-height="1080">
+    <div class="glow glow-warm" data-layout-allow-overflow></div>
+    <div class="glow glow-cool" data-layout-allow-overflow></div>
+    <div class="grid"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Slow, deterministic drift across the whole runtime (finite yoyo, never repeat:-1).
+    // 30s half-cycle * 18 = 540s, covers the 530.6s voiceover.
+    tl.to("#substrate .glow-warm", { x: 220, y: 160, duration: 30, ease: "sine.inOut", repeat: 17, yoyo: true }, 0);
+    tl.to("#substrate .glow-cool", { x: -200, y: -130, duration: 38, ease: "sine.inOut", repeat: 13, yoyo: true }, 0);
+    tl.to("#substrate .glow-warm", { opacity: 0.7, duration: 22, ease: "sine.inOut", repeat: 23, yoyo: true }, 0);
+
+    window.__timelines["substrate"] = tl;
+  </script>
+</body>
+</html>

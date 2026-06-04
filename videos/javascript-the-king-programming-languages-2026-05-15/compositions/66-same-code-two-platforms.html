@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 66 — Same JavaScript code, two mobile platforms, Android and iOS</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --android: #3ddc84;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-66 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-66 .cap {
+      position: absolute; left: 50%; top: 182px; transform: translateX(-50%);
+      width: 1400px; text-align: center;
+      font-size: 48px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-66 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-66 .cap .js { color: var(--accent); font-weight: 800; }
+    #scene-66 .cap .tw { color: var(--accent-2); font-weight: 800; }
+    #scene-66 .cap .an { color: var(--android); font-weight: 800; }
+
+    #scene-66 .rig {
+      position: absolute; left: 50%; top: 636px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 30px;
+    }
+
+    /* one JavaScript codebase */
+    #scene-66 .src {
+      display: flex; flex-direction: column; align-items: center; gap: 14px; flex: none;
+      padding: 30px 38px; border-radius: 18px; background: var(--panel); border: 1px solid rgba(247,223,30,0.35);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-66 .src img { width: 104px; height: 104px; border-radius: 18px; }
+    #scene-66 .src .lbl { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 700; color: var(--accent); }
+    #scene-66 .src .sub { font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 600; color: var(--muted); }
+
+    /* the fan-out connector */
+    #scene-66 .split { width: 132px; height: 200px; flex: none; opacity: 0; will-change: opacity; }
+    #scene-66 .split path { fill: none; stroke: var(--accent-2); stroke-width: 3; }
+    #scene-66 .split circle { fill: var(--accent-2); }
+
+    /* the two target platforms */
+    #scene-66 .plats { display: flex; flex-direction: column; gap: 22px; flex: none; }
+    #scene-66 .plat {
+      width: 268px; padding: 18px 24px; border-radius: 14px; background: var(--panel); border: 1px solid var(--border);
+      display: flex; align-items: center; gap: 18px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-66 .plat img { width: 52px; height: 52px; flex: none; }
+    #scene-66 .plat.ios img { filter: invert(1); }
+    #scene-66 .plat .name { font-family: "JetBrains Mono", monospace; font-size: 25px; font-weight: 800; color: var(--soft); }
+  </style>
+</head>
+<body>
+  <div id="scene-66" data-composition-id="scene-66" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Same</span> <span class="w js">JavaScript</span> <span class="w js">code,</span>
+      <span class="w tw">two</span> <span class="w">mobile</span> <span class="w">platforms,</span>
+      <span class="w an">Android</span> <span class="w">and</span> <span class="w">iOS.</span>
+    </div>
+
+    <div class="rig">
+      <div class="src">
+        <img src="assets/icons/javascript.svg" alt="JavaScript">
+        <span class="lbl">JavaScript</span>
+        <span class="sub">one codebase</span>
+      </div>
+
+      <svg class="split" viewBox="0 0 132 200" aria-hidden="true" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="2540" data-sfx-volume="0.42">
+        <circle cx="6" cy="100" r="6"/>
+        <path d="M6 100 C 60 100, 70 48, 126 48"/>
+        <path d="M6 100 C 60 100, 70 152, 126 152"/>
+      </svg>
+
+      <div class="plats">
+        <div class="plat android">
+          <img src="assets/icons/android.svg" alt="Android">
+          <span class="name">Android</span>
+        </div>
+        <div class="plat ios">
+          <img src="assets/icons/apple.svg" alt="iOS">
+          <span class="name">iOS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(369.69).
+    // "Same JavaScript code, two mobile platforms, Android and iOS."
+    // (JavaScript 1.10, code 1.64, two 2.32, platforms 2.84, Android 3.62, iOS 4.30).
+    const cw = [0.50, 1.10, 1.64, 2.32, 2.52, 2.84, 3.62, 4.10, 4.30];
+    gsap.utils.toArray("#scene-66 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Same JavaScript code" — the single JS codebase lands (Same 0.50).
+    tl.fromTo("#scene-66 .src",
+      { opacity: 0, x: -28, scale: 0.94 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.50);
+
+    // "two mobile platforms" — the fan-out connector appears (two 2.32).
+    tl.to("#scene-66 .split", { opacity: 1, duration: 0.4, ease: "power2.out" }, 2.30);
+
+    // "Android and iOS" — the two platform cards fan in (Android 3.62, iOS 4.30).
+    tl.fromTo("#scene-66 .plat.android",
+      { opacity: 0, x: 26 }, { opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.6)" }, 3.60);
+    tl.fromTo("#scene-66 .plat.ios",
+      { opacity: 0, x: 26 }, { opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.6)" }, 4.28);
+
+    // Subtle life — the JS source holds with a faint breath.
+    tl.to("#scene-66 .src", { y: "-=5", duration: 1.4, ease: "sine.inOut" }, 4.7);
+
+    // Seam clear — fade out across the trailing overlap with scene 67 (local 4.78-5.28).
+    tl.to("#scene-66 .cap, #scene-66 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.78);
+
+    window.__timelines["scene-66"] = tl;
+  </script>
+</body>
+</html>

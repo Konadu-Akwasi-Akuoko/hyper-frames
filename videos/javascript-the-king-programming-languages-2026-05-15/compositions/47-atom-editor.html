@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 47 — GitHub was building a text editor called Atom</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --atom: #a48bff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-47 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-47 .cap {
+      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
+      width: 1380px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-47 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-47 .cap .at { color: var(--atom); font-weight: 800; will-change: text-shadow; }
+
+    /* the Atom editor window */
+    #scene-47 .editor {
+      position: absolute; left: 50%; top: 638px; transform: translate(-50%, -50%);
+      width: 760px; border-radius: 14px; overflow: hidden;
+      background: var(--panel); border: 1px solid var(--border);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-47 .editor .bar {
+      display: flex; align-items: center; gap: 14px; padding: 14px 18px;
+      background: #0f1219; border-bottom: 1px solid var(--border);
+    }
+    #scene-47 .editor .bar i { width: 12px; height: 12px; border-radius: 50%; background: var(--dim); }
+    #scene-47 .editor .bar .title {
+      margin-left: 10px; font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--muted);
+    }
+    #scene-47 .editor .bar .title b { color: var(--atom); font-weight: 700; }
+    #scene-47 .editor .body { display: flex; height: 256px; }
+    #scene-47 .editor .tree {
+      width: 168px; border-right: 1px solid var(--border); padding: 18px 16px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    #scene-47 .editor .tree .f { height: 10px; border-radius: 5px; background: #1b2130; }
+    #scene-47 .editor .tree .f.active { background: rgba(164,139,255,0.4); }
+    #scene-47 .editor .code {
+      flex: 1; padding: 20px 22px; font-family: "JetBrains Mono", monospace; font-size: 18px; line-height: 1.7;
+    }
+    #scene-47 .editor .code .ln { display: block; opacity: 0; will-change: transform, opacity; white-space: nowrap; }
+    #scene-47 .editor .code .k { color: #c792ea; }
+    #scene-47 .editor .code .s { color: var(--ok); }
+    #scene-47 .editor .code .c { color: var(--muted); }
+    #scene-47 .editor .code .fn { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-47" data-composition-id="scene-47" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">GitHub</span> <span class="w">was</span> <span class="w">building</span>
+      <span class="w">a</span> <span class="w">text</span> <span class="w">editor</span>
+      <span class="w">called</span> <span class="w at">Atom.</span>
+    </div>
+
+    <div class="editor" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="2250" data-sfx-volume="0.42">
+      <div class="bar">
+        <i></i><i></i><i></i>
+        <span class="title">&mdash; <b>Atom</b> &middot; init.js</span>
+      </div>
+      <div class="body">
+        <div class="tree">
+          <div class="f active"></div>
+          <div class="f"></div>
+          <div class="f"></div>
+          <div class="f"></div>
+          <div class="f"></div>
+        </div>
+        <div class="code">
+          <span class="ln"><span class="c">// your editor, your rules</span></span>
+          <span class="ln"><span class="k">export default</span> {</span>
+          <span class="ln">&nbsp;&nbsp;<span class="fn">activate</span>() {</span>
+          <span class="ln">&nbsp;&nbsp;&nbsp;&nbsp;atom.<span class="fn">commands</span>.<span class="fn">add</span>(<span class="s">'atom-text-editor'</span>)</span>
+          <span class="ln">&nbsp;&nbsp;}</span>
+          <span class="ln">}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(302.34).
+    // "GitHub was building a text editor called Atom." (GitHub 0.50 ... Atom 3.02).
+    const cw = [0.50, 0.91, 1.22, 1.60, 1.76, 2.08, 2.56, 3.02];
+    gsap.utils.toArray("#scene-47 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // "text editor" — the editor window settles in (text 1.76, editor 2.08).
+    tl.fromTo("#scene-47 .editor",
+      { opacity: 0, y: 26, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 1.70);
+    // code lines type in quickly, line by line.
+    gsap.utils.toArray("#scene-47 .editor .code .ln").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.22, ease: "power2.out" }, 2.10 + i * 0.1);
+    });
+
+    // "called Atom" — the title flares purple (Atom 3.02).
+    tl.fromTo("#scene-47 .cap .at",
+      { textShadow: "0 0 0 rgba(164,139,255,0)" },
+      { textShadow: "0 0 24px rgba(164,139,255,0.55)", duration: 0.4, ease: "power2.out" }, 3.06);
+
+    // Subtle life — the editor breathes.
+    tl.to("#scene-47 .editor", { y: "-=5", duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.0);
+
+    // Seam clear — fade out across the trailing overlap with scene 48 (local 3.46-3.96).
+    tl.to("#scene-47 .cap, #scene-47 .editor",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.46);
+
+    window.__timelines["scene-47"] = tl;
+  </script>
+</body>
+</html>

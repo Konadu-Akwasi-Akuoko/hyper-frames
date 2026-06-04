@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 04 — how did JavaScript come to be?</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-04 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-04 .block {
+      position: absolute; left: 200px; top: 50%; transform: translateY(-50%);
+      width: 1500px;
+    }
+    /* The setup line — soft lead-in. */
+    #scene-04 .setup {
+      font-size: 40px; font-weight: 500; color: var(--soft);
+      letter-spacing: 0.2px; margin-bottom: 34px;
+    }
+    #scene-04 .setup .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+
+    /* A short accent rule that draws in before the title. */
+    #scene-04 .rule {
+      height: 5px; width: 0; background: var(--accent); border-radius: 3px;
+      margin-bottom: 30px; box-shadow: 0 0 18px rgba(247,223,30,0.4);
+    }
+
+    /* The chapter title question — big, JavaScript in accent. */
+    #scene-04 .title {
+      font-size: 104px; font-weight: 800; line-height: 1.06; color: var(--fg);
+      letter-spacing: -2px;
+    }
+    #scene-04 .title .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-04 .title .js { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-04" data-composition-id="scene-04" data-width="1920" data-height="1080">
+    <div class="block"
+         data-sfx-on-anchor="whoosh"
+         data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3"
+         data-sfx-at-scene-ms="550">
+      <div class="setup">
+        <span class="w">Let's</span> <span class="w">answer</span> <span class="w">the</span>
+        <span class="w">most</span> <span class="w">important</span> <span class="w">question</span>
+        <span class="w">first.</span>
+      </div>
+      <div class="rule"></div>
+      <div class="title">
+        <span class="w">How</span> <span class="w">did</span>
+        <span class="w"><span class="js"
+          data-sfx-on-anchor="ui-tick"
+          data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav"
+          data-sfx-at-scene-ms="4680">JavaScript</span></span>
+        <span class="w">come</span> <span class="w">to</span> <span class="w">be?</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(23.90). Entrance at local 0 (overlap w/ scene 03).
+    tl.fromTo("#scene-04 .block",
+      { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0);
+
+    // Setup reveals: Let's 24.40(0.50) answer .82 the 1.08 most 1.26 important 1.58 question 2.16 first 2.60
+    const setup = [0.50, 0.82, 1.08, 1.26, 1.58, 2.16, 2.60];
+    gsap.utils.toArray("#scene-04 .setup .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, setup[i]);
+    });
+
+    // Accent rule draws across after the setup, before the title (~3.2).
+    tl.to("#scene-04 .rule", { width: 320, duration: 0.45, ease: "power3.out" }, 3.2);
+
+    // Title reveals: How 27.66(3.76) did 28.28(4.38) JavaScript 28.38(4.48) come 29.04(5.14) to 5.44 be 5.60
+    const title = [3.76, 4.38, 4.48, 5.14, 5.44, 5.60];
+    gsap.utils.toArray("#scene-04 .title .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.42, ease: "power3.out" }, title[i]);
+    });
+    // "JavaScript" ignites accent on its word (28.38 -> local 4.48).
+    tl.fromTo("#scene-04 .title .js",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 30px rgba(247,223,30,0.45)", duration: 0.4, ease: "power2.out" }, 4.52);
+
+    // Subtle life — the block drifts a hair.
+    tl.to("#scene-04 .block", { y: "-=6", duration: 4.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.0);
+
+    window.__timelines["scene-04"] = tl;
+  </script>
+</body>
+</html>

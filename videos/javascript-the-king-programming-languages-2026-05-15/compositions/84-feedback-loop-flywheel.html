@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 84 — most-trained-on becomes most-generated becomes most-shipped becomes the next training corpus.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-84 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-84 .cap {
+      position: absolute; left: 50%; top: 138px; transform: translateX(-50%);
+      width: 1560px; text-align: center; line-height: 1.25;
+      font-size: 40px; font-weight: 600; color: var(--soft); letter-spacing: -0.6px;
+    }
+    #scene-84 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-84 .cap .trn { color: var(--accent); font-weight: 800; }
+    #scene-84 .cap .gen { color: var(--accent-2); font-weight: 800; }
+    #scene-84 .cap .shp { color: var(--ok); font-weight: 800; }
+
+    #scene-84 .wheel {
+      position: absolute; left: 50%; top: 690px; transform: translate(-50%, -50%);
+      width: 760px; height: 470px;
+    }
+    #scene-84 .wheel svg { position: absolute; inset: 0; width: 760px; height: 470px; overflow: visible; }
+    #scene-84 .wheel svg .arc { stroke: var(--accent-2); stroke-width: 4; fill: none; stroke-linecap: round; opacity: 0; will-change: opacity; }
+
+    #scene-84 .node {
+      position: absolute; transform: translate(-50%, -50%);
+      padding: 16px 26px; border-radius: 999px; background: rgba(17,20,27,0.98);
+      font-family: "JetBrains Mono", monospace; font-size: 23px; font-weight: 800; white-space: nowrap;
+      opacity: 0; will-change: transform, opacity; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2;
+    }
+    #scene-84 .node.a { left: 380px; top: 56px; color: var(--accent); border: 1px solid rgba(247,223,30,0.5); }
+    #scene-84 .node.b { left: 560px; top: 372px; color: var(--accent-2); border: 1px solid rgba(103,232,249,0.5); }
+    #scene-84 .node.c { left: 200px; top: 372px; color: var(--ok); border: 1px solid rgba(125,216,125,0.5); }
+
+    #scene-84 .lolbl {
+      position: absolute; left: 70px; top: 200px; transform: translate(-50%, -50%) rotate(-62deg);
+      font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 700; color: var(--accent-2);
+      white-space: nowrap; opacity: 0; will-change: opacity; z-index: 2;
+    }
+    #scene-84 .center {
+      position: absolute; left: 380px; top: 230px; transform: translate(-50%, -50%);
+      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--muted);
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-84 .center .sym { font-size: 30px; color: var(--soft); }
+  </style>
+</head>
+<body>
+  <div id="scene-84" data-composition-id="scene-84" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w trn">most</span> <span class="w trn">trained-on</span> <span class="w">language</span>
+      <span class="w">becomes</span> <span class="w">the</span> <span class="w gen">most</span> <span class="w gen">generated,</span>
+      <span class="w">the</span> <span class="w gen">most</span> <span class="w gen">generated</span> <span class="w">becomes</span> <span class="w">the</span> <span class="w shp">most</span> <span class="w shp">shipped,</span>
+      <span class="w">and</span> <span class="w">the</span> <span class="w shp">most</span> <span class="w shp">shipped</span> <span class="w">becomes</span> <span class="w">the</span>
+      <span class="w">next</span> <span class="w">training</span> <span class="w">corpus</span> <span class="w">for</span> <span class="w">the</span> <span class="w">model</span> <span class="w">after</span> <span class="w">that.</span>
+    </div>
+
+    <div class="wheel">
+      <svg viewBox="0 0 760 470" preserveAspectRatio="none">
+        <defs>
+          <marker id="ah84" markerWidth="10" markerHeight="10" refX="6.5" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#67e8f9"></path>
+          </marker>
+        </defs>
+        <path class="arc" id="ab84" d="M430 86 Q620 170 580 330" marker-end="url(#ah84)"></path>
+        <path class="arc" id="bc84" d="M500 392 Q380 470 270 392" marker-end="url(#ah84)"></path>
+        <path class="arc" id="ca84" d="M160 332 Q120 170 330 88" marker-end="url(#ah84)"></path>
+      </svg>
+
+      <div class="node a" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1110" data-sfx-volume="0.35">most-trained-on</div>
+      <div class="node b" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3210" data-sfx-volume="0.42">most-generated</div>
+      <div class="node c" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="5790" data-sfx-volume="0.35">most-shipped</div>
+
+      <div class="lolbl" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="7850" data-sfx-volume="0.42">&rarr; next training corpus</div>
+      <div class="center"><span class="sym">&#8635;</span>self-reinforcing</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(476.99).
+    // "The most-trained-on language becomes the most-generated, the most-generated becomes the most-shipped,
+    //  and the most-shipped becomes the next training corpus for the model after that."
+    // (trained 0.90, generated 3.00, generated2 4.48, shipped 5.58, shipped2 6.84, next 7.74, corpus 8.44, model 9.40, that 10.14).
+    const cw = [0.50,0.64,0.90,1.68,2.26,2.60,2.74,3.00,4.16,4.28,4.48,4.94,5.26,5.38,5.58,6.38,6.50,6.64,6.84,7.18,7.56,7.74,8.12,8.44,9.16,9.26,9.40,9.88,10.14];
+    gsap.utils.toArray("#scene-84 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, cw[i]);
+    });
+
+    // node A "most-trained-on" appears (trained 0.90).
+    tl.fromTo("#scene-84 .node.a",
+      { opacity: 0, y: -14, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.6)" }, 0.90);
+
+    // arrow A->B then node B "most-generated" (generated 3.00).
+    tl.to("#scene-84 #ab84", { opacity: 1, duration: 0.4, ease: "power2.out" }, 2.26);
+    tl.fromTo("#scene-84 .node.b",
+      { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(1.6)" }, 3.00);
+
+    // arrow B->C then node C "most-shipped" (shipped 5.58).
+    tl.to("#scene-84 #bc84", { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.94);
+    tl.fromTo("#scene-84 .node.c",
+      { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(1.6)" }, 5.58);
+
+    // loop-back arrow C->A + label "next training corpus" — the circle closes (next 7.74).
+    tl.to("#scene-84 #ca84", { opacity: 1, duration: 0.45, ease: "power2.out" }, 7.40);
+    tl.to("#scene-84 .lolbl", { opacity: 1, duration: 0.35 }, 7.74);
+
+    // "the model after that" — the whole flywheel pulses, self-reinforcing (model 9.40).
+    tl.to("#scene-84 .center", { opacity: 1, duration: 0.4 }, 9.40);
+    tl.to("#scene-84 .wheel .arc", { opacity: 0.5, duration: 0.45, ease: "sine.inOut", repeat: 1, yoyo: true }, 9.5);
+    tl.to("#scene-84 .node", { scale: 1.05, duration: 0.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 9.5);
+
+    // Seam clear — fade out across the trailing overlap with scene 85 (local 10.44-10.94).
+    tl.to("#scene-84 .cap, #scene-84 .wheel",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 10.44);
+
+    window.__timelines["scene-84"] = tl;
+  </script>
+</body>
+</html>

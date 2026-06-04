@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 45 — an engineer at GitHub named Cheng Zhao</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-45 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-45 .lead {
+      position: absolute; left: 50%; top: 232px; transform: translateX(-50%);
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.5px;
+    }
+    #scene-45 .lead .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-45 .lead .yr { color: var(--accent-2); font-weight: 800; }
+
+    /* the profile card */
+    #scene-45 .card {
+      position: absolute; left: 50%; top: 612px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 40px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 22px;
+      padding: 48px 64px; box-shadow: 0 28px 80px rgba(0,0,0,0.45);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-45 .avatar {
+      width: 132px; height: 132px; border-radius: 50%; flex: none;
+      background: linear-gradient(145deg, #1c2430, #11141b);
+      border: 2px solid var(--accent-2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 54px; font-weight: 800; color: var(--accent-2);
+      box-shadow: 0 0 30px rgba(103,232,249,0.25);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-45 .info { display: flex; flex-direction: column; gap: 14px; }
+    #scene-45 .info .name {
+      font-size: 56px; font-weight: 800; color: var(--fg); letter-spacing: -1px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-45 .info .role {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 30px; font-weight: 500; color: var(--muted);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-45 .info .role img { width: 34px; height: 34px; filter: invert(1); }
+    #scene-45 .info .role .gh { color: var(--soft); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="scene-45" data-composition-id="scene-45" data-width="1920" data-height="1080">
+    <div class="lead">
+      <span class="w">In</span> <span class="w yr">2013,</span> <span class="w">an</span>
+      <span class="w">engineer</span> <span class="w">at</span> <span class="w">GitHub&hellip;</span>
+    </div>
+
+    <div class="card">
+      <div class="avatar" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3750" data-sfx-volume="0.35">CZ</div>
+      <div class="info">
+        <div class="name">Cheng Zhao</div>
+        <div class="role" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2850" data-sfx-volume="0.42">
+          <span>Engineer</span>
+          <span>&middot;</span>
+          <img src="assets/icons/github.svg" alt="GitHub">
+          <span class="gh">GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(293.48).
+    // "In 2013, an engineer at GitHub..." (In 0.50 ... GitHub 2.68).
+    const cw = [0.50, 0.64, 1.86, 2.02, 2.46, 2.68];
+    gsap.utils.toArray("#scene-45 .lead .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // the card frame settles in early.
+    tl.fromTo("#scene-45 .card",
+      { opacity: 0, y: 24, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 1.80);
+    // "at GitHub" — the role line with the GitHub mark resolves (GitHub 2.68).
+    tl.fromTo("#scene-45 .info .role",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 2.62);
+
+    // "named Cheng Zhao" — the avatar and name land, introducing the protagonist (named 3.52, Zhao 4.42).
+    tl.fromTo("#scene-45 .avatar",
+      { opacity: 0, scale: 0.6, rotateZ: -8 },
+      { opacity: 1, scale: 1, rotateZ: 0, duration: 0.5, ease: "back.out(2)" }, 3.52);
+    tl.fromTo("#scene-45 .info .name",
+      { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.92);
+
+    // Subtle life — the card breathes.
+    tl.to("#scene-45 .card", { y: "-=6", duration: 2.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 46 (local 4.98-5.48).
+    tl.to("#scene-45 .lead, #scene-45 .card",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.98);
+
+    window.__timelines["scene-45"] = tl;
+  </script>
+</body>
+</html>

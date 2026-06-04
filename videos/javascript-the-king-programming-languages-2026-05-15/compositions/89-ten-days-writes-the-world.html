@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 89 — The kid Netscape hired to write a scripting language in 10 days, now writes the world.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-89 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-89 .cap {
+      position: absolute; left: 50%; top: 140px; transform: translateX(-50%);
+      width: 1560px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.7px;
+    }
+    #scene-89 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-89 .cap .tend { color: var(--accent); font-weight: 800; }
+    #scene-89 .cap .wd { color: var(--accent-2); font-weight: 800; }
+
+    #scene-89 .transform {
+      position: absolute; left: 50%; top: 640px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 56px;
+    }
+    #scene-89 .origin {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 26px 38px; border-radius: 16px; background: rgba(17,20,27,0.94); border: 1px solid var(--border);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.5); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-89 .origin .yr { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+    #scene-89 .origin .big { font-family: "JetBrains Mono", monospace; font-size: 52px; font-weight: 900; color: var(--accent); line-height: 0.95; letter-spacing: -1px; }
+    #scene-89 .origin .sb { font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 600; color: var(--soft); }
+
+    #scene-89 .arrow {
+      display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-89 .arrow .ar { font-family: "JetBrains Mono", monospace; font-size: 56px; font-weight: 800; color: var(--soft); line-height: 0.9; }
+    #scene-89 .arrow .now { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+
+    #scene-89 .world {
+      display: flex; flex-direction: column; align-items: center; gap: 14px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-89 .world svg { width: 240px; height: 240px; overflow: visible; }
+    #scene-89 .world svg .gl { fill: none; stroke: var(--win); stroke-width: 2.2; }
+    #scene-89 .world svg .dot { fill: var(--accent); opacity: 0; will-change: opacity; }
+    #scene-89 .world .wl { font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 900; color: var(--accent-2); letter-spacing: -0.3px; }
+  </style>
+</head>
+<body>
+  <div id="scene-89" data-composition-id="scene-89" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w">kid</span> <span class="w">Netscape</span> <span class="w">hired</span> <span class="w">to</span> <span class="w">write</span>
+      <span class="w">a</span> <span class="w">scripting</span> <span class="w">language</span> <span class="w">in</span>
+      <span class="w tend">10</span> <span class="w tend">days,</span>
+      <span class="w">now</span> <span class="w wd">writes</span> <span class="w">the</span> <span class="w wd">world.</span>
+    </div>
+
+    <div class="transform">
+      <div class="origin" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1130" data-sfx-volume="0.42">
+        <span class="yr">1995</span>
+        <span class="big">10 days</span>
+        <span class="sb">one scripting language</span>
+      </div>
+      <div class="arrow">
+        <span class="ar">&rarr;</span>
+        <span class="now">now</span>
+      </div>
+      <div class="world" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="4290" data-sfx-volume="0.35">
+        <svg viewBox="0 0 240 240">
+          <circle class="gl" cx="120" cy="120" r="104"></circle>
+          <ellipse class="gl" cx="120" cy="120" rx="44" ry="104"></ellipse>
+          <line class="gl" x1="16" y1="120" x2="224" y2="120"></line>
+          <path class="gl" d="M28 70 Q120 92 212 70"></path>
+          <path class="gl" d="M28 170 Q120 148 212 170"></path>
+          <circle class="dot" cx="86" cy="74" r="6"></circle>
+          <circle class="dot" cx="150" cy="96" r="6"></circle>
+          <circle class="dot" cx="104" cy="138" r="6"></circle>
+          <circle class="dot" cx="168" cy="158" r="6"></circle>
+          <circle class="dot" cx="66" cy="148" r="6"></circle>
+        </svg>
+        <span class="wl">writes the world</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(509.42).
+    // "The kid Netscape hired to write a scripting language in 10 days, now writes the world."
+    // (kid 0.71, 10 3.01, days 3.25, now 4.01, writes 4.29, world 4.95).
+    const cw = [0.50, 0.71, 1.05, 1.47, 1.79, 1.89, 2.11, 2.21, 2.59, 2.87, 3.01, 3.25, 4.01, 4.29, 4.79, 4.95];
+    gsap.utils.toArray("#scene-89 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "the kid Netscape hired" — the humble origin chip appears (kid 0.71).
+    tl.fromTo("#scene-89 .origin",
+      { opacity: 0, y: 16, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.5)" }, 0.90);
+    // "10 days" — the callback figure pulses (10 3.01).
+    tl.to("#scene-89 .origin .big", { scale: 1.12, duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1 }, 3.01);
+
+    // "now" — the arrow bridges origin to outcome (now 4.01).
+    tl.fromTo("#scene-89 .arrow",
+      { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 4.01);
+
+    // "writes the world" — the globe blooms and its surfaces light up (writes 4.29, world 4.95).
+    tl.fromTo("#scene-89 .world",
+      { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 4.29);
+    tl.to("#scene-89 .world .dot", { opacity: 1, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 4.95);
+
+    // Seam clear — fade out across the trailing overlap with scene 90 (local 5.26-5.76).
+    tl.to("#scene-89 .cap, #scene-89 .transform",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.26);
+
+    window.__timelines["scene-89"] = tl;
+  </script>
+</body>
+</html>

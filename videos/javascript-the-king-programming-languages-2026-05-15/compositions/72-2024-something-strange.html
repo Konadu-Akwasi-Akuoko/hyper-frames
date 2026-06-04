@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 72 — Now, in 2024, something strange also happened.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-72 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-72 .cap {
+      position: absolute; left: 50%; top: 230px; transform: translateX(-50%);
+      width: 1280px; text-align: center;
+      font-size: 52px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-72 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-72 .cap .st { color: var(--accent-2); font-weight: 800; }
+
+    #scene-72 .stage {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 26px;
+    }
+    #scene-72 .year {
+      position: relative;
+      font-family: "JetBrains Mono", monospace; font-size: 188px; font-weight: 900; line-height: 1.1;
+      color: var(--fg); letter-spacing: 4px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-72 .year .ghost {
+      position: absolute; inset: 0; color: var(--accent-2); opacity: 0; mix-blend-mode: screen; will-change: transform, opacity;
+    }
+    #scene-72 .strange {
+      display: flex; align-items: center; gap: 16px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-72 .strange .anom {
+      width: 52px; height: 52px; border-radius: 12px; border: 2px solid var(--accent-2); color: var(--accent-2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 800;
+    }
+    #scene-72 .strange .lbl { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 700; color: var(--accent-2); letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+  <div id="scene-72" data-composition-id="scene-72" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Now,</span> <span class="w">in</span> <span class="w">2024,</span>
+      <span class="w st">something</span> <span class="w st">strange</span> <span class="w">also</span>
+      <span class="w">happened.</span>
+    </div>
+
+    <div class="stage">
+      <div class="year">2024<span class="ghost" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3180">2024</span></div>
+      <div class="strange">
+        <span class="anom">?!</span>
+        <span class="lbl">something strange</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(404.75).
+    // "Now, in 2024, something strange also happened."
+    // (2024 1.32, something 2.68, strange 3.16, happened 3.68).
+    const cw = [0.50, 1.12, 1.32, 2.68, 3.16, 3.46, 3.68];
+    gsap.utils.toArray("#scene-72 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "in 2024" — the year stamps in (2024 1.32).
+    tl.fromTo("#scene-72 .year",
+      { opacity: 0, y: 22, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 1.32);
+
+    // "something strange" — the anomaly tag appears (something 2.68).
+    tl.fromTo("#scene-72 .strange",
+      { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.68);
+
+    // "strange" — a brief deterministic glitch jolts the year (strange 3.16).
+    tl.to("#scene-72 .year .ghost", { opacity: 0.8, duration: 0.02 }, 3.16);
+    tl.to("#scene-72 .year .ghost", { x: -10, duration: 0.05 }, 3.18);
+    tl.to("#scene-72 .year .ghost", { x: 8, duration: 0.05 }, 3.23);
+    tl.to("#scene-72 .year", { x: 6, skewX: -4, duration: 0.05 }, 3.18);
+    tl.to("#scene-72 .year", { x: -4, skewX: 3, duration: 0.05 }, 3.23);
+    tl.to("#scene-72 .year", { x: 0, skewX: 0, duration: 0.06 }, 3.28);
+    tl.to("#scene-72 .year .ghost", { opacity: 0, x: 0, duration: 0.1 }, 3.30);
+
+    // Seam clear — fade out across the trailing overlap with scene 73 (local 4.46-4.96).
+    tl.to("#scene-72 .cap, #scene-72 .stage",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.46);
+
+    window.__timelines["scene-72"] = tl;
+  </script>
+</body>
+</html>

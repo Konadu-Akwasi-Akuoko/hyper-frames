@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 62 — Then in 2013, an engineer named Jordan Walke</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --fb: #3b82f6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-62 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-62 .cap {
+      position: absolute; left: 50%; top: 186px; transform: translateX(-50%);
+      width: 1360px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-62 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-62 .cap .yr { color: var(--accent-2); font-weight: 800; }
+    #scene-62 .cap .nm { color: var(--fg); font-weight: 800; }
+
+    #scene-62 .stage {
+      position: absolute; left: 50%; top: 640px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 30px;
+    }
+
+    /* the 2013 year marker */
+    #scene-62 .year {
+      font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--accent-2);
+      padding: 9px 24px; border-radius: 999px; border: 1px solid rgba(103,232,249,0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the person card — Jordan Walke */
+    #scene-62 .person {
+      display: flex; align-items: center; gap: 28px;
+      padding: 30px 44px 30px 30px; border-radius: 20px;
+      background: var(--panel); border: 1px solid var(--border);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-62 .person .mono {
+      width: 116px; height: 116px; border-radius: 50%; flex: none;
+      background: rgba(59,130,246,0.14); border: 2px solid rgba(59,130,246,0.55);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 44px; font-weight: 800; color: var(--fb);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-62 .person .id { display: flex; flex-direction: column; gap: 8px; }
+    #scene-62 .person .name {
+      font-size: 44px; font-weight: 800; color: var(--fg); letter-spacing: -0.5px;
+    }
+    #scene-62 .person .role {
+      font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 600; color: var(--muted);
+      display: flex; align-items: center; gap: 10px;
+    }
+    #scene-62 .person .role .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--fb); }
+  </style>
+</head>
+<body>
+  <div id="scene-62" data-composition-id="scene-62" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Then</span> <span class="w">in</span> <span class="w yr">2013,</span>
+      <span class="w">an</span> <span class="w">engineer</span> <span class="w">named</span>
+      <span class="w nm">Jordan</span> <span class="w nm">Walke</span>
+    </div>
+
+    <div class="stage">
+      <div class="year">2013</div>
+      <div class="person">
+        <div class="mono" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4080" data-sfx-volume="0.35">JW</div>
+        <div class="id">
+          <span class="name">Jordan Walke</span>
+          <span class="role"><span class="dot"></span>engineer &middot; Facebook</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(353.88).
+    // "Then in 2013, an engineer named Jordan Walke"
+    // (2013 1.50, engineer 2.86, named 3.38, Jordan 3.84, Walke 4.30).
+    const cw = [0.50, 1.30, 1.50, 2.72, 2.86, 3.38, 3.84, 4.30];
+    gsap.utils.toArray("#scene-62 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // "2013" — the year marker lands (2013 1.50).
+    tl.fromTo("#scene-62 .year",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.42, ease: "back.out(1.6)" }, 1.50);
+
+    // "an engineer" — the person card frame slides up (engineer 2.86).
+    tl.fromTo("#scene-62 .person",
+      { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.84);
+
+    // "Jordan Walke" — the monogram stamps in as the name is read (Jordan 3.84).
+    tl.fromTo("#scene-62 .person .mono",
+      { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 3.86);
+
+    // Subtle life — the card holds with a faint breath.
+    tl.to("#scene-62 .person", { y: "-=5", duration: 1.4, ease: "sine.inOut" }, 4.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 63 (local 4.60-5.10).
+    tl.to("#scene-62 .cap, #scene-62 .stage",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.60);
+
+    window.__timelines["scene-62"] = tl;
+  </script>
+</body>
+</html>

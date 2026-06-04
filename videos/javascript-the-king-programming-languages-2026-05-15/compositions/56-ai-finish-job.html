@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 56 — before AI even showed up to finish the job</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --heat: #ff7a45; --ai: #67e8f9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-56 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-56 .cap {
+      position: absolute; left: 50%; top: 184px; transform: translateX(-50%);
+      width: 1380px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-56 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-56 .cap .ai { color: var(--ai); font-weight: 800; will-change: text-shadow; }
+    #scene-56 .cap .fj { color: var(--danger); font-weight: 800; }
+
+    #scene-56 .stack {
+      position: absolute; left: 50%; top: 624px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+    }
+
+    /* the AI chip arriving to finish the job */
+    #scene-56 .chip {
+      position: relative; width: 168px; height: 168px; border-radius: 22px;
+      background: #0e1620; border: 2px solid var(--ai);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 56px; font-weight: 800; color: var(--ai);
+      box-shadow: 0 0 0 rgba(103,232,249,0);
+      opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+
+    #scene-56 .beam {
+      width: 5px; height: 40px; background: linear-gradient(180deg, var(--ai), var(--danger));
+      border-radius: 3px; transform: scaleY(0); transform-origin: top center; will-change: transform;
+    }
+
+    /* the memory gauge it finishes off */
+    #scene-56 .gauge { width: 760px; opacity: 0; will-change: opacity; }
+    #scene-56 .gauge .head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+    #scene-56 .gauge .name { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+    #scene-56 .gauge .pct { font-family: "JetBrains Mono", monospace; font-size: 40px; font-weight: 800; color: var(--danger); letter-spacing: -1px; will-change: opacity; }
+    #scene-56 .gauge .crash {
+      font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 800; color: var(--danger); letter-spacing: -0.5px;
+      position: absolute; right: 0; top: 0; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-56 .gauge .headwrap { position: relative; }
+    #scene-56 .gauge .track {
+      position: relative; height: 50px; border-radius: 11px; background: #14181f; border: 1px solid var(--border); overflow: hidden;
+    }
+    #scene-56 .gauge .fill {
+      position: absolute; top: 0; left: 0; height: 100%; width: 100%; border-radius: 10px;
+      background: var(--danger); transform: scaleX(0.9); transform-origin: left center;
+      will-change: transform, box-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-56" data-composition-id="scene-56" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">before</span> <span class="w ai">AI</span> <span class="w">even</span>
+      <span class="w">showed</span> <span class="w">up</span> <span class="w">to</span>
+      <span class="w fj">finish</span> <span class="w fj">the</span> <span class="w fj">job.</span>
+    </div>
+
+    <div class="stack">
+      <div class="chip">AI</div>
+      <div class="beam"></div>
+      <div class="gauge">
+        <div class="headwrap">
+          <div class="head">
+            <span class="name">MEMORY</span>
+            <span class="pct">147%</span>
+          </div>
+          <span class="crash" data-sfx-on-anchor="boom" data-sfx-asset="Anime SFX/Hollow Hit 01.mp3" data-sfx-at-scene-ms="2400">OUT OF MEMORY</span>
+        </div>
+        <div class="track"><div class="fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(331.82).
+    // "before AI even showed up to finish the job." (AI 0.94, showed 1.46, finish 2.04, job 2.46).
+    const cw = [0.50, 0.94, 1.16, 1.46, 1.74, 1.88, 2.04, 2.30, 2.46];
+    gsap.utils.toArray("#scene-56 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // the redlined gauge is still here from before (before 0.50).
+    tl.to("#scene-56 .gauge", { opacity: 1, duration: 0.3 }, 0.45);
+
+    // "AI" — the chip drops in, glowing (AI 0.94).
+    tl.fromTo("#scene-56 .chip",
+      { opacity: 0, y: -28, scale: 0.85 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.92);
+    tl.to("#scene-56 .chip",
+      { boxShadow: "0 0 40px rgba(103,232,249,0.45)", duration: 0.4, ease: "power2.out" }, 1.30);
+
+    // "showed up" — the load beam fires from AI into the gauge (showed 1.46).
+    tl.to("#scene-56 .beam", { scaleY: 1, duration: 0.35, ease: "power2.in" }, 1.50);
+
+    // "finish the job" — the bar slams full and the machine crashes (finish 2.04, job 2.46).
+    tl.to("#scene-56 .gauge .fill",
+      { scaleX: 1, boxShadow: "0 0 34px rgba(255,107,93,0.6)", duration: 0.35, ease: "power3.in" }, 2.04);
+    tl.to("#scene-56 .gauge .pct", { opacity: 0, duration: 0.2 }, 2.30);
+    tl.fromTo("#scene-56 .gauge .crash",
+      { opacity: 0, scale: 1.3 },
+      { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 2.40);
+    tl.fromTo("#scene-56 .cap .fj",
+      { textShadow: "0 0 0 rgba(255,107,93,0)" },
+      { textShadow: "0 0 22px rgba(255,107,93,0.5)", duration: 0.4, ease: "power2.out" }, 2.10);
+
+    // a hard shudder as it crashes.
+    tl.to("#scene-56 .stack", { x: "+=6", duration: 0.06, ease: "none", repeat: 5, yoyo: true }, 2.42);
+
+    // Seam clear — fade out across the trailing overlap with scene 57 (local 3.34-3.84).
+    tl.to("#scene-56 .cap, #scene-56 .stack",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.34);
+
+    window.__timelines["scene-56"] = tl;
+  </script>
+</body>
+</html>

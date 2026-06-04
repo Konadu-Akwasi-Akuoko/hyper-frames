@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 54 — just to render a thumbs-up</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --chrome: #4a8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-54 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-54 .cap {
+      position: absolute; left: 50%; top: 188px; transform: translateX(-50%);
+      width: 1320px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-54 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-54 .cap .tu { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    /* the giant browser, rendering almost nothing */
+    #scene-54 .browser {
+      position: absolute; left: 50%; top: 632px; transform: translate(-50%, -50%);
+      width: 880px; border-radius: 16px; overflow: hidden;
+      background: #0d1018; border: 1px solid rgba(74,140,255,0.5); box-shadow: 0 24px 70px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-54 .browser .tabs { display: flex; align-items: flex-end; gap: 8px; padding: 12px 14px 0; background: #0a0c12; }
+    #scene-54 .browser .tab {
+      padding: 9px 20px; border-radius: 8px 8px 0 0; background: #141925; border: 1px solid rgba(74,140,255,0.3); border-bottom: none;
+      font-size: 17px; color: var(--chrome); font-family: "JetBrains Mono", monospace; font-weight: 600;
+    }
+    #scene-54 .browser .addr { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #141925; border-bottom: 1px solid var(--border); }
+    #scene-54 .browser .addr .dots { display: flex; gap: 7px; }
+    #scene-54 .browser .addr .dots b { width: 10px; height: 10px; border-radius: 50%; background: var(--dim); }
+    #scene-54 .browser .addr .url {
+      flex: 1; height: 30px; border-radius: 15px; background: #0a0c12; border: 1px solid var(--border);
+      display: flex; align-items: center; padding: 0 16px; font-family: "JetBrains Mono", monospace; font-size: 15px; color: var(--muted);
+    }
+    /* the vast, near-empty viewport */
+    #scene-54 .browser .view {
+      height: 300px; background: #0a0c12; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* the faint outline showing how little is actually used */
+    #scene-54 .browser .slot {
+      width: 150px; height: 150px; border-radius: 18px; border: 2px dashed rgba(122,132,147,0.35);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-54 .browser .thumb {
+      font-size: 92px; line-height: 1; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-54 .browser .slotlbl {
+      position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 17px; color: var(--muted); white-space: nowrap;
+      opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-54" data-composition-id="scene-54" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">just</span> <span class="w">to</span> <span class="w">render</span>
+      <span class="w">a</span> <span class="w tu">thumbs-up.</span>
+    </div>
+
+    <div class="browser">
+      <div class="tabs"><div class="tab">Chromium</div></div>
+      <div class="addr">
+        <div class="dots"><b></b><b></b><b></b></div>
+        <div class="url">chrome://render &middot; 1 emoji</div>
+      </div>
+      <div class="view">
+        <div class="slot" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="1480" data-sfx-volume="0.42"><span class="thumb">&#128077;</span></div>
+        <div class="slotlbl">rendered output: 1 &times; 👍</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(327.56).
+    // "just to render a thumbs-up." (render 0.76, thumbs 1.26, up 1.62).
+    const cw = [0.50, 0.68, 0.76, 1.07, 1.26];
+    gsap.utils.toArray("#scene-54 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // the giant browser is already here (carried from the previous scene).
+    tl.fromTo("#scene-54 .browser",
+      { opacity: 0, scale: 0.97 },
+      { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 0.30);
+
+    // "render" — the lone render slot outlines itself in the vast viewport (render 0.76).
+    tl.to("#scene-54 .browser .slot", { opacity: 1, duration: 0.3 }, 0.80);
+
+    // "a thumbs-up" — one tiny emoji pops in, dwarfed by the whole engine (thumbs 1.26).
+    tl.fromTo("#scene-54 .browser .thumb",
+      { opacity: 0, scale: 0.4 },
+      { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 1.26);
+    tl.fromTo("#scene-54 .browser .slotlbl",
+      { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.58);
+    tl.fromTo("#scene-54 .cap .tu",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 24px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 1.30);
+
+    // the thumb gives one little comedic bob.
+    tl.to("#scene-54 .browser .thumb", { y: "-=8", duration: 0.5, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.9);
+
+    // Seam clear — fade out across the trailing overlap with scene 55 (local 2.08-2.58).
+    tl.to("#scene-54 .cap, #scene-54 .browser",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 2.08);
+
+    window.__timelines["scene-54"] = tl;
+  </script>
+</body>
+</html>

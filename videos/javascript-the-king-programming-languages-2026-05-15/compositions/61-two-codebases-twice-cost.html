@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 61 — Two codebases, twice the cost</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --android: #3ddc84; --ios: #d8dde6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-61 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-61 .cap {
+      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
+      width: 1320px; text-align: center;
+      font-size: 54px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-61 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-61 .cap .cost { color: var(--danger); font-weight: 800; will-change: text-shadow; }
+
+    #scene-61 .rig {
+      position: absolute; left: 50%; top: 618px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 48px;
+    }
+
+    /* a duplicated codebase — two near-identical code cards */
+    #scene-61 .code {
+      width: 300px; height: 252px; border-radius: 16px; background: var(--panel); border: 1px solid var(--border);
+      display: flex; flex-direction: column; overflow: hidden; flex: none;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-61 .code .bar {
+      height: 38px; display: flex; align-items: center; gap: 9px; padding: 0 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    #scene-61 .code .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--dim); display: inline-block; }
+    #scene-61 .code .bar .tab {
+      margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700;
+    }
+    #scene-61 .code.ios .bar .tab { color: var(--ios); }
+    #scene-61 .code.android .bar .tab { color: var(--android); }
+    #scene-61 .code .body { padding: 18px 20px; display: flex; flex-direction: column; gap: 11px; }
+    #scene-61 .code .ln { height: 11px; border-radius: 4px; background: #232a35; }
+    #scene-61 .code .ln.k { background: #2b3a4a; }
+    #scene-61 .code .ln.w60 { width: 60%; } #scene-61 .code .ln.w85 { width: 85%; }
+    #scene-61 .code .ln.w45 { width: 45%; } #scene-61 .code .ln.w72 { width: 72%; }
+
+    /* the cost multiplier — the negative payoff */
+    #scene-61 .x2 {
+      display: flex; flex-direction: column; align-items: center; gap: 8px; flex: none;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-61 .x2 .mult {
+      font-family: "JetBrains Mono", monospace; font-size: 86px; font-weight: 900; color: var(--danger); line-height: 1;
+      text-shadow: 0 0 28px rgba(255,107,93,0.45);
+    }
+    #scene-61 .x2 .lbl {
+      font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 800; color: var(--danger);
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-61" data-composition-id="scene-61" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Two</span> <span class="w">codebases,</span>
+      <span class="w cost">twice</span> <span class="w">the</span> <span class="w cost">cost.</span>
+    </div>
+
+    <div class="rig">
+      <div class="code ios">
+        <div class="bar"><i></i><i></i><i></i><span class="tab">iOS</span></div>
+        <div class="body">
+          <div class="ln k w45"></div><div class="ln w85"></div>
+          <div class="ln w72"></div><div class="ln k w60"></div><div class="ln w85"></div>
+        </div>
+      </div>
+
+      <div class="x2" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="1530" data-sfx-volume="0.42">
+        <span class="mult">&times;2</span>
+        <span class="lbl">COST</span>
+      </div>
+
+      <div class="code android">
+        <div class="bar"><i></i><i></i><i></i><span class="tab">Android</span></div>
+        <div class="body">
+          <div class="ln k w45"></div><div class="ln w85"></div>
+          <div class="ln w72"></div><div class="ln k w60"></div><div class="ln w85"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(351.74).
+    // "Two codebases, twice the cost." (two 0.50, code 0.72, bases 0.94, twice 1.28, cost 1.66).
+    const cw = [0.50, 0.72, 1.28, 1.52, 1.66];
+    gsap.utils.toArray("#scene-61 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Two codebases" — the two near-identical code cards slide in from each edge (two 0.50).
+    tl.fromTo("#scene-61 .code.ios",
+      { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, 0.50);
+    tl.fromTo("#scene-61 .code.android",
+      { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, 0.74);
+
+    // "twice the cost" — the ×2 cost multiplier slams in between them (twice 1.28).
+    tl.fromTo("#scene-61 .x2",
+      { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2)" }, 1.30);
+    tl.fromTo("#scene-61 .cap .cost",
+      { textShadow: "0 0 0 rgba(255,107,93,0)" },
+      { textShadow: "0 0 22px rgba(255,107,93,0.5)", duration: 0.4, ease: "power2.out" }, 1.66);
+
+    // Subtle life — the cost figure holds with a faint pulse.
+    tl.to("#scene-61 .x2", { scale: 1.04, duration: 0.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.78);
+
+    // Seam clear — fade out across the trailing overlap with scene 62 (local 2.14-2.64).
+    tl.to("#scene-61 .cap, #scene-61 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 2.14);
+
+    window.__timelines["scene-61"] = tl;
+  </script>
+</body>
+</html>

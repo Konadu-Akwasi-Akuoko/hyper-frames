@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 18 — confined to the browser</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face {
+      font-family: "Excalifont";
+      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-display: swap;
+    }
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-18 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-18 .wrap {
+      position: absolute; left: 50%; top: 206px; transform: translateX(-50%);
+      width: 1080px; text-align: center;
+    }
+
+    /* the browser window — the cage */
+    #scene-18 .browser {
+      width: 880px; margin: 0 auto; border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; background: var(--panel); box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-18 .bar {
+      display: flex; align-items: center; gap: 12px; padding: 16px 22px;
+      background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border);
+    }
+    #scene-18 .bar .dot { width: 13px; height: 13px; border-radius: 50%; }
+    #scene-18 .bar .r { background: #ff5f56; } #scene-18 .bar .y { background: #ffbd2e; } #scene-18 .bar .g { background: #27c93f; }
+    #scene-18 .bar .url {
+      margin-left: 14px; flex: 1; text-align: left;
+      font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--muted);
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: 8px; padding: 7px 16px;
+    }
+    /* the viewport holding the trapped logo */
+    #scene-18 .view {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 22px; padding: 64px 0 70px;
+    }
+    #scene-18 .view img { width: 156px; height: 156px; }
+    #scene-18 .view .lbl { font-size: 44px; font-weight: 800; color: var(--fg); letter-spacing: -1px; }
+
+    #scene-18 .caption {
+      margin-top: 40px; font-size: 40px; font-weight: 600; color: var(--fg);
+      opacity: 0; will-change: transform, opacity;
+    }
+    /* the hand-drawn epitaph */
+    #scene-18 .epitaph {
+      margin-top: 22px; font-family: "Excalifont", "Inter", sans-serif;
+      font-size: 44px; color: var(--muted); transform: rotate(-2deg);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-18" data-composition-id="scene-18" data-width="1920" data-height="1080">
+    <div class="wrap">
+      <div class="browser"
+           data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1000">
+        <div class="bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="url">https://&hellip;/index.html</span>
+        </div>
+        <div class="view">
+          <img src="assets/icons/javascript.svg" alt="JavaScript">
+          <div class="lbl">JavaScript</div>
+        </div>
+      </div>
+      <div class="caption">Confined to the browser.</div>
+      <div class="epitaph"
+           data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="5780">&hellip; and everyone thought it would die here.</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(143.98).
+    // The browser (with JS trapped inside) enters (JavaScript 144.48 -> 0.50).
+    tl.fromTo("#scene-18 .browser",
+      { opacity: 0, y: 24, scale: 0.97 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 0.50);
+
+    // "always lived inside the browser" — caption fades in (lived 145.86 -> 1.88, browser 147.04 -> 3.06).
+    tl.fromTo("#scene-18 .caption",
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.95);
+
+    // "most people thought it would die there" — the window drains to grey, the epitaph scrawls in
+    // (most 148.32 -> 4.34, die 149.46 -> 5.48).
+    tl.fromTo("#scene-18 .browser",
+      { filter: "grayscale(0) brightness(1)" },
+      { filter: "grayscale(1) brightness(0.62)", duration: 1.1, ease: "power2.inOut" }, 4.34);
+    tl.to("#scene-18 .caption", { color: "#7a8493", duration: 0.8, ease: "power2.inOut" }, 4.34);
+    tl.fromTo("#scene-18 .epitaph",
+      { opacity: 0, y: 8, rotation: -8 },
+      { opacity: 1, y: 0, rotation: -2, duration: 0.5, ease: "power2.out" }, 5.48);
+
+    // Subtle life — the browser drifts a hair (stilled once it starts dying).
+    tl.to("#scene-18 .browser", { y: "-=5", duration: 3.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-18"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 09 — Mocha, LiveScript, JavaScript</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-09 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-09 .timeline {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 1560px; height: 360px;
+    }
+    /* the baseline axis */
+    #scene-09 .axis {
+      position: absolute; left: 0; right: 0; top: 50%; height: 3px;
+      background: var(--border); transform-origin: left center; transform: scaleX(0);
+    }
+    #scene-09 .node {
+      position: absolute; top: 50%; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; width: 360px;
+    }
+    #scene-09 .node .date {
+      font-family: "JetBrains Mono", monospace; font-size: 26px; color: var(--muted);
+      letter-spacing: 2px; margin-bottom: 18px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-09 .node .dot {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--dim);
+      border: 3px solid var(--border); flex: none; transform: scale(0);
+      will-change: transform; box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    #scene-09 .node .name {
+      font-size: 56px; font-weight: 800; color: var(--soft); letter-spacing: -1px;
+      margin-top: 18px; opacity: 0; will-change: transform, opacity;
+      display: flex; align-items: center; gap: 16px;
+    }
+    #scene-09 .node .name img { width: 60px; height: 60px; }
+    /* node positions */
+    #scene-09 .n1 { left: 18%; }
+    #scene-09 .n2 { left: 50%; }
+    #scene-09 .n3 { left: 82%; }
+    /* the JavaScript node — the keeper */
+    #scene-09 .n3 .name { color: var(--accent); }
+    #scene-09 .n3 .dot { background: var(--accent); border-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-09" data-composition-id="scene-09" data-width="1920" data-height="1080">
+    <div class="timeline">
+      <div class="axis"></div>
+      <div class="node n1">
+        <div class="date">MAY 1995</div>
+        <div class="dot"></div>
+        <div class="name" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1700" data-sfx-volume="0.42">Mocha</div>
+      </div>
+      <div class="node n2">
+        <div class="date">SEP 1995</div>
+        <div class="dot"></div>
+        <div class="name" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6350" data-sfx-volume="0.42">LiveScript</div>
+      </div>
+      <div class="node n3">
+        <div class="date">DEC 1995</div>
+        <div class="dot"></div>
+        <div class="name" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="11250" data-sfx-volume="0.42"><img src="assets/icons/javascript.svg" alt="">JavaScript</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(70.18).
+    // Axis grows across as the rename story progresses (start at entrance, slow).
+    tl.fromTo("#scene-09 .axis", { scaleX: 0 }, { scaleX: 1, duration: 9.6, ease: "none" }, 0.3);
+
+    // Node 1 — Mocha (71.76 -> 1.58). dot pops, name reveals.
+    tl.to("#scene-09 .n1 .dot", { scale: 1, duration: 0.4, ease: "back.out(2.5)" }, 1.50);
+    tl.fromTo("#scene-09 .n1 .date", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.30);
+    tl.fromTo("#scene-09 .n1 .name", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.58);
+
+    // Node 2 — LiveScript: date on "September 1995" (3.54), name on "LiveScript" (6.18).
+    tl.fromTo("#scene-09 .n2 .date", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.34);
+    tl.to("#scene-09 .n2 .dot", { scale: 1, duration: 0.4, ease: "back.out(2.5)" }, 5.90);
+    tl.fromTo("#scene-09 .n2 .name", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.18);
+
+    // Node 3 — JavaScript: date on "December...year" (8.84), name+logo on "JavaScript" (11.02).
+    tl.fromTo("#scene-09 .n3 .date", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 8.64);
+    tl.to("#scene-09 .n3 .dot",
+      { scale: 1, duration: 0.45, ease: "back.out(2.6)", boxShadow: "0 0 22px rgba(247,223,30,0.6)" }, 10.80);
+    tl.fromTo("#scene-09 .n3 .name",
+      { opacity: 0, y: 16, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 11.02);
+
+    // The keeper wins — prior names dim a touch as JavaScript ignites.
+    tl.to(["#scene-09 .n1 .name", "#scene-09 .n2 .name"],
+      { color: "#7a8493", duration: 0.5, ease: "power2.inOut" }, 11.10);
+
+    // Subtle life — nodes breathe.
+    tl.to("#scene-09 .node", { y: "-=4", duration: 3.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
+
+    // Seam clear — the full-width timeline fades out across the trailing overlap with scene 10
+    // (local 12.04-12.54) so scene 10's terminal never shares the frame with these nodes.
+    tl.to("#scene-09 .timeline", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 12.04);
+
+    window.__timelines["scene-09"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 46 — wrapped Chromium and Node.js into a single runtime</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --node: #8cc84b; --chrome: #4a8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-46 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-46 .cap {
+      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
+      width: 1420px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-46 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-46 .cap .cr { color: var(--chrome); font-weight: 800; }
+    #scene-46 .cap .nd { color: var(--node); font-weight: 800; }
+    #scene-46 .cap .rt { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    /* the wrapper that becomes a single runtime */
+    #scene-46 .wrap {
+      position: absolute; left: 50%; top: 624px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+      border: 2px solid var(--dim); border-radius: 24px; padding: 44px 52px 32px;
+      opacity: 0; will-change: opacity, border-color, box-shadow;
+    }
+    #scene-46 .row { display: flex; align-items: center; gap: 40px; }
+    #scene-46 .chip {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 26px 34px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-46 .chip img { width: 92px; height: 92px; }
+    #scene-46 .chip .lbl { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--soft); }
+    #scene-46 .plus { font-size: 50px; font-weight: 300; color: var(--muted); opacity: 0; will-change: opacity; }
+    #scene-46 .rtlabel {
+      font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-46" data-composition-id="scene-46" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">wrapped</span> <span class="w cr">Chromium</span> <span class="w">and</span>
+      <span class="w nd">Node.js</span> <span class="w">into</span> <span class="w">a</span>
+      <span class="w rt">single</span> <span class="w rt">runtime.</span>
+    </div>
+
+    <div class="wrap" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="2700">
+      <div class="row">
+        <div class="chip" id="c-chromium">
+          <img src="assets/icons/chrome.svg" alt="Chromium">
+          <span class="lbl">Chromium</span>
+        </div>
+        <span class="plus">+</span>
+        <div class="chip" id="c-node">
+          <img src="assets/icons/nodejs.svg" alt="Node.js">
+          <span class="lbl">Node.js</span>
+        </div>
+      </div>
+      <div class="rtlabel">a single runtime</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(298.46).
+    // "wrapped Chromium and Node.js into a single runtime." (wrapped 0.50 ... runtime 3.16).
+    const cw = [0.50, 0.82, 1.54, 1.68, 2.26, 2.48, 2.70, 3.16];
+    gsap.utils.toArray("#scene-46 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // the wrapper container is present (invisible border) so the chips have a home.
+    tl.to("#scene-46 .wrap", { opacity: 1, duration: 0.01 }, 0.5);
+
+    // "Chromium" — the first chip lands, pushed apart from centre (Chromium 0.82).
+    tl.fromTo("#scene-46 #c-chromium",
+      { opacity: 0, x: -30, scale: 0.9 }, { opacity: 1, x: -16, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.82);
+    // "Node.js" — the second chip lands (Node.js 1.68).
+    tl.fromTo("#scene-46 .plus", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.50);
+    tl.fromTo("#scene-46 #c-node",
+      { opacity: 0, x: 30, scale: 0.9 }, { opacity: 1, x: 16, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.68);
+
+    // "into a single runtime" — the wrapper border ignites around both and they pull together (into 2.26, runtime 3.16).
+    tl.to("#scene-46 #c-chromium", { x: 0, duration: 0.5, ease: "power2.inOut" }, 2.30);
+    tl.to("#scene-46 #c-node", { x: 0, duration: 0.5, ease: "power2.inOut" }, 2.30);
+    tl.fromTo("#scene-46 .wrap",
+      { borderColor: "var(--dim)", boxShadow: "0 0 0 rgba(247,223,30,0)" },
+      { borderColor: "var(--accent)", boxShadow: "0 0 40px rgba(247,223,30,0.28)", duration: 0.55, ease: "power2.out" }, 2.40);
+    tl.fromTo("#scene-46 .rtlabel",
+      { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 3.16);
+
+    // Subtle life — the bundle breathes once wrapped.
+    tl.to("#scene-46 .wrap", { y: "-=5", duration: 1.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 47 (local 3.88-4.38).
+    tl.to("#scene-46 .cap, #scene-46 .wrap",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.88);
+
+    window.__timelines["scene-46"] = tl;
+  </script>
+</body>
+</html>

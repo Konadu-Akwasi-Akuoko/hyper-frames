@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 81 — The most-deployed OS on the planet was drawing its own menu in the language one engineer wrote in ten days.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-81 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-81 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1540px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-81 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-81 .cap .big { color: var(--win); font-weight: 800; }
+    #scene-81 .cap .days { color: var(--accent); font-weight: 800; }
+
+    #scene-81 .rig {
+      position: absolute; left: 50%; top: 668px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 70px;
+    }
+
+    /* the planet — most-deployed OS scale */
+    #scene-81 .planet { display: flex; flex-direction: column; align-items: center; gap: 18px; opacity: 0; will-change: transform, opacity; }
+    #scene-81 .planet .globe {
+      position: relative; width: 250px; height: 250px; border-radius: 50%;
+      background: radial-gradient(circle at 38% 32%, rgba(76,194,255,0.32), rgba(76,194,255,0.06) 60%, rgba(11,13,18,0) 75%);
+      border: 1px solid rgba(76,194,255,0.45);
+      box-shadow: 0 0 50px rgba(76,194,255,0.18), inset 0 0 40px rgba(76,194,255,0.1);
+    }
+    #scene-81 .planet .globe .ring {
+      position: absolute; border: 1px solid rgba(76,194,255,0.22); border-radius: 50%;
+    }
+    #scene-81 .planet .globe .r1 { inset: 0; }
+    #scene-81 .planet .globe .r2 { inset: 0 70px; }
+    #scene-81 .planet .globe .r3 { inset: 70px 0; }
+    #scene-81 .planet .globe .dot {
+      position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--win);
+      box-shadow: 0 0 8px rgba(76,194,255,0.8); will-change: transform, opacity;
+    }
+    #scene-81 .planet .lbl { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--win); letter-spacing: 0.5px; }
+
+    /* the connector */
+    #scene-81 .link { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; will-change: opacity; }
+    #scene-81 .link .ltxt { font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+    #scene-81 .link .ar { font-size: 30px; color: var(--accent-2); }
+
+    /* the origin punch */
+    #scene-81 .origin { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+    #scene-81 .origin .pre { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 600; color: var(--soft); opacity: 0; will-change: transform, opacity; }
+    #scene-81 .origin .days {
+      font-family: "JetBrains Mono", monospace; font-size: 130px; font-weight: 900; color: var(--accent); line-height: 0.95; letter-spacing: -2px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-81 .origin .who { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 700; color: var(--muted); opacity: 0; will-change: transform, opacity; }
+  </style>
+</head>
+<body>
+  <div id="scene-81" data-composition-id="scene-81" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w big">most-deployed</span> <span class="w">operating</span> <span class="w">system</span>
+      <span class="w">on</span> <span class="w">the</span> <span class="w big">planet</span> <span class="w">was</span> <span class="w">drawing</span>
+      <span class="w">its</span> <span class="w">own</span> <span class="w">menu</span> <span class="w">in</span> <span class="w">the</span> <span class="w">language</span>
+      <span class="w">one</span> <span class="w">engineer</span> <span class="w">wrote</span> <span class="w">in</span> <span class="w days">ten</span> <span class="w days">days.</span>
+    </div>
+
+    <div class="rig">
+      <div class="planet">
+        <div class="globe">
+          <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+          <span class="dot" style="top:58px;left:96px"></span>
+          <span class="dot" style="top:104px;left:160px"></span>
+          <span class="dot" style="top:150px;left:70px"></span>
+          <span class="dot" style="top:182px;left:138px"></span>
+          <span class="dot" style="top:92px;left:54px"></span>
+          <span class="dot" style="top:170px;left:190px"></span>
+        </div>
+        <span class="lbl">most-deployed OS &middot; the planet</span>
+      </div>
+
+      <div class="link">
+        <span class="ltxt">drew its menu in</span>
+        <span class="ar">&rarr;</span>
+      </div>
+
+      <div class="origin">
+        <span class="pre">the language one engineer wrote in</span>
+        <span class="days" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="7020">10 DAYS</span>
+        <span class="who">&mdash; 1 engineer, 1995</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(453.90).
+    // "The most-deployed operating system on the planet was drawing its own menu in the language one engineer wrote in ten days."
+    // (most-deployed 0.69, planet 2.17, drawing 3.07, menu 4.19, language 5.09, one 5.53, engineer 5.67, ten 6.79, days 7.03).
+    const cw = [0.50, 0.69, 0.89, 1.31, 1.65, 1.93, 2.01, 2.17, 2.85, 3.07, 3.45, 3.75, 4.19, 4.85, 4.93, 5.09, 5.53, 5.67, 6.11, 6.65, 6.79, 7.03];
+    gsap.utils.toArray("#scene-81 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "operating system ... planet" — the globe scales in, device dots scattered across it (deployed 0.89).
+    tl.fromTo("#scene-81 .planet",
+      { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 0.89);
+    gsap.utils.toArray("#scene-81 .planet .dot").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.3 + i * 0.13);
+    });
+    // the dots twinkle once (deterministic) to read as live devices.
+    tl.to("#scene-81 .planet .dot", { opacity: 0.55, duration: 0.6, ease: "sine.inOut", repeat: 1, yoyo: true, stagger: 0.08 }, 2.6);
+
+    // "drawing its own menu in" — the connector reveals (drawing 3.07).
+    tl.to("#scene-81 .link", { opacity: 1, duration: 0.4, ease: "power2.out" }, 3.45);
+
+    // "one engineer" — the origin pre-line appears (one 5.53).
+    tl.fromTo("#scene-81 .origin .pre",
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 5.40);
+
+    // "ten days" — the punch slams in: the 10 DAYS callback (ten 6.79).
+    tl.fromTo("#scene-81 .origin .days",
+      { opacity: 0, y: 18, scale: 0.78 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(1.7)" }, 6.79);
+    tl.fromTo("#scene-81 .origin .who",
+      { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, 7.12);
+
+    // Seam clear — fade out across the trailing overlap with scene 82 (local 7.43-7.93).
+    tl.to("#scene-81 .cap, #scene-81 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 7.43);
+
+    window.__timelines["scene-81"] = tl;
+  </script>
+</body>
+</html>

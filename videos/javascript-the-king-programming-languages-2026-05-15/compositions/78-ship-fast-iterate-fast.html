@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 78 — It needed to ship fast and iterate fast, faster than recompiling Windows could allow.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-78 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-78 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1540px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-78 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-78 .cap .fast { color: var(--ok); font-weight: 800; }
+    #scene-78 .cap .slow { color: var(--win); font-weight: 800; }
+
+    #scene-78 .lanes {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; gap: 40px;
+    }
+    #scene-78 .lane { width: 880px; opacity: 0; will-change: transform, opacity; }
+    #scene-78 .lane .lhead {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+      font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 800; letter-spacing: 0.3px;
+    }
+    #scene-78 .lane .lhead .tag {
+      margin-left: auto; font-size: 16px; font-weight: 700; padding: 4px 13px; border-radius: 999px;
+    }
+
+    /* fast lane — a row of iteration segments */
+    #scene-78 .fastlane .lhead { color: var(--ok); }
+    #scene-78 .fastlane .lhead .tag { color: var(--ok); background: rgba(125,216,125,0.12); border: 1px solid rgba(125,216,125,0.4); }
+    #scene-78 .fastlane .segs { display: flex; gap: 12px; }
+    #scene-78 .fastlane .segs .seg {
+      flex: 1; height: 40px; border-radius: 10px; background: rgba(125,216,125,0.85);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 800; color: #0b0d12;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* slow lane — one long bar that barely fills */
+    #scene-78 .slowlane .lhead { color: var(--win); }
+    #scene-78 .slowlane .lhead .tag { color: var(--win); background: rgba(76,194,255,0.12); border: 1px solid rgba(76,194,255,0.4); }
+    #scene-78 .slowlane .track {
+      position: relative; height: 40px; border-radius: 10px; background: rgba(76,194,255,0.08); border: 1px solid rgba(76,194,255,0.25);
+      overflow: hidden; display: flex; align-items: center; padding: 0 16px; gap: 12px;
+    }
+    #scene-78 .slowlane .track .fill {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: rgba(76,194,255,0.4); will-change: width;
+    }
+    #scene-78 .slowlane .track .spin {
+      position: relative; z-index: 1; width: 20px; height: 20px; border-radius: 50%;
+      border: 3px solid rgba(76,194,255,0.3); border-top-color: var(--win); will-change: transform;
+    }
+    #scene-78 .slowlane .track .stxt {
+      position: relative; z-index: 1; font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700; color: var(--win);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-78" data-composition-id="scene-78" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">It</span> <span class="w">needed</span> <span class="w">to</span>
+      <span class="w fast">ship</span> <span class="w fast">fast</span> <span class="w">and</span>
+      <span class="w fast">iterate</span> <span class="w fast">fast,</span>
+      <span class="w fast">faster</span> <span class="w">than</span>
+      <span class="w slow">recompiling</span> <span class="w slow">Windows</span> <span class="w">could</span> <span class="w">allow.</span>
+    </div>
+
+    <div class="lanes">
+      <div class="lane fastlane" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1900" data-sfx-volume="0.42">
+        <div class="lhead">ship &rarr; iterate &rarr; ship<span class="tag">minutes</span></div>
+        <div class="segs">
+          <div class="seg">ship</div><div class="seg">iterate</div><div class="seg">ship</div>
+          <div class="seg">iterate</div><div class="seg">ship</div><div class="seg">iterate</div>
+        </div>
+      </div>
+
+      <div class="lane slowlane">
+        <div class="lhead">recompile Windows<span class="tag">hours</span></div>
+        <div class="track">
+          <div class="fill"></div>
+          <span class="spin"></span>
+          <span class="stxt">building&hellip;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(438.11).
+    // "It needed to ship fast and iterate fast, faster than recompiling Windows could allow."
+    // (ship 1.02, fast 1.24, iterate 1.90, fast 2.44, faster 3.38, recompiling 3.84, Windows 4.52, allow 5.10).
+    const cw = [0.50, 0.66, 0.92, 1.02, 1.24, 1.68, 1.90, 2.44, 3.38, 3.68, 3.84, 4.52, 4.92, 5.10];
+    gsap.utils.toArray("#scene-78 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "ship fast" — the fast lane appears (ship 1.02).
+    tl.fromTo("#scene-78 .fastlane",
+      { opacity: 0, x: -22 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 1.02);
+
+    // the iteration segments fire rapidly across "ship fast and iterate fast" (1.02 - 2.6).
+    gsap.utils.toArray("#scene-78 .fastlane .seg").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 1.10 + i * 0.26);
+    });
+
+    // "recompiling Windows" — the slow lane appears and barely creeps (recompiling 3.84).
+    tl.fromTo("#scene-78 .slowlane",
+      { opacity: 0, x: -22 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 3.84);
+    tl.to("#scene-78 .slowlane .track .fill", { width: "14%", duration: 1.4, ease: "none" }, 4.0);
+    tl.to("#scene-78 .slowlane .track .spin", { rotate: 360, duration: 0.9, ease: "none", repeat: 2 }, 4.0);
+
+    // Seam clear — fade out across the trailing overlap with scene 79 (local 5.72-6.22).
+    tl.to("#scene-78 .cap, #scene-78 .lanes",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.72);
+
+    window.__timelines["scene-78"] = tl;
+  </script>
+</body>
+</html>

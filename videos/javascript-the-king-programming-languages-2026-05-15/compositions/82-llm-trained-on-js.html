@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 82 — In 2026, every large language model appears trained on code where JavaScript dominates.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-82 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-82 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1540px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-82 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-82 .cap .yr { color: var(--accent-2); font-weight: 800; }
+    #scene-82 .cap .js { color: var(--accent); font-weight: 800; }
+
+    #scene-82 .stage {
+      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 26px;
+    }
+
+    /* model row */
+    #scene-82 .models { display: flex; align-items: center; gap: 28px; }
+    #scene-82 .models .chip {
+      display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 14px;
+      background: rgba(17,20,27,0.96); border: 1px solid var(--border);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-82 .models .chip .gl {
+      position: relative; width: 26px; height: 26px; flex: none;
+    }
+    #scene-82 .models .chip .gl span {
+      position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2);
+    }
+    #scene-82 .models .chip .gl span:nth-child(1) { top: 0; left: 9px; }
+    #scene-82 .models .chip .gl span:nth-child(2) { bottom: 0; left: 0; }
+    #scene-82 .models .chip .gl span:nth-child(3) { bottom: 0; right: 0; }
+    #scene-82 .models .chip .nm { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 800; color: var(--soft); }
+
+    #scene-82 .feed { font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700; color: var(--muted); opacity: 0; will-change: opacity; }
+
+    /* corpus bar */
+    #scene-82 .corpus { width: 1080px; opacity: 0; will-change: transform, opacity; }
+    #scene-82 .corpus .bar {
+      display: flex; height: 64px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
+    }
+    #scene-82 .corpus .seg {
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 800; color: #0b0d12;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    #scene-82 .corpus .seg.js { background: var(--accent); color: #0b0d12; }
+    #scene-82 .corpus .seg.ts { background: rgba(103,232,249,0.55); }
+    #scene-82 .corpus .seg.py { background: rgba(125,216,125,0.5); }
+    #scene-82 .corpus .seg.jv { background: rgba(122,132,147,0.6); color: var(--fg); }
+    #scene-82 .corpus .seg.ot { background: var(--dim); color: var(--soft); }
+    #scene-82 .corpus .clbl {
+      margin-top: 12px; display: flex; align-items: center; gap: 10px;
+      font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700; color: var(--muted);
+    }
+    #scene-82 .corpus .clbl .hl { color: var(--accent); opacity: 0; will-change: opacity; }
+  </style>
+</head>
+<body>
+  <div id="scene-82" data-composition-id="scene-82" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">In</span> <span class="w yr">2026,</span> <span class="w">every</span> <span class="w">large</span>
+      <span class="w">language</span> <span class="w">model</span> <span class="w">on</span> <span class="w">the</span> <span class="w">market</span>
+      <span class="w">appears</span> <span class="w">to</span> <span class="w">have</span> <span class="w">been</span> <span class="w">trained</span>
+      <span class="w">on</span> <span class="w">code</span> <span class="w">where</span> <span class="w js">JavaScript</span> <span class="w js">dominates.</span>
+    </div>
+
+    <div class="stage">
+      <div class="models">
+        <div class="chip" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2080" data-sfx-volume="0.35"><span class="gl"><span></span><span></span><span></span></span><span class="nm">LLM</span></div>
+        <div class="chip"><span class="gl"><span></span><span></span><span></span></span><span class="nm">LLM</span></div>
+        <div class="chip"><span class="gl"><span></span><span></span><span></span></span><span class="nm">LLM</span></div>
+      </div>
+
+      <span class="feed">&darr;&nbsp; trained on code &nbsp;&darr;</span>
+
+      <div class="corpus">
+        <div class="bar">
+          <div class="seg js" style="flex: 5" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="6500" data-sfx-volume="0.35">JavaScript</div>
+          <div class="seg ts" style="flex: 1.8">TS</div>
+          <div class="seg py" style="flex: 1.7">Python</div>
+          <div class="seg jv" style="flex: 1.2">Java</div>
+          <div class="seg ot" style="flex: 1.6">others</div>
+        </div>
+        <div class="clbl">training corpus &middot; public code<span class="hl">&mdash; JavaScript dominates</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(461.33).
+    // "In 2026, every large language model on the market appears to have been trained on code where JavaScript dominates."
+    // (2026 0.74, every 1.88, model 2.96, trained 4.84, code 5.48, JavaScript 6.30, dominates 6.88).
+    const cw = [0.50, 0.74, 1.88, 2.22, 2.54, 2.96, 3.24, 3.38, 3.52, 3.90, 4.32, 4.42, 4.60, 4.84, 5.30, 5.48, 6.14, 6.30, 6.88];
+    gsap.utils.toArray("#scene-82 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "every large language model" — the three model chips pop in (every 1.88).
+    gsap.utils.toArray("#scene-82 .models .chip").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: -16, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 1.88 + i * 0.34);
+    });
+
+    // "trained on code" — the corpus bar appears and its segments grow in (trained 4.84).
+    tl.to("#scene-82 .feed", { opacity: 1, duration: 0.3 }, 4.6);
+    tl.fromTo("#scene-82 .corpus",
+      { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.84);
+    gsap.utils.toArray("#scene-82 .corpus .seg").forEach((el, i) => {
+      tl.to(el, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 5.0 + i * 0.1);
+    });
+
+    // "JavaScript dominates" — the JS segment glows and the label confirms (JavaScript 6.30).
+    tl.to("#scene-82 .corpus .seg.js", { boxShadow: "0 0 30px rgba(247,223,30,0.6)", duration: 0.4, ease: "power2.out" }, 6.30);
+    tl.to("#scene-82 .corpus .seg.js", { scale: 1.04, duration: 0.3, ease: "back.out(2)", transformOrigin: "left center" }, 6.30);
+    tl.to("#scene-82 .corpus .clbl .hl", { opacity: 1, duration: 0.3 }, 6.88);
+
+    // Seam clear — fade out across the trailing overlap with scene 83 (local 7.66-8.16).
+    tl.to("#scene-82 .cap, #scene-82 .stage",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 7.66);
+
+    window.__timelines["scene-82"] = tl;
+  </script>
+</body>
+</html>

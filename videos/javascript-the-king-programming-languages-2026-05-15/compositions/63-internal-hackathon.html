@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 63 — proved at an internal hackathon</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --fb: #3b82f6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-63 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-63 .cap {
+      position: absolute; left: 50%; top: 200px; transform: translateX(-50%);
+      width: 1280px; text-align: center;
+      font-size: 52px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-63 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-63 .cap .pv { color: var(--ok); font-weight: 800; }
+    #scene-63 .cap .hk { color: var(--accent); font-weight: 800; }
+
+    #scene-63 .stage {
+      position: absolute; left: 50%; top: 624px; transform: translate(-50%, -50%);
+    }
+
+    /* the hackathon event badge */
+    #scene-63 .badge {
+      position: relative; width: 540px; padding: 40px 48px; border-radius: 20px;
+      background: var(--panel); border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-63 .badge .glyph {
+      font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700; color: var(--fb);
+      padding: 8px 18px; border-radius: 10px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.4);
+    }
+    #scene-63 .badge .title {
+      font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 800; color: var(--soft); letter-spacing: 1px;
+    }
+    #scene-63 .badge .sub {
+      font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 600; color: var(--muted);
+    }
+
+    /* the PROVED stamp slapping over it */
+    #scene-63 .stamp {
+      position: absolute; right: -28px; top: -26px;
+      font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 900; color: var(--ok);
+      padding: 10px 22px; border: 4px solid var(--ok); border-radius: 12px;
+      letter-spacing: 1px; background: rgba(13,16,22,0.7);
+      transform: rotate(-12deg) scale(1.6); opacity: 0; will-change: transform, opacity;
+      box-shadow: 0 0 26px rgba(125,216,125,0.35);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-63" data-composition-id="scene-63" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w pv">proved</span> <span class="w">at</span> <span class="w">an</span>
+      <span class="w">internal</span> <span class="w hk">hackathon</span>
+    </div>
+
+    <div class="stage">
+      <div class="badge">
+        <span class="glyph">&lt;/&gt;</span>
+        <span class="title">INTERNAL HACKATHON</span>
+        <span class="sub">Facebook &middot; 2013</span>
+        <div class="stamp" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="940">&check; PROVED</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(358.48).
+    // "proved at an internal hackathon" (proved 0.50, internal 1.14, hackathon 1.60).
+    const cw = [0.50, 0.90, 1.01, 1.14, 1.60];
+    gsap.utils.toArray("#scene-63 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
+    });
+
+    // the hackathon badge frames in first (just ahead of "proved" 0.50).
+    tl.fromTo("#scene-63 .badge",
+      { opacity: 0, y: 22, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.30);
+
+    // "proved" — the green PROVED stamp slaps down diagonally over the badge (proved 0.50).
+    tl.fromTo("#scene-63 .stamp",
+      { opacity: 0, rotation: -12, scale: 1.6 },
+      { opacity: 1, rotation: -12, scale: 1, duration: 0.4, ease: "back.out(2.2)" }, 0.74);
+
+    // Seam clear — fade out across the trailing overlap with scene 64 (local 1.76-2.10).
+    tl.to("#scene-63 .cap, #scene-63 .stage",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 1.76);
+
+    window.__timelines["scene-63"] = tl;
+  </script>
+</body>
+</html>

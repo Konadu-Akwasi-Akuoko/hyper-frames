@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 60 — They scrapped it and rebuilt native, iOS and Android separately</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --html5: #e34f26; --android: #3ddc84;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-60 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-60 .cap {
+      position: absolute; left: 50%; top: 170px; transform: translateX(-50%);
+      width: 1480px; text-align: center;
+      font-size: 48px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-60 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-60 .cap .sc { color: var(--danger); font-weight: 800; }
+    #scene-60 .cap .sp { color: var(--accent); font-weight: 800; }
+
+    #scene-60 .stage {
+      position: absolute; left: 50%; top: 640px; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+    }
+
+    /* the scrapped HTML5 badge */
+    #scene-60 .scrap { position: relative; display: flex; flex-direction: column; align-items: center; }
+    #scene-60 .h5 {
+      position: relative; width: 92px; height: 100px; background: var(--html5);
+      border-radius: 10px 10px 18px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; will-change: opacity, filter;
+    }
+    #scene-60 .h5 .five { font-family: "JetBrains Mono", monospace; font-size: 42px; font-weight: 900; color: #fff; line-height: 1; }
+    #scene-60 .h5 .wm { font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 800; color: #ffd9cc; }
+    /* strike is a sibling of .h5 so the badge's grayscale filter never desaturates it */
+    #scene-60 .scrap .strike {
+      position: absolute; top: 50px; left: 50%; width: 116px; margin-left: -58px; height: 6px; border-radius: 3px;
+      background: var(--danger); box-shadow: 0 0 12px rgba(255,107,93,0.6);
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+
+    #scene-60 .arrow {
+      display: flex; flex-direction: column; align-items: center; gap: 4px; opacity: 0; will-change: opacity;
+    }
+    #scene-60 .arrow .lbl { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--muted); }
+    #scene-60 .arrow .dn { font-size: 30px; color: var(--dim); line-height: 1; }
+
+    /* the two separate native builds */
+    #scene-60 .natives { display: flex; align-items: stretch; gap: 0; }
+    #scene-60 .card {
+      width: 280px; padding: 26px 30px; border-radius: 16px;
+      background: var(--panel); border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-60 .card img { width: 76px; height: 76px; }
+    #scene-60 .card.ios img { filter: invert(1); }
+    #scene-60 .card .name { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 800; color: var(--soft); }
+    #scene-60 .card .sub { font-family: "JetBrains Mono", monospace; font-size: 16px; color: var(--muted); }
+
+    /* the separator that makes "separately" land */
+    #scene-60 .divider {
+      width: 92px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; flex: none;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-60 .divider .line { width: 3px; height: 78px; border-radius: 2px; background: var(--muted); }
+    #scene-60 .divider .tag {
+      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 800; color: var(--accent); letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-60" data-composition-id="scene-60" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">They</span> <span class="w sc">scrapped</span> <span class="w">it</span>
+      <span class="w">and</span> <span class="w">rebuilt</span> <span class="w">native</span>
+      &mdash; <span class="w">iOS</span> <span class="w">and</span> <span class="w">Android,</span>
+      <span class="w sp">separately.</span>
+    </div>
+
+    <div class="stage">
+      <div class="scrap">
+        <div class="h5">
+          <span class="five">5</span><span class="wm">HTML</span>
+        </div>
+        <span class="strike" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1140" data-sfx-volume="0.42"></span>
+      </div>
+      <div class="arrow">
+        <span class="dn">&darr;</span>
+        <span class="lbl">rebuilt native</span>
+      </div>
+      <div class="natives">
+        <div class="card ios" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="4610" data-sfx-volume="0.42">
+          <img src="assets/icons/apple.svg" alt="iOS">
+          <span class="name">iOS</span>
+          <span class="sub">native build</span>
+        </div>
+        <div class="divider">
+          <span class="tag">&times;2</span>
+          <div class="line"></div>
+          <span class="tag">apart</span>
+        </div>
+        <div class="card android">
+          <img src="assets/icons/android.svg" alt="Android">
+          <span class="name">Android</span>
+          <span class="sub">native build</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(345.48).
+    // "They scrapped it and rebuilt native — iOS and Android, separately."
+    // (scrapped 0.70, rebuilt 1.88, native 2.72, iOS 4.18, Android 4.88, separately 5.59).
+    const cw = [0.50, 0.70, 1.14, 1.70, 1.88, 2.72, 4.18, 4.68, 4.88, 5.59];
+    gsap.utils.toArray("#scene-60 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // the HTML5 badge carries in (They 0.50).
+    tl.to("#scene-60 .h5", { opacity: 1, duration: 0.3 }, 0.45);
+
+    // "scrapped it" — the red strike slashes across (scrapped 0.70), then the badge greys out on "it" (1.14).
+    tl.to("#scene-60 .scrap .strike", { scaleX: 1, duration: 0.4, ease: "power2.inOut" }, 0.74);
+    tl.to("#scene-60 .h5", { filter: "grayscale(1) brightness(0.6)", duration: 0.5, ease: "power2.out" }, 1.18);
+
+    // "rebuilt native" — the rebuild arrow (rebuilt 1.88).
+    tl.fromTo("#scene-60 .arrow",
+      { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.86);
+
+    // "iOS" — the iOS native card rises (iOS 4.18).
+    tl.fromTo("#scene-60 .card.ios",
+      { opacity: 0, x: -24, y: 16 }, { opacity: 1, x: 0, y: 0, duration: 0.45, ease: "back.out(1.5)" }, 4.16);
+    // "Android" — the Android native card rises (Android 4.88).
+    tl.fromTo("#scene-60 .card.android",
+      { opacity: 0, x: 24, y: 16 }, { opacity: 1, x: 0, y: 0, duration: 0.45, ease: "back.out(1.5)" }, 4.86);
+
+    // "separately" — the divider between them lands, two apart (separately 5.59).
+    tl.fromTo("#scene-60 .divider",
+      { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 5.55);
+
+    // Subtle life — the two cards hold with a faint offset breath.
+    tl.to("#scene-60 .card.ios", { y: "-=4", duration: 1.4, ease: "sine.inOut" }, 5.6);
+
+    // Seam clear — fade out across the trailing overlap with scene 61 (local 6.26-6.76).
+    tl.to("#scene-60 .cap, #scene-60 .stage",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.26);
+
+    window.__timelines["scene-60"] = tl;
+  </script>
+</body>
+</html>

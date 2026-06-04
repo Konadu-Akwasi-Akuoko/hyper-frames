@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 57 — Facebook then made a bet</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --fb: #3b82f6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-57 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-57 .cap {
+      position: absolute; left: 50%; top: 210px; transform: translateX(-50%);
+      width: 1320px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-57 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-57 .cap .bt { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    #scene-57 .rig {
+      position: absolute; left: 50%; top: 612px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 64px;
+    }
+
+    /* the Facebook logo — the bettor */
+    #scene-57 .fb { display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none; opacity: 0; will-change: transform, opacity; }
+    #scene-57 .fb img { width: 132px; height: 132px; }
+    #scene-57 .fb .lbl { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--muted); }
+
+    /* the wager being placed */
+    #scene-57 .chip {
+      position: relative; width: 158px; height: 158px; border-radius: 50%; flex: none;
+      background: radial-gradient(circle at 50% 40%, #1a2030, #0f1320);
+      border: 8px dashed rgba(247,223,30,0.65);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-57 .chip .inner {
+      width: 104px; height: 104px; border-radius: 50%; border: 2px solid rgba(247,223,30,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 64px; font-weight: 800; color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-57" data-composition-id="scene-57" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Facebook</span> <span class="w">then</span> <span class="w">made</span>
+      <span class="w">a</span> <span class="w bt">bet.</span>
+    </div>
+
+    <div class="rig">
+      <div class="fb">
+        <img src="assets/icons/facebook.svg" alt="Facebook">
+        <span class="lbl">Facebook</span>
+      </div>
+      <div class="chip" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="1530"><div class="inner">?</div></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(335.16).
+    // "Facebook then made a bet." (Facebook 0.50, made 1.06, bet 1.28).
+    const cw = [0.50, 0.85, 1.06, 1.20, 1.28];
+    gsap.utils.toArray("#scene-57 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Facebook" — the logo lands (Facebook 0.50).
+    tl.fromTo("#scene-57 .fb",
+      { opacity: 0, x: -24, scale: 0.92 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.50);
+
+    // "made a bet" — the chip drops onto the table with a spin (bet 1.28).
+    tl.fromTo("#scene-57 .chip",
+      { opacity: 0, y: -40, scale: 0.7, rotation: -40 },
+      { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 0.55, ease: "back.out(1.7)" }, 1.26);
+    tl.fromTo("#scene-57 .cap .bt",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 24px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 1.32);
+
+    // Subtle life — the chip rocks slightly as it settles.
+    tl.to("#scene-57 .chip", { rotation: 4, duration: 0.9, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.9);
+
+    // Seam clear — fade out across the trailing overlap with scene 58 (local 1.88-2.38).
+    tl.to("#scene-57 .cap, #scene-57 .rig",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 1.88);
+
+    window.__timelines["scene-57"] = tl;
+  </script>
+</body>
+</html>

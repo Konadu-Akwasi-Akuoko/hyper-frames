@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 16 — how did JavaScript get to the server?</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-16 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-16 .block {
+      position: absolute; left: 200px; top: 50%; transform: translateY(-50%);
+      width: 1540px;
+    }
+    #scene-16 .setup {
+      font-size: 40px; font-weight: 500; color: var(--soft);
+      letter-spacing: 0.2px; margin-bottom: 34px;
+    }
+    #scene-16 .setup .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+
+    #scene-16 .rule {
+      height: 5px; width: 0; background: var(--accent); border-radius: 3px;
+      margin-bottom: 30px; box-shadow: 0 0 18px rgba(247,223,30,0.4);
+    }
+
+    #scene-16 .title {
+      font-size: 96px; font-weight: 800; line-height: 1.08; color: var(--fg);
+      letter-spacing: -2px; max-width: 1480px;
+    }
+    #scene-16 .title .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-16 .title .js { color: var(--accent); }
+    #scene-16 .title .srv { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-16" data-composition-id="scene-16" data-width="1920" data-height="1080">
+    <div class="block"
+         data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="550">
+      <div class="setup">
+        <span class="w">So</span> <span class="w">guys,</span> <span class="w">that</span>
+        <span class="w">begs</span> <span class="w">the</span> <span class="w">question&hellip;</span>
+      </div>
+      <div class="rule"></div>
+      <div class="title">
+        <span class="w">How</span> <span class="w">the</span> <span class="w">hell</span> <span class="w">did</span>
+        <span class="w"><span class="js" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4700">JavaScript</span></span> <span class="w">get</span>
+        <span class="w">to</span> <span class="w"><span class="srv">the&nbsp;server</span>?</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(129.50). Entrance at local 0 (overlap w/ scene 15).
+    tl.fromTo("#scene-16 .block",
+      { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0);
+
+    // Setup reveals: So 130.00(0.50) guys .66 that 1.58 begs 1.88 the 2.09 question 2.24
+    const setup = [0.50, 0.66, 1.58, 1.88, 2.09, 2.24];
+    gsap.utils.toArray("#scene-16 .setup .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, setup[i]);
+    });
+
+    // Accent rule draws across before the title (~2.9).
+    tl.to("#scene-16 .rule", { width: 320, duration: 0.45, ease: "power3.out" }, 2.9);
+
+    // Title reveals: How 132.72(3.22) the 3.44 hell 3.66 did 4.20 JavaScript 4.30 get 4.90 to 5.26 the-server 5.40
+    const title = [3.22, 3.44, 3.66, 4.20, 4.30, 4.90, 5.26, 5.40];
+    gsap.utils.toArray("#scene-16 .title .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.42, ease: "power3.out" }, title[i]);
+    });
+    // "JavaScript" ignites accent on its word (133.80 -> local 4.30).
+    tl.fromTo("#scene-16 .title .js",
+      { textShadow: "0 0 0 rgba(247,223,30,0)" },
+      { textShadow: "0 0 30px rgba(247,223,30,0.45)", duration: 0.4, ease: "power2.out" }, 4.34);
+    // "the server" glows cyan on its word — the destination this chapter chases (135.02 -> 5.52).
+    tl.fromTo("#scene-16 .title .srv",
+      { textShadow: "0 0 0 rgba(103,232,249,0)" },
+      { textShadow: "0 0 28px rgba(103,232,249,0.5)", duration: 0.4, ease: "power2.out" }, 5.52);
+
+    // Subtle life — the block drifts a hair.
+    tl.to("#scene-16 .block", { y: "-=6", duration: 4.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.0);
+
+    // Seam clear — block fades across the trailing overlap with scene 17 (local 6.38-6.88).
+    tl.to("#scene-16 .block", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.38);
+
+    window.__timelines["scene-16"] = tl;
+  </script>
+</body>
+</html>

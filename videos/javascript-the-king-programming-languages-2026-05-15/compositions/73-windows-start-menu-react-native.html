@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 73 — Microsoft confirmed the Windows 11 Start menu was built with React Native</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff; --react: #61dafb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-73 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-73 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1560px; text-align: center; line-height: 1.25;
+      font-size: 42px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-73 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-73 .cap .win { color: var(--win); font-weight: 800; }
+    #scene-73 .cap .rt { color: var(--react); font-weight: 800; }
+
+    /* Microsoft confirmation tag */
+    #scene-73 .ms {
+      position: absolute; left: 50%; top: 360px; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 14px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-73 .ms .winlogo { display: grid; grid-template: 1fr 1fr / 1fr 1fr; gap: 3px; width: 30px; height: 30px; }
+    #scene-73 .ms .winlogo span { background: var(--win); border-radius: 2px; }
+    #scene-73 .ms .t { font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--muted); }
+
+    /* the Windows 11 Start menu */
+    #scene-73 .start {
+      position: absolute; left: 50%; top: 680px; transform: translate(-50%, -50%);
+      width: 540px; padding: 26px 28px 24px; border-radius: 16px;
+      background: rgba(24,28,36,0.96); border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6); display: flex; flex-direction: column; gap: 18px;
+      opacity: 0; will-change: transform, opacity, border-color, box-shadow;
+    }
+    #scene-73 .start .search {
+      height: 40px; border-radius: 999px; background: #11141b; border: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px; padding: 0 18px;
+      font-family: "Inter", sans-serif; font-size: 16px; color: var(--muted);
+    }
+    #scene-73 .start .search .mag { width: 14px; height: 14px; border: 2px solid var(--muted); border-radius: 50%; position: relative; flex: none; }
+    #scene-73 .start .search .mag::after { content: ""; position: absolute; right: -5px; bottom: -3px; width: 7px; height: 2px; background: var(--muted); transform: rotate(45deg); }
+    #scene-73 .start .lbl { font-family: "Inter", sans-serif; font-size: 14px; font-weight: 700; color: var(--soft); }
+    #scene-73 .start .pins { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+    #scene-73 .start .pins .p { aspect-ratio: 1; border-radius: 11px; }
+    #scene-73 .start .pins .p:nth-child(1) { background: #4cc2ff; }
+    #scene-73 .start .pins .p:nth-child(2) { background: #f7df1e; }
+    #scene-73 .start .pins .p:nth-child(3) { background: #ff6b5d; }
+    #scene-73 .start .pins .p:nth-child(4) { background: #7dd87d; }
+    #scene-73 .start .pins .p:nth-child(5) { background: #a172ff; }
+    #scene-73 .start .pins .p:nth-child(6) { background: #67e8f9; }
+    #scene-73 .start .pins .p:nth-child(n+7) { background: #2a313d; }
+    #scene-73 .start .recs { display: flex; flex-direction: column; gap: 12px; }
+    #scene-73 .start .recs .r { display: flex; align-items: center; gap: 12px; }
+    #scene-73 .start .recs .r .ic { width: 30px; height: 30px; border-radius: 7px; background: #2a313d; flex: none; }
+    #scene-73 .start .recs .r .ln { height: 9px; border-radius: 4px; background: #2a313d; }
+    #scene-73 .start .recs .r .ln.a { width: 180px; } #scene-73 .start .recs .r .ln.b { width: 120px; }
+
+    /* the React Native reveal badge */
+    #scene-73 .rn {
+      position: absolute; left: 50%; top: 962px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 30px; border-radius: 999px;
+      background: rgba(97,218,251,0.1); border: 1px solid rgba(97,218,251,0.55);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-73 .rn img { width: 40px; height: 40px; }
+    #scene-73 .rn .t { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 800; color: var(--react); }
+  </style>
+</head>
+<body>
+  <div id="scene-73" data-composition-id="scene-73" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Microsoft</span> <span class="w">confirmed</span> <span class="w">that</span>
+      <span class="w">part</span> <span class="w">of</span> <span class="w">the</span> <span class="w win">Windows</span>
+      <span class="w win">11</span> <span class="w win">Start</span> <span class="w win">menu</span>
+      <span class="w">was</span> <span class="w">built</span> <span class="w">with</span>
+      <span class="w rt">React</span> <span class="w rt">Native.</span>
+    </div>
+
+    <div class="ms">
+      <div class="winlogo"><span></span><span></span><span></span><span></span></div>
+      <span class="t">Microsoft confirmed</span>
+    </div>
+
+    <div class="start" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="3460" data-sfx-volume="0.42">
+      <div class="search"><span class="mag"></span>Search</div>
+      <span class="lbl">Pinned</span>
+      <div class="pins"><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div></div>
+      <span class="lbl">Recommended</span>
+      <div class="recs">
+        <div class="r"><div class="ic"></div><div style="display:flex;flex-direction:column;gap:7px"><div class="ln a"></div><div class="ln b"></div></div></div>
+      </div>
+    </div>
+
+    <div class="rn" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="5730" data-sfx-volume="0.35">
+      <img src="assets/icons/react.svg" alt="React">
+      <span class="t">built with React Native</span>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(409.21).
+    // "Microsoft confirmed that part of the Windows 11 Start menu was built with React Native."
+    // (Microsoft 0.50, confirmed 1.04, Windows 2.92, Start 3.56, menu 3.84, built 4.84, React 5.48, Native 6.08).
+    const cw = [0.50, 1.04, 2.06, 2.30, 2.66, 2.80, 2.92, 3.22, 3.56, 3.84, 4.58, 4.84, 5.24, 5.48, 6.08];
+    gsap.utils.toArray("#scene-73 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "Microsoft confirmed" — the confirmation tag appears (Microsoft 0.50).
+    tl.fromTo("#scene-73 .ms",
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.50);
+
+    // "the Windows 11 Start menu" — the Start menu panel rises (Windows 2.92).
+    tl.fromTo("#scene-73 .start",
+      { opacity: 0, y: 40, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 2.86);
+
+    // "built with React Native" — the badge reveals and the panel glows react-cyan (React 5.48).
+    tl.fromTo("#scene-73 .rn",
+      { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 5.48);
+    tl.to("#scene-73 .start",
+      { borderColor: "rgba(97,218,251,0.5)", boxShadow: "0 0 38px rgba(97,218,251,0.22)", duration: 0.5, ease: "power2.out" }, 5.48);
+
+    // Subtle life — the panel holds with a faint breath.
+    tl.to("#scene-73 .start", { y: "-=5", duration: 1.4, ease: "sine.inOut" }, 6.3);
+
+    // Seam clear — fade out across the trailing overlap with scene 74 (local 6.58-7.08).
+    tl.to("#scene-73 .cap, #scene-73 .ms, #scene-73 .start, #scene-73 .rn",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.58);
+
+    window.__timelines["scene-73"] = tl;
+  </script>
+</body>
+</html>

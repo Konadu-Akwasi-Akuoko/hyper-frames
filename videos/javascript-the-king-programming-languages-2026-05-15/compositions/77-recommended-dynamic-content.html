@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 77 — The 'recommended' section pulls personalized files, recent apps, frequently-changing content.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --win: #4cc2ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-77 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-77 .cap {
+      position: absolute; left: 50%; top: 150px; transform: translateX(-50%);
+      width: 1540px; text-align: center; line-height: 1.25;
+      font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-77 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-77 .cap .rec { color: var(--win); font-weight: 800; }
+    #scene-77 .cap .dyn { color: var(--accent-2); font-weight: 800; }
+
+    /* the focused "Recommended" panel */
+    #scene-77 .panel {
+      position: absolute; left: 50%; top: 672px; transform: translate(-50%, -50%);
+      width: 700px; padding: 26px 28px; border-radius: 18px;
+      background: rgba(24,28,36,0.96); border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6); display: flex; flex-direction: column; gap: 16px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-77 .panel .phead {
+      display: flex; align-items: center; gap: 12px;
+      font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 800; color: var(--win); letter-spacing: 0.5px;
+    }
+    #scene-77 .panel .phead .live {
+      margin-left: auto; display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 700; color: var(--ok);
+    }
+    #scene-77 .panel .phead .live .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); will-change: transform, opacity; }
+
+    #scene-77 .panel .row {
+      display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 12px;
+      background: rgba(17,20,27,0.8); border: 1px solid var(--border);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-77 .panel .row .ic { width: 44px; height: 44px; border-radius: 10px; flex: none; position: relative; }
+    #scene-77 .panel .row .meta { display: flex; flex-direction: column; gap: 5px; }
+    #scene-77 .panel .row .nm { font-size: 21px; font-weight: 700; color: var(--fg); letter-spacing: -0.2px; }
+    #scene-77 .panel .row .sb { font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 600; color: var(--muted); }
+
+    /* row icons */
+    #scene-77 .row.files .ic { background: rgba(103,232,249,0.16); border: 1px solid rgba(103,232,249,0.4); }
+    #scene-77 .row.files .ic::before { content: ""; position: absolute; inset: 11px 13px; border-radius: 3px; border: 2px solid var(--accent-2); }
+    #scene-77 .row.apps .ic { background: rgba(247,223,30,0.16); border: 1px solid rgba(247,223,30,0.4); }
+    #scene-77 .row.apps .ic::before { content: ""; position: absolute; inset: 12px; border-radius: 6px; background: var(--accent); }
+    #scene-77 .row.content .ic { background: rgba(125,216,125,0.14); border: 1px solid rgba(125,216,125,0.4); }
+    #scene-77 .row.content .ic .pulse { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 14px; height: 14px; border-radius: 50%; background: var(--ok); will-change: transform, opacity; }
+  </style>
+</head>
+<body>
+  <div id="scene-77" data-composition-id="scene-77" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">The</span> <span class="w rec">&ldquo;recommended&rdquo;</span> <span class="w">section</span> <span class="w">pulls</span>
+      <span class="w dyn">personalized</span> <span class="w dyn">files,</span>
+      <span class="w dyn">recent</span> <span class="w dyn">apps,</span>
+      <span class="w dyn">frequently</span><span class="w dyn">-changing</span> <span class="w dyn">content.</span>
+    </div>
+
+    <div class="panel">
+      <div class="phead">
+        Recommended
+        <span class="live"><span class="dot"></span>live</span>
+      </div>
+      <div class="row files" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3080" data-sfx-volume="0.35">
+        <div class="ic"></div>
+        <div class="meta"><span class="nm">personalized files</span><span class="sb">opened yesterday &middot; 3:14pm</span></div>
+      </div>
+      <div class="row apps" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4600" data-sfx-volume="0.35">
+        <div class="ic"></div>
+        <div class="meta"><span class="nm">recent apps</span><span class="sb">last launched moments ago</span></div>
+      </div>
+      <div class="row content" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="5920" data-sfx-volume="0.35">
+        <div class="ic"><span class="pulse"></span></div>
+        <div class="meta"><span class="nm">frequently-changing content</span><span class="sb">updates constantly</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(430.75).
+    // "The 'recommended' section pulls personalized files, recent apps, frequently-changing content."
+    // (recommended 0.90, pulls 2.50, personalized 2.84, recent 4.36, frequently 5.68, content 6.58).
+    const cw = [0.50, 0.90, 1.44, 2.50, 2.84, 3.46, 4.36, 4.92, 5.68, 6.20, 6.58];
+    gsap.utils.toArray("#scene-77 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // "recommended" — the panel rises (recommended 0.90).
+    tl.fromTo("#scene-77 .panel",
+      { opacity: 0, y: 32, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 0.90);
+
+    // each content row populates as its category is named.
+    const rows = [
+      { sel: ".row.files",   at: 2.84 },
+      { sel: ".row.apps",    at: 4.36 },
+      { sel: ".row.content", at: 5.68 },
+    ];
+    rows.forEach((r) => {
+      tl.fromTo(`#scene-77 .panel ${r.sel}`,
+        { opacity: 0, x: -22 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, r.at);
+    });
+
+    // "frequently-changing" — the live indicators pulse to signal constant updates (finite, deterministic).
+    tl.fromTo("#scene-77 .panel .phead .live .dot",
+      { opacity: 0.4, scale: 0.8 }, { opacity: 1, scale: 1.25, duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 5.9);
+    tl.fromTo("#scene-77 .row.content .ic .pulse",
+      { opacity: 0.5, scale: 0.7 }, { opacity: 1, scale: 1.2, duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 5.9);
+
+    // Seam clear — fade out across the trailing overlap with scene 78 (local 7.36-7.86).
+    tl.to("#scene-77 .cap, #scene-77 .panel",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 7.36);
+
+    window.__timelines["scene-77"] = tl;
+  </script>
+</body>
+</html>

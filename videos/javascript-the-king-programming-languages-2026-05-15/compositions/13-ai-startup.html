@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 13 — slap AI on it</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-13 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-13 .card {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 940px; background: var(--panel); border: 1px solid var(--border);
+      border-radius: 24px; padding: 56px 60px; box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* header row: logo + name + AI sticker */
+    #scene-13 .head { display: flex; align-items: center; gap: 26px; position: relative; }
+    #scene-13 .logo {
+      width: 76px; height: 76px; border-radius: 18px; flex: none;
+      background: linear-gradient(135deg, #2b3340, #161b22);
+      border: 1px solid var(--border); position: relative;
+    }
+    #scene-13 .logo::after {
+      content: ""; position: absolute; inset: 24px;
+      border: 4px solid var(--muted); border-radius: 50%;
+      border-right-color: transparent;
+    }
+    #scene-13 .name { font-size: 64px; font-weight: 800; color: var(--fg); letter-spacing: -1.5px; }
+    #scene-13 .sticker {
+      font-size: 40px; font-weight: 900; letter-spacing: 1px; color: #0b0d12;
+      background: var(--accent); border-radius: 12px; padding: 8px 18px;
+      transform: rotate(-8deg) scale(1.6); opacity: 0;
+      box-shadow: 0 8px 24px rgba(247,223,30,0.25); will-change: transform, opacity;
+    }
+
+    #scene-13 .rule { height: 1px; background: var(--border); margin: 40px 0 34px; }
+
+    /* metrics */
+    #scene-13 .row { display: flex; align-items: baseline; gap: 22px; margin-bottom: 24px; }
+    #scene-13 .row .k {
+      font-family: "JetBrains Mono", monospace; font-size: 26px; color: var(--muted);
+      width: 200px; flex: none;
+    }
+    #scene-13 .tagline-before {
+      font-size: 38px; font-weight: 500; color: var(--muted); position: relative;
+    }
+    #scene-13 .tagline-before .strike {
+      position: absolute; left: -6px; right: -6px; top: 52%; height: 4px;
+      background: var(--danger); border-radius: 2px; transform: scaleX(0); transform-origin: left center;
+    }
+    #scene-13 .tagline-after {
+      font-size: 40px; font-weight: 800; color: var(--ok); letter-spacing: -0.5px;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+    #scene-13 .val { display: flex; align-items: baseline; gap: 20px; }
+    #scene-13 .val .now {
+      font-size: 76px; font-weight: 900; color: var(--fg); letter-spacing: -2px;
+      font-variant-numeric: tabular-nums; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-13 .val .was {
+      font-family: "JetBrains Mono", monospace; font-size: 26px; color: var(--muted);
+      opacity: 0; will-change: opacity;
+    }
+    #scene-13 .val .was b { color: var(--ok); }
+
+    #scene-13 .foot {
+      margin-top: 38px; font-size: 30px; color: var(--dim); font-style: italic;
+      opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-13" data-composition-id="scene-13" data-width="1920" data-height="1080">
+    <div class="card">
+      <div class="head">
+        <div class="logo"></div>
+        <div class="name">DataFlow</div>
+        <div class="sticker"
+             data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="2350" data-sfx-volume="0.42">+ AI</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="row">
+        <div class="k">pitch</div>
+        <div class="tagline-before">a humble database wrapper<span class="strike"></span></div>
+      </div>
+      <div class="row">
+        <div class="k"></div>
+        <div class="tagline-after">&#10024; &ldquo;adjacent to genius&rdquo;</div>
+      </div>
+      <div class="row val">
+        <div class="k">valuation</div>
+        <div class="now"
+             data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="7250">$400M</div>
+        <div class="was">&#9650; was <b>$2M</b></div>
+      </div>
+
+      <div class="foot">&mdash; same code. nothing actually changed.</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(102.48).
+    // Card enters as "Same energy" opens (Same 102.98 -> 0.50).
+    tl.fromTo("#scene-13 .card",
+      { opacity: 0, y: 26, scale: 0.97 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.50);
+    // The before-pitch is present from the start (it's what the startup already was).
+    tl.set("#scene-13 .tagline-before", { opacity: 1 }, 0.50);
+
+    // "slapping AI on your startup" — the +AI sticker slaps on (AI 104.62 -> 2.14).
+    tl.fromTo("#scene-13 .sticker",
+      { opacity: 0, scale: 1.6, rotation: -22 },
+      { opacity: 1, scale: 1, rotation: -8, duration: 0.42, ease: "back.out(2.6)" }, 2.14);
+
+    // "You did nothing different" — footnote whispers in (nothing 107.04 -> 4.56).
+    tl.fromTo("#scene-13 .foot",
+      { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 4.56);
+
+    // "suddenly you're adjacent to genius" — the inflation lands (adjacent 109.38 -> 6.90).
+    // old pitch gets struck, new pitch + valuation rocket in.
+    tl.to("#scene-13 .tagline-before .strike",
+      { scaleX: 1, duration: 0.4, ease: "power2.out" }, 6.70);
+    tl.to("#scene-13 .tagline-before",
+      { color: "#3a4150", duration: 0.4, ease: "power2.out" }, 6.80);
+    tl.fromTo("#scene-13 .tagline-after",
+      { opacity: 0, x: -16 },
+      { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 6.90);
+    tl.fromTo("#scene-13 .val .now",
+      { opacity: 0, scale: 1.4, y: 8 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2.2)" }, 7.00);
+    tl.fromTo("#scene-13 .val .was",
+      { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 7.30);
+    // the genius-pitch blooms (genius 110.00 -> 7.52).
+    tl.to("#scene-13 .tagline-after",
+      { textShadow: "0 0 30px rgba(125,216,125,0.6)", duration: 0.4, ease: "power2.out" }, 7.52);
+    tl.to("#scene-13 .tagline-after",
+      { textShadow: "0 0 10px rgba(125,216,125,0.2)", duration: 0.9, ease: "power2.in" }, 8.00);
+
+    // Subtle life — the card breathes; the sticker sways.
+    tl.to("#scene-13 .card", { y: "-=5", duration: 4.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+    tl.to("#scene-13 .sticker", { rotation: -5, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.8);
+
+    // Seam clear — card fades across the trailing overlap with scene 14 (local 8.30-8.80).
+    tl.to("#scene-13 .card", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.30);
+
+    window.__timelines["scene-13"] = tl;
+  </script>
+</body>
+</html>

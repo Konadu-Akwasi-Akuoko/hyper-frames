@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 70 — Discord, Figma, Notion, 1Password, Obsidian — all Electron.</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
+      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --discord: #5865f2; --notion: #e8eaed; --onepw: #1a8cff; --obsidian: #a172ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-70 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    #scene-70 .cap {
+      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
+      width: 1380px; text-align: center;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
+    }
+    #scene-70 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-70 .cap .el { color: var(--accent-2); font-weight: 800; }
+
+    #scene-70 .grid {
+      position: absolute; left: 50%; top: 580px; transform: translate(-50%, -50%);
+      display: flex; align-items: flex-start; gap: 34px;
+    }
+    #scene-70 .tile {
+      width: 150px; display: flex; flex-direction: column; align-items: center; gap: 14px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-70 .tile .ic {
+      width: 104px; height: 104px; border-radius: 24px; display: flex; align-items: center; justify-content: center;
+      font-family: "Inter", sans-serif; font-size: 52px; font-weight: 800; color: #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    }
+    #scene-70 .tile .ic img { width: 56px; height: 56px; }
+    #scene-70 .tile .nm { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 700; color: var(--soft); }
+
+    #scene-70 .tile.discord .ic { background: var(--discord); }
+    #scene-70 .tile.figma .ic { background: #1e222b; border: 1px solid var(--border); }
+    #scene-70 .tile.notion .ic { background: var(--notion); color: #0b0d12; }
+    #scene-70 .tile.onepw .ic { background: var(--onepw); }
+    #scene-70 .tile.obsidian .ic { background: var(--obsidian); }
+
+    /* the "all Electron" verdict banner over the grid */
+    #scene-70 .verdict {
+      position: absolute; left: 50%; top: 800px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; gap: 18px;
+      padding: 16px 40px; border-radius: 999px;
+      background: rgba(103,232,249,0.1); border: 1px solid rgba(103,232,249,0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-70 .verdict img { width: 46px; height: 46px; }
+    #scene-70 .verdict .t { font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 800; color: var(--accent-2); letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+  <div id="scene-70" data-composition-id="scene-70" data-width="1920" data-height="1080">
+    <div class="cap">
+      <span class="w">Discord,</span> <span class="w">Figma,</span> <span class="w">Notion,</span>
+      <span class="w">1Password,</span> <span class="w">Obsidian</span> &mdash;
+      <span class="w el">all</span> <span class="w el">Electron.</span>
+    </div>
+
+    <div class="grid">
+      <div class="tile discord"><div class="ic">D</div><span class="nm">Discord</span></div>
+      <div class="tile figma"><div class="ic"><img src="assets/icons/figma.svg" alt="Figma"></div><span class="nm">Figma</span></div>
+      <div class="tile notion"><div class="ic">N</div><span class="nm">Notion</span></div>
+      <div class="tile onepw"><div class="ic">1</div><span class="nm">1Password</span></div>
+      <div class="tile obsidian"><div class="ic">O</div><span class="nm">Obsidian</span></div>
+    </div>
+
+    <div class="verdict" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4760" data-sfx-volume="0.35">
+      <img src="assets/icons/electron.svg" alt="Electron">
+      <span class="t">all Electron</span>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Scene-local = global - data_start(392.33).
+    // "Discord, Figma, Notion, 1Password, Obsidian — all Electron."
+    // (Discord 0.50, Figma 1.30, Notion 1.98, 1Password 2.70, Obsidian 3.28, all 4.46, Electron 5.06).
+    const cw = [0.50, 1.30, 1.98, 2.70, 3.28, 4.46, 5.06];
+    gsap.utils.toArray("#scene-70 .cap .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
+    });
+
+    // each app tile pops in as it is named (Discord 0.50 … Obsidian 3.28).
+    const tiles = ["discord", "figma", "notion", "onepw", "obsidian"];
+    const at = [0.50, 1.30, 1.98, 2.70, 3.28];
+    tiles.forEach((c, i) => {
+      tl.fromTo(`#scene-70 .tile.${c}`,
+        { opacity: 0, y: 22, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, at[i]);
+    });
+
+    // "all Electron" — the verdict banner sweeps in under the whole grid (all 4.46).
+    tl.fromTo("#scene-70 .verdict",
+      { opacity: 0, y: 18, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 4.46);
+
+    // Subtle life — the grid holds with a faint breath.
+    tl.to("#scene-70 .grid", { y: "-=4", duration: 1.4, ease: "sine.inOut" }, 5.2);
+
+    // Seam clear — fade out across the trailing overlap with scene 71 (local 5.72-6.22).
+    tl.to("#scene-70 .cap, #scene-70 .grid, #scene-70 .verdict",
+      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.72);
+
+    window.__timelines["scene-70"] = tl;
+  </script>
+</body>
+</html>
