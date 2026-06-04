@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where the SFX lands — transient on the impact frame, never early</title>
+<style>
+  :root {
+    --ink: #1c1917; --muted: #78716c; --faint: #a8a29e; --line: #e7e5e4;
+    --bg: #fafaf9; --panel: #ffffff;
+    --visual: #2563eb; --visual-soft: #dbeafe; --visual-edge: #93c5fd;
+    --frame: #059669; --frame-soft: rgba(5,150,105,0.12);
+    --sfx: #ea580c; --sfx-soft: rgba(234,88,12,0.12);
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 48px 28px 80px; }
+  h1 { font-size: 26px; font-weight: 650; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .thesis { font-size: 16px; margin: 0 0 4px; max-width: 74ch; }
+  .thesis strong { color: var(--sfx); font-weight: 650; }
+  .thesis .frame { color: var(--frame); font-weight: 650; }
+  .sub { font-size: 13.5px; color: var(--muted); margin: 0; max-width: 76ch; }
+  .sub code, .thesis code { font-family: var(--mono); font-size: .92em; }
+  .legend { display: flex; flex-wrap: wrap; gap: 18px; margin: 18px 0 0; }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--muted); }
+  .sw { width: 22px; height: 0; border-top: 3px solid; border-radius: 2px; }
+  .sw.dot { width: 14px; height: 14px; border: 0; border-radius: 3px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; margin-top: 26px; box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 8px 24px -16px rgba(0,0,0,.12); }
+  .panel h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 650; margin: 0 0 4px; }
+  .panel .lead { font-size: 14px; margin: 0 0 14px; max-width: 78ch; }
+  .panel .lead code { font-family: var(--mono); font-size: .92em; }
+  svg { display: block; width: 100%; height: auto; }
+  .lbl { font-family: var(--sans); font-size: 12px; fill: var(--muted); }
+  .lbl-ink { font-family: var(--sans); font-size: 12px; fill: var(--ink); }
+  .val { font-family: var(--mono); font-size: 11.5px; }
+  .val-sfx { font-family: var(--mono); font-size: 12px; fill: var(--sfx); font-weight: 600; }
+  .val-frame { font-family: var(--mono); font-size: 12px; fill: var(--frame); font-weight: 600; }
+  .val-vis { font-family: var(--mono); font-size: 11px; fill: var(--visual); }
+  pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.6; background: #292524; color: #e7e5e4; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin: 0 0 16px; }
+  pre .k { color: #93c5fd; } pre .s { color: #fdba74; } pre .n { color: #6ee7b7; } pre .c { color: #a8a29e; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; align-items: center; }
+  .chip { font-family: var(--mono); font-size: 12px; background: #f5f5f4; border: 1px solid var(--line); border-radius: 7px; padding: 6px 10px; }
+  .chip b { color: var(--muted); font-weight: 500; }
+  .chip.out { background: #fff7ed; border-color: #fed7aa; color: var(--sfx); font-weight: 600; }
+  .arrow { color: var(--faint); font-family: var(--mono); }
+  .note { font-size: 12.5px; color: var(--muted); margin: 16px 0 0; padding-left: 12px; border-left: 2px solid var(--line); max-width: 82ch; }
+  .note code { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+  td:nth-child(2) { font-family: var(--mono); font-size: 12px; }
+  td .on { color: var(--frame); } td .pk { color: var(--sfx); }
+  footer { margin-top: 32px; font-size: 12px; color: var(--faint); }
+  footer code { font-family: var(--mono); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Where the SFX lands</h1>
+    <p class="thesis">SFX denote <strong>visual events</strong>, not the audio. A cue's transient lands on the <span class="frame">impact frame</span> — the moment the element is fully present — biased a hair late, so it is <strong>never early</strong>. You give one number, <code>data-sfx-at-scene-ms</code> = the impact frame; the tool aligns the sound there.</p>
+    <p class="sub">Punctuation cues (<code>pop, tick, ding, boom, snap</code>) land their <em>onset</em> on the frame. Anticipatory cues (<code>whoosh, riser</code>) land their <em>peak</em> on the frame so the swell leads in — for <em>motion</em> only, never for a thing appearing. Replaces the old "perceptual-landing" model.</p>
+  </header>
+
+  <div class="legend">
+    <span><span class="sw" style="border-color:var(--visual)"></span> the element's motion (opacity)</span>
+    <span><span class="sw" style="border-color:var(--frame); border-top-style:dashed"></span> impact frame (fully present)</span>
+    <span><span class="sw" style="border-color:var(--sfx); border-top-style:dashed"></span> SFX transient lands here ♪</span>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <div class="panel">
+    <h2>One case — a thing appears</h2>
+    <p class="lead">A card fades in. Its <span style="color:var(--frame);font-weight:600">impact frame</span> is the tween's <code>start + duration</code> — when it's fully there. The <code>pop</code>'s audible onset lands on that frame, +12ms late: on the picture, never before it.</p>
+
+    <pre>tl.<span class="k">fromTo</span>(<span class="s">"#card"</span>,
+  { opacity: <span class="n">0</span> }, { opacity: <span class="n">1</span>, duration: <span class="n">0.5</span>, ease: <span class="s">"expo.out"</span> },
+  <span class="n">5.0</span>,  <span class="c">// start 5.0s + duration 0.5s → impact frame 5.5s</span>
+);</pre>
+
+    <!-- x(t_ms) = 90 + (t-4800)*0.7 ; window 4800..6000 -->
+    <svg viewBox="0 0 1000 230" role="img" aria-label="A fade-in with the pop transient landing on the impact frame">
+      <!-- opacity guides -->
+      <line x1="230" y1="50"  x2="580" y2="50"  stroke="var(--line)" stroke-dasharray="3 4"/>
+      <line x1="230" y1="150" x2="580" y2="150" stroke="var(--line)" stroke-dasharray="3 4"/>
+      <text class="lbl" x="224" y="54"  text-anchor="end">opacity 1</text>
+      <text class="lbl" x="224" y="154" text-anchor="end">opacity 0</text>
+
+      <!-- impact-frame band: from where it's basically present to the frame -->
+      <rect x="510" y="40" width="70" height="150" fill="var(--frame-soft)"/>
+      <!-- opacity curve (expo.out, fast rise to full at the impact frame) -->
+      <polyline fill="none" stroke="var(--visual)" stroke-width="2.5" stroke-linejoin="round"
+        points="230,150 265,100 300,75 335,62 370,56 440,52 510,50 580,50"/>
+      <text class="val-vis" x="600" y="58">opacity (expo.out)</text>
+
+      <!-- baseline axis -->
+      <line x1="90" y1="180" x2="930" y2="180" stroke="var(--ink)" stroke-width="1"/>
+      <g stroke="var(--faint)">
+        <line x1="90"  y1="180" x2="90"  y2="185"/>
+        <line x1="230" y1="180" x2="230" y2="185"/>
+        <line x1="370" y1="180" x2="370" y2="185"/>
+        <line x1="510" y1="180" x2="510" y2="185"/>
+        <line x1="650" y1="180" x2="650" y2="185"/>
+        <line x1="790" y1="180" x2="790" y2="185"/>
+        <line x1="930" y1="180" x2="930" y2="185"/>
+      </g>
+      <g class="val" fill="var(--faint)" text-anchor="middle">
+        <text x="230" y="196">5000</text>
+        <text x="510" y="196">5400</text>
+        <text x="790" y="196">5800</text>
+      </g>
+      <text class="lbl" x="930" y="196" text-anchor="end">scene-local ms (from data-start)</text>
+
+      <!-- tween span bar: 5000..5500 -> x 230..580 -->
+      <rect x="230" y="162" width="350" height="12" rx="4" fill="var(--visual-soft)" stroke="var(--visual-edge)"/>
+      <text class="val-vis" x="230" y="159" text-anchor="middle">start 5000</text>
+      <text class="val-vis" x="405" y="171" text-anchor="middle">tween 500ms</text>
+
+      <!-- impact frame at 5500 -> x 580 -->
+      <line x1="580" y1="36" x2="580" y2="182" stroke="var(--frame)" stroke-width="1.8" stroke-dasharray="5 4"/>
+      <text class="val-frame" x="580" y="30" text-anchor="middle">impact frame 5500</text>
+
+      <!-- pop transient marker at ~5512 -> x ~588 -->
+      <line x1="588" y1="24" x2="588" y2="182" stroke="var(--sfx)" stroke-width="1.8" stroke-dasharray="2 3"/>
+      <circle cx="588" cy="50" r="4.5" fill="var(--sfx)"/>
+      <text x="588" y="18" text-anchor="middle" font-size="16" fill="var(--sfx)">&#9834;</text>
+      <text class="val-sfx" x="596" y="206" text-anchor="start">pop onset +12ms</text>
+    </svg>
+
+    <div class="chips">
+      <span class="chip"><b>impact frame</b> 5500ms <b style="margin-left:4px">(start 5000 + dur 500)</b></span>
+      <span class="arrow">&rarr;</span>
+      <span class="chip out">data-sfx-at-scene-ms="5500"</span>
+      <span class="arrow">&rarr;</span>
+      <span class="chip"><b>audible onset</b> 5512ms <b style="margin-left:4px">(never before 5500)</b></span>
+    </div>
+
+    <p class="note">You supply only the impact frame. <code>sfx-plan</code> reads the asset's measured <code>onset_time_s</code> and lands the audible start there +12ms — the never-early cushion. AV-sync research backs this: audio leading video reads as wrong far sooner than audio lagging (EBU R37, ITU-R BT.1359, ATSC all tolerate lag &raquo; lead), so a few ms late is free.</p>
+  </div>
+
+  <!-- ============ ONSET vs PEAK ============ -->
+  <div class="panel">
+    <h2>Onset vs. peak — same frame, two cue kinds</h2>
+    <p class="lead">The <code>align</code> mode is a property of the cue. Punctuation cues land their <em>onset</em> on the frame. A <code>whoosh</code> lands its <em>peak</em> there — its swell <em>leads into</em> the moment, which is right for <em>travel</em> and wrong for a thing appearing.</p>
+
+    <svg viewBox="0 0 1000 250" role="img" aria-label="Pop onset-aligned versus whoosh peak-aligned on the same impact frame">
+      <!-- shared impact-frame line at 5500 -> x580 -->
+      <line x1="580" y1="40" x2="580" y2="210" stroke="var(--frame)" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <text class="val-frame" x="580" y="32" text-anchor="middle">impact frame / arrival 5500</text>
+
+      <!-- shared axis -->
+      <line x1="90" y1="218" x2="930" y2="218" stroke="var(--ink)" stroke-width="1"/>
+      <g stroke="var(--faint)">
+        <line x1="230" y1="218" x2="230" y2="223"/><line x1="510" y1="218" x2="510" y2="223"/><line x1="790" y1="218" x2="790" y2="223"/>
+      </g>
+      <g class="val" fill="var(--faint)" text-anchor="middle">
+        <text x="230" y="234">5000</text><text x="510" y="234">5400</text><text x="790" y="234">5800</text>
+      </g>
+      <text class="lbl" x="930" y="234" text-anchor="end">scene-local ms</text>
+
+      <!-- ROW A: pop, onset -->
+      <text class="lbl-ink" x="14" y="78" font-weight="600">pop</text>
+      <text class="lbl" x="14" y="93">onset · a thing appears</text>
+      <rect x="230" y="70" width="350" height="6" rx="3" fill="var(--visual-soft)" stroke="var(--visual-edge)"/>
+      <line x1="588" y1="58" x2="588" y2="90" stroke="var(--sfx)" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <circle cx="588" cy="73" r="4" fill="var(--sfx)"/>
+      <text class="val-sfx" x="596" y="66">onset on the frame</text>
+
+      <!-- ROW B: whoosh, peak -->
+      <text class="lbl-ink" x="14" y="158" font-weight="600">whoosh</text>
+      <text class="lbl" x="14" y="173">peak · motion / travel</text>
+      <!-- travel bar: a panel sliding into place, settles at 5500 -->
+      <rect x="300" y="150" width="280" height="6" rx="3" fill="var(--visual-soft)" stroke="var(--visual-edge)"/>
+      <!-- swell region: audible onset ~5446 -> x ~542, leads into the peak at frame -->
+      <rect x="542" y="138" width="38" height="32" fill="var(--sfx-soft)"/>
+      <text class="val-sfx" x="470" y="142" text-anchor="start" font-size="11">swell leads in (~54ms)</text>
+      <line x1="580" y1="138" x2="580" y2="170" stroke="var(--sfx)" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <circle cx="580" cy="153" r="4" fill="var(--sfx)"/>
+      <text class="val-sfx" x="588" y="148">peak on arrival</text>
+      <text class="lbl" x="440" y="186" text-anchor="start">the element is still travelling here — so pre-arrival sound is correct</text>
+    </svg>
+
+    <p class="note">Put a <code>whoosh</code> on a thing that simply <em>appears in place</em> and its swell reads as sound-before-visual — the Java-card bug. The fix is the right cue: <code>pop</code>. <code>sfx-plan</code> prints a <code>pre-roll</code> note when a peak-aligned cue precedes its own impact frame, so a misused whoosh is easy to catch.</p>
+  </div>
+
+  <!-- ============ REFERENCE ============ -->
+  <div class="panel">
+    <h2>The palette — decide by the verb</h2>
+    <p class="lead">Pick the cue by what the beat is <em>doing</em>, never by CSS class. Each cue is a signature sound (one pinned asset, reused all video) with a fixed <code>align</code>.</p>
+    <table>
+      <thead><tr><th>The motion is doing…</th><th>cue · align</th></tr></thead>
+      <tbody>
+        <tr><td>appears / pops / fades in</td><td><span class="on">pop · onset</span></td></tr>
+        <tr><td>a small UI arrival (tighter)</td><td><span class="on">ui-tick · onset</span></td></tr>
+        <tr><td>highlighted / named / flagged</td><td><span class="on">msg-ding · onset</span></td></tr>
+        <tr><td>lands with weight; a major point</td><td><span class="on">boom · onset</span></td></tr>
+        <tr><td>slides / travels / a transition crosses</td><td><span class="pk">whoosh · peak</span></td></tr>
+        <tr><td>builds into a reveal</td><td><span class="pk">riser · peak</span></td></tr>
+        <tr><td>freeze-frame / highlight one element</td><td><span class="on">snap · onset</span></td></tr>
+        <tr><td>a card / tile taps in</td><td><span class="on">card-tap · onset</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>Each cue is independent.</strong> A cue fires whenever its own visual event warrants it — regardless of any other SFX nearby. No cooldowns, no dedup, no density caps: reuse a sound as often as you like, including repeatedly within one scene. Three cards appearing = three pops, one per card, each on its own impact frame.</p>
+  </div>
+
+  <footer>
+    Teaching aid &middot; visual-event SFX, transient-on-impact &middot; model: <code>.claude/skills/video-director/reference/sfx-cues-and-timing.md</code> &middot; tool: <code>tools/sfx-plan</code>
+  </footer>
+
+</div>
+</body>
+</html>
