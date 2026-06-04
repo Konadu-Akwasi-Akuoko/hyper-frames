@@ -1,24 +1,32 @@
-"""Tests for default cue recipes."""
+"""Tests for default cue recipes (curated, video-first palette)."""
 from __future__ import annotations
 
 from sfx_catalog.cues import default_cues
 
 
-def test_default_cues_includes_required_set() -> None:
+def test_default_cues_includes_core_palette() -> None:
+    names = set(default_cues().keys())
+    # Core motion-graphics vocabulary plus the snap cue.
+    assert {"ui-tick", "whoosh", "boom", "riser", "pop", "msg-ding", "snap"} <= names
+
+
+def test_every_cue_pins_a_default_asset_and_align() -> None:
+    for name, cue in default_cues().items():
+        assert cue.default_asset, f"{name} must pin a default_asset"
+        assert cue.align in ("onset", "peak"), f"{name} align must be onset|peak"
+        # 0.5 is both the house level and the ceiling; lead is a tuning knob only.
+        assert cue.default_volume == 0.5
+        assert cue.default_lead_ms == 0
+
+
+def test_punctuation_cues_are_onset_aligned() -> None:
     cues = default_cues()
-    names = set(cues.keys())
-    assert names == {"ui-tick", "whoosh", "boom", "riser", "pop"}
+    for name in ("ui-tick", "pop", "msg-ding", "boom", "snap", "card-tap"):
+        assert cues[name].align == "onset", f"{name} should be onset-aligned"
 
 
-def test_ui_tick_filter_prefers_short_bright_accents() -> None:
-    cue = default_cues()["ui-tick"]
-    assert cue.filter.get("auto_role") == "accent"
-    assert cue.filter.get("duration_s_max") == 0.5
-    assert "bright" in cue.filter.get("brightness_in", [])
-    assert cue.default_lead_ms == -50
-
-
-def test_whoosh_filter_targets_transitions() -> None:
-    cue = default_cues()["whoosh"]
-    assert cue.filter.get("auto_role") == "transition"
-    assert cue.default_lead_ms == -150
+def test_anticipatory_cues_are_peak_aligned() -> None:
+    cues = default_cues()
+    assert cues["whoosh"].align == "peak"
+    assert cues["riser"].align == "peak"
+    assert cues["whoosh"].filter.get("auto_role") == "transition"

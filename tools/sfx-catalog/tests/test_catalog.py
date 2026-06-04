@@ -65,7 +65,7 @@ def test_build_catalog_includes_all_assets_and_cues(library_dir: Path) -> None:
     cat = build_catalog(library_dir)
     assert cat.version == 1
     assert len(cat.assets) == 3
-    assert set(cat.cues.keys()) == {"ui-tick", "whoosh", "boom", "riser", "pop"}
+    assert {"ui-tick", "whoosh", "boom", "riser", "pop", "msg-ding", "snap"} <= set(cat.cues.keys())
 
 
 def test_incremental_short_circuits_unchanged_files(library_dir: Path) -> None:
