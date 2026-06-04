@@ -336,9 +336,10 @@ relate", with mood and narrative-position tables. What's missing is the
 *full-video* arc — every piece of guidance is scoped to one scene or one
 transition; nothing addresses tension across the whole runtime.
 
-**`sfx-author`** already operates on intent, not element type. The cue-character
-library picks by what a moment is *doing*; `reference/cue-vocabulary.md` treats
-silence as a first-class "unused cue"; the technical floors enforce a
+**The SFX step (`video-director` Step H, formerly `sfx-author`)** already operates
+on intent, not element type. The cue-character library picks by what a moment is
+*doing*; `reference/sfx-cues-and-timing.md` treats silence as a first-class
+"unused cue"; the technical floors enforce a
 1-cue-per-3s density ceiling; and there is already a `data-sfx-hook="true"`
 breadcrumb for the single biggest beat. What's missing: cue *density* is
 governed only as a ceiling, never as a deliberate arc across the video.
@@ -436,7 +437,7 @@ transition. Nothing addresses tension across the full runtime.
   *Why it's guidance:* it surfaces a conflict for human judgment rather than
   resolving it with a new rule.
 
-## 3.3 `sfx-author`
+## 3.3 The SFX step (`video-director` Step H, formerly `sfx-author`)
 
 **Current gap:** cue density is governed only as a ceiling (1 per 3s), never as
 a deliberate shape.
@@ -509,8 +510,8 @@ Concretely, a coordinated video would have:
   narration pause where the **music** thins and the **script** placed its
   1-in-5 short declarative.
 
-Each skill already has a private notion of "the big moment" — `sfx-author` even
-has `data-sfx-hook="true"`, and `audio-bed-music`'s Phase C roadmap mentions
+Each skill already has a private notion of "the big moment" — `video-director`'s
+SFX step even has `data-sfx-hook="true"`, and `audio-bed-music`'s Phase C roadmap mentions
 pre-impact silence keyed to it. But there is no shared, authoritative answer to
 "where is the climax" that all four read from.
 

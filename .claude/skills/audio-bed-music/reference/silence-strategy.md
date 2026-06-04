@@ -13,8 +13,8 @@ call. The file just helps name the candidates.
 
 The bed scores the emotional response before the narration is even parsed. But a bed
 that never lets up gives the viewer nothing to contrast against — the score flattens
-into wallpaper. Silence is a tool here exactly as it is in SFX (`sfx-author`'s "Silence
-— the unused cue"): the absence is the effect. A bed that pulls back at the right beat
+into wallpaper. Silence is a tool here exactly as it is in SFX (`video-director`'s SFX
+step — "Silence, the unused cue"): the absence is the effect. A bed that pulls back at the right beat
 makes that beat feel weightier, and makes its own return feel earned.
 
 ## Where pulling back tends to land
@@ -25,7 +25,7 @@ These are the *kinds* of moments where bed-silence tends to work — not a check
   it alone; bring the bed back after.
 - **A high-emotional-weight beat** — the moment the script treats as load-bearing, where
   a pad underneath would dilute rather than support.
-- **Just before a major reveal** — pre-impact silence. This is the beat `sfx-author`
+- **Just before a major reveal** — pre-impact silence. This is the beat the SFX step
   marks with `data-sfx-hook="true"`; the bed thinning or stopping ahead of it is the
   music-side of the same move.
 - **The landing** — some videos want the bed to thin or stop under the closing line, so

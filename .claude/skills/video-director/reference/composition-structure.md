@@ -201,7 +201,7 @@ inside `#root`. The shape (from the shipped js-king `index.html`):
   window.__timelines["main"] = gsap.timeline({ paused: true });
 </script>
 
-<!-- sfx-layer / music-layer are appended later by sfx-author / audio-bed-music. -->
+<!-- sfx-layer is appended by tools/sfx-plan during Step H; music-layer later by audio-bed-music. -->
 ```
 
 Wiring rules:

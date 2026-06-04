@@ -1,6 +1,6 @@
 ---
 name: video-director
-description: Author a HyperFrames video incrementally from an approved `script.md` + Scribe v2 `transcript.json`, a few sentences at a time, anchoring every animation to real transcript word timings and wiring each block into `index.html`. Use this whenever the user wants to turn a script into a composition — "build the video", "author the composition", "animate this script", "direct this video", "keep going on the video", "continue the composition", "do the next scene" — or names a `videos/<slug>-<date>/` folder that has `script.md` + `transcript.json` + `design.md` and asks to make it move. Use it even when the user doesn't say "video-director" by name; if the task is turning narrated script text into HyperFrames scenes, this is the skill. It DIRECTS the `hyperframes` / `hyperframes-cli` / `hyperframes-registry` plugin skills (it sequences, tracks state, and wires — it does not replace them), resumes cleanly across sessions by reading what's already mounted, and runs a visual-QA loop on every scene. Runs after voiceover + transcript exist and before `sfx-author` / `audio-bed-music`. Not for sound design, not for generating the voiceover/transcript — those are upstream/downstream skills.
+description: Author a HyperFrames video incrementally from an approved `script.md` + Scribe v2 `transcript.json`, a few sentences at a time, anchoring every animation to real transcript word timings and wiring each block into `index.html`. Use this whenever the user wants to turn a script into a composition — "build the video", "author the composition", "animate this script", "direct this video", "keep going on the video", "continue the composition", "do the next scene" — or names a `videos/<slug>-<date>/` folder that has `script.md` + `transcript.json` + `design.md` and asks to make it move. Use it even when the user doesn't say "video-director" by name; if the task is turning narrated script text into HyperFrames scenes, this is the skill. It DIRECTS the `hyperframes` / `hyperframes-cli` / `hyperframes-registry` plugin skills (it sequences, tracks state, and wires — it does not replace them), resumes cleanly across sessions by reading what's already mounted, and runs a visual-QA loop on every scene. It also owns the **SFX pass** — sound effects are scored per scene as Step H (right after each scene's visual QA) and reconciled across the whole video at the end, on top of `tools/sfx-plan` + `tools/sfx-level`. Runs after voiceover + transcript exist and before `audio-bed-music`. Not for the music bed, not for generating the voiceover/transcript — those are upstream/downstream skills.
 ---
 
 # video-director
@@ -205,7 +205,8 @@ Defer the mechanics to the `hyperframes` skill; this is what's specific here:
   low-amplitude idle (tilt/drift) so nothing sits perfectly still.
   `reference/visual-language.md` §3.
 - Deterministic only — no `Math.random`, `Date.now`, or `repeat: -1`.
-- Do **not** add `data-sfx-*` annotations — sound is a later pass (`sfx-author`).
+- Do **not** add `data-sfx-*` annotations while authoring visuals — SFX is scored
+  in the dedicated Step H of *this* skill, once the scene's visuals pass QA.
 
 ### F. Wire the host into index.html
 
@@ -275,7 +276,80 @@ defaulting to bare text.
 `snapshot` and `inspect` run headless in their own Chrome — they don't touch the
 running preview. Full command detail and the rubric: `reference/verify-and-preview.md`.
 
-### H. Loop or stop
+### H. Score the SFX for this pass
+
+Sound is scored **per pass, on the scene(s) you just authored** — while this
+scene's GSAP tween times and the Step-C word timings are still in context. That
+freshness is the whole point: it is how a cue lands neither early nor late. You
+score **only this pass's scene(s)** here; the whole-video reconcile runs once at
+the Done condition (below). SFX is **not just booms and risers** — the common
+case is small punctuation driven by *this scene's own beats*. Dense policy lives
+in `reference/sfx-cues-and-timing.md` (mode/cue/asset mechanics, the `data-sfx-*`
+contract, peak math) and `reference/sfx-arc-and-reconcile.md` (the arc ledger,
+density shape, final reconcile); this is the per-pass sub-flow.
+
+1. **Punctuation cues from this scene's GSAP beats — the common case.** Walk the
+   timeline you just wrote and score what each beat is *doing*, never by CSS
+   class: a thing **appears** → `ui-tick`/`pop`; something **slides in** →
+   `whoosh`; something is **highlighted** → `ui-tick`/`msg-ding`; something
+   **snaps into place** → `ui-tick`; a card **taps in** → `card-tap`. These are
+   visual changes, so the timing mode is **`data-sfx-at-scene-ms`** (scene-local
+   ms, relative to the host's own `data-start`). Compute the **perceptual
+   landing** from the tween you just keyed — a **fade** lands at `start +
+   dur×0.5–0.7`, a **slide/snap** at `start + dur`. **Pin every cue's asset** with
+   `data-sfx-asset`, reusing the file a same-family cue already uses in this video.
+   Lead with these — most passes are nothing but punctuation.
+
+2. **Spoken-word cues — anchor mode.** When the trigger is a *word landing* (a
+   label said aloud, a name read, a payoff line), use **`data-sfx-anchor` +
+   `data-sfx-anchor-index`** (1-indexed), never `data-sfx-at-scene-ms`. The two
+   modes are **mutually exclusive** — using anchor + a large negative lead to
+   *reach* a visual moment is the forbidden SFX-before-visual bug. The anchor must
+   resolve in `narration-map.json` at write time — if the word isn't there, append
+   it to `anchors.txt`, re-run `tools/narration-map`, and verify it resolves
+   **before** writing the attribute. `data-sfx-lead-ms` is ±100 ms peak-tuning
+   only (≥200 ms warns; treat as blocking).
+
+3. **Heavy/global cues — against the derived arc ledger.** `boom`, `riser`, and
+   the single `data-sfx-hook` are rationed across the *whole* video, not this
+   pass. There is no sidecar — **derive** the budget: read `story-spine.md` (if
+   present) / `script.md` for where hook/climax/landing fall, then **scan the
+   already-placed `data-sfx-*` across all compositions** for what's already spent
+   (mounted state is the source of truth). Spend a heavy cue only on a genuine
+   peak the ledger hasn't claimed; score the hook with **restraint** (one decisive
+   cue, or silence into the hit — never a stack). Most passes spend none.
+
+4. **VO check + the 0.5 rule.** Before committing each cue, probe the narration
+   under it — `uv run --project ../../tools/sfx-level sfx-level audio/voiceover.mp3
+   --at <t>` returns VO RMS/peak dBFS and classifies gap vs. active speech — to
+   confirm the cue lands where you think and catch one fighting hot VO. Volume is a
+   flat **0.5 default *and* ceiling**, set once as `default_volume: 0.5` in
+   `sound-effects/sfx-catalog.yml` — do **not** write `data-sfx-volume="0.5"` on
+   elements. Write `data-sfx-volume` **only to duck below 0.5** when sfx-level
+   reports the VO is hot under the cue; never above.
+
+5. **Compact proposal + approval gate.** Print one terse line per cue — `mode= /
+   cue= / asset= / on <element> / <short reason>` — plus a `ledger:` line and any
+   `NEW ANCHORS NEEDED`. **Write `data-sfx-*` annotations only on
+   `yes`/`approve`/`go`** (one `Edit` per element; never reformat surrounding
+   HTML). Honor a **standing approval** ("auto-approve SFX for the rest") so the
+   autonomous loop runs uninterrupted on later passes; absent that, the gate holds
+   each pass — but keep printing the compact proposal for the record. Full format:
+   `reference/sfx-arc-and-reconcile.md`.
+
+6. **Plan, then ear-audit.** Run `uv run --project ../../tools/sfx-plan sfx-plan
+   --report` from the video folder — it idempotently regenerates the whole
+   `compositions/sfx.html` and reports cue count plus warnings. A
+   `DensityViolationError` fails the run (>1 cue/s in a 6s window — real, fix it);
+   a `large lead_ms`, density (>0.5/s), or `overlap on track` warning still exits
+   0 but *you* treat it as blocking. SFX correctness is **partly
+   ear-only** — a snapshot can't show sound — so surface the seek target for the
+   cued beat ("Seek to **{t}s** to hear scene NN") and let the **human
+   listen-in-preview audit stay the gate** for this pass; the deterministic tools
+   (`sfx-plan` warnings + `sfx-level`) are the automated backstop, not a
+   substitute. **Never start, restart, or kill the preview server.**
+
+### I. Loop or stop
 
 If more script remains and the session still has headroom, go back to Step A
 (state is re-detected, so the loop is idempotent and self-correcting). To stop
@@ -290,9 +364,18 @@ truth and the comment as a convenience.
 
 The whole script is covered (every sentence maps to a mounted block whose
 window spans its transcript words), lint and inspect are clean, the final block
-holds the only exit animation, and you've surfaced the last seek target. Then
-hand off: sound design is next (`sfx-author`), and after that the music bed
-(`audio-bed-music`). You never do sound yourself.
+holds the only exit animation, every scene has had its per-pass SFX score (Step
+H), and you've surfaced the last seek target. Then run the **final SFX
+reconcile** — one whole-video pass that re-runs `tools/sfx-plan` over everything
+and verifies the density curve/shape (no `DensityViolationError`; trim any
+6s-window warning), per-track overlap, your own same-cue spacing (the tool does
+not check cooldowns — you do), that `boom`/`riser` were spent only on genuine
+peaks, that **exactly one** `data-sfx-hook` exists and
+was scored with restraint, that the `tools/sfx-level` sweep finds no cue fighting
+loud VO, and that the `sfx-layer` mount spans the full runtime (checklist:
+`reference/sfx-arc-and-reconcile.md`). Only then hand off to the music bed
+(`audio-bed-music`) — music sits *beneath* SFX and is the one sound layer you
+never author yourself.
 
 ## Delegation map
 
@@ -305,7 +388,9 @@ hand off: sound design is next (`sfx-author`), and after that the music bed
 | Image sourcing: find + fetch a real asset for a box, routed by `data-asset-class` — `reaction`→Pinterest, `logo`/`glyph`→Iconify (static SVG), `photo`→Wikimedia (licensed), web as catch-all — then treat it | `image-sourcer` agent | Declare the box with its `class`/`referent`, then dispatch `image-sourcer` (`model: sonnet`) with the `data-asset-*` spec + `video_dir`; weigh its confidence, swap the pick in (or leave the box standing + shopping-list on failure), surface any required attribution (`reference/assets-and-media.md`) |
 | Image treatment: background removal + VFX presets (grain/duotone/halftone/vintage) | `tools/image-prep` | Declare asset boxes + the shopping list; the `image-sourcer` agent runs image-prep for you, or run it directly on a human-supplied raster for a consistent cutout look (`reference/assets-and-media.md`) |
 | Voiceover / transcript | voiceover-* / `transcribe-and-plan-cuts` | Precondition; refuse to run if missing |
-| Sound design / music | `sfx-author` / `audio-bed-music` | Hand off after visuals settle; never do sound |
+| SFX scoring: cue choice, timing mode, the arc ledger, the per-pass + final-reconcile passes | **you** (Step H, this skill) | Own it — score each scene's sound after its visual QA; ration the heavy cues across the video |
+| SFX mechanics: `data-sfx-*` resolution → `compositions/sfx.html`; VO loudness at a cue | `tools/sfx-plan` / `tools/sfx-level` / `sfx-catalog.yml` | Annotate + run them; never hand-edit `sfx.html` |
+| Music bed | `audio-bed-music` | Hand off only after the final SFX reconcile; never author the music yourself |
 
 ## Reference files
 
@@ -335,7 +420,16 @@ that used to live in the root `CLAUDE.md`:
   PNG review → regenerate loop, the visual-QA rubric (incl. seam-collision,
   distinctness, imagery, liveliness; snapshot the seam), and the
   never-touch-preview + surface-a-seek-target rules.
-- `reference/house-rules.md` — no editorial chrome; sound design is the last
+- `reference/sfx-cues-and-timing.md` — the SFX reading layer for **Step H**: the
+  full cue vocabulary (appears/slide/highlight/snap → tick/pop/whoosh/ding, not
+  just booms), the anchor-vs-`at-scene-ms` timing-mode decision + perceptual-
+  landing math, peak alignment / leads / cooldowns / density ceiling, asset
+  pinning, and reading `tools/sfx-level` for the 0.5-default-and-ceiling volume.
+- `reference/sfx-arc-and-reconcile.md` — the SFX budget layer for **Step H**:
+  density-as-narrative, the single hook moment, the per-pass **arc ledger by
+  derivation**, the compact proposal + standing approval, and the **final
+  whole-video reconcile checklist** before the `audio-bed-music` hand-off.
+- `reference/house-rules.md` — no editorial chrome; the music bed is the last
   pass (and is someone else's pass).
 - `reference/state-and-resume.md` — reading `index.html` into a frontier,
   mapping it back to the next uncovered sentence, batching across sessions, and

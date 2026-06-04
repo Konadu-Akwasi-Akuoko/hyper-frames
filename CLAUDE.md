@@ -51,9 +51,11 @@ The project's **custom skills stay local under `.claude/skills/`** —
 `script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`,
 `transcribe-and-plan-cuts`, `thumbnail-creator`, `description-writer`,
 `create-srt-and-translate`, `youtube-seo-research`, `youtube-studio`,
-`sfx-author`, `audio-bed-music`, `design-catalog-add`, and `video-director`
-(the composition-authoring orchestrator). These are not part of the plugin; do
-not delete them when refreshing the plugin.
+`audio-bed-music`, `design-catalog-add`, and `video-director`
+(the composition-authoring orchestrator, which now also owns the **SFX pass** —
+sound effects are scored inside `video-director` Step H on top of `tools/sfx-plan`
++ `tools/sfx-level`, not in a separate skill). These are not part of the plugin;
+do not delete them when refreshing the plugin.
 
 For voiceover in this project, the **default is recording your own voice**: drop
 the recording at `audio/raw.mp3`, run the `transcribe-and-plan-cuts` skill (Scribe
