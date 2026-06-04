@@ -119,13 +119,13 @@ def test_cli_dry_run_does_not_bake(video_dir: Path, catalog_path: Path, monkeypa
     assert not (video_dir / "compositions" / "sfx.html").exists()
 
 
-def test_cli_returns_nonzero_on_unresolved_anchor(video_dir: Path, catalog_path: Path, capsys) -> None:
+def test_cli_returns_nonzero_on_missing_timing_reference(video_dir: Path, catalog_path: Path, capsys) -> None:
     extra = video_dir / "compositions" / "broken.html"
     extra.write_text(
-        '<html><body><div data-sfx-anchor="totally-missing-word" data-sfx-on-anchor="ui-tick"></div></body></html>',
+        '<html><body><div id="b" data-sfx-on-anchor="ui-tick"></div></body></html>',
         encoding="utf-8",
     )
     rc = main([str(video_dir), "--catalog", str(catalog_path)])
     assert rc != 0
     captured = capsys.readouterr()
-    assert "totally-missing-word" in captured.err
+    assert "data-sfx-at-scene-ms" in captured.err

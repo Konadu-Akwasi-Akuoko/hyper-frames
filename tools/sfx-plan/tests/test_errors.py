@@ -3,8 +3,7 @@ from __future__ import annotations
 
 from sfx_plan.errors import (
     SfxPlanError,
-    UnresolvedAnchorError,
-    AnchorIndexOutOfRangeError,
+    MissingTimeReferenceError,
     UnknownCueError,
     EmptyCueFilterError,
     CatalogMissingError,
@@ -14,23 +13,17 @@ from sfx_plan.errors import (
 
 def test_all_errors_inherit_from_base() -> None:
     for cls in (
-        UnresolvedAnchorError, AnchorIndexOutOfRangeError, UnknownCueError,
+        MissingTimeReferenceError, UnknownCueError,
         EmptyCueFilterError, CatalogMissingError, CatalogVersionMismatchError,
     ):
         assert issubclass(cls, SfxPlanError)
 
 
-def test_unresolved_anchor_message_includes_anchor_and_source() -> None:
-    err = UnresolvedAnchorError(anchor="Bezier", source="index.html:127")
-    assert "Bezier" in str(err)
-    assert "index.html:127" in str(err)
-    assert "narration-map" in str(err).lower()
-
-
-def test_anchor_index_out_of_range_lists_available() -> None:
-    err = AnchorIndexOutOfRangeError(anchor="easy", requested=3, available=2, source="index.html:45")
+def test_missing_time_reference_points_at_at_scene_ms() -> None:
+    err = MissingTimeReferenceError(source="index.html:127")
     msg = str(err)
-    assert "easy" in msg and "3" in msg and "2" in msg
+    assert "index.html:127" in msg
+    assert "data-sfx-at-scene-ms" in msg
 
 
 def test_unknown_cue_lists_known_cues() -> None:

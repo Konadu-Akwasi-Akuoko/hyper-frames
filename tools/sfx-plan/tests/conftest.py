@@ -1,7 +1,10 @@
-"""Fixtures: a miniature video folder, narration-map, and catalog."""
+"""Fixtures: a miniature video folder and catalog.
+
+SFX are triggered only by visual moments (`data-sfx-at-scene-ms`); there is no
+spoken-word/anchor path, so the fixtures carry no narration-map.
+"""
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from textwrap import dedent
 
@@ -11,7 +14,7 @@ import yaml
 
 @pytest.fixture
 def video_dir(tmp_path: Path) -> Path:
-    """A pretend video folder with an annotated index.html + narration-map.json."""
+    """A pretend video folder with an annotated index.html (at-scene-ms cues)."""
     root = tmp_path / "videos" / "demo-2026-05-11"
     root.mkdir(parents=True)
     (root / "compositions").mkdir()
@@ -27,17 +30,16 @@ def video_dir(tmp_path: Path) -> Path:
 
             <div id="s1" class="scene">
               <h1 id="s1-headline"
-                  data-sfx-anchor="nightmare"
-                  data-sfx-on-anchor="ui-tick">A mathematical nightmare.</h1>
+                  data-sfx-on-anchor="ui-tick"
+                  data-sfx-at-scene-ms="8400">A mathematical nightmare.</h1>
             </div>
 
             <div id="s2" class="scene"
-                 data-sfx-anchor="easy"
-                 data-sfx-on-anchor="whoosh">
+                 data-sfx-on-anchor="whoosh"
+                 data-sfx-at-scene-ms="22000">
               <h1 id="s2-title"
-                  data-sfx-anchor="easy"
-                  data-sfx-anchor-index="1"
-                  data-sfx-on-anchor="ui-tick">Easy.</h1>
+                  data-sfx-on-anchor="ui-tick"
+                  data-sfx-at-scene-ms="22000">Easy.</h1>
             </div>
           </div>
         </body>
@@ -45,27 +47,16 @@ def video_dir(tmp_path: Path) -> Path:
         '''),
         encoding="utf-8",
     )
-
-    nm = {
-        "source": "transcript.json",
-        "audio_duration_secs": 60.0,
-        "language_code": "eng",
-        "word_count": 12,
-        "config": {"pause_threshold_secs": 0.4, "scene_pause_threshold_secs": 0.6, "emphatic_top_n": 15, "anchor_phrase_count": 2},
-        "anchors": [
-            {"phrase": "nightmare",
-             "matches": [{"word_index": 4, "start": 8.40, "end": 9.10, "matched_text": "nightmare"}]},
-            {"phrase": "easy",
-             "matches": [{"word_index": 12, "start": 22.00, "end": 22.40, "matched_text": "easy"}]},
-        ],
-    }
-    (root / "narration-map.json").write_text(json.dumps(nm), encoding="utf-8")
     return root
 
 
 @pytest.fixture
 def catalog_path(tmp_path: Path) -> Path:
-    """A tiny sfx-catalog.yml with two assets and the five default cues."""
+    """A tiny sfx-catalog.yml with two assets and a handful of cues.
+
+    Cues exercise both alignment modes (ui-tick=onset, whoosh=peak) and the
+    `default_asset` short-circuit (snap pins an asset and has a no-match filter).
+    """
     p = tmp_path / "sound-effects" / "sfx-catalog.yml"
     p.parent.mkdir(parents=True)
     (p.parent / "Mister Horse" / "Click").mkdir(parents=True)
@@ -104,18 +95,21 @@ def catalog_path(tmp_path: Path) -> Path:
         "cues": {
             "ui-tick": {"filter": {"auto_role": "accent", "duration_s_max": 0.5,
                                     "brightness_in": ["bright", "airy"]},
-                       "default_lead_ms": -50, "default_volume": 0.8},
+                       "align": "onset", "default_lead_ms": -50, "default_volume": 0.8},
             "whoosh":  {"filter": {"auto_role": "transition", "duration_s_min": 0.4,
                                     "duration_s_max": 1.5, "attack_time_s_min": 0.1},
-                       "default_lead_ms": -150, "default_volume": 0.9},
+                       "align": "peak", "default_lead_ms": 0, "default_volume": 0.9},
             "boom":    {"filter": {"auto_role": "impact", "low_energy_pct_min": 50,
                                     "peak_time_s_max": 0.2},
-                       "default_lead_ms": 0, "default_volume": 1.0},
+                       "align": "onset", "default_lead_ms": 0, "default_volume": 1.0},
             "riser":   {"filter": {"auto_role": "riser", "duration_s_min": 1.5},
-                       "default_lead_ms": None, "default_volume": 0.85},
+                       "align": "peak", "default_lead_ms": 0, "default_volume": 0.85},
             "pop":     {"filter": {"auto_role": "accent", "duration_s_max": 0.3,
                                     "brightness_in": ["warm", "bright"]},
-                       "default_lead_ms": -50, "default_volume": 0.8},
+                       "align": "onset", "default_lead_ms": 0, "default_volume": 0.8},
+            "snap":    {"filter": {"auto_role": "no-such-role"},
+                       "default_asset": "Mister Horse/Click/click-bright-01.wav",
+                       "align": "onset", "default_lead_ms": 0, "default_volume": 0.7},
         },
     }
     p.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True), encoding="utf-8")

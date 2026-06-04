@@ -81,16 +81,12 @@ def _cue_id(cue: Cue, index: int) -> str:
     `index` is the cue's 1-based position in data-start order, so ids match
     between `sfx.html` (per-cue mode) and `sfx.cues.json` (baked mode).
     """
-    label = cue.anchor if cue.anchor is not None else f"scene-ms-{cue.at_scene_ms}"
-    return f"sfx-{index:03d}-{cue.cue}-{_slug(label)}"
+    return f"sfx-{index:03d}-{cue.cue}-{_slug(f'scene-ms-{cue.at_scene_ms}')}"
 
 
 def _audio_tag(*, cue: Cue, index: int, staged_rel: str, video_to_sfx_relpath: str) -> str:
     audio_id = _cue_id(cue, index)
-    if cue.anchor is not None:
-        ref = f'anchor="{cue.anchor}" idx={cue.anchor_index}'
-    else:
-        ref = f'at-scene-ms={cue.at_scene_ms}'
+    ref = f'at-scene-ms={cue.at_scene_ms}'
     comment = (
         f'        <!-- from {cue.source}  {ref}  '
         f'cue={cue.cue} -->'
@@ -247,7 +243,7 @@ def write_cue_manifest(*, cues: list[Cue], path: Path, total_duration_s: float) 
                 "pan": c.pan,
                 "src": c.src,
                 "cue": c.cue,
-                "anchor": c.anchor,
+                "at_scene_ms": c.at_scene_ms,
             }
             for i, c in enumerate(ordered)
         ],

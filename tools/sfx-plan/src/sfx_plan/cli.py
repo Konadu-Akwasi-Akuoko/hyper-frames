@@ -21,7 +21,6 @@ from sfx_plan.emit import (
 )
 from sfx_plan.errors import SfxPlanError
 from sfx_plan.mounts import load_mount_offsets
-from sfx_plan.narration import load_narration_map
 from sfx_plan.plan import Cue, build_plan
 from sfx_plan.validate import validate_plan
 
@@ -31,7 +30,7 @@ def _build_parser() -> argparse.ArgumentParser:
         prog="sfx-plan",
         description=(
             "Scan a HyperFrames video folder for data-sfx-* annotations, resolve "
-            "via narration-map and sfx-catalog, and emit compositions/sfx.html."
+            "via sfx-catalog, and emit compositions/sfx.html."
         ),
     )
     p.add_argument(
@@ -128,10 +127,7 @@ def _print_report(cues: list[Cue], video_dir: Path) -> None:
     print(f"\nSFX PLAN — {video_dir.name}   {len(cues)} cues\n")
     for c in cues:
         clamp = " ⚠clamped" if c.clamped else ""
-        if c.at_scene_ms is not None:
-            mode = f"at-scene-ms({c.at_scene_ms})"
-        else:
-            mode = f"anchor({c.anchor!r}#{c.anchor_index})"
+        mode = f"at-scene-ms({c.at_scene_ms})"
         print(f"  {c.data_start:>7.2f}s  mode={mode:<26} cue={c.cue:<10} "
               f"vol={c.volume:.2f}  src={c.src}{clamp}")
 
@@ -195,8 +191,6 @@ def main(argv: list[str] | None = None) -> int:
                 f"applied per-video overrides from sfx-overrides.yml "
                 f"({touched} cue{'s' if touched != 1 else ''} touched)"
             )
-        nm_path = video_dir / "narration-map.json"
-        nm = load_narration_map(nm_path)
         mount_offsets = load_mount_offsets(video_dir / "index.html")
 
         annotations = list(scan_annotations(video_dir))
@@ -204,7 +198,7 @@ def main(argv: list[str] | None = None) -> int:
             print("no data-sfx-* annotations found; nothing to emit.")
             return 0
 
-        cues = build_plan(annotations, nm=nm, catalog=catalog, mount_offsets=mount_offsets)
+        cues = build_plan(annotations, catalog=catalog, mount_offsets=mount_offsets)
         total_duration_s = float(max((c.data_start + c.duration_s for c in cues), default=0.0))
         warnings = validate_plan(cues, total_duration_s=total_duration_s)
         for w in warnings:

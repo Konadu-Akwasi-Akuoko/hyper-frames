@@ -7,19 +7,15 @@ from typing import Iterator
 
 from bs4 import BeautifulSoup
 
-from sfx_plan.errors import (
-    AmbiguousTimeReferenceError,
-    MissingTimeReferenceError,
-)
+from sfx_plan.errors import MissingTimeReferenceError
 
 
 @dataclass(frozen=True)
 class Annotation:
     """One element's worth of data-sfx-* attributes plus its source location."""
 
-    anchor: str | None
-    anchor_index: int
     cue: str
+    at_scene_ms: int
     lead_ms: int | None
     volume: float | None
     pan: float
@@ -27,7 +23,6 @@ class Annotation:
     element_id: str | None
     source: str
     asset: str | None = None
-    at_scene_ms: int | None = None
 
 
 def _parse_float(value: str | None) -> float | None:
@@ -59,8 +54,9 @@ def scan_annotations(video_dir: Path) -> Iterator[Annotation]:
     it would create a loop).
 
     An element is recognized as an annotation when it sets `data-sfx-on-anchor`
-    (the cue). It must also set exactly one timing reference:
-    `data-sfx-anchor` (spoken-word) or `data-sfx-at-scene-ms` (visual moment).
+    (the cue). It must also set its timing reference `data-sfx-at-scene-ms` — the
+    scene-local ms of the element's visual impact frame. SFX in this project are
+    triggered only by visual events; there is no spoken-word path.
     """
     for path in _html_files(video_dir):
         if path.name == "sfx.html" and path.parent.name == "compositions":
@@ -74,22 +70,16 @@ def scan_annotations(video_dir: Path) -> Iterator[Annotation]:
             rel = path.relative_to(video_dir).as_posix()
             source = f"{rel}:{line}"
 
-            anchor_raw = tag.get("data-sfx-anchor")
-            anchor = anchor_raw.strip() if isinstance(anchor_raw, str) and anchor_raw.strip() else None
             at_scene_ms = _parse_int(tag.get("data-sfx-at-scene-ms"))
-
-            if anchor is not None and at_scene_ms is not None:
-                raise AmbiguousTimeReferenceError(source=source)
-            if anchor is None and at_scene_ms is None:
+            if at_scene_ms is None:
                 raise MissingTimeReferenceError(source=source)
 
             asset_raw = tag.get("data-sfx-asset")
             asset = asset_raw.strip() if isinstance(asset_raw, str) and asset_raw.strip() else None
 
             yield Annotation(
-                anchor=anchor,
-                anchor_index=_parse_int(tag.get("data-sfx-anchor-index")) or 1,
                 cue=cue,
+                at_scene_ms=at_scene_ms,
                 lead_ms=_parse_int(tag.get("data-sfx-lead-ms")),
                 volume=_parse_float(tag.get("data-sfx-volume")),
                 pan=_parse_float(tag.get("data-sfx-pan")) or 0.0,
@@ -97,5 +87,4 @@ def scan_annotations(video_dir: Path) -> Iterator[Annotation]:
                 element_id=tag.get("id"),
                 source=source,
                 asset=asset,
-                at_scene_ms=at_scene_ms,
             )
