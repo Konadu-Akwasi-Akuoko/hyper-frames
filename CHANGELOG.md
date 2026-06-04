@@ -7,6 +7,30 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.8.0] — 2026-06-04
+
+### Added
+- **sfx-plan** — transient-on-impact SFX alignment: a cue's onset (punctuation —
+  pop/tick/ding/boom/snap) or peak (whoosh/riser) lands on the visual impact
+  frame given by `data-sfx-at-scene-ms`, biased a hair late so SFX are never
+  early. Adds per-cue `default_asset` resolution and lane-packing so concurrent
+  cues layer instead of colliding.
+- **sfx-catalog** — curated signature SFX palette: every cue pins one handpicked
+  `default_asset` (reused all video) and an `align` mode; adds the `snap` cue and
+  the `Riser Stop` riser asset (peak at 82%, so the climax lands on the reveal).
+
+### Changed
+- **sfx-plan** — SFX are now triggered only by visual events, never the audio.
+  Each cue is independent and element-bound: no cross-cue cooldowns, dedup, or
+  density caps; reuse a sound as often as you like.
+- **video-director** — rewrote Step H and the SFX reference docs for the new
+  model and replaced the teaching page with `docs/sfx-transient-on-impact.html`.
+
+### Removed
+- **sfx-plan** — the spoken-word/anchor SFX path (`data-sfx-anchor`, the
+  narration-map dependency) and the density cap / `DensityViolationError`.
+  Existing anchor-annotated videos keep their already-generated `sfx.html`.
+
 ## [0.7.0] — 2026-06-04
 
 ### Added
@@ -123,6 +147,7 @@ videos.
 - audio-editor: prefer raw-timeline artifacts when present.
 - mcp: apply the `http_safe` decorator to every tool registration.
 
+[0.8.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.4.0...v0.5.0
