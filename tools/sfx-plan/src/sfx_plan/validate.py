@@ -1,32 +1,24 @@
-"""Validation pass: overlap detection + density checks."""
+"""Validation pass: per-cue, informational, never fatal.
+
+Cross-cue suppression has been removed by design. Each cue is independent and
+element-bound: a cue is placed solely because its own visual event warrants a
+sound, and is never dropped, delayed, or merged because of any neighbouring cue.
+There is no density cap. Concurrent cues simply layer in playback (and build_plan
+lane-packs them onto distinct track-indices). Everything here only ever returns
+notes — nothing raises.
+"""
 from __future__ import annotations
 
-from sfx_plan.errors import SfxPlanError
 from sfx_plan.plan import Cue
 
 
-DENSITY_WARN_PER_SEC = 0.5
-DENSITY_HARD_PER_SEC = 1.0
-DENSITY_WINDOW_S = 6.0
+def _overlap_notes(cues: list[Cue]) -> list[str]:
+    """Quiet note when two cues share a track-index and overlap in time.
 
-# Anchor-mode cues with |lead_ms| ≥ this threshold are flagged: a large negative
-# lead used to reach a visual moment from a spoken anchor is the bug pattern
-# at-scene-ms exists to replace. Threshold tuned so default cue leads
-# (-50, -150) stay quiet; explicit large nudges warn.
-LARGE_LEAD_MS_THRESHOLD = 200
-
-
-class DensityViolationError(SfxPlanError):
-    def __init__(self, *, density: float, window_s: float, hard_cap: float) -> None:
-        super().__init__(
-            f"cue density {density:.2f}/s in a {window_s}s window exceeds the hard cap "
-            f"of {hard_cap:.2f}/s. Drop cues — the mix will smear VO intelligibility."
-        )
-        self.density = density
-
-
-def _overlap_warnings(cues: list[Cue]) -> list[str]:
-    warnings: list[str] = []
+    build_plan lane-packs cues so this should not fire; kept as a safety. Overlap
+    is NOT an error — concurrent SFX layer fine — so this only ever returns notes.
+    """
+    notes: list[str] = []
     by_track: dict[int, list[Cue]] = {}
     for c in cues:
         by_track.setdefault(c.track_index, []).append(c)
@@ -34,67 +26,40 @@ def _overlap_warnings(cues: list[Cue]) -> list[str]:
         lane.sort(key=lambda c: c.data_start)
         for prev, curr in zip(lane, lane[1:]):
             if curr.data_start < prev.data_start + prev.duration_s:
-                warnings.append(
-                    f"overlap on track {track}: cue at {prev.data_start:.2f}s "
-                    f"({prev.cue}, {prev.duration_s:.2f}s) intersects cue at "
-                    f"{curr.data_start:.2f}s ({curr.cue})."
+                notes.append(
+                    f"note: cues share track {track} and overlap at "
+                    f"{curr.data_start:.2f}s ({prev.cue} → {curr.cue}); they layer fine."
                 )
-    return warnings
+    return notes
 
 
-def _density_check(cues: list[Cue]) -> list[str]:
-    """Rolling-window density. Warn at WARN cap; raise at HARD cap."""
-    warnings: list[str] = []
-    if not cues:
-        return warnings
-    ordered = sorted(cues, key=lambda c: c.data_start)
-    warned = False
-    for i, anchor in enumerate(ordered):
-        window_end = anchor.data_start + DENSITY_WINDOW_S
-        count = sum(1 for c in ordered[i:] if c.data_start < window_end)
-        density = count / DENSITY_WINDOW_S
-        if density > DENSITY_HARD_PER_SEC:
-            raise DensityViolationError(
-                density=density, window_s=DENSITY_WINDOW_S, hard_cap=DENSITY_HARD_PER_SEC,
-            )
-        if density > DENSITY_WARN_PER_SEC and not warned:
-            warnings.append(
-                f"density {density:.2f}/s in window starting {anchor.data_start:.2f}s "
-                f"({count} cues in {DENSITY_WINDOW_S}s). Consider trimming."
-            )
-            warned = True
-    return warnings
+def _preroll_notes(cues: list[Cue]) -> list[str]:
+    """Per-cue hint: a cue audible before its own visual impact frame.
 
-
-def _large_lead_warnings(cues: list[Cue]) -> list[str]:
-    """Flag anchor-mode cues whose |lead_ms| ≥ threshold.
-
-    A large negative lead used to reach a visual moment from a spoken anchor
-    causes SFX-before-visual desync. The correct fix is to switch the cue to
-    `data-sfx-at-scene-ms` set to the perceptual landing time of the tween.
+    Only peak-aligned cues (whoosh, riser) carry pre-roll — their swell leads in,
+    which is correct for *motion*. If such a cue is punctuating a thing *appearing*,
+    that pre-roll reads as sound-before-visual; the fix is an onset-aligned cue
+    (pop / tick / ding). This is a cue-vs-its-own-visual check, never a cross-cue
+    rule, and never drops anything.
     """
-    out: list[str] = []
+    notes: list[str] = []
     for c in cues:
-        if c.at_scene_ms is not None:
-            continue  # at-scene-ms cues are exempt
-        if abs(c.lead_ms) >= LARGE_LEAD_MS_THRESHOLD:
-            out.append(
-                f"large lead_ms={c.lead_ms} at {c.source} (cue={c.cue}, "
-                f'anchor="{c.anchor}"). If the moment you are scoring is a '
-                f"visual entry, switch to data-sfx-at-scene-ms — anchor + "
-                f"large negative lead is the SFX-before-visual bug pattern."
+        if c.preroll_s > 0.05:
+            notes.append(
+                f"note: {c.cue} at {c.source} is audible {c.preroll_s * 1000:.0f}ms "
+                f"before its impact frame (peak-aligned). Fine for motion; if this is "
+                f"a thing appearing, use an onset-aligned cue (pop/tick/ding)."
             )
-    return out
+    return notes
 
 
 def validate_plan(cues: list[Cue], *, total_duration_s: float) -> list[str]:
-    """Run all validations; return a list of warning strings. May raise on hard caps."""
-    warnings = _overlap_warnings(cues)
-    warnings.extend(_density_check(cues))
-    warnings.extend(_large_lead_warnings(cues))
+    """Return a list of informational notes. Never raises — cues are never dropped."""
+    notes = _overlap_notes(cues)
+    notes.extend(_preroll_notes(cues))
     for c in cues:
         if c.clamped:
-            warnings.append(
-                f"cue at {c.source} clamped to 0s (computed start was negative)."
+            notes.append(
+                f"note: cue at {c.source} clamped to 0s (computed start was negative)."
             )
-    return warnings
+    return notes

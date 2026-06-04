@@ -31,8 +31,8 @@ def _cue(
 ) -> Cue:
     return Cue(
         data_start=start, duration_s=0.4, volume=volume, pan=pan,
-        track_index=20, src=src, cue=cue, anchor="foo", anchor_index=1,
-        source="index.html:9", clamped=False,
+        track_index=20, src=src, cue=cue,
+        source="index.html:9", clamped=False, at_scene_ms=1234,
     )
 
 

@@ -106,11 +106,10 @@ def apply_overrides(catalog: dict[str, Any], overrides_path: Path) -> tuple[dict
         if existing is None:
             if "filter" not in override or not isinstance(override["filter"], dict) or not override["filter"]:
                 raise EmptyCueFilterError(cue=name)
-            cues[name] = {
-                "default_lead_ms": override.get("default_lead_ms"),
-                "default_volume": override.get("default_volume", 1.0),
-                "filter": dict(override["filter"]),
-            }
+            new_cue = dict(override)
+            new_cue["filter"] = dict(override["filter"])
+            new_cue.setdefault("default_volume", 1.0)
+            cues[name] = new_cue
         else:
             for key, value in override.items():
                 if key == "filter":

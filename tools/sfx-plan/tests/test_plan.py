@@ -1,4 +1,4 @@
-"""Tests for asset picker and timing math."""
+"""Tests for asset picker and timing math (visual-only, transient-on-impact)."""
 from __future__ import annotations
 
 import math
@@ -9,173 +9,125 @@ import pytest
 from sfx_plan.annotations import Annotation
 from sfx_plan.catalog import load_catalog
 from sfx_plan.errors import UnknownAssetError, UnknownMountError
-from sfx_plan.narration import load_narration_map
-from sfx_plan.plan import pick_asset, build_cue, build_plan
+from sfx_plan.plan import SYNC_BIAS_MS, pick_asset, build_cue, build_plan
 
 
-def test_pick_asset_is_deterministic(catalog_path: Path) -> None:
-    candidates = [
-        ("a.wav", {"path": "a.wav"}),
-        ("b.wav", {"path": "b.wav"}),
-        ("c.wav", {"path": "c.wav"}),
-    ]
-    first = pick_asset(candidates, anchor="foo", anchor_index=1, cue="ui-tick")
-    second = pick_asset(candidates, anchor="foo", anchor_index=1, cue="ui-tick")
+def _ann(cue: str, *, at_scene_ms: int, source: str, lead_ms: int | None = None,
+         asset: str | None = None, volume: float | None = None) -> Annotation:
+    return Annotation(
+        cue=cue, at_scene_ms=at_scene_ms, lead_ms=lead_ms, volume=volume,
+        pan=0.0, is_hook=False, element_id="x", source=source, asset=asset,
+    )
+
+
+def test_pick_asset_is_deterministic() -> None:
+    candidates = [("a.wav", {}), ("b.wav", {}), ("c.wav", {})]
+    first = pick_asset(candidates, cue="ui-tick", at_scene_ms=1000, source="index.html:9")
+    second = pick_asset(candidates, cue="ui-tick", at_scene_ms=1000, source="index.html:9")
     assert first == second
 
 
-def test_pick_asset_changes_with_anchor(catalog_path: Path) -> None:
-    candidates = [
-        ("a.wav", {"path": "a.wav"}),
-        ("b.wav", {"path": "b.wav"}),
-        ("c.wav", {"path": "c.wav"}),
-        ("d.wav", {"path": "d.wav"}),
-    ]
-    p1 = pick_asset(candidates, anchor="foo", anchor_index=1, cue="ui-tick")
-    p2 = pick_asset(candidates, anchor="bar", anchor_index=1, cue="ui-tick")
+def test_pick_asset_varies_with_seed() -> None:
+    candidates = [("a.wav", {}), ("b.wav", {}), ("c.wav", {}), ("d.wav", {})]
+    p1 = pick_asset(candidates, cue="ui-tick", at_scene_ms=1000, source="index.html:9")
+    p2 = pick_asset(candidates, cue="ui-tick", at_scene_ms=2000, source="index.html:9")
     assert (p1, p2) != ("a.wav", "a.wav") or p1 != p2
 
 
-def test_build_cue_peak_aligned_data_start(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_onset_aligned_lands_transient_on_impact_frame(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
-    ann = Annotation(
-        anchor="nightmare", anchor_index=1, cue="ui-tick",
-        lead_ms=None, volume=None, pan=0.0, is_hook=False,
-        element_id="s1-headline", source="index.html:9",
-    )
-    cue = build_cue(ann, nm=nm, catalog=cat)
-    # nightmare starts at 8.40; ui-tick lead -50ms; click peak_time 0.05.
-    # data-start = 8.40 + (-0.050) - 0.05 = 8.30.
-    assert math.isclose(cue.data_start, 8.30, abs_tol=0.001)
+    ann = _ann("ui-tick", at_scene_ms=8400, source="index.html:9")
+    cue = build_cue(ann, catalog=cat)
+    # onset-align: data_start = t_ref + (lead + SYNC_BIAS)/1000 - onset_time_s
+    #            = 8.40 + (0 + 0.012) - 0.01 = 8.402.  Audible onset = t_ref + bias.
+    assert math.isclose(cue.data_start, 8.40 + SYNC_BIAS_MS / 1000.0 - 0.01, abs_tol=1e-4)
+    # Audible onset (data_start + onset) is never before the impact frame.
+    assert cue.data_start + 0.01 >= 8.40
+    assert cue.preroll_s <= 0.0
     assert cue.cue == "ui-tick"
 
 
-def test_build_plan_returns_cues_sorted_by_start(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_peak_aligned_whoosh_lands_peak_on_arrival(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
-    annotations = [
-        Annotation(anchor="easy", anchor_index=1, cue="whoosh",
-                   lead_ms=None, volume=None, pan=0.0, is_hook=False,
-                   element_id="s2", source="index.html:18"),
-        Annotation(anchor="nightmare", anchor_index=1, cue="ui-tick",
-                   lead_ms=None, volume=None, pan=0.0, is_hook=False,
-                   element_id="s1-headline", source="index.html:9"),
+    ann = _ann("whoosh", at_scene_ms=22000, source="index.html:18")
+    cue = build_cue(ann, catalog=cat)
+    # peak-align: data_start = t_ref + lead/1000 - peak_time_s = 22.0 - 0.40 = 21.60.
+    assert math.isclose(cue.data_start, 22.0 - 0.40, abs_tol=1e-4)
+    # The swell leads in: audible onset precedes the impact frame by peak - onset.
+    assert math.isclose(cue.preroll_s, 0.40 - 0.05, abs_tol=1e-4)
+
+
+def test_build_plan_sorts_and_lane_packs_overlaps(catalog_path: Path) -> None:
+    cat = load_catalog(catalog_path)
+    anns = [
+        _ann("whoosh", at_scene_ms=22000, source="index.html:18"),
+        _ann("ui-tick", at_scene_ms=8400, source="index.html:9"),
     ]
-    plan = build_plan(annotations, nm=nm, catalog=cat)
+    plan = build_plan(anns, catalog=cat)
     starts = [c.data_start for c in plan]
     assert starts == sorted(starts)
+    # whoosh (21.60, 0.80s long → ends 22.40) overlaps the ui-tick at ~22.00,
+    # so they land on distinct track-index lanes (no clip is dropped or delayed).
+    overlapping = [c for c in plan if c.data_start >= 21.0]
+    assert len({c.track_index for c in overlapping}) == len(overlapping)
 
 
-def test_lead_clamps_to_zero_with_warning(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_default_asset_short_circuits_filter_pool(catalog_path: Path) -> None:
+    """`snap` has a no-match filter but pins default_asset — it must resolve to it
+    without ever consulting (and failing) the filter pool."""
     cat = load_catalog(catalog_path)
-    ann = Annotation(
-        anchor="nightmare", anchor_index=1, cue="whoosh",
-        lead_ms=-10000, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="index.html:1",
-    )
-    cue = build_cue(ann, nm=nm, catalog=cat)
-    assert cue.data_start == 0.0
-    assert cue.clamped is True
+    cue = build_cue(_ann("snap", at_scene_ms=1000, source="index.html:9"), catalog=cat)
+    assert cue.src == "Mister Horse/Click/click-bright-01.wav"
 
 
-def test_pinned_asset_bypasses_picker(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_pinned_asset_overrides_default_and_pool(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
-    ann = Annotation(
-        anchor="nightmare", anchor_index=1, cue="ui-tick",
-        lead_ms=None, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="index.html:9",
-        asset="Whooshes/whoosh-mid-01.wav",
-    )
-    cue = build_cue(ann, nm=nm, catalog=cat)
+    ann = _ann("ui-tick", at_scene_ms=8400, source="index.html:9",
+               asset="Whooshes/whoosh-mid-01.wav")
+    cue = build_cue(ann, catalog=cat)
     assert cue.src == "Whooshes/whoosh-mid-01.wav"
-
-
-def test_pinned_asset_still_uses_cue_defaults(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
-    cat = load_catalog(catalog_path)
-    ann = Annotation(
-        anchor="nightmare", anchor_index=1, cue="ui-tick",
-        lead_ms=None, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="index.html:9",
-        asset="Whooshes/whoosh-mid-01.wav",
-    )
-    cue = build_cue(ann, nm=nm, catalog=cat)
-    # ui-tick default volume is 0.8, track index is 20
+    # Cue defaults still apply: ui-tick volume 0.8, lanes start at 20.
     assert cue.volume == 0.8
     assert cue.track_index == 20
 
 
-def test_pinned_asset_not_in_catalog_raises(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_pinned_asset_not_in_catalog_raises(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
-    ann = Annotation(
-        anchor="nightmare", anchor_index=1, cue="ui-tick",
-        lead_ms=None, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="index.html:9",
-        asset="No/Such/File.wav",
-    )
+    ann = _ann("ui-tick", at_scene_ms=8400, source="index.html:9", asset="No/Such/File.wav")
     with pytest.raises(UnknownAssetError):
-        build_cue(ann, nm=nm, catalog=cat)
+        build_cue(ann, catalog=cat)
 
 
-def test_at_scene_ms_adds_mount_offset(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_at_scene_ms_adds_mount_offset(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
     mount_offsets = {"compositions/scene-01-open.html": 10.0}
-    ann = Annotation(
-        anchor=None, anchor_index=1, cue="ui-tick",
-        lead_ms=None, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="compositions/scene-01-open.html:42",
-        at_scene_ms=2500,
-    )
-    cue = build_cue(ann, nm=nm, catalog=cat, mount_offsets=mount_offsets)
-    # offset 10.0 + 2.5 - peak_time_s(0.05) + lead 0 = 12.45
-    assert math.isclose(cue.data_start, 12.45, abs_tol=0.001)
+    ann = _ann("ui-tick", at_scene_ms=2500, source="compositions/scene-01-open.html:42")
+    cue = build_cue(ann, catalog=cat, mount_offsets=mount_offsets)
+    # 10.0 + 2.5 + 0.012 - 0.01 = 12.502
+    assert math.isclose(cue.data_start, 12.5 + SYNC_BIAS_MS / 1000.0 - 0.01, abs_tol=1e-4)
     assert cue.at_scene_ms == 2500
 
 
-def test_at_scene_ms_defaults_lead_to_zero(video_dir: Path, catalog_path: Path) -> None:
-    """The cue's default_lead_ms must NOT be applied to at-scene-ms cues."""
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_explicit_lead_is_respected(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
     mount_offsets = {"compositions/scene-01-open.html": 0.0}
-    ann = Annotation(
-        anchor=None, anchor_index=1, cue="ui-tick",  # default_lead_ms=-50
-        lead_ms=None, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="compositions/scene-01-open.html:42",
-        at_scene_ms=1000,
-    )
-    cue = build_cue(ann, nm=nm, catalog=cat, mount_offsets=mount_offsets)
-    # 0 + 1.0 - peak_time_s(0.05) + lead 0 = 0.95 (NOT 0.90 from default lead)
-    assert math.isclose(cue.data_start, 0.95, abs_tol=0.001)
+    ann = _ann("ui-tick", at_scene_ms=1000, source="compositions/scene-01-open.html:42", lead_ms=-30)
+    cue = build_cue(ann, catalog=cat, mount_offsets=mount_offsets)
+    # 1.0 + (-30 + 12)/1000 - 0.01 = 0.972
+    assert math.isclose(cue.data_start, 1.0 + (-30 + SYNC_BIAS_MS) / 1000.0 - 0.01, abs_tol=1e-4)
 
 
-def test_at_scene_ms_explicit_lead_is_respected(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_lead_clamps_to_zero_with_flag(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
     mount_offsets = {"compositions/scene-01-open.html": 0.0}
-    ann = Annotation(
-        anchor=None, anchor_index=1, cue="ui-tick",
-        lead_ms=-30, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="compositions/scene-01-open.html:42",
-        at_scene_ms=1000,
-    )
-    cue = build_cue(ann, nm=nm, catalog=cat, mount_offsets=mount_offsets)
-    # 0 + 1.0 + (-0.03) - 0.05 = 0.92
-    assert math.isclose(cue.data_start, 0.92, abs_tol=0.001)
+    ann = _ann("whoosh", at_scene_ms=1000, source="compositions/scene-01-open.html:42", lead_ms=-10000)
+    cue = build_cue(ann, catalog=cat, mount_offsets=mount_offsets)
+    assert cue.data_start == 0.0
+    assert cue.clamped is True
 
 
-def test_at_scene_ms_unknown_mount_raises(video_dir: Path, catalog_path: Path) -> None:
-    nm = load_narration_map(video_dir / "narration-map.json")
+def test_unknown_mount_raises(catalog_path: Path) -> None:
     cat = load_catalog(catalog_path)
-    ann = Annotation(
-        anchor=None, anchor_index=1, cue="ui-tick",
-        lead_ms=None, volume=None, pan=0.0, is_hook=False,
-        element_id="x", source="compositions/missing.html:1",
-        at_scene_ms=1000,
-    )
+    ann = _ann("ui-tick", at_scene_ms=1000, source="compositions/missing.html:1")
     with pytest.raises(UnknownMountError):
-        build_cue(ann, nm=nm, catalog=cat, mount_offsets={})
+        build_cue(ann, catalog=cat, mount_offsets={})

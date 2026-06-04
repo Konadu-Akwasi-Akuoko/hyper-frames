@@ -6,29 +6,6 @@ class SfxPlanError(Exception):
     """Base for all sfx-plan failures."""
 
 
-class UnresolvedAnchorError(SfxPlanError):
-    def __init__(self, *, anchor: str, source: str) -> None:
-        super().__init__(
-            f'unresolved anchor "{anchor}" at {source} — not present in narration-map. '
-            f"Did the script change? Re-run tools/narration-map or fix the data-sfx-anchor attribute."
-        )
-        self.anchor = anchor
-        self.source = source
-
-
-class AnchorIndexOutOfRangeError(SfxPlanError):
-    def __init__(self, *, anchor: str, requested: int, available: int, source: str) -> None:
-        super().__init__(
-            f'anchor "{anchor}" requested index {requested} at {source}, '
-            f"only {available} occurrence(s) in narration-map. "
-            f"Drop the data-sfx-anchor-index attribute or fix the value."
-        )
-        self.anchor = anchor
-        self.requested = requested
-        self.available = available
-        self.source = source
-
-
 class UnknownCueError(SfxPlanError):
     def __init__(self, *, cue: str, known: list[str], source: str) -> None:
         known_str = ", ".join(sorted(known))
@@ -83,20 +60,11 @@ class UnknownAssetError(SfxPlanError):
         self.near = near or []
 
 
-class AmbiguousTimeReferenceError(SfxPlanError):
-    def __init__(self, *, source: str) -> None:
-        super().__init__(
-            f"element at {source} sets BOTH data-sfx-anchor and data-sfx-at-scene-ms. "
-            f"Pick one: anchor for spoken-word cues, at-scene-ms for visual-entry cues."
-        )
-        self.source = source
-
-
 class MissingTimeReferenceError(SfxPlanError):
     def __init__(self, *, source: str) -> None:
         super().__init__(
-            f"element at {source} has data-sfx-on-anchor but no timing reference. "
-            f"Set either data-sfx-anchor (spoken word) or data-sfx-at-scene-ms (visual moment)."
+            f"element at {source} has data-sfx-on-anchor but no data-sfx-at-scene-ms. "
+            f"Set data-sfx-at-scene-ms to the scene-local ms of the element's visual impact frame."
         )
         self.source = source
 

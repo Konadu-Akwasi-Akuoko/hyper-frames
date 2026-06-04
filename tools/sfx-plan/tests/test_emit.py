@@ -19,12 +19,12 @@ from sfx_plan.emit import (
 )
 
 
-def _cue(start: float = 1.0, cue: str = "ui-tick", src: str = "Mister Horse/Click/click-bright-01.wav") -> Cue:
+def _cue(start: float = 1.0, cue: str = "ui-tick", src: str = "Mister Horse/Click/click-bright-01.wav",
+         at_scene_ms: int = 1234) -> Cue:
     return Cue(
         data_start=start, duration_s=0.4, volume=0.8, pan=0.0,
-        track_index=20, src=src,
-        cue=cue, anchor="foo", anchor_index=1,
-        source="index.html:9", clamped=False,
+        track_index=20, src=src, cue=cue,
+        source="index.html:9", clamped=False, at_scene_ms=at_scene_ms,
     )
 
 
@@ -146,7 +146,7 @@ def test_render_emits_audio_with_id_clip_and_staged_src(staged_video) -> None:
         catalog_sha="abc",
         total_duration_s=60.0,
     )
-    assert 'id="sfx-001-ui-tick-foo"' in text
+    assert 'id="sfx-001-ui-tick-scene-ms-1234"' in text
     assert 'class="clip"' in text
     # preload="none" defers per-cue media loading in the preview player; without it
     # the many SFX <audio> elements exhaust Chrome's WebMediaPlayer budget and freeze
@@ -170,7 +170,7 @@ def test_render_includes_source_comment_per_cue(staged_video) -> None:
         total_duration_s=60.0,
     )
     assert "from index.html:9" in text
-    assert 'anchor="foo"' in text
+    assert "at-scene-ms=1234" in text
     assert "cue=ui-tick" in text
 
 
@@ -282,5 +282,5 @@ def test_write_cue_manifest_shape_and_ids(staged_video) -> None:
     assert data["cues"][0]["id"].startswith("sfx-001-")
     assert data["cues"][1]["id"].startswith("sfx-002-")
     first = data["cues"][0]
-    for key in ("id", "data_start", "duration_s", "volume", "pan", "src", "cue", "anchor"):
+    for key in ("id", "data_start", "duration_s", "volume", "pan", "src", "cue", "at_scene_ms"):
         assert key in first
