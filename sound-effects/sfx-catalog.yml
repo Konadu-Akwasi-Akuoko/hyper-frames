@@ -1,6 +1,6 @@
 version: 1
-generated_at: '2026-05-24T12:20:22Z'
-library_sha: 8857a82bd2f882b3ada4aeb00869ac7e179526dae8792e1c05199e147c33392c
+generated_at: '2026-06-04T08:53:20Z'
+library_sha: 0293a82993ca036e3cd461952bc1a0884bdecbaebd18e97c8453326d4fd4f0df
 assets:
   Anime SFX/Anime wow sound effect.mp3:
     path: Anime SFX/Anime wow sound effect.mp3
@@ -39925,6 +39925,34 @@ assets:
     - bright
     - swelling
     auto_role: transition
+  Risers/Riser Stop.wav:
+    path: Risers/Riser Stop.wav
+    library: Risers
+    category: Risers
+    duration_s: 3.7013
+    sample_rate: 44100
+    channels: 2
+    format: wav
+    bit_depth: 16
+    sha256: 98c29c81bd1291033eec730afb6cd4d650dd2460a02d08bb87b78b01b3b88281
+    peak_dbfs: -3.52
+    peak_time_s: 3.0296
+    integrated_lufs: -13.6
+    rms_dbfs: -20.61
+    onset_time_s: 0.2205
+    attack_time_s: 2.8092
+    tail_time_s: 0.2595
+    spectral_centroid_hz: 4625.6
+    brightness: bright
+    low_energy_pct: 22
+    mid_energy_pct: 59
+    high_energy_pct: 19
+    tags:
+    - risers
+    - long
+    - bright
+    - swelling
+    auto_role: riser
   Whooshes/Aggresive Woosh.wav:
     path: Whooshes/Aggresive Woosh.wav
     library: Whooshes
@@ -40414,28 +40442,9 @@ cues:
       brightness_in:
       - bright
       - airy
-    default_lead_ms: -50
-    default_volume: 0.5
-  whoosh:
-    filter:
-      auto_role: transition
-      duration_s_min: 0.4
-      duration_s_max: 1.5
-      attack_time_s_min: 0.1
-    default_lead_ms: -150
-    default_volume: 0.5
-  boom:
-    filter:
-      auto_role: impact
-      low_energy_pct_min: 50
-      peak_time_s_max: 0.2
+    align: onset
+    default_asset: Mister Horse Free SFX/Click/Mouse Click 01.wav
     default_lead_ms: 0
-    default_volume: 0.5
-  riser:
-    filter:
-      auto_role: riser
-      duration_s_min: 1.5
-    default_lead_ms: null
     default_volume: 0.5
   pop:
     filter:
@@ -40444,31 +40453,73 @@ cues:
       brightness_in:
       - warm
       - bright
-    default_lead_ms: -50
+    align: onset
+    default_asset: Mister Horse Free SFX/Pop/Hollow Pop 06.wav
+    default_lead_ms: 0
     default_volume: 0.5
   msg-ding:
     filter:
-      auto_role: accent
       category_in:
       - Beep
-      duration_s_max: 0.6
+      - Rewards
+      - Clink
+      duration_s_max: 0.9
       brightness_in:
       - airy
       - bright
-    default_lead_ms: -50
+    align: onset
+    default_asset: Mister Horse Free SFX/Rewards/Bells 1 Upward 03.wav
+    default_lead_ms: 0
+    default_volume: 0.5
+  boom:
+    filter:
+      low_energy_pct_min: 50
+      peak_time_s_max: 0.25
+    align: onset
+    default_asset: Mister Horse Free SFX/Bass/Clean Bass Drop 01.wav
+    default_lead_ms: 0
+    default_volume: 0.5
+  whoosh:
+    filter:
+      auto_role: transition
+      duration_s_min: 0.4
+      duration_s_max: 1.5
+      attack_time_s_min: 0.1
+    align: peak
+    default_asset: Whooshes/fast woosh 2.mp3
+    default_lead_ms: 0
+    default_volume: 0.5
+  riser:
+    filter:
+      auto_role: riser
+      duration_s_min: 1.5
+    align: peak
+    default_asset: Risers/Riser Stop.wav
+    default_lead_ms: 0
+    default_volume: 0.5
+  snap:
+    filter:
+      category_in:
+      - Click
+      duration_s_max: 0.4
+      brightness_in:
+      - bright
+      - airy
+    align: onset
+    default_asset: Mister Horse Free SFX/Click/Camera Shutter Click 01.wav
+    default_lead_ms: 0
     default_volume: 0.5
   card-tap:
     filter:
-      auto_role: accent
       category_in:
-      - Click
       - Tap _ Knock
       duration_s_max: 0.4
-    default_lead_ms: -50
+    align: onset
+    default_asset: Mister Horse Free SFX/Tap _ Knock/Single Tap 01.wav
+    default_lead_ms: 0
     default_volume: 0.5
   card-blip:
     filter:
-      auto_role: accent
       category_in:
       - Pop
       - Blip
@@ -40478,5 +40529,7 @@ cues:
       - airy
       - bright
       - warm
-    default_lead_ms: -50
+    align: onset
+    default_asset: Mister Horse Free SFX/Blip/Synthetic Blip 01.wav
+    default_lead_ms: 0
     default_volume: 0.5

@@ -45,16 +45,28 @@ class CatalogEntry:
 
 @dataclass(frozen=True)
 class CueRecipe:
-    """Named cue, with a filter applied against catalog entries to find candidates."""
+    """Named cue, with a filter applied against catalog entries to find candidates.
+
+    `align` chooses the timing reference the SFX lands on: "onset" (punctuation
+    cues — the audible transient lands on the visual impact frame, never early)
+    or "peak" (anticipatory cues like whoosh/riser — the swell leads in and the
+    peak lands on arrival). `default_asset` pins the one handpicked file the cue
+    reuses across the whole video (its signature sound); the filter is only a
+    fallback when no asset is pinned.
+    """
 
     name: str
     default_lead_ms: int | None
     default_volume: float
+    align: str = "onset"
+    default_asset: str | None = None
     filter: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "filter": dict(self.filter),
+            "align": self.align,
+            "default_asset": self.default_asset,
             "default_lead_ms": self.default_lead_ms,
             "default_volume": self.default_volume,
         }
