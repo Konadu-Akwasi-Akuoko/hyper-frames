@@ -7,6 +7,30 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.6.0] — 2026-06-04
+
+### Added
+- **sfx-level** — VO-loudness probe tool. Measures the voiceover's RMS loudness
+  at a timestamp so the SFX pass places a cue in a real narration gap and ducks
+  it correctly relative to speech (reuses cut-snap's RMS DSP).
+- **sfx-plan** — `ensure_mount` now upserts the sfx-layer's `data-duration` to
+  the full runtime (derived from `transcript.json`), so cues scheduled late are
+  no longer silently clipped.
+- **image-prep** — onnxruntime dependency for background removal.
+- **js-king** — full composition built out: 91 scene sub-compositions plus a
+  scored `sfx.html`, wired into `index.html`, with assets and QA snapshots.
+- **prompt-evaluation** — video-director SFX-pass eval (iteration-5).
+
+### Changed
+- **video-director** — folds the SFX pass in as Step H (per-scene scoring after
+  each scene's visual QA) plus a final whole-video reconcile; removes the
+  standalone `sfx-author` skill and relocates its taste into
+  `reference/sfx-cues-and-timing.md` and `reference/sfx-arc-and-reconcile.md`.
+- **sfx-catalog** — flatten every cue role's `default_volume` to 0.5 (uniform
+  ceiling; per-cue ducking handled at placement via `data-sfx-level`).
+- settings: raise the autocompact threshold and window.
+- Refresh narration-map and youtube-studio-mcp lockfiles.
+
 ## [0.5.0] — 2026-06-03
 
 ### Added
@@ -77,6 +101,7 @@ videos.
 - audio-editor: prefer raw-timeline artifacts when present.
 - mcp: apply the `http_safe` decorator to every tool registration.
 
+[0.6.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.1.0...v0.3.0
