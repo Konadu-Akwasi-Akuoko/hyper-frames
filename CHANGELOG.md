@@ -7,6 +7,28 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.7.0] — 2026-06-04
+
+### Added
+- **sfx-plan** — opt-in `--bake` finalize: mixes every cue into one
+  `audio/sfx-mix.mp3` (ffmpeg; equal-power pan, unity `amix`, limiter, padded to
+  the full mount duration) and emits a single `<audio>`, eliminating the per-cue
+  `media_preload_none` lint noise and the preview-Play freeze caused by ~160
+  force-loaded media elements. Per-cue `preload="none"` stays the fast editing
+  default — bake LAST, since a plain run reverts it. Also writes
+  `sfx.cues.json` so `sfx-level --batch` still recovers every cue's timing from a
+  baked layer.
+
+### Fixed
+- **js-king** — preview Play froze while scrubbing still worked: the 162
+  force-loaded SFX `<audio>` elements exhausted Chrome's WebMediaPlayer budget
+  and evicted the voiceover into `MEDIA_ERR_DECODE`. `preload="none"` on every
+  cue restores playback; renders are unaffected (compiler strips `preload`).
+
+### Changed
+- **repo** — ignore `renders/` output directories (large MP4 build artifacts;
+  render locally, don't commit).
+
 ## [0.6.0] — 2026-06-04
 
 ### Added
@@ -101,6 +123,7 @@ videos.
 - audio-editor: prefer raw-timeline artifacts when present.
 - mcp: apply the `http_safe` decorator to every tool registration.
 
+[0.7.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Konadu-Akwasi-Akuoko/hyper-frames/compare/v0.3.0...v0.4.0
