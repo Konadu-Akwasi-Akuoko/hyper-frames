@@ -279,75 +279,72 @@ running preview. Full command detail and the rubric: `reference/verify-and-previ
 ### H. Score the SFX for this pass
 
 Sound is scored **per pass, on the scene(s) you just authored** — while this
-scene's GSAP tween times and the Step-C word timings are still in context. That
-freshness is the whole point: it is how a cue lands neither early nor late. You
-score **only this pass's scene(s)** here; the whole-video reconcile runs once at
-the Done condition (below). SFX is **not just booms and risers** — the common
-case is small punctuation driven by *this scene's own beats*. Dense policy lives
-in `reference/sfx-cues-and-timing.md` (mode/cue/asset mechanics, the `data-sfx-*`
-contract, peak math) and `reference/sfx-arc-and-reconcile.md` (the arc ledger,
-density shape, final reconcile); this is the per-pass sub-flow.
+scene's GSAP tween times are still in context. That freshness is how each cue
+lands on its visual. SFX in this project denote **visual events** (motion
+graphics), never the audio. Mechanics live in `reference/sfx-cues-and-timing.md`
+(the verb→cue palette, the impact-frame timing math, the `data-sfx-*` contract)
+and `reference/sfx-arc-and-reconcile.md` (the per-pass proposal + final
+reconcile); this is the sub-flow.
 
-1. **Punctuation cues from this scene's GSAP beats — the common case.** Walk the
-   timeline you just wrote and score what each beat is *doing*, never by CSS
-   class: a thing **appears** → `ui-tick`/`pop`; something **slides in** →
-   `whoosh`; something is **highlighted** → `ui-tick`/`msg-ding`; something
-   **snaps into place** → `ui-tick`; a card **taps in** → `card-tap`. These are
-   visual changes, so the timing mode is **`data-sfx-at-scene-ms`** (scene-local
-   ms, relative to the host's own `data-start`). Compute the **perceptual
-   landing** from the tween you just keyed — a **fade** lands at `start +
-   dur×0.5–0.7`, a **slide/snap** at `start + dur`. **Pin every cue's asset** with
-   `data-sfx-asset`, reusing the file a same-family cue already uses in this video.
-   Lead with these — most passes are nothing but punctuation.
+The governing rule: **each cue is independent and element-bound.** A cue is
+placed because *its* visual event warrants a sound — never suppressed, delayed,
+or skipped because of any other cue nearby. There are **no cross-cue rules** — no
+cooldowns, no dedup, no density caps. Reuse a sound as often as you like,
+including repeatedly within one scene.
 
-2. **Spoken-word cues — anchor mode.** When the trigger is a *word landing* (a
-   label said aloud, a name read, a payoff line), use **`data-sfx-anchor` +
-   `data-sfx-anchor-index`** (1-indexed), never `data-sfx-at-scene-ms`. The two
-   modes are **mutually exclusive** — using anchor + a large negative lead to
-   *reach* a visual moment is the forbidden SFX-before-visual bug. The anchor must
-   resolve in `narration-map.json` at write time — if the word isn't there, append
-   it to `anchors.txt`, re-run `tools/narration-map`, and verify it resolves
-   **before** writing the attribute. `data-sfx-lead-ms` is ±100 ms peak-tuning
-   only (≥200 ms warns; treat as blocking).
+1. **One cue per visual beat, chosen by the verb.** Walk the timeline you just
+   wrote; score every beat that's *doing* something by what it does, never by CSS
+   class: **appears/pops in** → `pop` (or `ui-tick`); **highlighted/named** →
+   `msg-ding`; **lands with weight / a major point** → `boom`;
+   **slides/travels / a transition crosses** → `whoosh`; **builds into a reveal**
+   → `riser`; **freeze-frame / highlight one element** → `snap`; a **card taps
+   in** → `card-tap`. Every occurrence gets its cue — three cards appearing =
+   three pops, one per card.
 
-3. **Heavy/global cues — against the derived arc ledger.** `boom`, `riser`, and
-   the single `data-sfx-hook` are rationed across the *whole* video, not this
-   pass. There is no sidecar — **derive** the budget: read `story-spine.md` (if
-   present) / `script.md` for where hook/climax/landing fall, then **scan the
-   already-placed `data-sfx-*` across all compositions** for what's already spent
-   (mounted state is the source of truth). Spend a heavy cue only on a genuine
-   peak the ledger hasn't claimed; score the hook with **restraint** (one decisive
-   cue, or silence into the hit — never a stack). Most passes spend none.
+2. **Timing = the impact frame.** The only mode is **`data-sfx-at-scene-ms`** —
+   the scene-local ms (relative to the host's own `data-start`) when the element
+   is *fully present*: for an entrance, the tween's `start + duration`; for a
+   slide, where it settles; for a snap, the snap frame. Read it off the tween you
+   just keyed. `sfx-plan` lands the cue's transient there (onset for punctuation,
+   peak for whoosh/riser) — **never early** — so you only supply the impact frame.
+   `data-sfx-lead-ms` is a ±100 ms tuning knob only; you rarely need it.
 
-4. **VO check + the 0.5 rule.** Before committing each cue, probe the narration
-   under it — `uv run --project ../../tools/sfx-level sfx-level audio/voiceover.mp3
-   --at <t>` returns VO RMS/peak dBFS and classifies gap vs. active speech — to
-   confirm the cue lands where you think and catch one fighting hot VO. Volume is a
-   flat **0.5 default *and* ceiling**, set once as `default_volume: 0.5` in
-   `sound-effects/sfx-catalog.yml` — do **not** write `data-sfx-volume="0.5"` on
-   elements. Write `data-sfx-volume` **only to duck below 0.5** when sfx-level
-   reports the VO is hot under the cue; never above.
+3. **The signature sound is automatic.** Each cue pins one handpicked
+   `default_asset` in `sound-effects/sfx-catalog.yml` and reuses it everywhere, so
+   you usually write just `data-sfx-on-anchor="pop"` and get the right sound. Pin
+   `data-sfx-asset` on an element **only** to deliberately diverge.
 
-5. **Compact proposal + approval gate.** Print one terse line per cue — `mode= /
-   cue= / asset= / on <element> / <short reason>` — plus a `ledger:` line and any
-   `NEW ANCHORS NEEDED`. **Write `data-sfx-*` annotations only on
-   `yes`/`approve`/`go`** (one `Edit` per element; never reformat surrounding
-   HTML). Honor a **standing approval** ("auto-approve SFX for the rest") so the
-   autonomous loop runs uninterrupted on later passes; absent that, the gate holds
-   each pass — but keep printing the compact proposal for the record. Full format:
+4. **The hook tag (for the music pass).** Mark the single biggest beat of the
+   whole video — its one largest emotional/informational moment — with
+   `data-sfx-hook="true"` on its element. It is a breadcrumb the downstream
+   `audio-bed-music` pass reads to carve pre-impact silence; **exactly one** exists
+   across the video. If this pass has no clear hook, omit it — a later scene may
+   own it.
+
+5. **VO check + the 0.5 rule.** Optionally probe the narration under a cue —
+   `uv run --project ../../tools/sfx-level sfx-level audio/voiceover.mp3 --at <t>`
+   (VO RMS/peak dBFS, gap vs. active speech) — to catch one fighting hot VO.
+   Volume is a flat **0.5 default *and* ceiling** (`default_volume: 0.5` in the
+   catalog) — do **not** write `data-sfx-volume="0.5"`. Write `data-sfx-volume`
+   **only to duck below 0.5** when the VO is hot under the cue; never above.
+
+6. **Compact proposal + approval gate.** Print one terse line per cue — `cue= /
+   asset= / at-scene-ms= / on <element> / <short reason>`. **Write `data-sfx-*`
+   only on `yes`/`approve`/`go`** (one `Edit` per element; never reformat
+   surrounding HTML). Honor a **standing approval** ("auto-approve SFX for the
+   rest") so the autonomous loop runs uninterrupted; absent that the gate holds
+   each pass — but keep printing the proposal. Full format:
    `reference/sfx-arc-and-reconcile.md`.
 
-6. **Plan, then ear-audit.** Run `uv run --project ../../tools/sfx-plan sfx-plan
+7. **Plan, then ear-audit.** Run `uv run --project ../../tools/sfx-plan sfx-plan
    --report` from the video folder — it idempotently regenerates the whole
-   `compositions/sfx.html` and reports cue count plus warnings. A
-   `DensityViolationError` fails the run (>1 cue/s in a 6s window — real, fix it);
-   a `large lead_ms`, density (>0.5/s), or `overlap on track` warning still exits
-   0 but *you* treat it as blocking. SFX correctness is **partly
-   ear-only** — a snapshot can't show sound — so surface the seek target for the
-   cued beat ("Seek to **{t}s** to hear scene NN") and let the **human
-   listen-in-preview audit stay the gate** for this pass; the deterministic tools
-   (`sfx-plan` warnings + `sfx-level`) are the automated backstop, not a
-   substitute. **Never start, restart, or kill the preview server.**
+   `compositions/sfx.html`. It **never fails on cue count or density** (those
+   guards are gone); it only prints informational notes — a `pre-roll` note flags
+   a whoosh/riser used where an appearance belongs (switch it to `pop`/`ding`); an
+   overlap note is benign (cues layer). SFX correctness is **partly ear-only** — a
+   snapshot can't show sound — so surface the seek target ("Seek to **{t}s** to
+   hear scene NN") and let the **human listen-in-preview audit stay the gate**.
+   **Never start, restart, or kill the preview server.**
 
 ### I. Loop or stop
 
@@ -367,13 +364,11 @@ window spans its transcript words), lint and inspect are clean, the final block
 holds the only exit animation, every scene has had its per-pass SFX score (Step
 H), and you've surfaced the last seek target. Then run the **final SFX
 reconcile** — one whole-video pass that re-runs `tools/sfx-plan` over everything
-and verifies the density curve/shape (no `DensityViolationError`; trim any
-6s-window warning), per-track overlap, your own same-cue spacing (the tool does
-not check cooldowns — you do), that `boom`/`riser` were spent only on genuine
-peaks, that **exactly one** `data-sfx-hook` exists and
-was scored with restraint, that the `tools/sfx-level` sweep finds no cue fighting
-loud VO, and that the `sfx-layer` mount spans the full runtime (checklist:
-`reference/sfx-arc-and-reconcile.md`).
+and verifies: every `pre-roll` note is intended (a whoosh/riser leading a real
+motion, not punctuating an appearance — fix those to `pop`/`ding`), that
+**exactly one** `data-sfx-hook` exists, that the `tools/sfx-level` sweep finds no
+cue fighting loud VO (duck the offenders below 0.5), and that the `sfx-layer`
+mount spans the full runtime (checklist: `reference/sfx-arc-and-reconcile.md`).
 
 Once the SFX is locked and the final reconcile passes, **bake it** as the last
 SFX action: `uv run --project ../../tools/sfx-plan sfx-plan . --bake`. This mixes
@@ -398,7 +393,7 @@ never author yourself.
 | Image sourcing: find + fetch a real asset for a box, routed by `data-asset-class` — `reaction`→Pinterest, `logo`/`glyph`→Iconify (static SVG), `photo`→Wikimedia (licensed), web as catch-all — then treat it | `image-sourcer` agent | Declare the box with its `class`/`referent`, then dispatch `image-sourcer` (`model: sonnet`) with the `data-asset-*` spec + `video_dir`; weigh its confidence, swap the pick in (or leave the box standing + shopping-list on failure), surface any required attribution (`reference/assets-and-media.md`) |
 | Image treatment: background removal + VFX presets (grain/duotone/halftone/vintage) | `tools/image-prep` | Declare asset boxes + the shopping list; the `image-sourcer` agent runs image-prep for you, or run it directly on a human-supplied raster for a consistent cutout look (`reference/assets-and-media.md`) |
 | Voiceover / transcript | voiceover-* / `transcribe-and-plan-cuts` | Precondition; refuse to run if missing |
-| SFX scoring: cue choice, timing mode, the arc ledger, the per-pass + final-reconcile passes | **you** (Step H, this skill) | Own it — score each scene's sound after its visual QA; ration the heavy cues across the video |
+| SFX scoring: cue choice, the impact-frame timing, the per-pass + final-reconcile passes | **you** (Step H, this skill) | Own it — score each scene's sound after its visual QA; each cue is independent and element-bound (no cross-cue rules) |
 | SFX mechanics: `data-sfx-*` resolution → `compositions/sfx.html`; VO loudness at a cue | `tools/sfx-plan` / `tools/sfx-level` / `sfx-catalog.yml` | Annotate + run them; never hand-edit `sfx.html` |
 | Music bed | `audio-bed-music` | Hand off only after the final SFX reconcile; never author the music yourself |
 
@@ -431,14 +426,16 @@ that used to live in the root `CLAUDE.md`:
   distinctness, imagery, liveliness; snapshot the seam), and the
   never-touch-preview + surface-a-seek-target rules.
 - `reference/sfx-cues-and-timing.md` — the SFX reading layer for **Step H**: the
-  full cue vocabulary (appears/slide/highlight/snap → tick/pop/whoosh/ding, not
-  just booms), the anchor-vs-`at-scene-ms` timing-mode decision + perceptual-
-  landing math, peak alignment / leads / cooldowns / density ceiling, asset
-  pinning, and reading `tools/sfx-level` for the 0.5-default-and-ceiling volume.
-- `reference/sfx-arc-and-reconcile.md` — the SFX budget layer for **Step H**:
-  density-as-narrative, the single hook moment, the per-pass **arc ledger by
-  derivation**, the compact proposal + standing approval, and the **final
-  whole-video reconcile checklist** before the `audio-bed-music` hand-off.
+  independence principle (each cue element-bound, no cross-cue rules), the
+  verb→cue palette with each cue's signature `default_asset` + `align` mode, the
+  **impact-frame** `data-sfx-at-scene-ms` timing (the tool lands the transient
+  there, never early), and reading `tools/sfx-level` for the 0.5-default-and-
+  ceiling volume.
+- `reference/sfx-arc-and-reconcile.md` — the SFX workflow layer for **Step H**:
+  the single hook tag (for the music pass), the compact proposal + standing
+  approval, the per-pass write/regenerate steps (and the informational notes
+  `sfx-plan` prints — pre-roll / overlap / clamped), and the **final whole-video
+  reconcile checklist** before the `audio-bed-music` hand-off.
 - `reference/house-rules.md` — no editorial chrome; the music bed is the last
   pass (and is someone else's pass).
 - `reference/state-and-resume.md` — reading `index.html` into a frontier,
