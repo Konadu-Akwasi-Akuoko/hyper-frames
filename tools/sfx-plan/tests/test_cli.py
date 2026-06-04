@@ -1,6 +1,7 @@
 """End-to-end smoke tests for the sfx-plan CLI."""
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from sfx_plan.cli import main
@@ -71,6 +72,51 @@ def test_cli_passes_mount_offsets_to_at_scene_ms_annotations(
     rc = main([str(video_dir), "--catalog", str(catalog_path), "--dry-run"])
     assert rc == 0
     # Plan should resolve to roughly 5.0 + 1.0 - peak_time_s(0.05) = 5.95s
+
+
+def test_cli_default_run_is_per_cue_with_preload_none(video_dir: Path, catalog_path: Path) -> None:
+    main([str(video_dir), "--catalog", str(catalog_path)])
+    text = (video_dir / "compositions" / "sfx.html").read_text(encoding="utf-8")
+    assert text.count("<audio\n") == 3
+    assert 'preload="none"' in text
+    assert not (video_dir / "compositions" / "sfx.cues.json").exists()
+
+
+def test_cli_bake_emits_single_element_and_manifest(
+    video_dir: Path, catalog_path: Path, monkeypatch,
+) -> None:
+    import sfx_plan.cli as cli_mod
+
+    def _stub_bake(*, video_dir, out_rel, **_kwargs):
+        out = video_dir / out_rel
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(b"\x00\x00")
+        return out
+
+    monkeypatch.setattr(cli_mod, "bake_sfx_mix", _stub_bake)
+    rc = main([str(video_dir), "--catalog", str(catalog_path), "--bake"])
+    assert rc == 0
+    sfx = (video_dir / "compositions" / "sfx.html").read_text(encoding="utf-8")
+    assert sfx.count("<audio") == 1
+    assert 'id="sfx-mix"' in sfx
+    assert 'preload="none"' not in sfx
+    assert (video_dir / "audio" / "sfx-mix.mp3").exists()
+    manifest = video_dir / "compositions" / "sfx.cues.json"
+    assert manifest.exists()
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    assert len(data["cues"]) == 3
+
+
+def test_cli_dry_run_does_not_bake(video_dir: Path, catalog_path: Path, monkeypatch) -> None:
+    import sfx_plan.cli as cli_mod
+
+    def _boom(**_kwargs):
+        raise AssertionError("ffmpeg bake must not run under --dry-run")
+
+    monkeypatch.setattr(cli_mod, "bake_sfx_mix", _boom)
+    rc = main([str(video_dir), "--catalog", str(catalog_path), "--bake", "--dry-run"])
+    assert rc == 0
+    assert not (video_dir / "compositions" / "sfx.html").exists()
 
 
 def test_cli_returns_nonzero_on_unresolved_anchor(video_dir: Path, catalog_path: Path, capsys) -> None:

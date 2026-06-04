@@ -117,3 +117,19 @@ class UnknownMountError(SfxPlanError):
 class OverridesShapeError(SfxPlanError):
     def __init__(self, *, message: str) -> None:
         super().__init__(f"sfx-overrides.yml is malformed: {message}")
+
+
+class FfmpegNotFoundError(SfxPlanError):
+    def __init__(self) -> None:
+        super().__init__(
+            "ffmpeg not found on PATH — required for --bake. "
+            "Install it (macOS: brew install ffmpeg) and retry."
+        )
+
+
+class FfmpegBakeError(SfxPlanError):
+    def __init__(self, *, stderr_tail: str) -> None:
+        super().__init__(
+            "ffmpeg failed to bake the SFX mix:\n" + stderr_tail
+        )
+        self.stderr_tail = stderr_tail
