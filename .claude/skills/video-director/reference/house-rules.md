@@ -1,7 +1,7 @@
 # House rules
 
-Two project-wide constraints on what a composition contains and when sound gets
-added.
+Two project-wide constraints: what a composition contains, and where the sound
+layers split between you and the downstream music pass.
 
 ## No editorial chrome
 
@@ -23,28 +23,32 @@ the user explicitly asks for it.
 The visual-QA reviewer (`reference/verify-and-preview.md`) flags chrome as a
 defect, so a stray label triggers a regenerate.
 
-## Sound design is the last pass — and it isn't yours
+## Sound follows visuals — SFX is yours, music is not
 
-Sound follows visuals, never drives them. You (`video-director`) author the
-visuals and hand off; you do **not** place SFX or music. Specifically:
+Sound follows visuals, never drives them. But the SFX layer is **yours now** —
+scored per scene in **Step H**, right after that scene's visual QA, and
+reconciled across the whole video at the Done condition (see
+`reference/sfx-cues-and-timing.md` and `reference/sfx-arc-and-reconcile.md`).
+Only the **music bed** is downstream and someone else's pass. Specifically:
 
-- **Do not** add `data-sfx-*` annotations to blocks while authoring. Those are
-  written by the `sfx-author` skill, after the composition is visually settled in
-  preview. (You'll see `data-sfx-*` on already-finished blocks like the shipped
-  js-king scenes — that's fine; it means sound already ran. Don't add your own.)
-- The SFX pass runs `sfx-author` → `tools/sfx-plan` → emits
-  `compositions/sfx.html` as a native HyperFrames audio sub-composition, and
-  mounts it in `index.html`. (Note: the `sfx-layer` host's `data-duration` must
-  be the full runtime, or late cues get clipped — but that's `sfx-author`'s
-  concern, not yours.)
-- After SFX, the music bed runs (`audio-bed-music`) — it sits *beneath* SFX, so
-  it's even later.
+- **Do not** add `data-sfx-*` annotations *while authoring visuals* (Steps D–F).
+  SFX is a deliberate, separate step (H) once the scene's visuals pass QA — never
+  smeared into the authoring. (You'll see `data-sfx-*` on already-finished blocks;
+  that's a scene whose Step H already ran. Re-running `tools/sfx-plan` is
+  idempotent.)
+- Step H runs `tools/sfx-plan` → emits `compositions/sfx.html` as a native
+  HyperFrames audio sub-composition and mounts it in `index.html`. The `sfx-layer`
+  host's `data-duration` must be the full runtime or late cues get clipped —
+  `tools/sfx-plan` sets this for you; the final reconcile verifies it.
+- After your SFX reconcile, the music bed runs (`audio-bed-music`) — it sits
+  *beneath* SFX, so it's even later, and it is the one sound layer you never author.
 
-The pipeline order, for orientation: **voiceover/transcript → (you) visuals →
-sfx-author → audio-bed-music → render.** Your Done condition is "visuals
-complete and verified"; you then point the user at `sfx-author`.
+The pipeline order, for orientation: **voiceover/transcript → (you) visuals + SFX
+(Step H + final reconcile) → audio-bed-music → render.** Your Done condition is
+"visuals complete and verified **and** the whole-video SFX reconcile passed"; you
+then point the user at `audio-bed-music`.
 
 The shared SFX library lives at the repo-root `sound-effects/` and is referenced
-by relative symlinks from each video's `assets/sfx/`. That library must stay at
-the repo root — none of which you touch, but know it's there so you don't
-duplicate sound assets into a video folder.
+by relative symlinks from each video's `assets/sfx/`. Cue assets are pinned with
+`data-sfx-asset` (paths under `sound-effects/`); that library must stay at the
+repo root, so never duplicate sound assets into a video folder.

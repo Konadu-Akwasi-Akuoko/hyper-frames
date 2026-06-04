@@ -44,8 +44,9 @@ The project's **custom skills stay local under `.Codex/skills/`** —
 `script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`,
 `transcribe-and-plan-cuts`, `thumbnail-creator`, `description-writer`,
 `create-srt-and-translate`, `youtube-seo-research`, `youtube-studio`,
-`sfx-author`, `audio-bed-music`, and `design-catalog-add`. These are not part of
-the plugin; do not delete them when refreshing the plugin.
+`audio-bed-music`, and `design-catalog-add`. SFX scoring now lives inside
+`video-director` (Step H), not a separate skill. These are not part of the
+plugin; do not delete them when refreshing the plugin.
 
 For voiceover in this project, the **default is recording your own voice**: drop
 the recording at `audio/raw.mp3`, run the `transcribe-and-plan-cuts` skill (Scribe
@@ -179,11 +180,12 @@ The pipeline ships with:
 - A shared SFX library at `sound-effects/` (~1416 assets across 4 sub-libraries).
 - A repo-level metadata catalog at `sound-effects/sfx-catalog.yml` (committed;
   rebuild only when the library changes via `uv run --project tools/sfx-catalog sfx-catalog`).
-- A Codex skill at `.Codex/skills/sfx-author/` that proposes a cue plan,
-  awaits human approval, and writes `data-sfx-*` annotations into the HTML.
-- A deterministic placement tool at `tools/sfx-plan/` that resolves
-  annotations into a native HyperFrames audio sub-composition at
-  `compositions/sfx.html`.
+- The SFX pass folded into `video-director` (Step H): it proposes a per-scene cue
+  plan, awaits approval, and writes `data-sfx-*` annotations into the HTML, then
+  reconciles across the whole video at the end.
+- A deterministic placement tool at `tools/sfx-plan/` that resolves annotations
+  into a native HyperFrames audio sub-composition at `compositions/sfx.html`, and
+  a VO-loudness probe at `tools/sfx-level/` for cue placement and ducking.
 
 Assets staged into `videos/<slug>/assets/sfx/` are **relative symlinks** into
 `sound-effects/`, not copies. `sound-effects/` must stay at the repo root —

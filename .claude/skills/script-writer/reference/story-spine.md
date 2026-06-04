@@ -68,12 +68,12 @@ the script — the exact failure mode the pipeline removed).
 
 ## How the downstream skills use it
 
-Each of `hyperframes`, `sfx-author`, and `audio-bed-music` reads the story spine — *if it
-exists* — as **orientation, not instruction**:
+Each of `hyperframes`, `video-director` (its SFX pass, Step H), and `audio-bed-music`
+reads the story spine — *if it exists* — as **orientation, not instruction**:
 
 - `hyperframes` — where the rhythm pattern's energy should peak and resolve.
-- `sfx-author` — confirms the `data-sfx-hook` beat and any climax `boom` agree with the
-  other layers.
+- `video-director` Step H — confirms the `data-sfx-hook` beat and any climax `boom`
+  agree with the other layers.
 - `audio-bed-music` — where a layer crossfade or a bed-pullback might coincide with a
   narrative turn.
 

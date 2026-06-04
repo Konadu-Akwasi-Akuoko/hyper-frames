@@ -7,7 +7,7 @@ HyperFrames audio sub-composition.
 
 ## Usage
 
-From inside a video folder (after the `sfx-author` skill has annotated the HTML):
+From inside a video folder (after `video-director` Step H has annotated the HTML):
 
 ```bash
 uv run --project ../../tools/sfx-plan sfx-plan

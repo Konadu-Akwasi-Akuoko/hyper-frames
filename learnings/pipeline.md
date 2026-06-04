@@ -392,10 +392,13 @@ A1.  tools/sfx-catalog/         (Python CLI)
      Repo-level. Runs rarely (only when sound-effects/ changes).
      Output: sound-effects/sfx-catalog.yml
 
-A2.  .claude/skills/sfx-author/ (Claude skill)
-     Per-video. The editorial brain — decides WHICH elements deserve
-     SFX and which cue type. Reads HTML + narration-map + transcript
-     + design.md + catalog. Writes data-sfx-* annotations into HTML.
+A2.  video-director Step H  (Claude skill — folded in 2026-06; was the
+     standalone .claude/skills/sfx-author/, now removed)
+     Per-scene, right after each scene's visual QA. The editorial brain —
+     decides WHICH elements deserve SFX and which cue type. Reads the HTML +
+     narration-map + transcript + design.md + catalog, writes data-sfx-*
+     annotations, and reconciles the whole video's sound at the end. Uses
+     tools/sfx-level to place cues against VO loudness.
 
 A3.  tools/sfx-plan/            (Python CLI)
      Per-video. Deterministic. Reads annotated HTML + narration-map
@@ -406,8 +409,8 @@ Updated lifecycle:
 ONCE per library state:
   sound-effects/  ──▶ A1 sfx-catalog ──▶ sfx-catalog.yml  (committed)
 
-PER VIDEO, after composition is done & previewed clean:
-  user invokes A2 sfx-author skill
+PER VIDEO, per scene (right after that scene's visual QA passes):
+  video-director Step H (A2)
        │
        ├──▶ reads HTML, narration-map, transcript, design.md, catalog
        ├──▶ proposes a cue plan: "17 cues — 4 whooshes, 8 ticks, …"
