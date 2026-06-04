@@ -16,3 +16,6 @@ __pycache__/
 # HyperFrames build caches (generated per-video, not source)
 .hyperframes/
 .thumbnails/
+
+# Rendered video output (large binaries; render locally, don't commit)
+renders/
