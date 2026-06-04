@@ -1,0 +1,29 @@
+[project]
+name = "sfx-level"
+version = "0.1.0"
+description = "Probe the voiceover's loudness at a timestamp so an SFX cue is placed in a real narration gap and ducked correctly relative to speech."
+readme = "README.md"
+authors = [
+    { name = "Akwasi Konadu Akuoko", email = "akwasikonadueverlasting@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.0.0",
+]
+
+[project.scripts]
+sfx-level = "sfx_level.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.10,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+extraPaths = ["src"]
