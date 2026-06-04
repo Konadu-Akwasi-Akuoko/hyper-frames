@@ -13,7 +13,38 @@ From inside a video folder (after `video-director` Step H has annotated the HTML
 uv run --project ../../tools/sfx-plan sfx-plan
 ```
 
-Flags: `--dry-run` (don't write), `--report` (print a plan table).
+Flags: `--dry-run` (don't write), `--report` (print a plan table),
+`--bake` / `--bake-format` (finalize — see below).
+
+## Two output modes: per-cue (edit) vs. baked (finalize)
+
+By default `sfx-plan` emits **one `<audio preload="none">` per cue** (162 for a
+busy video). This is the **editing default**: a `data-sfx-*` tweak rewrites the
+HTML attributes sub-second, the preview hot-reloads, and you hear it — the fast
+loop a long second-by-second SFX session needs. Its one cost is a
+`media_preload_none` lint warning per element (visible only at `npm run check`,
+never during `npm run dev`); `preload="none"` is load-bearing, though — without
+it the many `<audio>` elements exhaust Chrome's WebMediaPlayer budget and **freeze
+preview Play** (scrubbing still works).
+
+`--bake` is the **one-shot finalize**: it mixes every cue (delayed to its
+`data-start`, scaled by its volume, equal-power panned) into a single
+`audio/sfx-mix.mp3` (48 kHz stereo, 320 kbps) via ffmpeg, emits **one** `<audio
+id="sfx-mix">`, and writes `compositions/sfx.cues.json` so per-cue tooling
+(`sfx-level --batch`) still recovers every cue's timing. The result is a clean,
+lint-silent, single-player artifact for the committed/published video. Requires
+ffmpeg (so does `npm run render`). `--bake-format wav` emits PCM instead.
+
+```bash
+uv run --project ../../tools/sfx-plan sfx-plan . --bake   # run LAST, when SFX is locked
+```
+
+> **Footgun — bake LAST.** A plain `sfx-plan` run **regenerates the per-cue
+> layer and reverts the bake** (back to the fast editing default). That's
+> intentional: edit in per-cue mode, bake once when the SFX is locked, and don't
+> run plain `sfx-plan` again afterward. The orphaned `sfx-mix.mp3` left behind by
+> a revert is harmless — the next `--bake` overwrites it. Track the baked mp3 in
+> git alongside `voiceover.mp3`.
 
 ## Annotation reference (`data-sfx-*`)
 

@@ -1,6 +1,7 @@
 """Tests for sfx.html emission, asset staging, and index.html mount wiring."""
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 
@@ -9,9 +10,12 @@ import pytest
 from sfx_plan.plan import Cue
 from sfx_plan.emit import (
     SFX_LAYER_ID,
+    SFX_MIX_ID,
     ensure_mount,
     render_sfx_html,
+    render_sfx_html_baked,
     stage_assets,
+    write_cue_manifest,
 )
 
 
@@ -144,6 +148,10 @@ def test_render_emits_audio_with_id_clip_and_staged_src(staged_video) -> None:
     )
     assert 'id="sfx-001-ui-tick-foo"' in text
     assert 'class="clip"' in text
+    # preload="none" defers per-cue media loading in the preview player; without it
+    # the many SFX <audio> elements exhaust Chrome's WebMediaPlayer budget and freeze
+    # preview Play. The compiler strips it for renders, so the mux is unaffected.
+    assert 'preload="none"' in text
     assert 'src="../assets/sfx/click-bright-01.wav"' in text
     assert 'data-start="1.0"' in text
     assert 'data-duration="0.4"' in text
@@ -236,3 +244,43 @@ def test_ensure_mount_refreshes_short_duration(tmp_path: Path) -> None:
     assert 'data-duration="120.001"' in text
     # Re-running with the same duration is a no-op.
     assert ensure_mount(idx, total_duration_s=120.001) is False
+
+
+def test_render_baked_emits_single_audio_element() -> None:
+    text = render_sfx_html_baked(
+        mix_rel="../audio/sfx-mix.mp3",
+        total_duration_s=530.6,
+        catalog_sha="abc123",
+        cue_count=162,
+    )
+    # Exactly one <audio>, backed by the baked mix.
+    assert text.count("<audio") == 1
+    assert f'id="{SFX_MIX_ID}"' in text
+    assert 'src="../audio/sfx-mix.mp3"' in text
+    assert 'data-volume="1"' in text  # per-cue gains baked in
+    assert 'data-duration="530.6"' in text
+    assert 'data-track-index="19"' in text
+    # A single player never overruns the budget, so no preload deferral.
+    assert 'preload="none"' not in text
+    # Scaffold intact (template + composition root + paused timeline).
+    assert f'<template id="{SFX_LAYER_ID}-template">' in text
+    assert f'data-composition-id="{SFX_LAYER_ID}"' in text
+    assert "window.__timelines" in text
+
+
+def test_write_cue_manifest_shape_and_ids(staged_video) -> None:
+    video, _root, _staged = staged_video
+    cues = [_cue(start=5.0), _cue(start=1.0, cue="boom"), _cue(start=3.0)]
+    manifest_path = video / "compositions" / "sfx.cues.json"
+    write_cue_manifest(cues=cues, path=manifest_path, total_duration_s=60.0)
+    data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert data["version"] == 1
+    assert data["total_duration_s"] == 60.0
+    starts = [c["data_start"] for c in data["cues"]]
+    assert starts == sorted(starts)
+    # Ids are 1-based in data-start order, matching the per-cue sfx.html.
+    assert data["cues"][0]["id"].startswith("sfx-001-")
+    assert data["cues"][1]["id"].startswith("sfx-002-")
+    first = data["cues"][0]
+    for key in ("id", "data_start", "duration_s", "volume", "pan", "src", "cue", "anchor"):
+        assert key in first

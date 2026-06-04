@@ -373,7 +373,17 @@ not check cooldowns — you do), that `boom`/`riser` were spent only on genuine
 peaks, that **exactly one** `data-sfx-hook` exists and
 was scored with restraint, that the `tools/sfx-level` sweep finds no cue fighting
 loud VO, and that the `sfx-layer` mount spans the full runtime (checklist:
-`reference/sfx-arc-and-reconcile.md`). Only then hand off to the music bed
+`reference/sfx-arc-and-reconcile.md`).
+
+Once the SFX is locked and the final reconcile passes, **bake it** as the last
+SFX action: `uv run --project ../../tools/sfx-plan sfx-plan . --bake`. This mixes
+all cues into one `audio/sfx-mix.mp3` and emits a single `<audio>` (no
+per-element `media_preload_none` lint noise, one media player instead of ~160 —
+the per-cue layer otherwise freezes preview Play). **Bake LAST and don't re-run
+plain `sfx-plan` afterward** — a plain run regenerates the per-cue editing layer
+and reverts the bake. Track `sfx-mix.mp3` in git alongside `voiceover.mp3`. The
+per-cue `preload="none"` form stays the default precisely because re-baking on
+every edit would wreck the fast scoring loop. Only then hand off to the music bed
 (`audio-bed-music`) — music sits *beneath* SFX and is the one sound layer you
 never author yourself.
 

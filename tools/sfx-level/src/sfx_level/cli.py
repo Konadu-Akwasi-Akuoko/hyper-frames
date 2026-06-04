@@ -85,7 +85,18 @@ def probe(pcm: np.ndarray, ref: FloorRef, t: float, window_ms: float) -> dict:
 
 
 def _parse_cues(sfx_html: Path) -> list[tuple[str, float]]:
-    """Return (id, data_start) for each <audio> clip in a generated sfx.html."""
+    """Return (id, data_start) for each cue behind a generated sfx.html.
+
+    Prefers a sibling `sfx.cues.json` (written by `sfx-plan --bake`, when the
+    HTML holds a single baked `<audio>` and per-cue timing lives only in the
+    manifest). Falls back to scanning the `<audio>` tags of a per-cue sfx.html.
+    """
+    manifest = sfx_html.parent / "sfx.cues.json"
+    if manifest.exists():
+        data = json.loads(manifest.read_text(encoding="utf-8"))
+        cues = [(c["id"], float(c["data_start"])) for c in data.get("cues", [])]
+        return sorted(cues, key=lambda c: c[1])
+
     text = sfx_html.read_text(encoding="utf-8")
     cues: list[tuple[str, float]] = []
     for block in re.split(r"<audio", text)[1:]:
