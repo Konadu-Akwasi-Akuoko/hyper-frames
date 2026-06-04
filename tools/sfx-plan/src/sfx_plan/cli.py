@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import argparse
+import json
+import re
 import sys
 from pathlib import Path
 
@@ -51,6 +53,42 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Print a per-cue plan table on stdout.",
     )
     return p
+
+
+_ROOT_TAG_RE = re.compile(r'<[a-zA-Z]+\b[^>]*\b(?:id|data-composition-id)="root"[^>]*>')
+
+
+def _video_full_duration(video_dir: Path, *, fallback: float) -> float:
+    """Full voiceover runtime for the sfx-layer mount, so late cues aren't clipped.
+
+    Prefers transcript.json's `audio_duration_secs`, then the #root composition's
+    `data-duration` in index.html; never returns less than `fallback` (the last
+    cue's end), so the mount always spans every cue.
+    """
+    candidates: list[float] = [fallback]
+
+    transcript = video_dir / "transcript.json"
+    if transcript.exists():
+        try:
+            data = json.loads(transcript.read_text(encoding="utf-8"))
+            dur = data.get("audio_duration_secs")
+            if isinstance(dur, (int, float)) and dur > 0:
+                candidates.append(float(dur))
+        except (ValueError, OSError):
+            pass
+
+    index_html = video_dir / "index.html"
+    if index_html.exists():
+        try:
+            tag = _ROOT_TAG_RE.search(index_html.read_text(encoding="utf-8"))
+            if tag:
+                dur_match = re.search(r'data-duration="([0-9.]+)"', tag.group(0))
+                if dur_match:
+                    candidates.append(float(dur_match.group(1)))
+        except OSError:
+            pass
+
+    return max(candidates)
 
 
 def _resolve_catalog_path(video_dir: Path, override: Path | None) -> Path:
@@ -133,7 +171,8 @@ def main(argv: list[str] | None = None) -> int:
         ),
         encoding="utf-8",
     )
-    mounted = ensure_mount(video_dir / "index.html", total_duration_s=total_duration_s)
+    mount_duration_s = _video_full_duration(video_dir, fallback=total_duration_s)
+    mounted = ensure_mount(video_dir / "index.html", total_duration_s=mount_duration_s)
     note = " (mounted sfx-layer in index.html)" if mounted else ""
     print(f"{len(cues)} cues placed, {len(warnings)} warnings, wrote {sfx_html_path}{note}")
     return 0
