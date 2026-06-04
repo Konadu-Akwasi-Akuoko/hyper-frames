@@ -212,3 +212,27 @@ def test_ensure_mount_is_idempotent(tmp_path: Path) -> None:
     text = idx.read_text(encoding="utf-8")
     assert inserted is False
     assert text.count("compositions/sfx.html") == 1
+
+
+def test_ensure_mount_refreshes_short_duration(tmp_path: Path) -> None:
+    """An existing mount whose data-duration is shorter than the full runtime
+    (the old last-cue-end behavior) gets refreshed so late cues aren't clipped."""
+    idx = tmp_path / "index.html"
+    idx.write_text(
+        '<html>\n<body>\n  <div\n'
+        '    id="sfx-layer"\n'
+        '    data-composition-src="compositions/sfx.html"\n'
+        '    data-start="0"\n'
+        '    data-duration="11.2"\n'
+        '    data-track-index="19"\n'
+        '  ></div>\n</body>\n</html>\n',
+        encoding="utf-8",
+    )
+    changed = ensure_mount(idx, total_duration_s=120.001)
+    text = idx.read_text(encoding="utf-8")
+    assert changed is True
+    assert text.count("compositions/sfx.html") == 1
+    assert 'data-duration="11.2"' not in text
+    assert 'data-duration="120.001"' in text
+    # Re-running with the same duration is a no-op.
+    assert ensure_mount(idx, total_duration_s=120.001) is False

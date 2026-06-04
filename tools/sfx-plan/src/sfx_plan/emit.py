@@ -18,12 +18,23 @@ from sfx_plan.plan import Cue
 
 SFX_LAYER_ID = "sfx-layer"
 SFX_MOUNT_TRACK_INDEX = 19
+_MOUNT_SRC = 'data-composition-src="compositions/sfx.html"'
+# Match the sfx-layer mount's data-duration (it follows the src within the same tag).
+_MOUNT_DURATION_RE = re.compile(
+    r"(" + re.escape(_MOUNT_SRC) + r'[^>]*?data-duration=")([^"]*)(")',
+    re.DOTALL,
+)
 
 
 def _slug(text: str) -> str:
     """ASCII-safe lowercase slug for use in HTML ids."""
     slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
     return slug or "x"
+
+
+def _fmt_duration(seconds: float) -> str:
+    """Format a duration for the mount's data-duration (raw float repr, as before)."""
+    return f"{seconds}"
 
 
 def stage_assets(
@@ -156,16 +167,26 @@ def _mount_block(total_duration_s: float) -> str:
         f'        data-composition-id="{SFX_LAYER_ID}"\n'
         f'        data-composition-src="compositions/sfx.html"\n'
         f'        data-start="0"\n'
-        f'        data-duration="{total_duration_s}"\n'
+        f'        data-duration="{_fmt_duration(total_duration_s)}"\n'
         f'        data-track-index="{SFX_MOUNT_TRACK_INDEX}"\n'
         '      ></div>\n'
     )
 
 
 def ensure_mount(index_html_path: Path, *, total_duration_s: float) -> bool:
-    """Insert the sfx-layer mount into index.html if absent. Returns True if changed."""
+    """Upsert the sfx-layer mount in index.html. Returns True if changed.
+
+    If the mount is absent, insert it. If it already exists, refresh its
+    `data-duration` to `total_duration_s` — the mount must span the full runtime
+    or HyperFrames silently clips every cue scheduled past its end.
+    """
     text = index_html_path.read_text(encoding="utf-8")
-    if 'data-composition-src="compositions/sfx.html"' in text:
+    duration = _fmt_duration(total_duration_s)
+    if _MOUNT_SRC in text:
+        new_text, n = _MOUNT_DURATION_RE.subn(rf"\g<1>{duration}\g<3>", text, count=1)
+        if n and new_text != text:
+            index_html_path.write_text(new_text, encoding="utf-8")
+            return True
         return False
     mount = _mount_block(total_duration_s)
     if "</body>" in text:
