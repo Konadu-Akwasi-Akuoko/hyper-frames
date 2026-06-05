@@ -84,7 +84,7 @@
 </head>
 <body>
   <div id="scene-74" data-composition-id="scene-74" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">The</span> <span class="w iface">interface</span> <span class="w">rendered</span>
       <span class="w">into</span> <span class="w">the</span> <span class="w nx">native</span>
       <span class="w nx">XAML</span> <span class="w nx">layer</span> <span class="w">underneath.</span>
@@ -99,7 +99,7 @@
         <div class="ctrl"><span class="sw"></span><span class="btn">Button</span></div>
       </div>
 
-      <div class="flow" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="1880">
+      <div class="flow" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1380">
         <svg viewBox="0 0 30 88" preserveAspectRatio="none">
           <line class="stem" x1="15" y1="2" x2="15" y2="74"></line>
           <path class="head" d="M5 64 L15 78 L25 64"></path>
@@ -107,7 +107,7 @@
         <span class="flbl">renders into</span>
       </div>
 
-      <div class="layer bot" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3410" data-sfx-volume="0.35">
+      <div class="layer bot" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2860">
         <div class="lmeta">
           <span class="badge">Native XAML layer</span>
           <span class="ltag">actual Windows controls</span>
@@ -134,8 +134,6 @@
       { opacity: 0, y: -26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.70);
 
     // "rendered into" — the downward flow draws between layers (rendered 1.38).
-    const stem = document.querySelector("#scene-74 .flow .stem");
-    const head = document.querySelector("#scene-74 .flow .head");
     tl.set("#scene-74 .flow .stem", { attr: { y2: 2 } }, 0);
     tl.set("#scene-74 .flow .head", { opacity: 0 }, 0);
     tl.to("#scene-74 .flow .stem", { attr: { y2: 74 }, duration: 0.5, ease: "power2.inOut" }, 1.38);

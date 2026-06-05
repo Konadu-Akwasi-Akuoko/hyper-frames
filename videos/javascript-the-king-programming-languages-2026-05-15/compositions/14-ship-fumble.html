@@ -3,132 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 14 — they shipped with... JavaScript</title>
+  <title>Scene 14 — Mocha, no LiveScript, JavaScript</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    @font-face {
-      font-family: "Excalifont";
-      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
-      font-display: swap;
-    }
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-14 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    @font-face { font-family:"Excalifont"; src:url("../fonts/Excalifont-Regular.woff2") format("woff2"); font-weight:400; font-display:block; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-14 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-14 .stage {
-      position: absolute; left: 460px; top: 50%; transform: translateY(-50%);
-      width: 1100px;
-    }
-    #scene-14 .head {
-      font-family: "JetBrains Mono", monospace; font-size: 34px; letter-spacing: 3px;
-      color: var(--muted); text-transform: uppercase; margin-bottom: 44px;
-      opacity: 0; will-change: transform, opacity;
-    }
-
-    #scene-14 .row {
-      position: relative; display: flex; align-items: center; gap: 34px;
-      margin-bottom: 18px; height: 104px;
-    }
-    #scene-14 .nm {
-      position: relative; font-size: 86px; font-weight: 800; letter-spacing: -1.5px;
-      color: var(--fg); opacity: 0; will-change: transform, opacity, color;
-    }
-    #scene-14 .nm .strike {
-      position: absolute; left: -8px; right: -8px; top: 54%; height: 6px;
-      background: var(--danger); border-radius: 3px;
-      transform: scaleX(0); transform-origin: left center; will-change: transform;
-    }
-    /* handwritten correction asides */
-    #scene-14 .aside {
-      font-family: "Excalifont", "Inter", sans-serif; font-size: 44px; color: var(--soft);
-      transform: rotate(-5deg); opacity: 0; white-space: nowrap; will-change: transform, opacity;
-    }
-    /* the keeper */
-    #scene-14 .keeper .nm { color: var(--accent); }
-    #scene-14 .check {
-      font-size: 64px; font-weight: 900; color: var(--ok); opacity: 0;
-      will-change: transform, opacity;
-    }
+    #scene-14 .wrap { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1100px; }
+    #scene-14 .head { font-size:46px; font-weight:500; color:var(--soft); opacity:0; will-change:transform,opacity; margin-bottom:44px; }
+    #scene-14 .names { display:flex; flex-direction:column; gap:20px; }
+    #scene-14 .slot { position:relative; display:flex; align-items:center; gap:34px; opacity:0; will-change:transform,opacity; }
+    #scene-14 .slot .word { position:relative; font-size:78px; font-weight:800; color:var(--soft); letter-spacing:-1px; }
+    #scene-14 .slot .word .strike { position:absolute; left:-8px; right:-8px; top:54%; height:6px; width:0; background:var(--muted); border-radius:3px; will-change:width; }
+    #scene-14 .slot .note { font-family:"Excalifont","Inter",sans-serif; font-size:34px; color:var(--muted); opacity:0; will-change:transform,opacity; }
+    #scene-14 .slot.final .word { color:var(--accent); }
   </style>
 </head>
 <body>
   <div id="scene-14" data-composition-id="scene-14" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="head">Every browser shipped with&hellip;</div>
-
-      <div class="row">
-        <span class="nm"
-              data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3340">Mocha<span class="strike s-mocha"></span></span>
-        <span class="aside a-mocha">hey, no&mdash;</span>
-      </div>
-      <div class="row">
-        <span class="nm"
-              data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4820">LiveScript<span class="strike s-live"></span></span>
-        <span class="aside a-live">sorry, guys&mdash;</span>
-      </div>
-      <div class="row keeper">
-        <span class="nm nm-js"
-              data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="7210" data-sfx-volume="0.42">JavaScript</span>
-        <span class="check">&#10003;</span>
+    <div class="wrap">
+      <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1760">Every browser shipped with&hellip;</div>
+      <div class="names">
+        <div class="slot s1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3140"><span class="word">Mocha<span class="strike" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4480"></span></span><span class="note">hey, no&hellip;</span></div>
+        <div class="slot s2"><span class="word">LiveScript<span class="strike" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5640"></span></span><span class="note">sorry, guys&hellip;</span></div>
+        <div class="slot final s3" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6960"><span class="word">JavaScript</span></div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(110.78).
-    // Header in on "So with time, every browser shipped with" (So 111.28 -> 0.50).
-    tl.fromTo("#scene-14 .head",
-      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.50);
+    // shipped-with 1.76 / Mocha 3.14 / LiveScript 4.48 / sorry-guys 5.64 / JavaScript 6.96.
 
-    // "Mocha" lands (Mocha 113.92 -> 3.14).
-    tl.fromTo("#scene-14 .row:nth-child(2) .nm",
-      { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.14);
-    // "Hey, no" — strike Mocha + scribble (no 114.90 -> 4.12).
-    tl.to("#scene-14 .s-mocha", { scaleX: 1, duration: 0.3, ease: "power2.out" }, 4.00);
-    tl.to("#scene-14 .row:nth-child(2) .nm", { color: "#7a8493", duration: 0.4, ease: "power2.out" }, 4.10);
-    tl.fromTo("#scene-14 .a-mocha",
-      { opacity: 0, y: 8, rotation: -12 }, { opacity: 1, y: 0, rotation: -5, duration: 0.35, ease: "back.out(2)" }, 4.05);
+    tl.fromTo("#scene-14 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 1.76);
 
-    // "LiveScript" lands (LiveScript 115.26 -> 4.48).
-    tl.fromTo("#scene-14 .row:nth-child(3) .nm",
-      { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.62);
-    // "Hey, sorry, guys" — strike LiveScript + scribble (sorry 116.20 -> 5.42).
-    tl.to("#scene-14 .s-live", { scaleX: 1, duration: 0.3, ease: "power2.out" }, 5.40);
-    tl.to("#scene-14 .row:nth-child(3) .nm", { color: "#7a8493", duration: 0.4, ease: "power2.out" }, 5.50);
-    tl.fromTo("#scene-14 .a-live",
-      { opacity: 0, y: 8, rotation: -12 }, { opacity: 1, y: 0, rotation: -5, duration: 0.35, ease: "back.out(2)" }, 5.45);
+    // Mocha lands.
+    tl.fromTo("#scene-14 .s1", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.4, ease:"back.out(1.5)" }, 3.14);
 
-    // "They shipped with JavaScript" — the keeper lands, glows, checks (JavaScript 117.74 -> 6.96).
-    tl.fromTo("#scene-14 .nm-js",
-      { opacity: 0, y: 20, scale: 0.92 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 6.96);
-    tl.fromTo("#scene-14 .check",
-      { opacity: 0, scale: 1.6, rotation: -20 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.6)" }, 7.30);
-    tl.fromTo("#scene-14 .nm-js",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 40px rgba(247,223,30,0.6)", duration: 0.45, ease: "power2.out" }, 7.10);
-    tl.to("#scene-14 .nm-js",
-      { textShadow: "0 0 16px rgba(247,223,30,0.25)", duration: 1.0, ease: "power2.in" }, 7.60);
+    // "hey, no" — Mocha struck, LiveScript appears.
+    tl.to("#scene-14 .s1 .strike", { width:"calc(100% + 16px)", duration:0.3, ease:"power2.out" }, 4.48);
+    tl.to("#scene-14 .s1 .word", { color:"#5a626e", duration:0.3 }, 4.5);
+    tl.fromTo("#scene-14 .s1 .note", { opacity:0, x:-10, rotate:-4 }, { opacity:1, x:0, rotate:-3, duration:0.35, ease:"back.out(2)" }, 4.5);
+    tl.fromTo("#scene-14 .s2", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.4, ease:"back.out(1.5)" }, 4.62);
 
-    // Subtle life — the keeper row drifts a hair.
-    tl.to("#scene-14 .row.keeper", { y: "-=4", duration: 3.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 7.6);
+    // "sorry, guys" — LiveScript struck.
+    tl.to("#scene-14 .s2 .strike", { width:"calc(100% + 16px)", duration:0.3, ease:"power2.out" }, 5.64);
+    tl.to("#scene-14 .s2 .word", { color:"#5a626e", duration:0.3 }, 5.66);
+    tl.fromTo("#scene-14 .s2 .note", { opacity:0, x:-10, rotate:3 }, { opacity:1, x:0, rotate:2, duration:0.35, ease:"back.out(2)" }, 5.66);
 
-    // Seam clear — stage fades across the trailing overlap with scene 15 (local 8.30-8.80).
-    tl.to("#scene-14 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.30);
-
+    // JavaScript — the one that stuck.
+    tl.fromTo("#scene-14 .s3", { opacity:0, y:20, scale:0.95 }, { opacity:1, y:0, scale:1, duration:0.5, ease:"back.out(1.7)" }, 6.96);
+    tl.fromTo("#scene-14 .s3 .word", { textShadow:"0 0 0 rgba(247,223,30,0)" }, { textShadow:"0 0 32px rgba(247,223,30,0.45)", duration:0.5 }, 7.0);
     window.__timelines["scene-14"] = tl;
   </script>
 </body>

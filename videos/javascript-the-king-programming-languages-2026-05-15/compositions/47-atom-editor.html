@@ -6,71 +6,49 @@
   <title>Scene 47 — GitHub was building a text editor called Atom</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-      --atom: #a48bff;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-47 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --ok:#7dd87d; --atom:#a48bff; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-47 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-47 .cap {
-      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
-      width: 1380px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
-    }
-    #scene-47 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-47 .cap .at { color: var(--atom); font-weight: 800; will-change: text-shadow; }
+    #scene-47 .cap { position:absolute; left:50%; top:190px; transform:translateX(-50%); width:1380px; text-align:center; font-size:50px; font-weight:600; color:var(--soft); letter-spacing:-0.8px; }
+    #scene-47 .cap .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-47 .cap .at { color:var(--atom); font-weight:800; will-change:text-shadow; }
 
     /* the Atom editor window */
-    #scene-47 .editor {
-      position: absolute; left: 50%; top: 638px; transform: translate(-50%, -50%);
-      width: 760px; border-radius: 14px; overflow: hidden;
-      background: var(--panel); border: 1px solid var(--border);
-      box-shadow: 0 28px 80px rgba(0,0,0,0.5);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-47 .editor .bar {
-      display: flex; align-items: center; gap: 14px; padding: 14px 18px;
-      background: #0f1219; border-bottom: 1px solid var(--border);
-    }
-    #scene-47 .editor .bar i { width: 12px; height: 12px; border-radius: 50%; background: var(--dim); }
-    #scene-47 .editor .bar .title {
-      margin-left: 10px; font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--muted);
-    }
-    #scene-47 .editor .bar .title b { color: var(--atom); font-weight: 700; }
-    #scene-47 .editor .body { display: flex; height: 256px; }
-    #scene-47 .editor .tree {
-      width: 168px; border-right: 1px solid var(--border); padding: 18px 16px;
-      display: flex; flex-direction: column; gap: 14px;
-    }
-    #scene-47 .editor .tree .f { height: 10px; border-radius: 5px; background: #1b2130; }
-    #scene-47 .editor .tree .f.active { background: rgba(164,139,255,0.4); }
-    #scene-47 .editor .code {
-      flex: 1; padding: 20px 22px; font-family: "JetBrains Mono", monospace; font-size: 18px; line-height: 1.7;
-    }
-    #scene-47 .editor .code .ln { display: block; opacity: 0; will-change: transform, opacity; white-space: nowrap; }
-    #scene-47 .editor .code .k { color: #c792ea; }
-    #scene-47 .editor .code .s { color: var(--ok); }
-    #scene-47 .editor .code .c { color: var(--muted); }
-    #scene-47 .editor .code .fn { color: var(--accent-2); }
+    #scene-47 .editor { position:absolute; left:50%; top:632px; transform:translateX(-50%); width:820px; border-radius:14px; overflow:hidden; background:var(--panel); border:1px solid var(--border); box-shadow:0 30px 84px rgba(0,0,0,0.52); opacity:0; will-change:transform,opacity,border-color; }
+    #scene-47 .editor .bar { display:flex; align-items:center; gap:13px; padding:14px 18px; background:#0f1219; border-bottom:1px solid var(--border); }
+    #scene-47 .editor .bar i { width:12px; height:12px; border-radius:50%; background:var(--dim); }
+    #scene-47 .editor .bar .title { margin-left:10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:18px; color:var(--muted); }
+    #scene-47 .editor .bar .title b { color:var(--atom); font-weight:700; }
+    #scene-47 .editor .body { display:flex; height:262px; }
+    #scene-47 .editor .tree { width:176px; border-right:1px solid var(--border); padding:18px 16px; display:flex; flex-direction:column; gap:14px; }
+    #scene-47 .editor .tree .f { height:10px; border-radius:5px; background:#1b2130; }
+    #scene-47 .editor .tree .f.active { background:rgba(164,139,255,0.4); }
+    #scene-47 .editor .code { flex:1; padding:20px 24px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:18px; line-height:1.7; }
+    #scene-47 .editor .code .ln { display:block; opacity:0; will-change:transform,opacity; white-space:nowrap; }
+    #scene-47 .editor .code .k { color:#c792ea; }
+    #scene-47 .editor .code .s { color:var(--ok); }
+    #scene-47 .editor .code .c { color:var(--muted); }
+    #scene-47 .editor .code .fn { color:var(--accent-2); }
+
+    /* the Atom orbital logo badge — app icon at the window's corner */
+    #scene-47 .badge { position:absolute; left:calc(50% - 410px - 28px); top:calc(632px - 131px - 28px); width:88px; height:88px; border-radius:20px; background:linear-gradient(150deg,#1a1530,#120f1f); border:1px solid rgba(164,139,255,0.5); display:flex; align-items:center; justify-content:center; box-shadow:0 14px 40px rgba(164,139,255,0.28); opacity:0; will-change:transform,opacity; }
+    #scene-47 .badge svg { width:62px; height:62px; }
+    #scene-47 .badge .nuc { fill:var(--atom); }
+    #scene-47 .badge .orbit { fill:none; stroke:var(--atom); stroke-width:3; opacity:0.85; }
+    #scene-47 .badge .el { fill:#d7ccff; }
   </style>
 </head>
 <body>
   <div id="scene-47" data-composition-id="scene-47" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">GitHub</span> <span class="w">was</span> <span class="w">building</span>
       <span class="w">a</span> <span class="w">text</span> <span class="w">editor</span>
       <span class="w">called</span> <span class="w at">Atom.</span>
     </div>
 
-    <div class="editor" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="2250" data-sfx-volume="0.42">
+    <div class="editor" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1760">
       <div class="bar">
         <i></i><i></i><i></i>
         <span class="title">&mdash; <b>Atom</b> &middot; init.js</span>
@@ -84,7 +62,7 @@
           <div class="f"></div>
         </div>
         <div class="code">
-          <span class="ln"><span class="c">// your editor, your rules</span></span>
+          <span class="ln"><span class="c">// your editor, hackable to the core</span></span>
           <span class="ln"><span class="k">export default</span> {</span>
           <span class="ln">&nbsp;&nbsp;<span class="fn">activate</span>() {</span>
           <span class="ln">&nbsp;&nbsp;&nbsp;&nbsp;atom.<span class="fn">commands</span>.<span class="fn">add</span>(<span class="s">'atom-text-editor'</span>)</span>
@@ -93,39 +71,55 @@
         </div>
       </div>
     </div>
+
+    <div class="badge" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3020">
+      <svg viewBox="0 0 100 100">
+        <g class="o1"><ellipse class="orbit" cx="50" cy="50" rx="40" ry="15"/><circle class="el" cx="90" cy="50" r="5"/></g>
+        <g class="o2"><ellipse class="orbit" cx="50" cy="50" rx="40" ry="15"/><circle class="el" cx="90" cy="50" r="5"/></g>
+        <g class="o3"><ellipse class="orbit" cx="50" cy="50" rx="40" ry="15"/><circle class="el" cx="90" cy="50" r="5"/></g>
+        <circle class="nuc" cx="50" cy="50" r="8"/>
+      </svg>
+    </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(302.34).
-    // "GitHub was building a text editor called Atom." (GitHub 0.50 ... Atom 3.02).
+    // GitHub 0.50 / was 0.91 / building 1.22 / a 1.60 / text 1.76 / editor 2.08 / called 2.56 / Atom 3.02.
+
+    // base rotations form the 3-orbit atom shape.
+    gsap.set("#scene-47 .badge .o1", { rotation:0, svgOrigin:"50 50" });
+    gsap.set("#scene-47 .badge .o2", { rotation:60, svgOrigin:"50 50" });
+    gsap.set("#scene-47 .badge .o3", { rotation:120, svgOrigin:"50 50" });
+
+    // "GitHub was building a text editor called Atom."
     const cw = [0.50, 0.91, 1.22, 1.60, 1.76, 2.08, 2.56, 3.02];
     gsap.utils.toArray("#scene-47 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+      tl.fromTo(el, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.28, ease:"power2.out" }, cw[i]);
     });
 
-    // "text editor" — the editor window settles in (text 1.76, editor 2.08).
-    tl.fromTo("#scene-47 .editor",
-      { opacity: 0, y: 26, scale: 0.96 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 1.70);
-    // code lines type in quickly, line by line.
+    // "text editor" — the editor window settles in.
+    tl.fromTo("#scene-47 .editor", { opacity:0, y:26, scale:0.96 }, { opacity:1, y:0, scale:1, duration:0.55, ease:"power3.out" }, 1.70);
+    // code lines type in line by line.
     gsap.utils.toArray("#scene-47 .editor .code .ln").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.22, ease: "power2.out" }, 2.10 + i * 0.1);
+      tl.fromTo(el, { opacity:0, x:-10 }, { opacity:1, x:0, duration:0.2, ease:"power2.out" }, 2.10 + i * 0.09);
     });
 
-    // "called Atom" — the title flares purple (Atom 3.02).
-    tl.fromTo("#scene-47 .cap .at",
-      { textShadow: "0 0 0 rgba(164,139,255,0)" },
-      { textShadow: "0 0 24px rgba(164,139,255,0.55)", duration: 0.4, ease: "power2.out" }, 3.06);
+    // "called Atom" — the orbital badge reveals, electrons spin up, the name flares.
+    tl.fromTo("#scene-47 .badge", { opacity:0, scale:0.5, rotateZ:-12 }, { opacity:1, scale:1, rotateZ:0, duration:0.5, ease:"back.out(2)" }, 3.02);
+    tl.to("#scene-47 .editor", { borderColor:"rgba(164,139,255,0.45)", duration:0.5 }, 3.06);
+    tl.fromTo("#scene-47 .cap .at", { textShadow:"0 0 0 rgba(164,139,255,0)" }, { textShadow:"0 0 24px rgba(164,139,255,0.55)", duration:0.4, ease:"power2.out" }, 3.06);
+    // electrons orbit (deterministic, finite).
+    tl.to("#scene-47 .badge .o1", { rotation:"+=360", svgOrigin:"50 50", duration:3.0, ease:"none", repeat:1 }, 3.1);
+    tl.to("#scene-47 .badge .o2", { rotation:"+=360", svgOrigin:"50 50", duration:3.6, ease:"none", repeat:1 }, 3.1);
+    tl.to("#scene-47 .badge .o3", { rotation:"+=360", svgOrigin:"50 50", duration:4.2, ease:"none", repeat:1 }, 3.1);
 
     // Subtle life — the editor breathes.
-    tl.to("#scene-47 .editor", { y: "-=5", duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.0);
+    tl.to("#scene-47 .editor", { y:"-=5", duration:2.0, ease:"sine.inOut", repeat:1, yoyo:true }, 3.0);
 
     // Seam clear — fade out across the trailing overlap with scene 48 (local 3.46-3.96).
-    tl.to("#scene-47 .cap, #scene-47 .editor",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.46);
+    tl.to("#scene-47 .cap, #scene-47 .editor, #scene-47 .badge", { opacity:0, duration:0.34, ease:"power2.inOut" }, 3.48);
 
     window.__timelines["scene-47"] = tl;
   </script>

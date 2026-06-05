@@ -26,6 +26,7 @@
     }
     #scene-68 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
     #scene-68 .cap .k { color: var(--accent); font-weight: 800; }
+    #scene-68 .cap .t { color: var(--danger); font-weight: 800; will-change: text-shadow; }
 
     /* the crowned JavaScript */
     #scene-68 .throne {
@@ -62,31 +63,31 @@
 </head>
 <body>
   <div id="scene-68" data-composition-id="scene-68" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">And</span> <span class="w">that</span> <span class="w">was</span> <span class="w">the</span>
-      <span class="w">beginning</span> <span class="w">of</span> <span class="w">a</span> <span class="w k">terror</span>
-      <span class="w k">reign</span> <span class="w">by</span> <span class="w k">JavaScript,</span> <span class="w">as</span>
+      <span class="w">beginning</span> <span class="w">of</span> <span class="w">a</span> <span class="w t">terror</span>
+      <span class="w t">reign</span> <span class="w">by</span> <span class="w k">JavaScript,</span> <span class="w">as</span>
       <span class="w">the</span> <span class="w">world&rsquo;s</span> <span class="w k">most</span> <span class="w k">dominant</span>
       <span class="w">language.</span>
     </div>
 
     <div class="throne">
-      <svg class="crown" viewBox="0 0 150 84" aria-hidden="true" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3480">
+      <svg class="crown" viewBox="0 0 150 84" aria-hidden="true" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3200">
         <path d="M12 78 L24 28 L52 56 L75 18 L98 56 L126 28 L138 78 Z"/>
         <circle cx="24" cy="24" r="7"/>
         <circle cx="75" cy="13" r="8"/>
         <circle cx="126" cy="24" r="7"/>
       </svg>
-      <img class="js" src="assets/icons/javascript.svg" alt="JavaScript">
-      <div class="badge" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6070" data-sfx-volume="0.35"><span class="hash">#1</span> world&rsquo;s most dominant</div>
+      <img class="js" src="../assets/icons/javascript.svg" alt="JavaScript" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1560">
+      <div class="badge" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5840"><span class="hash">#1</span> world&rsquo;s most dominant</div>
     </div>
 
     <div class="fallen">
       <span class="lbl">the former rulers</span>
-      <div class="f"><img src="assets/icons/perl.svg" alt="Perl"><span>Perl</span></div>
-      <div class="f"><img src="assets/icons/php.svg" alt="PHP"><span>PHP</span></div>
-      <div class="f"><img src="assets/icons/python.svg" alt="Python"><span>Python</span></div>
-      <div class="f"><img src="assets/icons/ruby.svg" alt="Ruby"><span>Ruby</span></div>
+      <div class="f"><img src="../assets/icons/perl.svg" alt="Perl"><span>Perl</span></div>
+      <div class="f"><img src="../assets/icons/php.svg" alt="PHP"><span>PHP</span></div>
+      <div class="f"><img src="../assets/icons/python.svg" alt="Python"><span>Python</span></div>
+      <div class="f"><img src="../assets/icons/ruby.svg" alt="Ruby"><span>Ruby</span></div>
     </div>
   </div>
 
@@ -109,7 +110,12 @@
     // the former rulers gather below, dimmed (of a 2.40).
     tl.to("#scene-68 .fallen", { opacity: 1, duration: 0.5, ease: "power2.out" }, 2.20);
 
-    // "terror reign" — the crown descends onto JavaScript (reign 3.20).
+    // "terror reign" — the menace words bloom danger-red (terror 2.76).
+    tl.fromTo("#scene-68 .cap .t",
+      { textShadow: "0 0 0 rgba(255,107,93,0)" },
+      { textShadow: "0 0 22px rgba(255,107,93,0.55)", duration: 0.4, ease: "power2.out" }, 2.80);
+
+    // "reign" — the crown descends onto JavaScript and the logo ignites royal-yellow (reign 3.20).
     tl.fromTo("#scene-68 .crown",
       { opacity: 0, y: -46, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.7)" }, 3.20);
     tl.to("#scene-68 .js",

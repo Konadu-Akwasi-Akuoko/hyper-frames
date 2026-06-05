@@ -7,106 +7,118 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
     :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-      --atom: #a48bff; --node: #8cc84b; --chrome: #4a8cff;
+      --bg:#0b0d12; --panel:#11141b; --border:#1f242c;
+      --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150;
+      --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d;
+      --atom:#a48bff; --node:#8cc84b; --chrome:#4a8cff;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-51 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-51 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-51 .cap {
-      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
-      width: 1380px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
-    }
-    #scene-51 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-51 .cap { position:absolute; left:50%; top:196px; transform:translateX(-50%); width:1380px; text-align:center; font-size:50px; font-weight:600; color:var(--soft); letter-spacing:-0.8px; }
+    #scene-51 .cap .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-51 .cap .nm { color:var(--atom); font-weight:800; will-change:text-shadow; }
 
-    /* the nameplate */
-    #scene-51 .plate {
-      position: absolute; left: 50%; top: 612px; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center; gap: 26px;
-      padding: 50px 78px; border-radius: 20px;
-      background: var(--panel); border: 1px solid var(--border);
-      box-shadow: 0 28px 80px rgba(0,0,0,0.5);
-      opacity: 0; will-change: transform, opacity;
-    }
-    /* the bundled runtime contents — a callback to the single runtime */
-    #scene-51 .bundle { display: flex; align-items: center; gap: 14px; opacity: 0; will-change: transform, opacity; }
-    #scene-51 .bundle .mod {
-      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 600; color: var(--muted);
-      padding: 7px 16px; border-radius: 999px; border: 1px solid var(--border);
-    }
-    #scene-51 .bundle .mod.cr { color: var(--chrome); border-color: rgba(74,140,255,0.4); }
-    #scene-51 .bundle .mod.nd { color: var(--node); border-color: rgba(140,200,75,0.4); }
-    #scene-51 .bundle .plus { color: var(--dim); font-size: 24px; }
+    /* the naming row: sealed runtime module  →[named]→  the Atom Shell wordmark */
+    #scene-51 .row { position:absolute; left:50%; top:618px; transform:translate(-50%,-50%); display:flex; align-items:center; gap:44px; }
 
-    #scene-51 .name {
-      font-family: "JetBrains Mono", monospace; font-size: 92px; font-weight: 800; letter-spacing: -2px; line-height: 1;
-      color: var(--soft); opacity: 0; will-change: transform, opacity;
-    }
-    #scene-51 .name .at { color: var(--atom); }
-    #scene-51 .tag {
-      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; letter-spacing: 1px;
-      color: var(--muted); padding: 7px 22px; border-radius: 999px; border: 1px solid var(--dim);
-      opacity: 0; will-change: transform, opacity;
-    }
+    /* left — the sealed runtime module (callback to the wrapped single runtime) */
+    #scene-51 .runtime { display:flex; flex-direction:column; align-items:center; gap:18px; padding:30px 42px; border-radius:18px; background:var(--panel); border:1px solid rgba(164,139,255,0.32); box-shadow:0 24px 64px rgba(0,0,0,0.46); opacity:0; will-change:transform,opacity; }
+    #scene-51 .runtime .engines { display:flex; align-items:center; gap:18px; }
+    #scene-51 .runtime .engines img { width:64px; height:64px; object-fit:contain; }
+    #scene-51 .runtime .engines .plus { font-size:30px; font-weight:300; color:var(--dim); }
+    #scene-51 .runtime .rlabel { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:19px; font-weight:600; color:var(--muted); letter-spacing:0.5px; }
+
+    /* center — the naming connector */
+    #scene-51 .conn { display:flex; flex-direction:column; align-items:center; gap:10px; opacity:0; will-change:opacity; }
+    #scene-51 .conn .clbl { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:17px; font-weight:700; letter-spacing:1.5px; color:var(--muted); text-transform:lowercase; }
+    #scene-51 .conn .arr { font-size:40px; font-weight:300; color:var(--atom); line-height:1; }
+
+    /* right — the christened name */
+    #scene-51 .nameplate { position:relative; display:flex; flex-direction:column; align-items:center; gap:18px; opacity:0; will-change:transform,opacity; }
+    #scene-51 .nameplate .mark { width:74px; height:74px; }
+    #scene-51 .nameplate .mark .nuc { fill:var(--atom); }
+    #scene-51 .nameplate .mark .orbit { fill:none; stroke:var(--atom); stroke-width:3; opacity:0.88; }
+    #scene-51 .nameplate .mark .el { fill:#d7ccff; }
+    #scene-51 .nameplate .name { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:78px; font-weight:800; letter-spacing:-2px; line-height:1; color:var(--soft); white-space:nowrap; }
+    #scene-51 .nameplate .name .at { color:var(--atom); }
+    #scene-51 .nameplate .flash { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:360px; height:160px; border-radius:18px; border:2px solid var(--atom); opacity:0; pointer-events:none; will-change:transform,opacity; }
   </style>
 </head>
 <body>
   <div id="scene-51" data-composition-id="scene-51" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">The</span> <span class="w">runtime</span> <span class="w">was</span>
-      <span class="w">called</span> <span class="w">Atom</span> <span class="w">Shell.</span>
+      <span class="w">called</span> <span class="w nm">Atom</span> <span class="w nm">Shell.</span>
     </div>
 
-    <div class="plate">
-      <div class="bundle">
-        <span class="mod cr">Chromium</span>
-        <span class="plus">+</span>
-        <span class="mod nd">Node.js</span>
+    <div class="row">
+      <div class="runtime">
+        <div class="engines">
+          <img src="../assets/icons/chrome.svg" alt="Chromium">
+          <span class="plus">+</span>
+          <img src="../assets/icons/nodejs.svg" alt="Node.js">
+        </div>
+        <span class="rlabel">the runtime</span>
       </div>
-      <div class="name" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2430" data-sfx-volume="0.35"><span class="at">Atom</span> Shell</div>
-      <div class="tag">runtime</div>
+
+      <div class="conn" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1300">
+        <span class="clbl">named</span>
+        <span class="arr">&rarr;</span>
+      </div>
+
+      <div class="nameplate" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1860">
+        <svg class="mark" viewBox="0 0 100 100">
+          <g class="o1"><ellipse class="orbit" cx="50" cy="50" rx="40" ry="15"/><circle class="el" cx="90" cy="50" r="5"/></g>
+          <g class="o2"><ellipse class="orbit" cx="50" cy="50" rx="40" ry="15"/><circle class="el" cx="90" cy="50" r="5"/></g>
+          <g class="o3"><ellipse class="orbit" cx="50" cy="50" rx="40" ry="15"/><circle class="el" cx="90" cy="50" r="5"/></g>
+          <circle class="nuc" cx="50" cy="50" r="8"/>
+        </svg>
+        <div class="name"><span class="at">Atom</span> Shell</div>
+        <div class="flash"></div>
+      </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused:true });
 
     // Scene-local = global - data_start(316.78).
-    // "The runtime was called Atom Shell." (runtime 0.66, called 1.30, Atom 1.86, Shell 2.30).
+    // The 0.50 / runtime 0.66 / was 1.08 / called 1.30 / Atom 1.86 / Shell 2.30.
+
+    // base rotations form the 3-orbit atom mark.
+    gsap.set("#scene-51 .mark .o1", { rotation:0, svgOrigin:"50 50" });
+    gsap.set("#scene-51 .mark .o2", { rotation:60, svgOrigin:"50 50" });
+    gsap.set("#scene-51 .mark .o3", { rotation:120, svgOrigin:"50 50" });
+
+    // "The runtime was called Atom Shell."
     const cw = [0.50, 0.66, 1.08, 1.30, 1.86, 2.30];
     gsap.utils.toArray("#scene-51 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+      tl.fromTo(el, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.28, ease:"power2.out" }, cw[i]);
     });
 
-    // "runtime" — the plate settles and the bundled runtime appears (runtime 0.66).
-    tl.fromTo("#scene-51 .plate",
-      { opacity: 0, y: 26, scale: 0.96 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.62);
-    tl.fromTo("#scene-51 .bundle",
-      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.78);
+    // "runtime" — the sealed runtime module slides in from the left.
+    tl.fromTo("#scene-51 .runtime", { opacity:0, x:-40, scale:0.96 }, { opacity:1, x:0, scale:1, duration:0.5, ease:"power3.out" }, 0.62);
 
-    // "called Atom Shell" — the name stamps on (Atom 1.86, Shell 2.30).
-    tl.fromTo("#scene-51 .name",
-      { opacity: 0, scale: 1.2 },
-      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 2.18);
-    tl.fromTo("#scene-51 .tag",
-      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 2.44);
+    // "called" — the naming connector appears.
+    tl.fromTo("#scene-51 .conn", { opacity:0, x:-10 }, { opacity:1, x:0, duration:0.34, ease:"power2.out" }, 1.30);
 
-    // Subtle life — the plate breathes once named.
-    tl.to("#scene-51 .plate", { y: "-=5", duration: 1.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.7);
+    // "Atom Shell" — the name stamps in hard; a ring flashes out; the word flares.
+    tl.fromTo("#scene-51 .nameplate", { opacity:0, scale:1.18 }, { opacity:1, scale:1, duration:0.46, ease:"back.out(1.5)" }, 1.86);
+    tl.fromTo("#scene-51 .nameplate .flash", { opacity:0.85, scale:0.7 }, { opacity:0, scale:1.25, duration:0.5, ease:"power2.out" }, 1.90);
+    tl.fromTo("#scene-51 .cap .nm", { textShadow:"0 0 0 rgba(164,139,255,0)" }, { textShadow:"0 0 26px rgba(164,139,255,0.55)", duration:0.4, ease:"power2.out" }, 2.30);
+    // electrons orbit (deterministic, finite).
+    tl.to("#scene-51 .mark .o1", { rotation:"+=360", svgOrigin:"50 50", duration:3.4, ease:"none", repeat:1 }, 2.0);
+    tl.to("#scene-51 .mark .o2", { rotation:"+=360", svgOrigin:"50 50", duration:4.0, ease:"none", repeat:1 }, 2.0);
+    tl.to("#scene-51 .mark .o3", { rotation:"+=360", svgOrigin:"50 50", duration:4.6, ease:"none", repeat:1 }, 2.0);
 
-    // Seam clear — fade out across the trailing overlap with scene 52 (local 2.80-3.30).
-    tl.to("#scene-51 .cap, #scene-51 .plate",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 2.80);
+    // Subtle life — the runtime module breathes while it waits to be named.
+    tl.to("#scene-51 .runtime", { y:"-=5", duration:1.7, ease:"sine.inOut", repeat:1, yoyo:true }, 0.7);
+
+    // Seam clear — fade out across the trailing overlap with scene 52 (local 2.96-3.30).
+    tl.to("#scene-51 .cap, #scene-51 .row", { opacity:0, duration:0.32, ease:"power2.inOut" }, 2.96);
 
     window.__timelines["scene-51"] = tl;
   </script>

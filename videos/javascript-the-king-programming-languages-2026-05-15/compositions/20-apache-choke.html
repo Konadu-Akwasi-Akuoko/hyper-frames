@@ -6,123 +6,75 @@
   <title>Scene 20 — Apache choking under concurrent connections</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-20 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-20 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-20 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1380px; display: flex; align-items: center; justify-content: center; gap: 100px;
-    }
+    #scene-20 .head { position:absolute; left:50%; top:20%; transform:translateX(-50%); font-size:46px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-20 .head .ck { color:var(--danger); font-weight:800; }
+    #scene-20 .head .cc { color:var(--accent-2); font-weight:700; }
 
-    /* the Apache server, under load */
-    #scene-20 .server {
-      width: 460px; height: 460px; border-radius: 28px;
-      border: 2px solid var(--border); background: var(--panel);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-      opacity: 0; will-change: transform, opacity, border-color, box-shadow;
-    }
-    #scene-20 .server img { width: 200px; height: 200px; }
-    #scene-20 .server .nm { font-size: 52px; font-weight: 800; color: var(--fg); letter-spacing: -1px; }
+    #scene-20 .stage { position:absolute; left:50%; top:58%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:120px; }
 
-    /* the flood of concurrent connections */
-    #scene-20 .load { width: 600px; }
-    #scene-20 .load .hd {
-      font-family: "JetBrains Mono", monospace; font-size: 24px; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 22px;
-      opacity: 0; will-change: opacity;
-    }
-    #scene-20 .stack { display: flex; flex-direction: column-reverse; gap: 12px; position: relative; }
-    #scene-20 .pill {
-      height: 36px; border-radius: 8px; background: var(--accent-2);
-      transform-origin: left center; transform: scaleX(0); opacity: 0;
-      will-change: transform, opacity;
-    }
-    #scene-20 .pill.over { background: var(--danger); }
-    /* capacity line — where Apache runs out */
-    #scene-20 .cap-line {
-      position: absolute; left: -10px; right: -10px; height: 2px;
-      background: repeating-linear-gradient(90deg, var(--muted) 0 10px, transparent 10px 18px);
-      bottom: 196px; opacity: 0;
-    }
-    #scene-20 .cap-line .t {
-      position: absolute; left: 100%; margin-left: 16px; top: -10px; white-space: nowrap;
-      font-family: "JetBrains Mono", monospace; font-size: 18px; letter-spacing: 1px;
-      color: var(--muted); text-transform: uppercase;
-    }
+    /* incoming concurrent connections */
+    #scene-20 .conns { display:flex; flex-direction:column; gap:20px; align-items:flex-end; }
+    #scene-20 .conns .ln { display:flex; align-items:center; gap:0; opacity:0; will-change:transform,opacity; }
+    #scene-20 .conns .ln .bar { width:130px; height:3px; border-radius:2px; background:var(--accent-2); opacity:0.8; }
+    #scene-20 .conns .ln .tip { width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent; border-left:11px solid var(--accent-2); }
+    #scene-20 .conns .clabel { margin-top:14px; font-size:21px; color:var(--muted); align-self:center; }
+
+    /* the Apache server, choking */
+    #scene-20 .apache { width:300px; background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:30px 28px; display:flex; flex-direction:column; align-items:center; gap:18px; opacity:0; will-change:transform,opacity; box-shadow:0 26px 70px rgba(0,0,0,0.46); }
+    #scene-20 .apache img { width:96px; height:96px; object-fit:contain; }
+    #scene-20 .apache .nm { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:26px; font-weight:600; color:var(--soft); }
+    #scene-20 .apache .meter { width:100%; height:14px; background:#0d1016; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+    #scene-20 .apache .meter .fill { height:100%; width:28%; background:var(--ok); border-radius:7px; will-change:width,background-color; }
   </style>
 </head>
 <body>
   <div id="scene-20" data-composition-id="scene-20" data-width="1920" data-height="1080">
+    <div class="head">Apache <span class="ck">choked</span> under <span class="cc">concurrent connections</span>.</div>
+
     <div class="stage">
-      <div class="server">
-        <img src="assets/icons/apache.svg" alt="Apache">
-        <div class="nm">Apache</div>
+      <div class="conns" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2380">
+        <div class="ln l1"><span class="bar"></span><span class="tip"></span></div>
+        <div class="ln l2"><span class="bar"></span><span class="tip"></span></div>
+        <div class="ln l3"><span class="bar"></span><span class="tip"></span></div>
+        <div class="ln l4"><span class="bar"></span><span class="tip"></span></div>
+        <div class="ln l5"><span class="bar"></span><span class="tip"></span></div>
+        <div class="ln l6"><span class="bar"></span><span class="tip"></span></div>
       </div>
-      <div class="load">
-        <div class="hd">concurrent connections</div>
-        <div class="stack"
-             data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1620">
-          <div class="cap-line"><span class="t">capacity</span></div>
-          <div class="pill"></div>
-          <div class="pill"></div>
-          <div class="pill"></div>
-          <div class="pill"></div>
-          <div class="pill over"></div>
-          <div class="pill over"></div>
-          <div class="pill over"></div>
-        </div>
+      <div class="apache" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1260">
+        <img src="../assets/icons/apache.svg" alt="Apache">
+        <div class="nm">Apache</div>
+        <div class="meter"><div class="fill" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1740"></div></div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(161.16).
-    // "He'd been watching" — Apache box present from the open (He'd 0.50).
-    tl.fromTo("#scene-20 .server",
-      { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.40);
-    tl.fromTo("#scene-20 .load .hd",
-      { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.86);
-    tl.fromTo("#scene-20 .cap-line",
-      { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.00);
+    // He'd-watching 0.50 / Apache 1.26 / choke 1.74 / concurrent 2.38 / connections 2.92.
 
-    // Connections flood in, stacking fast and overrunning capacity (watching 0.86 -> connections 2.92).
-    const pills = gsap.utils.toArray("#scene-20 .pill");
-    pills.forEach((el, i) => {
-      tl.fromTo(el, { scaleX: 0, opacity: 0 },
-        { scaleX: 1, opacity: 1, duration: 0.22, ease: "power2.out" }, 0.86 + i * 0.18);
-    });
+    // the line.
+    tl.fromTo("#scene-20 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "choke" — the server reddens, shakes, the over-capacity pills already glaring red (choke 1.74).
-    tl.to("#scene-20 .server",
-      { borderColor: "#ff6b5d", boxShadow: "0 0 32px rgba(255,107,93,0.4)", duration: 0.3, ease: "power2.out" }, 1.74);
-    tl.to("#scene-20 .server",
-      { x: "+=7", duration: 0.05, repeat: 5, yoyo: true, ease: "none" }, 1.78);
-    tl.to("#scene-20 .server", { x: 0, duration: 0.05 }, 2.10);
+    // the Apache server stands up, healthy.
+    tl.fromTo("#scene-20 .apache", { opacity:0, y:24, scale:0.95 }, { opacity:1, y:0, scale:1, duration:0.5, ease:"back.out(1.5)" }, 1.26);
 
-    // "concurrent connections" — the header pulses as the label lands (concurrent 2.38).
-    tl.fromTo("#scene-20 .load .hd",
-      { color: "#7a8493" }, { color: "#67e8f9", duration: 0.4, ease: "power2.out" }, 2.38);
+    // "choke" — the load meter spikes to red, the box shudders.
+    tl.to("#scene-20 .apache .fill", { width:"100%", backgroundColor:"#ff6b5d", duration:0.45, ease:"power3.in" }, 1.74);
+    tl.to("#scene-20 .apache", { x:"+=5", duration:0.06, yoyo:true, repeat:7 }, 1.74);
+    tl.fromTo("#scene-20 .apache", { boxShadow:"0 26px 70px rgba(0,0,0,0.46)" }, { boxShadow:"0 26px 70px rgba(0,0,0,0.46), 0 0 44px rgba(255,107,93,0.34)", duration:0.4 }, 1.78);
 
-    // Subtle life — the load panel trembles a hair under strain.
-    tl.to("#scene-20 .stack", { y: "+=4", duration: 0.9, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.6);
+    // "concurrent connections" — they flood in toward the server.
+    tl.fromTo("#scene-20 .conns .ln", { opacity:0, x:-70 }, { opacity:1, x:0, duration:0.34, ease:"power2.out", stagger:0.06 }, 2.38);
 
-    // Seam clear — stage fades across the trailing overlap with scene 21 (local 3.80-4.30).
-    tl.to("#scene-20 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.80);
-
+    // idle: the red overload pulses, the connection arrows keep nudging in.
+    tl.to("#scene-20 .apache .fill", { opacity:0.72, duration:0.5, ease:"sine.inOut", repeat:3, yoyo:true }, 3.0);
     window.__timelines["scene-20"] = tl;
   </script>
 </body>

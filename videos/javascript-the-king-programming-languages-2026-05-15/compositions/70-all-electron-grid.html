@@ -10,6 +10,7 @@
       --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
       --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
       --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --electron: #9feaf9;
       --discord: #5865f2; --notion: #e8eaed; --onepw: #1a8cff; --obsidian: #a172ff;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,6 +41,7 @@
       width: 104px; height: 104px; border-radius: 24px; display: flex; align-items: center; justify-content: center;
       font-family: "Inter", sans-serif; font-size: 52px; font-weight: 800; color: #fff;
       box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      will-change: box-shadow;
     }
     #scene-70 .tile .ic img { width: 56px; height: 56px; }
     #scene-70 .tile .nm { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 700; color: var(--soft); }
@@ -64,22 +66,22 @@
 </head>
 <body>
   <div id="scene-70" data-composition-id="scene-70" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">Discord,</span> <span class="w">Figma,</span> <span class="w">Notion,</span>
       <span class="w">1Password,</span> <span class="w">Obsidian</span> &mdash;
       <span class="w el">all</span> <span class="w el">Electron.</span>
     </div>
 
-    <div class="grid">
+    <div class="grid" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5060">
       <div class="tile discord"><div class="ic">D</div><span class="nm">Discord</span></div>
-      <div class="tile figma"><div class="ic"><img src="assets/icons/figma.svg" alt="Figma"></div><span class="nm">Figma</span></div>
-      <div class="tile notion"><div class="ic">N</div><span class="nm">Notion</span></div>
-      <div class="tile onepw"><div class="ic">1</div><span class="nm">1Password</span></div>
-      <div class="tile obsidian"><div class="ic">O</div><span class="nm">Obsidian</span></div>
+      <div class="tile figma" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1300"><div class="ic"><img src="../assets/icons/figma.svg" alt="Figma"></div><span class="nm">Figma</span></div>
+      <div class="tile notion" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1980"><div class="ic">N</div><span class="nm">Notion</span></div>
+      <div class="tile onepw" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2700"><div class="ic">1</div><span class="nm">1Password</span></div>
+      <div class="tile obsidian" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3280"><div class="ic">O</div><span class="nm">Obsidian</span></div>
     </div>
 
-    <div class="verdict" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4760" data-sfx-volume="0.35">
-      <img src="assets/icons/electron.svg" alt="Electron">
+    <div class="verdict" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4460">
+      <img src="../assets/icons/electron.svg" alt="Electron">
       <span class="t">all Electron</span>
     </div>
   </div>
@@ -108,8 +110,12 @@
     tl.fromTo("#scene-70 .verdict",
       { opacity: 0, y: 18, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 4.46);
 
+    // "Electron" — every tile flushes to a shared Electron-cyan glow: five apps, one runtime (Electron 5.06).
+    tl.to("#scene-70 .tile .ic",
+      { boxShadow: "0 0 30px rgba(159,234,249,0.5)", duration: 0.45, ease: "power2.out", stagger: 0.05 }, 5.06);
+
     // Subtle life — the grid holds with a faint breath.
-    tl.to("#scene-70 .grid", { y: "-=4", duration: 1.4, ease: "sine.inOut" }, 5.2);
+    tl.to("#scene-70 .grid", { y: "-=4", duration: 1.4, ease: "sine.inOut" }, 5.4);
 
     // Seam clear — fade out across the trailing overlap with scene 71 (local 5.72-6.22).
     tl.to("#scene-70 .cap, #scene-70 .grid, #scene-70 .verdict",

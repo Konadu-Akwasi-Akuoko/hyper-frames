@@ -6,93 +6,53 @@
   <title>Scene 36 — he called it Node.js</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-      --node: #8cc84b;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-36 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-36 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-36 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center;
-    }
-    #scene-36 .lead {
-      font-size: 50px; font-weight: 500; color: var(--muted); letter-spacing: -0.5px; margin-bottom: 40px;
-    }
-    #scene-36 .lead .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-36 .wrap { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:26px; }
 
-    #scene-36 .reveal {
-      display: flex; align-items: center; gap: 36px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-36 .reveal img { width: 208px; height: 208px; will-change: filter; }
-    #scene-36 .reveal .wm {
-      font-size: 132px; font-weight: 900; color: var(--node); letter-spacing: -4px; will-change: text-shadow;
-    }
+    #scene-36 .pre { font-size:30px; font-weight:500; color:var(--muted); letter-spacing:0.3px; opacity:0; will-change:transform,opacity; }
 
-    /* a celebratory burst ring on the reveal */
-    #scene-36 .burst {
-      position: absolute; left: 50%; top: 56%; width: 360px; height: 360px; margin: -180px 0 0 -180px;
-      border-radius: 50%; border: 4px solid var(--node); opacity: 0; will-change: transform, opacity;
-    }
+    #scene-36 .logo { position:relative; width:200px; height:200px; opacity:0; will-change:transform,opacity; }
+    #scene-36 .logo img { width:200px; height:200px; object-fit:contain; filter:drop-shadow(0 0 0 rgba(125,216,125,0)); will-change:filter; }
+
+    #scene-36 .name { position:relative; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:88px; font-weight:800; color:var(--soft); letter-spacing:-1px; opacity:0; will-change:transform,opacity; overflow:hidden; }
+    #scene-36 .name .dot { color:var(--ok); }
+    #scene-36 .name .shine { position:absolute; top:0; left:-40%; width:36%; height:100%; transform:skewX(-18deg);
+      background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.16) 50%, rgba(255,255,255,0) 100%); pointer-events:none; }
   </style>
 </head>
 <body>
   <div id="scene-36" data-composition-id="scene-36" data-width="1920" data-height="1080">
-    <div class="burst"></div>
-    <div class="stage">
-      <div class="lead">
-        <span class="w">He</span> <span class="w">called</span> <span class="w">it&hellip;</span>
-      </div>
-      <div class="reveal" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="1800" data-sfx-volume="0.35">
-        <img src="assets/icons/nodejs.svg" alt="Node.js">
-        <span class="wm">Node.js</span>
-      </div>
+    <div class="wrap">
+      <div class="pre">He called it&hellip;</div>
+      <div class="logo" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="700"><img src="../assets/icons/nodejs.svg" alt="Node.js"></div>
+      <div class="name" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1520">Node<span class="dot">.js</span><span class="shine"></span></div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(247.58).
-    // "He called it" (He 0.50, called 0.64, it 0.90).
-    const lead = [0.50, 0.64, 0.90];
-    gsap.utils.toArray("#scene-36 .lead .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, lead[i]);
-    });
+    // He 0.50 / called 0.64 / Node.js 1.52 (held to 2.88).
 
-    // "Node.js" — the name lands, logo + wordmark punch in (Node.js 1.52).
-    tl.fromTo("#scene-36 .reveal",
-      { opacity: 0, y: 26, scale: 0.86 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.8)" }, 1.52);
-    tl.fromTo("#scene-36 .reveal img",
-      { filter: "drop-shadow(0 0 0 rgba(140,200,75,0))" },
-      { filter: "drop-shadow(0 0 30px rgba(140,200,75,0.5))", duration: 0.5, ease: "power2.out" }, 1.7);
-    tl.fromTo("#scene-36 .reveal .wm",
-      { textShadow: "0 0 0 rgba(140,200,75,0)" },
-      { textShadow: "0 0 40px rgba(140,200,75,0.5)", duration: 0.5, ease: "power2.out" }, 1.7);
+    // "He called it…"
+    tl.fromTo("#scene-36 .pre", { opacity:0, y:10 }, { opacity:1, y:0, duration:0.45, ease:"power2.out" }, 0.50);
 
-    // the celebratory burst ring expands and fades on the reveal.
-    tl.fromTo("#scene-36 .burst",
-      { opacity: 0.7, scale: 0.4 },
-      { opacity: 0, scale: 1.25, duration: 0.7, ease: "power2.out", immediateRender: false }, 1.56);
+    // the logo lands, confident.
+    tl.fromTo("#scene-36 .logo", { opacity:0, scale:0.6, rotate:-12 }, { opacity:1, scale:1, rotate:0, duration:0.6, ease:"back.out(1.7)" }, 0.70);
+    tl.fromTo("#scene-36 .logo img", { filter:"drop-shadow(0 0 0 rgba(125,216,125,0))" }, { filter:"drop-shadow(0 0 30px rgba(125,216,125,0.45))", duration:0.5 }, 1.10);
 
-    // Subtle life — the wordmark breathes after landing.
-    tl.to("#scene-36 .reveal", { y: "-=5", duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.3);
+    // "Node.js" — the name reveals.
+    tl.fromTo("#scene-36 .name", { opacity:0, y:14, scale:0.94 }, { opacity:1, y:0, scale:1, duration:0.5, ease:"power3.out" }, 1.52);
+    tl.fromTo("#scene-36 .name .shine", { left:"-40%" }, { left:"130%", duration:0.7, ease:"power2.inOut" }, 1.95);
 
-    // Seam clear — fade out across the trailing overlap with scene 37 (local 2.98-3.48).
-    tl.to("#scene-36 .stage, #scene-36 .burst",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 2.98);
-
+    // idle: the logo bobs gently, glow breathes.
+    tl.to("#scene-36 .logo", { y:-8, duration:1.0, ease:"sine.inOut", repeat:1, yoyo:true }, 2.5);
+    tl.to("#scene-36 .logo img", { filter:"drop-shadow(0 0 44px rgba(125,216,125,0.6))", duration:0.9, ease:"sine.inOut", repeat:1, yoyo:true }, 2.5);
     window.__timelines["scene-36"] = tl;
   </script>
 </body>

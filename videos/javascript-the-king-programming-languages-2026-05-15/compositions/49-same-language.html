@@ -3,128 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 49 — customizable in the same language its users wrote every day, JavaScript</title>
+  <title>Scene 49 — customizable in the same language: JavaScript</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-49 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-49 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-49 .cap {
-      position: absolute; left: 50%; top: 188px; transform: translateX(-50%);
-      width: 1480px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
-    }
-    #scene-49 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-49 .cap .js { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+    #scene-49 .cap { position:absolute; left:50%; top:182px; transform:translateX(-50%); width:1500px; text-align:center; font-size:50px; font-weight:600; color:var(--soft); letter-spacing:-0.8px; }
+    #scene-49 .cap .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-49 .cap .js { color:var(--accent); font-weight:800; will-change:text-shadow; }
 
-    #scene-49 .rig {
-      position: absolute; left: 50%; top: 600px; transform: translate(-50%, -50%);
-      display: flex; align-items: center; gap: 0;
-    }
+    /* the two JS code cards converging on one language */
+    #scene-49 .cc { position:absolute; top:512px; width:316px; background:var(--panel); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 22px 60px rgba(0,0,0,0.45); opacity:0; will-change:transform,opacity; }
+    #scene-49 .cc .bar { display:flex; align-items:center; justify-content:space-between; padding:11px 16px; background:#0f1219; border-bottom:1px solid var(--border); }
+    #scene-49 .cc .bar .fn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:17px; color:var(--soft); }
+    #scene-49 .cc .bar .tag { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px; color:var(--muted); }
+    #scene-49 .cc .code { padding:16px 18px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:17px; line-height:1.6; white-space:nowrap; }
+    #scene-49 .cc .code .k { color:#c792ea; }
+    #scene-49 .cc .code .s { color:var(--ok); }
+    #scene-49 .cc .code .f { color:var(--accent-2); }
+    #scene-49 .cc .role { padding:0 18px 14px; font-size:16px; color:var(--muted); }
+    #scene-49 #cc-app { left:300px; }
+    #scene-49 #cc-cfg { left:1304px; }
 
-    /* the two converging chips */
-    #scene-49 .chip {
-      width: 252px; padding: 26px 28px; border-radius: 16px;
-      background: var(--panel); border: 1px solid var(--border);
-      font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--soft);
-      text-align: center; line-height: 1.4; flex: none;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-49 .chip .sub { display: block; font-size: 17px; font-weight: 500; color: var(--muted); margin-top: 6px; }
+    /* the converging connectors */
+    #scene-49 .wires { position:absolute; inset:0; width:1920px; height:1080px; }
+    #scene-49 .wires path { fill:none; stroke:var(--dim); stroke-width:3; stroke-linecap:round; will-change:stroke; }
 
-    /* arrows from chips to the centre logo */
-    #scene-49 .arrow { width: 96px; height: 4px; flex: none; position: relative; }
-    #scene-49 .arrow .b {
-      position: absolute; top: 50%; left: 0; width: 100%; height: 4px; transform: translateY(-50%) scaleX(0);
-      background: linear-gradient(90deg, rgba(247,223,30,0.15), var(--accent)); border-radius: 2px;
-    }
-    #scene-49 .arrow.left .b { transform-origin: left center; }
-    #scene-49 .arrow.right .b { transform-origin: right center; background: linear-gradient(270deg, rgba(247,223,30,0.15), var(--accent)); }
-
-    /* the JS logo at the centre — the one language */
-    #scene-49 .hub { display: flex; flex-direction: column; align-items: center; gap: 18px; flex: none; }
-    #scene-49 .logo {
-      width: 176px; height: 176px; border-radius: 24px; flex: none;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0.4; will-change: transform, opacity, box-shadow;
-    }
-    #scene-49 .logo img { width: 176px; height: 176px; }
-    #scene-49 .one {
-      font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px;
-      opacity: 0; will-change: transform, opacity;
-    }
+    /* the one language — JS hero */
+    #scene-49 .hub { position:absolute; left:872px; top:512px; width:176px; display:flex; flex-direction:column; align-items:center; gap:16px; }
+    #scene-49 .logo { width:176px; height:176px; opacity:0.4; will-change:transform,opacity; }
+    #scene-49 .logo img { width:176px; height:176px; object-fit:contain; }
+    #scene-49 .one { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:23px; font-weight:700; color:var(--accent-2); letter-spacing:0.5px; opacity:0; will-change:transform,opacity; white-space:nowrap; }
   </style>
 </head>
 <body>
   <div id="scene-49" data-composition-id="scene-49" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">customizable</span> <span class="w">in</span> <span class="w">the</span>
       <span class="w">same</span> <span class="w">language</span> <span class="w">its</span>
       <span class="w">users</span> <span class="w">wrote</span> <span class="w">every</span>
       <span class="w">day,</span> <span class="w js">JavaScript.</span>
     </div>
 
-    <div class="rig">
-      <div class="chip" id="chip-daily">wrote every day<span class="sub">their own code</span></div>
-      <div class="arrow left"><div class="b"></div></div>
-      <div class="hub">
-        <div class="logo" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4570"><img src="assets/icons/javascript.svg" alt="JavaScript"></div>
-        <div class="one">one language</div>
-      </div>
-      <div class="arrow right"><div class="b"></div></div>
-      <div class="chip" id="chip-config" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1000" data-sfx-volume="0.35">configured Atom<span class="sub">the editor itself</span></div>
+    <svg class="wires" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <path class="c-app" d="M616 600 H872"/>
+      <path class="c-cfg" d="M1304 600 H1048"/>
+    </svg>
+
+    <div class="cc" id="cc-app" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2820">
+      <div class="bar"><span class="fn">app.js</span><span class="tag">their code</span></div>
+      <div class="code"><span class="k">const</span> ui = <span class="f">render</span>(state)</div>
+      <div class="role">what they built every day</div>
+    </div>
+
+    <div class="cc" id="cc-cfg">
+      <div class="bar"><span class="fn">init.js</span><span class="tag">their editor</span></div>
+      <div class="code">atom.config.<span class="f">set</span>(<span class="s">'theme'</span>)</div>
+      <div class="role">the editor itself</div>
+    </div>
+
+    <div class="hub">
+      <div class="logo"><img src="../assets/icons/javascript.svg" alt="JavaScript"></div>
+      <div class="one">one language</div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(308.84).
+    // customizable 0.50 / same 1.46 / language 1.82 / users 2.56 / wrote 2.82 / every 3.20 / day 3.60 / JavaScript 4.32.
+
     // "customizable in the same language its users wrote every day, JavaScript."
-    // (customizable 0.50, same 1.46, language 1.82, wrote 2.82, every 3.20, day 3.60, JavaScript 4.32).
     const cw = [0.50, 1.18, 1.26, 1.46, 1.82, 2.34, 2.56, 2.82, 3.20, 3.60, 4.32];
     gsap.utils.toArray("#scene-49 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+      tl.fromTo(el, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.28, ease:"power2.out" }, cw[i]);
     });
 
-    // the JS logo sits dim at centre from the start — the language is already there.
-    // "customizable" — the config chip slides in from the right (customizable 0.50).
-    tl.fromTo("#scene-49 #chip-config",
-      { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.55);
-    tl.to("#scene-49 .arrow.right .b", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 0.85);
+    const app = document.querySelector("#scene-49 .c-app");
+    const cfg = document.querySelector("#scene-49 .c-cfg");
+    const al = app ? app.getTotalLength() : 260;
+    const cl = cfg ? cfg.getTotalLength() : 260;
+    gsap.set(app, { strokeDasharray:al, strokeDashoffset:al });
+    gsap.set(cfg, { strokeDasharray:cl, strokeDashoffset:cl });
 
-    // "wrote every day" — the daily-code chip slides in from the left (wrote 2.82).
-    tl.fromTo("#scene-49 #chip-daily",
-      { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.86);
-    tl.to("#scene-49 .arrow.left .b", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 3.16);
+    // "customizable" — the editor-config card slides in from the right.
+    tl.fromTo("#scene-49 #cc-cfg", { opacity:0, x:36 }, { opacity:1, x:0, duration:0.45, ease:"power3.out" }, 0.55);
+    tl.to(cfg, { strokeDashoffset:0, duration:0.5, ease:"power2.out" }, 1.20);
 
-    // "JavaScript" — the one language ignites at the centre, both arrows feeding it (JavaScript 4.32).
-    tl.to("#scene-49 .logo",
-      { opacity: 1, scale: 1.12, boxShadow: "0 0 56px rgba(247,223,30,0.5)", duration: 0.5, ease: "back.out(1.8)" }, 4.32);
-    tl.to("#scene-49 .logo", { scale: 1, duration: 0.4, ease: "power2.out" }, 4.82);
-    tl.fromTo("#scene-49 .cap .js",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 28px rgba(247,223,30,0.6)", duration: 0.4, ease: "power2.out" }, 4.36);
-    tl.fromTo("#scene-49 .one",
-      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, 4.60);
+    // "wrote every day" — their daily-code card slides in from the left.
+    tl.fromTo("#scene-49 #cc-app", { opacity:0, x:-36 }, { opacity:1, x:0, duration:0.45, ease:"power3.out" }, 2.86);
+    tl.to(app, { strokeDashoffset:0, duration:0.5, ease:"power2.out" }, 3.20);
 
-    // Subtle life — the hub breathes while dim, before it ignites.
-    tl.to("#scene-49 .logo", { y: "-=5", duration: 1.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 0.6);
+    // "JavaScript" — the one language ignites at the centre; both wires feed it; the word flares.
+    tl.to("#scene-49 .logo", { opacity:1, scale:1.12, duration:0.5, ease:"back.out(1.8)" }, 4.32);
+    tl.to("#scene-49 .logo img", { filter:"drop-shadow(0 0 46px rgba(247,223,30,0.5))", duration:0.5 }, 4.32);
+    tl.to("#scene-49 .logo", { scale:1, duration:0.4, ease:"power2.out" }, 4.82);
+    tl.to("#scene-49 .c-app, #scene-49 .c-cfg", { stroke:"#67e8f9", duration:0.4 }, 4.36);
+    tl.fromTo("#scene-49 .cap .js", { textShadow:"0 0 0 rgba(247,223,30,0)" }, { textShadow:"0 0 28px rgba(247,223,30,0.6)", duration:0.4, ease:"power2.out" }, 4.36);
+    tl.fromTo("#scene-49 .one", { opacity:0, y:12 }, { opacity:1, y:0, duration:0.4, ease:"back.out(1.6)" }, 4.60);
+
+    // Subtle life — the hub breathes dim before it ignites.
+    tl.to("#scene-49 .logo", { y:"-=5", duration:1.8, ease:"sine.inOut", repeat:1, yoyo:true }, 0.6);
 
     // Seam clear — fade out across the trailing overlap with scene 50 (local 5.14-5.64).
-    tl.to("#scene-49 .cap, #scene-49 .rig",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.14);
+    tl.to("#scene-49 .cap, #scene-49 .wires, #scene-49 #cc-app, #scene-49 #cc-cfg, #scene-49 .hub", { opacity:0, duration:0.34, ease:"power2.inOut" }, 5.16);
 
     window.__timelines["scene-49"] = tl;
   </script>

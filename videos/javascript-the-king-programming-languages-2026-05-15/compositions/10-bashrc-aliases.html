@@ -6,160 +6,70 @@
   <title>Scene 10 — more aliases than your bashrc</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-10 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-10 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-10 .term {
-      position: absolute; left: 50%; top: 258px; transform: translateX(-50%);
-      width: 1180px; background: var(--panel);
-      border: 1px solid var(--border); border-radius: 16px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-      overflow: hidden; opacity: 0; will-change: transform, opacity;
-    }
-    /* title bar */
-    #scene-10 .bar {
-      display: flex; align-items: center; gap: 12px;
-      padding: 18px 24px; border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-    }
-    #scene-10 .bar .dot { width: 14px; height: 14px; border-radius: 50%; }
-    #scene-10 .bar .dot.r { background: #ff5f56; }
-    #scene-10 .bar .dot.y { background: #ffbd2e; }
-    #scene-10 .bar .dot.g { background: #27c93f; }
-    #scene-10 .bar .path {
-      margin-left: 16px; font-family: "JetBrains Mono", monospace;
-      font-size: 24px; color: var(--muted); letter-spacing: 0.5px;
-      will-change: text-shadow;
-    }
-
-    /* body */
-    #scene-10 .body {
-      padding: 34px 44px 44px; font-family: "JetBrains Mono", monospace;
-      font-size: 31px; line-height: 1.62;
-    }
-    #scene-10 .ln { white-space: pre; opacity: 0; will-change: transform, opacity; }
-    #scene-10 .ln.prompt { color: var(--soft); margin-bottom: 14px; }
-    #scene-10 .ln.prompt .dollar { color: var(--accent-2); font-weight: 700; }
-    #scene-10 .kw  { color: var(--muted); }
-    #scene-10 .nm  { color: var(--fg); }
-    #scene-10 .eq  { color: var(--dim); }
-    #scene-10 .str { color: var(--ok); }
-    #scene-10 .cm  { color: var(--muted); }
-
-    /* the language's own aliases — the punchline lines */
-    #scene-10 .ln.lang {
-      border-left: 3px solid var(--accent);
-      margin-left: -16px; padding-left: 13px;
-      background: rgba(247,223,30,0.04);
-    }
-    #scene-10 .ln.lang .str { color: var(--accent); }
-    /* the keeper — the name that stuck — is permanently brighter and heavier. */
-    #scene-10 .ln.lang.keeper {
-      background: rgba(247,223,30,0.09); border-left-width: 5px;
-    }
-    #scene-10 .ln.lang.keeper .str {
-      color: #ffe94d; font-weight: 700; will-change: text-shadow;
-      text-shadow: 0 0 10px rgba(247,223,30,0.3);
-    }
-    #scene-10 .ln.lang.dimmed .str { color: var(--muted); }
-
-    /* rubber-stamp: "MARKETING MOVE" — lives in the empty lower-right of the frame,
-       outside the terminal's clipping box so it can sit clear of the code. */
-    #scene-10 .stamp {
-      position: absolute; left: 1116px; top: 712px;
-      font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 800;
-      letter-spacing: 3px; color: var(--accent); text-transform: uppercase;
-      border: 3px solid var(--accent); border-radius: 10px;
-      padding: 12px 22px; background: rgba(247,223,30,0.06);
-      transform: rotate(-11deg) scale(1.4); opacity: 0;
-      will-change: transform, opacity;
-    }
+    #scene-10 .term { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1080px;
+      background:#0c0f15; border:1px solid var(--border); border-radius:14px; overflow:hidden; opacity:0;
+      will-change:transform,opacity; box-shadow:0 40px 110px rgba(0,0,0,0.6); }
+    #scene-10 .bar { height:56px; display:flex; align-items:center; gap:14px; padding:0 22px; background:#11141b; border-bottom:1px solid var(--border); }
+    #scene-10 .bar .dot { width:13px; height:13px; border-radius:50%; background:var(--dim); }
+    #scene-10 .bar .title { margin-left:14px; font-family:"JetBrains Mono",monospace; font-size:21px; color:var(--muted); }
+    #scene-10 .body { padding:40px 46px 46px; font-family:"JetBrains Mono",monospace; font-size:32px; line-height:1.85; }
+    #scene-10 .line { opacity:0; will-change:transform,opacity; white-space:nowrap; }
+    #scene-10 .prompt .sig { color:var(--accent-2); }
+    #scene-10 .prompt .cmd { color:var(--soft); }
+    #scene-10 .alias .kw { color:var(--muted); }
+    #scene-10 .alias .an { color:var(--accent-2); }
+    #scene-10 .alias .eq { color:var(--dim); }
+    #scene-10 .alias .val { color:var(--soft); }
+    #scene-10 .comment { color:var(--muted); margin-top:14px; }
+    #scene-10 .comment .mk { color:var(--accent); font-weight:700; }
   </style>
 </head>
 <body>
   <div id="scene-10" data-composition-id="scene-10" data-width="1920" data-height="1080">
-    <div class="term"
-         data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1000">
+    <div class="term" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="600">
       <div class="bar">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="path">~/.bashrc</span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="title">bash — ~/.bashrc</span>
       </div>
       <div class="body">
-        <div class="ln prompt"><span class="dollar">$</span> cat ~/.bashrc</div>
-        <div class="ln norm"><span class="kw">alias</span> <span class="nm">ll</span><span class="eq">=</span><span class="str">'ls -la'</span></div>
-        <div class="ln norm"><span class="kw">alias</span> <span class="nm">gs</span><span class="eq">=</span><span class="str">'git status'</span></div>
-        <div class="ln norm"><span class="kw">alias</span> <span class="nm">gp</span><span class="eq">=</span><span class="str">'git push'</span></div>
-        <div class="ln norm"><span class="kw">alias</span> <span class="nm">serve</span><span class="eq">=</span><span class="str">'python3 -m http.server'</span></div>
-        <div class="ln lang dimmed"><span class="kw">alias</span> <span class="nm">js</span><span class="eq">=</span><span class="str">'Mocha'</span>       <span class="cm"># May 1995</span></div>
-        <div class="ln lang dimmed"><span class="kw">alias</span> <span class="nm">js</span><span class="eq">=</span><span class="str">'LiveScript'</span>  <span class="cm"># Sep 1995</span></div>
-        <div class="ln lang keeper"
-             data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="5040"><span class="kw">alias</span> <span class="nm">js</span><span class="eq">=</span><span class="str">'JavaScript'</span>  <span class="cm"># Dec 1995</span></div>
+        <div class="line prompt"><span class="sig">$</span> <span class="cmd">cat ~/.bashrc</span></div>
+        <div class="line alias"><span class="kw">alias</span> <span class="an" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2780">mocha</span><span class="eq">=</span><span class="val">'javascript'</span></div>
+        <div class="line alias"><span class="kw">alias</span> <span class="an" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3460">livescript</span><span class="eq">=</span><span class="val">'javascript'</span></div>
+        <div class="line alias"><span class="kw">alias</span> <span class="an" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4080">jscript</span><span class="eq">=</span><span class="val">'javascript'</span></div>
+        <div class="line alias"><span class="kw">alias</span> <span class="an" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4660">ecmascript</span><span class="eq">=</span><span class="val">'javascript'</span></div>
+        <div class="line comment"># the name itself? <span class="mk" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7260">a marketing move</span></div>
       </div>
     </div>
-    <div class="stamp"
-         data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="7470">Marketing move</div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(82.22).
-    // Window enters on "At this point" (At 82.72 -> 0.50).
-    tl.fromTo("#scene-10 .term",
-      { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.50);
+    // point 0.50 / aliases 2.78 / bashrc 4.08 / file 4.82 / name 6.10 / marketing-move 7.26.
 
-    // Prompt line right after the window settles.
-    tl.fromTo("#scene-10 .ln.prompt",
-      { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 1.10);
+    // terminal appears + the cat command.
+    tl.fromTo("#scene-10 .term", { opacity:0, y:34, scale:0.98 }, { opacity:1, y:0, scale:1, duration:0.55, ease:"power3.out" }, 0.50);
+    tl.fromTo("#scene-10 .prompt", { opacity:0 }, { opacity:1, duration:0.35 }, 0.95);
 
-    // The ordinary alias pile cascades on "more aliases" (aliases 85.00 -> 2.78).
-    gsap.utils.toArray("#scene-10 .ln.norm").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, x: -14 },
-        { opacity: 1, x: 0, duration: 0.26, ease: "power2.out" }, 2.78 + i * 0.16);
+    // the aliases pile up — one name after another, all pointing at javascript.
+    const aliases = gsap.utils.toArray("#scene-10 .alias");
+    const at = [2.78, 3.46, 4.08, 4.66];
+    aliases.forEach((el,i)=>{
+      tl.fromTo(el, { opacity:0, x:-16 }, { opacity:1, x:0, duration:0.34, ease:"power2.out" }, at[i]);
     });
 
-    // The language's three names stack as alias lines — the joke peaks on "bashrc file"
-    // (bashrc 86.30 -> 4.08, file end 87.34 -> 5.12).
-    gsap.utils.toArray("#scene-10 .ln.lang").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 3.80 + i * 0.46);
-    });
-    // Title pulses as "bashrc" is spoken (4.08).
-    tl.to("#scene-10 .bar .path",
-      { textShadow: "0 0 22px rgba(247,223,30,0.55)", color: "#e8eaed", duration: 0.4, ease: "power2.out" }, 4.08);
-    tl.to("#scene-10 .bar .path",
-      { textShadow: "0 0 0 rgba(247,223,30,0)", color: "#7a8493", duration: 0.9, ease: "power2.in" }, 4.70);
+    // "but the name was a marketing move" — the comment lands, the punchline highlights.
+    tl.fromTo("#scene-10 .comment", { opacity:0, y:8 }, { opacity:1, y:0, duration:0.4, ease:"power2.out" }, 6.10);
+    tl.fromTo("#scene-10 .comment .mk", { textShadow:"0 0 0 rgba(247,223,30,0)" }, { textShadow:"0 0 26px rgba(247,223,30,0.5)", duration:0.45, ease:"power2.out" }, 7.26);
 
-    // The keeper line ignites as it lands (third lang line ~ 4.72).
-    tl.to("#scene-10 .ln.lang.keeper .str",
-      { textShadow: "0 0 26px rgba(247,223,30,0.7)", duration: 0.45, ease: "power2.out" }, 4.95);
-    tl.to("#scene-10 .ln.lang.keeper .str",
-      { textShadow: "0 0 8px rgba(247,223,30,0.25)", duration: 1.1, ease: "power2.in" }, 5.50);
-
-    // "MARKETING MOVE" stamps down on "marketing" (marketing 89.48 -> 7.26).
-    tl.fromTo("#scene-10 .stamp",
-      { opacity: 0, scale: 1.4, rotation: -11 },
-      { opacity: 1, scale: 1, rotation: -11, duration: 0.42, ease: "back.out(2.4)" }, 7.26);
-
-    // Subtle life — the whole window breathes a hair.
-    tl.to("#scene-10 .term", { y: "-=5", duration: 4.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.4);
-
-    // Seam clear — terminal + stamp fade out across the trailing overlap with scene 11
-    // (local 8.34-8.84) so they don't share the frame with scene 11's incoming plates.
-    tl.to(["#scene-10 .term", "#scene-10 .stamp"],
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.34);
-
+    // idle: a blinking-cursor-ish breath on the terminal.
+    tl.to("#scene-10 .term", { boxShadow:"0 40px 110px rgba(0,0,0,0.6), 0 0 36px rgba(103,232,249,0.06)", duration:1.6, ease:"sine.inOut", repeat:2, yoyo:true }, 5.0);
     window.__timelines["scene-10"] = tl;
   </script>
 </body>

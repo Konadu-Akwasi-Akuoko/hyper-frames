@@ -6,126 +6,102 @@
   <title>Scene 06 — Java too heavy, C too low-level</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-06 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-06 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-06 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1480px;
-    }
-    #scene-06 .lang {
-      display: flex; align-items: center; gap: 40px;
-      padding: 30px 40px; border: 1px solid var(--border); border-radius: 18px;
-      background: rgba(17,20,27,0.55); opacity: 0; will-change: transform, opacity;
-    }
-    #scene-06 .lang.java { margin-bottom: 34px; }
-    #scene-06 .lang .logo { flex: none; width: 132px; height: 132px; object-fit: contain;
-      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5)); }
-    #scene-06 .lang .body { flex: 1; }
-    #scene-06 .lang .head {
-      display: flex; align-items: baseline; gap: 22px; margin-bottom: 6px;
-    }
-    #scene-06 .lang .name { font-size: 58px; font-weight: 800; color: var(--fg); letter-spacing: -1px; }
-    #scene-06 .lang .verdict { font-size: 40px; font-weight: 700; color: var(--danger); opacity: 0;
-      will-change: transform, opacity; }
-    /* a small danger reject badge */
-    #scene-06 .lang .rej {
-      margin-left: auto; font-size: 30px; font-weight: 700; color: var(--danger);
-      border: 2px solid var(--danger); border-radius: 999px; padding: 6px 20px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    /* burden chips for Java */
-    #scene-06 .burdens { display: flex; gap: 14px; margin-top: 14px; }
-    #scene-06 .chip {
-      font-size: 27px; font-weight: 500; color: var(--soft);
-      background: rgba(255,107,93,0.10); border: 1px solid rgba(255,107,93,0.32);
-      border-radius: 12px; padding: 12px 20px; white-space: nowrap;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-06 .sub { font-size: 32px; color: var(--muted); }
+    #scene-06 .cards { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; gap:80px; align-items:flex-start; }
+    #scene-06 .card { width:560px; height:600px; background:var(--panel); border:1px solid var(--border); border-radius:18px;
+      padding:48px 44px; display:flex; flex-direction:column; opacity:0; will-change:transform,opacity;
+      box-shadow:0 30px 80px rgba(0,0,0,0.45); position:relative; overflow:hidden; }
+    /* the danger edge that lights when a candidate is rejected */
+    #scene-06 .card .edge { position:absolute; left:0; top:0; bottom:0; width:8px; background:var(--danger); transform:scaleY(0); transform-origin:top; will-change:transform; box-shadow:0 0 24px rgba(255,107,93,0.55); border-radius:0 4px 4px 0; }
+
+    #scene-06 .head { display:flex; align-items:center; gap:24px; }
+    #scene-06 .head img { width:66px; height:66px; flex:none; opacity:0; will-change:transform,opacity; }
+    #scene-06 .card.c .head img { width:92px; height:92px; }
+    #scene-06 .head .nm { font-size:56px; font-weight:800; color:var(--fg); opacity:0; will-change:transform,opacity; }
+
+    #scene-06 .verdict { margin-top:18px; font-size:34px; font-weight:600; color:var(--danger); opacity:0; will-change:transform,opacity; letter-spacing:0.2px; }
+
+    #scene-06 .baggage { margin-top:auto; display:flex; flex-direction:column; gap:16px; }
+    #scene-06 .chip { font-family:"JetBrains Mono",monospace; font-size:25px; color:var(--soft);
+      background:#161a22; border:1px solid var(--border); border-radius:10px; padding:14px 20px; opacity:0; will-change:transform,opacity;
+      box-shadow:0 8px 20px rgba(0,0,0,0.35); }
+
+    #scene-06 .lowtag { margin-top:24px; font-family:"JetBrains Mono",monospace; font-size:24px; color:var(--muted); opacity:0; will-change:opacity; }
+    #scene-06 .floor-c { margin-top:auto; display:flex; align-items:flex-end; gap:10px; height:120px; opacity:0; }
+    #scene-06 .floor-c i { flex:1; background:linear-gradient(180deg, rgba(122,132,147,0.28), rgba(122,132,147,0.04)); border-radius:3px 3px 0 0; }
   </style>
 </head>
 <body>
   <div id="scene-06" data-composition-id="scene-06" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="lang java"
-           data-sfx-on-anchor="whoosh"
-           data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3"
-           data-sfx-at-scene-ms="950">
-        <img class="logo" src="assets/icons/java.svg" alt="Java">
-        <div class="body">
-          <div class="head">
-            <span class="name">Java</span>
-            <span class="verdict">too heavy</span>
-            <span class="rej">rejected</span>
-          </div>
-          <div class="burdens">
-            <span class="chip" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="3580">virtual machine</span>
-            <span class="chip" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="5360">class file format</span>
-            <span class="chip" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="7460">separate runtime download</span>
-          </div>
+    <div class="cards">
+      <!-- Java: weighed down by its baggage -->
+      <div class="card java" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="500">
+        <span class="edge"></span>
+        <div class="head">
+          <img src="../assets/icons/java.svg" alt="Java">
+          <span class="nm">Java</span>
+        </div>
+        <div class="verdict">too heavy</div>
+        <div class="baggage">
+          <div class="chip" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2740">a virtual machine</div>
+          <div class="chip" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="5160">a class file format</div>
+          <div class="chip" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="7260">a separate runtime download</div>
         </div>
       </div>
-      <div class="lang c">
-        <img class="logo" src="assets/icons/c.svg" alt="C">
-        <div class="body">
-          <div class="head">
-            <span class="name">C</span>
-            <span class="verdict">too low-level</span>
-            <span class="rej" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="13170">rejected</span>
-          </div>
-          <div class="sub">unthinkable for a webpage author</div>
+
+      <!-- C: too close to the machine -->
+      <div class="card c" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9900">
+        <span class="edge"></span>
+        <div class="head">
+          <img src="../assets/icons/c.svg" alt="C">
         </div>
+        <div class="verdict" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="12460">too low-level</div>
+        <div class="lowtag">unthinkable for the web</div>
+        <div class="floor-c"><i style="height:18%"></i><i style="height:30%"></i><i style="height:22%"></i><i style="height:38%"></i><i style="height:26%"></i><i style="height:44%"></i><i style="height:30%"></i><i style="height:52%"></i></div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(36.20).
-    // Java card slides in (Java 36.70 -> 0.50).
-    tl.fromTo("#scene-06 .lang.java",
-      { opacity: 0, x: -36 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.40);
-    // "too heavy" verdict on its word (37.76 -> 1.56).
-    tl.fromTo("#scene-06 .lang.java .verdict",
-      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.56);
+    // Java 0.50 / heavy 1.34 / VM 2.74 / class-file 5.16 / runtime 7.26 / C 9.90 / unthinkable 10.94 / low-level 12.46.
 
-    // Three burden chips tap in on their words: VM 39.58(3.38), class file 41.36(5.16), runtime 43.46(7.26).
-    const chipT = [3.38, 5.16, 7.26];
-    gsap.utils.toArray("#scene-06 .burdens .chip").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 16, scale: 0.92 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, chipT[i]);
+    // Both candidate frames establish the comparison immediately.
+    tl.fromTo("#scene-06 .card.java", { opacity:0, y:30, scale:0.97 }, { opacity:1, y:0, scale:1, duration:0.5, ease:"power3.out" }, 0.50);
+    tl.fromTo("#scene-06 .card.c",    { opacity:0, y:30, scale:0.97 }, { opacity:0.4, y:0, scale:1, duration:0.5, ease:"power3.out" }, 0.62);
+
+    // Java fills first.
+    tl.fromTo("#scene-06 .card.java .head img", { opacity:0, scale:0.6, rotateZ:-8 }, { opacity:1, scale:1, rotateZ:0, duration:0.45, ease:"back.out(1.8)" }, 0.55);
+    tl.fromTo("#scene-06 .card.java .head .nm", { opacity:0, x:-12 }, { opacity:1, x:0, duration:0.4, ease:"power2.out" }, 0.66);
+    tl.fromTo("#scene-06 .card.java .verdict", { opacity:0, y:10 }, { opacity:1, y:0, duration:0.4, ease:"power2.out" }, 1.34);
+
+    // baggage chips drop in and the card visibly sags under each (the "heavy" made kinetic).
+    const chips = gsap.utils.toArray("#scene-06 .card.java .chip");
+    const chipT = [2.74, 5.16, 7.26];
+    chips.forEach((el,i)=>{
+      tl.fromTo(el, { opacity:0, y:-18, scale:0.96 }, { opacity:1, y:0, scale:1, duration:0.42, ease:"back.out(1.4)" }, chipT[i]);
+      // each weight visibly sinks the whole Java card — by the third it sits clearly lower than C ("too heavy").
+      tl.to("#scene-06 .card.java", { y:"+=15", duration:0.5, ease:"power2.out" }, chipT[i]);
     });
-    // Java reject badge stamps after the burdens (~8.6, "download" lands 44.72->8.52).
-    tl.fromTo("#scene-06 .lang.java .rej",
-      { opacity: 0, scale: 1.4, rotateZ: -10 },
-      { opacity: 1, scale: 1, rotateZ: -4, duration: 0.45, ease: "back.out(2)" }, 8.6);
 
-    // C card slides in (C 46.10 -> 9.90).
-    tl.fromTo("#scene-06 .lang.c",
-      { opacity: 0, x: -36 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 9.70);
-    // "too low-level" on its word (low 48.90 -> 12.70).
-    tl.fromTo("#scene-06 .lang.c .verdict",
-      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 12.55);
-    tl.fromTo("#scene-06 .lang.c .rej",
-      { opacity: 0, scale: 1.4, rotateZ: 8 },
-      { opacity: 1, scale: 1, rotateZ: 4, duration: 0.45, ease: "back.out(2)" }, 12.95);
+    // Java is rejected: danger edge lights, card dims (but the bright edge stays legible).
+    tl.fromTo("#scene-06 .card.java .edge", { scaleY:0 }, { scaleY:1, duration:0.5, ease:"power2.out" }, 8.4);
+    tl.to("#scene-06 .card.java", { opacity:0.62, duration:0.6 }, 8.6);
 
-    // Subtle life — cards breathe a hair.
-    tl.to("#scene-06 .lang.java", { y: "-=5", duration: 4, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
-    tl.to("#scene-06 .lang.c", { y: "+=5", duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 10.4);
+    // C fills late, then is dismissed.
+    tl.to("#scene-06 .card.c", { opacity:1, duration:0.45, ease:"power2.out" }, 9.90);
+    tl.fromTo("#scene-06 .card.c .head img", { opacity:0, scale:0.6, rotateZ:-8 }, { opacity:1, scale:1, rotateZ:0, duration:0.45, ease:"back.out(1.8)" }, 9.95);
+    tl.fromTo("#scene-06 .card.c .floor-c", { opacity:0, y:14 }, { opacity:0.7, y:0, duration:0.5, ease:"power2.out" }, 10.2);
+    tl.fromTo("#scene-06 .card.c .lowtag", { opacity:0, y:8 }, { opacity:1, y:0, duration:0.4, ease:"power2.out" }, 10.94);
+    tl.fromTo("#scene-06 .card.c .verdict", { opacity:0, y:10 }, { opacity:1, y:0, duration:0.4, ease:"power2.out" }, 12.46);
+    tl.fromTo("#scene-06 .card.c .edge", { scaleY:0 }, { scaleY:1, duration:0.5, ease:"power2.out" }, 12.7);
+    tl.to("#scene-06 .card.c", { opacity:0.62, duration:0.6 }, 12.9);
 
     window.__timelines["scene-06"] = tl;
   </script>

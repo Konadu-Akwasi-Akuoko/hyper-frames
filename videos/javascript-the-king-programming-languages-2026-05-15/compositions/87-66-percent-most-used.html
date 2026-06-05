@@ -64,16 +64,16 @@
       <span class="w">on</span> <span class="w">the</span> <span class="w pl">planet.</span>
     </div>
 
-    <div class="gauge">
+    <div class="gauge" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="550">
       <svg viewBox="0 0 360 360">
         <circle class="track" cx="180" cy="180" r="140"></circle>
         <circle class="val" cx="180" cy="180" r="140" transform="rotate(-90 180 180)"></circle>
       </svg>
-      <div class="ctr" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="850" data-sfx-volume="0.42"><span class="pn">66%</span></div>
+      <div class="ctr"><span class="pn" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1500">0%</span></div>
     </div>
 
     <div class="glabel">the single most-used language</div>
-    <div class="globe" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4110" data-sfx-volume="0.42">
+    <div class="globe" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3900">
       <svg viewBox="0 0 40 40">
         <circle class="gl" cx="20" cy="20" r="17"></circle>
         <ellipse class="gl" cx="20" cy="20" rx="7" ry="17"></ellipse>
@@ -97,12 +97,18 @@
       tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
     });
 
-    // "66%" — the radial gauge sweeps to 66% and the number pops in (66% 0.50).
+    // "66%" — the radial gauge sweeps to 66% while the number counts up to meet it (66% 0.50).
     // r=140 -> C = 2*pi*140 = 879.65; 66% shown -> offset = C*(1-0.66) = 299.08.
     gsap.set("#scene-87 .gauge .val", { strokeDasharray: 879.65, strokeDashoffset: 879.65 });
     tl.to("#scene-87 .gauge .val", { strokeDashoffset: 299.08, duration: 0.95, ease: "power2.out" }, 0.55);
     tl.fromTo("#scene-87 .gauge .ctr .pn",
-      { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 0.62);
+      { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 0.55);
+    const counter = { v: 0 };
+    const pnEl = document.querySelector("#scene-87 .gauge .ctr .pn");
+    tl.to(counter, {
+      v: 66, duration: 0.95, ease: "power2.out",
+      onUpdate: () => { pnEl.textContent = Math.round(counter.v) + "%"; }
+    }, 0.55);
 
     // "the single most-used language" — the label settles under the gauge (single 2.36).
     tl.fromTo("#scene-87 .glabel",

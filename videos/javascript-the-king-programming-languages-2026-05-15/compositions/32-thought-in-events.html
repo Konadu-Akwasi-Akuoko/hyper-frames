@@ -3,128 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 32 — thought in events, because that's how the browser works</title>
+  <title>Scene 32 — they thought in events, because that's how the browser works</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-32 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-32 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-32 .cap {
-      position: absolute; left: 50%; top: 188px; transform: translateX(-50%);
-      width: 1500px; text-align: center;
-      font-size: 48px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
-    }
-    #scene-32 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-32 .cap .ev { color: var(--accent-2); font-weight: 800; }
-    #scene-32 .cap .br { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+    #scene-32 .head { position:absolute; left:50%; top:18%; transform:translateX(-50%); font-size:48px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-32 .head .kw { color:var(--accent-2); font-weight:800; }
 
-    /* the browser — the JS-native home where events fire */
-    #scene-32 .browser {
-      position: absolute; left: 50%; top: 376px; transform: translateX(-50%);
-      width: 880px; border-radius: 18px; overflow: hidden;
-      background: var(--panel); border: 1px solid var(--border);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-      opacity: 0; will-change: transform, opacity, box-shadow;
-    }
-    #scene-32 .chrome {
-      display: flex; align-items: center; gap: 16px; padding: 18px 24px;
-      background: #0e1118; border-bottom: 1px solid var(--border);
-    }
-    #scene-32 .dots { display: flex; gap: 10px; }
-    #scene-32 .dots i { width: 16px; height: 16px; border-radius: 50%; background: var(--dim); }
-    #scene-32 .url {
-      flex: 1; height: 36px; border-radius: 10px; background: #161b24; border: 1px solid var(--border);
-      display: flex; align-items: center; padding: 0 16px;
-      font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--muted);
-    }
-    #scene-32 .viewport {
-      position: relative; height: 380px; padding: 40px;
-      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 26px;
-    }
-    #scene-32 .event {
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 14px; background: rgba(103,232,249,0.06); border: 1.5px solid rgba(103,232,249,0.45);
-      font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color: var(--accent-2);
-      opacity: 0; will-change: transform, opacity, box-shadow;
-    }
+    #scene-32 .stage { position:absolute; left:50%; top:57%; transform:translate(-50%,-50%); width:980px; height:220px; }
+
+    /* the browser, the source of events */
+    #scene-32 .browser { position:absolute; left:0; top:18px; width:300px; height:188px; background:var(--panel); border:1px solid var(--border); border-radius:14px; overflow:hidden; opacity:0; will-change:transform,opacity,box-shadow; box-shadow:0 18px 46px rgba(0,0,0,0.42); }
+    #scene-32 .browser .bt { height:42px; display:flex; align-items:center; padding:0 18px; background:#0d1016; border-bottom:1px solid var(--border); }
+    #scene-32 .browser .bt .bn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:19px; color:var(--muted); }
+    #scene-32 .browser .bv { position:relative; height:146px; }
+    #scene-32 .browser .bv .ln { position:absolute; left:18px; height:8px; border-radius:4px; background:var(--dim); }
+
+    /* the track the events travel */
+    #scene-32 .track { position:absolute; left:300px; right:200px; top:111px; height:2px; background:repeating-linear-gradient(90deg, var(--dim) 0 8px, transparent 8px 18px); opacity:0; will-change:opacity; }
+
+    /* event tokens */
+    #scene-32 .ev { position:absolute; top:92px; left:300px; display:flex; align-items:center; gap:8px; padding:7px 15px; border-radius:999px;
+      background:rgba(103,232,249,0.1); border:1px solid rgba(103,232,249,0.4); opacity:0; will-change:transform,opacity; }
+    #scene-32 .ev .en { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:19px; font-weight:700; color:var(--accent-2); }
+    #scene-32 .ev .dot { width:7px; height:7px; border-radius:50%; background:var(--accent-2); }
+
+    /* the JS handler that reacts to each event */
+    #scene-32 .handler { position:absolute; right:0; top:35px; width:200px; height:150px; background:var(--panel); border:1px solid var(--border); border-radius:16px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; opacity:0; will-change:transform,opacity,box-shadow,border-color; box-shadow:0 18px 46px rgba(0,0,0,0.42); }
+    #scene-32 .handler img { width:52px; height:52px; object-fit:contain; }
+    #scene-32 .handler .hn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:20px; font-weight:700; color:var(--soft); }
+
+    #scene-32 .cap { position:absolute; left:50%; top:84%; transform:translate(-50%,-50%); font-family:"JetBrains Mono",ui-monospace,monospace; font-size:24px; color:var(--muted); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-32 .cap .br { color:var(--soft); }
   </style>
 </head>
 <body>
   <div id="scene-32" data-composition-id="scene-32" data-width="1920" data-height="1080">
-    <div class="cap">
-      <span class="w">&hellip;who</span> <span class="w">already</span> <span class="w">thought</span>
-      <span class="w">in</span> <span class="w ev">events</span> <span class="w">&mdash; because</span>
-      <span class="w">that&rsquo;s</span> <span class="w">how</span> <span class="w">the</span>
-      <span class="w br">browser</span> <span class="w">works.</span>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">They already thought in <span class="kw">events</span>.</div>
+
+    <div class="stage">
+      <div class="browser">
+        <div class="bt"><span class="bn">browser</span></div>
+        <div class="bv">
+          <span class="ln" style="top:26px; width:200px;"></span>
+          <span class="ln" style="top:52px; width:150px;"></span>
+          <span class="ln" style="top:78px; width:184px;"></span>
+          <span class="ln" style="top:104px; width:120px;"></span>
+        </div>
+      </div>
+
+      <div class="track"></div>
+
+      <div class="ev e1" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1620"><span class="dot"></span><span class="en">click</span></div>
+      <div class="ev e2" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="2420"><span class="dot"></span><span class="en">keydown</span></div>
+      <div class="ev e3" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3220"><span class="dot"></span><span class="en">load</span></div>
+      <div class="ev e4" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3950"><span class="dot"></span><span class="en">scroll</span></div>
+
+      <div class="handler">
+        <img src="../assets/icons/javascript.svg" alt="JavaScript">
+        <span class="hn">handler</span>
+      </div>
     </div>
 
-    <div class="browser" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4100" data-sfx-volume="0.42">
-      <div class="chrome">
-        <div class="dots"><i></i><i></i><i></i></div>
-        <div class="url">developer &middot; the browser</div>
-      </div>
-      <div class="viewport">
-        <div class="event" data-e="0" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="1780" data-sfx-volume="0.42">onclick</div>
-        <div class="event" data-e="1">onscroll</div>
-        <div class="event" data-e="2">onkeydown</div>
-        <div class="event" data-e="3" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3100" data-sfx-volume="0.35">onload</div>
-      </div>
-    </div>
+    <div class="cap">because that's how the <span class="br">browser</span> works.</div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(231.38).
-    // "...who already thought in events — because that's how the browser works." (who 0.50 ... works 4.22).
-    const cw = [0.50, 0.74, 1.11, 1.44, 1.62, 2.86, 3.38, 3.60, 3.74, 3.86, 4.22];
-    gsap.utils.toArray("#scene-32 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+    // who 0.50 / thought 1.11 / events 1.62 / because 2.86 / browser 3.86 / works 4.22.
+
+    // "They already thought in events."
+    tl.fromTo("#scene-32 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
+
+    // browser + handler come up, the track lights.
+    tl.fromTo("#scene-32 .browser", { opacity:0, x:-26 }, { opacity:1, x:0, duration:0.5, ease:"power3.out" }, 0.70);
+    tl.fromTo("#scene-32 .handler", { opacity:0, x:26 }, { opacity:1, x:0, duration:0.5, ease:"power3.out" }, 0.86);
+    tl.fromTo("#scene-32 .track", { opacity:0 }, { opacity:1, duration:0.4 }, 1.20);
+
+    // "events" — the browser starts firing; tokens stream to the handler, which reacts to each.
+    const evs = [
+      { sel:".e1", emit:1.62 },
+      { sel:".e2", emit:2.42 },
+      { sel:".e3", emit:3.22 },
+      { sel:".e4", emit:3.95 },
+    ];
+    evs.forEach(({ sel, emit }) => {
+      tl.fromTo("#scene-32 " + sel, { opacity:0, x:0, scale:0.85 }, { opacity:1, x:0, scale:1, duration:0.2, ease:"power2.out" }, emit);
+      tl.to("#scene-32 " + sel, { x:486, duration:0.55, ease:"power1.inOut" }, emit + 0.06);
+      tl.to("#scene-32 " + sel, { opacity:0, duration:0.2 }, emit + 0.5);
+      // the handler pulses as the event lands.
+      tl.fromTo("#scene-32 .handler", { boxShadow:"0 18px 46px rgba(0,0,0,0.42), 0 0 0 rgba(103,232,249,0)" },
+        { boxShadow:"0 18px 46px rgba(0,0,0,0.42), 0 0 30px rgba(103,232,249,0.4)", borderColor:"rgba(103,232,249,0.5)", duration:0.22, ease:"power2.out", yoyo:true, repeat:1 }, emit + 0.5);
     });
 
-    // The browser settles in — the native home.
-    tl.fromTo("#scene-32 .browser",
-      { opacity: 0, y: 24, scale: 0.97 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.40);
-
-    // "thought in events" — the events start firing, one after another, each popping in and pulsing (events 1.62).
-    const fire = [1.62, 2.10, 2.52, 2.94];
-    gsap.utils.toArray("#scene-32 .event").forEach((el, i) => {
-      tl.fromTo(el,
-        { opacity: 0, scale: 0.7 },
-        { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2)" }, fire[i]);
-      // each fired event flashes a glow — a handler running.
-      tl.fromTo(el,
-        { boxShadow: "0 0 0 rgba(103,232,249,0)" },
-        { boxShadow: "0 0 26px rgba(103,232,249,0.45)", duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1 },
-        fire[i] + 0.2);
-    });
-
-    // "the browser works" — the browser frame itself lights up: this is the source of it all (browser 3.86).
-    tl.to("#scene-32 .browser",
-      { boxShadow: "0 30px 70px rgba(0,0,0,0.5), 0 0 60px rgba(247,223,30,0.42)", borderColor: "rgba(247,223,30,0.45)", duration: 0.4, ease: "power2.out" }, 3.86);
-    tl.fromTo("#scene-32 .cap .br",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 24px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 3.88);
-
-    // Subtle life — the browser breathes.
-    tl.to("#scene-32 .browser", { y: "-=5", duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
-
-    // Seam clear — fade out across the trailing overlap with scene 33 (local 4.48-4.98).
-    tl.to("#scene-32 .cap, #scene-32 .browser",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.48);
-
+    // "because that's how the browser works" — the caption + a browser glow on its word.
+    tl.fromTo("#scene-32 .cap", { opacity:0, y:8 }, { opacity:1, y:0, duration:0.45, ease:"power2.out" }, 2.86);
+    tl.fromTo("#scene-32 .browser", { boxShadow:"0 18px 46px rgba(0,0,0,0.42)" }, { boxShadow:"0 18px 46px rgba(0,0,0,0.42), 0 0 30px rgba(103,232,249,0.22)", duration:0.4, yoyo:true, repeat:1 }, 3.86);
     window.__timelines["scene-32"] = tl;
   </script>
 </body>

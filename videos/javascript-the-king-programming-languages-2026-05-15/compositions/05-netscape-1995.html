@@ -6,113 +6,82 @@
   <title>Scene 05 — Netscape, May 1995</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-05 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-05 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-05 .row {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      display: flex; align-items: center; justify-content: center; gap: 90px;
-    }
+    /* archival date stamp, top-left */
+    #scene-05 .stamp { position:absolute; left:130px; top:130px; font-family:"JetBrains Mono",monospace; font-size:30px; font-weight:600; letter-spacing:4px; color:var(--muted); opacity:0; will-change:transform,opacity; }
+    #scene-05 .stamp .yr { color:var(--soft); }
 
-    /* Netscape logo — the referent mark, on a soft platform glow. */
-    #scene-05 .logo-wrap {
-      position: relative; flex: none; width: 420px; height: 420px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    #scene-05 .logo-wrap .platform {
-      position: absolute; inset: -12%;
-      background: radial-gradient(circle, rgba(103,232,249,0.20) 0%, rgba(103,232,249,0) 66%);
-      border-radius: 50%; opacity: 0; will-change: opacity, transform;
-    }
-    #scene-05 .logo-wrap img {
-      width: 404px; height: 404px; object-fit: contain;
-      opacity: 0; will-change: transform, opacity;
-      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6));
-    }
+    /* period browser window (diegetic — the subject IS a browser) */
+    #scene-05 .win { position:absolute; left:50%; top:54%; transform:translate(-50%,-50%); width:1180px; height:600px;
+      background:var(--panel); border:1px solid var(--border); border-radius:12px; overflow:hidden; opacity:0;
+      will-change:transform,opacity; box-shadow:0 40px 120px rgba(0,0,0,0.6); }
+    #scene-05 .titlebar { height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 22px;
+      background:linear-gradient(180deg,#161a22,#11141b); border-bottom:1px solid var(--border); }
+    #scene-05 .titlebar .name { font-size:26px; font-weight:600; color:var(--soft); letter-spacing:0.3px; }
+    #scene-05 .throbber { width:52px; height:52px; border-radius:8px; overflow:hidden; flex:none; opacity:0;
+      transform:scale(0.6); will-change:transform,opacity; box-shadow:0 0 0 1px var(--border); }
+    #scene-05 .throbber img { width:100%; height:100%; object-fit:cover; display:block; }
 
-    #scene-05 .text { flex: none; width: 820px; }
-    #scene-05 .date {
-      font-family: "JetBrains Mono", monospace; font-weight: 600;
-      font-size: 38px; color: var(--accent-2); letter-spacing: 4px;
-      font-variant-numeric: tabular-nums; margin-bottom: 18px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-05 .who {
-      font-size: 92px; font-weight: 800; color: var(--fg); letter-spacing: -1.5px;
-      line-height: 1.0; margin-bottom: 22px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-05 .need {
-      font-size: 46px; font-weight: 500; color: var(--soft); line-height: 1.3;
-    }
-    #scene-05 .need .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-05 .need .browser { display: inline-block; color: var(--fg); font-weight: 700; will-change: text-shadow; }
+    #scene-05 .locbar { height:56px; display:flex; align-items:center; gap:16px; padding:0 24px; border-bottom:1px solid var(--border); }
+    #scene-05 .locbar .lbl { font-size:20px; color:var(--muted); }
+    #scene-05 .locbar .url { flex:1; height:34px; border:1px solid var(--border); border-radius:6px; background:#0d1016;
+      display:flex; align-items:center; padding:0 14px; font-family:"JetBrains Mono",monospace; font-size:19px; color:var(--muted); letter-spacing:0.3px; }
+
+    #scene-05 .page { position:relative; height:480px; display:flex; align-items:center; justify-content:center; }
+    #scene-05 .slot { font-family:"JetBrains Mono",monospace; font-size:42px; color:var(--dim); opacity:0; will-change:opacity; }
+    #scene-05 .slot .tag { color:var(--muted); }
+    #scene-05 .slot .blink { display:inline-block; width:4px; height:44px; vertical-align:-9px; margin:0 6px; background:var(--accent-2); opacity:0; }
   </style>
 </head>
 <body>
   <div id="scene-05" data-composition-id="scene-05" data-width="1920" data-height="1080">
-    <div class="row">
-      <div class="logo-wrap">
-        <div class="platform"></div>
-        <img src="assets/images/netscape-logo.png" alt="Netscape"
-             data-sfx-on-anchor="pop"
-             data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav"
-             data-sfx-at-scene-ms="2800">
+    <div class="stamp" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="950">MAY <span class="yr">1995</span></div>
+    <div class="win" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3100">
+      <div class="titlebar">
+        <span class="name">Netscape Navigator</span>
+        <span class="throbber"><img src="../assets/images/netscape-logo.png" alt="Netscape"></span>
       </div>
-      <div class="text">
-        <div class="date">MAY 1995</div>
-        <div class="who">Netscape</div>
-        <div class="need">
-          <span class="w">needed</span> <span class="w">a</span> <span class="w">scripting</span>
-          <span class="w">language</span> <span class="w">for</span> <span class="w">the</span>
-          <span class="w"><span class="browser">browser.</span></span>
-        </div>
+      <div class="locbar">
+        <span class="lbl">Location:</span>
+        <span class="url">http://home.netscape.com/</span>
+      </div>
+      <div class="page">
+        <div class="slot" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3720"><span class="tag">&lt;script&gt;</span><span class="blink" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="4300"></span><span class="tag">&lt;/script&gt;</span></div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused:true });
+    // Scene-local = global - data_start(30.48). In 0.50 / 1995 0.90 / Netscape 2.60 / needed 3.22 / scripting 3.72 / language 4.28 / browser 4.96.
 
-    // Scene-local = global - data_start(30.48). Entrance at local 0 (overlap w/ scene 04).
-    // Date "MAY 1995" stamps in as "In May 1995" is said (31.12 -> local 0.64).
-    tl.fromTo("#scene-05 .date",
-      { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.55);
+    // archival date stamp lands first.
+    tl.fromTo("#scene-05 .stamp", { opacity:0, y:-12 }, { opacity:1, y:0, duration:0.45, ease:"power3.out" }, 0.50);
+    tl.fromTo("#scene-05 .stamp .yr", { color:"#7a8493" }, { color:"#c2c9d4", textShadow:"0 0 18px rgba(194,201,212,0.3)", duration:0.4 }, 0.90);
 
-    // Netscape logo + name land on the spoken word "Netscape" (33.08 -> local 2.60).
-    tl.fromTo("#scene-05 .logo-wrap .platform",
-      { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" }, 2.40);
-    tl.fromTo("#scene-05 .logo-wrap img",
-      { opacity: 0, x: -40, scale: 0.85, rotateZ: -6 },
-      { opacity: 1, x: 0, scale: 1, rotateZ: 0, duration: 0.7, ease: "back.out(1.5)" }, 2.45);
-    tl.fromTo("#scene-05 .who",
-      { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.60);
+    // the browser window reveals on "Netscape"; the N throbber pops into the title bar where it lived.
+    tl.fromTo("#scene-05 .win", { opacity:0, y:40, scale:0.96 }, { opacity:1, y:0, scale:1, duration:0.6, ease:"power3.out" }, 2.60);
+    tl.fromTo("#scene-05 .throbber", { opacity:0, scale:0.6, rotateZ:-10 }, { opacity:1, scale:1, rotateZ:0, duration:0.5, ease:"back.out(2)" }, 2.85);
+    // the N "loads" — a soft cyan breathing on the throbber, the period throbber tell.
+    tl.to("#scene-05 .throbber", { boxShadow:"0 0 18px rgba(103,232,249,0.45), 0 0 0 1px #1f242c", duration:1.2, ease:"sine.inOut", repeat:2, yoyo:true }, 3.5);
 
-    // Need-line reveals: needed 33.70(3.22) a 3.60 scripting 3.72 language 4.28 for 4.72 the 4.84 browser 4.96
-    const need = [3.22, 3.60, 3.72, 4.28, 4.72, 4.84, 4.96];
-    gsap.utils.toArray("#scene-05 .need .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, need[i]);
-    });
-    // "browser" — JS's birthplace — blooms on its word (35.44 -> local 4.96).
-    tl.to("#scene-05 .need .browser",
-      { textShadow: "0 0 38px rgba(232,234,237,0.85)", duration: 0.4, ease: "power2.out" }, 5.02);
+    // the empty script slot fades in on "scripting language" — the language that doesn't exist yet.
+    tl.fromTo("#scene-05 .slot", { opacity:0 }, { opacity:1, duration:0.4 }, 3.72);
+    tl.set("#scene-05 .slot .blink", { opacity:1 }, 4.28);
+    tl.to("#scene-05 .slot .blink", { opacity:0, duration:0.5, ease:"steps(1)", repeat:6, yoyo:true }, 4.30);
 
-    // Constant subtle life — the logo breathes, the platform pulses.
-    tl.to("#scene-05 .logo-wrap img", { rotateZ: 2, duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.2);
-    tl.to("#scene-05 .logo-wrap .platform", { scale: 1.06, duration: 2.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.2);
+    // "for the browser" — the window frame takes a cyan edge that reads clearly.
+    tl.fromTo("#scene-05 .win",
+      { boxShadow:"0 40px 120px rgba(0,0,0,0.6)" },
+      { boxShadow:"0 40px 120px rgba(0,0,0,0.6), 0 0 0 2px rgba(103,232,249,0.85), 0 0 70px rgba(103,232,249,0.28)", duration:0.55, ease:"power2.out" }, 4.96);
 
+    // subtle idle drift so nothing sits perfectly still.
+    tl.to("#scene-05 .win", { y:"-=6", duration:3.5, ease:"sine.inOut", repeat:1, yoyo:true }, 6.0);
     window.__timelines["scene-05"] = tl;
   </script>
 </body>

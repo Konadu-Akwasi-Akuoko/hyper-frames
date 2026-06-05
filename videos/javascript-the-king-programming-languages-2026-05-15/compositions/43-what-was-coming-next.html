@@ -3,108 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 43 — he didn't know what was coming next</title>
+  <title>Scene 43 — he was right, but didn't know what was coming next</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-43 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
-
-    #scene-43 .stack {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center; gap: 56px;
-      width: 1500px; text-align: center;
-    }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-43 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
     /* the affirmed line */
-    #scene-43 .line1 {
-      display: flex; align-items: center; justify-content: center; gap: 22px;
-      font-size: 52px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
-      will-change: transform, opacity;
-    }
-    #scene-43 .line1 .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-43 .line1 .esc { color: var(--ok); font-weight: 800; will-change: text-shadow; }
-    #scene-43 .check {
-      width: 52px; height: 52px; border-radius: 50%; flex: none;
-      border: 3px solid var(--ok); display: flex; align-items: center; justify-content: center;
-      color: var(--ok); font-size: 30px; font-weight: 900;
-      opacity: 0; will-change: transform, opacity;
-    }
+    #scene-43 .l1 { position:absolute; left:50%; top:30%; transform:translateX(-50%); display:flex; align-items:center; gap:20px; font-size:50px; font-weight:600; color:var(--soft); white-space:nowrap; will-change:transform,opacity; }
+    #scene-43 .l1 .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-43 .l1 .esc { color:var(--ok); font-weight:800; will-change:text-shadow; }
+    #scene-43 .l1 .check { width:50px; height:50px; border-radius:50%; flex:none; border:3px solid var(--ok); display:flex; align-items:center; justify-content:center; color:var(--ok); font-size:28px; font-weight:900; opacity:0; will-change:transform,opacity; }
+
+    /* the horizon rail — the confirmed past, then the dashed path into the unknown */
+    #scene-43 .rail { position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); width:1040px; height:80px; display:flex; align-items:center; opacity:0; will-change:opacity; }
+    #scene-43 .rail .dot { width:18px; height:18px; border-radius:50%; background:var(--ok); flex:none; box-shadow:0 0 16px rgba(125,216,125,0.5); transform:scale(0); will-change:transform; }
+    #scene-43 .rail .seg { flex:1; height:3px; margin:0 14px; transform-origin:left center; transform:scaleX(0); will-change:transform;
+      background:repeating-linear-gradient(90deg, var(--dim) 0 14px, transparent 14px 26px); }
+    #scene-43 .rail .qnode { width:70px; height:70px; border-radius:50%; flex:none; border:2px dashed var(--dim); display:flex; align-items:center; justify-content:center; font-size:38px; font-weight:800; color:var(--accent-2); background:rgba(13,16,22,0.7); opacity:0; will-change:transform,opacity,border-color; }
+    /* the dark unknown the path fades into */
+    #scene-43 .rail .fog { position:absolute; right:-10px; top:-30px; bottom:-30px; width:360px; pointer-events:none; background:linear-gradient(90deg, rgba(11,13,18,0) 0%, rgba(11,13,18,0.85) 70%); }
+    #scene-43 .rail .startlabel { position:absolute; left:-4px; top:48px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:18px; color:var(--muted); opacity:0; will-change:opacity; white-space:nowrap; }
 
     /* the looming line */
-    #scene-43 .line2 {
-      font-size: 56px; font-weight: 700; color: var(--soft); letter-spacing: -1px; line-height: 1.3;
-      will-change: transform;
-    }
-    #scene-43 .line2 .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-43 .line2 .loom { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+    #scene-43 .l2 { position:absolute; left:50%; top:74%; transform:translateX(-50%); font-size:54px; font-weight:700; color:var(--soft); letter-spacing:-1px; white-space:nowrap; will-change:transform; }
+    #scene-43 .l2 .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-43 .l2 .loom { color:var(--accent-2); font-weight:800; will-change:text-shadow; }
   </style>
 </head>
 <body>
   <div id="scene-43" data-composition-id="scene-43" data-width="1920" data-height="1080">
-    <div class="stack">
-      <div class="line1">
-        <span class="check" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1200">&#10003;</span>
-        <span>
-          <span class="w">He</span> <span class="w">was</span> <span class="w">right</span>
-          <span class="w">about</span> <span class="w">the</span> <span class="w esc">escape.</span>
-        </span>
-      </div>
-      <div class="line2" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="4550">
-        <span class="w">But</span> <span class="w">he</span> <span class="w">didn&rsquo;t</span>
-        <span class="w">know</span> <span class="w loom">what</span> <span class="w loom">was</span>
-        <span class="w loom">coming</span> <span class="w loom">next.</span>
-      </div>
+    <div class="l1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
+      <span>
+        <span class="w">He</span> <span class="w">was</span> <span class="w">right</span>
+        <span class="w">about</span> <span class="w">the</span> <span class="w esc">escape.</span>
+      </span>
+      <span class="check" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="1000">&#10003;</span>
+    </div>
+
+    <div class="rail" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2860">
+      <span class="dot"></span>
+      <span class="seg"></span>
+      <span class="qnode" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="4520">?</span>
+      <span class="fog"></span>
+      <span class="startlabel">the escape &mdash; confirmed</span>
+    </div>
+
+    <div class="l2">
+      <span class="w">But</span> <span class="w">he</span> <span class="w">didn&rsquo;t</span>
+      <span class="w">know</span> <span class="w loom">what</span> <span class="w loom">was</span>
+      <span class="w loom">coming</span> <span class="w loom">next.</span>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(283.76).
-    // "He was right about the escape." (He 0.50 ... escape 1.84).
+    // He 0.50 / was 0.66 / right 0.96 / about 1.50 / the 1.76 / escape 1.84 / but 2.86 / he 3.14 / didn't 3.28 / know 3.62 / what 4.22 / was 4.42 / coming 4.52 / next 4.85.
+
+    // "He was right about the escape."
     const l1 = [0.50, 0.66, 0.96, 1.50, 1.76, 1.84];
-    gsap.utils.toArray("#scene-43 .line1 .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, l1[i]);
+    gsap.utils.toArray("#scene-43 .l1 .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.28, ease:"power2.out" }, l1[i]);
     });
-    // the green check stamps as the line affirms (right 0.96).
-    tl.fromTo("#scene-43 .check",
-      { opacity: 0, scale: 0.4, rotateZ: -12 },
-      { opacity: 1, scale: 1, rotateZ: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.00);
-    tl.fromTo("#scene-43 .line1 .esc",
-      { textShadow: "0 0 0 rgba(125,216,125,0)" },
-      { textShadow: "0 0 22px rgba(125,216,125,0.5)", duration: 0.4, ease: "power2.out" }, 1.88);
+    // the green check stamps — he called it (right 0.96).
+    tl.fromTo("#scene-43 .l1 .check", { opacity:0, scale:0.4, rotateZ:-12 }, { opacity:1, scale:1, rotateZ:0, duration:0.45, ease:"back.out(2.2)" }, 1.00);
+    tl.fromTo("#scene-43 .l1 .esc", { textShadow:"0 0 0 rgba(125,216,125,0)" }, { textShadow:"0 0 20px rgba(125,216,125,0.5)", duration:0.4, ease:"power2.out" }, 1.88);
 
-    // "But" — the affirmed line lifts and dims; the camera turns to the unknown (but 2.86).
-    tl.to("#scene-43 .line1",
-      { opacity: 0.28, y: -16, scale: 0.94, duration: 0.5, ease: "power2.inOut" }, 2.86);
+    // "But" — the affirmed line dims and lifts; the rail appears, the confirmed point set.
+    tl.to("#scene-43 .l1", { opacity:0.3, y:-12, scale:0.96, duration:0.5, ease:"power2.inOut" }, 2.86);
+    tl.fromTo("#scene-43 .rail", { opacity:0 }, { opacity:1, duration:0.3 }, 2.70);
+    tl.to("#scene-43 .rail .dot", { scale:1, duration:0.4, ease:"back.out(2)" }, 2.86);
+    tl.fromTo("#scene-43 .rail .startlabel", { opacity:0 }, { opacity:1, duration:0.4 }, 3.05);
+    // the dashed path draws forward into the dark.
+    tl.to("#scene-43 .rail .seg", { scaleX:1, duration:1.5, ease:"power1.inOut" }, 2.96);
 
-    // "but he didn't know what was coming next." (But 2.86 ... next 4.85).
+    // "but he didn't know what was coming next."
     const l2 = [2.86, 3.14, 3.28, 3.62, 4.22, 4.42, 4.52, 4.85];
-    gsap.utils.toArray("#scene-43 .line2 .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, l2[i]);
+    gsap.utils.toArray("#scene-43 .l2 .w").forEach((el, i) => {
+      tl.fromTo(el, { opacity:0, y:12 }, { opacity:1, y:0, duration:0.3, ease:"power2.out" }, l2[i]);
     });
 
-    // "what was coming next" looms forward — scales up and pulls toward the viewer, suspended (what 4.22).
-    tl.fromTo("#scene-43 .line2 .loom",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 26px rgba(247,223,30,0.45)", duration: 0.5, ease: "power2.out" }, 4.55);
-    tl.to("#scene-43 .line2",
-      { scale: 1.12, duration: 1.1, ease: "power2.out" }, 4.30);
+    // "coming next" — the "?" emerges from the fog and pulses; the words light cyan.
+    tl.fromTo("#scene-43 .rail .qnode", { opacity:0, scale:0.6, x:14 }, { opacity:1, scale:1, x:0, duration:0.5, ease:"back.out(1.8)" }, 4.52);
+    tl.to("#scene-43 .rail .qnode", { borderColor:"rgba(103,232,249,0.6)", boxShadow:"0 0 22px rgba(103,232,249,0.35)", duration:0.5 }, 4.7);
+    tl.fromTo("#scene-43 .l2 .loom", { textShadow:"0 0 0 rgba(103,232,249,0)" }, { textShadow:"0 0 24px rgba(103,232,249,0.45)", duration:0.5, ease:"power2.out" }, 4.85);
 
-    // Seam clear — fade out across the trailing overlap with scene 44 (local 5.60-6.10).
-    tl.to("#scene-43 .stack",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.60);
+    // idle — the "?" pulses, suspended.
+    tl.to("#scene-43 .rail .qnode", { scale:1.06, duration:0.7, ease:"sine.inOut", repeat:1, yoyo:true }, 5.3);
+
+    // Seam clear — fade foreground out across the trailing overlap with scene 44 (local 5.62-6.10).
+    tl.to("#scene-43 .l1, #scene-43 .rail, #scene-43 .l2", { opacity:0, duration:0.32, ease:"power2.inOut" }, 5.62);
 
     window.__timelines["scene-43"] = tl;
   </script>

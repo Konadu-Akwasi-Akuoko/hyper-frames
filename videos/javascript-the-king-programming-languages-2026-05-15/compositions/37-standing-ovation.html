@@ -3,142 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 37 — a standing ovation, the first in conference history</title>
+  <title>Scene 37 — a standing ovation, first in conference history</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-37 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-37 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-37 .cap {
-      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
-      width: 1480px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
-    }
-    #scene-37 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-37 .cap .ov { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+    #scene-37 .head { position:absolute; left:50%; top:13%; transform:translateX(-50%); font-size:48px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-37 .head .so { color:var(--accent-2); font-weight:800; }
 
-    /* the audience */
-    #scene-37 .crowd {
-      position: absolute; left: 50%; top: 612px; transform: translate(-50%, -50%);
-      display: grid; grid-template-columns: repeat(10, 60px); gap: 30px 30px;
-      justify-content: center;
-    }
-    #scene-37 .fig {
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-37 .fig .head { width: 28px; height: 28px; border-radius: 50%; background: #39414f; will-change: background; }
-    #scene-37 .fig .body { width: 40px; height: 62px; border-radius: 20px; background: #2a313d; will-change: background; }
+    /* the ovation — hero reaction image */
+    #scene-37 .photo { position:absolute; left:50%; top:56%; transform:translate(-50%,-50%); width:900px; height:460px; border-radius:22px; overflow:hidden;
+      background:#0d1016; border:1px solid var(--border); opacity:0; will-change:transform,opacity; box-shadow:0 34px 90px rgba(0,0,0,0.5); }
+    #scene-37 .photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
 
-    /* applause sparkles */
-    #scene-37 .spark {
-      position: absolute; width: 18px; height: 18px; border-radius: 50%;
-      background: var(--accent-2); box-shadow: 0 0 22px rgba(103,232,249,0.85);
-      opacity: 0; will-change: transform, opacity;
-    }
-
-    /* the "first in conference history" badge */
-    #scene-37 .badge {
-      position: absolute; left: 50%; top: 836px; transform: translateX(-50%);
-      display: flex; align-items: center; gap: 12px;
-      font-family: "JetBrains Mono", monospace; font-size: 28px; font-weight: 700; letter-spacing: 0.5px;
-      color: var(--accent); border: 1px solid rgba(247,223,30,0.4); border-radius: 999px; padding: 12px 28px;
-      background: rgba(247,223,30,0.05);
-      opacity: 0; will-change: transform, opacity;
-    }
+    /* the record badge */
+    #scene-37 .badge { position:absolute; left:calc(50% + 318px); top:calc(56% - 196px); transform:translate(-50%,-50%); display:flex; align-items:center; gap:14px;
+      padding:13px 20px 13px 14px; border-radius:999px; background:var(--panel); border:1px solid rgba(247,223,30,0.45); opacity:0; will-change:transform,opacity; box-shadow:0 16px 44px rgba(0,0,0,0.5); }
+    #scene-37 .badge .medal { width:46px; height:46px; border-radius:50%; background:rgba(247,223,30,0.14); border:1.5px solid rgba(247,223,30,0.6);
+      display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:20px; font-weight:800; color:var(--accent); flex:none; }
+    #scene-37 .badge .bx { display:flex; flex-direction:column; gap:1px; }
+    #scene-37 .badge .bt { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:19px; font-weight:700; color:var(--soft); white-space:nowrap; }
+    #scene-37 .badge .bs { font-size:15px; color:var(--muted); white-space:nowrap; }
   </style>
 </head>
 <body>
   <div id="scene-37" data-composition-id="scene-37" data-width="1920" data-height="1080">
-    <div class="cap">
-      <span class="w">The</span> <span class="w">audience</span> <span class="w">gave</span>
-      <span class="w">him</span> <span class="w">a</span> <span class="w ov">standing</span>
-      <span class="w ov">ovation.</span>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">The room rose for a <span class="so">standing ovation</span>.</div>
+
+    <div class="photo">
+      <img src="../assets/images/standing-ovation.png"
+           alt="conference audience on its feet giving a standing ovation, arms raised"
+           data-asset data-asset-class="reaction" data-asset-referent="a conference audience rising to give a standing ovation"
+           data-asset-emotion="triumphant, awed applause"
+           data-asset-desc="A wide shot of a tech-conference audience on its feet, clapping — a standing ovation, seen from the stage or side. Warm, energetic, slightly dramatic lighting. Fills a 900x460 landscape hero box. This is the JSConf-2009-style Node.js ovation moment."
+           data-asset-src="assets/images/standing-ovation.png">
     </div>
 
-    <div class="crowd" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1900" data-sfx-volume="0.35"></div>
-
-    <div class="badge" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3340" data-sfx-volume="0.42">&#9733; first in the conference&rsquo;s history</div>
+    <div class="badge" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3080">
+      <span class="medal">1st</span>
+      <span class="bx">
+        <span class="bt">first standing ovation</span>
+        <span class="bs">in the conference's history</span>
+      </span>
+    </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
-    // Build two rows of audience figures.
-    const crowd = document.querySelector("#scene-37 .crowd");
-    const COLS = 10, ROWS = 2;
-    for (let i = 0; i < COLS * ROWS; i++) {
-      const f = document.createElement("div");
-      f.className = "fig";
-      f.innerHTML = '<span class="head"></span><span class="body"></span>';
-      crowd.appendChild(f);
-    }
-    // Six applause sparkles tucked just above the standing crowd, within its width.
-    const sparkPos = [[-360, -8], [-210, -26], [-70, -2], [110, -22], [250, -6], [380, -28]];
-    sparkPos.forEach(([x, y]) => {
-      const s = document.createElement("div");
-      s.className = "spark";
-      s.style.left = (960 + x) + "px";
-      s.style.top = (456 + y) + "px";
-      document.querySelector("#scene-37").appendChild(s);
-    });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(250.56).
-    // "The audience gave him a standing ovation." (The 0.50 ... ovation 1.76).
-    const cw = [0.50, 0.64, 1.08, 1.22, 1.32, 1.42, 1.76];
-    gsap.utils.toArray("#scene-37 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, cw[i]);
-    });
+    // The 0.50 / audience 0.64 / standing 1.42 / ovation 1.76 / first 3.08 / conference's 3.86 / history 4.66.
 
-    // The seated audience is present from the start, lower in their seats.
-    const figs = gsap.utils.toArray("#scene-37 .fig");
-    tl.set(figs, { y: 44 }, 0);
-    figs.forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.40 + i * 0.015);
-    });
+    // "The room rose for a standing ovation."
+    tl.fromTo("#scene-37 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "standing ovation" — the crowd rises to its feet in a clear left-to-right wave and brightens (standing 1.42).
-    figs.forEach((el, i) => {
-      const col = i % COLS;
-      tl.to(el, { y: 0, duration: 0.5, ease: "back.out(1.7)" }, 1.46 + col * 0.06);
-      tl.to(el.querySelector(".head"), { background: "#67e8f9", duration: 0.45, ease: "power2.out" }, 1.46 + col * 0.06);
-      tl.to(el.querySelector(".body"), { background: "#3a4655", duration: 0.45, ease: "power2.out" }, 1.46 + col * 0.06);
-    });
-    tl.fromTo("#scene-37 .cap .ov",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 26px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 1.80);
+    // "standing ovation" — the image rises into place (the room standing up).
+    tl.fromTo("#scene-37 .photo", { opacity:0, y:66, scale:0.97 }, { opacity:1, y:0, scale:1, duration:0.7, ease:"power3.out" }, 1.42);
 
-    // applause sparkles pop above the standing crowd — overlapping so several are always lit.
-    gsap.utils.toArray("#scene-37 .spark").forEach((el, i) => {
-      tl.fromTo(el,
-        { opacity: 0, scale: 0.3, y: 10 },
-        { opacity: 1, scale: 1, y: -6, duration: 0.5, ease: "back.out(2)", yoyo: true, repeat: 1 },
-        1.85 + i * 0.13);
-    });
+    // "the first in the conference's history" — the record badge stamps in.
+    tl.fromTo("#scene-37 .badge", { opacity:0, scale:0.7, rotate:-8 }, { opacity:1, scale:1, rotate:0, duration:0.45, ease:"back.out(2)" }, 3.08);
+    tl.fromTo("#scene-37 .badge .medal", { boxShadow:"0 0 0 rgba(247,223,30,0)" }, { boxShadow:"0 0 22px rgba(247,223,30,0.4)", duration:0.5 }, 4.66);
 
-    // "the first in the conference's history" — the badge rises in (first 3.08, history 4.66).
-    tl.fromTo("#scene-37 .badge",
-      { opacity: 0, y: 18, scale: 0.92 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 3.08);
-
-    // Subtle life — the standing crowd sways a hair.
-    tl.to("#scene-37 .crowd", { y: "-=4", duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.6);
-
-    // Seam clear — fade out across the trailing overlap with scene 38 (local 4.94-5.44).
-    tl.to("#scene-37 .cap, #scene-37 .crowd, #scene-37 .badge",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.94);
-
+    // idle: the hero image breathes a touch.
+    tl.to("#scene-37 .photo", { y:-6, duration:1.2, ease:"sine.inOut", repeat:1, yoyo:true }, 4.0);
     window.__timelines["scene-37"] = tl;
   </script>
 </body>

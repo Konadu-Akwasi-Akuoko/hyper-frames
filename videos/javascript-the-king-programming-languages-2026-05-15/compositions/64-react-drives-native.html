@@ -27,7 +27,7 @@
     }
     #scene-64 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
     #scene-64 .cap .rc { color: var(--react); font-weight: 800; }
-    #scene-64 .cap .dr { color: var(--accent); font-weight: 800; }
+    #scene-64 .cap .dr { color: var(--accent-2); font-weight: 800; }
     #scene-64 .cap .nu { color: var(--accent-2); font-weight: 800; }
 
     #scene-64 .rig {
@@ -43,7 +43,7 @@
     /* the drive beam + its label, stacked so the label stays inside its own box */
     #scene-64 .drive { display: flex; flex-direction: column; align-items: center; gap: 12px; flex: none; }
     #scene-64 .drive .dtag {
-      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--accent);
+      font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; color: var(--accent-2);
       white-space: nowrap; opacity: 0; will-change: opacity;
     }
     #scene-64 .beam {
@@ -81,7 +81,7 @@
 </head>
 <body>
   <div id="scene-64" data-composition-id="scene-64" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">that</span> <span class="w rc">React&rsquo;s</span> <span class="w rc">component</span>
       <span class="w rc">model</span> <span class="w">could</span> <span class="w dr">drive</span>
       <span class="w">real</span> <span class="w nu">native</span> <span class="w nu">UI</span>
@@ -89,19 +89,19 @@
     </div>
 
     <div class="rig">
-      <div class="react">
-        <img src="assets/icons/react.svg" alt="React">
+      <div class="react" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1240">
+        <img src="../assets/icons/react.svg" alt="React">
         <span class="lbl">component model</span>
       </div>
 
-      <div class="drive">
+      <div class="drive" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3140">
         <span class="dtag">drive</span>
-        <div class="beam" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="3640" data-sfx-volume="0.35"></div>
+        <div class="beam"></div>
       </div>
 
-      <div class="ios" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4350" data-sfx-volume="0.35">
+      <div class="ios" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4100">
         <div class="head">
-          <img src="assets/icons/apple.svg" alt="iOS">
+          <img src="../assets/icons/apple.svg" alt="iOS">
           <span class="t">Native UI<small>iOS</small></span>
         </div>
         <div class="ctrl"><span class="name">enabled</span><div class="toggle"><i></i></div></div>
@@ -122,9 +122,10 @@
       tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
     });
 
-    // "React's component model" — the React mark lands (React's 1.24).
+    // "React's component model" — the React mark lands, then its atom slowly spins (React's 1.24).
     tl.fromTo("#scene-64 .react",
       { opacity: 0, x: -28, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.24);
+    tl.to("#scene-64 .react img", { rotation: 360, duration: 5.0, ease: "none", transformOrigin: "50% 50%" }, 1.6);
 
     // "drive" — the beam draws across toward the target (drive 3.14).
     tl.fromTo("#scene-64 .beam",

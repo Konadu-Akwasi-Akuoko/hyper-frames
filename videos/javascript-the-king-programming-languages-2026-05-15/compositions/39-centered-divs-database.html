@@ -3,187 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 39 — the people who centered divs got to touch a database</title>
+  <title>Scene 39 — centered divs got to touch a database</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-      --node: #8cc84b;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-39 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-39 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-39 .cap {
-      position: absolute; left: 50%; top: 168px; transform: translateX(-50%);
-      width: 1500px; text-align: center;
-      font-size: 46px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px; line-height: 1.34;
-    }
-    #scene-39 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-39 .cap .div { color: var(--accent); font-weight: 800; }
-    #scene-39 .cap .db { color: var(--accent-2); font-weight: 800; }
+    #scene-39 .head { position:absolute; left:50%; top:15%; transform:translateX(-50%); font-size:46px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-39 .head .d { color:var(--accent-2); font-weight:800; }
 
-    #scene-39 .rig {
-      position: absolute; left: 50%; top: 686px; transform: translate(-50%, -50%);
-      display: flex; align-items: center; gap: 70px;
-    }
+    #scene-39 .stage { position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:60px; }
 
-    /* the CSS-centering meme, rendered as the artifact itself */
-    #scene-39 .code {
-      width: 420px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.4);
-      opacity: 0; will-change: transform, opacity;
-      font-family: "JetBrains Mono", monospace;
-    }
-    #scene-39 .code .bar {
-      display: flex; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--border);
-    }
-    #scene-39 .code .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--dim); }
-    #scene-39 .code .src { padding: 18px 22px; font-size: 21px; line-height: 1.55; }
-    #scene-39 .code .src .k { color: #c792ea; }
-    #scene-39 .code .src .p { color: var(--accent-2); }
-    #scene-39 .code .src .v { color: var(--node); }
-    #scene-39 .code .src .s { color: var(--muted); }
-    /* the live demo: a box that snaps to centre */
-    #scene-39 .demo {
-      margin: 4px 22px 20px; height: 96px; border: 1px dashed var(--border); border-radius: 10px;
-      position: relative;
-    }
-    #scene-39 .demo .box {
-      position: absolute; left: 12px; top: 12px; width: 40px; height: 40px; border-radius: 8px;
-      background: var(--accent); will-change: transform;
-    }
+    /* the front-end dev: a browser centering a div */
+    #scene-39 .frontend { display:flex; flex-direction:column; align-items:center; gap:14px; opacity:0; will-change:transform,opacity; }
+    #scene-39 .frontend .card { width:300px; height:230px; background:var(--panel); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 22px 56px rgba(0,0,0,0.44); }
+    #scene-39 .frontend .fbar { height:40px; display:flex; align-items:center; padding:0 16px; background:#0d1016; border-bottom:1px solid var(--border); }
+    #scene-39 .frontend .fbar span { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:16px; color:var(--muted); }
+    #scene-39 .frontend .fviewport { height:140px; display:flex; align-items:center; justify-content:center; }
+    #scene-39 .frontend .divbox { width:92px; height:58px; border:1.5px solid var(--accent-2); border-radius:9px; background:rgba(103,232,249,0.08);
+      display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:19px; font-weight:700; color:var(--accent-2); opacity:0; will-change:transform,opacity; }
+    #scene-39 .frontend .fcss { height:50px; display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:16px; color:var(--muted); opacity:0; will-change:opacity; }
+    #scene-39 .frontend .flabel { font-size:21px; color:var(--soft); opacity:0; will-change:opacity; }
 
-    #scene-39 .link {
-      position: relative; width: 150px; height: 6px; opacity: 0; will-change: opacity;
-    }
-    #scene-39 .link .line {
-      position: absolute; top: 50%; left: 0; height: 3px; width: 100%; transform: translateY(-50%);
-      background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform-origin: left center;
-    }
-    #scene-39 .link .pulse {
-      position: absolute; top: 50%; left: 0; width: 18px; height: 18px; border-radius: 50%; transform: translate(-50%, -50%);
-      background: var(--accent-2); box-shadow: 0 0 18px rgba(103,232,249,0.8); opacity: 0;
-    }
+    /* the touch */
+    #scene-39 .reach { display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; will-change:opacity; margin-bottom:42px; }
+    #scene-39 .reach .rl { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:18px; color:var(--muted); }
+    #scene-39 .reach .rr { position:relative; width:120px; height:2px; background:repeating-linear-gradient(90deg, var(--dim) 0 8px, transparent 8px 16px); }
+    #scene-39 .reach .rr .ar { position:absolute; right:-2px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:7px solid transparent; border-bottom:7px solid transparent; border-left:11px solid var(--dim); }
 
     /* the database */
-    #scene-39 .dbwrap {
-      display: flex; flex-direction: column; align-items: center; gap: 16px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-39 .cyl {
-      position: relative; width: 158px; height: 188px;
-      border: 2px solid var(--accent-2); border-radius: 79px / 26px;
-      background: rgba(103,232,249,0.06); will-change: border-color, transform, box-shadow;
-    }
-    #scene-39 .cyl .lid {
-      position: absolute; top: -2px; left: -2px; right: -2px; height: 52px;
-      border: 2px solid var(--accent-2); border-radius: 50%; background: var(--panel);
-    }
-    #scene-39 .cyl .band {
-      position: absolute; left: -2px; right: -2px; height: 26px;
-      border: 2px solid rgba(103,232,249,0.4); border-radius: 50%; background: transparent;
-    }
-    #scene-39 .cyl .b1 { top: 58px; }
-    #scene-39 .cyl .b2 { top: 104px; }
-    #scene-39 .dbwrap .nm {
-      font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 700; color: var(--accent-2); letter-spacing: 0.5px;
-      will-change: color;
-    }
+    #scene-39 .dbwrap { display:flex; flex-direction:column; align-items:center; gap:16px; margin-bottom:42px; }
+    #scene-39 .db { position:relative; width:170px; height:210px; opacity:0; will-change:transform,opacity; }
+    #scene-39 .db svg { width:170px; height:210px; }
+    #scene-39 .db .dbody { fill:var(--panel); stroke:var(--border); stroke-width:2.5; will-change:stroke,fill; }
+    #scene-39 .db .dtop { fill:#0d1016; stroke:var(--border); stroke-width:2.5; will-change:stroke; }
+    #scene-39 .db .dband { fill:none; stroke:var(--dim); stroke-width:2; will-change:stroke; }
+    #scene-39 .db .sweat { position:absolute; right:30px; top:54px; width:14px; height:18px; border-radius:0 50% 50% 50%; transform:rotate(45deg); background:var(--accent-2); opacity:0; will-change:transform,opacity; }
+    #scene-39 .db .glitch { position:absolute; left:18px; width:134px; height:3px; background:var(--danger); opacity:0; will-change:transform,opacity; }
+    #scene-39 .dblabel { font-size:21px; color:var(--soft); opacity:0; will-change:opacity,color; }
+
+    #scene-39 .punch { position:absolute; left:50%; top:85%; transform:translate(-50%,-50%); font-size:34px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-39 .punch .ns { color:var(--danger); font-weight:800; }
   </style>
 </head>
 <body>
   <div id="scene-39" data-composition-id="scene-39" data-width="1920" data-height="1080">
-    <div class="cap">
-      <span class="w">The</span> <span class="w">people</span> <span class="w">who</span>
-      <span class="w div">centered</span> <span class="w div">divs</span> <span class="w">for</span>
-      <span class="w">a</span> <span class="w">living</span> <span class="w">got</span>
-      <span class="w">to</span> <span class="w">touch</span> <span class="w">a</span>
-      <span class="w db">database</span> <span class="w">&mdash; and</span> <span class="w">the</span>
-      <span class="w db">database</span> <span class="w">has</span> <span class="w">never</span>
-      <span class="w">been</span> <span class="w">the</span> <span class="w">same.</span>
-    </div>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">They centered <span class="d">divs</span> for a living.</div>
 
-    <div class="rig">
-      <div class="code">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <div class="src"><span class="s">.div</span> {<br>
-          &nbsp;&nbsp;<span class="p">display</span>: <span class="v">flex</span>;<br>
-          &nbsp;&nbsp;<span class="p">align-items</span>: <span class="v">center</span>;<br>
-          &nbsp;&nbsp;<span class="p">justify-content</span>: <span class="v">center</span>;<br>
-        }</div>
-        <div class="demo"><div class="box" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2300" data-sfx-volume="0.42"></div></div>
-      </div>
-
-      <div class="link">
-        <div class="line"></div>
-        <div class="pulse"></div>
-      </div>
-
-      <div class="dbwrap" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="3800" data-sfx-volume="0.42">
-        <div class="cyl" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="6350">
-          <div class="band b2"></div>
-          <div class="band b1"></div>
-          <div class="lid"></div>
+    <div class="stage">
+      <div class="frontend">
+        <div class="card">
+          <div class="fbar"><span>index.html</span></div>
+          <div class="fviewport"><div class="divbox" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1390">div</div></div>
+          <div class="fcss">place-items: center;</div>
         </div>
-        <div class="nm">database</div>
+        <span class="flabel">centered divs for a living</span>
+      </div>
+
+      <div class="reach">
+        <span class="rl">touched</span>
+        <span class="rr"><span class="ar"></span></span>
+      </div>
+
+      <div class="dbwrap" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4870">
+        <div class="db" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3390">
+          <svg viewBox="0 0 170 210" preserveAspectRatio="none">
+            <path class="dbody" d="M22 32 V172 A63 24 0 0 0 148 172 V32"/>
+            <ellipse class="dtop" cx="85" cy="32" rx="63" ry="24"/>
+            <path class="dband" d="M22 78 A63 24 0 0 0 148 78"/>
+            <path class="dband" d="M22 124 A63 24 0 0 0 148 124"/>
+          </svg>
+          <span class="glitch" style="top:96px;"></span>
+          <span class="glitch" style="top:138px;"></span>
+          <span class="sweat" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="6070"></span>
+        </div>
+        <span class="dblabel">a database</span>
       </div>
     </div>
+
+    <div class="punch">&hellip;and the database has <span class="ns">never been the same</span>.</div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(259.33).
-    // "The people who centered divs for a living got to touch a database — and the database has never been the same."
-    const cw = [0.50, 0.71, 1.14, 1.39, 1.77, 1.97, 2.11, 2.23, 3.09, 3.23, 3.39, 3.67, 3.77, 4.87, 4.99, 5.11, 5.77, 6.07, 6.43, 6.60, 6.81];
-    gsap.utils.toArray("#scene-39 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, cw[i]);
-    });
+    // The 0.50 / centered 1.39 / for-a-living 2.23 / touch 3.39 / database 3.77 / and 4.87 / never 6.07 / same 6.81.
 
-    // "centered divs" — the code card lands and the box snaps to centre (centered 1.39, divs 1.77).
-    tl.fromTo("#scene-39 .code",
-      { opacity: 0, x: -50, scale: 0.94 },
-      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.30);
-    // the demo box obediently centres itself — the thing they do for a living.
-    tl.to("#scene-39 .demo .box",
-      { left: "50%", top: "50%", xPercent: -50, yPercent: -50, duration: 0.55, ease: "back.out(1.7)" }, 1.85);
+    // "They centered divs for a living."
+    tl.fromTo("#scene-39 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "got to touch a database" — the link draws and the database materialises (touch 3.39, database 3.77).
-    tl.fromTo("#scene-39 .dbwrap",
-      { opacity: 0, x: 50, scale: 0.92 },
-      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 3.30);
-    tl.to("#scene-39 .link", { opacity: 1, duration: 0.2 }, 3.30);
-    tl.fromTo("#scene-39 .link .line",
-      { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 3.35);
-    // a pulse runs from the frontend code across into the database — they "touch" it.
-    tl.fromTo("#scene-39 .link .pulse",
-      { left: "0%", opacity: 0 },
-      { left: "100%", opacity: 1, duration: 0.55, ease: "power2.in" }, 3.55);
-    tl.to("#scene-39 .link .pulse", { opacity: 0, duration: 0.2 }, 4.10);
+    // the front-end card; the div snaps to center.
+    tl.fromTo("#scene-39 .frontend", { opacity:0, x:-26 }, { opacity:1, x:0, duration:0.5, ease:"power3.out" }, 0.71);
+    tl.fromTo("#scene-39 .divbox", { opacity:0, scale:0.6 }, { opacity:1, scale:1, duration:0.4, ease:"back.out(2)" }, 1.39);
+    tl.fromTo("#scene-39 .fcss", { opacity:0 }, { opacity:1, duration:0.35 }, 1.70);
+    tl.fromTo("#scene-39 .flabel", { opacity:0 }, { opacity:1, duration:0.35 }, 2.23);
 
-    // "never been the same" — the database is changed: its colour shifts off-cyan and it wobbles (never 6.07, same 6.81).
-    tl.to("#scene-39 .cyl",
-      { borderColor: "var(--node)", boxShadow: "0 0 34px rgba(140,200,75,0.4)", duration: 0.5, ease: "power2.out" }, 6.07);
-    tl.to("#scene-39 .cyl",
-      { rotation: -3, duration: 0.22, ease: "power1.inOut", yoyo: true, repeat: 3 }, 6.10);
-    tl.to("#scene-39 .dbwrap .nm",
-      { color: "var(--node)", duration: 0.5, ease: "power2.out" }, 6.20);
+    // "got to touch a database" — the reach, then the DB slides in.
+    tl.fromTo("#scene-39 .reach", { opacity:0, x:-8 }, { opacity:1, x:0, duration:0.4, ease:"power2.out" }, 3.09);
+    tl.fromTo("#scene-39 .db", { opacity:0, x:26, scale:0.92 }, { opacity:1, x:0, scale:1, duration:0.5, ease:"power3.out" }, 3.39);
+    tl.fromTo("#scene-39 .dblabel", { opacity:0 }, { opacity:1, duration:0.35 }, 3.77);
 
-    // Subtle life — the code card hums while the database arrives.
-    tl.to("#scene-39 .code", { y: "-=5", duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.4);
+    // "and the database has never been the same" — it panics.
+    // a nervous shake.
+    tl.to("#scene-39 .db", { x:"+=5", duration:0.07, ease:"none", repeat:9, yoyo:true }, 4.87);
+    // it reddens.
+    tl.to("#scene-39 .db .dbody", { stroke:"#ff6b5d", fill:"rgba(255,107,93,0.08)", duration:0.4 }, 5.11);
+    tl.to("#scene-39 .db .dtop", { stroke:"#ff6b5d", duration:0.4 }, 5.11);
+    tl.to("#scene-39 .dblabel", { color:"#ff6b5d", duration:0.4 }, 5.11);
+    // glitch bars flicker across.
+    tl.fromTo("#scene-39 .glitch", { opacity:0, scaleX:0.2 }, { opacity:0.8, scaleX:1, duration:0.12, ease:"none", stagger:0.1, yoyo:true, repeat:3 }, 5.3);
+    // a sweat drop rolls down on "never".
+    tl.fromTo("#scene-39 .db .sweat", { opacity:0, y:-6 }, { opacity:1, y:0, duration:0.3, ease:"power1.in" }, 6.07);
+    tl.to("#scene-39 .db .sweat", { y:60, opacity:0, duration:0.7, ease:"power1.in" }, 6.4);
+    // it tips, queasy.
+    tl.to("#scene-39 .db", { rotation:-7, duration:0.5, ease:"power2.inOut" }, 6.07);
 
-    // Seam clear — fade out across the trailing overlap with scene 40 (local 7.23-7.73).
-    tl.to("#scene-39 .cap, #scene-39 .rig",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 7.23);
+    // the punchline.
+    tl.fromTo("#scene-39 .punch", { opacity:0, y:12 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 6.40);
 
+    // idle: it keeps trembling, tipped.
+    tl.to("#scene-39 .db", { x:"+=3", duration:0.1, ease:"none", repeat:5, yoyo:true }, 7.1);
     window.__timelines["scene-39"] = tl;
   </script>
 </body>

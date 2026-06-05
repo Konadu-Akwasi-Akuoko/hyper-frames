@@ -26,7 +26,7 @@
       font-size: 46px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
     }
     #scene-67 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-67 .cap .os { color: var(--accent); font-weight: 800; }
+    #scene-67 .cap .os { color: var(--ok); font-weight: 800; }
     #scene-67 .cap .rn { color: var(--react); font-weight: 800; }
 
     /* context strip */
@@ -36,7 +36,7 @@
     }
     #scene-67 .context img { width: 44px; height: 44px; opacity: 0; will-change: transform, opacity; }
     #scene-67 .context .os {
-      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent); opacity: 0; will-change: opacity;
+      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--ok); opacity: 0; will-change: opacity;
     }
     #scene-67 .context .pill {
       font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--accent-2);
@@ -60,7 +60,7 @@
 </head>
 <body>
   <div id="scene-67" data-composition-id="scene-67" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">Facebook</span> <span class="w os">open-sourced</span> <span class="w">it</span>
       <span class="w">at</span> <span class="w">F8</span> <span class="w">in</span>
       <span class="w">March</span> <span class="w">2015</span> <span class="w">and</span>
@@ -68,14 +68,14 @@
     </div>
 
     <div class="context">
-      <img src="assets/icons/facebook.svg" alt="Facebook">
+      <img src="../assets/icons/facebook.svg" alt="Facebook">
       <span class="os">open-sourced</span>
-      <span class="pill">F8 &middot; March 2015</span>
+      <span class="pill" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2400">F8 &middot; March 2015</span>
     </div>
 
     <div class="hero">
-      <img src="assets/icons/react.svg" alt="React">
-      <div class="wordmark" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="5750" data-sfx-volume="0.35"><span class="r">React</span> <span class="n">Native</span></div>
+      <img src="../assets/icons/react.svg" alt="React" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4940">
+      <div class="wordmark" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5500"><span class="r">React</span> <span class="n">Native</span></div>
     </div>
   </div>
 

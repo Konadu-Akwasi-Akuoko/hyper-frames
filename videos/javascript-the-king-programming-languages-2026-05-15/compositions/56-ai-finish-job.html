@@ -7,133 +7,110 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
     :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-      --heat: #ff7a45; --ai: #67e8f9;
+      --bg:#0b0d12; --panel:#11141b; --border:#1f242c;
+      --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150;
+      --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d;
+      --heat:#ff7a45; --ai:#67e8f9;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-56 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-56 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-56 .cap {
-      position: absolute; left: 50%; top: 184px; transform: translateX(-50%);
-      width: 1380px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
-    }
-    #scene-56 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-56 .cap .ai { color: var(--ai); font-weight: 800; will-change: text-shadow; }
-    #scene-56 .cap .fj { color: var(--danger); font-weight: 800; }
+    #scene-56 .cap { position:absolute; left:50%; top:184px; transform:translateX(-50%); width:1380px; text-align:center; font-size:50px; font-weight:600; color:var(--soft); letter-spacing:-0.8px; }
+    #scene-56 .cap .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-56 .cap .ai { color:var(--ai); font-weight:800; will-change:text-shadow; }
+    #scene-56 .cap .fj { color:var(--danger); font-weight:800; will-change:text-shadow; }
 
-    #scene-56 .stack {
-      position: absolute; left: 50%; top: 624px; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center; gap: 16px;
-    }
+    /* the job checklist — explicit-anchored so the crash-shudder x is safe */
+    #scene-56 .card { position:absolute; left:530px; top:432px; width:860px; padding:30px 38px 34px; border-radius:18px; background:var(--panel); border:1px solid var(--border); box-shadow:0 28px 80px rgba(0,0,0,0.5); opacity:0; will-change:transform,opacity; }
+    #scene-56 .card .chead { display:flex; align-items:center; gap:12px; padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--border); font-family:"JetBrains Mono",ui-monospace,monospace; font-size:20px; font-weight:700; color:var(--muted); letter-spacing:0.5px; }
+    #scene-56 .card .chead b { color:var(--danger); }
 
-    /* the AI chip arriving to finish the job */
-    #scene-56 .chip {
-      position: relative; width: 168px; height: 168px; border-radius: 22px;
-      background: #0e1620; border: 2px solid var(--ai);
-      display: flex; align-items: center; justify-content: center;
-      font-family: "JetBrains Mono", monospace; font-size: 56px; font-weight: 800; color: var(--ai);
-      box-shadow: 0 0 0 rgba(103,232,249,0);
-      opacity: 0; will-change: transform, opacity, box-shadow;
-    }
+    #scene-56 .row { display:flex; align-items:center; gap:18px; padding:12px 0; opacity:0; will-change:transform,opacity; }
+    #scene-56 .row .box { width:30px; height:30px; border-radius:8px; border:2px solid var(--dim); flex:none; position:relative; will-change:background,border-color; }
+    #scene-56 .row .box svg { position:absolute; inset:4px; opacity:0; will-change:opacity; }
+    #scene-56 .row .box svg path { fill:none; stroke:#0b0d12; stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; }
+    #scene-56 .row .tx { font-size:25px; color:var(--soft); will-change:color; }
+    #scene-56 .row .who { margin-left:auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:15px; font-weight:700; letter-spacing:0.5px; color:var(--muted); white-space:nowrap; position:relative; }
+    #scene-56 .row .who .wai { position:absolute; right:0; top:0; color:var(--ai); opacity:0; will-change:opacity; }
+    #scene-56 .row.done .box { background:var(--ok); border-color:var(--ok); }
+    #scene-56 .row.done .box svg { opacity:1; }
+    #scene-56 .row.last .tx { color:var(--muted); }
 
-    #scene-56 .beam {
-      width: 5px; height: 40px; background: linear-gradient(180deg, var(--ai), var(--danger));
-      border-radius: 3px; transform: scaleY(0); transform-origin: top center; will-change: transform;
-    }
+    /* the COMPLETE stamp */
+    #scene-56 .stamp { position:absolute; right:38px; bottom:-22px; padding:8px 22px; border-radius:999px; background:rgba(255,107,93,0.14); border:1px solid rgba(255,107,93,0.55); font-family:"JetBrains Mono",ui-monospace,monospace; font-size:21px; font-weight:800; color:var(--danger); letter-spacing:1px; opacity:0; will-change:transform,opacity; }
 
-    /* the memory gauge it finishes off */
-    #scene-56 .gauge { width: 760px; opacity: 0; will-change: opacity; }
-    #scene-56 .gauge .head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
-    #scene-56 .gauge .name { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
-    #scene-56 .gauge .pct { font-family: "JetBrains Mono", monospace; font-size: 40px; font-weight: 800; color: var(--danger); letter-spacing: -1px; will-change: opacity; }
-    #scene-56 .gauge .crash {
-      font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 800; color: var(--danger); letter-spacing: -0.5px;
-      position: absolute; right: 0; top: 0; opacity: 0; will-change: transform, opacity;
-    }
-    #scene-56 .gauge .headwrap { position: relative; }
-    #scene-56 .gauge .track {
-      position: relative; height: 50px; border-radius: 11px; background: #14181f; border: 1px solid var(--border); overflow: hidden;
-    }
-    #scene-56 .gauge .fill {
-      position: absolute; top: 0; left: 0; height: 100%; width: 100%; border-radius: 10px;
-      background: var(--danger); transform: scaleX(0.9); transform-origin: left center;
-      will-change: transform, box-shadow;
-    }
+    /* the AI sparkle arriving to finish the job */
+    #scene-56 .spark { position:absolute; left:1326px; top:392px; width:96px; height:96px; opacity:0; will-change:transform,opacity; z-index:5; }
+    #scene-56 .spark svg { width:100%; height:100%; }
+    #scene-56 .spark .star { fill:var(--ai); }
   </style>
 </head>
 <body>
   <div id="scene-56" data-composition-id="scene-56" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">before</span> <span class="w ai">AI</span> <span class="w">even</span>
       <span class="w">showed</span> <span class="w">up</span> <span class="w">to</span>
       <span class="w fj">finish</span> <span class="w fj">the</span> <span class="w fj">job.</span>
     </div>
 
-    <div class="stack">
-      <div class="chip">AI</div>
-      <div class="beam"></div>
-      <div class="gauge">
-        <div class="headwrap">
-          <div class="head">
-            <span class="name">MEMORY</span>
-            <span class="pct">147%</span>
-          </div>
-          <span class="crash" data-sfx-on-anchor="boom" data-sfx-asset="Anime SFX/Hollow Hit 01.mp3" data-sfx-at-scene-ms="2400">OUT OF MEMORY</span>
-        </div>
-        <div class="track"><div class="fill"></div></div>
-      </div>
+    <div class="card">
+      <div class="chead">TO&#8209;DO &nbsp;&middot;&nbsp; <b>ruin software efficiency</b></div>
+      <div class="row done"><span class="box"><svg viewBox="0 0 22 22"><path d="M4 11 L9 16 L18 6"/></svg></span><span class="tx">ship a whole browser to send a 👍</span><span class="who">✓ humans</span></div>
+      <div class="row done"><span class="box"><svg viewBox="0 0 22 22"><path d="M4 11 L9 16 L18 6"/></svg></span><span class="tx">torch 16 GB of RAM like it&rsquo;s free</span><span class="who">✓ humans</span></div>
+      <div class="row last"><span class="box"><svg viewBox="0 0 22 22"><path d="M4 11 L9 16 L18 6"/></svg></span><span class="tx">spin up a datacenter to autocomplete</span><span class="who"><span class="wpend">&hellip;</span><span class="wai">✓ AI</span></span></div>
+      <div class="stamp" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2060">JOB COMPLETE</div>
+    </div>
+
+    <div class="spark" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="940">
+      <svg viewBox="0 0 100 100"><path class="star" d="M50 6 C54 38 62 46 94 50 C62 54 54 62 50 94 C46 62 38 54 6 50 C38 46 46 38 50 6 Z"/></svg>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused:true });
 
     // Scene-local = global - data_start(331.82).
-    // "before AI even showed up to finish the job." (AI 0.94, showed 1.46, finish 2.04, job 2.46).
+    // before 0.50 / AI 0.94 / even 1.16 / showed 1.46 / up 1.74 / to 1.88 / finish 2.04 / the 2.30 / job 2.46.
+
+    // "before AI even showed up to finish the job."
     const cw = [0.50, 0.94, 1.16, 1.46, 1.74, 1.88, 2.04, 2.30, 2.46];
     gsap.utils.toArray("#scene-56 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+      tl.fromTo(el, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.28, ease:"power2.out" }, cw[i]);
     });
 
-    // the redlined gauge is still here from before (before 0.50).
-    tl.to("#scene-56 .gauge", { opacity: 1, duration: 0.3 }, 0.45);
+    // the job card carries in; the two human-checked items are already done (before 0.50).
+    tl.fromTo("#scene-56 .card", { opacity:0, y:22, scale:0.97 }, { opacity:1, y:0, scale:1, duration:0.45, ease:"power3.out" }, 0.45);
+    tl.fromTo("#scene-56 .row:nth-child(2)", { opacity:0, x:-12 }, { opacity:1, x:0, duration:0.3, ease:"power2.out" }, 0.58);
+    tl.fromTo("#scene-56 .row:nth-child(3)", { opacity:0, x:-12 }, { opacity:1, x:0, duration:0.3, ease:"power2.out" }, 0.74);
+    tl.fromTo("#scene-56 .row.last", { opacity:0, x:-12 }, { opacity:1, x:0, duration:0.3, ease:"power2.out" }, 0.90);
 
-    // "AI" — the chip drops in, glowing (AI 0.94).
-    tl.fromTo("#scene-56 .chip",
-      { opacity: 0, y: -28, scale: 0.85 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.92);
-    tl.to("#scene-56 .chip",
-      { boxShadow: "0 0 40px rgba(103,232,249,0.45)", duration: 0.4, ease: "power2.out" }, 1.30);
+    // "AI" — the sparkle materialises top-right, glowing (AI 0.94).
+    tl.fromTo("#scene-56 .spark", { opacity:0, scale:0.4, rotation:-40 }, { opacity:1, scale:1, rotation:0, duration:0.5, ease:"back.out(1.8)" }, 0.94);
+    tl.to("#scene-56 .spark svg", { filter:"drop-shadow(0 0 18px rgba(103,232,249,0.7))", duration:0.4 }, 1.1);
 
-    // "showed up" — the load beam fires from AI into the gauge (showed 1.46).
-    tl.to("#scene-56 .beam", { scaleY: 1, duration: 0.35, ease: "power2.in" }, 1.50);
+    // "showed up" — the sparkle sweeps down to the last, unfinished item (showed 1.46).
+    tl.to("#scene-56 .spark", { x:-560, y:212, duration:0.6, ease:"power2.inOut" }, 1.50);
 
-    // "finish the job" — the bar slams full and the machine crashes (finish 2.04, job 2.46).
-    tl.to("#scene-56 .gauge .fill",
-      { scaleX: 1, boxShadow: "0 0 34px rgba(255,107,93,0.6)", duration: 0.35, ease: "power3.in" }, 2.04);
-    tl.to("#scene-56 .gauge .pct", { opacity: 0, duration: 0.2 }, 2.30);
-    tl.fromTo("#scene-56 .gauge .crash",
-      { opacity: 0, scale: 1.3 },
-      { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 2.40);
-    tl.fromTo("#scene-56 .cap .fj",
-      { textShadow: "0 0 0 rgba(255,107,93,0)" },
-      { textShadow: "0 0 22px rgba(255,107,93,0.5)", duration: 0.4, ease: "power2.out" }, 2.10);
+    // "to finish the job" — AI checks the last box; it flips cyan; the job stamps COMPLETE (finish 2.04, job 2.46).
+    tl.to("#scene-56 .row.last .box", { background:"#67e8f9", borderColor:"#67e8f9", duration:0.25, ease:"power2.out" }, 2.06);
+    tl.to("#scene-56 .row.last .box svg", { opacity:1, duration:0.25 }, 2.10);
+    tl.to("#scene-56 .row.last .tx", { color:"#c2c9d4", duration:0.3 }, 2.10);
+    tl.to("#scene-56 .row.last .who .wpend", { opacity:0, duration:0.2 }, 2.10);
+    tl.to("#scene-56 .row.last .who .wai", { opacity:1, duration:0.2 }, 2.14);
+    tl.to("#scene-56 .spark", { scale:1.25, duration:0.16, ease:"power2.out", yoyo:true, repeat:1 }, 2.06);
+    tl.fromTo("#scene-56 .stamp", { opacity:0, scale:1.3 }, { opacity:1, scale:1, duration:0.4, ease:"back.out(1.5)" }, 2.40);
+    tl.fromTo("#scene-56 .cap .fj", { textShadow:"0 0 0 rgba(255,107,93,0)" }, { textShadow:"0 0 22px rgba(255,107,93,0.5)", duration:0.4, ease:"power2.out" }, 2.10);
 
-    // a hard shudder as it crashes.
-    tl.to("#scene-56 .stack", { x: "+=6", duration: 0.06, ease: "none", repeat: 5, yoyo: true }, 2.42);
+    // a hard shudder as the job lands (card has explicit left, so x is safe).
+    tl.to("#scene-56 .card", { x:"+=6", duration:0.06, ease:"none", repeat:5, yoyo:true }, 2.42);
 
-    // Seam clear — fade out across the trailing overlap with scene 57 (local 3.34-3.84).
-    tl.to("#scene-56 .cap, #scene-56 .stack",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.34);
+    // the sparkle fades after its work.
+    tl.to("#scene-56 .spark", { opacity:0, scale:0.7, duration:0.4, ease:"power2.in" }, 2.7);
+
+    // Seam clear — fade out across the trailing overlap with scene 57 (local 3.46-3.84).
+    tl.to("#scene-56 .cap, #scene-56 .card", { opacity:0, duration:0.32, ease:"power2.inOut" }, 3.46);
 
     window.__timelines["scene-56"] = tl;
   </script>

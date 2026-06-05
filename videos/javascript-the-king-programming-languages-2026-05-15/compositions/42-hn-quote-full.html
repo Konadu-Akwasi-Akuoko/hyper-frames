@@ -3,129 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 42 — the full Hacker News quote (callback)</title>
+  <title>Scene 42 — the full Hacker News quote, pulled out (… in the form of Node.js)</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-      --node: #8cc84b;
-    }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d; }
     @font-face {
-      font-family: "Excalifont";
-      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
-      font-weight: 400; font-display: block;
+      font-family:"Excalifont";
+      src:url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-weight:400; font-display:block;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-42 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-42 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-42 .card {
-      position: absolute; left: 50%; top: 50%;
-      width: 1380px; transform: translate(-50%, -50%);
-      padding: 76px 96px 60px;
-      background: linear-gradient(180deg, rgba(20,24,32,0.92) 0%, rgba(14,17,23,0.94) 100%);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-42 .quote-mark {
-      position: absolute; left: 50px; top: 8px;
-      font-family: "Excalifont", "Inter", sans-serif;
-      font-size: 170px; line-height: 1; color: var(--dim);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-42 .quote {
-      font-family: "Excalifont", "Inter", sans-serif;
-      font-size: 56px; line-height: 1.36; color: var(--fg); letter-spacing: 0.2px;
-    }
-    #scene-42 .quote .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-42 .quote .ignite { color: var(--muted); will-change: color, text-shadow; }
-    #scene-42 .quote .node { color: var(--fg); font-weight: 700; will-change: color, text-shadow; }
+    /* the pulled quote — lifted out of the thread, weighty and large */
+    #scene-42 .pull { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1520px; }
+    #scene-42 .qmark { position:absolute; left:-30px; top:-118px; font-family:"Excalifont","Inter",sans-serif; font-size:200px; line-height:1; color:var(--dim); opacity:0; will-change:transform,opacity; }
 
-    #scene-42 .attrib {
-      display: flex; align-items: center; gap: 18px;
-      margin-top: 44px; padding-top: 30px; border-top: 1px solid var(--border);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-42 .attrib .hn {
-      width: 46px; height: 46px; border-radius: 8px; flex: none; display: block;
-      box-shadow: 0 4px 16px rgba(251,101,30,0.35);
-    }
-    #scene-42 .attrib .who { font-size: 30px; font-weight: 500; color: var(--soft); letter-spacing: 0.2px; }
-    #scene-42 .attrib .meta {
-      font-family: "JetBrains Mono", monospace; font-size: 24px; color: var(--muted);
-      margin-left: auto; font-variant-numeric: tabular-nums;
-    }
+    #scene-42 .quote { font-family:"Excalifont","Inter",sans-serif; font-size:54px; line-height:1.5; color:var(--soft); letter-spacing:0.2px; }
+    #scene-42 .quote .ln { opacity:0; will-change:transform,opacity; }
+    #scene-42 .quote .lnc { display:flex; align-items:center; gap:22px; }
+    #scene-42 .quote .esc, #scene-42 .quote .inf { color:var(--soft); will-change:color,text-shadow; }
+    #scene-42 .quote .node { color:var(--soft); font-weight:400; will-change:color,text-shadow; }
+    #scene-42 .quote .nlogo { width:66px; height:66px; object-fit:contain; opacity:0; will-change:transform,opacity; filter:drop-shadow(0 0 0 rgba(125,216,125,0)); }
+
+    /* the pulled-quote attribution dash */
+    #scene-42 .attrib { margin-top:48px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:25px; color:var(--muted); letter-spacing:0.3px; opacity:0; will-change:transform,opacity; }
+    #scene-42 .attrib .yr { color:var(--soft); font-variant-numeric:tabular-nums; }
   </style>
 </head>
 <body>
   <div id="scene-42" data-composition-id="scene-42" data-width="1920" data-height="1080">
-    <div class="card">
-      <div class="quote-mark" data-layout-allow-overflow>&ldquo;</div>
+    <div class="pull">
+      <div class="qmark" data-layout-allow-overflow>&ldquo;</div>
       <div class="quote">
-        <span class="w">We</span> <span class="w">allowed</span> <span class="w">this</span>
-        <span class="w">awful</span> <span class="w">language</span> <span class="w">to</span>
-        <span class="w ignite" data-key="escape" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2410">escape</span> <span class="w">the</span>
-        <span class="w">browser</span> <span class="w">and</span>
-        <span class="w ignite" data-key="infiltrate">infiltrate</span> <span class="w">our</span>
-        <span class="w">servers</span> <span class="w">in</span> <span class="w">form</span>
-        <span class="w">of</span> <span class="w node" data-key="node" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6050" data-sfx-volume="0.35">Node.js.</span>
+        <div class="ln l1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">We allowed this awful language to <span class="esc">escape</span> the browser</div>
+        <div class="ln l2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3670">and <span class="inf">infiltrate</span> our servers</div>
+        <div class="ln l3 lnc" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="5130">in the form of <span class="node">Node.js.</span><img class="nlogo" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6000" src="../assets/icons/nodejs.svg" alt="Node.js"></div>
       </div>
-      <div class="attrib">
-        <svg class="hn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#fb651e" d="M0 0h256v256H0z"/><path fill="#fff" d="M119.374 144.746L75.433 62.432h20.081l25.848 52.092q.597 1.392 1.392 2.883t1.391 3.082q.398.596.597 1.094q.199.496.398.894a66 66 0 0 1 1.79 3.877q.795 1.89 1.39 3.48q1.591-3.381 3.48-7.257q1.89-3.878 3.877-8.053l26.246-52.092h18.69l-44.34 83.308v53.087h-16.9z"/></svg>
-        <span class="who">A Hacker News commenter, on JavaScript</span>
-        <span class="meta">2014</span>
-      </div>
+      <div class="attrib">&mdash; Hacker News &middot; <span class="yr">2014</span></div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(276.81).
-    // Entrance — the same card returns (callback to scene 01).
-    tl.fromTo("#scene-42 .card",
-      { opacity: 0, y: 24, scale: 0.985 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 0.10);
-    tl.fromTo("#scene-42 .quote-mark",
-      { opacity: 0, y: 12, scale: 0.9 },
-      { opacity: 0.9, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 0.20);
-    // attribution is present from the start — we already know who said it (scene 41).
-    tl.fromTo("#scene-42 .attrib",
-      { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.35);
+    // We 0.50 / allowed 0.79 / escape 2.39 / browser 2.83 / and 3.67 / infiltrate 3.93 / servers 4.75 / in 5.13 / form 5.37 / Node.js 5.99.
 
-    // The full quote reveals word-by-word on the spoken word.
-    const words = [0.50, 0.79, 1.17, 1.41, 1.83, 2.23, 2.39, 2.69, 2.83, 3.67, 3.93, 4.57, 4.75, 5.13, 5.37, 5.63, 5.99];
-    gsap.utils.toArray("#scene-42 .quote .w").forEach((el, i) => {
-      tl.fromTo(el,
-        { opacity: 0, y: 14, rotateZ: -1.5 },
-        { opacity: 1, y: 0, rotateZ: 0, duration: 0.3, ease: "power2.out" }, words[i]);
-    });
+    // the big quote mark settles in first.
+    tl.fromTo("#scene-42 .qmark", { opacity:0, y:14, scale:0.9 }, { opacity:0.85, y:0, scale:1, duration:0.6, ease:"back.out(1.6)" }, 0.10);
 
-    // "escape" ignites danger-red on its word — the verb the narration just called out (escape 2.39).
-    tl.to('#scene-42 .quote .ignite[data-key="escape"]',
-      { color: "#ff6b5d", textShadow: "0 0 26px rgba(255,107,93,0.55)", duration: 0.3, ease: "power2.out" }, 2.41);
-    // "infiltrate" ignites on its word (infiltrate 3.93).
-    tl.to('#scene-42 .quote .ignite[data-key="infiltrate"]',
-      { color: "#ff6b5d", textShadow: "0 0 26px rgba(255,107,93,0.55)", duration: 0.3, ease: "power2.out" }, 3.95);
-    // "Node.js" resolves node-green — the irony: the thing he feared is the hero (Node.js 5.99).
-    tl.to('#scene-42 .quote .node[data-key="node"]',
-      { color: "#8cc84b", textShadow: "0 0 28px rgba(140,200,75,0.5)", duration: 0.4, ease: "power2.out" }, 6.05);
+    // clause 1 — "We allowed this awful language to escape the browser"
+    tl.fromTo("#scene-42 .l1", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
+    // "escape" flicks danger-red on its word (the menace verb; 2.39).
+    tl.to("#scene-42 .quote .esc", { color:"#ff6b5d", textShadow:"0 0 24px rgba(255,107,93,0.5)", duration:0.32, ease:"power2.out" }, 2.41);
 
-    // Constant subtle life — the card breathes.
-    tl.to("#scene-42 .card", { y: "-=6", duration: 5, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+    // clause 2 — "and infiltrate our servers"
+    tl.fromTo("#scene-42 .l2", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 3.67);
+    // "infiltrate" flicks danger-red (3.93).
+    tl.to("#scene-42 .quote .inf", { color:"#ff6b5d", textShadow:"0 0 24px rgba(255,107,93,0.5)", duration:0.32, ease:"power2.out" }, 3.95);
 
-    // Seam clear — fade out across the trailing overlap with scene 43 (local 6.95-7.45).
-    tl.to("#scene-42 .card",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.95);
+    // clause 3 — "in the form of Node.js." — the payoff line slides in.
+    tl.fromTo("#scene-42 .l3", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 5.13);
+    // "Node.js" resolves green and its logo punches in — the thing he feared is the hero (5.99).
+    tl.to("#scene-42 .quote .node", { color:"#7dd87d", textShadow:"0 0 26px rgba(125,216,125,0.45)", duration:0.4, ease:"power2.out" }, 6.00);
+    tl.fromTo("#scene-42 .nlogo", { opacity:0, scale:0.5, rotateZ:-10 }, { opacity:1, scale:1, rotateZ:0, duration:0.46, ease:"back.out(2)" }, 6.00);
+    tl.to("#scene-42 .nlogo", { filter:"drop-shadow(0 0 16px rgba(125,216,125,0.55))", duration:0.4 }, 6.10);
+
+    // attribution dash fades up after the line lands.
+    tl.fromTo("#scene-42 .attrib", { opacity:0, y:12 }, { opacity:1, y:0, duration:0.45, ease:"power2.out" }, 6.40);
+
+    // constant life — the pulled quote breathes; the Node logo bobs.
+    tl.to("#scene-42 .pull", { y:"-=6", duration:5, ease:"sine.inOut", repeat:1, yoyo:true }, 1.2);
+    tl.to("#scene-42 .nlogo", { y:-6, duration:0.9, ease:"sine.inOut", repeat:1, yoyo:true }, 6.6);
+
+    // Seam clear — fade foreground out across the trailing overlap with scene 43 (local 6.97-7.45).
+    tl.to("#scene-42 .pull", { opacity:0, duration:0.34, ease:"power2.inOut" }, 6.98);
 
     window.__timelines["scene-42"] = tl;
   </script>

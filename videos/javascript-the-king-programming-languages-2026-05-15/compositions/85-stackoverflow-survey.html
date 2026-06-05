@@ -10,6 +10,7 @@
       --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
       --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
       --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --so: #f48024;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
@@ -25,33 +26,50 @@
       font-size: 44px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
     }
     #scene-85 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-85 .cap .brand { color: var(--accent-2); font-weight: 800; }
-    #scene-85 .cap .num { color: var(--accent); font-weight: 800; }
+    #scene-85 .cap .brand { color: var(--so); font-weight: 800; }
+    #scene-85 .cap .num { color: var(--accent-2); font-weight: 800; }
 
-    #scene-85 .survey {
-      position: absolute; left: 50%; top: 660px; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center; gap: 22px;
+    /* the survey results card */
+    #scene-85 .card {
+      position: absolute; left: 50%; top: 668px; transform: translate(-50%, -50%);
+      width: 880px; border-radius: 20px; overflow: hidden;
+      background: rgba(17,20,27,0.97); border: 1px solid var(--border);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+      opacity: 0; will-change: transform, opacity;
     }
-    #scene-85 .shead {
-      display: flex; align-items: center; gap: 16px; opacity: 0; will-change: transform, opacity;
-    }
-    #scene-85 .shead img { height: 46px; width: auto; }
-    #scene-85 .shead .t { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 800; color: var(--soft); letter-spacing: 0.3px; }
+    #scene-85 .card .accentbar { height: 6px; background: var(--so); transform: scaleX(0); transform-origin: left center; will-change: transform; }
 
-    #scene-85 .big {
-      display: flex; flex-direction: column; align-items: center; gap: 4px; opacity: 0; will-change: transform, opacity;
+    #scene-85 .card .head {
+      display: flex; align-items: center; gap: 18px; padding: 26px 38px 22px;
+      border-bottom: 1px solid var(--border);
     }
-    #scene-85 .big .n {
-      font-family: "JetBrains Mono", monospace; font-size: 150px; font-weight: 900; color: var(--accent); line-height: 0.95; letter-spacing: -2px;
+    #scene-85 .card .head img { height: 44px; width: auto; }
+    #scene-85 .card .head .titles { display: flex; flex-direction: column; gap: 2px; }
+    #scene-85 .card .head .ttl { font-family: "JetBrains Mono", monospace; font-size: 25px; font-weight: 800; color: var(--soft); letter-spacing: 0.2px; }
+    #scene-85 .card .head .ttl .yr { color: var(--accent-2); }
+    #scene-85 .card .head .sub { font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0.3px; }
+    #scene-85 .card .head .pill {
+      margin-left: auto; display: flex; align-items: center; gap: 8px;
+      padding: 7px 16px; border-radius: 999px; background: rgba(244,128,36,0.1); border: 1px solid rgba(244,128,36,0.4);
+      font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 700; color: var(--so);
     }
-    #scene-85 .big .nl { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+    #scene-85 .card .head .pill .d { width: 8px; height: 8px; border-radius: 50%; background: var(--so); }
 
-    #scene-85 .q {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 26px; border-radius: 999px; background: rgba(103,232,249,0.08); border: 1px solid rgba(103,232,249,0.35);
+    #scene-85 .card .body { padding: 38px 38px 34px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+    #scene-85 .card .big { display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0; will-change: transform, opacity; }
+    #scene-85 .card .big .n {
+      font-family: "JetBrains Mono", monospace; font-size: 150px; font-weight: 900; color: var(--accent-2);
+      line-height: 0.92; letter-spacing: -3px;
+    }
+    #scene-85 .card .big .nl { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--muted); letter-spacing: 1.2px; text-transform: uppercase; }
+
+    #scene-85 .card .q {
+      display: flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 999px; background: rgba(103,232,249,0.07); border: 1px solid rgba(103,232,249,0.32);
       font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent-2);
       opacity: 0; will-change: transform, opacity;
     }
+    #scene-85 .card .q .qm { color: var(--muted); font-size: 26px; }
   </style>
 </head>
 <body>
@@ -63,16 +81,25 @@
       <span class="w">what</span> <span class="w">they</span> <span class="w">actually</span> <span class="w">use.</span>
     </div>
 
-    <div class="survey">
-      <div class="shead" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="1110" data-sfx-volume="0.42">
-        <img src="assets/icons/stackoverflow.svg" alt="Stack Overflow">
-        <span class="t">2025 Developer Survey</span>
+    <div class="card" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="840">
+      <div class="accentbar"></div>
+      <div class="head">
+        <img src="../assets/icons/stackoverflow.svg" alt="Stack Overflow">
+        <div class="titles">
+          <span class="ttl">Developer Survey <span class="yr">2025</span></span>
+          <span class="sub">stackoverflow.co/survey</span>
+        </div>
+        <span class="pill"><span class="d"></span>annual</span>
       </div>
-      <div class="big" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="4980">
-        <span class="n">0</span>
-        <span class="nl">engineers asked</span>
+      <div class="body">
+        <div class="big" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="4420">
+          <span class="n">0</span>
+          <span class="nl">engineers surveyed</span>
+        </div>
+        <div class="q" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6120">
+          <span class="qm">&ldquo;</span>what do you actually use?<span class="qm">&rdquo;</span>
+        </div>
       </div>
-      <div class="q">&ldquo;what do you actually use?&rdquo;</div>
     </div>
   </div>
 
@@ -82,32 +109,33 @@
 
     // Scene-local = global - data_start(487.43).
     // "Stack Overflow's 2025 developer survey asked 49,000 engineers what they actually use."
-    // (Stack 0.50, 2025 1.64, asked 4.04, 49,000 4.42, engineers 5.44, what 6.12, use 7.04).
+    // (Stack 0.50, 2025 1.64, survey 2.88, asked 4.04, 49,000 4.42, engineers 5.44, what 6.12, use 7.04).
     const cw = [0.50, 0.84, 1.64, 2.31, 2.88, 4.04, 4.42, 5.44, 6.12, 6.34, 6.52, 7.04];
     gsap.utils.toArray("#scene-85 .cap .w").forEach((el, i) => {
       tl.fromTo(el, { opacity: 0, y: 9 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, cw[i]);
     });
 
-    // "Stack Overflow's 2025 Developer Survey" — the survey header appears (Stack 0.50).
-    tl.fromTo("#scene-85 .shead",
-      { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.84);
+    // "Stack Overflow's 2025 Developer Survey" — the results card lands and the orange accent sweeps in (Overflow's 0.84).
+    tl.fromTo("#scene-85 .card",
+      { opacity: 0, y: 22, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 0.84);
+    tl.to("#scene-85 .card .accentbar", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.1);
 
-    // "49,000" — the big number counts up (49,000 4.42).
+    // "49,000 engineers" — the big number block pops and counts up (49,000 4.42).
     const counter = { v: 0 };
-    const numEl = document.querySelector("#scene-85 .big .n");
-    tl.fromTo("#scene-85 .big",
-      { opacity: 0, y: 16, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 4.42);
+    const numEl = document.querySelector("#scene-85 .card .big .n");
+    tl.fromTo("#scene-85 .card .big",
+      { opacity: 0, y: 16, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 4.42);
     tl.to(counter, {
-      v: 49000, duration: 0.8, ease: "power2.out",
+      v: 49000, duration: 0.85, ease: "power2.out",
       onUpdate: () => { numEl.textContent = Math.round(counter.v).toLocaleString("en-US"); }
     }, 4.42);
 
-    // "what they actually use" — the question appears (what 6.12).
-    tl.fromTo("#scene-85 .q",
+    // "what they actually use" — the question chip appears (what 6.12).
+    tl.fromTo("#scene-85 .card .q",
       { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.12);
 
     // Seam clear — fade out across the trailing overlap with scene 86 (local 7.44-7.94).
-    tl.to("#scene-85 .cap, #scene-85 .survey",
+    tl.to("#scene-85 .cap, #scene-85 .card",
       { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 7.44);
 
     window.__timelines["scene-85"] = tl;

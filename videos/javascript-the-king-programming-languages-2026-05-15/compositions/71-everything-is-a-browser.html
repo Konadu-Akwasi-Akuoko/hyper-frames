@@ -67,23 +67,23 @@
     </div>
 
     <div class="stack">
-      <div class="win" data-row="1">
+      <div class="win" data-row="1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
         <div class="chrome"><i></i><i></i><i></i>
-          <div class="urlbar"><img src="assets/icons/chrome.svg" alt=""><span class="u">your-code-editor.app</span></div>
+          <div class="urlbar"><img src="../assets/icons/chrome.svg" alt=""><span class="u">your-code-editor.app</span></div>
         </div>
-        <div class="body"><span class="tool">Code editor</span><span class="real" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="1820" data-sfx-volume="0.42">a browser</span></div>
+        <div class="body"><span class="tool">Code editor</span><span class="real" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1580">a browser</span></div>
       </div>
-      <div class="win" data-row="2">
+      <div class="win" data-row="2" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2500">
         <div class="chrome"><i></i><i></i><i></i>
-          <div class="urlbar"><img src="assets/icons/chrome.svg" alt=""><span class="u">your-password-manager.app</span></div>
+          <div class="urlbar"><img src="../assets/icons/chrome.svg" alt=""><span class="u">your-password-manager.app</span></div>
         </div>
-        <div class="body"><span class="tool">Password manager</span><span class="real" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="3980" data-sfx-volume="0.35">a browser</span></div>
+        <div class="body"><span class="tool">Password manager</span><span class="real" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3740">a browser</span></div>
       </div>
-      <div class="win" data-row="3">
+      <div class="win" data-row="3" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4700">
         <div class="chrome"><i></i><i></i><i></i>
-          <div class="urlbar"><img src="assets/icons/chrome.svg" alt=""><span class="u">your-chat-app.app</span></div>
+          <div class="urlbar"><img src="../assets/icons/chrome.svg" alt=""><span class="u">your-chat-app.app</span></div>
         </div>
-        <div class="body"><span class="tool">Chat app</span><span class="real" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6080" data-sfx-volume="0.35">a browser</span></div>
+        <div class="body"><span class="tool">Chat app</span><span class="real" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5840">a browser</span></div>
       </div>
     </div>
   </div>
@@ -116,6 +116,9 @@
         { borderColor: "rgba(103,232,249,0.55)", boxShadow: "0 0 24px rgba(103,232,249,0.18)", duration: 0.4, ease: "power2.out" }, r.br);
       tl.to(`#scene-71 .win${r.sel} .real`, { opacity: 1, duration: 0.3 }, r.br);
     });
+
+    // Subtle life — the stack holds with a faint breath after the last verdict.
+    tl.to("#scene-71 .stack", { y: "-=4", duration: 1.4, ease: "sine.inOut" }, 6.0);
 
     // Seam clear — fade out across the trailing overlap with scene 72 (local 6.70-7.20).
     tl.to("#scene-71 .cap, #scene-71 .stack",

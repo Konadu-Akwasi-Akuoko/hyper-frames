@@ -26,7 +26,7 @@
     }
     #scene-88 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
     #scene-88 .cap .qual { color: var(--muted); font-weight: 800; }
-    #scene-88 .cap .sup { color: var(--accent); font-weight: 800; }
+    #scene-88 .cap .sup { color: var(--ok); font-weight: 800; }
 
     #scene-88 .contrast {
       position: absolute; left: 50%; top: 610px; transform: translate(-50%, -50%);
@@ -46,8 +46,8 @@
     #scene-88 .right .line { display: flex; align-items: center; gap: 20px; }
     #scene-88 .right .mk { font-family: "JetBrains Mono", monospace; font-size: 56px; font-weight: 800; color: var(--ok); }
     #scene-88 .right .word {
-      font-family: "JetBrains Mono", monospace; font-size: 104px; font-weight: 900; color: var(--accent);
-      letter-spacing: -2px; line-height: 0.9; text-shadow: 0 0 40px rgba(247,223,30,0.25);
+      font-family: "JetBrains Mono", monospace; font-size: 104px; font-weight: 900; color: var(--ok);
+      letter-spacing: -2px; line-height: 0.9; text-shadow: 0 0 40px rgba(125,216,125,0.25);
     }
     #scene-88 .right .sb { font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 700; color: var(--soft); letter-spacing: 0.3px; }
   </style>
@@ -60,14 +60,14 @@
     </div>
 
     <div class="contrast">
-      <div class="wrong">
+      <div class="wrong" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1700">
         <div class="line">
           <span class="mk">&#10007;</span>
-          <span class="word">quality<span class="strikeline" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2350"></span></span>
+          <span class="word">quality<span class="strikeline" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2050"></span></span>
         </div>
         <span class="sb">not because it was the better language</span>
       </div>
-      <div class="right" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3870">
+      <div class="right" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3620">
         <div class="line">
           <span class="mk">&#10003;</span>
           <span class="word">supply</span>
@@ -97,7 +97,7 @@
     // "supply" — the real reason slams in as the hero (supply 3.72).
     tl.fromTo("#scene-88 .right",
       { opacity: 0, y: 20, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 3.62);
-    tl.to("#scene-88 .right .word", { textShadow: "0 0 64px rgba(247,223,30,0.4)",
+    tl.to("#scene-88 .right .word", { textShadow: "0 0 64px rgba(125,216,125,0.42)",
       duration: 0.9, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.2);
 
     // Seam clear — fade out across the trailing overlap with scene 89 (local 4.37-4.87).

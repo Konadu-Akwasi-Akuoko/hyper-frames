@@ -3,106 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 07 — something anyone could write</title>
+  <title>Scene 07 — anyone could write it</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-07 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-07 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-07 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1500px; text-align: center;
-    }
-    #scene-07 .lead {
-      font-size: 50px; font-weight: 500; color: var(--soft); margin-bottom: 46px;
-    }
-    #scene-07 .lead .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-07 .wrap { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1560px; text-align:center; }
+    #scene-07 .setup { font-size:46px; font-weight:500; color:var(--soft); opacity:0; will-change:transform,opacity; margin-bottom:72px; }
+    #scene-07 .setup .em { color:var(--fg); font-weight:700; }
 
-    #scene-07 .people {
-      display: flex; justify-content: center; gap: 26px; margin-bottom: 50px;
-    }
-    #scene-07 .person {
-      font-size: 40px; font-weight: 700; color: var(--fg);
-      background: var(--panel); border: 1px solid var(--border);
-      border-radius: 16px; padding: 26px 40px; white-space: nowrap;
-      opacity: 0; will-change: transform, opacity;
-    }
-
-    #scene-07 .payoff {
-      font-size: 64px; font-weight: 800; color: var(--fg); letter-spacing: -1px;
-    }
-    #scene-07 .payoff .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-07 .payoff .write { display: inline-block; color: var(--ok); will-change: text-shadow; }
+    #scene-07 .row { display:flex; justify-content:center; gap:44px; }
+    #scene-07 .persona { width:340px; display:flex; flex-direction:column; align-items:center; gap:24px; opacity:0; will-change:transform,opacity; }
+    #scene-07 .avatar { position:relative; width:150px; height:150px; border-radius:50%; background:#161a22; border:2px solid #2c333f;
+      display:flex; align-items:center; justify-content:center; color:var(--muted); box-shadow:0 16px 40px rgba(0,0,0,0.4); }
+    #scene-07 .avatar .body { width:84px; height:84px; color:var(--soft); }
+    #scene-07 .avatar .badge { position:absolute; right:-8px; bottom:-8px; width:62px; height:62px; border-radius:50%;
+      background:var(--panel); border:2px solid #2c333f; display:flex; align-items:center; justify-content:center; color:var(--soft); }
+    #scene-07 .avatar .badge svg { width:32px; height:32px; }
+    #scene-07 .label { font-size:30px; font-weight:600; color:var(--soft); }
+    /* the "they can write code" payoff badge */
+    #scene-07 .code { font-family:"JetBrains Mono",monospace; font-size:24px; font-weight:700; color:var(--accent-2);
+      letter-spacing:1px; opacity:0; will-change:transform,opacity; }
   </style>
 </head>
 <body>
   <div id="scene-07" data-composition-id="scene-07" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="lead">
-        <span class="w">They</span> <span class="w">needed</span> <span class="w">something</span>
-        <span class="w">a&nbsp;webpage&nbsp;author</span> <span class="w">could&nbsp;write:</span>
-      </div>
-      <div class="people">
-        <span class="person" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="3800">a designer</span>
-        <span class="person" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="4940">a marketer</span>
-        <span class="person" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="6140">an intern</span>
-      </div>
-      <div class="payoff">
-        <span class="w">could</span> <span class="w">actually</span>
-        <span class="w"><span class="write">write.</span></span>
+    <div class="wrap">
+      <div class="setup">They needed something <span class="em">anyone</span> could write</div>
+      <div class="row" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6840">
+        <div class="persona">
+          <div class="avatar">
+            <svg class="body" viewBox="0 0 64 64"><circle cx="32" cy="23" r="13" fill="currentColor"/><path d="M9 58 a23 22 0 0 1 46 0 Z" fill="currentColor"/></svg>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></span>
+          </div>
+          <div class="label" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2060">webpage author</div>
+          <div class="code">&lt;/&gt;</div>
+        </div>
+        <div class="persona">
+          <div class="avatar">
+            <svg class="body" viewBox="0 0 64 64"><circle cx="32" cy="23" r="13" fill="currentColor"/><path d="M9 58 a23 22 0 0 1 46 0 Z" fill="currentColor"/></svg>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 l9-9 4 4 -9 9 -4 1 z"/><path d="M13 11 l3-3 a2 2 0 0 1 3 3 l-3 3"/></svg></span>
+          </div>
+          <div class="label" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3600">designer</div>
+          <div class="code">&lt;/&gt;</div>
+        </div>
+        <div class="persona">
+          <div class="avatar">
+            <svg class="body" viewBox="0 0 64 64"><circle cx="32" cy="23" r="13" fill="currentColor"/><path d="M9 58 a23 22 0 0 1 46 0 Z" fill="currentColor"/></svg>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10 v4 l11 4 V6 z"/><path d="M15 9 a4 4 0 0 1 0 6"/></svg></span>
+          </div>
+          <div class="label" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4740">marketer</div>
+          <div class="code">&lt;/&gt;</div>
+        </div>
+        <div class="persona">
+          <div class="avatar">
+            <svg class="body" viewBox="0 0 64 64"><circle cx="32" cy="23" r="13" fill="currentColor"/><path d="M9 58 a23 22 0 0 1 46 0 Z" fill="currentColor"/></svg>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8 h12 v5 a5 5 0 0 1 -5 5 H10 a5 5 0 0 1 -5 -5 z"/><path d="M17 9 h2 a2.5 2.5 0 0 1 0 5 h-2"/></svg></span>
+          </div>
+          <div class="label" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5940">an intern</div>
+          <div class="code">&lt;/&gt;</div>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused:true });
+    // Scene-local = global - data_start(49.82).
+    // setup 0.50 / author 2.06 / designer 3.60 / marketer 4.74 / intern 5.94 / write 6.84.
 
-    // Scene-local = global - data_start(49.82). Entrance at local 0.
-    tl.fromTo("#scene-07 .stage",
-      { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+    tl.fromTo("#scene-07 .setup", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
+    tl.fromTo("#scene-07 .setup .em", { textShadow:"0 0 0 rgba(232,234,237,0)" }, { textShadow:"0 0 22px rgba(232,234,237,0.4)", duration:0.4 }, 1.0);
 
-    // Lead reveals: They 50.32(0.50) needed 0.84 something 1.24 webpage-author 2.06 could-write 2.64(author end)
-    const lead = [0.50, 0.84, 1.24, 2.06, 2.64];
-    gsap.utils.toArray("#scene-07 .lead .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, lead[i]);
+    // each ordinary persona pops in on its word.
+    const p = gsap.utils.toArray("#scene-07 .persona");
+    const pt = [2.06, 3.60, 4.74, 5.94];
+    p.forEach((el,i)=>{
+      tl.fromTo(el, { opacity:0, y:26, scale:0.92 }, { opacity:1, y:0, scale:1, duration:0.46, ease:"back.out(1.5)" }, pt[i]);
     });
 
-    // Persona chips tap in on their words: designer 53.42(3.60), marketer 54.56(4.74), intern 55.76(5.94).
-    const ppl = [3.60, 4.74, 5.94];
-    gsap.utils.toArray("#scene-07 .people .person").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 22, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.8)" }, ppl[i]);
-    });
+    // "could actually write" — a code badge lights cyan under each, and the avatar rings warm.
+    tl.fromTo("#scene-07 .code", { opacity:0, y:8 }, { opacity:1, y:0, duration:0.4, ease:"power2.out", stagger:0.08 }, 6.84);
+    tl.to("#scene-07 .avatar", { borderColor:"rgba(103,232,249,0.5)", boxShadow:"0 16px 40px rgba(0,0,0,0.4), 0 0 24px rgba(103,232,249,0.15)", duration:0.5, stagger:0.08 }, 6.9);
 
-    // Payoff "could actually write": could 56.66(6.84) actually 7.06 write 57.32(7.50).
-    const pay = [6.84, 7.06, 7.50];
-    gsap.utils.toArray("#scene-07 .payoff .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 18 },
-        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, pay[i]);
-    });
-    // "write" lands in resolved-green with a bloom (57.32 -> 7.50).
-    tl.to("#scene-07 .payoff .write",
-      { textShadow: "0 0 34px rgba(125,216,125,0.7)", duration: 0.42, ease: "power2.out" }, 7.56);
-
-    // Subtle life.
-    tl.to("#scene-07 .people", { y: "-=5", duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.2);
-
-    // Seam clear — foreground fades out across the trailing overlap with scene 08 (local 8.15-8.55)
-    // so scene 08's incoming content never shares the frame with this scene's text.
-    tl.to("#scene-07 .stage", { opacity: 0, duration: 0.32, ease: "power2.inOut" }, 8.00);
-
+    // gentle idle bob across the row so it stays alive.
+    tl.to("#scene-07 .row", { y:"-=5", duration:3, ease:"sine.inOut", repeat:1, yoyo:true }, 7.6);
     window.__timelines["scene-07"] = tl;
   </script>
 </body>

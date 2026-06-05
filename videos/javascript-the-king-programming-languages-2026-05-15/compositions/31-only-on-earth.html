@@ -6,98 +6,78 @@
   <title>Scene 31 — the only programmers on Earth</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-31 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-31 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-31 .cap {
-      position: absolute; left: 50%; top: 232px; transform: translateX(-50%);
-      width: 1500px; text-align: center;
-      font-size: 54px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
-    }
-    #scene-31 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-31 .cap .only { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+    #scene-31 .head { position:absolute; left:50%; top:18%; transform:translateX(-50%); font-size:50px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-31 .head .on { color:var(--accent-2); font-weight:800; }
 
-    /* the field of all programmers on Earth */
-    #scene-31 .field {
-      position: absolute; left: 50%; top: 620px; transform: translate(-50%, -50%);
-      display: grid; grid-template-columns: repeat(11, 56px); grid-auto-rows: 56px; gap: 20px;
-      justify-content: center;
-    }
-    #scene-31 .dot {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #1a1f29; border: 1px solid #232a35;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-31 .dot.me {
-      background: rgba(247,223,30,0.16); border: 2px solid var(--accent);
-      will-change: transform, box-shadow, opacity;
-    }
+    #scene-31 .globe { position:absolute; left:50%; top:60%; transform:translate(-50%,-50%); width:380px; height:380px; opacity:0; will-change:transform,opacity; }
+    #scene-31 .globe svg { position:absolute; inset:0; width:380px; height:380px; }
+    #scene-31 .globe .wire { fill:none; stroke:var(--dim); stroke-width:1.4; }
+    #scene-31 .globe .rim { fill:rgba(103,232,249,0.02); stroke:var(--border); stroke-width:2; }
+    #scene-31 .globe .ddot { fill:#3a4150; }
+
+    #scene-31 .beacon { position:absolute; left:62%; top:40%; transform:translate(-50%,-50%); width:18px; height:18px; opacity:0; will-change:transform,opacity; }
+    #scene-31 .beacon .core { position:absolute; inset:0; border-radius:50%; background:var(--accent-2); box-shadow:0 0 16px rgba(103,232,249,0.8); }
+    #scene-31 .beacon .ring { position:absolute; left:50%; top:50%; width:18px; height:18px; transform:translate(-50%,-50%); border-radius:50%; border:2px solid rgba(103,232,249,0.6); will-change:transform,opacity; }
+
+    #scene-31 .blabel { position:absolute; left:62%; top:40%; transform:translate(18px,-150%); display:flex; align-items:center; padding:6px 14px; border-radius:999px;
+      background:rgba(103,232,249,0.12); border:1px solid rgba(103,232,249,0.45); opacity:0; white-space:nowrap; will-change:transform,opacity; }
+    #scene-31 .blabel .bn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:20px; font-weight:700; color:var(--accent-2); }
   </style>
 </head>
 <body>
   <div id="scene-31" data-composition-id="scene-31" data-width="1920" data-height="1080">
-    <div class="cap">
-      <span class="w">JavaScript</span> <span class="w">developers</span> <span class="w">were</span>
-      <span class="w">the</span> <span class="w only">only</span> <span class="w">programmers</span>
-      <span class="w">on</span> <span class="w">Earth.</span>
-    </div>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">The <span class="on">only</span> programmers on Earth.</div>
 
-    <div class="field"></div>
+    <div class="globe">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="none">
+        <circle class="rim" cx="200" cy="200" r="180"/>
+        <ellipse class="wire" cx="200" cy="200" rx="180" ry="50"/>
+        <ellipse class="wire" cx="200" cy="140" rx="150" ry="40"/>
+        <ellipse class="wire" cx="200" cy="260" rx="150" ry="40"/>
+        <ellipse class="wire" cx="200" cy="200" rx="64" ry="180"/>
+        <ellipse class="wire" cx="200" cy="200" rx="140" ry="180"/>
+      </svg>
+      <div class="beacon" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="2080"><span class="ring"></span><span class="core"></span></div>
+      <div class="blabel" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2820"><span class="bn">JS devs</span></div>
+    </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
-    // Build the field: 44 programmer dots; one of them (the JS dev) is "me".
-    const ME = 27;
-    const field = document.querySelector("#scene-31 .field");
-    for (let i = 0; i < 44; i++) {
-      const d = document.createElement("div");
-      d.className = "dot" + (i === ME ? " me" : "");
-      field.appendChild(d);
-    }
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(228.18).
-    // "JavaScript developers were the only programmers on Earth." (JavaScript 0.70 ... Earth 3.08).
-    const cw = [0.70, 1.12, 1.70, 1.85, 2.08, 2.38, 2.82, 3.08];
-    gsap.utils.toArray("#scene-31 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, cw[i]);
+    // and 0.50 / developers 1.12 / only 2.08 / programmers 2.38 / Earth 3.08.
+
+    // scatter the world's programmers as faint dots (deterministic, hand-placed).
+    const dim = [[140,118],[262,108],[108,210],[300,222],[160,300],[252,300],[90,162],[312,164],[180,236],[232,205],[128,266],[284,264],[210,96],[150,180]];
+    const svg = document.querySelector("#scene-31 .globe svg");
+    if (svg) dim.forEach(([x,y]) => {
+      const c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("cx",x); c.setAttribute("cy",y); c.setAttribute("r",5); c.setAttribute("class","ddot");
+      svg.appendChild(c);
     });
 
-    // The whole population settles in — every programmer on Earth.
-    const dots = gsap.utils.toArray("#scene-31 .dot:not(.me)");
-    dots.forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 0.50 + i * 0.012);
-    });
-    tl.fromTo("#scene-31 .dot.me", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 0.90);
+    // "The only programmers on Earth."
+    tl.fromTo("#scene-31 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "only" — the field dims to grey and the single JS dev lights up alone (only 2.08).
-    tl.to("#scene-31 .dot:not(.me)", { opacity: 0.28, duration: 0.4, ease: "power2.out" }, 2.08);
-    tl.to("#scene-31 .dot.me",
-      { scale: 1.4, boxShadow: "0 0 30px rgba(247,223,30,0.55)", duration: 0.4, ease: "back.out(2)" }, 2.10);
-    tl.fromTo("#scene-31 .cap .only",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 26px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 2.12);
+    // the globe fades up, the world's programmers stipple in dim.
+    tl.fromTo("#scene-31 .globe", { opacity:0, scale:0.9 }, { opacity:1, scale:1, duration:0.6, ease:"power3.out" }, 0.70);
+    tl.fromTo("#scene-31 .ddot", { opacity:0 }, { opacity:1, duration:0.4, ease:"power1.out", stagger:0.03 }, 1.10);
 
-    // "Earth" — the lone dev pulses once more, held alone (Earth 3.08).
-    tl.to("#scene-31 .dot.me",
-      { scale: 1.5, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.08);
+    // "only" — one beacon lights, the rest stay dim.
+    tl.fromTo("#scene-31 .beacon", { opacity:0, scale:0.4 }, { opacity:1, scale:1, duration:0.4, ease:"back.out(2.4)" }, 2.08);
+    tl.fromTo("#scene-31 .beacon .ring", { scale:1, opacity:0.6 }, { scale:3.4, opacity:0, duration:1.0, ease:"power2.out", repeat:1 }, 2.20);
 
-    // Seam clear — fade out across the trailing overlap with scene 32 (local 3.20-3.70).
-    tl.to("#scene-31 .cap, #scene-31 .field",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.20);
+    // "on Earth" — the JS-devs label.
+    tl.fromTo("#scene-31 .blabel", { opacity:0, y:6 }, { opacity:1, y:0, duration:0.4, ease:"power2.out" }, 2.82);
 
+    // idle: the beacon core breathes.
+    tl.to("#scene-31 .beacon .core", { boxShadow:"0 0 26px rgba(103,232,249,1)", duration:0.6, ease:"sine.inOut", repeat:1, yoyo:true }, 3.2);
     window.__timelines["scene-31"] = tl;
   </script>
 </body>

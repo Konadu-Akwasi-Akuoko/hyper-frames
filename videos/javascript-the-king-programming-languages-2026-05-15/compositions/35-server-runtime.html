@@ -3,157 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 35 — wrapped in an event loop, a server runtime</title>
+  <title>Scene 35 — wrapped in an event loop, turned into a server runtime</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-35 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-35 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-35 .cap {
-      position: absolute; left: 50%; top: 226px; transform: translateX(-50%);
-      width: 1500px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
-    }
-    #scene-35 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-35 .cap .lp { color: var(--accent-2); font-weight: 800; }
-    #scene-35 .cap .sr { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+    #scene-35 .head { position:absolute; left:50%; top:17%; transform:translateX(-50%); font-size:48px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-35 .head .el { color:var(--accent-2); font-weight:800; }
 
-    #scene-35 .rig {
-      position: absolute; left: 50%; top: 614px; transform: translate(-50%, -50%);
-      display: flex; align-items: center; gap: 64px;
-    }
+    #scene-35 .stage { position:absolute; left:50%; top:57%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:90px; }
 
-    /* V8 wrapped by the event loop */
-    #scene-35 .engine { position: relative; width: 300px; height: 300px; }
-    #scene-35 .v8 {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 26px 34px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-35 .v8 .big {
-      font-family: "JetBrains Mono", monospace; font-size: 56px; font-weight: 800; color: var(--accent); letter-spacing: -1px; line-height: 1;
-    }
-    #scene-35 .v8 .sub { font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 600; color: var(--muted); }
-    #scene-35 .loop {
-      position: absolute; left: 50%; top: 50%; width: 270px; height: 270px; margin: -135px 0 0 -135px;
-      border-radius: 50%; border: 5px dashed var(--accent-2);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-35 .loop .arrowhead {
-      position: absolute; width: 0; height: 0;
-      border-left: 13px solid transparent; border-right: 13px solid transparent; border-bottom: 20px solid var(--accent-2);
-    }
-    #scene-35 .loop .a1 { top: -10px; left: 50%; transform: translateX(-50%) rotate(86deg); }
-    #scene-35 .loop .a2 { bottom: -10px; left: 50%; transform: translateX(-50%) rotate(-94deg); }
-    #scene-35 .engine .lbl {
-      position: absolute; left: 50%; top: -40px; transform: translateX(-50%);
-      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent-2); white-space: nowrap;
-      opacity: 0; will-change: opacity;
-    }
+    /* V8 core wrapped by the event loop */
+    #scene-35 .assembly { position:relative; width:240px; height:240px; }
+    #scene-35 .assembly .v8core { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:108px; height:108px; border-radius:18px;
+      background:var(--panel); border:1px solid rgba(103,232,249,0.4); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; opacity:0; will-change:transform,opacity; box-shadow:0 0 30px rgba(103,232,249,0.2); }
+    #scene-35 .assembly .v8core .vn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:30px; font-weight:800; color:var(--accent-2); }
+    #scene-35 .assembly .v8core .vs { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:14px; color:var(--muted); }
+    #scene-35 .assembly svg { position:absolute; inset:0; width:240px; height:240px; }
+    #scene-35 .assembly .ringp { fill:none; stroke:var(--accent-2); stroke-width:2.5; stroke-dasharray:7 11; opacity:0.85; }
+    #scene-35 .assembly .orbit { position:absolute; inset:0; width:240px; height:240px; will-change:transform; }
+    #scene-35 .assembly .orbit .odot { position:absolute; left:50%; top:14px; transform:translateX(-50%); width:16px; height:16px; border-radius:50%; background:var(--accent-2); box-shadow:0 0 14px rgba(103,232,249,0.9); }
+    #scene-35 .assembly .elabel { position:absolute; left:50%; top:248px; transform:translateX(-50%); font-family:"JetBrains Mono",ui-monospace,monospace; font-size:20px; color:var(--accent-2); white-space:nowrap; opacity:0; will-change:opacity; }
 
-    #scene-35 .arrow {
-      font-size: 60px; font-weight: 300; color: var(--muted); opacity: 0; will-change: transform, opacity;
-    }
+    /* the transform arrow */
+    #scene-35 .arrow { display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; will-change:opacity; }
+    #scene-35 .arrow .al { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:18px; color:var(--muted); }
+    #scene-35 .arrow .ag { font-size:40px; font-weight:800; color:var(--dim); line-height:1; }
 
-    /* the server runtime */
-    #scene-35 .server {
-      display: flex; flex-direction: column; align-items: center; gap: 18px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-35 .rack {
-      width: 220px; border-radius: 16px; background: var(--panel); border: 1px solid var(--border);
-      padding: 22px; display: flex; flex-direction: column; gap: 14px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.4); will-change: box-shadow;
-    }
-    #scene-35 .rack .slot {
-      height: 30px; border-radius: 8px; background: #161b24; border: 1px solid var(--border);
-      display: flex; align-items: center; padding: 0 12px; gap: 8px;
-    }
-    #scene-35 .rack .slot i { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); }
-    #scene-35 .rack .slot span { flex: 1; height: 4px; border-radius: 2px; background: var(--dim); }
-    #scene-35 .server .nm { font-size: 32px; font-weight: 800; color: var(--fg); letter-spacing: -0.5px; will-change: text-shadow; }
+    /* the resulting server runtime: Node.js */
+    #scene-35 .node { width:260px; height:240px; background:var(--panel); border:1px solid var(--border); border-radius:20px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:24px; opacity:0; will-change:transform,opacity,box-shadow,border-color; box-shadow:0 26px 70px rgba(0,0,0,0.46); }
+    #scene-35 .node img { width:96px; height:96px; object-fit:contain; }
+    #scene-35 .node .nn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:24px; font-weight:700; color:var(--soft); }
+    #scene-35 .node .ns { display:flex; align-items:center; gap:9px; padding:6px 15px; border-radius:999px; background:rgba(125,216,125,0.1); border:1px solid rgba(125,216,125,0.36); }
+    #scene-35 .node .ns .nst { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:18px; font-weight:700; color:var(--ok); }
   </style>
 </head>
 <body>
   <div id="scene-35" data-composition-id="scene-35" data-width="1920" data-height="1080">
-    <div class="cap">
-      <span class="w">wrapped</span> <span class="w">it</span> <span class="w">in</span>
-      <span class="w">an</span> <span class="w lp">event</span> <span class="w lp">loop</span>
-      <span class="w">&mdash; and</span> <span class="w">turned</span> <span class="w">it</span>
-      <span class="w">into</span> <span class="w">a</span> <span class="w sr">server</span> <span class="w sr">runtime.</span>
-    </div>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">Wrapped in an <span class="el">event loop</span>.</div>
 
-    <div class="rig">
-      <div class="engine">
-        <span class="lbl">event loop</span>
-        <div class="loop" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1360" data-sfx-volume="0.35">
-          <span class="arrowhead a1"></span>
-          <span class="arrowhead a2"></span>
-        </div>
-        <div class="v8"><span class="big">V8</span><span class="sub">JS engine</span></div>
+    <div class="stage">
+      <div class="assembly">
+        <svg viewBox="0 0 240 240"><circle class="ringp" cx="120" cy="120" r="106" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1140"/></svg>
+        <div class="orbit"><span class="odot"></span></div>
+        <div class="v8core"><span class="vn">V8</span><span class="vs">engine</span></div>
+        <div class="elabel">event loop</div>
       </div>
 
-      <div class="arrow">&rarr;</div>
+      <div class="arrow" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2400">
+        <span class="al">turned into</span>
+        <span class="ag">&rarr;</span>
+      </div>
 
-      <div class="server" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="3200" data-sfx-volume="0.42">
-        <div class="rack">
-          <div class="slot"><i></i><span></span></div>
-          <div class="slot"><i></i><span></span></div>
-          <div class="slot"><i></i><span></span></div>
-        </div>
-        <div class="nm">server runtime</div>
+      <div class="node" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2980">
+        <img src="../assets/icons/nodejs.svg" alt="Node.js">
+        <span class="nn">Node.js</span>
+        <span class="ns" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3980"><span class="nst">server runtime</span></span>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(243.04).
-    // "wrapped it in an event loop — and turned it into a server runtime." (wrapped 0.50 ... runtime 3.98).
-    const cw = [0.50, 0.80, 0.94, 1.02, 1.14, 1.54, 2.14, 2.40, 2.74, 2.98, 3.22, 3.36, 3.98];
-    gsap.utils.toArray("#scene-35 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
-    });
+    // wrapped 0.50 / event 1.14 / loop 1.54 / turned 2.40 / into 2.98 / server 3.36 / runtime 3.98.
 
-    // V8 carries over, centred.
-    tl.fromTo("#scene-35 .v8",
-      { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.50);
+    // "Wrapped in an event loop."
+    tl.fromTo("#scene-35 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "event loop" — the loop ring wraps around V8 and starts spinning (event 1.14, loop 1.54).
-    tl.fromTo("#scene-35 .loop",
-      { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 1.14);
-    tl.to("#scene-35 .engine .lbl", { opacity: 1, duration: 0.35, ease: "power2.out" }, 1.30);
-    tl.to("#scene-35 .loop", { rotation: 540, duration: 3.2, ease: "none" }, 1.5);
+    // V8 core at the center.
+    tl.fromTo("#scene-35 .v8core", { opacity:0, scale:0.8 }, { opacity:1, scale:1, duration:0.45, ease:"back.out(1.8)" }, 0.80);
 
-    // "turned it into a server runtime" — the arrow draws and the server materialises (turned 2.40, server 3.36).
-    tl.fromTo("#scene-35 .arrow",
-      { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 2.40);
-    tl.fromTo("#scene-35 .server",
-      { opacity: 0, x: 40, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 2.70);
-    // "runtime" — the server settles and the label glows; JS now runs server-side (runtime 3.98).
-    tl.to("#scene-35 .rack",
-      { boxShadow: "0 18px 50px rgba(0,0,0,0.4), 0 0 36px rgba(247,223,30,0.22)", duration: 0.4, ease: "power2.out" }, 3.98);
-    tl.fromTo("#scene-35 .server .nm",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 26px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 4.00);
+    // "event loop" — the ring draws around it and starts spinning.
+    const ring = document.querySelector("#scene-35 .ringp");
+    const rlen = ring ? ring.getTotalLength() : 700;
+    gsap.set("#scene-35 .ringp", { strokeDasharray:rlen, strokeDashoffset:rlen });
+    tl.to("#scene-35 .ringp", { strokeDashoffset:0, duration:0.7, ease:"power2.out", onComplete(){ gsap.set("#scene-35 .ringp", { strokeDasharray:"7 11" }); } }, 1.14);
+    tl.fromTo("#scene-35 .elabel", { opacity:0 }, { opacity:1, duration:0.35 }, 1.40);
+    tl.fromTo("#scene-35 .orbit", { rotation:0, opacity:0 }, { opacity:1, duration:0.3 }, 1.54);
+    tl.to("#scene-35 .orbit", { rotation:360, duration:1.7, ease:"none", repeat:2 }, 1.54);
 
-    // Seam clear — fade out across the trailing overlap with scene 36 (local 4.54-5.04).
-    tl.to("#scene-35 .cap, #scene-35 .rig",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.54);
+    // "turned into a server runtime" — the arrow, then Node.js resolves.
+    tl.fromTo("#scene-35 .arrow", { opacity:0, x:-8 }, { opacity:1, x:0, duration:0.4, ease:"power2.out" }, 2.40);
+    tl.fromTo("#scene-35 .node", { opacity:0, scale:0.9, x:20 }, { opacity:1, scale:1, x:0, duration:0.55, ease:"power3.out" }, 2.98);
+    tl.fromTo("#scene-35 .node .ns", { opacity:0, scale:0.7, y:8 }, { opacity:1, scale:1, y:0, duration:0.4, ease:"back.out(2)" }, 3.98);
+    tl.fromTo("#scene-35 .node", { borderColor:"#1f242c" }, { borderColor:"rgba(125,216,125,0.4)", duration:0.4 }, 3.98);
 
+    // idle: the Node panel breathes a soft green.
+    tl.to("#scene-35 .node", { boxShadow:"0 26px 70px rgba(0,0,0,0.46), 0 0 34px rgba(125,216,125,0.2)", duration:0.9, ease:"sine.inOut", repeat:1, yoyo:true }, 4.4);
     window.__timelines["scene-35"] = tl;
   </script>
 </body>

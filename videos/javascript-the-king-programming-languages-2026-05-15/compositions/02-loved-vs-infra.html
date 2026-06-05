@@ -3,165 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 02 — never loved, but runs the world</title>
+  <title>Scene 02 — never loved, runs the world</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
     :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      --bg:#0b0d12; --panel:#11141b; --border:#1f242c;
+      --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150;
+      --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-02 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-02 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    /* Stage column — concession on top, power claim below; reflows on the pivot. */
-    #scene-02 .stage {
-      position: absolute; left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      width: 1500px; text-align: center;
-    }
+    /* "world's infrastructure" — a faint rack of data columns along the floor that rises on the payoff. */
+    #scene-02 .infra { position:absolute; left:0; right:0; bottom:0; height:360px; display:flex; align-items:flex-end; justify-content:center; gap:14px; opacity:0; }
+    #scene-02 .infra .bar { width:26px; background:linear-gradient(180deg, rgba(103,232,249,0.20), rgba(103,232,249,0.02)); border-radius:4px 4px 0 0; transform:scaleY(0.12); transform-origin:bottom; will-change:transform; }
+    #scene-02 .floor { position:absolute; left:0; right:0; bottom:300px; height:1px; background:linear-gradient(90deg, transparent, rgba(122,132,147,0.35), transparent); opacity:0; }
 
-    /* The concession — a deliberate step down to soft. */
-    #scene-02 .concession {
-      font-size: 64px; font-weight: 500; line-height: 1.22; color: var(--soft);
-      letter-spacing: -0.5px; will-change: transform, opacity;
-    }
-    #scene-02 .concession .js { color: var(--accent); font-weight: 700; }
-    #scene-02 .concession .loved {
-      position: relative; color: var(--muted);
-    }
-    /* hand-free strike — a thin rule swept across "loved" on its word. */
-    #scene-02 .concession .loved .strike {
-      position: absolute; left: -4%; top: 54%; width: 0%; height: 6px;
-      background: var(--danger); border-radius: 3px; transform-origin: left center;
-      box-shadow: 0 0 12px rgba(255,107,93,0.6);
-    }
+    #scene-02 .stack { position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); width:1500px; text-align:center; }
 
-    /* The pivot word, large and centered between the two states. */
-    #scene-02 .pivot {
-      margin: 30px 0 26px;
-      font-size: 40px; font-weight: 700; color: var(--muted);
-      letter-spacing: 6px; text-transform: uppercase; opacity: 0;
-      will-change: transform, opacity;
-    }
+    #scene-02 .concession { font-size:58px; font-weight:500; line-height:1.3; color:var(--soft); opacity:0; will-change:transform,opacity; }
+    #scene-02 .concession .loved { color:var(--muted); position:relative; }
+    #scene-02 .concession .loved .strike { position:absolute; left:-4px; right:-4px; top:56%; height:4px; width:0; background:var(--danger); border-radius:2px; will-change:width; }
 
-    /* The power claim — brighter, larger, owns the frame. */
-    #scene-02 .claim {
-      font-size: 88px; font-weight: 800; line-height: 1.12; color: var(--fg);
-      letter-spacing: -1.5px; will-change: transform, opacity;
-    }
-    #scene-02 .claim .infra {
-      position: relative; display: inline-block; color: var(--fg);
-      will-change: transform, text-shadow;
-    }
-    /* accent-2 underline sweep — clearly-visible emphasis, distinct from the danger strike. */
-    #scene-02 .claim .infra .uline {
-      position: absolute; left: 0; bottom: -10px; width: 0%; height: 7px;
-      background: var(--accent-2); border-radius: 4px; transform-origin: left center;
-      box-shadow: 0 0 16px rgba(103,232,249,0.55);
-    }
-    #scene-02 .claim .yr {
-      font-family: "JetBrains Mono", monospace; font-weight: 600;
-      font-size: 64px; color: var(--accent-2); font-variant-numeric: tabular-nums;
-    }
+    #scene-02 .pivot { display:flex; align-items:center; justify-content:center; gap:18px; margin:26px 0; opacity:0; will-change:opacity; }
+    #scene-02 .pivot .rule { height:1px; width:120px; background:var(--border); }
+    #scene-02 .pivot .yr { font-family:"JetBrains Mono",monospace; font-size:30px; font-weight:600; color:var(--muted); letter-spacing:1px; font-variant-numeric:tabular-nums; }
 
-    #scene-02 .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-02 .payoff { display:flex; align-items:center; justify-content:center; gap:30px; }
+    #scene-02 .js { width:96px; height:96px; flex:none; opacity:0; will-change:transform,opacity; filter:drop-shadow(0 8px 28px rgba(0,0,0,0.5)); }
+    #scene-02 .payoff .ptext { font-size:78px; font-weight:800; line-height:1.12; color:var(--fg); text-align:left; opacity:0; will-change:transform,opacity; }
+    #scene-02 .payoff .ptext .infra-w { color:var(--accent); }
   </style>
 </head>
 <body>
   <div id="scene-02" data-composition-id="scene-02" data-width="1920" data-height="1080">
-    <div class="stage"
-         data-sfx-on-anchor="whoosh"
-         data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3"
-         data-sfx-at-scene-ms="220">
-      <div class="concession">
-        <span class="w"><span class="js">JavaScript</span></span>
-        <span class="w">has</span> <span class="w">never</span> <span class="w">been</span>
-        <span class="w">the</span> <span class="w">most</span>
-        <span class="w loved">loved<span class="strike"></span></span>
-        <span class="w">language.</span>
-      </div>
-      <div class="pivot">but</div>
-      <div class="claim">
-        <span class="w">in</span> <span class="w yr">2026</span><span class="w">,</span>
-        <span class="w">it</span> <span class="w">still</span> <span class="w">runs</span>
-        <span class="w">the</span> <span class="w">world's</span>
-        <span class="w"><span class="infra"
-          data-sfx-on-anchor="ui-tick"
-          data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav"
-          data-sfx-at-scene-ms="9380">infrastructure.<span class="uline"></span></span></span>
+    <div class="floor"></div>
+    <div class="infra"></div>
+
+    <div class="stack">
+      <div class="concession" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="600">JavaScript has never been the most <span class="loved">loved<span class="strike"></span></span> language</div>
+      <div class="pivot"><span class="rule"></span><span class="yr" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5840">2026</span><span class="rule"></span></div>
+      <div class="payoff">
+        <img class="js" src="../assets/icons/javascript.svg" alt="JavaScript" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="8200">
+        <div class="ptext">it runs the world's<br><span class="infra-w" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9120">infrastructure</span>.</div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused:true });
+    // Scene-local = global - data_start(11.16). Entrance at local 0 (overlap w/ scene 01).
+    // Word beats: loved 3.18 / 2026 5.44 / runs 7.84 / infrastructure 8.82.
 
-    // Scene-local time = global - data_start(11.16). Entrance at local 0 (overlap w/ scene 01).
-    tl.fromTo("#scene-02 .stage",
-      { opacity: 0, y: 22 },
-      { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0);
+    // build the infra rack columns (deterministic heights, no Math.random).
+    const infra = document.querySelector("#scene-02 .infra");
+    const H = [0.45,0.62,0.38,0.78,0.55,0.9,0.5,0.7,0.42,0.84,0.6,0.95,0.52,0.74,0.4,0.66,0.58,0.88,0.46,0.8];
+    H.forEach(h => { const b=document.createElement("div"); b.className="bar"; b.style.height=(h*300)+"px"; infra.appendChild(b); });
 
-    // Concession reveals word-by-word, soft. Globals: You 11.66, JavaScript 12.36,
-    // has 12.90, never 13.14, been 13.42, the 13.60, most 13.84, loved 14.34, language 14.78.
-    const conc = [
-      0.50,  // JavaScript (12.36 - hmm "You see" folded; first visible word group)
-      1.74,  // has
-      1.98,  // never
-      2.26,  // been
-      2.44,  // the
-      2.68,  // most
-      3.18,  // loved
-      3.62   // language
-    ];
-    gsap.utils.toArray("#scene-02 .concession .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, conc[i]);
-    });
-    // "loved" gets struck through on its word (14.34 -> local 3.18).
-    tl.to("#scene-02 .concession .loved .strike",
-      { width: "108%", duration: 0.4, ease: "power2.inOut" }, 3.30);
+    // Concession line lifts in across the entrance overlap.
+    tl.fromTo("#scene-02 .concession", { opacity:0, y:22 }, { opacity:1, y:0, duration:0.6, ease:"power3.out" }, 0);
+    // "loved" gets struck through + dims on its word (3.18).
+    tl.fromTo("#scene-02 .concession .loved .strike", { width:0 }, { width:0, duration:0.01 }, 0); // ensure 0 base
+    tl.to("#scene-02 .concession .loved .strike", { width:"calc(100% + 8px)", duration:0.4, ease:"power2.out" }, 3.18);
+    tl.to("#scene-02 .concession .loved", { color:"#5a626e", duration:0.4 }, 3.2);
 
-    // Pivot "but" (16.06 -> local 4.90). The concession lifts + dims to make room.
-    tl.to("#scene-02 .pivot", { opacity: 1, duration: 0.35, ease: "power2.out" }, 4.90);
-    tl.to("#scene-02 .concession",
-      { y: -14, opacity: 0.5, color: "#7a8493", duration: 0.5, ease: "power2.inOut" }, 4.90);
-    // Mute "JavaScript" with the line so dimmed accent-yellow doesn't read as muddy olive.
-    tl.to("#scene-02 .concession .js",
-      { color: "#7a8493", fontWeight: 500, duration: 0.5, ease: "power2.inOut" }, 4.90);
+    // Pivot rule + year stamp at "but in 2026" (4.90 / 5.44).
+    tl.fromTo("#scene-02 .pivot", { opacity:0, scaleX:0.6 }, { opacity:1, scaleX:1, duration:0.5, ease:"power2.out" }, 4.90);
+    tl.fromTo("#scene-02 .pivot .yr", { color:"#7a8493" }, { color:"#e8eaed", duration:0.4 }, 5.44);
 
-    // Power claim rises bright. Globals: in 16.42, 2026 16.60, it 18.58, still 17.94,
-    // runs 19.00, the 19.36, world's 19.52, infrastructure 19.98.
-    const claim = [
-      5.26,  // in
-      5.44,  // 2026
-      6.10,  // , (rides 2026)
-      7.42,  // it
-      6.78,  // still
-      7.84,  // runs
-      8.20,  // the
-      8.36,  // world's
-      8.82   // infrastructure
-    ];
-    gsap.utils.toArray("#scene-02 .claim .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.36, ease: "power3.out" }, claim[i]);
-    });
-    // "infrastructure" lands the claim (19.98 -> local 8.82): bright bloom + accent-2 underline sweep.
-    tl.to("#scene-02 .claim .infra",
-      { textShadow: "0 0 40px rgba(232,234,237,0.85)", duration: 0.4, ease: "power2.out" }, 8.86);
-    tl.to("#scene-02 .claim .infra .uline",
-      { width: "100%", duration: 0.46, ease: "power3.out" }, 8.92);
+    // Payoff: JS logo + line rise in on "runs" (7.84).
+    tl.fromTo("#scene-02 .js", { opacity:0, scale:0.7, rotateZ:-8 }, { opacity:1, scale:1, rotateZ:0, duration:0.6, ease:"back.out(1.7)" }, 7.6);
+    tl.fromTo("#scene-02 .payoff .ptext", { opacity:0, x:20 }, { opacity:1, x:0, duration:0.55, ease:"power3.out" }, 7.8);
 
-    // Constant subtle life — the whole stage drifts a hair.
-    tl.to("#scene-02 .stage",
-      { y: "+=7", duration: 5.5, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+    // "infrastructure" lands: floor + rack rise, JS logo glows accent (8.82).
+    tl.fromTo("#scene-02 .floor", { opacity:0 }, { opacity:1, duration:0.5 }, 8.6);
+    tl.fromTo("#scene-02 .infra", { opacity:0 }, { opacity:0.85, duration:0.7 }, 8.7);
+    tl.to("#scene-02 .infra .bar", { scaleY:1, duration:0.7, ease:"power2.out", stagger:{ each:0.02, from:"center" } }, 8.82);
+    tl.fromTo("#scene-02 .payoff .ptext .infra-w", { textShadow:"0 0 0 rgba(247,223,30,0)" }, { textShadow:"0 0 30px rgba(247,223,30,0.5)", duration:0.5, ease:"power2.out" }, 8.82);
+    tl.to("#scene-02 .js", { filter:"drop-shadow(0 0 26px rgba(247,223,30,0.55))", duration:0.5 }, 8.82);
+
+    // constant subtle life on the logo.
+    tl.to("#scene-02 .js", { y:"-=6", duration:4.5, ease:"sine.inOut", repeat:1, yoyo:true }, 8.1);
 
     window.__timelines["scene-02"] = tl;
   </script>

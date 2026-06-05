@@ -6,108 +6,72 @@
   <title>Scene 12 — Java was a cool name</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-12 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    @font-face { font-family:"Excalifont"; src:url("../fonts/Excalifont-Regular.woff2") format("woff2"); font-weight:400; font-display:block; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-12 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-12 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      text-align: center;
-    }
+    #scene-12 .setup { position:absolute; left:50%; top:24%; transform:translateX(-50%); font-size:40px; font-weight:500; color:var(--soft); opacity:0; will-change:transform,opacity; white-space:nowrap; }
+    #scene-12 .setup .em { color:var(--fg); font-weight:700; }
 
-    /* the wordmark */
-    #scene-12 .mark {
-      font-size: 158px; font-weight: 800; letter-spacing: -3px; line-height: 1;
-      white-space: nowrap; will-change: text-shadow;
-    }
-    #scene-12 .mark .java {
-      color: var(--fg); will-change: color, text-shadow;
-    }
-    #scene-12 .mark .script { color: var(--soft); }
-    #scene-12 .mark .ent { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-12 .stage { position:absolute; left:50%; top:56%; transform:translate(-50%,-50%); width:520px; height:520px; }
+    #scene-12 .halo { position:absolute; inset:90px; border-radius:50%; border:2px solid rgba(103,232,249,0.5);
+      box-shadow:0 0 60px rgba(103,232,249,0.2), inset 0 0 40px rgba(103,232,249,0.08); transform:scale(0); opacity:0; will-change:transform,opacity; }
+    #scene-12 .logo { position:absolute; inset:140px; display:flex; align-items:center; justify-content:center; opacity:0; will-change:transform,opacity; }
+    #scene-12 .logo img { width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 18px 44px rgba(0,0,0,0.55)); }
 
-    /* retro "cool" badge floating over the Java half */
-    #scene-12 .badge {
-      position: absolute; left: 152px; top: -78px; transform: rotate(-6deg) scale(0.7);
-      font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 700;
-      letter-spacing: 3px; color: var(--accent-2); text-transform: uppercase;
-      border: 3px solid var(--accent-2); border-radius: 999px;
-      padding: 8px 22px; background: rgba(103,232,249,0.06);
-      opacity: 0; will-change: transform, opacity;
-    }
+    #scene-12 .spark { position:absolute; font-size:46px; color:var(--accent-2); opacity:0; will-change:transform,opacity; text-shadow:0 0 16px rgba(103,232,249,0.6); }
+    #scene-12 .s1 { left:54px; top:70px; } #scene-12 .s2 { right:60px; top:120px; font-size:34px; }
+    #scene-12 .s3 { left:96px; bottom:96px; font-size:30px; } #scene-12 .s4 { right:80px; bottom:70px; }
 
-    /* the takeaway line */
-    #scene-12 .note {
-      margin-top: 64px; font-size: 46px; font-weight: 500; color: var(--soft);
-    }
-    #scene-12 .note .em { color: var(--fg); font-weight: 700; }
-    #scene-12 .note .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-12 .cool { position:absolute; left:50%; bottom:-6px; transform:translateX(-50%); font-family:"Excalifont","Inter",sans-serif;
+      font-size:44px; color:var(--accent-2); opacity:0; will-change:transform,opacity; white-space:nowrap; }
+    #scene-12 .also { position:absolute; left:50%; bottom:-78px; transform:translateX(-50%); font-family:"Excalifont","Inter",sans-serif;
+      font-size:34px; color:rgba(103,232,249,0.62); opacity:0; will-change:transform,opacity; white-space:nowrap; }
   </style>
 </head>
 <body>
   <div id="scene-12" data-composition-id="scene-12" data-width="1920" data-height="1080">
+    <div class="setup">In 1995, <span class="em">Java</span> was the coolest name in tech.</div>
     <div class="stage">
-      <div class="mark"
-           data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6080">
-        <span class="java"><span class="ent">J</span><span class="ent">a</span><span class="ent">v</span><span class="ent">a</span></span><span class="script"><span class="ent">S</span><span class="ent">c</span><span class="ent">r</span><span class="ent">i</span><span class="ent">p</span><span class="ent">t</span></span>
-        <div class="badge"
-             data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="2220" data-sfx-volume="0.42">&#9733; Cool &middot; 1995</div>
-      </div>
-      <div class="note">
-        <span class="w">Put</span> <span class="w">&lsquo;Java&rsquo;</span> <span class="w">in</span> <span class="w">the</span> <span class="w">name,</span>
-        <span class="w">borrow</span> <span class="w"><span class="em">the&nbsp;cool.</span></span>
-      </div>
+      <div class="halo" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="2050"></div>
+      <div class="logo" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1040"><img src="../assets/icons/java.svg" alt="Java"></div>
+      <span class="spark s1">&#10022;</span>
+      <span class="spark s2">&#10022;</span>
+      <span class="spark s3">&#10022;</span>
+      <span class="spark s4">&#10022;</span>
+      <div class="cool">effortlessly cool</div>
+      <div class="also" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5940">&hellip; so anything near it looked cool too</div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(96.14).
-    // The wordmark types in letter-by-letter as "You see" opens (You 96.64 -> 0.50).
-    gsap.utils.toArray("#scene-12 .mark .ent").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, 0.50 + i * 0.055);
-    });
+    // You-see 0.50 / Java 1.04 / cool-name 2.00 / back-then 2.46 / associating 3.78 / also-cool 5.94.
 
-    // "Java was a cool name" — the Java half ignites + the retro badge pops in (Java 97.18 -> 1.04, cool 98.14 -> 2.00).
-    tl.to("#scene-12 .mark .java",
-      { color: "#f7df1e", textShadow: "0 0 34px rgba(247,223,30,0.55)", duration: 0.5, ease: "power2.out" }, 1.60);
-    tl.fromTo("#scene-12 .badge",
-      { opacity: 0, scale: 0.7, rotation: -16 },
-      { opacity: 1, scale: 1, rotation: -6, duration: 0.45, ease: "back.out(2.4)" }, 2.00);
+    tl.fromTo("#scene-12 .setup", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "associating with Java meant you're also cool" — note reveals, then the whole mark
-    // catches the borrowed glow on "also cool" (associating 99.92 -> 3.78, cool 102.08 -> 5.94).
-    const note = [3.78, 4.06, 4.30, 4.50, 4.72, 5.20, 5.64];
-    gsap.utils.toArray("#scene-12 .note .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, note[i]);
-    });
-    // The cachet transfers: the whole wordmark blooms on "also cool" (5.94).
-    tl.to("#scene-12 .mark .script",
-      { color: "#f7df1e", duration: 0.5, ease: "power2.out" }, 5.80);
-    tl.to("#scene-12 .mark",
-      { textShadow: "0 0 46px rgba(247,223,30,0.5)", duration: 0.45, ease: "power2.out" }, 5.86);
-    tl.to("#scene-12 .mark",
-      { textShadow: "0 0 20px rgba(247,223,30,0.22)", duration: 1.0, ease: "power2.in" }, 6.40);
+    // Java logo reveals (Java).
+    tl.fromTo("#scene-12 .logo", { opacity:0, scale:0.7, y:14 }, { opacity:1, scale:1, y:0, duration:0.55, ease:"back.out(1.6)" }, 1.04);
 
-    // Subtle life — badge sways.
-    tl.to("#scene-12 .badge", { rotation: -3, duration: 2.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.6);
+    // the "cool" halo + sparkles ignite (a cool name).
+    tl.fromTo("#scene-12 .halo", { opacity:0, scale:0.5 }, { opacity:1, scale:1, duration:0.6, ease:"back.out(1.5)" }, 2.00);
+    tl.fromTo("#scene-12 .spark", { opacity:0, scale:0 }, { opacity:1, scale:1, duration:0.4, ease:"back.out(2.2)", stagger:0.1 }, 2.05);
+    tl.fromTo("#scene-12 .cool", { opacity:0, y:10, rotate:-3 }, { opacity:1, y:0, rotate:-2, duration:0.45, ease:"back.out(1.8)" }, 2.20);
 
-    // Seam clear — stage fades across the trailing overlap with scene 13 (local 6.34-6.84).
-    tl.to("#scene-12 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.34);
+    // sparkles twinkle continuously.
+    tl.to("#scene-12 .s1", { opacity:0.4, duration:0.9, ease:"sine.inOut", repeat:4, yoyo:true }, 3.0);
+    tl.to("#scene-12 .s3", { opacity:0.4, duration:1.1, ease:"sine.inOut", repeat:4, yoyo:true }, 3.4);
 
+    // "associating with Java meant you are also cool" — halo pulses, the transfer note lands.
+    tl.to("#scene-12 .halo", { boxShadow:"0 0 90px rgba(103,232,249,0.34), inset 0 0 40px rgba(103,232,249,0.1)", scale:1.05, duration:0.6, ease:"power2.out" }, 5.94);
+    tl.fromTo("#scene-12 .also", { opacity:0, y:10 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 5.94);
+
+    // idle: the logo breathes inside the halo.
+    tl.to("#scene-12 .logo", { scale:1.03, duration:2.2, ease:"sine.inOut", repeat:2, yoyo:true }, 3.2);
     window.__timelines["scene-12"] = tl;
   </script>
 </body>

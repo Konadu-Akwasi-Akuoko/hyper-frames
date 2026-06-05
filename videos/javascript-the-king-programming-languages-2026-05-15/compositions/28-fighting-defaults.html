@@ -3,122 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 28 — libraries fighting the language's defaults</title>
+  <title>Scene 28 — those libraries were fighting their own language's defaults</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-28 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-28 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-28 .cap {
-      position: absolute; left: 50%; top: 232px; transform: translateX(-50%);
-      width: 1520px; text-align: center;
-      font-size: 52px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
-    }
-    #scene-28 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-28 .cap .fight { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+    #scene-28 .head { position:absolute; left:50%; top:17%; transform:translateX(-50%); font-size:46px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-28 .head .fg { color:var(--danger); font-weight:800; }
 
-    /* the clash */
-    #scene-28 .battle {
-      position: absolute; left: 50%; top: 600px; transform: translate(-50%, -50%);
-      display: flex; align-items: center; justify-content: center; gap: 0;
-      will-change: transform;
-    }
-    #scene-28 .side {
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-      border-radius: 20px; padding: 40px 48px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-28 .side .ttl {
-      font-family: "JetBrains Mono", monospace; font-size: 56px; font-weight: 800; letter-spacing: -1px;
-    }
-    #scene-28 .side .sub { font-size: 24px; font-weight: 600; color: var(--muted); letter-spacing: 0.3px; }
+    #scene-28 .stage { position:absolute; left:50%; top:58%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:0; }
 
-    /* the bolt-on async library — dashed, smaller, straining */
-    #scene-28 .lib {
-      background: rgba(103,232,249,0.05); border: 2px dashed rgba(103,232,249,0.5);
-      transform-origin: right center;
-    }
-    #scene-28 .lib .ttl { color: var(--accent-2); }
+    /* the aftermarket async library — pulls right */
+    #scene-28 .lib { width:280px; height:150px; background:var(--panel); border:1px solid var(--border); border-radius:16px;
+      display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:8px; padding:0 28px; opacity:0; will-change:transform,opacity; box-shadow:0 18px 46px rgba(0,0,0,0.42); }
+    #scene-28 .lib .lib-nm { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:26px; font-weight:700; color:var(--accent-2); }
+    #scene-28 .lib .lib-tag { font-size:18px; color:var(--muted); }
 
-    /* the language's default — solid, heavier, dominant */
-    #scene-28 .def {
-      background: rgba(255,107,93,0.06); border: 2px solid rgba(255,107,93,0.55);
-      padding: 52px 60px; transform-origin: left center; will-change: transform, box-shadow;
-    }
-    #scene-28 .def .ttl { color: var(--danger); font-size: 64px; }
+    /* the strain seam where they pull against each other */
+    #scene-28 .strain { width:150px; height:150px; position:relative; display:flex; align-items:center; justify-content:center; }
+    #scene-28 .strain .seam { width:4px; height:78px; border-radius:3px; background:var(--dim); opacity:0; will-change:transform,opacity,background-color; }
+    #scene-28 .strain .glow { position:absolute; left:50%; top:50%; width:120px; height:120px; transform:translate(-50%,-50%) scale(0.4); border-radius:50%;
+      background:radial-gradient(circle, rgba(255,107,93,0.34) 0%, rgba(255,107,93,0) 68%); opacity:0; will-change:transform,opacity; }
+    /* opposing force arrows */
+    #scene-28 .strain .arr { position:absolute; top:50%; font-size:30px; font-weight:800; color:var(--danger); opacity:0; will-change:transform,opacity; }
+    #scene-28 .strain .arr.l { left:6px; transform:translateY(-50%); }
+    #scene-28 .strain .arr.r { right:6px; transform:translateY(-50%); }
 
-    /* the friction seam where they grind */
-    #scene-28 .seam {
-      width: 6px; height: 200px; margin: 0 -3px; border-radius: 3px;
-      background: linear-gradient(180deg, rgba(255,107,93,0), rgba(255,107,93,0.8), rgba(255,107,93,0));
-      opacity: 0; z-index: 2; will-change: opacity, transform;
-    }
+    /* the language and its built-in defaults — pulls left */
+    #scene-28 .lang { width:412px; background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:22px 24px; opacity:0; will-change:transform,opacity; box-shadow:0 18px 46px rgba(0,0,0,0.42); }
+    #scene-28 .lang .lhead { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:20px; color:var(--muted); margin-bottom:16px; }
+    #scene-28 .lang .chips { display:flex; flex-direction:column; gap:11px; }
+    #scene-28 .lang .chip { display:flex; align-items:center; gap:12px; height:52px; padding:0 18px; background:#0d1016; border:1px solid var(--border); border-radius:10px; opacity:0; will-change:transform,opacity,border-color; }
+    #scene-28 .lang .chip .cn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:21px; font-weight:600; color:var(--soft); white-space:nowrap; }
+    #scene-28 .lang .chip .lock { margin-left:auto; font-size:16px; font-weight:700; color:var(--muted); }
   </style>
 </head>
 <body>
   <div id="scene-28" data-composition-id="scene-28" data-width="1920" data-height="1080">
-    <div class="cap">
-      <span class="w">But</span> <span class="w">those</span> <span class="w">libraries</span>
-      <span class="w">were</span> <span class="w fight">fighting</span> <span class="w">their</span>
-      <span class="w">own</span> <span class="w">language&rsquo;s</span> <span class="w">defaults.</span>
-    </div>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">But those libraries were <span class="fg">fighting</span> their own language's defaults.</div>
 
-    <div class="battle" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="1480">
-      <div class="side lib"><span class="ttl">async</span><span class="sub">bolt-on library</span></div>
-      <div class="seam"></div>
-      <div class="side def" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="4270"><span class="ttl">blocking</span><span class="sub">the language&rsquo;s default</span></div>
+    <div class="stage">
+      <div class="lib" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1000">
+        <span class="lib-nm">async library</span>
+        <span class="lib-tag">an add-on, fighting upstream</span>
+      </div>
+
+      <div class="strain">
+        <span class="arr l">&larr;</span>
+        <span class="glow"></span>
+        <span class="seam" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1940"></span>
+        <span class="arr r">&rarr;</span>
+      </div>
+
+      <div class="lang" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1200">
+        <div class="lhead">the language</div>
+        <div class="chips">
+          <div class="chip c1" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4000"><span class="cn">blocking by default</span><span class="lock">baked&#8209;in</span></div>
+          <div class="chip c2"><span class="cn">synchronous I/O</span><span class="lock">baked&#8209;in</span></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(211.88).
-    // "But those libraries were fighting their own language's defaults." (But 0.50 ... defaults 4.00).
-    const cw = [0.50, 0.68, 1.00, 1.64, 1.94, 2.38, 2.74, 3.22, 4.00];
-    gsap.utils.toArray("#scene-28 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, cw[i]);
-    });
-    tl.fromTo("#scene-28 .cap .fight",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 26px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 1.98);
+    // But 0.50 / libraries 1.00 / fighting 1.94 / language's 3.22 / defaults 4.00.
 
-    // The two blocks slide in toward the seam — the library from the left, the default from the right.
-    tl.fromTo("#scene-28 .lib",
-      { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.90);
-    tl.fromTo("#scene-28 .def",
-      { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.10);
+    // "But those libraries…"
+    tl.fromTo("#scene-28 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "fighting" — the friction seam ignites and the whole rig grinds/shakes.
-    tl.fromTo("#scene-28 .seam",
-      { opacity: 0, scaleY: 0.6 }, { opacity: 1, scaleY: 1, duration: 0.3, ease: "power2.out" }, 1.94);
-    tl.to("#scene-28 .battle", { x: "+=7", duration: 0.07, repeat: 9, yoyo: true, ease: "none" }, 1.98);
-    tl.to("#scene-28 .seam", { opacity: 0.35, duration: 0.1, repeat: 7, yoyo: true, ease: "none" }, 2.26);
+    // the two sides slide in, facing off.
+    tl.fromTo("#scene-28 .lib", { opacity:0, x:-44 }, { opacity:1, x:0, duration:0.5, ease:"power3.out" }, 1.00);
+    tl.fromTo("#scene-28 .lang", { opacity:0, x:44 }, { opacity:1, x:0, duration:0.5, ease:"power3.out" }, 1.20);
+    tl.fromTo("#scene-28 .lang .chip", { opacity:0, y:10 }, { opacity:1, y:0, duration:0.35, ease:"power2.out", stagger:0.18 }, 1.45);
 
-    // "defaults" — the blocking default flares and wins ground, shoving the strained library back and dimming it.
-    tl.to("#scene-28 .def",
-      { boxShadow: "0 0 52px rgba(255,107,93,0.5)", scale: 1.12, duration: 0.45, ease: "power2.out" }, 4.00);
-    tl.to("#scene-28 .lib",
-      { x: -58, scale: 0.82, opacity: 0.5, duration: 0.45, ease: "power2.out" }, 4.04);
-    tl.fromTo("#scene-28 .def .ttl",
-      { textShadow: "0 0 0 rgba(255,107,93,0)" },
-      { textShadow: "0 0 28px rgba(255,107,93,0.55)", duration: 0.4, ease: "power2.out" }, 4.04);
+    // "fighting" — the seam goes taut and red, both sides strain against the center, friction flares.
+    tl.fromTo("#scene-28 .strain .seam", { opacity:0, scaleY:0.4 }, { opacity:1, scaleY:1, backgroundColor:"#ff6b5d", duration:0.4, ease:"power3.out" }, 1.94);
+    tl.fromTo("#scene-28 .strain .arr.l", { opacity:0, x:14 }, { opacity:1, x:0, duration:0.32, ease:"back.out(2)" }, 1.94);
+    tl.fromTo("#scene-28 .strain .arr.r", { opacity:0, x:-14 }, { opacity:1, x:0, duration:0.32, ease:"back.out(2)" }, 1.94);
+    tl.fromTo("#scene-28 .strain .glow", { opacity:0, scale:0.4 }, { opacity:1, scale:1, duration:0.4, ease:"power2.out" }, 1.96);
+    // the strain pulls the two boxes a hair toward the seam.
+    tl.to("#scene-28 .lib", { x:12, duration:0.5, ease:"power2.inOut" }, 1.96);
+    tl.to("#scene-28 .lang", { x:-12, duration:0.5, ease:"power2.inOut" }, 1.96);
 
-    // Seam clear — fade out across the trailing overlap with scene 29 (local 4.84-5.34).
-    tl.to(["#scene-28 .cap", "#scene-28 .battle"],
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.84);
+    // "their own language's defaults" — the baked-in defaults harden (the thing being fought).
+    tl.to("#scene-28 .lang .chip", { borderColor:"rgba(255,107,93,0.45)", duration:0.4, stagger:0.14 }, 4.00);
+    tl.to("#scene-28 .lang .chip .lock", { color:"#ff6b5d", duration:0.4, stagger:0.14 }, 4.00);
 
+    // idle: a low tension tremor in the seam and a faint flicker in the friction glow.
+    tl.to("#scene-28 .strain .seam", { scaleY:0.9, duration:0.32, ease:"sine.inOut", repeat:3, yoyo:true }, 2.6);
+    tl.to("#scene-28 .strain .glow", { opacity:0.55, duration:0.6, ease:"sine.inOut", repeat:1, yoyo:true }, 4.5);
     window.__timelines["scene-28"] = tl;
   </script>
 </body>

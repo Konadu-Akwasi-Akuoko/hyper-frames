@@ -3,126 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 23 — 10-day-old vs battle-tested Apache</title>
+  <title>Scene 23 — 10-day-old JS vs battle-tested Apache</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-23 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d; }
+    @font-face { font-family:"Excalifont"; src:url("../fonts/Excalifont-Regular.woff2") format("woff2"); font-weight:400; font-display:block; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-23 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-23 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1480px; display: flex; align-items: center; justify-content: center; gap: 70px;
-    }
+    #scene-23 .stage { position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); display:flex; align-items:flex-end; gap:90px; }
 
-    /* the newcomer — small, untested */
-    #scene-23 .new {
-      position: relative; width: 380px; display: flex; flex-direction: column; align-items: center; gap: 18px;
-      padding: 40px 28px; border-radius: 20px; background: var(--panel); border: 1px solid var(--border);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-23 .new img { width: 96px; height: 96px; }
-    #scene-23 .new .nm { font-size: 40px; font-weight: 800; color: var(--fg); letter-spacing: -1px; }
-    #scene-23 .new .stamp {
-      font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--accent);
-      border: 2px solid var(--accent); border-radius: 8px; padding: 6px 14px;
-      transform: rotate(-7deg); opacity: 0; will-change: transform, opacity;
-    }
+    /* the tiny 10-day-old challenger */
+    #scene-23 .side { display:flex; flex-direction:column; align-items:center; gap:18px; position:relative; }
+    #scene-23 .js .tile { width:124px; height:124px; border-radius:18px; background:var(--panel); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; opacity:0; will-change:transform,opacity; box-shadow:0 16px 40px rgba(0,0,0,0.42); }
+    #scene-23 .js .tile img { width:80px; height:80px; object-fit:contain; }
+    #scene-23 .js .nm { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:22px; color:var(--soft); opacity:0; will-change:opacity; }
+    #scene-23 .js .age { position:absolute; top:-66px; left:50%; transform:translateX(-50%); font-family:"Excalifont","Inter",sans-serif; font-size:30px; color:var(--accent-2); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-23 .js .age .arr { display:block; text-align:center; font-size:26px; line-height:1; margin-top:2px; }
 
-    /* the arrow / verb */
-    #scene-23 .mid { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; will-change: opacity; }
-    #scene-23 .mid .verb {
-      font-family: "JetBrains Mono", monospace; font-size: 24px; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--muted);
-    }
-    #scene-23 .mid .arrow { font-size: 64px; color: var(--soft); line-height: 0.7; }
+    /* vs */
+    #scene-23 .vs { font-size:46px; font-weight:800; color:var(--muted); margin-bottom:120px; opacity:0; will-change:transform,opacity; }
 
-    /* the veteran — big, imposing */
-    #scene-23 .vet {
-      position: relative; width: 520px; display: flex; flex-direction: column; align-items: center; gap: 22px;
-      padding: 56px 36px; border-radius: 24px; background: #0e1620; border: 2px solid #2b3a44;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 0 60px rgba(103,232,249,0.05);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-23 .vet img { width: 156px; height: 156px; }
-    #scene-23 .vet .nm { font-size: 58px; font-weight: 900; color: var(--fg); letter-spacing: -1px; }
-    #scene-23 .vet .tag {
-      display: flex; align-items: center; gap: 10px;
-      font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; letter-spacing: 1px;
-      color: var(--accent-2);
-    }
-    #scene-23 .vet .since {
-      font-family: "JetBrains Mono", monospace; font-size: 20px; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--muted);
-    }
+    /* the towering battle-tested veteran */
+    #scene-23 .ap .tile { width:248px; height:300px; border-radius:22px; background:var(--panel); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; opacity:0; will-change:transform,opacity; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+    #scene-23 .ap .tile img { width:150px; height:150px; object-fit:contain; }
+    #scene-23 .ap .nm { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:26px; color:var(--soft); opacity:0; will-change:opacity; }
+    #scene-23 .ap .badge { display:flex; align-items:center; gap:9px; padding:8px 16px; border-radius:999px; background:rgba(125,216,125,0.1); border:1px solid rgba(125,216,125,0.35); opacity:0; will-change:transform,opacity; }
+    #scene-23 .ap .badge svg { width:22px; height:22px; }
+    #scene-23 .ap .badge .bt { font-size:21px; font-weight:600; color:var(--ok); }
   </style>
 </head>
 <body>
   <div id="scene-23" data-composition-id="scene-23" data-width="1920" data-height="1080">
     <div class="stage">
-      <div class="new">
-        <img src="assets/icons/javascript.svg" alt="JavaScript">
+      <div class="side js">
+        <div class="age" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1360">10 days old<span class="arr">&darr;</span></div>
+        <div class="tile" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="820"><img src="../assets/icons/javascript.svg" alt="JavaScript"></div>
         <div class="nm">JavaScript</div>
-        <div class="stamp" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="2160" data-sfx-volume="0.42">10 days old</div>
       </div>
 
-      <div class="mid">
-        <div class="arrow">&rarr;</div>
-        <div class="verb">to replace</div>
-      </div>
+      <div class="vs" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2900">vs</div>
 
-      <div class="vet"
-           data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3890" data-sfx-volume="0.42">
-        <img src="assets/icons/apache.svg" alt="Apache">
+      <div class="side ap">
+        <div class="tile" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3700"><img src="../assets/icons/apache.svg" alt="Apache"></div>
         <div class="nm">Apache</div>
-        <div class="tag">&#9733; battle-tested</div>
-        <div class="since">since 1995</div>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7dd87d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span class="bt">battle-tested</span>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(179.34).
-    // "a 10-day-old language" — the small newcomer appears (10-day-old 1.36, language 2.02).
-    tl.fromTo("#scene-23 .new",
-      { opacity: 0, y: 18, scale: 0.94 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 1.36);
-    tl.fromTo("#scene-23 .new .stamp",
-      { opacity: 0, scale: 1.4, rotation: -7 },
-      { opacity: 1, scale: 1, rotation: -7, duration: 0.4, ease: "back.out(2)" }, 1.96);
+    // reaching 0.82 / 10-day-old 1.36 / language 2.02 / replace 2.90 / battle-tested 3.70 / Apache 4.62.
 
-    // "to replace" — the arrow + verb fade in (to 2.90, replace 3.04).
-    tl.fromTo("#scene-23 .mid",
-      { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 2.90);
+    // the little challenger.
+    tl.fromTo("#scene-23 .js .tile", { opacity:0, y:20, scale:0.7 }, { opacity:1, y:0, scale:1, duration:0.45, ease:"back.out(2)" }, 0.82);
+    tl.fromTo("#scene-23 .js .nm", { opacity:0 }, { opacity:1, duration:0.3 }, 1.10);
 
-    // "a battle-tested Apache" — the veteran lands big and imposing (a 3.56, battle-tested 3.70, Apache 4.62).
-    tl.fromTo("#scene-23 .vet",
-      { opacity: 0, y: 24, scale: 0.96 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 3.56);
-    tl.fromTo("#scene-23 .vet .tag",
-      { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 4.20);
-    tl.fromTo("#scene-23 .vet .since",
-      { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.50);
+    // "10 days old" — the hand tag pops over it.
+    tl.fromTo("#scene-23 .js .age", { opacity:0, y:8, rotate:-5 }, { opacity:1, y:0, rotate:-3, duration:0.4, ease:"back.out(2)" }, 1.36);
 
-    // Subtle life — the veteran sits heavy, the newcomer fidgets a hair.
-    tl.to("#scene-23 .new", { y: "-=5", duration: 2.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.4);
+    // "to replace" — vs.
+    tl.fromTo("#scene-23 .vs", { opacity:0, scale:0.6 }, { opacity:1, scale:1, duration:0.4, ease:"back.out(2)" }, 2.90);
 
-    // Seam clear — stage fades across the trailing overlap with scene 24 (local 5.46-5.96).
-    tl.to("#scene-23 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.46);
+    // "battle-tested Apache" — the giant lands with weight.
+    tl.fromTo("#scene-23 .ap .tile", { opacity:0, y:50, scale:0.9 }, { opacity:1, y:0, scale:1, duration:0.55, ease:"power3.out" }, 3.70);
+    tl.fromTo("#scene-23 .ap .nm", { opacity:0 }, { opacity:1, duration:0.3 }, 4.10);
+    tl.fromTo("#scene-23 .ap .badge", { opacity:0, y:10 }, { opacity:1, y:0, duration:0.4, ease:"back.out(1.8)" }, 4.40);
 
+    // idle: the tiny challenger fidgets; the giant looms still.
+    tl.to("#scene-23 .js .tile", { y:"-=5", duration:0.9, ease:"sine.inOut", repeat:3, yoyo:true }, 4.8);
     window.__timelines["scene-23"] = tl;
   </script>
 </body>

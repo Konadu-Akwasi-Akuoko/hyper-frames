@@ -3,134 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 11 — JavaScript is not Java</title>
+  <title>Scene 11 — nothing to do with Java</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    @font-face {
-      font-family: "Excalifont";
-      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
-      font-display: swap;
-    }
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-11 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; }
+    @font-face { font-family:"Excalifont"; src:url("../fonts/Excalifont-Regular.woff2") format("woff2"); font-weight:400; font-display:block; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-11 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-11 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1560px; height: 460px;
-    }
+    #scene-11 .split { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:120px; }
+    #scene-11 .side { width:360px; display:flex; flex-direction:column; align-items:center; gap:34px; opacity:0; will-change:transform,opacity; }
+    #scene-11 .side .logo { width:230px; height:230px; display:flex; align-items:center; justify-content:center; }
+    #scene-11 .side .logo img { width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 16px 40px rgba(0,0,0,0.5)); }
+    #scene-11 .side .nm { font-size:40px; font-weight:700; color:var(--soft); }
+    /* the verbatim "awful language" scare-quote — human voice, Excalifont */
+    #scene-11 .scare { font-family:"Excalifont","Inter",sans-serif; font-size:34px; color:var(--danger); opacity:0; will-change:transform,opacity; }
 
-    /* the two entity plates */
-    #scene-11 .plate {
-      position: absolute; top: 50%; transform: translate(-50%, -50%);
-      width: 420px; display: flex; flex-direction: column; align-items: center; gap: 26px;
-      background: var(--panel); border: 1px solid var(--border); border-radius: 22px;
-      padding: 48px 32px; opacity: 0; will-change: transform, opacity;
-    }
-    #scene-11 .plate img { width: 132px; height: 132px; }
-    #scene-11 .plate .name { font-size: 54px; font-weight: 800; letter-spacing: -1px; }
-    #scene-11 .js   { left: 300px; }
-    #scene-11 .js .name   { color: var(--accent); }
-    #scene-11 .java { left: 1260px; }
-    #scene-11 .java .name { color: #ce8a4f; }
-
-    /* the connector line between the plates */
-    #scene-11 .link {
-      position: absolute; top: 50%; left: 510px; width: 540px; height: 4px;
-      transform: translateY(-50%); transform-origin: left center;
-      background: var(--dim); border-radius: 4px; scale: 0 1; opacity: 0;
-      will-change: transform, scale, opacity;
-    }
-
-    /* the not-equal verdict */
-    #scene-11 .neq {
-      position: absolute; left: 780px; top: 50%; width: 220px;
-      transform: translate(-50%, -50%); text-align: center;
-      font-size: 168px; font-weight: 800; line-height: 1; color: var(--danger);
-      text-shadow: 0 0 40px rgba(255,107,93,0.45);
-      opacity: 0; will-change: transform, opacity;
-    }
-
-    /* the "awful language" callback scribble above the JS plate */
-    #scene-11 .tag {
-      position: absolute; left: 300px; top: -8px; transform: translateX(-50%) rotate(-4deg);
-      font-family: "Excalifont", "Inter", sans-serif; font-size: 42px; color: var(--soft);
-      white-space: nowrap; opacity: 0; will-change: transform, opacity;
-    }
-    #scene-11 .tag .arrow {
-      display: block; font-size: 38px; color: var(--muted); text-align: center;
-      margin-top: 2px; line-height: 1;
-    }
+    #scene-11 .neq { font-size:150px; font-weight:300; color:var(--muted); opacity:0; will-change:transform,opacity; line-height:1; }
   </style>
 </head>
 <body>
   <div id="scene-11" data-composition-id="scene-11" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="tag">&ldquo;awful language&rdquo;<span class="arrow">&darr;</span></div>
-
-      <div class="plate js">
-        <img src="assets/icons/javascript.svg" alt="JavaScript">
-        <div class="name">JavaScript</div>
+    <div class="split">
+      <div class="side js" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="600">
+        <div class="logo"><img src="../assets/icons/javascript.svg" alt="JavaScript"></div>
+        <div class="nm">JavaScript</div>
+        <div class="scare" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1580">&ldquo;awful language&rdquo;</div>
       </div>
-
-      <div class="link"></div>
-      <div class="neq"
-           data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="5240">&ne;</div>
-
-      <div class="plate java"
-           data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="4600">
-        <img src="assets/icons/java.svg" alt="Java">
-        <div class="name">Java</div>
+      <div class="neq" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3420">&ne;</div>
+      <div class="side java" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5020">
+        <div class="logo"><img src="../assets/icons/java.svg" alt="Java"></div>
+        <div class="nm">Java</div>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(90.56).
-    // "This [awful language]" = JavaScript — the JS plate enters first (This 91.06 -> 0.50).
-    tl.fromTo("#scene-11 .js",
-      { opacity: 0, x: -40, scale: 0.94 },
-      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.50);
+    // This 0.50 / awful-language 1.58 / nothing 3.42 / to-do-with 4.11 / Java 5.02.
 
-    // The "awful language" callback scribbles in over the JS plate (awful 92.14 -> 1.58).
-    tl.fromTo("#scene-11 .tag",
-      { opacity: 0, y: 10, rotation: -10 },
-      { opacity: 1, y: 0, rotation: -4, duration: 0.45, ease: "power2.out" }, 1.58);
+    // JS appears (this "awful language").
+    tl.fromTo("#scene-11 .side.js", { opacity:0, x:-40, scale:0.9 }, { opacity:1, x:0, scale:1, duration:0.55, ease:"back.out(1.4)" }, 0.50);
+    // the verbatim scare-quote scribbles in (callback to the HN line).
+    tl.fromTo("#scene-11 .scare", { opacity:0, scale:0.7, rotate:-6 }, { opacity:1, scale:1, rotate:-3, duration:0.45, ease:"back.out(2)" }, 1.58);
 
-    // "has nothing to do with" — the link draws toward Java, then Java arrives (nothing 93.98 -> 3.42).
-    tl.fromTo("#scene-11 .link",
-      { opacity: 1, scale: 0 }, { scale: 1, duration: 0.7, ease: "power2.inOut", transformOrigin: "left center" }, 3.42);
-    tl.fromTo("#scene-11 .java",
-      { opacity: 0, x: 40, scale: 0.94 },
-      { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 4.10);
+    // the "≠" snaps in (nothing to do with).
+    tl.fromTo("#scene-11 .neq", { opacity:0, scale:1.8 }, { opacity:1, scale:1, duration:0.45, ease:"back.out(1.8)" }, 3.42);
+    tl.to("#scene-11 .neq", { color:"#ff6b5d", textShadow:"0 0 30px rgba(255,107,93,0.4)", duration:0.4 }, 5.02);
 
-    // "...Java" — the verdict: ≠ slams in, the link severs, the plates recoil apart (Java 95.58 -> 5.02).
-    tl.fromTo("#scene-11 .neq",
-      { opacity: 0, scale: 1.8, rotation: -8 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, 5.02);
-    tl.to("#scene-11 .link", { opacity: 0.12, duration: 0.3, ease: "power2.in" }, 5.02);
-    tl.to("#scene-11 .js",   { x: "-=16", duration: 0.4, ease: "power3.out" }, 5.04);
-    tl.to("#scene-11 .java", { x: "+=16", duration: 0.4, ease: "power3.out" }, 5.04);
+    // Java appears on the other side (… with Java).
+    tl.fromTo("#scene-11 .side.java", { opacity:0, x:40, scale:0.9 }, { opacity:1, x:0, scale:1, duration:0.55, ease:"back.out(1.4)" }, 5.02);
 
-    // Subtle life — the plates breathe.
-    tl.to("#scene-11 .js",   { y: "-=5", duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
-    tl.to("#scene-11 .java", { y: "-=5", duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.6);
-
-    // Seam clear — the whole stage fades across the trailing overlap with scene 12 (local 5.58-6.08).
-    tl.to("#scene-11 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.58);
-
+    // idle: the two logos breathe slightly out of phase.
+    tl.to("#scene-11 .side.js .logo", { y:"-=6", duration:2.6, ease:"sine.inOut", repeat:2, yoyo:true }, 1.4);
+    tl.to("#scene-11 .side.java .logo", { y:"-=6", duration:2.6, ease:"sine.inOut", repeat:2, yoyo:true }, 5.6);
     window.__timelines["scene-11"] = tl;
   </script>
 </body>

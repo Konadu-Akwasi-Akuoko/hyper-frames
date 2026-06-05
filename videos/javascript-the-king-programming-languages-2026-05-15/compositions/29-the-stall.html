@@ -3,135 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 29 — a blocking call slips in, the whole thing stalled</title>
+  <title>Scene 29 — a blocking call slipped in, the whole thing stalled</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-29 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-29 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-29 .cap {
-      position: absolute; left: 50%; top: 226px; transform: translateX(-50%);
-      width: 1560px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
-    }
-    #scene-29 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-29 .cap .blk { color: var(--danger); font-weight: 800; }
-    #scene-29 .cap .stall { color: var(--danger); font-weight: 800; will-change: text-shadow; }
+    #scene-29 .head { position:absolute; left:50%; top:18%; transform:translateX(-50%); font-size:48px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-29 .head .bk { color:var(--danger); font-weight:800; }
 
-    /* the async flow lane */
-    #scene-29 .flow {
-      position: absolute; left: 50%; top: 600px; transform: translate(-50%, -50%);
-      width: 1320px; height: 200px;
-    }
-    #scene-29 .lane { position: absolute; inset: 0; will-change: filter; }
-    #scene-29 .track {
-      position: absolute; left: 0; top: 70px; width: 1320px; height: 92px;
-      background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
-      will-change: box-shadow, border-color;
-    }
-    #scene-29 .task {
-      position: absolute; left: 0; top: 84px; width: 60px; height: 60px; border-radius: 13px;
-      background: rgba(103,232,249,0.16); border: 2px solid var(--accent-2);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-29 .blocker {
-      position: absolute; top: 48px; width: 30px; height: 138px; border-radius: 8px;
-      background: var(--danger); box-shadow: 0 0 26px rgba(255,107,93,0.5);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-29 .stamp {
-      position: absolute; left: 50%; top: 44px;
-      font-family: "JetBrains Mono", monospace; font-size: 64px; font-weight: 800; letter-spacing: 4px;
-      color: var(--danger); border: 4px solid var(--danger); border-radius: 14px; padding: 10px 32px;
-      background: rgba(11,13,18,0.72); white-space: nowrap;
-      opacity: 0; will-change: transform, opacity;
-    }
+    /* the oscilloscope / health monitor */
+    #scene-29 .scope { position:absolute; left:50%; top:57%; transform:translate(-50%,-50%); width:780px; background:#0d1016; border:1px solid var(--border); border-radius:20px; padding:24px 28px 28px; opacity:0; will-change:transform,opacity,border-color; box-shadow:0 28px 74px rgba(0,0,0,0.46); }
+    #scene-29 .scope .shead { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+    #scene-29 .scope .slbl { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:21px; color:var(--muted); }
+    #scene-29 .scope .status { display:flex; align-items:center; gap:10px; padding:6px 14px; border-radius:999px; background:rgba(125,216,125,0.1); border:1px solid rgba(125,216,125,0.4); will-change:background-color,border-color; }
+    #scene-29 .scope .status .dot { width:10px; height:10px; border-radius:50%; background:var(--ok); will-change:background-color; }
+    #scene-29 .scope .status .st { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:18px; font-weight:700; color:var(--ok); will-change:color; }
+
+    #scene-29 .scope .wrap { position:relative; width:724px; height:140px; }
+    #scene-29 .scope svg { position:absolute; inset:0; width:724px; height:140px; }
+    #scene-29 .scope .beat { fill:none; stroke:var(--ok); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; will-change:opacity; }
+    #scene-29 .scope .flat { fill:none; stroke:var(--danger); stroke-width:3; stroke-linecap:round; opacity:0; will-change:opacity; }
+
+    /* the sweep cursor */
+    #scene-29 .scope .sweep { position:absolute; top:0; left:0; width:2px; height:140px; background:linear-gradient(180deg, rgba(125,216,125,0) 0%, rgba(125,216,125,0.55) 50%, rgba(125,216,125,0) 100%); opacity:0; will-change:transform,opacity; }
+
+    /* the blocking call that slips in */
+    #scene-29 .token { position:absolute; left:50%; top:57%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:12px; padding:12px 22px; border-radius:12px;
+      background:rgba(255,107,93,0.12); border:1px solid rgba(255,107,93,0.5); opacity:0; will-change:transform,opacity; box-shadow:0 14px 40px rgba(0,0,0,0.4); }
+    #scene-29 .token .tn { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:24px; font-weight:700; color:var(--danger); }
+    #scene-29 .token .td { width:9px; height:9px; border-radius:50%; background:var(--danger); }
+
+    /* the stalled stamp */
+    #scene-29 .stalled { position:absolute; left:50%; top:80%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:12px; padding:12px 26px; border-radius:12px;
+      background:rgba(255,107,93,0.1); border:1px solid rgba(255,107,93,0.45); opacity:0; will-change:transform,opacity; }
+    #scene-29 .stalled .sx { font-size:26px; font-weight:800; letter-spacing:0.5px; color:var(--danger); }
   </style>
 </head>
 <body>
   <div id="scene-29" data-composition-id="scene-29" data-width="1920" data-height="1080">
-    <div class="cap">
-      <span class="w">The</span> <span class="w">second</span> <span class="w">the</span>
-      <span class="w">normal</span> <span class="w blk">blocking</span> <span class="w">call</span>
-      <span class="w">slipped</span> <span class="w">in,</span> <span class="w">the</span>
-      <span class="w">whole</span> <span class="w">thing</span> <span class="w stall">stalled.</span>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">One <span class="bk">blocking call</span> slipped in.</div>
+
+    <div class="scope">
+      <div class="shead">
+        <span class="slbl">event loop</span>
+        <span class="status"><span class="dot"></span><span class="st">running</span></span>
+      </div>
+      <div class="wrap">
+        <svg viewBox="0 0 724 140" preserveAspectRatio="none">
+          <polyline class="beat" points="0,70 90,70 120,70 142,22 164,112 188,70 270,70 300,70 322,26 344,110 368,70 452,70 482,70 504,24 526,112 550,70 634,70 664,70 686,28 708,108 724,70"/>
+          <polyline class="flat" points="0,70 724,70"/>
+        </svg>
+        <div class="sweep"></div>
+      </div>
     </div>
 
-    <div class="flow">
-      <div class="lane">
-        <div class="track"></div>
-        <div class="task" data-t="0"></div>
-        <div class="task" data-t="1"></div>
-        <div class="task" data-t="2"></div>
-        <div class="task" data-t="3"></div>
-        <div class="task" data-t="4"></div>
-        <div class="blocker" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 01.mp3" data-sfx-at-scene-ms="2640"></div>
-      </div>
-      <div class="stamp" data-sfx-on-anchor="boom" data-sfx-asset="Anime SFX/Hollow Hit 01.mp3" data-sfx-at-scene-ms="4340" data-sfx-volume="0.35">STALLED</div>
-    </div>
+    <div class="token" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1540"><span class="td"></span><span class="tn">blocking call</span></div>
+
+    <div class="stalled" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4280"><span class="sx">STALLED</span></div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(216.72).
-    // "The second the normal blocking call slipped in, the whole thing stalled." (The 0.50 ... stalled 4.28).
-    const cw = [0.50, 0.64, 1.00, 1.16, 1.54, 2.04, 2.36, 2.68, 3.51, 3.68, 4.06, 4.28];
-    gsap.utils.toArray("#scene-29 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
-    });
+    // The 0.50 / normal 1.16 / blocking 1.54 / call 2.04 / slipped 2.36 / in 2.68 / whole 3.51 / stalled 4.28.
 
-    // The async flow works first — two tasks glide all the way across and exit, handled cleanly.
-    tl.set("#scene-29 .task[data-t='0']", { x: -80 });
-    tl.to("#scene-29 .task[data-t='0']", { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.40);
-    tl.to("#scene-29 .task[data-t='0']", { x: 1360, duration: 1.5, ease: "none" }, 0.40);
-    tl.to("#scene-29 .task[data-t='0']", { opacity: 0, duration: 0.25, ease: "power1.in" }, 1.70);
-    tl.set("#scene-29 .task[data-t='1']", { x: -80 });
-    tl.to("#scene-29 .task[data-t='1']", { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.78);
-    tl.to("#scene-29 .task[data-t='1']", { x: 1360, duration: 1.5, ease: "none" }, 0.78);
-    tl.to("#scene-29 .task[data-t='1']", { opacity: 0, duration: 0.25, ease: "power1.in" }, 2.08);
+    // "One blocking call…" headline.
+    tl.fromTo("#scene-29 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 0.50);
 
-    // "blocking call slipped in" — the red blocker slams down across the lane centre (slipped 2.36).
-    tl.fromTo("#scene-29 .blocker",
-      { opacity: 0, x: 660, y: -120 },
-      { opacity: 1, x: 660, y: 0, duration: 0.34, ease: "power3.in" }, 2.30);
-    tl.to("#scene-29 .track",
-      { x: "+=6", duration: 0.06, repeat: 5, yoyo: true, ease: "none" }, 2.62);
+    // the monitor comes up, running.
+    tl.fromTo("#scene-29 .scope", { opacity:0, y:24, scale:0.97 }, { opacity:1, y:0, scale:1, duration:0.5, ease:"power3.out" }, 0.64);
+    // the waveform draws on.
+    const beat = document.querySelector("#scene-29 .beat");
+    const blen = beat ? beat.getTotalLength() : 2000;
+    gsap.set("#scene-29 .beat", { strokeDasharray:blen, strokeDashoffset:blen });
+    tl.to("#scene-29 .beat", { strokeDashoffset:0, duration:0.7, ease:"power2.out" }, 0.92);
 
-    // the following tasks jam up behind the blocker — the flow piles into a queue.
-    tl.fromTo("#scene-29 .task[data-t='2']",
-      { opacity: 0, x: -80 }, { opacity: 1, x: 590, duration: 0.9, ease: "power2.out" }, 2.30);
-    tl.fromTo("#scene-29 .task[data-t='3']",
-      { opacity: 0, x: -80 }, { opacity: 1, x: 524, duration: 0.9, ease: "power2.out" }, 2.78);
-    tl.fromTo("#scene-29 .task[data-t='4']",
-      { opacity: 0, x: -80 }, { opacity: 1, x: 458, duration: 0.9, ease: "power2.out" }, 3.26);
+    // the sweep cursor runs across, twice — the loop is alive.
+    tl.fromTo("#scene-29 .sweep", { opacity:1, x:0 }, { x:722, duration:1.45, ease:"none", repeat:1 }, 1.20);
 
-    // "the whole thing stalled" — the lane freezes mid-motion and desaturates to a dead grey,
-    // then the alarm-red STALLED stamp slams over it (stalled 4.28). The stamp stays full colour
-    // (it is a sibling of the greyed .lane) so it pops against the frozen pipeline.
-    tl.to("#scene-29 .lane", { filter: "grayscale(0.92) brightness(0.62)", duration: 0.3, ease: "power2.out" }, 4.28);
-    tl.fromTo("#scene-29 .stamp",
-      { opacity: 0, scale: 1.5, rotation: -7, xPercent: -50 },
-      { opacity: 1, scale: 1, rotation: -7, xPercent: -50, duration: 0.34, ease: "back.out(2.2)" }, 4.34);
-    tl.fromTo("#scene-29 .cap .stall",
-      { textShadow: "0 0 0 rgba(255,107,93,0)" },
-      { textShadow: "0 0 28px rgba(255,107,93,0.6)", duration: 0.4, ease: "power2.out" }, 4.32);
+    // "blocking call slipped in" — the red token drops onto the lane.
+    tl.fromTo("#scene-29 .token", { opacity:0, x:120, y:-18, scale:0.9 }, { opacity:1, x:0, y:0, scale:1, duration:0.5, ease:"power3.out" }, 1.54);
+    tl.to("#scene-29 .token", { y:6, duration:0.3, ease:"power2.in" }, 2.36);
+    tl.to("#scene-29 .token", { y:0, duration:0.4, ease:"bounce.out" }, 2.66);
 
-    // Seam clear — fade out across the trailing overlap with scene 30 (local 5.02-5.52).
-    tl.to("#scene-29 .cap, #scene-29 .flow",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 5.02);
+    // "the whole thing stalled" — the beat flatlines, status flips, STALLED stamps.
+    tl.to("#scene-29 .sweep", { opacity:0, duration:0.2 }, 4.28);
+    tl.to("#scene-29 .beat", { opacity:0.12, duration:0.35 }, 4.28);
+    gsap.set("#scene-29 .flat", { strokeDasharray:724, strokeDashoffset:724 });
+    tl.to("#scene-29 .flat", { opacity:1, strokeDashoffset:0, duration:0.55, ease:"power2.out" }, 4.30);
+    tl.to("#scene-29 .scope", { borderColor:"rgba(255,107,93,0.5)", duration:0.4 }, 4.30);
+    tl.to("#scene-29 .scope .status", { backgroundColor:"rgba(255,107,93,0.12)", borderColor:"rgba(255,107,93,0.5)", duration:0.4 }, 4.30);
+    tl.to("#scene-29 .scope .status .dot", { backgroundColor:"#ff6b5d", duration:0.4 }, 4.30);
+    tl.to("#scene-29 .scope .status .st", { color:"#ff6b5d", duration:0.4 }, 4.30);
+    tl.add(() => { const st = document.querySelector("#scene-29 .scope .st"); if (st) st.textContent = "stalled"; }, 4.34);
+    tl.fromTo("#scene-29 .stalled", { opacity:0, scale:0.8, y:10 }, { opacity:1, scale:1, y:0, duration:0.4, ease:"back.out(2)" }, 4.40);
 
+    // idle: the red token pulses faintly while the system hangs.
+    tl.to("#scene-29 .token .td", { opacity:0.4, duration:0.5, ease:"sine.inOut", repeat:1, yoyo:true }, 5.0);
     window.__timelines["scene-29"] = tl;
   </script>
 </body>

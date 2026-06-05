@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 01 — Hacker News quote</title>
+  <title>Scene 01 — Hacker News quote (amber-paper)</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
     :root {
       --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
       --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
       --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+      /* warm lamp light — a lighting mechanic, deliberately NOT the rationed JS-yellow */
+      --amber: rgba(255,206,138,1);
     }
     @font-face {
       font-family: "Excalifont";
@@ -24,48 +26,77 @@
     }
     #scene-01 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
 
-    /* The quote card — the one place a framed card is right. */
-    #scene-01 .card {
-      position: absolute; left: 50%; top: 50%;
-      width: 1320px; transform: translate(-50%, -50%);
-      padding: 72px 96px 64px;
-      background: linear-gradient(180deg, rgba(20,24,32,0.92) 0%, rgba(14,17,23,0.94) 100%);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
-      will-change: transform;
+    /* Red ambient glow bleeding from the top — the "menace" wash (from the amber-paper inspo). */
+    #scene-01 .ambient-red {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% -8%,
+        rgba(255,80,70,0.16) 0%, rgba(255,80,70,0) 60%);
+      will-change: opacity;
+    }
+    /* Tightened vignette so the passage reads as a lit page in the dark. */
+    #scene-01 .vignette {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 62% 64% at 50% 50%, transparent 46%, rgba(0,0,0,0.62) 100%);
     }
 
-    /* Big opening quotation mark — decorative, top-left of the card. */
-    #scene-01 .quote-mark {
-      position: absolute; left: 48px; top: 6px;
-      font-family: "Excalifont", "Inter", sans-serif;
-      font-size: 180px; line-height: 1; color: var(--dim);
+    /* The dim comment-thread behind — out-of-focus passage context (the "dense paper"). */
+    #scene-01 .thread {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 1280px; opacity: 0; filter: blur(3px);
+      display: flex; flex-direction: column; gap: 26px;
+      will-change: opacity, transform;
+    }
+    #scene-01 .thread .ln {
+      height: 14px; border-radius: 7px;
+      background: linear-gradient(90deg, rgba(122,132,147,0.16), rgba(122,132,147,0.04));
+    }
+
+    /* The hero passage — the verbatim comment. */
+    #scene-01 .passage {
+      position: absolute; left: 50%; top: 50%;
+      width: 1360px; transform: translate(-50%, -50%);
+      padding: 76px 92px 60px;
       will-change: transform, opacity;
     }
 
-    /* The verbatim comment — human voice → Excalifont. */
-    #scene-01 .quote {
+    /* Warm amber highlight-wash — wipes left→right across the passage as it's read. */
+    #scene-01 .wash {
+      position: absolute; left: 64px; right: 64px; top: 64px;
+      height: 268px; z-index: 0; transform-origin: left center;
+      transform: scaleX(0);
+      background: linear-gradient(90deg,
+        rgba(255,206,138,0.13) 0%, rgba(255,206,138,0.10) 70%, rgba(255,206,138,0) 100%);
+      border-radius: 14px; filter: blur(6px);
+      will-change: transform;
+    }
+
+    #scene-01 .quote-mark {
+      position: absolute; left: 28px; top: -8px; z-index: 1;
       font-family: "Excalifont", "Inter", sans-serif;
-      font-size: 62px; line-height: 1.34; color: var(--fg);
+      font-size: 200px; line-height: 1; color: var(--dim);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-01 .quote {
+      position: relative; z-index: 1;
+      font-family: "Excalifont", "Inter", sans-serif;
+      font-size: 66px; line-height: 1.36; color: var(--muted);
       letter-spacing: 0.2px;
     }
-    #scene-01 .quote .w {
-      display: inline-block; opacity: 0; will-change: transform, opacity;
-    }
-    /* The menacing verbs ignite muted -> danger on their spoken word. */
-    #scene-01 .quote .ignite { color: var(--muted); }
+    /* Each word starts unlit (muted) and the amber light brightens it on its spoken beat. */
+    #scene-01 .quote .w { color: var(--muted); will-change: color, text-shadow; }
 
-    /* Attribution chrome — system voice → Inter. */
     #scene-01 .attrib {
+      position: relative; z-index: 1;
       display: flex; align-items: center; gap: 18px;
-      margin-top: 46px; padding-top: 30px;
+      margin-top: 52px; padding-top: 30px;
       border-top: 1px solid var(--border);
       opacity: 0; will-change: transform, opacity;
     }
     #scene-01 .hn {
       width: 46px; height: 46px; border-radius: 8px; flex: none;
       display: block; box-shadow: 0 4px 16px rgba(251,101,30,0.35);
+      will-change: transform;
     }
     #scene-01 .attrib .who {
       font-size: 30px; font-weight: 500; color: var(--soft); letter-spacing: 0.2px;
@@ -79,24 +110,32 @@
 </head>
 <body>
   <div id="scene-01" data-composition-id="scene-01" data-width="1920" data-height="1080">
-    <div class="card">
+    <div class="ambient-red"></div>
+
+    <div class="thread">
+      <div class="ln" style="width:88%"></div>
+      <div class="ln" style="width:72%"></div>
+      <div class="ln" style="width:94%"></div>
+    </div>
+
+    <div class="passage" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="600">
+      <div class="wash"></div>
       <div class="quote-mark" data-layout-allow-overflow>&ldquo;</div>
       <div class="quote">
         <span class="w">This</span> <span class="w">awful</span> <span class="w">language</span>
-        <span class="w">has</span> <span class="w ignite" data-key="escaped">escaped</span>
+        <span class="w">has</span> <span class="w ignite" data-key="escaped" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2260">escaped</span>
         <span class="w">the</span> <span class="w">browser</span> <span class="w">and</span>
-        <span class="w ignite" data-key="infiltrated"
-          data-sfx-on-anchor="ui-tick"
-          data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav"
-          data-sfx-at-scene-ms="3260">infiltrated</span> <span class="w">our</span>
+        <span class="w ignite" data-key="infiltrated" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3760">infiltrated</span> <span class="w">our</span>
         <span class="w">servers.</span>
       </div>
-      <div class="attrib">
-        <svg class="hn" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="6650" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#fb651e" d="M0 0h256v256H0z"/><path fill="#fff" d="M119.374 144.746L75.433 62.432h20.081l25.848 52.092q.597 1.392 1.392 2.883t1.391 3.082q.398.596.597 1.094q.199.496.398.894a66 66 0 0 1 1.79 3.877q.795 1.89 1.39 3.48q1.591-3.381 3.48-7.257q1.89-3.878 3.877-8.053l26.246-52.092h18.69l-44.34 83.308v53.087h-16.9z"/></svg>
+      <div class="attrib" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="6530">
+        <svg class="hn" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="7140" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#fb651e" d="M0 0h256v256H0z"/><path fill="#fff" d="M119.374 144.746L75.433 62.432h20.081l25.848 52.092q.597 1.392 1.392 2.883t1.391 3.082q.398.596.597 1.094q.199.496.398.894a66 66 0 0 1 1.79 3.877q.795 1.89 1.39 3.48q1.591-3.381 3.48-7.257q1.89-3.878 3.877-8.053l26.246-52.092h18.69l-44.34 83.308v53.087h-16.9z"/></svg>
         <span class="who">A Hacker News commenter, on JavaScript</span>
         <span class="meta">2014</span>
       </div>
     </div>
+
+    <div class="vignette"></div>
   </div>
 
   <script>
@@ -105,53 +144,66 @@
 
     // chunk_start (global) = 0.28 ("This). All times below are scene-local = global - 0.28.
 
-    // Entrance — card settles in (the transition INTO scene 01, at local 0).
-    tl.fromTo("#scene-01 .card",
-      { opacity: 0, y: 26, scale: 0.985 },
+    // Passage + dim thread settle in (the transition INTO scene 01, at local 0).
+    tl.fromTo("#scene-01 .passage",
+      { opacity: 0, y: 24, scale: 0.99 },
       { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 0);
+    tl.fromTo("#scene-01 .thread",
+      { opacity: 0, y: 10 },
+      { opacity: 0.5, y: 0, duration: 0.9, ease: "power2.out" }, 0.05);
     tl.fromTo("#scene-01 .quote-mark",
       { opacity: 0, y: 14, scale: 0.9 },
-      { opacity: 0.9, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, 0.05);
+      { opacity: 0.85, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, 0.05);
 
-    // Quote reveals word-by-word, each keyed to the spoken word (local = global - 0.28).
+    // Red ambient menace lifts in slowly under the whole passage.
+    tl.fromTo("#scene-01 .ambient-red",
+      { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "sine.inOut" }, 0.2);
+
+    // The amber highlight-wash wipes across the passage as it's read (0 -> ~4.5s).
+    tl.fromTo("#scene-01 .wash",
+      { scaleX: 0 }, { scaleX: 1, duration: 4.5, ease: "none" }, 0.2);
+
+    // Word-by-word: the warm light reaches each word on its spoken beat — muted -> fg,
+    // with a brief amber bloom that settles (the "lit page" lighting mechanic).
+    // Scene-local = global - data_start(0). So local == global word time.
     const words = [
-      0.00,  // "This  (0.28)
-      0.27,  // awful  (0.55)
-      0.77,  // language (1.05)
-      1.39,  // has    (1.67)
-      1.64,  // escaped (1.92)  <- ignite
-      2.02,  // the    (2.30)
-      2.18,  // browser (2.46)
-      2.88,  // and    (3.16)
-      3.14,  // infiltrated (3.42) <- ignite
-      3.96,  // our    (4.24)
-      4.18   // servers. (4.46)
+      0.28,  // This
+      0.55,  // awful
+      1.05,  // language
+      1.67,  // has
+      1.92,  // escaped     <- ignite
+      2.30,  // the
+      2.46,  // browser
+      3.16,  // and
+      3.42,  // infiltrated <- ignite
+      4.24,  // our
+      4.46   // servers.
     ];
     gsap.utils.toArray("#scene-01 .quote .w").forEach((el, i) => {
-      tl.fromTo(el,
-        { opacity: 0, y: 16, rotateZ: -1.5 },
-        { opacity: 1, y: 0, rotateZ: 0, duration: 0.32, ease: "power2.out" },
-        words[i]);
+      if (el.classList.contains("ignite")) return; // verbs handled below (go red, not fg)
+      // the warm wash supplies the amber bloom; each word just lights muted -> fg on its beat.
+      tl.to(el, { color: "#e8eaed", duration: 0.28, ease: "power2.out" }, words[i]);
     });
 
-    // "escaped" ignites muted -> danger on its word (1.64) with a shadow bloom.
-    tl.to('#scene-01 .quote .ignite[data-key="escaped"]',
-      { color: "#ff6b5d", textShadow: "0 0 26px rgba(255,107,93,0.55)", duration: 0.3, ease: "power2.out" }, 1.66);
-    // "infiltrated" ignites on its word (3.14).
-    tl.to('#scene-01 .quote .ignite[data-key="infiltrated"]',
-      { color: "#ff6b5d", textShadow: "0 0 26px rgba(255,107,93,0.55)", duration: 0.3, ease: "power2.out" }, 3.16);
+    // The menacing verbs ignite muted -> danger on their word, keeping a red bloom.
+    tl.fromTo('#scene-01 .quote .ignite[data-key="escaped"]',
+      { color: "#7a8493" },
+      { color: "#ff6b5d", textShadow: "0 0 28px rgba(255,107,93,0.6)", duration: 0.34, ease: "power2.out" }, 1.92);
+    tl.fromTo('#scene-01 .quote .ignite[data-key="infiltrated"]',
+      { color: "#7a8493" },
+      { color: "#ff6b5d", textShadow: "0 0 28px rgba(255,107,93,0.6)", duration: 0.34, ease: "power2.out" }, 3.42);
 
-    // Attribution stamps up from the bottom edge of the card at "That was" (5.98 -> local 5.70).
+    // Attribution stamps up from the bottom edge at "That was" (5.98).
     tl.fromTo("#scene-01 .attrib",
       { opacity: 0, y: 22 },
-      { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 5.70);
-    // HN mark gives a small recognition tick when "Hacker News" lands (6.74 -> local 6.46).
+      { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 5.98);
+    // HN mark gives a small recognition tick when "Hacker News" lands (6.74).
     tl.fromTo("#scene-01 .hn",
       { scale: 0.7, rotateZ: -8 },
-      { scale: 1, rotateZ: 0, duration: 0.4, ease: "back.out(2.2)" }, 6.46);
+      { scale: 1, rotateZ: 0, duration: 0.4, ease: "back.out(2.2)" }, 6.74);
 
-    // Constant subtle life — the card breathes a hair so nothing sits perfectly still.
-    tl.to("#scene-01 .card",
+    // Constant subtle life — the passage breathes a hair so nothing sits perfectly still.
+    tl.to("#scene-01 .passage",
       { y: "-=6", duration: 6, ease: "sine.inOut", repeat: 2, yoyo: true }, 1.2);
 
     window.__timelines["scene-01"] = tl;

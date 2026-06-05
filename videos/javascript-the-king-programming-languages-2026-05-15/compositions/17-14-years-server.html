@@ -3,113 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 17 — for 14 years, it didn't</title>
+  <title>Scene 17 — for 14 years the server ran Perl, PHP, Python, Ruby</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-17 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-17 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-17 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1400px; text-align: center;
-    }
+    #scene-17 .head { position:absolute; left:50%; top:21%; transform:translateX(-50%); font-size:54px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-17 .head .yr { color:var(--fg); font-weight:800; }
+    #scene-17 .sub { position:absolute; left:50%; top:33%; transform:translateX(-50%); font-size:30px; font-weight:500; color:var(--muted); white-space:nowrap; opacity:0; will-change:transform,opacity; }
 
-    /* stat hero */
-    #scene-17 .stat { display: flex; align-items: baseline; justify-content: center; gap: 24px; }
-    #scene-17 .stat .num {
-      font-size: 184px; font-weight: 900; color: var(--accent); line-height: 0.9;
-      letter-spacing: -6px; font-variant-numeric: tabular-nums;
-      opacity: 0; will-change: transform, opacity, text-shadow;
-    }
-    #scene-17 .stat .unit {
-      font-size: 92px; font-weight: 800; color: var(--accent-2); letter-spacing: -1px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-17 .sub {
-      font-size: 42px; font-weight: 500; color: var(--soft); margin-top: 14px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-17 .sub b { color: var(--fg); font-weight: 700; }
+    #scene-17 .rail { position:absolute; left:50%; top:60%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:0; }
+    #scene-17 .line { position:absolute; left:40px; right:40px; top:50%; height:2px; background:var(--border); transform:scaleX(0); transform-origin:left center; will-change:transform; }
 
-    #scene-17 .ranlabel {
-      font-family: "JetBrains Mono", monospace; font-size: 28px; color: var(--muted);
-      letter-spacing: 2px; text-transform: uppercase; margin: 52px 0 30px;
-      opacity: 0; will-change: transform, opacity;
-    }
+    #scene-17 .tile { position:relative; width:158px; height:178px; background:var(--panel); border:1px solid var(--border); border-radius:16px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; opacity:0; will-change:transform,opacity;
+      box-shadow:0 22px 60px rgba(0,0,0,0.42); }
+    #scene-17 .tile img { width:78px; height:78px; object-fit:contain; }
+    #scene-17 .tile .nm { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:23px; font-weight:600; color:var(--soft); }
 
-    #scene-17 .rack { display: flex; justify-content: center; gap: 26px; }
-    #scene-17 .chip {
-      display: flex; flex-direction: column; align-items: center; gap: 16px;
-      background: var(--panel); border: 1px solid var(--border); border-radius: 18px;
-      padding: 26px 40px; min-width: 200px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-17 .chip img { width: 64px; height: 64px; }
-    #scene-17 .chip .nm { font-size: 34px; font-weight: 700; color: var(--soft); }
+    #scene-17 .gap { width:78px; display:flex; align-items:center; justify-content:center; }
+    #scene-17 .gap .chev { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:30px; color:var(--dim); opacity:0; will-change:transform,opacity; }
   </style>
 </head>
 <body>
   <div id="scene-17" data-composition-id="scene-17" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="stat">
-        <span class="num" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="910" data-sfx-volume="0.42">14</span><span class="unit">YEARS</span>
-      </div>
-      <div class="sub">it didn&rsquo;t. JavaScript stayed in the <b>browser</b>.</div>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">For <span class="yr">14 years</span>, it didn&rsquo;t.</div>
+    <div class="sub">The server ran&hellip;</div>
 
-      <div class="ranlabel">Meanwhile, the server ran&hellip;</div>
-      <div class="rack">
-        <div class="chip c-perl" data-sfx-on-anchor="card-tap" data-sfx-asset="Mister Horse Free SFX/Click/Mechanical Keyboard Click 01.wav" data-sfx-at-scene-ms="4170" data-sfx-volume="0.35"><img src="assets/icons/perl.svg" alt="Perl"><span class="nm">Perl</span></div>
-        <div class="chip c-php"><img src="assets/icons/php.svg" alt="PHP"><span class="nm">PHP</span></div>
-        <div class="chip c-python"><img src="assets/icons/python.svg" alt="Python"><span class="nm">Python</span></div>
-        <div class="chip c-ruby" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="7850"><img src="assets/icons/ruby.svg" alt="Ruby"><span class="nm">Ruby</span></div>
-      </div>
+    <div class="rail">
+      <div class="line" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3500"></div>
+      <div class="tile t1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3960"><img src="../assets/icons/perl.svg" alt="Perl"><span class="nm">Perl</span></div>
+      <div class="gap g1"><span class="chev">&rarr;</span></div>
+      <div class="tile t2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5200"><img src="../assets/icons/php.svg" alt="PHP"><span class="nm">PHP</span></div>
+      <div class="gap g2"><span class="chev">&rarr;</span></div>
+      <div class="tile t3" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6480"><img src="../assets/icons/python.svg" alt="Python"><span class="nm">Python</span></div>
+      <div class="gap g3"><span class="chev">&rarr;</span></div>
+      <div class="tile t4" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7640"><img src="../assets/icons/ruby.svg" alt="Ruby"><span class="nm">Ruby</span></div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(135.88).
-    // "For 14 years" — the stat punches in (14 136.54 -> 0.66).
-    tl.fromTo("#scene-17 .stat .num",
-      { opacity: 0, scale: 1.4, y: 10 },
-      { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2.2)" }, 0.66);
-    tl.fromTo("#scene-17 .stat .unit",
-      { opacity: 0, x: -22 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, 1.00);
+    // For 0.50 / 14-years 0.66 / it-didn't 2.19 / server-ran 3.36 / Perl 3.96 / PHP 5.20 / Python 6.48 / Ruby 7.64.
 
-    // "it didn't. JavaScript stayed in the browser" (it 137.96 -> 2.08).
-    tl.fromTo("#scene-17 .sub",
-      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 2.08);
+    // "For 14 years, it didn't."
+    tl.fromTo("#scene-17 .head", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.55, ease:"power3.out" }, 0.50);
+    tl.fromTo("#scene-17 .head .yr", { textShadow:"0 0 0 rgba(232,234,237,0)" }, { textShadow:"0 0 24px rgba(232,234,237,0.32)", duration:0.4 }, 0.66);
 
-    // "The server ran" — the roster label (The 139.10 -> 3.22).
-    tl.fromTo("#scene-17 .ranlabel",
-      { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.22);
+    // "The server ran…" — the rail draws in.
+    tl.fromTo("#scene-17 .sub", { opacity:0, y:12 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 3.36);
+    tl.to("#scene-17 .line", { scaleX:1, duration:0.6, ease:"power2.out" }, 3.50);
 
-    // The four server languages cascade on their names:
-    // Perl 139.84(3.96), PHP 141.08(5.20), Python 142.36(6.48), Ruby 143.52(7.64).
-    const chips = [3.96, 5.20, 6.48, 7.64];
-    gsap.utils.toArray("#scene-17 .chip").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 24, scale: 0.92 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.8)" }, chips[i]);
-    });
+    // the four server languages march in, in sequence.
+    tl.fromTo("#scene-17 .t1", { opacity:0, y:22, scale:0.9 }, { opacity:1, y:0, scale:1, duration:0.4, ease:"back.out(1.6)" }, 3.96);
+    tl.fromTo("#scene-17 .g1 .chev", { opacity:0, x:-8 }, { opacity:1, x:0, duration:0.3 }, 5.00);
+    tl.fromTo("#scene-17 .t2", { opacity:0, y:22, scale:0.9 }, { opacity:1, y:0, scale:1, duration:0.4, ease:"back.out(1.6)" }, 5.20);
+    tl.fromTo("#scene-17 .g2 .chev", { opacity:0, x:-8 }, { opacity:1, x:0, duration:0.3 }, 6.28);
+    tl.fromTo("#scene-17 .t3", { opacity:0, y:22, scale:0.9 }, { opacity:1, y:0, scale:1, duration:0.4, ease:"back.out(1.6)" }, 6.48);
+    tl.fromTo("#scene-17 .g3 .chev", { opacity:0, x:-8 }, { opacity:1, x:0, duration:0.3 }, 7.44);
+    tl.fromTo("#scene-17 .t4", { opacity:0, y:22, scale:0.9 }, { opacity:1, y:0, scale:1, duration:0.4, ease:"back.out(1.6)" }, 7.64);
 
-    // Subtle life — the rack drifts a hair.
-    tl.to("#scene-17 .rack", { y: "-=5", duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 5.4);
-
-    // Seam clear — stage fades across the trailing overlap with scene 18 (local 8.10-8.60).
-    tl.to("#scene-17 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 8.10);
-
+    // idle: the tiles breathe faintly (rail keeps its centering transform untouched).
+    tl.to("#scene-17 .tile", { y:"-=4", duration:2.4, ease:"sine.inOut", repeat:1, yoyo:true, stagger:0.12 }, 8.1);
     window.__timelines["scene-17"] = tl;
   </script>
 </body>

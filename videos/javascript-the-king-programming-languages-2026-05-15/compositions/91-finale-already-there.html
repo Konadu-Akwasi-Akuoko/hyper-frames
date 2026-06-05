@@ -31,8 +31,8 @@
       background: var(--danger); transform: scaleX(0); transform-origin: left center; will-change: transform;
     }
     #scene-91 .l2 {
-      font-size: 104px; font-weight: 800; color: var(--accent); letter-spacing: -2.5px; line-height: 1.02;
-      text-shadow: 0 0 50px rgba(247,223,30,0.22);
+      font-size: 104px; font-weight: 800; color: var(--fg); letter-spacing: -2.5px; line-height: 1.02;
+      text-shadow: 0 0 50px rgba(232,234,237,0.18);
     }
     #scene-91 .l3 {
       font-size: 40px; font-weight: 700; color: var(--accent-2); letter-spacing: -0.4px;
@@ -44,9 +44,9 @@
   <div id="scene-91" data-composition-id="scene-91" data-width="1920" data-height="1080">
     <div class="finale">
       <div class="l1">
-        <span class="w">not</span> <span class="w">because</span> <span class="w">it</span> <span class="w">has</span> <span class="w">won</span><span class="strikeline"></span>
+        <span class="w">not</span> <span class="w">because</span> <span class="w">it</span> <span class="w">has</span> <span class="w">won</span><span class="strikeline" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1700"></span>
       </div>
-      <div class="l2" data-sfx-on-anchor="riser" data-sfx-asset="Whooshes/Deep Woosh.wav" data-sfx-at-scene-ms="3820" data-sfx-volume="0.30" data-sfx-hook="true">
+      <div class="l2" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3780">
         <span class="w">it</span> <span class="w">was</span> <span class="w">already</span> <span class="w">there.</span>
       </div>
       <div class="l3">
@@ -78,7 +78,7 @@
     // "it was already there" — the thesis lands and holds, glowing (there 3.78). THE hook.
     tl.fromTo("#scene-91 .l2",
       { scale: 0.96 }, { scale: 1, duration: 0.5, ease: "power2.out" }, 3.30);
-    tl.to("#scene-91 .l2", { textShadow: "0 0 80px rgba(247,223,30,0.45)",
+    tl.to("#scene-91 .l2", { textShadow: "0 0 80px rgba(232,234,237,0.34)",
       duration: 1.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.9);
 
     // Final exit (last scene of the video) — the words recede gently to black (local 6.50).

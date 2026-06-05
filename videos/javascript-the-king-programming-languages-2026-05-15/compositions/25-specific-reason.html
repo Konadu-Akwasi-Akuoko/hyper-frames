@@ -3,74 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 25 — a very specific reason</title>
+  <title>Scene 25 — but he chose it for a very specific reason</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-25 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-25 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-25 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1480px; text-align: center;
-    }
-    #scene-25 .a {
-      font-size: 64px; font-weight: 600; color: var(--soft); letter-spacing: -1px; margin-bottom: 14px;
-    }
-    #scene-25 .b {
-      font-size: 78px; font-weight: 800; color: var(--fg); letter-spacing: -1.5px; line-height: 1.1;
-    }
-    #scene-25 .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-25 .b .hl { color: var(--accent); will-change: text-shadow; }
+    #scene-25 .line { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-size:66px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-25 .line .pre, #scene-25 .line .post { will-change:color; }
+    #scene-25 .line .key { position:relative; display:inline-block; color:var(--soft); font-weight:800; will-change:transform,color; }
+    #scene-25 .line .key .ul { position:absolute; left:0; right:0; bottom:-12px; height:5px; border-radius:3px; background:var(--accent-2); transform:scaleX(0); transform-origin:left center; will-change:transform; }
   </style>
 </head>
 <body>
   <div id="scene-25" data-composition-id="scene-25" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="a">
-        <span class="w">But</span> <span class="w">he</span> <span class="w">chose</span> <span class="w">it</span>
-      </div>
-      <div class="b">
-        <span class="w">for</span> <span class="w">a</span>
-        <span class="w hl">very</span> <span class="w hl">specific</span> <span class="w hl" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="2600" data-sfx-volume="0.42">reason</span><span class="w">.</span>
-      </div>
-    </div>
+    <div class="line" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500"><span class="pre">But he chose it for a </span><span class="key" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="2320">very specific reason<span class="ul"></span></span><span class="post">.</span></div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(193.58).
-    // "But he chose it" (But 0.50, he 1.14, chose 1.32, it 1.54).
-    const a = [0.50, 1.14, 1.32, 1.54];
-    gsap.utils.toArray("#scene-25 .a .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, a[i]);
-    });
+    // But-he-chose 1.32 / specific 2.32 / reason 2.72.
 
-    // "for a very specific reason." (for 1.72, a 1.88, very 2.04, specific 2.32, reason 2.72, . 2.90).
-    const b = [1.72, 1.88, 2.04, 2.32, 2.72, 2.90];
-    gsap.utils.toArray("#scene-25 .b .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, b[i]);
-    });
+    // the line lands.
+    tl.fromTo("#scene-25 .line", { opacity:0, y:18 }, { opacity:1, y:0, duration:0.6, ease:"power3.out" }, 0.50);
 
-    // The withheld "specific reason" ignites and holds — the teaser before the next scene answers (specific 2.32, reason 2.72).
-    tl.fromTo("#scene-25 .b .hl",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 30px rgba(247,223,30,0.5)", duration: 0.5, ease: "power2.out", stagger: 0.12 }, 2.36);
-
-    // Seam clear — stage fades across the trailing overlap with scene 26 (local 3.50-4.00).
-    tl.to("#scene-25 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 3.50);
-
+    // "a very specific reason" — focus pull: the rest recedes, the key words sharpen.
+    tl.to("#scene-25 .line .pre", { color:"#5a626e", duration:0.45 }, 2.32);
+    tl.to("#scene-25 .line .post", { color:"#5a626e", duration:0.45 }, 2.32);
+    tl.fromTo("#scene-25 .line .key", { color:"#c2c9d4", textShadow:"0 0 0 rgba(103,232,249,0)" }, { color:"#67e8f9", textShadow:"0 0 26px rgba(103,232,249,0.45)", duration:0.45, ease:"power2.out" }, 2.32);
+    tl.to("#scene-25 .line .key .ul", { scaleX:1, duration:0.5, ease:"power2.out" }, 2.40);
     window.__timelines["scene-25"] = tl;
   </script>
 </body>

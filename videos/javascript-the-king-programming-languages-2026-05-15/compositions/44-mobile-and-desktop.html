@@ -6,163 +6,120 @@
   <title>Scene 44 — JavaScript went to mobile and desktop. How?</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-44 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-44 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-44 .cap {
-      position: absolute; left: 50%; top: 188px; transform: translateX(-50%);
-      width: 1400px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
-    }
-    #scene-44 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-44 .cap .m { color: var(--accent-2); font-weight: 800; }
-    #scene-44 .cap .d { color: var(--accent-2); font-weight: 800; }
+    #scene-44 .cap { position:absolute; left:50%; top:165px; transform:translateX(-50%); width:1400px; text-align:center; font-size:50px; font-weight:600; color:var(--soft); letter-spacing:-0.8px; }
+    #scene-44 .cap .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-44 .cap .pf { color:var(--accent-2); font-weight:800; }
 
-    #scene-44 .rig {
-      position: absolute; left: 50%; top: 560px; transform: translate(-50%, -50%);
-      display: flex; align-items: center; gap: 0;
-    }
+    /* the connectors layer */
+    #scene-44 .wires { position:absolute; inset:0; width:1920px; height:1080px; }
+    #scene-44 .wires path { fill:none; stroke:var(--dim); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; will-change:stroke; }
 
-    /* the JS mark at the centre */
-    #scene-44 .js {
-      width: 112px; height: 112px; border-radius: 20px; background: var(--accent); flex: none;
-      display: flex; align-items: flex-end; justify-content: flex-end; padding: 12px 15px;
-      box-shadow: 0 0 40px rgba(247,223,30,0.4);
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-44 .js span {
-      font-family: "JetBrains Mono", monospace; font-size: 46px; font-weight: 900; color: #0b0d12; letter-spacing: -2px; line-height: 1;
-    }
+    /* the source — the real JS mark, shipping out */
+    #scene-44 .js { position:absolute; left:380px; top:500px; width:124px; height:124px; opacity:0; will-change:transform,opacity; }
+    #scene-44 .js img { width:124px; height:124px; object-fit:contain; filter:drop-shadow(0 0 22px rgba(247,223,30,0.35)); }
 
-    /* beams from JS out to the devices */
-    #scene-44 .beam {
-      position: relative; width: 130px; height: 4px; flex: none;
-    }
-    #scene-44 .beam .b {
-      position: absolute; top: 50%; left: 0; height: 4px; width: 100%; transform: translateY(-50%);
-      background: linear-gradient(90deg, rgba(247,223,30,0.15), var(--accent)); border-radius: 2px;
-      transform-origin: right center;
-    }
-    #scene-44 .beam.left .b { transform-origin: left center; background: linear-gradient(270deg, rgba(247,223,30,0.15), var(--accent)); }
+    /* destination cards */
+    #scene-44 .dev { position:absolute; display:flex; flex-direction:column; align-items:center; gap:16px; opacity:0; will-change:transform,opacity; }
+    #scene-44 .dev .lbl { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:24px; font-weight:700; color:var(--muted); letter-spacing:0.5px; will-change:color; }
+    #scene-44 #d-mobile { left:1140px; top:332px; }
+    #scene-44 #d-desktop { left:1092px; top:606px; }
 
-    /* device glyphs */
-    #scene-44 .dev { display: flex; flex-direction: column; align-items: center; gap: 14px; flex: none; opacity: 0; will-change: transform, opacity; }
-    #scene-44 .dev .lbl { font-size: 24px; font-weight: 700; color: var(--muted); letter-spacing: 0.5px; }
+    #scene-44 .phone { width:92px; height:170px; border:3px solid var(--dim); border-radius:18px; background:var(--panel); position:relative; will-change:border-color,box-shadow; }
+    #scene-44 .phone::before { content:""; position:absolute; top:12px; left:50%; transform:translateX(-50%); width:28px; height:4px; border-radius:2px; background:var(--dim); }
+    #scene-44 .phone .scr { position:absolute; inset:22px 10px 18px; border-radius:8px; background:#161b24; }
 
-    #scene-44 .phone {
-      width: 96px; height: 176px; border: 3px solid var(--dim); border-radius: 18px;
-      background: var(--panel); position: relative; will-change: border-color, box-shadow;
-    }
-    #scene-44 .phone::before {
-      content: ""; position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-      width: 30px; height: 4px; border-radius: 2px; background: var(--dim);
-    }
-    #scene-44 .phone .scr { position: absolute; inset: 22px 10px 18px; border-radius: 8px; background: #161b24; }
-
-    #scene-44 .monitor {
-      display: flex; flex-direction: column; align-items: center;
-    }
-    #scene-44 .monitor .screen {
-      width: 210px; height: 138px; border: 3px solid var(--dim); border-radius: 12px;
-      background: var(--panel); position: relative; will-change: border-color, box-shadow;
-    }
-    #scene-44 .monitor .screen .scr { position: absolute; inset: 12px; border-radius: 6px; background: #161b24; }
-    #scene-44 .monitor .stand { width: 70px; height: 16px; background: var(--dim); border-radius: 0 0 8px 8px; margin-top: 0; }
-    #scene-44 .monitor .base { width: 110px; height: 8px; background: var(--dim); border-radius: 4px; margin-top: 4px; }
+    #scene-44 .monitor { display:flex; flex-direction:column; align-items:center; }
+    #scene-44 .monitor .screen { width:208px; height:136px; border:3px solid var(--dim); border-radius:12px; background:var(--panel); position:relative; will-change:border-color,box-shadow; }
+    #scene-44 .monitor .screen .scr { position:absolute; inset:12px; border-radius:6px; background:#161b24; }
+    #scene-44 .monitor .stand { width:68px; height:16px; background:var(--dim); border-radius:0 0 8px 8px; }
+    #scene-44 .monitor .base { width:108px; height:8px; background:var(--dim); border-radius:4px; margin-top:4px; }
 
     /* the hook question */
-    #scene-44 .how {
-      position: absolute; left: 50%; top: 818px; transform: translate(-50%, -50%);
-      font-size: 96px; font-weight: 900; color: var(--accent); letter-spacing: -2px;
-      opacity: 0; will-change: transform, opacity, text-shadow;
-    }
+    #scene-44 .how { position:absolute; left:50%; top:902px; transform:translate(-50%,-50%); font-size:92px; font-weight:900; color:var(--accent-2); letter-spacing:-2px; opacity:0; will-change:transform,opacity,text-shadow; }
   </style>
 </head>
 <body>
   <div id="scene-44" data-composition-id="scene-44" data-width="1920" data-height="1080">
     <div class="cap">
       <span class="w">JavaScript</span> <span class="w">went</span> <span class="w">to</span>
-      <span class="w m">mobile</span> <span class="w">and</span> <span class="w d">desktop.</span>
+      <span class="w pf">mobile</span> <span class="w">and</span> <span class="w pf">desktop.</span>
     </div>
 
-    <div class="rig">
-      <div class="dev" id="d-mobile">
-        <div class="phone"><div class="scr"></div></div>
-        <span class="lbl">mobile</span>
-      </div>
-      <div class="beam left"><div class="b"></div></div>
-      <div class="js"><span>JS</span></div>
-      <div class="beam right"><div class="b"></div></div>
-      <div class="dev" id="d-desktop">
-        <div class="monitor">
-          <div class="screen"><div class="scr"></div></div>
-          <div class="stand"></div>
-          <div class="base"></div>
-        </div>
-        <span class="lbl">desktop</span>
-      </div>
+    <svg class="wires" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <path class="c-up" d="M512 558 H720 V410 H1120"/>
+      <path class="c-down" d="M512 558 H720 V700 H1120"/>
+    </svg>
+
+    <div class="js" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500"><img src="../assets/icons/javascript.svg" alt="JavaScript"></div>
+
+    <div class="dev" id="d-mobile" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2060">
+      <div class="phone"><div class="scr"></div></div>
+      <span class="lbl">mobile</span>
     </div>
 
-    <div class="how" data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="3830">How?</div>
+    <div class="dev" id="d-desktop" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2840">
+      <div class="monitor">
+        <div class="screen"><div class="scr"></div></div>
+        <div class="stand"></div>
+        <div class="base"></div>
+      </div>
+      <span class="lbl">desktop</span>
+    </div>
+
+    <div class="how" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3580">How?</div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(289.36).
-    // "JavaScript went to mobile and desktop." (JavaScript 0.50 ... desktop 2.84).
+    // JavaScript 0.50 / went 1.46 / to 1.88 / mobile 2.06 / and 2.64 / desktop 2.84 / How 3.58.
+
+    // "JavaScript went to mobile and desktop."
     const cw = [0.50, 1.46, 1.88, 2.06, 2.64, 2.84];
     gsap.utils.toArray("#scene-44 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+      tl.fromTo(el, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.28, ease:"power2.out" }, cw[i]);
     });
 
-    // "JavaScript" — the mark lands centre (JavaScript 0.50).
-    tl.fromTo("#scene-44 .js",
-      { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 0.55);
-    // beams start collapsed.
-    tl.set("#scene-44 .beam .b", { scaleX: 0 }, 0);
+    // "JavaScript" — the source mark lands at left.
+    tl.fromTo("#scene-44 .js", { opacity:0, scale:0.7, x:-16 }, { opacity:1, scale:1, x:0, duration:0.5, ease:"back.out(1.7)" }, 0.55);
 
-    // "mobile" — the left beam fires and the phone lights up (mobile 2.06).
-    tl.to("#scene-44 .beam.left .b", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 2.00);
-    tl.fromTo("#scene-44 #d-mobile",
-      { opacity: 0, x: 30, scale: 0.9 }, { opacity: 1, x: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 2.06);
-    tl.to("#scene-44 #d-mobile .phone",
-      { borderColor: "var(--accent)", boxShadow: "0 0 26px rgba(247,223,30,0.4)", duration: 0.4, ease: "power2.out" }, 2.20);
-    tl.to("#scene-44 #d-mobile .lbl", { color: "var(--soft)", duration: 0.4 }, 2.20);
+    // connectors draw on their target's beat.
+    const up = document.querySelector("#scene-44 .c-up");
+    const dn = document.querySelector("#scene-44 .c-down");
+    const ul = up ? up.getTotalLength() : 800;
+    const dl = dn ? dn.getTotalLength() : 800;
+    gsap.set(up, { strokeDasharray:ul, strokeDashoffset:ul });
+    gsap.set(dn, { strokeDasharray:dl, strokeDashoffset:dl });
 
-    // "desktop" — the right beam fires and the monitor lights up (desktop 2.84).
-    tl.to("#scene-44 .beam.right .b", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 2.78);
-    tl.fromTo("#scene-44 #d-desktop",
-      { opacity: 0, x: -30, scale: 0.9 }, { opacity: 1, x: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 2.84);
-    tl.to("#scene-44 #d-desktop .screen",
-      { borderColor: "var(--accent)", boxShadow: "0 0 26px rgba(247,223,30,0.4)", duration: 0.4, ease: "power2.out" }, 2.98);
-    tl.to("#scene-44 #d-desktop .lbl", { color: "var(--soft)", duration: 0.4 }, 2.98);
+    // "mobile" — the upper wire draws and the phone lights cyan.
+    tl.to(up, { strokeDashoffset:0, duration:0.55, ease:"power2.out" }, 1.66);
+    tl.to(up, { stroke:"#67e8f9", duration:0.4 }, 2.06);
+    tl.fromTo("#scene-44 #d-mobile", { opacity:0, x:24, scale:0.9 }, { opacity:1, x:0, scale:1, duration:0.45, ease:"back.out(1.6)" }, 2.06);
+    tl.to("#scene-44 #d-mobile .phone", { borderColor:"#67e8f9", boxShadow:"0 0 24px rgba(103,232,249,0.4)", duration:0.4, ease:"power2.out" }, 2.20);
+    tl.to("#scene-44 #d-mobile .lbl", { color:"#c2c9d4", duration:0.4 }, 2.20);
 
-    // "How?" — the hook question punches in (How 3.58).
-    tl.fromTo("#scene-44 .how",
-      { opacity: 0, y: 18, scale: 0.8 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, 3.58);
-    tl.fromTo("#scene-44 .how",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 30px rgba(247,223,30,0.5)", duration: 0.4, ease: "power2.out" }, 3.80);
+    // "desktop" — the lower wire draws and the monitor lights cyan.
+    tl.to(dn, { strokeDashoffset:0, duration:0.55, ease:"power2.out" }, 2.44);
+    tl.to(dn, { stroke:"#67e8f9", duration:0.4 }, 2.84);
+    tl.fromTo("#scene-44 #d-desktop", { opacity:0, x:24, scale:0.9 }, { opacity:1, x:0, scale:1, duration:0.45, ease:"back.out(1.6)" }, 2.84);
+    tl.to("#scene-44 #d-desktop .screen", { borderColor:"#67e8f9", boxShadow:"0 0 24px rgba(103,232,249,0.4)", duration:0.4, ease:"power2.out" }, 2.98);
+    tl.to("#scene-44 #d-desktop .lbl", { color:"#c2c9d4", duration:0.4 }, 2.98);
+
+    // "How?" — the hook question punches in.
+    tl.fromTo("#scene-44 .how", { opacity:0, y:18, scale:0.8 }, { opacity:1, y:0, scale:1, duration:0.5, ease:"back.out(2)" }, 3.58);
+    tl.fromTo("#scene-44 .how", { textShadow:"0 0 0 rgba(103,232,249,0)" }, { textShadow:"0 0 30px rgba(103,232,249,0.5)", duration:0.4, ease:"power2.out" }, 3.80);
 
     // Subtle life — the JS mark hums.
-    tl.to("#scene-44 .js", { y: "-=6", duration: 1.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.0);
+    tl.to("#scene-44 .js", { y:"-=6", duration:1.7, ease:"sine.inOut", repeat:1, yoyo:true }, 0.9);
 
     // Seam clear — fade out across the trailing overlap with scene 45 (local 4.12-4.62).
-    tl.to("#scene-44 .cap, #scene-44 .rig, #scene-44 .how",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 4.12);
+    tl.to("#scene-44 .cap, #scene-44 .wires, #scene-44 .js, #scene-44 #d-mobile, #scene-44 #d-desktop, #scene-44 .how", { opacity:0, duration:0.34, ease:"power2.inOut" }, 4.12);
 
     window.__timelines["scene-44"] = tl;
   </script>

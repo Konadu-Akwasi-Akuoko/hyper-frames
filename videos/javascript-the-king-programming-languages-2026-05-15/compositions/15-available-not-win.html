@@ -3,103 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 15 — designed to be available, not to win</title>
+  <title>Scene 15 — designed to be available</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-15 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-15 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-15 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1520px; text-align: center;
-    }
-    #scene-15 .line { font-weight: 700; letter-spacing: -1px; line-height: 1.18; }
-    #scene-15 .a { font-size: 74px; color: var(--soft); margin-bottom: 30px; }
-    #scene-15 .b { font-size: 74px; color: var(--soft); margin-bottom: 64px; }
-    #scene-15 .c { font-size: 50px; font-weight: 600; color: var(--muted); }
+    #scene-15 .wrap { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:1300px; text-align:center; }
+    #scene-15 .l1 { font-size:62px; font-weight:600; color:var(--soft); opacity:0; will-change:transform,opacity; }
+    #scene-15 .l1 .win { position:relative; color:var(--muted); }
+    #scene-15 .l1 .win .strike { position:absolute; left:-6px; right:-6px; top:54%; height:6px; width:0; background:var(--muted); border-radius:3px; will-change:width; }
 
-    #scene-15 .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-15 .l2 { margin-top:40px; font-size:84px; font-weight:800; color:var(--fg); letter-spacing:-1.5px; opacity:0; will-change:transform,opacity; }
+    #scene-15 .l2 .avail { color:var(--accent-2); }
+    #scene-15 .readily { display:block; font-size:48px; font-weight:700; color:var(--accent-2); margin-top:10px; opacity:0; will-change:transform,opacity; }
 
-    #scene-15 .win {
-      position: relative; color: var(--danger); font-weight: 800;
-      will-change: color, text-shadow;
-    }
-    #scene-15 .win .strike {
-      position: absolute; left: -6px; right: -6px; top: 56%; height: 5px;
-      background: var(--danger); border-radius: 3px;
-      transform: scaleX(0); transform-origin: left center; will-change: transform;
-    }
-    #scene-15 .avail {
-      color: var(--accent); font-weight: 800; will-change: color, text-shadow;
-    }
-    #scene-15 .diff { color: var(--accent-2); font-weight: 800; }
+    #scene-15 .foot { margin-top:58px; font-size:36px; color:#9aa3b2; opacity:0; will-change:transform,opacity; }
+    #scene-15 .foot b { color:var(--soft); font-weight:600; }
   </style>
 </head>
 <body>
   <div id="scene-15" data-composition-id="scene-15" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="line a">
-        <span class="w">JavaScript</span> <span class="w">wasn&rsquo;t</span> <span class="w">designed</span>
-        <span class="w">to</span> <span class="w"><span class="win">win<span class="strike"></span></span>.</span>
+    <div class="wrap">
+      <div class="l1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="600">JavaScript was never designed to <span class="win">win<span class="strike" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3020"></span></span>.</div>
+      <div class="l2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4400">It was designed to be <span class="avail">available</span>.
+        <span class="readily" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="6500">readily available.</span>
       </div>
-      <div class="line b">
-        <span class="w">It</span> <span class="w">was</span> <span class="w">designed</span>
-        <span class="w">to</span> <span class="w">be</span> <span class="w"><span class="avail" data-sfx-on-anchor="ui-tick" data-sfx-asset="Mister Horse Free SFX/Click/Soft Click 01.wav" data-sfx-at-scene-ms="5600" data-sfx-volume="0.35">available</span>.</span>
-      </div>
-      <div class="line c">
-        <span class="w">Those</span> <span class="w">two</span> <span class="w">are</span>
-        <span class="w"><span class="diff">different</span></span> <span class="w">things.</span>
-      </div>
+      <div class="foot">being <b>available</b> and <b>winning</b> &mdash; two very different things.</div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(119.08).
-    // Line A: JavaScript 0.50, wasn't 1.56, designed 2.08, to 2.50, win 3.02.
-    const a = [0.50, 1.56, 2.08, 2.50, 3.02];
-    gsap.utils.toArray("#scene-15 .a .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, a[i]);
-    });
-    // "win" is rejected — strike sweeps + it dims to muted (just after it's said, 3.02).
-    tl.to("#scene-15 .win .strike", { scaleX: 1, duration: 0.34, ease: "power2.out" }, 3.40);
-    tl.to("#scene-15 .win", { color: "#7a8493", duration: 0.45, ease: "power2.out" }, 3.50);
+    // win 3.02 / available 5.32 / readily 6.50 / different 9.94.
 
-    // Line B: It 4.16, was 4.40, designed 4.52, to 4.86, be 5.08, available 5.32.
-    const b = [4.16, 4.40, 4.52, 4.86, 5.08, 5.32];
-    gsap.utils.toArray("#scene-15 .b .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, b[i]);
-    });
-    // "available" affirmed — glow on first say (5.32), brighter pulse on "readily available" (7.06).
-    tl.fromTo("#scene-15 .avail",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 38px rgba(247,223,30,0.6)", duration: 0.4, ease: "power2.out" }, 5.40);
-    tl.to("#scene-15 .avail",
-      { textShadow: "0 0 54px rgba(247,223,30,0.8)", scale: 1.04, duration: 0.4, ease: "power2.out" }, 7.06);
-    tl.to("#scene-15 .avail",
-      { textShadow: "0 0 34px rgba(247,223,30,0.45)", scale: 1.0, duration: 1.0, ease: "power2.in" }, 7.60);
+    // line 1, then "win" gets struck.
+    tl.fromTo("#scene-15 .l1", { opacity:0, y:20 }, { opacity:1, y:0, duration:0.55, ease:"power3.out" }, 0.60);
+    tl.to("#scene-15 .l1 .win .strike", { width:"calc(100% + 12px)", duration:0.35, ease:"power2.out" }, 3.02);
 
-    // Line C: Those 8.44, two 8.74, are 9.10, different 9.50, things 9.94.
-    const c = [8.44, 8.74, 9.10, 9.50, 9.94];
-    gsap.utils.toArray("#scene-15 .c .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, c[i]);
-    });
+    // line 2 — "available" is the real goal.
+    tl.fromTo("#scene-15 .l2", { opacity:0, y:24 }, { opacity:1, y:0, duration:0.55, ease:"power3.out" }, 4.40);
+    tl.fromTo("#scene-15 .l2 .avail", { textShadow:"0 0 0 rgba(103,232,249,0)" }, { textShadow:"0 0 34px rgba(103,232,249,0.5)", duration:0.5 }, 5.32);
 
-    // Seam clear — stage fades across the trailing overlap with scene 16 (local 10.42-10.92).
-    tl.to("#scene-15 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 10.42);
+    // "readily available" reinforces.
+    tl.fromTo("#scene-15 .readily", { opacity:0, y:12 }, { opacity:1, y:0, duration:0.45, ease:"power2.out" }, 6.50);
 
+    // "those two are different things".
+    tl.fromTo("#scene-15 .foot", { opacity:0, y:14 }, { opacity:1, y:0, duration:0.5, ease:"power3.out" }, 9.40);
+
+    // idle: a soft breath on the available line.
+    tl.to("#scene-15 .l2", { y:"-=5", duration:3, ease:"sine.inOut", repeat:1, yoyo:true }, 7.5);
     window.__timelines["scene-15"] = tl;
   </script>
 </body>

@@ -7,132 +7,113 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
     :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-      --heat: #ff7a45;
+      --bg:#0b0d12; --panel:#11141b; --border:#1f242c;
+      --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150;
+      --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d;
+      --heat:#ff7a45;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-55 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-55 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-55 .cap {
-      position: absolute; left: 50%; top: 196px; transform: translateX(-50%);
-      width: 1380px; text-align: center;
-      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: -0.8px;
-    }
-    #scene-55 .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity; }
-    #scene-55 .cap .tc { color: var(--heat); font-weight: 800; will-change: text-shadow; }
+    #scene-55 .cap { position:absolute; left:50%; top:196px; transform:translateX(-50%); width:1380px; text-align:center; font-size:50px; font-weight:600; color:var(--soft); letter-spacing:-0.8px; }
+    #scene-55 .cap .w { display:inline-block; opacity:0; will-change:transform,opacity; }
+    #scene-55 .cap .tc { color:var(--heat); font-weight:800; will-change:text-shadow; }
 
-    #scene-55 .gauge {
-      position: absolute; left: 50%; top: 612px; transform: translate(-50%, -50%);
-      width: 900px; opacity: 0; will-change: transform, opacity;
-    }
-    #scene-55 .gauge .head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
-    #scene-55 .gauge .name {
-      font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 700; color: var(--soft); letter-spacing: 1px;
-    }
-    #scene-55 .gauge .pct {
-      font-family: "JetBrains Mono", monospace; font-size: 52px; font-weight: 800; color: var(--soft); letter-spacing: -1px;
-      will-change: color;
-    }
+    /* explicit-anchored monitor (no translate+GSAP-y conflict) */
+    #scene-55 .monitor { position:absolute; left:480px; top:470px; width:960px; opacity:0; will-change:transform,opacity; }
+    #scene-55 .monitor .head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:46px; }
+    #scene-55 .monitor .name { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:25px; font-weight:700; color:var(--soft); letter-spacing:1.5px; }
+    #scene-55 .monitor .read { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:30px; font-weight:800; color:var(--soft); letter-spacing:-0.5px; will-change:color; }
+    #scene-55 .monitor .read b { font-size:48px; }
+    #scene-55 .monitor .read i { font-style:normal; color:var(--muted); font-size:24px; font-weight:600; }
+
+    /* the app chips that pile RAM onto the bar */
+    #scene-55 .marks { position:relative; height:34px; margin-bottom:10px; }
+    #scene-55 .marks .chip { position:absolute; top:0; transform:translateX(-50%); display:flex; align-items:center; gap:7px; padding:5px 12px; border-radius:999px; background:var(--panel); border:1px solid var(--border); font-family:"JetBrains Mono",ui-monospace,monospace; font-size:15px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-55 .marks .chip i { font-style:normal; color:var(--heat); }
+
     /* the memory bar */
-    #scene-55 .gauge .track {
-      position: relative; height: 56px; border-radius: 12px; background: #14181f; border: 1px solid var(--border);
-      overflow: visible;
-    }
-    #scene-55 .gauge .fill {
-      position: absolute; top: 0; left: 0; height: 100%; width: 100%; border-radius: 11px;
-      background: var(--ok); transform: scaleX(0.34); transform-origin: left center;
-      will-change: transform, background, box-shadow;
-    }
-    /* the part that bursts past the limit */
-    #scene-55 .gauge .over {
-      position: absolute; top: 0; right: -96px; height: 100%; width: 96px; border-radius: 0 12px 12px 0;
-      background: var(--danger); opacity: 0; will-change: opacity, box-shadow;
-    }
-    #scene-55 .gauge .limit {
-      position: absolute; top: -10px; bottom: -10px; right: 0; width: 3px; background: var(--muted); border-radius: 2px;
-    }
-    #scene-55 .gauge .warn {
-      margin-top: 18px; font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 700; color: var(--danger);
-      letter-spacing: 0.5px; opacity: 0; will-change: opacity;
-    }
+    #scene-55 .track { position:relative; height:54px; border-radius:12px; background:#14181f; border:1px solid var(--border); overflow:hidden; }
+    #scene-55 .track .fill { position:absolute; top:0; left:0; height:100%; width:100%; border-radius:11px; background:var(--ok); transform:scaleX(0); transform-origin:left center; will-change:transform,background; }
+    #scene-55 .track .grid { position:absolute; inset:0; }
+    #scene-55 .track .grid b { position:absolute; top:0; bottom:0; width:1px; background:rgba(122,132,147,0.18); }
+
+    #scene-55 .limitlbl { position:absolute; right:0; top:-30px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:15px; color:var(--muted); }
+    #scene-55 .warn { margin-top:20px; text-align:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:21px; font-weight:700; color:var(--danger); letter-spacing:0.5px; opacity:0; will-change:opacity; }
   </style>
 </head>
 <body>
   <div id="scene-55" data-composition-id="scene-55" data-width="1920" data-height="1080">
-    <div class="cap">
+    <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
       <span class="w">We</span> <span class="w">were</span> <span class="w tc">torching</span>
       <span class="w">memory</span> <span class="w">like</span> <span class="w">it</span>
       <span class="w">was</span> <span class="w">free,</span>
     </div>
 
-    <div class="gauge">
+    <div class="monitor">
       <div class="head">
-        <span class="name">MEMORY</span>
-        <span class="pct">34%</span>
+        <span class="name">SYSTEM MEMORY</span>
+        <span class="read"><b id="s55read">2.1</b> <i>/ 16 GB</i></span>
+      </div>
+      <div class="marks">
+        <div class="chip" style="left:11%">Slack <i>1.6</i></div>
+        <div class="chip" style="left:30%">Discord <i>1.5</i></div>
+        <div class="chip" style="left:50%">Teams <i>2.0</i></div>
+        <div class="chip" style="left:69%">VS&nbsp;Code <i>1.7</i></div>
+        <div class="chip" style="left:88%">Spotify <i>1.4</i></div>
       </div>
       <div class="track">
-        <div class="fill" data-sfx-on-anchor="whoosh" data-sfx-asset="Anime SFX/Camera Whoosh 02.mp3" data-sfx-at-scene-ms="1520" data-sfx-volume="0.35"></div>
-        <div class="over"></div>
-        <div class="limit"></div>
+        <div class="fill"></div>
+        <div class="grid"><b style="left:25%"></b><b style="left:50%"></b><b style="left:75%"></b></div>
       </div>
-      <div class="warn">&#9650; over capacity &mdash; who's counting?</div>
+      <div class="warn" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2080">&#9650; over capacity &mdash; but memory&rsquo;s free, right? &#128293;</div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused:true });
 
     // Scene-local = global - data_start(329.64).
-    // "We were torching memory like it was free," (torching 0.79, memory 1.22, like 1.49, free 2.08).
+    // We 0.50 / were 0.60 / torching 0.79 / memory 1.22 / like 1.49 / it 1.72 / was 1.84 / free 2.08.
+
+    // "We were torching memory like it was free,"
     const cw = [0.50, 0.60, 0.79, 1.22, 1.49, 1.72, 1.84, 2.08];
     gsap.utils.toArray("#scene-55 .cap .w").forEach((el, i) => {
-      tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, cw[i]);
+      tl.fromTo(el, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.28, ease:"power2.out" }, cw[i]);
     });
 
-    // the gauge settles in (We 0.50).
-    tl.fromTo("#scene-55 .gauge",
-      { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.45);
+    // the monitor settles in (We 0.50).
+    tl.fromTo("#scene-55 .monitor", { opacity:0, y:22 }, { opacity:1, y:0, duration:0.45, ease:"power3.out" }, 0.45);
 
-    // "torching memory" — the bar floods to full and ignites red (torching 0.79, memory 1.22).
-    tl.to("#scene-55 .gauge .fill",
-      { scaleX: 1, background: "var(--heat)", duration: 0.7, ease: "power2.in" }, 0.82);
-    tl.to("#scene-55 .gauge .fill",
-      { boxShadow: "0 0 36px rgba(255,122,69,0.55)", duration: 0.5, ease: "power2.out" }, 1.10);
+    // "torching memory" — the bar floods toward full, igniting from green through heat to red (torching 0.79).
+    tl.to("#scene-55 .track .fill", { scaleX:1.0, duration:1.2, ease:"power2.in" }, 0.82);
+    tl.to("#scene-55 .track .fill", { background:"#ff7a45", duration:0.5 }, 1.05);
+    tl.to("#scene-55 .track .fill", { background:"#ff6b5d", duration:0.4 }, 1.62);
 
-    // "like it was free" — it bursts past the limit, careless (like 1.49, free 2.08).
-    tl.to("#scene-55 .gauge .fill", { background: "var(--danger)", duration: 0.4 }, 1.55);
-    tl.to("#scene-55 .gauge .over",
-      { opacity: 1, boxShadow: "0 0 30px rgba(255,107,93,0.6)", duration: 0.4, ease: "power2.out" }, 1.58);
-    tl.fromTo("#scene-55 .gauge .warn",
-      { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.00);
+    // the Electron apps pile their RAM on, one after another, as the bar passes each.
+    gsap.utils.toArray("#scene-55 .marks .chip").forEach((el, i) => {
+      tl.fromTo(el, { opacity:0, y:8, scale:0.85 }, { opacity:1, y:0, scale:1, duration:0.24, ease:"back.out(1.7)" }, 0.86 + i * 0.18);
+    });
 
-    // the readout climbs past 100% — count up via a stepped proxy on the limit pulse.
-    tl.to("#scene-55 .gauge .pct", { color: "var(--danger)", duration: 0.4 }, 1.55);
+    // the readout climbs past the limit (deterministic, playhead-driven).
+    const readEl = document.querySelector("#s55read");
+    const counter = { v:2.1 };
+    tl.to(counter, { v:17.4, duration:1.2, ease:"power2.in", onUpdate:() => { readEl.textContent = counter.v.toFixed(1); } }, 0.82);
 
-    // Subtle life — the over-bar pulses with heat.
-    tl.to("#scene-55 .gauge .over", { opacity: 0.65, duration: 0.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.2);
+    // "like it was free" — it blows past 16 GB; the readout reddens and the warning lands (free 2.08).
+    tl.to("#scene-55 .monitor .read", { color:"#ff6b5d", duration:0.4 }, 1.66);
+    tl.fromTo("#scene-55 .cap .tc", { textShadow:"0 0 0 rgba(255,122,69,0)" }, { textShadow:"0 0 26px rgba(255,122,69,0.6)", duration:0.4, ease:"power2.out" }, 0.85);
+    tl.fromTo("#scene-55 .warn", { opacity:0, y:8 }, { opacity:1, y:0, duration:0.34, ease:"power2.out" }, 2.04);
 
-    // Seam clear — fade out across the trailing overlap with scene 56 (local 2.18-2.68).
-    tl.to("#scene-55 .cap, #scene-55 .gauge",
-      { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 2.18);
+    // Subtle life — the over-capacity bar throbs with heat.
+    tl.to("#scene-55 .track .fill", { boxShadow:"0 0 38px rgba(255,107,93,0.5)", duration:0.6, ease:"sine.inOut", repeat:1, yoyo:true }, 2.2);
+
+    // Seam clear — fade out across the trailing overlap with scene 56 (local 2.30-2.68).
+    tl.to("#scene-55 .cap, #scene-55 .monitor", { opacity:0, duration:0.32, ease:"power2.inOut" }, 2.30);
 
     window.__timelines["scene-55"] = tl;
-
-    // count the readout up from 34% to 147% as the bar floods (deterministic stepped tween).
-    const pctEl = document.querySelector("#scene-55 .gauge .pct");
-    const counter = { v: 34 };
-    tl.to(counter, {
-      v: 147, duration: 1.2, ease: "power2.in",
-      onUpdate: () => { pctEl.textContent = Math.round(counter.v) + "%"; }
-    }, 0.82);
   </script>
 </body>
 </html>

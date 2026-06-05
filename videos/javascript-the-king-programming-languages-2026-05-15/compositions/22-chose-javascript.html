@@ -3,104 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Scene 22 — and he chose JavaScript</title>
+  <title>Scene 22 — a server that didn't block, he chose JavaScript</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
-    :root {
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493; --dim: #3a4150;
-      --accent: #f7df1e; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;
-      font-family: "Inter", system-ui, sans-serif;
-    }
-    #scene-22 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    :root { --bg:#0b0d12; --panel:#11141b; --border:#1f242c; --fg:#e8eaed; --soft:#c2c9d4; --muted:#7a8493; --dim:#3a4150; --accent:#f7df1e; --accent-2:#67e8f9; --danger:#ff6b5d; --ok:#7dd87d; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:"Inter",system-ui,sans-serif; }
+    #scene-22 { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
 
-    #scene-22 .stage {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 1380px; text-align: center;
-    }
+    #scene-22 .head { position:absolute; left:50%; top:23%; transform:translateX(-50%); font-size:50px; font-weight:600; color:var(--soft); white-space:nowrap; opacity:0; will-change:transform,opacity; }
+    #scene-22 .head .nb { color:var(--ok); font-weight:800; }
 
-    #scene-22 .want {
-      font-size: 56px; font-weight: 600; color: var(--soft); letter-spacing: -1px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-22 .req {
-      font-size: 56px; font-weight: 700; color: var(--fg); letter-spacing: -1px;
-      margin-top: 18px; opacity: 0; will-change: transform, opacity;
-    }
-    #scene-22 .req .nb {
-      position: relative; color: var(--accent-2); font-weight: 800; will-change: text-shadow;
-    }
+    #scene-22 .stage { position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:34px; }
 
-    #scene-22 .choose {
-      font-size: 38px; font-weight: 500; color: var(--muted); margin-top: 64px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-22 .pick {
-      display: flex; align-items: center; justify-content: center; gap: 30px; margin-top: 22px;
-      opacity: 0; will-change: transform, opacity;
-    }
-    #scene-22 .pick img { width: 108px; height: 108px; }
-    #scene-22 .pick .wm {
-      font-size: 100px; font-weight: 900; color: var(--accent); letter-spacing: -3px;
-      will-change: text-shadow;
-    }
+    /* the JavaScript engine driving the flow */
+    #scene-22 .engine { width:150px; height:150px; border-radius:20px; background:var(--panel); border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center; opacity:0; will-change:transform,opacity; box-shadow:0 22px 56px rgba(0,0,0,0.46); flex:none; position:relative; }
+    #scene-22 .engine img { width:96px; height:96px; object-fit:contain; }
+    #scene-22 .engine .elabel { position:absolute; bottom:-44px; left:50%; transform:translateX(-50%); font-family:"JetBrains Mono",ui-monospace,monospace; font-size:21px; color:var(--accent); white-space:nowrap; }
+
+    /* the non-blocking lane */
+    #scene-22 .lanewrap { position:relative; }
+    #scene-22 .lane { position:relative; width:720px; height:92px; background:#0d1016; border:1px solid var(--border); border-radius:46px; overflow:hidden; opacity:0; will-change:transform,opacity; }
+    #scene-22 .lane .flowdot { position:absolute; top:50%; left:0; width:18px; height:18px; margin-top:-9px; border-radius:50%; background:var(--accent-2); box-shadow:0 0 14px rgba(103,232,249,0.55); }
+    #scene-22 .llabel { position:absolute; left:50%; bottom:-46px; transform:translateX(-50%); font-family:"JetBrains Mono",ui-monospace,monospace; font-size:22px; color:var(--ok); opacity:0; will-change:opacity; white-space:nowrap; }
   </style>
 </head>
 <body>
   <div id="scene-22" data-composition-id="scene-22" data-width="1920" data-height="1080">
-    <div class="stage">
-      <div class="want">He wanted something different.</div>
-      <div class="req">A server that <span class="nb">didn&rsquo;t block</span>.</div>
+    <div class="head" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">A server that <span class="nb">didn&rsquo;t block</span>.</div>
 
-      <div class="choose">&hellip; and he chose</div>
-      <div class="pick"
-           data-sfx-on-anchor="pop" data-sfx-asset="Mister Horse Free SFX/Pop/Echoing Pop 01.wav" data-sfx-at-scene-ms="6120">
-        <img src="assets/icons/javascript.svg" alt="JavaScript">
-        <span class="wm">JavaScript</span>
+    <div class="stage">
+      <div class="engine" data-allow-overflow="true" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5840">
+        <img src="../assets/icons/javascript.svg" alt="JavaScript">
+        <span class="elabel">JavaScript</span>
+      </div>
+      <div class="lanewrap">
+        <div class="lane" data-allow-overflow="true" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2950">
+          <span class="flowdot d1"></span><span class="flowdot d2"></span><span class="flowdot d3"></span>
+          <span class="flowdot d4"></span><span class="flowdot d5"></span>
+        </div>
+        <span class="llabel">non-blocking</span>
       </div>
     </div>
   </div>
 
   <script>
     window.__timelines = window.__timelines || {};
-    const tl = gsap.timeline({ paused: true });
-
+    const tl = gsap.timeline({ paused:true });
     // Scene-local = global - data_start(172.74).
-    // "He wanted something different" (He 0.50 ... different 1.54).
-    tl.fromTo("#scene-22 .want",
-      { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.50);
+    // He-wanted 0.50 / different 1.54 / server 2.76 / block 4.36 / chose 5.30 / JavaScript 5.84.
 
-    // "A server that didn't block" (a 2.60 ... block 4.36).
-    tl.fromTo("#scene-22 .req",
-      { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.60);
-    // "didn't block" glows on the word (block 4.36).
-    tl.fromTo("#scene-22 .req .nb",
-      { textShadow: "0 0 0 rgba(103,232,249,0)" },
-      { textShadow: "0 0 28px rgba(103,232,249,0.55)", duration: 0.4, ease: "power2.out" }, 4.40);
+    // "A server that didn't block."
+    tl.fromTo("#scene-22 .head", { opacity:0, y:16 }, { opacity:1, y:0, duration:0.55, ease:"power3.out" }, 0.50);
 
-    // "and he chose" — the soft lead-in (and 5.00).
-    tl.fromTo("#scene-22 .choose",
-      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 5.00);
+    // the lane appears, requests start streaming straight through — nothing piles up.
+    tl.fromTo("#scene-22 .lane", { opacity:0, scaleX:0.9 }, { opacity:1, scaleX:1, duration:0.5, ease:"power3.out" }, 2.76);
+    gsap.set("#scene-22 .flowdot", { x:-30 });
+    tl.to("#scene-22 .flowdot", { x:740, duration:1.5, ease:"none", repeat:3, stagger:0.3 }, 2.95);
 
-    // "JavaScript" — the choice lands, logo + wordmark punch in (JavaScript 5.84).
-    tl.fromTo("#scene-22 .pick",
-      { opacity: 0, y: 20, scale: 0.94 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.7)" }, 5.84);
-    tl.fromTo("#scene-22 .pick .wm",
-      { textShadow: "0 0 0 rgba(247,223,30,0)" },
-      { textShadow: "0 0 34px rgba(247,223,30,0.5)", duration: 0.45, ease: "power2.out" }, 6.04);
+    // "non-blocking" lands.
+    tl.fromTo("#scene-22 .llabel", { opacity:0 }, { opacity:1, duration:0.4 }, 4.36);
 
-    // Subtle life — the chosen wordmark breathes.
-    tl.to("#scene-22 .pick", { y: "-=5", duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.4);
-
-    // Seam clear — stage fades across the trailing overlap with scene 23 (local 6.60-7.10).
-    tl.to("#scene-22 .stage", { opacity: 0, duration: 0.34, ease: "power2.inOut" }, 6.60);
-
+    // "he chose JavaScript" — the engine driving the flow is revealed.
+    tl.fromTo("#scene-22 .engine", { opacity:0, scale:0.5, x:-20 }, { opacity:1, scale:1, x:0, duration:0.55, ease:"back.out(1.9)" }, 5.84);
+    tl.fromTo("#scene-22 .engine", { boxShadow:"0 22px 56px rgba(0,0,0,0.46)" }, { boxShadow:"0 22px 56px rgba(0,0,0,0.46), 0 0 46px rgba(247,223,30,0.3)", duration:0.5 }, 5.9);
     window.__timelines["scene-22"] = tl;
   </script>
 </body>
