@@ -7,6 +7,15 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.9.0] — 2026-06-05
+
+### Added
+- **js-king** — built the full *JavaScript, the King of Programming Languages*
+  video: 91 redesigned scene compositions wired through `index.html`, the SFX
+  layer (`sfx.html` + baked `sfx-mix.mp3`), and the music-bed layer (`music.html`
+  + layer stems), plus portrait/icon assets and QA snapshots.
+- **js-king** — three production thumbnail variants and the round-1 iteration set.
+
 ## [0.8.0] — 2026-06-04
 
 ### Added
