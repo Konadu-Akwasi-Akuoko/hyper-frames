@@ -32,6 +32,17 @@ Avoid the generic technical grid as the *primary* background gesture — a faint
 be one ingredient, but a grid alone is the "flat slideshow" smell this whole file
 exists to kill.
 
+**Sometimes a beat (or the whole video) wants a real background image** the tinted
+substrate can't be — a wooden desk under an article, a blueprint grid behind a connector
+diagram, a deep-blue cloudy sky behind a hero shot (the kind of backdrop the
+`../../vfxInspo/` frames show). You can't draw those; leave a **`background` placeholder
+box** describing exactly what you want and let the user supply it
+(`assets-and-media.md`). Decide its scope by whether it *persists*: a backdrop that sets
+the mood across many scenes belongs **in the substrate** (one request, promoted to the
+substrate layer — `composition-structure.md`); one tied to a single beat is a
+**scene-local** full-frame box. Request a background only when it genuinely helps — most
+beats are better served by the rationed subject tone above than by a literal photo floor.
+
 ## 2. Every scene gets its own shape — driven by the sentence
 
 The single most important instruction in this skill: **let the sentence decide how the
@@ -59,6 +70,16 @@ Two hard habits:
 | **Quote / source card** | a verbatim citation, a comment | a framed card with attribution chrome (the one place a card is right) |
 | **Checklist / attributes** | a list of properties, "it's used by…" | icon + check-badge + word rows that arrive and reflow (ref pattern) |
 | **Code reveal** | a code point, a syntax contrast | real syntax-highlighted snippet, lines/tokens lighting on the beat |
+
+**Reference frames live in `../../vfxInspo/`.** Its `README.md` is a one-line-per-frame
+index of concrete looks for these archetypes — kinetic type building over a sky, a printed
+article on a wooden desk (with polaroids dropping in), a blueprint grid bridging two devices
+through a labeled node, a triptych of monochrome diagram cards, a scattered research collage,
+a highlighter marker-sweep, a dark-mode passage with an amber glow. When one fits the beat,
+**adapt the technique — never reproduce the frame.** It should read as the same family, not
+the same shot (the "design original; copy the reasoning, not the scene" rule). It's a source
+of taste, not a quota: most beats won't draw on one. Where a frame's look needs a real
+backdrop you can't draw, that's a `background` box (§1 + `assets-and-media.md`).
 
 **When an image carries a contrast beat, let it carry — don't double up.** If a
 reaction/emotion cutout is doing the editorial work of an "X vs Y", the *image* is the

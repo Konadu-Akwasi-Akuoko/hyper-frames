@@ -49,13 +49,41 @@ A `photo`-class referent (e.g. `data-asset-referent="data center"`) also gets a
 `data-asset-credit` slot once sourced, since Wikimedia photos carry an attribution obligation (see
 the routing section).
 
+A **`background`** box is the full-frame backdrop case — a real scene you can't draw (a wooden
+desk, a blueprint render, a skyscraper sky), usually one you drew from a `../../vfxInspo/`
+reference frame. It is **always human-supply** (never `image-sourcer` — see the carve-out below):
+
+```html
+<div class="asset-box"
+     data-asset="wooden-desk-backdrop"
+     data-asset-class="background"              <!-- full-frame backdrop; human-supply only -->
+     data-asset-kind="image"
+     data-asset-desc="Warm wooden desk seen at a perspective tilt, soft vignette — like
+                      vfxInspo/printed-article-on-wooden-desk-perspective-tilt.png, but
+                      no article on it (our article is a separate foreground element)"
+     data-asset-scope="scene"                   <!-- scene | substrate (does it persist?) -->
+     data-asset-placement="background"
+     style="position:absolute; inset:0; z-index:0; /* sits behind the scene's foreground */">
+</div>
+```
+
+- **`data-asset-desc`** on a background box must name the **vfxInspo frame it riffs on and how
+  it diverges** — that is the "put in the box what you like and I'll get it" handoff. Same family,
+  not the same shot.
+- **`data-asset-scope`** — `scene` (this beat only → a scene-local full-frame box) or `substrate`
+  (persists across scenes / sets the video's mood → promote it to the substrate layer, one request,
+  see `composition-structure.md`). Decide by whether the backdrop should outlive this scene.
+- Animate the box as the backdrop will move (a slow drift/parallax), exactly like any other box.
+
 - **`data-asset`** — a stable kebab id, unique within the video. It is the filename
   stem the user fills (`assets/images/surprised-celebrity.png`) and how you find the box
   again to swap it.
-- **`data-asset-class`** — the lane: `reaction` (emotion/meme/face) or one of the three
-  **referent** kinds `logo` / `glyph` / `photo`. This routes sourcing — see "Two kinds of image"
-  below. A `logo`/`glyph` saves an SVG to `assets/icons/`; `photo`/`reaction` save a PNG to
-  `assets/images/`.
+- **`data-asset-class`** — the lane: `reaction` (emotion/meme/face), one of the three
+  **referent** kinds `logo` / `glyph` / `photo`, or **`background`** (a full-frame backdrop).
+  This routes sourcing — see "Two kinds of image" below. A `logo`/`glyph` saves an SVG to
+  `assets/icons/`; `photo`/`reaction`/`background` save a PNG (to `assets/images/` and
+  `assets/backgrounds/` respectively). `background` is the one class **never auto-sourced** —
+  it's always human-supply via the shopping list.
 - **`data-asset-referent`** — *(referent boxes)* the exact named thing to show (`javascript`,
   `data center`, `Brendan Eich`); drives the icon slug or photo search. Referent boxes usually
   omit `data-asset-emotion`.
@@ -84,7 +112,12 @@ the image carry the contrast — don't *also* dim the opposing text or divide th
 
 The box stays the spec; what changes is **who fills it**. Rather than handing the user a
 find-the-file errand for every beat, dispatch the **`image-sourcer`** subagent (the Agent
-tool, `model: sonnet`) to source the asset *for* the box. It **routes on `data-asset-class`**:
+tool, `model: sonnet`) to source the asset *for* the box — **except `background` boxes,
+which are excluded from auto-sourcing.** A full-frame backdrop (a bespoke desk, a blueprint
+render, a skyscraper sky) is not findable stock and isn't worth a poor Pinterest/Wikimedia
+pick; it always goes to the shopping list for the user's manual review pass. So the
+`image-sourcer` lane below covers `reaction` / `logo` / `glyph` / `photo` only. It **routes
+on `data-asset-class`**:
 a `reaction` box drives Chrome — Pinterest first (the user is logged in there), open-web as
 fallback — and treats the cutout through `image-prep`; a `logo`/`glyph` box is a plain Iconify
 fetch (local `assets/icons/` checked first) saved as a static SVG; a `photo` box pulls a
@@ -133,6 +166,7 @@ decided it's earned.
 | `glyph` | an abstract-but-iconic concept with a settled shorthand ("infrastructure"→server, "security"→lock, "database"→cylinder) | Iconify mono sets (`mdi`/`lucide`/`solar`/`tabler`), `currentColor`-tintable to the accent | a different set / synonym → open-web; or **draw a diagram** instead | static **SVG** → `assets/icons/<id>.svg` |
 | `photo` | a specific notable real thing where realness/scale/identity is the payoff ("a humming data center", "Brendan Eich") | **Wikimedia Commons** (freely-licensed, capture artist + license + source URL) | open-web image search | treated **PNG** → `assets/images/<id>.png` |
 | `reaction` | an ironic/comedic/emotional turn — react for the viewer | **Pinterest** (logged-in) | open-web image search | treated **PNG** → `assets/images/<id>.png` |
+| `background` | a full-frame backdrop the scene can't draw (wooden desk, blueprint render, sky) | **human-supply** — the shopping list, sourced in the user's manual review pass (**never `image-sourcer`** — bespoke/AI-rendered backdrops aren't findable stock) | the user | treated **PNG** → `assets/backgrounds/<id>.png` |
 
 Three rules cut across all of them:
 
@@ -156,11 +190,17 @@ box and emit **one table** to the user — their single to-do:
 | id | kind | scene | description | emotion | treatment | placement | target path |
 |---|---|---|---|---|---|---|---|
 | surprised-celebrity | image | 01 | Surprised celeb facing left | surprised | cutout,grain,duotone | right-full | `assets/images/surprised-celebrity.png` |
+| wooden-desk-backdrop | image · **bg (scene)** | 03 | Wooden desk, perspective tilt — riffs on vfxInspo desk frame, no article on it | — | grain | background | `assets/backgrounds/wooden-desk-backdrop.png` |
+| blueprint-grid | image · **bg (substrate)** | — | Blueprint grid w/ ruler border — riffs on vfxInspo blueprint frame; persists, promote to substrate | — | — | background | `assets/backgrounds/blueprint-grid.png` |
 
 Surface it alongside the seek target ("Seek to 0.0s… and drop these N assets"). The user
 replies by placing files at the listed paths (project convention:
-`assets/images/`, `assets/memes/`, `assets/video/`; `assets/icons/` already holds many
-tech logos you can use directly — check there before requesting a logo box).
+`assets/images/`, `assets/memes/`, `assets/video/`, `assets/backgrounds/`; `assets/icons/`
+already holds many tech logos you can use directly — check there before requesting a logo box).
+**Flag every `background` row as a background** and tag its scope — `bg (scene)` vs
+`bg (substrate)` — since the user sources these in the manual review pass and a `substrate`
+one is wired once behind the whole video rather than into a single block (see
+`composition-structure.md`).
 
 ## Swapping a box for the real asset
 
@@ -191,6 +231,13 @@ it:
       style="color:var(--accent); /* same footprint */"><!-- paste the saved SVG markup --></span>
 ```
 
+A **`background` box** swaps the same way — to a full-frame `<img>` behind the scene's
+foreground (`z-index:0`), keeping the box geometry and timeline target. But if its
+`data-asset-scope` is `substrate`, the supplied image doesn't swap into *this* block at all:
+it's wired into `compositions/substrate.html` (the persistent layer) so it sits behind every
+scene — see `composition-structure.md`. Either way, keep foreground contrast winning (dim the
+backdrop behind busy text — `visual-language.md` §1).
+
 Re-run the visual-QA loop after swapping — a real image changes contrast and edges; the
 emphasis and legibility checks must pass against the actual pixels, not the placeholder.
 
@@ -212,6 +259,10 @@ the cutout sits in the palette. See `tools/image-prep/README.md`. Background rem
 (`--remove-bg`) is what makes a photo read as a cutout on the void rather than a pasted
 rectangle. The user supplies raw files; you (or they) run image-prep to produce the
 treated asset the box swaps to.
+
+**A `background` image is the exception to `--remove-bg`** — it *is* the backdrop, so
+never cut it out. Treat it only for palette/feel (a light `grain`, or `duotone` toward
+the `bg`/`accent` tokens) and, if needed, scale to the 1920×1080 frame.
 
 ## When imagery earns its place — and when it doesn't
 

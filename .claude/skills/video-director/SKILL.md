@@ -61,7 +61,12 @@ the loop survives a fresh session.
 
 1. Resolve the video folder: an explicit path the user gave → the current
    working directory if it's a video folder → otherwise ask.
-2. Read `design.md` (the gate, once per session).
+2. Read `design.md` (the gate, once per session). In the same once-per-session
+   pass, read `../../vfxInspo/README.md` — the repo-root **inspiration index**, a
+   cheap text-only list with one technique note per reference frame. You consult
+   it while choosing scene archetypes (Step D). Its discipline: read the README's
+   notes, and open a PNG *only* when a note looks like a fit for a beat you're
+   about to author — never vision-parse the whole folder.
 3. Read `index.html` and enumerate the mounted **scene** hosts — the `<div>`s
    with `data-composition-src="compositions/..."` on a scene track. For each,
    note `data-composition-id`, `data-start`, `data-duration`, `data-track-index`.
@@ -135,6 +140,17 @@ would only cheapen it. The test is the signal in the sentence, **not the scene
 number, and never a quota**. The background is not a neutral grid — it carries a rationed
 subject tone (`visual-language.md` §1).
 
+**Glance at the vfxInspo index while you pick the archetype.** You loaded
+`../../vfxInspo/README.md` once this session (Step A); it holds reference frames for
+exactly these archetypes (kinetic type on a sky, an article on a wooden desk, a blueprint
+connector, monochrome diagram cards, a research collage, a marker-sweep highlight, …). If
+a frame's technique fits this beat's meaning, **draw on it as inspiration — adapt it, never
+reproduce it.** Same rule as a prior cut of the video: *design every block original; copy
+the reasoning, not the scene.* A vfxInspo frame can look like the same family — it must not
+be the same thing. This is **not a quota**: most chunks won't cite a frame, and you reach
+for one only when it genuinely fits, the same way you reach for an asset box. Where a frame's
+look needs a real background you can't draw, that's a `background` box (below + Step E).
+
 Before you author, **emit a per-chunk verdict block** — one per chunk in this pass, the same auditable discipline as Step B, where you quote the chunk text back so the pass can be checked. Quoting the text proves *which* line you're animating; the verdict proves *how you read it*, so the imagery decision is on the record instead of happening silently inside the authoring. The block is exactly:
 
   Chunk: "<first few words…>"
@@ -193,6 +209,19 @@ Defer the mechanics to the `hyperframes` skill; this is what's specific here:
   animate the *box* as the asset will move. The user fills it later; the full
   contract (attributes, the shopping list, swapping in the file, `image-prep`
   treatment) is in `reference/assets-and-media.md`.
+- **Real background → labeled `background` box (human-supply).** When a beat's look —
+  often one you drew from a vfxInspo frame — wants a real backdrop you can't draw (a
+  wooden desk, a blueprint render, a skyscraper sky), drop a **full-frame `background`
+  box** (`data-asset-class="background"`, `data-asset-placement="background"`) whose
+  `data-asset-desc` says exactly what you want *and names the vfxInspo frame it riffs on
+  plus how it diverges* — that's "put in the box what you like and I'll get it." Animate
+  the box as the bg will move (slow drift/parallax). **Decide its scope:** a backdrop that
+  should persist across scenes / set the whole video's mood is requested **as / into the
+  substrate** (one request, not per-scene — `reference/composition-structure.md`); one
+  specific to a single beat is a **scene-local** full-frame box in this block. A
+  `background` box is **always human-supply** — it goes to the shopping list, never to
+  `image-sourcer`. Request one only when it actually helps; ration it like any imagery
+  (Step D / `reference/visual-language.md`). Contract: `reference/assets-and-media.md`.
 - Time inside the block is **scene-local**: subtract `chunk_start` from each
   global word timestamp.
 - Entrance animation + a transition into the scene. **No exit animation** unless
@@ -261,9 +290,11 @@ ever sees it. Per pass:
    that mushes two text layers — each one is a regenerate, not a shrug.
 5. Only once the scene passes: surface the seek target so the user can confirm
    in their own preview — "Seek to **{chunk_start}s** to verify scene NN." If the
-   pass left any **asset boxes**, surface the **shopping list** here too (the table
-   from `reference/assets-and-media.md`) so the user knows exactly which images/
-   video to drop in.
+   pass left any **asset boxes** — including any **`background` boxes** — surface the
+   **shopping list** here too (the table from `reference/assets-and-media.md`) so the
+   user knows exactly which images/video/backgrounds to drop in. Backgrounds are
+   flagged as such in the list (with the substrate-vs-scene-local hint) because the
+   user sources them during their manual review pass.
 
 **Verdict check.** Confirm every signal beat in this pass resolved to either a
 declared asset box or a written, candidate-named `text-only` justification — i.e. the
@@ -389,8 +420,9 @@ never author yourself.
 | Composition mechanics: data-attrs, `class="clip"`, `window.__timelines`, layout-before-animation, transition/entrance/exit rules, determinism | `hyperframes` | Tell it *which chunk*, *what design*, *which word timestamps* to key to |
 | CLI loop: `init` / `lint` / `inspect` / `snapshot` / `preview` / `render` | `hyperframes-cli` | Decide *when* (lint+inspect+snapshot every pass, blocking); run the snapshot→Sonnet-review→regenerate loop; never touch preview; surface a seek target |
 | Registry: `catalog`, `add`, snippet-merge, `hyperframes.json` | `hyperframes-registry` | Check it before authoring; hand off the install/wire |
+| Look inspiration: the repo-root `vfxInspo/` reference frames (a *visual-technique* source, distinct from the registry/design-catalog *code-reuse* sources) | `vfxInspo/README.md` (its own index) | Load the README once/session (Step A); consult it picking each archetype (Step D); **adapt a frame, never reproduce it**; non-quota |
 | Animation adapters (gsap / three / lottie / css / waapi / animejs) | those skills | Pick the lane per beat; don't re-document them |
-| Image sourcing: find + fetch a real asset for a box, routed by `data-asset-class` — `reaction`→Pinterest, `logo`/`glyph`→Iconify (static SVG), `photo`→Wikimedia (licensed), web as catch-all — then treat it | `image-sourcer` agent | Declare the box with its `class`/`referent`, then dispatch `image-sourcer` (`model: sonnet`) with the `data-asset-*` spec + `video_dir`; weigh its confidence, swap the pick in (or leave the box standing + shopping-list on failure), surface any required attribution (`reference/assets-and-media.md`) |
+| Image sourcing: find + fetch a real asset for a box, routed by `data-asset-class` — `reaction`→Pinterest, `logo`/`glyph`→Iconify (static SVG), `photo`→Wikimedia (licensed), web as catch-all — then treat it | `image-sourcer` agent | Declare the box with its `class`/`referent`, then dispatch `image-sourcer` (`model: sonnet`) with the `data-asset-*` spec + `video_dir`; weigh its confidence, swap the pick in (or leave the box standing + shopping-list on failure), surface any required attribution (`reference/assets-and-media.md`). **`background`-class boxes are excluded — they're human-supply via the shopping list, never sent to `image-sourcer`.** |
 | Image treatment: background removal + VFX presets (grain/duotone/halftone/vintage) | `tools/image-prep` | Declare asset boxes + the shopping list; the `image-sourcer` agent runs image-prep for you, or run it directly on a human-supplied raster for a consistent cutout look (`reference/assets-and-media.md`) |
 | Voiceover / transcript | voiceover-* / `transcribe-and-plan-cuts` | Precondition; refuse to run if missing |
 | SFX scoring: cue choice, the impact-frame timing, the per-pass + final-reconcile passes | **you** (Step H, this skill) | Own it — score each scene's sound after its visual QA; each cue is independent and element-bound (no cross-cue rules) |
@@ -410,13 +442,16 @@ that used to live in the root `CLAUDE.md`:
   **index.html host-wiring template** (incl. the seam-collision transition rule),
   and the parametrized-local-block pattern.
 - `reference/visual-language.md` — the look layer: the background's rationed
-  **subject tone** (no logo), **per-scene archetype variety** (so scenes don't all
-  look alike) with the archetype menu, and the **motion language** (slide-ins,
-  layout reflow, constant subtle tilt/drift). Read before designing any block.
-- `reference/assets-and-media.md` — using **real images/video via labeled boxes**
-  the user fills: the `data-asset` placeholder contract, the collected shopping
-  list, swapping in the file, and the `tools/image-prep` treatment (BG-removal +
-  VFX presets).
+  **subject tone** (no logo) and when a beat earns a **real background image**
+  beyond the tinted substrate, **per-scene archetype variety** (so scenes don't all
+  look alike) with the archetype menu (and the `../../vfxInspo/` reference frames
+  that illustrate them), and the **motion language** (slide-ins, layout reflow,
+  constant subtle tilt/drift). Read before designing any block.
+- `reference/assets-and-media.md` — using **real images/video/backgrounds via
+  labeled boxes** the user fills: the `data-asset` placeholder contract (incl. the
+  full-frame **`background`** class — human-supply, never auto-sourced), the
+  collected shopping list, swapping in the file, and the `tools/image-prep`
+  treatment (BG-removal + VFX presets).
 - `reference/decision-examples.md` — the worked-example bank for Step D's
   **per-chunk verdict**: Set A (does this beat earn an image — logo/glyph/photo/
   reaction YES vs. a candidate-named `text-only`) and Set B (which font carries

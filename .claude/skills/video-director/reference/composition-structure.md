@@ -138,7 +138,12 @@ Notes that matter:
 - `background: transparent` on `html, body` — the persistent substrate layer
   sits behind every scene; an opaque block would hide it. That substrate is not a
   generic dark grid: it carries a **rationed subject tone** (a faint accent glow,
-  no logo) and drifts slowly. See `visual-language.md` §1.
+  no logo) and drifts slowly. See `visual-language.md` §1. The substrate may also
+  host a **human-supplied background image** — a `background` box with
+  `data-asset-scope="substrate"` (a backdrop that should persist across scenes, e.g.
+  a blueprint grid or sky), promoted here instead of into a single block. It's
+  still toned down behind busy scenes so foreground always wins contrast. Contract:
+  `assets-and-media.md`.
 - **Scope CSS** under the composition root id (`#scene-NN-slug .thing`), because
   all blocks render into the same document tree at runtime.
 - The timeline is **paused** and registered as
