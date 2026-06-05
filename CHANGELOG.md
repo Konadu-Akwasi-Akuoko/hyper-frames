@@ -7,6 +7,18 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.10.0] — 2026-06-05
+
+### Added
+- **whatsapp-40b** — video pre-production assets for the *How WhatsApp Handles
+  40 Billion Messages Per Day* system-design explainer: script, anchor list,
+  substrate notes, SEO research, and a fact-check pass (36 verified, 1 partial)
+  covering the one-socket / Erlang-BEAM actor model / Mnesia routing /
+  server-side fan-out arc.
+
+### Changed
+- sync `uv.lock` versions to 0.9.0 (lockfile catch-up from the v0.9.0 release).
+
 ## [0.9.0] — 2026-06-05
 
 ### Added
