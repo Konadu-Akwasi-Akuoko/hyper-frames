@@ -19,3 +19,6 @@ __pycache__/
 
 # Rendered video output (large binaries; render locally, don't commit)
 renders/
+
+# Baked music bed (large WAV output; regenerate via audio-bed-music)
+**/audio/music-bed.wav
