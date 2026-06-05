@@ -1,0 +1,93 @@
+# Hook
+Forty billion outbound messages a day
+two million live connections on a single server
+thirty-two engineers
+should not have been possible
+
+# Body — the connection
+one message
+one persistent TCP connection
+single long-lived socket
+FunXMPP
+
+# Body — Erlang / actor model
+chat server
+a process that exists only for you
+the actor model
+Erlang
+BEAM virtual machine
+let it crash
+
+# Body — routing
+Mnesia
+routing table
+kept in RAM
+fan-out time
+
+# Body — group fan-out
+server-side fan-out
+a group ID
+Erlang's distributed process groups
+twenty billion messages users sent
+forty-four billion delivered
+sixty-four billion in total
+The gap is fan-out
+
+# Body — delivery
+store-and-forward
+encrypted offline queue
+up to thirty days
+a relay, not a mailbox
+the two grey ticks you watch turn blue
+
+# Body — presence
+the small signals beside them
+last seen
+its own lightweight notification stream
+two jobs, one pipe
+
+# Body — encryption
+Open Whisper Systems
+the Signal Protocol
+X3DH
+the Double Ratchet
+forward secrecy
+ciphertext the server cannot read
+a dumb, fast, blind pipe
+
+# Body — multi-device
+its own identity key
+a directory that maps your account to every device
+client-side fan-out
+A directory, not a keyholder
+
+# Body — the metal
+FreeBSD
+big bare-metal boxes
+Intel Xeon
+IBM SoftLayer
+patched the BEAM runtime
+The metal was theirs
+
+# Body — hot code loading / outage
+load new code into a running system
+near-zero-downtime
+WhatsApp went dark
+two hundred and ten minutes
+resilient is not the same as invincible
+
+# Body — scale & growth
+past two million
+Ten billion messages a day
+a single-day record of sixty-four billion
+roughly a hundred billion a day
+five hundred and fifty servers
+eleven thousand CPU cores
+a hundred and forty-seven million phones
+
+# Landing
+One socket per phone, one process per socket
+do less
+fourteen million users for every engineer
+let a tiny team sleep at night
+one envelope the server carries but can never open
