@@ -7,6 +7,27 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.11.0] — 2026-06-07
+
+### Added
+- **inspo-ingest** — whole-video motion-graphics auto-scan: a new `scan`
+  subcommand streams a capped proxy through DIS dense optical flow, segments
+  genuine animation beats with a validated two-axis motion gate, and emits a
+  hero still + keyframe strip (+ optional flow heatmap) and objective per-beat
+  descriptors into a deterministic manifest. The original single-window capture
+  is preserved as the `clip` subcommand via a back-compat argv shim.
+- **motionGraphicsInspo** — re-establish the motion-reference library as a
+  two-tier tagged index (a Quick-index scan table over full Entries blocks),
+  reset empty, with a `Motion-metrics:` schema line carrying the objective
+  measured descriptors a scan produces (replaces the old `vfxInspo/` folder).
+- **motion-inspo-add** — manifest-review mode (Mode B) that curates whole-video
+  `scan` candidates into library entries: keep/drop per beat, rename survivors,
+  author the prose lines, and fill `Motion-metrics:` from the manifest.
+- **scene-design-decider** — a per-chunk design-decision subagent for
+  video-director that picks each scene's archetype, imagery, motion reference,
+  and font roles on the record, with Scope C numeric secondary ranking that
+  breaks motion-reference ties on the objective `Motion-metrics:` values.
+
 ## [0.10.0] — 2026-06-05
 
 ### Added
