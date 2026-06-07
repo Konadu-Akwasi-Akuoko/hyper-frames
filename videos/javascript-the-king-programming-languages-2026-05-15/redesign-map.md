@@ -1,13 +1,13 @@
 # Redesign + asset map — JS the King (91 scenes)
 
 Working PLAN/reference. Drives per-scene distinctness and global asset rationing.
-Adapt each vfxInspo technique to the **dark editorial palette** (design.md) — copy
+Adapt each motionGraphicsInspo technique to the **dark editorial palette** (design.md) — copy
 the reasoning, never the light/photo look.
 
 ## ⚑ REDESIGN PROGRESS (resume truth — all 91 hosts pre-mounted, so frontier ≠ progress)
 This is a RETROFIT: every scene host already exists in index.html, so the normal
 frontier-resume reports the whole video done. Instead, the next scene to redesign =
-**lowest NN not listed as ✅ below.** Each ✅ = composition rewritten (vfxInspo redesign)
+**lowest NN not listed as ✅ below.** Each ✅ = composition rewritten (motionGraphicsInspo redesign)
 + visuals QA-passed + SFX scored. Update this list after every scene.
 
 - ✅ 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15  (cold open + origin complete — task #489 done)
@@ -36,7 +36,7 @@ frontier-resume reports the whole video done. Instead, the next scene to redesig
 - ✅ 38  (STAT-HERO + GROWTH CURVE — asymmetric: "Tens of thousands" cyan hero left, steep adoption curve → Node hexagon cap right; "within months" kicker. No fabricated precise figure)
 - ✅ 39  (COMEDIC SKIT — centered-"div" front-end card "touched →" a database cylinder; DB panics: shakes, reddens, sweat-drop, tilts; "never been the same" red punchline. boom on the panic. Bespoke gag beats a stock reaction shot)
 - ✅ 40  (ESCAPE/BREAKOUT — JS logo bursts up+out of a browser cage (burst ring), leaving it dimmed/empty; "escaped" cyan. Callback to sc18 browser-confined. whoosh on launch)
-- ✅ 41  (HN COMMENT CARD / native-artifact — Hacker News card (orange bar + logo + "▲ throwaway42 · 2 points · 2014"), verbatim comment in Excalifont, cyan MARKER-SWEEP on the verb "escape" (echoes sc40 "escaped") + Excalifont annotation "↑ exactly that verb". vfxInspo marker-sweep frame. Replaced the old generic kinetic-caption+lockup (which misused rationed JS-yellow). whoosh on the sweep, snap on the annotation)
+- ✅ 41  (HN COMMENT CARD / native-artifact — Hacker News card (orange bar + logo + "▲ throwaway42 · 2 points · 2014"), verbatim comment in Excalifont, cyan MARKER-SWEEP on the verb "escape" (echoes sc40 "escaped") + Excalifont annotation "↑ exactly that verb". motionGraphicsInspo marker-sweep frame. Replaced the old generic kinetic-caption+lockup (which misused rationed JS-yellow). whoosh on the sweep, snap on the annotation)
 - ✅ 42  (PULLED-QUOTE / clause-staged — the full HN line lifted out of the thread (no card chrome, no HN logo — sc41 established source), 3 Excalifont clauses entering on beat; menace verbs "escape"+"infiltrate" flick danger-red (callback to sc01's two red verbs), payoff "...in the form of Node.js" resolves GREEN with the nodejs.svg hexagon punching in (the irony — the feared thing is the hero). Distinct from sc01 word-ignite + sc41 comment card. whoosh on payoff line, msg-ding on logo)
 - ✅ 43  (PIVOT / HORIZON-FORESHADOW — affirmed line "right about the escape" (green ✓ + green "escape") dims+lifts on "But"; a rail draws: green confirmed-dot → dashed seg drawing into a dark fog → cyan "?" emerging; "what was coming next" cyan. JS-yellow avoided (cyan=mystery). msg-ding on ✓, whoosh on path draw, card-blip on "?". COMPLETES server era 16-43 / task #490)
 - ✅ 44  (SPREAD/DISTRIBUTION — real javascript.svg logo (left) ships out along CYAN branching connectors (SVG draw-on) to a phone glyph (mobile) + monitor glyph (desktop), both lighting cyan; big cyan "How?" hook bottom. Replaced original's JS-yellow-saturated symmetric-beam version (fabricated yellow JS square, yellow beams/How) — yellow now ONLY on the real brand logo. pop on each device, snap on How?)

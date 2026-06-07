@@ -38,19 +38,12 @@
       mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 85%);
       -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 85%);
     }
-
-    /* Vignette so foreground content always wins contrast. */
-    #substrate .vignette {
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 75% 75% at 50% 48%, transparent 55%, rgba(0,0,0,0.55) 100%);
-    }
   </style>
 </head>
 <body>
   <div id="substrate" data-composition-id="substrate" data-width="1920" data-height="1080">
     <div class="breath"></div>
     <div class="grid"></div>
-    <div class="vignette"></div>
   </div>
 
   <script>
