@@ -51,11 +51,14 @@ The project's **custom skills stay local under `.claude/skills/`** —
 `script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`,
 `transcribe-and-plan-cuts`, `thumbnail-creator`, `description-writer`,
 `create-srt-and-translate`, `youtube-seo-research`, `youtube-studio`,
-`audio-bed-music`, `design-catalog-add`, and `video-director`
+`audio-bed-music`, `design-catalog-add`, `motion-inspo-add`, and `video-director`
 (the composition-authoring orchestrator, which now also owns the **SFX pass** —
 sound effects are scored inside `video-director` Step H on top of `tools/sfx-plan`
 + `tools/sfx-level`, not in a separate skill). These are not part of the plugin;
-do not delete them when refreshing the plugin.
+do not delete them when refreshing the plugin. `motion-inspo-add` is the curation
+skill that grows the repo-root `motionGraphicsInspo/` motion-reference library
+(hero + keyframe strip + tagged `Motion:` note) on top of `tools/inspo-ingest`, and
+`video-director` consults that library while picking each scene's archetype + motion.
 
 For voiceover in this project, the **default is recording your own voice**: drop
 the recording at `audio/raw.mp3`, run the `transcribe-and-plan-cuts` skill (Scribe
