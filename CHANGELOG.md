@@ -7,6 +7,13 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.12.0] — 2026-06-07
+
+### Added
+- **motionGraphicsInspo** — populate the library with 252 curated
+  motion-graphics references, each as a hero still + keyframe strip, replacing
+  the empty README placeholders with the tagged index entries.
+
 ## [0.11.0] — 2026-06-07
 
 ### Added
