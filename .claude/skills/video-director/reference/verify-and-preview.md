@@ -26,8 +26,11 @@ when they're not good.
 3. **`npx hyperframes snapshot --at <chunk_start>,<key beats>,<chunk_end>,<seam>`** —
    capture PNG frames of this scene at the moments that matter. **Always include the
    seam** with the previous scene (`prev_scene_end − 0.25`, i.e. mid-overlap) — that
-   is where two scenes co-render and text can collide; a scene that looks clean in
-   isolation can still mush at the seam. Then **dispatch a Sonnet subagent** (the
+   is where two scenes co-render and bleed: text-on-text collision *or* a static
+   incoming graphic with no entrance rendering solid over the previous scene. Grade
+   the seam frame on **every** pass, including graphic-only scenes with no text — a
+   scene that looks clean in isolation can still bleed at the seam. Then **dispatch a
+   Sonnet subagent** (the
    Agent tool with `model: sonnet`) to `Read` the batch of PNGs and grade them
    against the rubric below. Offloading the image read to Sonnet keeps the loop
    cheap — the director (often on Opus) doesn't burn its own context staring at
@@ -74,12 +77,24 @@ What to check:
 - **No editorial chrome.** Flag any corner metadata strip, scene label, running
   timecode, or footer rule (see `reference/house-rules.md`). Ambient decoratives
   (glows, grids, drifting ghost type) are fine.
+- **No edge vignette / gradient banding.** Flag any darkening vignette around the
+  frame edges, and flag visible **banding** (concentric/stair-stepped rings in a soft
+  dark gradient) on the substrate — both compress badly and smear into motion graphics
+  at YouTube bitrates (see `visual-language.md` §1). A small contained accent glow is
+  fine; an edge-to-center ramp into black is a defect.
 - **Layout integrity.** Flag clipping, overlap, or content escaping the
   1920x1080 frame that `inspect` didn't already catch.
-- **Seam collision (the seam frame).** On the mid-overlap frame, flag **two
-  legible text layers sharing the screen** — the outgoing scene's text still up
-  while the incoming scene's text is already on. The transition must cover/occlude,
-  not dissolve text through text (see `composition-structure.md` wiring rules).
+- **Seam bleed (the seam frame).** On the mid-overlap frame, flag **any element
+  from one scene rendered solid over the other** — not just text. Two shapes:
+  **(1)** two legible text layers sharing the screen (the outgoing scene's text
+  still up while the incoming scene's text is already on); **(2)** any foreign
+  graphic, label, panel, or shape from the incoming scene drawn at full opacity over
+  the outgoing scene because it has no entrance (no `opacity:0`+fade, not covered by
+  the scene-root crossfade) — the scene-21 memory-gauge column bleeding onto the
+  Apache scene is the canonical case. The hinge: anything appearing where it doesn't
+  belong during the overlap. The transition must cover/occlude, and every element
+  must obey the entrance invariant (see `composition-structure.md` wiring rules +
+  "Notes that matter").
 - **Per-scene distinctness.** Compare this scene's archetype to its neighbour's.
   Flag a scene that repeats the previous one's shape (e.g. a second centered text
   card in a row) — adjacent scenes should look different at a glance
@@ -109,6 +124,10 @@ What to check:
 - **Liveliness.** Flag a frame that reads as dead-static where motion was due — no
   idle tilt/drift, nothing mid-transition in a stretch that should breathe
   (`visual-language.md` §3). (Judge gently; a deliberately still quiet beat is fine.)
+  If this scene cited a `../../motionGraphicsInspo/` reference, also sanity-check its
+  motion against that entry's `Motion:` note — the cadence should read as the same
+  *family* (a comparable stagger/overshoot/settle), **adapted, not reproduced**; flag a
+  scene that names a reference but moves nothing like it, or one that copies it outright.
 
 ## Never touch the preview server
 

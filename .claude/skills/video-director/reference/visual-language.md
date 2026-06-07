@@ -16,10 +16,20 @@ rules:
 
 - **Tint it to the subject, rationed.** The video is *about* something — let the
   backdrop whisper it. For JavaScript that's a faint warm **JS-yellow** presence: a
-  low-opacity glow, a hair of warmth in the vignette, a tint on the drift. Enough that
+  low-opacity glow, a tint on the drift, a hair of warmth in a texture. Enough that
   a viewer feels "this is a JS video" without being able to point at why. Pull the hue
   from the `accent` token in `design.md` so the next video tints to *its* subject
   automatically (a Python video leans on its accent, etc.).
+- **No vignette.** Never darken the substrate edges with a radial/elliptical vignette
+  (`radial-gradient(... , transparent, #000)`, an inset `box-shadow` darkening, a
+  corner-darkening overlay, etc.). A soft tonal ramp over near-black is the worst case
+  for YouTube's codec: at low bitrate it quantizes into chunky concentric **banding**
+  rings and its feathered edge **smears into any motion graphics** drifting over it —
+  exactly the choppy, bleeding look this whole file exists to kill. If you want depth,
+  reach for a small, *contained* accent glow (kept well inside the frame, not an
+  edge-to-center ramp) or a textured drift — and if any soft radial ramp on a dark
+  field is unavoidable, dither it with low-opacity grain/noise so it can't band. This
+  is a hard rule: the visual-QA reviewer treats an edge vignette as a defect.
 - **No literal logo or brand mark in the background.** A JS logo (or any product mark)
   sitting in the substrate is too loud and dates instantly. Tone, glow, texture — yes.
   Iconography — no. (Logos belong *in a scene*, as a deliberate foreground asset, not
@@ -35,7 +45,7 @@ exists to kill.
 **Sometimes a beat (or the whole video) wants a real background image** the tinted
 substrate can't be — a wooden desk under an article, a blueprint grid behind a connector
 diagram, a deep-blue cloudy sky behind a hero shot (the kind of backdrop the
-`../../vfxInspo/` frames show). You can't draw those; leave a **`background` placeholder
+`../../motionGraphicsInspo/` references show). You can't draw those; leave a **`background` placeholder
 box** describing exactly what you want and let the user supply it
 (`assets-and-media.md`). Decide its scope by whether it *persists*: a backdrop that sets
 the mood across many scenes belongs **in the substrate** (one request, promoted to the
@@ -71,15 +81,18 @@ Two hard habits:
 | **Checklist / attributes** | a list of properties, "it's used by…" | icon + check-badge + word rows that arrive and reflow (ref pattern) |
 | **Code reveal** | a code point, a syntax contrast | real syntax-highlighted snippet, lines/tokens lighting on the beat |
 
-**Reference frames live in `../../vfxInspo/`.** Its `README.md` is a one-line-per-frame
-index of concrete looks for these archetypes — kinetic type building over a sky, a printed
-article on a wooden desk (with polaroids dropping in), a blueprint grid bridging two devices
-through a labeled node, a triptych of monochrome diagram cards, a scattered research collage,
-a highlighter marker-sweep, a dark-mode passage with an amber glow. When one fits the beat,
-**adapt the technique — never reproduce the frame.** It should read as the same family, not
-the same shot (the "design original; copy the reasoning, not the scene" rule). It's a source
-of taste, not a quota: most beats won't draw on one. Where a frame's look needs a real
-backdrop you can't draw, that's a `background` box (§1 + `assets-and-media.md`).
+**The motion reference library lives in `../../motionGraphicsInspo/`.** Its `README.md`
+is a two-tier, progressively-disclosed index (a Quick-index scan table over full
+`Motion:`-note entries + strips). You don't read it directly — the
+**`scene-design-decider` subagent** scans it per chunk, drills into a fitting entry, opens
+its **keyframe strip** (`<slug>-strip.png`), and names the slug + cadence in its verdict.
+Each entry pairs a hero still + a strip with a written **`Motion:` note** — the strip shows
+the *staging* (what enters, in what order), the note carries the *cadence* (timing, ease,
+overshoot, drift) a still can't. When the decider cites one, you open that strip to author
+and **adapt the cadence — never reproduce the scene.** It should read as the same family,
+not the same shot (the "design original; copy the reasoning, not the scene" rule). It's a
+source of taste, not a quota: most beats won't draw on one. Where a reference's look needs
+a real backdrop you can't draw, that's a `background` box (§1 + `assets-and-media.md`).
 
 **When an image carries a contrast beat, let it carry — don't double up.** If a
 reaction/emotion cutout is doing the editorial work of an "X vs Y", the *image* is the
@@ -122,7 +135,11 @@ Emphasis primitives to vary across scenes (don't reuse the same one every beat):
 ## 3. Keep it alive — the motion language
 
 Beyond entrance + the existing "settle pulse in dead zones" rule, three additions make
-the difference between *synced* and *alive*:
+the difference between *synced* and *alive*. (Entrance is non-negotiable: **every**
+appearing element enters — nothing sits solid at scene-local t=0, or it bleeds across
+the seam onto the previous scene. The element either rides the scene-root crossfade or
+carries its own `opacity:0` + fade-in. See the **Entrance invariant** in
+`composition-structure.md`.)
 
 - **Slide-in from the edge an element belongs to.** A right-side cutout enters from the
   right; a bottom logo rises from the bottom; a list row slides from where the list
@@ -140,6 +157,16 @@ the difference between *synced* and *alive*:
   two on a `yoyo` loop) or a slow 2-D drift/camera-shake. Keep it *subtle*: it should be
   felt, not noticed, and never fight legibility. Deterministic only — no `Math.random`,
   no `repeat: -1` with random; use fixed values and long `yoyo` cycles.
+
+**Where the concrete cadence comes from.** These three habits are the *what*; the
+specific timing that makes a beat feel expensive — how many ms a stagger steps, how hard
+the overshoot, how long the settle, where a camera push lands — is lifted from a fitting
+`../../motionGraphicsInspo/` entry that the **`scene-design-decider`** cited for this chunk
+(its `MOTION-REF:` line names the slug + which cadence to adapt). Open that **strip** for
+the staging and its **`Motion:` note** for the easing/overshoot, then **adapt that cadence
+to this beat — never reproduce the source scene** (same family, not the same shot). A prose
+bullet can say "ease it"; a real reference tells you *how much*. When the decider returned
+`MOTION-REF: none`, these habits carry the scene — non-quota, most beats just use them.
 
 ## Don't overdo it
 

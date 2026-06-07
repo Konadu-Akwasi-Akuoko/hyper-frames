@@ -39,7 +39,9 @@ fills). A structurally-correct block that ignores those reads as a flat slidesho
 
    The catalog is broad — captions, shader/CSS transitions, VFX (shatter, portal,
    liquid, 3D device showcases), maps, a data chart, effects (grain, vignette,
-   shimmer), social overlays, flowchart, logo outro. The **caption components are
+   shimmer), social overlays, flowchart, logo outro. **Do not use the `vignette`
+   effect on the substrate / full-frame background** — edge vignettes band and smear
+   at YouTube bitrates (`visual-language.md` §1, hard rule). The **caption components are
    word-timeable** — a direct fit for transcript-as-timing-truth, usually better
    than hand-rolling text emphasis. If a registry item matches, invoke the
    `hyperframes-registry` skill and use `hyperframes add` — don't hand-roll over
@@ -163,6 +165,21 @@ Notes that matter:
   floor, not the ceiling — `visual-language.md` §3 adds the rest of the motion
   language (edge slide-ins, layout reflow so new elements push rather than stack,
   and a constant low-amplitude tilt/drift so nothing sits perfectly still).
+- **Entrance invariant — nothing may render at full opacity at scene-local t=0.**
+  Because `data-start = chunk_start − 0.5`, t=0 sits 0.5s *inside* the overlap with
+  the previous scene; any element opaque at t=0 is drawn solid on top of the
+  *outgoing* scene and bleeds across the seam (this is the scene-21 memory-gauge
+  bug: a `.mem`/`.ml` gauge column with no fade rendered over the previous Apache
+  scene). Every element that appears must satisfy **one** of: **(a)** it is covered
+  by the scene-root entrance crossfade at the top of the timeline
+  (`tl.fromTo("#scene-NN-slug", { opacity: 0 }, { opacity: 1, … }, 0)`), which fades
+  the *whole* scene — every child — in together; or **(b)** it carries its own
+  `opacity: 0` baseline + a `fromTo` fade-in. Static stage scaffolding (an empty
+  gauge frame the fill later climbs into, a baseline axis) is allowed **only** when
+  the root crossfade covers it. The mental check at t=0: the scene is either fully
+  transparent (root fade still at 0) **or** has no solid children yet. A per-element
+  motion tween that animates `height`/`x`/`color` but never touches `opacity` does
+  **not** count as an entrance — that was exactly the gauge's failure mode.
 - **No exit animations** except on the final scene of the whole video — the
   transition into the next scene IS the exit. The final block is the one place a
   fade-to-black is allowed.
@@ -216,17 +233,25 @@ Wiring rules:
   and the incoming transition can render over the outgoing scene. (Abutting
   blocks with no overlap, all on track-index 1, is the older js-king pattern —
   standardize on the overlap so transitions always have something to cross over.)
-- **The seam must not show two legible text layers at once.** Both scenes *are*
-  mounted during the 0.5s overlap — if each just opacity-crossfades its full
+- **The seam must not show any element from one scene rendered solid over the
+  other.** Both scenes *are* mounted during the 0.5s overlap, so the failure has
+  two shapes. **(1) Text-on-text:** if each scene just opacity-crossfades its full
   layout, the outgoing scene's text and the incoming scene's text render on top of
-  each other and collide (the scene-2→3 "how / infrastructure" mush). Avoid this:
-  the transition is a **cover/occlude**, not a dual text dissolve. Either (a) the
-  outgoing scene fades/clears its *foreground text* out across the overlap before
-  the incoming text becomes legible, or (b) the incoming scene enters with an
-  opaque-enough wipe/slide/panel that occludes the outgoing one. Two readable text
-  blocks may never share the frame at a seam. Verify by snapshotting *at the seam*
-  (`prev_end − 0.25`) in the visual-QA loop. Mechanics: `visual-language.md` §3
-  (reflow + slide), `verify-and-preview.md` (the seam-collision check).
+  each other and collide (the scene-2→3 "how / infrastructure" mush). **(2) Static
+  graphic bleed:** an incoming element with *no entrance* (no `opacity:0`+fade, not
+  covered by the root crossfade) is drawn at full opacity from scene-local t=0,
+  which is 0.5s *inside* the overlap — so it sits solid on top of the still-present
+  previous scene (the scene-20→21 memory-gauge bleed). This is the **Entrance
+  invariant** above; a graphic, label, panel, or shape bleeds the same way text
+  does. Avoid both: the transition is a **cover/occlude**, not a dual dissolve, and
+  every element obeys the entrance invariant. Either (a) the outgoing scene
+  fades/clears its *foreground* out across the overlap before the incoming content
+  becomes legible, or (b) the incoming scene enters with an opaque-enough
+  wipe/slide/panel that occludes the outgoing one. No element from either scene may
+  share the seam frame at full strength with the other. Verify by snapshotting *at
+  the seam* (`prev_end − 0.25`) in the visual-QA loop. Mechanics:
+  `visual-language.md` §3 (reflow + slide), `verify-and-preview.md` (the seam-bleed
+  check).
 - `data-duration` runs to the next chunk's first word, so there's never a visual
   gap where no scene is mounted.
 - Keep `#root` `data-duration` at the full voiceover length from the start, so

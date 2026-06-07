@@ -50,26 +50,26 @@ A `photo`-class referent (e.g. `data-asset-referent="data center"`) also gets a
 the routing section).
 
 A **`background`** box is the full-frame backdrop case — a real scene you can't draw (a wooden
-desk, a blueprint render, a skyscraper sky), usually one you drew from a `../../vfxInspo/`
-reference frame. It is **always human-supply** (never `image-sourcer` — see the carve-out below):
+desk, a blueprint render, a skyscraper sky), usually one you drew from a `../../motionGraphicsInspo/`
+reference. It is **always human-supply** (never `image-sourcer` — see the carve-out below):
 
 ```html
 <div class="asset-box"
      data-asset="wooden-desk-backdrop"
      data-asset-class="background"              <!-- full-frame backdrop; human-supply only -->
      data-asset-kind="image"
-     data-asset-desc="Warm wooden desk seen at a perspective tilt, soft vignette — like
-                      vfxInspo/printed-article-on-wooden-desk-perspective-tilt.png, but
-                      no article on it (our article is a separate foreground element)"
+     data-asset-desc="Warm wooden desk seen at a perspective tilt, soft vignette — riffs on
+                      the motionGraphicsInspo wooden-desk reference, but no article on it
+                      (our article is a separate foreground element)"
      data-asset-scope="scene"                   <!-- scene | substrate (does it persist?) -->
      data-asset-placement="background"
      style="position:absolute; inset:0; z-index:0; /* sits behind the scene's foreground */">
 </div>
 ```
 
-- **`data-asset-desc`** on a background box must name the **vfxInspo frame it riffs on and how
-  it diverges** — that is the "put in the box what you like and I'll get it" handoff. Same family,
-  not the same shot.
+- **`data-asset-desc`** on a background box must name the **motionGraphicsInspo reference it
+  riffs on and how it diverges** — that is the "put in the box what you like and I'll get it"
+  handoff. Same family, not the same shot.
 - **`data-asset-scope`** — `scene` (this beat only → a scene-local full-frame box) or `substrate`
   (persists across scenes / sets the video's mood → promote it to the substrate layer, one request,
   see `composition-structure.md`). Decide by whether the backdrop should outlive this scene.
@@ -190,8 +190,8 @@ box and emit **one table** to the user — their single to-do:
 | id | kind | scene | description | emotion | treatment | placement | target path |
 |---|---|---|---|---|---|---|---|
 | surprised-celebrity | image | 01 | Surprised celeb facing left | surprised | cutout,grain,duotone | right-full | `assets/images/surprised-celebrity.png` |
-| wooden-desk-backdrop | image · **bg (scene)** | 03 | Wooden desk, perspective tilt — riffs on vfxInspo desk frame, no article on it | — | grain | background | `assets/backgrounds/wooden-desk-backdrop.png` |
-| blueprint-grid | image · **bg (substrate)** | — | Blueprint grid w/ ruler border — riffs on vfxInspo blueprint frame; persists, promote to substrate | — | — | background | `assets/backgrounds/blueprint-grid.png` |
+| wooden-desk-backdrop | image · **bg (scene)** | 03 | Wooden desk, perspective tilt — riffs on motionGraphicsInspo desk reference, no article on it | — | grain | background | `assets/backgrounds/wooden-desk-backdrop.png` |
+| blueprint-grid | image · **bg (substrate)** | — | Blueprint grid w/ ruler border — riffs on motionGraphicsInspo blueprint reference; persists, promote to substrate | — | — | background | `assets/backgrounds/blueprint-grid.png` |
 
 Surface it alongside the seek target ("Seek to 0.0s… and drop these N assets"). The user
 replies by placing files at the listed paths (project convention:
