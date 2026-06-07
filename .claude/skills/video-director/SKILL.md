@@ -61,12 +61,11 @@ the loop survives a fresh session.
 
 1. Resolve the video folder: an explicit path the user gave → the current
    working directory if it's a video folder → otherwise ask.
-2. Read `design.md` (the gate, once per session). In the same once-per-session
-   pass, read `../../vfxInspo/README.md` — the repo-root **inspiration index**, a
-   cheap text-only list with one technique note per reference frame. You consult
-   it while choosing scene archetypes (Step D). Its discipline: read the README's
-   notes, and open a PNG *only* when a note looks like a fit for a beat you're
-   about to author — never vision-parse the whole folder.
+2. Read `design.md` (the gate, once per session). You do **not** read the motion
+   reference index yourself — the `scene-design-decider` subagent reads the two-tier
+   `../../motionGraphicsInspo/README.md` per chunk (Step D) and returns a verdict, so
+   the index stays out of your context. Just keep that path on hand to pass into the
+   dispatch.
 3. Read `index.html` and enumerate the mounted **scene** hosts — the `<div>`s
    with `data-composition-src="compositions/..."` on a scene track. For each,
    note `data-composition-id`, `data-start`, `data-duration`, `data-track-index`.
@@ -111,54 +110,52 @@ of merely synced, and it matters more as runtime grows.
 ### D. Decide the block's design
 
 **Let the sentence decide how the scene looks — this is the highest-leverage
-choice you make.** The single biggest failure mode is every scene looking the same:
-muted text on a centered card, beat after beat. A concession, a power claim, a
-pivot question, a statistic, a quote each want a *different* composition. Before
-you author, pick a layout **archetype that fits this beat's meaning** (side-cutout
-+ image, full-bleed kinetic type, split/contrast, diagram/build, stat hero, quote
-card, checklist, code reveal — the menu lives in `reference/visual-language.md`),
-and **never reuse the previous scene's archetype back-to-back**. Then ask the imagery question as a **default, not a coin-flip**. Text can almost
-always carry a beat — so don't ask whether it *can*; read what the sentence is
-*doing*. These signals are the tell: a **named emotion** (surprise, grief, smugness,
-panic); **irony, comedy, or a punchline** (the payoff turns on a twist — "the
-language nobody wanted now runs the world"); a **human reaction**; a **named "who"**
-(a specific person, creator, company, character); or a **concrete thing you'd
-recognise on sight** (a real object, place, person, product, or logo — not a concept
-you'd draw). On any of these the default is to **declare an asset box**
-(`reference/assets-and-media.md`) and reach for it — don't wait to be talked into it.
-Set the box's `data-asset-class` so `image-sourcer` routes to the right source: `reaction`
-(emotion/punchline → Pinterest), or for a named recognisable thing `logo`/`glyph` (→ Iconify,
-saved as a static SVG) or `photo` (→ Wikimedia, licensed). A named thing earns the box only
-when it *is* the beat's subject and is recognisable on sight — not every noun (`visual-language.md` §2).
-The explainers people actually binge lean on exactly this (a laughing cutout landing
-an ironic payoff, a real face on the "who"), and that small reach is what keeps a
-viewer from clicking away. Pure text on a signal beat is the **exception you
-justify** — the line is genuinely abstract, or a code/diagram/stat says it better —
-not just "text can carry it." Text-only stays right for genuinely typographic beats
-(a quiet word landing in silence, a pure claim, a definition), where forcing a face
-would only cheapen it. The test is the signal in the sentence, **not the scene
-number, and never a quota**. The background is not a neutral grid — it carries a rationed
-subject tone (`visual-language.md` §1).
+choice in the skill, and you delegate it.** The single biggest failure mode is every
+scene looking the same (muted text on a centered card, beat after beat) with the motion
+library never opened. The design decision for each chunk — its **archetype**, whether it
+earns a **real image** (and which kind), which **motion reference** to adapt cadence from,
+and the **font role** for each text piece — is made by the **`scene-design-decider`
+subagent**. A dedicated decider, fed the previous scenes as images, picks a *fitted,
+distinct* archetype and makes a *recorded* call on the motion library — the consultation
+the director, under context pressure, tends to skip. You assemble its inputs, dispatch it,
+then author from its verdict.
 
-**Glance at the vfxInspo index while you pick the archetype.** You loaded
-`../../vfxInspo/README.md` once this session (Step A); it holds reference frames for
-exactly these archetypes (kinetic type on a sky, an article on a wooden desk, a blueprint
-connector, monochrome diagram cards, a research collage, a marker-sweep highlight, …). If
-a frame's technique fits this beat's meaning, **draw on it as inspiration — adapt it, never
-reproduce it.** Same rule as a prior cut of the video: *design every block original; copy
-the reasoning, not the scene.* A vfxInspo frame can look like the same family — it must not
-be the same thing. This is **not a quota**: most chunks won't cite a frame, and you reach
-for one only when it genuinely fits, the same way you reach for an asset box. Where a frame's
-look needs a real background you can't draw, that's a `background` box (below + Step E).
+**Assemble the payload** (all cheap, mostly already in hand):
 
-Before you author, **emit a per-chunk verdict block** — one per chunk in this pass, the same auditable discipline as Step B, where you quote the chunk text back so the pass can be checked. Quoting the text proves *which* line you're animating; the verdict proves *how you read it*, so the imagery decision is on the record instead of happening silently inside the authoring. The block is exactly:
+- the **chunk text** (Step B) and **±3 sentences** of surrounding `script.md` context;
+- the **prior 1-2 scenes** — their `compositions/<NN>-*.html` source path(s) (from the
+  Step A.3 host enumeration) **and** rendered snapshot PNG path(s): reuse the most recent
+  Step G QA snapshot of those scenes if present, else take one quick headless
+  `npx hyperframes snapshot` at each prior scene's midpoint (it doesn't touch the preview);
+- the **last 2-3 archetypes** used (for the anti-repeat rule);
+- the **`design.md` path** (palette/accent/font roles) and the repo-root
+  **`../../motionGraphicsInspo/README.md` path**.
 
-  Chunk: "<first few words…>"
-  Imagery: box: class=<logo|glyph|photo|reaction> referent="<thing>" [emotion="<e>"] [treatment="<…>"]
-           — OR —  text-only — <named candidate> weighed, rejected because <principled reason>
-  Type-role: <role→font assignments for this chunk; verbatim human quote → human-voice font, never system font>
+**Dispatch** the `scene-design-decider` subagent (the Agent tool,
+`subagent_type: scene-design-decider`, `model: sonnet`) with that payload. It reads the
+two-tier motion index itself, weighs the prior scenes' images, and returns a **structured
+verdict** — the per-chunk record that Step G checks:
 
-The iron rule: a `text-only` verdict must **name the candidate it weighed and why it loses** — literal/cheesy, not the beat's subject, an abstract with no settled mark, or already carried by a neighbour. A bare "just typographic" with no named, rejected candidate is no longer a reachable outcome; declining is a *named* rejection, not a shrug. This keeps `text-only` first-class — it stays the right call for genuinely typographic beats — but only as an auditable decision, never a quota and never a default you fall into by inertia. Fold the type-role line in while the chunk is in front of you: route a verbatim human quote (or a hand-drawn annotation) to the design's reserved human-voice font, and never let that font carry system narration. Worked examples for both sets — the §2 imagery gate and the font roles — are in `reference/decision-examples.md`; copy the reasoning, not the scenes.
+  CHUNK: "<first words…>"
+  ARCHETYPE: <archetype> — <why it fits> | anti-repeat: <how it differs from the prior scene>
+  IMAGERY: box: class=<logo|glyph|photo|reaction|background> referent="<thing>" [emotion=…]
+           — OR —  text-only — <named candidate> rejected because <reason>
+  MOTION-REF: <slug> — adapting <cadence>   — OR —   none — <nearest considered / "no fit" / "index empty">
+  TYPE-ROLE: <role→font; verbatim quote → human-voice font, never system font>
+  NOTES: <optional authoring guidance>
+
+**Author from the verdict.** It is the design spec for this block: build the named
+**archetype**; declare the **asset box** with the verdict's `data-asset-class` (`reaction`
+→ Pinterest, `logo`/`glyph` → Iconify SVG, `photo` → Wikimedia; `background` → human-supply
+shopping list) and `referent`, or commit to **text-only**; **adapt the cited motion-ref's
+cadence** (open its `<slug>-strip.png` yourself if you need the staging — the verdict names
+the slug), reading it as the same *family*, never reproducing it; and route each text role
+to the verdict's **font** (a verbatim quote → the human-voice font, never system
+narration). If the verdict is genuinely wrong for the beat, you may **overrule it — but say
+so explicitly in your authoring note**, so the override is on the record too; never
+silently diverge. The full policy the decider applies (the §2 imagery gate, the archetype
+menu, the motion-adapt rule, the type roles) lives in `reference/visual-language.md` and
+`reference/decision-examples.md` — read them when you need to sanity-check a verdict.
 
 Then check these sources for the pieces, in order, and author:
 
@@ -210,11 +207,12 @@ Defer the mechanics to the `hyperframes` skill; this is what's specific here:
   contract (attributes, the shopping list, swapping in the file, `image-prep`
   treatment) is in `reference/assets-and-media.md`.
 - **Real background → labeled `background` box (human-supply).** When a beat's look —
-  often one you drew from a vfxInspo frame — wants a real backdrop you can't draw (a
-  wooden desk, a blueprint render, a skyscraper sky), drop a **full-frame `background`
-  box** (`data-asset-class="background"`, `data-asset-placement="background"`) whose
-  `data-asset-desc` says exactly what you want *and names the vfxInspo frame it riffs on
-  plus how it diverges* — that's "put in the box what you like and I'll get it." Animate
+  often one you drew from a motionGraphicsInspo reference — wants a real backdrop you
+  can't draw (a wooden desk, a blueprint render, a skyscraper sky), drop a **full-frame
+  `background` box** (`data-asset-class="background"`, `data-asset-placement="background"`)
+  whose `data-asset-desc` says exactly what you want *and names the motionGraphicsInspo
+  reference it riffs on plus how it diverges* — that's "put in the box what you like and
+  I'll get it." Animate
   the box as the bg will move (slow drift/parallax). **Decide its scope:** a backdrop that
   should persist across scenes / set the whole video's mood is requested **as / into the
   substrate** (one request, not per-scene — `reference/composition-structure.md`); one
@@ -229,6 +227,13 @@ Defer the mechanics to the `hyperframes` skill; this is what's specific here:
   if this scene's foreground text must clear before the *next* scene's text comes
   up at the seam, fading that foreground out across the trailing overlap is part of
   the transition, not a forbidden exit (see Step F).
+- **Entrance invariant — every appearing element must enter; nothing renders solid
+  at scene-local t=0.** Scene-local t=0 is 0.5s *inside* the overlap with the
+  previous scene, so any element opaque at t=0 bleeds onto it (the scene-21
+  memory-gauge bug). Satisfy it either with the scene-root crossfade (fades the
+  whole scene in) **or** a per-element `opacity:0` + `fromTo`. A tween that animates
+  only `height`/`x`/`color` is not an entrance. Details + the seam consequence:
+  `reference/composition-structure.md` ("Notes that matter" + wiring rules).
 - **Motion language** beyond entrance: edge slide-ins, layout reflow (new elements
   push existing ones aside rather than stacking on them), and a constant
   low-amplitude idle (tilt/drift) so nothing sits perfectly still.
@@ -280,14 +285,15 @@ ever sees it. Per pass:
    this loop cheap. Pass the subagent the detailed rubric from
    `reference/verify-and-preview.md` (legibility, palette/type per `design.md`,
    anchored emphasis landing on the word, contrast, reads-as-a-diagram, no chrome,
-   **seam collision**, **per-scene distinctness**, **imagery fit**, **type-role
-   fidelity**, **liveliness**).
+   **seam bleed (text or graphic)**, **per-scene distinctness**, **imagery fit**,
+   **type-role fidelity**, **liveliness**).
    It returns `{frame, verdict, flags[]}` per image. **Claude does the looking — no
    Gemini, no `--describe`.**
 4. **If anything is flagged → fix the block (back to Step E) and re-run 1-3 on
    this scene only. Loop until the frames look right.** Small text, weak contrast,
    off-anchor emphasis, overflow, a scene that looks like its neighbour, a seam
-   that mushes two text layers — each one is a regenerate, not a shrug.
+   where one scene's text or a static no-entrance graphic bleeds over the other —
+   each one is a regenerate, not a shrug.
 5. Only once the scene passes: surface the seek target so the user can confirm
    in their own preview — "Seek to **{chunk_start}s** to verify scene NN." If the
    pass left any **asset boxes** — including any **`background` boxes** — surface the
@@ -296,11 +302,14 @@ ever sees it. Per pass:
    flagged as such in the list (with the substrate-vs-scene-local hint) because the
    user sources them during their manual review pass.
 
-**Verdict check.** Confirm every signal beat in this pass resolved to either a
-declared asset box or a written, candidate-named `text-only` justification — i.e. the
-per-chunk verdict (Step D) was actually emitted, not skipped — which is the auditable
-checkpoint that the imagery decision was made on the record rather than silently
-defaulting to bare text.
+**Verdict check.** Confirm each chunk in this pass has a `scene-design-decider` verdict
+(Step D) on the record, and that the verdict carries its **`MOTION-REF:` line** — a cited
+slug-with-cadence or a named `none` (nearest-considered / no-fit / index-empty) — alongside
+a resolved **`IMAGERY:` line** (a declared asset box or a candidate-named `text-only`). The
+`MOTION-REF:` line *existing* (not its content) is the checkpoint that converts a silently
+skipped motion-library consultation into a logged decision; the `IMAGERY:` line is the same
+checkpoint for the image-vs-text call. If you overruled the verdict while authoring, that
+note is part of the record too.
 
 **Never start, restart, or kill the preview server.** The user always has
 `npx hyperframes preview` running in another window and reloads it themselves.
@@ -420,7 +429,8 @@ never author yourself.
 | Composition mechanics: data-attrs, `class="clip"`, `window.__timelines`, layout-before-animation, transition/entrance/exit rules, determinism | `hyperframes` | Tell it *which chunk*, *what design*, *which word timestamps* to key to |
 | CLI loop: `init` / `lint` / `inspect` / `snapshot` / `preview` / `render` | `hyperframes-cli` | Decide *when* (lint+inspect+snapshot every pass, blocking); run the snapshot→Sonnet-review→regenerate loop; never touch preview; surface a seek target |
 | Registry: `catalog`, `add`, snippet-merge, `hyperframes.json` | `hyperframes-registry` | Check it before authoring; hand off the install/wire |
-| Look inspiration: the repo-root `vfxInspo/` reference frames (a *visual-technique* source, distinct from the registry/design-catalog *code-reuse* sources) | `vfxInspo/README.md` (its own index) | Load the README once/session (Step A); consult it picking each archetype (Step D); **adapt a frame, never reproduce it**; non-quota |
+| **Scene design decision**: per-chunk archetype + imagery + motion-ref + type-role | **`scene-design-decider` subagent** | Assemble the payload (chunk + ±3 sentences, prior 1-2 scenes as source **+ images**, last archetypes, `design.md` + motion-index paths); dispatch per chunk (Step D, `model: sonnet`); author from the returned structured verdict; overrule it only with an on-record note. Its verdict is the audit log Step G checks |
+| Motion inspiration: the repo-root `motionGraphicsInspo/` **two-tier index** — a Quick-index scan table over `Motion:`-note entries + strips (a *motion-technique* source, distinct from the registry/design-catalog *code-reuse* sources) | `scene-design-decider` (reads it) over `motionGraphicsInspo/README.md` | You **never read the index yourself** — the decider scans the Quick index, drills into a fitting entry, and opens its strip per chunk; **adapt the cadence, never reproduce the scene**; non-quota. Add references via the `motion-inspo-add` skill |
 | Animation adapters (gsap / three / lottie / css / waapi / animejs) | those skills | Pick the lane per beat; don't re-document them |
 | Image sourcing: find + fetch a real asset for a box, routed by `data-asset-class` — `reaction`→Pinterest, `logo`/`glyph`→Iconify (static SVG), `photo`→Wikimedia (licensed), web as catch-all — then treat it | `image-sourcer` agent | Declare the box with its `class`/`referent`, then dispatch `image-sourcer` (`model: sonnet`) with the `data-asset-*` spec + `video_dir`; weigh its confidence, swap the pick in (or leave the box standing + shopping-list on failure), surface any required attribution (`reference/assets-and-media.md`). **`background`-class boxes are excluded — they're human-supply via the shopping list, never sent to `image-sourcer`.** |
 | Image treatment: background removal + VFX presets (grain/duotone/halftone/vintage) | `tools/image-prep` | Declare asset boxes + the shopping list; the `image-sourcer` agent runs image-prep for you, or run it directly on a human-supplied raster for a consistent cutout look (`reference/assets-and-media.md`) |
@@ -439,14 +449,15 @@ that used to live in the root `CLAUDE.md`:
   planning aid, and the seo/research.json note.
 - `reference/composition-structure.md` — multi-block default, the
   catalog-then-local decision, the **full-HTML-doc block template** and the
-  **index.html host-wiring template** (incl. the seam-collision transition rule),
-  and the parametrized-local-block pattern.
+  **index.html host-wiring template** (incl. the seam-bleed transition rule and the
+  entrance invariant), and the parametrized-local-block pattern.
 - `reference/visual-language.md` — the look layer: the background's rationed
   **subject tone** (no logo) and when a beat earns a **real background image**
   beyond the tinted substrate, **per-scene archetype variety** (so scenes don't all
-  look alike) with the archetype menu (and the `../../vfxInspo/` reference frames
+  look alike) with the archetype menu (and the `../../motionGraphicsInspo/` references
   that illustrate them), and the **motion language** (slide-ins, layout reflow,
-  constant subtle tilt/drift). Read before designing any block.
+  constant subtle tilt/drift, and lifting concrete cadence from a reference's `Motion:`
+  note). Read before designing any block.
 - `reference/assets-and-media.md` — using **real images/video/backgrounds via
   labeled boxes** the user fills: the `data-asset` placeholder contract (incl. the
   full-frame **`background`** class — human-supply, never auto-sourced), the
@@ -457,8 +468,8 @@ that used to live in the root `CLAUDE.md`:
   reaction YES vs. a candidate-named `text-only`) and Set B (which font carries
   each role — verbatim quote → human-voice font, etc.). Copy the reasoning.
 - `reference/verify-and-preview.md` — the lint → inspect → snapshot → Sonnet
-  PNG review → regenerate loop, the visual-QA rubric (incl. seam-collision,
-  distinctness, imagery, liveliness; snapshot the seam), and the
+  PNG review → regenerate loop, the visual-QA rubric (incl. seam-bleed (text or
+  graphic), distinctness, imagery, liveliness; snapshot the seam), and the
   never-touch-preview + surface-a-seek-target rules.
 - `reference/sfx-cues-and-timing.md` — the SFX reading layer for **Step H**: the
   independence principle (each cue element-bound, no cross-cue rules), the

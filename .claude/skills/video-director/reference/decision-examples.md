@@ -1,12 +1,18 @@
 # Decision examples — the per-chunk imagery & type-role verdict bank
 
-This is the worked-example bank for Step D's per-chunk verdict. The point is not to memorise these scenes — it is to copy the *reasoning*: for each beat you walk the three-part AND gate from `visual-language.md` §2, you name what you'd put on screen (or name the candidate you weighed and rejected), and you settle which font carries each role. The iron rule lives in every example: **declining imagery names the candidate it rejected** — a `text-only` verdict with no named candidate is the silent skip this whole pass exists to kill. The examples are deliberately on *other* topics (CDNs, central banking, hyperscale data centres, lighthouse keeping) so the instinct generalises to whatever sentence is in front of you, not the one video you happen to be authoring.
+This is the worked-example bank for the **imagery & type-role** portion of the per-chunk
+verdict — the reasoning the **`scene-design-decider` subagent** applies (Step D), and that
+the director re-reads to sanity-check a returned verdict. The point is not to memorise these
+scenes — it is to copy the *reasoning*: for each beat the decider walks the three-part AND gate from `visual-language.md` §2, names what to put on screen (or names the candidate weighed and rejected), and settles which font carries each role. The iron rule lives in every example: **declining imagery names the candidate it rejected** — a `text-only` verdict with no named candidate is the silent skip this whole pass exists to kill. The examples are deliberately on *other* topics (CDNs, central banking, hyperscale data centres, lighthouse keeping) so the instinct generalises to whatever sentence is in front of you, not the one video you happen to be authoring.
 
 ## The per-chunk verdict
 
-Emit one block per chunk, **before** you author it — the same auditable discipline as Step B, where you quote the chunk text back so the pass can be checked. Every block ends in exactly this shape:
+The `scene-design-decider` returns one verdict per chunk **before** the director authors —
+the same auditable discipline as Step B (quote the chunk text back so the pass can be
+checked). The full verdict (SKILL.md Step D) also carries an `ARCHETYPE:` line and the
+auditable `MOTION-REF:` line; this bank focuses on the two lines below — the imagery call
+and the font roles:
 
-  Chunk: "<first few words…>"
   Imagery: box: class=<logo|glyph|photo|reaction> referent="<thing>" [emotion="<e>"] [treatment="<…>"]
            — OR —  text-only — <named candidate> weighed, rejected because <principled reason>
   Type-role: <role→font assignments for this chunk; verbatim human quote → human-voice font, never system font>
@@ -70,6 +76,17 @@ In a video about how deep-sea cargo gets to shore, two consecutive sentences lan
   Chunk: "Miss the tide there and a ship waits a full day…"
   Imagery: text-only — a second Suez Canal photo (class=photo, referent="Suez Canal") weighed, rejected because this beat's subject is the day-long wait, not the canal; gate part (1) fails (setting, not subject) and the adjacent beat already carries the canal, so re-stamping it would be duplicate noise.
   Type-role: "a full day" emphasis phrase → bold weight of the body display font; rest → muted body font.
+
+## Set A2 — a Motion-metrics tiebreak (Scope C) when two entries share the archetype
+
+One worked verdict on the `MOTION-REF:` line. The point is the secondary ranking: meaning and archetype stay primary, but when two index entries plausibly fit the same beat, the objective `Motion-metrics:` line breaks the tie toward the one whose measured character matches what the beat wants.
+
+### Two kinetic-type entries fit — measured energy/cadence/spatial breaks the tie
+
+A video on how a build pipeline fails fast lands on: *"One bad commit, and the whole pipeline slams to a halt — red across the board, instantly."* The beat is a single hard, abrupt stop: punchy, punctuated, and tightly localized on the failing node, not a sweeping full-frame drift. The chosen archetype is `kinetic-type`, and the Quick index scan turns up two entries that both plausibly fit it — `headline-snap-in` and `manifesto-drift`. Both share the archetype, so this is the genuine tie Scope C is for: drill in and read their `Motion-metrics:` lines. `headline-snap-in` carries `energy=punchy · cadence=punctuated · spatial=localized` (src=scan); `manifesto-drift` carries `energy=calm · cadence=continuous · spatial=full-frame`. The beat wants the slam — punchy/punctuated/localized — so `headline-snap-in` wins the tiebreak on measured character, even though both names read "kinetic." Note the metric, not the human Tag, decided it: `manifesto-drift`'s human `energy=` Tag reads "assertive," but its *measured* energy is calm, and on motion character the measured value is what we trust. Had only one entry fit, meaning alone would have settled it and the metrics line would be a footnote; here it earns its keep. (If a candidate had carried no `Motion-metrics:` line at all — a clip-mode entry — it would not be penalized; we'd fall back to its human energy/mood Tags and weigh it on those.)
+
+  Chunk: "One bad commit, and the whole pipeline slams to a halt…"
+  Motion-ref: headline-snap-in — adapting the hard single-overshoot snap-and-settle on the failing node (no stagger drift); tiebreak vs. manifesto-drift resolved on Motion-metrics — headline-snap-in measures energy=punchy · cadence=punctuated · spatial=localized, which matches this beat's abrupt localized slam, where manifesto-drift measures energy=calm · cadence=continuous · spatial=full-frame
 
 ## Set B — which font carries each role?
 
