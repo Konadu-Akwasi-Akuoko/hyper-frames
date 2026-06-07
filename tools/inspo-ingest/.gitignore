@@ -1,0 +1,8 @@
+# Local validation prototypes + flow-heatmap probes (the mg_probe_v* scripts the
+# motion.py math was ported from, kept on disk as a provenance record). Not part of
+# the shipped tool, so excluded from the commit.
+scratch/
+
+# Scan/clip working output if ever run with --out into the tool dir.
+*.mp4
+*-scan.json
