@@ -165,6 +165,24 @@ Alternate long explanatory sentences with 2-4 word fragments to re-grab attentio
 ### 3.7 The punchline metronome (for personality channels)
 Append a one-clause sardonic aside to factual sentences every ~10-15s so dense technical material stays rewarding ("GPU instances if you want to train an AI model or burn money quickly"). Optional; only if the channel has a comic voice.
 
+### 3.8 Measured pacing bands (pacingInspo, n=17 videos)
+
+§3.0's "≤45–60s on one idea" is a *narrative* reset ceiling. The figures below measure the finer-grained **visual cut cadence** — how often the picture changes — across 17 per-video studies in the repo-root `pacingInspo/` library (scene-change timeline × narration alignment). They don't replace §3.0; they show how each register *looks* operating under it. Four registers separate cleanly (full per-video numbers + contact sheets are in the library — read the `README.md` Quick index, never a raw `<slug>-pace.json`):
+
+| Register | cuts/min | median scene | longest hold | cuts ride… | exemplars (slugs) |
+|---|---|---|---|---|---|
+| **Chaptered diagram / system-design explainer** | 0.9–2.6 | 9–15s | **105–480s** (one *evolving* canvas) | section turns (sentence-align 0.30–0.68) | `bytebytego-7-system-design-concepts`, `bytebytego-chat-system`, `bytebytego-transformers-stepbystep` |
+| **Brisk sectioned / tier-list talking-head** | 6.5–10.5 | 3.4–5.9s | 17–41s | the item swap, not grammar (align 0.04–0.06) | `latticx-cs-advice-tier-list`, `awesome-real-problem` |
+| **Fast video essay / listicle B-roll churn** | 17–42 | 1.1–3.2s | 6–30s | the breath, mid-clause (align 0.08–0.49, med 0.19) | `fireship-github-outage-news`, `codehead-top-10-ides`, `swagprof-every-language-7min`, `technetium-25-cybersec-terms`, `codingsloth-get-rich-essay` (+4) |
+| **Vertical Short (<60s)** | 26–39 | 0.7–1.5s | 3–14s | the word (align ≤0.08) | `cleo-deep-sea-unknown-species`, `cleo-nuclear-space-ship`, `cleo-how-old-diamonds-are` |
+
+Two findings hold across all 17, regardless of register:
+
+- **Cuts ride the narration, not the silence.** `pct_cuts_in_pause` is ≈0.00 in every video (max 0.05) — the visual changes *while the voice runs*, never waiting for a gap. Budget cuts to land on the next idea, not in a pause.
+- **A faster register is *less* sentence-aligned, not faster-spoken.** Slow explainers cut at section/sentence turns (align 0.30–0.68); churn essays and Shorts cut mid-clause on the breath (align ≤0.19). Speed is bought by *decoupling* the cut from grammar — `words_per_s` only climbs ~2.4 → ~4.4 across the whole range while cuts/min climbs 0.9 → 42.
+
+The R1 long holds (one canvas held 100s+) are **not** §3.0 violations: the substrate is *evolving in place* (a diagram mutating, markers walking a timeline), and that internal motion is itself the reset — §3.0's "3–4 internal resets" exception rendered visually instead of narratively. (R2 is the thinnest band, n=2; treat its numbers as provisional until more sectioned talking-heads land.)
+
 ### Fixing 4:49 specifically
 The dragging subtopic almost certainly violated 3.0 (one frame > 90s), 3.1 (no live open loop), and 3.4 (not chunked). Rebuild it as: a sub-question planted ("but there's one part of this nobody explains") -> 2-3 numbered beats each on a new visual frame, each ending on a "but" that motivates the next -> a payoff that closes the sub-question and hands off to the next major section.
 
