@@ -1,0 +1,788 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 38.961,
+    "longest_hold_s": 3.166,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.0769,
+    "scene_count": 27,
+    "scene_duration_s": {
+      "max": 3.166,
+      "median": 1.475,
+      "min": 0.042,
+      "p25": 0.854,
+      "p75": 1.917
+    },
+    "soft_transition_count": 1,
+    "words_per_s_mean": 4.4531
+  },
+  "proxy": {
+    "duration_s": 38.5,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 0.042,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "NASA",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 23.8095
+      },
+      "window": {
+        "end_s": 0.042,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0948
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.398,
+        "leading_silence_s": 0.398,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is trying to",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 0.917,
+        "start_s": 0.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7025
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.003,
+        "leading_silence_s": 0.003,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "split atoms",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 1.917,
+        "start_s": 0.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.003,
+        "leading_silence_s": 0.003,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "in space to",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.6014
+      },
+      "window": {
+        "end_s": 2.75,
+        "start_s": 1.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4605
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 0.996,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.13,
+        "leading_silence_s": 0.13,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "power a ship. So right now, we",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.6667
+      },
+      "window": {
+        "end_s": 4.25,
+        "start_s": 2.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9822
+      },
+      "duration_s": 2.167,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.11,
+        "leading_silence_s": 0.11,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "mainly move spacecraft by burning fuel",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.7688
+      },
+      "window": {
+        "end_s": 6.417,
+        "start_s": 4.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1291
+      },
+      "duration_s": 0.375,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.023,
+        "leading_silence_s": 0.023,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and shooting",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 5.3333
+      },
+      "window": {
+        "end_s": 6.792,
+        "start_s": 6.417
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.694
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.168,
+        "leading_silence_s": 0.168,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "out the gas created in that chemical reaction.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 8.792,
+        "start_s": 6.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5702
+      },
+      "duration_s": 3.166,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 0.9469,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.008,
+        "leading_silence_s": 0.008,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But bringing all that fuel and the oxygen to burn it is really heavy.",
+        "trailing_silence_s": 0.168,
+        "word_count": 14,
+        "words_per_s": 4.422
+      },
+      "window": {
+        "end_s": 11.958,
+        "start_s": 8.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5568
+      },
+      "duration_s": 1.834,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 0.9771,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.042,
+        "leading_silence_s": 0.042,
+        "pause_before_cut_s": 0.21,
+        "sentence_aligned": true,
+        "text": "So they've tested more efficient engines that",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.8168
+      },
+      "window": {
+        "end_s": 13.792,
+        "start_s": 11.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4011
+      },
+      "duration_s": 1.791,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.008,
+        "leading_silence_s": 0.008,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "shoot out electrically charged gas, but",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.3501
+      },
+      "window": {
+        "end_s": 15.583,
+        "start_s": 13.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7906
+      },
+      "duration_s": 2.042,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.337,
+        "leading_silence_s": 0.337,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "those rely on solar panels, which",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.9383
+      },
+      "window": {
+        "end_s": 17.625,
+        "start_s": 15.583
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5861
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.135,
+        "leading_silence_s": 0.135,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "get less efficient",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 18.5,
+        "start_s": 17.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4139
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the further you travel",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.5714
+      },
+      "window": {
+        "end_s": 19.375,
+        "start_s": 18.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2665
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.145,
+        "leading_silence_s": 0.145,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "from the sun.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.4978
+      },
+      "window": {
+        "end_s": 20.042,
+        "start_s": 19.375
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2651
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.038,
+        "leading_silence_s": 0.038,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So NASA wants to power these engines by",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.4291
+      },
+      "window": {
+        "end_s": 22.375,
+        "start_s": 20.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5203
+      },
+      "duration_s": 1.792,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.105,
+        "leading_silence_s": 0.105,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "doing nuclear fission in",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.2321
+      },
+      "window": {
+        "end_s": 24.167,
+        "start_s": 22.375
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1337
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "space.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.2005
+      },
+      "window": {
+        "end_s": 25.0,
+        "start_s": 24.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9844
+      },
+      "duration_s": 1.917,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Same thing we do in nuclear power plants on Earth.",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 5.2165
+      },
+      "window": {
+        "end_s": 26.917,
+        "start_s": 25.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.125,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.003,
+        "leading_silence_s": 0.003,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Nuclear energy creates 10 to 100 times more power than solar,",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.52
+      },
+      "window": {
+        "end_s": 30.042,
+        "start_s": 26.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4974
+      },
+      "duration_s": 0.583,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.038,
+        "leading_silence_s": 0.038,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "meaning we could",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 5.1458
+      },
+      "window": {
+        "end_s": 30.625,
+        "start_s": 30.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3084
+      },
+      "duration_s": 1.583,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.015,
+        "leading_silence_s": 0.015,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "get places faster and we could also travel",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 5.0537
+      },
+      "window": {
+        "end_s": 32.208,
+        "start_s": 30.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9122
+      },
+      "duration_s": 1.917,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.231,
+        "leading_silence_s": 0.231,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "farther if we're not constrained by the sun. So",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 4.6948
+      },
+      "window": {
+        "end_s": 34.125,
+        "start_s": 32.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6601
+      },
+      "duration_s": 1.475,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.155,
+        "leading_silence_s": 0.155,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "NASA's planning to test this",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.3898
+      },
+      "window": {
+        "end_s": 35.6,
+        "start_s": 34.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.304
+      },
+      "duration_s": 1.025,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "on an upcoming mission to",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.878
+      },
+      "window": {
+        "end_s": 36.625,
+        "start_s": 35.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7656
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 0.9443,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.055,
+        "leading_silence_s": 0.055,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Mars. To see it,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.4276
+      },
+      "window": {
+        "end_s": 37.792,
+        "start_s": 36.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4767
+      },
+      "duration_s": 0.708,
+      "files": {
+        "thumb": "cleo-nuclear-space-ship-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 0.9435,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.168,
+        "leading_silence_s": 0.168,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "subscribe.",
+        "trailing_silence_s": 0.04,
+        "word_count": 1,
+        "words_per_s": 1.4124
+      },
+      "window": {
+        "end_s": 38.5,
+        "start_s": 37.792
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "cleo-nuclear-space-ship",
+  "source_url": "https://www.youtube.com/watch?v=NV8jFpd4INk",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 144,
+    "word_level": true
+  },
+  "video": {
+    "channel": "Cleo Abram",
+    "duration_s": 39.0,
+    "title": "The First Nuclear Space Ship",
+    "upload_date": "20260528"
+  }
+}

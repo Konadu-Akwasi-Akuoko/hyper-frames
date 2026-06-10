@@ -104,6 +104,33 @@ substrate had a real reveal to hold back. If the topic has nothing to withhold �
 straightforward process, a single counterintuitive fact deepened in place — you write no
 loops, and the script is not worse for it. The substrate decides, not this file.
 
+## Where the dips actually bit — two measured failures
+
+Two retention failures from a real long-form video on this channel, named here so you can
+recognize the *shape* — not as slots to fill.
+
+**The first ten seconds decide half the audience.** The video lost ~50% of viewers by
+0:42. The opening ramped instead of hooking. This is the hook-and-payoff frame failing at
+the front: if the first line is a frame-setting sentence rather than the promise itself,
+the viewer never receives the front half of the contract and leaves before the body can
+pay anything off. The fix is Step 4b's cold open — the first line *is* the hook and the
+concrete image lands inside ~10 seconds. Every one of the 237 transcripts in the repo-root
+`docs/creator-patterns.md` opens this way; none opens on a greeting, a logo, or "in this
+video".
+
+**A subtopic with no reset drags the back half off a cliff.** The same video shed most of
+its remaining audience across a ~2.5-minute stretch where one idea ran with no reset move
+firing — no short declarative, no "But" pivot, no newly named concept. The reset moves
+(Move 1, Move 2, Move 6) are not only sentence-level rhythm; their *absence over a long
+span* is where attention leaks. The diagnostic — not a checklist: if you can read a stretch
+longer than about a minute and find no short declarative, no pivot, and no new named
+handle, the prose has gone slack there, and that is where viewers leave. Reset it with the
+moves you already have. `docs/creator-patterns.md` §3 shows how twelve channels keep no
+single idea un-reset for more than ~45–60 seconds.
+
+These are *evidence for the moves the other files already define.* They place nothing. If
+they tempt you to count seconds or label beats, re-read the section below.
+
 ## What this file is not
 
 - Not a new set of moves. Draft from `sentence-rhythm.md`.

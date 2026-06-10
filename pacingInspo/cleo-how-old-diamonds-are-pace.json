@@ -1,0 +1,734 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 26.422,
+    "longest_hold_s": 10.875,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.0,
+    "scene_count": 25,
+    "scene_duration_s": {
+      "max": 10.875,
+      "median": 1.375,
+      "min": 0.042,
+      "p25": 0.459,
+      "p75": 2.083
+    },
+    "soft_transition_count": 0,
+    "words_per_s_mean": 2.9968
+  },
+  "proxy": {
+    "duration_s": 54.5,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 0.042,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 0.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.042,
+        "pause_before_cut_s": 0.08,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.042,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 0.042,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1981
+      },
+      "duration_s": 1.375,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 0.9724,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.038,
+        "leading_silence_s": 0.038,
+        "pause_before_cut_s": 0.08,
+        "sentence_aligned": false,
+        "text": "Most people don't understand",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.9091
+      },
+      "window": {
+        "end_s": 1.417,
+        "start_s": 0.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4707
+      },
+      "duration_s": 0.458,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.183,
+        "leading_silence_s": 0.183,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "just",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1834
+      },
+      "window": {
+        "end_s": 1.875,
+        "start_s": 1.417
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1393
+      },
+      "duration_s": 0.417,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.045,
+        "leading_silence_s": 0.045,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "how old",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.7962
+      },
+      "window": {
+        "end_s": 2.292,
+        "start_s": 1.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1126
+      },
+      "duration_s": 0.458,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.458,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.458,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 2.75,
+        "start_s": 2.292
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0543
+      },
+      "duration_s": 0.458,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.05,
+        "leading_silence_s": 0.05,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "diamonds",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1834
+      },
+      "window": {
+        "end_s": 3.208,
+        "start_s": 2.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1113
+      },
+      "duration_s": 0.459,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.312,
+        "leading_silence_s": 0.312,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "actually",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1786
+      },
+      "window": {
+        "end_s": 3.667,
+        "start_s": 3.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0952
+      },
+      "duration_s": 0.416,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.252,
+        "leading_silence_s": 0.252,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "are.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.4038
+      },
+      "window": {
+        "end_s": 4.083,
+        "start_s": 3.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.561
+      },
+      "duration_s": 10.875,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.236,
+        "leading_silence_s": 0.236,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "If this is today and this is when the dinosaurs went extinct, then this is when pangia split apart and the Atlantic Ocean opened up. Then this is when the largest diamond ever found formed,",
+        "trailing_silence_s": 0.0,
+        "word_count": 35,
+        "words_per_s": 3.2184
+      },
+      "window": {
+        "end_s": 14.958,
+        "start_s": 4.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7227
+      },
+      "duration_s": 1.292,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.082,
+        "leading_silence_s": 0.082,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the famous cullinan diamond that",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.87
+      },
+      "window": {
+        "end_s": 16.25,
+        "start_s": 14.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4952
+      },
+      "duration_s": 1.333,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.23,
+        "leading_silence_s": 0.23,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "was split into pieces and",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.7509
+      },
+      "window": {
+        "end_s": 17.583,
+        "start_s": 16.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9335
+      },
+      "duration_s": 1.584,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.017,
+        "leading_silence_s": 0.017,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "incorporated into the crown jewels.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.1566
+      },
+      "window": {
+        "end_s": 19.167,
+        "start_s": 17.583
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8154
+      },
+      "duration_s": 1.291,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.112,
+        "leading_silence_s": 0.112,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But diamonds get way older.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.873
+      },
+      "window": {
+        "end_s": 20.458,
+        "start_s": 19.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5425
+      },
+      "duration_s": 6.5,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.182,
+        "leading_silence_s": 0.182,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Here's where our atmosphere first had oxygen in it. And here's where the famous Kimberly diamond formed. But they get older.",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.2308
+      },
+      "window": {
+        "end_s": 26.958,
+        "start_s": 20.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6662
+      },
+      "duration_s": 1.959,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.161,
+        "leading_silence_s": 0.161,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "We know this because when a diamond forms,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0837
+      },
+      "window": {
+        "end_s": 28.917,
+        "start_s": 26.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3585
+      },
+      "duration_s": 2.083,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.122,
+        "leading_silence_s": 0.122,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "tiny minerals are trapped inside,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.4004
+      },
+      "window": {
+        "end_s": 31.0,
+        "start_s": 28.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7187
+      },
+      "duration_s": 3.667,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and some of those have radioactive elements that act like a natural atomic clock.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.8178
+      },
+      "window": {
+        "end_s": 34.667,
+        "start_s": 31.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4507
+      },
+      "duration_s": 1.75,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Over billions of years, these elements",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 36.417,
+        "start_s": 34.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9967
+      },
+      "duration_s": 2.291,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.142,
+        "leading_silence_s": 0.142,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "decay into other elements at measurable rates.",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.0554
+      },
+      "window": {
+        "end_s": 38.708,
+        "start_s": 36.417
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3156
+      },
+      "duration_s": 2.834,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.171,
+        "leading_silence_s": 0.171,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So, by calculating the ratio between them, we can tell how old they are.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 4.94
+      },
+      "window": {
+        "end_s": 41.542,
+        "start_s": 38.708
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6542
+      },
+      "duration_s": 8.5,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.218,
+        "leading_silence_s": 0.218,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Here is where the oldest diamonds ever found form. That is 3/4 as old as the earth itself.",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 2.1176
+      },
+      "window": {
+        "end_s": 50.042,
+        "start_s": 41.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6847
+      },
+      "duration_s": 1.083,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.118,
+        "leading_silence_s": 0.118,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But how they actually",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.6934
+      },
+      "window": {
+        "end_s": 51.125,
+        "start_s": 50.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3583
+      },
+      "duration_s": 1.417,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.235,
+        "leading_silence_s": 0.235,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "form is crazier than",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.8229
+      },
+      "window": {
+        "end_s": 52.542,
+        "start_s": 51.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1907
+      },
+      "duration_s": 1.375,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.098,
+        "leading_silence_s": 0.098,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "most people think. So to see that",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 5.0909
+      },
+      "window": {
+        "end_s": 53.917,
+        "start_s": 52.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.617
+      },
+      "duration_s": 0.583,
+      "files": {
+        "thumb": "cleo-how-old-diamonds-are-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.162,
+        "leading_silence_s": 0.162,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "subscribe.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.7153
+      },
+      "window": {
+        "end_s": 54.5,
+        "start_s": 53.917
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "cleo-how-old-diamonds-are",
+  "source_url": "https://www.youtube.com/watch?v=B9vdFqX5qJc",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 174,
+    "word_level": true
+  },
+  "video": {
+    "channel": "Cleo Abram",
+    "duration_s": 55.0,
+    "title": "How Old Diamonds REALLY Are",
+    "upload_date": "20260608"
+  }
+}

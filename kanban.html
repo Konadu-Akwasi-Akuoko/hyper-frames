@@ -595,6 +595,12 @@
             .column:nth-child(10) {
                 animation-delay: 600ms;
             }
+            .column:nth-child(11) {
+                animation-delay: 660ms;
+            }
+            .column:nth-child(12) {
+                animation-delay: 720ms;
+            }
             .topbar {
                 animation: fade-up 400ms ease 0ms both;
             }
@@ -1199,9 +1205,11 @@
                         <option value="compose">Compose</option>
                         <option value="review">Review</option>
                         <option value="thumbnail">Thumbnail</option>
-                        <option value="translate">Translate</option>
+                        <option value="translate">Captions</option>
                         <option value="render">Render</option>
                         <option value="published">Published</option>
+                        <option value="publish-qa">Publish QA</option>
+                        <option value="shorts">Shorts</option>
                     </select>
                 </label>
                 <div class="dialog-actions">
@@ -1261,9 +1269,11 @@
                     { id: "compose", label: "Compose 🤖" },
                     { id: "review", label: "Review 👨" },
                     { id: "thumbnail", label: "Thumbnail 🤖" },
-                    { id: "translate", label: "Translate 🤖" },
+                    { id: "translate", label: "Captions 🤖" },
                     { id: "render", label: "Render 🤖" },
                     { id: "published", label: "Published 👨" },
+                    { id: "publish-qa", label: "Publish QA 🤖" },
+                    { id: "shorts", label: "Shorts 🤖" },
                 ];
 
                 // Ordered for the progress dots (left to right). 'idea' has no dot.
@@ -1276,9 +1286,11 @@
                     { id: "compose", label: "Compose" },
                     { id: "review", label: "Review" },
                     { id: "thumbnail", label: "Thumbnail" },
-                    { id: "translate", label: "Translate" },
+                    { id: "translate", label: "Captions" },
                     { id: "render", label: "Render" },
                     { id: "published", label: "Published" },
+                    { id: "publish-qa", label: "Publish QA" },
+                    { id: "shorts", label: "Shorts" },
                 ];
 
                 const DRIFT_SVG = `
@@ -1293,18 +1305,28 @@
                     return "dot";
                 }
 
-                // 'published' is derived from stage, not scanned — if the card
-                // is in the published column it is, by definition, published.
-                // 'translate' is likewise stage-derived: partial while the card
-                // sits in the Translate column (work in progress), present once
-                // the human has moved it past Translate. We deliberately do not
-                // probe `multi-lingual/srt/` — SRT files on disk are not a
-                // sufficient signal that the localization stage is done.
+                // 'published' / 'publish-qa' / 'shorts' are post-render
+                // milestones derived from stage, not scanned. They are
+                // cumulative: reaching a later stage implies the earlier
+                // milestones were met (a card in Shorts has, by definition,
+                // been published and QA'd).
+                // 'translate' (the Captions stage) is likewise stage-derived:
+                // partial while the card sits in the Captions column (Phase 1 /
+                // work in progress), present once the human has moved it past.
+                // We deliberately do not probe captions.srt / multi-lingual/srt/
+                // — SRT files on disk are not a sufficient signal that
+                // captioning (let alone the on-demand localization) is done.
+                const MILESTONE_ARTIFACTS = ["published", "publish-qa", "shorts"];
                 function effectiveArtifactStatus(card, artifactId) {
-                    if (artifactId === "published") {
-                        return card.stage === "published"
-                            ? "present"
-                            : "missing";
+                    if (MILESTONE_ARTIFACTS.includes(artifactId)) {
+                        const cardIdx = STAGES.findIndex(
+                            (s) => s.id === card.stage,
+                        );
+                        const artIdx = STAGES.findIndex(
+                            (s) => s.id === artifactId,
+                        );
+                        if (cardIdx < 0 || artIdx < 0) return "missing";
+                        return cardIdx >= artIdx ? "present" : "missing";
                     }
                     if (artifactId === "translate") {
                         const stageIdx = STAGES.findIndex(
@@ -1328,9 +1350,11 @@
                     compose: "index.html",
                     review: "compositions/sfx.html · music.html",
                     thumbnail: "thumbnail-{a,b,c}.png",
-                    translate: "multi-lingual/srt/",
+                    translate: "captions.srt · multi-lingual/srt/",
                     render: "renders/*.mp4",
                     published: "stage flag",
+                    "publish-qa": "youtube metadata (live)",
+                    shorts: "shorts/PLAN.md",
                 };
 
                 // Concrete file (or trailing-slash directory) to open per artifact.
@@ -1342,9 +1366,11 @@
                     compose: "index.html",
                     review: "compositions/sfx.html",
                     thumbnail: "",
-                    translate: "multi-lingual/srt/",
+                    translate: "captions.srt",
                     render: "renders/",
                     published: "",
+                    "publish-qa": "",
+                    shorts: "shorts/",
                 };
 
                 function findCard(id) {
@@ -1466,7 +1492,14 @@
 
                 function hasDriftFor(card, suggestedStage) {
                     if (!card || !suggestedStage) return false;
-                    if (card.stage === "published") return false;
+                    // The post-render milestones are human-moved, not scanned,
+                    // so a scan never "suggests" them — exempt them from drift.
+                    if (
+                        ["published", "publish-qa", "shorts"].includes(
+                            card.stage,
+                        )
+                    )
+                        return false;
                     if (suggestedStage === "idea") return false;
                     return suggestedStage !== card.stage;
                 }
@@ -2991,7 +3024,7 @@
                                 throw new Error("artifacts not updated");
                             if (after.cards[0].hasDrift !== true)
                                 throw new Error("drift not flagged");
-                            if (after.cards[0].suggestedLabel !== "Research")
+                            if (after.cards[0].suggestedLabel !== "Research 👨")
                                 throw new Error("label missing");
                         },
                     );

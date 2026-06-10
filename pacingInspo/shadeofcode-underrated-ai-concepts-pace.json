@@ -1,0 +1,2651 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 20.6453,
+    "longest_hold_s": 7.967,
+    "pct_cuts_in_pause": 0.0105,
+    "pct_sentence_aligned": 0.4211,
+    "scene_count": 96,
+    "scene_duration_s": {
+      "max": 7.967,
+      "median": 2.5835,
+      "min": 0.667,
+      "p25": 1.6338,
+      "p75": 3.4752
+    },
+    "soft_transition_count": 4,
+    "words_per_s_mean": 3.1379
+  },
+  "proxy": {
+    "duration_s": 264.4667,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 3.733,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Every AI video on the internet right now is covering the same three things: transformers,",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 4.0182
+      },
+      "window": {
+        "end_s": 3.733,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1025
+      },
+      "duration_s": 1.034,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.987,
+        "leading_silence_s": 0.987,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "attention",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 0.9671
+      },
+      "window": {
+        "end_s": 4.767,
+        "start_s": 3.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6218
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "mechanisms, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 5.967,
+        "start_s": 4.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5962
+      },
+      "duration_s": 2.966,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "three blue one brown explaining neural networks with a diagram",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.3715
+      },
+      "window": {
+        "end_s": 8.933,
+        "start_s": 5.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0863
+      },
+      "duration_s": 2.3,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.347,
+        "leading_silence_s": 0.347,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that looks like the missing part of your life.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.913
+      },
+      "window": {
+        "end_s": 11.233,
+        "start_s": 8.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4718
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And look, those things matter,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 12.733,
+        "start_s": 11.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.798
+      },
+      "duration_s": 3.5,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but there's an entire layer of AI concepts that seem like black magic because",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 16.233,
+        "start_s": 12.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9285
+      },
+      "duration_s": 3.467,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.207,
+        "leading_silence_s": 0.207,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "no one talks about them. Let's get started. First, calibration. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.1728
+      },
+      "window": {
+        "end_s": 19.7,
+        "start_s": 16.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3484
+      },
+      "duration_s": 3.133,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.42,
+        "leading_silence_s": 0.42,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "no, not the kind where you adjust your monitor. When",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.1918
+      },
+      "window": {
+        "end_s": 22.833,
+        "start_s": 19.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3061
+      },
+      "duration_s": 3.8,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "an AI model tells you it's 95% confident in an answer, calibration",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.1579
+      },
+      "window": {
+        "end_s": 26.633,
+        "start_s": 22.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3029
+      },
+      "duration_s": 1.467,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.527,
+        "leading_silence_s": 0.527,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is whether that confidence",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.7267
+      },
+      "window": {
+        "end_s": 28.1,
+        "start_s": 26.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2102
+      },
+      "duration_s": 1.533,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "actually means anything.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.9569
+      },
+      "window": {
+        "end_s": 29.633,
+        "start_s": 28.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8614
+      },
+      "duration_s": 5.334,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "A well-calibrated model that says it's 90% confident should be right about 90% of the time. Sounds",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 3.1871
+      },
+      "window": {
+        "end_s": 34.967,
+        "start_s": 29.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.866,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "obvious, but",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.3095
+      },
+      "window": {
+        "end_s": 35.833,
+        "start_s": 34.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.921
+      },
+      "duration_s": 5.467,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "most models are catastrophically overconfident, especially in domains where they have weak training data. They'll",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.7437
+      },
+      "window": {
+        "end_s": 41.3,
+        "start_s": 35.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.8,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "tell you something with complete conviction",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 43.1,
+        "start_s": 41.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1491
+      },
+      "duration_s": 1.933,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 0.8086,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.5,
+        "leading_silence_s": 0.5,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and be completely wrong. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.5867
+      },
+      "window": {
+        "end_s": 45.033,
+        "start_s": 43.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4474
+      },
+      "duration_s": 2.834,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "here's why this matters for building real systems. If you're",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.5286
+      },
+      "window": {
+        "end_s": 47.867,
+        "start_s": 45.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0576
+      },
+      "duration_s": 5.166,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "using AI confidence scores to make decisions, routing requests, or filtering outputs, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.5165
+      },
+      "window": {
+        "end_s": 53.033,
+        "start_s": 47.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.099
+      },
+      "duration_s": 1.867,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your model is poorly calibrated, your",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.2137
+      },
+      "window": {
+        "end_s": 54.9,
+        "start_s": 53.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4651
+      },
+      "duration_s": 1.867,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "entire system is making decisions based",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.2137
+      },
+      "window": {
+        "end_s": 56.767,
+        "start_s": 54.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1092
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "on numbers that are essentially made up. Understanding",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 58.767,
+        "start_s": 56.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4693
+      },
+      "duration_s": 3.966,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.473,
+        "leading_silence_s": 0.473,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "calibration and techniques like temperature scaling to fix it. But",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.5214
+      },
+      "window": {
+        "end_s": 62.733,
+        "start_s": 58.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4062
+      },
+      "duration_s": 4.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "even a perfectly calibrated model can destroy your system in ways you'd never expect, which",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.75
+      },
+      "window": {
+        "end_s": 66.733,
+        "start_s": 62.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3877
+      },
+      "duration_s": 1.634,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "leads to concept two: distributional",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.06
+      },
+      "window": {
+        "end_s": 68.367,
+        "start_s": 66.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0553
+      },
+      "duration_s": 1.033,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.513,
+        "leading_silence_s": 0.513,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "shift. Here's",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.9361
+      },
+      "window": {
+        "end_s": 69.4,
+        "start_s": 68.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2182
+      },
+      "duration_s": 3.067,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "what happens in the real world that nobody prepares you for. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.9126
+      },
+      "window": {
+        "end_s": 72.467,
+        "start_s": 69.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.296
+      },
+      "duration_s": 2.533,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "train a model on data from one distribution, users",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.5531
+      },
+      "window": {
+        "end_s": 75.0,
+        "start_s": 72.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.823
+      },
+      "duration_s": 2.7,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.36,
+        "leading_silence_s": 0.36,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "interact with it in a completely different one, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 77.7,
+        "start_s": 75.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3462
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your model doesn't know the difference. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.1992
+      },
+      "window": {
+        "end_s": 79.367,
+        "start_s": 77.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3073
+      },
+      "duration_s": 1.466,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "just quietly gets worse. I've",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.4106
+      },
+      "window": {
+        "end_s": 80.833,
+        "start_s": 79.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2825
+      },
+      "duration_s": 2.867,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 0.9093,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "seen AI systems that performed beautifully in testing fall",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.1392
+      },
+      "window": {
+        "end_s": 83.7,
+        "start_s": 80.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.769
+      },
+      "duration_s": 1.567,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "completely apart in production because",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.1908
+      },
+      "window": {
+        "end_s": 85.267,
+        "start_s": 83.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4477
+      },
+      "duration_s": 3.266,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.253,
+        "leading_silence_s": 0.253,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the real world data looked nothing like the training data. Medical",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.368
+      },
+      "window": {
+        "end_s": 88.533,
+        "start_s": 85.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 5.167,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "AI trained on data from one hospital failing at another because patient demographics were different. Recommendation",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.0966
+      },
+      "window": {
+        "end_s": 93.7,
+        "start_s": 88.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.1,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.66,
+        "leading_silence_s": 0.66,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "systems degrading because user behavior",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 1.6129
+      },
+      "window": {
+        "end_s": 96.8,
+        "start_s": 93.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0621
+      },
+      "duration_s": 1.267,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 0.6283,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "shifted seasonally.",
+        "trailing_silence_s": 0.471,
+        "word_count": 2,
+        "words_per_s": 1.5785
+      },
+      "window": {
+        "end_s": 98.067,
+        "start_s": 96.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3019
+      },
+      "duration_s": 1.633,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 0.992,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.484,
+        "sentence_aligned": true,
+        "text": "The model has no idea this is happening. Understanding",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 5.5113
+      },
+      "window": {
+        "end_s": 99.7,
+        "start_s": 98.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.125
+      },
+      "duration_s": 3.233,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.5,
+        "leading_silence_s": 0.5,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "distributional shift and building systems that detect it is",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.7838
+      },
+      "window": {
+        "end_s": 102.933,
+        "start_s": 99.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0564
+      },
+      "duration_s": 4.067,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "one of the most practical skills in AI engineering that almost nobody teaches. Third",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.4423
+      },
+      "window": {
+        "end_s": 107.0,
+        "start_s": 102.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0797
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "concept: mechanistic",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 107.9,
+        "start_s": 107.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0707
+      },
+      "duration_s": 1.6,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.62,
+        "leading_silence_s": 0.62,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "interpretability. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.25
+      },
+      "window": {
+        "end_s": 109.5,
+        "start_s": 107.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4558
+      },
+      "duration_s": 1.9,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "this one is genuinely fascinating. Most",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.1579
+      },
+      "window": {
+        "end_s": 111.4,
+        "start_s": 109.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4158
+      },
+      "duration_s": 2.9,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "people think of AI models as black boxes. You put",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.4483
+      },
+      "window": {
+        "end_s": 114.3,
+        "start_s": 111.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0561
+      },
+      "duration_s": 2.667,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "something in, something comes out, nobody knows why. Mechanistic",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.3746
+      },
+      "window": {
+        "end_s": 116.967,
+        "start_s": 114.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1201
+      },
+      "duration_s": 5.533,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.393,
+        "leading_silence_s": 0.393,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "interpretability is the field trying to reverse engineer what's actually happening inside a neural network. What",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 2.8917
+      },
+      "window": {
+        "end_s": 122.5,
+        "start_s": 116.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8081
+      },
+      "duration_s": 1.567,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "are individual neurons doing? What",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.1908
+      },
+      "window": {
+        "end_s": 124.067,
+        "start_s": 122.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7181
+      },
+      "duration_s": 3.333,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.173,
+        "leading_silence_s": 0.173,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "circuits are forming? Why does the model make specific decisions? Anthropic",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.3003
+      },
+      "window": {
+        "end_s": 127.4,
+        "start_s": 124.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.21
+      },
+      "duration_s": 2.667,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.48,
+        "leading_silence_s": 0.48,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "has done some wild research in this space, finding",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.3746
+      },
+      "window": {
+        "end_s": 130.067,
+        "start_s": 127.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0913
+      },
+      "duration_s": 5.766,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.253,
+        "leading_silence_s": 0.253,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that individual neurons inside models often correspond to specific human interpretable concepts. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.2546
+      },
+      "window": {
+        "end_s": 135.833,
+        "start_s": 130.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8443
+      },
+      "duration_s": 2.2,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 0.9641,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "this isn't just academically interesting. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.7273
+      },
+      "window": {
+        "end_s": 138.033,
+        "start_s": 135.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8706
+      },
+      "duration_s": 2.067,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you understand why your model is making decisions,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.8703
+      },
+      "window": {
+        "end_s": 140.1,
+        "start_s": 138.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1673
+      },
+      "duration_s": 4.633,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.46,
+        "leading_silence_s": 0.46,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you can actually fix it when it makes bad ones instead of just retraining and hoping. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 3.6693
+      },
+      "window": {
+        "end_s": 144.733,
+        "start_s": 140.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0639
+      },
+      "duration_s": 4.2,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the difference between debugging with print of statements and having an actual debugger. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 148.933,
+        "start_s": 144.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5169
+      },
+      "duration_s": 1.6,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "field is still young, but it's moving",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.375
+      },
+      "window": {
+        "end_s": 150.533,
+        "start_s": 148.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9783
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "fast and understanding it now puts you ahead",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0671
+      },
+      "window": {
+        "end_s": 152.5,
+        "start_s": 150.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3648
+      },
+      "duration_s": 1.633,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of basically everyone. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.4495
+      },
+      "window": {
+        "end_s": 154.133,
+        "start_s": 152.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.37
+      },
+      "duration_s": 3.3,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the last concept that will make you think about AI completely differently: emergent",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.9394
+      },
+      "window": {
+        "end_s": 157.433,
+        "start_s": 154.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0677
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "capabilities. Here's",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 158.633,
+        "start_s": 157.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8897
+      },
+      "duration_s": 7.967,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the thing about scaling AI models that genuinely surprised everyone, including the researchers building them. At certain scales, models suddenly develop abilities that nobody",
+        "trailing_silence_s": 0.0,
+        "word_count": 24,
+        "words_per_s": 3.0124
+      },
+      "window": {
+        "end_s": 166.6,
+        "start_s": 158.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.497
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "explicitly trained them for. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.5419
+      },
+      "window": {
+        "end_s": 168.567,
+        "start_s": 166.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.455
+      },
+      "duration_s": 3.4,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "scale up the model and it can translate languages it was never trained on. These",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 4.4118
+      },
+      "window": {
+        "end_s": 171.967,
+        "start_s": 168.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7235
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "capabilities don't gradually",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.0
+      },
+      "window": {
+        "end_s": 172.967,
+        "start_s": 171.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.063
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.313,
+        "leading_silence_s": 0.313,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "appear, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 173.867,
+        "start_s": 172.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6316
+      },
+      "duration_s": 3.5,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the scary part is we don't fully understand why or when they appear, which",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 177.367,
+        "start_s": 173.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8448
+      },
+      "duration_s": 5.033,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "means nobody can completely predict what a model will be capable of before they actually scale it and test it. For",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 4.1725
+      },
+      "window": {
+        "end_s": 182.4,
+        "start_s": 177.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9676
+      },
+      "duration_s": 2.133,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "anyone building on top of these models, understanding",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.7506
+      },
+      "window": {
+        "end_s": 184.533,
+        "start_s": 182.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1769
+      },
+      "duration_s": 2.6,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.467,
+        "leading_silence_s": 0.467,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "emergence means understanding that your foundation",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.3077
+      },
+      "window": {
+        "end_s": 187.133,
+        "start_s": 184.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1641
+      },
+      "duration_s": 1.4,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is constantly shifting under",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.8571
+      },
+      "window": {
+        "end_s": 188.533,
+        "start_s": 187.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0546
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your feet in",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.4978
+      },
+      "window": {
+        "end_s": 189.2,
+        "start_s": 188.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2003
+      },
+      "duration_s": 3.733,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "ways that can be both incredibly useful and genuinely unpredictable. Here's",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.9467
+      },
+      "window": {
+        "end_s": 192.933,
+        "start_s": 189.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6572
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the pattern across all four of these: calibration,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 194.933,
+        "start_s": 192.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6449
+      },
+      "duration_s": 4.167,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.627,
+        "leading_silence_s": 0.627,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "distributional shift, mechanistic interpretability, emergent capabilities.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 1.4399
+      },
+      "window": {
+        "end_s": 199.1,
+        "start_s": 194.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1415
+      },
+      "duration_s": 1.867,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "None of them are about building AI. They're",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.2849
+      },
+      "window": {
+        "end_s": 200.967,
+        "start_s": 199.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6842
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "about understanding it deeply enough to actually trust it, fix",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 203.967,
+        "start_s": 200.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.691
+      },
+      "duration_s": 2.433,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it, and predict it. This video is sponsored by Hostinger,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 4.1102
+      },
+      "window": {
+        "end_s": 206.4,
+        "start_s": 203.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1685
+      },
+      "duration_s": 2.167,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.76,
+        "leading_silence_s": 0.76,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and this one's really unique. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.7688
+      },
+      "window": {
+        "end_s": 208.567,
+        "start_s": 206.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3197
+      },
+      "duration_s": 5.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you've ever wanted your own personal AI assistant that runs on your infrastructure, remembers everything, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.2
+      },
+      "window": {
+        "end_s": 213.567,
+        "start_s": 208.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4664
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "works across WhatsApp, Telegram, Slack,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.1432
+      },
+      "window": {
+        "end_s": 215.9,
+        "start_s": 213.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2448
+      },
+      "duration_s": 4.9,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and Discord, that's OpenClaw. And Hostinger makes deploying it genuinely stupid simple.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.449
+      },
+      "window": {
+        "end_s": 220.8,
+        "start_s": 215.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.847
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "I've been using it to automate writing notes about anything new I learn, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 4.6667
+      },
+      "window": {
+        "end_s": 223.8,
+        "start_s": 220.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1147
+      },
+      "duration_s": 3.133,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "honestly, it's kind of embarrassing how much time I used to waste. One",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 4.1494
+      },
+      "window": {
+        "end_s": 226.933,
+        "start_s": 223.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2318
+      },
+      "duration_s": 2.634,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "click, no setup headaches, no technical jargon. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.0372
+      },
+      "window": {
+        "end_s": 229.567,
+        "start_s": 226.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9336
+      },
+      "duration_s": 3.5,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you're a developer who wants full root access and complete customization, the",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 233.067,
+        "start_s": 229.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6493
+      },
+      "duration_s": 1.366,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "OpenClaw VPS is your move.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.6603
+      },
+      "window": {
+        "end_s": 234.433,
+        "start_s": 233.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9838
+      },
+      "duration_s": 0.867,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Either way, your",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.4602
+      },
+      "window": {
+        "end_s": 235.3,
+        "start_s": 234.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.567,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "data stays completely private on your own server, never",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.506
+      },
+      "window": {
+        "end_s": 237.867,
+        "start_s": 235.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2951
+      },
+      "duration_s": 2.966,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "stored on some third-party platform you don't control.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.6972
+      },
+      "window": {
+        "end_s": 240.833,
+        "start_s": 237.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1753
+      },
+      "duration_s": 1.467,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It comes with built-in AI credits",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.09
+      },
+      "window": {
+        "end_s": 242.3,
+        "start_s": 240.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.733,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-090.png"
+      },
+      "index": 90,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and live web scraping out of the box, so",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 5.1933
+      },
+      "window": {
+        "end_s": 244.033,
+        "start_s": 242.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.834,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-091.png"
+      },
+      "index": 91,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your agent is actually useful the second it launches. Managed",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.5286
+      },
+      "window": {
+        "end_s": 246.867,
+        "start_s": 244.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1828
+      },
+      "duration_s": 5.3,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-092.png"
+      },
+      "index": 92,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "plan starts at $5.99 a month and handles all the maintenance for you automatically. Use",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.8302
+      },
+      "window": {
+        "end_s": 252.167,
+        "start_s": 246.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1489
+      },
+      "duration_s": 2.966,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-093.png"
+      },
+      "index": 93,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "my link hostinger.com/shadeofcode and apply",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 1.6858
+      },
+      "window": {
+        "end_s": 255.133,
+        "start_s": 252.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 5.0,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-094.png"
+      },
+      "index": 94,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "code shadeofcode at checkout for an exclusive discount. Link is in the description. Thanks for watching,",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.2
+      },
+      "window": {
+        "end_s": 260.133,
+        "start_s": 255.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1273
+      },
+      "duration_s": 1.934,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-095.png"
+      },
+      "index": 95,
+      "narration": {
+        "coverage": 0.6655,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and don't forget to subscribe.",
+        "trailing_silence_s": 0.647,
+        "word_count": 5,
+        "words_per_s": 2.5853
+      },
+      "window": {
+        "end_s": 262.067,
+        "start_s": 260.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2969
+      },
+      "duration_s": 2.3997,
+      "files": {
+        "thumb": "shadeofcode-underrated-ai-concepts-thumbs/scene-096.png"
+      },
+      "index": 96,
+      "narration": {
+        "coverage": 0.0,
+        "cut_in_pause": true,
+        "first_word_offset_s": null,
+        "leading_silence_s": 2.3997,
+        "pause_before_cut_s": 3.0467,
+        "sentence_aligned": true,
+        "text": "",
+        "trailing_silence_s": 2.3997,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 264.4667,
+        "start_s": 262.067
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "shadeofcode-underrated-ai-concepts",
+  "source_url": "https://www.youtube.com/watch?v=BpIYoaFfW1w",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 835,
+    "word_level": true
+  },
+  "video": {
+    "channel": "Shade of Code",
+    "duration_s": 265.0,
+    "title": "Extremely Underrated AI Concepts",
+    "upload_date": "20260427"
+  }
+}

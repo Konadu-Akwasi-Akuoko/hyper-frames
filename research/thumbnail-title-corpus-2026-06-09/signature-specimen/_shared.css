@@ -1,0 +1,134 @@
+/* "Specimen" — evolved Bucket-B signature (Direction A).
+ * Corpus-derived white space: green-tinted near-black base (NOT navy),
+ * electric-teal recolor in the headline slot (NOT coral — de-collisions from
+ * awesome-coding + Pawel), a monospace code-native "tell", and a PRECISION
+ * accent grammar (clean bracket/callout) as the default — with a hand-drawn
+ * teal variant kept for A/B. Face = pop-culture/reaction still, bled right.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap');
+
+@font-face {
+  font-family: 'Excalifont';
+  src: url('file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/branding/fonts/Excalifont-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: block;
+}
+
+:root {
+  --bg-hi:   #16201f;   /* top-left light, faintly teal-tinted dark */
+  --bg:      #0b0e14;   /* base (green-tinted near-black) */
+  --bg-deep: #05070b;   /* corners / deep */
+  --white:   #f3f7f6;   /* headline */
+  --teal:    #19e3c2;   /* accent — headline recolor + precision marks */
+  --teal-soft:#79e9d6;  /* softer teal for mono annotation */
+  --js:      #f7df1e;   /* topic chip (JS) — per-topic, swappable */
+  --ink:     #06100e;   /* glyph on chip */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1280px; height: 720px; overflow: hidden; background: var(--bg-deep); }
+
+.thumb {
+  position: relative;
+  width: 1280px; height: 720px;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 100% at 16% 12%, var(--bg-hi) 0%, var(--bg) 44%, var(--bg-deep) 100%);
+}
+
+/* faint engineered grid — teal-tinted, radial-masked so it fades at edges */
+.grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(120,220,200,0.085) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,220,200,0.085) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(120% 100% at 38% 50%, #000 52%, transparent 100%);
+}
+.vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 120% at 50% 50%, transparent 54%, rgba(0,0,0,0.6) 100%);
+}
+
+/* face on the right, bled to edge */
+.face-wrap { position: absolute; right: -8px; bottom: 0; height: 760px; display: flex; align-items: flex-end; }
+.face-glow {
+  position: absolute; right: 44px; bottom: 64px; width: 540px; height: 540px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(25,227,194,0.46) 0%, rgba(25,227,194,0.18) 40%, rgba(25,227,194,0) 66%);
+  filter: blur(8px);
+}
+.face {
+  position: relative; height: 760px; width: auto; object-fit: contain; object-position: bottom right;
+  /* cool-teal grade + soft diffuse separation (never a hard keyline) */
+  filter: saturate(0.9) contrast(1.12) brightness(1.04)
+          drop-shadow(0 0 10px rgba(25,227,194,0.22))
+          drop-shadow(-18px 14px 30px rgba(0,0,0,0.62));
+}
+/* warm/blonde subjects ring under a teal glow — set class "warm" on .thumb to kill the disc */
+.thumb.warm .face-glow { display: none; }
+
+/* text column, far-left (no fade panel — face is far-right) */
+.copy { position: absolute; left: 72px; top: 50%; transform: translateY(-50%); width: 700px; z-index: 3; }
+.line {
+  font-weight: 900; letter-spacing: -0.025em; line-height: 0.95;
+  color: var(--white); text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.teal { color: var(--teal); text-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 26px rgba(25,227,194,0.28); }
+
+/* monospace code-native "tell" — the genuinely-unclaimed type signal */
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700; color: var(--teal-soft); text-transform: none;
+  letter-spacing: 0; line-height: 1.1;
+}
+
+/* hand-drawn annotation (A/B variant) — Excalifont, recolored teal (not coral) */
+.hand { font-family: 'Excalifont', cursive; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--teal); line-height: 0.95; }
+
+/* topic chip (JS here; swap per topic) */
+.chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--js); color: var(--ink); font-weight: 900;
+  border-radius: 14px; font-family: 'Inter', sans-serif;
+  box-shadow: 0 8px 24px rgba(247,223,30,0.26);
+}
+
+/* precision accent grammar (default): clean SVG bracket / callout in teal */
+.callout { position: absolute; z-index: 4; }
+.callout svg { overflow: visible; }
+.callout .clabel {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--teal);
+  font-size: 28px; letter-spacing: -0.01em; white-space: nowrap;
+}
+.annot { position: absolute; z-index: 4; }
+.annot svg { overflow: visible; }
+
+/* ---- coordinate-grid design overlay (add class "dbg" to .thumb) ----
+   Fine NUMBERED graph for exact element placement during the design/QA phase.
+   20px minor + 100px major lines, axis numbers injected by the cg-init snippet.
+   Never present in the final render (.dbg is off there). */
+.coord-grid { display: none; }
+.thumb.dbg .coord-grid {
+  display: block; position: absolute; inset: 0; z-index: 60; pointer-events: none;
+  font-family: 'JetBrains Mono', monospace;
+  background-image:
+    linear-gradient(rgba(130,225,205,0.10) 1px, transparent 1px),         /* minor horizontal */
+    linear-gradient(90deg, rgba(130,225,205,0.10) 1px, transparent 1px),  /* minor vertical */
+    linear-gradient(rgba(130,225,205,0.32) 1px, transparent 1px),         /* major horizontal */
+    linear-gradient(90deg, rgba(130,225,205,0.32) 1px, transparent 1px);  /* major vertical */
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+}
+/* title-safe area (60px inset) */
+.thumb.dbg .coord-grid::after {
+  content: ""; position: absolute; left: 60px; top: 60px; right: 60px; bottom: 60px;
+  border: 1px dashed rgba(255,95,95,0.7);
+}
+.thumb.dbg .cg-label {
+  position: absolute; color: #2af0d0; font-size: 13px; font-weight: 700; line-height: 1;
+  text-shadow: 0 0 3px #000, 0 0 2px #000;
+}
+.thumb.dbg .cg-x { top: 3px; transform: translateX(-50%); }
+.thumb.dbg .cg-y { left: 4px; transform: translateY(-50%); }

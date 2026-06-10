@@ -1,0 +1,6161 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 32.3273,
+    "longest_hold_s": 5.533,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.4889,
+    "scene_count": 226,
+    "scene_duration_s": {
+      "max": 5.533,
+      "median": 1.4835,
+      "min": 0.334,
+      "p25": 0.8662,
+      "p75": 2.5588
+    },
+    "soft_transition_count": 9,
+    "words_per_s_mean": 3.2715
+  },
+  "proxy": {
+    "duration_s": 400.9,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 0.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "First, encryption.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.1596
+      },
+      "window": {
+        "end_s": 0.633,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0894
+      },
+      "duration_s": 0.834,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.807,
+        "leading_silence_s": 0.807,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Let's",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.199
+      },
+      "window": {
+        "end_s": 1.467,
+        "start_s": 0.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1426
+      },
+      "duration_s": 0.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.173,
+        "leading_silence_s": 0.173,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "start here because",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.0928
+      },
+      "window": {
+        "end_s": 2.2,
+        "start_s": 1.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7579
+      },
+      "duration_s": 2.033,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "encryption is the reason you can buy things",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.9351
+      },
+      "window": {
+        "end_s": 4.233,
+        "start_s": 2.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1842
+      },
+      "duration_s": 0.334,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "online",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.994
+      },
+      "window": {
+        "end_s": 4.567,
+        "start_s": 4.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4631
+      },
+      "duration_s": 1.033,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "without crying.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.9361
+      },
+      "window": {
+        "end_s": 5.6,
+        "start_s": 4.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.911
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Encryption takes your data,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 6.6,
+        "start_s": 5.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1868
+      },
+      "duration_s": 0.5,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.5,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.5,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 7.1,
+        "start_s": 6.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2428
+      },
+      "duration_s": 3.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "say your credit card number, and scrambles it into complete gibberish. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.564
+      },
+      "window": {
+        "end_s": 10.467,
+        "start_s": 7.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3209
+      },
+      "duration_s": 0.933,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "looks like this.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.2154
+      },
+      "window": {
+        "end_s": 11.4,
+        "start_s": 10.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4267
+      },
+      "duration_s": 2.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "If a hacker steals it mid-flight, that's all they get. Only",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 4.6472
+      },
+      "window": {
+        "end_s": 13.767,
+        "start_s": 11.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.9,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the person with the right key can unscramble it. It's like writing a diary in a secret",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 4.359
+      },
+      "window": {
+        "end_s": 17.667,
+        "start_s": 13.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4166
+      },
+      "duration_s": 1.033,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.373,
+        "leading_silence_s": 0.373,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "language your little",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.9042
+      },
+      "window": {
+        "end_s": 18.7,
+        "start_s": 17.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2385
+      },
+      "duration_s": 1.3,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "sibling can't read. Second,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.0769
+      },
+      "window": {
+        "end_s": 20.0,
+        "start_s": 18.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2676
+      },
+      "duration_s": 2.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.48,
+        "leading_silence_s": 0.48,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "VPN, virtual private network.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.4636
+      },
+      "window": {
+        "end_s": 22.733,
+        "start_s": 20.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3291
+      },
+      "duration_s": 1.034,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "A VPN is",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.9014
+      },
+      "window": {
+        "end_s": 23.767,
+        "start_s": 22.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2436
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "like a private tunnel for your internet traffic. Normally,",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.8577
+      },
+      "window": {
+        "end_s": 26.1,
+        "start_s": 23.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1863
+      },
+      "duration_s": 2.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "your internet provider can see every website you visit.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.2931
+      },
+      "window": {
+        "end_s": 28.833,
+        "start_s": 26.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5993
+      },
+      "duration_s": 4.834,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "A VPN routes your connection through a secure server somewhere else, maybe another country, and encrypts",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.3099
+      },
+      "window": {
+        "end_s": 33.667,
+        "start_s": 28.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5444
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.253,
+        "leading_silence_s": 0.253,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "everything. To the",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 34.567,
+        "start_s": 33.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2714
+      },
+      "duration_s": 3.233,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "outside world, it looks like you're in that server's location. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.4024
+      },
+      "window": {
+        "end_s": 37.8,
+        "start_s": 34.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3283
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "great for privacy",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 38.4,
+        "start_s": 37.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1229
+      },
+      "duration_s": 1.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.28,
+        "leading_silence_s": 0.28,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "on public Wi-Fi, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.9261
+      },
+      "window": {
+        "end_s": 39.767,
+        "start_s": 38.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3101
+      },
+      "duration_s": 0.566,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "yes, it's",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.5336
+      },
+      "window": {
+        "end_s": 40.333,
+        "start_s": 39.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8264
+      },
+      "duration_s": 3.2,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "also how people watch Netflix shows that aren't available in their country. I'm",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 4.0625
+      },
+      "window": {
+        "end_s": 43.533,
+        "start_s": 40.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7073
+      },
+      "duration_s": 1.067,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "not here to judge. Third,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.686
+      },
+      "window": {
+        "end_s": 44.6,
+        "start_s": 43.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2073
+      },
+      "duration_s": 0.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.28,
+        "leading_silence_s": 0.28,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "firewall. Imagine",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.0683
+      },
+      "window": {
+        "end_s": 45.567,
+        "start_s": 44.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.066,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "a bouncer standing at the door of your computer. That's a firewall. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 4.2401
+      },
+      "window": {
+        "end_s": 48.633,
+        "start_s": 45.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "has a list of rules. Allow",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 6.0
+      },
+      "window": {
+        "end_s": 49.633,
+        "start_s": 48.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0674
+      },
+      "duration_s": 1.067,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "video games, allow",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.8116
+      },
+      "window": {
+        "end_s": 50.7,
+        "start_s": 49.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0721
+      },
+      "duration_s": 1.033,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Zoom calls, block",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.9042
+      },
+      "window": {
+        "end_s": 51.733,
+        "start_s": 50.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.604
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that random program trying to phone home to Russia",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.75
+      },
+      "window": {
+        "end_s": 54.133,
+        "start_s": 51.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5539
+      },
+      "duration_s": 0.867,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "at 3:00 a.m. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.6136
+      },
+      "window": {
+        "end_s": 55.0,
+        "start_s": 54.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2928
+      },
+      "duration_s": 4.067,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "monitors every packet of data trying to enter or leave and decides if it gets in. Windows",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 4.18
+      },
+      "window": {
+        "end_s": 59.067,
+        "start_s": 55.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2044
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.413,
+        "leading_silence_s": 0.413,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "and Mac",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 59.967,
+        "start_s": 59.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0852
+      },
+      "duration_s": 0.966,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "have them built in. Don't",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 5.176
+      },
+      "window": {
+        "end_s": 60.933,
+        "start_s": 59.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1199
+      },
+      "duration_s": 0.834,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "turn them off. Fourth,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.7962
+      },
+      "window": {
+        "end_s": 61.767,
+        "start_s": 60.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1868
+      },
+      "duration_s": 2.766,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.313,
+        "leading_silence_s": 0.313,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "two-factor authentication, 2FA. Passwords",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.4461
+      },
+      "window": {
+        "end_s": 64.533,
+        "start_s": 61.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1721
+      },
+      "duration_s": 1.134,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.467,
+        "leading_silence_s": 0.467,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "are dumb. We",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.6455
+      },
+      "window": {
+        "end_s": 65.667,
+        "start_s": 64.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1142
+      },
+      "duration_s": 2.766,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "all use password 1 2 3 or our dog's name. 2FA",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.9769
+      },
+      "window": {
+        "end_s": 68.433,
+        "start_s": 65.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9516
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.527,
+        "leading_silence_s": 0.527,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "fixes that.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.7138
+      },
+      "window": {
+        "end_s": 69.6,
+        "start_s": 68.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4974
+      },
+      "duration_s": 0.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "After you type your password,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 5.1706
+      },
+      "window": {
+        "end_s": 70.567,
+        "start_s": 69.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0585
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the site says, \"Okay,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.4444
+      },
+      "window": {
+        "end_s": 71.467,
+        "start_s": 70.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3459
+      },
+      "duration_s": 1.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.333,
+        "leading_silence_s": 0.333,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "now prove it's you by typing",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.2857
+      },
+      "window": {
+        "end_s": 72.867,
+        "start_s": 71.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0505
+      },
+      "duration_s": 1.766,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the code we just texted your phone.\" So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.53
+      },
+      "window": {
+        "end_s": 74.633,
+        "start_s": 72.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6342
+      },
+      "duration_s": 4.034,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.367,
+        "leading_silence_s": 0.367,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "even if a hacker steals your password, they can't get in without your physical phone. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.9663
+      },
+      "window": {
+        "end_s": 78.667,
+        "start_s": 74.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3371
+      },
+      "duration_s": 2.666,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "a cheap, effective way to stop most attacks. Fifth,",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.3758
+      },
+      "window": {
+        "end_s": 81.333,
+        "start_s": 78.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1564
+      },
+      "duration_s": 2.734,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "multi-factor authentication, MFA. MFA",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.4631
+      },
+      "window": {
+        "end_s": 84.067,
+        "start_s": 81.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1351
+      },
+      "duration_s": 3.333,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.733,
+        "leading_silence_s": 0.733,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is just the fancy older sibling of 2FA. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.7003
+      },
+      "window": {
+        "end_s": 87.4,
+        "start_s": 84.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4809
+      },
+      "duration_s": 2.767,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "means using two or more different types of verification. Something",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.614
+      },
+      "window": {
+        "end_s": 90.167,
+        "start_s": 87.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5109
+      },
+      "duration_s": 1.033,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.353,
+        "leading_silence_s": 0.353,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you know, password,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.9042
+      },
+      "window": {
+        "end_s": 91.2,
+        "start_s": 90.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2985
+      },
+      "duration_s": 3.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.36,
+        "leading_silence_s": 0.36,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "something you have, your phone, or something you are, your fingerprint. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.564
+      },
+      "window": {
+        "end_s": 94.567,
+        "start_s": 91.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6899
+      },
+      "duration_s": 3.166,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "more layers, the harder it is for someone to pretend to be you. Sixth,",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 4.422
+      },
+      "window": {
+        "end_s": 97.733,
+        "start_s": 94.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6291
+      },
+      "duration_s": 0.467,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.427,
+        "leading_silence_s": 0.427,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "antivirus.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1413
+      },
+      "window": {
+        "end_s": 98.2,
+        "start_s": 97.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0751
+      },
+      "duration_s": 0.867,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.8,
+        "leading_silence_s": 0.8,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Antivirus",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.1534
+      },
+      "window": {
+        "end_s": 99.067,
+        "start_s": 98.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8711
+      },
+      "duration_s": 1.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.653,
+        "leading_silence_s": 0.653,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "software is like a guard",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.2616
+      },
+      "window": {
+        "end_s": 100.6,
+        "start_s": 99.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1424
+      },
+      "duration_s": 3.267,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "dog that sits on your computer and barks at known bad guys. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.9792
+      },
+      "window": {
+        "end_s": 103.867,
+        "start_s": 100.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "has a list of",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 6.6667
+      },
+      "window": {
+        "end_s": 104.467,
+        "start_s": 103.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0754
+      },
+      "duration_s": 1.3,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "wanted criminals, virus",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.3077
+      },
+      "window": {
+        "end_s": 105.767,
+        "start_s": 104.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4325
+      },
+      "duration_s": 0.866,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "signatures, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.3095
+      },
+      "window": {
+        "end_s": 106.633,
+        "start_s": 105.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6133
+      },
+      "duration_s": 2.234,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "whenever a file matches one, it locks it up. Modern",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 4.4763
+      },
+      "window": {
+        "end_s": 108.867,
+        "start_s": 106.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4475
+      },
+      "duration_s": 0.866,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "antivirus",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.1547
+      },
+      "window": {
+        "end_s": 109.733,
+        "start_s": 108.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1225
+      },
+      "duration_s": 0.867,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is smarter now. It also",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 5.767
+      },
+      "window": {
+        "end_s": 110.6,
+        "start_s": 109.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4246
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "watches how programs",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.5707
+      },
+      "window": {
+        "end_s": 111.767,
+        "start_s": 110.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0592
+      },
+      "duration_s": 0.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "behave. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.7523
+      },
+      "window": {
+        "end_s": 112.3,
+        "start_s": 111.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5363
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Word starts trying to delete system files, the",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0671
+      },
+      "window": {
+        "end_s": 114.267,
+        "start_s": 112.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2798
+      },
+      "duration_s": 2.066,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "antivirus goes, \"Hey, that's suspicious.\" Seventh,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.9042
+      },
+      "window": {
+        "end_s": 116.333,
+        "start_s": 114.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1081
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.387,
+        "leading_silence_s": 0.387,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "vulnerability.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 0.8569
+      },
+      "window": {
+        "end_s": 117.5,
+        "start_s": 116.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.109
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "A vulnerability is just a flaw. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.6667
+      },
+      "window": {
+        "end_s": 119.0,
+        "start_s": 117.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1587
+      },
+      "duration_s": 1.233,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "a crack in the sidewalk.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.0552
+      },
+      "window": {
+        "end_s": 120.233,
+        "start_s": 119.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6579
+      },
+      "duration_s": 1.467,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.407,
+        "leading_silence_s": 0.407,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "developer wrote some code that",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.4083
+      },
+      "window": {
+        "end_s": 121.7,
+        "start_s": 120.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.111
+      },
+      "duration_s": 2.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "has a tiny mistake, and that mistake creates an opening. Every",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 4.2308
+      },
+      "window": {
+        "end_s": 124.3,
+        "start_s": 121.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6063
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "program has them. Question",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 125.5,
+        "start_s": 124.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.435
+      },
+      "duration_s": 2.8,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is whether the bad guys find it first or the good guys do.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 4.6429
+      },
+      "window": {
+        "end_s": 128.3,
+        "start_s": 125.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4093
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Eighth, exploit. An",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 129.2,
+        "start_s": 128.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5251
+      },
+      "duration_s": 1.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "exploit is the tool or technique",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.9139
+      },
+      "window": {
+        "end_s": 130.733,
+        "start_s": 129.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5299
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.347,
+        "leading_silence_s": 0.347,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "used",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 131.133,
+        "start_s": 130.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.069
+      },
+      "duration_s": 1.334,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to walk through that crack. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.4978
+      },
+      "window": {
+        "end_s": 132.467,
+        "start_s": 131.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5056
+      },
+      "duration_s": 4.2,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the vulnerability is an unlocked window, the exploit is the stick you use to push it open.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 4.0476
+      },
+      "window": {
+        "end_s": 136.667,
+        "start_s": 132.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3651
+      },
+      "duration_s": 3.566,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.133,
+        "leading_silence_s": 0.133,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Hackers either write their own exploits or buy them on the black market. Ninth,",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.926
+      },
+      "window": {
+        "end_s": 140.233,
+        "start_s": 136.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2301
+      },
+      "duration_s": 0.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "payload.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.7248
+      },
+      "window": {
+        "end_s": 140.6,
+        "start_s": 140.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0734
+      },
+      "duration_s": 0.467,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.4,
+        "leading_silence_s": 0.4,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Once",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1413
+      },
+      "window": {
+        "end_s": 141.067,
+        "start_s": 140.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3284
+      },
+      "duration_s": 3.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.173,
+        "leading_silence_s": 0.173,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the exploit gets you through the window, the payload is what happens next. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.8536
+      },
+      "window": {
+        "end_s": 144.7,
+        "start_s": 141.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2958
+      },
+      "duration_s": 2.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the actual malware delivered to your system. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.3798
+      },
+      "window": {
+        "end_s": 147.067,
+        "start_s": 144.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1196
+      },
+      "duration_s": 1.833,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "exploit is the delivery method. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.2733
+      },
+      "window": {
+        "end_s": 148.9,
+        "start_s": 147.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7233
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "payload is the bomb. Could",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.1667
+      },
+      "window": {
+        "end_s": 150.1,
+        "start_s": 148.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6372
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "be ransomware, spyware,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 151.6,
+        "start_s": 150.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1697
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "or just a prank",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 7.0547
+      },
+      "window": {
+        "end_s": 152.167,
+        "start_s": 151.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1457
+      },
+      "duration_s": 0.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that flips",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.1596
+      },
+      "window": {
+        "end_s": 152.8,
+        "start_s": 152.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1201
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-090.png"
+      },
+      "index": 90,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your screen upside",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 5.291
+      },
+      "window": {
+        "end_s": 153.367,
+        "start_s": 152.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1549
+      },
+      "duration_s": 0.566,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-091.png"
+      },
+      "index": 91,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "down. 10th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.5336
+      },
+      "window": {
+        "end_s": 153.933,
+        "start_s": 153.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.274
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-092.png"
+      },
+      "index": 92,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "backdoor.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 154.333,
+        "start_s": 153.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0702
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-093.png"
+      },
+      "index": 93,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.467,
+        "leading_silence_s": 0.467,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "A backdoor",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.5273
+      },
+      "window": {
+        "end_s": 154.9,
+        "start_s": 154.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2244
+      },
+      "duration_s": 2.133,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-094.png"
+      },
+      "index": 94,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.54,
+        "leading_silence_s": 0.54,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is exactly what it sounds like, a",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.2818
+      },
+      "window": {
+        "end_s": 157.033,
+        "start_s": 154.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4553
+      },
+      "duration_s": 3.067,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-095.png"
+      },
+      "index": 95,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "secret entrance that bypasses the front gate. Sometimes programmers",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.9345
+      },
+      "window": {
+        "end_s": 160.1,
+        "start_s": 157.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2358
+      },
+      "duration_s": 2.2,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-096.png"
+      },
+      "index": 96,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "leave backdoors intentionally to fix things",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.7273
+      },
+      "window": {
+        "end_s": 162.3,
+        "start_s": 160.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.155
+      },
+      "duration_s": 1.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-097.png"
+      },
+      "index": 97,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "later, bad practice. Sometimes",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.9261
+      },
+      "window": {
+        "end_s": 163.667,
+        "start_s": 162.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7553
+      },
+      "duration_s": 3.933,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-098.png"
+      },
+      "index": 98,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.453,
+        "leading_silence_s": 0.453,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "hackers install them after breaking in so they can come back whenever they want without",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.8139
+      },
+      "window": {
+        "end_s": 167.6,
+        "start_s": 163.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.073
+      },
+      "duration_s": 1.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-099.png"
+      },
+      "index": 99,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "going through security again. 11th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.1908
+      },
+      "window": {
+        "end_s": 169.167,
+        "start_s": 167.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3208
+      },
+      "duration_s": 1.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-100.png"
+      },
+      "index": 100,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.433,
+        "leading_silence_s": 0.433,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "logic bomb. This",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.1429
+      },
+      "window": {
+        "end_s": 170.567,
+        "start_s": 169.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1502
+      },
+      "duration_s": 1.766,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-101.png"
+      },
+      "index": 101,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is malicious code that waits. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.3975
+      },
+      "window": {
+        "end_s": 172.333,
+        "start_s": 170.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3161
+      },
+      "duration_s": 3.234,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-102.png"
+      },
+      "index": 102,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "sits dormant on a system until a specific condition triggers it, like,",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.7106
+      },
+      "window": {
+        "end_s": 175.567,
+        "start_s": 172.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1278
+      },
+      "duration_s": 3.466,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-103.png"
+      },
+      "index": 103,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "\"When my name is removed from the employee database, delete all files.\" Disgruntled",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.7507
+      },
+      "window": {
+        "end_s": 179.033,
+        "start_s": 175.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3942
+      },
+      "duration_s": 1.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-104.png"
+      },
+      "index": 104,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.487,
+        "leading_silence_s": 0.487,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "employees sometimes",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.2763
+      },
+      "window": {
+        "end_s": 180.6,
+        "start_s": 179.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6848
+      },
+      "duration_s": 2.067,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-105.png"
+      },
+      "index": 105,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "set these before quitting. It's digital petty",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.3866
+      },
+      "window": {
+        "end_s": 182.667,
+        "start_s": 180.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0771
+      },
+      "duration_s": 0.8,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-106.png"
+      },
+      "index": 106,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "revenge. 12th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 183.467,
+        "start_s": 182.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2745
+      },
+      "duration_s": 0.8,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-107.png"
+      },
+      "index": 107,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "patch.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.25
+      },
+      "window": {
+        "end_s": 184.267,
+        "start_s": 183.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8113
+      },
+      "duration_s": 1.566,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-108.png"
+      },
+      "index": 108,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Remember vulnerabilities? When",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.9157
+      },
+      "window": {
+        "end_s": 185.833,
+        "start_s": 184.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7928
+      },
+      "duration_s": 1.934,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-109.png"
+      },
+      "index": 109,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the good guys find them, they write a fix. That",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 5.1706
+      },
+      "window": {
+        "end_s": 187.767,
+        "start_s": 185.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3911
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-110.png"
+      },
+      "index": 110,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "fix is called a patch. It's a band-aid for your software. When",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 190.767,
+        "start_s": 187.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5121
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-111.png"
+      },
+      "index": 111,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "your computer says update",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 191.767,
+        "start_s": 190.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1026
+      },
+      "duration_s": 1.133,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-112.png"
+      },
+      "index": 112,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.353,
+        "leading_silence_s": 0.353,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and restart, those",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.6478
+      },
+      "window": {
+        "end_s": 192.9,
+        "start_s": 191.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5063
+      },
+      "duration_s": 2.467,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-113.png"
+      },
+      "index": 113,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "updates often contain patches for security",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.4321
+      },
+      "window": {
+        "end_s": 195.367,
+        "start_s": 192.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0554
+      },
+      "duration_s": 0.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-114.png"
+      },
+      "index": 114,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "holes. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.7523
+      },
+      "window": {
+        "end_s": 195.9,
+        "start_s": 195.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3012
+      },
+      "duration_s": 2.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-115.png"
+      },
+      "index": 115,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you keep ignoring them, you're leaving the window open. 13th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.9479
+      },
+      "window": {
+        "end_s": 198.433,
+        "start_s": 195.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2007
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-116.png"
+      },
+      "index": 116,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.567,
+        "leading_silence_s": 0.567,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "social",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 199.033,
+        "start_s": 198.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0733
+      },
+      "duration_s": 1.067,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-117.png"
+      },
+      "index": 117,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.367,
+        "leading_silence_s": 0.367,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "engineering. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.8744
+      },
+      "window": {
+        "end_s": 200.1,
+        "start_s": 199.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6914
+      },
+      "duration_s": 4.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-118.png"
+      },
+      "index": 118,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "can have the strongest lock in the world, but it doesn't matter if you just hand the keys to a stranger. Social",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 4.6482
+      },
+      "window": {
+        "end_s": 204.833,
+        "start_s": 200.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7769
+      },
+      "duration_s": 2.034,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-119.png"
+      },
+      "index": 119,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "engineering is manipulating people. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.4582
+      },
+      "window": {
+        "end_s": 206.867,
+        "start_s": 204.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0696
+      },
+      "duration_s": 1.3,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-120.png"
+      },
+      "index": 120,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the hacker calling you, pretending",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.8462
+      },
+      "window": {
+        "end_s": 208.167,
+        "start_s": 206.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1503
+      },
+      "duration_s": 0.8,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-121.png"
+      },
+      "index": 121,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.353,
+        "leading_silence_s": 0.353,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to be from",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.75
+      },
+      "window": {
+        "end_s": 208.967,
+        "start_s": 208.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0713
+      },
+      "duration_s": 1.133,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-122.png"
+      },
+      "index": 122,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "IT, and saying, \"Hi,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.5305
+      },
+      "window": {
+        "end_s": 210.1,
+        "start_s": 208.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7403
+      },
+      "duration_s": 2.3,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-123.png"
+      },
+      "index": 123,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "we're doing maintenance. I just need your password real",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.913
+      },
+      "window": {
+        "end_s": 212.4,
+        "start_s": 210.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3166
+      },
+      "duration_s": 0.767,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-124.png"
+      },
+      "index": 124,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "quick.\" And because",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.9113
+      },
+      "window": {
+        "end_s": 213.167,
+        "start_s": 212.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.133
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-125.png"
+      },
+      "index": 125,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "they sound nice, people",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 214.167,
+        "start_s": 213.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3489
+      },
+      "duration_s": 1.033,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-126.png"
+      },
+      "index": 126,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "just give it. 14th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.8722
+      },
+      "window": {
+        "end_s": 215.2,
+        "start_s": 214.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.093
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-127.png"
+      },
+      "index": 127,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.4,
+        "leading_silence_s": 0.4,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "OSINT, open-source intelligence. OSINT",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.3333
+      },
+      "window": {
+        "end_s": 218.2,
+        "start_s": 215.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4267
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-128.png"
+      },
+      "index": 128,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.4,
+        "leading_silence_s": 0.4,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is the art of stalking, legally. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.0004
+      },
+      "window": {
+        "end_s": 220.533,
+        "start_s": 218.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5191
+      },
+      "duration_s": 3.8,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-129.png"
+      },
+      "index": 129,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "gathering information from public sources, Instagram, LinkedIn, company",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.1053
+      },
+      "window": {
+        "end_s": 224.333,
+        "start_s": 220.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0533
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-130.png"
+      },
+      "index": 130,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "websites, public",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 225.333,
+        "start_s": 224.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0626
+      },
+      "duration_s": 0.767,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-131.png"
+      },
+      "index": 131,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "records. A hacker",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.9113
+      },
+      "window": {
+        "end_s": 226.1,
+        "start_s": 225.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4266
+      },
+      "duration_s": 3.867,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-132.png"
+      },
+      "index": 132,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.34,
+        "leading_silence_s": 0.34,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "might find out your dog's name from your Instagram and guess that's your password, or",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.879
+      },
+      "window": {
+        "end_s": 229.967,
+        "start_s": 226.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6836
+      },
+      "duration_s": 5.266,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-133.png"
+      },
+      "index": 133,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.233,
+        "leading_silence_s": 0.233,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "find out your company uses specific software and look up vulnerabilities for that exact version, all",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.0384
+      },
+      "window": {
+        "end_s": 235.233,
+        "start_s": 229.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6901
+      },
+      "duration_s": 1.034,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-134.png"
+      },
+      "index": 134,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "from public info. 15th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.8685
+      },
+      "window": {
+        "end_s": 236.267,
+        "start_s": 235.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2253
+      },
+      "duration_s": 0.466,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-135.png"
+      },
+      "index": 135,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.373,
+        "leading_silence_s": 0.373,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "penetration",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1459
+      },
+      "window": {
+        "end_s": 236.733,
+        "start_s": 236.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0609
+      },
+      "duration_s": 1.034,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-136.png"
+      },
+      "index": 136,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.507,
+        "leading_silence_s": 0.507,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "testing. This",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.9342
+      },
+      "window": {
+        "end_s": 237.767,
+        "start_s": 236.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7285
+      },
+      "duration_s": 1.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-137.png"
+      },
+      "index": 137,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is the good guys doing the breaking. Companies",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 239.367,
+        "start_s": 237.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6802
+      },
+      "duration_s": 2.266,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-138.png"
+      },
+      "index": 138,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.313,
+        "leading_silence_s": 0.313,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "hire ethical hackers to try to hack them. They",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.9718
+      },
+      "window": {
+        "end_s": 241.633,
+        "start_s": 239.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7855
+      },
+      "duration_s": 4.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-139.png"
+      },
+      "index": 139,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "attempt to get through the firewall, break into the building, trick employees. At the end, they write a report.",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 4.3508
+      },
+      "window": {
+        "end_s": 246.0,
+        "start_s": 241.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.3,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-140.png"
+      },
+      "index": 140,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Here's how we got in. Fix this stuff before the actual criminals find it. 16th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 4.5455
+      },
+      "window": {
+        "end_s": 249.3,
+        "start_s": 246.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3178
+      },
+      "duration_s": 1.3,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-141.png"
+      },
+      "index": 141,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.42,
+        "leading_silence_s": 0.42,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "sandboxing. Sandboxing",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.5385
+      },
+      "window": {
+        "end_s": 250.6,
+        "start_s": 249.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1183
+      },
+      "duration_s": 2.1,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-142.png"
+      },
+      "index": 142,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.6,
+        "leading_silence_s": 0.6,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is like a quarantine zone. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.8571
+      },
+      "window": {
+        "end_s": 252.7,
+        "start_s": 250.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4235
+      },
+      "duration_s": 3.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-143.png"
+      },
+      "index": 143,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you get a suspicious email attachment, instead of opening it on your real computer,",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.8536
+      },
+      "window": {
+        "end_s": 256.333,
+        "start_s": 252.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5234
+      },
+      "duration_s": 2.334,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-144.png"
+      },
+      "index": 144,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "security software opens it in a fake",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.9991
+      },
+      "window": {
+        "end_s": 258.667,
+        "start_s": 256.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3828
+      },
+      "duration_s": 1.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-145.png"
+      },
+      "index": 145,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "computer, a sandbox. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.6093
+      },
+      "window": {
+        "end_s": 260.2,
+        "start_s": 258.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4911
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-146.png"
+      },
+      "index": 146,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the file tries to encrypt everything, they go,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0671
+      },
+      "window": {
+        "end_s": 262.167,
+        "start_s": 260.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.95
+      },
+      "duration_s": 1.766,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-147.png"
+      },
+      "index": 147,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "\"Aha, malware,\" and delete",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.265
+      },
+      "window": {
+        "end_s": 263.933,
+        "start_s": 262.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4733
+      },
+      "duration_s": 1.834,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-148.png"
+      },
+      "index": 148,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it while your real computer stays safe. 17th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.3621
+      },
+      "window": {
+        "end_s": 265.767,
+        "start_s": 263.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6721
+      },
+      "duration_s": 0.666,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-149.png"
+      },
+      "index": 149,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.553,
+        "leading_silence_s": 0.553,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "honeypot.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.5015
+      },
+      "window": {
+        "end_s": 266.433,
+        "start_s": 265.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0598
+      },
+      "duration_s": 0.467,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-150.png"
+      },
+      "index": 150,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.407,
+        "leading_silence_s": 0.407,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "A",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1413
+      },
+      "window": {
+        "end_s": 266.9,
+        "start_s": 266.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.172
+      },
+      "duration_s": 1.267,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-151.png"
+      },
+      "index": 151,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "honeypot is a trap. Security",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.9463
+      },
+      "window": {
+        "end_s": 268.167,
+        "start_s": 266.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5662
+      },
+      "duration_s": 2.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-152.png"
+      },
+      "index": 152,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.393,
+        "leading_silence_s": 0.393,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "teams set up a fake server that looks valuable but",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.2931
+      },
+      "window": {
+        "end_s": 270.9,
+        "start_s": 268.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2092
+      },
+      "duration_s": 0.867,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-153.png"
+      },
+      "index": 153,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "has no real data.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.6136
+      },
+      "window": {
+        "end_s": 271.767,
+        "start_s": 270.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4116
+      },
+      "duration_s": 0.366,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-154.png"
+      },
+      "index": 154,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.7322
+      },
+      "window": {
+        "end_s": 272.133,
+        "start_s": 271.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7069
+      },
+      "duration_s": 1.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-155.png"
+      },
+      "index": 155,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "monitored 24/7. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.9145
+      },
+      "window": {
+        "end_s": 273.7,
+        "start_s": 272.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2853
+      },
+      "duration_s": 3.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-156.png"
+      },
+      "index": 156,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "a hacker touches it, alarms go off. Now, the defenders know they have an intruder and",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 4.0333
+      },
+      "window": {
+        "end_s": 277.667,
+        "start_s": 273.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6781
+      },
+      "duration_s": 3.1,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-157.png"
+      },
+      "index": 157,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "can watch their every move without risking real assets. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.2258
+      },
+      "window": {
+        "end_s": 280.767,
+        "start_s": 277.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6014
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-158.png"
+      },
+      "index": 158,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "bait for hackers. 18th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 281.767,
+        "start_s": 280.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2093
+      },
+      "duration_s": 0.566,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-159.png"
+      },
+      "index": 159,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.513,
+        "leading_silence_s": 0.513,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "air",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.7668
+      },
+      "window": {
+        "end_s": 282.333,
+        "start_s": 281.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0824
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-160.png"
+      },
+      "index": 160,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "gap. This",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.5273
+      },
+      "window": {
+        "end_s": 282.9,
+        "start_s": 282.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2997
+      },
+      "duration_s": 2.033,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-161.png"
+      },
+      "index": 161,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is the ultimate offline mode. An",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.9513
+      },
+      "window": {
+        "end_s": 284.933,
+        "start_s": 282.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4302
+      },
+      "duration_s": 3.167,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-162.png"
+      },
+      "index": 162,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "air-gapped computer is physically disconnected from the internet. No",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.8418
+      },
+      "window": {
+        "end_s": 288.1,
+        "start_s": 284.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2757
+      },
+      "duration_s": 0.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-163.png"
+      },
+      "index": 163,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Wi-Fi, no",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.0683
+      },
+      "window": {
+        "end_s": 289.067,
+        "start_s": 288.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.08
+      },
+      "duration_s": 0.7,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-164.png"
+      },
+      "index": 164,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Ethernet, no",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.8571
+      },
+      "window": {
+        "end_s": 289.767,
+        "start_s": 289.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1349
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-165.png"
+      },
+      "index": 165,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Bluetooth. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.401
+      },
+      "window": {
+        "end_s": 290.6,
+        "start_s": 289.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.312
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-166.png"
+      },
+      "index": 166,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "literally separated by air. To",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.9994
+      },
+      "window": {
+        "end_s": 292.267,
+        "start_s": 290.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1957
+      },
+      "duration_s": 1.933,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-167.png"
+      },
+      "index": 167,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "hack it, you need physical access. This",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.6213
+      },
+      "window": {
+        "end_s": 294.2,
+        "start_s": 292.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.765
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-168.png"
+      },
+      "index": 168,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is used for the most sensitive systems, like nuclear plant controls",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.6667
+      },
+      "window": {
+        "end_s": 297.2,
+        "start_s": 294.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3954
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-169.png"
+      },
+      "index": 169,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "or voting machine test labs. 19th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.5993
+      },
+      "window": {
+        "end_s": 298.867,
+        "start_s": 297.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6628
+      },
+      "duration_s": 0.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-170.png"
+      },
+      "index": 170,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.613,
+        "leading_silence_s": 0.613,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "deep",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.5798
+      },
+      "window": {
+        "end_s": 299.5,
+        "start_s": 298.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0666
+      },
+      "duration_s": 0.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-171.png"
+      },
+      "index": 171,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "web.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.3643
+      },
+      "window": {
+        "end_s": 300.233,
+        "start_s": 299.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4213
+      },
+      "duration_s": 2.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-172.png"
+      },
+      "index": 172,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The deep web is just anything Google can't find. Your",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.506
+      },
+      "window": {
+        "end_s": 302.8,
+        "start_s": 300.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3338
+      },
+      "duration_s": 1.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-173.png"
+      },
+      "index": 173,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "email inbox, deep web. Your",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.0618
+      },
+      "window": {
+        "end_s": 304.433,
+        "start_s": 302.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1149
+      },
+      "duration_s": 1.934,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-174.png"
+      },
+      "index": 174,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "bank account statements, deep web. Private",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.1024
+      },
+      "window": {
+        "end_s": 306.367,
+        "start_s": 304.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0683
+      },
+      "duration_s": 2.066,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-175.png"
+      },
+      "index": 175,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "company databases, deep web. It's not",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.9042
+      },
+      "window": {
+        "end_s": 308.433,
+        "start_s": 306.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4311
+      },
+      "duration_s": 2.534,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-176.png"
+      },
+      "index": 176,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "shady. It's just stuff that requires a login. Most",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.5517
+      },
+      "window": {
+        "end_s": 310.967,
+        "start_s": 308.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6583
+      },
+      "duration_s": 1.966,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-177.png"
+      },
+      "index": 177,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "of the internet is actually the deep web. 20th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 4.5778
+      },
+      "window": {
+        "end_s": 312.933,
+        "start_s": 310.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.505
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-178.png"
+      },
+      "index": 178,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.307,
+        "leading_silence_s": 0.307,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "dark",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 313.333,
+        "start_s": 312.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0584
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-179.png"
+      },
+      "index": 179,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "web. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.5273
+      },
+      "window": {
+        "end_s": 313.9,
+        "start_s": 313.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4609
+      },
+      "duration_s": 3.233,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-180.png"
+      },
+      "index": 180,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "dark web is a small part of the deep web that requires special software",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 4.3303
+      },
+      "window": {
+        "end_s": 317.133,
+        "start_s": 313.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5125
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-181.png"
+      },
+      "index": 181,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "like Tor",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 317.533,
+        "start_s": 317.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0852
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-182.png"
+      },
+      "index": 182,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to access. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 318.433,
+        "start_s": 317.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.194
+      },
+      "duration_s": 1.9,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-183.png"
+      },
+      "index": 183,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "intentionally hidden and anonymous. Yes,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.6316
+      },
+      "window": {
+        "end_s": 320.333,
+        "start_s": 318.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1053
+      },
+      "duration_s": 0.367,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-184.png"
+      },
+      "index": 184,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "there",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.7248
+      },
+      "window": {
+        "end_s": 320.7,
+        "start_s": 320.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1662
+      },
+      "duration_s": 3.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-185.png"
+      },
+      "index": 185,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "are illegal markets there, drugs, stolen credit cards, hacking tools, but",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.7729
+      },
+      "window": {
+        "end_s": 324.667,
+        "start_s": 320.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6449
+      },
+      "duration_s": 4.233,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-186.png"
+      },
+      "index": 186,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it also hosts whistleblower platforms and privacy tools for people in oppressive countries. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.3073
+      },
+      "window": {
+        "end_s": 328.9,
+        "start_s": 324.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.909
+      },
+      "duration_s": 3.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-187.png"
+      },
+      "index": 187,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "not inherently evil, but it's definitely where the shady characters hang out.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 332.5,
+        "start_s": 328.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4192
+      },
+      "duration_s": 0.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-188.png"
+      },
+      "index": 188,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "21st,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.8762
+      },
+      "window": {
+        "end_s": 333.033,
+        "start_s": 332.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0618
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-189.png"
+      },
+      "index": 189,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "malware.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 333.433,
+        "start_s": 333.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1673
+      },
+      "duration_s": 1.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-190.png"
+      },
+      "index": 190,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Malware is the umbrella term. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.829
+      },
+      "window": {
+        "end_s": 335.0,
+        "start_s": 333.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9148
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-191.png"
+      },
+      "index": 191,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "it's bad and it's software, it's malware. Viruses,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0671
+      },
+      "window": {
+        "end_s": 336.967,
+        "start_s": 335.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8882
+      },
+      "duration_s": 1.933,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-192.png"
+      },
+      "index": 192,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.593,
+        "leading_silence_s": 0.593,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "ransomware, spyware, they're",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.552
+      },
+      "window": {
+        "end_s": 338.9,
+        "start_s": 336.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-193.png"
+      },
+      "index": 193,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "all just different flavors of the same nasty milkshake. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.7979
+      },
+      "window": {
+        "end_s": 341.533,
+        "start_s": 338.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.998
+      },
+      "duration_s": 2.934,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-194.png"
+      },
+      "index": 194,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "your computer is acting possessed, you probably have malware. 22nd,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.4083
+      },
+      "window": {
+        "end_s": 344.467,
+        "start_s": 341.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1777
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-195.png"
+      },
+      "index": 195,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.533,
+        "leading_silence_s": 0.533,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "ransomware.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 345.067,
+        "start_s": 344.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0711
+      },
+      "duration_s": 0.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-196.png"
+      },
+      "index": 196,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.613,
+        "leading_silence_s": 0.613,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Ransomware",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.5798
+      },
+      "window": {
+        "end_s": 345.7,
+        "start_s": 345.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7419
+      },
+      "duration_s": 1.633,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-197.png"
+      },
+      "index": 197,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.46,
+        "leading_silence_s": 0.46,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "breaks into your computer and locks",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.6742
+      },
+      "window": {
+        "end_s": 347.333,
+        "start_s": 345.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0684
+      },
+      "duration_s": 1.3,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-198.png"
+      },
+      "index": 198,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.347,
+        "leading_silence_s": 0.347,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "all your files, photos,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.0769
+      },
+      "window": {
+        "end_s": 348.633,
+        "start_s": 347.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7951
+      },
+      "duration_s": 1.8,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-199.png"
+      },
+      "index": 199,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.607,
+        "leading_silence_s": 0.607,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "documents, everything. Then",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 350.433,
+        "start_s": 348.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1904
+      },
+      "duration_s": 3.334,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-200.png"
+      },
+      "index": 200,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "a pop-up appears, \"Pay me Bitcoin or your stuff is gone forever.\" It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.8992
+      },
+      "window": {
+        "end_s": 353.767,
+        "start_s": 350.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5465
+      },
+      "duration_s": 5.533,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-201.png"
+      },
+      "index": 201,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.233,
+        "leading_silence_s": 0.233,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "digital kidnapping. Hospitals pay these guys. Schools pay. Don't be someone who has to pay. 23rd, phishing.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 3.0725
+      },
+      "window": {
+        "end_s": 359.3,
+        "start_s": 353.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0629
+      },
+      "duration_s": 0.433,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-202.png"
+      },
+      "index": 202,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Phishing",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3095
+      },
+      "window": {
+        "end_s": 359.733,
+        "start_s": 359.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5195
+      },
+      "duration_s": 1.1,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-203.png"
+      },
+      "index": 203,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is when hackers send",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.6364
+      },
+      "window": {
+        "end_s": 360.833,
+        "start_s": 359.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0932
+      },
+      "duration_s": 1.467,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-204.png"
+      },
+      "index": 204,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "fake emails pretending to be",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.4083
+      },
+      "window": {
+        "end_s": 362.3,
+        "start_s": 360.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2013
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-205.png"
+      },
+      "index": 205,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your bank, Netflix,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 363.5,
+        "start_s": 362.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0685
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-206.png"
+      },
+      "index": 206,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "or boss.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.5273
+      },
+      "window": {
+        "end_s": 364.067,
+        "start_s": 363.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4932
+      },
+      "duration_s": 1.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-207.png"
+      },
+      "index": 207,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "\"Urgent, verify your account.\" You",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.8852
+      },
+      "window": {
+        "end_s": 365.8,
+        "start_s": 364.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5227
+      },
+      "duration_s": 2.733,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-208.png"
+      },
+      "index": 208,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "click the link, type your password, and now they own you. They're",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.3908
+      },
+      "window": {
+        "end_s": 368.533,
+        "start_s": 365.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.634,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-209.png"
+      },
+      "index": 209,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "phishing and",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.1546
+      },
+      "window": {
+        "end_s": 369.167,
+        "start_s": 368.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.063
+      },
+      "duration_s": 1.666,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-210.png"
+      },
+      "index": 210,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you're the fish. Don't take the bait.",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.2017
+      },
+      "window": {
+        "end_s": 370.833,
+        "start_s": 369.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0511
+      },
+      "duration_s": 0.334,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-211.png"
+      },
+      "index": 211,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.207,
+        "leading_silence_s": 0.207,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "24th,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.994
+      },
+      "window": {
+        "end_s": 371.167,
+        "start_s": 370.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.166,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-212.png"
+      },
+      "index": 212,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.513,
+        "leading_silence_s": 0.513,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "botnet. A botnet",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.5729
+      },
+      "window": {
+        "end_s": 372.333,
+        "start_s": 371.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-213.png"
+      },
+      "index": 213,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.747,
+        "leading_silence_s": 0.747,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is an army of zombie computers.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.0
+      },
+      "window": {
+        "end_s": 374.333,
+        "start_s": 372.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2909
+      },
+      "duration_s": 0.7,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-214.png"
+      },
+      "index": 214,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.587,
+        "leading_silence_s": 0.587,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Hackers",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.4286
+      },
+      "window": {
+        "end_s": 375.033,
+        "start_s": 374.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.334,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-215.png"
+      },
+      "index": 215,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.287,
+        "leading_silence_s": 0.287,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "infect thousands of random people's PCs and control",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.3995
+      },
+      "window": {
+        "end_s": 378.367,
+        "start_s": 375.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0613
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-216.png"
+      },
+      "index": 216,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "them remotely.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 378.767,
+        "start_s": 378.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0547
+      },
+      "duration_s": 0.5,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-217.png"
+      },
+      "index": 217,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.473,
+        "leading_silence_s": 0.473,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Then",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 379.267,
+        "start_s": 378.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5258
+      },
+      "duration_s": 2.866,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-218.png"
+      },
+      "index": 218,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.173,
+        "leading_silence_s": 0.173,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "they point all those computers at one website and crash it. Your",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.187
+      },
+      "window": {
+        "end_s": 382.133,
+        "start_s": 379.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8978
+      },
+      "duration_s": 4.534,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-219.png"
+      },
+      "index": 219,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "computer could be a soldier in someone else's war right now, and you wouldn't even know. 25th, zero-day.",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 3.97
+      },
+      "window": {
+        "end_s": 386.667,
+        "start_s": 382.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1032
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-220.png"
+      },
+      "index": 220,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.733,
+        "leading_silence_s": 0.733,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "A zero-day",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.401
+      },
+      "window": {
+        "end_s": 387.5,
+        "start_s": 386.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3798
+      },
+      "duration_s": 4.133,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-221.png"
+      },
+      "index": 221,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.7,
+        "leading_silence_s": 0.7,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is a security hole the software company doesn't know exist yet. They've",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.9035
+      },
+      "window": {
+        "end_s": 391.633,
+        "start_s": 387.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2334
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-222.png"
+      },
+      "index": 222,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "had zero days to fix it. Hackers",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.1992
+      },
+      "window": {
+        "end_s": 393.3,
+        "start_s": 391.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2923
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-223.png"
+      },
+      "index": 223,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "find these first",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.6014
+      },
+      "window": {
+        "end_s": 394.133,
+        "start_s": 393.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1061
+      },
+      "duration_s": 1.6,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-224.png"
+      },
+      "index": 224,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.307,
+        "leading_silence_s": 0.307,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and use them to break into anything",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.375
+      },
+      "window": {
+        "end_s": 395.733,
+        "start_s": 394.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0899
+      },
+      "duration_s": 0.7,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-225.png"
+      },
+      "index": 225,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "they want.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.8571
+      },
+      "window": {
+        "end_s": 396.433,
+        "start_s": 395.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2014
+      },
+      "duration_s": 4.467,
+      "files": {
+        "thumb": "technetium-25-cybersec-terms-thumbs/scene-226.png"
+      },
+      "index": 226,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It's the ultimate sneak attack, and there's zero defense until the company figures it out.",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.358
+      },
+      "window": {
+        "end_s": 400.9,
+        "start_s": 396.433
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "technetium-25-cybersec-terms",
+  "source_url": "https://www.youtube.com/watch?v=sTujlreIhPg",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1364,
+    "word_level": true
+  },
+  "video": {
+    "channel": "TECHNETIUM",
+    "duration_s": 401.0,
+    "title": "25 Cybersecurity Terms Explained in 6 Minutes.",
+    "upload_date": "20260325"
+  }
+}

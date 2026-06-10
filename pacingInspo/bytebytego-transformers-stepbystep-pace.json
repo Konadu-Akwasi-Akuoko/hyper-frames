@@ -1,0 +1,356 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 0.8954,
+    "longest_hold_s": 479.9798,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.3,
+    "scene_count": 11,
+    "scene_duration_s": {
+      "max": 479.9798,
+      "median": 2.711,
+      "min": 1.126,
+      "p25": 1.437,
+      "p75": 6.4855
+    },
+    "soft_transition_count": 1,
+    "words_per_s_mean": 2.3588
+  },
+  "proxy": {
+    "duration_s": 603.0608,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 94.886,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "How did a single paper, \"Attention is All You Need\", reshape the entire AI landscape? In this video, we will unpack the Transformer architecture. We will see how it works, what makes it so powerful, and why it replaced almost every older neural network design. Before diving in, let's take a quick a step back. The goal of machine learning is to learn a mapping from inputs to outputs. For example, in predicting house prices, an ML model maps features like the number of bedrooms, location, and zip code to a price. In a spam detection, an ML model maps a sequence of words or characters to a binary output, a spam or not a spam. An effective way to learn this mapping is through neural networks. A neural network is just a sequence of layers, each transforming an input to an output through its parameters. For example, a linear layer applies a linear transformation into its input. By stacking several layers, we form a long chain of mathematical operations that transform inputs into outputs. The parameters of these layers are updated during training to learn an accurate mapping from the input space to the output space of the task at hand. But for sequential tasks such as sentiment analysis, things get tricky. If each token in a sequence, say each word in a sentence, is processed and transformed independently, the model loses all sense of context.",
+        "trailing_silence_s": 0.0,
+        "word_count": 237,
+        "words_per_s": 2.4977
+      },
+      "window": {
+        "end_s": 94.886,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0683
+      },
+      "duration_s": 1.414,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.234,
+        "leading_silence_s": 0.234,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Today's video is sponsored by",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.5361
+      },
+      "window": {
+        "end_s": 96.3,
+        "start_s": 94.886
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.4344
+      },
+      "duration_s": 4.801,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Clerk, the complete authentication and user management platform for developers. Forget",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.2912
+      },
+      "window": {
+        "end_s": 101.101,
+        "start_s": 96.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1531
+      },
+      "duration_s": 2.711,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.219,
+        "leading_silence_s": 0.219,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "writing thousands of lines of boilerplate. Clerk",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.5821
+      },
+      "window": {
+        "end_s": 103.812,
+        "start_s": 101.101
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0642
+      },
+      "duration_s": 5.088,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.028,
+        "leading_silence_s": 0.028,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "gives you customizable UI components and powerful APIs that work with any framework.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.555
+      },
+      "window": {
+        "end_s": 108.9,
+        "start_s": 103.812
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3633
+      },
+      "duration_s": 1.46,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Add sign-in, user profiles,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.7397
+      },
+      "window": {
+        "end_s": 110.36,
+        "start_s": 108.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1365
+      },
+      "duration_s": 1.126,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.72,
+        "leading_silence_s": 0.72,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "org management,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.7762
+      },
+      "window": {
+        "end_s": 111.486,
+        "start_s": 110.36
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1482
+      },
+      "duration_s": 1.335,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.634,
+        "leading_silence_s": 0.634,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "even billing,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.4981
+      },
+      "window": {
+        "end_s": 112.821,
+        "start_s": 111.486
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4175
+      },
+      "duration_s": 2.377,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.219,
+        "leading_silence_s": 0.219,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "in minutes, not weeks. Stop",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.1035
+      },
+      "window": {
+        "end_s": 115.198,
+        "start_s": 112.821
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5052
+      },
+      "duration_s": 7.883,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.162,
+        "leading_silence_s": 0.162,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "reinventing the wheel. Start shipping feature faster with Clerk. Try free today. Link in the description.",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 2.0297
+      },
+      "window": {
+        "end_s": 123.081,
+        "start_s": 115.198
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0816
+      },
+      "duration_s": 479.9798,
+      "files": {
+        "thumb": "bytebytego-transformers-stepbystep-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 0.9991,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.479,
+        "leading_silence_s": 0.479,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Earlier models like RNNs and LSTMs handled this by processing one token at a time. Each step would process one token, update an internal memory, and pass it to the next a step. It worked, but it came with two big problems. First, it was sequential. No parallel processing, which made training a slow. Second, it struggled with long-term dependencies. By the time the network reached the end of a long sequence, much of the early information was lost. Transformers, introduced in the 2017 paper \"Attention is All You Need\" published by Google, solved both issues. The Transformer is a still a neural network, a sequence of layers, but its design is a smarter. It adds a special layer called attention, which lets all tokens in a sequence talk to each other directly. You can think of attention as a communication layer built inside the network. Each token looks at all others and decides which ones are important for better learning the mapping for the task at hand. This mechanism allows the model to capture context efficiently. Whether a keyword appeared two steps away or 200. Now, let's unpack the architecture. The Transformer includes an encoder and a decoder. Both are made of a stacked blocks. Each block has two key layers, an attention layer and a feed-forward or MLP layer. The attention layer is where all the tokens interact. While in the MLP layer, each token privately refines its representation. Let's walk through a concrete example. Suppose the input sentence \"Jake learned AI even though it was difficult.\" In the attention layer, the word \"it\" looks at all other words to figure out what it refers to. It learns that Jake is the most relevant token. Other tokens also update themselves by looking at each other and exchanging information with each other. The outputs are updated representations for each token borrowing information from tokens that are most relevant to them. Then, in the MLP layer, the token \"it\" refines that understanding internally and adjusts its own representation. This combination of communication in attention and then individual refinement through the MLP layer is what helps the Transformer build contextual understanding. Other details such as residual connections and layer normalization are there just to keep training a stable. Now, let's walk through how inputs flow through the Transformer. First, a tokenizer splits text into smaller units called tokens. Then, the input tokens are embedded. That is, transformed into numerical vectors intended to capture their semantic meaning after training. Now, Transformer has no sense of order by default. So, we add positional information to embeddings to introduce a sense of order among tokens. These are a special patterns added to embeddings to tell the model where each token is in the sequence. Without this, \"Jake learned AI\" could look the same as \"AI learned Jake.\" At each a step, attention mixes information across tokens, and the MLP polishes each token individually. At the end, we still have a sequence of vectors, now rich context-aware representations. Depending on the task, we use these final representations differently. In text generation, the last representation can be used to predict the next word. In sentiment analysis, we can rely on the first vector to represent the entire sentence and feed it into a classifier. Now, let's zoom into the attention layer. The attention layer first creates three different representations of each token in the sequence, a query, a key, and a value. The query asks, \"What am I looking for?\" The key contains, \"Here is what I have.\" And the value carries the actual content to share. For example, in the sentence \"Jake learned AI even though it was difficult\", the token \"it\" forms a query vector implicitly asking, \"What concept am I referring to?\" The other tokens like Jake and AI each provide their keys describing what information they hold. The values carry the meanings of those words such as Jake representing a person and AI representing a subject. To decide which tokens are relevant, we take the dot product between a token's query and the keys of all other tokens in the sequence. In our example, \"it\" will produce higher scores when compared with the key for AI than for Jake, showing that AI is more relevant in context. Next, we normalize these scores, often with a softmax function, to turn them into attention weights. These weights act like focus levels. \"It\" gives a strong attention to AI and weaker attention to unrelated words like Jake. Some tokens receive a strong attention, others get very little. Finally, each token gathers information by taking a weighted sum of all the values vectors, where the weights come from those attention scores. In our example, the token \"it\" updates itself with more information from AI and less information from the rest, forming a richer context-aware meaning. This process gives us a new context-aware representation for each token, one that blends the most relevant information from the rest of the sequence. Mathematically, the paper expresses this exact process in matrix form. Instead of looping through tokens one by one, the model stacks all queries, keys, and values into matrices, and performs these dot products and weighted sums simultaneously. This means every token communicates with every other token in a single set of parallel matrix operations, which is efficient and fully differentiable. At the very beginning of training, all the parameters are random. Therefore, all the representations are meaningless. The model has no idea what to look for or what to offer. But as training progresses, the parameters that produce the queries, keys, and values are optimized. Over time, the attention layer learns meaningful patterns. For instance, verbs like \"learned\" start querying their subjects, and pronouns like \"it\" learn to look toward relevant nouns like AI. Other details like masked, multi-head, and cross attention just modify how attention is calculated. These variations help the model handle sequence order, enforce causality, and combine information from different sources. The Transformer is a powerful way of stacking neural layers that allows dynamic communication between sequence elements. This design turns out to be incredibly general. It can be adapted to support different tasks like translation, summarization, and text generation. But it also extends beyond language to images, audio, and even code. Whenever data can be viewed as a sequence of elements that need to interact, Transformers shine. They can be used in encoder-decoder setups like in the original paper for translation, or in decoder-only models like GPT for text generation. If you remember just one thing, remember this. A Transformer is a network that lets its inputs talk to each other. It's not magic, it's communication. And that's why attention really is all we need.",
+        "trailing_silence_s": 0.4408,
+        "word_count": 1122,
+        "words_per_s": 2.3376
+      },
+      "window": {
+        "end_s": 603.0608,
+        "start_s": 123.081
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "bytebytego-transformers-stepbystep",
+  "source_url": "https://www.youtube.com/watch?v=avjX3QrYkls",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1424,
+    "word_level": true
+  },
+  "video": {
+    "channel": "ByteByteGo",
+    "duration_s": 603.0,
+    "title": "Transformers Step-by-Step Explained (Attention Is All You Need)",
+    "upload_date": "20251211"
+  }
+}

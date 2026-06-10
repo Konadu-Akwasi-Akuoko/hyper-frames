@@ -1,0 +1,842 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 2.6097,
+    "longest_hold_s": 105.08,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.6786,
+    "scene_count": 29,
+    "scene_duration_s": {
+      "max": 105.08,
+      "median": 15.36,
+      "min": 0.56,
+      "p25": 8.84,
+      "p75": 28.12
+    },
+    "soft_transition_count": 0,
+    "words_per_s_mean": 2.4055
+  },
+  "proxy": {
+    "duration_s": 643.76,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 18.32,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 0.9825,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.32,
+        "leading_silence_s": 0.32,
+        "pause_before_cut_s": 0.32,
+        "sentence_aligned": false,
+        "text": "How does Amazon maintain high availability during Black Friday traffic spikes? Why do financial systems rarely lose transactions despite network failures? Today, we'll explore the reliability and consistency concepts that power high-scale distributed system. Let's dive right in. System",
+        "trailing_silence_s": 0.0,
+        "word_count": 39,
+        "words_per_s": 2.1288
+      },
+      "window": {
+        "end_s": 18.32,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1334
+      },
+      "duration_s": 22.52,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.32,
+        "leading_silence_s": 0.32,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "reliability isn't about preventing all failures. It's about continuing to work correctly when failures inevitably happen. Network partitions will occur. Servers will crash, hard drives will fail. The question is, how do we build systems that handle these realities gracefully? There are seven key concepts that make this possible. Let's examine each one. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 54,
+        "words_per_s": 2.3979
+      },
+      "window": {
+        "end_s": 40.84,
+        "start_s": 18.32
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1382
+      },
+      "duration_s": 8.84,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "CAP theorems establishes a fundamental constraint. Distributed system can provide at most two of these three guarantees simultaneously.",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 2.0362
+      },
+      "window": {
+        "end_s": 49.68,
+        "start_s": 40.84
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1017
+      },
+      "duration_s": 36.8,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Consistency. All notes see the same data at the same time. Availability. Every request to a non-failing note receives a response. Partition tolerance. The system continues operating despite network failures. Since network partitions are unavoidable in distributed systems, you're really choosing between consistency and availability during partition events. Let's look at how real systems make this choice. Google Spanner chooses consistency. It uses atomic clocks and synchronized time across global data centers to maintain linearizable transactions. During",
+        "trailing_silence_s": 0.0,
+        "word_count": 77,
+        "words_per_s": 2.0924
+      },
+      "window": {
+        "end_s": 86.48,
+        "start_s": 49.68
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2514
+      },
+      "duration_s": 8.32,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "network partitions, the majority partition remains available for both reads and rights while minority partitions become read only. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 2.2837
+      },
+      "window": {
+        "end_s": 94.8,
+        "start_s": 86.48
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2537
+      },
+      "duration_s": 105.08,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "trade-off is that notes in the minority partition lose right availability until the partition heals. Amazon Dynamo DB chooses availability. During network partitions, it continues accepting rights using eventual consistency and resolve conflicts to last right wins based on timestamps. User always get responses, but they might occasionally see stale data. Neither approach is right or wrong. It depends on your requirements. Banking systems typically need consistency. Social media feeds can tolerate eventual consistency. Eventual consistency makes a simple promise. If you stop making updates, all replicas will eventually converge to the same state. This might sound sloppy, but it's incredibly powerful for large scale systems. Here's why. In eventually consistent system, rice can complete immediately without waiting for confirmation from all replicas. This improves performance and availability. Amazon's shopping cart works this way. You can add items even if some servers are temporarily unreachable. But how the system handle conflicts when different replicas receive different updates? When conflicts occur, systems use different resolution strategies. Last right winds use timestamp to pick the most recent update. Simple but can lose data. Conflict free replicated data types use mathematical properties to guarantee that all replicas converge to the same state regardless of update order. Application defined merge functions let developers write custom logic for resolving conflicts based on business rules. Modern systems like Dynamob typically achieve consistency within milliseconds under normal conditions making an eventual park barely noticeable to users.",
+        "trailing_silence_s": 0.0,
+        "word_count": 239,
+        "words_per_s": 2.2745
+      },
+      "window": {
+        "end_s": 199.88,
+        "start_s": 94.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0528
+      },
+      "duration_s": 8.92,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Low balances distribute incoming requests across multiple servers. Sounds simple, but there's sophisticated engineering behind effective load balancing.",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 2.0179
+      },
+      "window": {
+        "end_s": 208.8,
+        "start_s": 199.88
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0518
+      },
+      "duration_s": 4.88,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "There are two main types. Layer 4 load balancers operate at the transport layer. They",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.0738
+      },
+      "window": {
+        "end_s": 213.68,
+        "start_s": 208.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0629
+      },
+      "duration_s": 15.36,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "make routing decisions based on IP addresses and TCP UDP ports. They are fast because they don't need to inspect application data, but they are also limited in their routing intelligence. Layer 7 load balancers operate at the application layer. They",
+        "trailing_silence_s": 0.0,
+        "word_count": 41,
+        "words_per_s": 2.6693
+      },
+      "window": {
+        "end_s": 229.04,
+        "start_s": 213.68
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0643
+      },
+      "duration_s": 15.36,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "can examine HTTP headers, URLs, and even request content to make smarter routing decisions. More powerful, but also more computationally expensive. Modern load balancers go beyond simple roundrobin distribution. Lease",
+        "trailing_silence_s": 0.0,
+        "word_count": 30,
+        "words_per_s": 1.9531
+      },
+      "window": {
+        "end_s": 244.4,
+        "start_s": 229.04
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0536
+      },
+      "duration_s": 5.76,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "connections routing sends new requests to the server handling the fewest active connections. Lease",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.4306
+      },
+      "window": {
+        "end_s": 250.16,
+        "start_s": 244.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0567
+      },
+      "duration_s": 26.48,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.4,
+        "leading_silence_s": 0.4,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "time factors in how quickly each server responds avoiding slower servers. For high availability, low balances themselves are deployed in primary secondary configurations with heartbeat protocols. If the primary fails, the secondary takes over within milliseconds. Consistent hashing ensures the same client consistently hits the same server, which is critical for maintaining session state. In the",
+        "trailing_silence_s": 0.0,
+        "word_count": 56,
+        "words_per_s": 2.1148
+      },
+      "window": {
+        "end_s": 276.64,
+        "start_s": 250.16
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0572
+      },
+      "duration_s": 22.72,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "last video, we talked about horizontal scaling. Here's a problem that large horizontally scale systems face. You have data spread across multiple nodes and you need to add or remove nodes without moving massive amounts of data. Traditional hashing doesn't work well here. If you use simple modular hashing, then adding one node requires remapping almost all of your data.",
+        "trailing_silence_s": 0.0,
+        "word_count": 60,
+        "words_per_s": 2.6408
+      },
+      "window": {
+        "end_s": 299.36,
+        "start_s": 276.64
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.48,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "That's expensive and disruptive. Consistent",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.0161
+      },
+      "window": {
+        "end_s": 301.84,
+        "start_s": 299.36
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 36.36,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "hashing solves this elegantly. Instead of mapping keys directly to notes, both keys and notes are placed on a circular hash ring. Here's how it works step by step. First, hash each note to determine its position on the ring. Second, to find where data belongs, hash the key and walk clockwise around the ring until you hit the first note. Third, replicate the data to the next n minus one notes clockwise on the ring. When you add a new note, it only takes ownership of keys from its immediate neighbors. When you remove a note, it keys get redistributed to the next note on the ring. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 109,
+        "words_per_s": 2.9978
+      },
+      "window": {
+        "end_s": 338.2,
+        "start_s": 301.84
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0597
+      },
+      "duration_s": 23.48,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "result adding or moving notes only requires moving k over n keys instead of nearly all keys where k is total keys and n is the number of nodes. Amazon Dynamo DB and Apache Cassandra both use consistent hashing for exactly this reason. It lets them scale horizontally without massive data reorganization. When one",
+        "trailing_silence_s": 0.0,
+        "word_count": 54,
+        "words_per_s": 2.2998
+      },
+      "window": {
+        "end_s": 361.68,
+        "start_s": 338.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0672
+      },
+      "duration_s": 27.72,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "service in a distributed system fails, it can trigger a cascade of failures across dependent services. Circuit breakers prevent this. A circuit breaker monitors the failure rate array of calls to the dependent service. It has three states. Closed requests flow normally. Open requests are block immediately returning fast failures. Half open. A few test requests allow through to check if the service has recovered. Here's how",
+        "trailing_silence_s": 0.0,
+        "word_count": 66,
+        "words_per_s": 2.381
+      },
+      "window": {
+        "end_s": 389.4,
+        "start_s": 361.68
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0579
+      },
+      "duration_s": 35.84,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it works step by step. The circuit breakers tracks successful and failed requests to a service. When the failure rate exceeds a threshold, the circuit breaker trips to open state. In the open state, requests fail immediately without even attempting to call the failing service. This prevents resource exhaustion and gives the failing service time to recover. After a timeout period, the circuit breaker moves to half open and allows a few test requests through. If the test requests succeed, the circuit breaker closes and normal operation resumes. If they fail, it opens again.",
+        "trailing_silence_s": 0.0,
+        "word_count": 94,
+        "words_per_s": 2.6228
+      },
+      "window": {
+        "end_s": 425.24,
+        "start_s": 389.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0562
+      },
+      "duration_s": 13.72,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Netflix pioneered this pattern with their history library and is now standard in microservices architectures. The key insight is that fast failures are better than slow failures that consume resources. Rate limiting",
+        "trailing_silence_s": 0.0,
+        "word_count": 32,
+        "words_per_s": 2.3324
+      },
+      "window": {
+        "end_s": 438.96,
+        "start_s": 425.24
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0504
+      },
+      "duration_s": 30.6,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.4,
+        "leading_silence_s": 0.4,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "controls how many requests client can make within a given time window. It protects systems from overload and abuse. There are several algorithms each with different characteristics. Token bucket accumulates tokens at a fixed rate up to a maximum capacity. Each request consumes a token. This allows control burst while maintaining an average rate. Leaky bucket processes requests at a constant rate smoothing out traffic spikes. Excess requests are cute or dropped. Fixed",
+        "trailing_silence_s": 0.0,
+        "word_count": 73,
+        "words_per_s": 2.3856
+      },
+      "window": {
+        "end_s": 469.56,
+        "start_s": 438.96
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0919
+      },
+      "duration_s": 11.4,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.359,
+        "leading_silence_s": 0.359,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "window can request in discrete time intervals. simple but prone to boundary effects where clients can double the rate by timing requests around window boundaries.",
+        "trailing_silence_s": 0.0,
+        "word_count": 25,
+        "words_per_s": 2.193
+      },
+      "window": {
+        "end_s": 480.96,
+        "start_s": 469.56
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0655
+      },
+      "duration_s": 28.12,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Sliding windows uses a rolling average that smooths out the boundary problems of fixed windows. In distributed systems, ray limiting gets more complex. You can't just count requests on a single server. You need coordination across multiple instances. One solution is rad space ray limiters that use l script to atomically increment counters and set ttls. This ensures consistent ray limiting across your entire service cluster.",
+        "trailing_silence_s": 0.0,
+        "word_count": 66,
+        "words_per_s": 2.3471
+      },
+      "window": {
+        "end_s": 509.08,
+        "start_s": 480.96
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.121
+      },
+      "duration_s": 62.4,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Many systems implement tier array limiting with different limits for authenticators versus anonymous users and progressively stricter limits as suspicious patterns are detected. You can manage what you can measure. Monitoring provides visibility into system behavior and performance. Modern observability focuses on four key signal types. Metrics, time series numerical data like CPU usage, request rate, and error counts. Logs structured records of discrete events with contextual information. Traces end to end request flows showing how a single request moves through your distributed system. events, significant occurrences like deployments or configuration changes. The challenge is processing massive amounts of telemetry data. Large scale systems generate terabytes of monitoring data daily. Effective alerting balances two concerns. You want to catch real problems quickly, but you don't want to be overwhelmed by false alarms. Static",
+        "trailing_silence_s": 0.0,
+        "word_count": 133,
+        "words_per_s": 2.1314
+      },
+      "window": {
+        "end_s": 571.48,
+        "start_s": 509.08
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0683
+      },
+      "duration_s": 12.04,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.28,
+        "leading_silence_s": 0.28,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "thresholds work for stable metrics, but fail when traffic patterns change. Modern systems use statistical anomaly detection that learns normal patterns and alerts on deviations. Composite",
+        "trailing_silence_s": 0.0,
+        "word_count": 26,
+        "words_per_s": 2.1595
+      },
+      "window": {
+        "end_s": 583.52,
+        "start_s": 571.48
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0912
+      },
+      "duration_s": 34.48,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.48,
+        "leading_silence_s": 0.48,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "alerts combine multiple signals to reduce noise. Instead of alerting on high CPU alone, you may alert when CPU is high and error rates are increasing and response times are slow. The goal is service level objectives that measures user experience. Not every systems needs all these patterns. A simple web application serving a few thousand users doesn't need consistent hashing or circuit breakers. The concepts we covered give you the tools to make this trade-off consciously rather than discovering your systems limitation during an outage. Start",
+        "trailing_silence_s": 0.0,
+        "word_count": 87,
+        "words_per_s": 2.5232
+      },
+      "window": {
+        "end_s": 618.0,
+        "start_s": 583.52
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.134
+      },
+      "duration_s": 11.28,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "simple, measure everything and add complexity only when you have clear evidence you need it. That's how you build systems that scale reliably. If you like our videos,",
+        "trailing_silence_s": 0.0,
+        "word_count": 28,
+        "words_per_s": 2.4823
+      },
+      "window": {
+        "end_s": 629.28,
+        "start_s": 618.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0534
+      },
+      "duration_s": 0.56,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.239,
+        "leading_silence_s": 0.239,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you might like",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 5.3571
+      },
+      "window": {
+        "end_s": 629.84,
+        "start_s": 629.28
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0609
+      },
+      "duration_s": 7.52,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "our system design newsletter as well. It covers topics and trends in large scale system design. Trusted by 1 million readers.",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 2.7926
+      },
+      "window": {
+        "end_s": 637.36,
+        "start_s": 629.84
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6681
+      },
+      "duration_s": 6.4,
+      "files": {
+        "thumb": "bytebytego-7-system-design-concepts-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 0.4655,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Subscribed at blog.by go.com.",
+        "trailing_silence_s": 3.421,
+        "word_count": 4,
+        "words_per_s": 0.625
+      },
+      "window": {
+        "end_s": 643.76,
+        "start_s": 637.36
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "bytebytego-7-system-design-concepts",
+  "source_url": "https://www.youtube.com/watch?v=Qd9tJ3H_hPE",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1506,
+    "word_level": true
+  },
+  "video": {
+    "channel": "ByteByteGo",
+    "duration_s": 644.0,
+    "title": "7 System Design Concepts Explained in 10 Minutes",
+    "upload_date": "20250625"
+  }
+}

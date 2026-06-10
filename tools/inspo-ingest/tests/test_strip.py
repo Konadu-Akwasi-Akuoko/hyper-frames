@@ -3,7 +3,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from inspo_ingest.strip import (
+    contact_sheet_argvs,
     extract_frame_argv,
     ffmpeg_flow_decode_argv,
     ffprobe_dimensions_argv,
@@ -128,6 +131,91 @@ def test_ytdlp_prefer_avc_defaults_off() -> None:
     assert argv[argv.index("-S") + 1] == "res,fps"
 
 
+def test_ytdlp_subtitles_langs_appends_verified_flag_group_before_url() -> None:
+    # pace mode fetches subtitles in the SAME yt-dlp call (one invocation total — this
+    # IP has tripped the bot-wall before). The flag group is contiguous, after the fixed
+    # block, before the URL.
+    argv = ytdlp_download_argv(
+        url="https://www.youtube.com/watch?v=VIDEO_ID",
+        out_template="/tmp/proxy.%(ext)s",
+        max_height=1080,
+        prefer_avc=True,
+        subtitles_langs=("en-orig", "en"),
+    )
+    i = argv.index("--write-auto-subs")
+    assert argv[i : i + 8] == [
+        "--write-auto-subs",
+        "--write-subs",
+        "--sub-langs",
+        "en-orig,en",
+        "--sub-format",
+        "json3/srv3/vtt",
+        "--sleep-subtitles",
+        "2",
+    ]
+    # After the fixed block (the -o pair), immediately before the URL.
+    assert i > argv.index("-o") + 1
+    assert argv[-1] == "https://www.youtube.com/watch?v=VIDEO_ID"
+    assert argv[-2] == "2"
+    # info-json not requested here.
+    assert "--write-info-json" not in argv
+
+
+def test_ytdlp_write_info_json_appends_single_flag_before_url() -> None:
+    argv = ytdlp_download_argv(
+        url="u", out_template="o", max_height=1080, write_info_json=True
+    )
+    assert argv[-2:] == ["--write-info-json", "u"]
+    # No subtitle flags without subtitles_langs.
+    assert "--write-auto-subs" not in argv
+    assert "--sub-langs" not in argv
+
+
+def test_ytdlp_subtitles_and_info_json_combined_order() -> None:
+    # Exact tail shape when both opt-ins are set: subtitle group, then info-json, then URL.
+    argv = ytdlp_download_argv(
+        url="u",
+        out_template="o",
+        max_height=1080,
+        subtitles_langs=("en-orig", "en"),
+        write_info_json=True,
+    )
+    assert argv == [
+        "yt-dlp",
+        "-f",
+        "bv*[height<=1080]/b[height<=1080]",
+        "-S",
+        "res,fps",
+        "--sleep-requests",
+        "1",
+        "-o",
+        "o",
+        "--write-auto-subs",
+        "--write-subs",
+        "--sub-langs",
+        "en-orig,en",
+        "--sub-format",
+        "json3/srv3/vtt",
+        "--sleep-subtitles",
+        "2",
+        "--write-info-json",
+        "u",
+    ]
+
+
+def test_ytdlp_subtitles_defaults_off_keeps_argv_clean() -> None:
+    argv = ytdlp_download_argv(url="u", start_s=1.0, end_s=2.0, out_template="o")
+    for flag in (
+        "--write-auto-subs",
+        "--write-subs",
+        "--sub-langs",
+        "--sub-format",
+        "--sleep-subtitles",
+        "--write-info-json",
+    ):
+        assert flag not in argv
+
+
 def test_ffprobe_dimensions_argv_emits_bare_wxh() -> None:
     argv = ffprobe_dimensions_argv(clip_path=Path("/tmp/clip.mp4"))
     assert argv[0] == "ffprobe"
@@ -246,3 +334,136 @@ def test_filmstrip_argv_uses_append_not_montage() -> None:
 def test_filmstrip_argv_resize_scales_with_width() -> None:
     argv = filmstrip_argv(frame_paths=[Path("a.png")], out_path=Path("o.png"), frame_width=320)
     assert argv[argv.index("-resize") + 1] == "320x"
+
+
+def _thumbs(n: int) -> list[Path]:
+    return [Path(f"/tmp/thumbs/scene-{i:03d}.png") for i in range(1, n + 1)]
+
+
+def test_contact_sheet_argvs_single_row_appends_straight_to_out_path() -> None:
+    # Fewer thumbs than row_len -> one +append directly to out_path, no -append step,
+    # no intermediate row files to clean up.
+    argvs, row_paths = contact_sheet_argvs(
+        frame_paths=_thumbs(4),
+        out_path=Path("/tmp/sheet-000.png"),
+        row_len=10,
+        tmp_dir=Path("/tmp/rows"),
+    )
+    assert row_paths == []
+    assert argvs == [
+        [
+            "magick",
+            "/tmp/thumbs/scene-001.png",
+            "/tmp/thumbs/scene-002.png",
+            "/tmp/thumbs/scene-003.png",
+            "/tmp/thumbs/scene-004.png",
+            "+append",
+            "/tmp/sheet-000.png",
+        ]
+    ]
+
+
+def test_contact_sheet_argvs_exact_multiple_rows_then_vertical_stack() -> None:
+    # 6 thumbs at row_len=3 -> exactly 2 full rows, then one -append stacking them.
+    argvs, row_paths = contact_sheet_argvs(
+        frame_paths=_thumbs(6),
+        out_path=Path("/tmp/sheet-000.png"),
+        row_len=3,
+        tmp_dir=Path("/tmp/rows"),
+    )
+    assert row_paths == ["/tmp/rows/row-000.png", "/tmp/rows/row-001.png"]
+    assert argvs == [
+        [
+            "magick",
+            "/tmp/thumbs/scene-001.png",
+            "/tmp/thumbs/scene-002.png",
+            "/tmp/thumbs/scene-003.png",
+            "+append",
+            "/tmp/rows/row-000.png",
+        ],
+        [
+            "magick",
+            "/tmp/thumbs/scene-004.png",
+            "/tmp/thumbs/scene-005.png",
+            "/tmp/thumbs/scene-006.png",
+            "+append",
+            "/tmp/rows/row-001.png",
+        ],
+        [
+            "magick",
+            "/tmp/rows/row-000.png",
+            "/tmp/rows/row-001.png",
+            "-background",
+            "none",
+            "-append",
+            "/tmp/sheet-000.png",
+        ],
+    ]
+
+
+def test_contact_sheet_argvs_remainder_row_is_shorter() -> None:
+    # 7 thumbs at row_len=3 -> rows of 3, 3, 1; the short final row is padded by the
+    # -append step's -background none, so no filler tiles are synthesized.
+    argvs, row_paths = contact_sheet_argvs(
+        frame_paths=_thumbs(7),
+        out_path=Path("/tmp/sheet-000.png"),
+        row_len=3,
+        tmp_dir=Path("/tmp/rows"),
+    )
+    assert row_paths == [
+        "/tmp/rows/row-000.png",
+        "/tmp/rows/row-001.png",
+        "/tmp/rows/row-002.png",
+    ]
+    assert len(argvs) == 4
+    # Last row argv carries only the single remainder thumb.
+    assert argvs[2] == [
+        "magick",
+        "/tmp/thumbs/scene-007.png",
+        "+append",
+        "/tmp/rows/row-002.png",
+    ]
+    # Final stack consumes the row PNGs in order, transparent padding, -append.
+    assert argvs[3] == [
+        "magick",
+        "/tmp/rows/row-000.png",
+        "/tmp/rows/row-001.png",
+        "/tmp/rows/row-002.png",
+        "-background",
+        "none",
+        "-append",
+        "/tmp/sheet-000.png",
+    ]
+
+
+def test_contact_sheet_argvs_never_montage_never_annotate() -> None:
+    # montage and -annotate both need a configured font; Homebrew builds abort with
+    # "unable to read font" (project memory). Neither may ever appear.
+    for n in (1, 3, 7):
+        argvs, _ = contact_sheet_argvs(
+            frame_paths=_thumbs(n),
+            out_path=Path("/tmp/sheet.png"),
+            row_len=3,
+            tmp_dir=Path("/tmp/rows"),
+        )
+        for argv in argvs:
+            assert argv[0] == "magick"
+            assert "montage" not in argv
+            assert "-annotate" not in argv
+
+
+def test_contact_sheet_argvs_rejects_empty_and_bad_row_len() -> None:
+    with pytest.raises(ValueError):
+        contact_sheet_argvs(
+            frame_paths=[],
+            out_path=Path("o.png"),
+            row_len=3,
+            tmp_dir=Path("/tmp/rows"),
+        )
+    with pytest.raises(ValueError):
+        contact_sheet_argvs(
+            frame_paths=_thumbs(2),
+            out_path=Path("o.png"),
+            row_len=0,
+            tmp_dir=Path("/tmp/rows"),
+        )

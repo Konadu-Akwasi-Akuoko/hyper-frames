@@ -1,21 +1,33 @@
 ---
 name: create-srt-and-translate
-description: Generate a video's English captions.srt from its Scribe v2 transcript and translate it into the 13 languages YouTube auto-dubs (Arabic, German, Spanish, French, Hindi, Indonesian, Italian, Japanese, Polish, Portuguese, Russian, Turkish, Vietnamese). Use this skill whenever the user says "create the SRT", "translate the captions", "generate captions for this video", "make the multilingual subtitles", or anything similar after the voiceover step has run and a transcript.json exists. Triggers on phrases like "translate my video to all languages", "do the localization", "prep this for multi-language upload". Always run from inside or against a `videos/<slug>-<date>/` folder.
+description: Generate a video's English captions.srt from its Scribe v2 transcript — and, only when explicitly asked, translate it into the 13 languages YouTube auto-dubs (Arabic, German, Spanish, French, Hindi, Indonesian, Italian, Japanese, Polish, Portuguese, Russian, Turkish, Vietnamese). By DEFAULT this skill produces the English captions and STOPS. Use it for "create the SRT", "generate captions for this video", "make the captions" (English only); generate the 13 translations only on an explicit localization request — "translate the captions", "translate to all languages", "do the localization", "dub it", "make the multilingual subtitles", "prep for multi-language upload". Always run from inside or against a `videos/<slug>-<date>/` folder.
 ---
 
 # create-srt-and-translate
 
-Generate a video's English captions.srt and the full set of YouTube
-multi-language subtitle localizations from one invocation.
+Generate a video's English captions.srt — and, on explicit request, the full
+set of YouTube multi-language subtitle localizations.
+
+**The default is English-only.** The skill produces `captions.srt` and stops.
+The 13-language translation is a separate, on-demand phase (progressive
+discovery — see Step 2.5 and Step 3). Do not generate the translations unless
+the invoking request explicitly asks to translate / localize / dub.
 
 Thumbnail-title localization is intentionally out of scope. Thumbnails ship
 in English; if titles ever need to be localized, that's a separate manual
-pass through the thumbnail-creator pipeline.
+pass through the thumbnail-and-title-generator pipeline.
 
 ## When to invoke
 
 After the voiceover step (`voiceover-elevenlabs-v2` or v3) has produced
 `transcript.json` at the video folder root.
+
+**Two phases, gated (progressive discovery).** Phase 1 (default) = English
+`captions.srt`, then STOP. Phase 2 (on-demand) = the 13-language translation,
+run *only* when the user explicitly asks to translate / localize / dub. A plain
+"create the SRT" / "make the captions" is Phase 1 only — do not roll into
+translations. English alone already unlocks YouTube's own auto-translation and
+auto-dub, so it's the right default for most videos.
 
 The skill is safe to re-run — it overwrites the same output paths. Each
 language file is independent, so partial re-runs are fine.
@@ -93,10 +105,33 @@ SRT blocks using sentence-break preferences and ~84 char / 7 s caps. See
 If captions.srt already exists, the script overwrites it. That's
 intentional — re-runs should be idempotent.
 
-### Step 3 — Translate the SRT into 13 languages
+### Step 2.5 — Default stop: English only unless translation was asked for
 
-Read `captions.srt`, then write one translated file per language code into
-`<video-folder>/multi-lingual/srt/`. Each translated file:
+**This is the default endpoint.** Unless the invoking request explicitly asked
+to translate / localize / dub (the trigger list in Step 3), STOP here:
+
+- Skip to Step 4 and report the English `captions.srt` as done.
+- Offer the translations as a follow-up, don't perform them: *"English
+  `captions.srt` is ready. Want the 13 YouTube auto-dub languages too? Say
+  'translate the captions' and I'll run the localization pass."*
+- Do **not** create `multi-lingual/srt/` or write any translated file.
+
+Progressive discovery: the 13-language phase below exists, but it is opt-in.
+Most videos only need the English SRT; a full hand-translated set is a
+deliberate, heavier ask the user makes explicitly.
+
+### Step 3 — Translate the SRT into 13 languages (on-demand only)
+
+**Gate — run this step only on an explicit translation request.** Triggers:
+"translate", "translate the captions", "translate to all languages", "do the
+localization", "localize", "dub it", "make the multilingual subtitles", "prep
+for multi-language upload". If the request was a plain "create the SRT" /
+"make the captions", you already stopped at Step 2.5 — do not run this step.
+
+When triggered: first verify `<video-folder>/captions.srt` exists (if not, run
+Step 2 once to produce it — do **not** re-run the chunker if it already
+exists). Then read `captions.srt` and write one translated file per language
+code into `<video-folder>/multi-lingual/srt/`. Each translated file:
 
 - **Preserves block numbers and timestamps verbatim.** Only the text changes.
 - **Preserves the line-wrap structure when reasonable.** Translations may
@@ -124,7 +159,13 @@ Every file should report the same count.
 
 ### Step 4 — Report
 
-Summarize for the user:
+Summarize for the user. **English-only run (the default):**
+
+- `captions.srt` block count, and that it's ready to upload.
+- The Studio upload path: `Studio → Subtitles → Add language → English → Upload file → With timing`.
+- The follow-up offer from Step 2.5 (translations available on request).
+
+**After a translation run:**
 
 - The number of SRT blocks per language (should all match captions.srt).
 - A reminder of the Studio upload path:
@@ -134,7 +175,7 @@ Summarize for the user:
 
 - **Does not translate thumbnail titles.** Thumbnails ship in English. If
   the user wants localized thumbnail text, that is a separate manual pass
-  through the thumbnail-creator pipeline with explicit text overrides.
+  through the thumbnail-and-title-generator pipeline with explicit text overrides.
 - **Does not align voiceover.txt against transcript.json.** Captions
   use Scribe v2's transcribed text verbatim. If the script's exact
   casing/spelling matters (e.g. brand names that Scribe misheard), a
