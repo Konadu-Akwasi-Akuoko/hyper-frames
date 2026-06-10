@@ -71,7 +71,7 @@ sanity-checking chapter boundaries. Not required.
 
 ### Step 3 — Probe `seo/research.json`
 
-Same hook contract as `thumbnail-creator` and `script-writer` (see
+Same hook contract as `thumbnail-and-title-generator` and `script-writer` (see
 `.claude/skills/youtube-seo-research/reference/consumer-integration.md`):
 
 - **Present** → load it. Print: `Using SEO research from <date>.`
@@ -306,7 +306,7 @@ The loop ends when the user says "ship it", "done", "looks good",
 - Write the script. That's `script-writer` (this runs after).
 - Generate the voiceover. That's `voiceover-elevenlabs-v2` /
   `voiceover-elevenlabs-v3`.
-- Pick a thumbnail title. That's `thumbnail-creator`.
+- Pick a thumbnail title. That's `thumbnail-and-title-generator`.
 - Upload to YouTube. The user pastes manually after `pbcopy`.
 - A/B test the description. YouTube's native A/B is for titles +
   thumbnails only; descriptions are not A/B-testable.

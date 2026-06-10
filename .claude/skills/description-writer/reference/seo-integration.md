@@ -5,7 +5,7 @@ the description, and how to use them without contortion.
 
 ## The probe contract
 
-Identical to `script-writer` and `thumbnail-creator` — see
+Identical to `script-writer` and `thumbnail-and-title-generator` — see
 `.claude/skills/youtube-seo-research/reference/consumer-integration.md`
 for the canonical hook. Three rules carry over verbatim:
 

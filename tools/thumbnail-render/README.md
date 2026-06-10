@@ -1,7 +1,7 @@
 # thumbnail-render
 
 Brand-agnostic Node tool that turns thumbnail HTML into 1280×720 PNG via
-Playwright headless Chrome. Used by the `thumbnail-creator` Claude skill;
+Playwright headless Chrome. Used by the `thumbnail-and-title-generator` Claude skill;
 the channel's visual signature lives in that skill, not here.
 
 ## Setup (once)

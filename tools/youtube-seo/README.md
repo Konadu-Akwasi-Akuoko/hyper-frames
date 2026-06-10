@@ -2,7 +2,7 @@
 
 Mine YouTube autocomplete + top-N video metadata for one topic into a structured SEO research artifact at `<video-dir>/seo/research.json`. No API key, fully anonymous, ~25s per run.
 
-Consumed by the `youtube-seo-research` skill (and downstream consumer skills `script-writer` and `thumbnail-creator`).
+Consumed by the `youtube-seo-research` skill (and downstream consumer skills `script-writer` and `thumbnail-and-title-generator`).
 
 ## Usage
 

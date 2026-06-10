@@ -130,6 +130,6 @@ Writes `narration-map.json` next to the transcript. See
 ## seo/research.json — a shared per-video artifact (FYI)
 
 The `youtube-seo-research` skill generates `<video-dir>/seo/research.json` from
-one topic phrase. It's consumed by `script-writer` and `thumbnail-creator`, not
+one topic phrase. It's consumed by `script-writer` and `thumbnail-and-title-generator`, not
 by authoring directly — but it's the same per-video artifact, so know it exists.
 Not your concern during composition authoring.
