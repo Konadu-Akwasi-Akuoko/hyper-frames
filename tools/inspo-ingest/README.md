@@ -346,9 +346,18 @@ table with a 12-word text excerpt) and **no judgment prose**.
   approximate. Manual (cue-level) tracks have no word timing at all
   (`word_level: false`), which degrades the narration stats further.
 - **Detection defaults are calibrated, not universal** — `--hard-floor 0.05`
-  and `--soft-wide-min 0.12` were tuned on two real videos: a quiet
-  diagram-explainer (ByteByteGo: median scene score ~0, diagram swaps at
-  0.03–0.10) and a fast-cut video essay (~14 scene changes/min). Lower
+  and `--soft-wide-min 0.12` were originally tuned on two videos (2026-06-09:
+  a quiet diagram-explainer and a fast-cut essay) and **formally re-validated
+  on 17 videos across 4 registers (2026-06-10)** — chaptered explainer, brisk
+  sectioned talking-head, fast essay/listicle churn, and vertical Short. The
+  per-frame score distributions confirm both floors generalize: `--hard-floor
+  0.05` sits 5–10× above the per-frame noise floor in every register (median
+  nonzero scene score 0.002–0.009), and `--soft-wide-min 0.12` sits 10–40×
+  above the static-canvas baseline in the slow-explainer register where soft
+  transitions actually matter (median wide-delta 0.003–0.012). No register
+  needed a different floor; the adaptive ratio + `--min-gap` debounce + dedupe
+  do the real cut selection, so the floors are robust noise gates rather than
+  the binding selector. Tuning knobs still apply per video: lower
   `--soft-wide-min` catches more eased transitions but starts firing on
   in-scene text build-ons; raise `--hard-floor` toward 0.12 on noisy
   hard-cut-heavy footage if precision suffers. Slow pans or very long
