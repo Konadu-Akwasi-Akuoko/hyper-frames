@@ -1,0 +1,86 @@
+<!--
+  Tokens substituted by the thumbnail-and-title-generator skill ("Specimen"
+  signature). Names are listed WITHOUT brace syntax to avoid colliding with
+  first-occurrence string replacement. The skill MUST use global replacement
+  (/g in JS, re.sub in Python) when substituting.
+
+  Required:
+    STYLES_HREF       absolute file:// URL to templates/styles.css
+    TITLE_PLAIN       plain text title (for <title>; parsed by create-srt
+                      localize_thumbnails.py — keep it)
+    THUMBNAIL_CLASS   "" for horizontal (1280x720), "vertical" for 1080x1920
+    ACCENT_CLASS      one of: acc-teal acc-cyan acc-violet acc-amber acc-slate
+                      acc-lime acc-red  (the per-video accent hue — the ONLY
+                      per-video brand variable; default acc-teal)
+    WARM_CLASS        "" normally; "warm" for warm/blonde subjects (kills the
+                      colored glow disc so it doesn't ring)
+    FACE_IMAGE_URL    absolute file:// URL to the DEFRINGED cutout PNG
+    ROW_FONT_SIZE_PX  integer px, autosized so the longest row fits the column
+    TITLE_ROW_1..3    headline rows. KEEP as <span class="thumbnail-row"> — the
+                      2-tone accent is a ROW CLASS (below), never an inner span,
+                      so localization can re-fill the row text without losing it.
+    ROW_1_CLASS,
+    ROW_2_CLASS,
+    ROW_3_CLASS       "" | "accent" (the one accent-hued punch row) | "kicker"
+                      (vertical Variant C row 3) | "accent kicker"
+    TITLE_ROW_4..5    "" by default; vertical Variant B (stacked staccato) only
+    MONO_TELL         the code-native tell, e.g.
+                      // <span class="stat">98.8%</span> of all websites
+                      (set "" to omit)
+    CHIP_HTML         "" or a positioned brand chip, e.g.
+                      <div class="chip" style="left:520px;top:430px;width:92px;height:70px;font-size:50px;position:absolute;z-index:3;">JS</div>
+    ANNOTATION_SVG    "" or a positioned inline-SVG annotation from the kit
+                      (see reference/annotation-kit.md), e.g. a precision pointer
+                      <div class="anno" style="left:..;top:..;"><svg>..</svg></div>
+                      Place endpoints by reading the numbered coord grid (?grid).
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{TITLE_PLAIN}}</title>
+  <link rel="stylesheet" href="{{STYLES_HREF}}">
+</head>
+<body>
+  <div class="thumbnail {{THUMBNAIL_CLASS}} {{ACCENT_CLASS}} {{WARM_CLASS}}">
+    <div class="bg-grid"></div>
+
+    <div class="face-wrap">
+      <div class="face-glow"></div>
+      <img class="face" src="{{FACE_IMAGE_URL}}" alt="">
+    </div>
+
+    {{ANNOTATION_SVG}}
+    {{CHIP_HTML}}
+
+    <div class="thumbnail-text" style="font-size: {{ROW_FONT_SIZE_PX}}px;">
+      <span class="thumbnail-row {{ROW_1_CLASS}}">{{TITLE_ROW_1}}</span>
+      <span class="thumbnail-row {{ROW_2_CLASS}}">{{TITLE_ROW_2}}</span>
+      <span class="thumbnail-row {{ROW_3_CLASS}}">{{TITLE_ROW_3}}</span>
+      <span class="thumbnail-row">{{TITLE_ROW_4}}</span>
+      <span class="thumbnail-row">{{TITLE_ROW_5}}</span>
+      <div class="mono-tell">{{MONO_TELL}}</div>
+    </div>
+
+    <div class="vignette"></div>
+
+    <div class="grid-overlay" aria-hidden="true">
+      <div class="grid-safe-area"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var t = document.querySelector('.thumbnail');
+      if (location.search.includes('grid')) t.classList.add('with-grid');
+      // numbered axis labels for the coord grid (visible only under .with-grid)
+      var g = t.querySelector('.grid-overlay');
+      if (g) {
+        var W = t.classList.contains('vertical') ? 1080 : 1280;
+        var H = t.classList.contains('vertical') ? 1920 : 720;
+        for (var x = 100; x < W; x += 100) { var ex = document.createElement('div'); ex.className = 'cg-label cg-x'; ex.style.left = x + 'px'; ex.textContent = x; g.appendChild(ex); }
+        for (var y = 100; y < H; y += 100) { var ey = document.createElement('div'); ey.className = 'cg-label cg-y'; ey.style.top = y + 'px'; ey.textContent = y; g.appendChild(ey); }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "name": "@hyper-frames/thumbnail-render",
   "version": "0.12.0",
-  "description": "Render hyper-frames thumbnail HTML to 1280x720 PNG via Playwright. Brand-agnostic; the channel's visual signature lives in the thumbnail-creator skill, not here.",
+  "description": "Render hyper-frames thumbnail HTML to 1280x720 PNG via Playwright. Brand-agnostic; the channel's visual signature lives in the thumbnail-and-title-generator skill, not here.",
   "type": "module",
   "private": true,
   "engines": { "node": ">=20" },

@@ -1,0 +1,193 @@
+/* thumbnail-and-title-generator — LOCKED visual signature ("Specimen")
+ * A face-forward "Bucket-B" signature designed into the white space found in
+ * the 2026-06-09 11-channel corpus study. Constants documented in
+ * reference/specimen-signature.md. Do NOT change the LOCKED elements per
+ * video — that is a rebrand. The ONE per-video variable is --accent (palette
+ * below); everything else (base, mono tell, 2-tone structure, precision
+ * pointer grammar, face-right layout) is the brand and stays constant.
+ *
+ * Class-name contract preserved for downstream consumers (do not rename):
+ *   .thumbnail, .thumbnail-text, .thumbnail-row(.kicker), .accent,
+ *   .thumbnail.vertical, .grid-overlay / .with-grid
+ * (create-srt localize_thumbnails.py parses .thumbnail-row + <title>;
+ *  the renderer screenshots the viewport; ?grid drives .grid-overlay.)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap');
+
+:root {
+  /* LOCKED base (green-tinted near-black — distinct from navy + pure black) */
+  --bg-hi:   #16201f;   /* soft top-left light */
+  --bg:      #0b0e14;   /* base */
+  --bg-deep: #05070b;   /* corners / deep */
+  --ink:     #f3f7f6;   /* headline white line */
+
+  /* ACCENT PALETTE — pick ONE per video via `--accent` on the .thumbnail.
+   * Default leans cool/unclaimed for max contrast vs the coral-saturated
+   * niche; red is available but is the niche's most-saturated hue, so
+   * reserve it for emotionally-red beats (worst/danger/anger). */
+  --c-teal:   #19e3c2;   /* default — unclaimed in the lane */
+  --c-cyan:   #34c3ff;
+  --c-violet: #8a7bff;
+  --c-amber:  #f5a524;
+  --c-slate:  #5b8def;
+  --c-lime:   #b6f23a;
+  --c-red:    #ff4d4d;   /* available; saturated in the niche — use sparingly */
+
+  --accent: var(--c-teal);
+  /* translucent accent for rim-light / glow (overridden per accent below) */
+  --accent-glow: rgba(25, 227, 194, 0.30);
+
+  --canvas-w: 1280px;
+  --canvas-h: 720px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: var(--canvas-w); height: var(--canvas-h); overflow: hidden; background: var(--bg-deep); }
+
+/* ---- canvas ---- */
+.thumbnail {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 100% at 16% 12%, var(--bg-hi) 0%, var(--bg) 44%, var(--bg-deep) 100%);
+}
+
+/* faint ambient engineering grid (part of the signature; stays in final render) */
+.bg-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(120,220,200,0.085) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,220,200,0.085) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(120% 100% at 38% 50%, #000 52%, transparent 100%);
+}
+.vignette {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 120% at 50% 50%, transparent 54%, rgba(0,0,0,0.6) 100%);
+}
+
+/* ---- face (pop-culture/reaction still, user-supplied + credited) ---- */
+.face-wrap { position: absolute; right: -8px; bottom: 0; height: 760px; display: flex; align-items: flex-end; z-index: 2; }
+.face-glow {
+  position: absolute; right: 44px; bottom: 64px; width: 540px; height: 540px; border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 66%);
+  filter: blur(8px);
+}
+.face {
+  position: relative; height: 760px; width: auto; object-fit: contain; object-position: bottom right;
+  /* cool grade + soft diffuse separation (never a hard keyline). Defringe the
+   * cutout PNG first — CSS glow does NOT fix a matte fringe. */
+  filter: saturate(0.9) contrast(1.12) brightness(1.04)
+          drop-shadow(0 0 10px var(--accent-glow))
+          drop-shadow(-18px 14px 30px rgba(0,0,0,0.62));
+}
+/* warm/blonde subjects ring under a colored glow — set `warm` on .thumbnail to kill the disc */
+.thumbnail.warm .face-glow { display: none; }
+
+/* ---- headline (2-tone): white line(s) + one accent-hued punch word ---- */
+.thumbnail-text {
+  position: absolute; left: 72px; top: 50%; transform: translateY(-50%);
+  right: 470px;            /* clears the face zone on the right */
+  z-index: 3;
+  display: flex; flex-direction: column;
+  color: var(--ink);
+  font-weight: 900; letter-spacing: -0.025em; line-height: 0.95;
+  text-transform: uppercase;
+}
+.thumbnail-row { display: block; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+.thumbnail-row:empty { display: none; }
+/* the dominant punch row (usually also the accent row) — bigger than flanking
+ * white rows; base font-size is set on .thumbnail-text (the flanking size). */
+.thumbnail-row.punch { font-size: 1.7em; line-height: 0.9; }
+/* the accent-hued punch word — recolored by --accent (the per-video hue) */
+.thumbnail-text .accent, .thumbnail-row.accent, .accent {
+  color: var(--accent);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 26px var(--accent-glow);
+}
+
+/* monospace code-native "tell" (the genuinely-unclaimed type signal) */
+.mono-tell {
+  margin-top: 22px;
+  font-family: 'JetBrains Mono', monospace; font-weight: 800;
+  font-size: 0.42em;       /* relative to the headline base; ~38px at base 92 — NOT the headline size */
+  text-transform: none; letter-spacing: 0; line-height: 1.1; white-space: nowrap;
+  color: var(--ink); opacity: 0.92;
+}
+.mono-tell .stat { color: var(--accent); }
+
+/* ---- brand chip (small per-topic badge; replaces the old topic icon) ---- */
+.chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--chip-bg, var(--accent)); color: var(--chip-ink, var(--bg-deep));
+  font-weight: 900; font-family: 'Inter', sans-serif; border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.chip svg { width: 0.72em; height: 0.72em; }
+.chip.brand-silhouette svg { fill: currentColor; }
+.chip.brand-color svg { fill: initial; }
+
+/* ---- inline-SVG annotation kit (precision grammar; all inside .thumbnail
+ * so it scales + stays deterministic; stroke uses --accent). Author places
+ * endpoints by reading the numbered coord grid. Optional data-anchor helper
+ * (annotation-kit.md) can auto-draw the pointer to a marked point. ---- */
+.anno { position: absolute; z-index: 4; pointer-events: none; }
+.anno svg { overflow: visible; stroke: var(--accent); fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.anno svg .filled { fill: var(--accent); stroke: none; }   /* solid node/arrowhead */
+.anno .anno-label {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent);
+  font-size: 26px; letter-spacing: -0.01em; white-space: nowrap;
+}
+
+/* ---- per-accent rim/glow overrides (keep separation tasteful per hue) ---- */
+.thumbnail.acc-teal   { --accent: var(--c-teal);   --accent-glow: rgba(25,227,194,0.30); }
+.thumbnail.acc-cyan   { --accent: var(--c-cyan);   --accent-glow: rgba(52,195,255,0.30); }
+.thumbnail.acc-violet { --accent: var(--c-violet); --accent-glow: rgba(138,123,255,0.32); }
+.thumbnail.acc-amber  { --accent: var(--c-amber);  --accent-glow: rgba(245,165,36,0.30); }
+.thumbnail.acc-slate  { --accent: var(--c-slate);  --accent-glow: rgba(91,141,239,0.30); }
+.thumbnail.acc-lime   { --accent: var(--c-lime);   --accent-glow: rgba(182,242,58,0.28); }
+.thumbnail.acc-red    { --accent: var(--c-red);    --accent-glow: rgba(255,77,77,0.30); }
+
+/* ---- numbered coordinate-grid design overlay (toggled by .with-grid via
+ * ?grid; never in the final PNG — the renderer strips query params). Fine
+ * 20px minor / 100px major graph + numbered x/y axes + title-safe border.
+ * Axis numbers are injected by the cg-init snippet in variant.html. ---- */
+.grid-overlay { display: none; position: absolute; inset: 0; z-index: 60; pointer-events: none; font-family: 'JetBrains Mono', monospace; }
+.thumbnail.with-grid .grid-overlay {
+  display: block;
+  background-image:
+    linear-gradient(rgba(130,225,205,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130,225,205,0.10) 1px, transparent 1px),
+    linear-gradient(rgba(130,225,205,0.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130,225,205,0.32) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+}
+.thumbnail.with-grid .grid-overlay .grid-safe-area {
+  position: absolute; left: 60px; top: 60px; right: 60px; bottom: 60px;
+  border: 1px dashed rgba(255,95,95,0.7);
+}
+.cg-label { position: absolute; color: #2af0d0; font-size: 13px; font-weight: 700; line-height: 1; text-shadow: 0 0 3px #000, 0 0 2px #000; }
+.cg-x { top: 3px; transform: translateX(-50%); }
+.cg-y { left: 4px; transform: translateY(-50%); }
+
+/* ====================================================================
+ * Vertical mode (1080x1920 Shorts/TikTok cover) — `vertical` on .thumbnail.
+ * Face anchored to one side / bottom, headline stacked. See
+ * reference/vertical-mode.md. Safe-area + crop markers under .with-grid.
+ * ==================================================================== */
+.thumbnail.vertical { --canvas-w: 1080px; --canvas-h: 1920px; width: var(--canvas-w); height: var(--canvas-h); }
+.thumbnail.vertical .face-wrap { right: 50%; transform: translateX(50%); height: 1100px; }
+.thumbnail.vertical .thumbnail-text {
+  top: auto; bottom: 150px; left: 72px; right: 72px; transform: none;
+  text-align: center; align-items: center; white-space: normal;
+}
+.thumbnail.vertical .thumbnail-row.kicker { font-size: 0.6em; }
+.thumbnail.vertical .mono-tell { text-align: center; }
+
+.thumbnail.vertical.with-grid .grid-overlay::after { /* profile-grid 1:1 crop: y=420..1500 */
+  content: ""; position: absolute; left: 0; right: 0; top: 420px; height: 1080px;
+  outline: 2px dashed rgba(255,95,95,0.6); outline-offset: -1px;
+}

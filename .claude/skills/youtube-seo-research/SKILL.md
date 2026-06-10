@@ -1,6 +1,6 @@
 ---
 name: youtube-seo-research
-description: Mine YouTube autocomplete + top-N video metadata for a topic into <video-dir>/seo/research.json, then surface a 5-line digest of searchable nouns, demand phrases, saturation warnings, and hook-shape data. Use when the user wants to research a topic before titling or scripting — phrases like "research SEO for this video", "what are competitors using", "what should I title this", "do keyword research", "research the topic before I write". Also invoked programmatically by other skills (script-writer, thumbnail-creator) when their consumer hooks detect a missing seo/research.json. Backed by the tools/youtube-seo/ Python CLI; this skill handles natural-language invocation, topic resolution, the digest, and follow-ups.
+description: Mine YouTube autocomplete + top-N video metadata for a topic into <video-dir>/seo/research.json, then surface a 5-line digest of searchable nouns, demand phrases, saturation warnings, and hook-shape data. Use when the user wants to research a topic before titling or scripting — phrases like "research SEO for this video", "what are competitors using", "what should I title this", "do keyword research", "research the topic before I write". Also invoked programmatically by other skills (script-writer, thumbnail-and-title-generator) when their consumer hooks detect a missing seo/research.json. Backed by the tools/youtube-seo/ Python CLI; this skill handles natural-language invocation, topic resolution, the digest, and follow-ups.
 ---
 
 # youtube-seo-research
@@ -101,7 +101,7 @@ For ages: derive from `top_videos[].upload_date` (yt-dlp format `YYYYMMDD`). Com
 
 After the digest, ask:
 
-> "Want me to: (a) expand to a related topic and re-research, (b) hand off to script-writer or thumbnail-creator, or (c) explain any signal in detail?"
+> "Want me to: (a) expand to a related topic and re-research, (b) hand off to script-writer or thumbnail-and-title-generator, or (c) explain any signal in detail?"
 
 Handle each:
 - **(a) expand** → take the new topic, restart from Step 3 (probe → fetch → digest).

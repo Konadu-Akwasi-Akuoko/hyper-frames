@@ -10,14 +10,14 @@ Any skill that benefits from SEO context follows this hook at its decision point
 2. **Missing** → invoke the `youtube-seo-research` skill via the `Skill` tool, with one-line user confirmation. If the user declines, proceed without it. **Never block on missing data.**
 3. **Present** → load it. Read the fields the consumer skill cares about (see field map below). Optionally surface a consumer-specific compressed digest at the consumer's decision point.
 
-The full canonical 5-line digest is printed once by `youtube-seo-research` when it runs. Consumer-specific digests are compressed reminders printed at consumer decision moments (e.g., thumbnail-creator's title-pairing step) that may happen hours or days after the original research.
+The full canonical 5-line digest is printed once by `youtube-seo-research` when it runs. Consumer-specific digests are compressed reminders printed at consumer decision moments (e.g., thumbnail-and-title-generator's title-pairing step) that may happen hours or days after the original research.
 
 ## Field map per consumer
 
 | Consumer | Decision point | Fields used |
 |---|---|---|
 | `script-writer` | Step 2.5 (research checkpoint) + Step 3 (outline) | `signals.top_nouns` (working title), `signals.saturation_warnings` (framing), `signals.hook_patterns` (beat 1 budget), `top_videos[].chapters` (coverage check) |
-| `thumbnail-creator` | Step 2 (probe) + Step 4 (paired title) | `signals.top_nouns`, `signals.demand_phrases`, `signals.saturation_warnings`, `top_videos[].upload_date` (recency context) |
+| `thumbnail-and-title-generator` | Step 2 (probe) + Step 4 (paired title) | `signals.top_nouns`, `signals.demand_phrases`, `signals.saturation_warnings`, `top_videos[].upload_date` (recency context) |
 
 ## Adding a new consumer
 
