@@ -48,11 +48,26 @@ pacing-side mechanics either way.
 
 ## Consumers
 
-`script-writer` cites this library in its retention-discipline step (Step 4)
-and its external-references note: it reads the Quick index plus the one entry
-whose register matches the script, to calibrate reset-cadence ceilings with
-measured numbers — evidence, never a target to match. Still unwired:
-`video-director`'s scene chunking, and a distillation of the aggregates into
-`docs/creator-patterns.md` §3 once the library has enough entries to
-generalize from (2 is not enough; revisit at ~10+). Both are tracked with
-detailed activation instructions in the repo-root `TODO.md`.
+All three consumers are now wired — the library grew to **17 register-diverse
+entries on 2026-06-10**, clearing the "~10+ entries, ≥3 registers" threshold the
+wiring waited on (`TODO.md` items 1 & 2):
+
+- **`docs/creator-patterns.md` §3.8** is the cross-video distillation: four
+  per-register bands (chaptered explainer / brisk sectioned talking-head / fast
+  essay-listicle / vertical Short) computed mechanically from every entry's
+  `aggregates`, plus two findings that hold across all 17 (cuts ride the breath,
+  not the pause — `pct_cuts_in_pause`≈0 everywhere; a faster register is *less*
+  sentence-aligned, not faster-spoken). This is the cheap first stop.
+- **`script-writer`** (Step 4 retention-discipline + external-references note)
+  reads §3.8 first to place the script's register and its hold ceiling, drilling
+  into the one matching entry block here only for a specific video's texture —
+  evidence, never a target to match.
+- **`video-director`** (Step B, first chunk of a *new video* only) reads the
+  Quick index + the one register-matched entry directly, letting `median scene`
+  + `longest_hold_s` calibrate how many sentences a chunk can carry before it
+  drags — once per video, never per chunk.
+
+When you add entries the §3.8 bands go stale: recompute them from the full set
+of `*-pace.json` `aggregates` (the grouped-by-register dump method is in
+`TODO.md` item 2), don't hand-patch. Activation history + the exact procedure
+remain in the repo-root `TODO.md`.

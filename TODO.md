@@ -10,6 +10,13 @@ default in `motion-inspo-add`.
 
 ## 1. Wire `pacingInspo/` into video-director's scene chunking
 
+**✅ DONE 2026-06-10** — library reached 17 entries across 4 registers, firing
+the trigger. Added a first-chunk-only calibration paragraph to
+`video-director/SKILL.md` Step B (reads Quick index + the one register-matched
+entry; `median scene` + `longest_hold_s` set the hold ceiling; once per video,
+not in `scene-design-decider`). `pacingInspo/CLAUDE.md` Consumers + the project
+memory updated. History below.
+
 **Trigger:** `pacingInspo/README.md` has **~10+ entries** spanning at least 3
 registers (e.g. diagram explainer, fast video essay, talking-head tutorial,
 narrative doc). Count the Quick-index rows.
@@ -47,6 +54,15 @@ director hook is a refinement, not a missing limb.
 
 ## 2. Distill `pacingInspo/` aggregates into `docs/creator-patterns.md` §3
 
+**✅ DONE 2026-06-10** — added §3.8 "Measured pacing bands (pacingInspo, n=17)":
+a four-register table (cuts/min, median scene, longest hold, cut-on-sentence
+behavior) computed mechanically from every entry's `aggregates`, plus two
+cross-cutting findings (cuts ride the breath not the pause — `pct_cuts_in_pause`
+≈0 everywhere; faster register ⇒ less sentence-aligned, not faster-spoken).
+`script-writer`'s two pacingInspo references now point at §3.8 first, raw library
+second. Existing §3 prose left intact (evidence appendix, not a rewrite). History
+below.
+
 **Trigger:** same threshold as item 1 (~10+ entries, ≥3 registers). Do item 1
 and this together.
 
@@ -72,13 +88,25 @@ evidence next to a much larger corpus.
 
 ## 3. Re-validate `pace` detection defaults as the library grows
 
+**◐ Re-validated 2026-06-10 at n=17 (no change) — rolling trigger continues.**
+Formal distribution-dump pass over all 18 cached proxies (probe scripts were in
+`scratch/pacing/{hard,soft}_floor_probe.py` — gitignored/throwaway, reconstruct
+from step 2 below): `--hard-floor 0.05` sits 5–10×
+above the per-frame noise floor in every register (median nonzero scene score
+0.002–0.009); `--soft-wide-min 0.12` sits 10–40× above the static-canvas
+baseline in the slow-explainer register where soft transitions matter. Both
+generalize across 4 registers; no default changed; 182 tests still green; tool
+README calibration note updated to record the n=17 validation. **Next formal
+pass after ~5 more ingests beyond 17 (~22 entries)**, or immediately on a QA
+showing systematic over/under-detection.
+
 **Trigger:** rolling — every new ingest's contact-sheet QA is the cheap check;
 do a formal pass after **~5 more ingests**, or immediately if any QA shows
 systematic over/under-detection that flag-tuning per video keeps fighting.
 
 **Why flagged:** `--hard-floor 0.05` and `--soft-wide-min 0.12` were calibrated
 on exactly two videos (2026-06-09). They generalized across those two opposite
-registers, but n=2.
+registers, but n=2 — now re-validated at n=17 (see status line above).
 
 **What to do when it fires:**
 
