@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>You can't escape JavaScript</title>
+  <link rel="stylesheet" href="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/.claude/skills/thumbnail-and-title-generator/templates/styles.css">
+</head>
+<body>
+  <div class="thumbnail  acc-teal warm">
+    <div class="bg-grid"></div>
+
+    <div class="face-wrap">
+      <div class="face-glow"></div>
+      <img class="face" src="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/videos/javascript-the-king-programming-languages-2026-05-15/thumbnails/cutouts/defringed/homealone.png" alt="">
+    </div>
+
+    <div class="anno" style="left:752px;top:224px;"><svg width="150" height="70" viewBox="0 0 150 70"><line x1="0" y1="46" x2="96" y2="46" stroke-width="4"/><line x1="96" y1="46" x2="120" y2="22" stroke-width="4"/><circle cx="124" cy="18" r="8" class="filled"/></svg></div>
+    <div class="chip" style="position:absolute;left:72px;top:58px;width:88px;height:62px;font-size:44px;z-index:3;--chip-bg:#f7df1e;--chip-ink:#06100e;">JS</div>
+
+    <div class="thumbnail-text" style="font-size: 92px;">
+      <span class="thumbnail-row ">YOU CAN'T</span>
+      <span class="thumbnail-row punch accent">ESCAPE</span>
+      <span class="thumbnail-row ">JAVASCRIPT</span>
+      <span class="thumbnail-row"></span>
+      <span class="thumbnail-row"></span>
+      <div class="mono-tell">// <span class="stat">98.8%</span> of all websites</div>
+    </div>
+
+    <div class="vignette"></div>
+
+    <div class="grid-overlay" aria-hidden="true">
+      <div class="grid-safe-area"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var t = document.querySelector('.thumbnail');
+      if (location.search.includes('grid')) t.classList.add('with-grid');
+      var g = t.querySelector('.grid-overlay');
+      if (g) {
+        var W = t.classList.contains('vertical') ? 1080 : 1280;
+        var H = t.classList.contains('vertical') ? 1920 : 720;
+        for (var x = 100; x < W; x += 100) { var ex = document.createElement('div'); ex.className = 'cg-label cg-x'; ex.style.left = x + 'px'; ex.textContent = x; g.appendChild(ex); }
+        for (var y = 100; y < H; y += 100) { var ey = document.createElement('div'); ey.className = 'cg-label cg-y'; ey.style.top = y + 'px'; ey.textContent = y; g.appendChild(ey); }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 34.664,
+    "longest_hold_s": 14.333,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.0417,
+    "scene_count": 25,
+    "scene_duration_s": {
+      "max": 14.333,
+      "median": 0.667,
+      "min": 0.042,
+      "p25": 0.334,
+      "p75": 1.792
+    },
+    "soft_transition_count": 0,
+    "words_per_s_mean": 4.3322
+  },
+  "proxy": {
+    "duration_s": 41.5417,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 0.042,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "If",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 23.8095
+      },
+      "window": {
+        "end_s": 0.042,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0657
+      },
+      "duration_s": 0.666,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.118,
+        "leading_silence_s": 0.118,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you stuck a cup",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 6.006
+      },
+      "window": {
+        "end_s": 0.708,
+        "start_s": 0.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.451
+      },
+      "duration_s": 2.625,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.212,
+        "leading_silence_s": 0.212,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "deep into the ocean and brought it back up again, it would",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.5714
+      },
+      "window": {
+        "end_s": 3.333,
+        "start_s": 0.708
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4669
+      },
+      "duration_s": 2.459,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "be full of little bits of DNA that we",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.66
+      },
+      "window": {
+        "end_s": 5.792,
+        "start_s": 3.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2767
+      },
+      "duration_s": 0.333,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.008,
+        "leading_silence_s": 0.008,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "can use",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 6.006
+      },
+      "window": {
+        "end_s": 6.125,
+        "start_s": 5.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1875
+      },
+      "duration_s": 0.375,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.275,
+        "leading_silence_s": 0.275,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 6.5,
+        "start_s": 6.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1848
+      },
+      "duration_s": 0.333,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "discover",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 3.003
+      },
+      "window": {
+        "end_s": 6.833,
+        "start_s": 6.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.145
+      },
+      "duration_s": 0.334,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.287,
+        "leading_silence_s": 0.287,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "what",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.994
+      },
+      "window": {
+        "end_s": 7.167,
+        "start_s": 6.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.274
+      },
+      "duration_s": 0.333,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "animals",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 3.003
+      },
+      "window": {
+        "end_s": 7.5,
+        "start_s": 7.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3592
+      },
+      "duration_s": 0.333,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.333,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.333,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 7.833,
+        "start_s": 7.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3446
+      },
+      "duration_s": 0.334,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "are down",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 5.988
+      },
+      "window": {
+        "end_s": 8.167,
+        "start_s": 7.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.163
+      },
+      "duration_s": 0.458,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "there.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1834
+      },
+      "window": {
+        "end_s": 8.625,
+        "start_s": 8.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5905
+      },
+      "duration_s": 1.25,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.015,
+        "leading_silence_s": 0.015,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But when they really did this,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.8
+      },
+      "window": {
+        "end_s": 9.875,
+        "start_s": 8.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3382
+      },
+      "duration_s": 1.792,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.085,
+        "leading_silence_s": 0.085,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "guess how much of the DNA",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.3482
+      },
+      "window": {
+        "end_s": 11.667,
+        "start_s": 9.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8177
+      },
+      "duration_s": 6.25,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.373,
+        "leading_silence_s": 0.373,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "was unknown. We don't know what animal it came from. The answer is 90%.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.24
+      },
+      "window": {
+        "end_s": 17.917,
+        "start_s": 11.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2214
+      },
+      "duration_s": 2.541,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.123,
+        "leading_silence_s": 0.123,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "They call it dark taxa. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.3613
+      },
+      "window": {
+        "end_s": 20.458,
+        "start_s": 17.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3528
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.062,
+        "leading_silence_s": 0.062,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "might be from animals",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 5.997
+      },
+      "window": {
+        "end_s": 21.125,
+        "start_s": 20.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1622
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.275,
+        "leading_silence_s": 0.275,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that we know",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.4978
+      },
+      "window": {
+        "end_s": 21.792,
+        "start_s": 21.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1412
+      },
+      "duration_s": 0.708,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.088,
+        "leading_silence_s": 0.088,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "about but never",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.2373
+      },
+      "window": {
+        "end_s": 22.5,
+        "start_s": 21.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2122
+      },
+      "duration_s": 0.625,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "genome.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.6
+      },
+      "window": {
+        "end_s": 23.125,
+        "start_s": 22.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2666
+      },
+      "duration_s": 14.333,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.195,
+        "leading_silence_s": 0.195,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Or it might be from something entirely new. Researchers are starting to use machine learning to fill in those gaps. And the hope is that they can use this dark taxa to group them with similar DNA. So you can start to say, \"This looks like squid.",
+        "trailing_silence_s": 0.0,
+        "word_count": 47,
+        "words_per_s": 3.2791
+      },
+      "window": {
+        "end_s": 37.458,
+        "start_s": 23.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8064
+      },
+      "duration_s": 1.834,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.222,
+        "leading_silence_s": 0.222,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Is it new squid?\"",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.181
+      },
+      "window": {
+        "end_s": 39.292,
+        "start_s": 37.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7236
+      },
+      "duration_s": 0.791,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.028,
+        "leading_silence_s": 0.028,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So to see what they're actually",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 7.5853
+      },
+      "window": {
+        "end_s": 40.083,
+        "start_s": 39.292
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2799
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.397,
+        "leading_silence_s": 0.397,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "finding, subscribe.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.2857
+      },
+      "window": {
+        "end_s": 40.958,
+        "start_s": 40.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6125
+      },
+      "duration_s": 0.5837,
+      "files": {
+        "thumb": "cleo-deep-sea-unknown-species-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 0.7915,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.5837,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.5837,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 41.5417,
+        "start_s": 40.958
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "cleo-deep-sea-unknown-species",
+  "source_url": "https://www.youtube.com/watch?v=MQwZdGiaPsw",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 137,
+    "word_level": true
+  },
+  "video": {
+    "channel": "Cleo Abram",
+    "duration_s": 42.0,
+    "title": "Guess How Many Deep Sea Animals Are UNKNOWN",
+    "upload_date": "20260529"
+  }
+}

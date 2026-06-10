@@ -24,7 +24,8 @@ of this layout.
 
 ## Authoring workflow
 
-This project is a HyperFrames pipeline: voiceover → transcript → composition → render.
+This project is a HyperFrames pipeline: voiceover → transcript → composition → render. The full stage-by-stage map — topic → publish, plus the
+Shorts spur — lives in `learnings/pipeline.html`.
 **To author or continue any video, invoke the `video-director` skill.** It directs the
 `hyperframes` / `hyperframes-cli` / `hyperframes-registry` plugin skills (sequencing,
 state-tracking, and wiring on top of them — not replacing them), works a few sentences
@@ -47,18 +48,42 @@ then `/plugin install hyperframes@hyperframes`. That plugin supplies
 picking a tool for a scene; `hyperframes-registry` in particular governs
 `hyperframes add` and how blocks/components get wired into the project.
 
-The project's **custom skills stay local under `.claude/skills/`** —
-`script-writer`, `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3`,
-`transcribe-and-plan-cuts`, `thumbnail-creator`, `description-writer`,
-`create-srt-and-translate`, `youtube-seo-research`, `youtube-studio`,
-`audio-bed-music`, `design-catalog-add`, `motion-inspo-add`, and `video-director`
-(the composition-authoring orchestrator, which now also owns the **SFX pass** —
-sound effects are scored inside `video-director` Step H on top of `tools/sfx-plan`
-+ `tools/sfx-level`, not in a separate skill). These are not part of the plugin;
-do not delete them when refreshing the plugin. `motion-inspo-add` is the curation
-skill that grows the repo-root `motionGraphicsInspo/` motion-reference library
-(hero + keyframe strip + tagged `Motion:` note) on top of `tools/inspo-ingest`, and
-`video-director` consults that library while picking each scene's archetype + motion.
+The project's **custom skills stay local under `.claude/skills/`** (not part of
+the plugin — do not delete them when refreshing it):
+
+- **Authoring:** `video-director` — the composition orchestrator; also owns the
+  **SFX pass** as Step H, on `tools/sfx-plan` + `tools/sfx-level` (not a separate
+  skill).
+- **Script & research:** `script-writer`, `youtube-seo-research`.
+- **Voiceover:** `transcribe-and-plan-cuts` (recorded voice, the default),
+  `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3` (TTS).
+- **Packaging:** `thumbnail-and-title-generator`, `description-writer`,
+  `create-srt-and-translate`.
+- **Publishing:** `youtube-studio`, `video-publish-qa`, `shorts-creator`.
+- **Music & catalog growth:** `audio-bed-music`, `design-catalog-add`, and
+  `motion-inspo-add` — which grows TWO repo-root inspiration libraries on
+  `tools/inspo-ingest`: `motionGraphicsInspo/` (single-beat motion references —
+  hero + keyframe strip + tagged `Motion:` note; `video-director` consults it
+  while picking each scene's archetype + motion) and `pacingInspo/`
+  (whole-video scene-change × narration pacing studies; `script-writer` cites
+  its measured numbers when calibrating reset cadence). A bare whole-video URL
+  defaults to combined ingest into both from one download; see each library's
+  CLAUDE.md for the curation contract.
+
+The **publishing + retention skills** are grounded in `docs/creator-patterns.md`
+— a synthesized reference distilled from 237 transcripts across 12 channels
+(hook taxonomy, the first-10-seconds rule, the ~45–60s reset cadence, the Cleo
+Shorts CTA, title formulas, and per-workstream wiring in §6). `script-writer`
+front-loads a cold-open hook and resets every subtopic from §6 WS1.
+`video-publish-qa` runs post-upload packaging QA (title / tags / description /
+captions) via the `youtube-studio` MCP under a preview-then-confirm gate, fixing
+what the v1 MCP allows and handing off captions (it can't write them). And
+`shorts-creator` turns a finished long-form video into ~5 vertical 1080×1920
+Shorts that funnel back to it — Phase 1 selects beats + drafts each clip's
+Cleo-CTA script, Phase 2 builds one Short at a time by orchestrating `voiceover-*`
+→ `video-director` (dimension-aware: a 1080×1920 root triggers
+`reference/portrait-mode.md`) → `thumbnail-and-title-generator` (vertical) → render, with a
+manual Studio upload/stagger hand-off (the v1 MCP can't upload or schedule).
 
 For voiceover in this project, the **default is recording your own voice**: drop
 the recording at `audio/raw.mp3`, run the `transcribe-and-plan-cuts` skill (Scribe
@@ -71,7 +96,21 @@ mic-free, repeatable, or multi-language narration; use `voiceover-elevenlabs-v3`
 only when a video genuinely needs inline audio tags for per-beat emotional shifts.
 The `hyperframes-media tts` (Kokoro) path stays parallel for any non-ElevenLabs
 use case. Either way, the Scribe v2 `transcript.json` is the timing source of
-truth. See `learnings/pipeline.md` Stage 3 for the full recorded-voice vs. TTS split.
+truth. See `learnings/pipeline.html` (Stage 3) for the full recorded-voice vs. TTS split.
+
+## Hard rules (composition authoring)
+
+These always apply when authoring a composition; `video-director` carries the
+full versions.
+
+- **No editorial chrome.** No corner metadata strips, scene labels, or running
+  timecodes. Ambient decoratives (glows, grids, ghost type) are fine. Add chrome
+  only if the user asks.
+- **The user keeps `npx hyperframes preview` running.** Don't start, restart, or
+  kill it — after any edit, tell the user the timestamp or scene to seek to.
+- **Don't `Read transcript.json` directly** (~1500+ word entries flood context).
+  Filter it with a `python3 -c` slice, and anchor animations to real word
+  timings, never round numbers.
 
 Official docs: https://hyperframes.heygen.com/introduction (full text index at
 https://hyperframes.mintlify.app/llms.txt). Use these as the upstream source of

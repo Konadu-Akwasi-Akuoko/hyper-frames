@@ -1,0 +1,626 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 1.9439,
+    "longest_hold_s": 165.44,
+    "pct_cuts_in_pause": 0.05,
+    "pct_sentence_aligned": 0.35,
+    "scene_count": 21,
+    "scene_duration_s": {
+      "max": 165.44,
+      "median": 9.0,
+      "min": 0.62,
+      "p25": 5.68,
+      "p75": 24.44
+    },
+    "soft_transition_count": 3,
+    "words_per_s_mean": 2.4054
+  },
+  "proxy": {
+    "duration_s": 524.72,
+    "max_height": 1080
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 4.32,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 0.8704,
+        "cut_in_pause": true,
+        "first_word_offset_s": 0.56,
+        "leading_silence_s": 0.56,
+        "pause_before_cut_s": 0.56,
+        "sentence_aligned": false,
+        "text": "WhatsApp and Facebook Messenger process billions of messages daily.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.0833
+      },
+      "window": {
+        "end_s": 4.32,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0781
+      },
+      "duration_s": 5.68,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Behind every message is a distributed system delivering text instantly across the globe. How",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.4648
+      },
+      "window": {
+        "end_s": 10.0,
+        "start_s": 4.32
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.164
+      },
+      "duration_s": 5.84,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "do we design a test system that can handle real-time messaging at this scale? Let's break it down. There's a",
+        "trailing_silence_s": 0.0,
+        "word_count": 20,
+        "words_per_s": 3.4247
+      },
+      "window": {
+        "end_s": 15.84,
+        "start_s": 10.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.08
+      },
+      "duration_s": 19.96,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "lot to cover when designing a test system, so let's focus on the core features. Our test system supports one-on-one and group chats up to 100 participants. We guarantee message delivery. We store messages for offline users for a limited time. This is different from systems that keep all messages in central storage forever. We",
+        "trailing_silence_s": 0.0,
+        "word_count": 55,
+        "words_per_s": 2.7555
+      },
+      "window": {
+        "end_s": 35.8,
+        "start_s": 15.84
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0558
+      },
+      "duration_s": 103.88,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "also show online presence with that familiar green dot. We're designing for a growing chat app that starts with thousands of users and scales to millions. How do clients and servers communicate in a chat system? We could use HTTP for everything. When someone sends a message, the client makes an HTTP post request. The server acknowledges and forwards the message to the recipient. This works well for sending, but receiving is problematic. HTTP is client initiated. Servers can easily push messages directly to clients. How do we get messages to users instantly? Polling is an option. The client repeatedly ask any new messages. Most requests return empty. This waste server resources. Long pollings hold connections open longer until messages arrive or the connection times out. This reduces requests, but we can do better. Websocket offers a better solution. After an HTTP handshake, the connection upgrades to a persistent channel. The server can push messages instantly. However, websocket connections are more difficult to scale, which we'll address later in the video. We could use websocket for both directions, but we keep things simple. HTTP works fine for sending and scales easily. Websocket handles the real challenge receiving messages instantly. So we choose a hybrid approach. HTTP for sending messages and websocket for receiving them. Now we have chosen our protocols. Let's design the overall system. We need multiple components working together to handle a large number of users. We divide the system into three layers. Salus services, staple services and third party integrations. Sailor",
+        "trailing_silence_s": 0.0,
+        "word_count": 254,
+        "words_per_s": 2.4451
+      },
+      "window": {
+        "end_s": 139.68,
+        "start_s": 35.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0507
+      },
+      "duration_s": 27.96,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.32,
+        "leading_silence_s": 0.32,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "services handle authentication, user profiles, and message sending through REST APIs. Load balances distribute requests across multiple servers. This is a known design pattern that scales easily by adding more servers as needed. Chat servers form the stable core. Each client maintains a persistent websocket connection to one chat server. Modern servers can handle tens of thousands or hundreds of thousands of concurrence websocket connections.",
+        "trailing_silence_s": 0.0,
+        "word_count": 65,
+        "words_per_s": 2.3247
+      },
+      "window": {
+        "end_s": 167.64,
+        "start_s": 139.68
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0621
+      },
+      "duration_s": 165.44,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This capacity determines how many servers we need as we scale. When someone sends you a message, but you are not connected to a chat server, the system needs another way to reach you. Third party services like Apple's APNS or Google's FCM deliver push notifications when users are offline. They maintain persistent connections to millions of devices. This is not something we want to reinvent. Our architecture handles online users well, but what about offline scenarios? When someone sends you a message while your phone is off or when network connections fail during transmission, how do we guarantee delivery? The inbox pattern solves this. Every users gets an inbox, a personal queue that stores and deliver messages. When someone sends you a message while you're offline, it waits in your inbox for a limited time. Here's how it works. When someone sends you a message, the server tries to deliver it immediately if you're online. Your device gets the message through websocket and sends back an acknowledgement. Done. No storage needed. But if you're offline or the delivery fails, the message goes into your inbox. It waits there until you come back online. The acknowledgement mechanism provides reliability for inbox messages. When your device receives a message from the inbox, it sends back an act. The server only removes the message from the inbox after getting this acknowledgement. No act means the server will retry later. When you come back online, your chat server checks your inbox for waiting messages. All accumulated messages download to your device in order, bringing you up to date. The inbox patterns works great, but now we have a new challenge. With multiple chat servers handling different users, how do messages travel between them? We need a way to route messages between chat servers when users are connected to different servers. The most scalable approach uses a combination of service discovery and direct server communication. Let's say Alice sends a message to Bob. Alice's chat server first checks if Bob is online. The server queries a user presence service that tracks which chat server Bob is connected to. This service acts like a directory mapping users to the current server locations. If Bob is online, Alice's server makes a direct RPC call to Bob's chat server. Bob server gets the message and immediately pushes it through Bob's websocket connection. This direct approach minimizes latency. This scales well with service discovery systems that help servers find each other. Chat platforms like Discord uses direct serverto-s server communication pattern. If Bob is offline, the message goes to his inbox for later delivery. And we trigger a push notification through third party services.",
+        "trailing_silence_s": 0.0,
+        "word_count": 446,
+        "words_per_s": 2.6958
+      },
+      "window": {
+        "end_s": 333.08,
+        "start_s": 167.64
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.055
+      },
+      "duration_s": 22.52,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.44,
+        "leading_silence_s": 0.44,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "One-on-one messages works smoothly now, but group chat introduce a new complexity. How do we efficiently deliver one message to 100 different users? We use a fan out pattern. When someone sends a group message, the server checks which members are online and make RPC calls to deliver immediately to their devices. Offline members get the message stored in the inboxes.",
+        "trailing_silence_s": 0.0,
+        "word_count": 61,
+        "words_per_s": 2.7087
+      },
+      "window": {
+        "end_s": 355.6,
+        "start_s": 333.08
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.294
+      },
+      "duration_s": 7.04,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This works well for a requirement of up to 100 members since the fan out workload scales with group size. With",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 2.983
+      },
+      "window": {
+        "end_s": 362.64,
+        "start_s": 355.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2961
+      },
+      "duration_s": 41.08,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "messaging sorted out, let's work on another feature, online presence. The green dot showing online status seems simple but creates interesting technical challenges. We use heartbeats to track presence. We can rely on websocket connection stay alone. connection can appear alive even when the app is backgrounded or the device is sleeping. Clients send a websocket ping frame every 30 seconds to their chat server. The server tracks the timestamp of the last ping it receives for each user. If the chat server gets no ping for 60 seconds, it marks the user offline. This approach smooths out brief disconnection in tunnels, elevators, or areas with poor coverage. We",
+        "trailing_silence_s": 0.0,
+        "word_count": 109,
+        "words_per_s": 2.6534
+      },
+      "window": {
+        "end_s": 403.72,
+        "start_s": 362.64
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0984
+      },
+      "duration_s": 9.0,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "built a working chat system, but success brings new problems. As our user base grows from thousands to millions, which components bricks first",
+        "trailing_silence_s": 0.0,
+        "word_count": 23,
+        "words_per_s": 2.5556
+      },
+      "window": {
+        "end_s": 412.72,
+        "start_s": 403.72
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0727
+      },
+      "duration_s": 7.72,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.72,
+        "leading_silence_s": 0.72,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "connections likely becomes the first bottleneck. As user count grows, we need more chat servers to handle the connections. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 20,
+        "words_per_s": 2.5907
+      },
+      "window": {
+        "end_s": 420.44,
+        "start_s": 412.72
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0585
+      },
+      "duration_s": 24.44,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.199,
+        "leading_silence_s": 0.199,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "database can also hit limits as we scale. As millions of users go offline and come back online, the inboxes filled up and empty constantly. We can split users across multiple database servers based on their user ids. For global reach, we deploy chat servers in multiple regions. Users connect to their nearest region for low latency, but cross region message routing as complexity.",
+        "trailing_silence_s": 0.0,
+        "word_count": 64,
+        "words_per_s": 2.6187
+      },
+      "window": {
+        "end_s": 444.88,
+        "start_s": 420.44
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0925
+      },
+      "duration_s": 25.52,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "This covers the core chat system architecture. There are other areas worth considering. What about message ordering? When messages travel across distributed servers, they can arrive out of order. Message IDs, timestamps, and vector clocks help solve this. Security and encryption add another layer of complexity. End-to-end encryption requires careful key exchange mechanisms. Group chess makes this even more challenging.",
+        "trailing_silence_s": 0.0,
+        "word_count": 60,
+        "words_per_s": 2.3511
+      },
+      "window": {
+        "end_s": 470.4,
+        "start_s": 444.88
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0627
+      },
+      "duration_s": 19.32,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Media handling is its own beast. Sharing images and videos requires compression, CDNs, and progressive loading to keep things fast. Then there features like red receipts and typing indicators. Broadcasting typing status to group members sounds simple but can easily overwhelm your system without careful design.",
+        "trailing_silence_s": 0.0,
+        "word_count": 46,
+        "words_per_s": 2.381
+      },
+      "window": {
+        "end_s": 489.72,
+        "start_s": 470.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0609
+      },
+      "duration_s": 18.04,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "One more, we need ray limiting and abuse prevention. Stopping spams and API abuse while keeping the experience smooth is a delicate balance. We are barely scratching the surface, but this is how we design the core features of a chat system that handles real-time messaging at scale.",
+        "trailing_silence_s": 0.0,
+        "word_count": 48,
+        "words_per_s": 2.6608
+      },
+      "window": {
+        "end_s": 507.76,
+        "start_s": 489.72
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.086
+      },
+      "duration_s": 1.04,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.159,
+        "leading_silence_s": 0.159,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Ready to ace your",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.8462
+      },
+      "window": {
+        "end_s": 508.8,
+        "start_s": 507.76
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.309
+      },
+      "duration_s": 4.7,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "next technical interview? Join our community where we offer comprehensive courses on system",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.766
+      },
+      "window": {
+        "end_s": 513.5,
+        "start_s": 508.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2631
+      },
+      "duration_s": 6.34,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "design, coding, behavioral questions, machine learning, and object-oriented design. Learn more",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 1.735
+      },
+      "window": {
+        "end_s": 519.84,
+        "start_s": 513.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0792
+      },
+      "duration_s": 4.26,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 0.2674,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "at bitebico.com.",
+        "trailing_silence_s": 3.121,
+        "word_count": 2,
+        "words_per_s": 0.4695
+      },
+      "window": {
+        "end_s": 524.1,
+        "start_s": 519.84
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1662
+      },
+      "duration_s": 0.62,
+      "files": {
+        "thumb": "bytebytego-chat-system-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 0.0,
+        "cut_in_pause": true,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.62,
+        "pause_before_cut_s": 3.741,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.62,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 524.72,
+        "start_s": 524.1
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "bytebytego-chat-system",
+  "source_url": "https://www.youtube.com/watch?v=okrR1KXNLtA",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1345,
+    "word_level": true
+  },
+  "video": {
+    "channel": "ByteByteGo",
+    "duration_s": 525.0,
+    "title": "FAANG System Design Interview: Design A Chat System (WhatsApp, Facebook Messenger, Discord, Slack)",
+    "upload_date": "20250922"
+  }
+}

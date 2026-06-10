@@ -1,0 +1,3947 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 22.1104,
+    "longest_hold_s": 11.144,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.0839,
+    "scene_count": 144,
+    "scene_duration_s": {
+      "max": 11.144,
+      "median": 1.6685,
+      "min": 0.3,
+      "p25": 0.6927,
+      "p75": 3.353
+    },
+    "soft_transition_count": 6,
+    "words_per_s_mean": 2.8646
+  },
+  "proxy": {
+    "duration_s": 371.7714,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 2.803,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "You could be writing code twice as fast right now,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.5676
+      },
+      "window": {
+        "end_s": 2.803,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2785
+      },
+      "duration_s": 4.271,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 0.9986,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.197,
+        "leading_silence_s": 0.197,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and the only thing standing between you and that is the tool you're using.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.2779
+      },
+      "window": {
+        "end_s": 7.074,
+        "start_s": 2.803
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7324
+      },
+      "duration_s": 3.226,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.006,
+        "leading_silence_s": 0.006,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Today, we're going through the 10 best IDEs in 2026,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.0998
+      },
+      "window": {
+        "end_s": 10.3,
+        "start_s": 7.074
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1416
+      },
+      "duration_s": 1.812,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.54,
+        "leading_silence_s": 0.54,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "counting up from 10",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.2075
+      },
+      "window": {
+        "end_s": 12.112,
+        "start_s": 10.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8991
+      },
+      "duration_s": 5.388,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.048,
+        "leading_silence_s": 0.048,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to the one that basically every developer on the planet has installed. Let's get into it. Oh, and quickly",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.5264
+      },
+      "window": {
+        "end_s": 17.5,
+        "start_s": 12.112
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1875
+      },
+      "duration_s": 1.119,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "before we start,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.681
+      },
+      "window": {
+        "end_s": 18.619,
+        "start_s": 17.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4661
+      },
+      "duration_s": 0.867,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.061,
+        "leading_silence_s": 0.061,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "I post three",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.4602
+      },
+      "window": {
+        "end_s": 19.486,
+        "start_s": 18.619
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0979
+      },
+      "duration_s": 0.701,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.034,
+        "leading_silence_s": 0.034,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "videos weekly.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.8531
+      },
+      "window": {
+        "end_s": 20.187,
+        "start_s": 19.486
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1138
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So, subscribe",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.9985
+      },
+      "window": {
+        "end_s": 20.854,
+        "start_s": 20.187
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1224
+      },
+      "duration_s": 0.734,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.346,
+        "leading_silence_s": 0.346,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and hit that",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.0872
+      },
+      "window": {
+        "end_s": 21.588,
+        "start_s": 20.854
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.149
+      },
+      "duration_s": 0.734,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.172,
+        "leading_silence_s": 0.172,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "bell to become a",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 5.4496
+      },
+      "window": {
+        "end_s": 22.322,
+        "start_s": 21.588
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1372
+      },
+      "duration_s": 0.734,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.038,
+        "leading_silence_s": 0.038,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "code head and get",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 5.4496
+      },
+      "window": {
+        "end_s": 23.056,
+        "start_s": 22.322
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1415
+      },
+      "duration_s": 1.135,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.144,
+        "leading_silence_s": 0.144,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "notified as soon as",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.5242
+      },
+      "window": {
+        "end_s": 24.191,
+        "start_s": 23.056
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2129
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.129,
+        "leading_silence_s": 0.129,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "I drop.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.9985
+      },
+      "window": {
+        "end_s": 24.858,
+        "start_s": 24.191
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1725
+      },
+      "duration_s": 0.501,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.102,
+        "leading_silence_s": 0.102,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "All right, let's",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 5.988
+      },
+      "window": {
+        "end_s": 25.359,
+        "start_s": 24.858
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2109
+      },
+      "duration_s": 6.606,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.041,
+        "leading_silence_s": 0.041,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "go. Taking the number 10 spot is Visual Studio. No, not VS Code, Visual Studio.",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.2707
+      },
+      "window": {
+        "end_s": 31.965,
+        "start_s": 25.359
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.058
+      },
+      "duration_s": 4.705,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.235,
+        "leading_silence_s": 0.235,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This is Microsoft's full-scale IDE that's been around since 1997 and",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.3379
+      },
+      "window": {
+        "end_s": 36.67,
+        "start_s": 31.965
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.636,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.09,
+        "leading_silence_s": 0.09,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is still one of the most powerful tools you can use. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.5524
+      },
+      "window": {
+        "end_s": 39.306,
+        "start_s": 36.67
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1601
+      },
+      "duration_s": 9.576,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.054,
+        "leading_silence_s": 0.054,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "debugger is what makes it special. You can pause execution, inspect memory live, and see exactly what your program is doing as it runs. For .NET and C++",
+        "trailing_silence_s": 0.0,
+        "word_count": 28,
+        "words_per_s": 2.924
+      },
+      "window": {
+        "end_s": 48.882,
+        "start_s": 39.306
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0563
+      },
+      "duration_s": 3.003,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.598,
+        "leading_silence_s": 0.598,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "development, it has no real competition. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.331
+      },
+      "window": {
+        "end_s": 51.885,
+        "start_s": 48.882
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7848
+      },
+      "duration_s": 5.939,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.235,
+        "leading_silence_s": 0.235,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "heavy on resources and slow to start, but for enterprise and Windows development, you're not finding better.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.8624
+      },
+      "window": {
+        "end_s": 57.824,
+        "start_s": 51.885
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7324
+      },
+      "duration_s": 2.436,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.016,
+        "leading_silence_s": 0.016,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But unfortunately, it barely reached the top 10.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.2841
+      },
+      "window": {
+        "end_s": 60.26,
+        "start_s": 57.824
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1687
+      },
+      "duration_s": 0.934,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Number nine is",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.212
+      },
+      "window": {
+        "end_s": 61.194,
+        "start_s": 60.26
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0543
+      },
+      "duration_s": 9.076,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.046,
+        "leading_silence_s": 0.046,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Zed. This one is newer, open source, and fast, like very fast. The whole editor is built in Rust, which means startup is near instant,",
+        "trailing_silence_s": 0.0,
+        "word_count": 25,
+        "words_per_s": 2.7545
+      },
+      "window": {
+        "end_s": 70.27,
+        "start_s": 61.194
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3781
+      },
+      "duration_s": 3.737,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.01,
+        "leading_silence_s": 0.01,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and big code bases don't slow it down. What really sets it apart is built-in",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 4.0139
+      },
+      "window": {
+        "end_s": 74.007,
+        "start_s": 70.27
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2102
+      },
+      "duration_s": 2.793,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.673,
+        "leading_silence_s": 0.673,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "live collaboration. You and another developer",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.1482
+      },
+      "window": {
+        "end_s": 76.8,
+        "start_s": 74.007
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2799
+      },
+      "duration_s": 4.381,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.28,
+        "leading_silence_s": 0.28,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "can edit the same file at the same time, like Google Docs, but for code.",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.4239
+      },
+      "window": {
+        "end_s": 81.181,
+        "start_s": 76.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3906
+      },
+      "duration_s": 0.467,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.019,
+        "leading_silence_s": 0.019,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It's still growing",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 6.424
+      },
+      "window": {
+        "end_s": 81.648,
+        "start_s": 81.181
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0745
+      },
+      "duration_s": 0.434,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.352,
+        "leading_silence_s": 0.352,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "its",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3041
+      },
+      "window": {
+        "end_s": 82.082,
+        "start_s": 81.648
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0713
+      },
+      "duration_s": 0.534,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.078,
+        "leading_silence_s": 0.078,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "extension",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.8727
+      },
+      "window": {
+        "end_s": 82.616,
+        "start_s": 82.082
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0793
+      },
+      "duration_s": 0.5,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.144,
+        "leading_silence_s": 0.144,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "ecosystem,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 83.116,
+        "start_s": 82.616
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0696
+      },
+      "duration_s": 0.501,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.404,
+        "leading_silence_s": 0.404,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "so",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.996
+      },
+      "window": {
+        "end_s": 83.617,
+        "start_s": 83.116
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0758
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.063,
+        "leading_silence_s": 0.063,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it's not for everyone",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 5.997
+      },
+      "window": {
+        "end_s": 84.284,
+        "start_s": 83.617
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0864
+      },
+      "duration_s": 0.601,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.476,
+        "leading_silence_s": 0.476,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "yet.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.6639
+      },
+      "window": {
+        "end_s": 84.885,
+        "start_s": 84.284
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.355,
+        "leading_silence_s": 0.355,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "That's why",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 85.485,
+        "start_s": 84.885
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0613
+      },
+      "duration_s": 0.634,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.115,
+        "leading_silence_s": 0.115,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it's not higher",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.7319
+      },
+      "window": {
+        "end_s": 86.119,
+        "start_s": 85.485
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0581
+      },
+      "duration_s": 0.701,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.121,
+        "leading_silence_s": 0.121,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "on the list.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.2796
+      },
+      "window": {
+        "end_s": 86.82,
+        "start_s": 86.119
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0731
+      },
+      "duration_s": 1.101,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Number eight is",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.7248
+      },
+      "window": {
+        "end_s": 87.921,
+        "start_s": 86.82
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0715
+      },
+      "duration_s": 2.002,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Xcode. If you're building anything for",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.997
+      },
+      "window": {
+        "end_s": 89.923,
+        "start_s": 87.921
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1174
+      },
+      "duration_s": 0.701,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.117,
+        "leading_silence_s": 0.117,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "iPhone,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.4265
+      },
+      "window": {
+        "end_s": 90.624,
+        "start_s": 89.923
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7361
+      },
+      "duration_s": 0.634,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.016,
+        "leading_silence_s": 0.016,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "iPad,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.5773
+      },
+      "window": {
+        "end_s": 91.258,
+        "start_s": 90.624
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9455
+      },
+      "duration_s": 0.701,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.022,
+        "leading_silence_s": 0.022,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "or Mac,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.8531
+      },
+      "window": {
+        "end_s": 91.959,
+        "start_s": 91.258
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8622
+      },
+      "duration_s": 3.336,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.081,
+        "leading_silence_s": 0.081,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "this is the only IDE Apple officially supports.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.3981
+      },
+      "window": {
+        "end_s": 95.295,
+        "start_s": 91.959
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9908
+      },
+      "duration_s": 3.404,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.025,
+        "leading_silence_s": 0.025,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And in typical Apple fashion, there's no real way around that. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.5253
+      },
+      "window": {
+        "end_s": 98.699,
+        "start_s": 95.295
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7161
+      },
+      "duration_s": 5.001,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.101,
+        "leading_silence_s": 0.101,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Instruments profiler inside it is one of the best performance tools in the industry. Swift",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.9994
+      },
+      "window": {
+        "end_s": 103.7,
+        "start_s": 98.699
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1302
+      },
+      "duration_s": 8.178,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "UI preview lets you watch your UI update in real time as you type. It's Mac only and slow to update. That's why it only sits at number eight.",
+        "trailing_silence_s": 0.0,
+        "word_count": 29,
+        "words_per_s": 3.5461
+      },
+      "window": {
+        "end_s": 111.878,
+        "start_s": 103.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.168,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.042,
+        "leading_silence_s": 0.042,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "At number seven is",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.4247
+      },
+      "window": {
+        "end_s": 113.046,
+        "start_s": 111.878
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1298
+      },
+      "duration_s": 1.135,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.034,
+        "leading_silence_s": 0.034,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Android Studio,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.7621
+      },
+      "window": {
+        "end_s": 114.181,
+        "start_s": 113.046
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0957
+      },
+      "duration_s": 2.102,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.019,
+        "leading_silence_s": 0.019,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Google's official Android IDE. Built",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.3787
+      },
+      "window": {
+        "end_s": 116.283,
+        "start_s": 114.181
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5111
+      },
+      "duration_s": 3.637,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.277,
+        "leading_silence_s": 0.277,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "on IntelliJ, so the editing experience is already solid.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.4746
+      },
+      "window": {
+        "end_s": 119.92,
+        "start_s": 116.283
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2222
+      },
+      "duration_s": 5.072,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The layout editor lets you build your UI visually by dragging components instead of writing",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.9574
+      },
+      "window": {
+        "end_s": 124.992,
+        "start_s": 119.92
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1844
+      },
+      "duration_s": 1.067,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.048,
+        "leading_silence_s": 0.048,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "XML by hand",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.8116
+      },
+      "window": {
+        "end_s": 126.059,
+        "start_s": 124.992
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.132
+      },
+      "duration_s": 9.209,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.061,
+        "leading_silence_s": 0.061,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "like a maniac. The built-in emulator means you can test on any Android device without owning it. Google recently added Gemini as an AI assistant directly inside",
+        "trailing_silence_s": 0.0,
+        "word_count": 27,
+        "words_per_s": 2.9319
+      },
+      "window": {
+        "end_s": 135.268,
+        "start_s": 126.059
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1627
+      },
+      "duration_s": 3.838,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.012,
+        "leading_silence_s": 0.012,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the editor, too. If you're doing Android development, this is your starting point.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.3872
+      },
+      "window": {
+        "end_s": 139.106,
+        "start_s": 135.268
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4876
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.094,
+        "leading_silence_s": 0.094,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Number six is",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.5707
+      },
+      "window": {
+        "end_s": 140.273,
+        "start_s": 139.106
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0597
+      },
+      "duration_s": 1.669,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "WebStorm from JetBrains.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.7975
+      },
+      "window": {
+        "end_s": 141.942,
+        "start_s": 140.273
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3209
+      },
+      "duration_s": 4.838,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.058,
+        "leading_silence_s": 0.058,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Where most editors make you install and configure things to get decent JavaScript support,",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.8938
+      },
+      "window": {
+        "end_s": 146.78,
+        "start_s": 141.942
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3749
+      },
+      "duration_s": 7.02,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "WebStorm ships with full React, Vue, Angular, TypeScript, and Node.js support out of the box. The refactoring",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.4217
+      },
+      "window": {
+        "end_s": 153.8,
+        "start_s": 146.78
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2142
+      },
+      "duration_s": 10.798,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.6,
+        "leading_silence_s": 0.6,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "tools are what keep developers around, though. Renaming a function, restructuring a component, moving a module, it handles all of that without breaking imports or missing a reference.",
+        "trailing_silence_s": 0.0,
+        "word_count": 28,
+        "words_per_s": 2.5931
+      },
+      "window": {
+        "end_s": 164.598,
+        "start_s": 153.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3687
+      },
+      "duration_s": 2.669,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.002,
+        "leading_silence_s": 0.002,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It costs money, and it's heavier than those editors,",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.372
+      },
+      "window": {
+        "end_s": 167.267,
+        "start_s": 164.598
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2728
+      },
+      "duration_s": 1.735,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but for professional JavaScript work,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.8818
+      },
+      "window": {
+        "end_s": 169.002,
+        "start_s": 167.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.334
+      },
+      "duration_s": 1.535,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.398,
+        "leading_silence_s": 0.398,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it's hard to argue with. Number",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.9088
+      },
+      "window": {
+        "end_s": 170.537,
+        "start_s": 169.002
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2726
+      },
+      "duration_s": 1.001,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.263,
+        "leading_silence_s": 0.263,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "five is",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.998
+      },
+      "window": {
+        "end_s": 171.538,
+        "start_s": 170.537
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0934
+      },
+      "duration_s": 2.135,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.062,
+        "leading_silence_s": 0.062,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Wind Surf by Cognition AI.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.3419
+      },
+      "window": {
+        "end_s": 173.673,
+        "start_s": 171.538
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.161
+      },
+      "duration_s": 1.569,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Built from scratch with AI at",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.8241
+      },
+      "window": {
+        "end_s": 175.242,
+        "start_s": 173.673
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0664
+      },
+      "duration_s": 11.144,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.078,
+        "leading_silence_s": 0.078,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the center, the main feature is called Cascade, and it doesn't just suggest your next line. It understands your whole code base and carries out multi-step tasks on its own. You describe what you want, it",
+        "trailing_silence_s": 0.0,
+        "word_count": 36,
+        "words_per_s": 3.2304
+      },
+      "window": {
+        "end_s": 186.386,
+        "start_s": 175.242
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0685
+      },
+      "duration_s": 2.67,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.094,
+        "leading_silence_s": 0.094,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "plans and executes across multiple files.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.2472
+      },
+      "window": {
+        "end_s": 189.056,
+        "start_s": 186.386
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1386
+      },
+      "duration_s": 2.402,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.144,
+        "leading_silence_s": 0.144,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The free tier is actually useful, too.",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.9142
+      },
+      "window": {
+        "end_s": 191.458,
+        "start_s": 189.056
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.767,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.061,
+        "leading_silence_s": 0.061,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And no,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.6076
+      },
+      "window": {
+        "end_s": 192.225,
+        "start_s": 191.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.114
+      },
+      "duration_s": 1.969,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.014,
+        "leading_silence_s": 0.014,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Wind Surf did not sponsor this video.",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.5551
+      },
+      "window": {
+        "end_s": 194.194,
+        "start_s": 192.225
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1156
+      },
+      "duration_s": 1.902,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.166,
+        "leading_silence_s": 0.166,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Moving on to number four, we have",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.6803
+      },
+      "window": {
+        "end_s": 196.096,
+        "start_s": 194.194
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0752
+      },
+      "duration_s": 2.302,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.064,
+        "leading_silence_s": 0.064,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "PyCharm. JetBrains again, I know.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.172
+      },
+      "window": {
+        "end_s": 198.398,
+        "start_s": 196.096
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8861
+      },
+      "duration_s": 5.472,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.002,
+        "leading_silence_s": 0.002,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Over 30% of professional Python developers use it according to the JetBrains developer survey. Django,",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.7412
+      },
+      "window": {
+        "end_s": 203.87,
+        "start_s": 198.398
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 8.242,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.77,
+        "leading_silence_s": 0.77,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Flask, Fast API, Jupyter notebooks, virtual environments, everything Python related works without setup.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 1.5773
+      },
+      "window": {
+        "end_s": 212.112,
+        "start_s": 203.87
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2367
+      },
+      "duration_s": 4.771,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.008,
+        "leading_silence_s": 0.008,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The static analysis is the real selling point. PyCharm catches bugs before you run your",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.144
+      },
+      "window": {
+        "end_s": 216.883,
+        "start_s": 212.112
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0593
+      },
+      "duration_s": 0.568,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.076,
+        "leading_silence_s": 0.076,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "code.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.7606
+      },
+      "window": {
+        "end_s": 217.451,
+        "start_s": 216.883
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0881
+      },
+      "duration_s": 0.767,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.029,
+        "leading_silence_s": 0.029,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Type mismatches,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.6076
+      },
+      "window": {
+        "end_s": 218.218,
+        "start_s": 217.451
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0576
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.342,
+        "leading_silence_s": 0.342,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "missing",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.7637
+      },
+      "window": {
+        "end_s": 218.785,
+        "start_s": 218.218
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0711
+      },
+      "duration_s": 0.668,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.174,
+        "leading_silence_s": 0.174,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "imports,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.497
+      },
+      "window": {
+        "end_s": 219.453,
+        "start_s": 218.785
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.19
+      },
+      "duration_s": 1.501,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.347,
+        "leading_silence_s": 0.347,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "unreachable logic,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.3324
+      },
+      "window": {
+        "end_s": 220.954,
+        "start_s": 219.453
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.066
+      },
+      "duration_s": 1.235,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.086,
+        "leading_silence_s": 0.086,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it flags all of it while",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.8583
+      },
+      "window": {
+        "end_s": 222.189,
+        "start_s": 220.954
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0868
+      },
+      "duration_s": 2.269,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.011,
+        "leading_silence_s": 0.011,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you're still typing. For serious Python",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.6443
+      },
+      "window": {
+        "end_s": 224.458,
+        "start_s": 222.189
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1305
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.142,
+        "leading_silence_s": 0.142,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "work, it",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.9985
+      },
+      "window": {
+        "end_s": 225.125,
+        "start_s": 224.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1023
+      },
+      "duration_s": 1.468,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.035,
+        "leading_silence_s": 0.035,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "saves a lot of time.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.406
+      },
+      "window": {
+        "end_s": 226.593,
+        "start_s": 225.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2873
+      },
+      "duration_s": 2.603,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.167,
+        "leading_silence_s": 0.167,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Number three is IntelliJ IDEA.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 1.9209
+      },
+      "window": {
+        "end_s": 229.196,
+        "start_s": 226.593
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4203
+      },
+      "duration_s": 0.5,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.004,
+        "leading_silence_s": 0.004,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Damn,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 229.696,
+        "start_s": 229.196
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0984
+      },
+      "duration_s": 0.501,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.024,
+        "leading_silence_s": 0.024,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "JetBrains",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.996
+      },
+      "window": {
+        "end_s": 230.197,
+        "start_s": 229.696
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1208
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.003,
+        "leading_silence_s": 0.003,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "can't stop",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 230.797,
+        "start_s": 230.197
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.069
+      },
+      "duration_s": 0.467,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.043,
+        "leading_silence_s": 0.043,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "winning, I guess.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 6.424
+      },
+      "window": {
+        "end_s": 231.264,
+        "start_s": 230.797
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0746
+      },
+      "duration_s": 4.505,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-090.png"
+      },
+      "index": 90,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.376,
+        "leading_silence_s": 0.376,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "84% of Java developers use it, according to a JetBrains survey.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.4417
+      },
+      "window": {
+        "end_s": 235.769,
+        "start_s": 231.264
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8912
+      },
+      "duration_s": 1.301,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-091.png"
+      },
+      "index": 91,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.031,
+        "leading_silence_s": 0.031,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "IntelliJ doesn't just auto-complete,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.0746
+      },
+      "window": {
+        "end_s": 237.07,
+        "start_s": 235.769
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1359
+      },
+      "duration_s": 0.901,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-092.png"
+      },
+      "index": 92,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.69,
+        "leading_silence_s": 0.69,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it understands",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.2198
+      },
+      "window": {
+        "end_s": 237.971,
+        "start_s": 237.07
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1493
+      },
+      "duration_s": 1.668,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-093.png"
+      },
+      "index": 93,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.509,
+        "leading_silence_s": 0.509,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your code structure.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.7986
+      },
+      "window": {
+        "end_s": 239.639,
+        "start_s": 237.971
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.762
+      },
+      "duration_s": 1.769,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-094.png"
+      },
+      "index": 94,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.041,
+        "leading_silence_s": 0.041,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It spots redundant logic,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.2612
+      },
+      "window": {
+        "end_s": 241.408,
+        "start_s": 239.639
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.157
+      },
+      "duration_s": 1.568,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-095.png"
+      },
+      "index": 95,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.072,
+        "leading_silence_s": 0.072,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "suggests refactors, rewrites",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.9133
+      },
+      "window": {
+        "end_s": 242.976,
+        "start_s": 241.408
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3046
+      },
+      "duration_s": 1.735,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-096.png"
+      },
+      "index": 96,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.544,
+        "leading_silence_s": 0.544,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "blocks more cleanly.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.7291
+      },
+      "window": {
+        "end_s": 244.711,
+        "start_s": 242.976
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9541
+      },
+      "duration_s": 3.003,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-097.png"
+      },
+      "index": 97,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.049,
+        "leading_silence_s": 0.049,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It also handles over 30 languages beyond Java.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.664
+      },
+      "window": {
+        "end_s": 247.714,
+        "start_s": 244.711
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8088
+      },
+      "duration_s": 1.301,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-098.png"
+      },
+      "index": 98,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.006,
+        "leading_silence_s": 0.006,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "There's a free community edition",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.8432
+      },
+      "window": {
+        "end_s": 249.015,
+        "start_s": 247.714
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0845
+      },
+      "duration_s": 9.61,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-099.png"
+      },
+      "index": 99,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.185,
+        "leading_silence_s": 0.185,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and a paid ultimate tier when you need everything. If you write Java professionally like me, you probably already know this is the one true answer. Getting close to the top now.",
+        "trailing_silence_s": 0.0,
+        "word_count": 32,
+        "words_per_s": 3.3299
+      },
+      "window": {
+        "end_s": 258.625,
+        "start_s": 249.015
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.168,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-100.png"
+      },
+      "index": 100,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.015,
+        "leading_silence_s": 0.015,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Number two is Cursor.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.4247
+      },
+      "window": {
+        "end_s": 259.793,
+        "start_s": 258.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0639
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-101.png"
+      },
+      "index": 101,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.667,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.667,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 260.46,
+        "start_s": 259.793
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2077
+      },
+      "duration_s": 2.936,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-102.png"
+      },
+      "index": 102,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.059,
+        "leading_silence_s": 0.059,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Built on top of VS Code, so it feels familiar,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.406
+      },
+      "window": {
+        "end_s": 263.396,
+        "start_s": 260.46
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1596
+      },
+      "duration_s": 2.236,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-103.png"
+      },
+      "index": 103,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.004,
+        "leading_silence_s": 0.004,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but the AI here is not bolted on.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.5778
+      },
+      "window": {
+        "end_s": 265.632,
+        "start_s": 263.396
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1587
+      },
+      "duration_s": 2.769,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-104.png"
+      },
+      "index": 104,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.208,
+        "leading_silence_s": 0.208,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Tab completion predicts multiple lines ahead.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.1668
+      },
+      "window": {
+        "end_s": 268.401,
+        "start_s": 265.632
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2816
+      },
+      "duration_s": 3.537,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-105.png"
+      },
+      "index": 105,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The chat panel answers real questions about your own code base.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.11
+      },
+      "window": {
+        "end_s": 271.938,
+        "start_s": 268.401
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2339
+      },
+      "duration_s": 7.074,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-106.png"
+      },
+      "index": 106,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.022,
+        "leading_silence_s": 0.022,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The composer feature lets you describe what you want to build in plain English and it writes it across multiple files at once. Teams at",
+        "trailing_silence_s": 0.0,
+        "word_count": 25,
+        "words_per_s": 3.5341
+      },
+      "window": {
+        "end_s": 279.012,
+        "start_s": 271.938
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0553
+      },
+      "duration_s": 3.103,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-107.png"
+      },
+      "index": 107,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.068,
+        "leading_silence_s": 0.068,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Vercel and OpenAI use it. And finally,",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.2559
+      },
+      "window": {
+        "end_s": 282.115,
+        "start_s": 279.012
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2438
+      },
+      "duration_s": 8.409,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-108.png"
+      },
+      "index": 108,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.005,
+        "leading_silence_s": 0.005,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "number one, the moment you've all been waiting for. This spot belongs to",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 1.546
+      },
+      "window": {
+        "end_s": 290.524,
+        "start_s": 282.115
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0612
+      },
+      "duration_s": 1.701,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-109.png"
+      },
+      "index": 109,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.196,
+        "leading_silence_s": 0.196,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Visual Studio Code, as",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.3516
+      },
+      "window": {
+        "end_s": 292.225,
+        "start_s": 290.524
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3192
+      },
+      "duration_s": 1.335,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-110.png"
+      },
+      "index": 110,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.255,
+        "leading_silence_s": 0.255,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "everyone expected.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.4981
+      },
+      "window": {
+        "end_s": 293.56,
+        "start_s": 292.225
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6574
+      },
+      "duration_s": 6.74,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-111.png"
+      },
+      "index": 111,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Over 73% of developers globally use Visual Studio Code. That's according to the Stack Overflow Developer Survey. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 2.6706
+      },
+      "window": {
+        "end_s": 300.3,
+        "start_s": 293.56
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8047
+      },
+      "duration_s": 1.301,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-112.png"
+      },
+      "index": 112,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "runs on Windows, Mac,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.0746
+      },
+      "window": {
+        "end_s": 301.601,
+        "start_s": 300.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0776
+      },
+      "duration_s": 2.436,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-113.png"
+      },
+      "index": 113,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.679,
+        "leading_silence_s": 0.679,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Linux, and even in the browser. Over",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.8736
+      },
+      "window": {
+        "end_s": 304.037,
+        "start_s": 301.601
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.869,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-114.png"
+      },
+      "index": 114,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.243,
+        "leading_silence_s": 0.243,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "40,000 extensions, fast",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.6051
+      },
+      "window": {
+        "end_s": 305.906,
+        "start_s": 304.037
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-115.png"
+      },
+      "index": 115,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.374,
+        "leading_silence_s": 0.374,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "startup, free,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.7138
+      },
+      "window": {
+        "end_s": 307.073,
+        "start_s": 305.906
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3622
+      },
+      "duration_s": 1.702,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-116.png"
+      },
+      "index": 116,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.687,
+        "leading_silence_s": 0.687,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "open source. VS",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.7626
+      },
+      "window": {
+        "end_s": 308.775,
+        "start_s": 307.073
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9405
+      },
+      "duration_s": 4.425,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-117.png"
+      },
+      "index": 117,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.265,
+        "leading_silence_s": 0.265,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Code isn't the best at any one specific thing, but it's the best overall",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.1638
+      },
+      "window": {
+        "end_s": 313.2,
+        "start_s": 308.775
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1677
+      },
+      "duration_s": 1.948,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-118.png"
+      },
+      "index": 118,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "package at any price, and that's why",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.5934
+      },
+      "window": {
+        "end_s": 315.148,
+        "start_s": 313.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.47
+      },
+      "duration_s": 2.036,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-119.png"
+      },
+      "index": 119,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.052,
+        "leading_silence_s": 0.052,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it's been sitting at number one for years. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 4.4204
+      },
+      "window": {
+        "end_s": 317.184,
+        "start_s": 315.148
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2349
+      },
+      "duration_s": 5.872,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-120.png"
+      },
+      "index": 120,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.256,
+        "leading_silence_s": 0.256,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "like I said at the beginning, your IDE could be the thing that's slowing you down, so you must choose carefully.",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.5763
+      },
+      "window": {
+        "end_s": 323.056,
+        "start_s": 317.184
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7694
+      },
+      "duration_s": 2.97,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-121.png"
+      },
+      "index": 121,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.064,
+        "leading_silence_s": 0.064,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Okay, those IDEs are all powerful, but",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.3569
+      },
+      "window": {
+        "end_s": 326.026,
+        "start_s": 323.056
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2441
+      },
+      "duration_s": 3.069,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-122.png"
+      },
+      "index": 122,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.094,
+        "leading_silence_s": 0.094,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "if you're a junior dev or a new to coding in general, you",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 4.2359
+      },
+      "window": {
+        "end_s": 329.095,
+        "start_s": 326.026
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8337
+      },
+      "duration_s": 5.406,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-123.png"
+      },
+      "index": 123,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.145,
+        "leading_silence_s": 0.145,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "most likely be doing a lot of alt-tabbing between your tutorial and your IDE, and that's a problem",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 3.3296
+      },
+      "window": {
+        "end_s": 334.501,
+        "start_s": 329.095
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1092
+      },
+      "duration_s": 0.367,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-124.png"
+      },
+      "index": 124,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.259,
+        "leading_silence_s": 0.259,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Scrimba,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.7248
+      },
+      "window": {
+        "end_s": 334.868,
+        "start_s": 334.501
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.101
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-125.png"
+      },
+      "index": 125,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.3,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 335.168,
+        "start_s": 334.868
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1056
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-126.png"
+      },
+      "index": 126,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.3,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 335.468,
+        "start_s": 335.168
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1089
+      },
+      "duration_s": 0.301,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-127.png"
+      },
+      "index": 127,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.012,
+        "leading_silence_s": 0.012,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "today's",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 3.3223
+      },
+      "window": {
+        "end_s": 335.769,
+        "start_s": 335.468
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1503
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-128.png"
+      },
+      "index": 128,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.031,
+        "leading_silence_s": 0.031,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "sponsor,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 336.069,
+        "start_s": 335.769
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1388
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-129.png"
+      },
+      "index": 129,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.3,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 336.369,
+        "start_s": 336.069
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1287
+      },
+      "duration_s": 0.301,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-130.png"
+      },
+      "index": 130,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.071,
+        "leading_silence_s": 0.071,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "fixes",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 3.3223
+      },
+      "window": {
+        "end_s": 336.67,
+        "start_s": 336.369
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1155
+      },
+      "duration_s": 0.333,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-131.png"
+      },
+      "index": 131,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.333,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.333,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 337.003,
+        "start_s": 336.67
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1071
+      },
+      "duration_s": 0.301,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-132.png"
+      },
+      "index": 132,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.037,
+        "leading_silence_s": 0.037,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "in an amazing",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 9.9668
+      },
+      "window": {
+        "end_s": 337.304,
+        "start_s": 337.003
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1079
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-133.png"
+      },
+      "index": 133,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.3,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 337.604,
+        "start_s": 337.304
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1039
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-134.png"
+      },
+      "index": 134,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.3,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 337.904,
+        "start_s": 337.604
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0801
+      },
+      "duration_s": 0.434,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-135.png"
+      },
+      "index": 135,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.056,
+        "leading_silence_s": 0.056,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "way.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3041
+      },
+      "window": {
+        "end_s": 338.338,
+        "start_s": 337.904
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1116
+      },
+      "duration_s": 3.57,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-136.png"
+      },
+      "index": 136,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.102,
+        "leading_silence_s": 0.102,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Scrimba turns coding lessons into an actual coding environment.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.521
+      },
+      "window": {
+        "end_s": 341.908,
+        "start_s": 338.338
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0684
+      },
+      "duration_s": 0.634,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-137.png"
+      },
+      "index": 137,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.132,
+        "leading_silence_s": 0.132,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Their scrims",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.1546
+      },
+      "window": {
+        "end_s": 342.542,
+        "start_s": 341.908
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1202
+      },
+      "duration_s": 6.774,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-138.png"
+      },
+      "index": 138,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.178,
+        "leading_silence_s": 0.178,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "let you pause anytime and edit the instructor's code directly in the browser. No setup or version issues involved.",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 2.8048
+      },
+      "window": {
+        "end_s": 349.316,
+        "start_s": 342.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1615
+      },
+      "duration_s": 8.942,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-139.png"
+      },
+      "index": 139,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.044,
+        "leading_silence_s": 0.044,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "They also offer full front-end, back-end, full stack, and AI engineering career paths with real projects and practical industry skills. Around 30%",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 2.4603
+      },
+      "window": {
+        "end_s": 358.258,
+        "start_s": 349.316
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0767
+      },
+      "duration_s": 1.268,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-140.png"
+      },
+      "index": 140,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.502,
+        "leading_silence_s": 0.502,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of their courses are",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.1546
+      },
+      "window": {
+        "end_s": 359.526,
+        "start_s": 358.258
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0629
+      },
+      "duration_s": 1.101,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-141.png"
+      },
+      "index": 141,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.074,
+        "leading_silence_s": 0.074,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "completely free, so",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.7248
+      },
+      "window": {
+        "end_s": 360.627,
+        "start_s": 359.526
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0998
+      },
+      "duration_s": 0.701,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-142.png"
+      },
+      "index": 142,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.133,
+        "leading_silence_s": 0.133,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you can try them",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 5.7061
+      },
+      "window": {
+        "end_s": 361.328,
+        "start_s": 360.627
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0913
+      },
+      "duration_s": 0.433,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-143.png"
+      },
+      "index": 143,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.032,
+        "leading_silence_s": 0.032,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "first.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3095
+      },
+      "window": {
+        "end_s": 361.761,
+        "start_s": 361.328
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0849
+      },
+      "duration_s": 10.0104,
+      "files": {
+        "thumb": "codehead-top-10-ides-thumbs/scene-144.png"
+      },
+      "index": 144,
+      "narration": {
+        "coverage": 0.9969,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.199,
+        "leading_silence_s": 0.199,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Use my link in the description to get an extra 20% off Scrimba Pro on top of annual savings, and the discount never expires. Thanks to Scrimba for sponsoring this video.",
+        "trailing_silence_s": 0.0314,
+        "word_count": 31,
+        "words_per_s": 3.0968
+      },
+      "window": {
+        "end_s": 371.7714,
+        "start_s": 361.761
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "codehead-top-10-ides",
+  "source_url": "https://www.youtube.com/watch?v=TcOvs_DYMv0",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1067,
+    "word_level": true
+  },
+  "video": {
+    "channel": "CodeHead",
+    "duration_s": 372.0,
+    "title": "Top 10 Best IDEs In 2026",
+    "upload_date": "20260528"
+  }
+}

@@ -99,6 +99,15 @@ What to check:
   Flag a scene that repeats the previous one's shape (e.g. a second centered text
   card in a row) — adjacent scenes should look different at a glance
   (`visual-language.md` §2).
+- **Archetype-family rotation (windowed).** Beyond the adjacent-pair check above:
+  across a *run* of scenes covering one long subtopic, flag the same archetype
+  **family** repeating for ~3+ consecutive scenes — even when each adjacent pair
+  technically differs. Families (from `visual-language.md` §2): *typographic*
+  (kinetic type, quote/source card, checklist), *structural* (split/contrast,
+  diagram/build, code reveal), *figural* (side-cutout, referent mark), *numeric*
+  (stat hero). A 2.5-minute subtopic rendered as three typographic cards in a row
+  reads as one long static block — the visual analogue of the script's
+  dragging-subtopic failure. Rotate the family every ~3 scenes.
 - **Imagery fit.** If the beat carries an imagery signal — a named emotion,
   irony/comedy/a punchline, a human reaction, a named "who", or a concrete recognisable
   thing (a logo, a real place/person/object) — but renders as bare text, flag it as a

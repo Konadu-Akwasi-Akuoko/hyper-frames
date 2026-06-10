@@ -1,0 +1,4514 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 24.5093,
+    "longest_hold_s": 7.458,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.2866,
+    "scene_count": 165,
+    "scene_duration_s": {
+      "max": 7.458,
+      "median": 1.958,
+      "min": 0.042,
+      "p25": 1.25,
+      "p75": 3.0
+    },
+    "soft_transition_count": 6,
+    "words_per_s_mean": 3.0901
+  },
+  "proxy": {
+    "duration_s": 386.7917,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 0.042,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Vercel",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 23.8095
+      },
+      "window": {
+        "end_s": 0.042,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0657
+      },
+      "duration_s": 3.833,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.518,
+        "leading_silence_s": 0.518,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is hands-down one of the smartest tech companies I have ever seen.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.1307
+      },
+      "window": {
+        "end_s": 3.875,
+        "start_s": 0.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.063
+      },
+      "duration_s": 3.167,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.205,
+        "leading_silence_s": 0.205,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "You are probably using it for free as most people do, but",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.7891
+      },
+      "window": {
+        "end_s": 7.042,
+        "start_s": 3.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.275
+      },
+      "duration_s": 1.291,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.198,
+        "leading_silence_s": 0.198,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "do you know the company that",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.6476
+      },
+      "window": {
+        "end_s": 8.333,
+        "start_s": 7.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0954
+      },
+      "duration_s": 2.167,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "just hosted your website for free is",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.2303
+      },
+      "window": {
+        "end_s": 10.5,
+        "start_s": 8.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8484
+      },
+      "duration_s": 3.125,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "currently valued at $9.3 billion,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 1.6
+      },
+      "window": {
+        "end_s": 13.625,
+        "start_s": 10.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.101
+      },
+      "duration_s": 2.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.215,
+        "leading_silence_s": 0.215,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and it made $200 million last year. So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.9996
+      },
+      "window": {
+        "end_s": 16.292,
+        "start_s": 13.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.833,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.268,
+        "leading_silence_s": 0.268,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "either Vercel is lying about their",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.2733
+      },
+      "window": {
+        "end_s": 18.125,
+        "start_s": 16.292
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0839
+      },
+      "duration_s": 0.75,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.035,
+        "leading_silence_s": 0.035,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "numbers,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.3333
+      },
+      "window": {
+        "end_s": 18.875,
+        "start_s": 18.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.484
+      },
+      "duration_s": 2.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.005,
+        "leading_silence_s": 0.005,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "or there is something much more interesting going on here, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 4.1245
+      },
+      "window": {
+        "end_s": 21.542,
+        "start_s": 18.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5902
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.098,
+        "leading_silence_s": 0.098,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "trust me, it's the second one.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.0
+      },
+      "window": {
+        "end_s": 23.542,
+        "start_s": 21.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6183
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.018,
+        "leading_silence_s": 0.018,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And if you think they made $200 million by selling you that",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 26.542,
+        "start_s": 23.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6272
+      },
+      "duration_s": 1.458,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.018,
+        "leading_silence_s": 0.018,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "$20 pro plan,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.0576
+      },
+      "window": {
+        "end_s": 28.0,
+        "start_s": 26.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1562
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you cannot be more wrong.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 29.5,
+        "start_s": 28.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6505
+      },
+      "duration_s": 5.458,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Because what Vercel figured out is one of the most clever business tricks in the entire tech industry. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.4811
+      },
+      "window": {
+        "end_s": 34.958,
+        "start_s": 29.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5571
+      },
+      "duration_s": 1.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.122,
+        "leading_silence_s": 0.122,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "once I explain it to you,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.8
+      },
+      "window": {
+        "end_s": 36.208,
+        "start_s": 34.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0988
+      },
+      "duration_s": 0.459,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.312,
+        "leading_silence_s": 0.312,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1786
+      },
+      "window": {
+        "end_s": 36.667,
+        "start_s": 36.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0801
+      },
+      "duration_s": 1.291,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "are never going to look at a free",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 6.1967
+      },
+      "window": {
+        "end_s": 37.958,
+        "start_s": 36.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1001
+      },
+      "duration_s": 0.959,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.162,
+        "leading_silence_s": 0.162,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "developer tool the",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.1283
+      },
+      "window": {
+        "end_s": 38.917,
+        "start_s": 37.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1191
+      },
+      "duration_s": 1.125,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.003,
+        "leading_silence_s": 0.003,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "same way again. So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.5556
+      },
+      "window": {
+        "end_s": 40.042,
+        "start_s": 38.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6222
+      },
+      "duration_s": 2.583,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.118,
+        "leading_silence_s": 0.118,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "to understand how Vercel makes money, we",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.71
+      },
+      "window": {
+        "end_s": 42.625,
+        "start_s": 40.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7418
+      },
+      "duration_s": 1.125,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.055,
+        "leading_silence_s": 0.055,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "first need to talk about",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.4444
+      },
+      "window": {
+        "end_s": 43.75,
+        "start_s": 42.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2148
+      },
+      "duration_s": 3.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.05,
+        "leading_silence_s": 0.05,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "a guy named Guillermo Rauch. Before you skip ahead thinking",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.0769
+      },
+      "window": {
+        "end_s": 47.0,
+        "start_s": 43.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3337
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.36,
+        "leading_silence_s": 0.36,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "I'm going to talk about",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.2845
+      },
+      "window": {
+        "end_s": 48.167,
+        "start_s": 47.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.23
+      },
+      "duration_s": 2.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "some Silicon Valley founder story, just",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 50.417,
+        "start_s": 48.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8277
+      },
+      "duration_s": 1.458,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.183,
+        "leading_silence_s": 0.183,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "hold on for a second because",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.1152
+      },
+      "window": {
+        "end_s": 51.875,
+        "start_s": 50.417
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7187
+      },
+      "duration_s": 2.917,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.205,
+        "leading_silence_s": 0.205,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "this one actually matters for understanding the trick. Guillermo",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.0854
+      },
+      "window": {
+        "end_s": 54.792,
+        "start_s": 51.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7204
+      },
+      "duration_s": 1.083,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.488,
+        "leading_silence_s": 0.488,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "grew up in Argentina,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.6934
+      },
+      "window": {
+        "end_s": 55.875,
+        "start_s": 54.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2239
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.845,
+        "leading_silence_s": 0.845,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "taught",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.1429
+      },
+      "window": {
+        "end_s": 56.75,
+        "start_s": 55.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.542,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.25,
+        "leading_silence_s": 0.25,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "himself to code as a teenager, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.7537
+      },
+      "window": {
+        "end_s": 59.292,
+        "start_s": 56.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.958,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.028,
+        "leading_silence_s": 0.028,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "by the time he was in his 20s, he",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 4.5965
+      },
+      "window": {
+        "end_s": 61.25,
+        "start_s": 59.292
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0985
+      },
+      "duration_s": 1.833,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.07,
+        "leading_silence_s": 0.07,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "had already built something that millions",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.2733
+      },
+      "window": {
+        "end_s": 63.083,
+        "start_s": 61.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0553
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.117,
+        "leading_silence_s": 0.117,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of developers were using without even knowing his name. Any",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 66.083,
+        "start_s": 63.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2814
+      },
+      "duration_s": 1.917,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.157,
+        "leading_silence_s": 0.157,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "guesses? Here's a hint. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.6082
+      },
+      "window": {
+        "end_s": 68.0,
+        "start_s": 66.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 4.417,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "wouldn't be able to communicate in real time inside a web browser without it.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.1696
+      },
+      "window": {
+        "end_s": 72.417,
+        "start_s": 68.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0555
+      },
+      "duration_s": 2.083,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.143,
+        "leading_silence_s": 0.143,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It's called Socket.IO. Because",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.9203
+      },
+      "window": {
+        "end_s": 74.5,
+        "start_s": 72.417
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2821
+      },
+      "duration_s": 1.75,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "he was a developer himself, he",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 76.25,
+        "start_s": 74.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6543
+      },
+      "duration_s": 3.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.15,
+        "leading_silence_s": 0.15,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "understood other developers habits really well. He understood",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.1816
+      },
+      "window": {
+        "end_s": 79.917,
+        "start_s": 76.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2938
+      },
+      "duration_s": 1.916,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.043,
+        "leading_silence_s": 0.043,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "how they think, what they hate,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.1315
+      },
+      "window": {
+        "end_s": 81.833,
+        "start_s": 79.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0569
+      },
+      "duration_s": 2.834,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and what makes them actually adopt a new tool. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.5286
+      },
+      "window": {
+        "end_s": 84.667,
+        "start_s": 81.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.583,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "in the early 2010s, what",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.1586
+      },
+      "window": {
+        "end_s": 86.25,
+        "start_s": 84.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.995
+      },
+      "duration_s": 1.958,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.15,
+        "leading_silence_s": 0.15,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "developers really hated was deployment.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.5536
+      },
+      "window": {
+        "end_s": 88.208,
+        "start_s": 86.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5126
+      },
+      "duration_s": 3.709,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.672,
+        "leading_silence_s": 0.672,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Getting your web app laptop onto the internet was a genuine",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.9658
+      },
+      "window": {
+        "end_s": 91.917,
+        "start_s": 88.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6501
+      },
+      "duration_s": 1.333,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.323,
+        "leading_silence_s": 0.323,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "nightmare. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.5004
+      },
+      "window": {
+        "end_s": 93.25,
+        "start_s": 91.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6865
+      },
+      "duration_s": 2.417,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.03,
+        "leading_silence_s": 0.03,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "were configuring servers and dealing with AWS",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.8962
+      },
+      "window": {
+        "end_s": 95.667,
+        "start_s": 93.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 5.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.813,
+        "leading_silence_s": 0.813,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "settings that looked like they were designed by developers themselves rather than designers. So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 100.917,
+        "start_s": 95.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 4.833,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.123,
+        "leading_silence_s": 0.123,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Guillermo had this idea. What if deployment was just not a problem anymore? And",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.8968
+      },
+      "window": {
+        "end_s": 105.75,
+        "start_s": 100.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5393
+      },
+      "duration_s": 1.208,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.05,
+        "leading_silence_s": 0.05,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "in 2015, he",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.4834
+      },
+      "window": {
+        "end_s": 106.958,
+        "start_s": 105.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0808
+      },
+      "duration_s": 1.417,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.122,
+        "leading_silence_s": 0.122,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "started a company originally",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.8229
+      },
+      "window": {
+        "end_s": 108.375,
+        "start_s": 106.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0786
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.465,
+        "leading_silence_s": 0.465,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "called Zeit, which he later renamed to Vercel",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 111.375,
+        "start_s": 108.375
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1445
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.665,
+        "leading_silence_s": 0.665,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "with exactly",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.401
+      },
+      "window": {
+        "end_s": 112.208,
+        "start_s": 111.375
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1211
+      },
+      "duration_s": 1.834,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.592,
+        "leading_silence_s": 0.592,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that goal in mind. But there",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.2715
+      },
+      "window": {
+        "end_s": 114.042,
+        "start_s": 112.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3823
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.158,
+        "leading_silence_s": 0.158,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is a move that",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.5714
+      },
+      "window": {
+        "end_s": 114.917,
+        "start_s": 114.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.356
+      },
+      "duration_s": 1.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.163,
+        "leading_silence_s": 0.163,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "most people overlook, and it",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 116.792,
+        "start_s": 114.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2231
+      },
+      "duration_s": 3.958,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.048,
+        "leading_silence_s": 0.048,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is honestly one of the main reasons Vercel became what it is today.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.2845
+      },
+      "window": {
+        "end_s": 120.75,
+        "start_s": 116.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.542,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.01,
+        "leading_silence_s": 0.01,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Before Vercel was a billion-dollar company, their",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.7537
+      },
+      "window": {
+        "end_s": 123.292,
+        "start_s": 120.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8063
+      },
+      "duration_s": 1.375,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.108,
+        "leading_silence_s": 0.108,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "team built something called",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.9091
+      },
+      "window": {
+        "end_s": 124.667,
+        "start_s": 123.292
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5404
+      },
+      "duration_s": 1.208,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Next.js,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 0.8278
+      },
+      "window": {
+        "end_s": 125.875,
+        "start_s": 124.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0775
+      },
+      "duration_s": 3.833,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.165,
+        "leading_silence_s": 0.165,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and then they gave it away, completely free and open source. Now,",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.1307
+      },
+      "window": {
+        "end_s": 129.708,
+        "start_s": 125.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.187
+      },
+      "duration_s": 4.625,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.212,
+        "leading_silence_s": 0.212,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "I'm sure you already know Next.js, but here's what most people don't think about. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.2432
+      },
+      "window": {
+        "end_s": 134.333,
+        "start_s": 129.708
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3567
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "majority of Next.js developers",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 136.333,
+        "start_s": 134.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0613
+      },
+      "duration_s": 1.75,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "eventually end up on Vercel because",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 138.083,
+        "start_s": 136.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.249
+      },
+      "duration_s": 4.459,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.277,
+        "leading_silence_s": 0.277,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Vercel is quite literally built and optimized for Next.js projects.",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.2427
+      },
+      "window": {
+        "end_s": 142.542,
+        "start_s": 138.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7952
+      },
+      "duration_s": 4.058,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.058,
+        "leading_silence_s": 0.058,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So, every developer who adopts it without realizing they come one step",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.9571
+      },
+      "window": {
+        "end_s": 146.6,
+        "start_s": 142.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1613
+      },
+      "duration_s": 2.358,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "closer to becoming a Vercel user.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.5445
+      },
+      "window": {
+        "end_s": 148.958,
+        "start_s": 146.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6622
+      },
+      "duration_s": 5.242,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.001,
+        "leading_silence_s": 0.001,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And since Next.js has tens of millions of developers using it worldwide, that is an enormous",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.0523
+      },
+      "window": {
+        "end_s": 154.2,
+        "start_s": 148.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3937
+      },
+      "duration_s": 2.175,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "pipeline of future users, all",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.2989
+      },
+      "window": {
+        "end_s": 156.375,
+        "start_s": 154.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3974
+      },
+      "duration_s": 4.083,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.145,
+        "leading_silence_s": 0.145,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of whom arrived without Vercel spending a single dollar on advertising.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.6941
+      },
+      "window": {
+        "end_s": 160.458,
+        "start_s": 156.375
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4293
+      },
+      "duration_s": 1.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.062,
+        "leading_silence_s": 0.062,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Now, let's talk about the main thing. What's",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.2667
+      },
+      "window": {
+        "end_s": 162.333,
+        "start_s": 160.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3986
+      },
+      "duration_s": 1.792,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the business model of Vercel, and how",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.9062
+      },
+      "window": {
+        "end_s": 164.125,
+        "start_s": 162.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1239
+      },
+      "duration_s": 2.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.235,
+        "leading_silence_s": 0.235,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "are they making millions from developers? It",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.6247
+      },
+      "window": {
+        "end_s": 166.792,
+        "start_s": 164.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4847
+      },
+      "duration_s": 7.458,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.088,
+        "leading_silence_s": 0.088,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "basically works in three layers, and each layer is clever than the one before it. Layer one is what they call the free tier. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 25,
+        "words_per_s": 3.3521
+      },
+      "window": {
+        "end_s": 174.25,
+        "start_s": 166.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.03,
+        "leading_silence_s": 0.03,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "this is the part that hooks developers in the first place. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 177.25,
+        "start_s": 174.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.11,
+        "leading_silence_s": 0.11,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "sign up, you",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 178.125,
+        "start_s": 177.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2599
+      },
+      "duration_s": 1.458,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.035,
+        "leading_silence_s": 0.035,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "deploy your project, everything",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.7435
+      },
+      "window": {
+        "end_s": 179.583,
+        "start_s": 178.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2954
+      },
+      "duration_s": 1.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.417,
+        "leading_silence_s": 0.417,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "works, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.6
+      },
+      "window": {
+        "end_s": 180.833,
+        "start_s": 179.583
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.417,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Vercel",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3981
+      },
+      "window": {
+        "end_s": 181.25,
+        "start_s": 180.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0593
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.03,
+        "leading_silence_s": 0.03,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "doesn't ask you",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.4978
+      },
+      "window": {
+        "end_s": 181.917,
+        "start_s": 181.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0544
+      },
+      "duration_s": 0.333,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.042,
+        "leading_silence_s": 0.042,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "for anything.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 6.006
+      },
+      "window": {
+        "end_s": 182.25,
+        "start_s": 181.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0682
+      },
+      "duration_s": 0.583,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.51,
+        "leading_silence_s": 0.51,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.7153
+      },
+      "window": {
+        "end_s": 182.833,
+        "start_s": 182.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9771
+      },
+      "duration_s": 2.334,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "here's the catch that isn't really a catch. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.856
+      },
+      "window": {
+        "end_s": 185.167,
+        "start_s": 182.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5846
+      },
+      "duration_s": 1.583,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "free tier has limits. Not",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.1586
+      },
+      "window": {
+        "end_s": 186.75,
+        "start_s": 185.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8211
+      },
+      "duration_s": 1.333,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.25,
+        "leading_silence_s": 0.25,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "limits designed to annoy",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.0008
+      },
+      "window": {
+        "end_s": 188.083,
+        "start_s": 186.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0602
+      },
+      "duration_s": 2.167,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.237,
+        "leading_silence_s": 0.237,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you, but limits designed around scaling.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.7688
+      },
+      "window": {
+        "end_s": 190.25,
+        "start_s": 188.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4494
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.79,
+        "leading_silence_s": 0.79,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "When",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.1429
+      },
+      "window": {
+        "end_s": 191.125,
+        "start_s": 190.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4067
+      },
+      "duration_s": 3.125,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.075,
+        "leading_silence_s": 0.075,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "your project is small, you stay free forever. But",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.88
+      },
+      "window": {
+        "end_s": 194.25,
+        "start_s": 191.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.583,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.07,
+        "leading_silence_s": 0.07,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the moment your app starts getting real traffic,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.0972
+      },
+      "window": {
+        "end_s": 196.833,
+        "start_s": 194.25
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.933
+      },
+      "duration_s": 2.967,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "real users, real usage, that's when Vercel's",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.3593
+      },
+      "window": {
+        "end_s": 199.8,
+        "start_s": 196.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2117
+      },
+      "duration_s": 2.283,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.32,
+        "leading_silence_s": 0.32,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "meter quietly starts ticking. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.1901
+      },
+      "window": {
+        "end_s": 202.083,
+        "start_s": 199.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9403
+      },
+      "duration_s": 6.292,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-090.png"
+      },
+      "index": 90,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.037,
+        "leading_silence_s": 0.037,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the beautiful part is that by the time you hit those limits, you're not some student deploying a side project anymore. You're",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 3.4965
+      },
+      "window": {
+        "end_s": 208.375,
+        "start_s": 202.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5489
+      },
+      "duration_s": 1.375,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-091.png"
+      },
+      "index": 91,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.105,
+        "leading_silence_s": 0.105,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "a startup or growing",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.9091
+      },
+      "window": {
+        "end_s": 209.75,
+        "start_s": 208.375
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.064
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-092.png"
+      },
+      "index": 92,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.33,
+        "leading_silence_s": 0.33,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "product,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 0.8569
+      },
+      "window": {
+        "end_s": 210.917,
+        "start_s": 209.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9672
+      },
+      "duration_s": 1.291,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-093.png"
+      },
+      "index": 93,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.003,
+        "leading_silence_s": 0.003,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and suddenly paying that $20",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.873
+      },
+      "window": {
+        "end_s": 212.208,
+        "start_s": 210.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5952
+      },
+      "duration_s": 4.709,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-094.png"
+      },
+      "index": 94,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.552,
+        "leading_silence_s": 0.552,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "makes sense because the value Vercel is delivering is actually worth it. In",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.7607
+      },
+      "window": {
+        "end_s": 216.917,
+        "start_s": 212.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4158
+      },
+      "duration_s": 6.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-095.png"
+      },
+      "index": 95,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.083,
+        "leading_silence_s": 0.083,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "other terms, this is also called vendor lock-in, where you simply don't want to switch to a different platform. Layer",
+        "trailing_silence_s": 0.0,
+        "word_count": 20,
+        "words_per_s": 3.2
+      },
+      "window": {
+        "end_s": 223.167,
+        "start_s": 216.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6152
+      },
+      "duration_s": 2.708,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-096.png"
+      },
+      "index": 96,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.233,
+        "leading_silence_s": 0.233,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "two is where the real money lives. This",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.9542
+      },
+      "window": {
+        "end_s": 225.875,
+        "start_s": 223.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6094
+      },
+      "duration_s": 0.5,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-097.png"
+      },
+      "index": 97,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.125,
+        "leading_silence_s": 0.125,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is kind",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 226.375,
+        "start_s": 225.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0511
+      },
+      "duration_s": 0.708,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-098.png"
+      },
+      "index": 98,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.144,
+        "leading_silence_s": 0.144,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of Vercel's",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.8249
+      },
+      "window": {
+        "end_s": 227.083,
+        "start_s": 226.375
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4295
+      },
+      "duration_s": 1.209,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-099.png"
+      },
+      "index": 99,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.117,
+        "leading_silence_s": 0.117,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "main strategy, so",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.4814
+      },
+      "window": {
+        "end_s": 228.292,
+        "start_s": 227.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5375
+      },
+      "duration_s": 0.666,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-100.png"
+      },
+      "index": 100,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.108,
+        "leading_silence_s": 0.108,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "listen carefully.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.003
+      },
+      "window": {
+        "end_s": 228.958,
+        "start_s": 228.292
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5183
+      },
+      "duration_s": 1.042,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-101.png"
+      },
+      "index": 101,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.561,
+        "leading_silence_s": 0.561,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So, what Vercel",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.8791
+      },
+      "window": {
+        "end_s": 230.0,
+        "start_s": 228.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.6301
+      },
+      "duration_s": 2.083,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-102.png"
+      },
+      "index": 102,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.36,
+        "leading_silence_s": 0.36,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "basically does is it",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.9203
+      },
+      "window": {
+        "end_s": 232.083,
+        "start_s": 230.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0584
+      },
+      "duration_s": 2.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-103.png"
+      },
+      "index": 103,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.197,
+        "leading_silence_s": 0.197,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "stops thinking about individual developers and starts",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.4348
+      },
+      "window": {
+        "end_s": 234.958,
+        "start_s": 232.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1521
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-104.png"
+      },
+      "index": 104,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.082,
+        "leading_silence_s": 0.082,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "focusing on companies. Companies",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.3995
+      },
+      "window": {
+        "end_s": 236.625,
+        "start_s": 234.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5224
+      },
+      "duration_s": 3.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-105.png"
+      },
+      "index": 105,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.415,
+        "leading_silence_s": 0.415,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "notice that half their team is already using Vercel. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.727
+      },
+      "window": {
+        "end_s": 240.292,
+        "start_s": 236.625
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3457
+      },
+      "duration_s": 1.291,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-106.png"
+      },
+      "index": 106,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.148,
+        "leading_silence_s": 0.148,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "what usually happens is",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.0984
+      },
+      "window": {
+        "end_s": 241.583,
+        "start_s": 240.292
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5802
+      },
+      "duration_s": 4.417,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-107.png"
+      },
+      "index": 107,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.057,
+        "leading_silence_s": 0.057,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that developers preferences matter more in what platform the company runs on. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.9432
+      },
+      "window": {
+        "end_s": 246.0,
+        "start_s": 241.583
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.5,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-108.png"
+      },
+      "index": 108,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "since developers already love Vercel, what's",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.4
+      },
+      "window": {
+        "end_s": 248.5,
+        "start_s": 246.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.708,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-109.png"
+      },
+      "index": 109,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "their first suggestion? This",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.3419
+      },
+      "window": {
+        "end_s": 250.208,
+        "start_s": 248.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2475
+      },
+      "duration_s": 0.75,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-110.png"
+      },
+      "index": 110,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.152,
+        "leading_silence_s": 0.152,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is the primary",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 250.958,
+        "start_s": 250.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0642
+      },
+      "duration_s": 1.125,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-111.png"
+      },
+      "index": 111,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.042,
+        "leading_silence_s": 0.042,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "strategy of Vercel I",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.5556
+      },
+      "window": {
+        "end_s": 252.083,
+        "start_s": 250.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0883
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-112.png"
+      },
+      "index": 112,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.037,
+        "leading_silence_s": 0.037,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "was talking about before.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.3995
+      },
+      "window": {
+        "end_s": 253.75,
+        "start_s": 252.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2735
+      },
+      "duration_s": 1.208,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-113.png"
+      },
+      "index": 113,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.01,
+        "leading_silence_s": 0.01,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "You might have noticed Vercel",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.1391
+      },
+      "window": {
+        "end_s": 254.958,
+        "start_s": 253.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.209
+      },
+      "duration_s": 3.459,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-114.png"
+      },
+      "index": 114,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.442,
+        "leading_silence_s": 0.442,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "doesn't really market much. Vercel doesn't need to convince",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.6019
+      },
+      "window": {
+        "end_s": 258.417,
+        "start_s": 254.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0795
+      },
+      "duration_s": 2.583,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-115.png"
+      },
+      "index": 115,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.503,
+        "leading_silence_s": 0.503,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "developers to use their product because",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.3229
+      },
+      "window": {
+        "end_s": 261.0,
+        "start_s": 258.417
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8249
+      },
+      "duration_s": 3.125,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-116.png"
+      },
+      "index": 116,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.239,
+        "leading_silence_s": 0.239,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "developers are already convincing themselves. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 1.92
+      },
+      "window": {
+        "end_s": 264.125,
+        "start_s": 261.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6129
+      },
+      "duration_s": 2.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-117.png"
+      },
+      "index": 117,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.075,
+        "leading_silence_s": 0.075,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "then they go to work and convince their companies, too. This",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.8261
+      },
+      "window": {
+        "end_s": 267.0,
+        "start_s": 264.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.684
+      },
+      "duration_s": 2.833,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-118.png"
+      },
+      "index": 118,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is what the industry calls product-led growth. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.8239
+      },
+      "window": {
+        "end_s": 269.833,
+        "start_s": 267.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4335
+      },
+      "duration_s": 4.5,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-119.png"
+      },
+      "index": 119,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.086,
+        "leading_silence_s": 0.086,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "build a product so good that your users become your marketing department. And they",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.1111
+      },
+      "window": {
+        "end_s": 274.333,
+        "start_s": 269.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.305
+      },
+      "duration_s": 1.542,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-120.png"
+      },
+      "index": 120,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "do it voluntarily because",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.594
+      },
+      "window": {
+        "end_s": 275.875,
+        "start_s": 274.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4209
+      },
+      "duration_s": 2.167,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-121.png"
+      },
+      "index": 121,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.165,
+        "leading_silence_s": 0.165,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "they genuinely like the product. That",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.7688
+      },
+      "window": {
+        "end_s": 278.042,
+        "start_s": 275.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3946
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-122.png"
+      },
+      "index": 122,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.198,
+        "leading_silence_s": 0.198,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "shift from",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 279.042,
+        "start_s": 278.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1025
+      },
+      "duration_s": 0.791,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-123.png"
+      },
+      "index": 123,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.078,
+        "leading_silence_s": 0.078,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "selling to a developer",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 5.0569
+      },
+      "window": {
+        "end_s": 279.833,
+        "start_s": 279.042
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0609
+      },
+      "duration_s": 1.084,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-124.png"
+      },
+      "index": 124,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.367,
+        "leading_silence_s": 0.367,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to selling to a company",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.6125
+      },
+      "window": {
+        "end_s": 280.917,
+        "start_s": 279.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0585
+      },
+      "duration_s": 1.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-125.png"
+      },
+      "index": 125,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.763,
+        "leading_silence_s": 0.763,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is where the money",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.2
+      },
+      "window": {
+        "end_s": 282.167,
+        "start_s": 280.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1738
+      },
+      "duration_s": 2.708,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-126.png"
+      },
+      "index": 126,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.313,
+        "leading_silence_s": 0.313,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "actually multiplies. And when you get to the",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.9542
+      },
+      "window": {
+        "end_s": 284.875,
+        "start_s": 282.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0832
+      },
+      "duration_s": 3.208,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-127.png"
+      },
+      "index": 127,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.044,
+        "leading_silence_s": 0.044,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "enterprise tier, we're talking custom contracts, dedicated",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.182
+      },
+      "window": {
+        "end_s": 288.083,
+        "start_s": 284.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0629
+      },
+      "duration_s": 2.334,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-128.png"
+      },
+      "index": 128,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.597,
+        "leading_silence_s": 0.597,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "support, compliance features,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.2853
+      },
+      "window": {
+        "end_s": 290.417,
+        "start_s": 288.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0721
+      },
+      "duration_s": 0.791,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-129.png"
+      },
+      "index": 129,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.343,
+        "leading_silence_s": 0.343,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the whole package,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.7927
+      },
+      "window": {
+        "end_s": 291.208,
+        "start_s": 290.417
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0776
+      },
+      "duration_s": 0.375,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-130.png"
+      },
+      "index": 130,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.375,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.375,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 291.583,
+        "start_s": 291.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0655
+      },
+      "duration_s": 0.75,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-131.png"
+      },
+      "index": 131,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.417,
+        "leading_silence_s": 0.417,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "which costs",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 292.333,
+        "start_s": 291.583
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0575
+      },
+      "duration_s": 0.334,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-132.png"
+      },
+      "index": 132,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.334,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.334,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 292.667,
+        "start_s": 292.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0624
+      },
+      "duration_s": 0.5,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-133.png"
+      },
+      "index": 133,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "really good",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 293.167,
+        "start_s": 292.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0918
+      },
+      "duration_s": 0.708,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-134.png"
+      },
+      "index": 134,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "money to enterprise.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.2373
+      },
+      "window": {
+        "end_s": 293.875,
+        "start_s": 293.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0625
+      },
+      "duration_s": 7.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-135.png"
+      },
+      "index": 135,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.805,
+        "leading_silence_s": 0.805,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Brands like Under Armour, Nintendo, Porsche, and The Washington Post are all running on Vercel. These",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 2.2857
+      },
+      "window": {
+        "end_s": 300.875,
+        "start_s": 293.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.636
+      },
+      "duration_s": 3.708,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-136.png"
+      },
+      "index": 136,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.165,
+        "leading_silence_s": 0.165,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "aren't companies that picked a deployment platform because it was easy. They",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.2362
+      },
+      "window": {
+        "end_s": 304.583,
+        "start_s": 300.875
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.524
+      },
+      "duration_s": 4.167,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-137.png"
+      },
+      "index": 137,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.097,
+        "leading_silence_s": 0.097,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "are paying serious money because their engineering teams chose Vercel first, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.8798
+      },
+      "window": {
+        "end_s": 308.75,
+        "start_s": 304.583
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.221
+      },
+      "duration_s": 1.583,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-138.png"
+      },
+      "index": 138,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.05,
+        "leading_silence_s": 0.05,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "then the companies followed. So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.1586
+      },
+      "window": {
+        "end_s": 310.333,
+        "start_s": 308.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4717
+      },
+      "duration_s": 5.459,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-139.png"
+      },
+      "index": 139,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "moving on to layer three, it is the newest one and honestly the most interesting. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 2.9309
+      },
+      "window": {
+        "end_s": 315.792,
+        "start_s": 310.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4614
+      },
+      "duration_s": 7.166,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-140.png"
+      },
+      "index": 140,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.088,
+        "leading_silence_s": 0.088,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you haven't seen V0 yet, it's Vercel's AI tool that generates full front-end code from a plain text description.",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 2.6514
+      },
+      "window": {
+        "end_s": 322.958,
+        "start_s": 315.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1542
+      },
+      "duration_s": 3.75,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-141.png"
+      },
+      "index": 141,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.042,
+        "leading_silence_s": 0.042,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It costs money on its own, separate from everything else. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.9333
+      },
+      "window": {
+        "end_s": 326.708,
+        "start_s": 322.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2439
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-142.png"
+      },
+      "index": 142,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.052,
+        "leading_silence_s": 0.052,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "as of early 2025, V0",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 328.708,
+        "start_s": 326.708
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1145
+      },
+      "duration_s": 2.459,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-143.png"
+      },
+      "index": 143,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.492,
+        "leading_silence_s": 0.492,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "was already generating an estimated",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.0333
+      },
+      "window": {
+        "end_s": 331.167,
+        "start_s": 328.708
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2365
+      },
+      "duration_s": 5.666,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-144.png"
+      },
+      "index": 144,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "$42 million in annual recurring revenue despite launching just over a year ago.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.2944
+      },
+      "window": {
+        "end_s": 336.833,
+        "start_s": 331.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0703
+      },
+      "duration_s": 2.5,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-145.png"
+      },
+      "index": 145,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.167,
+        "leading_silence_s": 0.167,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But the genius of V0 isn't just the subscription",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.6
+      },
+      "window": {
+        "end_s": 339.333,
+        "start_s": 336.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1454
+      },
+      "duration_s": 1.459,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-146.png"
+      },
+      "index": 146,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.667,
+        "leading_silence_s": 0.667,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "fee. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.3708
+      },
+      "window": {
+        "end_s": 340.792,
+        "start_s": 339.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2702
+      },
+      "duration_s": 1.125,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-147.png"
+      },
+      "index": 147,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.048,
+        "leading_silence_s": 0.048,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "that almost every app",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.5556
+      },
+      "window": {
+        "end_s": 341.917,
+        "start_s": 340.792
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2637
+      },
+      "duration_s": 1.541,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-148.png"
+      },
+      "index": 148,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.163,
+        "leading_silence_s": 0.163,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that is created on V0",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.2446
+      },
+      "window": {
+        "end_s": 343.458,
+        "start_s": 341.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3669
+      },
+      "duration_s": 0.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-149.png"
+      },
+      "index": 149,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.222,
+        "leading_silence_s": 0.222,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "ends up hosted",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.4286
+      },
+      "window": {
+        "end_s": 344.333,
+        "start_s": 343.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2994
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-150.png"
+      },
+      "index": 150,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.307,
+        "leading_silence_s": 0.307,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "on Vercel infrastructure. So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 346.333,
+        "start_s": 344.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5174
+      },
+      "duration_s": 7.334,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-151.png"
+      },
+      "index": 151,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Vercel gets paid twice. Once when you use V0 to build and again every month when your app sits on their service. That",
+        "trailing_silence_s": 0.0,
+        "word_count": 23,
+        "words_per_s": 3.1361
+      },
+      "window": {
+        "end_s": 353.667,
+        "start_s": 346.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4201
+      },
+      "duration_s": 1.541,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-152.png"
+      },
+      "index": 152,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is not a coincidence. That",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.2446
+      },
+      "window": {
+        "end_s": 355.208,
+        "start_s": 353.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4059
+      },
+      "duration_s": 1.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-153.png"
+      },
+      "index": 153,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.152,
+        "leading_silence_s": 0.152,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is their funnel. So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.2
+      },
+      "window": {
+        "end_s": 356.458,
+        "start_s": 355.208
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4692
+      },
+      "duration_s": 5.292,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-154.png"
+      },
+      "index": 154,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.102,
+        "leading_silence_s": 0.102,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "when you zoom out and look at all three layers together, what you're actually looking at is a funnel that prints",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.9683
+      },
+      "window": {
+        "end_s": 361.75,
+        "start_s": 356.458
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.207
+      },
+      "duration_s": 2.25,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-155.png"
+      },
+      "index": 155,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.29,
+        "leading_silence_s": 0.29,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "millions every year. And that's",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 364.0,
+        "start_s": 361.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2165
+      },
+      "duration_s": 1.917,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-156.png"
+      },
+      "index": 156,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the overall Vercel story.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.0866
+      },
+      "window": {
+        "end_s": 365.917,
+        "start_s": 364.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2999
+      },
+      "duration_s": 1.208,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-157.png"
+      },
+      "index": 157,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.003,
+        "leading_silence_s": 0.003,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Free product,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.6556
+      },
+      "window": {
+        "end_s": 367.125,
+        "start_s": 365.917
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0522
+      },
+      "duration_s": 5.958,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-158.png"
+      },
+      "index": 158,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.035,
+        "leading_silence_s": 0.035,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "three-layer money-making machine, developers as marketers, and a $9.3 billion company. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.0141
+      },
+      "window": {
+        "end_s": 373.083,
+        "start_s": 367.125
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.667,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-159.png"
+      },
+      "index": 159,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.037,
+        "leading_silence_s": 0.037,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you want to see the same breakdown for another company,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.7495
+      },
+      "window": {
+        "end_s": 375.75,
+        "start_s": 373.083
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8544
+      },
+      "duration_s": 2.45,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-160.png"
+      },
+      "index": 160,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.01,
+        "leading_silence_s": 0.01,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "let me know in the comments because there are about 10",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 4.4898
+      },
+      "window": {
+        "end_s": 378.2,
+        "start_s": 375.75
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2967
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-161.png"
+      },
+      "index": 161,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "more of these I want to make. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0671
+      },
+      "window": {
+        "end_s": 380.167,
+        "start_s": 378.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3945
+      },
+      "duration_s": 2.375,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-162.png"
+      },
+      "index": 162,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "if you haven't already, make sure to subscribe",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.3684
+      },
+      "window": {
+        "end_s": 382.542,
+        "start_s": 380.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0561
+      },
+      "duration_s": 1.416,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-163.png"
+      },
+      "index": 163,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.578,
+        "leading_silence_s": 0.578,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "because I promise the next",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.5311
+      },
+      "window": {
+        "end_s": 383.958,
+        "start_s": 382.542
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0635
+      },
+      "duration_s": 1.875,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-164.png"
+      },
+      "index": 164,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.242,
+        "leading_silence_s": 0.242,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "one is just as interesting as this",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.7333
+      },
+      "window": {
+        "end_s": 385.833,
+        "start_s": 383.958
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2287
+      },
+      "duration_s": 0.9587,
+      "files": {
+        "thumb": "codingkoala-vercel-200m-thumbs/scene-165.png"
+      },
+      "index": 165,
+      "narration": {
+        "coverage": 0.5289,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "one.",
+        "trailing_silence_s": 0.4517,
+        "word_count": 1,
+        "words_per_s": 1.0431
+      },
+      "window": {
+        "end_s": 386.7917,
+        "start_s": 385.833
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "codingkoala-vercel-200m",
+  "source_url": "https://www.youtube.com/watch?v=Aiv9NwyfGnM",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1142,
+    "word_level": true
+  },
+  "video": {
+    "channel": "The Coding Koala",
+    "duration_s": 387.0,
+    "title": "The Genius Business Model Behind Vercel: $200M a Year Giving Away Free Hosting",
+    "upload_date": "20260606"
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  /* ESCAPE — Home Alone (square cutout; bleed big to lower-right) */
+  .face-wrap { right: -70px; bottom: -30px; height: 740px; }
+  .face { height: 740px; }
+  .face-glow { right: 60px; bottom: 90px; width: 540px; height: 540px; }
+
+  .copy { left: 64px; top: 196px; transform: none; width: 560px; }
+  .l1 { font-size: 88px; }
+  .l2 { font-size: 196px; margin: 0 0 10px; }              /* escape — coral hand hero */
+  .l3 { font-size: 76px; display: flex; align-items: center; gap: 18px; }
+  .js-chip { width: 116px; height: 116px; font-size: 64px; padding: 0 12px 8px 0; }
+
+  /* annotation in the clear top band, arrow diving toward the kid's face */
+  .annot-text { position: absolute; left: 300px; top: 40px; font-size: 52px;
+                transform: rotate(-6deg); z-index: 4; }
+  .annot-arrow { position: absolute; left: 612px; top: 56px; z-index: 4; }
+</style>
+</head>
+<body>
+  <div class="thumb dbg">
+    <div class="grid"></div>
+    <div class="face-wrap">
+      <div class="face-glow"></div>
+      <img class="face" src="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/videos/javascript-the-king-programming-languages-2026-05-15/thumbnails/cutouts/homealone.png" alt="">
+    </div>
+    <div class="face-fade"></div>
+    <div class="vignette"></div>
+
+    <div class="annot annot-text hand">it's everywhere</div>
+    <div class="annot annot-arrow">
+      <svg width="190" height="150" viewBox="0 0 190 150" fill="none">
+        <path d="M12 14 C 70 40, 150 50, 168 130" stroke="#ff5c52" stroke-width="7" stroke-linecap="round"/>
+        <path d="M168 130 L 142 120 M168 130 L 176 102" stroke="#ff5c52" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="copy">
+      <div class="line l1">YOU CAN'T</div>
+      <div class="line l2 hand">escape</div>
+      <div class="line l3">JAVASCRIPT <span class="js-chip">JS</span></div>
+    </div>
+
+    <div class="grid-debug">
+      <span class="gcell" style="left:322px;top:6px">320</span>
+      <span class="gcell" style="left:642px;top:6px">640</span>
+      <span class="gcell" style="left:962px;top:6px">960</span>
+      <span class="gcell" style="left:6px;top:244px">240</span>
+      <span class="gcell" style="left:6px;top:484px">480</span>
+    </div>
+  </div>
+</body>
+</html>

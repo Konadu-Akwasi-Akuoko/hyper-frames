@@ -1,0 +1,2462 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 6.4876,
+    "longest_hold_s": 41.0,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.0568,
+    "scene_count": 89,
+    "scene_duration_s": {
+      "max": 41.0,
+      "median": 5.933,
+      "min": 0.434,
+      "p25": 2.767,
+      "p75": 11.033
+    },
+    "soft_transition_count": 13,
+    "words_per_s_mean": 3.4158
+  },
+  "proxy": {
+    "duration_s": 693.6333,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 3.033,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The computer science degree is becoming worthless, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.6377
+      },
+      "window": {
+        "end_s": 3.033,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1049
+      },
+      "duration_s": 6.6,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "I'm going to have to put that in true. And I'm not just saying that to be edgy or controversial. If you look at what's actually happening right now, the",
+        "trailing_silence_s": 0.0,
+        "word_count": 30,
+        "words_per_s": 4.5455
+      },
+      "window": {
+        "end_s": 9.633,
+        "start_s": 3.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8175
+      },
+      "duration_s": 3.967,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "value of a CS degree has genuinely tanked in the last few years.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.277
+      },
+      "window": {
+        "end_s": 13.6,
+        "start_s": 9.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1586
+      },
+      "duration_s": 3.667,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "First off, you have major grade inflation. If you look at any state school",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.8178
+      },
+      "window": {
+        "end_s": 17.267,
+        "start_s": 13.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 3.566,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "right now, you'll see that half of the CS program is graduating",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.3651
+      },
+      "window": {
+        "end_s": 20.833,
+        "start_s": 17.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0538
+      },
+      "duration_s": 2.5,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "with above a 3.5. And so, when everyone",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.2
+      },
+      "window": {
+        "end_s": 23.333,
+        "start_s": 20.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4889
+      },
+      "duration_s": 3.667,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "has a good GPA, it loses its value. And on top of",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.2724
+      },
+      "window": {
+        "end_s": 27.0,
+        "start_s": 23.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3877
+      },
+      "duration_s": 4.767,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that, students are losing their problem-solving skills. This really goes for any class, but",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.9369
+      },
+      "window": {
+        "end_s": 31.767,
+        "start_s": 27.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5017
+      },
+      "duration_s": 8.766,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "really computer science as well. Because students aren't learning how to struggle through a bug or learning to read documentation or ask a professor. Because now, the",
+        "trailing_silence_s": 0.0,
+        "word_count": 27,
+        "words_per_s": 3.0801
+      },
+      "window": {
+        "end_s": 40.533,
+        "start_s": 31.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5209
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "second they hit a wall, they can just",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 5.3333
+      },
+      "window": {
+        "end_s": 42.033,
+        "start_s": 40.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0669
+      },
+      "duration_s": 0.434,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.207,
+        "leading_silence_s": 0.207,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "ask",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3041
+      },
+      "window": {
+        "end_s": 42.467,
+        "start_s": 42.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0604
+      },
+      "duration_s": 12.466,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 0.9025,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "ChatGPT or paste their entire error into whatever LLM and then just copy whatever it spits out. And I'm not saying don't use AI, but there's a big difference between using it as a tool and just using it for everything.",
+        "trailing_silence_s": 0.0,
+        "word_count": 41,
+        "words_per_s": 3.2889
+      },
+      "window": {
+        "end_s": 54.933,
+        "start_s": 42.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.9973
+      },
+      "duration_s": 6.167,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And then you also have to consider how things were like 5 to 10 years ago where CS was really looked at as this",
+        "trailing_silence_s": 0.0,
+        "word_count": 24,
+        "words_per_s": 3.8917
+      },
+      "window": {
+        "end_s": 61.1,
+        "start_s": 54.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1684
+      },
+      "duration_s": 7.233,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "sort of safe major, the one that guarantees a job and pays six figures right out of college. And because it was viewed this way, computer",
+        "trailing_silence_s": 0.0,
+        "word_count": 26,
+        "words_per_s": 3.5946
+      },
+      "window": {
+        "end_s": 68.333,
+        "start_s": 61.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2726
+      },
+      "duration_s": 12.867,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "science got a really big inflow of students that really don't even care that much about computer science. And so, basically, when you combine all of this, you get this storm where grade inflation means that GPAs are no longer that valuable,",
+        "trailing_silence_s": 0.0,
+        "word_count": 42,
+        "words_per_s": 3.2642
+      },
+      "window": {
+        "end_s": 81.2,
+        "start_s": 68.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3998
+      },
+      "duration_s": 12.7,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "overcrowding means that competition is just insane, and AI dependency means students aren't really learning how to code. So, the CS degree really is starting to lose its value and really isn't as prestigious as it once was.",
+        "trailing_silence_s": 0.0,
+        "word_count": 38,
+        "words_per_s": 2.9921
+      },
+      "window": {
+        "end_s": 93.9,
+        "start_s": 81.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2586
+      },
+      "duration_s": 6.967,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Okay, next we have grinding FAANG companies or pretty much any of like the top companies. I get the appeal. Pretty much everyone wants to work at these",
+        "trailing_silence_s": 0.0,
+        "word_count": 28,
+        "words_per_s": 4.0189
+      },
+      "window": {
+        "end_s": 100.867,
+        "start_s": 93.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.226
+      },
+      "duration_s": 11.866,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "companies, and if you can get in, it's definitely an incredible opportunity. But to be honest, for these companies, the bar is really, really high. Because these companies get hundreds of thousands of applications, which",
+        "trailing_silence_s": 0.0,
+        "word_count": 35,
+        "words_per_s": 2.9496
+      },
+      "window": {
+        "end_s": 112.733,
+        "start_s": 100.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4063
+      },
+      "duration_s": 15.834,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 0.995,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "means they need to have five, six, or seven rounds of interviews. And even if you're good, there's also just an element of luck involved with whether you get past like the resume screen or whether the interviewer likes you or whether they happen to be hiring for your specific role. And so, I don't really get this",
+        "trailing_silence_s": 0.0,
+        "word_count": 57,
+        "words_per_s": 3.5998
+      },
+      "window": {
+        "end_s": 128.567,
+        "start_s": 112.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8118
+      },
+      "duration_s": 13.8,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 0.9722,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "whole grinding for FAANG or grinding for big tech thing because there's literally thousands of great companies out there that pay just as well or maybe a little bit less, but have good work-life balance, interesting problems, and that will actually hire you. There's",
+        "trailing_silence_s": 0.0,
+        "word_count": 44,
+        "words_per_s": 3.1884
+      },
+      "window": {
+        "end_s": 142.367,
+        "start_s": 128.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6459
+      },
+      "duration_s": 6.133,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 0.9772,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "literally so many companies that you've probably never heard of that are doing incredible work that you would probably be interested",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.4241
+      },
+      "window": {
+        "end_s": 148.5,
+        "start_s": 142.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1904
+      },
+      "duration_s": 8.967,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "in. And there's startups that will give you way more responsibilities and learning opportunities than you'd get as a new grad at Google. So, yeah, my ideology kind of is",
+        "trailing_silence_s": 0.0,
+        "word_count": 30,
+        "words_per_s": 3.3456
+      },
+      "window": {
+        "end_s": 157.467,
+        "start_s": 148.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3484
+      },
+      "duration_s": 2.2,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to shoot your shot at FAANG and kind",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.6364
+      },
+      "window": {
+        "end_s": 159.667,
+        "start_s": 157.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0503
+      },
+      "duration_s": 11.366,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 0.9763,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.173,
+        "leading_silence_s": 0.173,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of grind for it. And even if you don't get it, you'll still be in a good position to go for these maybe lesser-known companies. And since I don't really agree with this that much and since I think it's like less than 1%",
+        "trailing_silence_s": 0.0,
+        "word_count": 44,
+        "words_per_s": 3.8712
+      },
+      "window": {
+        "end_s": 171.033,
+        "start_s": 159.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1089
+      },
+      "duration_s": 5.134,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of new grads that actually get into FAANG, I'm going to have to put this in you're cooked. Okay,",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.7008
+      },
+      "window": {
+        "end_s": 176.167,
+        "start_s": 171.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4307
+      },
+      "duration_s": 5.966,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.313,
+        "leading_silence_s": 0.313,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "next we have LeetCode is dying. So, I feel like a lot of people more and more are starting to say this due",
+        "trailing_silence_s": 0.0,
+        "word_count": 23,
+        "words_per_s": 3.8552
+      },
+      "window": {
+        "end_s": 182.133,
+        "start_s": 176.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4015
+      },
+      "duration_s": 3.767,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to the rise of like cheating with platforms like ClueLee or even",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.1856
+      },
+      "window": {
+        "end_s": 185.9,
+        "start_s": 182.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1804
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "with more companies like Meta moving to",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.9167
+      },
+      "window": {
+        "end_s": 188.3,
+        "start_s": 185.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1481
+      },
+      "duration_s": 10.133,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "asking different styles of questions in general. And I get it. I get why people would want the LeetCode and the data structures and algorithms questions to pretty much go away.",
+        "trailing_silence_s": 0.0,
+        "word_count": 31,
+        "words_per_s": 3.0593
+      },
+      "window": {
+        "end_s": 198.433,
+        "start_s": 188.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5589
+      },
+      "duration_s": 16.634,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 0.9865,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Because I think we all know that DSA-style questions and actually like learning all of the different data structures and algorithms really isn't that relevant to the job. But to be honest, with how integrated LeetCode is right now with all of the big tech companies, I feel like it's going to be pretty hard for it to go away.",
+        "trailing_silence_s": 0.225,
+        "word_count": 60,
+        "words_per_s": 3.6071
+      },
+      "window": {
+        "end_s": 215.067,
+        "start_s": 198.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8831
+      },
+      "duration_s": 4.933,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 0.9893,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.278,
+        "sentence_aligned": true,
+        "text": "And so, we might see more companies like Meta allow you to use like different AI tools",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 3.4462
+      },
+      "window": {
+        "end_s": 220.0,
+        "start_s": 215.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2192
+      },
+      "duration_s": 5.933,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to work on a bigger task in the interview. But in my mind, I think companies will more so just start to shift",
+        "trailing_silence_s": 0.0,
+        "word_count": 23,
+        "words_per_s": 3.8766
+      },
+      "window": {
+        "end_s": 225.933,
+        "start_s": 220.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 4.167,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to more actual in-person interviews because that can pretty much just eliminate",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.8798
+      },
+      "window": {
+        "end_s": 230.1,
+        "start_s": 225.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2537
+      },
+      "duration_s": 41.0,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.74,
+        "leading_silence_s": 0.74,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the entire problem of cheating and then keep the entire interview process that they already have in place. And also, you have to think about the reason why companies like Google started doing these DSA-style interviews. It's not because LeetCode questions are even somewhat related to the job. It's because it's a good indicator that someone is capable of learning things, which in my mind is what these companies are really looking for, someone who's either willing to learn or already pretty talented. And so, for the people that are saying LeetCode is dying or going away, that might be true in the future, but as far as right now, you need to be at least competent enough to pass your online assessments and hopefully your interviews. So, I'll put this one in",
+        "trailing_silence_s": 0.0,
+        "word_count": 133,
+        "words_per_s": 3.2439
+      },
+      "window": {
+        "end_s": 271.1,
+        "start_s": 230.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0921
+      },
+      "duration_s": 1.867,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.62,
+        "leading_silence_s": 0.62,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "possibly cooked. Okay,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.6069
+      },
+      "window": {
+        "end_s": 272.967,
+        "start_s": 271.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2942
+      },
+      "duration_s": 4.0,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "next we have going to hackathons. This right off the bat is a locked-in take, so I'mma",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 4.25
+      },
+      "window": {
+        "end_s": 276.967,
+        "start_s": 272.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0525
+      },
+      "duration_s": 2.533,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "just go ahead and put it there. In my experience, it's pretty",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.7375
+      },
+      "window": {
+        "end_s": 279.5,
+        "start_s": 276.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4885
+      },
+      "duration_s": 2.767,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "fun to like meet new people and work on a project",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.9754
+      },
+      "window": {
+        "end_s": 282.267,
+        "start_s": 279.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2925
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.253,
+        "leading_silence_s": 0.253,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "with them. Like even if your project isn't",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 284.267,
+        "start_s": 282.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0561
+      },
+      "duration_s": 23.366,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 0.995,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.133,
+        "leading_silence_s": 0.133,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that good or it's not that cool, it's just fun overall just to try and get something done within the deadline. And then not only this, you get like free snacks and a bunch of free stuff. And it's also just a good way to like mitigate project anxiety. Because I feel like a lot of people deep down like want to make some cool projects, but then they just never set aside the time for it. Or they're like always procrastinating on working on it. And so, I feel like this really",
+        "trailing_silence_s": 0.0,
+        "word_count": 93,
+        "words_per_s": 3.9801
+      },
+      "window": {
+        "end_s": 307.633,
+        "start_s": 284.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4607
+      },
+      "duration_s": 3.467,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 0.9965,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "gives you just a dedicated window and even a dedicated",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.8843
+      },
+      "window": {
+        "end_s": 311.1,
+        "start_s": 307.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2446
+      },
+      "duration_s": 9.333,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "place to just hyperfocus on your one project and just get it done. So, I think it's definitely a good way to like build up your resume. And then not only this, but a lot of",
+        "trailing_silence_s": 0.0,
+        "word_count": 36,
+        "words_per_s": 3.8573
+      },
+      "window": {
+        "end_s": 320.433,
+        "start_s": 311.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 4.467,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 0.9167,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the times there's like talent scouts or recruiters like as the judges. And so, this",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.358
+      },
+      "window": {
+        "end_s": 324.9,
+        "start_s": 320.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1553
+      },
+      "duration_s": 11.033,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "can be a really good way to network as well. So, I really recommend trying to find like some some of your good friends or if you don't have any friends, then try to make some friends like at the hackathon and then just try and build something cool. Okay,",
+        "trailing_silence_s": 0.0,
+        "word_count": 50,
+        "words_per_s": 4.5319
+      },
+      "window": {
+        "end_s": 335.933,
+        "start_s": 324.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.333
+      },
+      "duration_s": 14.367,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.507,
+        "leading_silence_s": 0.507,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "next we have getting a 4.0 GPA. Right off the bat, I think people know kind of what my stance is on this. It's like you can go for it, but after like a 3.5, I feel like you start to get diminishing returns. Like if you're stressing",
+        "trailing_silence_s": 0.0,
+        "word_count": 48,
+        "words_per_s": 3.341
+      },
+      "window": {
+        "end_s": 350.3,
+        "start_s": 335.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6738
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "over every assignment,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 351.5,
+        "start_s": 350.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1842
+      },
+      "duration_s": 1.6,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "every quiz, every point",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 353.1,
+        "start_s": 351.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5763
+      },
+      "duration_s": 7.533,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "on every exam, then you're taking a lot of time away from a lot of other things that I feel like you should be focused more on. Like if",
+        "trailing_silence_s": 0.0,
+        "word_count": 29,
+        "words_per_s": 3.8497
+      },
+      "window": {
+        "end_s": 360.633,
+        "start_s": 353.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.383
+      },
+      "duration_s": 39.334,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you're always grinding schoolwork, it's going to be kind of hard to fit in like a side project every month or every now and then. Or if you're like missing networking events or, you know, basically, if you're just taking time away from a lot of other things that you should be doing just to try and get like a perfect 4.0, I feel like it's not really worth it. Especially because nowadays, recruiters really only just check to see that you have like above a 3.0. I think it's definitely more relevant just to have real experience on your resume rather than just, you know, a perfect GPA. But obviously, if you're trying to get into like grad school or something, you know, that's completely different. But I'm just talking for the average student. I feel like grinding for a perfect GPA just really isn't that worth it.",
+        "trailing_silence_s": 0.0,
+        "word_count": 149,
+        "words_per_s": 3.7881
+      },
+      "window": {
+        "end_s": 399.967,
+        "start_s": 360.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0846
+      },
+      "duration_s": 16.866,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So, I'll put it in you're cooked. And by the way, anything in like the these bottom tiers isn't actually bad. Like these are both like good things. Mainly, it's just like I'm saying for the average student, like these might not be worth your time. But these are definitely still good things to do. Like all of these on the list are good. Okay, next we have",
+        "trailing_silence_s": 0.0,
+        "word_count": 68,
+        "words_per_s": 4.0318
+      },
+      "window": {
+        "end_s": 416.833,
+        "start_s": 399.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1545
+      },
+      "duration_s": 5.967,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "joining a club. And obviously, for this one, I'm talking about like a computer science-related club. So, maybe something like",
+        "trailing_silence_s": 0.0,
+        "word_count": 20,
+        "words_per_s": 3.3518
+      },
+      "window": {
+        "end_s": 422.8,
+        "start_s": 416.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2749
+      },
+      "duration_s": 6.3,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 0.9951,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "robotics or web development or game development, pretty much anything like that. And honestly, I have to put this in decent take.",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 3.4921
+      },
+      "window": {
+        "end_s": 429.1,
+        "start_s": 422.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0903
+      },
+      "duration_s": 10.067,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And the reason why it's not higher is because I feel like most like university clubs might not teach you that much. Because you have to think about it, like the actual club itself",
+        "trailing_silence_s": 0.0,
+        "word_count": 34,
+        "words_per_s": 3.3774
+      },
+      "window": {
+        "end_s": 439.167,
+        "start_s": 429.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4431
+      },
+      "duration_s": 4.933,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "has to be learnable and applicable for all demographics. So, they're not really going to give",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.2435
+      },
+      "window": {
+        "end_s": 444.1,
+        "start_s": 439.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1863
+      },
+      "duration_s": 12.567,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 0.9948,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you stuff that's like super hard unless you obviously like start going up the ranks and maybe you become like a leadership position. But I definitely think this is a pretty decent thing to do. Because even though you might not learn be learning like",
+        "trailing_silence_s": 0.0,
+        "word_count": 45,
+        "words_per_s": 3.5808
+      },
+      "window": {
+        "end_s": 456.667,
+        "start_s": 444.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5231
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "something insanely complex, you're at least learning",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.9167
+      },
+      "window": {
+        "end_s": 459.067,
+        "start_s": 456.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4986
+      },
+      "duration_s": 22.433,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "something valuable for the career path that you're choosing. But then it's also a good thing just to have networking opportunities. Like you might meet new friends in the club that will maybe motivate you to do more coding. But also, clubs a lot of the times will have like different networking events where you can meet like actual people in the industry. And so, yeah, overall, I mean, this is a pretty decent take. Okay, next we have master the basics.",
+        "trailing_silence_s": 0.0,
+        "word_count": 82,
+        "words_per_s": 3.6553
+      },
+      "window": {
+        "end_s": 481.5,
+        "start_s": 459.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2025
+      },
+      "duration_s": 7.667,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.38,
+        "leading_silence_s": 0.38,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And this is something you've probably heard like a thousand times. But truly, it's honestly the best advice that you can get right now, especially with like the",
+        "trailing_silence_s": 0.0,
+        "word_count": 28,
+        "words_per_s": 3.652
+      },
+      "window": {
+        "end_s": 489.167,
+        "start_s": 481.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4076
+      },
+      "duration_s": 4.333,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "rise of LLMs and using AI for code. And I get it. It's cuz you want to put",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 4.1542
+      },
+      "window": {
+        "end_s": 493.5,
+        "start_s": 489.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1511
+      },
+      "duration_s": 20.767,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "like these modern frameworks and technologies on your resume because you think it'll be more impressive than just putting >> [music] >> bland like HTML, CSS, that kind of stuff. You know, you might be able to get your projects working with a bunch of AI, but you don't really understand why they work. And then I feel like you really just shooting yourself in the foot if you don't know any of like the basic stuff. Because one,",
+        "trailing_silence_s": 0.0,
+        "word_count": 77,
+        "words_per_s": 3.7078
+      },
+      "window": {
+        "end_s": 514.267,
+        "start_s": 493.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 7.333,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "like if something breaks in your code and you can't just use AI to fix it, then it's going to be kind of hard to backtrack and figure out what",
+        "trailing_silence_s": 0.0,
+        "word_count": 30,
+        "words_per_s": 4.0911
+      },
+      "window": {
+        "end_s": 521.6,
+        "start_s": 514.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1836
+      },
+      "duration_s": 18.3,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.119,
+        "leading_silence_s": 0.119,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "went wrong because you don't really know the fundamental stuff that you should know. And then also, it's just like if you get asked questions about your projects in interviews and there's something that you just literally vibe coded the entire thing, it's going to be pretty obvious because they're not testing whether you understand like why things work. They want to know if you can just",
+        "trailing_silence_s": 0.0,
+        "word_count": 67,
+        "words_per_s": 3.6612
+      },
+      "window": {
+        "end_s": 539.9,
+        "start_s": 521.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.723
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 0.835,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.42,
+        "leading_silence_s": 0.42,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "think through",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 540.5,
+        "start_s": 539.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0673
+      },
+      "duration_s": 1.8,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "problems, understand what's happening",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 542.3,
+        "start_s": 540.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7451
+      },
+      "duration_s": 9.867,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.46,
+        "leading_silence_s": 0.46,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "under the hood, and how this can correlate to a bigger scale. And, you know, if you skip the fundamentals, you can't really do any of that. So, I'm definitely going to put this in true,",
+        "trailing_silence_s": 0.0,
+        "word_count": 36,
+        "words_per_s": 3.6485
+      },
+      "window": {
+        "end_s": 552.167,
+        "start_s": 542.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0835
+      },
+      "duration_s": 25.8,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 0.9954,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.393,
+        "leading_silence_s": 0.393,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "especially nowadays. So, yeah, if you want to stand out, learn all of the data structures and algorithms, learn how the internet works, how compilers work, how memory is managed, how operating systems work. Pretty much just learn the basics of your field and don't jump to like all the cool frameworks and cool technologies if you don't have the fundamentals down. And so, if you're someone trying to figure out how you can learn everything that you need to know for your career path, well, that's why I use today's",
+        "trailing_silence_s": 0.0,
+        "word_count": 91,
+        "words_per_s": 3.5271
+      },
+      "window": {
+        "end_s": 577.967,
+        "start_s": 552.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5041
+      },
+      "duration_s": 11.4,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "sponsor, Brilliant. Brilliant helps you excel in math and computer science with visual interactive problem-solving and personalized practice. And Brilliant is designed to be highly effective where you learn through active problem-solving,",
+        "trailing_silence_s": 0.0,
+        "word_count": 32,
+        "words_per_s": 2.807
+      },
+      "window": {
+        "end_s": 589.367,
+        "start_s": 577.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0541
+      },
+      "duration_s": 5.933,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.793,
+        "leading_silence_s": 0.793,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "which is a method that research has shown to be far more powerful than just watching lectures or videos.",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.2024
+      },
+      "window": {
+        "end_s": 595.3,
+        "start_s": 589.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0702
+      },
+      "duration_s": 6.167,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And what I like about Brilliant is that it really has a perfect mix of interactive problems, motivating challenge,",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.0809
+      },
+      "window": {
+        "end_s": 601.467,
+        "start_s": 595.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0913
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 0.9492,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and encouragement to keep",
+        "trailing_silence_s": 0.061,
+        "word_count": 4,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 602.667,
+        "start_s": 601.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1239
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 0.9647,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.114,
+        "sentence_aligned": false,
+        "text": "you moving forward. So, not only",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 604.167,
+        "start_s": 602.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0772
+      },
+      "duration_s": 4.233,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "will you build your genuine understanding, but you'll also reach serious learning",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.8349
+      },
+      "window": {
+        "end_s": 608.4,
+        "start_s": 604.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0695
+      },
+      "duration_s": 1.433,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "goals. And what's really cool about Brilliant",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.8849
+      },
+      "window": {
+        "end_s": 609.833,
+        "start_s": 608.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1023
+      },
+      "duration_s": 2.934,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is that it personalizes learning for you. It starts",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.0675
+      },
+      "window": {
+        "end_s": 612.767,
+        "start_s": 609.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0616
+      },
+      "duration_s": 2.666,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.233,
+        "leading_silence_s": 0.233,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you at the right level based on your background, and then designs",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 4.5011
+      },
+      "window": {
+        "end_s": 615.433,
+        "start_s": 612.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4806
+      },
+      "duration_s": 6.267,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.287,
+        "leading_silence_s": 0.287,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "practice sets and reviews personalized for you, and helps you advance at your own pace. And Brilliant is crafted",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.0318
+      },
+      "window": {
+        "end_s": 621.7,
+        "start_s": 615.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0954
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "by an award-winning",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.6014
+      },
+      "window": {
+        "end_s": 622.533,
+        "start_s": 621.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.126
+      },
+      "duration_s": 5.7,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.307,
+        "leading_silence_s": 0.307,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "team of teachers, researchers, and professionals from MIT, Harvard, Stanford, Caltech, Google,",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.1053
+      },
+      "window": {
+        "end_s": 628.233,
+        "start_s": 622.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.055
+      },
+      "duration_s": 12.467,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and more. And Brilliant helps you become a better thinker and problem-solver. Brilliant really believes that everyone is a math, logic, and programming kind of person. It's just the way that we learn these things that can feel confusing and hard. But with Brilliant, you don't just",
+        "trailing_silence_s": 0.0,
+        "word_count": 47,
+        "words_per_s": 3.77
+      },
+      "window": {
+        "end_s": 640.7,
+        "start_s": 628.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.094
+      },
+      "duration_s": 4.533,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "memorize formulas, you get hands-on with concepts until they make sense. Brilliant really guides",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.0885
+      },
+      "window": {
+        "end_s": 645.233,
+        "start_s": 640.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1486
+      },
+      "duration_s": 2.7,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you to those aha moments, helping you develop the",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 647.933,
+        "start_s": 645.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1122
+      },
+      "duration_s": 2.567,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "intuition and problem-solving skills to figure things",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.7269
+      },
+      "window": {
+        "end_s": 650.5,
+        "start_s": 647.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2299
+      },
+      "duration_s": 6.533,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "out on your own. And Brilliant CS and programming courses help build a strong foundation for students with a focus on structuring logic,",
+        "trailing_silence_s": 0.0,
+        "word_count": 23,
+        "words_per_s": 3.5206
+      },
+      "window": {
+        "end_s": 657.033,
+        "start_s": 650.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.07
+      },
+      "duration_s": 4.5,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "ensuring correctness, and efficiency. They also give vibe coders with little to no",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.8889
+      },
+      "window": {
+        "end_s": 661.533,
+        "start_s": 657.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1262
+      },
+      "duration_s": 0.767,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "experience",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.3038
+      },
+      "window": {
+        "end_s": 662.3,
+        "start_s": 661.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1187
+      },
+      "duration_s": 1.833,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the actual knowledge to build",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.7278
+      },
+      "window": {
+        "end_s": 664.133,
+        "start_s": 662.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5638
+      },
+      "duration_s": 2.767,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "confidence. So, to learn for free on Brilliant, go",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.2526
+      },
+      "window": {
+        "end_s": 666.9,
+        "start_s": 664.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.135
+      },
+      "duration_s": 12.267,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to brilliant.org/ladders. Scan the QR code on screen or click on the link in the description. Brilliant's also given our viewers 20% off an annual premium subscription, which gives you unlimited daily access to everything on Brilliant. So, once",
+        "trailing_silence_s": 0.0,
+        "word_count": 39,
+        "words_per_s": 3.1793
+      },
+      "window": {
+        "end_s": 679.167,
+        "start_s": 666.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 14.4663,
+      "files": {
+        "thumb": "latticx-cs-advice-tier-list-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "again, huge thank you to Brilliant for sponsoring this video, and thank you to all of you for watching. I think I'll leave the video here because I don't want it to get too long, but definitely let me know what you think of this new style and this like tier ranking thing, and if I should make a part two. Thank you.",
+        "trailing_silence_s": 0.0,
+        "word_count": 63,
+        "words_per_s": 4.3549
+      },
+      "window": {
+        "end_s": 693.6333,
+        "start_s": 679.167
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "latticx-cs-advice-tier-list",
+  "source_url": "https://www.youtube.com/watch?v=hQrOLDxKHzA",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 2441,
+    "word_level": true
+  },
+  "video": {
+    "channel": "Lattice",
+    "duration_s": 694.0,
+    "title": "Advice for computer science students (tier list)",
+    "upload_date": "20251128"
+  }
+}

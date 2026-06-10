@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/research/thumbnail-title-corpus-2026-06-09/signature-specimen/_shared.css">
+<style>
+  #t .l1 { font-size: 96px; }
+  #t .l2 { font-size: 168px; margin: -6px 0; }
+  #t .l3 { font-size: 92px; display: flex; align-items: center; gap: 16px; }
+  #t .chip { width: 92px; height: 70px; font-size: 50px; }
+  #t .mono-tell { margin-top: 24px; font-size: 40px; font-weight: 800; }
+  #t .mono-tell .stat { color: var(--teal); }
+  #t .face-wrap { right: -6px; }
+  /* leader-line anchors (invisible, absolutely positioned -> font-independent) */
+  #t .ll-start, #t .ll-end { position: absolute; width: 2px; height: 2px; }
+  #t .ll-start { left: 706px; top: 252px; }
+  #t .ll-end   { left: 884px; top: 232px; }  /* on the eye — read off the coord grid */
+</style>
+</head>
+<body>
+<div class="thumb warm" id="t">
+  <div class="grid"></div>
+
+  <div class="face-wrap">
+    <div class="face-glow"></div>
+    <img class="face" src="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/videos/javascript-the-king-programming-languages-2026-05-15/thumbnails/cutouts/defringed/homealone.png" alt="">
+  </div>
+
+  <!-- leader-line endpoints -->
+  <i class="ll-start"></i>
+  <i class="ll-end"></i>
+
+  <div class="copy">
+    <div class="line l1">YOU CAN'T</div>
+    <div class="line teal l2">ESCAPE</div>
+    <div class="line l3">JAVASCRIPT <span class="chip">JS</span></div>
+    <div class="mono mono-tell">// <span class="stat">98.8%</span> of all websites</div>
+  </div>
+
+  <div class="vignette"></div>
+  <div class="coord-grid"></div>
+</div>
+
+<script src="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/research/thumbnail-title-corpus-2026-06-09/signature-specimen/lib/leader-line.min.js"></script>
+<script>
+  // coord-grid axis numbers (design phase only)
+  (function () {
+    var t = document.querySelector('.thumb.dbg'); if (!t) return;
+    var g = t.querySelector('.coord-grid'); if (!g) return;
+    for (var x = 100; x <= 1200; x += 100) { var ex = document.createElement('div'); ex.className = 'cg-label cg-x'; ex.style.left = x + 'px'; ex.textContent = x; g.appendChild(ex); }
+    for (var y = 100; y <= 700; y += 100) { var ey = document.createElement('div'); ey.className = 'cg-label cg-y'; ey.style.top = y + 'px'; ey.textContent = y; g.appendChild(ey); }
+  })();
+  // leader-line precision pointer (auto-anchored to the .ll-* elements)
+  window.addEventListener('load', function () {
+    var s = document.querySelector('.ll-start'), e = document.querySelector('.ll-end');
+    if (s && e && window.LeaderLine) {
+      new LeaderLine(s, e, {
+        color: '#19e3c2', size: 4, path: 'grid',
+        startPlug: 'behind', endPlug: 'disc', endPlugSize: 2.4,
+        startSocket: 'right', endSocket: 'left'
+      });
+    }
+  });
+</script>
+</body>
+</html>

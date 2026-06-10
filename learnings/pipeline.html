@@ -121,6 +121,7 @@
     border-radius: var(--radius-lg);
     margin-bottom: 32px;
     width: fit-content;
+    flex-wrap: wrap;
   }
   .tab {
     appearance: none;
@@ -726,14 +727,14 @@
       <div class="mark"><span class="mark-dot"></span>hyper-frames · pipeline</div>
       <div class="title-block">
         <h1>HyperFrames video pipeline</h1>
-        <p>The ten stages that take a topic to a published video, plus the sound-design subsystem and the failure smells worth watching for. Reference page — come back when the order blurs.</p>
+        <p>Topic to published video, plus the Shorts spur — every stage, the skill that drives it, and the failure smells worth watching for. The canonical reference; <code>pipeline.md</code> is now just a pointer here. Come back when the order blurs.</p>
       </div>
     </div>
     <div class="meta">
       <div><strong>Maiden</strong> · why-text-is-hard · 2026-05-07</div>
-      <div><strong>Second</strong> · how-does-captchas-work · 2026-05-10</div>
+      <div><strong>Compose</strong> · /video-director (SFX = Step H)</div>
       <div><strong>Stage 3 default</strong> · recording (since 2026-05-19)</div>
-      <div><strong>Updated</strong> · 2026-05-23</div>
+      <div><strong>Updated</strong> · 2026-06-09</div>
     </div>
   </header>
 
@@ -743,10 +744,16 @@
       <span class="tab-num">01</span><span>Main pipeline</span>
     </button>
     <button class="tab" role="tab" aria-selected="false" data-tab="sound">
-      <span class="tab-num">02</span><span>Sound design</span>
+      <span class="tab-num">02</span><span>Sound &amp; music</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="publishing">
+      <span class="tab-num">03</span><span>Captions &amp; publishing</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="shorts">
+      <span class="tab-num">04</span><span>Shorts engine</span>
     </button>
     <button class="tab" role="tab" aria-selected="false" data-tab="smells">
-      <span class="tab-num">03</span><span>Smell tests</span>
+      <span class="tab-num">05</span><span>Smell tests</span>
     </button>
   </div>
 
@@ -757,16 +764,16 @@
 
     <div class="lede">
       <div class="lede-cell">
-        <div class="lede-label">Stages</div>
-        <div class="lede-value"><span class="accent">11</span> · from topic to publish</div>
+        <div class="lede-label">Long-form stages</div>
+        <div class="lede-value"><span class="accent">0–13</span> · topic to publish</div>
       </div>
       <div class="lede-cell">
         <div class="lede-label">Sequential one-shots</div>
-        <div class="lede-value">Stages <span class="accent">0–4</span></div>
+        <div class="lede-value">Stages <span class="accent">0–5</span></div>
       </div>
       <div class="lede-cell">
         <div class="lede-label">Iterative authoring loop</div>
-        <div class="lede-value">Stages <span class="accent">5–7</span></div>
+        <div class="lede-value">Stages <span class="accent">6–7</span></div>
       </div>
     </div>
 
@@ -780,16 +787,16 @@
             <div class="stage-title">Pick topic + slug</div>
             <div class="stage-tag plain">no command</div>
           </div>
-          <p class="stage-summary">Decide working title, pick a kebab-case slug. The folder gets scaffolded by <code>/script-writer</code> at stage 2 — no manual <code>npx hyperframes init</code> at the root.</p>
+          <p class="stage-summary">Decide the working title, pick a short kebab-case slug. The folder gets scaffolded by <code>/script-writer</code> at stage 2 — no manual <code>npx hyperframes init</code> at the root. Write the title and the hook as two phrasings of one promise; they must confirm each other.</p>
 
-          <div class="section-label">Captchas</div>
+          <div class="section-label">Decide</div>
           <ul class="artifact-list">
-            <li>how-does-captchas-work</li>
-            <li>2026-05-10</li>
+            <li>working title</li>
+            <li>kebab slug</li>
           </ul>
 
           <div class="pitfall">
-            <div><strong>Don't</strong> run <code>npx hyperframes init</code> at the repo root. The script-writer handles folder scaffold inside <code>videos/&lt;slug&gt;-&lt;date&gt;/</code>.</div>
+            <div><strong>Don't</strong> run <code>npx hyperframes init</code> at the repo root, and never author HyperFrames files there — the root is reserved for shared concerns. The script-writer owns the scaffold inside <code>videos/&lt;slug&gt;-&lt;date&gt;/</code>.</div>
           </div>
         </div>
       </li>
@@ -799,10 +806,10 @@
         <div class="stage-bullet">01</div>
         <div class="stage-card">
           <div class="stage-head">
-            <div class="stage-title">YouTube SEO research</div>
+            <div class="stage-title">YouTube SEO research <span style="color:var(--fg-3);font-size:11px;font-family:var(--font-mono);">// optional</span></div>
             <div class="stage-tag">/youtube-seo-research</div>
           </div>
-          <p class="stage-summary">yt-dlp + autocomplete; no API key, ~25s. Read by <code>/script-writer</code> at the outline step and <code>/thumbnail-creator</code> at the paired-title step.</p>
+          <p class="stage-summary">yt-dlp + autocomplete; no API key, ~25s. Searchable nouns, demand phrases, saturation warnings, hook-shape data. Optional but recommended — both <code>/script-writer</code> and <code>/thumbnail-and-title-generator</code> auto-invoke it if <code>seo/research.json</code> is missing.</p>
 
           <div class="section-label">Produces</div>
           <ul class="artifact-list">
@@ -817,11 +824,6 @@ checkbox isn't the test.</div></pre>
           <div class="pitfall">
             <div>Give the <strong>angle</strong>, not just the noun. Vague topic phrasing produces generic output.</div>
           </div>
-
-          <div class="example-strip">
-            <strong>Captchas</strong>
-            <span>seo/research.json · 05:53</span>
-          </div>
         </div>
       </li>
 
@@ -833,12 +835,15 @@ checkbox isn't the test.</div></pre>
             <div class="stage-title">Script writing</div>
             <div class="stage-tag">/script-writer</div>
           </div>
-          <p class="stage-summary">Auto-scaffolds the video folder and runs <code>npx hyperframes init</code> inside it. Reads <code>seo/research.json</code> at the outline step — accept its offer to re-run if missing.</p>
+          <p class="stage-summary">Turns a topic + research into a TTS-ready script in the house style (170 wpm, short declaratives, "But" pivots, three-part lists, concrete numbers). Encodes a <em>voice</em>, not a recipe. <strong>Mandatory cold open</strong>: the opening line IS the hook (claim / number / question / scene) landing in ~10s (~25–30 words) — never a frame-setting ramp. <strong>Reset cadence</strong>: no single idea runs past ~45–60s without a reset. Hook is carved <em>last</em> from the strongest body beat. Long-form stays <strong>CTA-free</strong>. Also scaffolds the video folder and runs <code>npx hyperframes init</code>.</p>
 
           <div class="section-label">Produces</div>
           <ul class="artifact-list">
-            <li>outline.md</li>
+            <li>substrate-notes.md</li>
             <li class="primary">script.md</li>
+            <li>anchors.txt</li>
+            <li>fact-check.md</li>
+            <li>story-spine.md <em>(optional)</em></li>
           </ul>
 
           <div class="section-label">Type</div>
@@ -849,16 +854,13 @@ generations of CAPTCHAs, each broken in turn, with the
 GPT-4 / TaskRabbit incident as climax.</div></pre>
 
           <div class="pitfall">
-            <div>Review <strong>outline.md</strong> and push back if beats feel generic <em>before</em> moving to script.md. The script is much harder to course-correct than the outline.</div>
+            <div>The old <strong>9-beat "iceberg" arc and <code>outline.md</code> are gone</strong> — Step 4 is continuous prose, not labeled beats; <code>story-spine.md</code> is optional and never required.</div>
           </div>
           <div class="pitfall">
-            <div>Don't impersonate any creator. The skill encodes a writing <strong>style</strong>, not a person.</div>
+            <div><code>docs/creator-patterns.md</code> is a <strong>menu of references, never a template to fill</strong>; <code>rhythm-and-retention.md</code> is explanation, not a checklist. Counting seconds / placing loops by checklist is the documented captcha failure mode.</div>
           </div>
-
-          <div class="example-strip">
-            <strong>Captchas</strong>
-            <span>outline.md · 05:54</span><span class="sep">/</span>
-            <span>script.md · 06:28</span>
+          <div class="pitfall">
+            <div>Don't open with "in this video" or any pre-hook frame-setting. If the cold open is a concrete scene, the close owes it an explicit callback (one-master-loop). Don't impersonate any creator — it's a <strong>style</strong>, not a person.</div>
           </div>
         </div>
       </li>
@@ -880,30 +882,22 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
             <li class="primary">cuts.json</li>
           </ul>
 
-          <div class="section-label">Type</div>
-<pre class="code"><div class="code-head"><span>/transcribe-and-plan-cuts</span></div><div class="code-body"><span class="comment"># after dropping audio/raw.mp3 in the video folder</span>
-/transcribe-and-plan-cuts</div></pre>
-
-          <div class="section-label">Then</div>
+          <div class="section-label">The full 3a chain</div>
           <p style="font-size:12.5px;color:var(--fg-2);margin:0 0 16px;">
-            Approve the cost checkpoint, open
-            <code>http://localhost:5173/#/edit/&lt;slug&gt;-&lt;date&gt;</code>
-            (<code>bun dev</code> from <code>tools/audio-editor/</code> must be running),
-            scrub the proposed cuts, drag region edges, click <strong>Save cuts</strong>.
-            Then render the final <code>audio/voiceover.mp3</code> from
-            <code>audio/raw.mp3</code> + <code>cuts.json</code> —
-            <strong>Phase A leaves this manual</strong> (ffmpeg concat); a future
-            <code>apply-recording-cuts</code> skill will automate it.
+            <code>raw.mp3</code> → Scribe v2 <code>transcript.json</code> + <code>cuts.json</code> → refine cuts in <code>tools/audio-editor</code>
+            (<code>bun dev</code> on <code>:5173</code>, open <code>/#/edit/&lt;slug&gt;-&lt;date&gt;</code>, <strong>Save cuts</strong>) →
+            <strong>manual ffmpeg concat</strong> renders <code>audio/voiceover.mp3</code> →
+            <strong>re-transcribe the cut audio</strong> so <code>transcript.json</code> timings match the final cut.
           </p>
 
           <div class="pitfall">
-            <div>The skill never modifies <code>audio/raw.mp3</code>. That's the source of truth — re-runs are non-destructive on audio.</div>
+            <div>3a does <strong>not</strong> flow straight to composition — a cuts edit, a manual ffmpeg render, and a <strong>re-transcription</strong> sit between recording and Stage 4. The pre-cut transcript no longer aligns once cuts are applied.</div>
           </div>
           <div class="pitfall">
-            <div>Re-running clobbers <code>cuts.json</code> and destroys any editor saves. The cost checkpoint surfaces this — heed the warning.</div>
+            <div>Re-running clobbers <code>cuts.json</code> and destroys editor saves. The cost checkpoint surfaces this — heed the warning. The skill never modifies <code>audio/raw.mp3</code> (source of truth).</div>
           </div>
           <div class="pitfall">
-            <div><strong>Audio events</strong> (<code>[cough]</code>, <code>[breath]</code>, <code>[mouth_noise]</code>) are first-class — the cut-decider needs them. The audio-editor's transcript schema was extended on 2026-05-19 to accept <code>audio_event</code> rows; pre-patch loads will Zod-fail.</div>
+            <div><strong>Audio events</strong> (<code>[cough]</code>, <code>[breath]</code>, <code>[mouth_noise]</code>) are first-class — the cut-decider needs them.</div>
           </div>
         </div>
       </li>
@@ -916,7 +910,7 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
             <div class="stage-title">Voiceover + transcript · TTS <span style="color:var(--fg-3);font-size:11px;font-family:var(--font-mono);">// alternative</span></div>
             <div class="stage-tag plain">/voiceover-elevenlabs-v2</div>
           </div>
-          <p class="stage-summary">Use TTS when you need clean repeatable narration without a mic, faster iteration, or multi-language coverage. Project default for the TTS path. Use <code>/voiceover-elevenlabs-v3</code> only when a video needs inline audio tags for per-beat emotional shifts. Hard checkpoint for annotation review before spending API credits.</p>
+          <p class="stage-summary">TTS when you need clean repeatable narration without a mic, faster iteration, or multi-language coverage. Project default for the TTS path; annotates <code>script.md</code> → <code>voiceover.txt</code> (ALL-CAPS anchors + SSML <code>&lt;break&gt;</code> only — v2 strips audio tags) behind one hard cost checkpoint, then ElevenLabs Multilingual v2 audio + Scribe v2 transcript. Use <code>/voiceover-elevenlabs-v3</code> only when a video genuinely needs inline audio tags for per-beat emotional shifts.</p>
 
           <div class="section-label">Produces</div>
           <ul class="artifact-list">
@@ -929,17 +923,10 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
 <pre class="code"><div class="code-head"><span>/voiceover-elevenlabs-v2</span></div><div class="code-body">Voice script.md.</div></pre>
 
           <div class="pitfall">
-            <div>The annotation checkpoint matters. Verify ALL-CAPS anchors land on words you actually want emphasized.</div>
+            <div>The annotation checkpoint matters. Verify ALL-CAPS anchors land on words you actually want emphasized. <strong>v2 strips audio tags</strong> — only v3 accepts them; don't put v3-style tags in a v2 run.</div>
           </div>
           <div class="pitfall">
-            <div>Once the audio commits, re-generating costs credits.</div>
-          </div>
-
-          <div class="example-strip">
-            <strong>Captchas (TTS path)</strong>
-            <span>voiceover.mp3 · 06:50</span><span class="sep">/</span>
-            <span>transcript.json · 06:51</span><span class="sep">/</span>
-            <span>runtime 6:27</span>
+            <div>Once the audio commits, re-generating costs credits. Either path's <code>transcript.json</code> is the timing source of truth.</div>
           </div>
         </div>
       </li>
@@ -952,7 +939,7 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
             <div class="stage-title">Anchors + narration map</div>
             <div class="stage-tag plain">tools/narration-map</div>
           </div>
-          <p class="stage-summary">Write <code>anchors.txt</code> (phrases pulled from script.md's emphatic words and proper nouns), then run the tool from inside the video folder.</p>
+          <p class="stage-summary">Write <code>anchors.txt</code> (emphatic phrases + proper nouns from script.md), then run the tool against <code>transcript.json</code>. Emits anchor-word start times, pause windows (&gt;400ms), scene-boundary candidates (after .!?), and top-N longest words. This is what <code>/video-director</code> reads instead of hand-grepping the transcript.</p>
 
           <div class="section-label">Produces</div>
           <ul class="artifact-list">
@@ -965,16 +952,10 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
   transcript.json --anchors anchors.txt</div></pre>
 
           <div class="pitfall">
-            <div><strong>Don't grep transcript.json by hand</strong> for timestamps in stage 6 — that's what narration-map.json is for. Hand-rolled <code>python3 -c</code> searches are a code smell.</div>
+            <div><strong>Don't hand-roll <code>python3 -c</code></strong> searches over transcript.json in Stage 6 — that's what narration-map.json is for (project CLAUDE.md flags it as a code smell).</div>
           </div>
           <div class="pitfall">
             <div>Anchors that don't match transcript words exactly get skipped silently. Sanity-check the output.</div>
-          </div>
-
-          <div class="example-strip">
-            <strong>Captchas</strong>
-            <span>anchors.txt · 06:51</span><span class="sep">/</span>
-            <span>narration-map.json · 35 KB</span>
           </div>
         </div>
       </li>
@@ -995,19 +976,10 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
           </ul>
 
           <div class="pitfall">
-            <div>Resist the urge to pre-specify atmosphere layers, transition tables, or component recipes. <strong>These close the lexicon and pre-empt invention.</strong></div>
-          </div>
-          <div class="pitfall">
-            <div>If the design picker emits a long file, trim it before stage 6.</div>
+            <div>Resist pre-specifying atmosphere layers, transition tables, or component recipes. <strong>These close the lexicon and pre-empt invention.</strong></div>
           </div>
           <div class="pitfall">
             <div>Don't create <code>.hyperframes/expanded-prompt.md</code>. Stage 6 reads design.md + script.md + transcript.json directly.</div>
-          </div>
-
-          <div class="example-strip">
-            <strong>Captchas</strong>
-            <span>design.md · 20:48 · 43 lines</span><span class="sep">/</span>
-            <span>copied from why-text-is-hard</span>
           </div>
         </div>
       </li>
@@ -1018,45 +990,34 @@ GPT-4 / TaskRabbit incident as climax.</div></pre>
         <div class="stage-card">
           <div class="stage-head">
             <div class="stage-title">HyperFrames composition <span style="color:var(--amber);font-size:11px;font-family:var(--font-mono);">// authoring loop</span></div>
-            <div class="stage-tag">/hyperframes</div>
+            <div class="stage-tag">/video-director</div>
           </div>
-          <p class="stage-summary">The iterative authoring loop. Two sentences do most of the work: <em>"Treat <code>videos/why-text-is-hard-2026-05-07/index.html</code> as the QUALITY BAR"</em> and <em>"Invent worldbuilding, NOT generic CSS primitives."</em></p>
+          <p class="stage-summary"><code>/video-director</code> is the <strong>orchestrator</strong> — it directs the <code>hyperframes</code> / <code>hyperframes-cli</code> / <code>hyperframes-registry</code> plugin skills (sequencing, state-tracking, wiring); it is <em>not</em> bare <code>/hyperframes</code>. Authors 1–2 sentences per pass, anchoring every animation to <code>transcript.json</code> word timings, resuming cleanly by reading what's mounted in <code>index.html</code>. <strong>Step A.3</strong> reads the root <code>data-width</code>/<code>data-height</code> to detect orientation (1080×1920 → <code>reference/portrait-mode.md</code>). <strong>Step D</strong> dispatches the <code>scene-design-decider</code> subagent (it reads <code>motionGraphicsInspo/</code>, the director does not). <strong>Step G</strong> dispatches a visual-QA subagent over PNG snapshots. <strong>Step H</strong> is the SFX pass — see the Sound &amp; music tab.</p>
 
           <div class="section-label">Produces</div>
           <ul class="artifact-list">
+            <li>compositions/&lt;NN&gt;-&lt;slug&gt;.html</li>
             <li class="primary">index.html</li>
-            <li>compositions/*.html</li>
+            <li>compositions/sfx.html</li>
+            <li>audio/sfx-mix.mp3</li>
           </ul>
 
           <div class="section-label">Type</div>
-<pre class="code"><div class="code-head"><span>/hyperframes</span></div><div class="code-body">Build the composition using:
-- script.md (narrative)
-- transcript.json (timing source of truth — see narration-map.json
-  for anchor starts, pause windows, scene boundaries)
-- design.md (palette + tone)
-
+<pre class="code"><div class="code-head"><span>/video-director</span></div><div class="code-body">Build the video from script.md + transcript.json + design.md.
 Treat `videos/why-text-is-hard-2026-05-07/index.html` as the
 QUALITY BAR. Invent worldbuilding (real-looking reCAPTCHA on a
-real-looking webpage, real-looking research paper, real-looking
-chat log) — NOT generic CSS primitives.
-
-Multi-composition split is fine, but commit to building every
-scene in this session. Do not leave PLACEHOLDER / TO BE BUILT
-stubs.
-
-Surface the studio URL after authoring.</div></pre>
+real-looking webpage, real-looking research paper) — NOT generic
+CSS primitives. Build every scene this session; no PLACEHOLDER
+stubs. Run the visual-QA loop, then the SFX pass (Step H).</div></pre>
 
           <div class="pitfall">
-            <div><strong>Scene 1 sets the quality bar.</strong> Generic CSS checkbox in scene 1 → generic CSS everything-else. Real-looking widget in scene 1 → the model carries that worldbuilding forward.</div>
+            <div><strong>Don't invoke bare <code>/hyperframes</code> for authoring</strong> — video-director orchestrates it; the plugin skills are now lower-level (animations, captions, CLI dev-loop, registry wiring).</div>
           </div>
           <div class="pitfall">
-            <div>Multi-composition split is neutral on creativity but carries a coordination tax. <strong>Either</strong> build all scenes in one session, <strong>or</strong> single-file composition for short videos (≤2–3 min).</div>
+            <div><strong>Entrance invariant:</strong> a static no-entrance graphic bleeds onto the previous scene at the seam (seam-bleed is not just text); transparent scene blocks need a mounted substrate or they render on white.</div>
           </div>
-
-          <div class="example-strip">
-            <strong>Captchas</strong>
-            <span>11 scenes · 22:35</span><span class="sep">/</span>
-            <span>real reCAPTCHA, kinetic typography, stat closer</span>
+          <div class="pitfall">
+            <div>Scene-local time = global − host <code>data-start</code> = <code>chunk_start − 0.5</code>; the "subtract chunk_start" shorthand is 0.5s early and causes seam collisions.</div>
           </div>
         </div>
       </li>
@@ -1069,7 +1030,7 @@ Surface the studio URL after authoring.</div></pre>
             <div class="stage-title">Preview + lint iteration</div>
             <div class="stage-tag plain">hyperframes preview / lint</div>
           </div>
-          <p class="stage-summary">Scrub the timeline, watch each scene at its hold frame. Inspect at <code>t=mid</code>, not <code>t=0</code> — entrances haven't landed at 0.</p>
+          <p class="stage-summary">Scrub the timeline, watch each scene at its hold frame. Inspect at <code>t=mid</code>, not <code>t=0</code> — entrances haven't landed at 0. video-director runs this loop continuously; it's broken out here because it's where shippable-looking bugs get caught.</p>
 
           <div class="section-label">Run</div>
 <pre class="code"><div class="code-head"><span>from inside the video folder</span></div><div class="code-body"><span class="cmd">npx hyperframes preview</span>    <span class="comment"># studio URL</span>
@@ -1085,79 +1046,151 @@ Surface the studio URL after authoring.</div></pre>
         </div>
       </li>
 
-      <!-- 7.5 — SOUND -->
-      <li class="stage" data-stage="sound" data-iterative>
-        <div class="stage-bullet" style="border-color:var(--border-amber);color:var(--amber);">SFX</div>
+      <!-- H — SFX pointer -->
+      <li class="stage" data-stage="sfx" data-iterative>
+        <div class="stage-bullet" style="border-color:var(--border-amber);color:var(--amber);">H</div>
         <div class="stage-card" style="border-color:var(--border-amber);background:linear-gradient(180deg,var(--surface) 0%,rgba(245,158,11,0.025) 100%);">
           <div class="stage-head">
-            <div class="stage-title">Sound design pass</div>
-            <div class="stage-tag">/sfx-author</div>
+            <div class="stage-title">Sound effects · video-director Step H</div>
+            <div class="stage-tag">video-director Step&nbsp;H</div>
           </div>
-          <p class="stage-summary">After visuals are settled in preview, run the editorial SFX pass: the skill proposes a cue plan, you approve, it writes <code>data-sfx-*</code> annotations and emits <code>compositions/sfx.html</code>. <a href="#" onclick="document.querySelector('[data-tab=&quot;sound&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">See the sound-design tab →</a></p>
+          <p class="stage-summary">Not a separate skill — the SFX pass runs <em>inside</em> video-director, per scene right after each scene's visual QA, reconciled across the whole video at the end. It writes <code>data-sfx-*</code> annotations, emits <code>compositions/sfx.html</code>, and bakes <code>audio/sfx-mix.mp3</code>. <a href="#" onclick="document.querySelector('[data-tab=&quot;sound&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">See the Sound &amp; music tab →</a></p>
         </div>
       </li>
 
-      <!-- 8 -->
-      <li class="stage" data-stage="8">
+      <!-- 8 — music bed -->
+      <li class="stage" data-stage="8" data-iterative>
         <div class="stage-bullet">08</div>
         <div class="stage-card">
           <div class="stage-head">
-            <div class="stage-title">Thumbnails</div>
-            <div class="stage-tag">/thumbnail-creator</div>
+            <div class="stage-title">Music bed</div>
+            <div class="stage-tag">/audio-bed-music</div>
           </div>
-          <p class="stage-summary">Three variants at 1280×720 (YouTube) or 1080×1920 (Shorts/TikTok). Reads <code>seo/research.json</code> at the paired-title step. Can run any time after stage 2.</p>
+          <p class="stage-summary">Adds a deterministic music bed <strong>underneath</strong> locked VO + SFX — so it runs <em>after</em> video-director's Step H and final reconcile. A short brainstorm settles vibe; the <strong>human curates the tracks</strong> (the skill never recommends music — taste is human); boundaries snap to real narration pauses and are approved before baking. <a href="#" onclick="document.querySelector('[data-tab=&quot;sound&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">See the Sound &amp; music tab →</a></p>
 
           <div class="section-label">Produces</div>
           <ul class="artifact-list">
-            <li>thumbnail-a.png</li>
-            <li>thumbnail-b.png</li>
-            <li>thumbnail-c.png</li>
+            <li class="primary">compositions/music.html</li>
+            <li>audio/music-bed.wav</li>
           </ul>
 
-          <div class="section-label">Type</div>
-<pre class="code"><div class="code-head"><span>/thumbnail-creator</span></div><div class="code-body">Generate three thumbnail variants for this video.
-
-<span class="comment"># for vertical/shorts: include the word "vertical"
-# (or "shorts", "tiktok", "9:16")</span></div></pre>
-
           <div class="pitfall">
-            <div>Don't run before the script is approved — the thumbnail title needs to match the final script's framing.</div>
+            <div>Can't run before SFX is locked — the bed snaps to narration pauses that only exist once VO + SFX are final, and sits beneath SFX (music track-index 10, SFX 19–29).</div>
           </div>
         </div>
       </li>
 
-      <!-- 9 -->
+      <!-- 9 — captions -->
       <li class="stage" data-stage="9">
         <div class="stage-bullet">09</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Captions</div>
+            <div class="stage-tag">/create-srt-and-translate</div>
+          </div>
+          <p class="stage-summary"><strong>Progressive discovery.</strong> The default path generates English <code>captions.srt</code> from <code>transcript.json</code> and <strong>STOPS</strong> — no <code>multi-lingual/</code> folder. The 13 YouTube auto-dub languages run <em>only</em> on an explicit trigger ("translate the captions"). Captions are a manual Studio upload — the MCP v1 can't write them. <a href="#" onclick="document.querySelector('[data-tab=&quot;publishing&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">See Captions &amp; publishing →</a></p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">captions.srt <em>(English, default)</em></li>
+            <li>multi-lingual/srt/&lt;lang&gt;.srt <em>(on-demand)</em></li>
+          </ul>
+
+          <div class="pitfall">
+            <div>Plain requests ("create the SRT", "generate captions") invoke Phase 1 only — do <strong>not</strong> roll into translations. Phase 2 needs an explicit trigger; otherwise stop and offer the follow-up.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 10 — thumbnails -->
+      <li class="stage" data-stage="10">
+        <div class="stage-bullet">10</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Thumbnails</div>
+            <div class="stage-tag">/thumbnail-and-title-generator</div>
+          </div>
+          <p class="stage-summary">Three variants in the locked style with an iterative review loop. Horizontal <strong>1280×720</strong> by default; vertical <strong>1080×1920</strong> on trigger words (<code>vertical</code> / <code>shorts</code> / <code>tiktok</code> / <code>9:16</code>). Independent <code>round-N/</code> vs <code>round-N-vertical/</code> counters. Can run any time after the script is approved.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">thumbnails/round-N/thumbnail-a·b·c.png</li>
+            <li>thumbnails/round-N-vertical/…</li>
+          </ul>
+
+          <div class="pitfall">
+            <div>Don't run before the script is approved — the thumbnail title must pair with the final hook. Vertical mode reads different reference + token files; don't reuse horizontal recipes.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 11 — description -->
+      <li class="stage" data-stage="11">
+        <div class="stage-bullet">11</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Description</div>
+            <div class="stage-tag">/description-writer</div>
+          </div>
+          <p class="stage-summary">Single-run guided generator (not A/B). Runs <strong>after</strong> the transcript exists — derives chapter timestamps from <code>transcript.json</code> word timings (never 30s buckets), batches WebSearch citation queries in parallel, composes hook + explainer + chapters + sources + hashtags under a 5000-char cap, writes <code>description.md</code> and copies to the clipboard via <code>pbcopy</code>. <a href="#" onclick="document.querySelector('[data-tab=&quot;publishing&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">See Captions &amp; publishing →</a></p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">description.md</li>
+          </ul>
+
+          <div class="pitfall">
+            <div><code>seo/research.json</code> is optional — it feeds noun-rotation + hashtags, not chapters/sources, and never blocks. Don't derive timestamps by hand.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- 12 — render -->
+      <li class="stage" data-stage="12">
+        <div class="stage-bullet">12</div>
         <div class="stage-card">
           <div class="stage-head">
             <div class="stage-title">Render</div>
             <div class="stage-tag plain">hyperframes render</div>
           </div>
-          <p class="stage-summary">Run once after lint passes and preview looks right. Render is slow — not during iteration.</p>
+          <p class="stage-summary">Render to MP4 once lint passes and preview looks right. The root <code>data-width</code>/<code>data-height</code> drive the output dimensions (1080×1920 for Shorts). Slow — run once after iteration settles.</p>
 
           <div class="section-label">Run</div>
 <pre class="code"><div class="code-head"><span>from inside the video folder</span></div><div class="code-body"><span class="cmd">npm run render</span>             <span class="comment"># via package.json</span>
 <span class="cmd">npx hyperframes render</span>     <span class="comment"># direct</span></div></pre>
 
           <div class="pitfall">
-            <div>If you re-render after edits, delete the old MP4 first to avoid confusion.</div>
+            <div>Render is slow — run it once after lint passes and preview looks right, not during iteration. Delete the old MP4 before re-rendering after edits.</div>
           </div>
         </div>
       </li>
 
-      <!-- 10 -->
-      <li class="stage" data-stage="10">
-        <div class="stage-bullet">10</div>
+      <!-- 13 — publish + QA -->
+      <li class="stage" data-stage="13">
+        <div class="stage-bullet">13</div>
         <div class="stage-card">
           <div class="stage-head">
-            <div class="stage-title">Publish</div>
-            <div class="stage-tag plain">hyperframes publish</div>
+            <div class="stage-title">Publish + post-upload QA</div>
+            <div class="stage-tag">manual upload → /video-publish-qa</div>
           </div>
-          <p class="stage-summary">Shareable link. Download the rendered MP4 to your local edit folder; upload to YouTube with the thumbnail variant chosen at stage 8.</p>
+          <p class="stage-summary">Upload is <strong>manual in YouTube Studio</strong> (the youtube-studio MCP v1 can't upload, schedule, or write captions). After upload, <code>/video-publish-qa</code> is the <strong>final gate before public indexing</strong>: it reads live metadata, grades title / tags / description / captions against <code>docs/creator-patterns.md</code> §5–§6, and fixes what the MCP allows under a strict preview-then-confirm write-gate. <a href="#" onclick="document.querySelector('[data-tab=&quot;publishing&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">See Captions &amp; publishing →</a></p>
 
-          <div class="section-label">Run</div>
-<pre class="code"><div class="code-head"><span>from inside the video folder</span></div><div class="code-body"><span class="cmd">npm run publish</span>            <span class="comment"># or: npx hyperframes publish</span></div></pre>
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">live YouTube video</li>
+            <li>QA report · Passed / Fixed / Manual</li>
+          </ul>
+
+          <div class="pitfall">
+            <div>Hard checks for the flagship's silent regressions: captions <strong>OFF</strong>, thin 3-tag sets, flat titles that lose the hook on truncation. Never auto-apply — strict preview-then-confirm.</div>
+          </div>
+
+          <div class="example-strip">
+            <strong>Then</strong>
+            <span>cut Shorts that funnel back →</span>
+            <span class="sep">/</span>
+            <a href="#" onclick="document.querySelector('[data-tab=&quot;shorts&quot;]').click();return false;" style="color:var(--amber);border-bottom:1px dotted var(--amber-dim);text-decoration:none;">Shorts engine tab</a>
+          </div>
         </div>
       </li>
     </ol>
@@ -1165,14 +1198,14 @@ Surface the studio URL after authoring.</div></pre>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       PANEL 2 — sound design
+       PANEL 2 — sound & music
        ═══════════════════════════════════════════════════════════ -->
   <section class="panel" id="panel-sound">
 
     <div class="sfx-intro">
-      <h2>The editorial brain + two deterministic tools</h2>
-      <p>Sound design is the last authoring pass — runs only after visuals are settled in preview. Phase A separates concerns: a Python CLI builds a metadata catalog of the SFX library, a Claude skill decides which moments earn a hit and which cue type, and a second Python CLI deterministically picks files and emits a HyperFrames audio sub-composition.</p>
-      <p style="color:var(--fg-3);font-size:12px;"><strong style="color:var(--fg-2);">Phase A scope:</strong> SFX placement only. Music beds, ambient drone, sidechain ducking, and master loudness normalization to −14 LUFS / −1 dBTP are Phase B/C.</p>
+      <h2>SFX: the editorial brain + two deterministic tools</h2>
+      <p>Sound effects are scored <strong>inside video-director as Step H</strong> — there is no standalone <code>/sfx-author</code> skill anymore (it was folded in and removed in 2026-06). The pass runs per scene, right after that scene's visual QA, and reconciles the whole video at the end. Around the editorial brain sit two Python CLIs: one builds a metadata catalog of the SFX library; the other deterministically picks files and emits the audio sub-composition.</p>
+      <p style="color:var(--fg-3);font-size:12px;"><strong style="color:var(--fg-2);">Then the music bed (stage 8):</strong> a separate pass that lays a human-curated bed <em>underneath</em> the locked VO + SFX. Master loudness normalization to −14 LUFS / −1 dBTP is a later concern.</p>
     </div>
 
     <div class="triptych">
@@ -1195,14 +1228,14 @@ Surface the studio URL after authoring.</div></pre>
       <div class="sfx-card">
         <div class="sfx-card-head">
           <span class="sfx-card-code">A2</span>
-          <span class="sfx-card-kind">Claude skill · per video</span>
+          <span class="sfx-card-kind">video-director · per scene</span>
         </div>
-        <h3>sfx-author</h3>
-        <p class="sfx-card-path">.claude/skills/sfx-author/</p>
-        <p>The editorial brain. Reads HTML + narration-map + transcript + design.md + catalog. Proposes a cue plan, awaits human approval, then writes <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">data-sfx-*</code> annotations into HTML.</p>
-        <div class="sfx-card-row"><span class="k">In</span><span class="v muted">composition + transcript + catalog</span></div>
+        <h3>video-director Step&nbsp;H</h3>
+        <p class="sfx-card-path">the SFX pass (folded-in; was /sfx-author)</p>
+        <p>The editorial brain. Reads scene HTML + narration-map + transcript + design.md + catalog. Proposes a cue plan, awaits approval, then writes <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">data-sfx-*</code> annotations. Uses <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">tools/sfx-level</code> to place each cue under the VO loudness.</p>
+        <div class="sfx-card-row"><span class="k">In</span><span class="v muted">scene + transcript + catalog</span></div>
         <div class="sfx-card-row"><span class="k">Out</span><span class="v">data-sfx-* attrs</span></div>
-        <div class="sfx-card-row"><span class="k">When</span><span class="v muted">after preview clean</span></div>
+        <div class="sfx-card-row"><span class="k">When</span><span class="v muted">after each scene's QA</span></div>
       </div>
 
       <!-- A3 -->
@@ -1216,13 +1249,13 @@ Surface the studio URL after authoring.</div></pre>
         <p>Deterministic. Reads annotated HTML + narration-map + catalog. Picks file paths via sha256 seeding, stages assets into <code style="font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">assets/sfx/</code>, emits the audio sub-composition, and idempotently mounts it.</p>
         <div class="sfx-card-row"><span class="k">In</span><span class="v muted">annotated HTML + catalog</span></div>
         <div class="sfx-card-row"><span class="k">Out</span><span class="v">compositions/sfx.html</span></div>
-        <div class="sfx-card-row"><span class="k">When</span><span class="v muted">after skill writes attrs</span></div>
+        <div class="sfx-card-row"><span class="k">When</span><span class="v muted">after Step H writes attrs</span></div>
       </div>
     </div>
 
     <div class="lifecycle">
       <h3>Lifecycle</h3>
-      <p class="lifecycle-sub">Two cadences: catalog churn (rare) vs. per-video sound pass (every video).</p>
+      <p class="lifecycle-sub">Two cadences: catalog churn (rare) vs. per-scene SFX pass inside video-director — then the music bed beneath it all.</p>
 
       <div class="flow">
 
@@ -1251,13 +1284,13 @@ Surface the studio URL after authoring.</div></pre>
         </div>
 
         <div class="flow-row" style="margin-top:20px;">
-          <div class="flow-rail">Per video · after<span class="when">composition done<br/>+ previewed clean</span></div>
+          <div class="flow-rail">Per scene · after<span class="when">that scene's<br/>visual QA passes</span></div>
           <div class="flow-node">
             <span class="label">A2</span>
-            <span>user invokes /sfx-author</span>
+            <span>video-director Step H — the editorial SFX brain</span>
           </div>
         </div>
-        <div class="flow-row"><div class="flow-loop">reads HTML, narration-map, transcript, design.md, catalog</div></div>
+        <div class="flow-row"><div class="flow-loop">reads scene HTML, narration-map, transcript, design.md, catalog</div></div>
         <div class="flow-row"><div class="flow-loop">proposes cue plan: <em>"17 cues — 4 whooshes, 8 ticks, 3 booms, 2 risers"</em></div></div>
         <div class="flow-row"><div class="flow-arrow">↓</div></div>
         <div class="flow-row">
@@ -1283,27 +1316,266 @@ Surface the studio URL after authoring.</div></pre>
             <span>sfx-plan · stages assets, emits compositions/sfx.html, mounts layer</span>
           </div>
         </div>
+        <div class="flow-row"><div class="flow-arrow">↓ final reconcile</div></div>
+        <div class="flow-row">
+          <div class="flow-rail"></div>
+          <div class="flow-node">
+            <span class="label">OUT</span>
+            <span>one hook · pre-roll · VO conflicts checked → bake audio/sfx-mix.mp3</span>
+          </div>
+        </div>
+
+        <div class="flow-row" style="margin-top:20px;">
+          <div class="flow-rail">After SFX locked<span class="when">music sits beneath</span></div>
+          <div class="flow-node">
+            <span class="label">8</span>
+            <span>/audio-bed-music — human curates tracks, bed snaps to narration pauses</span>
+          </div>
+        </div>
+        <div class="flow-row"><div class="flow-loop">brainstorm vibe → human curates the actual tracks (skill never recommends music) → approve boundaries → bake</div></div>
         <div class="flow-row"><div class="flow-arrow">↓</div></div>
         <div class="flow-row">
           <div class="flow-rail"></div>
           <div class="flow-node">
             <span class="label">OUT</span>
-            <span>npx hyperframes preview · studio URL surfaced</span>
+            <span>compositions/music.html (track-index 10, beneath SFX 19–29) + audio/music-bed.wav</span>
           </div>
         </div>
-        <div class="flow-row"><div class="flow-loop">user audits in preview → asks skill to refine specific cues → loop</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <div class="pitfall">
+        <div>Set the sfx-layer mount <code>data-duration</code> to the full runtime or late cues are clipped; emit <code>preload="none"</code> on every SFX <code>&lt;audio&gt;</code> or many elements freeze preview play (render is unaffected).</div>
+      </div>
+      <div class="pitfall">
+        <div>Music can't run before SFX is locked — it snaps to narration pauses that only exist once VO + SFX are final, and it sits <em>beneath</em> SFX. Don't bake before the human approves the proposed layer boundaries; <code>data-volume</code> starts ~0.18, tuned to ~0.10–0.25 in preview.</div>
       </div>
     </div>
 
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       PANEL 3 — smell tests
+       PANEL 3 — captions & publishing
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-publishing">
+
+    <div class="sfx-intro">
+      <h2>Captions, description, and the publish-time gate</h2>
+      <p>The publishing surface is shaped by one hard constraint: the <strong>youtube-studio MCP is v1</strong>. It can read analytics and write title / description / tags / thumbnail — but it <strong>cannot upload a video, schedule a publish, or write captions</strong>. So upload is a manual Studio step, captions are a detect-and-hand-off, and the skills here either prep artifacts for that manual upload or QA the live result afterward.</p>
+      <p style="color:var(--fg-3);font-size:12px;"><strong style="color:var(--fg-2);">Order:</strong> captions + description are prepped while the composition renders; you upload by hand; then <code>/video-publish-qa</code> is the final gate before the video indexes publicly.</p>
+    </div>
+
+    <ol class="stage-list">
+
+      <!-- captions -->
+      <li class="stage" data-stage="cap">
+        <div class="stage-bullet" style="font-size:10px;">SRT</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Captions — progressive discovery</div>
+            <div class="stage-tag">/create-srt-and-translate</div>
+          </div>
+          <p class="stage-summary">Two phases, gated. <strong>Phase 1 (default)</strong> reads the Scribe v2 <code>transcript.json</code>, writes English <code>captions.srt</code> at the folder root, and <strong>STOPS</strong> — no <code>multi-lingual/</code> folder is created. It then offers the follow-up. <strong>Phase 2 (on-demand only)</strong> translates into the 13 YouTube auto-dub languages, reading the existing <code>captions.srt</code> as source.</p>
+
+          <div class="section-label">Phase 2 triggers (explicit only)</div>
+          <ul class="artifact-list">
+            <li>translate the captions</li>
+            <li>translate to all languages</li>
+            <li>do the localization</li>
+            <li>dub it</li>
+            <li>prep for multi-language upload</li>
+          </ul>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">captions.srt <em>(English — Phase 1)</em></li>
+            <li>multi-lingual/srt/{ar,de,es,fr,hi,id,it,ja,pl,pt,ru,tr,vi}.srt <em>(Phase 2)</em></li>
+          </ul>
+
+          <div class="pitfall">
+            <div>Plain requests ("create the SRT", "make the captions") are <strong>Phase 1 only</strong> — never roll into translations without an explicit trigger.</div>
+          </div>
+          <div class="pitfall">
+            <div>The MCP can't write captions — hand off the manual path: <code>Studio → Subtitles → Add language → English → Upload file → With timing</code>. English captions also unlock auto-translate and the Hindi auto-dub.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- description -->
+      <li class="stage" data-stage="desc">
+        <div class="stage-bullet" style="font-size:9px;">DESC</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Description</div>
+            <div class="stage-tag">/description-writer</div>
+          </div>
+          <p class="stage-summary">Single-run guided generator (not multi-variant). Runs after <code>transcript.json</code> exists — derives real chapter timestamps from word timings (never 30s buckets), integrates <code>seo/research.json</code> nouns via noun-rotation (optional), batches WebSearch citation queries in parallel, and composes hook + explainer + chapters + sources + hashtags under a hard 5000-char cap with staged trim. Output is darwin-pinned to <code>pbcopy</code>.</p>
+
+          <div class="section-label">Produces</div>
+          <ul class="artifact-list">
+            <li class="primary">description.md <em>(+ clipboard)</em></li>
+          </ul>
+
+          <div class="pitfall">
+            <div>Runs in the publish-prep phase, after the transcript exists — it can't scaffold from an outline alone (unlike thumbnail-and-title-generator). <code>seo/research.json</code> is optional and non-blocking.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- manual upload -->
+      <li class="stage" data-stage="upload">
+        <div class="stage-bullet plain" style="font-size:9px;color:var(--fg-2);border-color:var(--border-strong);">↑YT</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Manual YouTube upload</div>
+            <div class="stage-tag plain">YouTube Studio</div>
+          </div>
+          <p class="stage-summary">The bridge between the local pipeline and the live video — fully manual. Upload the rendered MP4, paste <code>description.md</code>, set the chosen thumbnail variant, and upload <code>captions.srt</code> by hand. The MCP v1 cannot do any of these.</p>
+
+          <div class="section-label">Click path</div>
+<pre class="code"><div class="code-head"><span>Studio</span></div><div class="code-body">Create → Upload videos → (the renders/ MP4)
+  → paste description.md, set thumbnail, set title
+  → Visibility → Schedule (or Publish)
+Subtitles → Add language → English → Upload file → With timing</div></pre>
+        </div>
+      </li>
+
+      <!-- publish QA -->
+      <li class="stage" data-stage="qa">
+        <div class="stage-bullet" style="border-color:var(--border-amber);color:var(--amber);font-size:10px;">QA</div>
+        <div class="stage-card" style="border-color:var(--border-amber);background:linear-gradient(180deg,var(--surface) 0%,rgba(245,158,11,0.025) 100%);">
+          <div class="stage-head">
+            <div class="stage-title">Post-upload packaging QA</div>
+            <div class="stage-tag">/video-publish-qa</div>
+          </div>
+          <p class="stage-summary">The <strong>final gate before public indexing</strong>. Reads live metadata via the youtube-studio MCP and grades title / tags / description / captions against <code>docs/creator-patterns.md</code> §5–§6. Fixes what the MCP allows (title, description, tags, thumbnail) under a strict preview-then-confirm write-gate; detects-and-hands-off what it can't (caption upload, video upload, schedule). Emits a Passed / Fixed / Manual report.</p>
+
+          <div class="section-label">Hard checks (the flagship's silent regressions)</div>
+          <ul class="artifact-list">
+            <li>captions OFF</li>
+            <li>thin 3-tag sets</li>
+            <li>flat title loses hook on truncation</li>
+            <li>description not hook-led</li>
+          </ul>
+
+          <div class="pitfall">
+            <div><strong>Never auto-apply.</strong> Read → preview diff + <code>cost_preview</code> → explicit affirmative → write. <code>tags</code> is a full-list replacement. Going public needs <code>confirm_publish=True</code>.</div>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL 4 — shorts engine
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="panel" id="panel-shorts">
+
+    <div class="sfx-intro">
+      <h2>Long-form → ~5 vertical Shorts that funnel back</h2>
+      <p><code>/shorts-creator</code> turns a finished long-form video into ~5 (up to 10) vertical <strong>1080×1920</strong> Shorts, each ending on a Cleo-Abram-style subscribe CTA. This is the channel's strongest discovery path — a companion Short pulled <strong>2.7× the flagship's views</strong>. Like video-director it's an <strong>orchestrator</strong>: it owns beat selection, the Shorts script shape, and the publish hand-off, and delegates voiceover → portrait composition → vertical cover → render to the existing skills. Portrait is a <strong>layout delta on video-director</strong>, not a second engine.</p>
+      <p style="color:var(--fg-3);font-size:12px;"><strong style="color:var(--fg-2);">Two phases, both gated:</strong> Phase 1 selects beats + drafts scripts + a stagger plan for review; Phase 2 builds one approved Short at a time. Publishing stays a manual Studio hand-off (MCP v1 can't upload or schedule).</p>
+    </div>
+
+    <ol class="stage-list">
+
+      <!-- Phase 1 -->
+      <li class="stage" data-stage="p1" data-iterative>
+        <div class="stage-bullet">P1</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Selection + clip scripts <span style="color:var(--amber);font-size:11px;font-family:var(--font-mono);">// gate before any build</span></div>
+            <div class="stage-tag">/shorts-creator</div>
+          </div>
+          <p class="stage-summary">Read the parent <code>script.md</code> + <code>transcript.json</code> (+ optional <code>captions.srt</code>, <code>design.md</code>). Pick ~5 <strong>self-contained beats</strong>, each orbiting ONE counterintuitive question. Draft each clip's script in the Shorts shape (below). Draft a stagger plan — one Short every ~3 days. Write <code>shorts/PLAN.md</code> + each Short's <code>script.md</code>, then <strong>stop and present the plan</strong>.</p>
+
+          <div class="section-label">The Shorts script shape</div>
+          <ul class="artifact-list">
+            <li>hook in first 5–9 words</li>
+            <li>counter-twist sentence 2–3</li>
+            <li>but/then/turns-out pivot chain</li>
+            <li>Cleo CTA = final line</li>
+          </ul>
+
+          <div class="section-label">Cleo CTA</div>
+<pre class="code"><div class="code-head"><span>the shape — never end on resolution</span></div><div class="code-body">[solve the headline question]
+  → [open a NEW bigger loop in one sentence]
+  → [subscribe as the way to close THAT loop]
+"But where's it going? To find out, subscribe."</div></pre>
+
+          <div class="pitfall">
+            <div>Shorts scripts are <strong>not</strong> written by <code>/script-writer</code> — wrong shape (no CTA, too long). shorts-creator owns the shape, grounded in <code>docs/creator-patterns.md</code> §4.2 + §6 WS4.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Phase 2 -->
+      <li class="stage" data-stage="p2" data-iterative>
+        <div class="stage-bullet">P2</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Build one approved Short <span style="color:var(--amber);font-size:11px;font-family:var(--font-mono);">// repeat per Short</span></div>
+            <div class="stage-tag plain">orchestrates the skills</div>
+          </div>
+          <p class="stage-summary">Build one at a time, fully, before the next — each is a self-contained mini-project and the loop survives a fresh session. The root declares 1080×1920, so video-director detects portrait in Step A.3 and reflows landscape archetypes to 9:16 (split → stacked, side-cutout → full-height) inside the phone-UI safe zones. The final scene is the CTA beat, adapting a native portrait subscribe block.</p>
+
+          <div class="section-label">Per-Short chain</div>
+<pre class="code"><div class="code-head"><span>from videos/&lt;parent&gt;/shorts/&lt;NN&gt;-&lt;hook-slug&gt;/</span></div><div class="code-body"><span class="cmd">npx hyperframes init</span> &lt;NN&gt;-&lt;hook-slug&gt; --example vignelli  <span class="comment"># 1080×1920</span>
+voiceover (record / TTS)        → audio/voiceover.mp3 + transcript.json
+/video-director  (portrait)     → vertical composition + CTA beat
+/thumbnail-and-title-generator (vertical)   → 1080×1920 cover
+<span class="cmd">npx hyperframes render</span>          → out/ 1080×1920 MP4
+publish.md  → manual Studio upload, apply the stagger date</div></pre>
+
+          <div class="section-label">Safe zones (phone UI)</div>
+          <ul class="artifact-list">
+            <li>top ~220px</li>
+            <li>bottom ~320px</li>
+            <li>right ~120px gutter</li>
+            <li>title-safe ~1080×1380</li>
+          </ul>
+
+          <div class="pitfall">
+            <div>The on-screen "Subscribe" cue sits <strong>upper-middle</strong>, gesturing down toward YouTube's real button — never over it. Land it on the VO's "subscribe" word.</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- publish -->
+      <li class="stage" data-stage="sp">
+        <div class="stage-bullet plain" style="font-size:9px;color:var(--fg-2);border-color:var(--border-strong);">↑YT</div>
+        <div class="stage-card">
+          <div class="stage-head">
+            <div class="stage-title">Publish — the stagger plan</div>
+            <div class="stage-tag plain">manual Studio</div>
+          </div>
+          <p class="stage-summary">Default 5 Shorts, one every ~3 days, so the channel gets a sustained drip feeding the parent — not a single-day dump. Each Short's <code>publish.md</code> carries its own copy; <code>PLAN.md</code> carries the schedule. Uploading and scheduling stay manual until a youtube-studio MCP v2 lands. Optionally run <code>/video-publish-qa</code> on each Short once live.</p>
+
+          <div class="section-label">Folder layout</div>
+<pre class="code"><div class="code-head"><span>shorts live under the parent</span></div><div class="code-body">videos/&lt;parent-slug&gt;-&lt;date&gt;/
+└── shorts/
+    ├── PLAN.md                  <span class="comment"># beats + stagger schedule</span>
+    └── &lt;NN&gt;-&lt;hook-slug&gt;/        <span class="comment"># each = a full portrait mini-project</span>
+        ├── script.md  design.md
+        ├── audio/  transcript.json
+        ├── index.html  compositions/  assets/
+        ├── thumbnails/  out/
+        └── publish.md</div></pre>
+        </div>
+      </li>
+    </ol>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL 5 — smell tests
        ═══════════════════════════════════════════════════════════ -->
   <section class="panel" id="panel-smells">
 
     <div class="smells-intro">
-      <p><strong>If any of these are true mid-pipeline, you are heading toward the captchas-failure mode.</strong> Reset to maiden-video conditions and re-invoke <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">/hyperframes</code> with an explicit quality-bar reference.</p>
+      <p><strong>If any of these are true mid-pipeline, you are heading toward the captchas-failure mode.</strong> Reset to maiden-video conditions and re-invoke <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;">/video-director</code> with an explicit quality-bar reference.</p>
     </div>
 
     <div class="section-label" style="margin-bottom:12px;">Failure smells</div>
@@ -1314,6 +1586,8 @@ Surface the studio URL after authoring.</div></pre>
       <li>The Scene 1 thumbnail is a <strong>CSS primitive</strong>, not a real-looking artifact</li>
       <li>The session is on turn <strong>7+</strong> and Scene 1 isn't built yet</li>
       <li>An intermediate spec file <strong>cites a project rule then violates it</strong></li>
+      <li>A subtopic runs <strong>past ~60s with no reset</strong> (pivot / frame change / closed loop)</li>
+      <li>The cold open is a frame-setting ramp, not a hook in the first <strong>~10s</strong></li>
     </ul>
 
     <div class="section-label" style="margin-bottom:12px;">Rules going forward</div>
@@ -1347,7 +1621,7 @@ Surface the studio URL after authoring.</div></pre>
         <div class="rule-num">04</div>
         <div>
           <h4>The first scene sets the quality bar</h4>
-          <p>Generic CSS checkbox in scene 1 → generic CSS everything-else. Real-looking reCAPTCHA in scene 1 → the model carries that worldbuilding forward. When invoking <code>/hyperframes</code>, <strong>point at a known-good reference video</strong> as the explicit quality bar.</p>
+          <p>Generic CSS checkbox in scene 1 → generic CSS everything-else. Real-looking reCAPTCHA in scene 1 → the model carries that worldbuilding forward. When invoking <code>/video-director</code>, <strong>point at a known-good reference video</strong> as the explicit quality bar.</p>
         </div>
       </div>
 
@@ -1362,8 +1636,16 @@ Surface the studio URL after authoring.</div></pre>
       <div class="rule">
         <div class="rule-num">06</div>
         <div>
+          <h4>Cold open in ~10s; reset every ~45–60s</h4>
+          <p>The script-level retention floor (the fix for the flagship's 0:42 drop-off and 4:49 drag). The opening line IS the hook — claim / number / question / scene in the first ~25–30 words, never a ramp. No single idea runs past ~45–60s without a reset (pivot conjunction / frame change / pattern interrupt / closed loop). Both rules are corpus-grounded in <code>docs/creator-patterns.md</code>, which is a <strong>menu, not a checklist</strong>.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-num">07</div>
+        <div>
           <h4>Pipeline-emitted artifacts respect project CLAUDE.md</h4>
-          <p>Every intermediate artifact (<code>design.md</code>, <code>expanded-prompt.md</code>, per-scene spec) has to pass the same project rules the final composition does. The captchas <code>expanded-prompt.md</code> cited the no-chrome rule in its negative-prompt section, then prescribed <code>VERIFICATION · 1 / 1</code> in beat 1. A meta-check at the end of any spec-generating step catches this.</p>
+          <p>Every intermediate artifact (<code>design.md</code>, per-scene spec) has to pass the same project rules the final composition does. The captchas <code>expanded-prompt.md</code> cited the no-chrome rule, then prescribed editorial chrome in beat 1. A meta-check at the end of any spec-generating step catches this.</p>
         </div>
       </div>
     </div>
@@ -1372,7 +1654,7 @@ Surface the studio URL after authoring.</div></pre>
 
   <!-- ─── footnote ─────────────────────────────────────────── -->
   <footer class="footnote">
-    <div>learnings/pipeline.html · companion to <a href="pipeline.md">pipeline.md</a> &amp; <a href="composition-spec-over-restriction.md">composition-spec-over-restriction.md</a></div>
+    <div>learnings/pipeline.html · canonical reference · see also <a href="composition-spec-over-restriction.md">composition-spec-over-restriction.md</a></div>
     <div>hyper-frames · 2026</div>
   </footer>
 
@@ -1381,9 +1663,11 @@ Surface the studio URL after authoring.</div></pre>
 <script>
   const tabs = document.querySelectorAll('[role="tab"]');
   const panels = {
-    pipeline: document.getElementById('panel-pipeline'),
-    sound:    document.getElementById('panel-sound'),
-    smells:   document.getElementById('panel-smells'),
+    pipeline:   document.getElementById('panel-pipeline'),
+    sound:      document.getElementById('panel-sound'),
+    publishing: document.getElementById('panel-publishing'),
+    shorts:     document.getElementById('panel-shorts'),
+    smells:     document.getElementById('panel-smells'),
   };
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {

@@ -1,0 +1,3569 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 16.8163,
+    "longest_hold_s": 10.7,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.1395,
+    "scene_count": 130,
+    "scene_duration_s": {
+      "max": 10.7,
+      "median": 3.167,
+      "min": 0.533,
+      "p25": 1.7505,
+      "p75": 4.6247
+    },
+    "soft_transition_count": 0,
+    "words_per_s_mean": 2.2517
+  },
+  "proxy": {
+    "duration_s": 460.2667,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 0.933,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 0.7428,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.24,
+        "sentence_aligned": false,
+        "text": "Python.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.0718
+      },
+      "window": {
+        "end_s": 0.933,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.418
+      },
+      "duration_s": 4.2,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Python was created in 1991 by Guido van Rossum,",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.1429
+      },
+      "window": {
+        "end_s": 5.133,
+        "start_s": 0.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5717
+      },
+      "duration_s": 3.367,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "a Dutch programmer who wanted to make coding easier and",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.97
+      },
+      "window": {
+        "end_s": 8.5,
+        "start_s": 5.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3362
+      },
+      "duration_s": 0.933,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "more readable.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.1436
+      },
+      "window": {
+        "end_s": 9.433,
+        "start_s": 8.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5108
+      },
+      "duration_s": 2.7,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "At that time, most programming languages were",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.5926
+      },
+      "window": {
+        "end_s": 12.133,
+        "start_s": 9.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1978
+      },
+      "duration_s": 1.834,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "complex and intimidating,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.6358
+      },
+      "window": {
+        "end_s": 13.967,
+        "start_s": 12.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1977
+      },
+      "duration_s": 3.033,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "filled with symbols and strict rules.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 1.9782
+      },
+      "window": {
+        "end_s": 17.0,
+        "start_s": 13.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2284
+      },
+      "duration_s": 5.267,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Guido wanted a language where developers could focus on thinking, not syntax. Python",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.4682
+      },
+      "window": {
+        "end_s": 22.267,
+        "start_s": 17.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2146
+      },
+      "duration_s": 8.6,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.493,
+        "leading_silence_s": 0.493,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "took a different path. It's clean and simple syntax almost reads like plain English, which made it extremely beginner-friendly.",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 2.2093
+      },
+      "window": {
+        "end_s": 30.867,
+        "start_s": 22.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2162
+      },
+      "duration_s": 4.1,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This simplicity helped Python grow rapidly across the world,",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.1951
+      },
+      "window": {
+        "end_s": 34.967,
+        "start_s": 30.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1794
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but Python is not",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 35.967,
+        "start_s": 34.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.211
+      },
+      "duration_s": 1.433,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "just for beginners.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.0935
+      },
+      "window": {
+        "end_s": 37.4,
+        "start_s": 35.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0519
+      },
+      "duration_s": 2.367,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "It is widely used in data science,",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.9573
+      },
+      "window": {
+        "end_s": 39.767,
+        "start_s": 37.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2109
+      },
+      "duration_s": 3.933,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "machine learning, artificial intelligence, automation, and back-end",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 1.7798
+      },
+      "window": {
+        "end_s": 43.7,
+        "start_s": 39.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0894
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.58,
+        "leading_silence_s": 0.58,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "web development. Companies",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.7996
+      },
+      "window": {
+        "end_s": 45.367,
+        "start_s": 43.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2132
+      },
+      "duration_s": 8.266,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.593,
+        "leading_silence_s": 0.593,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "use Python to analyze massive data sets, train AI models, automate workflows, and build scalable systems. Its",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.0566
+      },
+      "window": {
+        "end_s": 53.633,
+        "start_s": 45.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2765
+      },
+      "duration_s": 2.467,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.167,
+        "leading_silence_s": 0.167,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "huge library ecosystem allows",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.6214
+      },
+      "window": {
+        "end_s": 56.1,
+        "start_s": 53.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0852
+      },
+      "duration_s": 4.633,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "developers to build powerful applications without starting from zero. However,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.1584
+      },
+      "window": {
+        "end_s": 60.733,
+        "start_s": 56.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3158
+      },
+      "duration_s": 8.934,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.667,
+        "leading_silence_s": 0.667,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Python has weaknesses. Since it is an interpreted language, it runs slower than compiled languages like C or C++.",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 2.1267
+      },
+      "window": {
+        "end_s": 69.667,
+        "start_s": 60.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1588
+      },
+      "duration_s": 6.3,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It also consumes more memory, making it unsuitable for performance-critical systems like game engines or",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.381
+      },
+      "window": {
+        "end_s": 75.967,
+        "start_s": 69.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0699
+      },
+      "duration_s": 1.666,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "operating systems.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.2005
+      },
+      "window": {
+        "end_s": 77.633,
+        "start_s": 75.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1611
+      },
+      "duration_s": 8.0,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Still, for productivity, learning speed, and real-world problem-solving, Python remains one of the most important languages today.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.125
+      },
+      "window": {
+        "end_s": 85.633,
+        "start_s": 77.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1662
+      },
+      "duration_s": 3.434,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "C. C was created in 1972 by",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.0384
+      },
+      "window": {
+        "end_s": 89.067,
+        "start_s": 85.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1076
+      },
+      "duration_s": 1.266,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.133,
+        "leading_silence_s": 0.133,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Dennis Ritchie at Bell",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.1596
+      },
+      "window": {
+        "end_s": 90.333,
+        "start_s": 89.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1119
+      },
+      "duration_s": 1.1,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Labs.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 0.9091
+      },
+      "window": {
+        "end_s": 91.433,
+        "start_s": 90.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2485
+      },
+      "duration_s": 6.934,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It was designed to build operating systems, especially Unix, at a time when computers were extremely limited in",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 2.5959
+      },
+      "window": {
+        "end_s": 98.367,
+        "start_s": 91.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0881
+      },
+      "duration_s": 0.733,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "power.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.3643
+      },
+      "window": {
+        "end_s": 99.1,
+        "start_s": 98.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2656
+      },
+      "duration_s": 3.6,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "What makes C special is how close it is to the hardware.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 102.7,
+        "start_s": 99.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1947
+      },
+      "duration_s": 4.767,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It gives programmers direct control over memory and system resources.",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.0978
+      },
+      "window": {
+        "end_s": 107.467,
+        "start_s": 102.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0938
+      },
+      "duration_s": 10.7,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This results in extremely fast and efficient programs. Because of this, C is still widely used in operating systems, embedded systems, firmware, and low-level",
+        "trailing_silence_s": 0.0,
+        "word_count": 24,
+        "words_per_s": 2.243
+      },
+      "window": {
+        "end_s": 118.167,
+        "start_s": 107.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0657
+      },
+      "duration_s": 1.133,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.393,
+        "leading_silence_s": 0.393,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "software,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 0.8826
+      },
+      "window": {
+        "end_s": 119.3,
+        "start_s": 118.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.129
+      },
+      "duration_s": 4.133,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but this power comes with responsibility. C requires manual memory",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.4195
+      },
+      "window": {
+        "end_s": 123.433,
+        "start_s": 119.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0589
+      },
+      "duration_s": 2.934,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "management, meaning developers must allocate",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 1.7042
+      },
+      "window": {
+        "end_s": 126.367,
+        "start_s": 123.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0627
+      },
+      "duration_s": 2.066,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.112,
+        "leading_silence_s": 0.112,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and free memory themselves.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.9361
+      },
+      "window": {
+        "end_s": 128.433,
+        "start_s": 126.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1742
+      },
+      "duration_s": 6.3,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.287,
+        "leading_silence_s": 0.287,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Even small mistakes can lead to crashes, memory leaks, or serious security vulnerabilities.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.0635
+      },
+      "window": {
+        "end_s": 134.733,
+        "start_s": 128.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0784
+      },
+      "duration_s": 3.134,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "C also lacks modern safety features. Despite",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.2336
+      },
+      "window": {
+        "end_s": 137.867,
+        "start_s": 134.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0589
+      },
+      "duration_s": 0.733,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "this,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.3643
+      },
+      "window": {
+        "end_s": 138.6,
+        "start_s": 137.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.054
+      },
+      "duration_s": 3.567,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "learning C teaches how computers actually work at the",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.5231
+      },
+      "window": {
+        "end_s": 142.167,
+        "start_s": 138.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1009
+      },
+      "duration_s": 0.8,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "lowest level. C++.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.75
+      },
+      "window": {
+        "end_s": 142.967,
+        "start_s": 142.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1537
+      },
+      "duration_s": 4.466,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.992,
+        "leading_silence_s": 0.992,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "C++ was created in the early 1980s by Bjarne",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.0152
+      },
+      "window": {
+        "end_s": 147.433,
+        "start_s": 142.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1918
+      },
+      "duration_s": 3.2,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.487,
+        "leading_silence_s": 0.487,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Stroustrup as an extension of C.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 1.875
+      },
+      "window": {
+        "end_s": 150.633,
+        "start_s": 147.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1349
+      },
+      "duration_s": 5.534,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "His goal was to add object-oriented programming while keeping C's speed and control.",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.3491
+      },
+      "window": {
+        "end_s": 156.167,
+        "start_s": 150.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3194
+      },
+      "duration_s": 4.333,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "C++ became the backbone of performance-critical software.",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 1.6155
+      },
+      "window": {
+        "end_s": 160.5,
+        "start_s": 156.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0903
+      },
+      "duration_s": 7.833,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It is heavily used in game engines, real-time systems, operating systems, browsers, and financial trading platforms.",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 2.0426
+      },
+      "window": {
+        "end_s": 168.333,
+        "start_s": 160.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1581
+      },
+      "duration_s": 6.3,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Game engines rely on C++ because it allows precise control over performance and memory.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 174.633,
+        "start_s": 168.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1347
+      },
+      "duration_s": 0.534,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "However,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.8727
+      },
+      "window": {
+        "end_s": 175.167,
+        "start_s": 174.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1137
+      },
+      "duration_s": 2.466,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "C++ is famously difficult.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.6221
+      },
+      "window": {
+        "end_s": 177.633,
+        "start_s": 175.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1627
+      },
+      "duration_s": 3.934,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The language is large, complex, and easy to misuse.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.2877
+      },
+      "window": {
+        "end_s": 181.567,
+        "start_s": 177.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.082
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Memory management is still challenging,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.1432
+      },
+      "window": {
+        "end_s": 183.9,
+        "start_s": 181.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0728
+      },
+      "duration_s": 1.833,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and debugging can be painful,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.7278
+      },
+      "window": {
+        "end_s": 185.733,
+        "start_s": 183.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1207
+      },
+      "duration_s": 3.4,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but when maximum performance and control are required,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.3529
+      },
+      "window": {
+        "end_s": 189.133,
+        "start_s": 185.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0763
+      },
+      "duration_s": 7.4,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "C++ remains one of the most powerful tools available. Java. Java was introduced in 1995 by James",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.2973
+      },
+      "window": {
+        "end_s": 196.533,
+        "start_s": 189.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1488
+      },
+      "duration_s": 1.334,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.347,
+        "leading_silence_s": 0.347,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Gosling and his",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.2489
+      },
+      "window": {
+        "end_s": 197.867,
+        "start_s": 196.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3117
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "team at Sun Microsystems.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.7145
+      },
+      "window": {
+        "end_s": 200.2,
+        "start_s": 197.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4761
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "The main idea behind Java was simple: write",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 202.6,
+        "start_s": 200.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3094
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "once, run anywhere. Instead",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.0336
+      },
+      "window": {
+        "end_s": 204.567,
+        "start_s": 202.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3283
+      },
+      "duration_s": 4.6,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.473,
+        "leading_silence_s": 0.473,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "of running directly on hardware, Java runs on a virtual machine.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.3913
+      },
+      "window": {
+        "end_s": 209.167,
+        "start_s": 204.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4844
+      },
+      "duration_s": 5.7,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This allows the same Java program to run on different operating systems without modification.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.4561
+      },
+      "window": {
+        "end_s": 214.867,
+        "start_s": 209.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4972
+      },
+      "duration_s": 9.533,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This portability made Java extremely popular in enterprise systems, banking software, large back-end applications, and Android development.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 1.7833
+      },
+      "window": {
+        "end_s": 224.4,
+        "start_s": 214.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5802
+      },
+      "duration_s": 3.8,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.119,
+        "leading_silence_s": 0.119,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Java automatically manages memory using garbage collection,",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 1.8421
+      },
+      "window": {
+        "end_s": 228.2,
+        "start_s": 224.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.406
+      },
+      "duration_s": 2.233,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "which reduces certain types of bugs.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.687
+      },
+      "window": {
+        "end_s": 230.433,
+        "start_s": 228.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3469
+      },
+      "duration_s": 3.7,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "However, Java is often criticized for being verbose.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.1622
+      },
+      "window": {
+        "end_s": 234.133,
+        "start_s": 230.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2943
+      },
+      "duration_s": 3.767,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Simple tasks require a lot of boilerplate code.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.1237
+      },
+      "window": {
+        "end_s": 237.9,
+        "start_s": 234.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1646
+      },
+      "duration_s": 3.667,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Performance is good, but still slower than low-level languages",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.4543
+      },
+      "window": {
+        "end_s": 241.567,
+        "start_s": 237.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1519
+      },
+      "duration_s": 1.866,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "due to virtual machine overhead.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.6795
+      },
+      "window": {
+        "end_s": 243.433,
+        "start_s": 241.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0998
+      },
+      "duration_s": 6.267,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.167,
+        "leading_silence_s": 0.167,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Despite this, Java remains a core language for large-scale, long-term software systems.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 1.9148
+      },
+      "window": {
+        "end_s": 249.7,
+        "start_s": 243.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0799
+      },
+      "duration_s": 3.967,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "JavaScript. JavaScript was created in 1995 by",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 1.7646
+      },
+      "window": {
+        "end_s": 253.667,
+        "start_s": 249.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1574
+      },
+      "duration_s": 1.833,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Brendan Eich while working at Netscape.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.2733
+      },
+      "window": {
+        "end_s": 255.5,
+        "start_s": 253.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0858
+      },
+      "duration_s": 0.833,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.833,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.833,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 256.333,
+        "start_s": 255.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3842
+      },
+      "duration_s": 2.067,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.186,
+        "leading_silence_s": 0.186,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Surprisingly, it was written in just",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.9028
+      },
+      "window": {
+        "end_s": 258.4,
+        "start_s": 256.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1192
+      },
+      "duration_s": 1.467,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "about 10 days.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.045
+      },
+      "window": {
+        "end_s": 259.867,
+        "start_s": 258.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3759
+      },
+      "duration_s": 2.066,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.212,
+        "leading_silence_s": 0.212,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Its original purpose was simple:",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.4201
+      },
+      "window": {
+        "end_s": 261.933,
+        "start_s": 259.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1074
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "add interactivity to web pages.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.0833
+      },
+      "window": {
+        "end_s": 264.333,
+        "start_s": 261.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2995
+      },
+      "duration_s": 3.5,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Over time, JavaScript grew far beyond that role.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.2857
+      },
+      "window": {
+        "end_s": 267.833,
+        "start_s": 264.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2865
+      },
+      "duration_s": 4.134,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.127,
+        "leading_silence_s": 0.127,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It is now the only language that runs natively in web browsers.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.9028
+      },
+      "window": {
+        "end_s": 271.967,
+        "start_s": 267.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3438
+      },
+      "duration_s": 7.233,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Every modern website depends on JavaScript for animations, forms, dynamic content, and user interaction.",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 1.9356
+      },
+      "window": {
+        "end_s": 279.2,
+        "start_s": 271.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3873
+      },
+      "duration_s": 2.7,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "With the introduction of server-side runtimes,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 281.9,
+        "start_s": 279.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2529
+      },
+      "duration_s": 5.1,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "JavaScript also moved to back-end development, enabling full-stack applications.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 1.7647
+      },
+      "window": {
+        "end_s": 287.0,
+        "start_s": 281.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2496
+      },
+      "duration_s": 2.633,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "JavaScript is powerful, but messy.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 1.899
+      },
+      "window": {
+        "end_s": 289.633,
+        "start_s": 287.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1472
+      },
+      "duration_s": 8.0,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.367,
+        "leading_silence_s": 0.367,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Its loose typing, strange edge cases, and asynchronous behavior often confuse developers. Despite these problems,",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 1.875
+      },
+      "window": {
+        "end_s": 297.633,
+        "start_s": 289.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0639
+      },
+      "duration_s": 1.834,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "JavaScript is unavoidable. If",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.181
+      },
+      "window": {
+        "end_s": 299.467,
+        "start_s": 297.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0793
+      },
+      "duration_s": 2.666,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you work on the web, you work with JavaScript. TypeScript.",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.7509
+      },
+      "window": {
+        "end_s": 302.133,
+        "start_s": 299.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0745
+      },
+      "duration_s": 2.2,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.707,
+        "leading_silence_s": 0.707,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "TypeScript was created by",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.8182
+      },
+      "window": {
+        "end_s": 304.333,
+        "start_s": 302.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.21
+      },
+      "duration_s": 1.1,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Anders Hejlsberg",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.8182
+      },
+      "window": {
+        "end_s": 305.433,
+        "start_s": 304.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2115
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.167,
+        "leading_silence_s": 0.167,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "at Microsoft.",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 306.633,
+        "start_s": 305.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4248
+      },
+      "duration_s": 4.5,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.167,
+        "leading_silence_s": 0.167,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It was designed to fix JavaScript's biggest problems without replacing it.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.4444
+      },
+      "window": {
+        "end_s": 311.133,
+        "start_s": 306.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2587
+      },
+      "duration_s": 3.567,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "TypeScript adds static typing on top of JavaScript,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.2428
+      },
+      "window": {
+        "end_s": 314.7,
+        "start_s": 311.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1299
+      },
+      "duration_s": 5.433,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "allowing developers to catch many errors during development instead of at runtime.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.2087
+      },
+      "window": {
+        "end_s": 320.133,
+        "start_s": 314.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1305
+      },
+      "duration_s": 7.934,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This makes large codebases easier to scale and maintain. Today, most serious web applications use TypeScript.",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 2.0166
+      },
+      "window": {
+        "end_s": 328.067,
+        "start_s": 320.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1368
+      },
+      "duration_s": 2.7,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-090.png"
+      },
+      "index": 90,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The downside is added complexity.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 1.8519
+      },
+      "window": {
+        "end_s": 330.767,
+        "start_s": 328.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1552
+      },
+      "duration_s": 3.233,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-091.png"
+      },
+      "index": 91,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Developers must learn types and compilation steps,",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.1652
+      },
+      "window": {
+        "end_s": 334.0,
+        "start_s": 330.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1012
+      },
+      "duration_s": 1.6,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-092.png"
+      },
+      "index": 92,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but for large projects,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 335.6,
+        "start_s": 334.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0655
+      },
+      "duration_s": 4.567,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-093.png"
+      },
+      "index": 93,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "TypeScript has become the standard way to write safe and maintainable JavaScript.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.6275
+      },
+      "window": {
+        "end_s": 340.167,
+        "start_s": 335.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0964
+      },
+      "duration_s": 0.533,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-094.png"
+      },
+      "index": 94,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Lua.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.8762
+      },
+      "window": {
+        "end_s": 340.7,
+        "start_s": 340.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0679
+      },
+      "duration_s": 3.267,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-095.png"
+      },
+      "index": 95,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Lua was created in the early 1990s by Roberto",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.7548
+      },
+      "window": {
+        "end_s": 343.967,
+        "start_s": 340.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2068
+      },
+      "duration_s": 1.533,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-096.png"
+      },
+      "index": 96,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.473,
+        "leading_silence_s": 0.473,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Ierusalimschy and",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.3046
+      },
+      "window": {
+        "end_s": 345.5,
+        "start_s": 343.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1101
+      },
+      "duration_s": 1.367,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-097.png"
+      },
+      "index": 97,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "his team in Brazil. It",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.6576
+      },
+      "window": {
+        "end_s": 346.867,
+        "start_s": 345.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.406
+      },
+      "duration_s": 2.433,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-098.png"
+      },
+      "index": 98,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "was designed to be lightweight, fast,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.4661
+      },
+      "window": {
+        "end_s": 349.3,
+        "start_s": 346.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0966
+      },
+      "duration_s": 2.8,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-099.png"
+      },
+      "index": 99,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and easy to embed inside other programs.",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 352.1,
+        "start_s": 349.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1753
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-100.png"
+      },
+      "index": 100,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Lua is widely used",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.3995
+      },
+      "window": {
+        "end_s": 353.767,
+        "start_s": 352.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1862
+      },
+      "duration_s": 2.366,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-101.png"
+      },
+      "index": 101,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "in game development, game engines,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.1133
+      },
+      "window": {
+        "end_s": 356.133,
+        "start_s": 353.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0515
+      },
+      "duration_s": 1.334,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-102.png"
+      },
+      "index": 102,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and embedded systems. Many",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.9985
+      },
+      "window": {
+        "end_s": 357.467,
+        "start_s": 356.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2991
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-103.png"
+      },
+      "index": 103,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "games use",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 358.367,
+        "start_s": 357.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0797
+      },
+      "duration_s": 1.266,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-104.png"
+      },
+      "index": 104,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Lua for scripting game",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.1596
+      },
+      "window": {
+        "end_s": 359.633,
+        "start_s": 358.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0664
+      },
+      "duration_s": 5.467,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-105.png"
+      },
+      "index": 105,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.207,
+        "leading_silence_s": 0.207,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "play logic while the core engine is written in faster languages like C or C++.",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.7437
+      },
+      "window": {
+        "end_s": 365.1,
+        "start_s": 359.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3502
+      },
+      "duration_s": 3.833,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-106.png"
+      },
+      "index": 106,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Lua's clean syntax makes it easy to learn and modify.",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.6089
+      },
+      "window": {
+        "end_s": 368.933,
+        "start_s": 365.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2174
+      },
+      "duration_s": 3.567,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-107.png"
+      },
+      "index": 107,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Lua is rarely used alone for large applications.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 2.2428
+      },
+      "window": {
+        "end_s": 372.5,
+        "start_s": 368.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1429
+      },
+      "duration_s": 6.367,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-108.png"
+      },
+      "index": 108,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Its real strength lies in acting as a scripting layer that gives flexibility and control to bigger systems.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.67
+      },
+      "window": {
+        "end_s": 378.867,
+        "start_s": 372.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1976
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-109.png"
+      },
+      "index": 109,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Go lang. Go lang was created at",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.0004
+      },
+      "window": {
+        "end_s": 381.2,
+        "start_s": 378.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1755
+      },
+      "duration_s": 0.867,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-110.png"
+      },
+      "index": 110,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Google by Rob",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.4602
+      },
+      "window": {
+        "end_s": 382.067,
+        "start_s": 381.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3293
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-111.png"
+      },
+      "index": 111,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Pike, Ken Thompson, and Robert Griesemer.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 385.067,
+        "start_s": 382.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2824
+      },
+      "duration_s": 6.566,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-112.png"
+      },
+      "index": 112,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.453,
+        "leading_silence_s": 0.453,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Their goal was to build a language that was simple, fast, and perfect for large-scale back-end systems.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.5891
+      },
+      "window": {
+        "end_s": 391.633,
+        "start_s": 385.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3114
+      },
+      "duration_s": 4.5,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-113.png"
+      },
+      "index": 113,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Go lang removes unnecessary complexity and focuses on clarity.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.0
+      },
+      "window": {
+        "end_s": 396.133,
+        "start_s": 391.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1452
+      },
+      "duration_s": 6.8,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-114.png"
+      },
+      "index": 114,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Its built-in support for concurrency makes it ideal for servers, cloud platforms, and distributed systems.",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.2059
+      },
+      "window": {
+        "end_s": 402.933,
+        "start_s": 396.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0805
+      },
+      "duration_s": 5.5,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-115.png"
+      },
+      "index": 115,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.507,
+        "leading_silence_s": 0.507,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Many modern infrastructure tools and back-end services are written in Go lang. The trade-off",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.5455
+      },
+      "window": {
+        "end_s": 408.433,
+        "start_s": 402.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.245
+      },
+      "duration_s": 1.534,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-116.png"
+      },
+      "index": 116,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.447,
+        "leading_silence_s": 0.447,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is flexibility. Go",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.9557
+      },
+      "window": {
+        "end_s": 409.967,
+        "start_s": 408.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1393
+      },
+      "duration_s": 4.166,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-117.png"
+      },
+      "index": 117,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "lang intentionally limits features, which can feel restrictive,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 1.9203
+      },
+      "window": {
+        "end_s": 414.133,
+        "start_s": 409.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1655
+      },
+      "duration_s": 4.5,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-118.png"
+      },
+      "index": 118,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but for scalable and reliable systems, Go lang is extremely effective.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.4444
+      },
+      "window": {
+        "end_s": 418.633,
+        "start_s": 414.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.14
+      },
+      "duration_s": 1.734,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-119.png"
+      },
+      "index": 119,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Rust. Rust was created by",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.8835
+      },
+      "window": {
+        "end_s": 420.367,
+        "start_s": 418.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1462
+      },
+      "duration_s": 1.166,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-120.png"
+      },
+      "index": 120,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Graydon Hoare at Mozilla",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.4305
+      },
+      "window": {
+        "end_s": 421.533,
+        "start_s": 420.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0562
+      },
+      "duration_s": 3.967,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-121.png"
+      },
+      "index": 121,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.547,
+        "leading_silence_s": 0.547,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to solve one major problem, memory safety. It aims",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.2687
+      },
+      "window": {
+        "end_s": 425.5,
+        "start_s": 421.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2939
+      },
+      "duration_s": 5.6,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-122.png"
+      },
+      "index": 122,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to deliver the performance of C and C++ without their most dangerous bugs. Rust",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 431.1,
+        "start_s": 425.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2191
+      },
+      "duration_s": 5.1,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-123.png"
+      },
+      "index": 123,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.38,
+        "leading_silence_s": 0.38,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "uses a strict ownership system that catches memory errors at compile time.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.3529
+      },
+      "window": {
+        "end_s": 436.2,
+        "start_s": 431.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1057
+      },
+      "duration_s": 7.933,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-124.png"
+      },
+      "index": 124,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.4,
+        "leading_silence_s": 0.4,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This prevents issues like null pointer crashes and data races before the program runs. Rust is now used in operating",
+        "trailing_silence_s": 0.0,
+        "word_count": 20,
+        "words_per_s": 2.5211
+      },
+      "window": {
+        "end_s": 444.133,
+        "start_s": 436.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0589
+      },
+      "duration_s": 0.8,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-125.png"
+      },
+      "index": 125,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.307,
+        "leading_silence_s": 0.307,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "systems,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.25
+      },
+      "window": {
+        "end_s": 444.933,
+        "start_s": 444.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0798
+      },
+      "duration_s": 0.934,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-126.png"
+      },
+      "index": 126,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "browsers,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.0707
+      },
+      "window": {
+        "end_s": 445.867,
+        "start_s": 444.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0891
+      },
+      "duration_s": 1.633,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-127.png"
+      },
+      "index": 127,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and critical infrastructure. Rust",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.4495
+      },
+      "window": {
+        "end_s": 447.5,
+        "start_s": 445.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2507
+      },
+      "duration_s": 1.8,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-128.png"
+      },
+      "index": 128,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.34,
+        "leading_silence_s": 0.34,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "has a steep learning curve.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.7778
+      },
+      "window": {
+        "end_s": 449.3,
+        "start_s": 447.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1638
+      },
+      "duration_s": 4.833,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-129.png"
+      },
+      "index": 129,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Its rules can feel overwhelming at first, and compilation times can be slow,",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.6898
+      },
+      "window": {
+        "end_s": 454.133,
+        "start_s": 449.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1927
+      },
+      "duration_s": 6.1337,
+      "files": {
+        "thumb": "swagprof-every-language-7min-thumbs/scene-130.png"
+      },
+      "index": 130,
+      "narration": {
+        "coverage": 0.9859,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "but for developers who want performance and safety, Rust represents the future of systems programming.",
+        "trailing_silence_s": 0.0867,
+        "word_count": 15,
+        "words_per_s": 2.4455
+      },
+      "window": {
+        "end_s": 460.2667,
+        "start_s": 454.133
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "swagprof-every-language-7min",
+  "source_url": "https://www.youtube.com/watch?v=Nx5Kk-WEhAg",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1040,
+    "word_level": true
+  },
+  "video": {
+    "channel": "Swag Professor Explain ",
+    "duration_s": 460.0,
+    "title": "Every Major Programming Languages Explained in 7 Minutes!",
+    "upload_date": "20260606"
+  }
+}

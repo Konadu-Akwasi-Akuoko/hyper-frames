@@ -70,7 +70,12 @@ the loop survives a fresh session.
    with `data-composition-src="compositions/..."` on a scene track. For each,
    note `data-composition-id`, `data-start`, `data-duration`, `data-track-index`.
    Ignore the voiceover `<audio>`, the `substrate-layer`, `sfx-layer`,
-   `music-layer` — those are not scenes.
+   `music-layer` — those are not scenes. Also read the **root `#root` host's
+   `data-width`/`data-height`** to fix the **canvas orientation**: default is
+   landscape **1920×1080**; a **1080×1920** root means this is a **portrait**
+   video (a Short / vertical) — read `reference/portrait-mode.md` once and author
+   every block at 1080×1920. You don't choose orientation; you honor whatever the
+   root declares (the `shorts-creator` skill scaffolds the portrait root).
 4. Compute the **frontier** = the max of (`data-start` + `data-duration`) across
    scene hosts. That's how far into the audio the video is already authored. An
    index with only the scaffold (root + voiceover + maybe substrate, zero scene
@@ -248,8 +253,9 @@ Append a host `<div>` after the previous scene host, using the attribute set
 from `reference/composition-structure.md`:
 
 - `data-composition-id`, `data-composition-src="compositions/<NN>-<slug>.html"`,
-  `data-width="1920"`, `data-height="1080"`, and
-  `style="position:absolute;inset:0;z-index:N"`.
+  the host's **`data-width`/`data-height` matching the root** — landscape
+  `1920`/`1080`, or **portrait `1080`/`1920`** when the root is vertical (Step A;
+  `reference/portrait-mode.md`) — and `style="position:absolute;inset:0;z-index:N"`.
 - `data-start = chunk_start − 0.5` — a 0.5s overlap so the incoming scene can
   transition over the outgoing one.
 - `data-duration` spans to the next chunk's first word so there's no visual gap.
@@ -285,7 +291,8 @@ ever sees it. Per pass:
    this loop cheap. Pass the subagent the detailed rubric from
    `reference/verify-and-preview.md` (legibility, palette/type per `design.md`,
    anchored emphasis landing on the word, contrast, reads-as-a-diagram, no chrome,
-   **seam bleed (text or graphic)**, **per-scene distinctness**, **imagery fit**,
+   **seam bleed (text or graphic)**, **per-scene distinctness**,
+   **archetype-family rotation (windowed, across a long subtopic)**, **imagery fit**,
    **type-role fidelity**, **liveliness**).
    It returns `{frame, verdict, flags[]}` per image. **Claude does the looking — no
    Gemini, no `--describe`.**
@@ -482,6 +489,11 @@ that used to live in the root `CLAUDE.md`:
   approval, the per-pass write/regenerate steps (and the informational notes
   `sfx-plan` prints — pre-roll / overlap / clamped), and the **final whole-video
   reconcile checklist** before the `audio-bed-music` hand-off.
+- `reference/portrait-mode.md` — the **vertical 1080×1920 delta** for Shorts:
+  the dimension flip (root + CSS + viewport + every host), phone-UI **safe
+  areas**, how each archetype family reflows landscape→vertical, the faster cut
+  cadence, and the subscribe-CTA beat (the native portrait registry blocks +
+  where the "Subscribe" cue sits). Read once when Step A finds a portrait root.
 - `reference/house-rules.md` — no editorial chrome; the music bed is the last
   pass (and is someone else's pass).
 - `reference/state-and-resume.md` — reading `index.html` into a frontier,

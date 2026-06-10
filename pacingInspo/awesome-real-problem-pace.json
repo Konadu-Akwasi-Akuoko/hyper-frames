@@ -1,0 +1,4001 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 10.5062,
+    "longest_hold_s": 17.266,
+    "pct_cuts_in_pause": 0.0,
+    "pct_sentence_aligned": 0.0414,
+    "scene_count": 146,
+    "scene_duration_s": {
+      "max": 17.266,
+      "median": 3.3785,
+      "min": 0.333,
+      "p25": 1.26,
+      "p75": 5.566
+    },
+    "soft_transition_count": 38,
+    "words_per_s_mean": 3.353
+  },
+  "proxy": {
+    "duration_s": 611.0688,
+    "max_height": 1080
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 1.335,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 0.8202,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.24,
+        "sentence_aligned": false,
+        "text": "I know we are all sick",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 4.4944
+      },
+      "window": {
+        "end_s": 1.335,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0742
+      },
+      "duration_s": 0.458,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.104,
+        "leading_silence_s": 0.104,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and tired",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.3668
+      },
+      "window": {
+        "end_s": 1.793,
+        "start_s": 1.335
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2062
+      },
+      "duration_s": 0.876,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.046,
+        "leading_silence_s": 0.046,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of both the AI",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.5662
+      },
+      "window": {
+        "end_s": 2.669,
+        "start_s": 1.793
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0756
+      },
+      "duration_s": 1.794,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.131,
+        "leading_silence_s": 0.131,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "taking our jobs narrative and",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.7871
+      },
+      "window": {
+        "end_s": 4.463,
+        "start_s": 2.669
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0834
+      },
+      "duration_s": 0.542,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.017,
+        "leading_silence_s": 0.017,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the AI",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.69
+      },
+      "window": {
+        "end_s": 5.005,
+        "start_s": 4.463
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0608
+      },
+      "duration_s": 3.395,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.035,
+        "leading_silence_s": 0.035,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "skeptic narrative where we are trying to gatekeep programming while",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.9455
+      },
+      "window": {
+        "end_s": 8.4,
+        "start_s": 5.005
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1623
+      },
+      "duration_s": 2.236,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "pretending people outside our profession really care",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.1306
+      },
+      "window": {
+        "end_s": 10.636,
+        "start_s": 8.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0979
+      },
+      "duration_s": 3.461,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.164,
+        "leading_silence_s": 0.164,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "about code quality and best practices of clean architecture.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.6004
+      },
+      "window": {
+        "end_s": 14.097,
+        "start_s": 10.636
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0897
+      },
+      "duration_s": 1.003,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.223,
+        "leading_silence_s": 0.223,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But luckily for",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.991
+      },
+      "window": {
+        "end_s": 15.1,
+        "start_s": 14.097
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1365
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "us, real software professionals are still active",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.9167
+      },
+      "window": {
+        "end_s": 17.5,
+        "start_s": 15.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1956
+      },
+      "duration_s": 2.27,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "in the industry and they still have a lot to",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 4.4053
+      },
+      "window": {
+        "end_s": 19.77,
+        "start_s": 17.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0534
+      },
+      "duration_s": 0.459,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.07,
+        "leading_silence_s": 0.07,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "say about the",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 6.5359
+      },
+      "window": {
+        "end_s": 20.229,
+        "start_s": 19.77
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0792
+      },
+      "duration_s": 3.628,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.171,
+        "leading_silence_s": 0.171,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "future of our careers. In the past few days, both the creator of",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.5832
+      },
+      "window": {
+        "end_s": 23.857,
+        "start_s": 20.229
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0919
+      },
+      "duration_s": 8.3,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.063,
+        "leading_silence_s": 0.063,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "C++ and the creator of Zigg shared their thoughts on the current state of programming. And surprisingly, both of them seemed completely unaffected by the current",
+        "trailing_silence_s": 0.0,
+        "word_count": 26,
+        "words_per_s": 3.1325
+      },
+      "window": {
+        "end_s": 32.157,
+        "start_s": 23.857
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0919
+      },
+      "duration_s": 1.143,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.163,
+        "leading_silence_s": 0.163,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "hype and psychosis",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.6247
+      },
+      "window": {
+        "end_s": 33.3,
+        "start_s": 32.157
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2061
+      },
+      "duration_s": 1.526,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "most of us are going through these days.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 5.2425
+      },
+      "window": {
+        "end_s": 34.826,
+        "start_s": 33.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1007
+      },
+      "duration_s": 2.128,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.694,
+        "leading_silence_s": 0.694,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And I'm not going to lie,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.8195
+      },
+      "window": {
+        "end_s": 36.954,
+        "start_s": 34.826
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0993
+      },
+      "duration_s": 2.246,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.006,
+        "leading_silence_s": 0.006,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "hearing people still focusing on what really matters",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.5619
+      },
+      "window": {
+        "end_s": 39.2,
+        "start_s": 36.954
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2932
+      },
+      "duration_s": 2.8,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is a breath of fresh air. So, in this Monday morning",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.9286
+      },
+      "window": {
+        "end_s": 42.0,
+        "start_s": 39.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2102
+      },
+      "duration_s": 1.877,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "review, we'll look at the main ideas and",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.2621
+      },
+      "window": {
+        "end_s": 43.877,
+        "start_s": 42.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0552
+      },
+      "duration_s": 6.173,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.123,
+        "leading_silence_s": 0.123,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "takeaways real hardcore software developers are bringing into this discussion and why their view of the future is",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 2.9159
+      },
+      "window": {
+        "end_s": 50.05,
+        "start_s": 43.877
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0885
+      },
+      "duration_s": 1.25,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.029,
+        "leading_silence_s": 0.029,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "probably more useful than another",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 51.3,
+        "start_s": 50.05
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1814
+      },
+      "duration_s": 1.044,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "viral post explaining",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.8736
+      },
+      "window": {
+        "end_s": 52.344,
+        "start_s": 51.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0802
+      },
+      "duration_s": 0.542,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.375,
+        "leading_silence_s": 0.375,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "how",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.845
+      },
+      "window": {
+        "end_s": 52.886,
+        "start_s": 52.344
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0604
+      },
+      "duration_s": 4.213,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.074,
+        "leading_silence_s": 0.074,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "a prompt is basically a senior engineer. Now, for a bit of context, Biana",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.323
+      },
+      "window": {
+        "end_s": 57.099,
+        "start_s": 52.886
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.059
+      },
+      "duration_s": 2.419,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Stro created C++ at Bell",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.067
+      },
+      "window": {
+        "end_s": 59.518,
+        "start_s": 57.099
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0539
+      },
+      "duration_s": 6.465,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.002,
+        "leading_silence_s": 0.002,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Labs, which at the time was about the best engineering lab on the planet. Among other things, Bell Labs gave us Unix",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 3.4029
+      },
+      "window": {
+        "end_s": 65.983,
+        "start_s": 59.518
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1056
+      },
+      "duration_s": 2.627,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.097,
+        "leading_silence_s": 0.097,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "C and a small little thing called the transistor.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.426
+      },
+      "window": {
+        "end_s": 68.61,
+        "start_s": 65.983
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0756
+      },
+      "duration_s": 1.877,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.03,
+        "leading_silence_s": 0.03,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Andrew Kelly, on the other hand, created",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.7294
+      },
+      "window": {
+        "end_s": 70.487,
+        "start_s": 68.61
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0523
+      },
+      "duration_s": 6.213,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Zigg roughly four decades later, mostly alone, after quitting his job in 2018 to run a nonprofit that made $670,000",
+        "trailing_silence_s": 0.0,
+        "word_count": 20,
+        "words_per_s": 3.2191
+      },
+      "window": {
+        "end_s": 76.7,
+        "start_s": 70.487
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2401
+      },
+      "duration_s": 4.172,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 1.54,
+        "leading_silence_s": 1.54,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "last year. I'm mentioning the money because it tells you",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.3969
+      },
+      "window": {
+        "end_s": 80.872,
+        "start_s": 76.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0729
+      },
+      "duration_s": 7.428,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.088,
+        "leading_silence_s": 0.088,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "where Kelly is standing. He pays himself 154,000 a year, which is the median senior engineer salary in New York. And when",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 2.9618
+      },
+      "window": {
+        "end_s": 88.3,
+        "start_s": 80.872
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2181
+      },
+      "duration_s": 1.29,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the interviewer floated a",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.1008
+      },
+      "window": {
+        "end_s": 89.59,
+        "start_s": 88.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2852
+      },
+      "duration_s": 4.21,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.09,
+        "leading_silence_s": 0.09,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "hypothetical 100 million with no strings attached, his answer was that he'd stick",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.0879
+      },
+      "window": {
+        "end_s": 93.8,
+        "start_s": 89.59
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1475
+      },
+      "duration_s": 9.637,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it in the bank, never fund raise again, and would still refuse to grow the team past 10 people since he has no interest in spending his life managing 100 people. I don't know about you, but",
+        "trailing_silence_s": 0.0,
+        "word_count": 37,
+        "words_per_s": 3.8394
+      },
+      "window": {
+        "end_s": 103.437,
+        "start_s": 93.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0824
+      },
+      "duration_s": 0.625,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.163,
+        "leading_silence_s": 0.163,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "I find it",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.8
+      },
+      "window": {
+        "end_s": 104.062,
+        "start_s": 103.437
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0608
+      },
+      "duration_s": 6.966,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.178,
+        "leading_silence_s": 0.178,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "refreshing to see that there still are passionate people out there building serious technology without immediately turning it into a growth at all",
+        "trailing_silence_s": 0.0,
+        "word_count": 23,
+        "words_per_s": 3.3018
+      },
+      "window": {
+        "end_s": 111.028,
+        "start_s": 104.062
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0785
+      },
+      "duration_s": 0.417,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.091,
+        "leading_silence_s": 0.091,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "cost startup,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.7962
+      },
+      "window": {
+        "end_s": 111.445,
+        "start_s": 111.028
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0577
+      },
+      "duration_s": 1.418,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.555,
+        "leading_silence_s": 0.555,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "then selling it to Anthropic",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.5261
+      },
+      "window": {
+        "end_s": 112.863,
+        "start_s": 111.445
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0681
+      },
+      "duration_s": 0.584,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.497,
+        "leading_silence_s": 0.497,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.7123
+      },
+      "window": {
+        "end_s": 113.447,
+        "start_s": 112.863
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2612
+      },
+      "duration_s": 3.503,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "rewriting the whole codebase using LLMs. Don't worry, we'll",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.5692
+      },
+      "window": {
+        "end_s": 116.95,
+        "start_s": 113.447
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1006
+      },
+      "duration_s": 3.879,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.169,
+        "leading_silence_s": 0.169,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "get back to this one in a minute. Kelly was in the news recently because",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.867
+      },
+      "window": {
+        "end_s": 120.829,
+        "start_s": 116.95
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0734
+      },
+      "duration_s": 0.375,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.051,
+        "leading_silence_s": 0.051,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "he banned",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 5.3333
+      },
+      "window": {
+        "end_s": 121.204,
+        "start_s": 120.829
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4959
+      },
+      "duration_s": 5.214,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.156,
+        "leading_silence_s": 0.156,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "AI generated contributions. The reason is straightforward and we heard it in the past with projects",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.0687
+      },
+      "window": {
+        "end_s": 126.418,
+        "start_s": 121.204
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.14
+      },
+      "duration_s": 2.92,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.381,
+        "leading_silence_s": 0.381,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "like curl. In short, these contributions are",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.3973
+      },
+      "window": {
+        "end_s": 129.338,
+        "start_s": 126.418
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0665
+      },
+      "duration_s": 0.625,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.022,
+        "leading_silence_s": 0.022,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "mostly the kind",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.8
+      },
+      "window": {
+        "end_s": 129.963,
+        "start_s": 129.338
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0998
+      },
+      "duration_s": 5.005,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.037,
+        "leading_silence_s": 0.037,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "of garbage that burns through maintainers time. For context, at the moment, Zeke has over 200",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.1968
+      },
+      "window": {
+        "end_s": 134.968,
+        "start_s": 129.963
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2494
+      },
+      "duration_s": 5.232,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.312,
+        "leading_silence_s": 0.312,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "open pool requests and only a small group of people available to review them. But the open PR count",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.6315
+      },
+      "window": {
+        "end_s": 140.2,
+        "start_s": 134.968
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2819
+      },
+      "duration_s": 14.329,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and the wasted hours are not the main driver for his decision. The reason actually worth talking about is something Kelly calls contributor poker. The idea is that reviewing an outside contribution is never really about one specific patch. If all he wanted was the code,",
+        "trailing_silence_s": 0.0,
+        "word_count": 46,
+        "words_per_s": 3.2103
+      },
+      "window": {
+        "end_s": 154.529,
+        "start_s": 140.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0941
+      },
+      "duration_s": 9.271,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.35,
+        "leading_silence_s": 0.35,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it would be faster to write it himself. The real point of accepting contributions is mentorship. Basically, you review someone's work because this is how a drive by contributor",
+        "trailing_silence_s": 0.0,
+        "word_count": 29,
+        "words_per_s": 3.128
+      },
+      "window": {
+        "end_s": 163.8,
+        "start_s": 154.529
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3742
+      },
+      "duration_s": 4.5,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.36,
+        "leading_silence_s": 0.36,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "slowly turns into a regular and a regular eventually turns into someone you trust",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.1111
+      },
+      "window": {
+        "end_s": 168.3,
+        "start_s": 163.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1451
+      },
+      "duration_s": 3.246,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "with the core. So, every review is a bet where you are trying",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 4.0049
+      },
+      "window": {
+        "end_s": 171.546,
+        "start_s": 168.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0991
+      },
+      "duration_s": 1.054,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.134,
+        "leading_silence_s": 0.134,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to decide if this is",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.7438
+      },
+      "window": {
+        "end_s": 172.6,
+        "start_s": 171.546
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3623
+      },
+      "duration_s": 7.872,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "a person you can invest time in, who will be a better systems programmer on the other side and maybe stick around, or is this someone who shows up once and vanishes",
+        "trailing_silence_s": 0.0,
+        "word_count": 32,
+        "words_per_s": 4.065
+      },
+      "window": {
+        "end_s": 180.472,
+        "start_s": 172.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0512
+      },
+      "duration_s": 5.228,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.407,
+        "leading_silence_s": 0.407,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and this touches on a very important topic in today's world. Ensuring that competent people",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 2.8692
+      },
+      "window": {
+        "end_s": 185.7,
+        "start_s": 180.472
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3356
+      },
+      "duration_s": 12.9,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "continue to enter the ecosystem is a key responsibility for any serious software project. Unfortunately, this part of the process has been largely ignored in the past couple of years. Everyone is so focused on optimizing workflows with",
+        "trailing_silence_s": 0.0,
+        "word_count": 38,
+        "words_per_s": 2.9457
+      },
+      "window": {
+        "end_s": 198.6,
+        "start_s": 185.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.137
+      },
+      "duration_s": 9.024,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "AI that almost nobody wants to invest in training juniors anymore. I'm sure we'll all get to enjoy the consequences of these brilliant decisions in a few years when there's nobody left in",
+        "trailing_silence_s": 0.0,
+        "word_count": 33,
+        "words_per_s": 3.6569
+      },
+      "window": {
+        "end_s": 207.624,
+        "start_s": 198.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0778
+      },
+      "duration_s": 5.464,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.216,
+        "leading_silence_s": 0.216,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the office who can cover for you when you're sick or need a vacation. But if you wanted to find the one",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 4.0264
+      },
+      "window": {
+        "end_s": 213.088,
+        "start_s": 207.624
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1012
+      },
+      "duration_s": 0.5,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.032,
+        "leading_silence_s": 0.032,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "person least",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 213.588,
+        "start_s": 213.088
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0511
+      },
+      "duration_s": 1.001,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.252,
+        "leading_silence_s": 0.252,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "likely to be an AI",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.995
+      },
+      "window": {
+        "end_s": 214.589,
+        "start_s": 213.588
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1015
+      },
+      "duration_s": 0.626,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.29,
+        "leading_silence_s": 0.29,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "skeptic,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.5974
+      },
+      "window": {
+        "end_s": 215.215,
+        "start_s": 214.589
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0743
+      },
+      "duration_s": 13.722,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.145,
+        "leading_silence_s": 0.145,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it would probably be Bja Strastrop. His entire career has been about handing more work to the machine. He'll tell you that compilers today beat handwritten assembly in most cases and that the clever hand optimized code people wrote in the '9s",
+        "trailing_silence_s": 0.0,
+        "word_count": 42,
+        "words_per_s": 3.0608
+      },
+      "window": {
+        "end_s": 228.937,
+        "start_s": 215.215
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0615
+      },
+      "duration_s": 4.338,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.022,
+        "leading_silence_s": 0.022,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is often slower today because the hardware has moved underneath it. His whole philosophy",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.2273
+      },
+      "window": {
+        "end_s": 233.275,
+        "start_s": 228.937
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4232
+      },
+      "duration_s": 3.753,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.405,
+        "leading_silence_s": 0.405,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is that you write at a high level, let the compiler do the work",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.7303
+      },
+      "window": {
+        "end_s": 237.028,
+        "start_s": 233.275
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1844
+      },
+      "duration_s": 1.172,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.092,
+        "leading_silence_s": 0.092,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and only reach under",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.413
+      },
+      "window": {
+        "end_s": 238.2,
+        "start_s": 237.028
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2582
+      },
+      "duration_s": 4.918,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the hood for the two or 3% of code where it actually matters. He even has a name",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 3.66
+      },
+      "window": {
+        "end_s": 243.118,
+        "start_s": 238.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1207
+      },
+      "duration_s": 4.921,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.002,
+        "leading_silence_s": 0.002,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "for this and it is called negative overhead abstraction. The core idea is that a well-written",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.2514
+      },
+      "window": {
+        "end_s": 248.039,
+        "start_s": 243.118
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0607
+      },
+      "duration_s": 2.67,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.28,
+        "leading_silence_s": 0.28,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "abstraction doesn't cost you performance and",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.2472
+      },
+      "window": {
+        "end_s": 250.709,
+        "start_s": 248.039
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0574
+      },
+      "duration_s": 8.3,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.011,
+        "leading_silence_s": 0.011,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it can actually be faster than the clever low-level version you'd write by hand. Mostly because the compiler has more information to work with than you do. So, this really",
+        "trailing_silence_s": 0.0,
+        "word_count": 30,
+        "words_per_s": 3.6145
+      },
+      "window": {
+        "end_s": 259.009,
+        "start_s": 250.709
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.075
+      },
+      "duration_s": 0.417,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.111,
+        "leading_silence_s": 0.111,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is a man",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 7.1942
+      },
+      "window": {
+        "end_s": 259.426,
+        "start_s": 259.009
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0611
+      },
+      "duration_s": 5.297,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.174,
+        "leading_silence_s": 0.174,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "who has spent 40 years arguing that the machine should do more of your job. So, when this specific person says",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.9645
+      },
+      "window": {
+        "end_s": 264.723,
+        "start_s": 259.426
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0668
+      },
+      "duration_s": 0.625,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.237,
+        "leading_silence_s": 0.237,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "AI",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.6
+      },
+      "window": {
+        "end_s": 265.348,
+        "start_s": 264.723
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1072
+      },
+      "duration_s": 2.419,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.012,
+        "leading_silence_s": 0.012,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "generated code is a problem, it's worth understanding",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.3072
+      },
+      "window": {
+        "end_s": 267.767,
+        "start_s": 265.348
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4319
+      },
+      "duration_s": 3.433,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.152,
+        "leading_silence_s": 0.152,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "why because it is not the reflex of someone who fears automation.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.4955
+      },
+      "window": {
+        "end_s": 271.2,
+        "start_s": 267.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1456
+      },
+      "duration_s": 2.115,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.48,
+        "leading_silence_s": 0.48,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But before discussing his objections,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.3641
+      },
+      "window": {
+        "end_s": 273.315,
+        "start_s": 271.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0503
+      },
+      "duration_s": 0.417,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.365,
+        "leading_silence_s": 0.365,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "please",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3981
+      },
+      "window": {
+        "end_s": 273.732,
+        "start_s": 273.315
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2162
+      },
+      "duration_s": 3.568,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "let me tell you a few words about today's sponsor. Are you tired of wrestling",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 4.204
+      },
+      "window": {
+        "end_s": 277.3,
+        "start_s": 273.732
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.5153
+      },
+      "duration_s": 14.366,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "with a fragmented AI stack? Building modern AI applications usually means you're stuck patching together an operational database, a separate vector database, embedding models, and a search engine. Managing these separate systems requires complex pipelines.",
+        "trailing_silence_s": 0.0,
+        "word_count": 35,
+        "words_per_s": 2.4363
+      },
+      "window": {
+        "end_s": 291.666,
+        "start_s": 277.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2278
+      },
+      "duration_s": 8.134,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.494,
+        "leading_silence_s": 0.494,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This increases your total cost of ownership and introduces data steness. So your AI answers questions based on outdated information.",
+        "trailing_silence_s": 0.0,
+        "word_count": 20,
+        "words_per_s": 2.4588
+      },
+      "window": {
+        "end_s": 299.8,
+        "start_s": 291.666
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.626,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Enter MongoDB. It is the",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.075
+      },
+      "window": {
+        "end_s": 301.426,
+        "start_s": 299.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0649
+      },
+      "duration_s": 2.127,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.094,
+        "leading_silence_s": 0.094,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "data platform for AI that collapses these",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.291
+      },
+      "window": {
+        "end_s": 303.553,
+        "start_s": 301.426
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1618
+      },
+      "duration_s": 4.88,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.206,
+        "leading_silence_s": 0.206,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "three layers into a single unified architecture, MongoDB. With MongoDB's flexible",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.2541
+      },
+      "window": {
+        "end_s": 308.433,
+        "start_s": 303.553
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1044
+      },
+      "duration_s": 7.716,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.367,
+        "leading_silence_s": 0.367,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "document model, you can store your source data right alongside its vector embeddings. Because there is no data movement between disjointed systems,",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 2.8512
+      },
+      "window": {
+        "end_s": 316.149,
+        "start_s": 308.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2425
+      },
+      "duration_s": 3.045,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.091,
+        "leading_silence_s": 0.091,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "your AI models have instant access to the freshest data.",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.2841
+      },
+      "window": {
+        "end_s": 319.194,
+        "start_s": 316.149
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8856
+      },
+      "duration_s": 6.214,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.486,
+        "leading_silence_s": 0.486,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Plus, it integrates seamlessly with major model providers and standard frameworks such as Langchain and Lama Index.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.7358
+      },
+      "window": {
+        "end_s": 325.408,
+        "start_s": 319.194
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1043
+      },
+      "duration_s": 6.59,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.511,
+        "leading_silence_s": 0.511,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Simplify your architecture, reduce complexity, and speed up your time to market using a single API. Discover",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.5797
+      },
+      "window": {
+        "end_s": 331.998,
+        "start_s": 325.408
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1786
+      },
+      "duration_s": 4.202,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.082,
+        "leading_silence_s": 0.082,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "how to build smarter applications at mongodb.com today. Back to the video.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.8558
+      },
+      "window": {
+        "end_s": 336.2,
+        "start_s": 331.998
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.5228
+      },
+      "duration_s": 2.013,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.439,
+        "leading_silence_s": 0.439,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Stra outlines that an LLM",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.4839
+      },
+      "window": {
+        "end_s": 338.213,
+        "start_s": 336.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.075
+      },
+      "duration_s": 0.834,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.426,
+        "leading_silence_s": 0.426,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is trained",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.3981
+      },
+      "window": {
+        "end_s": 339.047,
+        "start_s": 338.213
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1114
+      },
+      "duration_s": 5.047,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-090.png"
+      },
+      "index": 90,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "on existing code, which means it can only ever produce a remix of code that already exists.",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 3.3683
+      },
+      "window": {
+        "end_s": 344.094,
+        "start_s": 339.047
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1944
+      },
+      "duration_s": 7.674,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-091.png"
+      },
+      "index": 91,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.066,
+        "leading_silence_s": 0.066,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It imitates old code and it inherits old codes bugs and old codes performance characteristics. and Beyond's entire job since the 80s",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 2.8668
+      },
+      "window": {
+        "end_s": 351.768,
+        "start_s": 344.094
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1113
+      },
+      "duration_s": 1.132,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-092.png"
+      },
+      "index": 92,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.072,
+        "leading_silence_s": 0.072,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is getting people to",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.5336
+      },
+      "window": {
+        "end_s": 352.9,
+        "start_s": 351.768
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2553
+      },
+      "duration_s": 4.04,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-093.png"
+      },
+      "index": 93,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "stop writing code the old way and adopt the newer, better techniques the language has",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.7129
+      },
+      "window": {
+        "end_s": 356.94,
+        "start_s": 352.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0687
+      },
+      "duration_s": 4.46,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-094.png"
+      },
+      "index": 94,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.099,
+        "leading_silence_s": 0.099,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "grown. Some would argue that C++ is actually helping people do the",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.6906
+      },
+      "window": {
+        "end_s": 361.4,
+        "start_s": 356.94
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1276
+      },
+      "duration_s": 5.6,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-095.png"
+      },
+      "index": 95,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "opposite, but that's a discussion for another day. So, from where he's standing, the tool is structurally pointed",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 3.2143
+      },
+      "window": {
+        "end_s": 367.0,
+        "start_s": 361.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1785
+      },
+      "duration_s": 7.541,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-096.png"
+      },
+      "index": 96,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "backwards. It's very good at producing more of the thing he spent his career trying to get people to move away from. An interesting point he's making",
+        "trailing_silence_s": 0.0,
+        "word_count": 27,
+        "words_per_s": 3.5804
+      },
+      "window": {
+        "end_s": 374.541,
+        "start_s": 367.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.084
+      },
+      "duration_s": 0.459,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-097.png"
+      },
+      "index": 97,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.019,
+        "leading_silence_s": 0.019,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is that",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.3573
+      },
+      "window": {
+        "end_s": 375.0,
+        "start_s": 374.541
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0511
+      },
+      "duration_s": 6.673,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-098.png"
+      },
+      "index": 98,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "when a human makes a change, that change is localized. you know roughly what got touched, so when something breaks, you know where to look. With",
+        "trailing_silence_s": 0.0,
+        "word_count": 26,
+        "words_per_s": 3.8963
+      },
+      "window": {
+        "end_s": 381.673,
+        "start_s": 375.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0959
+      },
+      "duration_s": 2.711,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-099.png"
+      },
+      "index": 99,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "an LLM, the relationship between what you asked for and",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.6887
+      },
+      "window": {
+        "end_s": 384.384,
+        "start_s": 381.673
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0724
+      },
+      "duration_s": 3.616,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-100.png"
+      },
+      "index": 100,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.176,
+        "leading_silence_s": 0.176,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "what actually changed isn't stable. Tweak the prompt a little and",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.042
+      },
+      "window": {
+        "end_s": 388.0,
+        "start_s": 384.384
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1852
+      },
+      "duration_s": 6.6,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-101.png"
+      },
+      "index": 101,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it can rewrite far more than you expected, which means every change is a fresh round of rechecking the whole output. On top of that,",
+        "trailing_silence_s": 0.0,
+        "word_count": 25,
+        "words_per_s": 3.7879
+      },
+      "window": {
+        "end_s": 394.6,
+        "start_s": 388.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1805
+      },
+      "duration_s": 10.179,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-102.png"
+      },
+      "index": 102,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "it tends to generate more code than a person would for the same task. So there's simply more surface area to verify in the first place. And the volume of output code is actually a very known problem.",
+        "trailing_silence_s": 0.0,
+        "word_count": 38,
+        "words_per_s": 3.7332
+      },
+      "window": {
+        "end_s": 404.779,
+        "start_s": 394.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0775
+      },
+      "duration_s": 2.878,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-103.png"
+      },
+      "index": 103,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.181,
+        "leading_silence_s": 0.181,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The team behind BAN, which is quickly transitioning from a",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.4746
+      },
+      "window": {
+        "end_s": 407.657,
+        "start_s": 404.779
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.053
+      },
+      "duration_s": 1.143,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-104.png"
+      },
+      "index": 104,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.102,
+        "leading_silence_s": 0.102,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "JavaScript runtime to",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.6247
+      },
+      "window": {
+        "end_s": 408.8,
+        "start_s": 407.657
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1329
+      },
+      "duration_s": 3.362,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-105.png"
+      },
+      "index": 105,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "an LLM add-on, decided to use Claude to rewrite its entire codebase",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.5693
+      },
+      "window": {
+        "end_s": 412.162,
+        "start_s": 408.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0736
+      },
+      "duration_s": 3.545,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-106.png"
+      },
+      "index": 106,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.558,
+        "leading_silence_s": 0.558,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "from Zigg to Rust. I'm not even going to get into the reasons",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.6671
+      },
+      "window": {
+        "end_s": 415.707,
+        "start_s": 412.162
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0783
+      },
+      "duration_s": 7.674,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-107.png"
+      },
+      "index": 107,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "behind this exercise because I'm sure we'll get to read an anthropic blog post praising Claude for writing an entire JS runtime from scratch.",
+        "trailing_silence_s": 0.0,
+        "word_count": 24,
+        "words_per_s": 3.1274
+      },
+      "window": {
+        "end_s": 423.381,
+        "start_s": 415.707
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1208
+      },
+      "duration_s": 0.459,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-108.png"
+      },
+      "index": 108,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.059,
+        "leading_silence_s": 0.059,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It would",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 4.3573
+      },
+      "window": {
+        "end_s": 423.84,
+        "start_s": 423.381
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0518
+      },
+      "duration_s": 2.127,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-109.png"
+      },
+      "index": 109,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "not be the first time they have done this. What",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 4.7015
+      },
+      "window": {
+        "end_s": 425.967,
+        "start_s": 423.84
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0697
+      },
+      "duration_s": 0.626,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-110.png"
+      },
+      "index": 110,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "I find fascinating",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.7923
+      },
+      "window": {
+        "end_s": 426.593,
+        "start_s": 425.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1235
+      },
+      "duration_s": 4.755,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-111.png"
+      },
+      "index": 111,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.687,
+        "leading_silence_s": 0.687,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is that the rewrite itself resulted in 400,000 lines of additional code and",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 2.734
+      },
+      "window": {
+        "end_s": 431.348,
+        "start_s": 426.593
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0606
+      },
+      "duration_s": 1.71,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-112.png"
+      },
+      "index": 112,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.092,
+        "leading_silence_s": 0.092,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "too many issues to count here.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.5088
+      },
+      "window": {
+        "end_s": 433.058,
+        "start_s": 431.348
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0942
+      },
+      "duration_s": 0.417,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-113.png"
+      },
+      "index": 113,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.222,
+        "leading_silence_s": 0.222,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3981
+      },
+      "window": {
+        "end_s": 433.475,
+        "start_s": 433.058
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0628
+      },
+      "duration_s": 1.877,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-114.png"
+      },
+      "index": 114,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.045,
+        "leading_silence_s": 0.045,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "let me clarify that the ZIG project",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.7294
+      },
+      "window": {
+        "end_s": 435.352,
+        "start_s": 433.475
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1072
+      },
+      "duration_s": 7.448,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-115.png"
+      },
+      "index": 115,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.247,
+        "leading_silence_s": 0.247,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "had around half a million lines of code and after the rewrite it got to close to 1 million lines of code. Of course, Bun creator and",
+        "trailing_silence_s": 0.0,
+        "word_count": 27,
+        "words_per_s": 3.6251
+      },
+      "window": {
+        "end_s": 442.8,
+        "start_s": 435.352
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2181
+      },
+      "duration_s": 7.9,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-116.png"
+      },
+      "index": 116,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "now anthropic employee Jared Sumner noted that the rewrite successfully passed 99.8% of Bun's pre-existing test suite on Linux.",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 2.4051
+      },
+      "window": {
+        "end_s": 450.7,
+        "start_s": 442.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1398
+      },
+      "duration_s": 3.003,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-117.png"
+      },
+      "index": 117,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.499,
+        "leading_silence_s": 0.499,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But then the community looked under the hood and found",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.33
+      },
+      "window": {
+        "end_s": 453.703,
+        "start_s": 450.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0928
+      },
+      "duration_s": 1.197,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-118.png"
+      },
+      "index": 118,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.137,
+        "leading_silence_s": 0.137,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "massive underlying debt.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.5063
+      },
+      "window": {
+        "end_s": 454.9,
+        "start_s": 453.703
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2481
+      },
+      "duration_s": 5.0,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-119.png"
+      },
+      "index": 119,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.699,
+        "leading_silence_s": 0.699,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Because the translation was a literal file by file port from a language with manual",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.0
+      },
+      "window": {
+        "end_s": 459.9,
+        "start_s": 454.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1527
+      },
+      "duration_s": 9.611,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-120.png"
+      },
+      "index": 120,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "memory management to one with strict compile time rules, the AI took a massive shortcut to make the code compile by spamming unsafe blocks everywhere. For those unfamiliar with Rust,",
+        "trailing_silence_s": 0.0,
+        "word_count": 30,
+        "words_per_s": 3.1214
+      },
+      "window": {
+        "end_s": 469.511,
+        "start_s": 459.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0561
+      },
+      "duration_s": 0.333,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-121.png"
+      },
+      "index": 121,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.333,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.333,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 469.844,
+        "start_s": 469.511
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0575
+      },
+      "duration_s": 16.767,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-122.png"
+      },
+      "index": 122,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.075,
+        "leading_silence_s": 0.075,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the unsafe keyword disables a specific set of compiler enforced guarantees inside a controlled scope. This is not really considered a bad practice, but it comes with a very strict expectation that the unsafe code has to be small, intentional, and justified. So, they took a code base written in a language with manual memory",
+        "trailing_silence_s": 0.0,
+        "word_count": 55,
+        "words_per_s": 3.2803
+      },
+      "window": {
+        "end_s": 486.611,
+        "start_s": 469.844
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0534
+      },
+      "duration_s": 4.889,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-123.png"
+      },
+      "index": 123,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.268,
+        "leading_silence_s": 0.268,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "management, rewrote it into a language whose entire selling point is that the compiler stops",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.0681
+      },
+      "window": {
+        "end_s": 491.5,
+        "start_s": 486.611
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1609
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-124.png"
+      },
+      "index": 124,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.259,
+        "leading_silence_s": 0.259,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you from making memory mistakes, and",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.0
+      },
+      "window": {
+        "end_s": 493.5,
+        "start_s": 491.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1405
+      },
+      "duration_s": 1.369,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-125.png"
+      },
+      "index": 125,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to get the translation to",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.6523
+      },
+      "window": {
+        "end_s": 494.869,
+        "start_s": 493.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.054
+      },
+      "duration_s": 1.131,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-126.png"
+      },
+      "index": 126,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.17,
+        "leading_silence_s": 0.17,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "actually compile,",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.7683
+      },
+      "window": {
+        "end_s": 496.0,
+        "start_s": 494.869
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2193
+      },
+      "duration_s": 4.6,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-127.png"
+      },
+      "index": 127,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the AI reached for the one keyword that switches those guarantees back off, and it reached",
+        "trailing_silence_s": 0.0,
+        "word_count": 16,
+        "words_per_s": 3.4783
+      },
+      "window": {
+        "end_s": 500.6,
+        "start_s": 496.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2589
+      },
+      "duration_s": 5.322,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-128.png"
+      },
+      "index": 128,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.039,
+        "leading_silence_s": 0.039,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "for it everywhere. But regardless of all the AI slop we're used to by now, both Bja and Kelly",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.5701
+      },
+      "window": {
+        "end_s": 505.922,
+        "start_s": 500.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1447
+      },
+      "duration_s": 1.378,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-129.png"
+      },
+      "index": 129,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.238,
+        "leading_silence_s": 0.238,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "agree the biggest issue in",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.6284
+      },
+      "window": {
+        "end_s": 507.3,
+        "start_s": 505.922
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2201
+      },
+      "duration_s": 17.266,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-130.png"
+      },
+      "index": 130,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the industry is the people who are supposed to exist in 10 years and currently aren't being made. Bja puts it plainly, \"Companies want to get rid of junior developers because there are a lot of them and they're expensive to train, but a senior is just a junior that someone bothered to invest in for a decade.\" That's the same point Kelly",
+        "trailing_silence_s": 0.0,
+        "word_count": 63,
+        "words_per_s": 3.6488
+      },
+      "window": {
+        "end_s": 524.566,
+        "start_s": 507.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0586
+      },
+      "duration_s": 1.034,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-131.png"
+      },
+      "index": 131,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.314,
+        "leading_silence_s": 0.314,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "makes with contributor",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.9014
+      },
+      "window": {
+        "end_s": 525.6,
+        "start_s": 524.566
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2164
+      },
+      "duration_s": 12.521,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-132.png"
+      },
+      "index": 132,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.32,
+        "leading_silence_s": 0.32,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "poker from the opposite end of the field. The review is a good mechanism for knowledge transfer. someone who knows explaining it to someone who doesn't should not be considered overhead getting in the way of the work. And that brings us to",
+        "trailing_silence_s": 0.0,
+        "word_count": 43,
+        "words_per_s": 3.4342
+      },
+      "window": {
+        "end_s": 538.121,
+        "start_s": 525.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4797
+      },
+      "duration_s": 5.297,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-133.png"
+      },
+      "index": 133,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.119,
+        "leading_silence_s": 0.119,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the awesome trivia of the day. >> Right now, the airline industry",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.0766
+      },
+      "window": {
+        "end_s": 543.418,
+        "start_s": 538.121
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3028
+      },
+      "duration_s": 4.482,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-134.png"
+      },
+      "index": 134,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.101,
+        "leading_silence_s": 0.101,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "is living through the exact scenario I just described. In the US, pilots are required",
+        "trailing_silence_s": 0.0,
+        "word_count": 15,
+        "words_per_s": 3.3467
+      },
+      "window": {
+        "end_s": 547.9,
+        "start_s": 543.418
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2042
+      },
+      "duration_s": 5.736,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-135.png"
+      },
+      "index": 135,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "by law to retire at 65. So, a known number of senior captains walk out the door every single year. Of",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.6611
+      },
+      "window": {
+        "end_s": 553.636,
+        "start_s": 547.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0711
+      },
+      "duration_s": 0.417,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-136.png"
+      },
+      "index": 136,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.044,
+        "leading_silence_s": 0.044,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "course,",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3981
+      },
+      "window": {
+        "end_s": 554.053,
+        "start_s": 553.636
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0526
+      },
+      "duration_s": 9.552,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-137.png"
+      },
+      "index": 137,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you can't just hire a replacement captain because a captain is a first officer who has spent years in the right seat learning the job from the person who's now retiring. So, when a",
+        "trailing_silence_s": 0.0,
+        "word_count": 34,
+        "words_per_s": 3.5595
+      },
+      "window": {
+        "end_s": 563.605,
+        "start_s": 554.053
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0736
+      },
+      "duration_s": 11.72,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-138.png"
+      },
+      "index": 138,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.075,
+        "leading_silence_s": 0.075,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "captain leaves, an airline has to promote from within, which opens a first officer vacancy, which cascades all the way down the roster to the entry level. A few years back, when the retirements and the travel rebound hit at the same",
+        "trailing_silence_s": 0.0,
+        "word_count": 42,
+        "words_per_s": 3.5836
+      },
+      "window": {
+        "end_s": 575.325,
+        "start_s": 563.605
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1044
+      },
+      "duration_s": 1.475,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-139.png"
+      },
+      "index": 139,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.115,
+        "leading_silence_s": 0.115,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "time, the bottleneck was a",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.3898
+      },
+      "window": {
+        "end_s": 576.8,
+        "start_s": 575.325
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2819
+      },
+      "duration_s": 1.82,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-140.png"
+      },
+      "index": 140,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "shortage of qualified captains. So,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.7473
+      },
+      "window": {
+        "end_s": 578.62,
+        "start_s": 576.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1219
+      },
+      "duration_s": 0.584,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-141.png"
+      },
+      "index": 141,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "over 500",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.4247
+      },
+      "window": {
+        "end_s": 579.204,
+        "start_s": 578.62
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0515
+      },
+      "duration_s": 13.805,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-142.png"
+      },
+      "index": 142,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.396,
+        "leading_silence_s": 0.396,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "regional aircraft got parked because of it. flights disappeared from small airports where the original route was the only one anybody flew. The forecasts have the gap staying open into the 2030 because a freshly licensed pilot still needs 3",
+        "trailing_silence_s": 0.0,
+        "word_count": 40,
+        "words_per_s": 2.8975
+      },
+      "window": {
+        "end_s": 593.009,
+        "start_s": 579.204
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0927
+      },
+      "duration_s": 1.191,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-143.png"
+      },
+      "index": 143,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.031,
+        "leading_silence_s": 0.031,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "to 5 years of accumulating",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.1982
+      },
+      "window": {
+        "end_s": 594.2,
+        "start_s": 593.009
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2179
+      },
+      "duration_s": 3.981,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-144.png"
+      },
+      "index": 144,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.28,
+        "leading_silence_s": 0.28,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "hours before an airline will put them up front. So get ready because",
+        "trailing_silence_s": 0.0,
+        "word_count": 13,
+        "words_per_s": 3.2655
+      },
+      "window": {
+        "end_s": 598.181,
+        "start_s": 594.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0515
+      },
+      "duration_s": 0.667,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-145.png"
+      },
+      "index": 145,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.218,
+        "leading_silence_s": 0.218,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that's where we'll",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.4978
+      },
+      "window": {
+        "end_s": 598.848,
+        "start_s": 598.181
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0719
+      },
+      "duration_s": 12.2208,
+      "files": {
+        "thumb": "awesome-real-problem-thumbs/scene-146.png"
+      },
+      "index": 146,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.272,
+        "leading_silence_s": 0.272,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "all be in a couple of years. If you liked this video, you should consider joining our community where I'm posting more dedicated weekly content. Please don't forget to smash all the buttons. And until next time, thank you for watching.",
+        "trailing_silence_s": 0.0,
+        "word_count": 41,
+        "words_per_s": 3.3549
+      },
+      "window": {
+        "end_s": 611.0688,
+        "start_s": 598.848
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "awesome-real-problem",
+  "source_url": "https://www.youtube.com/watch?v=2AzUeddzxF0",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1995,
+    "word_level": true
+  },
+  "video": {
+    "channel": "Awesome",
+    "duration_s": 611.0,
+    "title": "Two of the best programmers alive agree on the real problem",
+    "upload_date": "20260608"
+  }
+}

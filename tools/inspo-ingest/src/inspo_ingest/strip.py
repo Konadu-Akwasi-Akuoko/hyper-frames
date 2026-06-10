@@ -37,6 +37,8 @@ def ytdlp_download_argv(
     sleep_requests: int = 1,
     max_height: int | None = None,
     prefer_avc: bool = False,
+    subtitles_langs: tuple[str, ...] | None = None,
+    write_info_json: bool = False,
 ) -> list[str]:
     """Build the yt-dlp argv that downloads a clip (or whole video) at the chosen resolution.
 
@@ -66,6 +68,15 @@ def ytdlp_download_argv(
     decode is a few seconds either way and the best codec gives the crispest still.
 
     ``--sleep-requests`` guards against YouTube's per-request throttle on repeated runs.
+
+    ``subtitles_langs`` opts in to fetching subtitle tracks in the SAME invocation
+    (bot-wall discipline: one yt-dlp call total for pace mode, never a separate subtitle
+    fetch). It appends the verified flag group ``--write-auto-subs --write-subs
+    --sub-langs <comma-joined> --sub-format json3/srv3/vtt --sleep-subtitles 2`` —
+    json3 first because it is the only format carrying word-level ``tOffsetMs`` timing.
+    ``write_info_json`` appends ``--write-info-json`` so video metadata (title, channel,
+    upload date, duration) lands beside the proxy. Both default off, keeping the existing
+    clip/scan argv byte-identical.
     """
     argv = ["yt-dlp"]
     if start_s is not None and end_s is not None:
@@ -91,8 +102,21 @@ def ytdlp_download_argv(
         str(sleep_requests),
         "-o",
         out_template,
-        url,
     ]
+    if subtitles_langs is not None:
+        argv += [
+            "--write-auto-subs",
+            "--write-subs",
+            "--sub-langs",
+            ",".join(subtitles_langs),
+            "--sub-format",
+            "json3/srv3/vtt",
+            "--sleep-subtitles",
+            "2",
+        ]
+    if write_info_json:
+        argv.append("--write-info-json")
+    argv.append(url)
     return argv
 
 
@@ -251,3 +275,43 @@ def filmstrip_argv(*, frame_paths: list[Path], out_path: Path, frame_width: int)
         str(out_path),
     ]
     return argv
+
+
+def contact_sheet_argvs(
+    *,
+    frame_paths: list[Path],
+    out_path: Path,
+    row_len: int,
+    tmp_dir: Path,
+) -> tuple[list[list[str]], list[str]]:
+    """Build the ImageMagick argvs that tile thumbnails into a row-major contact sheet.
+
+    Returns ``(argvs, row_paths)``: the argv lists to run in order, plus the intermediate
+    row PNG paths for the caller to delete afterwards. Rows are built with
+    ``magick … +append`` (horizontal) and stacked with ``magick … -append`` (vertical) —
+    NEVER ``magick montage`` and never ``-annotate``, both of which need a configured font
+    that Homebrew ImageMagick builds can lack ("unable to read font" abort). Ordering is
+    row-major by the caller-supplied ``frame_paths``; the accompanying report documents
+    which scene each tile is, so no text is drawn on the sheet itself.
+
+    A single row needs no stacking step: one ``+append`` writes straight to ``out_path``
+    and ``row_paths`` is empty. A short final row is padded by ``-append``'s transparent
+    ``-background none`` so the stack stays rectangular.
+    """
+    if not frame_paths:
+        raise ValueError("frame_paths must be non-empty")
+    if row_len < 1:
+        raise ValueError("row_len must be >= 1")
+    rows = [frame_paths[i : i + row_len] for i in range(0, len(frame_paths), row_len)]
+    if len(rows) == 1:
+        argv = ["magick", *(str(p) for p in rows[0]), "+append", str(out_path)]
+        return [argv], []
+    row_paths = [str(tmp_dir / f"row-{i:03d}.png") for i in range(len(rows))]
+    argvs = [
+        ["magick", *(str(p) for p in row), "+append", row_path]
+        for row, row_path in zip(rows, row_paths)
+    ]
+    argvs.append(
+        ["magick", *row_paths, "-background", "none", "-append", str(out_path)]
+    )
+    return argvs, row_paths

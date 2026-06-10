@@ -1,0 +1,3677 @@
+{
+  "aggregates": {
+    "cuts_per_minute": 18.6421,
+    "longest_hold_s": 30.334,
+    "pct_cuts_in_pause": 0.0301,
+    "pct_sentence_aligned": 0.2331,
+    "scene_count": 134,
+    "scene_duration_s": {
+      "max": 30.334,
+      "median": 1.7835,
+      "min": 0.233,
+      "p25": 1.0415,
+      "p75": 2.9585
+    },
+    "soft_transition_count": 7,
+    "words_per_s_mean": 3.0808
+  },
+  "proxy": {
+    "duration_s": 405.5333,
+    "max_height": 480
+  },
+  "scene_detect": {
+    "dedupe_s": 0.2,
+    "hard": {
+      "abs_floor": 0.05,
+      "min_gap_s": 0.3,
+      "ratio": 6.0,
+      "window_s": 3.0
+    },
+    "soft": {
+      "adj_max": 0.1,
+      "min_plateau_s": 0.5,
+      "proc_width": 256,
+      "sample_fps": 10.0,
+      "suppress_s": 1.0,
+      "wide_baseline_s": 1.0,
+      "wide_min": 0.12
+    }
+  },
+  "scenes": [
+    {
+      "boundary": {
+        "kind": "start",
+        "score": null
+      },
+      "duration_s": 0.233,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-001.png"
+      },
+      "index": 1,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Computer",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 4.2918
+      },
+      "window": {
+        "end_s": 0.233,
+        "start_s": 0.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 14.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-002.png"
+      },
+      "index": 2,
+      "narration": {
+        "coverage": 0.9136,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.407,
+        "leading_silence_s": 0.407,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "science grads now face a 6.1% unemployment rate. That's ranked seventh highest among all college majors, higher than the overall recent graduate average of 4.8% even philosophy majors have better job prospects at 3.2%.",
+        "trailing_silence_s": 1.278,
+        "word_count": 34,
+        "words_per_s": 2.2973
+      },
+      "window": {
+        "end_s": 15.033,
+        "start_s": 0.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-003.png"
+      },
+      "index": 3,
+      "narration": {
+        "coverage": 0.9478,
+        "cut_in_pause": true,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 1.325,
+        "sentence_aligned": false,
+        "text": "If you're a developer expecting",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 5.5556
+      },
+      "window": {
+        "end_s": 15.933,
+        "start_s": 15.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2526
+      },
+      "duration_s": 2.834,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-004.png"
+      },
+      "index": 4,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.507,
+        "leading_silence_s": 0.507,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "$200,000 in 2026,",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.0586
+      },
+      "window": {
+        "end_s": 18.767,
+        "start_s": 15.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.221
+      },
+      "duration_s": 1.666,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-005.png"
+      },
+      "index": 5,
+      "narration": {
+        "coverage": 0.9232,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the game has completely changed",
+        "trailing_silence_s": 0.128,
+        "word_count": 5,
+        "words_per_s": 3.0012
+      },
+      "window": {
+        "end_s": 20.433,
+        "start_s": 18.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0521
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-006.png"
+      },
+      "index": 6,
+      "narration": {
+        "coverage": 0.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.495,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.3,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 20.733,
+        "start_s": 20.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.179
+      },
+      "duration_s": 2.367,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-007.png"
+      },
+      "index": 7,
+      "narration": {
+        "coverage": 0.9717,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.495,
+        "sentence_aligned": false,
+        "text": "and most people are playing by the old rules.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.8023
+      },
+      "window": {
+        "end_s": 23.1,
+        "start_s": 20.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3539
+      },
+      "duration_s": 1.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-008.png"
+      },
+      "index": 8,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Here's what nobody's telling you.",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.5714
+      },
+      "window": {
+        "end_s": 24.5,
+        "start_s": 23.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8222
+      },
+      "duration_s": 4.667,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-009.png"
+      },
+      "index": 9,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "While national software engineer salaries grew modestly to $130,000 median",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.1427
+      },
+      "window": {
+        "end_s": 29.167,
+        "start_s": 24.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.05
+      },
+      "duration_s": 2.366,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-010.png"
+      },
+      "index": 10,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "entry-level positions have collapsed. Tech",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.1133
+      },
+      "window": {
+        "end_s": 31.533,
+        "start_s": 29.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1471
+      },
+      "duration_s": 3.1,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-011.png"
+      },
+      "index": 11,
+      "narration": {
+        "coverage": 0.9406,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "salary growth hit just 3.3% in 2025",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.2581
+      },
+      "window": {
+        "end_s": 34.633,
+        "start_s": 31.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2512
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-012.png"
+      },
+      "index": 12,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.367,
+        "leading_silence_s": 0.367,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and real purchasing",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.5707
+      },
+      "window": {
+        "end_s": 35.8,
+        "start_s": 34.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.2462
+      },
+      "duration_s": 1.967,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-013.png"
+      },
+      "index": 13,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "power is stagnating. Meanwhile,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.0336
+      },
+      "window": {
+        "end_s": 37.767,
+        "start_s": 35.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-014.png"
+      },
+      "index": 14,
+      "narration": {
+        "coverage": 0.8517,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "fresh CS grads who were promised",
+        "trailing_silence_s": 0.267,
+        "word_count": 6,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 39.567,
+        "start_s": 37.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2446
+      },
+      "duration_s": 3.633,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-015.png"
+      },
+      "index": 15,
+      "narration": {
+        "coverage": 0.9909,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.3,
+        "sentence_aligned": false,
+        "text": "$165,000 starting salaries are now fighting",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 1.6515
+      },
+      "window": {
+        "end_s": 43.2,
+        "start_s": 39.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1974
+      },
+      "duration_s": 1.7,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-016.png"
+      },
+      "index": 16,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "for $80,000 offers",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.7647
+      },
+      "window": {
+        "end_s": 44.9,
+        "start_s": 43.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3423
+      },
+      "duration_s": 1.667,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-017.png"
+      },
+      "index": 17,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "when they can even get interviews. But",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 4.1992
+      },
+      "window": {
+        "end_s": 46.567,
+        "start_s": 44.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4278
+      },
+      "duration_s": 0.966,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-018.png"
+      },
+      "index": 18,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.113,
+        "leading_silence_s": 0.113,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "here's the twist. AI",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.1408
+      },
+      "window": {
+        "end_s": 47.533,
+        "start_s": 46.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 2.567,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-019.png"
+      },
+      "index": 19,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "engineers at the same companies, they're pulling $917,000",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.1165
+      },
+      "window": {
+        "end_s": 50.1,
+        "start_s": 47.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0727
+      },
+      "duration_s": 2.967,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-020.png"
+      },
+      "index": 20,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 1.86,
+        "leading_silence_s": 1.86,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "in total compensation.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.0111
+      },
+      "window": {
+        "end_s": 53.067,
+        "start_s": 50.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 1.0
+      },
+      "duration_s": 1.333,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-021.png"
+      },
+      "index": 21,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The money didn't disappear, it",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.7509
+      },
+      "window": {
+        "end_s": 54.4,
+        "start_s": 53.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0909
+      },
+      "duration_s": 0.633,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-022.png"
+      },
+      "index": 22,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "moved",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.5798
+      },
+      "window": {
+        "end_s": 55.033,
+        "start_s": 54.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4001
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-023.png"
+      },
+      "index": 23,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and in the next few minutes,",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 56.233,
+        "start_s": 55.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2402
+      },
+      "duration_s": 0.567,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-024.png"
+      },
+      "index": 24,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "I'm going to show",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 7.0547
+      },
+      "window": {
+        "end_s": 56.8,
+        "start_s": 56.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0851
+      },
+      "duration_s": 1.467,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-025.png"
+      },
+      "index": 25,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you exactly where it went,",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.4083
+      },
+      "window": {
+        "end_s": 58.267,
+        "start_s": 56.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2389
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-026.png"
+      },
+      "index": 26,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "why this happened",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 58.867,
+        "start_s": 58.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6311
+      },
+      "duration_s": 1.566,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-027.png"
+      },
+      "index": 27,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.413,
+        "leading_silence_s": 0.413,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and what you need to do",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.8314
+      },
+      "window": {
+        "end_s": 60.433,
+        "start_s": 58.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2749
+      },
+      "duration_s": 1.567,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-028.png"
+      },
+      "index": 28,
+      "narration": {
+        "coverage": 0.7256,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "before you become obsolete.",
+        "trailing_silence_s": 0.43,
+        "word_count": 4,
+        "words_per_s": 2.5526
+      },
+      "window": {
+        "end_s": 62.0,
+        "start_s": 60.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3994
+      },
+      "duration_s": 1.033,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-029.png"
+      },
+      "index": 29,
+      "narration": {
+        "coverage": 0.8838,
+        "cut_in_pause": true,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.55,
+        "sentence_aligned": true,
+        "text": "So here's what actually",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.8722
+      },
+      "window": {
+        "end_s": 63.033,
+        "start_s": 62.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0624
+      },
+      "duration_s": 1.067,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-030.png"
+      },
+      "index": 30,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "happened. Between 2021",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.8116
+      },
+      "window": {
+        "end_s": 64.1,
+        "start_s": 63.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.4365
+      },
+      "duration_s": 19.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-031.png"
+      },
+      "index": 31,
+      "narration": {
+        "coverage": 0.9578,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.66,
+        "leading_silence_s": 0.66,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and 2022, tech companies went absolutely insane. They were hiring at any cost pushing entry-level salaries way beyond sustainable levels. Fresh boot camp grads were getting $150,000 to $180,000 offers in Silicon Valley. Companies were terrified of missing out on digital transformation so they over hired and",
+        "trailing_silence_s": 0.0,
+        "word_count": 47,
+        "words_per_s": 2.3737
+      },
+      "window": {
+        "end_s": 83.9,
+        "start_s": 64.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1009
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-032.png"
+      },
+      "index": 32,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "they over paid. Now, they're",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 85.4,
+        "start_s": 83.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.3025
+      },
+      "duration_s": 8.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-033.png"
+      },
+      "index": 33,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "correcting. Over 100,000 tech workers were laid off in 2025 alone. That's on top of the 150,000 laid off in 2024. But here's",
+        "trailing_silence_s": 0.0,
+        "word_count": 23,
+        "words_per_s": 2.6136
+      },
+      "window": {
+        "end_s": 94.2,
+        "start_s": 85.4
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1335
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-034.png"
+      },
+      "index": 34,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.12,
+        "leading_silence_s": 0.12,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the brutal",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 94.6,
+        "start_s": 94.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1337
+      },
+      "duration_s": 0.433,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-035.png"
+      },
+      "index": 35,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "part.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.3095
+      },
+      "window": {
+        "end_s": 95.033,
+        "start_s": 94.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2354
+      },
+      "duration_s": 1.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-036.png"
+      },
+      "index": 36,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This isn't a recession.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.8571
+      },
+      "window": {
+        "end_s": 96.433,
+        "start_s": 95.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3797
+      },
+      "duration_s": 2.334,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-037.png"
+      },
+      "index": 37,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "This is entry-level positions collapsing and",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.5707
+      },
+      "window": {
+        "end_s": 98.767,
+        "start_s": 96.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3691
+      },
+      "duration_s": 1.1,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-038.png"
+      },
+      "index": 38,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "reality looks very",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.7273
+      },
+      "window": {
+        "end_s": 99.867,
+        "start_s": 98.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1413
+      },
+      "duration_s": 1.566,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-039.png"
+      },
+      "index": 39,
+      "narration": {
+        "coverage": 0.9432,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "different than what we were sold.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.8314
+      },
+      "window": {
+        "end_s": 101.433,
+        "start_s": 99.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4618
+      },
+      "duration_s": 0.734,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-040.png"
+      },
+      "index": 40,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "See, while everyone",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.0872
+      },
+      "window": {
+        "end_s": 102.167,
+        "start_s": 101.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1865
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-041.png"
+      },
+      "index": 41,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.393,
+        "leading_silence_s": 0.393,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "was rushing into tech,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 103.667,
+        "start_s": 102.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3013
+      },
+      "duration_s": 1.3,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-042.png"
+      },
+      "index": 42,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "something else was happening.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.0769
+      },
+      "window": {
+        "end_s": 104.967,
+        "start_s": 103.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4003
+      },
+      "duration_s": 8.633,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-043.png"
+      },
+      "index": 43,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Computer science became the most popular major during the boom years. Universities pumped out record numbers of CS grads, 112,000 bachelor's degrees in 2023",
+        "trailing_silence_s": 0.0,
+        "word_count": 24,
+        "words_per_s": 2.78
+      },
+      "window": {
+        "end_s": 113.6,
+        "start_s": 104.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0744
+      },
+      "duration_s": 3.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-044.png"
+      },
+      "index": 44,
+      "narration": {
+        "coverage": 0.9253,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.64,
+        "leading_silence_s": 0.64,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "alone up from previous years. Everyone learned the same stack,",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 2.7778
+      },
+      "window": {
+        "end_s": 117.2,
+        "start_s": 113.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1993
+      },
+      "duration_s": 4.533,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-045.png"
+      },
+      "index": 45,
+      "narration": {
+        "coverage": 0.8771,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.28,
+        "leading_silence_s": 0.28,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "built the same portfolio projects. Supply exploded, demand collapsed.",
+        "trailing_silence_s": 0.557,
+        "word_count": 9,
+        "words_per_s": 1.9854
+      },
+      "window": {
+        "end_s": 121.733,
+        "start_s": 117.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2028
+      },
+      "duration_s": 6.134,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-046.png"
+      },
+      "index": 46,
+      "narration": {
+        "coverage": 0.8593,
+        "cut_in_pause": true,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.624,
+        "sentence_aligned": true,
+        "text": "Software job postings on Indeed dropped 72% between February 2022 and August 2025.",
+        "trailing_silence_s": 0.796,
+        "word_count": 13,
+        "words_per_s": 2.1193
+      },
+      "window": {
+        "end_s": 127.867,
+        "start_s": 121.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3991
+      },
+      "duration_s": 6.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-047.png"
+      },
+      "index": 47,
+      "narration": {
+        "coverage": 0.9917,
+        "cut_in_pause": true,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.849,
+        "sentence_aligned": true,
+        "text": "Basic economics, when supply goes up and demand goes down, prices fall. In this case, the price is your salary. But",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.2813
+      },
+      "window": {
+        "end_s": 134.267,
+        "start_s": 127.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4086
+      },
+      "duration_s": 0.933,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-048.png"
+      },
+      "index": 48,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "that's only half the",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.2872
+      },
+      "window": {
+        "end_s": 135.2,
+        "start_s": 134.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2222
+      },
+      "duration_s": 0.467,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-049.png"
+      },
+      "index": 49,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "story",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.1413
+      },
+      "window": {
+        "end_s": 135.667,
+        "start_s": 135.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1916
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-050.png"
+      },
+      "index": 50,
+      "narration": {
+        "coverage": 0.8075,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "because something way more fundamental changed.",
+        "trailing_silence_s": 0.449,
+        "word_count": 6,
+        "words_per_s": 2.5718
+      },
+      "window": {
+        "end_s": 138.0,
+        "start_s": 135.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.8131
+      },
+      "duration_s": 1.733,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-051.png"
+      },
+      "index": 51,
+      "narration": {
+        "coverage": 0.9769,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.489,
+        "sentence_aligned": true,
+        "text": "In 2025, AI generated",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.3081
+      },
+      "window": {
+        "end_s": 139.733,
+        "start_s": 138.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0752
+      },
+      "duration_s": 2.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-052.png"
+      },
+      "index": 52,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.307,
+        "leading_silence_s": 0.307,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "41% of all code written. Let",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.3077
+      },
+      "window": {
+        "end_s": 142.333,
+        "start_s": 139.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5746
+      },
+      "duration_s": 0.967,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-053.png"
+      },
+      "index": 53,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "that sink in. Nearly",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.1365
+      },
+      "window": {
+        "end_s": 143.3,
+        "start_s": 142.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2829
+      },
+      "duration_s": 2.933,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-054.png"
+      },
+      "index": 54,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.38,
+        "leading_silence_s": 0.38,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "half of all code now comes from AI tools.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.0685
+      },
+      "window": {
+        "end_s": 146.233,
+        "start_s": 143.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4261
+      },
+      "duration_s": 0.634,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-055.png"
+      },
+      "index": 55,
+      "narration": {
+        "coverage": 0.7997,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And here's what this",
+        "trailing_silence_s": 0.127,
+        "word_count": 4,
+        "words_per_s": 6.3091
+      },
+      "window": {
+        "end_s": 146.867,
+        "start_s": 146.233
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0692
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-056.png"
+      },
+      "index": 56,
+      "narration": {
+        "coverage": 0.8675,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.18,
+        "sentence_aligned": false,
+        "text": "actually",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 147.267,
+        "start_s": 146.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.064
+      },
+      "duration_s": 0.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-057.png"
+      },
+      "index": 57,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "means.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 147.667,
+        "start_s": 147.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0539
+      },
+      "duration_s": 5.433,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-058.png"
+      },
+      "index": 58,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.133,
+        "leading_silence_s": 0.133,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Companies figured out that one senior engineer with AI tools can do what a team of four used to do. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 21,
+        "words_per_s": 3.8653
+      },
+      "window": {
+        "end_s": 153.1,
+        "start_s": 147.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3959
+      },
+      "duration_s": 0.967,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-059.png"
+      },
+      "index": 59,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "math is simple.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.1024
+      },
+      "window": {
+        "end_s": 154.067,
+        "start_s": 153.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3747
+      },
+      "duration_s": 3.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-060.png"
+      },
+      "index": 60,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.093,
+        "leading_silence_s": 0.093,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Why pay four developers $120,000 each when",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 1.9444
+      },
+      "window": {
+        "end_s": 157.667,
+        "start_s": 154.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0548
+      },
+      "duration_s": 4.066,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-061.png"
+      },
+      "index": 61,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "you can pay one exceptional developer $250,000 and give",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.2135
+      },
+      "window": {
+        "end_s": 161.733,
+        "start_s": 157.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0619
+      },
+      "duration_s": 1.267,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-062.png"
+      },
+      "index": 62,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "them AI tools. You",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.1571
+      },
+      "window": {
+        "end_s": 163.0,
+        "start_s": 161.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1786
+      },
+      "duration_s": 2.667,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-063.png"
+      },
+      "index": 63,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.08,
+        "leading_silence_s": 0.08,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "save $230,000 per year.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 1.4998
+      },
+      "window": {
+        "end_s": 165.667,
+        "start_s": 163.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6052
+      },
+      "duration_s": 2.766,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-064.png"
+      },
+      "index": 64,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But here's where it gets really brutal for junior developers.",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.6153
+      },
+      "window": {
+        "end_s": 168.433,
+        "start_s": 165.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4053
+      },
+      "duration_s": 26.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-065.png"
+      },
+      "index": 65,
+      "narration": {
+        "coverage": 0.9896,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "See, companies used to hire juniors to write boilerplate code, fix simple bugs, handle repetitive tasks. That was the apprenticeship model. You start a junior, learn on the job and work your way up. AI killed that model. Chat GPT and GitHub Copilot can write boilerplate code instantly. They don't need a salary, benefits or training. So entry-level positions basically vanished. Meanwhile, companies are desperately hiring senior engineers who can architect systems and review AI generated code.",
+        "trailing_silence_s": 0.0,
+        "word_count": 77,
+        "words_per_s": 2.8947
+      },
+      "window": {
+        "end_s": 195.033,
+        "start_s": 168.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1579
+      },
+      "duration_s": 2.167,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-066.png"
+      },
+      "index": 66,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.087,
+        "leading_silence_s": 0.087,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Now, here's the thing about AI generated code",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.6917
+      },
+      "window": {
+        "end_s": 197.2,
+        "start_s": 195.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1877
+      },
+      "duration_s": 1.233,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-067.png"
+      },
+      "index": 67,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that nobody talks about.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.2441
+      },
+      "window": {
+        "end_s": 198.433,
+        "start_s": 197.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2018
+      },
+      "duration_s": 1.434,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-068.png"
+      },
+      "index": 68,
+      "narration": {
+        "coverage": 0.9073,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "It's incredibly fast.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.0921
+      },
+      "window": {
+        "end_s": 199.867,
+        "start_s": 198.433
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1281
+      },
+      "duration_s": 0.933,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-069.png"
+      },
+      "index": 69,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "But here's the problem. A",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 5.3591
+      },
+      "window": {
+        "end_s": 200.8,
+        "start_s": 199.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.7749
+      },
+      "duration_s": 5.1,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-070.png"
+      },
+      "index": 70,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "recent study found 48% of AI generated code contains security vulnerabilities.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 2.1569
+      },
+      "window": {
+        "end_s": 205.9,
+        "start_s": 200.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0806
+      },
+      "duration_s": 6.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-071.png"
+      },
+      "index": 71,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "You get code that compiles perfectly, looks clean on the surface, but has missing features, broken edge cases and security holes. This",
+        "trailing_silence_s": 0.0,
+        "word_count": 22,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 212.5,
+        "start_s": 205.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6629
+      },
+      "duration_s": 1.767,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-072.png"
+      },
+      "index": 72,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.26,
+        "leading_silence_s": 0.26,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "is actually where I've been using something",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.9615
+      },
+      "window": {
+        "end_s": 214.267,
+        "start_s": 212.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5273
+      },
+      "duration_s": 1.9,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-073.png"
+      },
+      "index": 73,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "that completely changed my workflow. It's",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 3.1579
+      },
+      "window": {
+        "end_s": 216.167,
+        "start_s": 214.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1854
+      },
+      "duration_s": 1.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-074.png"
+      },
+      "index": 74,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "called TestSprite MCP.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 217.967,
+        "start_s": 216.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0654
+      },
+      "duration_s": 3.233,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-075.png"
+      },
+      "index": 75,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.153,
+        "leading_silence_s": 0.153,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "I saw it trending everywhere recently, hit number one on Product Hunt",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 3.7117
+      },
+      "window": {
+        "end_s": 221.2,
+        "start_s": 217.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3347
+      },
+      "duration_s": 5.433,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-076.png"
+      },
+      "index": 76,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and honestly, I was skeptical. Another AI tool promising to fix AI problems? Sure. But I tried it anyway",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 3.4971
+      },
+      "window": {
+        "end_s": 226.633,
+        "start_s": 221.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3444
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-077.png"
+      },
+      "index": 77,
+      "narration": {
+        "coverage": 0.8813,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.047,
+        "leading_silence_s": 0.047,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and I'm genuinely impressed. Here's",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 228.133,
+        "start_s": 226.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1668
+      },
+      "duration_s": 0.634,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-078.png"
+      },
+      "index": 78,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.187,
+        "leading_silence_s": 0.187,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "how it actually",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 4.7319
+      },
+      "window": {
+        "end_s": 228.767,
+        "start_s": 228.133
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1312
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-079.png"
+      },
+      "index": 79,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "works. You install their MCP",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.1667
+      },
+      "window": {
+        "end_s": 229.967,
+        "start_s": 228.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1731
+      },
+      "duration_s": 0.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-080.png"
+      },
+      "index": 80,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.393,
+        "leading_silence_s": 0.393,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "plugin",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.6667
+      },
+      "window": {
+        "end_s": 230.567,
+        "start_s": 229.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.171
+      },
+      "duration_s": 3.1,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-081.png"
+      },
+      "index": 81,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.313,
+        "leading_silence_s": 0.313,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "right into Cursor or whatever coding IDE you're using.",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 2.9032
+      },
+      "window": {
+        "end_s": 233.667,
+        "start_s": 230.567
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0518
+      },
+      "duration_s": 2.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-082.png"
+      },
+      "index": 82,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.173,
+        "leading_silence_s": 0.173,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "One-click installation, takes like 30 seconds. Then",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.6923
+      },
+      "window": {
+        "end_s": 236.267,
+        "start_s": 233.667
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0963
+      },
+      "duration_s": 5.933,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-083.png"
+      },
+      "index": 83,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.133,
+        "leading_silence_s": 0.133,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "you give it your project and your requirements doc and what happens next is honestly kind of wild. TestSprite reads your code and your",
+        "trailing_silence_s": 0.0,
+        "word_count": 24,
+        "words_per_s": 4.0452
+      },
+      "window": {
+        "end_s": 242.2,
+        "start_s": 236.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6339
+      },
+      "duration_s": 1.167,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-084.png"
+      },
+      "index": 84,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "product spec. It automatically",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 3.4276
+      },
+      "window": {
+        "end_s": 243.367,
+        "start_s": 242.2
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.6079
+      },
+      "duration_s": 7.733,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-085.png"
+      },
+      "index": 85,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.273,
+        "leading_silence_s": 0.273,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "generates a comprehensive test plan. Then it writes all the actual test code for you, runs every single test on their cloud servers, analyzes the results and",
+        "trailing_silence_s": 0.0,
+        "word_count": 27,
+        "words_per_s": 3.4915
+      },
+      "window": {
+        "end_s": 251.1,
+        "start_s": 243.367
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0518
+      },
+      "duration_s": 1.2,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-086.png"
+      },
+      "index": 86,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "builds you a detailed bug",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 4.1667
+      },
+      "window": {
+        "end_s": 252.3,
+        "start_s": 251.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0809
+      },
+      "duration_s": 0.7,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-087.png"
+      },
+      "index": 87,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "report.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.4286
+      },
+      "window": {
+        "end_s": 253.0,
+        "start_s": 252.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1015
+      },
+      "duration_s": 14.733,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-088.png"
+      },
+      "index": 88,
+      "narration": {
+        "coverage": 0.99,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Then, and this is the part that blew my mind, it pushes that report straight back into your coding AI. So now Cursor knows exactly what's broken and how to fix it. They keep looping back and forth until everything passes. I literally sat there for 20 minutes watching two AIs debug my entire app together",
+        "trailing_silence_s": 0.0,
+        "word_count": 56,
+        "words_per_s": 3.801
+      },
+      "window": {
+        "end_s": 267.733,
+        "start_s": 253.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1834
+      },
+      "duration_s": 0.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-089.png"
+      },
+      "index": 89,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.267,
+        "leading_silence_s": 0.267,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "while I grabbed",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.75
+      },
+      "window": {
+        "end_s": 268.533,
+        "start_s": 267.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1149
+      },
+      "duration_s": 0.3,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-090.png"
+      },
+      "index": 90,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "coffee.",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 268.833,
+        "start_s": 268.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1158
+      },
+      "duration_s": 0.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-091.png"
+      },
+      "index": 91,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.287,
+        "leading_silence_s": 0.287,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "And here's the kicker.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 5.0
+      },
+      "window": {
+        "end_s": 269.633,
+        "start_s": 268.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0879
+      },
+      "duration_s": 0.334,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-092.png"
+      },
+      "index": 92,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.334,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.334,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 269.967,
+        "start_s": 269.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4819
+      },
+      "duration_s": 5.966,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-093.png"
+      },
+      "index": 93,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Their benchmark data shows it boosts AI coding accuracy from around 42% to over 93% and it's",
+        "trailing_silence_s": 0.0,
+        "word_count": 17,
+        "words_per_s": 2.8495
+      },
+      "window": {
+        "end_s": 275.933,
+        "start_s": 269.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1867
+      },
+      "duration_s": 3.0,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-094.png"
+      },
+      "index": 94,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "completely free to try right now. I'll drop a link in the description. Now",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 4.6667
+      },
+      "window": {
+        "end_s": 278.933,
+        "start_s": 275.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1613
+      },
+      "duration_s": 2.0,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-095.png"
+      },
+      "index": 95,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "here's the thing most devs aren't seeing yet.",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 280.933,
+        "start_s": 278.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1491
+      },
+      "duration_s": 1.0,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-096.png"
+      },
+      "index": 96,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The high-paying developer jobs,",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 4.0
+      },
+      "window": {
+        "end_s": 281.933,
+        "start_s": 280.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1335
+      },
+      "duration_s": 0.534,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-097.png"
+      },
+      "index": 97,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": null,
+        "leading_silence_s": 0.534,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "",
+        "trailing_silence_s": 0.534,
+        "word_count": 0,
+        "words_per_s": 0.0
+      },
+      "window": {
+        "end_s": 282.467,
+        "start_s": 281.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2153
+      },
+      "duration_s": 5.466,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-098.png"
+      },
+      "index": 98,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.013,
+        "leading_silence_s": 0.013,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "they're not going to people who just use AI to write code faster. They're going to people who know how to validate AI output, who",
+        "trailing_silence_s": 0.0,
+        "word_count": 25,
+        "words_per_s": 4.5737
+      },
+      "window": {
+        "end_s": 287.933,
+        "start_s": 282.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3533
+      },
+      "duration_s": 2.167,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-099.png"
+      },
+      "index": 99,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "understand that speed without accuracy is completely",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.2303
+      },
+      "window": {
+        "end_s": 290.1,
+        "start_s": 287.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2448
+      },
+      "duration_s": 1.233,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-100.png"
+      },
+      "index": 100,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.54,
+        "leading_silence_s": 0.54,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "worthless, who",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 1.6221
+      },
+      "window": {
+        "end_s": 291.333,
+        "start_s": 290.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2912
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-101.png"
+      },
+      "index": 101,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "can orchestrate multiple AI tools together to",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 2.9167
+      },
+      "window": {
+        "end_s": 293.733,
+        "start_s": 291.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5249
+      },
+      "duration_s": 2.267,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-102.png"
+      },
+      "index": 102,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.147,
+        "leading_silence_s": 0.147,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "actually deliver production-ready software. That's",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.2056
+      },
+      "window": {
+        "end_s": 296.0,
+        "start_s": 293.733
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2714
+      },
+      "duration_s": 2.833,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-103.png"
+      },
+      "index": 103,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.2,
+        "leading_silence_s": 0.2,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the skill gap companies are paying a premium for right now.",
+        "trailing_silence_s": 0.0,
+        "word_count": 11,
+        "words_per_s": 3.8828
+      },
+      "window": {
+        "end_s": 298.833,
+        "start_s": 296.0
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5805
+      },
+      "duration_s": 30.334,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-104.png"
+      },
+      "index": 104,
+      "narration": {
+        "coverage": 0.9699,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.007,
+        "leading_silence_s": 0.007,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "The market bifurcated into three tiers. Tier one, elite engineers making $250,000 to $900,000. >> [music] >> AI/ML specialists, staff plus engineers, infrastructure architects. Tier two, solid mid-level developers making $120,000 to $200,000. Full stack engineers with business impact, domain experts and technical leads. Tier three, struggling entry-level and generalists making $60,000 to $100,000. Recent boot camp grads, generic developers without specialized skills.",
+        "trailing_silence_s": 0.0,
+        "word_count": 61,
+        "words_per_s": 2.0109
+      },
+      "window": {
+        "end_s": 329.167,
+        "start_s": 298.833
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1591
+      },
+      "duration_s": 1.933,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-105.png"
+      },
+      "index": 105,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.073,
+        "leading_silence_s": 0.073,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "So what do you actually do about this? First,",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 4.656
+      },
+      "window": {
+        "end_s": 331.1,
+        "start_s": 329.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3347
+      },
+      "duration_s": 4.8,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-106.png"
+      },
+      "index": 106,
+      "narration": {
+        "coverage": 0.9173,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.42,
+        "leading_silence_s": 0.42,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "if you're trying to break into tech right now, understand this. The traditional path is dead. You can't",
+        "trailing_silence_s": 0.0,
+        "word_count": 18,
+        "words_per_s": 3.75
+      },
+      "window": {
+        "end_s": 335.9,
+        "start_s": 331.1
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.114
+      },
+      "duration_s": 2.067,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-107.png"
+      },
+      "index": 107,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.22,
+        "leading_silence_s": 0.22,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "just learn to code, apply to 500 junior",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.8703
+      },
+      "window": {
+        "end_s": 337.967,
+        "start_s": 335.9
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1833
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-108.png"
+      },
+      "index": 108,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "jobs and expect",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 338.867,
+        "start_s": 337.967
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2094
+      },
+      "duration_s": 7.3,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-109.png"
+      },
+      "index": 109,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.213,
+        "leading_silence_s": 0.213,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "one to land. Instead, you need to specialize early. Pick AI, infrastructure, security or another high-demand niche. Companies are",
+        "trailing_silence_s": 0.0,
+        "word_count": 19,
+        "words_per_s": 2.6027
+      },
+      "window": {
+        "end_s": 346.167,
+        "start_s": 338.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.1506
+      },
+      "duration_s": 1.466,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-110.png"
+      },
+      "index": 110,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.033,
+        "leading_silence_s": 0.033,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "evaluating who creates value",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.7285
+      },
+      "window": {
+        "end_s": 347.633,
+        "start_s": 346.167
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0953
+      },
+      "duration_s": 1.434,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-111.png"
+      },
+      "index": 111,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.327,
+        "leading_silence_s": 0.327,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "and who's replaceable.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 2.0921
+      },
+      "window": {
+        "end_s": 349.067,
+        "start_s": 347.633
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.587
+      },
+      "duration_s": 2.4,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-112.png"
+      },
+      "index": 112,
+      "narration": {
+        "coverage": 0.8513,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Make it obvious which category you're in. Look,",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 3.3333
+      },
+      "window": {
+        "end_s": 351.467,
+        "start_s": 349.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3694
+      },
+      "duration_s": 1.866,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-113.png"
+      },
+      "index": 113,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.373,
+        "leading_silence_s": 0.373,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "the era of easy tech money is",
+        "trailing_silence_s": 0.0,
+        "word_count": 7,
+        "words_per_s": 3.7513
+      },
+      "window": {
+        "end_s": 353.333,
+        "start_s": 351.467
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2748
+      },
+      "duration_s": 0.734,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-114.png"
+      },
+      "index": 114,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.227,
+        "leading_silence_s": 0.227,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "over. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.7248
+      },
+      "window": {
+        "end_s": 354.067,
+        "start_s": 353.333
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.5084
+      },
+      "duration_s": 1.433,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-115.png"
+      },
+      "index": 115,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.053,
+        "leading_silence_s": 0.053,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "days of learning JavaScript and",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.4892
+      },
+      "window": {
+        "end_s": 355.5,
+        "start_s": 354.067
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2537
+      },
+      "duration_s": 2.433,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-116.png"
+      },
+      "index": 116,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.06,
+        "leading_silence_s": 0.06,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "coasting to $200,000 are done. But",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.4661
+      },
+      "window": {
+        "end_s": 357.933,
+        "start_s": 355.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3976
+      },
+      "duration_s": 0.767,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-117.png"
+      },
+      "index": 117,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.107,
+        "leading_silence_s": 0.107,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "here's the thing.",
+        "trailing_silence_s": 0.0,
+        "word_count": 3,
+        "words_per_s": 3.9113
+      },
+      "window": {
+        "end_s": 358.7,
+        "start_s": 357.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2447
+      },
+      "duration_s": 2.9,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-118.png"
+      },
+      "index": 118,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "If you develop genuine expertise in a high-value area, your",
+        "trailing_silence_s": 0.0,
+        "word_count": 10,
+        "words_per_s": 3.4483
+      },
+      "window": {
+        "end_s": 361.6,
+        "start_s": 358.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3533
+      },
+      "duration_s": 2.333,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-119.png"
+      },
+      "index": 119,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.16,
+        "leading_silence_s": 0.16,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "earning potential is higher than it's ever been. The",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.8577
+      },
+      "window": {
+        "end_s": 363.933,
+        "start_s": 361.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.441
+      },
+      "duration_s": 10.367,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-120.png"
+      },
+      "index": 120,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "market is pricing skills more accurately now. Elite engineers are making more, average engineers are making less. The question isn't whether this is fair. The question is, which side will you be on? So stop",
+        "trailing_silence_s": 0.0,
+        "word_count": 35,
+        "words_per_s": 3.3761
+      },
+      "window": {
+        "end_s": 374.3,
+        "start_s": 363.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1604
+      },
+      "duration_s": 1.5,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-121.png"
+      },
+      "index": 121,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.14,
+        "leading_silence_s": 0.14,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "chasing the old playbook.",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.6667
+      },
+      "window": {
+        "end_s": 375.8,
+        "start_s": 374.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.382
+      },
+      "duration_s": 1.467,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-122.png"
+      },
+      "index": 122,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.04,
+        "leading_silence_s": 0.04,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Stop building to-do apps. Stop",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 3.4083
+      },
+      "window": {
+        "end_s": 377.267,
+        "start_s": 375.8
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.273
+      },
+      "duration_s": 2.266,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-123.png"
+      },
+      "index": 123,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.253,
+        "leading_silence_s": 0.253,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "applying to hundreds of generic jobs.",
+        "trailing_silence_s": 0.0,
+        "word_count": 6,
+        "words_per_s": 2.6478
+      },
+      "window": {
+        "end_s": 379.533,
+        "start_s": 377.267
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3692
+      },
+      "duration_s": 2.767,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-124.png"
+      },
+      "index": 124,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.027,
+        "leading_silence_s": 0.027,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "Start building real skills that AI can't replicate. Start",
+        "trailing_silence_s": 0.0,
+        "word_count": 9,
+        "words_per_s": 3.2526
+      },
+      "window": {
+        "end_s": 382.3,
+        "start_s": 379.533
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.4885
+      },
+      "duration_s": 2.3,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-125.png"
+      },
+      "index": 125,
+      "narration": {
+        "coverage": 0.9691,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.3,
+        "leading_silence_s": 0.3,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "creating measurable business impact. Start",
+        "trailing_silence_s": 0.0,
+        "word_count": 5,
+        "words_per_s": 2.1739
+      },
+      "window": {
+        "end_s": 384.6,
+        "start_s": 382.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3264
+      },
+      "duration_s": 0.9,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-126.png"
+      },
+      "index": 126,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.24,
+        "leading_silence_s": 0.24,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "positioning yourself",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 2.2222
+      },
+      "window": {
+        "end_s": 385.5,
+        "start_s": 384.6
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0625
+      },
+      "duration_s": 0.533,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-127.png"
+      },
+      "index": 127,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.18,
+        "leading_silence_s": 0.18,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "as irreplaceable",
+        "trailing_silence_s": 0.0,
+        "word_count": 2,
+        "words_per_s": 3.7523
+      },
+      "window": {
+        "end_s": 386.033,
+        "start_s": 385.5
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0575
+      },
+      "duration_s": 0.734,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-128.png"
+      },
+      "index": 128,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.687,
+        "leading_silence_s": 0.687,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "because",
+        "trailing_silence_s": 0.0,
+        "word_count": 1,
+        "words_per_s": 1.3624
+      },
+      "window": {
+        "end_s": 386.767,
+        "start_s": 386.033
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2782
+      },
+      "duration_s": 4.166,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-129.png"
+      },
+      "index": 129,
+      "narration": {
+        "coverage": 0.8809,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.193,
+        "leading_silence_s": 0.193,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the developers who adapt to this new reality won't just survive. They'll thrive. And",
+        "trailing_silence_s": 0.0,
+        "word_count": 14,
+        "words_per_s": 3.3605
+      },
+      "window": {
+        "end_s": 390.933,
+        "start_s": 386.767
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3909
+      },
+      "duration_s": 1.934,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-130.png"
+      },
+      "index": 130,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.067,
+        "leading_silence_s": 0.067,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "if you're wondering which AI tools are separating",
+        "trailing_silence_s": 0.0,
+        "word_count": 8,
+        "words_per_s": 4.1365
+      },
+      "window": {
+        "end_s": 392.867,
+        "start_s": 390.933
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.2999
+      },
+      "duration_s": 1.833,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-131.png"
+      },
+      "index": 131,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.293,
+        "leading_silence_s": 0.293,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the $80,000 developers from",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.1822
+      },
+      "window": {
+        "end_s": 394.7,
+        "start_s": 392.867
+      }
+    },
+    {
+      "boundary": {
+        "kind": "soft",
+        "score": 0.1245
+      },
+      "duration_s": 1.6,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-132.png"
+      },
+      "index": 132,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.1,
+        "leading_silence_s": 0.1,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "the $300,000 ones, I",
+        "trailing_silence_s": 0.0,
+        "word_count": 4,
+        "words_per_s": 2.5
+      },
+      "window": {
+        "end_s": 396.3,
+        "start_s": 394.7
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.0685
+      },
+      "duration_s": 4.3,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-133.png"
+      },
+      "index": 133,
+      "narration": {
+        "coverage": 1.0,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.02,
+        "leading_silence_s": 0.02,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": false,
+        "text": "broke down the exact shift 99% are missing in my previous video.",
+        "trailing_silence_s": 0.0,
+        "word_count": 12,
+        "words_per_s": 2.7907
+      },
+      "window": {
+        "end_s": 400.6,
+        "start_s": 396.3
+      }
+    },
+    {
+      "boundary": {
+        "kind": "cut",
+        "score": 0.3114
+      },
+      "duration_s": 4.9333,
+      "files": {
+        "thumb": "devforge-200k-salaries-vanishing-thumbs/scene-134.png"
+      },
+      "index": 134,
+      "narration": {
+        "coverage": 0.2959,
+        "cut_in_pause": false,
+        "first_word_offset_s": 0.0,
+        "leading_silence_s": 0.0,
+        "pause_before_cut_s": 0.0,
+        "sentence_aligned": true,
+        "text": "Just click it and I'll see you there.",
+        "trailing_silence_s": 3.4733,
+        "word_count": 8,
+        "words_per_s": 1.6216
+      },
+      "window": {
+        "end_s": 405.5333,
+        "start_s": 400.6
+      }
+    }
+  ],
+  "schema": "inspo-pace/1",
+  "slug": "devforge-200k-salaries-vanishing",
+  "source_url": "https://www.youtube.com/watch?v=2ahtzV2OPwE",
+  "subtitles": {
+    "lang": "en-orig",
+    "punctuated": true,
+    "source_format": "json3",
+    "track_kind": "auto",
+    "word_count": 1178,
+    "word_level": true
+  },
+  "video": {
+    "channel": "DevForge",
+    "duration_s": 406.0,
+    "title": "Why $200k Developer Salaries Are Vanishing (And Where They're Going)",
+    "upload_date": "20260128"
+  }
+}

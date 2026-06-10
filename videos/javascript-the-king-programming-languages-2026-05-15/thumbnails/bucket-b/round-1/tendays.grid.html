@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  /* BUILT IN 10 DAYS / RUNS THE WORLD — Math Lady (low-res; crop face large via cover) */
+  .face-wrap { right: -20px; bottom: 0; height: 660px; width: 560px; overflow: hidden; }
+  .face { height: 100%; width: 100%; object-fit: cover; object-position: 60% 38%;
+          filter: saturate(0.62) contrast(1.22) brightness(1.05)
+                  drop-shadow(0 0 1px rgba(255,255,255,0.5))
+                  drop-shadow(-20px 10px 28px rgba(0,0,0,0.55)); }
+  .face-glow { right: 120px; bottom: 170px; width: 460px; height: 460px; }
+
+  .copy { left: 64px; top: 150px; transform: none; width: 600px; }
+  .l1 { font-size: 70px; }
+  .l2 { font-size: 188px; display: flex; align-items: baseline; gap: 22px; margin: 0 0 8px; }
+  .l2 .num { font-size: 188px; }                  /* 10 — coral hand hero */
+  .l2 .days { font-size: 92px; color: var(--white); font-weight: 900; }
+  .l3 { font-size: 64px; display: flex; align-items: center; gap: 16px; }
+  .js-chip { width: 92px; height: 92px; font-size: 52px; padding: 0 10px 6px 0; }
+
+  /* annotation above the number, arrow diving down to "10" */
+  .annot-text { position: absolute; left: 250px; top: 28px; font-size: 50px;
+                transform: rotate(-10deg); z-index: 4; }
+  .annot-arrow { position: absolute; left: 196px; top: 92px; z-index: 4; }
+</style>
+</head>
+<body>
+  <div class="thumb dbg">
+    <div class="grid"></div>
+    <div class="face-wrap">
+      <div class="face-glow"></div>
+      <img class="face" src="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/videos/javascript-the-king-programming-languages-2026-05-15/thumbnails/cutouts/mathlady.png" alt="">
+    </div>
+    <div class="face-fade"></div>
+    <div class="vignette"></div>
+
+    <div class="annot annot-text hand">yes, ten</div>
+    <div class="annot annot-arrow">
+      <svg width="120" height="130" viewBox="0 0 120 130" fill="none">
+        <path d="M104 12 C 70 44, 44 78, 24 118" stroke="#ff5c52" stroke-width="7" stroke-linecap="round"/>
+        <path d="M24 118 L 46 110 M24 118 L 30 92" stroke="#ff5c52" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="copy">
+      <div class="line l1">BUILT IN</div>
+      <div class="line l2"><span class="num hand coral">10</span> <span class="days">DAYS</span> <span class="js-chip">JS</span></div>
+      <div class="line l3">IT RUNS THE <span class="coral">WORLD</span></div>
+    </div>
+
+    <div class="grid-debug">
+      <span class="gcell" style="left:322px;top:6px">320</span>
+      <span class="gcell" style="left:642px;top:6px">640</span>
+      <span class="gcell" style="left:962px;top:6px">960</span>
+      <span class="gcell" style="left:6px;top:244px">240</span>
+      <span class="gcell" style="left:6px;top:484px">480</span>
+    </div>
+  </div>
+</body>
+</html>

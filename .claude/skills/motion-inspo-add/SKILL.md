@@ -1,6 +1,6 @@
 ---
 name: motion-inspo-add
-description: Add a motion-graphics reference to the repo-root motionGraphicsInspo/ library — ingest a YouTube clip into a hero still + keyframe strip and author its tagged index entry. Use whenever the user says "add a motion reference", "ingest this VFX clip", "add this to motionGraphicsInspo", "build the motion library", "grab the motion from this video", or hands over a YouTube URL (often with a timestamp) for the inspiration/motion library. Trigger even if the user doesn't name the skill — if the task is turning a YouTube motion-graphics beat into a reference the video-director can draw cadence from, this is the skill. NOT for consuming references while authoring a video (that's video-director) and NOT for the ffmpeg mechanics (that's the tools/inspo-ingest CLI this skill drives).
+description: Ingest a YouTube video into the repo-root inspiration libraries. DEFAULT for a whole-video URL is COMBINED ingest — motion-beat references into motionGraphicsInspo/ AND a pacing study into pacingInspo/, sharing one download. Narrower asks route to one mode - a clip window ("the beat at 1:12") captures a single motion beat; "motion only"/"scan for motion refs" does just the motion library; "ingest the pacing"/"study the cut cadence" does just the pacing library. Use whenever the user says "add a motion reference", "ingest this video", "add this to the library", "ingest this VFX clip", "build the motion library", "grab the motion from this video", "ingest this video's pacing", or hands over a YouTube URL for the inspiration libraries. Trigger even if the user doesn't name the skill — if the task is turning a YouTube video or beat into a reference our authoring skills can draw from, this is the skill. NOT for consuming references while authoring a video (that's video-director) and NOT for the ffmpeg mechanics (that's the tools/inspo-ingest CLI this skill drives).
 allowed-tools: Read, Edit, Glob, Grep, Bash(uv run --project tools/inspo-ingest:*), Bash(git diff:*), Bash(git status:*), Bash(ls:*), Bash(mv:*)
 ---
 
@@ -37,8 +37,39 @@ motion is invisible. A tiled strip reads in full, so the staging is legible; the
   reference is a `## Quick index` table row **and** a `## Entries` detail block, sharing
   one slug. Each `<slug>.png` / `<slug>-strip.png` pair has exactly one row and one entry,
   and vice versa — never a row without its entry, never an entry without its PNGs.
-- **Only `motionGraphicsInspo/` changes.** The two new PNGs and the README entry —
-  nothing else. Confirm with `git diff --stat` before declaring done.
+- **Only the target library changes.** `motionGraphicsInspo/` for Modes A/B,
+  `pacingInspo/` for Mode C, both for the default combined ingest — and nothing
+  else either way. Confirm with `git diff --stat` before declaring done.
+
+## Mode routing — combined ingest is the DEFAULT
+
+When the user hands over a **whole-video YouTube URL with no narrower framing**,
+ingest it into BOTH libraries. Route to a single mode only when the ask names one:
+
+| Ask | Route |
+|---|---|
+| Bare URL / "ingest this video" / "add this video to the library" | **Combined ingest (below)** |
+| URL + a timestamp or clip window ("the beat at 1:12") | Mode A only |
+| "scan for motion refs", "motion only" | Mode B only |
+| "ingest the pacing", "pacing only", "study the cut cadence" | Mode C only |
+
+Combined ingest — one network call total, `pace` first because its single
+yt-dlp invocation fetches the proxy, subtitles, and metadata that both
+analyses need:
+
+```bash
+uv run --project tools/inspo-ingest inspo-ingest pace "<url>" --slug <slug>
+uv run --project tools/inspo-ingest inspo-ingest scan "<url>" --slug <slug> \
+  --from-proxy scratch/pacing/<slug>/proxy.mp4 --out scratch/inspo-scans/<slug>
+```
+
+Then curate both outputs: the scan manifest per **Mode B** (keep/drop beats →
+`motionGraphicsInspo/`) and the pace artifacts per **Mode C** /
+`pacingInspo/CLAUDE.md` (promote + author the `Pacing:` note → `pacingInspo/`).
+The two curations are independent — a talking-head video may yield zero kept
+motion beats and still be a worthwhile pacing entry, and vice versa. Never
+re-download for the second analysis; `--from-proxy` exists precisely because
+this IP has tripped YouTube's bot-wall before.
 
 ## Mode A — single beat (clip)
 
@@ -217,6 +248,27 @@ only.
 plus `README.md`. The staging dir and its manifest are throwaway and are **never
 committed**; no `-beat-NNN-…` names, no dropped-beat PNGs, no `-scan.json` should appear.
 Restore any stray.
+
+## Mode C — whole-video pacing study (pace)
+
+When the ask is about a video's *temporal* craft — "how does this creator pace
+scene changes against narration", "ingest this video's pacing", "study the cut
+cadence" — the target library is **`pacingInspo/`** (repo root), not
+`motionGraphicsInspo/`, and the tool subcommand is `pace`:
+
+```bash
+uv run --project tools/inspo-ingest inspo-ingest pace "<youtube-url>" --slug <slug>
+```
+
+It detects every scene change (hard cuts + eased transitions), fetches the
+yt-dlp word-level transcript in the same single network call, aligns narration
+to scenes (wps, pauses, sentence alignment), and emits candidates into
+`scratch/pacing/<slug>/`. The full curation procedure — contact-sheet QA,
+threshold tuning, which three artifact kinds get promoted, the two-tier index
+contract, and the authored `Pacing:` note — lives in **`pacingInspo/CLAUDE.md`**;
+follow it rather than the Mode A/B steps. Do not mix the libraries: one beat ↔
+one PNG pair belongs in motionGraphicsInspo; one whole-video timeline belongs
+in pacingInspo.
 
 ## Anti-patterns
 

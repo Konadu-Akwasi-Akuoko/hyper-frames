@@ -62,8 +62,9 @@ uv run --project tools/inspo-ingest inspo-ingest \
    spaced timestamps across the clip.
 5. **Extract** the chosen frames with output-side `-ss` (frame-accurate) and
    `scale=W:-1`.
-6. **Tile** them horizontally into `<out>/<slug>-strip.png` via `magick montage`
-   (`-tile x1 -geometry WxH>+4+4 -background none`).
+6. **Tile** them horizontally into `<out>/<slug>-strip.png` via `magick +append`
+   (`-resize Wx -bordercolor #1a1a1a -border 3 -background none`; never
+   `montage`, which needs a configured font Homebrew builds can lack).
 7. **Hero frame** — extract the highest-score frame at fuller res to
    `<out>/<slug>.png`.
 8. **Cleanup** — delete the temp clip and intermediate frames unless
@@ -74,7 +75,8 @@ uv run --project tools/inspo-ingest inspo-ingest \
 
 ## `scan` vs `clip` — whole-video auto-detection
 
-The tool has two subcommands:
+The tool has three subcommands (`clip`, `scan`, and `pace` — the latter is
+documented in its own section below):
 
 - **`clip`** (the original behavior, documented above) — you hand it *one
   bounded window* via `--section MM:SS-MM:SS` and it captures whatever has the
@@ -145,6 +147,21 @@ How it works:
 | `--pad` | `0.4` | Padding (s) added to each beat's boundaries (clamped) |
 | `--flow-fps` | `10` | Optical-flow sampling rate (frames/s) |
 | `--heatmap` | off | Also emit a per-beat flow heatmap PNG |
+| `--from-proxy` | none | Analyze this existing proxy file instead of downloading (skips yt-dlp; `--max-height` ignored; the URL is still recorded as `source_url`) |
+
+`--from-proxy` exists for the **combined ingest** flow: `pace` and `scan` use
+identical proxy parameters (≤1080p, AVC-preferred), so after a `pace` run you
+can point `scan` at its cached file and analyze the same video for motion beats
+with zero additional network traffic:
+
+```bash
+uv run --project tools/inspo-ingest inspo-ingest pace "<url>" --slug my-video
+uv run --project tools/inspo-ingest inspo-ingest scan "<url>" --slug my-video \
+  --from-proxy scratch/pacing/my-video/proxy.mp4 --out scratch/inspo-scans/my-video
+```
+
+One yt-dlp invocation total for both analyses (bot-wall discipline). The
+external proxy is never deleted by scan's cleanup.
 
 ### JSON manifest output
 
@@ -182,13 +199,171 @@ budget a minute or two end-to-end for a ~10-minute video. `--flow-fps` (fewer
 pairs) and `--max-height` (smaller download/decode) are the main runtime knobs;
 the work is single-core by design, so it won't peg the whole machine.
 
+## pace — scene-change + narration pacing
+
+`pace` takes a **whole-video URL** and measures how the video is *edited*: it
+detects EVERY scene change (hard cuts AND soft transitions like crossfades or
+wipes), fetches the video's word-level auto captions, aligns narration to the
+resulting scenes (words-per-second, silences, whether cuts land in speech
+pauses or on sentence boundaries), and emits deterministic **candidate**
+artifacts — a JSON manifest, a mechanical markdown pacing report, and per-scene
+thumbnails tiled into contact sheets.
+
+**`pace` emits CANDIDATES only — it never writes any library or prose.** Every
+number it produces is mechanical; the judgment (`Pacing:` notes, curation into
+a library) happens afterward, outside the tool.
+
+```
+inspo-ingest pace <youtube-url> --slug <prefix>
+  [--out <dir>] [--max-height 1080] [--sample-fps 10]
+  [--hard-floor 0.05] [--hard-ratio 6.0] [--hard-window 3.0] [--min-gap 0.3]
+  [--soft-wide-min 0.12] [--soft-adj-max 0.10] [--soft-plateau 0.5]
+  [--dedupe 0.2] [--langs en-orig,en] [--no-frames] [--thumb-width 160]
+```
+
+```bash
+uv run --project tools/inspo-ingest inspo-ingest pace \
+  "https://www.youtube.com/watch?v=VIDEO_ID" \
+  --slug fast-explainer
+```
+
+### `pace` options
+
+| Flag | Default | Meaning |
+|---|---|---|
+| `--slug` | (required) | Filename prefix for the emitted artifacts |
+| `--out` | `scratch/pacing/<slug>/` at repo root | Output dir; doubles as the download cache |
+| `--max-height` | `1080` | Cap (px) on the downloaded proxy's height |
+| `--sample-fps` | `10` | Sampling rate for the soft-transition feature pass |
+| `--hard-floor` | `0.05` | Absolute scene-score floor a hard cut must clear |
+| `--hard-ratio` | `6.0` | Adaptive multiplier on the rolling-median scene score |
+| `--hard-window` | `3.0` | Full width (s) of the centered rolling-median window |
+| `--min-gap` | `0.3` | Debounce (s); qualifying cut frames closer than this cluster |
+| `--soft-wide-min` | `0.12` | Min wide-baseline HSV delta for a soft-transition plateau |
+| `--soft-adj-max` | `0.10` | Max adjacent HSV delta for a soft-transition plateau |
+| `--soft-plateau` | `0.5` | Minimum plateau span (s) for a soft transition |
+| `--dedupe` | `0.2` | Boundaries within this (s) collapse to one (hard wins) |
+| `--langs` | `en-orig,en` | Subtitle language preference order (comma-separated) |
+| `--no-frames` | off | Skip per-scene thumbnails and contact sheets |
+| `--thumb-width` | `160` | Per-scene thumbnail width (px) |
+
+### How it works
+
+1. **ONE yt-dlp call total** — the proxy download also fetches subtitles
+   (`--write-auto-subs --write-subs --sub-langs ... --sub-format
+   json3/srv3/vtt --sleep-subtitles 2`) and `--write-info-json` in the same
+   invocation. No separate subtitle fetch, ever (bot-wall discipline). The
+   proxy, subtitle files, and info JSON live in the out dir as a **cache**: on
+   re-run, when the proxy + a json3 track + the info JSON already exist, the
+   network fetch is skipped entirely and logged. Determinism is scoped to
+   "same cached inputs → byte-identical manifest".
+2. **Hard cuts** — the full-fps ffmpeg scene-score pass (thresholdless, scores
+   every frame) is run over the whole proxy, then an **adaptive threshold**
+   picks the cuts: a frame qualifies iff its score is at least
+   `max(--hard-floor, --hard-ratio × rolling-median)` of its ±`--hard-window`/2
+   neighborhood (self excluded), debounced to the cluster max within
+   `--min-gap`. A fixed threshold cannot serve motion-graphics content — it
+   false-positives during animation at low T and misses subtle talking-head
+   cuts at high T; the rolling ratio adapts to the local baseline.
+3. **Soft transitions** — crossfades/wipes are structurally invisible to
+   adjacent-frame metrics, so a low-fps 256px HSV pipe pass (same ffmpeg-pipe
+   pattern as `scan`, no optical flow) computes per-sample deltas vs the
+   previous sample and vs the sample ~1s earlier. A sustained plateau of high
+   wide-baseline delta with moderate adjacent delta (≥ `--soft-plateau` s)
+   marks a soft boundary at its wide-delta peak; candidates within 1s of a
+   hard cut are suppressed. These defaults are first-guess heuristics —
+   calibrate on live runs.
+4. **Scenes** — boundaries are merged (within `--dedupe` s they collapse, hard
+   beats soft, then higher score, then earlier) and the proxy is tiled into
+   1-based scene windows spanning `[0, duration]` exactly.
+5. **Transcript alignment** — the preferred json3 track (`--langs` order,
+   `en-orig` first because it carries word-level `tOffsetMs` timing) is parsed
+   into word onsets, bracketed non-speech tokens (`[Music]`…) are dropped, and
+   each scene gets word count, words/s, coverage, leading/trailing silence,
+   whether its opening cut sits inside a speech pause, and whether it follows a
+   sentence end. Missing or cue-level-only subtitles degrade gracefully
+   (`"subtitles": null` / `"word_level": false`); they never fail the run.
+6. **Thumbs + contact sheets** (default on; `--no-frames` to skip) — one thumb
+   per scene sampled *inside* the scene at `start + min(0.3, duration/2)`
+   (never AT the boundary, where a fast-seek grab can land on the wrong side
+   of the cut) into `<slug>-thumbs/scene-NNN.png`, then tiled row-major, 10
+   per row, max 10 rows per sheet, into `<slug>-scenes-sheet-NNN.png`. Sheets
+   are built with `magick +append`/`-append` (never `montage`, never
+   `-annotate` — both need a configured font that Homebrew builds can lack),
+   so there are no on-image labels; tile order matches the report's table.
+
+### `pace` outputs
+
+```
+proxy.<ext>                    # cached download (plus proxy.<lang>.json3, proxy.info.json)
+<slug>-pace.json               # the inspo-pace/1 manifest
+<slug>-pacing.md               # mechanical report: aggregates + per-scene table
+<slug>-thumbs/scene-NNN.png    # one per scene (unless --no-frames)
+<slug>-scenes-sheet-NNN.png    # contact sheets, 10x10 tiles, row-major
+```
+
+The `inspo-pace/1` manifest is a **frozen field-name contract** (downstream
+copies fields mechanically by exact name). Sketch:
+
+```jsonc
+{
+  "schema": "inspo-pace/1",
+  "source_url": "...", "slug": "...",
+  "video": {"title": "...", "channel": "...", "upload_date": "...", "duration_s": 612.0},
+  "proxy": {"max_height": 1080, "duration_s": 611.96},
+  "scene_detect": {"hard": {...}, "soft": {...}, "dedupe_s": 0.2},
+  "subtitles": {"lang": "en-orig", "track_kind": "auto", "source_format": "json3",
+                "word_level": true, "punctuated": true, "word_count": 1742},  // or null
+  "scenes": [{
+    "index": 1, "window": {"start_s": 0.0, "end_s": 4.2}, "duration_s": 4.2,
+    "boundary": {"kind": "start", "score": null},   // then "cut" | "soft"
+    "narration": {"word_count": 12, "words_per_s": 2.86, "coverage": 0.95,
+                  "first_word_offset_s": 0.21, "leading_silence_s": 0.21,
+                  "trailing_silence_s": 0.4, "cut_in_pause": true,
+                  "pause_before_cut_s": 0.7, "sentence_aligned": true,
+                  "text": "..."},                   // or null without subtitles
+    "files": {"thumb": "fast-explainer-thumbs/scene-001.png"}  // or null
+  }],
+  "aggregates": {"scene_count": 87, "cuts_per_minute": 8.3, "soft_transition_count": 4,
+                 "scene_duration_s": {"median": 5.1, "p25": 2.9, "p75": 9.4,
+                                      "min": 0.8, "max": 31.2},
+                 "longest_hold_s": 31.2, "words_per_s_mean": 2.7,
+                 "pct_cuts_in_pause": 0.62, "pct_sentence_aligned": 0.55}
+}
+```
+
+It is deterministic: every float quantized to 4 decimals, sorted keys, trailing
+newline — a re-run over the same cached inputs is byte-identical. The markdown
+report carries the same numbers (header facts, aggregates block, per-scene
+table with a 12-word text excerpt) and **no judgment prose**.
+
+### Known limitations
+
+- **No diarization** — per-scene words/s conflates the narrator with speech in
+  embedded clips.
+- **ASR timing** — auto-caption word onsets are ±0.1–0.2s on clean speech and
+  unreliable over music; treat `cut_in_pause` / `sentence_aligned` as
+  approximate. Manual (cue-level) tracks have no word timing at all
+  (`word_level: false`), which degrades the narration stats further.
+- **Detection defaults are calibrated, not universal** — `--hard-floor 0.05`
+  and `--soft-wide-min 0.12` were tuned on two real videos: a quiet
+  diagram-explainer (ByteByteGo: median scene score ~0, diagram swaps at
+  0.03–0.10) and a fast-cut video essay (~14 scene changes/min). Lower
+  `--soft-wide-min` catches more eased transitions but starts firing on
+  in-scene text build-ons; raise `--hard-floor` toward 0.12 on noisy
+  hard-cut-heavy footage if precision suffers. Slow pans or very long
+  dissolves can still fool the soft detector in either direction — QA the
+  contact sheet (adjacent near-identical tiles = over-detection; a
+  suspiciously long scene = under-detection).
+
 ## Design
 
-All subprocess calls live in `cli.py`. The parsing, ranking, even-spacing
-fallback, and every argv list (yt-dlp / ffmpeg / ffprobe / montage) are **pure
-functions** in `frames.py` and `strip.py`, so the test suite asserts the exact
-verified flag shape and the ranking logic without a network connection or any
-binary installed.
+All subprocess calls (and all `cv2` work) live in `cli.py`. The parsing,
+ranking, even-spacing fallback, scene-boundary math, transcript alignment, and
+every argv list (yt-dlp / ffmpeg / ffprobe / magick) are **pure functions** in
+`frames.py`, `strip.py`, `motion.py`, `scenes.py`, and `transcript.py`, so the
+test suite asserts the exact verified flag shape and the decision logic without
+a network connection or any binary installed.
 
 ## Tests
 

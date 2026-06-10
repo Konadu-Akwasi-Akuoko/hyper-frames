@@ -5,7 +5,7 @@ magick +append) and is the *sole* owner of ``cv2``. All parsing, ranking, argv
 construction, and the pure motion-graphics detection math live in the ``frames``,
 ``strip``, and ``motion`` modules so the decision logic stays testable without binaries.
 
-Two subcommands:
+Three subcommands:
 
 * ``clip`` — the original per-window capture (full-resolution download, scene-detect,
   rank, film-strip + hero, print a stub). Unchanged behavior.
@@ -14,9 +14,16 @@ Two subcommands:
   genuine animation beats (``motion.segment``), and for each beat run the existing
   capture pipeline against the one proxy, then write per-beat files + a deterministic
   ``<slug>-scan.json`` manifest.
+* ``pace`` — the whole-video scene-change + narration pacing ingest: download ONE
+  capped proxy (subtitles + info JSON in the SAME yt-dlp call), detect every hard cut
+  (adaptive threshold over the full-fps scene-score series, ``scenes.detect_hard_cuts``)
+  and soft transition (wide-baseline HSV plateaus, ``scenes.detect_soft_transitions``),
+  align the json3 transcript to the resulting scene windows (``transcript``), and emit
+  a deterministic ``<slug>-pace.json`` manifest + mechanical ``<slug>-pacing.md`` report
+  + per-scene thumbs/contact sheets. Candidates only: never writes any library or prose.
 
-``cv2`` is **lazy-imported inside the scan codepath only** (never at module top), so
-importing this module for ``clip`` mode or for the pure test suite pulls zero
+``cv2`` is **lazy-imported inside the scan/pace codepaths only** (never at module top),
+so importing this module for ``clip`` mode or for the pure test suite pulls zero
 third-party deps.
 """
 from __future__ import annotations
@@ -27,6 +34,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from collections import deque
 from pathlib import Path
 
 from inspo_ingest.frames import (
@@ -47,7 +55,16 @@ from inspo_ingest.motion import (
     describe,
     segment,
 )
+from inspo_ingest.scenes import (
+    FeatureRow,
+    SceneWindow,
+    build_scenes,
+    detect_hard_cuts,
+    detect_soft_transitions,
+    merge_boundaries,
+)
 from inspo_ingest.strip import (
+    contact_sheet_argvs,
     extract_frame_argv,
     ffmpeg_flow_decode_argv,
     ffprobe_dimensions_argv,
@@ -55,8 +72,20 @@ from inspo_ingest.strip import (
     scene_detect_argv,
     ytdlp_download_argv,
 )
+from inspo_ingest.transcript import (
+    PUNCTUATED_MIN_FRACTION,
+    SceneNarration,
+    aggregates,
+    align_scenes,
+    filter_non_speech,
+    parse_json3,
+    punctuated_fraction,
+)
 
 DEFAULT_OUT = Path("/Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/motionGraphicsInspo")
+# pace-mode candidates land under scratch/ (never a library dir); the per-slug
+# subfolder doubles as the proxy/subtitle/info-json cache for re-runs.
+DEFAULT_PACE_OUT_BASE = Path("/Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/scratch/pacing")
 
 # (binary on PATH, brew formula hint)
 _REQUIRED_BINARIES: tuple[tuple[str, str], ...] = (
@@ -102,6 +131,17 @@ _FP_TIME_DECIMALS = 3
 _FP_VALUE_DECIMALS = 4
 # Manifest float formatting: enough precision to be useful, few enough to stay stable.
 _MANIFEST_DECIMALS = 4
+
+# --- pace-mode constants ---
+# Soft-transition candidates within this of a hard cut are dropped (the cut already
+# explains the change); paired with detect_soft_transitions' suppress_s.
+_SOFT_SUPPRESS_S = 1.0
+# Contact-sheet geometry: row-major tiles, 10 per row, max 10 rows per sheet.
+_SHEET_ROW_LEN = 10
+_SHEET_MAX_ROWS = 10
+# Per-scene thumbnail sample point: start + min(inset, duration/2) — never AT the
+# boundary, where a fast_seek frame grab can land on the wrong side of the cut.
+_THUMB_INSET_S = 0.3
 
 
 def _build_clip_parser(sub: argparse._SubParsersAction) -> argparse.ArgumentParser:
@@ -252,7 +292,123 @@ def _build_scan_parser(sub: argparse._SubParsersAction) -> argparse.ArgumentPars
         action="store_true",
         help="Keep the downloaded proxy and intermediate frames instead of deleting them.",
     )
+    p.add_argument(
+        "--from-proxy",
+        type=Path,
+        default=None,
+        help=(
+            "Analyze this existing proxy file instead of downloading one (skips "
+            "yt-dlp entirely; --max-height is ignored). The positional URL is still "
+            "recorded as the manifest's source_url. Use with the proxy that a prior "
+            "'pace' run cached, e.g. scratch/pacing/<slug>/proxy.mp4."
+        ),
+    )
     p.set_defaults(_handler=_run_scan)
+    return p
+
+
+def _build_pace_parser(sub: argparse._SubParsersAction) -> argparse.ArgumentParser:
+    p = sub.add_parser(
+        "pace",
+        help="Whole-video scene-change + narration pacing ingest (cuts, transitions, transcript).",
+        description=(
+            "Download one capped proxy of a whole video (subtitles + info JSON in the "
+            "same yt-dlp call), detect every hard cut and soft transition, align the "
+            "transcript to the resulting scenes, and emit a deterministic "
+            "<slug>-pace.json manifest, a mechanical <slug>-pacing.md report, and "
+            "per-scene thumbnails + contact sheets. Candidates only: never writes any "
+            "library or prose."
+        ),
+    )
+    p.add_argument("url", help="YouTube URL of the whole video to analyze.")
+    p.add_argument(
+        "--slug",
+        required=True,
+        help="Kebab-case filename prefix for the emitted artifacts.",
+    )
+    p.add_argument(
+        "--out",
+        type=Path,
+        default=None,
+        help=f"Output directory (default: {DEFAULT_PACE_OUT_BASE}/<slug>).",
+    )
+    p.add_argument(
+        "--max-height",
+        type=int,
+        default=1080,
+        help="Cap the downloaded proxy resolution (default: 1080).",
+    )
+    p.add_argument(
+        "--sample-fps",
+        type=float,
+        default=10.0,
+        help="Sampling rate (fps) for the soft-transition feature pass.",
+    )
+    p.add_argument(
+        "--hard-floor",
+        type=float,
+        default=0.05,
+        help="Absolute scene-score floor a hard cut must always clear.",
+    )
+    p.add_argument(
+        "--hard-ratio",
+        type=float,
+        default=6.0,
+        help="Adaptive multiplier on the rolling-median scene score.",
+    )
+    p.add_argument(
+        "--hard-window",
+        type=float,
+        default=3.0,
+        help="Full width (s) of the centered rolling-median window.",
+    )
+    p.add_argument(
+        "--min-gap",
+        type=float,
+        default=0.3,
+        help="Debounce gap (s); qualifying cut frames closer than this cluster.",
+    )
+    p.add_argument(
+        "--soft-wide-min",
+        type=float,
+        default=0.12,
+        help="Minimum wide-baseline HSV delta for a soft-transition plateau row.",
+    )
+    p.add_argument(
+        "--soft-adj-max",
+        type=float,
+        default=0.10,
+        help="Maximum adjacent HSV delta for a soft-transition plateau row.",
+    )
+    p.add_argument(
+        "--soft-plateau",
+        type=float,
+        default=0.5,
+        help="Minimum plateau time span (s) for a soft transition.",
+    )
+    p.add_argument(
+        "--dedupe",
+        type=float,
+        default=0.2,
+        help="Boundaries within this (s) of each other collapse to one (hard wins).",
+    )
+    p.add_argument(
+        "--langs",
+        default="en-orig,en",
+        help="Comma-separated subtitle language preference order.",
+    )
+    p.add_argument(
+        "--no-frames",
+        action="store_true",
+        help="Skip per-scene thumbnails and contact sheets.",
+    )
+    p.add_argument(
+        "--thumb-width",
+        type=int,
+        default=160,
+        help="Per-scene thumbnail width in px (height auto).",
+    )
+    p.set_defaults(_handler=_run_pace)
     return p
 
 
@@ -262,16 +418,18 @@ def _build_parser() -> argparse.ArgumentParser:
         description=(
             "Ingest motion-graphics reference from YouTube. 'clip' captures a single "
             "window; 'scan' auto-detects animation beats across a whole video via "
-            "DIS optical flow."
+            "DIS optical flow; 'pace' detects every scene change and aligns the "
+            "transcript to it."
         ),
     )
     sub = p.add_subparsers(dest="command")
     _build_clip_parser(sub)
     _build_scan_parser(sub)
+    _build_pace_parser(sub)
     return p
 
 
-_KNOWN_SUBCOMMANDS = frozenset({"clip", "scan"})
+_KNOWN_SUBCOMMANDS = frozenset({"clip", "scan", "pace"})
 
 
 def _inject_clip_shim(argv: list[str]) -> list[str]:
@@ -911,24 +1069,41 @@ def _run_scan(args: argparse.Namespace) -> int:
     work_dir = Path(tempfile.mkdtemp(prefix="inspo-scan-"))
     cleanup = not args.keep_proxy
     try:
-        # 1. Download ONE capped proxy of the WHOLE video (no --download-sections).
-        print(f"scan: downloading proxy (<= {args.max_height}p) ...", file=sys.stderr)
-        dl = _run(
-            ytdlp_download_argv(
-                url=args.url,
-                out_template=str(work_dir / "clip.%(ext)s"),
-                max_height=args.max_height,
-                prefer_avc=True,
+        # 1. Acquire ONE capped proxy of the WHOLE video: either reuse an existing
+        # file (--from-proxy, e.g. the one a prior pace run cached) or download it
+        # (no --download-sections).
+        if args.from_proxy is not None:
+            proxy_path = args.from_proxy
+            if not proxy_path.is_file():
+                print(
+                    f"error: --from-proxy file not found: {proxy_path}",
+                    file=sys.stderr,
+                )
+                return 2
+            print(f"scan: reusing existing proxy {proxy_path} ...", file=sys.stderr)
+        else:
+            print(
+                f"scan: downloading proxy (<= {args.max_height}p) ...", file=sys.stderr
             )
-        )
-        if dl.returncode != 0:
-            print(f"error: yt-dlp failed:\n{dl.stderr.strip()[-2000:]}", file=sys.stderr)
-            return 1
+            dl = _run(
+                ytdlp_download_argv(
+                    url=args.url,
+                    out_template=str(work_dir / "clip.%(ext)s"),
+                    max_height=args.max_height,
+                    prefer_avc=True,
+                )
+            )
+            if dl.returncode != 0:
+                print(
+                    f"error: yt-dlp failed:\n{dl.stderr.strip()[-2000:]}",
+                    file=sys.stderr,
+                )
+                return 1
 
-        proxy_path = _find_clip(work_dir)
-        if proxy_path is None:
-            print("error: yt-dlp produced no proxy file.", file=sys.stderr)
-            return 1
+            proxy_path = _find_clip(work_dir)
+            if proxy_path is None:
+                print("error: yt-dlp produced no proxy file.", file=sys.stderr)
+                return 1
 
         proxy_duration = _ffprobe_duration(proxy_path)
         print(
@@ -1073,6 +1248,617 @@ def _run_scan(args: argparse.Namespace) -> int:
             "scan: no motion-graphics beats detected (manifest beats: []).",
             file=sys.stderr,
         )
+    return 0
+
+
+# --- pace-mode helpers (cv2 is lazy-imported inside _compute_scene_features only) ---
+
+
+def _compute_scene_features(proxy_path: Path, *, sample_fps: float) -> list[FeatureRow]:
+    """Stream the proxy through the low-fps HSV-delta pipe pass into ``FeatureRow``s.
+
+    Same decode pattern as ``_compute_fingerprints`` (ffmpeg pipe, fixed-size 256px
+    BGR frames, ``cv2.setNumThreads(1)``) but WITHOUT DIS flow — the soft-transition
+    detector only needs two mean-abs HSV deltas per sample: vs the previous sample
+    (``adj_delta``) and vs the sample ~1s earlier (``wide_delta``, a ring buffer of
+    ``round(sample_fps)`` frames; ``0.0`` while it warms up). Deltas are normalized
+    to 0-1 by /255 and pre-rounded (t to 3dp, values to 4dp) so platform jitter
+    cannot flip a boundary downstream.
+
+    Raises:
+        ImportError: If ``cv2`` (opencv-python-headless) is not installed.
+    """
+    try:
+        import cv2  # noqa: PLC0415  (lazy by design — keeps clip mode dep-free)
+    except ImportError as exc:
+        raise ImportError(
+            "pace mode requires OpenCV. Install it with: "
+            "uv pip install opencv-python-headless"
+        ) from exc
+    import numpy as np
+
+    cv2.setNumThreads(1)
+
+    src_w, src_h = _probe_dims(proxy_path)
+    proc_w = _PROC_WIDTH
+    proc_h = max(2, int(round(src_h * proc_w / src_w)))
+    if proc_h % 2:
+        proc_h += 1
+    frame_bytes = proc_w * proc_h * 3
+
+    wide_lag = max(1, round(sample_fps))
+
+    proc = subprocess.Popen(
+        ffmpeg_flow_decode_argv(
+            clip_path=proxy_path, fps=sample_fps, width=proc_w, height=proc_h
+        ),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    assert proc.stdout is not None
+
+    rows: list[FeatureRow] = []
+    history: deque = deque(maxlen=wide_lag)  # last wide_lag HSV frames, oldest first
+    prev_hsv = None
+    idx = -1
+    try:
+        while True:
+            buf = _read_exact(proc.stdout, frame_bytes)
+            if buf is None:
+                break
+            idx += 1
+            small_bgr = np.frombuffer(buf, dtype=np.uint8).reshape(proc_h, proc_w, 3)
+            hsv = cv2.cvtColor(small_bgr, cv2.COLOR_BGR2HSV).astype(np.int16)
+            if prev_hsv is None:
+                history.append(hsv)
+                prev_hsv = hsv
+                continue
+
+            t_s = idx / sample_fps
+            adj = float(np.abs(hsv - prev_hsv).mean()) / 255.0
+            if len(history) == wide_lag:
+                wide = float(np.abs(hsv - history[0]).mean()) / 255.0
+            else:
+                wide = 0.0
+            rows.append(
+                FeatureRow(
+                    t_s=round(t_s, _FP_TIME_DECIMALS),
+                    adj_delta=_round_value(adj),
+                    wide_delta=_round_value(wide),
+                )
+            )
+            history.append(hsv)
+            prev_hsv = hsv
+    finally:
+        proc.stdout.close()
+        err = proc.stderr.read() if proc.stderr else b""
+        rc = proc.wait()
+
+    if not rows and rc != 0:
+        raise RuntimeError(
+            "ffmpeg feature decode failed:\n" + err.decode("utf-8", "replace")[-2000:]
+        )
+    return rows
+
+
+def _find_pace_proxy(out_dir: Path) -> Path | None:
+    """Return the cached proxy video in ``out_dir``, skipping subtitle/info sidecars."""
+    sidecar_suffixes = {".json", ".json3", ".srv3", ".vtt"}
+    candidates = sorted(
+        p for p in out_dir.glob("proxy.*") if p.suffix not in sidecar_suffixes
+    )
+    return candidates[0] if candidates else None
+
+
+def _pick_subtitle_track(
+    out_dir: Path, *, langs: tuple[str, ...]
+) -> tuple[Path, str] | None:
+    """Pick the json3 subtitle track to analyze: preferred langs in order, else any.
+
+    Only ``.json3`` qualifies — it is the sole format carrying word-level
+    ``tOffsetMs`` timing; srv3/vtt fallbacks are left on disk unanalyzed. The
+    "any" fallback is sorted-first for determinism.
+    """
+    for lang in langs:
+        p = out_dir / f"proxy.{lang}.json3"
+        if p.exists():
+            return p, lang
+    others = sorted(out_dir.glob("proxy.*.json3"))
+    if others:
+        p = others[0]
+        return p, p.name[len("proxy.") : -len(".json3")]
+    return None
+
+
+def _load_info_json(path: Path) -> dict | None:
+    """Read the yt-dlp info JSON; ``None`` when missing or unparseable (non-fatal)."""
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def _pace_video_json(info: dict | None) -> dict:
+    """Build the manifest's ``video`` block from the info JSON (all-null when absent)."""
+    if info is None:
+        return {"title": None, "channel": None, "upload_date": None, "duration_s": None}
+    duration = info.get("duration")
+    return {
+        "title": info.get("title"),
+        "channel": info.get("channel") or info.get("uploader"),
+        "upload_date": info.get("upload_date"),
+        "duration_s": _q(float(duration)) if duration is not None else None,
+    }
+
+
+def _pace_scene_record(
+    scene: SceneWindow, narration: SceneNarration | None, thumb: str | None
+) -> dict:
+    """Build one manifest scene record from already-computed values.
+
+    The field names are the frozen ``inspo-pace/1`` contract — downstream copies
+    them mechanically by exact name. Every float goes through ``_q``.
+    """
+    if narration is None:
+        narration_json = None
+    else:
+        narration_json = {
+            "word_count": int(narration.word_count),
+            "words_per_s": _q(narration.words_per_s),
+            "coverage": _q(narration.coverage),
+            "first_word_offset_s": _q(narration.first_word_offset_s),
+            "leading_silence_s": _q(narration.leading_silence_s),
+            "trailing_silence_s": _q(narration.trailing_silence_s),
+            "cut_in_pause": bool(narration.cut_in_pause),
+            "pause_before_cut_s": _q(narration.pause_before_cut_s),
+            "sentence_aligned": narration.sentence_aligned,
+            "text": narration.text,
+        }
+    return {
+        "index": int(scene.index),
+        "window": {"start_s": _q(scene.start_s), "end_s": _q(scene.end_s)},
+        "duration_s": _q(scene.end_s - scene.start_s),
+        "boundary": {"kind": scene.boundary_kind, "score": _q(scene.boundary_score)},
+        "narration": narration_json,
+        "files": {"thumb": thumb},
+    }
+
+
+def _pace_aggregates_json(agg: dict) -> dict:
+    """Quantize the ``transcript.aggregates`` dict for the manifest (frozen names)."""
+    sd = agg["scene_duration_s"]
+    return {
+        "scene_count": int(agg["scene_count"]),
+        "cuts_per_minute": _q(agg["cuts_per_minute"]),
+        "soft_transition_count": int(agg["soft_transition_count"]),
+        "scene_duration_s": {
+            "median": _q(sd["median"]),
+            "p25": _q(sd["p25"]),
+            "p75": _q(sd["p75"]),
+            "min": _q(sd["min"]),
+            "max": _q(sd["max"]),
+        },
+        "longest_hold_s": _q(agg["longest_hold_s"]),
+        "words_per_s_mean": _q(agg["words_per_s_mean"]),
+        "pct_cuts_in_pause": _q(agg["pct_cuts_in_pause"]),
+        "pct_sentence_aligned": _q(agg["pct_sentence_aligned"]),
+    }
+
+
+def _pace_manifest(
+    *,
+    url: str,
+    slug: str,
+    video: dict,
+    max_height: int,
+    proxy_duration_s: float,
+    sample_fps: float,
+    hard_floor: float,
+    hard_ratio: float,
+    hard_window: float,
+    min_gap: float,
+    soft_wide_min: float,
+    soft_adj_max: float,
+    soft_plateau: float,
+    dedupe: float,
+    subtitles: dict | None,
+    scenes: list[SceneWindow],
+    narrations: list[SceneNarration | None],
+    thumbs: list[str | None],
+    agg: dict,
+) -> dict:
+    """Assemble the full ``inspo-pace/1`` manifest from already-computed values.
+
+    Pure assembly (no I/O) so the frozen field-name contract is testable without
+    subprocesses. ``wide_baseline_s`` records the soft pass's actual ring-buffer
+    lag in seconds (``round(sample_fps) / sample_fps``).
+    """
+    wide_lag = max(1, round(sample_fps))
+    return {
+        "schema": "inspo-pace/1",
+        "source_url": url,
+        "slug": slug,
+        "video": video,
+        "proxy": {"max_height": int(max_height), "duration_s": _q(proxy_duration_s)},
+        "scene_detect": {
+            "hard": {
+                "abs_floor": _q(hard_floor),
+                "ratio": _q(hard_ratio),
+                "window_s": _q(hard_window),
+                "min_gap_s": _q(min_gap),
+            },
+            "soft": {
+                "sample_fps": _q(sample_fps),
+                "proc_width": _PROC_WIDTH,
+                "wide_baseline_s": _q(wide_lag / sample_fps),
+                "wide_min": _q(soft_wide_min),
+                "adj_max": _q(soft_adj_max),
+                "min_plateau_s": _q(soft_plateau),
+                "suppress_s": _q(_SOFT_SUPPRESS_S),
+            },
+            "dedupe_s": _q(dedupe),
+        },
+        "subtitles": subtitles,
+        "scenes": [
+            _pace_scene_record(scene, narration, thumb)
+            for scene, narration, thumb in zip(scenes, narrations, thumbs, strict=True)
+        ],
+        "aggregates": _pace_aggregates_json(agg),
+    }
+
+
+def _fmt_md(value: float | None, decimals: int = 2) -> str:
+    """Format an already-quantized manifest number for the md report (``-`` for null)."""
+    if value is None:
+        return "-"
+    return f"{value:.{decimals}f}"
+
+
+def _excerpt(text: str, max_words: int = 12) -> str:
+    """First ``max_words`` words of a scene's text, pipe-escaped, for the md table."""
+    words = text.split()
+    if not words:
+        return "-"
+    head = " ".join(words[:max_words]).replace("|", "\\|")
+    return head + ("…" if len(words) > max_words else "")
+
+
+def _pace_markdown_report(manifest: dict) -> str:
+    """Render the mechanical ``<slug>-pacing.md`` report from the manifest.
+
+    Numbers only — no judgment prose. The Pacing: note is authored by a human (or
+    Claude) at curation time, never by the tool.
+    """
+    video = manifest["video"]
+    subs = manifest["subtitles"]
+    agg = manifest["aggregates"]
+    sd = agg["scene_duration_s"]
+
+    lines = [
+        f"# {manifest['slug']} — pacing report (mechanical)",
+        "",
+        f"- Source: {manifest['source_url']}",
+        f"- Title: {video['title'] or '-'}",
+        f"- Channel: {video['channel'] or '-'}",
+        f"- Upload date: {video['upload_date'] or '-'}",
+        f"- Proxy: <={manifest['proxy']['max_height']}p, "
+        f"{_fmt_md(manifest['proxy']['duration_s'])}s",
+    ]
+    if subs is None:
+        lines.append("- Subtitles: none")
+    else:
+        lines.append(
+            f"- Subtitles: {subs['lang']} ({subs['track_kind']}, "
+            f"word_level={subs['word_level']}, punctuated={subs['punctuated']}, "
+            f"{subs['word_count']} words)"
+        )
+    lines += [
+        "",
+        "## Aggregates",
+        "",
+        f"- scene_count: {agg['scene_count']}",
+        f"- cuts_per_minute: {_fmt_md(agg['cuts_per_minute'])}",
+        f"- soft_transition_count: {agg['soft_transition_count']}",
+        f"- scene_duration_s: median {_fmt_md(sd['median'])} · "
+        f"p25 {_fmt_md(sd['p25'])} · p75 {_fmt_md(sd['p75'])} · "
+        f"min {_fmt_md(sd['min'])} · max {_fmt_md(sd['max'])}",
+        f"- longest_hold_s: {_fmt_md(agg['longest_hold_s'])}",
+        f"- words_per_s_mean: {_fmt_md(agg['words_per_s_mean'])}",
+        f"- pct_cuts_in_pause: {_fmt_md(agg['pct_cuts_in_pause'])}",
+        f"- pct_sentence_aligned: {_fmt_md(agg['pct_sentence_aligned'])}",
+        "",
+        "## Scenes",
+        "",
+        f"Contact-sheet tiles are row-major, {_SHEET_ROW_LEN} per row, in the table's "
+        "scene order (no on-image labels).",
+        "",
+        "| # | start | end | dur_s | boundary | score | words | wps | "
+        "pause_before_s | ¶ | text |",
+        "|---|---|---|---|---|---|---|---|---|---|---|",
+    ]
+    for rec in manifest["scenes"]:
+        nar = rec["narration"]
+        if nar is None:
+            words = wps = pause = para = text = "-"
+        else:
+            words = str(nar["word_count"])
+            wps = _fmt_md(nar["words_per_s"])
+            pause = _fmt_md(nar["pause_before_cut_s"])
+            if nar["sentence_aligned"] is None:
+                para = "-"
+            else:
+                para = "y" if nar["sentence_aligned"] else "n"
+            text = _excerpt(nar["text"])
+        score = rec["boundary"]["score"]
+        lines.append(
+            f"| {rec['index']} | {_fmt_md(rec['window']['start_s'])} | "
+            f"{_fmt_md(rec['window']['end_s'])} | {_fmt_md(rec['duration_s'])} | "
+            f"{rec['boundary']['kind']} | "
+            f"{'-' if score is None else f'{score:.3f}'} | "
+            f"{words} | {wps} | {pause} | {para} | {text} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def _run_pace(args: argparse.Namespace) -> int:
+    """The whole-video scene-change + narration pacing workflow."""
+    if args.sample_fps <= 0:
+        print("error: --sample-fps must be > 0.", file=sys.stderr)
+        return 2
+    if args.thumb_width < 1:
+        print("error: --thumb-width must be >= 1.", file=sys.stderr)
+        return 2
+
+    langs = tuple(lang for lang in args.langs.split(",") if lang)
+    if not langs:
+        print("error: --langs must name at least one language.", file=sys.stderr)
+        return 2
+
+    out_dir: Path = args.out if args.out is not None else DEFAULT_PACE_OUT_BASE / args.slug
+    out_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = out_dir / f"{args.slug}-pace.json"
+    report_path = out_dir / f"{args.slug}-pacing.md"
+    info_path = out_dir / "proxy.info.json"
+
+    work_dir = Path(tempfile.mkdtemp(prefix="inspo-pace-"))
+    try:
+        # 1. ONE yt-dlp call total (proxy + subtitles + info JSON together — bot-wall
+        #    discipline), skipped entirely when the out-dir cache already has them.
+        proxy_path = _find_pace_proxy(out_dir)
+        cached = (
+            proxy_path is not None
+            and info_path.exists()
+            and any(out_dir.glob("proxy.*.json3"))
+        )
+        if cached:
+            print(
+                f"pace: using cached proxy + subtitles + info in {out_dir} "
+                "(skipping download)",
+                file=sys.stderr,
+            )
+        else:
+            print(f"pace: downloading proxy (<= {args.max_height}p) ...", file=sys.stderr)
+            dl = _run(
+                ytdlp_download_argv(
+                    url=args.url,
+                    out_template=str(out_dir / "proxy.%(ext)s"),
+                    max_height=args.max_height,
+                    prefer_avc=True,
+                    subtitles_langs=langs,
+                    write_info_json=True,
+                )
+            )
+            if dl.returncode != 0:
+                print(f"error: yt-dlp failed:\n{dl.stderr.strip()[-2000:]}", file=sys.stderr)
+                return 1
+            proxy_path = _find_pace_proxy(out_dir)
+        if proxy_path is None:
+            print("error: yt-dlp produced no proxy file.", file=sys.stderr)
+            return 1
+
+        # 2. Proxy duration anchors the scene tiling.
+        proxy_duration = _ffprobe_duration(proxy_path)
+        if proxy_duration <= 0.0:
+            print(f"error: ffprobe read no duration from {proxy_path}.", file=sys.stderr)
+            return 1
+
+        # 3. Hard cuts: full-fps scene-score pass -> adaptive threshold.
+        print(
+            f"pace: proxy {proxy_path.name} ({proxy_duration:g}s); scene-scoring ...",
+            file=sys.stderr,
+        )
+        meta_path = work_dir / "scene-meta.txt"
+        det = _run(scene_detect_argv(clip_path=proxy_path, meta_path=meta_path))
+        if det.returncode != 0:
+            print(
+                f"error: ffmpeg scene detection failed:\n{det.stderr.strip()[-2000:]}",
+                file=sys.stderr,
+            )
+            return 1
+        meta_text = meta_path.read_text(encoding="utf-8") if meta_path.exists() else ""
+        score_series = [
+            SceneCut(
+                time_s=round(c.time_s, _FP_TIME_DECIMALS),
+                score=_round_value(c.score),
+            )
+            for c in parse_scene_scores(meta_text + "\n" + det.stderr)
+        ]
+        hard = detect_hard_cuts(
+            score_series,
+            abs_floor=args.hard_floor,
+            ratio=args.hard_ratio,
+            window_s=args.hard_window,
+            min_gap_s=args.min_gap,
+        )
+
+        # 4. Soft transitions: low-fps HSV pipe pass -> plateau detection.
+        print(
+            f"pace: {len(hard)} hard cut(s); HSV feature pass @ ~{args.sample_fps:g}fps ...",
+            file=sys.stderr,
+        )
+        try:
+            feature_rows = _compute_scene_features(proxy_path, sample_fps=args.sample_fps)
+        except ImportError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+        soft = detect_soft_transitions(
+            feature_rows,
+            wide_min=args.soft_wide_min,
+            adj_max=args.soft_adj_max,
+            min_plateau_s=args.soft_plateau,
+            hard_cuts=hard,
+            suppress_s=_SOFT_SUPPRESS_S,
+        )
+
+        # 5. Merge + tile the proxy into scenes.
+        boundaries = merge_boundaries(
+            hard, soft, dedupe_s=args.dedupe, duration_s=proxy_duration
+        )
+        scenes = build_scenes(boundaries, duration_s=proxy_duration)
+
+        # 6. Transcript alignment (missing/unparseable subtitles degrade, never fail).
+        info = _load_info_json(info_path)
+        subtitles_json: dict | None = None
+        narrations: list[SceneNarration | None] = [None] * len(scenes)
+        subs_label = "none"
+        track = _pick_subtitle_track(out_dir, langs=langs)
+        if track is None:
+            print("pace: no json3 subtitle track found; narration is null.", file=sys.stderr)
+        else:
+            track_path, lang = track
+            text = track_path.read_text(encoding="utf-8")
+            try:
+                words = filter_non_speech(parse_json3(text))
+            except ValueError as exc:
+                print(
+                    f"pace: warning: {track_path.name} is not parseable json3 ({exc}); "
+                    "narration is null.",
+                    file=sys.stderr,
+                )
+            else:
+                manual_langs = info.get("subtitles") or {} if info else {}
+                track_kind = "manual" if lang in manual_langs else "auto"
+                subtitles_json = {
+                    "lang": lang,
+                    "track_kind": track_kind,
+                    "source_format": "json3",
+                    # Word-level timing shows up as per-seg tOffsetMs keys; cue-level
+                    # (manual) tracks carry none at all.
+                    "word_level": '"tOffsetMs"' in text,
+                    "punctuated": punctuated_fraction(words) >= PUNCTUATED_MIN_FRACTION,
+                    "word_count": len(words),
+                }
+                narrations = align_scenes(scenes, words)
+                subs_label = f"{lang} ({track_kind})"
+
+        agg = aggregates(scenes, narrations, duration_s=proxy_duration)
+
+        # 7. Per-scene thumbnails + contact sheets (row-major, no on-image text).
+        thumbs: list[str | None] = [None] * len(scenes)
+        sheet_count = 0
+        if not args.no_frames:
+            print(f"pace: extracting {len(scenes)} scene thumb(s) ...", file=sys.stderr)
+            thumb_dir = out_dir / f"{args.slug}-thumbs"
+            thumb_dir.mkdir(parents=True, exist_ok=True)
+            thumb_paths: list[Path] = []
+            for scene in scenes:
+                t = scene.start_s + min(_THUMB_INSET_S, (scene.end_s - scene.start_s) / 2)
+                name = f"scene-{scene.index:03d}.png"
+                thumb_path = thumb_dir / name
+                ext = _run(
+                    extract_frame_argv(
+                        clip_path=proxy_path,
+                        time_s=t,
+                        frame_width=args.thumb_width,
+                        out_path=thumb_path,
+                        fast_seek=True,
+                    )
+                )
+                if ext.returncode != 0 or not thumb_path.exists():
+                    print(
+                        f"error: scene {scene.index}: thumb extraction failed at "
+                        f"{t:g}s:\n{ext.stderr.strip()[-800:]}",
+                        file=sys.stderr,
+                    )
+                    return 1
+                thumb_paths.append(thumb_path)
+                thumbs[scene.index - 1] = f"{thumb_dir.name}/{name}"
+
+            per_sheet = _SHEET_ROW_LEN * _SHEET_MAX_ROWS
+            chunks = [
+                thumb_paths[i : i + per_sheet]
+                for i in range(0, len(thumb_paths), per_sheet)
+            ]
+            for sheet_idx, chunk in enumerate(chunks, start=1):
+                sheet_path = out_dir / f"{args.slug}-scenes-sheet-{sheet_idx:03d}.png"
+                sheet_tmp = work_dir / f"sheet-{sheet_idx:03d}"
+                sheet_tmp.mkdir(parents=True, exist_ok=True)
+                argvs, row_paths = contact_sheet_argvs(
+                    frame_paths=chunk,
+                    out_path=sheet_path,
+                    row_len=_SHEET_ROW_LEN,
+                    tmp_dir=sheet_tmp,
+                )
+                for argv in argvs:
+                    sheet = _run(argv)
+                    if sheet.returncode != 0:
+                        print(
+                            f"error: contact sheet {sheet_idx} (magick append) failed:\n"
+                            f"{sheet.stderr.strip()[-800:]}",
+                            file=sys.stderr,
+                        )
+                        return 1
+                for row_path in row_paths:
+                    Path(row_path).unlink(missing_ok=True)
+                sheet_count += 1
+    finally:
+        shutil.rmtree(work_dir, ignore_errors=True)
+
+    # 8. Deterministic manifest + mechanical markdown report.
+    manifest = _pace_manifest(
+        url=args.url,
+        slug=args.slug,
+        video=_pace_video_json(info),
+        max_height=args.max_height,
+        proxy_duration_s=proxy_duration,
+        sample_fps=args.sample_fps,
+        hard_floor=args.hard_floor,
+        hard_ratio=args.hard_ratio,
+        hard_window=args.hard_window,
+        min_gap=args.min_gap,
+        soft_wide_min=args.soft_wide_min,
+        soft_adj_max=args.soft_adj_max,
+        soft_plateau=args.soft_plateau,
+        dedupe=args.dedupe,
+        subtitles=subtitles_json,
+        scenes=scenes,
+        narrations=narrations,
+        thumbs=thumbs,
+        agg=agg,
+    )
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    report_path.write_text(_pace_markdown_report(manifest), encoding="utf-8")
+
+    # 9. Mechanical stdout summary.
+    agg_json = manifest["aggregates"]
+    print(
+        f"pace: {agg_json['scene_count']} scene(s), "
+        f"{_fmt_md(agg_json['cuts_per_minute'])} cuts/min, "
+        f"{agg_json['soft_transition_count']} soft transition(s) "
+        f"over {_fmt_md(manifest['proxy']['duration_s'])}s"
+    )
+    print(f"pace: subtitles: {subs_label}")
+    print(f"pace: manifest: {manifest_path}")
+    print(f"pace: report: {report_path}")
+    if args.no_frames:
+        print("pace: frames skipped (--no-frames)")
+    else:
+        print(f"pace: thumbs: {out_dir / f'{args.slug}-thumbs'} ({sheet_count} sheet(s))")
     return 0
 
 

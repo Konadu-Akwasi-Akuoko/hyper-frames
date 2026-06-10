@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  /* ESCAPE — Home Alone (square cutout; bleed big to lower-right) */
+  .face-wrap { right: -110px; bottom: -30px; height: 720px; }
+  .face { height: 720px; }
+  /* no blue glow behind the kid — his warm blonde hair would ring against it */
+  .face-glow { display: none; }
+
+  .copy { left: 64px; top: 196px; transform: none; width: 560px; }
+  .l1 { font-size: 88px; }
+  .l2 { font-size: 176px; margin: 0 0 10px; }              /* escape — coral hand hero */
+  .l3 { font-size: 76px; display: flex; align-items: center; gap: 18px; }
+  .js-chip { width: 142px; height: 142px; font-size: 78px; padding: 0 14px 10px 0; }
+
+  /* annotation in the clear top band, arrow diving toward the kid's face */
+  .annot-text { position: absolute; left: 286px; top: 34px; font-size: 64px;
+                transform: rotate(-6deg); z-index: 4;
+                -webkit-text-stroke: 1.6px var(--coral);
+                text-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.5); }
+  .annot-arrow { position: absolute; left: 626px; top: 44px; z-index: 4; }
+</style>
+</head>
+<body>
+  <div class="thumb">
+    <div class="grid"></div>
+    <div class="face-wrap">
+      <div class="face-glow"></div>
+      <img class="face" src="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/videos/javascript-the-king-programming-languages-2026-05-15/thumbnails/cutouts/defringed/homealone.png" alt="">
+    </div>
+    <div class="face-fade"></div>
+    <div class="vignette"></div>
+
+    <div class="annot annot-text hand">it's everywhere</div>
+    <div class="annot annot-arrow">
+      <svg width="200" height="180" viewBox="0 0 200 180" fill="none">
+        <path d="M14 12 C 90 28, 150 70, 170 162" stroke="#FFB627" stroke-width="10" stroke-linecap="round"/>
+        <path d="M170 162 L 140 150 M170 162 L 182 130" stroke="#FFB627" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="copy">
+      <div class="line l1">YOU CAN'T</div>
+      <div class="line l2 hand">escape</div>
+      <div class="line l3">JAVASCRIPT <span class="js-chip">JS</span></div>
+    </div>
+
+    <div class="grid-debug">
+      <span class="gcell" style="left:322px;top:6px">320</span>
+      <span class="gcell" style="left:642px;top:6px">640</span>
+      <span class="gcell" style="left:962px;top:6px">960</span>
+      <span class="gcell" style="left:6px;top:244px">240</span>
+      <span class="gcell" style="left:6px;top:484px">480</span>
+    </div>
+  </div>
+</body>
+</html>
