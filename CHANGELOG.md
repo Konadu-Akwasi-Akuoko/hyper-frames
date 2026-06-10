@@ -7,6 +7,30 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.13.0] — 2026-06-10
+
+### Added
+- **motionGraphicsInspo / pacingInspo** — substantial library growth: motion
+  references expanded to 519 curated entries and pacing studies to 17
+  register-diverse videos, alongside the `inspo-ingest pace` tooling, the
+  shorts-creator and video-publish-qa skills, the creator-patterns reference,
+  and the thumbnail-title research corpus.
+- **creator-patterns** — distill the pacingInspo library into a §3.8 "Measured
+  pacing bands" appendix: four per-register cadence bands (chaptered explainer /
+  sectioned talking-head / fast essay-listicle / vertical Short) computed from
+  every entry's aggregates, plus two cross-cutting findings.
+- **video-director** — calibrate first-chunk size from the matching pacingInspo
+  register band (median scene + longest-hold ceiling), consulted once per video.
+- **thumbnails** — rebrand the thumbnail-creator skill to
+  thumbnail-and-title-generator with the Specimen visual signature.
+
+### Changed
+- **inspo-ingest** — re-validate the `pace` detection defaults
+  (`--hard-floor 0.05`, `--soft-wide-min 0.12`) across 17 videos and 4
+  registers; both generalize, no defaults changed.
+- **pacingInspo** — mark the consumer-wiring TODO items done and refresh the
+  CLAUDE.md consumers index.
+
 ## [0.12.0] — 2026-06-07
 
 ### Added
