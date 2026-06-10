@@ -99,6 +99,24 @@ line** so the pass is auditable — they should be able to see exactly what you'
 about to animate. Identify the chunk's first content word and the last word
 before the next chunk starts.
 
+**First chunk of a new video only — set the register's hold ceiling.** Before
+settling how many sentences your *first* chunk carries, read the repo-root
+`../../pacingInspo/README.md` Quick index and open the ONE entry whose register
+matches this script: chaptered diagram/system-design explainer (≈1-3 cuts/min,
+median scene 9-15s, one canvas held 100s+), brisk sectioned / tier-list
+talking-head (≈6-10 cuts/min, ≈4-6s per item), fast video essay / listicle B-roll
+churn (≈17-40 cuts/min, ≈1-3s a shot), or vertical Short (≈30+ cuts/min, sub-1.5s,
+word-rate). Let that entry's `median scene` and `longest_hold_s` calibrate the
+ceiling — a system-design explainer can hold one evolving substrate for many
+sentences between resets, a fast essay wants a fresh visual each sentence. Read
+the Quick index + that one entry block only; **never load a `<slug>-pace.json`
+whole** (its per-scene transcript text floods context). This is evidence
+calibrating the *ceiling*, not a target to hit — the transcript's own sentence
+boundaries still decide each actual chunk — and you consult it once per video at
+first-chunk time, never per chunk (chunk-level design is the
+`scene-design-decider`'s job in Step D, and a per-chunk pacing lookup would just
+repeat this one).
+
 ### C. Pull exact transcript word timings
 
 Run the `python3 -c` filter (see `reference/transcript-timing.md`) to get:
