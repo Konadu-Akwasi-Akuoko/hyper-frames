@@ -7,6 +7,34 @@ and the project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Releases are cut repo-wide in lockstep: every tool and video manifest carries the
 same version.
 
+## [0.14.0] — 2026-06-12
+
+### Added
+- **WhatsApp 40B/day video** — full HyperFrames composition for "how WhatsApp
+  handles 40 billion messages per day": index.html with all mounted scene hosts,
+  the SFX layer, voiceover + Scribe v2 transcript, narration map, captions, and
+  the packaging artifacts (script, fact-check, design, description, thumbnails,
+  SEO). Rendered output stays local.
+- **WhatsApp Shorts** — five 1080×1920 vertical Shorts cut from the parent video,
+  each a self-contained portrait HyperFrames project (script, voiceover, portrait
+  composition, vertical thumbnails, publish plan) that funnels back to it.
+- **Faceless brand covers** — vertical-mode guidance to promote a nameable brand's
+  real logo from a corner chip to the focal mark when a cover ships faceless; adds
+  the `logos:whatsapp-icon` entry to the iconify cache.
+- **Post-compaction nudge** — a `SessionStart(compact)` hook that, inside a
+  `videos/` folder, re-points to `/video-director` after a compaction summarizes
+  its SKILL.md + reference guides out of context.
+
+### Changed
+- **Retire the riser SFX cue** — drop `riser` from the video-director cue palette;
+  a building reveal now scores on its payoff frame (`boom`/`pop`/`msg-ding`) and
+  `whoosh` becomes the only peak-aligned cue.
+
+### Fixed
+- **Vertical thumbnail render clipping** — document the per-variant inline
+  `html, body { width: 1080px; height: 1920px }` override so the single-file
+  renderer stops clipping everything below y=720.
+
 ## [0.13.0] — 2026-06-10
 
 ### Added
