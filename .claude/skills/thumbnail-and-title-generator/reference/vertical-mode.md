@@ -194,6 +194,27 @@ the portrait layout via its inline `left`/`top`/`width`/`height` (read the `?gri
 overlay); a common spot is tucked beside the face's lower edge, clear of the
 bottom safe band.
 
+**Faceless brand covers — the logo IS the focal mark.** When a vertical cover is
+*faceless* (no face still — the parent shipped faceless, or the topic has no
+creator face) **and** the topic IS a nameable brand, promote the brand's real
+logo from a corner chip to the **focal mark**: place it in the upper third (the
+slot a face would occupy), ~240–300px, clear of the top ~220px Shorts-UI safe
+zone, above the centered headline. With no face, the logo is what carries brand
+recognition at feed scale — this is the vertical equivalent of "the face is the
+subject."
+
+- Source via the icon CLI (`logos:*` for native-color marks — WhatsApp, Slack,
+  Firefox; `simple-icons:*` for monochrome), drop the `body` verbatim into an
+  inline `<svg>`. **Never mutate the body to recolor** — `logos:*` keeps native
+  brand colors.
+- Position it **absolutely, NOT inside a `thumbnail-row`** (same contract as the
+  chip): `left:50%; transform:translateX(-50%); top:≈300px`.
+- Give it a soft `drop-shadow` glow in the accent hue so it harmonizes with the
+  punch row, and nudge the headline block down (e.g. `top:54%`) so logo +
+  headline read as one column with the bottom safe band clear.
+- **Face-present** vertical covers keep the small corner chip (above) — the face
+  is still the subject. Faceless + brand → focal logo; face-present → corner chip.
+
 ## 6. Round folder + filenames (Steps 7, 10)
 
 - Round folder: `<video-dir>/thumbnails/round-N-vertical/`.
