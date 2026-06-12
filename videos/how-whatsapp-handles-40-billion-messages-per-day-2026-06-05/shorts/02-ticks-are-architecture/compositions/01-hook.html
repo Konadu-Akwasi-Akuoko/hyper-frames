@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 01 — hook</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-01-hook { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-01-hook .stack {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; text-align: center;
+    }
+    #scene-01-hook .kicker {
+      font-size: 44px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.24em; text-transform: uppercase; opacity: 0;
+    }
+    #scene-01-hook .ticks {
+      margin: 40px 0 30px; display: flex; gap: 6px; line-height: 0.8;
+      font-size: 360px; font-weight: 700;
+    }
+    #scene-01-hook .ticks .t {
+      color: var(--muted); opacity: 0; will-change: transform, opacity; display: inline-block;
+    }
+    #scene-01-hook .leak { font-size: 78px; font-weight: 300; color: var(--soft); opacity: 0; }
+    #scene-01-hook .leak .secret { font-weight: 800; color: var(--accent); }
+    #scene-01-hook .bloom {
+      position: absolute; left: 50%; top: 44%; width: 1100px; height: 1100px;
+      transform: translate(-50%, -50%) scale(0.2); border-radius: 50%; pointer-events: none; opacity: 0;
+      background: radial-gradient(circle, rgba(37,211,102,0.20) 0%, rgba(37,211,102,0) 62%);
+      filter: blur(34px); will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-01-hook" data-composition-id="scene-01-hook" data-width="1080" data-height="1920">
+    <div class="bloom" data-layout-allow-overflow></div>
+    <div class="stack">
+      <div class="kicker">those little ticks</div>
+      <div class="ticks"><span class="t t1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1120">✓</span><span class="t t2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1320" data-sfx-volume="0.42">✓</span></div>
+      <div class="leak">are leaking a <span class="secret" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1900" data-sfx-hook="true">secret</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-01-hook";
+    // host data-start = 0, scene-local time == global transcript time.
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "Those little ticks" @0.08
+    tl.fromTo(root + " .kicker", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.10);
+    // "ticks" @0.72 — the double tick snaps in
+    tl.fromTo(root + " .t1", { opacity: 0, scale: 1.6, y: 12 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power4.out" }, 0.72);
+    tl.fromTo(root + " .t2", { opacity: 0, scale: 1.6, y: 12 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power4.out" }, 0.92);
+    // "leaking a secret" @1.42 / "secret" @1.90
+    tl.fromTo(root + " .leak", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.42);
+    tl.fromTo(root + " .bloom", { opacity: 0, scale: 0.2 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" }, 1.86);
+    // ticks bleed green as the "secret" lands
+    tl.to(root + " .ticks .t", { color: "#25d366", textShadow: "0 0 50px rgba(37,211,102,0.55)", duration: 0.5, ease: "power2.out", stagger: 0.08 }, 1.90);
+    tl.to(root + " .secret", { textShadow: "0 0 38px rgba(37,211,102,0.5)", duration: 0.35, ease: "power2.out" }, 1.96);
+    // idle
+    tl.to(root + " .ticks", { y: -8, duration: 1.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.2);
+    // clear before the seam with scene 02
+    tl.to(root + " .stack", { opacity: 0, y: -36, duration: 0.4, ease: "power2.in" }, 2.66);
+    tl.to(root + " .bloom", { opacity: 0, duration: 0.4, ease: "power2.in" }, 2.66);
+
+    window.__timelines["scene-01-hook"] = tl;
+  </script>
+</body>
+</html>

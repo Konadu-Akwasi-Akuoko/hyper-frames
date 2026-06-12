@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 07 — let it crash / respawn</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face {
+      font-family: "Excalifont";
+      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: block;
+    }
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-07-crash { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-07-crash .server {
+      position: absolute; left: 150px; right: 150px; top: 560px; height: 760px;
+      background: var(--panel); border: 2px solid var(--accent-2); border-radius: 24px;
+      opacity: 0; box-shadow: 0 0 50px rgba(125,211,252,0.08);
+      will-change: opacity, transform;
+    }
+    #scene-07-crash .grid {
+      position: absolute; inset: 60px; display: grid;
+      grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(5, 1fr);
+      align-items: center; justify-items: center;
+    }
+    #scene-07-crash .wk {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #5ce08e, var(--accent));
+      box-shadow: 0 0 20px rgba(37,211,102,0.5);
+      opacity: 0; will-change: opacity, transform;
+    }
+    #scene-07-crash .wk.crasher { position: relative; }
+
+    #scene-07-crash .note {
+      position: absolute; left: 600px; top: 430px;
+      font-family: "Excalifont", cursive;
+      font-size: 52px; color: var(--danger); opacity: 0; transform: rotate(-6deg);
+      white-space: nowrap; will-change: opacity, transform;
+    }
+    #scene-07-crash .note .arrow {
+      display: block; margin: 6px 0 0 90px; width: 4px; height: 70px;
+      background: var(--danger); transform: rotate(28deg); transform-origin: top center;
+      border-radius: 2px;
+    }
+
+    #scene-07-crash .sup {
+      position: absolute; left: 50%; top: 470px; transform: translateX(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 38px; font-weight: 500;
+      color: var(--accent-2); letter-spacing: 0.05em; opacity: 0; white-space: nowrap;
+      will-change: opacity, transform;
+    }
+
+    #scene-07-crash .cap {
+      position: absolute; left: 90px; right: 90px; top: 1430px; text-align: center;
+      font-size: 64px; font-weight: 800; color: var(--fg); opacity: 0; line-height: 1.18;
+    }
+    #scene-07-crash .cap .hi { color: var(--accent); }
+    /* zero-footprint cue carrier (respawn shares the crasher element, which already carries the crash snap) */
+    #scene-07-crash .sfxmark { position: absolute; width: 0; height: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <div id="scene-07-crash" data-composition-id="scene-07-crash" data-width="1080" data-height="1920">
+    <div class="sup" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3260" data-sfx-volume="0.35">supervisor</div>
+    <div class="sfxmark" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4640"></div>
+
+    <div class="server" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1000" data-sfx-volume="0.35">
+      <div class="grid">
+        <div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div>
+        <div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div>
+        <div class="wk"></div><div class="wk"></div><div class="wk crasher" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1400" data-sfx-volume="0.42"></div><div class="wk"></div><div class="wk"></div>
+        <div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div>
+        <div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div><div class="wk"></div>
+      </div>
+    </div>
+
+    <div class="note" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1580">let it crash<span class="arrow"></span></div>
+
+    <div class="cap" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="7150">The box <span class="hi">never goes down</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-07-crash";
+    // host data-start = 34.94, scene-local = global - 34.94.
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+
+    // box of running workers settles in @0.50
+    tl.fromTo(root + " .server", { opacity: 0, y: 22, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .wk", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)", stagger: { each: 0.012, from: "edges" } }, 0.70);
+
+    // "crashes" @1.18 — the crasher flares danger (snap the gradient; GSAP can't tween two gradients), "let it crash" note flips in
+    tl.set(root + " .wk.crasher", { background: "radial-gradient(circle at 40% 35%, #ff9a8f, #ff6b5d)" }, 1.18);
+    tl.to(root + " .wk.crasher", { boxShadow: "0 0 36px rgba(255,107,93,0.85)", scale: 1.35, duration: 0.22, ease: "power2.out" }, 1.18);
+    tl.fromTo(root + " .note", { opacity: 0, y: -14, rotation: -16 }, { opacity: 1, y: 0, rotation: -6, duration: 0.4, ease: "back.out(2)" }, 1.18);
+
+    // "dies on its own" @1.80 — it collapses out, leaving an empty slot
+    tl.to(root + " .wk.crasher", { opacity: 0, scale: 0, duration: 0.35, ease: "power3.in" }, 1.80);
+    tl.to(root + " .note", { opacity: 0, y: 10, duration: 0.35, ease: "power2.in" }, 2.40);
+
+    // "a supervisor instantly" @2.86 — supervisor label pulses above the box
+    tl.fromTo(root + " .sup", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.86);
+    tl.to(root + " .sup", { textShadow: "0 0 26px rgba(125,211,252,0.7)", duration: 0.5, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.00);
+
+    // "respawns a clean one" @4.14 → clean@4.68 — snap back to green, then a fresh worker pops into the slot
+    tl.set(root + " .wk.crasher", { background: "radial-gradient(circle at 40% 35%, #5ce08e, #25d366)", boxShadow: "0 0 20px rgba(37,211,102,0.5)" }, 4.14);
+    tl.fromTo(root + " .wk.crasher",
+      { opacity: 0, scale: 0.2 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.4)", immediateRender: false }, 4.14);
+    tl.fromTo(root + " .wk.crasher",
+      { filter: "brightness(1.8)" }, { filter: "brightness(1)", duration: 0.5, ease: "power2.out", immediateRender: false }, 4.68);
+
+    // "the other million keep running" @5.30 — survivors breathe in unison
+    tl.to(root + " .wk:not(.crasher)", { scale: 1.1, duration: 0.7, ease: "sine.inOut", repeat: 1, yoyo: true, stagger: { each: 0.01, from: "center" } }, 5.30);
+
+    // "The box never goes down" — caption @6.70, "never goes down" ignites @7.40
+    tl.fromTo(root + " .cap", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.70);
+    tl.fromTo(root + " .cap .hi", { textShadow: "0 0 0 rgba(37,211,102,0)" }, { textShadow: "0 0 28px rgba(37,211,102,0.65)", duration: 0.3, ease: "power2.out" }, 7.40);
+
+    // quick clean clear right before unmount (scene end local 7.74) — payoff has been legible since 6.70
+    tl.to([root + " .server", root + " .sup", root + " .cap"], { opacity: 0, duration: 0.22, ease: "power2.in" }, 7.52);
+
+    window.__timelines["scene-07-crash"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+WhatsApp's engineers wanted their code to crash.
+
+On purpose. There's an actual engineering philosophy for it: let it crash.
+
+Most systems are built to never fail. They wrap everything in safety nets. They try to recover from every error.
+
+WhatsApp's backend does the opposite. And it works because of the language underneath it. Erlang, born in the telecom world.
+
+Every phone that connects gets its own tiny, isolated process. It runs on the BEAM virtual machine. Not a thread. Just one featherweight worker per person. Millions of them, running at once.
+
+So when one breaks, it doesn't try to heal. It just dies, alone. A supervisor notices. It spawns a fresh, clean copy. And the other million processes never even feel it.
+
+None of it comes free, though. Erlang is a niche language, with a hiring pool to match. It was never built for raw number-crunching speed. What it was built for is holding millions of things at once, without falling over.
+
+So what does a tiny team actually buy, by betting everything on a language almost nobody hires for? To find out, subscribe.

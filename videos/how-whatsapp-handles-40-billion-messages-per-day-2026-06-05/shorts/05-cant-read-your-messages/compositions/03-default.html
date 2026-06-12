@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 03 — 2016: E2EE on by default for a billion, built with Signal</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-03-default { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-03-default .stack { position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+    #scene-03-default .year { font-size: 188px; font-weight: 900; color: var(--fg); letter-spacing: -0.03em; line-height: 0.9; opacity: 0; will-change: transform, opacity; text-shadow: 0 0 60px rgba(37,211,102,0.14); }
+    #scene-03-default .year .em { color: var(--accent); }
+    #scene-03-default .yk { font-size: 38px; font-weight: 600; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; opacity: 0; }
+
+    /* the encryption toggle that flips ON green */
+    #scene-03-default .toggle { margin-top: 76px; display: flex; flex-direction: column; align-items: center; gap: 26px; opacity: 0; will-change: transform, opacity; }
+    #scene-03-default .switch { position: relative; width: 250px; height: 116px; border-radius: 58px; background: #0c1210; border: 3px solid var(--dim); }
+    #scene-03-default .knob { position: absolute; top: 8px; left: 8px; width: 92px; height: 92px; border-radius: 50%; background: var(--muted); will-change: transform, background; }
+    #scene-03-default .tlabel { font-size: 50px; font-weight: 800; color: var(--soft); letter-spacing: -0.01em; }
+    #scene-03-default .tlabel .on { color: var(--accent); }
+
+    /* the billion-people stat */
+    #scene-03-default .stat { margin-top: 64px; opacity: 0; will-change: transform, opacity; }
+    #scene-03-default .stat .big { font-size: 116px; font-weight: 900; color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
+    #scene-03-default .stat .sub { font-size: 46px; font-weight: 700; color: var(--soft); margin-top: 6px; }
+
+    /* the Signal credit */
+    #scene-03-default .credit { margin-top: 60px; font-family: "JetBrains Mono", monospace; font-size: 40px; font-weight: 500; color: var(--soft); letter-spacing: 0.02em; opacity: 0; will-change: transform, opacity; }
+    #scene-03-default .credit b { font-weight: 500; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-03-default" data-composition-id="scene-03-default" data-width="1080" data-height="1920">
+    <div class="stack">
+      <div class="yk" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="800" data-sfx-volume="0.42">the milestone</div>
+      <div class="year" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1040"><span class="em">20</span>16</div>
+      <div class="toggle" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1600" data-sfx-volume="0.42">
+        <div class="switch"><div class="knob" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3000"></div></div>
+        <div class="tlabel">end-to-end encryption <span class="on">on by default</span></div>
+      </div>
+      <div class="stat" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4260" data-sfx-volume="0.35">
+        <div class="big">1&thinsp;billion+</div>
+        <div class="sub">people, overnight</div>
+      </div>
+      <div class="credit" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6560">built with <b>// Signal</b></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-03-default";
+    const S = 8.62; // host data-start; scene-local = global - S
+
+    // root crossfade during seam overlap; content held to 0.50 (global 9.12) so it can't collide with scene 02's tail
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+
+    // "In twenty sixteen" @9.12 -> local 0.50 — the year stamps in
+    tl.fromTo(root + " .yk", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .year", { opacity: 0, scale: 1.24, y: 14 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "power4.out" }, 0.62);
+
+    // "end-to-end encryption" @9.92 -> local 1.30 — the toggle slides up (still OFF)
+    tl.fromTo(root + " .toggle", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.20);
+    // "switched on by default" @11.32 -> local 2.70 — the knob flips green
+    tl.to(root + " .switch", { borderColor: "var(--accent)", duration: 0.3, ease: "power2.out" }, 2.66);
+    tl.to(root + " .knob", { x: 134, backgroundColor: "var(--accent)", duration: 0.34, ease: "back.out(2)" }, 2.66);
+    tl.to(root + " .switch", { boxShadow: "0 0 50px rgba(37,211,102,0.4)", duration: 0.26, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.70);
+
+    // "for over a billion people" @12.56 -> local 3.94 — the stat counts up
+    tl.fromTo(root + " .stat", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.86);
+
+    // "built with the team behind Signal" @14.02 -> local 5.40 — the credit appears
+    tl.fromTo(root + " .credit", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.16);
+    // idle drift on the year
+    tl.to(root + " .year", { y: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.4);
+
+    window.__timelines["scene-03-default"] = tl;
+  </script>
+</body>
+</html>

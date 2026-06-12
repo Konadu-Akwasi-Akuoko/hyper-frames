@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 09 — dated record: 20B sent, 44B fanned, 64B in a day</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-09-date { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-09-date .stamp {
+      position: absolute; left: 50%; top: 330px; transform: translateX(-50%); opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-size: 40px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--soft);
+      border: 1px solid var(--border); border-radius: 14px; padding: 16px 34px;
+      background: rgba(16,22,19,0.7); white-space: nowrap;
+    }
+    #scene-09-date .rows {
+      position: absolute; left: 50%; top: 540px; transform: translateX(-50%);
+      width: 1000px; display: flex; flex-direction: column; gap: 36px;
+    }
+    #scene-09-date .row { opacity: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    #scene-09-date .fig {
+      font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums;
+      font-size: 86px; font-weight: 700; line-height: 0.96; letter-spacing: -0.01em;
+    }
+    #scene-09-date .lbl { font-size: 34px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    #scene-09-date .sent .fig { color: var(--accent); text-shadow: 0 0 40px rgba(37,211,102,0.22); }
+    #scene-09-date .fan  .fig { color: var(--accent-2); text-shadow: 0 0 40px rgba(125,211,252,0.22); }
+    #scene-09-date .rule { width: 0; height: 5px; background: var(--border); border-radius: 3px; margin: 6px auto; }
+    #scene-09-date .total .fig { color: var(--cost); font-size: 92px; text-shadow: 0 0 48px rgba(240,180,41,0.36); }
+    #scene-09-date .total .lbl { color: var(--cost); opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <div id="scene-09-date" data-composition-id="scene-09-date" data-width="1080" data-height="1920">
+    <div class="stamp" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1600" data-sfx-volume="0.35">2&nbsp;APRIL&nbsp;2014</div>
+    <div class="rows">
+      <div class="row sent" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3660" data-sfx-volume="0.35"><div class="fig">20,000,000,000</div><div class="lbl">sent</div></div>
+      <div class="row fan" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5760" data-sfx-volume="0.35"><div class="fig">44,000,000,000</div><div class="lbl">fanned out</div></div>
+      <div class="rule" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="7840"></div>
+      <div class="row total" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="8800" data-sfx-volume="0.35"><div class="fig">64,000,000,000</div><div class="lbl">in one day</div></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-09-date";
+    const S = 42.96; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "2nd of April 2014" @44.10 -> local 1.14 — the date stamps in
+    tl.fromTo(root + " .stamp", { opacity: 0, scale: 0.9, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.46, ease: "back.out(1.6)" }, 44.10 - S);
+    // "twenty billion messages people sent" @46.20 -> local 3.24
+    tl.fromTo(root + " .sent", { opacity: 0, x: -22 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, 46.20 - S);
+    // "fanned out into forty-four billion" @48.30 -> local 5.34
+    tl.fromTo(root + " .fan", { opacity: 0, x: -22 }, { opacity: 1, x: 0, duration: 0.42, ease: "power3.out" }, 48.30 - S);
+    tl.fromTo(root + " .rule", { width: 0 }, { width: 620, duration: 0.4, ease: "power2.inOut" }, 50.40 - S);
+    // "Sixty-four billion in a single day" @51.26 -> local 8.30 — the total detonates (ties back to the hook)
+    tl.fromTo(root + " .total", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }, 51.26 - S);
+    // idle drift on the total figure
+    tl.to(root + " .total .fig", { y: -6, duration: 1.0, ease: "sine.inOut", repeat: 1, yoyo: true, overwrite: "auto" }, 52.2 - S);
+    // clear before seam with scene 10 (scene-10 host start 52.82; its text legible ~53.32)
+    tl.to([root + " .stamp", root + " .rows"], { opacity: 0, y: -22, duration: 0.3, ease: "power2.in", overwrite: "auto" }, 52.96 - S);
+
+    window.__timelines["scene-09-date"] = tl;
+  </script>
+</body>
+</html>

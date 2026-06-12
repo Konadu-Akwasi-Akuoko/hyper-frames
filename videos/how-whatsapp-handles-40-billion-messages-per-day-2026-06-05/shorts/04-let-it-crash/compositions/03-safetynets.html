@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 03 — most systems wrap everything in safety nets</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-03-safetynets { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-03-safetynets .head {
+      position: absolute; left: 0; right: 0; top: 470px; text-align: center; opacity: 0;
+      font-size: 52px; font-weight: 700; color: var(--fg); letter-spacing: 0.01em;
+    }
+    #scene-03-safetynets .head .x { color: var(--muted); font-weight: 500; }
+
+    /* a core element swaddled in layered safety-net rings — "never fail" armor */
+    #scene-03-safetynets .swaddle {
+      position: absolute; left: 50%; top: 1010px; transform: translate(-50%,-50%);
+      width: 520px; height: 520px;
+    }
+    #scene-03-safetynets .ring {
+      position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--dim); opacity: 0;
+    }
+    #scene-03-safetynets .ring.r2 { inset: 64px; border-color: var(--border); }
+    #scene-03-safetynets .ring.r3 { inset: 128px; border-color: var(--dim); }
+    #scene-03-safetynets .ring.r4 { inset: 192px; border-color: var(--border); }
+    #scene-03-safetynets .core {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) scale(0.6); opacity: 0;
+      width: 96px; height: 96px; border-radius: 20px; background: var(--panel); border: 2px solid var(--soft);
+    }
+    /* try/catch braces flanking — the machine's own armor language */
+    #scene-03-safetynets .brace {
+      position: absolute; top: 985px; font-family: "JetBrains Mono", monospace;
+      font-size: 220px; font-weight: 400; color: var(--dim); opacity: 0; line-height: 0.6;
+    }
+    #scene-03-safetynets .brace.l { left: 150px; }
+    #scene-03-safetynets .brace.r { right: 150px; }
+
+    #scene-03-safetynets .tags {
+      position: absolute; left: 0; right: 0; top: 1430px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-size: 40px; color: var(--muted);
+    }
+    #scene-03-safetynets .tag { display: inline-block; opacity: 0; margin: 0 14px; }
+  </style>
+</head>
+<body>
+  <div id="scene-03-safetynets" data-composition-id="scene-03-safetynets" data-width="1080" data-height="1920">
+    <div class="head" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="940" data-sfx-volume="0.42"><span class="x">Most systems are built to</span> never fail.</div>
+    <div class="brace l">{</div>
+    <div class="brace r">}</div>
+    <div class="swaddle">
+      <div class="ring r1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4460"></div>
+      <div class="ring r2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4120"></div>
+      <div class="ring r3" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3440" data-sfx-volume="0.42"></div>
+      <div class="ring r4" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3100"></div>
+      <div class="core" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2800" data-sfx-volume="0.35"></div>
+    </div>
+    <div class="tags">
+      <span class="tag">try</span><span class="tag">catch</span><span class="tag">retry</span>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-03-safetynets";
+    const S = 6.68; // local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // "Most systems are built to never fail." never@8.56 -> 1.88, fail@8.92 -> 2.24
+    tl.fromTo(root + " .head", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.44, ease: "power3.out", overwrite: "auto" }, 0.50);
+    // the core, then the nets wrap it — "wrap everything in safety nets" wrap@2.76, safety/nets@4.06/4.42
+    tl.fromTo(root + " .core", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", overwrite: "auto" }, 2.40);
+    tl.fromTo(root + " .ring.r4", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 2.76);
+    tl.fromTo(root + " .ring.r3", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 3.10);
+    tl.fromTo(root + " .ring.r2", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 3.78);
+    tl.fromTo(root + " .ring.r1", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 4.12);
+    tl.fromTo([root + " .brace.l", root + " .brace.r"], { opacity: 0 }, { opacity: 0.55, duration: 0.4, ease: "power2.out", stagger: 0.08, overwrite: "auto" }, 3.40);
+    // "They try to recover from every error." recover@5.42, error@6.58 — the armor tags arrive
+    tl.fromTo(root + " .tag", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.26, overwrite: "auto" }, 5.30);
+    // idle drift on the whole swaddle so nothing sits still
+    tl.to(root + " .swaddle", { y: -8, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 4.6);
+
+    window.__timelines["scene-03-safetynets"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 05 — store-and-forward label</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-05-label { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-05-label .top {
+      position: absolute; top: 540px; left: 0; right: 0; text-align: center;
+    }
+    #scene-05-label .eyebrow { font-size: 40px; font-weight: 500; color: var(--muted); letter-spacing: 0.22em; text-transform: uppercase; opacity: 0; margin-bottom: 30px; }
+    #scene-05-label .term {
+      display: inline-block; font-size: 116px; font-weight: 900; color: var(--accent-2);
+      letter-spacing: -0.01em; line-height: 0.95; opacity: 0; will-change: transform, opacity;
+      text-shadow: 0 0 54px rgba(125,211,252,0.28);
+    }
+    #scene-05-label .readout {
+      position: absolute; top: 1050px; left: 0; right: 0; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+    }
+    #scene-05-label .rticks { display: flex; gap: 8px; font-size: 150px; font-weight: 700; line-height: 0.8; }
+    #scene-05-label .rticks .t { color: var(--accent); opacity: 0; will-change: transform, opacity; text-shadow: 0 0 40px rgba(37,211,102,0.5); display: inline-block; }
+    #scene-05-label .rcap { font-size: 56px; font-weight: 300; color: var(--soft); opacity: 0; }
+    #scene-05-label .rcap b { font-weight: 800; color: var(--fg); }
+  </style>
+</head>
+<body>
+  <div id="scene-05-label" data-composition-id="scene-05-label" data-width="1080" data-height="1920">
+    <div class="top">
+      <div class="eyebrow">engineers call it</div>
+      <div class="term" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1740">STORE-AND-FORWARD</div>
+    </div>
+    <div class="readout">
+      <div class="rticks"><span class="t" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5360">✓</span><span class="t" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5520" data-sfx-volume="0.42">✓</span></div>
+      <div class="rcap">the ticks are that <b data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6440">relay</b>, reporting back</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-05-label";
+    const S = 16.16; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "Engineers call it" @16.66 -> local 0.50
+    tl.fromTo(root + " .eyebrow", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.66 - S);
+    // "store and forward" @17.40 -> local 1.24 : stamp in
+    tl.fromTo(root + " .term", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power4.out" }, 17.40 - S);
+    // "the ticks" @21.12 -> local 4.96 : ticks pop
+    tl.fromTo(root + " .rticks .t", { opacity: 0, scale: 1.5, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power4.out", stagger: 0.16 }, 21.12 - S);
+    // "relay reporting back" @22.10 -> local 5.94
+    tl.fromTo(root + " .rcap", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 22.10 - S);
+    tl.to(root + " .rcap b", { textShadow: "0 0 30px rgba(233,237,235,0.5)", duration: 0.3 }, 22.60 - S);
+    // ticks pulse on "reporting back"
+    tl.to(root + " .rticks", { y: -8, duration: 0.45, ease: "sine.inOut", repeat: 1, yoyo: true }, 23.02 - S);
+    // idle on term
+    tl.to(root + " .term", { y: -6, duration: 1.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 19.0 - S);
+    // clear before seam with scene 06 (host ends 24.02; scene06 host start 23.52)
+    tl.to([root + " .top", root + " .readout"], { opacity: 0, y: -28, duration: 0.36, ease: "power2.in" }, 23.66 - S);
+
+    window.__timelines["scene-05-label"] = tl;
+  </script>
+</body>
+</html>

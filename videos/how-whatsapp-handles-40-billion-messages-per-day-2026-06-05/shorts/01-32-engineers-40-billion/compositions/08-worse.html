@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 08 — it gets worse (meta-reward)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-08-worse { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-08-worse .wrap {
+      position: absolute; left: 90px; right: 90px; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 50px;
+    }
+
+    #scene-08-worse .pill {
+      display: inline-flex; align-items: center; gap: 20px;
+      padding: 24px 52px; border-radius: 999px;
+      background: var(--accent); color: #06210f; font-weight: 800; font-size: 52px;
+      letter-spacing: 0.01em; opacity: 0; box-shadow: 0 0 40px rgba(37,211,102,0.45);
+      will-change: opacity, transform;
+    }
+    #scene-08-worse .pill .play {
+      width: 0; height: 0; border-style: solid; border-width: 18px 0 18px 30px;
+      border-color: transparent transparent transparent #06210f;
+    }
+
+    #scene-08-worse .line {
+      font-size: 58px; font-weight: 500; color: var(--soft); text-align: center; opacity: 0; line-height: 1.25;
+    }
+    #scene-08-worse .line .ins { color: var(--fg); font-weight: 800; }
+
+    #scene-08-worse .slam {
+      text-align: center; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-08-worse .slam .pre { font-size: 50px; font-weight: 400; color: var(--muted); }
+    #scene-08-worse .slam .worse {
+      display: block; margin-top: 8px; font-size: 168px; font-weight: 900; color: var(--danger);
+      letter-spacing: -0.02em; line-height: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-08-worse" data-composition-id="scene-08-worse" data-width="1080" data-height="1920">
+    <div class="wrap">
+      <div class="pill" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="950" data-sfx-volume="0.35"><span class="play"></span> Subscribe</div>
+      <div class="line">if that already sounds <span class="ins">insane</span>…</div>
+      <div class="slam"><span class="pre">because it gets</span><span class="worse" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3590">WORSE</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-08-worse";
+    // host data-start = 42.18, scene-local = global - 42.18.
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+
+    // "Subscribe" @0.50 — green pill snaps in
+    tl.fromTo(root + " .pill", { opacity: 0, scale: 0.7, y: -16 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2.2)" }, 0.50);
+    tl.to(root + " .pill", { scale: 1.06, duration: 0.5, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.05);
+
+    // "if that already sounds insane" @0.90 → insane ignites @2.00
+    tl.fromTo(root + " .line", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.90);
+    tl.fromTo(root + " .line .ins", { textShadow: "0 0 0 rgba(233,237,235,0)" }, { textShadow: "0 0 24px rgba(233,237,235,0.5)", duration: 0.3, ease: "power2.out" }, 2.00);
+
+    // "because it gets" @2.68 — pre line fades up
+    tl.fromTo(root + " .slam", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.68);
+    // "WORSE" slams @3.14 → punch @3.84
+    tl.fromTo(root + " .slam .worse", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" }, 3.14);
+    tl.to(root + " .slam .worse", { scale: 1.08, textShadow: "0 0 40px rgba(255,107,93,0.6)", duration: 0.32, ease: "power2.out" }, 3.84);
+
+    // clear before seam (scene end local 4.76; next scene mounts at local 4.26)
+    tl.to(root + " .wrap", { opacity: 0, y: -26, duration: 0.34, ease: "power2.in" }, 4.30);
+
+    window.__timelines["scene-08-worse"] = tl;
+  </script>
+</body>
+</html>

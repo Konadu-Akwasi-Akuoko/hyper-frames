@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 11 — holds millions at once without falling over</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-11-buy { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-11-buy .label {
+      position: absolute; left: 0; right: 0; top: 560px; text-align: center; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-size: 44px; color: var(--accent); letter-spacing: 0.06em;
+    }
+    #scene-11-buy .card {
+      position: absolute; left: 110px; right: 110px; top: 760px; opacity: 0;
+      padding: 64px 56px; border-radius: 28px;
+      background: rgba(37,211,102,0.06); border: 2px solid var(--accent);
+      box-shadow: 0 0 70px rgba(37,211,102,0.22); text-align: center;
+    }
+    #scene-11-buy .card .plus {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 88px; height: 88px; border-radius: 50%; border: 4px solid var(--accent);
+      color: var(--accent); font-size: 64px; font-weight: 800; margin-bottom: 28px;
+    }
+    #scene-11-buy .card .big { font-size: 74px; font-weight: 900; color: var(--fg); line-height: 1.04; letter-spacing: -0.01em; }
+    #scene-11-buy .card .big .em { color: var(--accent); }
+    #scene-11-buy .card .sub { margin-top: 22px; font-size: 42px; font-weight: 500; color: var(--soft); }
+  </style>
+</head>
+<body>
+  <div id="scene-11-buy" data-composition-id="scene-11-buy" data-width="1080" data-height="1920">
+    <div class="label" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="640" data-sfx-volume="0.42">// what it buys</div>
+    <div class="card" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2180">
+      <div class="plus">+</div>
+      <div class="big">Holds <span class="em">millions</span> at once</div>
+      <div class="sub">without ever falling over</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-11-buy";
+    const S = 54.70; // local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    tl.fromTo(root + " .label", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 0.30);
+    // "holding millions of things at once" holding@1.92 millions@2.32
+    tl.fromTo(root + " .card", { opacity: 0, scale: 0.9, y: 26 }, { opacity: 1, scale: 1, y: 0, duration: 0.48, ease: "back.out(1.4)", overwrite: "auto" }, 1.70);
+    // "without falling over" — the card holds firm, a confident glow pulse @falling 4.22
+    tl.to(root + " .card", { boxShadow: "0 0 100px rgba(37,211,102,0.42)", duration: 0.36, ease: "power2.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 4.10);
+    // idle drift
+    tl.to(root + " .card", { y: -7, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 2.6);
+
+    window.__timelines["scene-11-buy"] = tl;
+  </script>
+</body>
+</html>

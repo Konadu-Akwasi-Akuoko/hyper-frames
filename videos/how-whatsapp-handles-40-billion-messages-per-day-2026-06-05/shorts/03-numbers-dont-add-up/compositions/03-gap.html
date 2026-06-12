@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 03 — the gap: where do the extra 40B come from</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-03-gap { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-03-gap .wrap {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0;
+    }
+    #scene-03-gap .kick {
+      font-size: 50px; font-weight: 700; color: var(--soft);
+      letter-spacing: 0.02em; text-transform: uppercase; opacity: 0; margin-bottom: 72px;
+    }
+    #scene-03-gap .calc {
+      display: flex; flex-direction: column; align-items: center; gap: 18px;
+      font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums;
+    }
+    #scene-03-gap .calc .line { font-size: 70px; font-weight: 500; color: var(--muted); opacity: 0; }
+    #scene-03-gap .rule { width: 0; height: 5px; background: var(--border); border-radius: 3px; margin: 6px 0; }
+    #scene-03-gap .gap {
+      font-size: 132px; font-weight: 700; color: var(--cost); opacity: 0; will-change: transform, opacity;
+      text-shadow: 0 0 70px rgba(240,180,41,0.34); line-height: 1;
+    }
+    #scene-03-gap .q {
+      margin-top: 56px; font-size: 56px; font-weight: 500; color: var(--fg); opacity: 0; max-width: 880px;
+    }
+    #scene-03-gap .q b { color: var(--cost); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="scene-03-gap" data-composition-id="scene-03-gap" data-width="1080" data-height="1920">
+    <div class="wrap">
+      <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900">Same messages.</div>
+      <div class="calc">
+        <div class="line" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1310">64,000,000,000</div>
+        <div class="line" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1530" data-sfx-volume="0.35">&minus; 20,000,000,000</div>
+        <div class="rule"></div>
+        <div class="gap" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2440" data-sfx-volume="0.42">40,000,000,000</div>
+      </div>
+      <div class="q" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3530">Where do the <b>extra forty billion</b> come from?</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-03-gap";
+    const S = 7.64; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "same messages" @8.14 -> local 0.50
+    tl.fromTo(root + " .kick", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.14 - S);
+    // the two operands stagger in just behind the question setup
+    tl.fromTo(root + " .calc .line", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.22 }, 8.55 - S);
+    tl.fromTo(root + " .rule", { width: 0 }, { width: 560, duration: 0.4, ease: "power2.inOut" }, 9.3 - S);
+    // "extra forty billion" @9.58 -> local 1.94 — the gap lands
+    tl.fromTo(root + " .gap", { opacity: 0, scale: 1.2, y: 8 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power4.out" }, 9.58 - S);
+    // "come from?" @10.72 -> local 3.08
+    tl.fromTo(root + " .q", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 10.72 - S);
+    // idle pulse on the gap
+    tl.to(root + " .gap", { scale: 1.04, duration: 0.7, ease: "sine.inOut", repeat: 1, yoyo: true, overwrite: "auto" }, 10.8 - S);
+    // clear before seam with scene 04 (scene-04 host start 10.84; this host ends 11.34)
+    tl.to(root + " .wrap", { opacity: 0, y: -24, duration: 0.32, ease: "power2.in", overwrite: "auto" }, 10.94 - S);
+
+    window.__timelines["scene-03-gap"] = tl;
+  </script>
+</body>
+</html>

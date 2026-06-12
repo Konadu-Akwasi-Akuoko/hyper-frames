@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 10 — niche language, never built for speed</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-10-cost { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-10-cost .label {
+      position: absolute; left: 0; right: 0; top: 520px; text-align: center; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-size: 44px; color: var(--cost); letter-spacing: 0.06em;
+    }
+    #scene-10-cost .ledger {
+      position: absolute; left: 110px; right: 110px; top: 700px;
+      display: flex; flex-direction: column; gap: 34px;
+    }
+    #scene-10-cost .row {
+      display: flex; align-items: center; gap: 30px; padding: 40px 44px; border-radius: 22px;
+      background: rgba(240,180,41,0.05); border: 2px solid rgba(240,180,41,0.45); opacity: 0;
+    }
+    #scene-10-cost .row .mark {
+      flex: 0 0 auto; width: 64px; height: 64px; border-radius: 50%;
+      border: 3px solid var(--cost); color: var(--cost);
+      display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 800;
+    }
+    #scene-10-cost .row .txt { font-size: 50px; font-weight: 700; color: var(--fg); line-height: 1.12; }
+    #scene-10-cost .row .txt .sub { display: block; font-size: 34px; font-weight: 500; color: var(--muted); margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div id="scene-10-cost" data-composition-id="scene-10-cost" data-width="1080" data-height="1920">
+    <div class="label" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="740" data-sfx-volume="0.35">// what it costs</div>
+    <div class="ledger">
+      <div class="row" id="r1" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1820">
+        <div class="mark">&minus;</div>
+        <div class="txt">A niche language<span class="sub">a small hiring pool to match</span></div>
+      </div>
+      <div class="row" id="r2" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="5060" data-sfx-volume="0.35">
+        <div class="mark">&minus;</div>
+        <div class="txt">Not built for raw speed<span class="sub">never meant for number-crunching</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-10-cost";
+    const S = 48.04; // local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    tl.fromTo(root + " .label", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 0.40);
+    // "Erlang is a niche language with a hiring pool to match" niche@1.50 pool@3.52
+    tl.fromTo("#r1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.46, ease: "power3.out", overwrite: "auto" }, 1.36);
+    // "never built for raw number crunching speed" never@4.72 raw@5.60
+    tl.fromTo("#r2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.46, ease: "power3.out", overwrite: "auto" }, 4.60);
+    // idle drift on the ledger
+    tl.to(root + " .ledger", { y: -7, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 5.4);
+
+    window.__timelines["scene-10-cost"] = tl;
+  </script>
+</body>
+</html>

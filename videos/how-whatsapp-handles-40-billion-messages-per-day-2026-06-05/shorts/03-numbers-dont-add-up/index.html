@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0f0d;
+        --panel: #101613;
+        --border: #1e2722;
+        --fg: #e9edeb;
+        --soft: #c3cbc7;
+        --muted: #79857f;
+        --dim: #39443f;
+        --accent: #25d366;
+        --accent-2: #7dd3fc;
+        --cost: #f0b429;
+        --danger: #ff6b5d;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="74.77"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Persistent subject-toned background behind every scene (no logo). -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="74.77"
+        data-track-index="7"
+        data-width="1080"
+        data-height="1920"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
+
+      <!-- Voiceover — the timing source of truth for every scene. -->
+      <audio
+        id="voiceover"
+        src="audio/voiceover.mp3"
+        data-start="0"
+        data-duration="74.77"
+        data-track-index="9"
+        data-volume="1"
+      ></audio>
+
+      <!-- Scene 01 — Hook: the numbers don't add up (chunk 0.08–2.78; next 2.92). -->
+      <div id="scene-01" data-composition-id="scene-01-hook"
+        data-composition-src="compositions/01-hook.html"
+        data-start="0" data-duration="2.92" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:1"></div>
+
+      <!-- Scene 02 — Reveal: 20B sent turned into 64B (chunk 2.92–7.88; next 8.14). -->
+      <div id="scene-02" data-composition-id="scene-02-reveal"
+        data-composition-src="compositions/02-reveal.html"
+        data-start="2.42" data-duration="5.72" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:2"></div>
+
+      <!-- Scene 03 — The gap: where do the extra 40B come from (chunk 8.14–11.20; next 11.34). -->
+      <div id="scene-03" data-composition-id="scene-03-gap"
+        data-composition-src="compositions/03-gap.html"
+        data-start="7.64" data-duration="3.70" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:3"></div>
+
+      <!-- Scene 04 — Groups: you upload exactly once (chunk 11.34–18.20, holds pause; next 22.52). -->
+      <div id="scene-04" data-composition-id="scene-04-groups"
+        data-composition-src="compositions/04-groups.html"
+        data-start="10.84" data-duration="11.68" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:4"></div>
+
+      <!-- Scene 05 — Ledger: one copy, battery+data pay once (chunk 22.52–29.14; next 29.28). -->
+      <div id="scene-05" data-composition-id="scene-05-ledger"
+        data-composition-src="compositions/05-ledger.html"
+        data-start="22.02" data-duration="7.26" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:5"></div>
+
+      <!-- Scene 06 — Fan-out: the server multiplies one into many (chunk 29.28–37.06; next 37.36). -->
+      <div id="scene-06" data-composition-id="scene-06-fanout"
+        data-composition-src="compositions/06-fanout.html"
+        data-start="28.78" data-duration="8.58" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:6"></div>
+
+      <!-- Scene 07 — One in, a hundred out (chunk 37.36–41.08; next 41.30). -->
+      <div id="scene-07" data-composition-id="scene-07-in-out"
+        data-composition-src="compositions/07-in-out.html"
+        data-start="36.86" data-duration="4.44" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:7"></div>
+
+      <!-- Scene 08 — Name card: server-side fan-out (chunk 41.30–43.26; next 43.46). -->
+      <div id="scene-08" data-composition-id="scene-08-name"
+        data-composition-src="compositions/08-name.html"
+        data-start="40.80" data-duration="2.66" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:8"></div>
+
+      <!-- Scene 09 — Dated record: 20B sent → 44B fanned → 64B (chunk 43.46–52.86; next 53.32). -->
+      <div id="scene-09" data-composition-id="scene-09-date"
+        data-composition-src="compositions/09-date.html"
+        data-start="42.96" data-duration="10.36" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:9"></div>
+
+      <!-- Scene 10 — Reframe: not an error, fan-out made visible (chunk 53.32–56.38; next 56.56). -->
+      <div id="scene-10" data-composition-id="scene-10-reframe"
+        data-composition-src="compositions/10-reframe.html"
+        data-start="52.82" data-duration="3.74" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:10"></div>
+
+      <!-- Scene 11 — Kicker: cost scales with group size, not typers (chunk 56.56–64.26; next 64.44). -->
+      <div id="scene-11" data-composition-id="scene-11-kicker"
+        data-composition-src="compositions/11-kicker.html"
+        data-start="56.06" data-duration="8.38" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:11"></div>
+
+      <!-- Scene 12a — Act 1: flipped fan-out inside-out (tease + fan motif; held to 72.26). -->
+      <!-- Split from a single scene-12 so the framework's window-end masking clears Act 1 as Act 2
+           enters — a GSAP mid-scene clear does not render under headless seek (lazy-tween rAF defer). -->
+      <div id="scene-12a" data-composition-id="scene-12a-flip"
+        data-composition-src="compositions/12a-flip.html"
+        data-start="63.94" data-duration="8.32" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:12"></div>
+
+      <!-- Scene 12b — Act 2: the CTA, Why? → Subscribe (chunk 72.26–74.77; final, exit). -->
+      <div id="scene-12b" data-composition-id="scene-12b-cta"
+        data-composition-src="compositions/12b-cta.html"
+        data-start="71.76" data-duration="3.01" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:13"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div
+        id="sfx-layer"
+        data-composition-id="sfx-layer"
+        data-composition-src="compositions/sfx.html"
+        data-start="0"
+        data-duration="74.77"
+        data-track-index="19"
+      ></div>
+</body>
+</html>

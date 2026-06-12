@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Substrate — persistent background (portrait)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #080d0a;
+      --accent: #25d366;
+      --grid: rgba(120, 196, 158, 0.05);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: var(--bg);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #substrate { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+
+    #substrate .field {
+      position: absolute; inset: -60px; will-change: transform;
+      background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+      background-size: 120px 120px;
+    }
+
+    #substrate .node {
+      position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px;
+      border-radius: 50%; background: var(--accent);
+      will-change: opacity, transform;
+    }
+    #substrate .node.bright { box-shadow: 0 0 12px 2px rgba(37, 211, 102, 0.38); opacity: 0.85; }
+    #substrate .node.dim    { box-shadow: 0 0 8px 1px rgba(37, 211, 102, 0.22);  opacity: 0.5; width: 6px; height: 6px; }
+
+    #substrate .links { position: absolute; inset: -60px; }
+    #substrate .links line { stroke: rgba(37, 211, 102, 0.10); stroke-width: 1; }
+  </style>
+</head>
+<body>
+  <div id="substrate" data-composition-id="substrate" data-width="1080" data-height="1920">
+    <div class="field" data-layout-allow-overflow>
+      <svg class="links" width="1200" height="2040" viewBox="0 0 1200 2040" data-layout-allow-overflow>
+        <line x1="240" y1="480" x2="600" y2="360"></line>
+        <line x1="720" y1="960" x2="960" y2="1200"></line>
+        <line x1="360" y1="1440" x2="720" y2="1560"></line>
+      </svg>
+      <div class="node bright" style="left:240px;  top:480px;"></div>
+      <div class="node dim"    style="left:600px;  top:360px;"></div>
+      <div class="node dim"    style="left:840px;  top:720px;"></div>
+      <div class="node dim"    style="left:360px;  top:960px;"></div>
+      <div class="node bright" style="left:720px;  top:1200px;"></div>
+      <div class="node dim"    style="left:960px;  top:1440px;"></div>
+      <div class="node dim"    style="left:240px;  top:1680px;"></div>
+      <div class="node bright" style="left:720px;  top:1560px;"></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Voiceover runs 58.79s. Finite drift cycle that covers it.
+    tl.to("#substrate .field", { x: 40, y: 28, duration: 22, ease: "sine.inOut", repeat: 5, yoyo: true }, 0);
+
+    tl.to("#substrate .node.bright", { opacity: 1,    duration: 7, ease: "sine.inOut", repeat: 99, yoyo: true, stagger: 3.5 }, 0);
+    tl.to("#substrate .node.dim",    { opacity: 0.72, duration: 9, ease: "sine.inOut", repeat: 99, yoyo: true, stagger: 2.2 }, 1);
+
+    window.__timelines["substrate"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 04 — store-and-forward hop</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-04-hop { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-04-hop .cap {
+      position: absolute; top: 230px; left: 0; right: 0; text-align: center;
+      font-size: 54px; font-weight: 300; color: var(--soft); opacity: 0;
+    }
+    #scene-04-hop .cap b { font-weight: 800; color: var(--accent-2); }
+
+    #scene-04-hop .rig { position: absolute; left: 50%; top: 1020px; transform: translate(-50%,-50%); width: 760px; height: 1040px; }
+    #scene-04-hop .node {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; justify-content: center; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-04-hop .phone { width: 200px; height: 290px; border: 5px solid var(--border); border-radius: 34px; background: var(--panel); }
+    #scene-04-hop .phone.top { top: 0; }
+    #scene-04-hop .phone.bot { bottom: 0; }
+    #scene-04-hop .server {
+      top: 50%; transform: translate(-50%,-50%); width: 360px; height: 200px; border-radius: 24px;
+      background: linear-gradient(160deg, #122231, #0c1620); border: 5px solid #234356;
+      flex-direction: column; gap: 14px;
+    }
+    #scene-04-hop .server .bars { display: flex; gap: 12px; }
+    #scene-04-hop .server .bars i { width: 14px; height: 56px; background: var(--accent-2); opacity: 0.5; border-radius: 3px; display: block; }
+    #scene-04-hop .server .name { font-size: 30px; font-weight: 600; color: var(--accent-2); letter-spacing: 0.18em; text-transform: uppercase; }
+    #scene-04-hop .conn { position: absolute; left: 50%; transform: translateX(-50%); width: 4px; background: var(--dim); }
+    #scene-04-hop .conn.a { top: 290px; height: 130px; }
+    #scene-04-hop .conn.b { bottom: 290px; height: 130px; }
+    #scene-04-hop .msg {
+      position: absolute; left: 50%; top: 150px; width: 46px; height: 46px; margin-left: -23px; margin-top: -23px;
+      border-radius: 50%; background: var(--accent); box-shadow: 0 0 28px 4px rgba(37,211,102,0.6);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-04-hop .held {
+      position: absolute; left: 50%; top: 520px; transform: translateX(-50%);
+      font-size: 36px; font-weight: 700; color: var(--cost); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0; white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-04-hop" data-composition-id="scene-04-hop" data-width="1080" data-height="1920">
+    <div class="cap">routed through a <b>server in the middle</b></div>
+    <div class="rig">
+      <div class="conn a"></div>
+      <div class="conn b"></div>
+      <div class="node phone top" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900" data-sfx-volume="0.35"></div>
+      <div class="node server" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2310"><div class="bars"><i></i><i></i><i></i><i></i></div><div class="name">server</div></div>
+      <div class="node phone bot" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3720"></div>
+      <div class="held" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="2910" data-sfx-volume="0.35">held</div>
+      <div class="msg" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2660"></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-04-hop";
+    const S = 12.30; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "Every message" @12.80 -> local 0.50 : phones + server settle
+    tl.fromTo(root + " .phone.top", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.80 - S);
+    tl.fromTo(root + " .phone.bot", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.92 - S);
+    // "server in the middle" @14.16 -> local 1.86
+    tl.fromTo(root + " .server", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 14.16 - S);
+    tl.fromTo(root + " .cap", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 13.86 - S);
+    // message dot leaves the top phone, travels to server
+    tl.fromTo(root + " .msg", { opacity: 0, top: 150 }, { opacity: 1, top: 150, duration: 0.25, ease: "power2.out" }, 14.30 - S);
+    tl.to(root + " .msg", { top: 520, duration: 0.5, ease: "power1.inOut" }, 14.46 - S);
+    // "gets held" @14.86 -> local 2.56 : dot pulses at server, "held" tag
+    tl.to(root + " .server .bars i", { opacity: 1, duration: 0.25, stagger: 0.05, ease: "power2.out" }, 14.86 - S);
+    tl.fromTo(root + " .held", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 14.86 - S);
+    tl.to(root + " .msg", { scale: 1.25, duration: 0.3, ease: "sine.inOut", repeat: 1, yoyo: true }, 14.96 - S);
+    // "then forwarded on" @15.62 -> local 3.32 : dot continues to bottom phone, lands ~15.9
+    tl.to(root + " .held", { opacity: 0, duration: 0.3, ease: "power2.in" }, 15.62 - S);
+    tl.to(root + " .msg", { top: 890, duration: 0.45, ease: "power2.in" }, 15.62 - S);
+    tl.to(root + " .phone.bot", { borderColor: "var(--accent)", duration: 0.3, ease: "power2.out" }, 16.02 - S);
+    tl.to(root + " .msg", { opacity: 0, scale: 0.4, duration: 0.25, ease: "power2.in" }, 16.05 - S);
+    // clear before seam with scene 05
+    tl.to([root + " .cap", root + " .rig"], { opacity: 0, duration: 0.36, ease: "power2.in" }, 16.30 - S);
+
+    window.__timelines["scene-04-hop"] = tl;
+  </script>
+</body>
+</html>

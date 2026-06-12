@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 01 — hook: numbers don't add up</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-01-hook { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-01-hook .stack {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0;
+    }
+    #scene-01-hook .kick {
+      font-size: 52px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase; opacity: 0;
+    }
+    /* ghost figures that visibly disagree, behind the headline */
+    #scene-01-hook .ghosts {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      display: flex; align-items: center; gap: 40px; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums;
+      font-size: 96px; font-weight: 500; color: var(--dim);
+    }
+    #scene-01-hook .ghosts .neq { color: var(--danger); font-weight: 500; }
+    #scene-01-hook .punch {
+      position: relative; margin-top: 28px; font-size: 150px; font-weight: 900; line-height: 0.9;
+      color: var(--cost); letter-spacing: -0.02em; opacity: 0; will-change: transform, opacity;
+      text-shadow: 0 0 64px rgba(240,180,41,0.30);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-01-hook" data-composition-id="scene-01-hook" data-width="1080" data-height="1920">
+    <div class="stack">
+      <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="550">WhatsApp's message numbers</div>
+      <div class="ghosts" data-layout-allow-overflow data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1450"><span>20B</span><span class="neq">&ne;</span><span>64B</span></div>
+      <div class="punch" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2510" data-sfx-hook="true">DON'T<br>ADD UP</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-01-hook";
+    const S = 0; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.inOut" }, 0);
+    // "WhatsApp's message numbers" @0.08
+    tl.fromTo(root + " .kick", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", overwrite: "auto" }, 0.10);
+    // ghost figures fade up behind, disagreeing
+    tl.fromTo(root + " .ghosts", { opacity: 0, scale: 0.9 }, { opacity: 0.5, scale: 1, duration: 0.5, ease: "power2.out" }, 0.95);
+    // "DON'T ADD UP" detonates on "don't" @2.12 -> local 2.05 (anticipate for dwell)
+    tl.fromTo(root + " .punch", { opacity: 0, scale: 1.3, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.46, ease: "power4.out" }, 2.05);
+    tl.to(root + " .ghosts", { opacity: 0.22, duration: 0.36, ease: "power2.out", overwrite: "auto" }, 2.18);
+    // hard cut to the reveal at host end (2.92) — no clear; scene 02 carries no visible
+    // text until 3.34, so nothing collides at the seam (verified by snapshot at 2.67).
+
+    window.__timelines["scene-01-hook"] = tl;
+  </script>
+</body>
+</html>

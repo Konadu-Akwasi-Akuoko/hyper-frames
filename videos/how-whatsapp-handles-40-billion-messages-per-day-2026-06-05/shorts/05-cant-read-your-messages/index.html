@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0f0d;
+        --panel: #101613;
+        --border: #1e2722;
+        --fg: #e9edeb;
+        --soft: #c3cbc7;
+        --muted: #79857f;
+        --dim: #39443f;
+        --accent: #25d366;
+        --accent-2: #7dd3fc;
+        --cost: #f0b429;
+        --danger: #ff6b5d;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="58.79"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Persistent subject-toned background behind every scene (no logo). -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="58.79"
+        data-track-index="7"
+        data-width="1080"
+        data-height="1920"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
+
+      <!-- Voiceover — the timing source of truth for every scene. -->
+      <audio
+        id="voiceover"
+        src="audio/voiceover.mp3"
+        data-start="0"
+        data-duration="58.79"
+        data-track-index="9"
+        data-volume="1"
+      ></audio>
+
+      <!-- Scene 01 — Hook: WhatsApp can't read your messages (chunk 0.74; next 3.50). -->
+      <div id="scene-01" data-composition-id="scene-01-hook"
+        data-composition-src="compositions/01-hook.html"
+        data-start="0" data-duration="3.50" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:1"></div>
+
+      <!-- Scene 02 — Counter-twist: not won't, can't; the keys don't exist (chunk 3.50; next 9.12). -->
+      <div id="scene-02" data-composition-id="scene-02-nokey"
+        data-composition-src="compositions/02-nokey.html"
+        data-start="3.00" data-duration="6.12" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:2"></div>
+
+      <!-- Scene 03 — 2016 / Signal: E2EE default-on for a billion+ (chunk 9.12; next 16.40). -->
+      <div id="scene-03" data-composition-id="scene-03-default"
+        data-composition-src="compositions/03-default.html"
+        data-start="8.62" data-duration="7.78" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:3"></div>
+
+      <!-- Scene 04 — X3DH handshake: two agree on one shared secret key (chunk 16.40; next 25.90). -->
+      <div id="scene-04" data-composition-id="scene-04-handshake"
+        data-composition-src="compositions/04-handshake.html"
+        data-start="15.90" data-duration="10.00" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:4"></div>
+
+      <!-- Scene 05 — Asleep prekey: agree even with one phone off (chunk 25.90; next 28.94). -->
+      <div id="scene-05" data-composition-id="scene-05-asleep"
+        data-composition-src="compositions/05-asleep.html"
+        data-start="25.40" data-duration="3.54" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:5"></div>
+
+      <!-- Scene 06 — Double Ratchet: a fresh key per message (chunk 28.94; next 34.60). -->
+      <div id="scene-06" data-composition-id="scene-06-ratchet"
+        data-composition-src="compositions/06-ratchet.html"
+        data-start="28.44" data-duration="6.16" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:6"></div>
+
+      <!-- Scene 07 — Steal one key, unlock one message (chunk 34.60; next 38.46). -->
+      <div id="scene-07" data-composition-id="scene-07-steal"
+        data-composition-src="compositions/07-steal.html"
+        data-start="34.10" data-duration="4.36" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:7"></div>
+
+      <!-- Scene 08 — Blind relay: routes the sealed envelope, never sees inside (chunk 38.46; next 44.22). -->
+      <div id="scene-08" data-composition-id="scene-08-relay"
+        data-composition-src="compositions/08-relay.html"
+        data-start="37.96" data-duration="6.26" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:8"></div>
+
+      <!-- Scene 09 — The bill: can't search, can't scan spam, can't rebuild history (chunk 44.22; next 52.72). -->
+      <div id="scene-09" data-composition-id="scene-09-bill"
+        data-composition-src="compositions/09-bill.html"
+        data-start="43.72" data-duration="9.00" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:9"></div>
+
+      <!-- Scene 10 — CTA question: link a laptop, old chats appear — where from? (chunk 52.72; next 57.46). -->
+      <div id="scene-10" data-composition-id="scene-10-cta-q"
+        data-composition-src="compositions/10-cta-q.html"
+        data-start="52.22" data-duration="5.24" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:10"></div>
+
+      <!-- Scene 11 — CTA subscribe: to find out, subscribe (chunk 57.46; FINAL). -->
+      <div id="scene-11" data-composition-id="scene-11-cta-sub"
+        data-composition-src="compositions/11-cta-sub.html"
+        data-start="56.96" data-duration="1.83" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:11"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+      <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div
+        id="sfx-layer"
+        data-composition-id="sfx-layer"
+        data-composition-src="compositions/sfx.html"
+        data-start="0"
+        data-duration="58.8156"
+        data-track-index="19"
+      ></div>
+</body>
+</html>

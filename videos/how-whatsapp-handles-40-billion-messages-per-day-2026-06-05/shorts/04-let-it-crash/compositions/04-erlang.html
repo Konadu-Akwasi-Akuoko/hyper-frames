@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 04 — the opposite; Erlang, born in telecom</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-04-erlang { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    /* "does the opposite" — a hard reversal line */
+    #scene-04-erlang .opp {
+      position: absolute; left: 0; right: 0; top: 560px; text-align: center; opacity: 0;
+      font-size: 92px; font-weight: 900; color: var(--fg); letter-spacing: -0.01em;
+    }
+    #scene-04-erlang .opp .em { color: var(--accent); }
+    #scene-04-erlang .because {
+      position: absolute; left: 0; right: 0; top: 720px; text-align: center; opacity: 0;
+      font-size: 42px; font-weight: 500; color: var(--soft);
+    }
+
+    /* the nameplate — the substrate language revealed (sky = identity / structure) */
+    #scene-04-erlang .plate {
+      position: absolute; left: 50%; top: 1080px; transform: translate(-50%,0); opacity: 0;
+      padding: 40px 84px; border-radius: 26px;
+      background: rgba(125,211,252,0.06); border: 2px solid var(--accent-2);
+      box-shadow: 0 0 70px rgba(125,211,252,0.22); text-align: center;
+    }
+    #scene-04-erlang .plate .name {
+      font-family: "JetBrains Mono", monospace; font-size: 118px; font-weight: 500;
+      color: var(--accent-2); letter-spacing: 0.02em; line-height: 1;
+    }
+    #scene-04-erlang .plate .sub {
+      margin-top: 18px; font-size: 38px; font-weight: 500; color: var(--muted); letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-04-erlang" data-composition-id="scene-04-erlang" data-width="1080" data-height="1920">
+    <div class="opp" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2200">does the <span class="em">opposite.</span></div>
+    <div class="because" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6740" data-sfx-volume="0.42">It works because of the language underneath it.</div>
+    <div class="plate" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9240" data-sfx-volume="0.35">
+      <div class="name">Erlang</div>
+      <div class="sub">born in the telecom world</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-04-erlang";
+    const S = 13.18; // local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // "does the opposite" opposite@15.20 -> local 2.02 (flip in)
+    tl.fromTo(root + " .opp", { opacity: 0, rotationX: -70, y: 24 }, { opacity: 1, rotationX: 0, y: 0, duration: 0.5, ease: "back.out(1.4)", overwrite: "auto" }, 1.70);
+    // "because of the language underneath it" language@6.78
+    tl.fromTo(root + " .because", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.44, ease: "power3.out", overwrite: "auto" }, 6.30);
+    // "Erlang" nameplate slams up Erlang@8.90; telecom subtitle @9.72
+    tl.fromTo(root + " .plate", { opacity: 0, scale: 0.86, y: 34 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)", overwrite: "auto" }, 8.74);
+    tl.to(root + " .plate", { boxShadow: "0 0 104px rgba(125,211,252,0.42)", duration: 0.34, ease: "power2.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 9.0);
+    // idle drift
+    tl.to(root + " .plate", { y: -7, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 9.8);
+
+    window.__timelines["scene-04-erlang"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 02 — two million on one server</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-02-server { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-02-server .setup {
+      position: absolute; left: 90px; right: 90px; top: 360px; text-align: center;
+      font-size: 50px; font-weight: 300; line-height: 1.3; color: var(--soft); opacity: 0;
+    }
+
+    #scene-02-server .statwrap {
+      position: absolute; left: 0; right: 0; top: 470px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    #scene-02-server .bignum {
+      font-family: "JetBrains Mono", monospace; font-weight: 700;
+      font-size: 118px; line-height: 0.95; color: var(--fg);
+      font-variant-numeric: tabular-nums; letter-spacing: -0.02em; opacity: 0;
+      will-change: transform, opacity;
+    }
+    #scene-02-server .statwrap .lbl {
+      margin-top: 12px; font-size: 46px; font-weight: 500; color: var(--accent-2);
+      letter-spacing: 0.04em; opacity: 0;
+    }
+
+    #scene-02-server .server {
+      position: absolute; left: 180px; top: 760px; width: 720px; height: 600px;
+      background: var(--panel); border: 2px solid var(--accent-2);
+      border-radius: 22px; opacity: 0;
+      box-shadow: 0 0 60px rgba(125,211,252,0.10) inset, 0 0 30px rgba(125,211,252,0.08);
+      will-change: transform, opacity;
+    }
+    #scene-02-server .server .tag {
+      position: absolute; left: 50%; bottom: -64px; transform: translateX(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 38px; font-weight: 400;
+      color: var(--muted); letter-spacing: 0.06em; white-space: nowrap; opacity: 0;
+    }
+    #scene-02-server .swarm {
+      position: absolute; inset: 46px;
+      display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 1fr; gap: 14px;
+    }
+    #scene-02-server .swarm .dot {
+      width: 22px; height: 22px; border-radius: 6px; justify-self: center; align-self: center;
+      background: var(--accent); opacity: 0;
+      box-shadow: 0 0 10px rgba(37,211,102,0.5); will-change: opacity, transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-02-server" data-composition-id="scene-02-server" data-width="1080" data-height="1920">
+    <div class="setup">On hardware you could almost count on your fingers.</div>
+
+    <div class="statwrap">
+      <div class="bignum" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4170" data-sfx-volume="0.35">2,000,000</div>
+      <div class="lbl">live phones</div>
+    </div>
+
+    <div class="server" data-layout-allow-overflow data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5550">
+      <div class="swarm"></div>
+      <div class="tag" data-layout-allow-overflow>one&nbsp;server</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-02-server";
+    // host data-start = 3.08, scene-local = global - 3.08.
+
+    // build the swarm dots (deterministic count)
+    (function () {
+      const swarm = document.querySelector(root + " .swarm");
+      for (let i = 0; i < 144; i++) {
+        const d = document.createElement("div");
+        d.className = "dot";
+        swarm.appendChild(d);
+      }
+    })();
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+
+    // "On hardware..." setup @0.50
+    tl.fromTo(root + " .setup", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+    // setup clears before the number lands
+    tl.to(root + " .setup", { opacity: 0, y: -28, duration: 0.45, ease: "power2.in" }, 3.20);
+
+    // "Two million" @3.72 / "live phones" @4.26
+    tl.fromTo(root + " .bignum", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 3.72);
+    tl.fromTo(root + " .statwrap .lbl", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.26);
+
+    // server box draws in as "held open on a single server" — box @5.00
+    tl.fromTo(root + " .server", { opacity: 0, scale: 0.92, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "power3.out" }, 5.00);
+    tl.fromTo(root + " .server .tag", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.26);
+
+    // swarm of connections fills the box (held open) — staggered pop, "single server" 5.88
+    tl.fromTo(root + " .swarm .dot",
+      { opacity: 0, scale: 0.4 },
+      { opacity: 0.92, scale: 1, duration: 0.5, ease: "power2.out", stagger: { each: 0.006, from: "center" } }, 5.35);
+
+    // idle breathe between the fill and the seam clear
+    tl.to(root + " .statwrap", { y: -6, duration: 0.55, ease: "sine.inOut", repeat: 1, yoyo: true }, 5.0);
+
+    // clear before seam (scene end local 6.76)
+    tl.to([root + " .statwrap", root + " .server"], { opacity: 0, y: -34, duration: 0.4, ease: "power2.in" }, 6.40);
+
+    window.__timelines["scene-02-server"] = tl;
+  </script>
+</body>
+</html>

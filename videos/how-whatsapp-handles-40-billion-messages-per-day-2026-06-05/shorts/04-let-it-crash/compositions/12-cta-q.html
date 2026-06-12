@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 12 — what does a tiny team actually buy?</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-12-cta-q { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-12-cta-q .wrap {
+      position: absolute; left: 90px; right: 90px; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 38px;
+    }
+    #scene-12-cta-q .line {
+      font-size: 78px; font-weight: 800; color: var(--fg); line-height: 1.08; letter-spacing: -0.01em; opacity: 0;
+    }
+    #scene-12-cta-q .line .buy { color: var(--accent); }
+    #scene-12-cta-q .line .bet { color: var(--fg); }
+    #scene-12-cta-q .q {
+      font-size: 200px; font-weight: 900; color: var(--accent-2); line-height: 0.8; opacity: 0;
+      text-shadow: 0 0 70px rgba(125,211,252,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-12-cta-q" data-composition-id="scene-12-cta-q" data-width="1080" data-height="1920">
+    <div class="wrap">
+      <div class="line" id="l1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1460" data-sfx-volume="0.35">What does a tiny team actually <span class="buy">buy</span>&hellip;</div>
+      <div class="line" id="l2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3360" data-sfx-volume="0.42">by <span class="bet">betting everything</span> on a language<br>almost nobody hires for?</div>
+      <div class="q" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5900">?</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-12-cta-q";
+    const S = 59.30; // local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // "what does a tiny team actually buy" tiny@1.40 buy@2.54
+    tl.fromTo("#l1", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.46, ease: "power3.out", overwrite: "auto" }, 1.00);
+    // "by betting everything on a language almost nobody hires for" betting@3.22 nobody@5.14
+    tl.fromTo("#l2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.46, ease: "power3.out", overwrite: "auto" }, 2.90);
+    // the question mark detonates on "hires for?" @5.58
+    tl.fromTo(root + " .q", { opacity: 0, scale: 1.4, y: 14 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power4.out", overwrite: "auto" }, 5.40);
+    tl.to(root + " .q", { y: -10, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 6.0);
+
+    window.__timelines["scene-12-cta-q"] = tl;
+  </script>
+</body>
+</html>

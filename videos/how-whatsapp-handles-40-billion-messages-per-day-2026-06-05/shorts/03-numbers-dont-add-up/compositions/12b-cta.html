@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 12b — CTA: Why? → Subscribe (Act 2)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-12b-cta { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-12b-cta .why {
+      position: absolute; left: 0; right: 0; top: 560px; text-align: center; opacity: 0;
+    }
+    #scene-12b-cta .why span {
+      display: inline-block;
+      font-size: 168px; font-weight: 900; color: var(--cost); letter-spacing: -0.02em;
+      text-shadow: 0 0 70px rgba(240,180,41,0.34);
+    }
+    #scene-12b-cta .see {
+      position: absolute; left: 0; right: 0; top: 800px; text-align: center; opacity: 0;
+      font-size: 52px; font-weight: 500; color: var(--soft);
+    }
+    #scene-12b-cta .chev {
+      position: absolute; left: 50%; top: 940px; transform: translateX(-50%); opacity: 0;
+      font-size: 56px; color: var(--accent);
+    }
+    #scene-12b-cta .pill {
+      position: absolute; left: 50%; top: 1030px; transform: translate(-50%,0); opacity: 0;
+      display: flex; align-items: center; gap: 22px;
+      background: var(--accent); border-radius: 999px; padding: 30px 64px;
+      box-shadow: 0 0 60px rgba(37,211,102,0.5);
+    }
+    #scene-12b-cta .pill .play {
+      width: 0; height: 0; border-style: solid; border-width: 20px 0 20px 34px;
+      border-color: transparent transparent transparent #0a1410;
+    }
+    #scene-12b-cta .pill .word {
+      font-size: 64px; font-weight: 700; color: #07130d; letter-spacing: 0.01em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-12b-cta" data-composition-id="scene-12b-cta" data-width="1080" data-height="1920">
+    <div class="why" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="960"><span>Why?</span></div>
+    <div class="see" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1800" data-sfx-volume="0.35">To see it,</div>
+    <div class="chev" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2140">&#9660;</div>
+    <div class="pill" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2740"><span class="play"></span><span class="word">Subscribe</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-12b-cta";
+    const S = 71.76; // host data-start (FINAL scene); local = global - S
+    // No root crossfade — every element enters on its own beat so the scene stays fully
+    // dark through the 0.5s overlap with 12a (whose window ends @72.26 as "Why?" lands).
+
+    // "Why?" @72.26 -> local 0.50 — the open loop, held alone (scale the shrink-wrapped span so the box never overflows)
+    tl.fromTo(root + " .why", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.46, ease: "power4.out" }, 72.26 - S);
+    tl.fromTo(root + " .why span", { scale: 1.18 }, { scale: 1, duration: 0.46, ease: "power4.out", overwrite: "auto" }, 72.26 - S);
+    // "To see it," @73.20
+    tl.fromTo(root + " .see", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.36, ease: "power3.out" }, 73.20 - S);
+    // chevron cue points down to the pill
+    tl.fromTo(root + " .chev", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 73.60 - S);
+    tl.to(root + " .chev", { y: 10, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3, overwrite: "auto" }, 73.92 - S);
+    // "subscribe" @74.00 -> the green pill slides up + overshoot, glow pulse
+    tl.fromTo(root + " .pill", { opacity: 0, scale: 0.85, y: 44 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)", overwrite: "auto" }, 74.00 - S);
+    tl.to(root + " .pill", { boxShadow: "0 0 96px rgba(37,211,102,0.8)", duration: 0.4, ease: "power2.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 74.52 - S);
+
+    window.__timelines["scene-12b-cta"] = tl;
+  </script>
+</body>
+</html>

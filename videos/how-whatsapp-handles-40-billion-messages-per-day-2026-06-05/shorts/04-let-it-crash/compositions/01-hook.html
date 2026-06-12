@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 01 — hook: they wanted it to crash</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-01-hook { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-01-hook .stack {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0;
+    }
+    #scene-01-hook .kick {
+      font-size: 50px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.05em; opacity: 0; max-width: 860px; line-height: 1.2;
+    }
+    /* one isolated worker cell, glitching red — the wrongness */
+    #scene-01-hook .cell {
+      position: relative; margin: 56px 0 60px; width: 168px; height: 168px; border-radius: 30px;
+      background: var(--panel); border: 3px solid var(--danger);
+      box-shadow: 0 0 50px rgba(255,107,93,0.42); opacity: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #scene-01-hook .cell::before {
+      content: ""; width: 54px; height: 54px; border-radius: 12px;
+      background: var(--danger); box-shadow: 0 0 26px rgba(255,107,93,0.8);
+    }
+    #scene-01-hook .punch {
+      font-size: 132px; font-weight: 900; line-height: 0.92; color: var(--danger);
+      letter-spacing: -0.02em; opacity: 0; will-change: transform, opacity;
+      text-shadow: 0 0 60px rgba(255,107,93,0.34);
+    }
+    #scene-01-hook .punch .sub { display: block; font-size: 64px; color: var(--fg); margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <div id="scene-01-hook" data-composition-id="scene-01-hook" data-width="1080" data-height="1920">
+    <div class="stack">
+      <div class="kick" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="550">WhatsApp's engineers wanted<br>their code to&hellip;</div>
+      <div class="cell" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1600" data-sfx-volume="0.42"></div>
+      <div class="punch" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2890">CRASH<span class="sub">on purpose.</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-01-hook";
+    const S = 0; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.inOut" }, 0);
+    // "WhatsApp's engineers wanted their code to..." @0.08
+    tl.fromTo(root + " .kick", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", overwrite: "auto" }, 0.10);
+    // the lone red cell flickers up — wrongness building
+    tl.fromTo(root + " .cell", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)", overwrite: "auto" }, 1.20);
+    tl.to(root + " .cell", { boxShadow: "0 0 80px rgba(255,107,93,0.7)", duration: 0.34, ease: "sine.inOut", yoyo: true, repeat: 2, overwrite: "auto" }, 1.70);
+    // "CRASH" detonates on "crash" @2.58 -> local 2.52 (slight anticipate)
+    tl.fromTo(root + " .punch", { opacity: 0, scale: 1.28, y: 12 }, { opacity: 1, scale: 1, y: 0, duration: 0.44, ease: "power4.out" }, 2.45);
+    // idle drift on the cell so nothing sits still
+    tl.to(root + " .cell", { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 2.9);
+    // hard cut at host end (3.82) into the philosophy name card.
+
+    window.__timelines["scene-01-hook"] = tl;
+  </script>
+</body>
+</html>

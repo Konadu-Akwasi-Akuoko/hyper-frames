@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 11 — kicker: cost scales with group size, not typers</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-11-kicker { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-11-kicker .kick {
+      position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-size: 64px; font-weight: 700; color: var(--fg); letter-spacing: -0.01em; opacity: 0;
+    }
+    #scene-11-kicker .kick .em { color: var(--cost); }
+
+    /* the disproportion equation: 1 green typer  →  thousands amber deliveries */
+    #scene-11-kicker .eq {
+      position: absolute; left: 50%; top: 470px; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 44px;
+    }
+    #scene-11-kicker .eq .col { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    #scene-11-kicker .seed {
+      width: 132px; height: 132px; border-radius: 50%; opacity: 0;
+      background: rgba(37,211,102,0.12); border: 3px solid var(--accent);
+      box-shadow: 0 0 40px rgba(37,211,102,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums;
+      font-size: 76px; font-weight: 700; color: var(--accent);
+    }
+    #scene-11-kicker .count {
+      min-width: 320px; text-align: center; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums;
+      font-size: 96px; font-weight: 700; color: var(--cost); line-height: 1;
+      text-shadow: 0 0 50px rgba(240,180,41,0.3);
+    }
+    #scene-11-kicker .lbl { font-size: 30px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-11-kicker .seedlbl { color: var(--soft); }
+    #scene-11-kicker .arrow { opacity: 0; font-size: 70px; font-weight: 300; color: var(--dim); margin-top: -38px; }
+
+    #scene-11-kicker .scap {
+      position: absolute; left: 0; right: 0; top: 720px; text-align: center; opacity: 0;
+      font-size: 38px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent-2);
+    }
+    #scene-11-kicker .scap .no { color: var(--muted); font-weight: 500; }
+
+    /* the amber field — deliveries multiplying */
+    #scene-11-kicker .field {
+      position: absolute; left: 50%; top: 820px; transform: translateX(-50%);
+      width: 744px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px;
+    }
+    #scene-11-kicker .cell {
+      width: 48px; height: 48px; border-radius: 10px; opacity: 0;
+      background: rgba(240,180,41,0.16); border: 1.5px solid rgba(240,180,41,0.55);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-11-kicker" data-composition-id="scene-11-kicker" data-width="1080" data-height="1920">
+    <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900" data-sfx-volume="0.35">The real <span class="em">kicker</span></div>
+
+    <div class="eq">
+      <div class="col">
+        <div class="seed" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2040" data-sfx-volume="0.35">1</div>
+        <div class="lbl seedlbl">typing</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="col">
+        <div class="count" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2940">1</div>
+        <div class="lbl dlvlbl">deliveries</div>
+      </div>
+    </div>
+
+    <div class="scap">scales with GROUP SIZE <span class="no">— not who's typing</span></div>
+
+    <div class="field" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6300" data-sfx-volume="0.35"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-11-kicker";
+    const S = 56.06; // host data-start; local = global - S
+
+    // build the amber field (144 cells)
+    (function () {
+      const field = document.querySelector(root + " .field");
+      if (field && !field.children.length) {
+        for (let i = 0; i < 144; i++) {
+          const c = document.createElement("div");
+          c.className = "cell";
+          field.appendChild(c);
+        }
+      }
+    })();
+
+    // No root crossfade — each element enters on its own beat so scene 11 stays dark
+    // through the overlap with scene 10 (which clears first). Prevents the label seam-bleed.
+    // "And the real kicker" @56.56 -> local 0.50
+    tl.fromTo(root + " .kick", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 56.56 - S);
+    // "the cost scales" @57.68 -> the lone green typer + its "typing" label
+    tl.fromTo(root + " .seed", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(1.7)", overwrite: "auto" }, 57.68 - S);
+    tl.fromTo(root + " .seedlbl", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", overwrite: "auto" }, 57.86 - S);
+    // "how big the group is" @58.66 -> arrow + counter + its label + caption + field begins cascading
+    tl.fromTo(root + " .arrow", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 58.66 - S);
+    tl.fromTo(root + " .count", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 58.66 - S);
+    tl.fromTo(root + " .dlvlbl", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", overwrite: "auto" }, 58.84 - S);
+    tl.fromTo(root + " .scap", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out", overwrite: "auto" }, 58.86 - S);
+    tl.fromTo(root + " .cell", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", stagger: { each: 0.021, grid: [12, 12], from: "start" }, overwrite: "auto" }, 58.78 - S);
+    // the delivery counter climbs as the field fills
+    const cObj = { v: 1 };
+    tl.to(cObj, {
+      v: 2400, duration: 3.30, ease: "power2.out",
+      onUpdate: function () {
+        const e = document.querySelector("#scene-11-kicker .count");
+        if (e) e.textContent = Math.round(cObj.v).toLocaleString("en-US");
+      }
+    }, 58.80 - S);
+    // "not with how many people are actually typing" @59.92 -> pulse the lone green typer (text-shadow bloom)
+    tl.to(root + " .seed", { boxShadow: "0 0 64px rgba(37,211,102,0.75)", duration: 0.4, ease: "power2.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 59.92 - S);
+    // "One person can trigger thousands of deliveries" @62.14 -> magnitude payoff: counter pops, field glows amber
+    tl.to(root + " .count", { scale: 1.16, duration: 0.22, ease: "power3.out", yoyo: true, repeat: 1, overwrite: "auto" }, 62.14 - S);
+    tl.to(root + " .cell", { boxShadow: "0 0 18px rgba(240,180,41,0.85)", duration: 0.28, ease: "power2.inOut", yoyo: true, repeat: 1 }, 62.14 - S);
+    // clear before seam with scene 12 (scene-12 host start 63.94; its text legible ~64.44)
+    tl.to([root + " .kick", root + " .eq", root + " .scap", root + " .field"], { opacity: 0, y: -20, duration: 0.32, ease: "power2.in", overwrite: "auto" }, 64.04 - S);
+
+    window.__timelines["scene-11-kicker"] = tl;
+  </script>
+</body>
+</html>

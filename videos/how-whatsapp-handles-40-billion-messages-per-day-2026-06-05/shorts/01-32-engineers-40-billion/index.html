@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0f0d;
+        --panel: #101613;
+        --border: #1e2722;
+        --fg: #e9edeb;
+        --soft: #c3cbc7;
+        --muted: #79857f;
+        --dim: #39443f;
+        --accent: #25d366;
+        --accent-2: #7dd3fc;
+        --cost: #f0b429;
+        --danger: #ff6b5d;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="65.71"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Persistent subject-toned background behind every scene (no logo). -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="65.71"
+        data-track-index="7"
+        data-width="1080"
+        data-height="1920"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
+
+      <!-- Voiceover — the timing source of truth for every scene. -->
+      <audio
+        id="voiceover"
+        src="audio/voiceover.mp3"
+        data-start="0"
+        data-duration="65.71"
+        data-track-index="9"
+        data-volume="1"
+      ></audio>
+
+      <!-- Scene 01 — Hook: 32 engineers / 40B messages (chunk 0.12–3.1; next 3.58). -->
+      <div id="scene-01" data-composition-id="scene-01-hook"
+        data-composition-src="compositions/01-hook.html"
+        data-start="0" data-duration="3.58" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:1"></div>
+
+      <!-- Scene 02 — 2M phones on one server (chunk 3.58–9.7; next 9.84). -->
+      <div id="scene-02" data-composition-id="scene-02-server"
+        data-composition-src="compositions/02-server.html"
+        data-start="3.08" data-duration="6.76" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:2"></div>
+
+      <!-- Scene 03 — not a fresh request per text (chunk 9.84–15.2; next 15.80). -->
+      <div id="scene-03" data-composition-id="scene-03-request"
+        data-composition-src="compositions/03-request.html"
+        data-start="9.34" data-duration="6.46" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:3"></div>
+
+      <!-- Scene 04 — one persistent socket, held open (chunk 15.80–22.2; next 22.76). -->
+      <div id="scene-04" data-composition-id="scene-04-socket"
+        data-composition-src="compositions/04-socket.html"
+        data-start="15.30" data-duration="7.46" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:4"></div>
+
+      <!-- Scene 05 — each pipe becomes a tiny worker (chunk 22.76–28.8; next 29.16). -->
+      <div id="scene-05" data-composition-id="scene-05-workers"
+        data-composition-src="compositions/05-workers.html"
+        data-start="22.26" data-duration="6.90" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:5"></div>
+
+      <!-- Scene 06 — not a thread / one process per phone (chunk 29.16–35.4; next 35.44). -->
+      <div id="scene-06" data-composition-id="scene-06-process"
+        data-composition-src="compositions/06-process.html"
+        data-start="28.66" data-duration="6.78" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:6"></div>
+
+      <!-- Scene 07 — let it crash / respawn (chunk 35.44–42.5; next 42.68). -->
+      <div id="scene-07" data-composition-id="scene-07-crash"
+        data-composition-src="compositions/07-crash.html"
+        data-start="34.94" data-duration="7.74" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:7"></div>
+
+      <!-- Scene 08 — meta-reward: it gets worse (chunk 42.68–46.4; next 46.94). -->
+      <div id="scene-08" data-composition-id="scene-08-worse"
+        data-composition-src="compositions/08-worse.html"
+        data-start="42.18" data-duration="4.76" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:8"></div>
+
+      <!-- Scene 09 — 14M users per engineer (chunk 46.94–55.1; next 55.28). -->
+      <div id="scene-09" data-composition-id="scene-09-leverage"
+        data-composition-src="compositions/09-leverage.html"
+        data-start="46.44" data-duration="8.84" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:9"></div>
+
+      <!-- Scene 10 — bus factor + CTA subscribe (chunk 55.28–65.4; final). -->
+      <div id="scene-10" data-composition-id="scene-10-cta"
+        data-composition-src="compositions/10-cta.html"
+        data-start="54.78" data-duration="10.93" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:10"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div
+        id="sfx-layer"
+        data-composition-id="sfx-layer"
+        data-composition-src="compositions/sfx.html"
+        data-start="0"
+        data-duration="66.3351"
+        data-track-index="19"
+      ></div>
+</body>
+</html>

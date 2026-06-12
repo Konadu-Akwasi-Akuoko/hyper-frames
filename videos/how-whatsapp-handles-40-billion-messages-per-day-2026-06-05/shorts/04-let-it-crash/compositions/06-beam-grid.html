@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 06 — BEAM; millions of featherweight workers at once</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-06-beam-grid { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-06-beam-grid .plate {
+      position: absolute; left: 50%; top: 360px; transform: translate(-50%,0); opacity: 0;
+      padding: 18px 44px; border-radius: 18px; background: rgba(125,211,252,0.06);
+      border: 2px solid var(--accent-2);
+      font-family: "JetBrains Mono", monospace; font-size: 50px; font-weight: 500; color: var(--accent-2);
+      letter-spacing: 0.03em; white-space: nowrap;
+    }
+    #scene-06-beam-grid .notthread {
+      position: absolute; left: 0; right: 0; top: 480px; text-align: center; opacity: 0;
+      font-size: 44px; font-weight: 600; color: var(--muted);
+    }
+    #scene-06-beam-grid .notthread s { color: var(--dim); text-decoration-color: var(--danger); }
+
+    /* the grid of featherweight worker cells */
+    #scene-06-beam-grid .grid {
+      position: absolute; left: 50%; top: 1010px; transform: translate(-50%,-50%);
+      display: grid; grid-template-columns: repeat(10, 1fr); gap: 18px; width: 760px;
+    }
+    #scene-06-beam-grid .dot {
+      width: 100%; aspect-ratio: 1; border-radius: 10px; background: rgba(37,211,102,0.10);
+      border: 2px solid var(--accent); opacity: 0;
+    }
+    /* the very first featherweight worker, called out */
+    #scene-06-beam-grid .dot.lead { box-shadow: 0 0 24px rgba(37,211,102,0.85); background: var(--accent); }
+
+    #scene-06-beam-grid .count {
+      position: absolute; left: 0; right: 0; top: 1490px; text-align: center; opacity: 0;
+      font-size: 78px; font-weight: 900; color: var(--accent); letter-spacing: 0.01em;
+    }
+    #scene-06-beam-grid .count .sub { display: block; font-size: 38px; font-weight: 500; color: var(--soft); margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div id="scene-06-beam-grid" data-composition-id="scene-06-beam-grid" data-width="1080" data-height="1920">
+    <div class="plate" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1720">BEAM&nbsp;VM</div>
+    <div class="notthread" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3400">not a <s>thread</s> &mdash; a featherweight worker</div>
+    <div class="grid" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4500"></div>
+    <div class="count" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="7740">millions<span class="sub">running at once</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-06-beam-grid";
+    const S = 27.60; // local = global - S
+
+    // build the worker grid deterministically (10 x 7 = 70 cells); first cell is the lead worker
+    const grid = document.querySelector(root + " .grid");
+    for (let i = 0; i < 70; i++) {
+      const d = document.createElement("div");
+      d.className = "dot" + (i === 0 ? " lead" : "");
+      grid.appendChild(d);
+    }
+    const dots = gsap.utils.toArray(root + " .dot");
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // "It runs on the BEAM virtual machine" BEAM@1.60
+    tl.fromTo(root + " .plate", { opacity: 0, y: -16, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.5)", overwrite: "auto" }, 1.30);
+    // "not a thread, just one featherweight worker" thread@3.16, featherweight@4.22
+    tl.fromTo(root + " .notthread", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out", overwrite: "auto" }, 3.00);
+    // the lone lead worker appears on "featherweight worker" @4.22
+    tl.fromTo(dots[0], { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.9)", overwrite: "auto" }, 4.10);
+    // "millions of them running at once" — the grid floods in @6.10 -> settles by once@7.56
+    tl.fromTo(dots.slice(1), { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out", stagger: { each: 0.012, from: "start" }, overwrite: "auto" }, 6.00);
+    // "millions / running at once" count detonates @once 7.56
+    tl.fromTo(root + " .count", { opacity: 0, scale: 1.2, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.44, ease: "power4.out", overwrite: "auto" }, 7.30);
+    // idle shimmer on the grid
+    tl.to(root + " .grid", { y: -6, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 7.6);
+
+    window.__timelines["scene-06-beam-grid"] = tl;
+  </script>
+</body>
+</html>

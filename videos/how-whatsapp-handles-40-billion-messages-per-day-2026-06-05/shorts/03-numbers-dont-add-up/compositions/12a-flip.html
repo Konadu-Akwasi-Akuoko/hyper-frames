@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 12a — they flipped fan-out inside-out (Act 1)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-12a-flip { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-12a-flip .tease {
+      position: absolute; left: 0; right: 0; top: 320px; text-align: center; opacity: 0;
+      font-size: 56px; font-weight: 700; color: var(--fg); letter-spacing: -0.01em; line-height: 1.18;
+    }
+    #scene-12a-flip .tease .em { color: var(--cost); }
+
+    #scene-12a-flip .fan { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+    #scene-12a-flip .node {
+      position: absolute; left: 540px; top: 1000px; transform: translate(-50%,-50%);
+      width: 120px; height: 120px; border-radius: 24px; opacity: 0;
+      background: var(--panel); border: 2px solid var(--accent);
+      box-shadow: 0 0 34px rgba(37,211,102,0.4);
+    }
+    #scene-12a-flip .member {
+      position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+      background: var(--panel); border: 2px solid var(--accent-2); box-shadow: 0 0 16px rgba(125,211,252,0.32); opacity: 0;
+    }
+    /* travelling packets — sky going out (fan-out), amber coming back in (inside-out) */
+    #scene-12a-flip .pkt {
+      position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 7px; opacity: 0;
+    }
+    #scene-12a-flip .pkt.out { background: var(--accent-2); box-shadow: 0 0 12px rgba(125,211,252,0.6); }
+    #scene-12a-flip .pkt.in { background: var(--cost); box-shadow: 0 0 14px rgba(240,180,41,0.7); }
+
+    #scene-12a-flip .cap {
+      position: absolute; left: 0; right: 0; top: 1300px; text-align: center; height: 56px;
+    }
+    #scene-12a-flip .cap span {
+      position: absolute; left: 0; right: 0; top: 0; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-size: 44px; font-weight: 500; letter-spacing: 0.08em;
+    }
+    #scene-12a-flip .cap .fanout { color: var(--accent-2); }
+    #scene-12a-flip .cap .inside { color: var(--cost); }
+    #scene-12a-flip .laptop {
+      position: absolute; left: 0; right: 0; top: 1390px; text-align: center; opacity: 0;
+      font-size: 36px; font-weight: 500; color: var(--soft);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-12a-flip" data-composition-id="scene-12a-flip" data-width="1080" data-height="1920">
+    <div class="tease" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="950">Years later, they flipped<br>fan-out <span class="em">inside-out</span></div>
+
+    <div class="fan">
+      <div class="node" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1960"></div>
+      <div class="member" data-mx="280" data-my="700"></div>
+      <div class="member" data-mx="420" data-my="620"></div>
+      <div class="member" data-mx="600" data-my="600"></div>
+      <div class="member" data-mx="760" data-my="640"></div>
+      <div class="member" data-mx="830" data-my="780"></div>
+
+      <div class="pkt out" data-mx="280" data-my="700" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2760"></div>
+      <div class="pkt out" data-mx="420" data-my="620"></div>
+      <div class="pkt out" data-mx="600" data-my="600"></div>
+      <div class="pkt out" data-mx="760" data-my="640"></div>
+      <div class="pkt out" data-mx="830" data-my="780"></div>
+
+      <div class="pkt in" data-mx="280" data-my="700" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4470"></div>
+      <div class="pkt in" data-mx="420" data-my="620"></div>
+      <div class="pkt in" data-mx="600" data-my="600"></div>
+      <div class="pkt in" data-mx="760" data-my="640"></div>
+      <div class="pkt in" data-mx="830" data-my="780"></div>
+    </div>
+
+    <div class="cap">
+      <span class="fanout">fan-out</span>
+      <span class="inside" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5780">inside-out</span>
+    </div>
+    <div class="laptop" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6580" data-sfx-volume="0.42">&mdash; just to read your chats on a laptop</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-12a-flip";
+    const S = 63.94; // host data-start; local = global - S
+    const CX = 540, CY = 1000; // node center
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "Years later, they flipped..." @64.44 -> local 0.50
+    tl.fromTo(root + " .tease", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 64.44 - S);
+    // the node + members build the fan-out tree @65.50
+    tl.fromTo(root + " .node", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)", overwrite: "auto" }, 65.50 - S);
+    tl.fromTo(root + " .member", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2)", stagger: 0.05 }, 65.80 - S);
+    // place members at their coords
+    gsap.utils.toArray(root + " .member").forEach(function (m) {
+      m.style.left = m.getAttribute("data-mx") + "px";
+      m.style.top = m.getAttribute("data-my") + "px";
+    });
+    // "fan-out" caption + outward packets spray from node to each member @66.20
+    tl.fromTo(root + " .cap .fanout", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 66.20 - S);
+    gsap.utils.toArray(root + " .pkt.out").forEach(function (p, i) {
+      const mx = parseFloat(p.getAttribute("data-mx"));
+      const my = parseFloat(p.getAttribute("data-my"));
+      gsap.set(p, { left: CX, top: CY });
+      const at = (66.20 - S) + i * 0.07;
+      tl.fromTo(p, { opacity: 0, x: 0, y: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power2.out", overwrite: "auto" }, at);
+      tl.to(p, { x: mx - CX, y: my - CY, duration: 0.5, ease: "power2.inOut" }, at);
+      tl.to(p, { opacity: 0, duration: 0.2, ease: "power2.in" }, at + 0.5);
+    });
+    // "they had to flip fanout completely inside out" @67.86 -> reverse: inward amber packets + caption flips
+    tl.to(root + " .cap .fanout", { opacity: 0, duration: 0.3, ease: "power2.in", overwrite: "auto" }, 68.90 - S);
+    tl.fromTo(root + " .cap .inside", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.36, ease: "power3.out" }, 69.36 - S);
+    tl.to(root + " .node", { borderColor: "#f0b429", boxShadow: "0 0 40px rgba(240,180,41,0.5)", duration: 0.4, ease: "power2.inOut" }, 69.36 - S);
+    gsap.utils.toArray(root + " .pkt.in").forEach(function (p, i) {
+      const mx = parseFloat(p.getAttribute("data-mx"));
+      const my = parseFloat(p.getAttribute("data-my"));
+      gsap.set(p, { left: CX, top: CY, x: mx - CX, y: my - CY });
+      const at = (67.86 - S) + i * 0.08;
+      tl.fromTo(p, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power2.out", overwrite: "auto" }, at);
+      tl.to(p, { x: 0, y: 0, duration: 0.55, ease: "power2.inOut" }, at);
+      tl.to(p, { opacity: 0, duration: 0.2, ease: "power2.in" }, at + 0.55);
+    });
+    // "...to read your chats on a laptop" @70.12 -> local 6.18 — Act 1 holds here until the host
+    // window ends @72.26 (framework hides the whole scene); 12b's "Why?" enters as it cuts away.
+    tl.fromTo(root + " .laptop", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 70.12 - S);
+
+    window.__timelines["scene-12a-flip"] = tl;
+  </script>
+</body>
+</html>

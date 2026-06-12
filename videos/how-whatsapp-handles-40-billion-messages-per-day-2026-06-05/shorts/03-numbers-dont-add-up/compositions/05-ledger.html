@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 05 — ledger: the phone pays only once</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-05-ledger { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-05-ledger .kick {
+      position: absolute; left: 0; right: 0; top: 360px; text-align: center;
+      font-size: 50px; font-weight: 700; color: var(--soft);
+      letter-spacing: 0.03em; text-transform: uppercase; opacity: 0;
+    }
+    /* the single uploaded copy — one green card */
+    #scene-05-ledger .copy {
+      position: absolute; left: 50%; top: 560px; transform: translate(-50%,0);
+      width: 420px; height: 240px; border-radius: 28px; background: var(--panel);
+      border: 2px solid var(--accent); box-shadow: 0 0 50px rgba(37,211,102,0.34); opacity: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    }
+    #scene-05-ledger .copy .x1 {
+      font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums;
+      font-size: 104px; font-weight: 700; color: var(--accent); line-height: 1;
+    }
+    #scene-05-ledger .copy .clabel {
+      font-size: 30px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    }
+    #scene-05-ledger .tag {
+      position: absolute; left: 50%; top: 824px; transform: translateX(-50%); opacity: 0;
+      width: 480px; text-align: center; line-height: 1.4;
+      font-family: "JetBrains Mono", monospace; font-size: 30px; color: var(--accent-2);
+      background: rgba(125,211,252,0.08); border: 1px solid rgba(125,211,252,0.3);
+      border-radius: 999px; padding: 16px 40px; white-space: nowrap;
+    }
+    /* two cost meters that barely tick */
+    #scene-05-ledger .meters {
+      position: absolute; left: 50%; top: 980px; transform: translateX(-50%);
+      width: 620px; display: flex; flex-direction: column; gap: 40px;
+    }
+    #scene-05-ledger .meter { opacity: 0; }
+    #scene-05-ledger .meter .mhead {
+      display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;
+    }
+    #scene-05-ledger .meter .mname { font-size: 34px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
+    #scene-05-ledger .meter .mval { font-family: "JetBrains Mono", monospace; font-size: 32px; color: var(--muted); }
+    #scene-05-ledger .meter .track { width: 100%; height: 22px; border-radius: 12px; background: var(--panel); border: 1px solid var(--border); overflow: hidden; }
+    #scene-05-ledger .meter .fill { width: 0%; height: 100%; border-radius: 12px; background: var(--accent); box-shadow: 0 0 18px rgba(37,211,102,0.4); }
+  </style>
+</head>
+<body>
+  <div id="scene-05-ledger" data-composition-id="scene-05-ledger" data-width="1080" data-height="1920">
+    <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900">One copy. Tagged.</div>
+
+    <div class="copy" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1280">
+      <div class="x1">&times;1</div>
+      <div class="clabel">uploaded copy</div>
+    </div>
+    <div class="tag" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3100">group-id&nbsp;&middot;&nbsp;one&nbsp;copy</div>
+
+    <div class="meters">
+      <div class="meter battery" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5460">
+        <div class="mhead"><span class="mname">Battery</span><span class="mval">&times;1</span></div>
+        <div class="track"><div class="fill"></div></div>
+      </div>
+      <div class="meter data" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6320">
+        <div class="mhead"><span class="mname">Data</span><span class="mval">&times;1</span></div>
+        <div class="track"><div class="fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-05-ledger";
+    const S = 22.02; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "a single copy" @22.52 -> local 0.50
+    tl.fromTo(root + " .kick", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.52 - S);
+    tl.fromTo(root + " .copy", { opacity: 0, scale: 0.82, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)", overwrite: "auto" }, 22.80 - S);
+    // "tagged with a group ID" @24.72 -> local 2.70
+    tl.fromTo(root + " .tag", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 24.72 - S);
+    // "battery" @27.08 -> local 5.06 — meter ticks barely
+    tl.fromTo(root + " .meter.battery", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 27.08 - S);
+    tl.fromTo(root + " .meter.battery .fill", { width: "0%" }, { width: "6%", duration: 0.5, ease: "power2.out" }, 27.28 - S);
+    // "data" @27.94 -> local 5.92
+    tl.fromTo(root + " .meter.data", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 27.94 - S);
+    tl.fromTo(root + " .meter.data .fill", { width: "0%" }, { width: "6%", duration: 0.5, ease: "power2.out" }, 28.14 - S);
+    // idle drift on the copy card
+    tl.to(root + " .copy", { y: -8, duration: 1.1, ease: "sine.inOut", repeat: 1, yoyo: true, overwrite: "auto" }, 26.0 - S);
+    // clear before seam with scene 06 (scene-06 host start 28.78; its text legible ~29.40)
+    tl.to([root + " .kick", root + " .copy", root + " .tag", root + " .meters"], { opacity: 0, y: -20, duration: 0.32, ease: "power2.in", overwrite: "auto" }, 28.88 - S);
+
+    window.__timelines["scene-05-ledger"] = tl;
+  </script>
+</body>
+</html>

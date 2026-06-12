@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 10 — CTA: where does it crack? subscribe</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-10-cta { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    /* figure: a heavy load balanced on one thin pillar (the tiny team) */
+    #scene-10-cta .figure { position: absolute; left: 0; right: 0; top: 360px; height: 470px; }
+    #scene-10-cta .load {
+      position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+      width: 560px; height: 200px; border-radius: 18px;
+      background: var(--panel); border: 2px solid var(--accent); opacity: 0;
+      box-shadow: 0 0 40px rgba(37,211,102,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-size: 76px; font-weight: 700; color: var(--fg);
+      will-change: opacity, transform, border-color;
+    }
+    #scene-10-cta .load .crack {
+      position: absolute; inset: 0; opacity: 0; pointer-events: none;
+    }
+    #scene-10-cta .pillar {
+      position: absolute; left: 50%; top: 210px; transform: translateX(-50%);
+      width: 56px; height: 230px; border-radius: 10px;
+      background: linear-gradient(to bottom, var(--accent), rgba(37,211,102,0.35));
+      border: 2px solid var(--accent); opacity: 0; transform-origin: bottom center;
+      box-shadow: 0 0 24px rgba(37,211,102,0.3);
+      display: flex; align-items: flex-start; justify-content: center; padding-top: 16px;
+      font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color: #06210f;
+      will-change: opacity, transform, background, border-color;
+    }
+
+    #scene-10-cta .cap {
+      position: absolute; left: 90px; right: 90px; top: 900px; text-align: center;
+      font-size: 56px; font-weight: 700; line-height: 1.22; color: var(--fg); opacity: 0;
+    }
+    #scene-10-cta .cap.b { color: var(--soft); font-weight: 600; font-size: 50px; }
+    #scene-10-cta .cap .bf { color: var(--danger); }
+    #scene-10-cta .cap .lev { color: var(--accent); }
+    #scene-10-cta .cap .brk { color: var(--danger); }
+
+    /* the open loop — the question that stays on screen under the button */
+    #scene-10-cta .quest {
+      position: absolute; left: 70px; right: 70px; top: 1140px; text-align: center;
+      font-size: 78px; font-weight: 900; line-height: 1.12; color: var(--fg); opacity: 0;
+      letter-spacing: -0.01em;
+    }
+    #scene-10-cta .quest .ck { color: var(--danger); }
+
+    #scene-10-cta .tofind {
+      position: absolute; left: 0; right: 0; top: 1360px; text-align: center;
+      font-size: 40px; font-weight: 400; color: var(--muted); opacity: 0;
+    }
+    #scene-10-cta .subwrap {
+      position: absolute; left: 0; right: 0; top: 1430px;
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+    }
+    #scene-10-cta .subbtn {
+      display: inline-flex; align-items: center; gap: 24px;
+      padding: 30px 70px; border-radius: 999px;
+      background: var(--accent); color: #06210f; font-weight: 900; font-size: 64px;
+      letter-spacing: 0.01em; opacity: 0; box-shadow: 0 0 50px rgba(37,211,102,0.5);
+      will-change: opacity, transform;
+    }
+    #scene-10-cta .subbtn .play {
+      width: 0; height: 0; border-style: solid; border-width: 22px 0 22px 38px;
+      border-color: transparent transparent transparent #06210f;
+    }
+    #scene-10-cta .arrowdown {
+      font-size: 56px; color: var(--accent); opacity: 0; line-height: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-10-cta" data-composition-id="scene-10-cta" data-width="1080" data-height="1920">
+    <div class="figure">
+      <div class="load" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1000" data-sfx-volume="0.35">40B
+        <svg class="crack" viewBox="0 0 560 200" preserveAspectRatio="none" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="8800">
+          <polyline points="280,0 256,52 300,96 250,140 286,200" fill="none"
+            stroke="#ff6b5d" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"
+            style="filter: drop-shadow(0 0 8px rgba(255,107,93,0.7));"/>
+        </svg>
+      </div>
+      <div class="pillar" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1300" data-sfx-volume="0.42">32</div>
+    </div>
+
+    <div class="cap a">a bus factor <span class="bf">waiting to happen</span></div>
+    <div class="cap b">the same <span class="lev">leverage</span> that let them sleep<br>is the thing that could <span class="brk" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="7420">break them</span></div>
+
+    <div class="quest" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="8610">So where does it <span class="ck">crack?</span></div>
+    <div class="tofind">To find out</div>
+    <div class="subwrap">
+      <div class="arrowdown">▼</div>
+      <div class="subbtn" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="10800"><span class="play"></span> Subscribe</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-10-cta";
+    // host data-start = 54.78, scene-local = global - 54.78. FINAL scene.
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+
+    // "But a team that small" @0.50 — load lands on the single thin pillar (precarious)
+    tl.fromTo(root + " .load", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .pillar", { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 0.80);
+
+    // "a bus factor waiting to happen" capA @0.50, bus-factor emphasis @2.10
+    tl.fromTo(root + " .cap.a", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.80);
+    tl.fromTo(root + " .cap.a .bf", { textShadow: "0 0 0 rgba(255,107,93,0)" }, { textShadow: "0 0 24px rgba(255,107,93,0.7)", duration: 0.3 }, 2.10);
+    // a nervous wobble on the balanced load
+    tl.to(root + " .load", { rotation: 1.5, duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true, transformOrigin: "50% 100%" }, 2.4);
+    tl.to(root + " .cap.a", { opacity: 0, y: -20, duration: 0.35, ease: "power2.in" }, 4.05);
+
+    // "the same leverage that let them sleep ... could break them" capB @4.42
+    tl.fromTo(root + " .cap.b", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.42);
+    // the green leverage flips to danger as "could break them" lands @7.58
+    tl.to(root + " .load", { borderColor: "#ff6b5d", boxShadow: "0 0 40px rgba(255,107,93,0.18)", duration: 0.5, ease: "power2.inOut" }, 7.42);
+    tl.to(root + " .pillar", { background: "linear-gradient(to bottom, #ff6b5d, rgba(255,107,93,0.35))", borderColor: "#ff6b5d", color: "#2a0c0a", duration: 0.5, ease: "power2.inOut" }, 7.42);
+    tl.fromTo(root + " .cap.b .brk", { textShadow: "0 0 0 rgba(255,107,93,0)" }, { textShadow: "0 0 26px rgba(255,107,93,0.8)", duration: 0.3 }, 7.58);
+    tl.to(root + " .cap.b", { opacity: 0, y: -20, duration: 0.35, ease: "power2.in" }, 8.02);
+
+    // "So where does it crack?" — question @8.16, crack splits the load @8.80
+    tl.fromTo(root + " .quest", { opacity: 0, y: 20, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 8.16);
+    tl.to(root + " .load .crack", { opacity: 1, duration: 0.15 }, 8.80);
+    tl.fromTo(root + " .load .crack polyline",
+      { attr: { points: "280,0 280,40 280,80 280,120 280,200" } },
+      { attr: { points: "280,0 256,52 300,96 250,140 286,200" }, duration: 0.4, ease: "power3.out" }, 8.80);
+    tl.to(root + " .load", { x: -6, duration: 0.06, ease: "power1.inOut", repeat: 5, yoyo: true }, 8.80);
+    tl.fromTo(root + " .quest .ck", { textShadow: "0 0 0 rgba(255,107,93,0)" }, { textShadow: "0 0 30px rgba(255,107,93,0.8)", duration: 0.3 }, 8.92);
+
+    // "To find out" @9.50 → "subscribe" button lands ON the word @10.30
+    tl.fromTo(root + " .tofind", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 9.50);
+    tl.fromTo(root + " .arrowdown", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 9.95);
+    tl.fromTo(root + " .subbtn", { opacity: 0, scale: 0.6, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2.4)" }, 10.30);
+    // button keeps a living pulse to the end (final frame holds question + button)
+    tl.to(root + " .subbtn", { scale: 1.06, duration: 0.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 10.85);
+    tl.to(root + " .arrowdown", { y: 10, duration: 0.5, ease: "sine.inOut", repeat: 1, yoyo: true }, 10.85);
+
+    window.__timelines["scene-10-cta"] = tl;
+  </script>
+</body>
+</html>

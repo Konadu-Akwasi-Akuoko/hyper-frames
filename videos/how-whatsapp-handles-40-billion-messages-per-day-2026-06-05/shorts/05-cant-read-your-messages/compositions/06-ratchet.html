@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 06 — the Double Ratchet: a fresh key for every message</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-06-ratchet { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    /* the protocol name — mono, sky, arrives before the chain builds */
+    #scene-06-ratchet .label { position: absolute; top: 540px; left: 0; right: 0; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-size: 64px; font-weight: 500; color: var(--accent-2);
+      letter-spacing: 0.02em; opacity: 0; will-change: transform, opacity; text-shadow: 0 0 40px rgba(125,211,252,0.28); }
+    #scene-06-ratchet .label .pre { display: block; font-size: 30px; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 10px; }
+
+    /* the mechanism — thin rail (infrastructure) + a clicking gear + the row of minted keys (hero) */
+    #scene-06-ratchet .mech { position: absolute; top: 760px; left: 60px; width: 960px; height: 360px; }
+    #scene-06-ratchet .rail { position: absolute; left: 150px; right: 6px; top: 196px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--border) 10%, var(--border) 90%, transparent); opacity: 0; }
+    /* notch ticks on the rail, one under each key slot */
+    #scene-06-ratchet .notch { position: absolute; top: 190px; width: 3px; height: 16px; background: var(--dim); opacity: 0; }
+
+    /* the ratchet gear at the rail's left end */
+    #scene-06-ratchet .gear { position: absolute; left: 8px; top: 198px; width: 132px; height: 132px; margin-top: -66px; opacity: 0; will-change: transform, opacity; }
+    #scene-06-ratchet .gear svg { width: 100%; height: 100%; }
+    #scene-06-ratchet .gear .teeth { fill: none; stroke: var(--muted); stroke-width: 7; }
+    #scene-06-ratchet .gear .hub { fill: none; stroke: var(--dim); stroke-width: 6; }
+    #scene-06-ratchet .gear .pawl { fill: none; stroke: var(--accent-2); stroke-width: 8; stroke-linecap: round; }
+
+    /* each minted key — sky, the hero */
+    #scene-06-ratchet .keyslot { position: absolute; width: 150px; text-align: center; opacity: 0; will-change: transform, opacity; }
+    #scene-06-ratchet .keyslot .kicon { width: 92px; height: 132px; margin: 0 auto; }
+    #scene-06-ratchet .keyslot .kicon svg { width: 100%; height: 100%; overflow: visible; }
+    #scene-06-ratchet .keyslot .bow { fill: none; stroke: var(--accent-2); stroke-width: 11; }
+    #scene-06-ratchet .keyslot .stem { stroke: var(--accent-2); stroke-width: 11; stroke-linecap: round; }
+    #scene-06-ratchet .keyslot .msg { margin-top: 14px; font-family: "JetBrains Mono", monospace; font-size: 28px; font-weight: 400; color: var(--muted); letter-spacing: 0.02em; }
+    #scene-06-ratchet .keyslot.k3 .bow, #scene-06-ratchet .keyslot.k3 .stem { filter: drop-shadow(0 0 12px rgba(125,211,252,0.5)); }
+
+    /* the payoff caption */
+    #scene-06-ratchet .cap { position: absolute; top: 1260px; left: 0; right: 0; text-align: center;
+      font-size: 72px; font-weight: 800; color: var(--fg); letter-spacing: -0.02em; line-height: 1.06; opacity: 0; will-change: transform, opacity; }
+    #scene-06-ratchet .cap .l2 { display: block; margin-top: 8px; font-size: 60px; font-weight: 800; color: var(--soft); opacity: 0; }
+    #scene-06-ratchet .cap .l2 em { font-style: normal; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-06-ratchet" data-composition-id="scene-06-ratchet" data-width="1080" data-height="1920">
+    <div class="label" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1440" data-sfx-volume="0.35"><span class="pre">then something called the</span>Double Ratchet</div>
+
+    <div class="mech">
+      <div class="rail"></div>
+      <span class="notch" style="left:225px"></span>
+      <span class="notch" style="left:435px"></span>
+      <span class="notch" style="left:645px"></span>
+      <span class="notch" style="left:855px"></span>
+
+      <div class="gear" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="980">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="teeth" cx="50" cy="50" r="38"></circle>
+          <circle class="hub" cx="50" cy="50" r="14"></circle>
+          <line class="teeth" x1="50" y1="4" x2="50" y2="18"></line>
+          <line class="teeth" x1="50" y1="82" x2="50" y2="96"></line>
+          <line class="teeth" x1="4" y1="50" x2="18" y2="50"></line>
+          <line class="teeth" x1="82" y1="50" x2="96" y2="50"></line>
+          <line class="teeth" x1="17" y1="17" x2="27" y2="27"></line>
+          <line class="teeth" x1="73" y1="73" x2="83" y2="83"></line>
+          <line class="teeth" x1="17" y1="83" x2="27" y2="73"></line>
+          <line class="teeth" x1="73" y1="27" x2="83" y2="17"></line>
+        </svg>
+      </div>
+
+      <div class="keyslot k1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3640" data-sfx-volume="0.42" style="left:150px; top:24px"><div class="kicon"><svg viewBox="0 0 92 132"><circle class="bow" cx="46" cy="34" r="26"></circle><line class="stem" x1="46" y1="60" x2="46" y2="120"></line><line class="stem" x1="46" y1="96" x2="70" y2="96"></line><line class="stem" x1="46" y1="120" x2="66" y2="120"></line></svg></div><div class="msg">msg 1</div></div>
+      <div class="keyslot k2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4300" style="left:360px; top:24px"><div class="kicon"><svg viewBox="0 0 92 132"><circle class="bow" cx="46" cy="34" r="26"></circle><line class="stem" x1="46" y1="60" x2="46" y2="120"></line><line class="stem" x1="46" y1="96" x2="70" y2="96"></line><line class="stem" x1="46" y1="120" x2="66" y2="120"></line></svg></div><div class="msg">msg 2</div></div>
+      <div class="keyslot k3" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4860" style="left:570px; top:24px"><div class="kicon"><svg viewBox="0 0 92 132"><circle class="bow" cx="46" cy="34" r="26"></circle><line class="stem" x1="46" y1="60" x2="46" y2="120"></line><line class="stem" x1="46" y1="96" x2="70" y2="96"></line><line class="stem" x1="46" y1="120" x2="66" y2="120"></line></svg></div><div class="msg">msg 3</div></div>
+      <div class="keyslot k4" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5340" style="left:780px; top:24px"><div class="kicon"><svg viewBox="0 0 92 132"><circle class="bow" cx="46" cy="34" r="26"></circle><line class="stem" x1="46" y1="60" x2="46" y2="120"></line><line class="stem" x1="46" y1="96" x2="70" y2="96"></line><line class="stem" x1="46" y1="120" x2="66" y2="120"></line></svg></div><div class="msg">msg 4</div></div>
+    </div>
+
+    <div class="cap" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2980" data-sfx-volume="0.35">a brand-new key<span class="l2">for <em>every</em> message</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-06-ratchet";
+    const S = 28.44; // host data-start; scene-local = global - S
+
+    // root crossfade during the seam overlap; content held to 0.50 (global 28.94, "Then")
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.30, ease: "power2.inOut" }, 0);
+
+    // "Then" @28.94 -> local 0.50 — the rail + gear establish (infrastructure first)
+    tl.fromTo(root + " .rail", { opacity: 0, scaleX: 0.7, transformOrigin: "left center" }, { opacity: 1, scaleX: 1, duration: 0.4, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .gear", { opacity: 0, scale: 0.6, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: "back.out(1.6)" }, 0.58);
+    // "Double Ratchet" @29.48 -> local 1.04 — the protocol NAME stamps in (name-then-show)
+    tl.fromTo(root + " .label", { opacity: 0, y: 14, scale: 1.12 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 1.04);
+    // "takes over" @30.32 -> local 1.88 — a first establishing ratchet click
+    tl.to(root + " .gear", { rotation: "+=26", duration: 0.2, ease: "power3.out" }, 1.88);
+
+    // "It derives a brand-new key" @31.08-32.68 -> the caption lands, then keys mint per notch
+    tl.fromTo(root + " .cap", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.34, ease: "power3.out" }, 2.64);
+
+    // each key pops with a crisp punctuated scale-bloom, gear clicks one notch with it — discrete, no slide
+    // "brand-new" @32.00 -> local 3.56
+    tl.fromTo(root + " .keyslot.k1", { opacity: 0, scale: 0.3, y: -8 }, { opacity: 1, scale: 1, y: 0, duration: 0.24, ease: "back.out(2.4)" }, 3.40);
+    tl.fromTo(root + " .notch:nth-of-type(2)", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.40);
+    tl.to(root + " .gear", { rotation: "+=26", duration: 0.16, ease: "power3.out" }, 3.40);
+    // "key" @32.50 -> local 4.06
+    tl.fromTo(root + " .keyslot.k2", { opacity: 0, scale: 0.3, y: -8 }, { opacity: 1, scale: 1, y: 0, duration: 0.24, ease: "back.out(2.4)" }, 4.06);
+    tl.fromTo(root + " .notch:nth-of-type(3)", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 4.06);
+    tl.to(root + " .gear", { rotation: "+=26", duration: 0.16, ease: "power3.out" }, 4.06);
+    // "for every message" @32.72 -> local 4.28 — the second caption line
+    tl.fromTo(root + " .cap .l2", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.28);
+    // "every" @33.02 -> local 4.58 — FOCAL: the third key pops biggest (plurality lands here)
+    tl.fromTo(root + " .keyslot.k3", { opacity: 0, scale: 0.25, y: -10 }, { opacity: 1, scale: 1, y: 0, duration: 0.28, ease: "back.out(2.8)" }, 4.58);
+    tl.fromTo(root + " .notch:nth-of-type(4)", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 4.58);
+    tl.to(root + " .gear", { rotation: "+=26", duration: 0.16, ease: "power3.out" }, 4.58);
+    // "message" @33.54 -> local 5.10
+    tl.fromTo(root + " .keyslot.k4", { opacity: 0, scale: 0.3, y: -8 }, { opacity: 1, scale: 1, y: 0, duration: 0.24, ease: "back.out(2.4)" }, 5.10);
+    tl.fromTo(root + " .notch:nth-of-type(5)", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 5.10);
+    tl.to(root + " .gear", { rotation: "+=26", duration: 0.16, ease: "power3.out" }, 5.10);
+    // "you send" @33.82 -> local 5.38 — a glow sweep confirms all four are distinct, fresh keys
+    tl.to(root + " .keyslot .bow, " + root + " .keyslot .stem", { filter: "drop-shadow(0 0 10px rgba(125,211,252,0.55))", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.05 }, 5.46);
+    // idle drift so nothing sits still
+    tl.to(root + " .mech", { y: -6, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.2);
+
+    window.__timelines["scene-06-ratchet"] = tl;
+  </script>
+</body>
+</html>

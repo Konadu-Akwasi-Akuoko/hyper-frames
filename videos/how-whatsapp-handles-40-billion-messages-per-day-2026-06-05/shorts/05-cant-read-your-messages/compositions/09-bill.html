@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 09 — the bill: a blind server can't search, scan spam, or rebuild history</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-09-bill { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    /* the header — the cost lands; "bill" is the Short's first amber */
+    #scene-09-bill .head { position: absolute; top: 384px; left: 0; right: 0; text-align: center;
+      font-size: 78px; font-weight: 800; color: var(--fg); letter-spacing: -0.02em; opacity: 0; will-change: transform, opacity; }
+    #scene-09-bill .head .bill { color: var(--cost); }
+
+    /* the ledger panel — a receipt of what a blind server can't do */
+    #scene-09-bill .ledger { position: absolute; left: 130px; top: 660px; width: 820px; height: 660px;
+      background: var(--panel); border: 2px solid var(--border); border-radius: 30px; opacity: 0; will-change: transform, opacity; }
+    #scene-09-bill .ltitle { position: absolute; left: 56px; top: 50px; font-family: "JetBrains Mono", monospace;
+      font-size: 32px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; opacity: 0; will-change: opacity; }
+
+    #scene-09-bill .item { position: absolute; left: 56px; display: flex; align-items: center; gap: 26px; opacity: 0; will-change: transform, opacity; }
+    #scene-09-bill .item.r1 { top: 210px; }
+    #scene-09-bill .item.r2 { top: 348px; }
+    #scene-09-bill .item.r3 { top: 486px; }
+    #scene-09-bill .item .x { width: 44px; font-size: 52px; font-weight: 800; color: var(--cost); line-height: 1; opacity: 0; will-change: transform, opacity; }
+    #scene-09-bill .item .tw { position: relative; display: inline-block; }
+    #scene-09-bill .item .txt { font-family: "JetBrains Mono", monospace; font-size: 48px; font-weight: 500; color: var(--soft); white-space: nowrap; will-change: color; }
+    #scene-09-bill .item .strike { position: absolute; left: -8px; right: -8px; top: 50%; height: 7px; border-radius: 4px;
+      background: var(--cost); transform: scaleX(0); transform-origin: left center; will-change: transform; }
+
+    /* the sub-line — and there's a fourth cost on phone switch */
+    #scene-09-bill .sub { position: absolute; top: 1410px; left: 0; right: 0; text-align: center;
+      font-size: 48px; font-weight: 600; color: var(--muted); letter-spacing: -0.01em; opacity: 0; will-change: transform, opacity; }
+    #scene-09-bill .sub .ph { color: var(--soft); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div id="scene-09-bill" data-composition-id="scene-09-bill" data-width="1080" data-height="1920">
+    <div class="head" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="840">that blindness has a <span class="bill" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="1380">bill</span></div>
+
+    <div class="ledger" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2100" data-sfx-volume="0.35">
+      <div class="ltitle">// a blind server can&rsquo;t:</div>
+
+      <div class="item r1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3720">
+        <span class="x">&times;</span>
+        <span class="tw"><span class="txt">search your messages</span><span class="strike"></span></span>
+      </div>
+      <div class="item r2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4680" data-sfx-volume="0.42">
+        <span class="x">&times;</span>
+        <span class="tw"><span class="txt">scan them for spam</span><span class="strike"></span></span>
+      </div>
+      <div class="item r3" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6340" data-sfx-volume="0.35">
+        <span class="x">&times;</span>
+        <span class="tw"><span class="txt">rebuild your history</span><span class="strike"></span></span>
+      </div>
+    </div>
+
+    <div class="sub" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7760" data-sfx-volume="0.42">&mdash; even when you switch <span class="ph" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="8620">phones</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-09-bill";
+    const S = 43.72; // host data-start; scene-local = global - S
+
+    // root crossfade during the seam overlap; content held to 0.50 (global 44.22, "blindness")
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.30, ease: "power2.inOut" }, 0);
+
+    // "blindness has a bill." @44.22-45.48 -> local 0.50 — header lands; "bill" blooms amber (the Short's first --cost)
+    tl.fromTo(root + " .head", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.34, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .head .bill", { textShadow: "0 0 0 rgba(240,180,41,0)" }, { textShadow: "0 0 34px rgba(240,180,41,0.55)", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.08);
+
+    // "A server that can't:" @45.54-46.88 -> local 1.82 — the ledger panel + its title enter
+    tl.fromTo(root + " .ledger", { opacity: 0, scale: 0.95, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.70);
+    tl.fromTo(root + " .ltitle", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 2.10);
+
+    // cost #1 "can't search them," @46.94-47.70 -> reveal then strike on "search" (47.46 -> local 3.74... "search" 3.48)
+    tl.fromTo(root + " .item.r1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.00);
+    tl.fromTo(root + " .item.r1 .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.24, ease: "power3.out" }, 3.48);
+    tl.fromTo(root + " .item.r1 .x", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2)" }, 3.48);
+    tl.to(root + " .item.r1 .txt", { color: "var(--muted)", duration: 0.3, ease: "power2.out" }, 3.84);
+
+    // cost #2 "it can't scan them for spam," @47.78-49.18 -> reveal then strike on "scan" (local 4.44)
+    tl.fromTo(root + " .item.r2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.00);
+    tl.fromTo(root + " .item.r2 .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.24, ease: "power3.out" }, 4.44);
+    tl.fromTo(root + " .item.r2 .x", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2)" }, 4.44);
+    tl.to(root + " .item.r2 .txt", { color: "var(--muted)", duration: 0.3, ease: "power2.out" }, 5.10);
+
+    // cost #3 "and it can't rebuild your chat history" @49.30-51.12 -> reveal then strike on "rebuild" (local 6.08)
+    tl.fromTo(root + " .item.r3", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.58);
+    tl.fromTo(root + " .item.r3 .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.26, ease: "power3.out" }, 6.08);
+    tl.fromTo(root + " .item.r3 .x", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2)" }, 6.08);
+    tl.to(root + " .item.r3 .txt", { color: "var(--muted)", duration: 0.3, ease: "power2.out" }, 6.60);
+
+    // "when you switch to a new phone." @51.16-52.68 -> local 7.44 — the sub-line; "phones" pops on the word
+    tl.fromTo(root + " .sub", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 7.44);
+    tl.fromTo(root + " .sub .ph", { textShadow: "0 0 0 rgba(195,203,199,0)" }, { textShadow: "0 0 26px rgba(195,203,199,0.4)", duration: 0.28, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.34);
+
+    // constant low-amplitude idle on the ledger so nothing sits perfectly still
+    tl.to(root + " .ledger", { y: -6, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.4);
+
+    window.__timelines["scene-09-bill"] = tl;
+  </script>
+</body>
+</html>

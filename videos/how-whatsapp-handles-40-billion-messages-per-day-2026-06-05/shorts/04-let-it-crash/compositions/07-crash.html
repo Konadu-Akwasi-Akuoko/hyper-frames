@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 07 — one breaks, dies alone</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-07-crash { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-07-crash .grid {
+      position: absolute; left: 50%; top: 940px; transform: translate(-50%,-50%);
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 26px; width: 720px;
+    }
+    #scene-07-crash .dot {
+      width: 100%; aspect-ratio: 1; border-radius: 16px; background: rgba(37,211,102,0.10);
+      border: 3px solid var(--accent); opacity: 0;
+    }
+    #scene-07-crash .dot.dead {
+      background: rgba(255,107,93,0.10); border-color: var(--danger);
+      box-shadow: 0 0 50px rgba(255,107,93,0.6);
+    }
+    #scene-07-crash .head {
+      position: absolute; left: 0; right: 0; top: 1330px; text-align: center; opacity: 0;
+      font-size: 110px; font-weight: 900; color: var(--danger); letter-spacing: -0.01em;
+      text-shadow: 0 0 50px rgba(255,107,93,0.3);
+    }
+    #scene-07-crash .head .sub { display: block; font-size: 46px; font-weight: 600; color: var(--soft); margin-top: 10px; letter-spacing: 0.02em; }
+  </style>
+</head>
+<body>
+  <div id="scene-07-crash" data-composition-id="scene-07-crash" data-width="1080" data-height="1920">
+    <div class="grid" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1320"></div>
+    <div class="head" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3420">it just dies<span class="sub">alone &mdash; the rest never feel it</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-07-crash";
+    const S = 35.08; // local = global - S
+
+    const grid = document.querySelector(root + " .grid");
+    const DEAD = 24; // the cell that crashes (center of a 7x7 = 49 grid)
+    for (let i = 0; i < 49; i++) {
+      const d = document.createElement("div");
+      d.className = "dot" + (i === DEAD ? " dead" : "");
+      grid.appendChild(d);
+    }
+    const dots = gsap.utils.toArray(root + " .dot");
+    const dead = dots[DEAD];
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // the field is present from the start (carried from the BEAM grid) — quick assemble
+    tl.fromTo(dots, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out", stagger: { each: 0.006, from: "center" }, overwrite: "auto" }, 0.20);
+    // "so when one breaks" breaks@1.02 — the dead cell flares + jitters
+    tl.to(dead, { x: 7, duration: 0.05, ease: "none", yoyo: true, repeat: 5, overwrite: "auto" }, 0.96);
+    tl.to(dead, { boxShadow: "0 0 80px rgba(255,107,93,0.9)", scale: 1.18, duration: 0.3, ease: "power2.out", overwrite: "auto" }, 1.02);
+    // "it doesn't try to heal" heal@2.32 — it holds, flickering, no recovery
+    tl.to(dead, { opacity: 0.55, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 2.20);
+    // "it just dies alone" dies@3.20 alone@3.80 — snaps dark
+    tl.to(dead, { backgroundColor: "rgba(0,0,0,0.0)", borderColor: "var(--dim)", boxShadow: "0 0 0 rgba(0,0,0,0)", scale: 0.9, opacity: 0.35, duration: 0.3, ease: "power3.in", overwrite: "auto" }, 3.12);
+    tl.fromTo(root + " .head", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.42, ease: "power4.out", overwrite: "auto" }, 3.30);
+    // neighbours idle-drift unbothered
+    tl.to(root + " .grid", { y: -5, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 3.7);
+
+    window.__timelines["scene-07-crash"] = tl;
+  </script>
+</body>
+</html>

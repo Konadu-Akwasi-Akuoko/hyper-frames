@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 09 — 14M users per engineer</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-09-leverage { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-09-leverage .chips {
+      position: absolute; left: 0; right: 0; top: 420px;
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+    }
+    #scene-09-leverage .chip {
+      width: 660px; padding: 22px 36px; border-radius: 16px;
+      background: var(--panel); border: 1.5px solid var(--border);
+      font-size: 40px; font-weight: 500; color: var(--soft); text-align: center; opacity: 0;
+      will-change: opacity, transform;
+    }
+
+    #scene-09-leverage .ratio {
+      position: absolute; left: 90px; right: 90px; top: 800px; text-align: center;
+      opacity: 0; will-change: opacity, transform;
+    }
+    #scene-09-leverage .ratio .bignum {
+      font-family: "JetBrains Mono", monospace; font-weight: 700;
+      font-size: 150px; line-height: 0.95; color: var(--accent);
+      font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+      text-shadow: 0 0 40px rgba(37,211,102,0.28);
+    }
+    #scene-09-leverage .ratio .unit {
+      margin-top: 10px; font-size: 52px; font-weight: 600; color: var(--fg); letter-spacing: 0.02em;
+    }
+    #scene-09-leverage .ratio .bar {
+      width: 0; height: 5px; margin: 46px auto 36px; background: var(--dim); border-radius: 3px;
+    }
+    #scene-09-leverage .ratio .denom {
+      font-size: 64px; font-weight: 800; color: var(--soft); opacity: 0;
+    }
+    #scene-09-leverage .ratio .denom .one {
+      font-family: "JetBrains Mono", monospace; color: var(--accent-2);
+    }
+    #scene-09-leverage .ratio .team {
+      margin-top: 18px; font-size: 40px; font-weight: 400; color: var(--muted); opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-09-leverage" data-composition-id="scene-09-leverage" data-width="1080" data-height="1920">
+    <div class="chips">
+      <div class="chip c1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900">one persistent connection</div>
+      <div class="chip c2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1240" data-sfx-volume="0.35">one isolated process per phone</div>
+      <div class="chip c3" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1580" data-sfx-volume="0.42">let it crash, respawn clean</div>
+    </div>
+
+    <div class="ratio">
+      <div class="bignum" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5140">14,000,000</div>
+      <div class="unit">users</div>
+      <div class="bar" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="6550"></div>
+      <div class="denom" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7170">per <span class="one">1</span> engineer</div>
+      <div class="team">across the whole team</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-09-leverage";
+    // host data-start = 46.44, scene-local = global - 46.44.
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+
+    // "Stack those choices up" @0.50 → choices@1.58 — the three choices stack in
+    tl.fromTo(root + " .chip", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.34 }, 0.50);
+
+    // "the math lands at" @2.94 — chips compress upward and clear out as the result takes over
+    tl.to(root + " .chips", { y: -60, scale: 0.88, opacity: 0, duration: 0.5, ease: "power2.in" }, 2.94);
+
+    // ratio block reveals @4.10 ("roughly")
+    tl.fromTo(root + " .ratio", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.10);
+    // "14 million" — bignum slams @4.64, million@5.06
+    tl.fromTo(root + " .ratio .bignum", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power4.out" }, 4.64);
+    // "users" @5.46
+    tl.fromTo(root + " .ratio .unit", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.46);
+
+    // "for every single engineer" — bar draws @6.10, denominator lands @6.72 / engineer@7.28
+    tl.fromTo(root + " .ratio .bar", { width: 0 }, { width: 360, duration: 0.45, ease: "power2.inOut" }, 6.10);
+    tl.fromTo(root + " .ratio .denom", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.72);
+    tl.to(root + " .ratio .denom", { scale: 1.06, duration: 0.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 7.28);
+
+    // "on the team" @8.48
+    tl.fromTo(root + " .ratio .team", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.30);
+
+    // idle on the headline number
+    tl.to(root + " .ratio .bignum", { y: -6, duration: 1.1, ease: "sine.inOut", repeat: 1, yoyo: true }, 5.6);
+
+    // clear before seam (scene end local 8.84; next scene mounts at local 8.34)
+    tl.to([root + " .chips", root + " .ratio"], { opacity: 0, y: -28, duration: 0.34, ease: "power2.in" }, 8.40);
+
+    window.__timelines["scene-09-leverage"] = tl;
+  </script>
+</body>
+</html>

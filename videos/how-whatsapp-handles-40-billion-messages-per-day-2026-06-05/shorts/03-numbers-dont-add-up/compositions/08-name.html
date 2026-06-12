@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 08 — name card: server-side fan-out</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-08-name { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-08-name .wrap {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0;
+    }
+    #scene-08-name .pre {
+      font-size: 46px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.16em; text-transform: uppercase; opacity: 0; margin-bottom: 40px;
+    }
+    #scene-08-name .term {
+      position: relative; font-family: "JetBrains Mono", monospace; font-weight: 700;
+      font-size: 120px; line-height: 1.04; letter-spacing: -0.01em; color: var(--accent-2);
+      text-shadow: 0 0 70px rgba(125,211,252,0.34); opacity: 0;
+    }
+    #scene-08-name .term .lo { color: var(--soft); }
+    #scene-08-name .bracket {
+      width: 0; height: 6px; margin: 44px auto 0; border-radius: 4px;
+      background: var(--accent-2); box-shadow: 0 0 22px rgba(125,211,252,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-08-name" data-composition-id="scene-08-name" data-width="1080" data-height="1920">
+    <div class="wrap">
+      <div class="pre" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="860">This is</div>
+      <div class="term" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1540" data-sfx-volume="0.42">SERVER&#8209;SIDE<br><span class="lo">FAN&#8209;OUT</span></div>
+      <div class="bracket" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2000" data-sfx-volume="0.42"></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-08-name";
+    const S = 40.80; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.36, ease: "power2.inOut" }, 0);
+    // "This is" @41.30 -> local 0.50
+    tl.fromTo(root + " .pre", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.36, ease: "power3.out" }, 41.30 - S);
+    // "server-side fanout" @41.88 -> local 1.08 — the term lands
+    tl.fromTo(root + " .term", { opacity: 0, scale: 1.12, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.46, ease: "power4.out" }, 41.88 - S);
+    tl.fromTo(root + " .bracket", { width: 0 }, { width: 540, duration: 0.4, ease: "power2.inOut" }, 42.40 - S);
+    // clear before seam with scene 09 (scene-09 host start 42.96; its text legible ~43.46)
+    tl.to(root + " .wrap", { opacity: 0, y: -22, duration: 0.3, ease: "power2.in", overwrite: "auto" }, 43.16 - S);
+
+    window.__timelines["scene-08-name"] = tl;
+  </script>
+</body>
+</html>

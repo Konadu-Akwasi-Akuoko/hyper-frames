@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 08 — the server routes it blind: never learns what's inside</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-08-relay { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    /* headline — sentence 1: routed correctly */
+    #scene-08-relay .head { position: absolute; top: 232px; left: 0; right: 0; text-align: center;
+      font-size: 74px; font-weight: 700; color: var(--fg); letter-spacing: -0.02em; opacity: 0; will-change: transform, opacity; }
+    #scene-08-relay .head .place { font-weight: 800; color: var(--accent); }
+
+    /* the vertical relay column: sender -> server -> receiver */
+    #scene-08-relay .rail { position: absolute; left: 537px; top: 742px; width: 6px; height: 556px; border-radius: 3px;
+      background: var(--dim); transform-origin: top center; opacity: 0; will-change: transform, opacity; }
+
+    /* the two phone endpoints */
+    #scene-08-relay .phone { position: absolute; left: 480px; width: 120px; height: 184px; border-radius: 26px;
+      background: var(--panel); border: 4px solid var(--accent); display: flex; align-items: center; justify-content: center;
+      opacity: 0; will-change: transform, opacity; }
+    #scene-08-relay .phone .scr { width: 78px; height: 132px; border-radius: 12px; background: rgba(37,211,102,0.10); }
+    #scene-08-relay .sender { top: 542px; }
+    #scene-08-relay .receiver { top: 1300px; }
+    #scene-08-relay .nlabel { position: absolute; left: 0; right: 0; text-align: center; font-family: "JetBrains Mono", monospace;
+      font-size: 26px; font-weight: 400; color: var(--muted); letter-spacing: 0.02em; opacity: 0; will-change: opacity; }
+    #scene-08-relay .nlabel.s { top: 738px; }
+    #scene-08-relay .nlabel.r { top: 1496px; }
+
+    /* the delivered check at the receiver */
+    #scene-08-relay .deliver { position: absolute; left: 612px; top: 1336px; width: 70px; height: 70px; border-radius: 50%;
+      background: var(--accent); display: flex; align-items: center; justify-content: center; color: #06210f; font-size: 44px; font-weight: 900;
+      opacity: 0; will-change: transform, opacity; }
+
+    /* the server node in the middle — the blinded relay */
+    #scene-08-relay .server { position: absolute; left: 360px; top: 874px; width: 360px; height: 252px; border-radius: 30px;
+      background: var(--panel); border: 4px solid var(--border); opacity: 0; will-change: transform, opacity, border-color;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+    #scene-08-relay .server .slabel { font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 500; color: var(--soft); letter-spacing: 0.04em; }
+    #scene-08-relay .eye { position: relative; width: 150px; height: 92px; }
+    #scene-08-relay .eye svg { width: 100%; height: 100%; overflow: visible; }
+    #scene-08-relay .eye .almond { fill: none; stroke: var(--soft); stroke-width: 6; }
+    #scene-08-relay .eye .iris { fill: var(--soft); }
+    #scene-08-relay .eye .lidline { fill: none; stroke: var(--danger); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 112; stroke-dashoffset: 112; }
+
+    /* the sealed envelope that travels the rail — green, with a tiny padlock (server only ever sees the lock) */
+    #scene-08-relay .env { position: absolute; left: 484px; top: 600px; width: 112px; height: 80px; border-radius: 12px;
+      background: var(--panel); border: 4px solid var(--accent); opacity: 0; will-change: transform, opacity;
+      display: flex; align-items: center; justify-content: center; }
+    #scene-08-relay .env .flap { position: absolute; top: 0; left: 0; right: 0; height: 40px; }
+    #scene-08-relay .env .flap svg { width: 100%; height: 100%; overflow: visible; }
+    #scene-08-relay .env .flap path { fill: none; stroke: var(--accent); stroke-width: 4; }
+    #scene-08-relay .env .plock { width: 34px; height: 40px; }
+    #scene-08-relay .env .plock svg { width: 100%; height: 100%; }
+    #scene-08-relay .env .plock path, #scene-08-relay .env .plock rect { fill: none; stroke: var(--accent); stroke-width: 5; }
+
+    /* payoff caption — sentence 2: never learns what's inside */
+    #scene-08-relay .cap { position: absolute; top: 1556px; left: 0; right: 0; text-align: center;
+      font-size: 60px; font-weight: 500; color: var(--soft); letter-spacing: -0.01em; line-height: 1.12; opacity: 0; will-change: transform, opacity; }
+    #scene-08-relay .cap .never { font-weight: 800; color: var(--fg); }
+    #scene-08-relay .cap .inside { display: block; margin-top: 10px; font-weight: 800; color: var(--danger); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-08-relay" data-composition-id="scene-08-relay" data-width="1080" data-height="1920">
+    <div class="head">routed to the <span class="place">right place</span></div>
+
+    <div class="rail" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2540"></div>
+
+    <div class="phone sender"><div class="scr"></div></div>
+    <div class="nlabel s">you</div>
+
+    <div class="server" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="940" data-sfx-volume="0.42">
+      <div class="slabel">server</div>
+      <div class="eye">
+        <svg viewBox="0 0 150 92" aria-hidden="true">
+          <path class="almond" d="M12 46 Q75 6 138 46 Q75 86 12 46 Z"></path>
+          <circle class="iris" cx="75" cy="46" r="20"></circle>
+          <line class="lidline" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4720" data-sfx-volume="0.42" x1="20" y1="46" x2="130" y2="46"></line>
+        </svg>
+      </div>
+    </div>
+
+    <div class="phone receiver"><div class="scr"></div></div>
+    <div class="nlabel r">them</div>
+    <div class="deliver" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="2860">&check;</div>
+
+    <div class="env" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1080" data-sfx-volume="0.35">
+      <div class="flap"><svg viewBox="0 0 112 40"><path d="M2 2 L56 34 L110 2"></path></svg></div>
+      <div class="plock"><svg viewBox="0 0 34 40"><path d="M8 18 V12 a9 9 0 0 1 18 0 V18"></path><rect x="4" y="18" width="26" height="20" rx="4"></rect></svg></div>
+    </div>
+
+    <div class="cap" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3480" data-sfx-volume="0.35">it just <span class="never">never</span> learns<span class="inside">what&rsquo;s inside</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-08-relay";
+    const S = 37.96; // host data-start; scene-local = global - S
+
+    // root crossfade during the seam overlap; content held to 0.50 (global 38.46, "The server")
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.30, ease: "power2.inOut" }, 0);
+
+    // "The server" @38.46 -> local 0.50 — the relay column builds: endpoints, server node, rail
+    tl.fromTo(root + " .sender", { opacity: 0, y: -16, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "back.out(1.6)" }, 0.50);
+    tl.fromTo(root + " .server", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.5)" }, 0.58);
+    tl.fromTo(root + " .receiver", { opacity: 0, y: 16, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "back.out(1.6)" }, 0.66);
+    tl.fromTo(root + " .rail", { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.46, ease: "power2.out" }, 0.62);
+    tl.fromTo(root + " .nlabel", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.08 }, 0.74);
+    tl.fromTo(root + " .head", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 0.70);
+
+    // "still routes the envelope" @38.78-39.74 -> local 0.82 — the sealed envelope appears at the sender
+    tl.fromTo(root + " .env", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.26, ease: "back.out(1.7)" }, 0.82);
+    // "the envelope" @39.74 -> local 1.78 — it travels down, passing THROUGH the server node (the server sees only the lock)
+    tl.to(root + " .env", { top: 956, duration: 0.62, ease: "power1.inOut" }, 1.20);
+    // "to the right place" @40.40-41.08 -> local 2.44-3.12 — it continues to the receiver and lands; the deliver check pops
+    tl.to(root + " .env", { top: 1252, duration: 0.56, ease: "power1.in" }, 1.98);
+    tl.fromTo(root + " .deliver", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.56);
+    tl.to(root + " .head .place", { textShadow: "0 0 26px rgba(37,211,102,0.55)", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.56);
+
+    // --- sentence 2: "It just never, ever learns what's inside." ---
+    // "It just never," @41.12-42.24 -> local 3.16 — the caption lands; attention returns to the server
+    tl.fromTo(root + " .cap", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 3.16);
+    // the server's eye begins to dim — the iris fades, the node desaturates toward off
+    tl.to(root + " .eye .iris", { fill: "var(--dim)", duration: 0.5, ease: "power2.in" }, 3.50);
+    tl.to(root + " .eye .almond", { stroke: "var(--muted)", duration: 0.5, ease: "power2.in" }, 3.50);
+    // "ever learns" @42.34-42.90 -> local 4.38 — the lid line draws shut in danger; the node rings danger (mask-conceal)
+    tl.fromTo(root + " .eye .lidline", { strokeDashoffset: 112 }, { strokeDashoffset: 0, duration: 0.34, ease: "power3.out" }, 4.38);
+    tl.to(root + " .eye .iris", { opacity: 0, duration: 0.2, ease: "power2.in" }, 4.40);
+    tl.to(root + " .server", { borderColor: "var(--danger)", duration: 0.3, ease: "power2.out" }, 4.38);
+    // "what's inside" @42.98-43.80 -> local 5.02 — the danger ring flashes then settles dark; the line punches
+    tl.fromTo(root + " .cap .inside", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 4.74);
+    tl.to(root + " .server", { boxShadow: "0 0 0 4px rgba(255,107,93,0.0), 0 0 44px rgba(255,107,93,0.5)", duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1 }, 5.06);
+
+    // constant low-amplitude idle on the whole relay column so nothing sits perfectly still
+    tl.to(root + " .server", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.0);
+
+    window.__timelines["scene-08-relay"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 06 — tick ladder</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-06-ladder { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-06-ladder .hd {
+      position: absolute; top: 250px; left: 0; right: 0; text-align: center;
+      font-size: 46px; font-weight: 500; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; opacity: 0;
+    }
+    #scene-06-ladder .ladder { position: absolute; left: 90px; right: 90px; top: 470px; display: flex; flex-direction: column; gap: 40px; }
+    #scene-06-ladder .rung {
+      display: flex; align-items: center; gap: 40px; padding: 46px 50px; border-radius: 30px;
+      background: var(--panel); border: 3px solid var(--border); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-06-ladder .rung .ticks { display: flex; gap: 4px; font-size: 110px; font-weight: 700; line-height: 0.8; flex: 0 0 auto; width: 230px; }
+    #scene-06-ladder .rung .ticks .t { color: var(--muted); display: inline-block; }
+    #scene-06-ladder .rung .meaning { display: flex; flex-direction: column; gap: 8px; }
+    #scene-06-ladder .rung .state { font-size: 40px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); }
+    #scene-06-ladder .rung .desc { font-size: 44px; font-weight: 300; color: var(--fg); }
+    #scene-06-ladder .rung.r3 .ticks .t { text-shadow: none; }
+  </style>
+</head>
+<body>
+  <div id="scene-06-ladder" data-composition-id="scene-06-ladder" data-width="1080" data-height="1920">
+    <div class="hd">what each tick means</div>
+    <div class="ladder">
+      <div class="rung r1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1030"><div class="ticks"><span class="t">✓</span></div><div class="meaning"><div class="state">one grey tick</div><div class="desc">the server has it</div></div></div>
+      <div class="rung r2" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3110"><div class="ticks"><span class="t">✓</span><span class="t">✓</span></div><div class="meaning"><div class="state">two grey ticks</div><div class="desc">reached their device</div></div></div>
+      <div class="rung r3" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="5590"><div class="ticks" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6280"><span class="t">✓</span><span class="t">✓</span></div><div class="meaning"><div class="state">two blue ticks</div><div class="desc" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9860">actually been read</div></div></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-06-ladder";
+    const S = 23.52; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    tl.fromTo(root + " .hd", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 24.02 - S);
+    // Rung 1 "One grey tick" @24.02 -> local 0.50
+    tl.fromTo(root + " .rung.r1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 24.10 - S);
+    // Rung 2 "Two grey ticks" @26.18 -> local 2.66
+    tl.fromTo(root + " .rung.r2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 26.18 - S);
+    // Rung 3 "Two blue ticks" @28.66 -> local 5.14
+    tl.fromTo(root + " .rung.r3", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 28.66 - S);
+    // "blue" @29.30 -> local 5.78 : rung 3 ticks turn blue + state recolors
+    tl.to(root + " .rung.r3 .ticks .t", { color: "#7dd3fc", textShadow: "0 0 44px rgba(125,211,252,0.6)", duration: 0.5, ease: "power2.out", stagger: 0.1 }, 29.30 - S);
+    tl.to(root + " .rung.r3 .state", { color: "#7dd3fc", duration: 0.4 }, 29.30 - S);
+    tl.to(root + " .rung.r3", { borderColor: "#234356", duration: 0.4 }, 29.30 - S);
+    // "actually been read" @31.84 -> local 8.32 ; "read" @33.38 -> local 9.86 : payoff glow
+    tl.fromTo(root + " .rung.r3 .desc", { color: "#e9edeb" }, { color: "#7dd3fc", duration: 0.4 }, 31.84 - S);
+    tl.to(root + " .rung.r3", { scale: 1.04, duration: 0.4, ease: "back.out(2)", transformOrigin: "center" }, 33.38 - S);
+    tl.to(root + " .rung.r3 .ticks", { scale: 1.12, duration: 0.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 33.38 - S);
+    // dim the earlier rungs slightly so the read state owns the frame
+    tl.to([root + " .rung.r1", root + " .rung.r2"], { opacity: 0.45, duration: 0.5, ease: "power2.out" }, 31.84 - S);
+    // clear before seam with scene 07
+    tl.to([root + " .hd", root + " .ladder"], { opacity: 0, duration: 0.36, ease: "power2.in" }, 33.66 - S);
+
+    window.__timelines["scene-06-ladder"] = tl;
+  </script>
+</body>
+</html>

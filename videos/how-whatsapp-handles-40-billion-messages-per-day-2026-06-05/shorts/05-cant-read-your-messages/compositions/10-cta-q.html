@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 10 — CTA question: link a new laptop, old chats appear — where from?</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-10-cta-q { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    /* setup headline (top third) — you link a new laptop, old chats appear anyway */
+    #scene-10-cta-q .head { position: absolute; left: 60px; right: 60px; text-align: center;
+      font-size: 56px; font-weight: 700; color: var(--fg); letter-spacing: -0.02em; line-height: 1.12; opacity: 0; will-change: transform, opacity; }
+    #scene-10-cta-q .head1 { top: 300px; }
+    #scene-10-cta-q .head2 { top: 374px; }
+    #scene-10-cta-q .head2 .appear { color: var(--accent); font-weight: 800; }
+
+    /* the laptop device — thin-lined, machine-diagram register; old chats materialize inside it */
+    #scene-10-cta-q .laptop { position: absolute; left: 280px; top: 640px; width: 520px; opacity: 0; will-change: transform, opacity; }
+    #scene-10-cta-q .mtag { position: absolute; left: 0; right: 0; top: -54px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-size: 28px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; }
+    #scene-10-cta-q .screen { position: relative; width: 520px; height: 340px; border-radius: 18px;
+      background: var(--panel); border: 5px solid #41565d; overflow: hidden; box-shadow: 0 0 32px rgba(125,211,252,0.16); }
+    #scene-10-cta-q .cam { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+    #scene-10-cta-q .base { position: absolute; left: 50%; transform: translateX(-50%); top: 340px; width: 640px; height: 26px;
+      border-radius: 0 0 16px 16px; background: var(--panel); border: 5px solid #41565d; border-top: none; }
+    #scene-10-cta-q .base::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 6px; width: 120px; height: 6px; border-radius: 3px; background: var(--border); }
+
+    /* the chat bubbles that appear inside the screen */
+    #scene-10-cta-q .bubble { position: absolute; height: 54px; border-radius: 16px; opacity: 0; will-change: transform, opacity; }
+    #scene-10-cta-q .bubble.b1 { top: 52px; left: 34px; width: 210px; background: var(--border); border-bottom-left-radius: 5px; }
+    #scene-10-cta-q .bubble.b2 { top: 138px; right: 34px; width: 250px; background: var(--accent); border-bottom-right-radius: 5px; }
+    #scene-10-cta-q .bubble.b3 { top: 224px; right: 34px; width: 180px; background: var(--accent); border-bottom-right-radius: 5px; }
+
+    /* the mystery — a ghost question mark blooms behind the crisp question */
+    #scene-10-cta-q .qmark { position: absolute; left: 0; right: 0; top: 1040px; text-align: center;
+      font-size: 300px; font-weight: 900; color: var(--accent-2); line-height: 1; opacity: 0; will-change: transform, opacity;
+      text-shadow: 0 0 70px rgba(125,211,252,0.4); }
+    #scene-10-cta-q .qline { position: absolute; left: 70px; right: 70px; text-align: center;
+      font-size: 58px; font-weight: 800; color: var(--fg); letter-spacing: -0.01em; line-height: 1.1; opacity: 0; will-change: transform, opacity; }
+    #scene-10-cta-q .qline.q1 { top: 1396px; }
+    #scene-10-cta-q .qline.q2 { top: 1488px; color: var(--accent-2); }
+    #scene-10-cta-q .qline .srv { color: var(--accent-2); font-weight: 900; }
+  </style>
+</head>
+<body>
+  <div id="scene-10-cta-q" data-composition-id="scene-10-cta-q" data-width="1080" data-height="1920">
+    <div class="head head1">So you link a new laptop&hellip;</div>
+    <div class="head head2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2220" data-sfx-volume="0.35">and your old chats <span class="appear">appear anyway.</span></div>
+
+    <div class="laptop" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1040" data-sfx-volume="0.42">
+      <div class="mtag">// new device &middot; just linked</div>
+      <div class="screen">
+        <div class="cam"></div>
+        <div class="bubble b1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2600" data-sfx-volume="0.42"></div>
+        <div class="bubble b2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2800"></div>
+        <div class="bubble b3" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3040"></div>
+      </div>
+      <div class="base"></div>
+    </div>
+
+    <div class="qmark" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5020" data-layout-allow-overflow="true">?</div>
+    <div class="qline q1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3940" data-sfx-volume="0.42">Where did they come from&mdash;</div>
+    <div class="qline q2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4660">if not <span class="srv">the server?</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-10-cta-q";
+    const S = 52.22; // host data-start; scene-local = global - S
+
+    // root crossfade during the seam overlap; content held to 0.50 (global 52.72, "So")
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.30, ease: "power2.inOut" }, 0);
+
+    // "So you link a new laptop," @52.72-54.06 -> local 0.50 — setup line lands, the laptop blooms in
+    tl.fromTo(root + " .head1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.34, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .laptop", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(1.5)" }, 0.62);
+
+    // "and your old chats appear anyway." @54.12-55.80 -> local 1.90 — second line, then the chats materialize inside the screen
+    tl.fromTo(root + " .head2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 1.90);
+    // bubbles stagger in on "old" 2.30 / "chats" 2.50 / "appear" 2.74
+    tl.fromTo(root + " .bubble.b1", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 2.30);
+    tl.fromTo(root + " .bubble.b2", { opacity: 0, x: 28 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 2.50);
+    tl.fromTo(root + " .bubble.b3", { opacity: 0, x: 28 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 2.74);
+    // "appear anyway" pops green — the impossible reveal
+    tl.fromTo(root + " .head2 .appear", { textShadow: "0 0 0 rgba(37,211,102,0)" }, { textShadow: "0 0 30px rgba(37,211,102,0.6)", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.12);
+
+    // --- the mystery: "Where did they come from, if not the server?" ---
+    // "Where" @55.84 -> local 3.62 — the ghost "?" begins to bloom, the first question line lands
+    tl.fromTo(root + " .qmark", { opacity: 0, scale: 0.55 }, { opacity: 0.15, scale: 1, duration: 0.6, ease: "power2.out" }, 3.62);
+    tl.fromTo(root + " .qline.q1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 3.62);
+    // "if not the server?" — second line @56.58 -> local 4.36 lands; "server?" @56.98 -> 4.76 detonates the "?"
+    tl.fromTo(root + " .qline.q2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.30, ease: "power3.out" }, 4.36);
+    tl.to(root + " .qmark", { opacity: 0.30, scale: 1.12, duration: 0.26, ease: "power3.out", yoyo: true, repeat: 1 }, 4.76);
+    tl.to(root + " .qline .srv", { textShadow: "0 0 34px rgba(125,211,252,0.7)", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.76);
+
+    // constant low-amplitude idle on the laptop so nothing sits perfectly still
+    tl.to(root + " .laptop", { y: -7, duration: 1.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.2);
+
+    window.__timelines["scene-10-cta-q"] = tl;
+  </script>
+</body>
+</html>

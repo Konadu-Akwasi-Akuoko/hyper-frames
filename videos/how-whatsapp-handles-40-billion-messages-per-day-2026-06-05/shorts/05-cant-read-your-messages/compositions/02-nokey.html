@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 02 — not won't, can't: no key on the server</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-02-nokey { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-02-nokey .stack { position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+    /* the "not won't / can't" correction */
+    #scene-02-nokey .correct { position: relative; height: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 96px; }
+    #scene-02-nokey .wont { position: absolute; font-size: 104px; font-weight: 800; color: var(--soft); letter-spacing: -0.02em; opacity: 0; will-change: transform, opacity; }
+    #scene-02-nokey .wont .strike { position: absolute; left: -6%; top: 52%; width: 112%; height: 8px; background: var(--danger); border-radius: 4px; transform: scaleX(0); transform-origin: left center; box-shadow: 0 0 18px rgba(255,107,93,0.5); }
+    #scene-02-nokey .cant { position: absolute; font-size: 132px; font-weight: 900; color: var(--fg); letter-spacing: -0.03em; opacity: 0; will-change: transform, opacity; text-shadow: 0 0 44px rgba(233,237,235,0.12); }
+
+    /* the server holding an EMPTY keyhole — no key to seize */
+    #scene-02-nokey .server { position: relative; width: 470px; padding: 34px 34px 40px; border-radius: 26px;
+      background: var(--panel); border: 3px solid var(--border); opacity: 0; will-change: transform, opacity; }
+    #scene-02-nokey .server .label { font-family: "JetBrains Mono", monospace; font-size: 32px; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; margin-bottom: 30px; white-space: nowrap; }
+    #scene-02-nokey .slot { position: relative; width: 100%; height: 220px; border-radius: 18px; background: #0c1210; border: 2px dashed var(--dim);
+      display: flex; align-items: center; justify-content: center; }
+    /* the empty keyhole, drawn in sky (the crypto/key motif) */
+    #scene-02-nokey .keyhole { width: 96px; height: 132px; opacity: 0; }
+    #scene-02-nokey .keyhole svg { width: 100%; height: 100%; }
+    #scene-02-nokey .keyhole .kh { fill: none; stroke: var(--accent-2); stroke-width: 9; }
+    /* the ghost key that never materializes */
+    #scene-02-nokey .ghost { position: absolute; right: 44px; top: 50%; transform: translateY(-50%); font-family: "JetBrains Mono", monospace;
+      font-size: 30px; font-weight: 500; color: var(--accent-2); opacity: 0; }
+    #scene-02-nokey .ghost .x { color: var(--danger); font-weight: 500; }
+
+    #scene-02-nokey .cap { margin-top: 70px; font-size: 60px; font-weight: 800; color: var(--fg); letter-spacing: -0.01em; opacity: 0; will-change: transform, opacity; }
+    #scene-02-nokey .cap .none { color: var(--accent-2); }
+    #scene-02-nokey .cap .atall { display: block; margin-top: 12px; font-size: 56px; font-weight: 800; color: var(--soft); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-02-nokey" data-composition-id="scene-02-nokey" data-width="1080" data-height="1920">
+    <div class="stack">
+      <div class="correct">
+        <div class="wont" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="840">won&rsquo;t<span class="strike"></span></div>
+        <div class="cant" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1640">Can&rsquo;t.</div>
+      </div>
+      <div class="server" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2240" data-sfx-volume="0.42">
+        <div class="label">// whatsapp's servers</div>
+        <div class="slot">
+          <div class="keyhole" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2440">
+            <svg viewBox="0 0 100 140" aria-hidden="true">
+              <circle class="kh" cx="50" cy="42" r="26"></circle>
+              <path class="kh" d="M38 60 L34 120 H66 L62 60"></path>
+            </svg>
+          </div>
+          <div class="ghost"><span class="x">&times;</span> no key</div>
+        </div>
+      </div>
+      <div class="cap" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3740">the keys <span class="none">don&rsquo;t exist</span><span class="atall" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5800" data-sfx-volume="0.42">at all.</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-02-nokey";
+    const S = 3.00; // host data-start; scene-local = global - S
+
+    // root crossfade-in during the seam overlap; content held until 0.50 so it can't collide with scene 01's tail
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+
+    // "Not won't" @3.50/3.86 -> local 0.50/0.86
+    tl.fromTo(root + " .wont", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.34, ease: "power3.out" }, 0.50);
+    // strike "won't" @ just before "can't" 4.30 -> local 1.30
+    tl.to(root + " .wont .strike", { scaleX: 1, duration: 0.22, ease: "power2.out" }, 1.10);
+    // "Can't." stamps in over it @1.30
+    tl.to(root + " .wont", { opacity: 0.35, duration: 0.2, ease: "power1.out" }, 1.30);
+    tl.fromTo(root + " .cant", { opacity: 0, scale: 1.3, y: 8 }, { opacity: 1, scale: 1, y: 0, duration: 0.34, ease: "power4.out" }, 1.30);
+
+    // "The keys" @5.02 -> local 2.02 — the server slides up
+    tl.fromTo(root + " .server", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.40, ease: "power3.out" }, 1.84);
+    // the empty keyhole glows in
+    tl.fromTo(root + " .keyhole", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.7)" }, 2.10);
+    // "don't exist" @6.38 -> local 3.38 — the ghost "no key" stamps, caption appears
+    tl.fromTo(root + " .ghost", { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 3.30);
+    tl.fromTo(root + " .cap", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.36, ease: "power3.out" }, 3.38);
+    // the keyhole flickers toward danger — there's nothing to unlock with
+    tl.to(root + " .keyhole .kh", { stroke: "var(--danger)", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.60);
+    // "at all." @8.50 -> local 5.50
+    tl.fromTo(root + " .cap .atall", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.50);
+    // idle drift on the server
+    tl.to(root + " .server", { y: -7, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.6);
+
+    window.__timelines["scene-02-nokey"] = tl;
+  </script>
+</body>
+</html>

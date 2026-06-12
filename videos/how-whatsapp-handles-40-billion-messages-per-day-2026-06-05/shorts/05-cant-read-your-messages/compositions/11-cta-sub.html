@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 11 — CTA: To find out, subscribe (FINAL)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-11-cta-sub { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-11-cta-sub .see {
+      position: absolute; left: 0; right: 0; top: 720px; text-align: center; opacity: 0; will-change: transform, opacity;
+      font-size: 62px; font-weight: 600; color: var(--soft);
+    }
+    #scene-11-cta-sub .chev {
+      position: absolute; left: 50%; top: 866px; transform: translateX(-50%); opacity: 0; will-change: transform, opacity;
+      font-size: 54px; color: var(--accent);
+    }
+    /* the subscribe pill — lands upper-middle, never over the phone's real button (bottom) */
+    #scene-11-cta-sub .pill {
+      position: absolute; left: 50%; top: 968px; transform: translate(-50%,0); opacity: 0; will-change: transform, opacity;
+      display: flex; align-items: center; gap: 24px;
+      background: var(--accent); border-radius: 999px; padding: 34px 74px;
+      box-shadow: 0 0 60px rgba(37,211,102,0.5);
+    }
+    #scene-11-cta-sub .pill .play {
+      width: 0; height: 0; border-style: solid; border-width: 23px 0 23px 38px;
+      border-color: transparent transparent transparent #07130d;
+    }
+    #scene-11-cta-sub .pill .word {
+      font-size: 70px; font-weight: 700; color: #07130d; letter-spacing: 0.01em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-11-cta-sub" data-composition-id="scene-11-cta-sub" data-width="1080" data-height="1920">
+    <div class="see" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="840" data-sfx-volume="0.35">To find out,</div>
+    <div class="chev" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1140">&#9660;</div>
+    <div class="pill" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1640"><span class="play"></span><span class="word">Subscribe</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-11-cta-sub";
+    const S = 56.96; // host data-start (FINAL scene); local = global - S
+    // No root crossfade — each element enters on its own beat so the scene stays dark
+    // through the 0.5s overlap with scene 10 (whose "server?" lands as this opens).
+
+    // "To find out," To@57.46 -> local 0.50
+    tl.fromTo(root + " .see", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.34, ease: "power3.out", overwrite: "auto" }, 0.50);
+    // the chevron points down to the pill
+    tl.fromTo(root + " .chev", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out", overwrite: "auto" }, 0.86);
+    tl.to(root + " .chev", { y: 10, duration: 0.46, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 1.02);
+    // "subscribe" @58.14 -> local 1.18 — the green pill slides up + overshoot, glow pulse; holds to the end
+    tl.fromTo(root + " .pill", { opacity: 0, scale: 0.85, y: 42 }, { opacity: 1, scale: 1, y: 0, duration: 0.46, ease: "back.out(1.6)", overwrite: "auto" }, 1.18);
+    tl.to(root + " .pill", { boxShadow: "0 0 100px rgba(37,211,102,0.85)", duration: 0.34, ease: "power2.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 1.66);
+
+    window.__timelines["scene-11-cta-sub"] = tl;
+  </script>
+</body>
+</html>

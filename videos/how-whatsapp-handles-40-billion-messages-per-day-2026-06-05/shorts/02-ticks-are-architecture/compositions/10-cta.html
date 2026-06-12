@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 10 — CTA</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-10-cta { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-10-cta .wild { position: absolute; top: 300px; left: 0; right: 0; text-align: center; font-size: 50px; font-weight: 500; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0; }
+
+    #scene-10-cta .para { position: absolute; top: 430px; left: 80px; right: 80px; text-align: center; }
+    #scene-10-cta .para .carry { font-size: 60px; font-weight: 300; color: var(--soft); opacity: 0; line-height: 1.2; }
+    #scene-10-cta .lock { margin: 40px auto 26px; width: 150px; height: 150px; opacity: 0; will-change: transform, opacity; }
+    #scene-10-cta .cant { font-size: 86px; font-weight: 900; color: var(--accent); line-height: 1.0; opacity: 0; text-shadow: 0 0 50px rgba(37,211,102,0.3); }
+
+    #scene-10-cta .ask { position: absolute; top: 980px; left: 60px; right: 60px; text-align: center; font-size: 78px; font-weight: 800; color: var(--fg); line-height: 1.1; opacity: 0; }
+
+    #scene-10-cta .cta { position: absolute; top: 1230px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+    #scene-10-cta .pill {
+      display: flex; align-items: center; gap: 22px; padding: 30px 64px; border-radius: 60px;
+      background: var(--accent); opacity: 0; will-change: transform, opacity; box-shadow: 0 14px 50px rgba(37,211,102,0.4);
+    }
+    #scene-10-cta .pill .ic { width: 46px; height: 46px; }
+    #scene-10-cta .pill .txt { font-size: 64px; font-weight: 800; color: #062012; letter-spacing: 0.01em; }
+    #scene-10-cta .chev { font-size: 80px; color: var(--accent); line-height: 0.6; opacity: 0; will-change: transform, opacity; }
+  </style>
+</head>
+<body>
+  <div id="scene-10-cta" data-composition-id="scene-10-cta" data-width="1080" data-height="1920">
+    <div class="wild" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1100" data-sfx-volume="0.42">but here's what's wild</div>
+    <div class="para">
+      <div class="carry">it carries every message you send —</div>
+      <svg class="lock" viewBox="0 0 100 110" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5150" data-sfx-volume="0.35"><rect x="14" y="48" width="72" height="54" rx="10" fill="none" stroke="#25d366" stroke-width="6"/><path d="M30 48 v-14 a20 20 0 0 1 40 0 v14" fill="none" stroke="#25d366" stroke-width="6"/><circle cx="50" cy="72" r="7" fill="#25d366"/><rect x="46" y="76" width="8" height="16" rx="4" fill="#25d366"/></svg>
+      <div class="cant" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5490">can't read a word</div>
+    </div>
+    <div class="ask" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="7280">how is that even possible?</div>
+    <div class="cta">
+      <div class="pill" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="9350"><svg class="ic" viewBox="0 0 24 24" fill="#062012"><path d="M10 8l6 4-6 4z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#062012" stroke-width="2"/></svg><span class="txt">Subscribe</span></div>
+      <div class="chev">⌄</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-10-cta";
+    const S = 53.50; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "but here's what's wild" @54.20 -> local 0.70
+    tl.fromTo(root + " .wild", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 54.20 - S);
+    // "carries every message you send" @56.00 -> local 2.50
+    tl.fromTo(root + " .carry", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 56.00 - S);
+    // "can't read a single word" @58.54 -> local 5.04 : lock + payoff
+    tl.fromTo(root + " .lock", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 58.20 - S);
+    tl.fromTo(root + " .cant", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 58.54 - S);
+    // "How is that even possible?" @60.28 -> local 6.78
+    tl.fromTo(root + " .ask", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 60.28 - S);
+    // "subscribe" @62.76 -> local 9.26 : the pill lands
+    tl.fromTo(root + " .pill", { opacity: 0, scale: 0.8, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.7)" }, 62.40 - S);
+    tl.fromTo(root + " .chev", { opacity: 0, y: -8 }, { opacity: 0.9, y: 0, duration: 0.4, ease: "power3.out" }, 62.76 - S);
+    tl.to(root + " .chev", { y: 14, duration: 0.6, ease: "sine.inOut", repeat: 4, yoyo: true }, 63.0 - S);
+    tl.to(root + " .pill", { boxShadow: "0 14px 70px rgba(37,211,102,0.7)", duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 63.0 - S);
+    // gentle idle on the ask
+    tl.to(root + " .ask", { y: -5, duration: 1.2, ease: "sine.inOut", repeat: 2, yoyo: true }, 61.0 - S);
+
+    window.__timelines["scene-10-cta"] = tl;
+  </script>
+</body>
+</html>

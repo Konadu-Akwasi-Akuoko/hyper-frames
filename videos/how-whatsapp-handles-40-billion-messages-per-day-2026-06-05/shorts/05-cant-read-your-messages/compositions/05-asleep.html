@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 05 — even one asleep, phone off: the prekey still agrees</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-05-asleep { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-05-asleep .stack { position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+    /* one phone, powering down */
+    #scene-05-asleep .phonewrap { position: relative; width: 260px; height: 440px; margin-bottom: 90px; opacity: 0; will-change: transform, opacity; }
+    #scene-05-asleep .phone { width: 100%; height: 100%; border-radius: 40px; background: var(--panel); border: 4px solid var(--accent-2);
+      display: flex; align-items: center; justify-content: center; will-change: border-color; }
+    #scene-05-asleep .phone .power { width: 72px; height: 72px; opacity: 0; }
+    #scene-05-asleep .phone .power svg { width: 100%; height: 100%; }
+    #scene-05-asleep .phone .power path, #scene-05-asleep .phone .power line { stroke: var(--muted); stroke-width: 8; stroke-linecap: round; fill: none; }
+    /* sleep Zzz */
+    #scene-05-asleep .zzz { position: absolute; top: -10px; right: -70px; font-size: 72px; font-weight: 800; color: var(--accent-2); opacity: 0; will-change: transform, opacity; }
+
+    #scene-05-asleep .cap { font-size: 78px; font-weight: 900; color: var(--fg); letter-spacing: -0.02em; line-height: 1.04; opacity: 0; will-change: transform, opacity; }
+    #scene-05-asleep .cap .off { display: block; color: var(--soft); font-weight: 800; font-size: 60px; margin-top: 8px; opacity: 0; }
+
+    /* the reassurance — they still agree */
+    #scene-05-asleep .badge { margin-top: 70px; display: inline-flex; align-items: center; gap: 18px; padding: 22px 40px; border-radius: 60px;
+      background: rgba(37,211,102,0.10); border: 2px solid var(--accent); opacity: 0; will-change: transform, opacity; }
+    #scene-05-asleep .badge .tick { width: 46px; height: 46px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #06210f; font-size: 30px; font-weight: 900; }
+    #scene-05-asleep .badge .t { font-size: 42px; font-weight: 700; color: var(--accent); letter-spacing: -0.01em; }
+  </style>
+</head>
+<body>
+  <div id="scene-05-asleep" data-composition-id="scene-05-asleep" data-width="1080" data-height="1920">
+    <div class="stack">
+      <div class="phonewrap" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900" data-sfx-volume="0.42">
+        <div class="phone">
+          <div class="power">
+            <svg viewBox="0 0 80 80" aria-hidden="true">
+              <line x1="40" y1="14" x2="40" y2="40"></line>
+              <path d="M24 26 A26 26 0 1 0 56 26"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="zzz">z<sup>z</sup></div>
+      </div>
+      <div class="cap" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2040">fast asleep<span class="off" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3300">phone off.</span></div>
+      <div class="badge" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3460" data-sfx-volume="0.42"><span class="tick">&check;</span><span class="t">they still agree</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-05-asleep";
+    const S = 25.40; // host data-start; scene-local = global - S
+
+    // root crossfade during seam overlap; content held to 0.50 (global 25.90)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.30, ease: "power2.inOut" }, 0);
+
+    // "even when one of them is" @25.90 -> local 0.50 — the phone appears
+    tl.fromTo(root + " .phonewrap", { opacity: 0, y: 22, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 0.50);
+    // "fast asleep" @27.42 -> local 2.02 — Zzz floats up, the phone dims toward off
+    tl.fromTo(root + " .zzz", { opacity: 0, y: 16, x: -8 }, { opacity: 1, y: -14, x: 0, duration: 0.5, ease: "power2.out" }, 1.70);
+    tl.fromTo(root + " .cap", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 1.72);
+    tl.to(root + " .phone", { borderColor: "var(--muted)", duration: 0.4, ease: "power2.in" }, 2.02);
+    tl.fromTo(root + " .phone .power", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.6)" }, 2.10);
+    // "phone off." @28.50 -> local 3.10 — the off label + the green reassurance that they still agreed
+    tl.fromTo(root + " .cap .off", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 3.02);
+    tl.fromTo(root + " .badge", { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(1.8)" }, 3.14);
+    // idle drift on the phone
+    tl.to(root + " .phonewrap", { y: -6, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.95);
+
+    window.__timelines["scene-05-asleep"] = tl;
+  </script>
+</body>
+</html>

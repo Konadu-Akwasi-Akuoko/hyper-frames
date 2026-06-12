@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 02 — the philosophy: let it crash</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-02-philosophy { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-02-philosophy .lead {
+      position: absolute; left: 90px; right: 90px; top: 620px; text-align: center; opacity: 0;
+      font-size: 44px; font-weight: 500; color: var(--soft); letter-spacing: 0.01em; line-height: 1.25;
+    }
+    /* the term, as a mono card — the machine naming itself */
+    #scene-02-philosophy .card {
+      position: absolute; left: 50%; top: 940px; transform: translate(-50%,0); opacity: 0;
+      padding: 44px 72px; border-radius: 26px;
+      background: var(--panel); border: 2px solid var(--accent);
+      box-shadow: 0 0 60px rgba(37,211,102,0.28);
+    }
+    #scene-02-philosophy .card .term {
+      font-family: "JetBrains Mono", monospace; font-size: 104px; font-weight: 500;
+      color: var(--accent); letter-spacing: 0.01em; white-space: nowrap;
+    }
+    #scene-02-philosophy .quote {
+      position: absolute; left: 50%; top: 900px; transform: translate(-50%,0);
+      font-family: "JetBrains Mono", monospace; font-size: 60px; color: var(--dim); opacity: 0;
+    }
+    #scene-02-philosophy .quote.r { top: 1080px; }
+  </style>
+</head>
+<body>
+  <div id="scene-02-philosophy" data-composition-id="scene-02-philosophy" data-width="1080" data-height="1920">
+    <div class="lead" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="940" data-sfx-volume="0.42">There's an actual engineering philosophy for it.</div>
+    <div class="card" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3350"><span class="term">let&nbsp;it&nbsp;crash</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-02-philosophy";
+    const S = 3.32; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // "There's an actual engineering philosophy for it." @3.82 -> local 0.50
+    tl.fromTo(root + " .lead", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.44, ease: "power3.out", overwrite: "auto" }, 0.50);
+    // the card lands on "Let it crash" @6.30 -> local 2.98 (back-ease settle)
+    tl.fromTo(root + " .card", { opacity: 0, scale: 0.86, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.6)", overwrite: "auto" }, 2.85);
+    // glow pulse as "crash" lands @6.68 -> local 3.36
+    tl.to(root + " .card", { boxShadow: "0 0 92px rgba(37,211,102,0.5)", duration: 0.36, ease: "power2.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 3.30);
+    // idle drift
+    tl.to(root + " .card", { y: -7, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 3.8);
+
+    window.__timelines["scene-02-philosophy"] = tl;
+  </script>
+</body>
+</html>

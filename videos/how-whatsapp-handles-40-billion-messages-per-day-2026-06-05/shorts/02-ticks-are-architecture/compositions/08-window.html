@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 08 — drain vs expire</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-08-window { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-08-window .panel {
+      position: absolute; left: 80px; right: 80px; height: 600px; border-radius: 34px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+      opacity: 0; will-change: transform, opacity; padding: 0 50px; text-align: center;
+    }
+    #scene-08-window .top { top: 300px; background: rgba(37,211,102,0.07); border: 4px solid rgba(37,211,102,0.5); }
+    #scene-08-window .bot { top: 1020px; background: rgba(255,107,93,0.06); border: 4px solid rgba(255,107,93,0.45); }
+    #scene-08-window .cond { font-family: "JetBrains Mono", monospace; font-size: 50px; font-weight: 500; letter-spacing: 0.04em; }
+    #scene-08-window .top .cond { color: var(--accent); }
+    #scene-08-window .bot .cond { color: var(--danger); }
+    #scene-08-window .verb { font-size: 100px; font-weight: 900; line-height: 0.95; letter-spacing: -0.01em; }
+    #scene-08-window .top .verb { color: var(--fg); }
+    #scene-08-window .bot .verb { color: var(--danger); }
+    #scene-08-window .top .verb { text-shadow: 0 0 40px rgba(37,211,102,0.25); }
+  </style>
+</head>
+<body>
+  <div id="scene-08-window" data-composition-id="scene-08-window" data-width="1080" data-height="1920">
+    <div class="panel top" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="950">
+      <div class="cond">≤ 30 days</div>
+      <div class="verb" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="2610">drains instantly</div>
+    </div>
+    <div class="panel bot" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3990" data-sfx-volume="0.35">
+      <div class="cond">&gt; 30 days</div>
+      <div class="verb">gone forever</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-08-window";
+    const S = 39.66; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "come back inside that window" @40.16 -> local 0.50 : top panel slides in
+    tl.fromTo(root + " .top", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 40.16 - S);
+    // "drains to you instantly" @41.92 -> local 2.26 : verb pulse
+    tl.to(root + " .top .verb", { scale: 1.06, duration: 0.35, ease: "back.out(2)", transformOrigin: "center" }, 41.92 - S);
+    tl.to(root + " .top", { borderColor: "rgba(37,211,102,0.85)", duration: 0.35 }, 41.92 - S);
+    // "come back after" @43.20 -> local 3.54 : bottom panel slides in
+    tl.fromTo(root + " .bot", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 43.20 - S);
+    // "gone forever" @44.46 -> local 4.80 : it desaturates / dissolves
+    tl.to(root + " .bot .verb", { opacity: 0.35, letterSpacing: "0.14em", duration: 0.6, ease: "power2.out" }, 44.46 - S);
+    tl.to(root + " .bot", { borderColor: "rgba(255,107,93,0.2)", duration: 0.5 }, 44.46 - S);
+    // idle
+    tl.to(root + " .top", { y: -6, duration: 1.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 42.4 - S);
+    // clear before seam with scene 09
+    tl.to([root + " .top", root + " .bot"], { opacity: 0, duration: 0.34, ease: "power2.in" }, 45.18 - S);
+
+    window.__timelines["scene-08-window"] = tl;
+  </script>
+</body>
+</html>

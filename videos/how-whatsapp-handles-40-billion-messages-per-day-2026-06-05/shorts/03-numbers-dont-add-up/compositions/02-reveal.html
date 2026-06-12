@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 02 — reveal: 20B becomes 64B</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-02-reveal { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-02-reveal .wrap {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0;
+    }
+    #scene-02-reveal .kick {
+      font-size: 46px; font-weight: 500; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase; opacity: 0; margin-bottom: 64px;
+    }
+    #scene-02-reveal .row { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; }
+    #scene-02-reveal .fig {
+      font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums;
+      font-size: 86px; font-weight: 500; letter-spacing: -0.01em; line-height: 1;
+    }
+    #scene-02-reveal .sent .fig { color: var(--accent); text-shadow: 0 0 46px rgba(37,211,102,0.24); }
+    #scene-02-reveal .lbl { font-size: 36px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    #scene-02-reveal .arrow { margin: 30px 0; font-size: 64px; color: var(--dim); opacity: 0; transform: rotate(90deg); }
+    #scene-02-reveal .total .fig { color: var(--cost); font-size: 104px; font-weight: 700; text-shadow: 0 0 70px rgba(240,180,41,0.34); }
+    #scene-02-reveal .total .lbl { color: var(--cost); opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <div id="scene-02-reveal" data-composition-id="scene-02-reveal" data-width="1080" data-height="1920">
+    <div class="wrap">
+      <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1320" data-sfx-volume="0.42">One ordinary day</div>
+      <div class="row sent" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2270" data-sfx-volume="0.35">
+        <div class="fig">20,000,000,000</div>
+        <div class="lbl">messages sent</div>
+      </div>
+      <div class="arrow" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4140">&darr;</div>
+      <div class="row total" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4820" data-sfx-volume="0.42">
+        <div class="fig">64,000,000,000</div>
+        <div class="lbl">by day's end</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-02-reveal";
+    const S = 2.42; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "one ordinary day" @3.34 -> local 0.92
+    tl.fromTo(root + " .kick", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.34 - S);
+    // "twenty billion messages sent" @4.24 -> local 1.82
+    tl.fromTo(root + " .sent", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.24 - S);
+    // "turned into" @6.16 -> local 3.74 — the arrow drops
+    tl.fromTo(root + " .arrow", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.16 - S);
+    // "sixty-four billion" @6.74 -> local 4.32 — the shock total detonates
+    tl.fromTo(root + " .total", { opacity: 0, scale: 1.18, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power4.out" }, 6.74 - S);
+    // idle
+    tl.to(root + " .total .fig", { y: -6, duration: 1.2, ease: "sine.inOut", repeat: 1, yoyo: true, overwrite: "auto" }, 7.6 - S);
+    // clear before seam with scene 03 (scene-03 host start 7.64; this host ends 8.14)
+    tl.to(root + " .wrap", { opacity: 0, y: -26, duration: 0.34, ease: "power2.in", overwrite: "auto" }, 7.74 - S);
+
+    window.__timelines["scene-02-reveal"] = tl;
+  </script>
+</body>
+</html>

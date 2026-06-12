@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>32 RAN 40B MESSAGES A DAY</title>
+  <link rel="stylesheet" href="file:///Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/.claude/skills/thumbnail-and-title-generator/templates/styles.css">
+  <!-- styles.css sizes html/body from :root (1280x720); force portrait so body doesn't clip at y=720 -->
+  <style>html, body { width: 1080px; height: 1920px; }</style>
+</head>
+<body>
+  <!-- Faceless headline+kicker reframe: the smallness IS the story. "40B" punch,
+       "32 RAN" sets up the contrast, kicker grounds the scale.
+       Accent = parent WhatsApp green #25d366. -->
+  <div class="thumbnail vertical acc-teal" style="--accent:#25d366; --accent-glow:rgba(37,211,102,0.34);">
+    <div class="bg-grid"></div>
+
+    <div class="thumbnail-text" style="font-size: 90px; top:50%; bottom:auto; transform:translateY(-50%);">
+      <span class="thumbnail-row" style="font-size:1.7em; line-height:0.92;">32</span>
+      <span class="thumbnail-row" style="font-size:0.46em; color:#79857f; letter-spacing:0.14em;">ENGINEERS</span>
+      <span class="thumbnail-row punch accent" style="margin-top:24px;">40 BILLION</span>
+      <span class="thumbnail-row" style="font-size:0.46em; color:#79857f; letter-spacing:0.14em;">MESSAGES A DAY</span>
+      <div class="mono-tell">// <span class="stat">14M</span> users per engineer</div>
+    </div>
+
+    <div class="vignette"></div>
+
+    <div class="grid-overlay" aria-hidden="true">
+      <div class="grid-safe-area"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var t = document.querySelector('.thumbnail');
+      if (location.search.includes('grid')) t.classList.add('with-grid');
+      var g = t.querySelector('.grid-overlay');
+      if (g) {
+        var W = t.classList.contains('vertical') ? 1080 : 1280;
+        var H = t.classList.contains('vertical') ? 1920 : 720;
+        for (var x = 100; x < W; x += 100) { var ex = document.createElement('div'); ex.className = 'cg-label cg-x'; ex.style.left = x + 'px'; ex.textContent = x; g.appendChild(ex); }
+        for (var y = 100; y < H; y += 100) { var ey = document.createElement('div'); ey.className = 'cg-label cg-y'; ey.style.top = y + 'px'; ey.textContent = y; g.appendChild(ey); }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 05 — each pipe becomes a worker</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-05-workers { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-05-workers .rack {
+      position: absolute; left: 140px; right: 140px; top: 420px; height: 200px;
+      display: grid; grid-template-columns: repeat(5, 1fr);
+    }
+    #scene-05-workers .lane { position: relative; display: flex; flex-direction: column; align-items: center; }
+    #scene-05-workers .ph {
+      width: 86px; height: 150px; border-radius: 16px;
+      border: 3px solid var(--accent-2); background: rgba(125,211,252,0.05); opacity: 0;
+      will-change: opacity, transform;
+    }
+    #scene-05-workers .pp {
+      width: 8px; height: 230px; margin-top: 6px; transform-origin: top center;
+      background: linear-gradient(to bottom, rgba(125,211,252,0.9), rgba(125,211,252,0.4));
+      border-radius: 4px; opacity: 0; transform: scaleY(0);
+      box-shadow: 0 0 14px rgba(125,211,252,0.3); will-change: transform, opacity;
+    }
+
+    #scene-05-workers .server {
+      position: absolute; left: 140px; right: 140px; top: 1010px; height: 420px;
+      background: var(--panel); border: 2px solid var(--accent-2); border-radius: 22px;
+      opacity: 0; box-shadow: 0 0 40px rgba(125,211,252,0.08);
+      will-change: opacity, transform;
+    }
+    #scene-05-workers .wgrid {
+      position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr);
+      align-items: center; justify-items: center;
+    }
+    #scene-05-workers .wk {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #5ce08e, var(--accent));
+      opacity: 0; box-shadow: 0 0 22px rgba(37,211,102,0.55);
+      will-change: opacity, transform;
+    }
+    #scene-05-workers .server .tag {
+      position: absolute; left: 50%; bottom: -60px; transform: translateX(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 34px; color: var(--muted); letter-spacing: 0.05em; white-space: nowrap;
+    }
+
+    #scene-05-workers .cap {
+      position: absolute; left: 90px; right: 90px; top: 1560px; text-align: center;
+      font-size: 56px; font-weight: 700; color: var(--fg); opacity: 0; line-height: 1.22;
+    }
+    #scene-05-workers .cap .hi { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-05-workers" data-composition-id="scene-05-workers" data-width="1080" data-height="1920">
+    <div class="rack">
+      <div class="lane"><div class="ph"></div><div class="pp"></div></div>
+      <div class="lane"><div class="ph"></div><div class="pp"></div></div>
+      <div class="lane"><div class="ph"></div><div class="pp"></div></div>
+      <div class="lane"><div class="ph"></div><div class="pp"></div></div>
+      <div class="lane"><div class="ph"></div><div class="pp"></div></div>
+    </div>
+
+    <div class="server" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3340">
+      <div class="wgrid">
+        <div class="wk" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3750"></div><div class="wk" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4090" data-sfx-volume="0.42"></div><div class="wk" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4430"></div><div class="wk" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4770" data-sfx-volume="0.42"></div><div class="wk" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5110"></div>
+      </div>
+      <div class="tag">one&nbsp;worker&nbsp;per&nbsp;connection</div>
+    </div>
+
+    <div class="cap" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="5200">each pipe becomes its own <span class="hi">tiny worker</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-05-workers";
+    // host data-start = 22.26, scene-local = global - 22.26.
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+
+    // "and every one of those open pipes" — phones + pipes stagger in 0.50 → 2.84
+    tl.fromTo(root + " .ph", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.18 }, 0.50);
+    tl.fromTo(root + " .pp", { opacity: 1, scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.out", stagger: 0.18 }, 1.2);
+
+    // server box "becomes" @3.30
+    tl.fromTo(root + " .server", { opacity: 0, y: 24, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 2.84);
+
+    // worker dots spawn — one per pipe — landing across "its own tiny worker" 3.30 → 5.32
+    tl.fromTo(root + " .wk",
+      { opacity: 0, scale: 0.2 },
+      { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)", stagger: 0.34 }, 3.30);
+
+    // caption @4.70 "tiny worker"
+    tl.fromTo(root + " .cap", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.70);
+    tl.fromTo(root + " .cap .hi", { textShadow: "0 0 0 rgba(37,211,102,0)" }, { textShadow: "0 0 26px rgba(37,211,102,0.6)", duration: 0.35, ease: "power2.out" }, 5.32);
+
+    // idle — workers breathe
+    tl.to(root + " .wk", { scale: 1.08, duration: 0.8, ease: "sine.inOut", repeat: 1, yoyo: true, stagger: 0.1 }, 5.6);
+
+    // clear before seam (scene end local 6.90)
+    tl.to([root + " .rack", root + " .server", root + " .cap"], { opacity: 0, y: -28, duration: 0.4, ease: "power2.in" }, 6.50);
+
+    window.__timelines["scene-05-workers"] = tl;
+  </script>
+</body>
+</html>

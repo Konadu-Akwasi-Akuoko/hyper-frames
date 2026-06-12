@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 09 — none of it comes free</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-09-notfree { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-09-notfree .wrap {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 40px;
+    }
+    #scene-09-notfree .tag {
+      font-family: "JetBrains Mono", monospace; font-size: 44px; color: var(--muted);
+      letter-spacing: 0.08em; opacity: 0;
+    }
+    #scene-09-notfree .big {
+      font-size: 150px; font-weight: 900; line-height: 0.95; color: var(--fg); letter-spacing: -0.02em; opacity: 0;
+    }
+    #scene-09-notfree .big .em { color: var(--cost); text-shadow: 0 0 60px rgba(240,180,41,0.3); }
+    #scene-09-notfree .price {
+      width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--cost); opacity: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 86px; font-weight: 800; color: var(--cost); box-shadow: 0 0 56px rgba(240,180,41,0.28);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-09-notfree" data-composition-id="scene-09-notfree" data-width="1080" data-height="1920">
+    <div class="wrap">
+      <div class="tag" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="640" data-sfx-volume="0.35">// the trade-off</div>
+      <div class="price" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2660">$</div>
+      <div class="big" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="940">none of it is<br><span class="em">free.</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-09-notfree";
+    const S = 45.00; // local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // "None of it comes free, though." None@0.50, free@2.36
+    tl.fromTo(root + " .tag", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 0.30);
+    tl.fromTo(root + " .big", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.44, ease: "power3.out", overwrite: "auto" }, 0.50);
+    // the amber price coin drops in on "free" @2.36
+    tl.fromTo(root + " .price", { opacity: 0, scale: 0.5, y: -24 }, { opacity: 1, scale: 1, y: 0, duration: 0.46, ease: "back.out(1.8)", overwrite: "auto" }, 2.20);
+    tl.to(root + " .price", { boxShadow: "0 0 86px rgba(240,180,41,0.5)", duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 2.50);
+    // idle drift
+    tl.to(root + " .price", { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 3.0);
+
+    window.__timelines["scene-09-notfree"] = tl;
+  </script>
+</body>
+</html>

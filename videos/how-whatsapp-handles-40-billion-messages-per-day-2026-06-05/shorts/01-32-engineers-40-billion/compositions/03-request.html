@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 03 — not a fresh request per text</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-03-request { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-03-request .setup {
+      position: absolute; left: 90px; right: 90px; top: 380px; text-align: center;
+      font-size: 54px; font-weight: 300; line-height: 1.3; color: var(--soft); opacity: 0;
+    }
+
+    #scene-03-request .claim {
+      position: absolute; left: 90px; right: 90px; top: 560px; text-align: center;
+      font-size: 66px; font-weight: 700; line-height: 1.22; color: var(--fg); opacity: 0;
+    }
+    #scene-03-request .claim .no { color: var(--danger); }
+
+    #scene-03-request .chips {
+      position: absolute; left: 0; right: 0; top: 880px;
+      display: flex; flex-direction: column; align-items: center; gap: 26px;
+    }
+    #scene-03-request .chip {
+      display: flex; align-items: center; gap: 22px;
+      width: 640px; padding: 26px 40px; border-radius: 18px;
+      background: var(--panel); border: 1.5px solid var(--border);
+      font-size: 44px; font-weight: 500; color: var(--soft); opacity: 0;
+      will-change: transform, opacity;
+    }
+    #scene-03-request .chip .ic { font-size: 40px; }
+    #scene-03-request .chip .for { margin-left: auto; font-size: 34px; color: var(--muted); font-weight: 400; }
+
+    #scene-03-request .strike {
+      position: absolute; left: 200px; top: 1108px; width: 0; height: 8px;
+      background: var(--danger); border-radius: 4px; transform-origin: left center;
+      box-shadow: 0 0 18px rgba(255,107,93,0.5); opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-03-request" data-composition-id="scene-03-request" data-width="1080" data-height="1920">
+    <div class="setup">Here's how a team that small carried that much.</div>
+
+    <div class="claim">Your phone <span class="no" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3860" data-sfx-volume="0.42">doesn't</span> make a fresh request for every text.</div>
+
+    <div class="chips">
+      <div class="chip c1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4640"><span class="ic">✉</span> request <span class="for">every text</span></div>
+      <div class="chip c2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4900"><span class="ic">✉</span> request <span class="for">every text</span></div>
+      <div class="chip c3" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5160"><span class="ic">✉</span> request <span class="for">every text</span></div>
+    </div>
+
+    <div class="strike" data-layout-allow-overflow data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="5700"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-03-request";
+    // host data-start = 9.34, scene-local = global - 9.34.
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+
+    // "Here's how a team that small carried that much." @0.50
+    tl.fromTo(root + " .setup", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+    tl.to(root + " .setup", { opacity: 0, y: -26, duration: 0.4, ease: "power2.in" }, 2.66);
+
+    // "Your phone doesn't make a fresh request for every text." — claim @3.04
+    tl.fromTo(root + " .claim", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 3.04);
+    // "doesn't" @3.56 — danger ignite
+    tl.fromTo(root + " .claim .no", { textShadow: "0 0 0 rgba(255,107,93,0)" }, { textShadow: "0 0 26px rgba(255,107,93,0.7)", duration: 0.3, ease: "power2.out" }, 3.56);
+
+    // request chips — the rejected model — appear "fresh request for every text" 4.24+
+    tl.fromTo(root + " .chip",
+      { opacity: 0, x: -40 },
+      { opacity: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.26 }, 4.24);
+
+    // strike sweep across the chips — the negation — ~5.2
+    tl.fromTo(root + " .strike", { opacity: 1, width: 0 }, { width: 680, duration: 0.5, ease: "power3.inOut" }, 5.2);
+    tl.to(root + " .chip", { color: "#39443f", borderColor: "#1e2722", duration: 0.4, ease: "power2.inOut" }, 5.3);
+
+    // idle on the claim
+    tl.to(root + " .claim", { y: -6, duration: 1.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.0);
+
+    // clear before seam (scene end local 6.46)
+    tl.to([root + " .claim", root + " .chips", root + " .strike"], { opacity: 0, y: -30, duration: 0.4, ease: "power2.in" }, 6.06);
+
+    window.__timelines["scene-03-request"] = tl;
+  </script>
+</body>
+</html>

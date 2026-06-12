@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 03 — relay spine</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-03-spine { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-03-spine .title {
+      position: absolute; top: 250px; left: 0; right: 0; text-align: center;
+      font-size: 60px; font-weight: 300; color: var(--soft); opacity: 0;
+    }
+    #scene-03-spine .title b { font-weight: 800; color: var(--fg); }
+
+    #scene-03-spine .rig { position: absolute; left: 50%; top: 880px; transform: translate(-50%,-50%); width: 720px; height: 900px; }
+    #scene-03-spine .phone {
+      position: absolute; left: 50%; transform: translateX(-50%); width: 250px; height: 360px;
+      border: 5px solid #3c4b43; border-radius: 40px; background: var(--panel);
+      display: flex; align-items: center; justify-content: center; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-03-spine .phone .scr { width: 196px; height: 300px; border-radius: 22px; background: #0c120f; border: 2px solid var(--dim); }
+    #scene-03-spine .phone.top { top: 0; }
+    #scene-03-spine .phone.bot { bottom: 0; }
+    #scene-03-spine .phone .lbl {
+      position: absolute; left: 50%; transform: translateX(-50%); bottom: -52px;
+      font-size: 34px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap;
+    }
+    #scene-03-spine .link {
+      position: absolute; left: 50%; top: 200px; transform: translateX(-50%);
+      width: 0; height: 500px; border-left: 5px dashed var(--dim);
+    }
+    #scene-03-spine .cross {
+      position: absolute; left: 50%; top: 450px; transform: translate(-50%,-50%) scale(0.3) rotate(0deg);
+      font-size: 220px; font-weight: 900; color: var(--danger); opacity: 0; line-height: 1;
+      text-shadow: 0 0 40px rgba(255,107,93,0.45); will-change: transform, opacity;
+    }
+    #scene-03-spine .never {
+      position: absolute; left: 0; right: 0; bottom: 470px; text-align: center;
+      font-size: 64px; font-weight: 800; color: var(--danger); letter-spacing: 0.04em;
+      text-transform: uppercase; opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-03-spine" data-composition-id="scene-03-spine" data-width="1080" data-height="1920">
+    <div class="title">your phone <b>never</b> talks to their phone</div>
+    <div class="rig">
+      <div class="link" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2460" data-sfx-volume="0.42"></div>
+      <div class="phone top" data-layout-allow-overflow data-sfx-on-anchor="pop" data-sfx-at-scene-ms="950" data-sfx-volume="0.35"><div class="scr"></div><div class="lbl">you</div></div>
+      <div class="phone bot" data-layout-allow-overflow data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1130"><div class="scr"></div><div class="lbl">your friend</div></div>
+      <div class="cross" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3870" data-sfx-volume="0.42">✕</div>
+    </div>
+    <div class="never" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4020">not directly · not ever</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-03-spine";
+    const S = 7.78; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "because here's the thing" @8.28 -> local 0.50 : phones rise in
+    tl.fromTo(root + " .phone.top", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 8.28 - S);
+    tl.fromTo(root + " .phone.bot", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 8.46 - S);
+    // "your phone never talks to your friend's phone" @9.30 -> local 1.52
+    tl.fromTo(root + " .title", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 9.30 - S);
+    // direct dashed line draws @9.74
+    tl.fromTo(root + " .link", { height: 0 }, { height: 500, duration: 0.5, ease: "power2.inOut" }, 9.74 - S);
+    // "not directly, not ever" @11.20 -> local 3.42 : the X stamps over the direct path
+    tl.fromTo(root + " .cross", { opacity: 0, scale: 0.3, rotation: -25 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 11.20 - S);
+    tl.to(root + " .link", { borderLeftColor: "rgba(255,107,93,0.5)", duration: 0.3 }, 11.20 - S);
+    // phone labels exit as the conclusion lands, so "not directly · not ever" owns the lower frame
+    tl.to(root + " .phone .lbl", { opacity: 0, duration: 0.3, ease: "power2.in" }, 11.30 - S);
+    tl.fromTo(root + " .never", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.40 - S);
+    // idle
+    tl.to(root + " .rig", { y: -8, duration: 1.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 11.9 - S);
+    // clear before seam with scene 04 (host ends 12.80; scene04 host start 12.30)
+    tl.to([root + " .title", root + " .rig", root + " .never"], { opacity: 0, duration: 0.4, ease: "power2.in" }, 12.42 - S);
+
+    window.__timelines["scene-03-spine"] = tl;
+  </script>
+</body>
+</html>

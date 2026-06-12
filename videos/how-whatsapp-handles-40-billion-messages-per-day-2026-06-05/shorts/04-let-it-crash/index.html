@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0f0d;
+        --panel: #101613;
+        --border: #1e2722;
+        --fg: #e9edeb;
+        --soft: #c3cbc7;
+        --muted: #79857f;
+        --dim: #39443f;
+        --accent: #25d366;
+        --accent-2: #7dd3fc;
+        --cost: #f0b429;
+        --danger: #ff6b5d;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="67.29"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Persistent subject-toned background behind every scene (no logo). -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="67.29"
+        data-track-index="7"
+        data-width="1080"
+        data-height="1920"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
+
+      <!-- Voiceover — the timing source of truth for every scene. -->
+      <audio
+        id="voiceover"
+        src="audio/voiceover.mp3"
+        data-start="0"
+        data-duration="67.29"
+        data-track-index="9"
+        data-volume="1"
+      ></audio>
+
+      <!-- Scene 01 — Hook: they wanted their code to crash (chunk 0.08–2.90; next 3.82). -->
+      <div id="scene-01" data-composition-id="scene-01-hook"
+        data-composition-src="compositions/01-hook.html"
+        data-start="0" data-duration="3.82" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:1"></div>
+
+      <!-- Scene 02 — Philosophy: "let it crash" named (chunk 3.82–7.02; next 7.18). -->
+      <div id="scene-02" data-composition-id="scene-02-philosophy"
+        data-composition-src="compositions/02-philosophy.html"
+        data-start="3.32" data-duration="3.86" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:2"></div>
+
+      <!-- Scene 03 — Safety nets: most systems wrap everything (chunk 7.18–13.54; next 13.68). -->
+      <div id="scene-03" data-composition-id="scene-03-safetynets"
+        data-composition-src="compositions/03-safetynets.html"
+        data-start="6.68" data-duration="7.00" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:3"></div>
+
+      <!-- Scene 04 — Erlang: the opposite; born in telecom (chunk 13.68–23.66; next 23.90). -->
+      <div id="scene-04" data-composition-id="scene-04-erlang"
+        data-composition-src="compositions/04-erlang.html"
+        data-start="13.18" data-duration="10.72" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:4"></div>
+
+      <!-- Scene 05 — Process: one tiny isolated process per phone (chunk 23.90–28.06; next 28.10). -->
+      <div id="scene-05" data-composition-id="scene-05-process"
+        data-composition-src="compositions/05-process.html"
+        data-start="23.40" data-duration="4.70" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:5"></div>
+
+      <!-- Scene 06 — BEAM grid: millions of featherweight workers (chunk 28.10–35.44; next 35.58). -->
+      <div id="scene-06" data-composition-id="scene-06-beam-grid"
+        data-composition-src="compositions/06-beam-grid.html"
+        data-start="27.60" data-duration="7.98" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:6"></div>
+
+      <!-- Scene 07 — Crash: one breaks, dies alone (chunk 35.58–39.40; next 39.60). -->
+      <div id="scene-07" data-composition-id="scene-07-crash"
+        data-composition-src="compositions/07-crash.html"
+        data-start="35.08" data-duration="4.52" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:7"></div>
+
+      <!-- Scene 08 — Supervisor: spawns a fresh clean copy (chunk 39.60–45.16; next 45.50). -->
+      <div id="scene-08" data-composition-id="scene-08-supervisor"
+        data-composition-src="compositions/08-supervisor.html"
+        data-start="39.10" data-duration="6.40" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:8"></div>
+
+      <!-- Scene 09 — Not free: none of it comes free (chunk 45.50–48.44; next 48.54). -->
+      <div id="scene-09" data-composition-id="scene-09-notfree"
+        data-composition-src="compositions/09-notfree.html"
+        data-start="45.00" data-duration="3.54" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:9"></div>
+
+      <!-- Scene 10 — Cost: niche language, never built for speed (chunk 48.54–55.14; next 55.20). -->
+      <div id="scene-10" data-composition-id="scene-10-cost"
+        data-composition-src="compositions/10-cost.html"
+        data-start="48.04" data-duration="7.16" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:10"></div>
+
+      <!-- Scene 11 — Buy: holds millions without falling over (chunk 55.20–59.74; next 59.80). -->
+      <div id="scene-11" data-composition-id="scene-11-buy"
+        data-composition-src="compositions/11-buy.html"
+        data-start="54.70" data-duration="5.10" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:11"></div>
+
+      <!-- Scene 12 — CTA question: what does a tiny team buy (chunk 59.80–65.62; next 65.68). -->
+      <div id="scene-12" data-composition-id="scene-12-cta-q"
+        data-composition-src="compositions/12-cta-q.html"
+        data-start="59.30" data-duration="6.38" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:12"></div>
+
+      <!-- Scene 13 — CTA subscribe: to find out, subscribe (chunk 65.68–67.16; FINAL). -->
+      <div id="scene-13" data-composition-id="scene-13-cta-sub"
+        data-composition-src="compositions/13-cta-sub.html"
+        data-start="65.18" data-duration="2.11" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:13"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div
+        id="sfx-layer"
+        data-composition-id="sfx-layer"
+        data-composition-src="compositions/sfx.html"
+        data-start="0"
+        data-duration="67.2914375"
+        data-track-index="19"
+      ></div>
+</body>
+</html>

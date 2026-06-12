@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 04 — X3DH handshake: two agree on one shared secret key</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-04-handshake { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-04-handshake .kick { position: absolute; top: 360px; left: 0; right: 0; text-align: center;
+      font-size: 40px; font-weight: 600; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; opacity: 0; }
+
+    #scene-04-handshake .fig { position: absolute; top: 470px; left: 90px; width: 900px; height: 1000px; }
+    #scene-04-handshake .fig svg { width: 100%; height: 100%; overflow: visible; }
+    /* phones */
+    #scene-04-handshake .phone { opacity: 0; will-change: transform, opacity; }
+    #scene-04-handshake .phone .body { fill: var(--panel); stroke: var(--accent-2); stroke-width: 5; }
+    #scene-04-handshake .phone .avatar { fill: var(--accent-2); opacity: 0.85; }
+    /* converging lines */
+    #scene-04-handshake .wire { fill: none; stroke: var(--accent-2); stroke-width: 5; stroke-linecap: round; }
+    /* the single shared key that mints at the convergence */
+    #scene-04-handshake .key { opacity: 0; will-change: transform, opacity; filter: drop-shadow(0 0 12px rgba(125,211,252,0.45)); }
+    #scene-04-handshake .key .bow { fill: none; stroke: var(--accent-2); stroke-width: 20; }
+    #scene-04-handshake .key .stem { stroke: var(--accent-2); stroke-width: 20; stroke-linecap: round; }
+
+    /* the X3DH protocol name */
+    #scene-04-handshake .x3dh { position: absolute; top: 880px; left: 0; right: 0; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-size: 96px; font-weight: 500; color: var(--accent-2); letter-spacing: 0.04em;
+      opacity: 0; will-change: transform, opacity; text-shadow: 0 0 44px rgba(125,211,252,0.3); }
+    #scene-04-handshake .x3dh .pre { display: block; font-size: 34px; font-weight: 500; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 8px; }
+
+    /* the caption */
+    #scene-04-handshake .cap { position: absolute; top: 1410px; left: 0; right: 0; text-align: center;
+      font-size: 56px; font-weight: 800; color: var(--fg); letter-spacing: -0.01em; opacity: 0; will-change: transform, opacity; }
+    #scene-04-handshake .cap .em { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-04-handshake" data-composition-id="scene-04-handshake" data-width="1080" data-height="1920">
+    <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="840" data-sfx-volume="0.35">the handshake</div>
+
+    <div class="x3dh" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4940" data-sfx-volume="0.42"><span class="pre">a protocol called</span>X3DH</div>
+
+    <div class="fig">
+      <svg viewBox="0 0 900 1000" aria-hidden="true">
+        <!-- converging wires (drawn from phones down to the key) -->
+        <path class="wire w1" d="M190 290 L450 760"></path>
+        <path class="wire w2" d="M710 290 L450 760"></path>
+        <!-- phone A (left) -->
+        <g class="phone pA" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1220" data-sfx-volume="0.35">
+          <rect class="body" x="120" y="40" width="140" height="250" rx="22"></rect>
+          <circle class="avatar" cx="190" cy="165" r="34"></circle>
+        </g>
+        <!-- phone B (right) -->
+        <g class="phone pB" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1400">
+          <rect class="body" x="640" y="40" width="140" height="250" rx="22"></rect>
+          <circle class="avatar" cx="710" cy="165" r="34"></circle>
+        </g>
+        <!-- the single shared secret key -->
+        <g class="key" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9040">
+          <circle class="bow" cx="450" cy="724" r="56"></circle>
+          <line class="stem" x1="450" y1="780" x2="450" y2="892"></line>
+          <line class="stem" x1="450" y1="846" x2="512" y2="846"></line>
+          <line class="stem" x1="450" y1="892" x2="500" y2="892"></line>
+        </g>
+      </svg>
+    </div>
+
+    <div class="cap" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="9360">one <span class="em">shared secret key</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-04-handshake";
+    const S = 15.90; // host data-start; scene-local = global - S
+
+    // wire draw setup
+    const wires = root + " .wire";
+
+    // root crossfade during seam overlap; content held to 0.50 (global 16.40)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+
+    // "It starts with a handshake" @16.40-19.70 -> local 0.50-3.80
+    tl.fromTo(root + " .kick", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.34, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .phone.pA", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.44, ease: "power3.out" }, 0.78);
+    tl.fromTo(root + " .phone.pB", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.44, ease: "power3.out" }, 0.96);
+
+    // "called X3DH." @20.48 -> local 4.58 — the protocol name stamps in big
+    tl.fromTo(root + " .x3dh", { opacity: 0, scale: 1.22, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.44, ease: "back.out(1.8)" }, 4.50);
+    tl.to(root + " .x3dh", { textShadow: "0 0 64px rgba(125,211,252,0.55)", duration: 0.34, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.94);
+
+    // "It lets two people agree" @22.52-24.06 -> local 6.62-8.16 — the wires draw down to the convergence
+    gsap.set(wires, { strokeDasharray: 620, strokeDashoffset: 620 });
+    tl.to(root + " .wire.w1", { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 6.60);
+    tl.to(root + " .wire.w2", { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 6.85);
+
+    // "on a shared secret key" @24.52-25.38 -> local 8.62-9.48 — the single key mints + caption
+    tl.fromTo(root + " .key", { opacity: 0, scale: 0.4, transformOrigin: "450px 800px" }, { opacity: 1, scale: 1, duration: 0.46, ease: "back.out(2.2)" }, 8.58);
+    tl.fromTo(root + " .cap", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.96);
+    tl.to(root + " .key .bow, " + root + " .key .stem", { filter: "drop-shadow(0 0 16px rgba(125,211,252,0.7))", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.10);
+
+    // idle drift on the whole figure so 10s never sits still
+    tl.to(root + " .fig", { y: -10, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 2 }, 1.6);
+
+    window.__timelines["scene-04-handshake"] = tl;
+  </script>
+</body>
+</html>

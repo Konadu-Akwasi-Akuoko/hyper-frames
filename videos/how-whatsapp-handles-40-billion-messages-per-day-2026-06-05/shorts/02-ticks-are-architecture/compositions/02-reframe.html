@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 02 — reframe</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-02-reframe { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-02-reframe .stack {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0;
+    }
+    #scene-02-reframe .not {
+      position: relative; font-size: 64px; font-weight: 600; color: var(--muted);
+      letter-spacing: 0.01em; text-transform: uppercase; opacity: 0;
+    }
+    #scene-02-reframe .not .strike {
+      position: absolute; left: -2%; top: 52%; height: 6px; width: 0; background: var(--danger);
+      border-radius: 3px; box-shadow: 0 0 16px rgba(255,107,93,0.5);
+    }
+    #scene-02-reframe .arch {
+      margin: 36px 0 30px; font-size: 118px; font-weight: 900; line-height: 0.92;
+      color: var(--accent-2); letter-spacing: -0.02em; opacity: 0; will-change: transform, opacity;
+      text-shadow: 0 0 60px rgba(125,211,252,0.28);
+    }
+    #scene-02-reframe .sub { font-size: 58px; font-weight: 300; color: var(--soft); opacity: 0; max-width: 880px; }
+    #scene-02-reframe .glow {
+      position: absolute; left: 50%; top: 50%; width: 1200px; height: 760px;
+      transform: translate(-50%,-50%) scale(0.6); opacity: 0; pointer-events: none; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(125,211,252,0.16) 0%, rgba(125,211,252,0) 64%); filter: blur(40px);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-02-reframe" data-composition-id="scene-02-reframe" data-width="1080" data-height="1920">
+    <div class="glow" data-layout-allow-overflow></div>
+    <div class="stack">
+      <div class="not" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="980" data-sfx-volume="0.42">not a status update<span class="strike" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2030"></span></div>
+      <div class="arch" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3480">ARCHITECTURE</div>
+      <div class="sub">showing through onto your screen</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-02-reframe";
+    const S = 2.52; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "not a status update" @3.62 -> local 1.10
+    tl.fromTo(root + " .not", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.10 - S);
+    // strike sweeps across "update" @4.06 -> local 1.54
+    tl.fromTo(root + " .not .strike", { width: 0 }, { width: "104%", duration: 0.45, ease: "power2.inOut" }, 4.10 - S);
+    // "ARCHITECTURE" @5.58 -> local 3.06 — detonation
+    tl.fromTo(root + " .arch", { opacity: 0, scale: 1.35, y: 8 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power4.out" }, 5.50 - S);
+    tl.fromTo(root + " .glow", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out" }, 5.54 - S);
+    // dim the struck line as architecture takes over
+    tl.to(root + " .not", { opacity: 0.4, duration: 0.4, ease: "power2.out" }, 5.58 - S);
+    // "showing through onto your screen" @6.48 -> local 3.96
+    tl.fromTo(root + " .sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.48 - S);
+    // idle
+    tl.to(root + " .arch", { y: -7, duration: 1.3, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.8 - S);
+    // clear before seam with scene 03 (scene03 host start 7.78; this host ends 8.28)
+    tl.to(root + " .stack", { opacity: 0, y: -34, duration: 0.4, ease: "power2.in" }, 7.92 - S);
+    tl.to(root + " .glow", { opacity: 0, duration: 0.4, ease: "power2.in" }, 7.92 - S);
+
+    window.__timelines["scene-02-reframe"] = tl;
+  </script>
+</body>
+</html>

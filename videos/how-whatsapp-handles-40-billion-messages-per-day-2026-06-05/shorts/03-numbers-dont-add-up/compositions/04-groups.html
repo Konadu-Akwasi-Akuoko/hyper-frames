@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 04 — groups: you upload exactly once</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-04-groups { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-04-groups .kick {
+      position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-size: 50px; font-weight: 700; color: var(--soft);
+      letter-spacing: 0.04em; text-transform: uppercase; opacity: 0;
+    }
+
+    /* group node — a cluster of member dots, upper-middle */
+    #scene-04-groups .group {
+      position: absolute; left: 50%; top: 640px; transform: translateX(-50%);
+      width: 360px; height: 360px; opacity: 0;
+    }
+    #scene-04-groups .group .ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 2px dashed rgba(125,211,252,0.35);
+    }
+    #scene-04-groups .group .glabel {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      font-size: 38px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-2);
+    }
+    #scene-04-groups .member {
+      position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%;
+      background: var(--panel); border: 2px solid var(--accent-2); box-shadow: 0 0 14px rgba(125,211,252,0.3);
+    }
+
+    /* the one phone, bottom */
+    #scene-04-groups .phone {
+      position: absolute; left: 50%; top: 1240px; transform: translateX(-50%);
+      width: 240px; height: 300px; border-radius: 34px; background: var(--panel);
+      border: 2px solid var(--border); opacity: 0;
+    }
+    #scene-04-groups .phone::after {
+      content: "YOU"; position: absolute; left: 0; right: 0; bottom: -52px; text-align: center;
+      font-size: 30px; font-weight: 700; letter-spacing: 0.14em; color: var(--muted);
+    }
+
+    /* the single uploaded copy */
+    #scene-04-groups .packet {
+      position: absolute; left: 50%; top: 1300px; transform: translate(-50%,-50%);
+      width: 150px; height: 100px; border-radius: 18px; background: var(--accent);
+      box-shadow: 0 0 34px rgba(37,211,102,0.5); opacity: 0;
+    }
+    #scene-04-groups .packet .tag {
+      position: absolute; left: 50%; bottom: -40px; transform: translateX(-50%); white-space: nowrap;
+      font-family: "JetBrains Mono", monospace; font-size: 24px; color: var(--accent); opacity: 0.85;
+    }
+    #scene-04-groups .once {
+      position: absolute; left: 0; right: 0; top: 1640px; text-align: center;
+      font-size: 58px; font-weight: 900; color: var(--accent); opacity: 0;
+      text-shadow: 0 0 40px rgba(37,211,102,0.3);
+    }
+    #scene-04-groups .once .x1 { font-family: "JetBrains Mono", monospace; color: var(--fg); }
+  </style>
+</head>
+<body>
+  <div id="scene-04-groups" data-composition-id="scene-04-groups" data-width="1080" data-height="1920">
+    <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1060" data-sfx-volume="0.42">The answer is groups</div>
+
+    <div class="group" data-layout-allow-overflow data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1860" data-sfx-volume="0.42">
+      <div class="ring"></div>
+      <div class="glabel">GROUP</div>
+      <div class="member" style="left:50%;  top:0%;"></div>
+      <div class="member" style="left:85%;  top:18%;"></div>
+      <div class="member" style="left:100%; top:50%;"></div>
+      <div class="member" style="left:85%;  top:82%;"></div>
+      <div class="member" style="left:50%;  top:100%;"></div>
+      <div class="member" style="left:15%;  top:82%;"></div>
+      <div class="member" style="left:0%;   top:50%;"></div>
+      <div class="member" style="left:15%;  top:18%;"></div>
+    </div>
+
+    <div class="phone" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4700" data-sfx-volume="0.42"></div>
+    <div class="packet" data-layout-allow-overflow data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="5860"><div class="tag">group-id · one copy</div></div>
+    <div class="once" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6270">uploaded <span class="x1">&times;1</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-04-groups";
+    const S = 10.84; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    // "the answer is groups" @11.50 -> local 0.66
+    tl.fromTo(root + " .kick", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.50 - S);
+    // group cluster + members fade in @12.20 (groups) -> local 1.36
+    tl.fromTo(root + " .group", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, 12.20 - S);
+    tl.fromTo(root + " .member", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.05, overwrite: "auto" }, 12.40 - S);
+    // phone appears as "your phone" @15.14 -> local 4.30
+    tl.fromTo(root + " .phone", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.14 - S);
+    // the single packet leaves the phone and rises to the group ("uploads") @15.54 -> local 4.70
+    tl.fromTo(root + " .packet", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", overwrite: "auto" }, 15.54 - S);
+    tl.to(root + " .packet", { top: 800, duration: 1.0, ease: "power2.inOut" }, 15.7 - S);
+    tl.fromTo(root + " .packet .tag", { opacity: 0 }, { opacity: 0.85, duration: 0.3 }, 16.0 - S);
+    // "exactly once" @16.66 -> local 5.82 — the ×1 badge punches in as packet docks
+    tl.fromTo(root + " .once", { opacity: 0, scale: 1.2 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 16.66 - S);
+    // hold through the pause (18.2 -> 22.52): idle drift on group + packet
+    tl.to(root + " .group", { y: -10, duration: 1.6, ease: "sine.inOut", repeat: 3, yoyo: true, overwrite: "auto" }, 17.5 - S);
+    tl.to(root + " .packet", { y: -8, duration: 1.4, ease: "sine.inOut", repeat: 3, yoyo: true, overwrite: "auto" }, 17.5 - S);
+    // clear before seam with scene 05 (scene-05 host start 22.02; this host ends 22.52)
+    tl.to(root + " .kick", { opacity: 0, duration: 0.34, ease: "power2.in", overwrite: "auto" }, 22.12 - S);
+    tl.to([root + " .once", root + " .phone"], { opacity: 0, duration: 0.34, ease: "power2.in", overwrite: "auto" }, 22.12 - S);
+
+    window.__timelines["scene-04-groups"] = tl;
+  </script>
+</body>
+</html>

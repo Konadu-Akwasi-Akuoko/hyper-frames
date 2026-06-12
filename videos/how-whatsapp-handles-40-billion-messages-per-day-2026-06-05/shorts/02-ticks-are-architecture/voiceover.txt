@@ -1,0 +1,13 @@
+Those little ticks are leaking a secret. <break time="0.5s"/>
+
+They're not a status update. They're WhatsApp's architecture, showing through onto your screen.
+
+Because here's the thing: your phone never talks to your friend's phone. Not directly, not ever. Every message routes through a server in the middle, gets held, then forwarded on. Engineers call it store-and-forward — and the ticks are that relay reporting back.
+
+One grey tick means the server has your message. Two grey ticks mean it reached their device. Two blue ticks mean it's actually been read.
+
+And if they're offline? The message drops into an encrypted queue and waits — for up to thirty days. Come back inside that window, and it drains to you instantly. Come back after, and it's gone forever. The server is a relay, not a mailbox.
+
+So every tick you've ever watched was the machine narrating its own delivery, one step at a time.
+
+But here's what's wild: that server carries every message you send, and it can't read a single word of any of them. How is that even possible? <break time="0.3s"/> To find out, subscribe.

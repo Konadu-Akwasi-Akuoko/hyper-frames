@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0f0d;
+        --panel: #101613;
+        --border: #1e2722;
+        --fg: #e9edeb;
+        --soft: #c3cbc7;
+        --muted: #79857f;
+        --dim: #39443f;
+        --accent: #25d366;
+        --accent-2: #7dd3fc;
+        --cost: #f0b429;
+        --danger: #ff6b5d;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="63.53"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Persistent subject-toned background behind every scene (no logo). -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="63.53"
+        data-track-index="7"
+        data-width="1080"
+        data-height="1920"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
+
+      <!-- Voiceover — the timing source of truth for every scene. -->
+      <audio
+        id="voiceover"
+        src="audio/voiceover.mp3"
+        data-start="0"
+        data-duration="63.53"
+        data-track-index="9"
+        data-volume="1"
+      ></audio>
+
+      <!-- Scene 01 — Hook: ticks are leaking a secret (chunk 0.08–3.02; next 3.02). -->
+      <div id="scene-01" data-composition-id="scene-01-hook"
+        data-composition-src="compositions/01-hook.html"
+        data-start="0" data-duration="3.02" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:1"></div>
+
+      <!-- Scene 02 — Counter-twist: not a status update / architecture (chunk 3.02–8.28; next 8.28). -->
+      <div id="scene-02" data-composition-id="scene-02-reframe"
+        data-composition-src="compositions/02-reframe.html"
+        data-start="2.52" data-duration="5.76" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:2"></div>
+
+      <!-- Scene 03 — Relay spine: phone never talks to phone directly (chunk 8.28–12.80; next 12.80). -->
+      <div id="scene-03" data-composition-id="scene-03-spine"
+        data-composition-src="compositions/03-spine.html"
+        data-start="7.78" data-duration="5.02" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:3"></div>
+
+      <!-- Scene 04 — Store-and-forward hop: message held then forwarded (chunk 12.80–16.66; next 16.66). -->
+      <div id="scene-04" data-composition-id="scene-04-hop"
+        data-composition-src="compositions/04-hop.html"
+        data-start="12.30" data-duration="4.36" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:4"></div>
+
+      <!-- Scene 05 — Label: store-and-forward, ticks = relay reporting back (chunk 16.66–24.02; next 24.02). -->
+      <div id="scene-05" data-composition-id="scene-05-label"
+        data-composition-src="compositions/05-label.html"
+        data-start="16.16" data-duration="7.86" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:5"></div>
+
+      <!-- Scene 06 — Tick ladder: grey / grey-grey / blue-blue (chunk 24.02–34.02; next 34.02). -->
+      <div id="scene-06" data-composition-id="scene-06-ladder"
+        data-composition-src="compositions/06-ladder.html"
+        data-start="23.52" data-duration="10.50" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:6"></div>
+
+      <!-- Scene 07 — Offline queue: encrypted queue, 30 days (chunk 34.02–40.16; next 40.16). -->
+      <div id="scene-07" data-composition-id="scene-07-queue"
+        data-composition-src="compositions/07-queue.html"
+        data-start="33.52" data-duration="6.64" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:7"></div>
+
+      <!-- Scene 08 — Drain vs expire: instantly / gone forever (chunk 40.16–45.32; next 45.32). -->
+      <div id="scene-08" data-composition-id="scene-08-window"
+        data-composition-src="compositions/08-window.html"
+        data-start="39.66" data-duration="5.66" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:8"></div>
+
+      <!-- Scene 09 — Summary: relay not mailbox / machine narrating delivery (chunk 45.32–54.00; next 54.00). -->
+      <div id="scene-09" data-composition-id="scene-09-summary"
+        data-composition-src="compositions/09-summary.html"
+        data-start="44.82" data-duration="9.18" data-track-index="1"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:9"></div>
+
+      <!-- Scene 10 — CTA: can't read a word / how is that possible / subscribe (chunk 54.00–63.53; final). -->
+      <div id="scene-10" data-composition-id="scene-10-cta"
+        data-composition-src="compositions/10-cta.html"
+        data-start="53.50" data-duration="10.03" data-track-index="2"
+        data-width="1080" data-height="1920"
+        style="position:absolute;inset:0;z-index:10"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div
+        id="sfx-layer"
+        data-composition-id="sfx-layer"
+        data-composition-src="compositions/sfx.html"
+        data-start="0"
+        data-duration="63.6051"
+        data-track-index="19"
+      ></div>
+</body>
+</html>

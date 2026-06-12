@@ -1,0 +1,13 @@
+Thirty-two engineers moved forty billion messages a day. <break time="0.5s"/>
+
+On hardware you could almost count on your fingers. Two million live phones — held open on a single server.
+
+Here's how a team that small carried that much. Your phone doesn't make a fresh request for every text. It opens one persistent connection and keeps it alive for hours. And every one of those open pipes becomes its own tiny worker on the server — not a thread, not a request handler, one isolated little process per phone, alive as long as you're connected.
+
+When one of them crashes, it dies on its own, and a supervisor instantly respawns a clean one. The other million keep running. The box never goes down.
+
+Subscribe if that already sounds insane, because it gets worse.
+
+Stack those choices up and the math lands at roughly fourteen million users for every single engineer on the team.
+
+But a team that small is a bus factor waiting to happen — the same leverage that let them sleep at night is the thing that could break them. So where does it crack? <break time="0.3s"/> To find out, subscribe.

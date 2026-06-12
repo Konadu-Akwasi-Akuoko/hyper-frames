@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 05 — one tiny isolated process per phone</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-05-process { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-05-process .head {
+      position: absolute; left: 0; right: 0; top: 560px; text-align: center; opacity: 0;
+      font-size: 50px; font-weight: 600; color: var(--soft); letter-spacing: 0.01em;
+    }
+    #scene-05-process .head b { color: var(--fg); font-weight: 800; }
+
+    /* a phone glyph -> its own isolated process cell */
+    #scene-05-process .phone {
+      position: absolute; left: 50%; top: 880px; transform: translate(-50%,0); opacity: 0;
+      width: 150px; height: 280px; border-radius: 30px; background: var(--panel);
+      border: 3px solid var(--muted);
+    }
+    #scene-05-process .phone::after {
+      content: ""; position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
+      width: 46px; height: 6px; border-radius: 3px; background: var(--dim);
+    }
+    #scene-05-process .arrow {
+      position: absolute; left: 50%; top: 1200px; transform: translate(-50%,0); opacity: 0;
+      font-size: 60px; color: var(--accent); font-weight: 700;
+    }
+    #scene-05-process .cell {
+      position: absolute; left: 50%; top: 1300px; transform: translate(-50%,0); opacity: 0;
+      width: 200px; height: 200px; border-radius: 28px; background: rgba(37,211,102,0.07);
+      border: 3px solid var(--accent); box-shadow: 0 0 56px rgba(37,211,102,0.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #scene-05-process .cell::before {
+      content: ""; width: 60px; height: 60px; border-radius: 14px; background: var(--accent);
+      box-shadow: 0 0 26px rgba(37,211,102,0.8);
+    }
+    #scene-05-process .pid {
+      position: absolute; left: 0; right: 0; top: 1540px; text-align: center; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-size: 46px; color: var(--accent-2); letter-spacing: 0.04em;
+    }
+    #scene-05-process .pid .lbl { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div id="scene-05-process" data-composition-id="scene-05-process" data-width="1080" data-height="1920">
+    <div class="head" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="920" data-sfx-volume="0.42">Every phone gets its own<br><b>tiny, isolated process.</b></div>
+    <div class="phone" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1200"></div>
+    <div class="arrow" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3200">&darr;</div>
+    <div class="cell" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3920"></div>
+    <div class="pid" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4440"><span class="lbl">pid </span>&lt;0.1.0&gt;</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-05-process";
+    const S = 23.40; // local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.inOut" }, 0);
+    // "Every phone..." phone@0.86
+    tl.fromTo(root + " .head", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.42, ease: "power3.out", overwrite: "auto" }, 0.50);
+    tl.fromTo(root + " .phone", { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)", overwrite: "auto" }, 0.80);
+    // "tiny isolated process" tiny@2.98 isolated@3.60 process@4.20 — arrow, then the cell lands
+    tl.fromTo(root + " .arrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", overwrite: "auto" }, 2.90);
+    tl.fromTo(root + " .cell", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(1.8)", overwrite: "auto" }, 3.50);
+    tl.fromTo(root + " .pid", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out", overwrite: "auto" }, 4.10);
+    // idle drift
+    tl.to(root + " .cell", { y: -7, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1, overwrite: "auto" }, 4.4);
+
+    window.__timelines["scene-05-process"] = tl;
+  </script>
+</body>
+</html>

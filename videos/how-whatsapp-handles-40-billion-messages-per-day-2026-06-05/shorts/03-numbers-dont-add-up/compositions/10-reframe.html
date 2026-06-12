@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Scene 10 — reframe: not an error, fan-out made visible</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: "Inter", system-ui, sans-serif; }
+    #scene-10-reframe { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+
+    #scene-10-reframe .wrap {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 80px;
+    }
+    /* the rejected reading */
+    #scene-10-reframe .not { position: relative; opacity: 0; }
+    #scene-10-reframe .not .t {
+      font-size: 96px; font-weight: 800; line-height: 1.0; letter-spacing: -0.01em;
+      color: var(--muted); text-transform: uppercase;
+    }
+    #scene-10-reframe .not .strike {
+      position: absolute; left: -10px; top: 50%; height: 8px; width: 0; transform: translateY(-50%);
+      background: var(--danger); border-radius: 4px; box-shadow: 0 0 22px rgba(255,107,93,0.55);
+    }
+    /* the real reading */
+    #scene-10-reframe .yes { opacity: 0; }
+    #scene-10-reframe .yes .t {
+      font-size: 120px; font-weight: 900; line-height: 0.96; letter-spacing: -0.02em;
+      color: var(--accent); text-transform: uppercase; text-shadow: 0 0 60px rgba(37,211,102,0.3);
+    }
+    #scene-10-reframe .yes .sub { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-10-reframe" data-composition-id="scene-10-reframe" data-width="1080" data-height="1920">
+    <div class="wrap">
+      <div class="not" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900" data-sfx-volume="0.42">
+        <div class="t">Not an error</div>
+        <div class="strike" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1720"></div>
+      </div>
+      <div class="yes" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2400" data-sfx-volume="0.42">
+        <div class="t">Fan&#8209;out,</div>
+        <div class="t sub">made visible</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-10-reframe";
+    const S = 52.82; // host data-start; local = global - S
+
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.36, ease: "power2.inOut" }, 0);
+    // "That gap isn't an error" @53.32 -> local 0.50
+    tl.fromTo(root + " .not", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 53.32 - S);
+    // "error" @54.20 -> the strike crosses it out
+    tl.fromTo(root + " .not .strike", { width: 0 }, { width: 560, duration: 0.34, ease: "power2.inOut" }, 54.20 - S);
+    // "it's fan-out, made visible" @54.72 -> local 1.90 — the real reading lands
+    tl.fromTo(root + " .yes", { opacity: 0, scale: 1.12, y: 12 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power4.out" }, 54.72 - S);
+    // dim the rejected line as the truth takes over
+    tl.to(root + " .not", { opacity: 0.4, duration: 0.4, ease: "power2.out", overwrite: "auto" }, 55.06 - S);
+    // clear before seam with scene 11 (scene-11 host start 56.06; its text legible ~56.56) — opacity-only so nothing pokes past the canvas
+    tl.to(root + " .wrap", { opacity: 0, duration: 0.3, ease: "power2.in", overwrite: "auto" }, 56.16 - S);
+
+    window.__timelines["scene-10-reframe"] = tl;
+  </script>
+</body>
+</html>
