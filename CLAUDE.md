@@ -37,6 +37,16 @@ visual-QA loop, the no-editorial-chrome rule, and the sound-design hand-off — 
 to live in this file and now lives in `.claude/skills/video-director/` (SKILL.md +
 `reference/`).
 
+**After any compaction, re-invoke `video-director` before continuing composition
+work.** Compaction summarizes the skill's SKILL.md + reference guides out of context
+while this CLAUDE.md survives — so the mandate persists but the guidance does not.
+Skills are live-watched, so re-invoking reloads the full guidance cheaply. Do this
+before acting on the post-compaction summary, even for a narrow follow-up edit: treat
+the mounted hosts in `index.html` as the source of truth for what is already built and
+re-detect state per the skill's Step A rather than trusting the summary. (A
+`SessionStart(compact)` hook also nudges this, but it can only inject a pointer, not
+force the call — this line is the binding instruction.)
+
 The HyperFrames-origin skills now come from the official **`hyperframes` Claude
 Code plugin** (marketplace `heygen-com/hyperframes`), which keeps them current
 with upstream — install with `/plugin marketplace add heygen-com/hyperframes`
