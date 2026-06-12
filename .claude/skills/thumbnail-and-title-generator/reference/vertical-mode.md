@@ -38,6 +38,13 @@ vertical `round-1-vertical/` at once (§6).
   under `.thumbnail.vertical` in `templates/styles.css` flips `--canvas-w` /
   `--canvas-h` and reflows the face + headline. No literal-dimension edits — set
   the class and let the cascade do the rest.
+- **Body-size override (single-file render fix).** `styles.css` sizes
+  `html, body` from `:root` (1280×720) and `.thumbnail.vertical` only overrides
+  the canvas vars on *itself* — so the body stays 720px tall and the single-file
+  renderer clips everything below y=720. Add
+  `<style>html, body { width: 1080px; height: 1920px; }</style>` in each variant's
+  `<head>`, right after the `STYLES_HREF` link. (Until the shared template bakes
+  this in, every `a/b/c.html` needs it.)
 - **Face — centered, upper-biased.** Horizontal bleeds the still off the right
   edge; portrait centers it. `.thumbnail.vertical .face-wrap` resolves to
   `right: 50%; transform: translateX(50%); height: 1100px`, anchored to the
