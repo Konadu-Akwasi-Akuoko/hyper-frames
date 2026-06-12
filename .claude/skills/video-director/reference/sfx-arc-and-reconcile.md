@@ -24,7 +24,6 @@ Read each beat's verb and reach for the cue (full palette in
 | highlighted / named / flagged | `msg-ding` |
 | lands with weight; a major point | `boom` |
 | slides / travels / a transition crosses | `whoosh` (peak-aligned, motion only) |
-| builds into a reveal | `riser` (peak-aligned) |
 | freeze-frame / highlight one element | `snap` |
 | a card / tile taps in | `card-tap` |
 
@@ -45,7 +44,8 @@ element; it is not a cross-cue suppression rule.)
 The only mode is `data-sfx-at-scene-ms` = the scene-local ms of the element's
 **impact frame** (entrance: tween `start + duration`; slide: settle; snap: the
 snap frame). `sfx-plan` lands the transient there — onset cues on the frame biased
-a hair late (never early), whoosh/riser peak-on-arrival with the swell leading in.
+a hair late (never early), `whoosh` peak-on-arrival with the swell leading in.
+(`riser` is retired — this project's videos do not use riser swells.)
 You supply only the impact frame; the tool reads the asset's measured
 onset/peak and aligns. `data-sfx-lead-ms` is a ±100 ms tuning knob only.
 
@@ -92,7 +92,7 @@ On `abort`, write nothing.
 
    The run **never fails on cue count or density** (those guards are gone). It
    prints only informational notes:
-   - a **`pre-roll`** note → a peak-aligned cue (`whoosh`/`riser`) is audible
+   - a **`pre-roll`** note → a peak-aligned cue (`whoosh`) is audible
      before its own impact frame. Fine if it's leading a real *motion*; if it's
      punctuating a thing *appearing*, switch it to `pop`/`ding`.
    - an **overlap** note → two cues share a track and overlap. Benign — concurrent
@@ -120,7 +120,7 @@ one reconcile pass before handing off:
 1. **Regenerate everything.** `uv run --project ../../tools/sfx-plan sfx-plan
    --report` over the full video (idempotent).
 2. **Pre-roll notes are intended.** Every `pre-roll` note should be a `whoosh`/
-   `riser` leading a real motion — not one punctuating an appearance. Fix the
+   leading a real motion — not one punctuating an appearance. Fix the
    strays to `pop`/`ding`.
 3. **Exactly one hook.** Confirm precisely one `data-sfx-hook` exists across all
    compositions:

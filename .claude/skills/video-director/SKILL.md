@@ -361,17 +361,18 @@ including repeatedly within one scene.
    wrote; score every beat that's *doing* something by what it does, never by CSS
    class: **appears/pops in** → `pop` (or `ui-tick`); **highlighted/named** →
    `msg-ding`; **lands with weight / a major point** → `boom`;
-   **slides/travels / a transition crosses** → `whoosh`; **builds into a reveal**
-   → `riser`; **freeze-frame / highlight one element** → `snap`; a **card taps
+   **slides/travels / a transition crosses** → `whoosh`;
+   **freeze-frame / highlight one element** → `snap`; a **card taps
    in** → `card-tap`. Every occurrence gets its cue — three cards appearing =
-   three pops, one per card.
+   three pops, one per card. (`riser` is retired — do not use it; score a
+   building reveal on its payoff frame with `boom`/`pop`/`msg-ding`.)
 
 2. **Timing = the impact frame.** The only mode is **`data-sfx-at-scene-ms`** —
    the scene-local ms (relative to the host's own `data-start`) when the element
    is *fully present*: for an entrance, the tween's `start + duration`; for a
    slide, where it settles; for a snap, the snap frame. Read it off the tween you
    just keyed. `sfx-plan` lands the cue's transient there (onset for punctuation,
-   peak for whoosh/riser) — **never early** — so you only supply the impact frame.
+   peak for whoosh) — **never early** — so you only supply the impact frame.
    `data-sfx-lead-ms` is a ±100 ms tuning knob only; you rarely need it.
 
 3. **The signature sound is automatic.** Each cue pins one handpicked
@@ -405,7 +406,7 @@ including repeatedly within one scene.
    --report` from the video folder — it idempotently regenerates the whole
    `compositions/sfx.html`. It **never fails on cue count or density** (those
    guards are gone); it only prints informational notes — a `pre-roll` note flags
-   a whoosh/riser used where an appearance belongs (switch it to `pop`/`ding`); an
+   a whoosh used where an appearance belongs (switch it to `pop`/`ding`); an
    overlap note is benign (cues layer). SFX correctness is **partly ear-only** — a
    snapshot can't show sound — so surface the seek target ("Seek to **{t}s** to
    hear scene NN") and let the **human listen-in-preview audit stay the gate**.
@@ -429,7 +430,7 @@ window spans its transcript words), lint and inspect are clean, the final block
 holds the only exit animation, every scene has had its per-pass SFX score (Step
 H), and you've surfaced the last seek target. Then run the **final SFX
 reconcile** — one whole-video pass that re-runs `tools/sfx-plan` over everything
-and verifies: every `pre-roll` note is intended (a whoosh/riser leading a real
+and verifies: every `pre-roll` note is intended (a whoosh leading a real
 motion, not punctuating an appearance — fix those to `pop`/`ding`), that
 **exactly one** `data-sfx-hook` exists, that the `tools/sfx-level` sweep finds no
 cue fighting loud VO (duck the offenders below 0.5), and that the `sfx-layer`

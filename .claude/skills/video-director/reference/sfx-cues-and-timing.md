@@ -44,18 +44,17 @@ normally write just `data-sfx-on-anchor="<cue>"` and get the right sound.
 | a thing is **highlighted / named / flagged** | `msg-ding` | onset | upward bell |
 | a thing **lands with weight; a major point** | `boom` | onset | clean bass drop |
 | a thing **slides / travels / a transition crosses** | `whoosh` | peak | fast woosh |
-| tension **builds into a reveal** | `riser` | peak | Riser Stop (peak@82%) |
 | a **freeze-frame / highlight one element** | `snap` | onset | camera shutter |
 | a **card / tile taps in** | `card-tap` | onset | soft tap |
 | a light **chip / blip arrives** | `card-blip` | onset | synthetic blip |
 
-`riser`'s climax sits near the end of its file, so peak-align lands the climax on
-the reveal with the full build leading in. (`sfx-plan` prints a `pre-roll` note for
-it — that long pre-roll *is* the build, so it's expected for a riser.)
+**`riser` is retired — do not use it.** This project's videos do not use riser
+swells; for a building reveal, score the payoff frame itself (`boom`/`pop`/
+`msg-ding`) rather than a pre-rolled build. `whoosh` is the only peak-aligned cue.
 
 The cue's `align` mode is a property of the cue, not a choice you make:
 **punctuation cues are onset-aligned** (the audible transient lands on the impact
-frame) and **whoosh/riser are peak-aligned** (the swell leads in, the peak lands
+frame) and **`whoosh` is peak-aligned** (the swell leads in, the peak lands
 on arrival — correct only for *motion*, never for a static element appearing). If
 you're tempted to put a `whoosh` on a thing that simply *appears in place*, that's
 the wrong cue — use `pop`. (A whoosh's swell would read as sound-before-visual;
@@ -95,7 +94,7 @@ So for the tween above: `start 4.9s + duration 0.55s = 5.45s → data-sfx-at-sce
 
 That's all you supply. **`sfx-plan` does the rest** — it lands the cue's transient
 on that frame, biased a hair late so it is **never early** (onset cues), or lands
-the peak there with the swell leading in (whoosh/riser). You never compute peak
+the peak there with the swell leading in (whoosh). You never compute peak
 offsets, leads, or "perceptual landing" multipliers; the tool reads the asset's
 measured `onset_time_s` / `peak_time_s` and aligns from there.
 
