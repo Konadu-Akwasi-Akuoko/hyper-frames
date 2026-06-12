@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 51 — every device gets its own key; the sender encrypts each message separately</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-51-keys { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-51-keys .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the sender on the left */
+    #scene-51-keys .sender {
+      position: absolute; left: 250px; top: 408px; width: 150px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-51-keys .sender .snm {
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 26px; color: var(--soft);
+    }
+
+    /* the wires fanning out to each device */
+    #scene-51-keys .wires { position: absolute; inset: 0; overflow: visible; }
+    #scene-51-keys .wires .w {
+      fill: none; stroke: var(--dim); stroke-width: 2.2; stroke-linecap: round;
+      stroke-dasharray: 1180; stroke-dashoffset: 1180; will-change: stroke-dashoffset;
+    }
+
+    /* each device lane on the right, with its own identity key */
+    #scene-51-keys .lane {
+      position: absolute; left: 1432px; width: 360px; height: 120px;
+      display: flex; align-items: center; gap: 26px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-51-keys .ln1 { top: 250px; }
+    #scene-51-keys .ln2 { top: 440px; }
+    #scene-51-keys .ln3 { top: 630px; }
+    #scene-51-keys .lane .keywrap {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-51-keys .lane .ktag {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 20px;
+      color: var(--accent); letter-spacing: 0.06em;
+    }
+
+    /* the three separately-sealed envelopes that travel each wire */
+    #scene-51-keys .env {
+      position: absolute; left: 372px; top: 448px; width: 74px; height: 54px;
+      background: var(--panel); border: 1.5px solid var(--accent); border-radius: 8px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-51-keys .env .seal { position: absolute; left: 50%; top: 50%; margin-left: -10px; margin-top: -11px; }
+    #scene-51-keys .env .flapline { position: absolute; inset: 0; overflow: visible; }
+
+    /* the payoff caption */
+    #scene-51-keys .cap {
+      position: absolute; left: 0; right: 0; top: 884px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 38px;
+      color: var(--soft); letter-spacing: -0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-51-keys .cap .count { color: var(--cost); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div id="scene-51-keys" data-composition-id="scene-51-keys" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <!-- wires drawn first, behind everything -->
+      <svg class="wires" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+        <path class="w wa" d="M412 470 C760 470 1040 320 1430 312"></path>
+        <path class="w wb" d="M412 482 H1430"></path>
+        <path class="w wc" d="M412 494 C760 494 1040 660 1430 692"></path>
+      </svg>
+
+      <div class="sender" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">
+        <svg viewBox="0 0 32 48" width="78" height="118" fill="none">
+          <rect x="5" y="3" width="22" height="42" rx="4.4" stroke="#7dd3fc" stroke-width="2.3"></rect>
+          <line x1="12.5" y1="40" x2="19.5" y2="40" stroke="#7dd3fc" stroke-width="2.3" stroke-linecap="round"></line>
+          <circle cx="16" cy="21" r="4.6" fill="rgba(37,211,102,0.18)" stroke="#25d366" stroke-width="2"></circle>
+        </svg>
+        <div class="snm">the sender</div>
+      </div>
+
+      <!-- lane 1 -->
+      <div class="lane ln1">
+        <svg viewBox="0 0 40 48" width="72" height="86" fill="none">
+          <rect x="5" y="5" width="30" height="38" rx="3.4" stroke="#7dd3fc" stroke-width="2.2"></rect>
+          <circle cx="20" cy="38.5" r="1.6" fill="#7dd3fc"></circle>
+        </svg>
+        <div class="keywrap">
+          <svg viewBox="0 0 32 32" width="40" height="40" fill="none">
+            <circle cx="10.5" cy="10.5" r="6" stroke="#25d366" stroke-width="2.4"></circle>
+            <path d="M14.8 14.8 L26 26 M22 22 l3 3 M25 25 l3 3" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          </svg>
+          <div class="ktag">key · 7f</div>
+        </div>
+      </div>
+
+      <!-- lane 2 -->
+      <div class="lane ln2">
+        <svg viewBox="0 0 32 48" width="62" height="92" fill="none">
+          <rect x="6" y="4" width="20" height="40" rx="4" stroke="#7dd3fc" stroke-width="2.2"></rect>
+          <line x1="13" y1="39" x2="19" y2="39" stroke="#7dd3fc" stroke-width="2.2" stroke-linecap="round"></line>
+        </svg>
+        <div class="keywrap">
+          <svg viewBox="0 0 32 32" width="40" height="40" fill="none">
+            <circle cx="10.5" cy="10.5" r="6" stroke="#25d366" stroke-width="2.4"></circle>
+            <path d="M14.8 14.8 L26 26 M22 22 l3 3 M25 25 l3 3" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          </svg>
+          <div class="ktag">key · a4</div>
+        </div>
+      </div>
+
+      <!-- lane 3 -->
+      <div class="lane ln3">
+        <svg viewBox="0 0 48 40" width="84" height="70" fill="none">
+          <rect x="9" y="6" width="30" height="20" rx="2.4" stroke="#7dd3fc" stroke-width="2.2"></rect>
+          <path d="M4 32 h40 l-3 -6 H7 Z" stroke="#7dd3fc" stroke-width="2.2" stroke-linejoin="round"></path>
+        </svg>
+        <div class="keywrap">
+          <svg viewBox="0 0 32 32" width="40" height="40" fill="none">
+            <circle cx="10.5" cy="10.5" r="6" stroke="#25d366" stroke-width="2.4"></circle>
+            <path d="M14.8 14.8 L26 26 M22 22 l3 3 M25 25 l3 3" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          </svg>
+          <div class="ktag">key · c1</div>
+        </div>
+      </div>
+
+      <!-- three separately-sealed envelopes -->
+      <div class="env e1" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="5160">
+        <svg class="flapline" viewBox="0 0 74 54" width="74" height="54" fill="none">
+          <path d="M6 12 L37 34 L68 12" stroke="#1e2722" stroke-width="1.8"></path>
+        </svg>
+        <svg class="seal" viewBox="0 0 24 24" width="20" height="22" fill="none">
+          <rect x="5" y="10" width="14" height="10" rx="2" stroke="#25d366" stroke-width="2" fill="rgba(37,211,102,0.1)"></rect>
+          <path d="M7.6 10 v-2.4 a4.4 4.4 0 0 1 8.8 0 v2.4" stroke="#25d366" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </div>
+
+      <div class="env e2" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="5680">
+        <svg class="flapline" viewBox="0 0 74 54" width="74" height="54" fill="none">
+          <path d="M6 12 L37 34 L68 12" stroke="#1e2722" stroke-width="1.8"></path>
+        </svg>
+        <svg class="seal" viewBox="0 0 24 24" width="20" height="22" fill="none">
+          <rect x="5" y="10" width="14" height="10" rx="2" stroke="#25d366" stroke-width="2" fill="rgba(37,211,102,0.1)"></rect>
+          <path d="M7.6 10 v-2.4 a4.4 4.4 0 0 1 8.8 0 v2.4" stroke="#25d366" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </div>
+
+      <div class="env e3" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6200" data-sfx-volume="0.42">
+        <svg class="flapline" viewBox="0 0 74 54" width="74" height="54" fill="none">
+          <path d="M6 12 L37 34 L68 12" stroke="#1e2722" stroke-width="1.8"></path>
+        </svg>
+        <svg class="seal" viewBox="0 0 24 24" width="20" height="22" fill="none">
+          <rect x="5" y="10" width="14" height="10" rx="2" stroke="#25d366" stroke-width="2" fill="rgba(37,211,102,0.1)"></rect>
+          <path d="M7.6 10 v-2.4 a4.4 4.4 0 0 1 8.8 0 v2.4" stroke="#25d366" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </div>
+
+      <div class="cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="8140" data-sfx-volume="0.35"><span class="count">once</span> for every device you own</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-51-keys";
+
+    // Host data-start = 430.32 → scene-local = global − 430.32. Chunk first word "Every" 430.82 = local 0.50.
+
+    // Entrance crossfade over scene 50's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Every device" 430.82→431.10 (local 0.50→0.78) — the sender sets up, wires reach out
+    tl.fromTo(root + " .sender", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .wires .wa", { strokeDashoffset: 1180 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.66);
+    tl.fromTo(root + " .wires .wb", { strokeDashoffset: 1180 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.72);
+    tl.fromTo(root + " .wires .wc", { strokeDashoffset: 1180 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.78);
+
+    // "gets its own" 431.64→432.10 (local 1.32→1.78) — each device arrives
+    tl.fromTo(root + " .ln1", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.3)" }, 1.32);
+    tl.fromTo(root + " .ln2", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.3)" }, 1.46);
+    tl.fromTo(root + " .ln3", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.3)" }, 1.60);
+
+    // "identity key" 432.46→433.02 (local 2.14→2.70) — each device's own key blooms
+    tl.fromTo(root + " .ln1 .keywrap", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.9)" }, 2.14);
+    tl.fromTo(root + " .ln2 .keywrap", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.9)" }, 2.28);
+    tl.fromTo(root + " .ln3 .keywrap", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.9)" }, 2.42);
+    tl.fromTo(root + " .lane .keywrap", { filter: "drop-shadow(0 0 0px rgba(37,211,102,0))" }, { filter: "drop-shadow(0 0 10px rgba(37, 211, 102, 0.45))", duration: 0.4, ease: "power2.out" }, 2.42);
+    tl.to(root + " .lane .keywrap", { filter: "drop-shadow(0 0 3px rgba(37, 211, 102, 0.2))", duration: 0.5, ease: "power2.inOut" }, 2.9);
+
+    // "and the sender" 434.28→434.58 (local 3.96→4.26) — the sender lights up, about to encrypt
+    tl.fromTo(root + " .sender", { filter: "drop-shadow(0 0 0px rgba(125,211,252,0))" }, { filter: "drop-shadow(0 0 14px rgba(125, 211, 252, 0.5))", duration: 0.4, ease: "power2.out" }, 3.96);
+    tl.to(root + " .sender", { filter: "drop-shadow(0 0 4px rgba(125, 211, 252, 0.22))", duration: 0.5, ease: "power2.inOut" }, 4.5);
+
+    // "encrypts each message separately" 435.48→437.02 (local 5.16→6.70)
+    // each envelope seals at the sender and travels its own wire — separately, one at a time
+    function send(sel, dx, dy, t) {
+      tl.fromTo(root + " " + sel, { opacity: 0, scale: 0.6, x: 0, y: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, t);
+      tl.to(root + " " + sel, { x: dx, y: dy, duration: 1.0, ease: "power1.inOut" }, t + 0.3);
+      tl.to(root + " " + sel, { opacity: 0, duration: 0.24, ease: "power2.in" }, t + 1.2);
+    }
+    send(".e1", 1024, -176, 5.16);
+    send(".e2", 1024, 6, 5.68);
+    send(".e3", 1024, 214, 6.20);
+
+    // "once for every device you own" 438.46→440.26 (local 8.14→9.94) — the payoff caption
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 8.14);
+    tl.fromTo(root + " .cap .count", { textShadow: "0 0 0px rgba(240,180,41,0)" }, { textShadow: "0 0 22px rgba(240, 180, 41, 0.5)", duration: 0.44, ease: "power2.out" }, 8.30);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 3.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.8);
+
+    window.__timelines["scene-51-keys"] = tl;
+  </script>
+</body>
+</html>

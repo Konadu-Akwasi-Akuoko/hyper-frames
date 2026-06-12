@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 37 — up to now, the server has known everything</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-37-server-knew { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-37-server-knew .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-37-server-knew .glyph {
+      position: absolute; left: 50%; top: 282px; transform: translateX(-50%);
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-37-server-knew .kicker {
+      position: absolute; left: 0; right: 0; top: 414px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px;
+      color: var(--muted); letter-spacing: 0.32em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-37-server-knew .line {
+      position: absolute; left: 0; right: 0; top: 470px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 50px;
+      color: var(--soft); letter-spacing: -0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-37-server-knew .hero {
+      position: absolute; left: 0; right: 0; top: 552px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 150px; line-height: 1;
+      color: var(--fg); letter-spacing: -0.018em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-37-server-knew" data-composition-id="scene-37-server-knew" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <svg class="glyph" viewBox="0 0 48 48" width="96" height="96" fill="none" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">
+        <rect x="7" y="8" width="34" height="32" rx="4" stroke="#7dd3fc" stroke-width="2.2"></rect>
+        <line x1="7" y1="18.7" x2="41" y2="18.7" stroke="#7dd3fc" stroke-width="1.6" opacity="0.6"></line>
+        <line x1="7" y1="29.3" x2="41" y2="29.3" stroke="#7dd3fc" stroke-width="1.6" opacity="0.6"></line>
+        <circle cx="13" cy="13.3" r="1.9" fill="#7dd3fc"></circle>
+        <circle cx="13" cy="24" r="1.9" fill="#7dd3fc"></circle>
+        <circle cx="13" cy="34.6" r="1.9" fill="#7dd3fc"></circle>
+      </svg>
+
+      <div class="kicker">Up to now</div>
+      <div class="line">the server has known</div>
+      <div class="hero">everything</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-37-server-knew";
+
+    // Host data-start = 342.96 → scene-local = global − 342.96. Chunk first word "Up" 343.46 = local 0.50.
+
+    // Entrance crossfade over scene 36's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Up to now," 343.46→344.12 (local 0.50→1.16) — the temporal pivot + the subject (the server)
+    tl.fromTo(root + " .glyph", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.4)" }, 0.50);
+    tl.fromTo(root + " .kicker", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.66);
+
+    // "the server has known" 344.94→345.98 (local 1.98→3.02)
+    tl.fromTo(root + " .line", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.98);
+
+    // "everything" 346.14→346.70 (local 3.18→3.74) — the omniscience lands hard, sky-lit
+    tl.fromTo(root + " .hero", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.46, ease: "back.out(1.8)" }, 3.18);
+    tl.fromTo(root + " .hero", { textShadow: "0 0 0px rgba(125,211,252,0)" }, { textShadow: "0 0 34px rgba(125, 211, 252, 0.38)", duration: 0.5, ease: "power2.out" }, 3.18);
+    // the server glyph pulses as its knowledge completes
+    tl.fromTo(root + " .glyph", { filter: "drop-shadow(0 0 0px rgba(125,211,252,0))" }, { filter: "drop-shadow(0 0 14px rgba(125, 211, 252, 0.6))", duration: 0.4, ease: "power2.out" }, 3.18);
+    tl.to(root + " .glyph", { filter: "drop-shadow(0 0 5px rgba(125, 211, 252, 0.25))", duration: 0.6, ease: "power2.inOut" }, 3.7);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.4);
+
+    window.__timelines["scene-37-server-knew"] = tl;
+  </script>
+</body>
+</html>

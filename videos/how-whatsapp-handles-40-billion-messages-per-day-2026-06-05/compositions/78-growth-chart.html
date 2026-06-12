@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 78 — 10 billion in 2012, 40 billion by 2014, roughly 100 billion by 2020</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-78-grow { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-78-grow .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-78-grow .axis {
+      position: absolute; left: 524px; top: 246px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      color: var(--muted); letter-spacing: 0.06em;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-78-grow .baseline {
+      position: absolute; left: 520px; top: 760px; width: 880px; height: 2px;
+      background: var(--dim); opacity: 0; will-change: opacity;
+    }
+
+    #scene-78-grow .bar {
+      position: absolute; width: 170px; border-radius: 10px 10px 0 0;
+      background: linear-gradient(180deg, var(--accent), rgba(37,211,102,0.45));
+      transform: scaleY(0); transform-origin: bottom center; will-change: transform;
+    }
+    #scene-78-grow .b1 { left: 575px; top: 716px; height: 44px; }
+    #scene-78-grow .b2 { left: 875px; top: 584px; height: 176px; }
+    #scene-78-grow .b3 { left: 1175px; top: 320px; height: 440px; box-shadow: 0 0 26px rgba(37,211,102,0.4); }
+
+    #scene-78-grow .val {
+      position: absolute; width: 220px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; color: var(--accent); line-height: 1;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-78-grow .v1 { left: 550px; top: 654px; font-size: 46px; }
+    #scene-78-grow .v2 { left: 850px; top: 522px; font-size: 46px; }
+    #scene-78-grow .v3 { left: 1140px; top: 244px; font-size: 66px; }
+
+    #scene-78-grow .yr {
+      position: absolute; width: 220px; text-align: center; top: 776px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px;
+      color: var(--accent-2); letter-spacing: 0.08em;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-78-grow .yr1 { left: 550px; }
+    #scene-78-grow .yr2 { left: 850px; }
+    #scene-78-grow .yr3 { left: 1150px; }
+  </style>
+</head>
+<body>
+  <div id="scene-78-grow" data-composition-id="scene-78-grow" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="axis">messages / day</div>
+      <div class="baseline"></div>
+
+      <div class="bar b1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="500" data-sfx-volume="0.42"></div>
+      <div class="val v1">10B</div>
+      <div class="yr yr1">2012</div>
+
+      <div class="bar b2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3640" data-sfx-volume="0.35"></div>
+      <div class="val v2">40B</div>
+      <div class="yr yr2">2014</div>
+
+      <div class="bar b3" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="7520"></div>
+      <div class="val v3">&asymp;100B</div>
+      <div class="yr yr3">2020</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-78-grow";
+
+    // Host data-start = 574.08 → scene-local = global − 574.08. Chunk first word "10" 574.58 = local 0.50.
+
+    // Entrance crossfade over scene 77's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(root + " .axis", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.30);
+    tl.fromTo(root + " .baseline", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.30);
+
+    // "10 billion a day in 2012" 574.58→576.04 (local 0.50→1.96) — first bar
+    tl.fromTo(root + " .b1", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .v1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.5)" }, 0.72);
+    tl.fromTo(root + " .yr1", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.96);
+
+    // "40 billion out by 2014" 577.72→579.08 (local 3.64→5.00) — second bar
+    tl.fromTo(root + " .b2", { scaleY: 0 }, { scaleY: 1, duration: 0.55, ease: "power2.out" }, 3.64);
+    tl.fromTo(root + " .v2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.5)" }, 3.90);
+    tl.fromTo(root + " .yr2", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 5.00);
+
+    // "roughly 100 billion by 2020" 580.68→582.88 (local 6.60→8.80) — the climax bar
+    tl.fromTo(root + " .b3", { scaleY: 0 }, { scaleY: 1, duration: 0.85, ease: "power3.out" }, 7.52);
+    tl.fromTo(root + " .v3", { opacity: 0, scale: 1.2, y: 12 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)" }, 7.9);
+    tl.fromTo(root + " .v3", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 42px rgba(37,211,102,0.5)", duration: 0.5, ease: "power2.out" }, 8.1);
+    tl.fromTo(root + " .yr3", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 8.80);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 9.0);
+
+    window.__timelines["scene-78-grow"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 77 — and the volume climbed right alongside it</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-77-climb { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-77-climb .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-77-climb svg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-77-climb .line {
+      stroke-dasharray: 2200; stroke-dashoffset: 2200; will-change: stroke-dashoffset;
+    }
+    #scene-77-climb .arrow { opacity: 0; will-change: opacity, transform; transform-box: fill-box; transform-origin: center; }
+
+    #scene-77-climb .axis {
+      position: absolute; left: 300px; top: 250px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      color: var(--muted); letter-spacing: 0.06em;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-77-climb .cap {
+      position: absolute; left: 0; right: 0; top: 854px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 46px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-77-climb" data-composition-id="scene-77-climb" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="axis" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">messages / day</div>
+
+      <svg viewBox="0 0 1920 1080" fill="none">
+        <path class="line" d="M340 760 L560 700 L760 652 L960 556 L1160 488 L1360 386 L1560 300"
+              stroke="#25d366" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+              data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1110" data-sfx-volume="0.35"></path>
+        <path class="arrow" d="M1560 300 L1524 312 M1560 300 L1548 336" stroke="#25d366" stroke-width="5" stroke-linecap="round"></path>
+        <circle class="arrow" cx="1560" cy="300" r="9" fill="#25d366" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2300" data-sfx-volume="0.42"></circle>
+      </svg>
+
+      <div class="cap">the volume climbed alongside it</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-77-climb";
+
+    // Host data-start = 571.38 → scene-local = global − 571.38. Chunk first word "And" 571.88 = local 0.50.
+
+    // Entrance crossfade over scene 76's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "And the volume" 571.88→572.18 (local 0.50→0.80) — axis label
+    tl.fromTo(root + " .axis", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.50);
+
+    // "climbed right alongside" 572.49→573.10 (local 1.11→1.72) — the line draws upward
+    tl.fromTo(root + " .line", { strokeDashoffset: 2200 }, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" }, 1.11);
+
+    // "it," 573.78 (local 2.40) — the arrowhead lands at the top
+    tl.fromTo(root + " .arrow", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2)" }, 2.30);
+
+    // caption
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 1.30);
+
+    window.__timelines["scene-77-climb"] = tl;
+  </script>
+</body>
+</html>

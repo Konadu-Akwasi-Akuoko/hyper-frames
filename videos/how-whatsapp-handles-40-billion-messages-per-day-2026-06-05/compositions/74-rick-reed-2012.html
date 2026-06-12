@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 74 — by 2012, an engineer named Rick Reed</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-74-reed { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-74-reed .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-74-reed .date {
+      position: absolute; left: 0; right: 0; top: 280px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 50px;
+      color: var(--accent-2); letter-spacing: 0.14em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-74-reed .avatar {
+      position: absolute; left: 960px; top: 372px; width: 0; height: 0;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-74-reed .avatar .head {
+      position: absolute; left: -38px; top: 0; width: 76px; height: 76px; border-radius: 50%;
+      border: 2.4px solid var(--soft); background: rgba(195,203,199,0.1);
+    }
+    #scene-74-reed .avatar .body {
+      position: absolute; left: -82px; top: 90px; width: 164px; height: 92px;
+      border-radius: 84px 84px 0 0; border: 2.4px solid var(--soft);
+      border-bottom: none; background: rgba(195,203,199,0.08);
+    }
+
+    #scene-74-reed .name {
+      position: absolute; left: 0; right: 0; top: 560px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 70px; line-height: 1;
+      color: var(--fg); letter-spacing: -0.02em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-74-reed .role {
+      position: absolute; left: 0; right: 0; top: 654px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px;
+      color: var(--accent-2); letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-74-reed" data-composition-id="scene-74-reed" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="date" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">2012</div>
+
+      <div class="avatar" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1940">
+        <div class="head"></div>
+        <div class="body"></div>
+      </div>
+
+      <div class="name" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3660" data-sfx-volume="0.42">Rick Reed</div>
+      <div class="role">WhatsApp engineer</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-74-reed";
+
+    // Host data-start = 554.96 → scene-local = global − 554.96. Chunk first word "By" 555.46 = local 0.50.
+
+    // Entrance crossfade over scene 73's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "By 2012" 555.46→555.70 (local 0.50→0.74) — the date
+    tl.fromTo(root + " .date", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+
+    // "an engineer" 556.90→557.06 (local 1.94→2.10) — the figure
+    tl.fromTo(root + " .avatar", { opacity: 0, y: 16, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(1.3)" }, 1.94);
+
+    // "named Rick Reed" 558.10→558.88 (local 3.14→3.92) — the name + role
+    tl.fromTo(root + " .name", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 3.66);
+    tl.fromTo(root + " .role", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 3.92);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
+
+    window.__timelines["scene-74-reed"] = tl;
+  </script>
+</body>
+</html>

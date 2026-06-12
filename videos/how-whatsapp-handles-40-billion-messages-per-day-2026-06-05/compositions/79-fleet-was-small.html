@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 79 — and the fleet that held the 2014 numbers was small</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-79-small { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-79-small .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-79-small .kick {
+      position: absolute; left: 0; right: 0; top: 286px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px;
+      color: var(--accent-2); letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-79-small .cluster {
+      position: absolute; left: 0; right: 0; top: 388px; height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; flex-wrap: wrap; max-width: 320px; margin: 0 auto;
+    }
+    #scene-79-small .srv {
+      width: 76px; height: 76px; border-radius: 14px;
+      border: 2.2px solid var(--accent-2); background: rgba(125,211,252,0.1);
+      box-shadow: 0 0 14px rgba(125,211,252,0.28);
+      opacity: 0; will-change: transform, opacity;
+      position: relative;
+    }
+    #scene-79-small .srv::after {
+      content: ""; position: absolute; left: 50%; top: 50%; margin: -5px 0 0 -5px;
+      width: 10px; height: 10px; border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 8px rgba(125,211,252,0.6);
+    }
+
+    #scene-79-small .cap {
+      position: absolute; left: 0; right: 0; top: 644px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 56px;
+      color: var(--soft); letter-spacing: -0.015em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-79-small .cap .sm { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+  </style>
+</head>
+<body>
+  <div id="scene-79-small" data-composition-id="scene-79-small" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="kick" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">the 2014 fleet</div>
+
+      <div class="cluster">
+        <div class="srv"></div><div class="srv"></div><div class="srv"></div>
+        <div class="srv"></div><div class="srv"></div><div class="srv"></div>
+      </div>
+
+      <div class="cap">it was <span class="sm" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2940">small</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-79-small";
+
+    // Host data-start = 583.72 → scene-local = global − 583.72. Chunk first word "And" 584.22 = local 0.50.
+
+    // Entrance crossfade over scene 78's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "And the 2014 fleet" 584.22→585.60 (local 0.50→1.88) — the context
+    tl.fromTo(root + " .kick", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.50);
+
+    // "that held the 2014 numbers" 584.58→586.10 (local 0.86→2.38) — the small cluster pops in
+    tl.fromTo(root + " .srv", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.7)", stagger: { each: 0.07, from: "center" } }, 0.86);
+
+    // "was small," 586.50→586.66 (local 2.78→2.94) — the caption, "small" blooms
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 2.60);
+    tl.fromTo(root + " .cap .sm", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 30px rgba(37,211,102,0.6)", duration: 0.4, ease: "power2.out" }, 2.94);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.2);
+
+    window.__timelines["scene-79-small"] = tl;
+  </script>
+</body>
+</html>

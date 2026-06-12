@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 61 — that bought them control, but it cost them elasticity</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-61-trade { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-61-trade .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-61-trade .kick {
+      position: absolute; left: 0; right: 0; top: 244px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px;
+      color: var(--muted); letter-spacing: 0.22em; text-transform: uppercase;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the balance beam (HTML div — rotate safe) */
+    #scene-61-trade .beam {
+      position: absolute; left: 50%; margin-left: -380px; top: 560px; width: 760px; height: 16px;
+      background: linear-gradient(to right, #2b3a44, #3a4c4f, #2b3a44); border-radius: 8px;
+      transform-origin: center center; opacity: 0;
+      will-change: transform, opacity;
+    }
+    #scene-61-trade .beam .pan {
+      position: absolute; top: -150px; width: 224px; height: 132px;
+      border-radius: 16px; background: rgba(16,22,19,0.6);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+      will-change: transform;
+    }
+    #scene-61-trade .beam .pan .plbl {
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 27px; letter-spacing: 0.02em;
+    }
+    #scene-61-trade .beam .pan .ptag {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    /* hanger from beam end to pan */
+    #scene-61-trade .beam .pan::before {
+      content: ""; position: absolute; top: -28px; left: 50%; width: 1.6px; height: 28px;
+      background: #2b3a44; transform: translateX(-50%);
+    }
+
+    #scene-61-trade .pan-l { left: -22px; border: 1.7px solid #2b3a44; }
+    #scene-61-trade .pan-l.won { border-color: var(--accent); background: rgba(37,211,102,0.07); }
+    #scene-61-trade .pan-l .plbl { color: var(--accent); }
+    #scene-61-trade .pan-l .ptag { color: var(--accent); }
+
+    #scene-61-trade .pan-r { right: -22px; border: 1.7px solid #2b3a44; }
+    #scene-61-trade .pan-r.lost { border-color: var(--cost); background: rgba(240,180,41,0.06); }
+    #scene-61-trade .pan-r .plbl { color: var(--cost); }
+    #scene-61-trade .pan-r .ptag { color: var(--cost); }
+
+    #scene-61-trade .pan .tags { opacity: 0; will-change: opacity; }
+
+    /* the fulcrum */
+    #scene-61-trade .pivot {
+      position: absolute; left: 50%; margin-left: -26px; top: 576px;
+      width: 0; height: 0; border-left: 26px solid transparent; border-right: 26px solid transparent;
+      border-bottom: 44px solid #243843; opacity: 0; will-change: opacity;
+    }
+    #scene-61-trade .base {
+      position: absolute; left: 50%; margin-left: -90px; top: 620px; width: 180px; height: 6px;
+      border-radius: 3px; background: #1e2722; opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-61-trade" data-composition-id="scene-61-trade" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="kick">the trade —</div>
+
+      <div class="beam" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500" data-sfx-volume="0.35">
+        <div class="pan pan-l" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1260">
+          <div class="plbl">control</div>
+          <div class="tags"><span class="ptag">gained</span></div>
+        </div>
+        <div class="pan pan-r" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3620">
+          <div class="plbl">elasticity</div>
+          <div class="tags"><span class="ptag">given up</span></div>
+        </div>
+      </div>
+      <div class="pivot"></div>
+      <div class="base"></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-61-trade";
+
+    // Host data-start = 491.16 → scene-local = global − 491.16. Chunk first word "That" 491.66 = local 0.50.
+
+    // Entrance crossfade over scene 60's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "That bought them" 491.66→492.22 (local 0.50→1.06) — the beam + fulcrum appear, level
+    tl.fromTo(root + " .kick", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .pivot", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .base", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .beam", { opacity: 0, scaleX: 0.85 }, { opacity: 1, scaleX: 1, duration: 0.44, ease: "back.out(1.4)" }, 0.50);
+
+    // "control" 492.42 (local 1.26) — the left pan wins: it goes solid green and the beam tilts down toward it
+    tl.to(root + " .pan-l", { borderColor: "#25d366", backgroundColor: "rgba(37,211,102,0.07)", duration: 0.4, ease: "power2.out" }, 1.26);
+    tl.fromTo(root + " .pan-l .tags", { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.out" }, 1.4);
+    tl.to(root + " .beam", { rotation: -7, duration: 0.66, ease: "power2.out" }, 1.26);
+    // counter-rotate the pans so their text stays upright as the beam tilts
+    tl.to(root + " .pan-l", { rotation: 7, duration: 0.66, ease: "power2.out" }, 1.26);
+    tl.to(root + " .pan-r", { rotation: 7, duration: 0.66, ease: "power2.out" }, 1.26);
+
+    // "but it cost them" 493.76→494.38 (local 2.60→3.22) — attention turns to the rising side
+    // "elasticity" 494.78 (local 3.62) — the right pan is what was given up: amber, risen high
+    tl.to(root + " .pan-r", { borderColor: "#f0b429", backgroundColor: "rgba(240,180,41,0.06)", duration: 0.4, ease: "power2.out" }, 3.22);
+    tl.fromTo(root + " .pan-r .tags", { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.out" }, 3.62);
+    tl.to(root + " .pan-r .plbl", { textShadow: "0 0 20px rgba(240, 180, 41, 0.45)", duration: 0.42, ease: "power2.out" }, 3.62);
+    // a touch more tilt as elasticity is named — it lifts away
+    tl.to(root + " .beam", { rotation: -9, duration: 0.5, ease: "power2.inOut" }, 3.62);
+    tl.to(root + " .pan-l", { rotation: 9, duration: 0.5, ease: "power2.inOut" }, 3.62);
+    tl.to(root + " .pan-r", { rotation: 9, duration: 0.5, ease: "power2.inOut" }, 3.62);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.6);
+
+    window.__timelines["scene-61-trade"] = tl;
+  </script>
+</body>
+</html>

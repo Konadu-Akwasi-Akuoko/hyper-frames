@@ -1,0 +1,11 @@
+{
+  "name": "whatsapp-40b-messages",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.6.89 preview",
+    "check": "npx --yes hyperframes@0.6.89 lint && npx --yes hyperframes@0.6.89 validate && npx --yes hyperframes@0.6.89 inspect",
+    "render": "npx --yes hyperframes@0.6.89 render",
+    "publish": "npx --yes hyperframes@0.6.89 publish"
+  }
+}

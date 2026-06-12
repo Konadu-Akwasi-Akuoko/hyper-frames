@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 04 — follow one message</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-04-follow-one-message { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    /* the phone — a slim rounded-rect outline, diagram vocabulary not product UI */
+    #scene-04-follow-one-message .phone {
+      position: absolute; left: 690px; top: 200px; width: 320px; height: 580px;
+      border: 2px solid var(--border); border-radius: 36px;
+      background: rgba(16, 22, 19, 0.6);
+      opacity: 0; will-change: transform, opacity;
+      padding: 34px 26px 26px;
+      display: flex; flex-direction: column; justify-content: flex-end; gap: 14px;
+    }
+    /* dim placeholder chat history bars */
+    #scene-04-follow-one-message .phone .bar {
+      height: 26px; border-radius: 13px; background: var(--panel);
+      border: 1px solid var(--border); opacity: 0; will-change: opacity;
+    }
+    #scene-04-follow-one-message .phone .bar.b1 { width: 62%; }
+    #scene-04-follow-one-message .phone .bar.b2 { width: 78%; align-self: flex-end; }
+    #scene-04-follow-one-message .phone .bar.b3 { width: 50%; }
+    /* compose bar */
+    #scene-04-follow-one-message .phone .compose {
+      margin-top: 22px; height: 56px; border-radius: 28px;
+      border: 1.5px solid var(--dim); display: flex; align-items: center;
+      padding: 0 14px; gap: 12px;
+    }
+    /* THE message — the one element that is always accent green */
+    #scene-04-follow-one-message .chip-wrap { position: relative; will-change: transform; }
+    #scene-04-follow-one-message .chip {
+      width: 132px; height: 34px; border-radius: 17px 17px 4px 17px;
+      background: var(--accent); opacity: 0;
+      box-shadow: 0 0 22px rgba(37, 211, 102, 0.35);
+      will-change: transform, opacity;
+    }
+    /* the send tap ripple */
+    #scene-04-follow-one-message .tap {
+      position: absolute; right: 30px; bottom: 36px; width: 64px; height: 64px;
+      border-radius: 50%; border: 2px solid var(--accent);
+      opacity: 0; transform: scale(0.4); will-change: transform, opacity;
+    }
+
+    /* narration below the device */
+    #scene-04-follow-one-message .cap {
+      position: absolute; left: 0; right: 0; top: 850px; text-align: center;
+    }
+    #scene-04-follow-one-message .cap .l1 {
+      font-size: 46px; font-weight: 500; color: var(--fg); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-04-follow-one-message .cap .l2 {
+      margin-top: 12px; font-size: 30px; font-weight: 400; color: var(--soft);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-04-follow-one-message .cap .send-word { color: var(--soft); }
+  </style>
+</head>
+<body>
+  <div id="scene-04-follow-one-message" data-composition-id="scene-04-follow-one-message" data-width="1920" data-height="1080">
+    <div class="phone" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1000">
+      <div class="bar b1"></div>
+      <div class="bar b2"></div>
+      <div class="bar b3"></div>
+      <div class="compose">
+        <div class="chip-wrap" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4750">
+          <div class="chip" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1450"></div>
+        </div>
+      </div>
+      <div class="tap" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4060"></div>
+    </div>
+
+    <div class="cap">
+      <div class="l1">Follow one message</div>
+      <div class="l2">from the moment your thumb hits <span class="send-word">send.</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-04-follow-one-message";
+
+    // Host data-start = 30.1 → scene-local = global − 30.1.
+
+    // Entrance crossfade over scene 03's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Follow" 30.60 (local 0.50) — phone settles up from below
+    tl.fromTo(root + " .phone", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.65, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .cap .l1", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.55);
+    // chat history bars trickle in behind the settle
+    tl.fromTo(root + " .phone .bar", { opacity: 0 }, { opacity: 0.85, duration: 0.4, ease: "sine.out", stagger: 0.1 }, 0.85);
+
+    // "message" 31.20 (local 1.10) — THE green chip is born in the compose bar
+    tl.fromTo(root + " .chip",
+      { opacity: 0, scale: 0.4 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 1.10);
+
+    // "from the moment..." — "from" 32.46 (local 2.36)
+    tl.fromTo(root + " .cap .l2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 2.36);
+
+    // "hits" 33.96 (local 3.86) — the thumb tap ripple on the send area
+    tl.fromTo(root + " .tap",
+      { opacity: 0.9, scale: 0.4 },
+      { opacity: 0, scale: 1.5, duration: 0.55, ease: "power2.out" }, 3.86);
+
+    // "send." 34.30 (local 4.20) — the chip squeezes then launches rightward off the device
+    tl.to(root + " .chip", { scale: 1.1, duration: 0.18, ease: "power2.in" }, 4.20);
+    tl.to(root + " .chip-wrap", { x: 760, duration: 0.6, ease: "power2.in" }, 4.40);
+    tl.to(root + " .chip", { opacity: 0, duration: 0.18, ease: "sine.out" }, 4.85);
+    // "send." word blooms green as the chip flies
+    tl.to(root + " .cap .send-word", { color: "#25d366", textShadow: "0 0 18px rgba(37,211,102,0.6)", duration: 0.3, ease: "power2.out" }, 4.30);
+
+    // idle — phone breathes very slightly (finite yoyo)
+    tl.to(root + " .phone", { y: -5, duration: 1.6, ease: "sine.inOut", repeat: 2, yoyo: true }, 1.2);
+
+    window.__timelines["scene-04-follow-one-message"] = tl;
+  </script>
+</body>
+</html>

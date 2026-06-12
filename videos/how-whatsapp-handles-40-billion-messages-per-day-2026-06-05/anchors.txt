@@ -1,93 +1,105 @@
 # Hook
-Forty billion outbound messages a day
-two million live connections on a single server
-thirty-two engineers
-should not have been possible
+You sent a message on WhatsApp today
+that little tap
+forty billion messages a day
+Two million live connections on a single server
+thirty-two engineers running all of it
+should not have been able to move that much
 
 # Body — the connection
-one message
 one persistent TCP connection
-single long-lived socket
-FunXMPP
+a single long-lived socket
+a warm pipe has a price
+keeping the connections alive
 
 # Body — Erlang / actor model
-chat server
+FunXMPP
+single-byte tokens
 a process that exists only for you
 the actor model
 Erlang
 BEAM virtual machine
+one tiny, isolated worker per phone
+
+# Body — let it crash
 let it crash
+a supervisor respawns a clean one
+That was the trade they made
 
 # Body — routing
 Mnesia
 routing table
+two terabytes
 kept in RAM
-fan-out time
 
 # Body — group fan-out
 server-side fan-out
 a group ID
-Erlang's distributed process groups
-twenty billion messages users sent
+twenty billion messages people sent
 forty-four billion delivered
-sixty-four billion in total
-The gap is fan-out
+Sixty-four billion in a single day
+That gap is fan-out
+the size of the group
 
-# Body — delivery
+# Body — delivery & ticks
 store-and-forward
 encrypted offline queue
 up to thirty days
 a relay, not a mailbox
-the two grey ticks you watch turn blue
-
-# Body — presence
-the small signals beside them
-last seen
-its own lightweight notification stream
-two jobs, one pipe
+those little ticks you watch
+One grey tick
+Two grey ticks
+Two blue ticks
+leaking through onto your screen
 
 # Body — encryption
+Encryption is where that knowing stops
 Open Whisper Systems
 the Signal Protocol
 X3DH
 the Double Ratchet
-forward secrecy
-ciphertext the server cannot read
-a dumb, fast, blind pipe
+ciphertext the server can't read
+that blindness has a bill
 
 # Body — multi-device
-its own identity key
-a directory that maps your account to every device
+one key per person
 client-side fan-out
-A directory, not a keyholder
+its own identity key
+a directory of where those keys live
+your history doesn't come from the server
 
 # Body — the metal
 FreeBSD
 big bare-metal boxes
-Intel Xeon
-IBM SoftLayer
-patched the BEAM runtime
-The metal was theirs
+patched the BEAM runtime and the FreeBSD kernel
+control, but it cost them elasticity
 
 # Body — hot code loading / outage
 load new code into a running system
 near-zero-downtime
 WhatsApp went dark
-two hundred and ten minutes
+three and a half hours
 resilient is not the same as invincible
+absorbs failure
 
 # Body — scale & growth
 past two million
-Ten billion messages a day
-a single-day record of sixty-four billion
-roughly a hundred billion a day
+Ten billion a day
+Forty billion out by 2014
+a hundred billion by 2020
 five hundred and fifty servers
 eleven thousand CPU cores
 a hundred and forty-seven million phones
 
-# Landing
-One socket per phone, one process per socket
-do less
+# Body — the lean team
+do-less culture
+No ads, no games, no gimmicks
 fourteen million users for every engineer
 let a tiny team sleep at night
+a bus factor waiting to happen
+The leverage and the limits were the same decision
+
+# Landing
+That message you sent earlier
+It made this exact trip
 one envelope the server carries but can never open

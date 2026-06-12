@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 63 — one last trick: Erlang can load new code into a running system</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-63-hot { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-63-hot .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-63-hot .kick {
+      position: absolute; left: 0; right: 0; top: 226px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px;
+      color: var(--cost); letter-spacing: 0.2em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the running system */
+    #scene-63-hot .sys {
+      position: absolute; left: 50%; margin-left: -250px; top: 332px; width: 500px; height: 300px;
+      background: var(--panel); border: 1.8px solid var(--accent-2); border-radius: 18px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-63-hot .sys .runtime {
+      position: absolute; top: 18px; left: 26px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 21px;
+      color: var(--accent-2); letter-spacing: 0.04em;
+    }
+    #scene-63-hot .sys .live {
+      position: absolute; top: 20px; right: 26px; display: flex; align-items: center; gap: 9px;
+    }
+    #scene-63-hot .sys .live .dot {
+      width: 12px; height: 12px; border-radius: 50%; background: var(--accent); will-change: transform, box-shadow;
+    }
+    #scene-63-hot .sys .live .ltxt {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 16px;
+      color: var(--accent); letter-spacing: 0.16em;
+    }
+    /* the slot where the hot code lands */
+    #scene-63-hot .sys .slot {
+      position: absolute; top: 76px; left: 30px; right: 30px; height: 64px;
+      border: 1.6px dashed #2b3a44; border-radius: 11px; will-change: border-color, background-color;
+    }
+    /* running processes */
+    #scene-63-hot .sys .proc {
+      position: absolute; left: 30px; height: 22px; border-radius: 5px;
+      background: rgba(125,211,252,0.16); border: 1.3px solid #2b3a44; will-change: opacity;
+    }
+    #scene-63-hot .sys .p1 { top: 168px; width: 300px; }
+    #scene-63-hot .sys .p2 { top: 202px; width: 240px; }
+    #scene-63-hot .sys .p3 { top: 236px; width: 280px; }
+    #scene-63-hot .sys .syslbl {
+      position: absolute; bottom: 16px; right: 26px;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 18px; color: var(--muted); letter-spacing: 0.01em;
+    }
+
+    /* the new code module that hot-loads in */
+    #scene-63-hot .code {
+      position: absolute; left: 50%; margin-left: -220px; top: 408px; width: 440px; height: 64px;
+      border: 1.8px solid var(--accent); border-radius: 11px; background: rgba(37,211,102,0.09);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 25px; color: var(--accent);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-63-hot" data-composition-id="scene-63-hot" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="kick" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">one last trick —</div>
+
+      <div class="sys" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="2390" data-sfx-volume="0.35">
+        <div class="runtime">Erlang</div>
+        <div class="live"><span class="dot"></span><span class="ltxt">LIVE</span></div>
+        <div class="slot"></div>
+        <div class="proc p1"></div>
+        <div class="proc p2"></div>
+        <div class="proc p3"></div>
+        <div class="syslbl">running system</div>
+      </div>
+
+      <div class="code" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3390" data-sfx-volume="0.42">new code</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-63-hot";
+
+    // Host data-start = 502.75 → scene-local = global − 502.75. Chunk first word "And" 503.25 = local 0.50.
+
+    // Entrance crossfade over scene 62's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "And there's one last trick" 503.25→504.02 (local 0.50→1.27) — the kicker
+    tl.fromTo(root + " .kick", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.50);
+
+    // "Erlang" 505.14 (local 2.39) — the running system appears, alive
+    tl.fromTo(root + " .sys", { opacity: 0, y: 16, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 2.39);
+    // a finite heartbeat — the system is running and keeps running
+    tl.fromTo(root + " .sys .live .dot",
+      { boxShadow: "0 0 0px rgba(37,211,102,0)", scale: 1 },
+      { boxShadow: "0 0 12px rgba(37, 211, 102, 0.7)", scale: 1.22, duration: 0.42, ease: "sine.inOut", repeat: 6, yoyo: true },
+      2.7);
+
+    // "load new code" 506.14→506.66 (local 3.39→3.91) — the new code slides in from the right
+    tl.fromTo(root + " .code", { opacity: 0, x: 620 }, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }, 3.39);
+
+    // "into a running system" 506.98→507.66 (local 4.23→4.91) — it docks into the slot, which lights green; the system never stopped
+    tl.to(root + " .sys .slot", { borderColor: "#25d366", backgroundColor: "rgba(37,211,102,0.1)", duration: 0.4, ease: "power2.out" }, 4.40);
+    tl.to(root + " .code", { borderColor: "#25d366", duration: 0.3, ease: "power2.out" }, 4.40);
+    // the processes flicker once as the swap takes — but never stop
+    tl.fromTo(root + " .sys .proc", { opacity: 1 }, { opacity: 0.45, duration: 0.18, ease: "power1.inOut", yoyo: true, repeat: 1, stagger: 0.05 }, 4.5);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.8);
+
+    window.__timelines["scene-63-hot"] = tl;
+  </script>
+</body>
+</html>

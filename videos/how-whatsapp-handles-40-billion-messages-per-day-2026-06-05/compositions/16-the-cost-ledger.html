@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 16 — none of it comes free</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-16-the-cost-ledger { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-16-the-cost-ledger .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* cost header — the turn: the approach has a bill */
+    #scene-16-the-cost-ledger .hdr {
+      position: absolute; left: 0; right: 0; top: 318px; text-align: center;
+      font-size: 60px; font-weight: 700; color: var(--fg); letter-spacing: 0.005em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-16-the-cost-ledger .hdr .free { color: var(--cost); }
+
+    /* cost ledger — two rows, each a downside */
+    #scene-16-the-cost-ledger .ledger {
+      position: absolute; left: 540px; top: 506px; width: 900px;
+      display: flex; flex-direction: column; gap: 60px;
+    }
+    #scene-16-the-cost-ledger .row {
+      display: flex; align-items: center; gap: 34px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-16-the-cost-ledger .row .mk {
+      flex: 0 0 auto; width: 56px; height: 56px;
+    }
+    #scene-16-the-cost-ledger .row .mk line {
+      stroke: var(--cost); stroke-width: 6; stroke-linecap: round;
+      filter: drop-shadow(0 0 8px rgba(240, 180, 41, 0.4));
+    }
+    #scene-16-the-cost-ledger .row .lbl {
+      font-size: 35px; font-weight: 500; color: var(--soft); line-height: 1.18;
+      white-space: nowrap;
+    }
+    #scene-16-the-cost-ledger .row .lbl .key { color: var(--fg); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-16-the-cost-ledger" data-composition-id="scene-16-the-cost-ledger" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="hdr" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="520">
+        None of it comes <span class="free">free</span>, though.
+      </div>
+
+      <div class="ledger">
+        <div class="row r1" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="6160">
+          <svg class="mk" viewBox="0 0 56 56">
+            <line class="d1" x1="12" y1="12" x2="44" y2="44" />
+            <line class="d2" x1="44" y1="12" x2="12" y2="44" />
+          </svg>
+          <div class="lbl">A <span class="key">niche language</span> &mdash; a small hiring pool.</div>
+        </div>
+
+        <div class="row r2" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="9660">
+          <svg class="mk" viewBox="0 0 56 56">
+            <line class="d1" x1="12" y1="12" x2="44" y2="44" />
+            <line class="d2" x1="44" y1="12" x2="12" y2="44" />
+          </svg>
+          <div class="lbl">Never built for <span class="key">raw number-crunching speed</span>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-16-the-cost-ledger";
+
+    // Host data-start = 152.18 → scene-local = global − 152.18.
+
+    // prime the X strokes as undrawn (each diagonal ~45px)
+    gsap.set(root + " .row .mk line", { strokeDasharray: 46, strokeDashoffset: 46 });
+
+    // Entrance crossfade over scene 15's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "None of it comes free, though." 152.68 (local 0.50) — the cost header lands
+    tl.fromTo(root + " .hdr", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+    // "free" 153.36 (local 1.18) — warm amber glow on the cost word
+    tl.fromTo(root + " .hdr .free", { textShadow: "0 0 0 rgba(240,180,41,0)" }, { textShadow: "0 0 26px rgba(240, 180, 41, 0.45)", duration: 0.5, ease: "power2.out" }, 1.18);
+
+    // "Erlang is a niche language" 155.02→156.34 (local 2.84→4.16) — row 1 label slides in
+    tl.fromTo(root + " .r1", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 3.86);
+    // "to match." 158.34 (local 6.16) — the cost is sealed: the amber X strokes on
+    tl.to(root + " .r1 .mk line", { strokeDashoffset: 0, duration: 0.32, ease: "power2.out", stagger: 0.12 }, 6.16);
+
+    // "it was never built" 159.82 (local 7.64) — row 2 label slides in
+    tl.fromTo(root + " .r2", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 7.64);
+    // "speed." 161.84 (local 9.66) — second cost sealed
+    tl.to(root + " .r2 .mk line", { strokeDashoffset: 0, duration: 0.32, ease: "power2.out", stagger: 0.12 }, 9.66);
+
+    // idle — the ledger drifts faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -5, duration: 3.2, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-16-the-cost-ledger"] = tl;
+  </script>
+</body>
+</html>

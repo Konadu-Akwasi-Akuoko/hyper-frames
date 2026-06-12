@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 69 — the architecture absorbs failures, it doesn't abolish them</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-69-abs { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-69-abs .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the incoming failure */
+    #scene-69-abs .fail {
+      position: absolute; left: 50%; margin-left: -66px; top: 300px; width: 132px; height: 132px;
+      border-radius: 50%; background: rgba(255,107,93,0.16); border: 3px solid var(--danger);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-69-abs .fail .fx {
+      position: absolute; left: 50%; top: 50%; margin: -3px 0 0 -22px; width: 44px; height: 6px;
+      border-radius: 3px; background: var(--danger);
+    }
+
+    /* the architecture membrane that absorbs it */
+    #scene-69-abs .arch {
+      position: absolute; left: 50%; margin-left: -310px; top: 472px; width: 620px; height: 40px;
+      border-radius: 20px; border: 2px solid var(--accent-2); background: rgba(125,211,252,0.08);
+      opacity: 0; will-change: transform, opacity, box-shadow, border-color;
+    }
+    #scene-69-abs .archlbl {
+      position: absolute; left: 0; right: 0; top: 526px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      color: var(--accent-2); letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the residue that survives — not abolished */
+    #scene-69-abs .remnant {
+      position: absolute; left: 50%; margin-left: -13px; top: 576px; width: 26px; height: 26px;
+      border-radius: 50%; background: var(--danger); opacity: 0;
+      box-shadow: 0 0 12px rgba(255,107,93,0.5); will-change: transform, opacity;
+    }
+
+    #scene-69-abs .cap {
+      position: absolute; left: 0; right: 0; top: 666px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 44px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-69-abs .cap .abs { color: var(--accent); }
+    #scene-69-abs .cap .awrap { position: relative; display: inline-block; }
+    #scene-69-abs .cap .abo { color: var(--soft); will-change: color; }
+    #scene-69-abs .cap .strike {
+      position: absolute; left: -6px; top: 54%; height: 4px; width: calc(100% + 12px);
+      background: var(--danger); border-radius: 2px; margin-top: -2px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-69-abs" data-composition-id="scene-69-abs" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="fail"><div class="fx"></div></div>
+
+      <div class="arch" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.35"></div>
+      <div class="archlbl">architecture</div>
+
+      <div class="remnant"></div>
+
+      <div class="cap"><span class="abs">absorbs</span> failures — doesn't <span class="awrap"><span class="abo">abolish</span><span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3100"></span></span> them</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-69-abs";
+
+    // Host data-start = 529.62 → scene-local = global − 529.62. Chunk first word "The" 530.12 = local 0.50.
+
+    // Entrance crossfade over scene 68's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "The architecture" 530.12→531.04 (local 0.50→1.42) — the membrane appears
+    tl.fromTo(root + " .arch", { opacity: 0, scaleX: 0.85 }, { opacity: 1, scaleX: 1, duration: 0.46, ease: "back.out(1.4)" }, 0.50);
+    tl.fromTo(root + " .archlbl", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.80);
+
+    // "absorbs failures" 531.04→531.58 (local 1.42→1.96) — a failure drops in and is absorbed: it shrinks, the membrane flexes and glows
+    tl.fromTo(root + " .fail", { opacity: 0, y: -70, scale: 1 }, { opacity: 1, y: 70, scale: 1, duration: 0.4, ease: "power2.in" }, 1.42);
+    // impact + absorb: the burst collapses into the membrane, which dips and glows green
+    tl.to(root + " .fail", { y: 150, scale: 0.15, opacity: 0, duration: 0.42, ease: "power2.in" }, 1.82);
+    tl.to(root + " .arch", { scaleY: 0.78, boxShadow: "0 0 30px rgba(37, 211, 102, 0.5)", borderColor: "#25d366", duration: 0.2, ease: "power2.in", transformOrigin: "center center" }, 1.96);
+    tl.to(root + " .arch", { scaleY: 1, boxShadow: "0 0 14px rgba(125, 211, 252, 0.25)", duration: 0.5, ease: "elastic.out(1, 0.5)" }, 2.16);
+
+    // "It doesn't abolish it" 532.24→533.22 (local 2.62→3.60) — a small remnant survives below; abolish is struck
+    tl.fromTo(root + " .remnant", { opacity: 0, scale: 0.4, y: -10 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 2.62);
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 2.62);
+    tl.fromTo(root + " .cap .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power2.out" }, 3.10);
+    tl.to(root + " .cap .abo", { color: "#79857f", duration: 0.4, ease: "power2.out" }, 3.18);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.6);
+
+    window.__timelines["scene-69-abs"] = tl;
+  </script>
+</body>
+</html>

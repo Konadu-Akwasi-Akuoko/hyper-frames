@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 10 — up the socket, into your process</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-10-up-the-socket { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-10-up-the-socket .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* phone at lower-left — departure point */
+    #scene-10-up-the-socket .phone-node {
+      position: absolute; left: 300px; top: 700px; width: 100px; height: 180px;
+      border: 2px solid #324039; border-radius: 16px;
+      background: rgba(22, 30, 26, 0.75); opacity: 0; will-change: opacity;
+    }
+
+    /* the compact message — the FunXMPP bytes from scene 09, traveling as one packet */
+    #scene-10-up-the-socket .pkt {
+      position: absolute; left: 430px; top: 770px;
+      display: flex; gap: 6px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-10-up-the-socket .pkt .b {
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 22px; color: var(--accent); padding: 7px 10px;
+      background: rgba(37, 211, 102, 0.10);
+      border: 1px solid rgba(37, 211, 102, 0.45); border-radius: 6px;
+      text-shadow: 0 0 10px rgba(37, 211, 102, 0.35);
+    }
+
+    /* the socket — climbing UP for the first time */
+    #scene-10-up-the-socket svg.wire { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-10-up-the-socket svg.wire line.socket {
+      stroke: var(--accent-2); stroke-width: 4; stroke-linecap: round; opacity: 0;
+      filter: drop-shadow(0 0 8px rgba(125, 211, 252, 0.5));
+    }
+
+    /* server interior at upper-right — a small constellation of processes */
+    #scene-10-up-the-socket .server {
+      position: absolute; left: 1180px; top: 140px; width: 440px; height: 380px;
+      background: var(--panel); border: 1.5px solid #2c3a45; border-radius: 16px;
+      box-shadow: 0 0 40px rgba(125, 211, 252, 0.10);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-10-up-the-socket .proc {
+      position: absolute; width: 18px; height: 18px; border-radius: 50%;
+      background: var(--dim); opacity: 0; will-change: transform, opacity;
+    }
+    /* the one that's yours */
+    #scene-10-up-the-socket .proc.lit {
+      width: 26px; height: 26px; background: var(--accent-2);
+      box-shadow: 0 0 24px rgba(125, 211, 252, 0.65);
+    }
+    /* green bloom ring radiating from the lit process as the message lands */
+    #scene-10-up-the-socket .bloom {
+      position: absolute; left: 1364px; top: 304px; width: 26px; height: 26px;
+      border-radius: 50%; border: 2px solid var(--accent);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-10-up-the-socket .pid {
+      position: absolute; left: 1180px; top: 540px; width: 440px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 25px; color: var(--muted);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* narration captions */
+    #scene-10-up-the-socket .cap {
+      position: absolute; left: 0; right: 0; top: 870px; text-align: center;
+    }
+    #scene-10-up-the-socket .cap .l1 {
+      font-size: 40px; font-weight: 500; color: var(--soft); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-10-up-the-socket .cap .l2 {
+      margin-top: 12px; font-size: 44px; font-weight: 700; color: var(--fg);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-10-up-the-socket .cap .l2 .you { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <div id="scene-10-up-the-socket" data-composition-id="scene-10-up-the-socket" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="phone-node"></div>
+
+      <svg class="wire" viewBox="0 0 1920 1080" data-layout-allow-overflow>
+        <line class="socket" x1="480" y1="830" x2="1340" y2="330" pathLength="1"
+              data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2900" data-sfx-volume="0.42" />
+      </svg>
+
+      <div class="server">
+        <div class="proc p1" style="left: 70px;  top: 70px;"></div>
+        <div class="proc p2" style="left: 200px; top: 52px;"></div>
+        <div class="proc p3" style="left: 330px; top: 90px;"></div>
+        <div class="proc p4" style="left: 110px; top: 180px;"></div>
+        <div class="proc p5" style="left: 320px; top: 210px;"></div>
+        <div class="proc p6" style="left: 80px;  top: 290px;"></div>
+        <div class="proc p7" style="left: 230px; top: 305px;"></div>
+        <div class="proc lit" style="left: 178px; top: 158px;"
+             data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="4050"></div>
+      </div>
+      <div class="bloom"></div>
+      <div class="pid" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5060">pid &lt;0.4417.0&gt; &mdash; yours</div>
+
+      <div class="pkt" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1450">
+        <div class="b">F8</div><div class="b">05</div><div class="b">B7</div>
+      </div>
+    </div>
+
+    <div class="cap">
+      <div class="l1">The slimmed-down message travels up that socket&hellip;</div>
+      <div class="l2">&hellip;and lands inside a process that exists <span class="you" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="6900" data-sfx-volume="0.35">only for you.</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-10-up-the-socket";
+
+    // Host data-start = 95.08 → scene-local = global − 95.08.
+
+    // Entrance crossfade over scene 09's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "The slimmed-down" 95.58 (local 0.50) — departure point assembles
+    tl.fromTo(root + " .phone-node", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "sine.out" }, 0.50);
+    tl.fromTo(root + " .cap .l1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+
+    // "message" 96.36 (local 1.28) — the compact packet (scene 09's bytes) pops at the phone
+    tl.fromTo(root + " .pkt",
+      { opacity: 0, scale: 0.5 },
+      { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.28);
+
+    // server ghosts in dim — the destination exists before we reach it
+    tl.fromTo(root + " .server", { opacity: 0, y: -24 }, { opacity: 0.6, y: 0, duration: 0.6, ease: "power2.out" }, 1.6);
+
+    // "travels up" — "travels" 97.12 (local 2.04): the socket draws UPWARD
+    tl.fromTo(root + " .socket",
+      { strokeDasharray: 1, strokeDashoffset: 1, opacity: 1 },
+      { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 2.04);
+
+    // "up" 97.72 (local 2.64) — the packet rides the wire to the server
+    // wire runs (480,830)→(1340,330): Δx +860, Δy −500; packet shrinks as it goes
+    tl.to(root + " .pkt", { x: 860, y: -500, scale: 0.55, duration: 1.14, ease: "power1.inOut" }, 2.64);
+
+    // "lands" 98.86 (local 3.78) — packet is absorbed; the server wakes; YOUR process pops
+    tl.to(root + " .pkt", { opacity: 0, duration: 0.2, ease: "sine.in" }, 3.78);
+    tl.to(root + " .server", { opacity: 1, duration: 0.4, ease: "power2.out" }, 3.78);
+    tl.fromTo(root + " .proc.lit",
+      { opacity: 0, scale: 0.3 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 3.78);
+    // green bloom radiates from the landing — the message ignites its process
+    tl.fromTo(root + " .bloom",
+      { opacity: 0, scale: 1 },
+      { opacity: 0.9, duration: 0.12, ease: "power1.out" }, 3.83);
+    tl.to(root + " .bloom",
+      { opacity: 0, scale: 5.5, duration: 0.9, ease: "power2.out" }, 3.95);
+
+    // "process" 99.94 (local 4.86) — the dim neighbours fade up: yours isn't alone, just yours
+    tl.fromTo(root + " .proc.p1, " + root + " .proc.p2, " + root + " .proc.p3, " +
+              root + " .proc.p4, " + root + " .proc.p5, " + root + " .proc.p6, " + root + " .proc.p7",
+      { opacity: 0 },
+      { opacity: 0.5, duration: 0.4, ease: "sine.out", stagger: 0.07 }, 4.86);
+    tl.fromTo(root + " .pid", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.96);
+
+    // "exists only for you." — "inside" already landed; payoff line at "exists" 101.08 (local 6.00)
+    tl.fromTo(root + " .cap .l2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 6.00);
+    tl.to(root + " .cap .l1", { opacity: 0.45, duration: 0.5, ease: "sine.inOut" }, 6.00);
+    // "only" 101.78 (local 6.70) — the payoff phrase blooms
+    tl.to(root + " .cap .l2 .you", {
+      color: "#7dd3fc", textShadow: "0 0 20px rgba(125, 211, 252, 0.5)",
+      duration: 0.4, ease: "power2.out"
+    }, 6.70);
+    // your process breathes once with the words
+    tl.to(root + " .proc.lit", { scale: 1.25, duration: 0.3, ease: "power2.out" }, 6.70);
+    tl.to(root + " .proc.lit", { scale: 1, duration: 0.45, ease: "sine.inOut" }, 7.00);
+
+    // idle — stage drifts slightly (finite yoyo)
+    tl.to(root + " .stage", { y: -6, duration: 2.8, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-10-up-the-socket"] = tl;
+  </script>
+</body>
+</html>

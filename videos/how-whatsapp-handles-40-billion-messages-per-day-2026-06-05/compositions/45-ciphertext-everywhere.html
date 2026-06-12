@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 45 — routing, queue, and fan-out all move ciphertext the server can't read</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-45-cipher { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-45-cipher .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the three subsystem lanes, each now carrying ciphertext */
+    #scene-45-cipher .lane {
+      position: absolute; left: 322px; height: 72px; display: flex; align-items: center; gap: 30px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-45-cipher .ln1 { top: 350px; }
+    #scene-45-cipher .ln2 { top: 492px; }
+    #scene-45-cipher .ln3 { top: 634px; }
+    #scene-45-cipher .lane .tag {
+      width: 196px; text-align: right;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 27px;
+      color: var(--accent-2); letter-spacing: 0.06em;
+    }
+    #scene-45-cipher .lane .pill {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(37, 211, 102, 0.06); border: 1.5px solid rgba(37, 211, 102, 0.55);
+      border-radius: 12px; padding: 12px 20px; will-change: filter;
+    }
+    #scene-45-cipher .lane .pill .ct {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px;
+      color: var(--accent); letter-spacing: 0.14em;
+    }
+
+    /* connectors feeding the server */
+    #scene-45-cipher .wires { position: absolute; inset: 0; overflow: visible; }
+    #scene-45-cipher .wire {
+      fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-opacity: 0.62; stroke-linecap: round;
+      stroke-dasharray: 520; stroke-dashoffset: 520; will-change: stroke-dashoffset;
+    }
+
+    /* the server — same rack motif as the earlier server scenes */
+    #scene-45-cipher .server {
+      position: absolute; left: 1356px; top: 420px; width: 168px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-45-cipher .server .rack { display: block; will-change: filter; }
+    #scene-45-cipher .server .slabel {
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      color: var(--accent-2); letter-spacing: 0.16em;
+    }
+    /* the blind-eye badge */
+    #scene-45-cipher .eye { position: absolute; left: 1402px; top: 392px; opacity: 0; will-change: transform, opacity; }
+    #scene-45-cipher .eye .slash { stroke-dasharray: 44; stroke-dashoffset: 44; will-change: stroke-dashoffset; }
+
+    #scene-45-cipher .cap {
+      position: absolute; left: 0; right: 0; top: 802px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 36px;
+      color: var(--soft); letter-spacing: 0.002em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-45-cipher .cap .blind { color: var(--muted); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-45-cipher" data-composition-id="scene-45-cipher" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <svg class="wires" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+        <path class="wire wA" d="M884 386 H1180 Q1230 386 1250 440 L1356 500" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4400" data-sfx-volume="0.42"></path>
+        <path class="wire wB" d="M884 528 H1330 L1356 510"></path>
+        <path class="wire wC" d="M884 670 H1180 Q1230 670 1250 580 L1356 524"></path>
+      </svg>
+
+      <div class="lane ln1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1520" data-sfx-volume="0.35">
+        <div class="tag">ROUTING</div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none">
+            <rect x="5" y="11" width="14" height="9.5" rx="2" stroke="#25d366" stroke-width="2"></rect>
+            <path d="M7.6 11 v-2.4 a4.4 4.4 0 0 1 8.8 0 v2.4" stroke="#25d366" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <div class="ct">a4 f9 1c e7</div>
+        </div>
+      </div>
+
+      <div class="lane ln2" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2680" data-sfx-volume="0.42">
+        <div class="tag">QUEUE</div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none">
+            <rect x="5" y="11" width="14" height="9.5" rx="2" stroke="#25d366" stroke-width="2"></rect>
+            <path d="M7.6 11 v-2.4 a4.4 4.4 0 0 1 8.8 0 v2.4" stroke="#25d366" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <div class="ct">3b d0 8a 5f</div>
+        </div>
+      </div>
+
+      <div class="lane ln3" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3840" data-sfx-volume="0.42">
+        <div class="tag">FAN-OUT</div>
+        <div class="pill">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none">
+            <rect x="5" y="11" width="14" height="9.5" rx="2" stroke="#25d366" stroke-width="2"></rect>
+            <path d="M7.6 11 v-2.4 a4.4 4.4 0 0 1 8.8 0 v2.4" stroke="#25d366" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <div class="ct">c1 6e 9d 22</div>
+        </div>
+      </div>
+
+      <div class="server">
+        <svg class="rack" viewBox="0 0 48 56" width="120" height="140" fill="none">
+          <rect x="7" y="6" width="34" height="44" rx="4" stroke="#7dd3fc" stroke-width="2.4"></rect>
+          <line x1="7" y1="20" x2="41" y2="20" stroke="#7dd3fc" stroke-width="1.8"></line>
+          <line x1="7" y1="34" x2="41" y2="34" stroke="#7dd3fc" stroke-width="1.8"></line>
+          <circle cx="13" cy="13" r="1.8" fill="#7dd3fc"></circle>
+          <circle cx="13" cy="27" r="1.8" fill="#7dd3fc"></circle>
+          <circle cx="13" cy="41" r="1.8" fill="#7dd3fc"></circle>
+        </svg>
+        <div class="slabel">SERVER</div>
+      </div>
+
+      <svg class="eye" viewBox="0 0 48 48" width="76" height="76" fill="none" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="7180" data-sfx-volume="0.42">
+        <path d="M6 24 C13 14 35 14 42 24 C35 34 13 34 6 24 Z" stroke="#79857f" stroke-width="2.4"></path>
+        <circle cx="24" cy="24" r="5.5" stroke="#79857f" stroke-width="2.4"></circle>
+        <line class="slash" x1="9" y1="39" x2="39" y2="9" stroke="#ff6b5d" stroke-width="2.8" stroke-linecap="round"></line>
+      </svg>
+
+      <div class="cap">it routes every envelope — and <span class="blind">reads none of them</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-45-cipher";
+
+    // Host data-start = 390.44 → scene-local = global − 390.44. Chunk first word "Now" 390.94 = local 0.50.
+
+    // Entrance crossfade over scene 44's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // the server destination is present, faint, from the top
+    tl.fromTo(root + " .server", { opacity: 0, scale: 0.94 }, { opacity: 0.5, scale: 1, duration: 0.5, ease: "power2.out" }, 0.5);
+
+    // "the routing" 391.96 (local 1.52) — lane one carries ciphertext
+    tl.fromTo(root + " .ln1", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.42, ease: "back.out(1.4)" }, 1.52);
+    // "the queue" 393.12 (local 2.68)
+    tl.fromTo(root + " .ln2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.42, ease: "back.out(1.4)" }, 2.68);
+    // "the fanout" 394.28 (local 3.84)
+    tl.fromTo(root + " .ln3", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.42, ease: "back.out(1.4)" }, 3.84);
+
+    // "all move ciphertext" 394.84→396.00 (local 4.40→5.56) — the flow draws into the server, pills pulse green
+    tl.fromTo(root + " .wA", { strokeDashoffset: 520 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 4.40);
+    tl.fromTo(root + " .wB", { strokeDashoffset: 520 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 4.55);
+    tl.fromTo(root + " .wC", { strokeDashoffset: 520 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 4.70);
+    tl.to(root + " .server", { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.6);
+    tl.fromTo(root + " .lane .pill", { filter: "drop-shadow(0 0 0px rgba(37,211,102,0))" }, { filter: "drop-shadow(0 0 13px rgba(37, 211, 102, 0.5))", duration: 0.4, ease: "power2.out", stagger: 0.08 }, 5.56);
+    tl.to(root + " .lane .pill", { filter: "drop-shadow(0 0 4px rgba(37, 211, 102, 0.2))", duration: 0.6, ease: "power2.inOut", stagger: 0.08 }, 6.0);
+
+    // "the server can't read" 396.86→398.06 (local 6.42→7.62) — the blind eye, server dims to muted
+    tl.fromTo(root + " .server .rack", { filter: "drop-shadow(0 0 0px rgba(125,211,252,0))" }, { filter: "drop-shadow(0 0 12px rgba(125, 211, 252, 0.4))", duration: 0.4, ease: "power2.out" }, 6.42);
+    tl.fromTo(root + " .eye", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(1.6)" }, 7.18);
+    tl.fromTo(root + " .eye .slash", { strokeDashoffset: 44 }, { strokeDashoffset: 0, duration: 0.34, ease: "power2.out" }, 7.30);
+    tl.to(root + " .server .rack", { filter: "drop-shadow(0 0 4px rgba(125, 211, 252, 0.18))", opacity: 0.72, duration: 0.5, ease: "power2.inOut" }, 7.4);
+
+    // caption rides in under the last beat
+    tl.fromTo(root + " .cap", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 6.7);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.0);
+
+    window.__timelines["scene-45-cipher"] = tl;
+  </script>
+</body>
+</html>

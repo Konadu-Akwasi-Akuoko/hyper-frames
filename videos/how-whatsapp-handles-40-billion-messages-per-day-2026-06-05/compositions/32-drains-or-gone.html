@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 32 — come back in time it drains, after it's gone</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-32-drains-or-gone { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-32-drains-or-gone .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* hairline divider between the two branches */
+    #scene-32-drains-or-gone .divider {
+      position: absolute; left: 960px; top: 268px; width: 1px; height: 544px;
+      background: linear-gradient(180deg, rgba(30,39,34,0) 0%, var(--border) 18%, var(--border) 82%, rgba(30,39,34,0) 100%);
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the two co-equal branch panels */
+    #scene-32-drains-or-gone .panel {
+      position: absolute; top: 0; height: 1080px; width: 960px;
+      display: flex; flex-direction: column; align-items: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-32-drains-or-gone .left { left: 0; }
+    #scene-32-drains-or-gone .right { left: 960px; }
+
+    /* a soft outcome wash behind each branch's hero */
+    #scene-32-drains-or-gone .wash {
+      position: absolute; top: 360px; left: 50%; transform: translateX(-50%);
+      width: 620px; height: 300px; border-radius: 50%;
+      filter: blur(60px); opacity: 0; pointer-events: none;
+    }
+    #scene-32-drains-or-gone .left .wash { background: radial-gradient(circle, rgba(37,211,102,0.16), rgba(37,211,102,0) 70%); }
+    #scene-32-drains-or-gone .right .wash { background: radial-gradient(circle, rgba(255,107,93,0.12), rgba(255,107,93,0) 70%); }
+
+    #scene-32-drains-or-gone .cond {
+      position: absolute; top: 332px; left: 80px; right: 80px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500;
+      font-size: 42px; color: var(--soft); letter-spacing: 0.003em; line-height: 1.24;
+    }
+    #scene-32-drains-or-gone .hero {
+      position: absolute; top: 472px; left: 0; right: 0; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800;
+      font-size: 116px; line-height: 1; color: var(--fg); letter-spacing: -0.012em;
+      will-change: transform, color, text-shadow;
+    }
+    #scene-32-drains-or-gone .sub {
+      position: absolute; top: 642px; left: 0; right: 0; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 24px; color: var(--muted); letter-spacing: 0.01em;
+    }
+
+    /* subordinate queue echoes — left drains, right is already empty */
+    #scene-32-drains-or-gone .qecho {
+      position: absolute; top: 728px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 10px;
+    }
+    #scene-32-drains-or-gone .qslot {
+      width: 46px; height: 60px; border-radius: 7px;
+      border: 1px solid rgba(125, 211, 252, 0.32); background: rgba(16, 22, 19, 0.5);
+    }
+    #scene-32-drains-or-gone .right .qslot { border-color: rgba(57, 68, 63, 0.6); }
+    #scene-32-drains-or-gone .qchip {
+      position: absolute; left: 8px; top: 8px; width: 30px; height: 44px; border-radius: 8px;
+      background: var(--accent); box-shadow: 0 0 16px rgba(37, 211, 102, 0.4);
+      will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-32-drains-or-gone" data-composition-id="scene-32-drains-or-gone" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="divider" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500" data-sfx-volume="0.42"></div>
+
+      <!-- LEFT branch — inside the window: it drains (green) -->
+      <div class="panel left">
+        <div class="wash"></div>
+        <div class="cond">Come back inside that window&hellip;</div>
+        <div class="hero">drains</div>
+        <div class="sub">inside the 30-day window</div>
+        <div class="qecho">
+          <div class="qslot"><div class="qchip" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2740" data-sfx-volume="0.42"></div></div>
+          <div class="qslot"></div>
+          <div class="qslot"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT branch — too late: it's gone (red) -->
+      <div class="panel right">
+        <div class="wash"></div>
+        <div class="cond">Come back after&hellip;</div>
+        <div class="hero" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6300" data-sfx-volume="0.35">gone</div>
+        <div class="sub">after 30 days</div>
+        <div class="qecho">
+          <div class="qslot"></div>
+          <div class="qslot"></div>
+          <div class="qslot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-32-drains-or-gone";
+
+    // Host data-start = 312.76 → scene-local = global − 312.76. Chunk first word "Come" 313.26 = local 0.50.
+
+    // Entrance — root crossfade occludes the seam; both branches settle in parallel (left leads ~100ms)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(root + " .divider", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.5);
+    tl.fromTo(root + " .left", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.4)" }, 0.30);
+    tl.fromTo(root + " .right", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.4)" }, 0.40);
+
+    // "and it drains" 315.40→316.50 (local 2.64→3.74) — the queue empties + "drains" blooms green
+    tl.to(root + " .left .qchip", { opacity: 0, scale: 0.2, y: 10, duration: 0.45, ease: "power2.in" }, 2.74);
+    tl.to(root + " .left .wash", { opacity: 1, duration: 0.5, ease: "power2.out" }, 2.9);
+    tl.to(root + " .left .hero", { color: "#25d366", textShadow: "0 0 30px rgba(37, 211, 102, 0.5)", duration: 0.34, ease: "power2.out" }, 3.12);
+
+    // "Come back after… and it's gone" — "gone" 319.06→319.42 (local 6.30→6.66) — ignites red, arrives harder
+    tl.to(root + " .right .wash", { opacity: 1, duration: 0.5, ease: "power2.out" }, 6.0);
+    tl.to(root + " .right .hero", { color: "#ff6b5d", textShadow: "0 0 30px rgba(255, 107, 93, 0.5)", scale: 1.12, duration: 0.24, ease: "back.out(2.4)" }, 6.30);
+    tl.to(root + " .right .hero", { scale: 1, duration: 0.34, ease: "power2.out" }, 6.54);
+
+    // ambient — the living side breathes; the dead side stays flat
+    tl.to(root + " .left", { y: -3, duration: 3.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.6);
+
+    window.__timelines["scene-32-drains-or-gone"] = tl;
+  </script>
+</body>
+</html>

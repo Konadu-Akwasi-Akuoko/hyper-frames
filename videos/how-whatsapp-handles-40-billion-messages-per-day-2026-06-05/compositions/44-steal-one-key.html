@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 44 — stealing one key never unlocks the rest</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-44-steal { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-44-steal .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the row of per-message locks */
+    #scene-44-steal .lock {
+      position: absolute; top: 432px; width: 90px; height: 112px;
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-44-steal .lk1 { left: 525px; }
+    #scene-44-steal .lk2 { left: 735px; }
+    #scene-44-steal .lk3 { left: 945px; }
+    #scene-44-steal .lk4 { left: 1155px; }
+    #scene-44-steal .lk5 { left: 1365px; }
+    #scene-44-steal .lock .shut { display: block; }
+    #scene-44-steal .lock .open { position: absolute; left: 0; top: 0; opacity: 0; }
+
+    /* the thief's key — red, plunges onto the middle lock */
+    #scene-44-steal .thief {
+      position: absolute; left: 946px; top: 286px; opacity: 0;
+      will-change: transform, opacity, filter;
+    }
+
+    #scene-44-steal .cap {
+      position: absolute; left: 0; right: 0; top: 656px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 40px;
+      color: var(--soft); letter-spacing: 0.001em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-44-steal .cap .bad { color: var(--danger); font-weight: 700; will-change: text-shadow; }
+    #scene-44-steal .cap .good { color: var(--accent); font-weight: 700; will-change: text-shadow; }
+  </style>
+</head>
+<body>
+  <div id="scene-44-steal" data-composition-id="scene-44-steal" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="lock lk1">
+        <svg class="shut" viewBox="0 0 48 56" width="90" height="112" fill="none">
+          <rect x="9" y="24" width="30" height="26" rx="4" stroke="#25d366" stroke-width="2.4" fill="rgba(37,211,102,0.06)"></rect>
+          <path d="M15 24 v-7 a9 9 0 0 1 18 0 v7" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="24" cy="35" r="2.6" fill="#25d366"></circle>
+          <line x1="24" y1="37" x2="24" y2="43" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <div class="lock lk2">
+        <svg class="shut" viewBox="0 0 48 56" width="90" height="112" fill="none">
+          <rect x="9" y="24" width="30" height="26" rx="4" stroke="#25d366" stroke-width="2.4" fill="rgba(37,211,102,0.06)"></rect>
+          <path d="M15 24 v-7 a9 9 0 0 1 18 0 v7" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="24" cy="35" r="2.6" fill="#25d366"></circle>
+          <line x1="24" y1="37" x2="24" y2="43" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <!-- middle lock: the one that gets stolen -->
+      <div class="lock lk3">
+        <svg class="shut" viewBox="0 0 48 56" width="90" height="112" fill="none">
+          <rect x="9" y="24" width="30" height="26" rx="4" stroke="#25d366" stroke-width="2.4" fill="rgba(37,211,102,0.06)"></rect>
+          <path d="M15 24 v-7 a9 9 0 0 1 18 0 v7" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="24" cy="35" r="2.6" fill="#25d366"></circle>
+          <line x1="24" y1="37" x2="24" y2="43" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+        <svg class="open" viewBox="0 0 48 56" width="90" height="112" fill="none" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1300" data-sfx-volume="0.42">
+          <rect x="9" y="24" width="30" height="26" rx="4" stroke="#ff6b5d" stroke-width="2.4" fill="rgba(255,107,93,0.1)"></rect>
+          <path d="M15 24 v-7 a9 9 0 0 1 18 0 v2" stroke="#ff6b5d" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="24" cy="35" r="2.6" fill="#ff6b5d"></circle>
+          <line x1="24" y1="37" x2="24" y2="43" stroke="#ff6b5d" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <div class="lock lk4">
+        <svg class="shut" viewBox="0 0 48 56" width="90" height="112" fill="none" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1960" data-sfx-volume="0.35">
+          <rect x="9" y="24" width="30" height="26" rx="4" stroke="#25d366" stroke-width="2.4" fill="rgba(37,211,102,0.06)"></rect>
+          <path d="M15 24 v-7 a9 9 0 0 1 18 0 v7" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="24" cy="35" r="2.6" fill="#25d366"></circle>
+          <line x1="24" y1="37" x2="24" y2="43" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <div class="lock lk5">
+        <svg class="shut" viewBox="0 0 48 56" width="90" height="112" fill="none">
+          <rect x="9" y="24" width="30" height="26" rx="4" stroke="#25d366" stroke-width="2.4" fill="rgba(37,211,102,0.06)"></rect>
+          <path d="M15 24 v-7 a9 9 0 0 1 18 0 v7" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="24" cy="35" r="2.6" fill="#25d366"></circle>
+          <line x1="24" y1="37" x2="24" y2="43" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <svg class="thief" viewBox="0 0 32 32" width="58" height="58" fill="none" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1060" data-sfx-volume="0.35">
+        <circle cx="10.5" cy="10.5" r="6" stroke="#ff6b5d" stroke-width="2.4"></circle>
+        <path d="M14.8 14.8 L26 26 M22 22 l3 3 M25 25 l3 3" stroke="#ff6b5d" stroke-width="2.4" stroke-linecap="round"></path>
+      </svg>
+
+      <div class="cap">stealing <span class="bad">one key</span> never unlocks <span class="good">the rest</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-44-steal";
+
+    // Host data-start = 386.52 → scene-local = global − 386.52. Chunk first word "So" 387.02 = local 0.50.
+
+    // Entrance crossfade over scene 43's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "So" 387.02 (local 0.50) — the chain of per-message locks settles in, all secure
+    const locks = [".lk1", ".lk2", ".lk3", ".lk4", ".lk5"];
+    locks.forEach(function (l, i) {
+      tl.fromTo(root + " " + l, { opacity: 0, y: 14, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "back.out(1.5)" }, 0.50 + i * 0.06);
+    });
+
+    // caption rides in low, ready to resolve on its key words
+    tl.fromTo(root + " .cap", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.62);
+
+    // "stealing" 387.22 (local 0.70) — the thief's red key appears above the middle lock
+    tl.fromTo(root + " .thief", { opacity: 0, y: -18, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" }, 0.70);
+
+    // "one" 387.58 (local 1.06) — it plunges down onto the middle lock
+    tl.to(root + " .thief", { y: 150, duration: 0.26, ease: "power2.in" }, 1.06);
+
+    // "key" 387.82 (local 1.30) — strike: the middle lock cracks open, compromised red
+    tl.to(root + " .thief", { opacity: 0, duration: 0.14, ease: "power2.in" }, 1.30);
+    tl.to(root + " .lk3 .shut", { opacity: 0, duration: 0.16, ease: "power2.in" }, 1.30);
+    tl.fromTo(root + " .lk3 .open", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(1.8)" }, 1.30);
+    tl.fromTo(root + " .lk3", { filter: "drop-shadow(0 0 0px rgba(255,107,93,0))" }, { filter: "drop-shadow(0 0 20px rgba(255, 107, 93, 0.6))", duration: 0.3, ease: "power2.out" }, 1.30);
+    tl.to(root + " .lk3", { filter: "drop-shadow(0 0 8px rgba(255, 107, 93, 0.32))", duration: 0.6, ease: "power2.inOut" }, 1.7);
+    // "one key" reddens in the caption
+    tl.fromTo(root + " .cap .bad", { textShadow: "0 0 0px rgba(255,107,93,0)" }, { textShadow: "0 0 24px rgba(255, 107, 93, 0.5)", duration: 0.4, ease: "power2.out" }, 1.10);
+
+    // "never unlocks the rest" 388.00→389.36 (local 1.48→2.84) — the four neighbours hold, green and firm
+    [".lk1", ".lk2", ".lk4", ".lk5"].forEach(function (l, i) {
+      tl.fromTo(root + " " + l, { filter: "drop-shadow(0 0 0px rgba(37,211,102,0))" }, { filter: "drop-shadow(0 0 16px rgba(37, 211, 102, 0.55))", duration: 0.34, ease: "power2.out" }, 1.86 + i * 0.1);
+      tl.to(root + " " + l, { filter: "drop-shadow(0 0 4px rgba(37, 211, 102, 0.22))", duration: 0.55, ease: "power2.inOut" }, 2.22 + i * 0.1);
+    });
+    // "the rest" 389.02 (local 2.52) — the survivors glow green in the caption
+    tl.fromTo(root + " .cap .good", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 24px rgba(37, 211, 102, 0.5)", duration: 0.42, ease: "power2.out" }, 2.50);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.8);
+
+    window.__timelines["scene-44-steal"] = tl;
+  </script>
+</body>
+</html>

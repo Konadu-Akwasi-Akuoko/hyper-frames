@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 93 — One socket, one process, one envelope the server queries but can never open</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-93-seal { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-93-seal .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-93-seal .chips {
+      position: absolute; left: 0; right: 0; top: 270px;
+      display: flex; align-items: center; justify-content: center; gap: 26px;
+    }
+    #scene-93-seal .chip {
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 32px;
+      padding: 14px 26px; border-radius: 12px;
+      background: var(--panel); border: 1.5px solid var(--border);
+      letter-spacing: 0.01em; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-93-seal .chip .n { color: var(--muted); }
+    #scene-93-seal .chip.c1 { color: var(--accent-2); border-color: rgba(125,211,252,0.4); }
+    #scene-93-seal .chip.c2 { color: var(--accent-2); border-color: rgba(125,211,252,0.4); }
+    #scene-93-seal .chip.c3 { color: var(--accent); border-color: rgba(37,211,102,0.4); }
+
+    #scene-93-seal .envwrap {
+      position: absolute; left: 50%; top: 396px; transform: translateX(-50%);
+      width: 320px; height: 220px;
+    }
+    #scene-93-seal svg.env { width: 320px; height: 220px; }
+    #scene-93-seal .eline { will-change: stroke-dashoffset; }
+    #scene-93-seal .seal {
+      position: absolute; left: 50%; top: 132px; transform: translate(-50%,-50%);
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0px rgba(37,211,102,0);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 20px; color: #0a0f0d;
+      opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+
+    #scene-93-seal .cap {
+      position: absolute; left: 0; right: 0; top: 662px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 46px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-93-seal .cap .never { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+  </style>
+</head>
+<body>
+  <div id="scene-93-seal" data-composition-id="scene-93-seal" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="chips">
+        <div class="chip c1" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="600" data-sfx-volume="0.35"><span class="n">one</span> socket</div>
+        <div class="chip c2" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1620" data-sfx-volume="0.35"><span class="n">one</span> process</div>
+        <div class="chip c3" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="2540" data-sfx-volume="0.35"><span class="n">one</span> envelope</div>
+      </div>
+
+      <div class="envwrap">
+        <svg class="env" viewBox="0 0 320 220" fill="none">
+          <rect class="eline" x="16" y="40" width="288" height="160" rx="12" stroke="#7dd3fc" stroke-width="3"
+                stroke-dasharray="900" stroke-dashoffset="900"
+                data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3640"></rect>
+          <path class="eline" d="M22 50 L160 144 L298 50" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                stroke-dasharray="420" stroke-dashoffset="420"></path>
+        </svg>
+        <div class="seal" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4780">&#9679;</div>
+      </div>
+
+      <div class="cap">the server queries it &mdash; but can <span class="never">never open</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-93-seal";
+
+    // Host data-start = 657.00 → scene-local = global − 657.00. Chunk first word "One" 657.50 = local 0.50.
+
+    // Entrance crossfade over scene 92's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "One socket," 657.50→657.70 (local 0.50→0.70)
+    tl.fromTo(root + " .chip.c1", { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 0.50);
+    // "one process," 658.52→658.72 (local 1.52→1.72)
+    tl.fromTo(root + " .chip.c2", { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 1.52);
+    // "one envelope" 659.44→659.68 (local 2.44→2.68)
+    tl.fromTo(root + " .chip.c3", { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 2.44);
+
+    // "the server queries" 660.54→661.02 (local 3.54→4.02) — the envelope draws on, scanned
+    tl.fromTo(root + " .env rect.eline", { strokeDashoffset: 900 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 3.40);
+    tl.fromTo(root + " .env path.eline", { strokeDashoffset: 420 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 3.80);
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 3.54);
+
+    // "but can never open." 661.68→662.36 (local 4.68→5.36) — the seal clicks shut, stays sealed
+    tl.fromTo(root + " .seal", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2)" }, 4.68);
+    tl.fromTo(root + " .seal", { boxShadow: "0 0 0px rgba(37,211,102,0)" }, { boxShadow: "0 0 26px rgba(37,211,102,0.6)", duration: 0.5, ease: "power2.out" }, 4.9);
+    tl.fromTo(root + " .cap .never", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 24px rgba(37,211,102,0.5)", duration: 0.5, ease: "power2.out" }, 4.9);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 5.6);
+
+    window.__timelines["scene-93-seal"] = tl;
+  </script>
+</body>
+</html>

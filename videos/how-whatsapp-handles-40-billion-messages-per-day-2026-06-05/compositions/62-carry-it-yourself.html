@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 62 — no auto-scaling, so you carry the capacity and the failures yourself</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-62-carry { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-62-carry .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the auto-scaling control, switched off */
+    #scene-62-carry .auto {
+      position: absolute; left: 50%; margin-left: -190px; top: 196px; width: 380px; height: 92px;
+      background: rgba(16,22,19,0.6); border: 1.6px solid #2b3a44; border-radius: 14px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 26px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-62-carry .auto .albl {
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 23px;
+      color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    #scene-62-carry .auto .toggle {
+      position: relative; width: 76px; height: 38px; border-radius: 19px;
+      background: #1a221e; border: 1.5px solid #2b3a44;
+    }
+    #scene-62-carry .auto .knob {
+      position: absolute; top: 3px; left: 3px; width: 30px; height: 30px; border-radius: 50%;
+      background: var(--muted); will-change: transform, background-color;
+    }
+    #scene-62-carry .auto .offx {
+      position: absolute; right: 30px; top: 50%; margin-top: -34px; opacity: 0;
+      transform: scale(0.5); transform-origin: center center; will-change: transform, opacity;
+    }
+
+    /* the operator who carries it all */
+    #scene-62-carry .figure {
+      position: absolute; left: 50%; margin-left: -78px; top: 560px; width: 156px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-62-carry .figure .head {
+      position: absolute; left: 50%; margin-left: -34px; top: 0; width: 68px; height: 68px; border-radius: 50%;
+      background: #1a221e; border: 2px solid var(--soft);
+    }
+    #scene-62-carry .figure .body {
+      position: absolute; left: 50%; margin-left: -62px; top: 84px; width: 124px; height: 188px;
+      background: #161d19; border: 2px solid var(--soft); border-radius: 40px 40px 18px 18px;
+    }
+
+    /* the plank across the shoulders + the two loads */
+    #scene-62-carry .plank {
+      position: absolute; left: 50%; margin-left: -210px; top: 526px; width: 420px; height: 16px;
+      background: #2b3a44; border-radius: 8px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-62-carry .crate {
+      position: absolute; top: 416px; width: 196px; height: 96px;
+      border-radius: 12px; background: rgba(16,22,19,0.7);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-62-carry .crate-cap { left: 50%; margin-left: -206px; border: 1.8px solid var(--accent-2); color: var(--accent-2); }
+    #scene-62-carry .crate-fail { left: 50%; margin-left: 10px; border: 1.8px solid var(--danger); color: var(--danger); }
+
+    #scene-62-carry .cap {
+      position: absolute; left: 0; right: 0; top: 858px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 44px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-62-carry .cap .self { color: var(--fg); will-change: text-shadow; }
+  </style>
+</head>
+<body>
+  <div id="scene-62-carry" data-composition-id="scene-62-carry" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <!-- auto-scaling, switched off -->
+      <div class="auto" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1080" data-sfx-volume="0.42">
+        <div class="albl">auto-scaling</div>
+        <div class="toggle"><div class="knob"></div></div>
+        <svg class="offx" viewBox="0 0 48 48" width="68" height="68" fill="none">
+          <circle cx="24" cy="24" r="21" stroke="#ff6b5d" stroke-width="2.6" fill="rgba(10,15,13,0.55)"></circle>
+          <line x1="15" y1="15" x2="33" y2="33" stroke="#ff6b5d" stroke-width="3.4" stroke-linecap="round"></line>
+          <line x1="33" y1="15" x2="15" y2="33" stroke="#ff6b5d" stroke-width="3.4" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <!-- the two loads borne on the plank -->
+      <div class="crate crate-cap" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3840" data-sfx-volume="0.42">capacity</div>
+      <div class="crate crate-fail" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4780" data-sfx-volume="0.42">failures</div>
+      <div class="plank"></div>
+
+      <!-- the operator -->
+      <div class="figure" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2620" data-sfx-volume="0.35">
+        <div class="head"></div>
+        <div class="body"></div>
+      </div>
+
+      <div class="cap">you carry it <span class="self">yourself</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-62-carry";
+
+    // Host data-start = 495.84 → scene-local = global − 495.84. Chunk first word "There" 496.34 = local 0.50.
+
+    // Entrance crossfade over scene 61's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "There is no auto-scaling" 496.34→497.42 (local 0.50→1.58) — the auto-scaling control appears, then switches off
+    tl.fromTo(root + " .auto", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.50);
+    // "no" / "auto-scaling" 496.64→496.92 (local 0.80→1.08) — knob slides off, dims, red ✗ stamps
+    tl.to(root + " .auto .knob", { x: 0, backgroundColor: "#5a4140", duration: 0.3, ease: "power2.out" }, 0.90);
+    tl.fromTo(root + " .auto .offx", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(2)" }, 1.08);
+    tl.to(root + " .auto", { borderColor: "#5a3a38", duration: 0.4, ease: "power2.out" }, 1.08);
+
+    // "so you" 498.46→499.16 (local 2.62→3.32) — the operator appears, alone
+    tl.fromTo(root + " .figure", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.62);
+    tl.fromTo(root + " .plank", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.10);
+
+    // "the capacity" 499.54→499.68 (local 3.70→3.84) — the capacity load drops onto the plank
+    tl.fromTo(root + " .crate-cap", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.in" }, 3.70);
+
+    // "and the failures" 500.42→500.62 (local 4.58→4.78) — the failures load drops on, heavy
+    tl.fromTo(root + " .crate-fail", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.in" }, 4.58);
+    // the figure presses down under the combined weight
+    tl.to(root + " .figure", { scaleY: 0.96, y: 8, duration: 0.3, ease: "power2.out", transformOrigin: "bottom center" }, 4.78);
+    tl.to(root + " .plank", { y: 6, duration: 0.3, ease: "power2.out" }, 4.78);
+    tl.to(root + " .crate-cap, " + root + " .crate-fail", { y: 6, duration: 0.3, ease: "power2.out" }, 4.78);
+
+    // "yourself" 501.34 (local 5.50) — the line lands; the burden is yours alone
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 5.40);
+    tl.fromTo(root + " .cap .self", { textShadow: "0 0 0px rgba(233,237,235,0)" }, { textShadow: "0 0 20px rgba(233, 237, 235, 0.35)", duration: 0.44, ease: "power2.out" }, 5.50);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.6);
+
+    window.__timelines["scene-62-carry"] = tl;
+  </script>
+</body>
+</html>

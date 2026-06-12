@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 50 — in 2021, Meta solved it with client-side fan-out</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-50-fanout { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-50-fanout .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-50-fanout .date {
+      position: absolute; left: 0; right: 0; top: 252px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 27px;
+      color: var(--muted); letter-spacing: 0.34em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-50-fanout .lead {
+      position: absolute; left: 0; right: 0; top: 332px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 36px;
+      color: var(--soft); letter-spacing: 0.002em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-50-fanout .term {
+      position: absolute; left: 0; right: 0; top: 432px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 78px;
+      color: var(--accent-2); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-50-fanout .term .fo { will-change: text-shadow; }
+
+    /* the fan-out glyph: one source branching to many */
+    #scene-50-fanout .fan { position: absolute; left: 50%; top: 612px; margin-left: -260px; opacity: 0; will-change: opacity; }
+    #scene-50-fanout .fan .branch {
+      fill: none; stroke: var(--accent-2); stroke-width: 2.6; stroke-linecap: round;
+      stroke-dasharray: 280; stroke-dashoffset: 280; will-change: stroke-dashoffset;
+    }
+    #scene-50-fanout .fan .src { fill: #7dd3fc; }
+    #scene-50-fanout .fan .node { fill: none; stroke: var(--accent-2); stroke-width: 2.6; opacity: 0; will-change: opacity; }
+  </style>
+</head>
+<body>
+  <div id="scene-50-fanout" data-composition-id="scene-50-fanout" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="date" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="940">2021</div>
+      <div class="lead" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1760">Meta solved it —</div>
+
+      <div class="term" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="4040"><span class="cs">client-side </span><span class="fo">fan-out</span></div>
+
+      <svg class="fan" viewBox="0 0 520 140" width="520" height="140" fill="none">
+        <circle class="src" cx="40" cy="70" r="11"></circle>
+        <path class="branch b1" d="M52 70 C200 70 300 22 470 22"></path>
+        <path class="branch b2" d="M52 70 H470"></path>
+        <path class="branch b3" d="M52 70 C200 70 300 118 470 118"></path>
+        <circle class="node n1" cx="482" cy="22" r="9"></circle>
+        <circle class="node n2" cx="482" cy="70" r="9"></circle>
+        <circle class="node n3" cx="482" cy="118" r="9"></circle>
+      </svg>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-50-fanout";
+
+    // Host data-start = 424.36 → scene-local = global − 424.36. Chunk first word "So" 424.86 = local 0.50.
+
+    // Entrance crossfade over scene 49's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "So in 2021" 424.86→425.30 (local 0.50→0.94) — the date stamps in
+    tl.fromTo(root + " .date", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.94);
+
+    // "Meta solved it" 426.12→426.98 (local 1.76→2.62) — the who
+    tl.fromTo(root + " .lead", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.76);
+
+    // "something called client-side" 427.30→428.40 (local 2.94→4.04) — the term begins
+    tl.fromTo(root + " .term", { opacity: 0, y: 16, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 4.04);
+
+    // "fan-out" 429.34 (local 4.98) — the concept name lands, the glyph branches out
+    tl.fromTo(root + " .term .fo", { textShadow: "0 0 0px rgba(125,211,252,0)" }, { textShadow: "0 0 30px rgba(125, 211, 252, 0.5)", duration: 0.45, ease: "power2.out" }, 4.98);
+    tl.fromTo(root + " .fan", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 4.86);
+    tl.fromTo(root + " .fan .b1", { strokeDashoffset: 280 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 4.98);
+    tl.fromTo(root + " .fan .b2", { strokeDashoffset: 280 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 5.04);
+    tl.fromTo(root + " .fan .b3", { strokeDashoffset: 280 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 5.10);
+    tl.fromTo(root + " .fan .n1", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power2.out" }, 5.4);
+    tl.fromTo(root + " .fan .n2", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power2.out" }, 5.46);
+    tl.fromTo(root + " .fan .n3", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power2.out" }, 5.52);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.4);
+
+    window.__timelines["scene-50-fanout"] = tl;
+  </script>
+</body>
+</html>

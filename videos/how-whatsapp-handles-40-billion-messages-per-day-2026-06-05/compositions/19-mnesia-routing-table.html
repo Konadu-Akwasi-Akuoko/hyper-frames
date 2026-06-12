@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 19 — Mnesia routing table</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-19-mnesia-routing-table { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-19-mnesia-routing-table .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* breathing-room glow in the right half — slow infra drift */
+    #scene-19-mnesia-routing-table .glow {
+      position: absolute; left: 1320px; top: 300px; width: 520px; height: 520px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(125,211,252,0.08), rgba(125,211,252,0) 70%);
+      opacity: 0; will-change: opacity, transform;
+    }
+
+    /* the Mnesia database panel — left-of-centre, the answer to scene 18's "?" */
+    #scene-19-mnesia-routing-table .panel {
+      position: absolute; left: 470px; top: 300px; width: 720px;
+      background: rgba(16, 22, 19, 0.72); border: 1.5px solid rgba(125, 211, 252, 0.32);
+      border-radius: 20px; padding: 36px 44px 40px;
+      box-shadow: 0 0 44px rgba(125, 211, 252, 0.10);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* panel header — the database is named */
+    #scene-19-mnesia-routing-table .name {
+      font-size: 50px; font-weight: 700; color: var(--fg); letter-spacing: 0.005em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-19-mnesia-routing-table .meta {
+      margin-top: 8px; font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 21px; color: var(--accent-2); letter-spacing: 0.04em; opacity: 0;
+      will-change: opacity;
+    }
+
+    #scene-19-mnesia-routing-table .rule {
+      margin-top: 26px; height: 1.5px; background: rgba(125, 211, 252, 0.22);
+      transform-origin: left center; transform: scaleX(0); will-change: transform;
+    }
+
+    /* table caption — the routing table is what it holds */
+    #scene-19-mnesia-routing-table .cap {
+      margin-top: 24px; font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 22px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;
+      display: flex; justify-content: space-between; opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the routing rows — user → server, mono tabular */
+    #scene-19-mnesia-routing-table .rows { margin-top: 14px; }
+    #scene-19-mnesia-routing-table .row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 4px; font-family: "JetBrains Mono", monospace;
+      font-size: 30px; font-variant-numeric: tabular-nums;
+      border-bottom: 1px solid rgba(125, 211, 252, 0.07);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-19-mnesia-routing-table .row .usr { color: var(--soft); font-weight: 400; }
+    #scene-19-mnesia-routing-table .row .arr { color: var(--accent-2); font-weight: 400; opacity: 0.7; }
+    #scene-19-mnesia-routing-table .row .srv { color: var(--accent-2); font-weight: 500; }
+
+    /* the scale callout — 2 TB, all in RAM */
+    #scene-19-mnesia-routing-table .callout {
+      position: absolute; left: 470px; top: 872px; width: 720px;
+      display: flex; align-items: center; justify-content: center; gap: 18px;
+      padding: 20px 0; border-radius: 14px;
+      background: rgba(125, 211, 252, 0.05); border: 1.5px solid rgba(125, 211, 252, 0.26);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-19-mnesia-routing-table .callout .tb {
+      font-size: 46px; font-weight: 700; color: var(--fg); letter-spacing: 0.005em;
+    }
+    #scene-19-mnesia-routing-table .callout .dot { color: var(--dim); font-size: 34px; }
+    #scene-19-mnesia-routing-table .callout .ram {
+      font-size: 38px; font-weight: 500; color: var(--accent-2); letter-spacing: 0.005em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-19-mnesia-routing-table" data-composition-id="scene-19-mnesia-routing-table" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="glow"></div>
+
+      <div class="panel" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="180">
+        <div class="name" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2520" data-sfx-volume="0.42">Mnesia</div>
+        <div class="meta">Erlang &middot; in-memory &middot; distributed</div>
+        <div class="rule"></div>
+        <div class="cap" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="8660" data-sfx-volume="0.35"><span>user</span><span>server</span></div>
+        <div class="rows">
+          <div class="row r1" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="9620" data-sfx-volume="0.42"><span class="usr">user_8842</span><span class="arr">&rarr;</span><span class="srv">srv-04</span></div>
+          <div class="row r2" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="10040"><span class="usr">user_3391</span><span class="arr">&rarr;</span><span class="srv">srv-11</span></div>
+          <div class="row r3" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="10460" data-sfx-volume="0.42"><span class="usr">user_7126</span><span class="arr">&rarr;</span><span class="srv">srv-02</span></div>
+          <div class="row r4" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="10880" data-sfx-volume="0.42"><span class="usr">user_9920</span><span class="arr">&rarr;</span><span class="srv">srv-07</span></div>
+          <div class="row r5" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="11300"><span class="usr">user_5508</span><span class="arr">&rarr;</span><span class="srv">srv-13</span></div>
+        </div>
+      </div>
+
+      <div class="callout" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="13460">
+        <span class="tb">2 TB</span>
+        <span class="dot">&bull;</span>
+        <span class="ram">all kept in RAM</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-19-mnesia-routing-table";
+
+    // Host data-start = 181.52 → scene-local = global - 181.52.
+
+    // Entrance crossfade over scene 18's tail (overlap 0-0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(root + " .glow", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "sine.out" }, 0.0);
+
+    // The panel shell rises into the seam overlap (local 0.18) so it covers scene 18's
+    // tail with a real crossfade rather than a hard cut — the empty frame is the answer
+    // arriving; the database NAME then lands on its transcript word below.
+    tl.fromTo(root + " .panel", { opacity: 0, scale: 0.96, y: 14 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.18);
+
+    // "Mnesia," 184.04 (local 2.52) — the database is named
+    tl.fromTo(root + " .name", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.52);
+    // "Erlang's in-memory distributed database." 185.74->187.74 (local 4.22->6.22) — the qualifier resolves
+    tl.fromTo(root + " .meta", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, 4.22);
+    tl.fromTo(root + " .rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 4.50);
+
+    // "It holds the routing table" 190.18->191.02 (local 8.66->9.50) — the schema header lands
+    tl.fromTo(root + " .cap", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 8.66);
+
+    // "that maps every user to their server" 191.74->193.68 (local 10.22->12.16) —
+    // rows stagger-snap into the grid (adapted from db-table-columns-stagger-build: header-first, cells accumulate)
+    tl.fromTo(root + " .rows .row",
+      { opacity: 0, x: -22 },
+      { opacity: 1, x: 0, duration: 0.4, ease: "power2.out", stagger: 0.42 }, 9.62);
+
+    // "Around two terabytes... all kept in RAM." 194.98->198.36 (local 13.46->16.84) —
+    // the scale callout slides up beneath the panel with a small settle overshoot
+    tl.fromTo(root + " .callout",
+      { opacity: 0, y: 26 },
+      { opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.7)" }, 13.46);
+    // "in RAM." 198.20 (local 16.68) — sky-blue bloom on the in-RAM qualifier
+    tl.fromTo(root + " .callout .ram",
+      { textShadow: "0 0 0 rgba(125,211,252,0)" },
+      { textShadow: "0 0 24px rgba(125, 211, 252, 0.45)", duration: 0.5, ease: "power2.out" }, 16.68);
+
+    // idle — the panel drifts faintly, the glow breathes (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 3.6, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.8);
+    tl.to(root + " .glow", { scale: 1.08, duration: 4.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.0);
+
+    window.__timelines["scene-19-mnesia-routing-table"] = tl;
+  </script>
+</body>
+</html>

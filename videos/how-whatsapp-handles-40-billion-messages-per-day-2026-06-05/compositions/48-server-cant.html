@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 48 — a blind server can't search, scan, or rebuild</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-48-cant { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-48-cant .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-48-cant .head {
+      position: absolute; left: 612px; top: 262px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px;
+      color: var(--cost); letter-spacing: 0.16em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-48-cant .row {
+      position: absolute; left: 612px; width: 720px; height: 76px;
+      display: flex; align-items: center; gap: 30px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-48-cant .r1 { top: 376px; }
+    #scene-48-cant .r2 { top: 490px; }
+    #scene-48-cant .r3 { top: 604px; }
+    #scene-48-cant .row .ic { display: block; flex: none; will-change: opacity; }
+    #scene-48-cant .row .lbwrap { position: relative; }
+    #scene-48-cant .row .lb {
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 42px;
+      color: var(--soft); letter-spacing: -0.006em; white-space: nowrap; will-change: color;
+    }
+    #scene-48-cant .row .strike {
+      position: absolute; left: -4px; top: 50%; height: 4px; width: calc(100% + 8px);
+      background: var(--danger); border-radius: 2px; margin-top: -2px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    #scene-48-cant .row .x { margin-left: 16px; opacity: 0; will-change: transform, opacity; }
+    #scene-48-cant .row .dev { margin-left: 10px; opacity: 0; will-change: opacity; }
+  </style>
+</head>
+<body>
+  <div id="scene-48-cant" data-composition-id="scene-48-cant" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="head" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="500">a blind server can't —</div>
+
+      <div class="row r1">
+        <svg class="ic" viewBox="0 0 32 32" width="46" height="46" fill="none">
+          <circle cx="14" cy="14" r="8.5" stroke="#c3cbc7" stroke-width="2.4"></circle>
+          <line x1="20.4" y1="20.4" x2="27" y2="27" stroke="#c3cbc7" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+        <div class="lbwrap">
+          <div class="lb">search your messages</div>
+          <div class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2480" data-sfx-volume="0.42"></div>
+        </div>
+        <svg class="x" viewBox="0 0 24 24" width="34" height="34" fill="none">
+          <line x1="6" y1="6" x2="18" y2="18" stroke="#ff6b5d" stroke-width="2.8" stroke-linecap="round"></line>
+          <line x1="18" y1="6" x2="6" y2="18" stroke="#ff6b5d" stroke-width="2.8" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <div class="row r2">
+        <svg class="ic" viewBox="0 0 32 32" width="46" height="46" fill="none">
+          <path d="M16 4 L27 8 v8 c0 7 -5 11 -11 13 c-6 -2 -11 -6 -11 -13 V8 Z" stroke="#c3cbc7" stroke-width="2.4" stroke-linejoin="round"></path>
+          <path d="M11.5 16 l3 3 l6 -6.5" stroke="#c3cbc7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <div class="lbwrap">
+          <div class="lb">scan them for spam</div>
+          <div class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3820" data-sfx-volume="0.35"></div>
+        </div>
+        <svg class="x" viewBox="0 0 24 24" width="34" height="34" fill="none">
+          <line x1="6" y1="6" x2="18" y2="18" stroke="#ff6b5d" stroke-width="2.8" stroke-linecap="round"></line>
+          <line x1="18" y1="6" x2="6" y2="18" stroke="#ff6b5d" stroke-width="2.8" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+      <div class="row r3">
+        <svg class="ic" viewBox="0 0 32 32" width="46" height="46" fill="none">
+          <path d="M6 16 a10 10 0 1 1 3 7" stroke="#c3cbc7" stroke-width="2.4" stroke-linecap="round"></path>
+          <path d="M5 17 l4 4 l4 -4" stroke="#c3cbc7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <div class="lbwrap">
+          <div class="lb">rebuild your history</div>
+          <div class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5740" data-sfx-volume="0.42"></div>
+        </div>
+        <svg class="dev" viewBox="0 0 32 48" width="34" height="50" fill="none" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="7300">
+          <rect x="6" y="4" width="20" height="40" rx="4" stroke="#79857f" stroke-width="2.2"></rect>
+          <line x1="13" y1="39" x2="19" y2="39" stroke="#79857f" stroke-width="2.2" stroke-linecap="round"></line>
+        </svg>
+        <svg class="x" viewBox="0 0 24 24" width="34" height="34" fill="none">
+          <line x1="6" y1="6" x2="18" y2="18" stroke="#ff6b5d" stroke-width="2.8" stroke-linecap="round"></line>
+          <line x1="18" y1="6" x2="6" y2="18" stroke="#ff6b5d" stroke-width="2.8" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-48-cant";
+
+    // Host data-start = 406.74 → scene-local = global − 406.74. Chunk first word "A" 407.24 = local 0.50.
+
+    // Entrance crossfade over scene 47's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "A server that can't read your messages" 407.24→408.36 (local 0.50→1.62) — the framing header
+    tl.fromTo(root + " .head", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.50);
+
+    // each lost capability: the row settles, then the red strike rips across and the ✗ stamps, row dims
+    function disable(sel, t) {
+      tl.fromTo(root + " " + sel, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, t);
+      tl.fromTo(root + " " + sel + " .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power2.out" }, t + 0.22);
+      tl.fromTo(root + " " + sel + " .x", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.2)" }, t + 0.3);
+      tl.to(root + " " + sel + " .lb", { color: "#79857f", duration: 0.4, ease: "power2.out" }, t + 0.3);
+      tl.to(root + " " + sel + " .ic", { opacity: 0.5, duration: 0.4, ease: "power2.out" }, t + 0.3);
+    }
+
+    // "can't search them" 409.00→409.52 (local 2.26→2.78)
+    disable(".r1", 2.26);
+    // "can't scan them for spam" 410.34→411.28 (local 3.60→4.54)
+    disable(".r2", 3.60);
+    // "can't rebuild your history" 412.26→413.30 (local 5.52→6.56)
+    disable(".r3", 5.52);
+
+    // "on a new device" 413.74→414.38 (local 7.00→7.64) — the new device shows up, history never arrives
+    tl.fromTo(root + " .r3 .dev", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 7.30);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.4);
+
+    window.__timelines["scene-48-cant"] = tl;
+  </script>
+</body>
+</html>

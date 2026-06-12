@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 15 — "let it crash"</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face {
+      font-family: "Excalifont";
+      src: url("../fonts/Excalifont-Regular.woff2") format("woff2");
+      font-weight: 400; font-display: block;
+    }
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-15-let-it-crash-quote { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-15-let-it-crash-quote .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* framing narration — the narrator introduces the coinage */
+    #scene-15-let-it-crash-quote .frame {
+      position: absolute; left: 0; right: 0; top: 392px; text-align: center;
+      font-size: 36px; font-weight: 500; color: var(--soft); letter-spacing: 0.01em;
+    }
+    #scene-15-let-it-crash-quote .frame .w {
+      display: inline-block; opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the verbatim coinage — the engineers' own words, hand-voice */
+    #scene-15-let-it-crash-quote .quote {
+      position: absolute; left: 0; right: 0; top: 486px; text-align: center;
+      font-family: "Excalifont", "Inter", sans-serif;
+      font-size: 132px; font-weight: 400; color: var(--fg); letter-spacing: 0.005em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-15-let-it-crash-quote .quote .qm { color: var(--muted); font-size: 96px; }
+
+    /* amber underline — snaps wide as the phrase lands (cost/trade temperature) */
+    #scene-15-let-it-crash-quote .bar {
+      position: absolute; left: 660px; top: 686px; width: 600px; height: 5px;
+      border-radius: 3px; background: var(--cost);
+      box-shadow: 0 0 18px rgba(240, 180, 41, 0.45);
+      transform-origin: center; opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-15-let-it-crash-quote" data-composition-id="scene-15-let-it-crash-quote" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="frame" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">
+        <span class="w">Erlang</span> <span class="w">engineers</span> <span class="w">call</span> <span class="w">this</span>
+      </div>
+
+      <div class="quote" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2480">
+        <span class="qm">&ldquo;</span>let it crash<span class="qm">&rdquo;</span>
+      </div>
+
+      <div class="bar" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2760" data-sfx-volume="0.42"></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-15-let-it-crash-quote";
+
+    // Host data-start = 148.56 → scene-local = global − 148.56.
+
+    // Entrance crossfade over scene 14's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // framing line word by word, each on its transcript timestamp:
+    // Erlang 0.50 / engineers 0.86 / call 1.40 / this 1.68
+    const fw = gsap.utils.toArray(root + " .frame .w");
+    const at = [0.50, 0.86, 1.40, 1.68];
+    fw.forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, at[i]);
+    });
+
+    // "let it crash." 151.04 (local 2.48) — the coinage slides in from the right,
+    // fast launch + eased settle, lands centre-frame as a single unit (adapted from
+    // tech-logos-slide-swap cadence: lateral entry, clean stop, no bounce)
+    tl.fromTo(root + " .quote",
+      { opacity: 0, x: 220 },
+      { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 2.48);
+    // the framing line recedes — the engineers' words own the frame
+    tl.to(root + " .frame", { opacity: 0.4, duration: 0.5, ease: "sine.inOut" }, 2.48);
+
+    // "crash." 151.30 (local 2.74) — the amber bar snaps wide + a warm bloom on the phrase
+    tl.fromTo(root + " .bar",
+      { opacity: 0, scaleX: 0.05 },
+      { opacity: 1, scaleX: 1, duration: 0.45, ease: "power3.out" }, 2.74);
+    tl.to(root + " .quote", {
+      textShadow: "0 0 30px rgba(240, 180, 41, 0.28)",
+      duration: 0.5, ease: "power2.out"
+    }, 2.74);
+
+    // idle — the held phrase breathes faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.0);
+
+    window.__timelines["scene-15-let-it-crash-quote"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 28 — the online delivery path</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-28-online-delivery-path { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-28-online-delivery-path .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* system component boxes — process and DS, sky-blue (server-side entities) */
+    #scene-28-online-delivery-path .node {
+      position: absolute; border-radius: 18px; background: rgba(16, 22, 19, 0.65);
+      border: 2px solid rgba(125, 211, 252, 0.22);
+      box-shadow: 0 0 30px rgba(125, 211, 252, 0.05);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-28-online-delivery-path .node .nlabel {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; color: var(--accent-2);
+      letter-spacing: 0.04em;
+    }
+    #scene-28-online-delivery-path .node .nsub {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 17px;
+      color: var(--muted); letter-spacing: 0.04em;
+    }
+    #scene-28-online-delivery-path .process { left: 180px; top: 390px; width: 240px; height: 168px; }
+    #scene-28-online-delivery-path .process .nlabel { font-size: 30px; }
+    #scene-28-online-delivery-path .ds { left: 720px; top: 390px; width: 200px; height: 168px; }
+    #scene-28-online-delivery-path .ds .nlabel { font-size: 40px; }
+
+    /* the connectors — process→DS, and the long socket pipe DS→recipient */
+    #scene-28-online-delivery-path .conn1 {
+      position: absolute; left: 420px; top: 472px; width: 300px; height: 3px;
+      background: linear-gradient(90deg, rgba(125,211,252,0.25), rgba(125,211,252,0.5));
+      transform-origin: left center; transform: scaleX(0); will-change: transform;
+    }
+    #scene-28-online-delivery-path .pipe {
+      position: absolute; left: 920px; top: 471px; width: 580px; height: 5px; border-radius: 3px;
+      background: linear-gradient(90deg, rgba(125,211,252,0.3), rgba(125,211,252,0.4));
+      transform-origin: left center; transform: scaleX(0); will-change: transform;
+    }
+    #scene-28-online-delivery-path .socklabel {
+      position: absolute; left: 920px; top: 506px; width: 580px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 22px; color: var(--accent-2); letter-spacing: 0.05em;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the recipient device — a person's phone, neutral (NOT a system component) */
+    #scene-28-online-delivery-path .phone {
+      position: absolute; left: 1500px; top: 350px; width: 150px; height: 248px;
+      border-radius: 26px; background: var(--panel);
+      border: 2px solid rgba(195, 203, 199, 0.42);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-28-online-delivery-path .phone .screen {
+      position: absolute; inset: 12px; border-radius: 16px;
+      background: rgba(10, 15, 13, 0.6); border: 1px solid rgba(195, 203, 199, 0.12);
+      box-shadow: inset 0 0 0 rgba(37, 211, 102, 0); will-change: box-shadow;
+    }
+    #scene-28-online-delivery-path .online {
+      position: absolute; left: 1500px; top: 624px; width: 150px; text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-28-online-delivery-path .online .dot {
+      width: 13px; height: 13px; border-radius: 50%;
+      background: var(--soft); box-shadow: 0 0 10px rgba(195, 203, 199, 0.6);
+    }
+    #scene-28-online-delivery-path .online .otext {
+      font-family: "Inter", sans-serif; font-weight: 400; font-size: 24px;
+      color: var(--soft); letter-spacing: 0.01em;
+    }
+
+    /* the message — one green chip, the thing that travels the path */
+    #scene-28-online-delivery-path .msg {
+      position: absolute; left: 282px; top: 455px; width: 38px; height: 36px;
+      border-radius: 10px 10px 10px 3px; background: var(--accent);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.55);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* narration captions */
+    #scene-28-online-delivery-path .cap {
+      position: absolute; left: 0; right: 0; top: 760px; text-align: center;
+    }
+    #scene-28-online-delivery-path .cap .l1 {
+      font-size: 38px; font-weight: 500; color: var(--fg); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-28-online-delivery-path .cap .l1 .person { color: var(--soft); }
+    #scene-28-online-delivery-path .cap .l2 {
+      margin-top: 16px; font-size: 33px; font-weight: 400; color: var(--soft); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-28-online-delivery-path .cap .l2 .sock { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-28-online-delivery-path" data-composition-id="scene-28-online-delivery-path" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="conn1"></div>
+      <div class="pipe" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="9640"></div>
+      <div class="socklabel">open socket</div>
+
+      <div class="node process">
+        <div class="nlabel">process</div>
+        <div class="nsub">the sender's</div>
+      </div>
+      <div class="node ds" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="7920" data-sfx-volume="0.42">
+        <div class="nlabel">DS</div>
+        <div class="nsub">delivery</div>
+      </div>
+
+      <div class="phone"><div class="screen" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="10920"></div></div>
+      <div class="online" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4940" data-sfx-volume="0.35"><span class="dot"></span><span class="otext">online</span></div>
+
+      <div class="msg" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="6600" data-sfx-volume="0.42"></div>
+
+      <div class="cap">
+        <div class="l1">Either way, it still has to reach a <span class="person">person</span>.</div>
+        <div class="l2">Online, it flows straight down their <span class="sock">open socket</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-28-online-delivery-path";
+
+    // Host data-start = 274.08 → scene-local = global − 274.08. Chunk first word "Either" 274.58 = local 0.50.
+
+    // Entrance crossfade over scene 27's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // --- Phase 1 (0.5→3.7): the pipeline assembles; the narration reframes to "a person" ---
+    // "Either way, the message still has to reach a person" 274.58→277.78 (local 0.50→3.70)
+    tl.fromTo(root + " .cap .l1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .process", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.80);
+    tl.fromTo(root + " .ds", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.10);
+    tl.to(root + " .conn1", { scaleX: 1, duration: 0.55, ease: "power2.inOut" }, 1.55);
+    tl.fromTo(root + " .phone", { opacity: 0, x: 28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.10);
+    tl.to(root + " .pipe", { scaleX: 1, duration: 0.65, ease: "power2.inOut" }, 2.30);
+    tl.fromTo(root + " .socklabel", { opacity: 0 }, { opacity: 0.55, duration: 0.5, ease: "sine.out" }, 2.50);
+    // "person" 277.32→277.78 (local 3.24→3.70) — the recipient device wakes as the human endpoint:
+    // its outline brightens and the screen lights a NEUTRAL glow (a present person, not yet the green message)
+    tl.to(root + " .phone", { borderColor: "rgba(195, 203, 199, 0.9)", boxShadow: "0 0 38px rgba(195, 203, 199, 0.26)", duration: 0.5, ease: "power2.out" }, 3.24);
+    tl.fromTo(root + " .phone .screen", { boxShadow: "inset 0 0 0 rgba(195, 203, 199, 0)" }, { boxShadow: "inset 0 0 26px rgba(195, 203, 199, 0.22)", duration: 0.5, ease: "power2.out" }, 3.24);
+
+    // --- Phase 2 (4.5→11.1): the message travels the path ---
+    // "If they are online" 278.62→279.54 (local 4.54→5.46) — the second caption + the online presence lights
+    tl.fromTo(root + " .cap .l2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.54);
+    tl.fromTo(root + " .online", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "sine.out" }, 4.94);
+
+    // "your process" 280.32→280.84 (local 6.24→6.76) — the sender's process highlights, the message appears in it
+    tl.to(root + " .process", { borderColor: "rgba(125, 211, 252, 0.6)", boxShadow: "0 0 36px rgba(125, 211, 252, 0.12)", duration: 0.4, ease: "power2.out" }, 6.24);
+    tl.fromTo(root + " .msg", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 6.60);
+
+    // "hands it straight to DS" 280.88→282.39 (local 6.80→8.31) — the chip travels process→DS; DS ignites
+    tl.to(root + " .msg", { x: 520, duration: 1.0, ease: "power2.inOut" }, 6.90);
+    tl.to(root + " .conn1", { background: "linear-gradient(90deg, rgba(37,211,102,0.35), rgba(37,211,102,0.6))", duration: 0.5, ease: "power1.out" }, 6.90);
+    // "DS" 282.00→282.39 (local 7.92→8.31) — the delivery service ignites sky-blue as the chip lands:
+    // border brightens, glow swells, a faint sky fill, and a quick scale pop to mark the hand-off
+    tl.to(root + " .ds", { borderColor: "rgba(125, 211, 252, 0.95)", boxShadow: "0 0 56px rgba(125, 211, 252, 0.3)", backgroundColor: "rgba(125, 211, 252, 0.06)", duration: 0.4, ease: "power2.out" }, 7.92);
+    tl.to(root + " .ds", { scale: 1.06, duration: 0.16, ease: "power2.out" }, 7.92);
+    tl.to(root + " .ds", { scale: 1, duration: 0.36, ease: "back.out(2)" }, 8.08);
+    tl.to(root + " .msg", { scale: 1.12, duration: 0.16, ease: "power2.out" }, 7.92);
+    tl.to(root + " .msg", { scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.08);
+
+    // "and it flows right down their open socket" 283.72→285.64 (local 9.64→11.56) —
+    // the chip flows down the socket pipe to the recipient; the pipe lights green as it passes
+    tl.to(root + " .msg", { x: 1275, duration: 1.2, ease: "power2.inOut" }, 9.64);
+    tl.to(root + " .pipe", { background: "linear-gradient(90deg, rgba(37,211,102,0.5), rgba(37,211,102,0.65))", duration: 0.7, ease: "power1.out" }, 9.64);
+    // "open socket" 284.92→285.64 (local 10.84→11.56) — the socket label lights, the chip arrives, the screen glows green
+    tl.to(root + " .socklabel", { opacity: 1, color: "#25d366", duration: 0.4, ease: "power2.out" }, 10.84);
+    tl.to(root + " .phone .screen", { boxShadow: "inset 0 0 30px rgba(37, 211, 102, 0.5)", borderColor: "rgba(37,211,102,0.4)", duration: 0.5, ease: "power2.out" }, 10.92);
+    tl.to(root + " .phone", { scale: 1.05, duration: 0.18, ease: "power2.out" }, 10.92);
+    tl.to(root + " .phone", { scale: 1, duration: 0.45, ease: "back.out(2)" }, 11.10);
+    // the chip merges into the screen
+    tl.to(root + " .msg", { opacity: 0, duration: 0.3, ease: "power1.in" }, 11.04);
+
+    // idle — the whole pipeline drifts faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 4.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-28-online-delivery-path"] = tl;
+  </script>
+</body>
+</html>

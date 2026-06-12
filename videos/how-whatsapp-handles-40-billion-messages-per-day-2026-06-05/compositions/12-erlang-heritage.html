@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 12 — Erlang, out of the telecom world</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-12-erlang-heritage { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-12-erlang-heritage .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* oversized ghost Erlang mark — depth layer, fixed */
+    #scene-12-erlang-heritage .ghost {
+      position: absolute; left: 1120px; top: 180px; width: 640px; height: 640px;
+      background-color: var(--dim);
+      -webkit-mask: url("../assets/icons/erlang.svg") center / contain no-repeat;
+      mask: url("../assets/icons/erlang.svg") center / contain no-repeat;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* foreground referent block — the named anchor */
+    #scene-12-erlang-heritage .hero {
+      position: absolute; left: 280px; top: 396px;
+      display: flex; align-items: center; gap: 38px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-12-erlang-heritage .hero .mark {
+      width: 124px; height: 124px; background-color: var(--fg);
+      -webkit-mask: url("../assets/icons/erlang.svg") center / contain no-repeat;
+      mask: url("../assets/icons/erlang.svg") center / contain no-repeat;
+    }
+    #scene-12-erlang-heritage .hero .name {
+      font-size: 108px; font-weight: 900; color: var(--fg); letter-spacing: 0.01em;
+    }
+
+    /* heritage annotation */
+    #scene-12-erlang-heritage .annot {
+      position: absolute; left: 286px; top: 580px;
+      font-size: 30px; font-weight: 400; color: var(--soft);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-12-erlang-heritage .annot .org { color: var(--muted); }
+
+    /* narration caption */
+    #scene-12-erlang-heritage .cap {
+      position: absolute; left: 0; right: 0; top: 880px; text-align: center;
+      font-size: 40px; font-weight: 500; color: var(--soft);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-12-erlang-heritage" data-composition-id="scene-12-erlang-heritage" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="ghost" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1000" data-sfx-volume="0.42"></div>
+
+      <div class="hero" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3350" data-sfx-volume="0.42">
+        <div class="mark"></div>
+        <div class="name">Erlang</div>
+      </div>
+
+      <div class="annot" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6150" data-sfx-volume="0.35">
+        born in the telecom world <span class="org">&mdash; Ericsson, 1986</span>
+      </div>
+    </div>
+
+    <div class="cap">The backend was built almost entirely in&hellip;</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-12-erlang-heritage";
+
+    // Host data-start = 109.76 → scene-local = global − 109.76.
+
+    // Entrance crossfade over scene 11's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "The backend" 110.26 (local 0.50) — narration caption sets up the reveal
+    tl.fromTo(root + " .cap", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+
+    // "built" 111.10 (local 1.34) — the ghost mark surfaces in the depth field
+    tl.fromTo(root + " .ghost", { opacity: 0 }, { opacity: 0.16, duration: 1.0, ease: "sine.out" }, 1.0);
+
+    // "Erlang," 112.98 (local 3.22) — the referent block rises and settles
+    tl.fromTo(root + " .hero",
+      { opacity: 0, y: 26 },
+      { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 3.22);
+    // bloom as the name finishes — infrastructure term, sky-blue
+    tl.to(root + " .hero .name", {
+      textShadow: "0 0 30px rgba(125, 211, 252, 0.3)",
+      duration: 0.45, ease: "power2.out"
+    }, 3.68);
+
+    // "language" 114.20 (local 4.44) — caption recedes, the name owns the frame
+    tl.to(root + " .cap", { opacity: 0.45, duration: 0.5, ease: "sine.inOut" }, 4.44);
+
+    // "telecom" 115.80 (local 6.04) — heritage annotation wipes in under the name
+    tl.fromTo(root + " .annot",
+      { opacity: 0, x: -22 },
+      { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 6.04);
+
+    // "world." 116.28 (local 6.52) — ghost mark breathes up slightly: lineage acknowledged
+    tl.to(root + " .ghost", { opacity: 0.22, duration: 0.5, ease: "sine.out" }, 6.52);
+    tl.to(root + " .ghost", { opacity: 0.16, duration: 0.7, ease: "sine.inOut" }, 7.02);
+
+    // idle — stage drifts slightly (finite yoyo)
+    tl.to(root + " .stage", { y: -5, duration: 3.0, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-12-erlang-heritage"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 73 — back in 2011, one box already held around a million</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-73-box { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-73-box .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-73-box .date {
+      position: absolute; left: 0; right: 0; top: 286px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 50px;
+      color: var(--accent-2); letter-spacing: 0.14em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-73-box .box {
+      position: absolute; left: 960px; top: 404px; margin: -44px 0 0 -44px;
+      width: 88px; height: 88px; border-radius: 18px;
+      border: 2.6px solid var(--accent-2); background: rgba(125,211,252,0.12);
+      box-shadow: 0 0 24px rgba(125,211,252,0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-73-box .box .core {
+      position: absolute; left: 50%; top: 50%; margin: -9px 0 0 -9px;
+      width: 18px; height: 18px; border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 12px rgba(125,211,252,0.7); will-change: transform;
+    }
+    #scene-73-box .boxlbl {
+      position: absolute; left: 0; right: 0; top: 470px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      color: var(--accent-2); letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0; will-change: opacity;
+    }
+
+    #scene-73-box .count {
+      position: absolute; left: 0; right: 0; top: 540px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 100px; line-height: 1;
+      color: var(--accent); letter-spacing: -0.02em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+    #scene-73-box .countlbl {
+      position: absolute; left: 0; right: 0; top: 686px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 30px;
+      color: var(--muted); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-73-box" data-composition-id="scene-73-box" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="date" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.35">2011</div>
+
+      <div class="box" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2120" data-sfx-volume="0.35"><div class="core"></div></div>
+      <div class="boxlbl">one box</div>
+
+      <div class="count" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4220" data-sfx-volume="0.42">&asymp; 0</div>
+      <div class="countlbl">connections held</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-73-box";
+
+    // Host data-start = 549.84 → scene-local = global − 549.84. Chunk first word "Back" 550.34 = local 0.50.
+
+    const countEl = document.querySelector(root + " .count");
+    const counter = { v: 0 };
+    const fmt = (n) => "≈ " + Math.round(n).toLocaleString("en-US");
+
+    // Entrance crossfade over scene 72's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Back in 2011" 550.34→550.82 (local 0.50→0.98) — the date
+    tl.fromTo(root + " .date", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+
+    // "one box already held" 551.96→553.42 (local 2.12→3.04) — the single machine
+    tl.fromTo(root + " .box", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.44, ease: "back.out(1.6)" }, 2.12);
+    tl.fromTo(root + " .boxlbl", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 2.46);
+    tl.to(root + " .box .core", { scale: 1.4, duration: 0.4, ease: "sine.inOut", repeat: 5, yoyo: true }, 2.5);
+
+    // "around a million." 553.46→554.06 (local 3.62→4.22) — the counter climbs to ~a million
+    tl.fromTo(root + " .count", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, 3.04);
+    tl.fromTo(root + " .countlbl", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, 3.30);
+    tl.to(counter, {
+      v: 1000000, duration: 1.18, ease: "power2.out",
+      onUpdate() { countEl.textContent = fmt(counter.v); }
+    }, 3.10);
+    tl.fromTo(root + " .count", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 38px rgba(37,211,102,0.45)", duration: 0.5, ease: "power2.out" }, 4.0);
+    tl.to(root + " .count", { scale: 1.06, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 4.22);
+
+    window.__timelines["scene-73-box"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Substrate — persistent background</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #080d0a;            /* deep green-black base */
+      --accent: #25d366;
+      --accent-2: #7dd3fc;
+      --grid: rgba(120, 196, 158, 0.05);   /* faint desaturated-green grid lines */
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: var(--bg);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #substrate { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* The drifting field carries the grid + the network nodes together, so the
+       glowing intersections stay locked to their grid crossings as it moves.
+       inset:-60px keeps the drift from ever revealing an edge. No center mask,
+       so no vignette falloff — the grid reads edge-to-edge and uniform. */
+    #substrate .field {
+      position: absolute; inset: -60px; will-change: transform;
+      background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+      background-size: 120px 120px;
+    }
+
+    /* A handful of grid intersections glow faint WhatsApp-green — live nodes on
+       a messaging network. Positions are multiples of 120px (field-local), so
+       each sits exactly on a crossing. Two weights: bright + dim. */
+    #substrate .node {
+      position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px;
+      border-radius: 50%; background: var(--accent);
+      will-change: opacity, transform;
+    }
+    #substrate .node.bright { box-shadow: 0 0 12px 2px rgba(37, 211, 102, 0.38); opacity: 0.85; }
+    #substrate .node.dim    { box-shadow: 0 0 8px 1px rgba(37, 211, 102, 0.22);  opacity: 0.5; width: 6px; height: 6px; }
+
+    /* Two whisper-faint connectors imply the mesh without drawing attention. */
+    #substrate .links { position: absolute; inset: -60px; }
+    #substrate .links line { stroke: rgba(37, 211, 102, 0.10); stroke-width: 1; }
+  </style>
+</head>
+<body>
+  <div id="substrate" data-composition-id="substrate" data-width="1920" data-height="1080">
+    <div class="field" data-layout-allow-overflow>
+      <svg class="links" width="2040" height="1200" viewBox="0 0 2040 1200" data-layout-allow-overflow>
+        <line x1="360" y1="360" x2="840" y2="240"></line>
+        <line x1="1200" y1="600" x2="1560" y2="480"></line>
+      </svg>
+      <div class="node bright" style="left:360px;  top:360px;"></div>
+      <div class="node dim"    style="left:840px;  top:240px;"></div>
+      <div class="node dim"    style="left:1200px; top:600px;"></div>
+      <div class="node dim"    style="left:600px;  top:840px;"></div>
+      <div class="node dim"    style="left:1560px; top:480px;"></div>
+      <div class="node bright" style="left:960px;  top:960px;"></div>
+      <div class="node dim"    style="left:1680px; top:840px;"></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Voiceover runs 682.789s. The field drifts on a finite yoyo cycle that covers it.
+    // field slow slide: 61s * 12 = 732s
+    tl.to("#substrate .field", { x: 48, y: 24, duration: 61, ease: "sine.inOut", repeat: 11, yoyo: true }, 0);
+
+    // Nodes breathe on their own slow cycles, staggered — a network quietly alive.
+    tl.to("#substrate .node.bright", { opacity: 1,    duration: 7,  ease: "sine.inOut", repeat: 99, yoyo: true, stagger: 3.5 }, 0);
+    tl.to("#substrate .node.dim",    { opacity: 0.72, duration: 9,  ease: "sine.inOut", repeat: 99, yoyo: true, stagger: 2.2 }, 1);
+
+    window.__timelines["substrate"] = tl;
+  </script>
+</body>
+</html>

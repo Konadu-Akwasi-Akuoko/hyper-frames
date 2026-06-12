@@ -1,0 +1,3029 @@
+{
+  "source": "transcript.json",
+  "audio_duration_secs": 682.789,
+  "language_code": "eng",
+  "word_count": 1431,
+  "config": {
+    "pause_threshold_secs": 0.4,
+    "scene_pause_threshold_secs": 0.6,
+    "emphatic_top_n": 15,
+    "anchor_phrase_count": 78
+  },
+  "anchors": [
+    {
+      "phrase": "You sent a message on WhatsApp today",
+      "matches": [
+        {
+          "word_index": 0,
+          "start": 0.36,
+          "end": 2.5,
+          "matched_text": "You sent a message on WhatsApp today"
+        }
+      ]
+    },
+    {
+      "phrase": "that little tap",
+      "matches": [
+        {
+          "word_index": 17,
+          "start": 7.6,
+          "end": 8.54,
+          "matched_text": "that little tap"
+        }
+      ]
+    },
+    {
+      "phrase": "forty billion messages a day",
+      "matches": []
+    },
+    {
+      "phrase": "Two million live connections on a single server",
+      "matches": [
+        {
+          "word_index": 27,
+          "start": 13.06,
+          "end": 16.2,
+          "matched_text": "Two million live connections on a single server."
+        }
+      ]
+    },
+    {
+      "phrase": "thirty-two engineers running all of it",
+      "matches": []
+    },
+    {
+      "phrase": "should not have been able to move that much",
+      "matches": [
+        {
+          "word_index": 46,
+          "start": 23.82,
+          "end": 26.24,
+          "matched_text": "should not have been able to move that much."
+        }
+      ]
+    },
+    {
+      "phrase": "one persistent TCP connection",
+      "matches": [
+        {
+          "word_index": 85,
+          "start": 40.94,
+          "end": 43.5,
+          "matched_text": "one persistent TCP connection."
+        }
+      ]
+    },
+    {
+      "phrase": "a single long-lived socket",
+      "matches": [
+        {
+          "word_index": 89,
+          "start": 44.44,
+          "end": 46.68,
+          "matched_text": "A single long-lived socket,"
+        }
+      ]
+    },
+    {
+      "phrase": "a warm pipe has a price",
+      "matches": [
+        {
+          "word_index": 106,
+          "start": 54.96,
+          "end": 56.9,
+          "matched_text": "a warm pipe has a price."
+        }
+      ]
+    },
+    {
+      "phrase": "keeping the connections alive",
+      "matches": []
+    },
+    {
+      "phrase": "FunXMPP",
+      "matches": []
+    },
+    {
+      "phrase": "single-byte tokens",
+      "matches": []
+    },
+    {
+      "phrase": "a process that exists only for you",
+      "matches": [
+        {
+          "word_index": 192,
+          "start": 99.8,
+          "end": 102.66,
+          "matched_text": "a process that exists only for you."
+        }
+      ]
+    },
+    {
+      "phrase": "the actor model",
+      "matches": [
+        {
+          "word_index": 208,
+          "start": 107.94,
+          "end": 109.16,
+          "matched_text": "the actor model."
+        }
+      ]
+    },
+    {
+      "phrase": "Erlang",
+      "matches": [
+        {
+          "word_index": 218,
+          "start": 112.98,
+          "end": 113.44,
+          "matched_text": "Erlang,"
+        },
+        {
+          "word_index": 292,
+          "start": 149.06,
+          "end": 149.38,
+          "matched_text": "Erlang"
+        },
+        {
+          "word_index": 305,
+          "start": 155.02,
+          "end": 155.68,
+          "matched_text": "Erlang"
+        },
+        {
+          "word_index": 1049,
+          "start": 505.14,
+          "end": 505.58,
+          "matched_text": "Erlang"
+        },
+        {
+          "word_index": 1165,
+          "start": 562.38,
+          "end": 562.84,
+          "matched_text": "Erlang"
+        }
+      ]
+    },
+    {
+      "phrase": "BEAM virtual machine",
+      "matches": [
+        {
+          "word_index": 237,
+          "start": 121.19,
+          "end": 122.52,
+          "matched_text": "BEAM virtual machine."
+        }
+      ]
+    },
+    {
+      "phrase": "one tiny, isolated worker per phone",
+      "matches": [
+        {
+          "word_index": 248,
+          "start": 126.32,
+          "end": 128.84,
+          "matched_text": "one tiny isolated worker per phone,"
+        }
+      ]
+    },
+    {
+      "phrase": "let it crash",
+      "matches": [
+        {
+          "word_index": 296,
+          "start": 151.04,
+          "end": 151.74,
+          "matched_text": "let it crash."
+        }
+      ]
+    },
+    {
+      "phrase": "a supervisor respawns a clean one",
+      "matches": [
+        {
+          "word_index": 277,
+          "start": 142.62,
+          "end": 144.84,
+          "matched_text": "a supervisor respawns a clean one"
+        }
+      ]
+    },
+    {
+      "phrase": "That was the trade they made",
+      "matches": [
+        {
+          "word_index": 341,
+          "start": 168.52,
+          "end": 170.24,
+          "matched_text": "That was the trade they made."
+        }
+      ]
+    },
+    {
+      "phrase": "Mnesia",
+      "matches": [
+        {
+          "word_index": 369,
+          "start": 184.04,
+          "end": 184.58,
+          "matched_text": "Mnesia,"
+        }
+      ]
+    },
+    {
+      "phrase": "routing table",
+      "matches": [
+        {
+          "word_index": 377,
+          "start": 190.64,
+          "end": 191.44,
+          "matched_text": "routing table"
+        }
+      ]
+    },
+    {
+      "phrase": "two terabytes",
+      "matches": [
+        {
+          "word_index": 387,
+          "start": 195.58,
+          "end": 196.28,
+          "matched_text": "two terabytes"
+        }
+      ]
+    },
+    {
+      "phrase": "kept in RAM",
+      "matches": [
+        {
+          "word_index": 392,
+          "start": 197.74,
+          "end": 198.68,
+          "matched_text": "kept in RAM."
+        }
+      ]
+    },
+    {
+      "phrase": "server-side fan-out",
+      "matches": [
+        {
+          "word_index": 491,
+          "start": 245.76,
+          "end": 247.16,
+          "matched_text": "server-side fan-out,"
+        }
+      ]
+    },
+    {
+      "phrase": "a group ID",
+      "matches": [
+        {
+          "word_index": 467,
+          "start": 234.3,
+          "end": 235.04,
+          "matched_text": "a group ID."
+        }
+      ]
+    },
+    {
+      "phrase": "twenty billion messages people sent",
+      "matches": []
+    },
+    {
+      "phrase": "forty-four billion delivered",
+      "matches": []
+    },
+    {
+      "phrase": "Sixty-four billion in a single day",
+      "matches": []
+    },
+    {
+      "phrase": "That gap is fan-out",
+      "matches": [
+        {
+          "word_index": 526,
+          "start": 264.28,
+          "end": 266.14,
+          "matched_text": "That gap is fan-out"
+        }
+      ]
+    },
+    {
+      "phrase": "the size of the group",
+      "matches": [
+        {
+          "word_index": 537,
+          "start": 269.32,
+          "end": 270.4,
+          "matched_text": "the size of the group,"
+        }
+      ]
+    },
+    {
+      "phrase": "store-and-forward",
+      "matches": []
+    },
+    {
+      "phrase": "encrypted offline queue",
+      "matches": [
+        {
+          "word_index": 624,
+          "start": 307.36,
+          "end": 309.1,
+          "matched_text": "encrypted offline queue"
+        }
+      ]
+    },
+    {
+      "phrase": "up to thirty days",
+      "matches": []
+    },
+    {
+      "phrase": "a relay, not a mailbox",
+      "matches": [
+        {
+          "word_index": 651,
+          "start": 320.86,
+          "end": 322.62,
+          "matched_text": "a relay, not a mailbox."
+        }
+      ]
+    },
+    {
+      "phrase": "those little ticks you watch",
+      "matches": [
+        {
+          "word_index": 657,
+          "start": 323.68,
+          "end": 325.2,
+          "matched_text": "those little ticks you watch"
+        }
+      ]
+    },
+    {
+      "phrase": "One grey tick",
+      "matches": []
+    },
+    {
+      "phrase": "Two grey ticks",
+      "matches": []
+    },
+    {
+      "phrase": "Two blue ticks",
+      "matches": []
+    },
+    {
+      "phrase": "leaking through onto your screen",
+      "matches": [
+        {
+          "word_index": 696,
+          "start": 340.34,
+          "end": 341.94,
+          "matched_text": "leaking through onto your screen."
+        }
+      ]
+    },
+    {
+      "phrase": "Encryption is where that knowing stops",
+      "matches": [
+        {
+          "word_index": 721,
+          "start": 353.26,
+          "end": 355.68,
+          "matched_text": "Encryption is where that knowing stops."
+        }
+      ]
+    },
+    {
+      "phrase": "Open Whisper Systems",
+      "matches": []
+    },
+    {
+      "phrase": "the Signal Protocol",
+      "matches": [
+        {
+          "word_index": 738,
+          "start": 362.64,
+          "end": 363.8,
+          "matched_text": "the Signal Protocol."
+        }
+      ]
+    },
+    {
+      "phrase": "X3DH",
+      "matches": []
+    },
+    {
+      "phrase": "the Double Ratchet",
+      "matches": [
+        {
+          "word_index": 777,
+          "start": 380.42,
+          "end": 381.2,
+          "matched_text": "the double ratchet"
+        }
+      ]
+    },
+    {
+      "phrase": "ciphertext the server can't read",
+      "matches": [
+        {
+          "word_index": 808,
+          "start": 396.0,
+          "end": 398.46,
+          "matched_text": "ciphertext the server can't read."
+        }
+      ]
+    },
+    {
+      "phrase": "that blindness has a bill",
+      "matches": [
+        {
+          "word_index": 827,
+          "start": 404.48,
+          "end": 406.14,
+          "matched_text": "that blindness has a bill."
+        }
+      ]
+    },
+    {
+      "phrase": "one key per person",
+      "matches": []
+    },
+    {
+      "phrase": "client-side fan-out",
+      "matches": []
+    },
+    {
+      "phrase": "its own identity key",
+      "matches": [
+        {
+          "word_index": 887,
+          "start": 431.9,
+          "end": 433.26,
+          "matched_text": "its own identity key,"
+        }
+      ]
+    },
+    {
+      "phrase": "a directory of where those keys live",
+      "matches": [
+        {
+          "word_index": 911,
+          "start": 443.94,
+          "end": 446.02,
+          "matched_text": "a directory of where those keys live."
+        }
+      ]
+    },
+    {
+      "phrase": "your history doesn't come from the server",
+      "matches": [
+        {
+          "word_index": 925,
+          "start": 449.08,
+          "end": 451.0,
+          "matched_text": "your history doesn't come from the server."
+        }
+      ]
+    },
+    {
+      "phrase": "FreeBSD",
+      "matches": [
+        {
+          "word_index": 963,
+          "start": 463.16,
+          "end": 464.42,
+          "matched_text": "FreeBSD,"
+        },
+        {
+          "word_index": 1015,
+          "start": 486.04,
+          "end": 486.66,
+          "matched_text": "FreeBSD"
+        }
+      ]
+    },
+    {
+      "phrase": "big bare-metal boxes",
+      "matches": []
+    },
+    {
+      "phrase": "patched the BEAM runtime and the FreeBSD kernel",
+      "matches": [
+        {
+          "word_index": 1009,
+          "start": 483.96,
+          "end": 487.06,
+          "matched_text": "patched the BEAM runtime and the FreeBSD kernel"
+        }
+      ]
+    },
+    {
+      "phrase": "control, but it cost them elasticity",
+      "matches": [
+        {
+          "word_index": 1025,
+          "start": 492.42,
+          "end": 495.52,
+          "matched_text": "control, but it cost them elasticity."
+        }
+      ]
+    },
+    {
+      "phrase": "load new code into a running system",
+      "matches": [
+        {
+          "word_index": 1051,
+          "start": 506.14,
+          "end": 508.1,
+          "matched_text": "load new code into a running system,"
+        }
+      ]
+    },
+    {
+      "phrase": "near-zero-downtime",
+      "matches": []
+    },
+    {
+      "phrase": "WhatsApp went dark",
+      "matches": [
+        {
+          "word_index": 1098,
+          "start": 526.849,
+          "end": 527.7,
+          "matched_text": "WhatsApp went dark"
+        }
+      ]
+    },
+    {
+      "phrase": "three and a half hours",
+      "matches": [
+        {
+          "word_index": 1103,
+          "start": 528.1,
+          "end": 529.12,
+          "matched_text": "three and a half hours."
+        }
+      ]
+    },
+    {
+      "phrase": "resilient is not the same as invincible",
+      "matches": [
+        {
+          "word_index": 1076,
+          "start": 517.24,
+          "end": 519.56,
+          "matched_text": "resilient is not the same as invincible."
+        }
+      ]
+    },
+    {
+      "phrase": "absorbs failure",
+      "matches": []
+    },
+    {
+      "phrase": "past two million",
+      "matches": []
+    },
+    {
+      "phrase": "Ten billion a day",
+      "matches": []
+    },
+    {
+      "phrase": "Forty billion out by 2014",
+      "matches": []
+    },
+    {
+      "phrase": "a hundred billion by 2020",
+      "matches": []
+    },
+    {
+      "phrase": "five hundred and fifty servers",
+      "matches": []
+    },
+    {
+      "phrase": "eleven thousand CPU cores",
+      "matches": []
+    },
+    {
+      "phrase": "a hundred and forty-seven million phones",
+      "matches": []
+    },
+    {
+      "phrase": "do-less culture",
+      "matches": []
+    },
+    {
+      "phrase": "No ads, no games, no gimmicks",
+      "matches": [
+        {
+          "word_index": 1260,
+          "start": 610.42,
+          "end": 612.34,
+          "matched_text": "No ads, no games, no gimmicks."
+        }
+      ]
+    },
+    {
+      "phrase": "fourteen million users for every engineer",
+      "matches": []
+    },
+    {
+      "phrase": "let a tiny team sleep at night",
+      "matches": [
+        {
+          "word_index": 1308,
+          "start": 629.82,
+          "end": 632.24,
+          "matched_text": "let a tiny team sleep at night."
+        }
+      ]
+    },
+    {
+      "phrase": "a bus factor waiting to happen",
+      "matches": [
+        {
+          "word_index": 1335,
+          "start": 639.9,
+          "end": 642.4,
+          "matched_text": "a bus factor waiting to happen."
+        }
+      ]
+    },
+    {
+      "phrase": "The leverage and the limits were the same decision",
+      "matches": [
+        {
+          "word_index": 1341,
+          "start": 643.18,
+          "end": 645.96,
+          "matched_text": "The leverage and the limits were the same decision."
+        }
+      ]
+    },
+    {
+      "phrase": "That message you sent earlier",
+      "matches": [
+        {
+          "word_index": 1362,
+          "start": 652.76,
+          "end": 654.18,
+          "matched_text": "That message you sent earlier"
+        }
+      ]
+    },
+    {
+      "phrase": "It made this exact trip",
+      "matches": [
+        {
+          "word_index": 1369,
+          "start": 655.6,
+          "end": 656.98,
+          "matched_text": "it made this exact trip."
+        }
+      ]
+    },
+    {
+      "phrase": "one envelope the server carries but can never open",
+      "matches": []
+    }
+  ],
+  "pauses": [
+    {
+      "after_word_index": 10,
+      "after_word_text": "it.",
+      "gap_secs": 0.7,
+      "start_secs": 4.12,
+      "end_secs": 4.82
+    },
+    {
+      "after_word_index": 13,
+      "after_word_text": "2014,",
+      "gap_secs": 0.66,
+      "start_secs": 5.92,
+      "end_secs": 6.58
+    },
+    {
+      "after_word_index": 19,
+      "after_word_text": "tap",
+      "gap_secs": 0.56,
+      "start_secs": 8.54,
+      "end_secs": 9.1
+    },
+    {
+      "after_word_index": 26,
+      "after_word_text": "day.",
+      "gap_secs": 1.14,
+      "start_secs": 11.92,
+      "end_secs": 13.06
+    },
+    {
+      "after_word_index": 34,
+      "after_word_text": "server.",
+      "gap_secs": 1.26,
+      "start_secs": 16.2,
+      "end_secs": 17.46
+    },
+    {
+      "after_word_index": 37,
+      "after_word_text": "engineers",
+      "gap_secs": 0.82,
+      "start_secs": 19.28,
+      "end_secs": 20.1
+    },
+    {
+      "after_word_index": 41,
+      "after_word_text": "it.",
+      "gap_secs": 0.8,
+      "start_secs": 21.34,
+      "end_secs": 22.14
+    },
+    {
+      "after_word_index": 54,
+      "after_word_text": "much.",
+      "gap_secs": 0.76,
+      "start_secs": 26.24,
+      "end_secs": 27.0
+    },
+    {
+      "after_word_index": 62,
+      "after_word_text": "much?",
+      "gap_secs": 0.84,
+      "start_secs": 29.76,
+      "end_secs": 30.6
+    },
+    {
+      "after_word_index": 65,
+      "after_word_text": "message",
+      "gap_secs": 0.78,
+      "start_secs": 31.68,
+      "end_secs": 32.46
+    },
+    {
+      "after_word_index": 72,
+      "after_word_text": "send.",
+      "gap_secs": 0.8,
+      "start_secs": 34.7,
+      "end_secs": 35.5
+    },
+    {
+      "after_word_index": 88,
+      "after_word_text": "connection.",
+      "gap_secs": 0.94,
+      "start_secs": 43.5,
+      "end_secs": 44.44
+    },
+    {
+      "after_word_index": 92,
+      "after_word_text": "socket,",
+      "gap_secs": 0.86,
+      "start_secs": 46.68,
+      "end_secs": 47.54
+    },
+    {
+      "after_word_index": 99,
+      "after_word_text": "hours.",
+      "gap_secs": 1.06,
+      "start_secs": 50.8,
+      "end_secs": 51.86
+    },
+    {
+      "after_word_index": 104,
+      "after_word_text": "message.",
+      "gap_secs": 0.97,
+      "start_secs": 53.61,
+      "end_secs": 54.58
+    },
+    {
+      "after_word_index": 111,
+      "after_word_text": "price.",
+      "gap_secs": 1.0,
+      "start_secs": 56.9,
+      "end_secs": 57.9
+    },
+    {
+      "after_word_index": 116,
+      "after_word_text": "memory",
+      "gap_secs": 1.06,
+      "start_secs": 59.98,
+      "end_secs": 61.04
+    },
+    {
+      "after_word_index": 125,
+      "after_word_text": "hold",
+      "gap_secs": 0.7,
+      "start_secs": 63.44,
+      "end_secs": 64.14
+    },
+    {
+      "after_word_index": 131,
+      "after_word_text": "said.",
+      "gap_secs": 1.22,
+      "start_secs": 65.96,
+      "end_secs": 67.18
+    },
+    {
+      "after_word_index": 137,
+      "after_word_text": "millions",
+      "gap_secs": 0.46,
+      "start_secs": 70.34,
+      "end_secs": 70.8
+    },
+    {
+      "after_word_index": 141,
+      "after_word_text": "phones,",
+      "gap_secs": 0.86,
+      "start_secs": 72.54,
+      "end_secs": 73.4
+    },
+    {
+      "after_word_index": 147,
+      "after_word_text": "alive",
+      "gap_secs": 0.46,
+      "start_secs": 75.5,
+      "end_secs": 75.96
+    },
+    {
+      "after_word_index": 151,
+      "after_word_text": "part.",
+      "gap_secs": 2.28,
+      "start_secs": 77.52,
+      "end_secs": 79.8
+    },
+    {
+      "after_word_index": 156,
+      "after_word_text": "leaves,",
+      "gap_secs": 0.92,
+      "start_secs": 81.98,
+      "end_secs": 82.9
+    },
+    {
+      "after_word_index": 166,
+      "after_word_text": "called",
+      "gap_secs": 0.78,
+      "start_secs": 86.8,
+      "end_secs": 87.58
+    },
+    {
+      "after_word_index": 168,
+      "after_word_text": "XMPP,",
+      "gap_secs": 1.08,
+      "start_secs": 88.96,
+      "end_secs": 90.04
+    },
+    {
+      "after_word_index": 180,
+      "after_word_text": "battery.",
+      "gap_secs": 0.66,
+      "start_secs": 94.92,
+      "end_secs": 95.58
+    },
+    {
+      "after_word_index": 198,
+      "after_word_text": "you.",
+      "gap_secs": 1.24,
+      "start_secs": 102.66,
+      "end_secs": 103.9
+    },
+    {
+      "after_word_index": 205,
+      "after_word_text": "design.",
+      "gap_secs": 0.9,
+      "start_secs": 106.14,
+      "end_secs": 107.04
+    },
+    {
+      "after_word_index": 210,
+      "after_word_text": "model.",
+      "gap_secs": 1.1,
+      "start_secs": 109.16,
+      "end_secs": 110.26
+    },
+    {
+      "after_word_index": 218,
+      "after_word_text": "Erlang,",
+      "gap_secs": 0.64,
+      "start_secs": 113.44,
+      "end_secs": 114.08
+    },
+    {
+      "after_word_index": 227,
+      "after_word_text": "world.",
+      "gap_secs": 1.0,
+      "start_secs": 116.7,
+      "end_secs": 117.7
+    },
+    {
+      "after_word_index": 229,
+      "after_word_text": "connection",
+      "gap_secs": 0.56,
+      "start_secs": 118.46,
+      "end_secs": 119.02
+    },
+    {
+      "after_word_index": 239,
+      "after_word_text": "machine.",
+      "gap_secs": 1.0,
+      "start_secs": 122.52,
+      "end_secs": 123.52
+    },
+    {
+      "after_word_index": 242,
+      "after_word_text": "thread,",
+      "gap_secs": 0.64,
+      "start_secs": 124.16,
+      "end_secs": 124.8
+    },
+    {
+      "after_word_index": 253,
+      "after_word_text": "phone,",
+      "gap_secs": 0.6,
+      "start_secs": 128.84,
+      "end_secs": 129.44
+    },
+    {
+      "after_word_index": 262,
+      "after_word_text": "open.",
+      "gap_secs": 2.48,
+      "start_secs": 132.2,
+      "end_secs": 134.68
+    },
+    {
+      "after_word_index": 266,
+      "after_word_text": "everything.",
+      "gap_secs": 1.16,
+      "start_secs": 136.42,
+      "end_secs": 137.58
+    },
+    {
+      "after_word_index": 270,
+      "after_word_text": "crashes,",
+      "gap_secs": 0.82,
+      "start_secs": 139.18,
+      "end_secs": 140.0
+    },
+    {
+      "after_word_index": 282,
+      "after_word_text": "one",
+      "gap_secs": 0.78,
+      "start_secs": 144.84,
+      "end_secs": 145.62
+    },
+    {
+      "after_word_index": 291,
+      "after_word_text": "it.",
+      "gap_secs": 0.88,
+      "start_secs": 148.18,
+      "end_secs": 149.06
+    },
+    {
+      "after_word_index": 295,
+      "after_word_text": "this",
+      "gap_secs": 0.54,
+      "start_secs": 150.5,
+      "end_secs": 151.04
+    },
+    {
+      "after_word_index": 298,
+      "after_word_text": "crash.",
+      "gap_secs": 0.94,
+      "start_secs": 151.74,
+      "end_secs": 152.68
+    },
+    {
+      "after_word_index": 304,
+      "after_word_text": "though.",
+      "gap_secs": 1.1,
+      "start_secs": 153.92,
+      "end_secs": 155.02
+    },
+    {
+      "after_word_index": 315,
+      "after_word_text": "match,",
+      "gap_secs": 0.78,
+      "start_secs": 158.64,
+      "end_secs": 159.42
+    },
+    {
+      "after_word_index": 325,
+      "after_word_text": "speed.",
+      "gap_secs": 0.76,
+      "start_secs": 162.28,
+      "end_secs": 163.04
+    },
+    {
+      "after_word_index": 330,
+      "after_word_text": "for",
+      "gap_secs": 0.4,
+      "start_secs": 164.14,
+      "end_secs": 164.54
+    },
+    {
+      "after_word_index": 340,
+      "after_word_text": "over.",
+      "gap_secs": 0.8,
+      "start_secs": 167.72,
+      "end_secs": 168.52
+    },
+    {
+      "after_word_index": 346,
+      "after_word_text": "made.",
+      "gap_secs": 1.74,
+      "start_secs": 170.24,
+      "end_secs": 171.98
+    },
+    {
+      "after_word_index": 352,
+      "after_word_text": "destination.",
+      "gap_secs": 0.98,
+      "start_secs": 173.94,
+      "end_secs": 174.92
+    },
+    {
+      "after_word_index": 357,
+      "after_word_text": "question:",
+      "gap_secs": 1.28,
+      "start_secs": 176.94,
+      "end_secs": 178.22
+    },
+    {
+      "after_word_index": 364,
+      "after_word_text": "now?",
+      "gap_secs": 1.14,
+      "start_secs": 180.88,
+      "end_secs": 182.02
+    },
+    {
+      "after_word_index": 366,
+      "after_word_text": "answer",
+      "gap_secs": 0.54,
+      "start_secs": 182.62,
+      "end_secs": 183.16
+    },
+    {
+      "after_word_index": 369,
+      "after_word_text": "Mnesia,",
+      "gap_secs": 1.16,
+      "start_secs": 184.58,
+      "end_secs": 185.74
+    },
+    {
+      "after_word_index": 373,
+      "after_word_text": "database.",
+      "gap_secs": 1.62,
+      "start_secs": 188.4,
+      "end_secs": 190.02
+    },
+    {
+      "after_word_index": 385,
+      "after_word_text": "server.",
+      "gap_secs": 0.84,
+      "start_secs": 194.14,
+      "end_secs": 194.98
+    },
+    {
+      "after_word_index": 390,
+      "after_word_text": "it,",
+      "gap_secs": 0.78,
+      "start_secs": 196.72,
+      "end_secs": 197.5
+    },
+    {
+      "after_word_index": 394,
+      "after_word_text": "RAM.",
+      "gap_secs": 1.14,
+      "start_secs": 198.68,
+      "end_secs": 199.82
+    },
+    {
+      "after_word_index": 406,
+      "after_word_text": "message,",
+      "gap_secs": 0.68,
+      "start_secs": 203.88,
+      "end_secs": 204.56
+    },
+    {
+      "after_word_index": 417,
+      "after_word_text": "demands.",
+      "gap_secs": 1.26,
+      "start_secs": 208.28,
+      "end_secs": 209.54
+    },
+    {
+      "after_word_index": 421,
+      "after_word_text": "expensive",
+      "gap_secs": 0.991,
+      "start_secs": 211.609,
+      "end_secs": 212.6
+    },
+    {
+      "after_word_index": 430,
+      "after_word_text": "carefully,",
+      "gap_secs": 0.91,
+      "start_secs": 216.07,
+      "end_secs": 216.98
+    },
+    {
+      "after_word_index": 438,
+      "after_word_text": "speed.",
+      "gap_secs": 2.72,
+      "start_secs": 220.42,
+      "end_secs": 223.14
+    },
+    {
+      "after_word_index": 448,
+      "after_word_text": "person.",
+      "gap_secs": 0.88,
+      "start_secs": 226.02,
+      "end_secs": 226.9
+    },
+    {
+      "after_word_index": 461,
+      "after_word_text": "once.",
+      "gap_secs": 0.69,
+      "start_secs": 231.2,
+      "end_secs": 231.89
+    },
+    {
+      "after_word_index": 469,
+      "after_word_text": "ID.",
+      "gap_secs": 1.2,
+      "start_secs": 235.04,
+      "end_secs": 236.24
+    },
+    {
+      "after_word_index": 475,
+      "after_word_text": "server.",
+      "gap_secs": 1.12,
+      "start_secs": 238.2,
+      "end_secs": 239.32
+    },
+    {
+      "after_word_index": 480,
+      "after_word_text": "member",
+      "gap_secs": 0.71,
+      "start_secs": 240.95,
+      "end_secs": 241.66
+    },
+    {
+      "after_word_index": 488,
+      "after_word_text": "one.",
+      "gap_secs": 1.14,
+      "start_secs": 243.98,
+      "end_secs": 245.12
+    },
+    {
+      "after_word_index": 492,
+      "after_word_text": "fan-out,",
+      "gap_secs": 0.56,
+      "start_secs": 247.16,
+      "end_secs": 247.72
+    },
+    {
+      "after_word_index": 502,
+      "after_word_text": "up.",
+      "gap_secs": 1.5,
+      "start_secs": 251.22,
+      "end_secs": 252.72
+    },
+    {
+      "after_word_index": 508,
+      "after_word_text": "2014,",
+      "gap_secs": 1.02,
+      "start_secs": 254.3,
+      "end_secs": 255.32
+    },
+    {
+      "after_word_index": 519,
+      "after_word_text": "delivered.",
+      "gap_secs": 1.26,
+      "start_secs": 260.22,
+      "end_secs": 261.48
+    },
+    {
+      "after_word_index": 525,
+      "after_word_text": "day.",
+      "gap_secs": 1.04,
+      "start_secs": 263.24,
+      "end_secs": 264.28
+    },
+    {
+      "after_word_index": 541,
+      "after_word_text": "group,",
+      "gap_secs": 0.58,
+      "start_secs": 270.4,
+      "end_secs": 270.98
+    },
+    {
+      "after_word_index": 547,
+      "after_word_text": "typing.",
+      "gap_secs": 1.94,
+      "start_secs": 272.64,
+      "end_secs": 274.58
+    },
+    {
+      "after_word_index": 549,
+      "after_word_text": "way,",
+      "gap_secs": 0.84,
+      "start_secs": 275.16,
+      "end_secs": 276.0
+    },
+    {
+      "after_word_index": 557,
+      "after_word_text": "person.",
+      "gap_secs": 0.84,
+      "start_secs": 277.78,
+      "end_secs": 278.62
+    },
+    {
+      "after_word_index": 561,
+      "after_word_text": "online,",
+      "gap_secs": 0.78,
+      "start_secs": 279.54,
+      "end_secs": 280.32
+    },
+    {
+      "after_word_index": 568,
+      "after_word_text": "DS",
+      "gap_secs": 0.95,
+      "start_secs": 282.39,
+      "end_secs": 283.34
+    },
+    {
+      "after_word_index": 576,
+      "after_word_text": "socket.",
+      "gap_secs": 1.12,
+      "start_secs": 285.64,
+      "end_secs": 286.76
+    },
+    {
+      "after_word_index": 584,
+      "after_word_text": "directly.",
+      "gap_secs": 0.66,
+      "start_secs": 289.3,
+      "end_secs": 289.96
+    },
+    {
+      "after_word_index": 593,
+      "after_word_text": "called",
+      "gap_secs": 0.46,
+      "start_secs": 293.48,
+      "end_secs": 293.94
+    },
+    {
+      "after_word_index": 596,
+      "after_word_text": "forward.",
+      "gap_secs": 0.76,
+      "start_secs": 295.22,
+      "end_secs": 295.98
+    },
+    {
+      "after_word_index": 602,
+      "after_word_text": "there.",
+      "gap_secs": 0.98,
+      "start_secs": 298.32,
+      "end_secs": 299.3
+    },
+    {
+      "after_word_index": 604,
+      "after_word_text": "die.",
+      "gap_secs": 0.52,
+      "start_secs": 300.02,
+      "end_secs": 300.54
+    },
+    {
+      "after_word_index": 608,
+      "after_word_text": "signal.",
+      "gap_secs": 0.52,
+      "start_secs": 301.8,
+      "end_secs": 302.32
+    },
+    {
+      "after_word_index": 611,
+      "after_word_text": "asleep.",
+      "gap_secs": 0.72,
+      "start_secs": 303.4,
+      "end_secs": 304.12
+    },
+    {
+      "after_word_index": 628,
+      "after_word_text": "waits",
+      "gap_secs": 0.76,
+      "start_secs": 309.78,
+      "end_secs": 310.54
+    },
+    {
+      "after_word_index": 633,
+      "after_word_text": "days.",
+      "gap_secs": 0.96,
+      "start_secs": 312.3,
+      "end_secs": 313.26
+    },
+    {
+      "after_word_index": 638,
+      "after_word_text": "window",
+      "gap_secs": 0.76,
+      "start_secs": 314.64,
+      "end_secs": 315.4
+    },
+    {
+      "after_word_index": 641,
+      "after_word_text": "drains.",
+      "gap_secs": 0.78,
+      "start_secs": 316.5,
+      "end_secs": 317.28
+    },
+    {
+      "after_word_index": 644,
+      "after_word_text": "after",
+      "gap_secs": 0.68,
+      "start_secs": 318.04,
+      "end_secs": 318.72
+    },
+    {
+      "after_word_index": 647,
+      "after_word_text": "gone.",
+      "gap_secs": 0.66,
+      "start_secs": 319.42,
+      "end_secs": 320.08
+    },
+    {
+      "after_word_index": 655,
+      "after_word_text": "mailbox.",
+      "gap_secs": 0.9,
+      "start_secs": 322.62,
+      "end_secs": 323.52
+    },
+    {
+      "after_word_index": 661,
+      "after_word_text": "watch",
+      "gap_secs": 0.46,
+      "start_secs": 325.2,
+      "end_secs": 325.66
+    },
+    {
+      "after_word_index": 666,
+      "after_word_text": "back.",
+      "gap_secs": 0.96,
+      "start_secs": 327.16,
+      "end_secs": 328.12
+    },
+    {
+      "after_word_index": 674,
+      "after_word_text": "it.",
+      "gap_secs": 1.32,
+      "start_secs": 330.14,
+      "end_secs": 331.46
+    },
+    {
+      "after_word_index": 682,
+      "after_word_text": "device.",
+      "gap_secs": 1.12,
+      "start_secs": 333.96,
+      "end_secs": 335.08
+    },
+    {
+      "after_word_index": 686,
+      "after_word_text": "means",
+      "gap_secs": 0.5,
+      "start_secs": 336.12,
+      "end_secs": 336.62
+    },
+    {
+      "after_word_index": 690,
+      "after_word_text": "read.",
+      "gap_secs": 1.18,
+      "start_secs": 337.48,
+      "end_secs": 338.66
+    },
+    {
+      "after_word_index": 700,
+      "after_word_text": "screen.",
+      "gap_secs": 1.52,
+      "start_secs": 341.94,
+      "end_secs": 343.46
+    },
+    {
+      "after_word_index": 703,
+      "after_word_text": "now,",
+      "gap_secs": 0.82,
+      "start_secs": 344.12,
+      "end_secs": 344.94
+    },
+    {
+      "after_word_index": 708,
+      "after_word_text": "everything.",
+      "gap_secs": 0.94,
+      "start_secs": 346.7,
+      "end_secs": 347.64
+    },
+    {
+      "after_word_index": 711,
+      "after_word_text": "live,",
+      "gap_secs": 0.7,
+      "start_secs": 348.38,
+      "end_secs": 349.08
+    },
+    {
+      "after_word_index": 714,
+      "after_word_text": "reconnect,",
+      "gap_secs": 0.5,
+      "start_secs": 350.04,
+      "end_secs": 350.54
+    },
+    {
+      "after_word_index": 720,
+      "after_word_text": "backlog.",
+      "gap_secs": 1.06,
+      "start_secs": 352.2,
+      "end_secs": 353.26
+    },
+    {
+      "after_word_index": 726,
+      "after_word_text": "stops.",
+      "gap_secs": 1.16,
+      "start_secs": 355.68,
+      "end_secs": 356.84
+    },
+    {
+      "after_word_index": 729,
+      "after_word_text": "2014,",
+      "gap_secs": 0.58,
+      "start_secs": 358.06,
+      "end_secs": 358.64
+    },
+    {
+      "after_word_index": 740,
+      "after_word_text": "Protocol.",
+      "gap_secs": 0.74,
+      "start_secs": 363.8,
+      "end_secs": 364.54
+    },
+    {
+      "after_word_index": 744,
+      "after_word_text": "2016,",
+      "gap_secs": 0.58,
+      "start_secs": 365.78,
+      "end_secs": 366.36
+    },
+    {
+      "after_word_index": 755,
+      "after_word_text": "users.",
+      "gap_secs": 1.06,
+      "start_secs": 370.08,
+      "end_secs": 371.14
+    },
+    {
+      "after_word_index": 768,
+      "after_word_text": "key,",
+      "gap_secs": 0.98,
+      "start_secs": 375.32,
+      "end_secs": 376.3
+    },
+    {
+      "after_word_index": 775,
+      "after_word_text": "offline.",
+      "gap_secs": 1.44,
+      "start_secs": 378.06,
+      "end_secs": 379.5
+    },
+    {
+      "after_word_index": 781,
+      "after_word_text": "over,",
+      "gap_secs": 0.78,
+      "start_secs": 381.76,
+      "end_secs": 382.54
+    },
+    {
+      "after_word_index": 789,
+      "after_word_text": "message.",
+      "gap_secs": 0.86,
+      "start_secs": 386.16,
+      "end_secs": 387.02
+    },
+    {
+      "after_word_index": 797,
+      "after_word_text": "rest.",
+      "gap_secs": 1.58,
+      "start_secs": 389.36,
+      "end_secs": 390.94
+    },
+    {
+      "after_word_index": 798,
+      "after_word_text": "Now,",
+      "gap_secs": 0.57,
+      "start_secs": 391.23,
+      "end_secs": 391.8
+    },
+    {
+      "after_word_index": 800,
+      "after_word_text": "routing,",
+      "gap_secs": 0.54,
+      "start_secs": 392.42,
+      "end_secs": 392.96
+    },
+    {
+      "after_word_index": 802,
+      "after_word_text": "queue,",
+      "gap_secs": 0.58,
+      "start_secs": 393.42,
+      "end_secs": 394.0
+    },
+    {
+      "after_word_index": 812,
+      "after_word_text": "read.",
+      "gap_secs": 0.84,
+      "start_secs": 398.46,
+      "end_secs": 399.3
+    },
+    {
+      "after_word_index": 819,
+      "after_word_text": "envelope.",
+      "gap_secs": 0.84,
+      "start_secs": 400.9,
+      "end_secs": 401.74
+    },
+    {
+      "after_word_index": 825,
+      "after_word_text": "inside.",
+      "gap_secs": 0.76,
+      "start_secs": 403.56,
+      "end_secs": 404.32
+    },
+    {
+      "after_word_index": 831,
+      "after_word_text": "bill.",
+      "gap_secs": 1.1,
+      "start_secs": 406.14,
+      "end_secs": 407.24
+    },
+    {
+      "after_word_index": 841,
+      "after_word_text": "them,",
+      "gap_secs": 0.6,
+      "start_secs": 409.74,
+      "end_secs": 410.34
+    },
+    {
+      "after_word_index": 846,
+      "after_word_text": "spam,",
+      "gap_secs": 0.44,
+      "start_secs": 411.64,
+      "end_secs": 412.08
+    },
+    {
+      "after_word_index": 855,
+      "after_word_text": "device.",
+      "gap_secs": 2.54,
+      "start_secs": 414.94,
+      "end_secs": 417.48
+    },
+    {
+      "after_word_index": 862,
+      "after_word_text": "person,",
+      "gap_secs": 1.0,
+      "start_secs": 420.26,
+      "end_secs": 421.26
+    },
+    {
+      "after_word_index": 872,
+      "after_word_text": "device.",
+      "gap_secs": 1.0,
+      "start_secs": 423.86,
+      "end_secs": 424.86
+    },
+    {
+      "after_word_index": 881,
+      "after_word_text": "called",
+      "gap_secs": 0.44,
+      "start_secs": 427.96,
+      "end_secs": 428.4
+    },
+    {
+      "after_word_index": 883,
+      "after_word_text": "fanout.",
+      "gap_secs": 0.88,
+      "start_secs": 429.94,
+      "end_secs": 430.82
+    },
+    {
+      "after_word_index": 890,
+      "after_word_text": "key,",
+      "gap_secs": 1.02,
+      "start_secs": 433.26,
+      "end_secs": 434.28
+    },
+    {
+      "after_word_index": 893,
+      "after_word_text": "sender",
+      "gap_secs": 0.46,
+      "start_secs": 435.02,
+      "end_secs": 435.48
+    },
+    {
+      "after_word_index": 897,
+      "after_word_text": "separately,",
+      "gap_secs": 0.82,
+      "start_secs": 437.64,
+      "end_secs": 438.46
+    },
+    {
+      "after_word_index": 903,
+      "after_word_text": "own.",
+      "gap_secs": 0.98,
+      "start_secs": 440.52,
+      "end_secs": 441.5
+    },
+    {
+      "after_word_index": 909,
+      "after_word_text": "key,",
+      "gap_secs": 0.85,
+      "start_secs": 442.81,
+      "end_secs": 443.66
+    },
+    {
+      "after_word_index": 917,
+      "after_word_text": "live.",
+      "gap_secs": 1.16,
+      "start_secs": 446.02,
+      "end_secs": 447.18
+    },
+    {
+      "after_word_index": 948,
+      "after_word_text": "laptop.",
+      "gap_secs": 1.44,
+      "start_secs": 456.18,
+      "end_secs": 457.62
+    },
+    {
+      "after_word_index": 959,
+      "after_word_text": "to,",
+      "gap_secs": 0.98,
+      "start_secs": 460.18,
+      "end_secs": 461.16
+    },
+    {
+      "after_word_index": 961,
+      "after_word_text": "Linux,",
+      "gap_secs": 0.64,
+      "start_secs": 461.86,
+      "end_secs": 462.5
+    },
+    {
+      "after_word_index": 963,
+      "after_word_text": "FreeBSD,",
+      "gap_secs": 1.18,
+      "start_secs": 464.42,
+      "end_secs": 465.6
+    },
+    {
+      "after_word_index": 976,
+      "after_word_text": "deep.",
+      "gap_secs": 0.8,
+      "start_secs": 469.82,
+      "end_secs": 470.62
+    },
+    {
+      "after_word_index": 986,
+      "after_word_text": "hard",
+      "gap_secs": 0.62,
+      "start_secs": 474.04,
+      "end_secs": 474.66
+    },
+    {
+      "after_word_index": 1000,
+      "after_word_text": "scaling.",
+      "gap_secs": 1.34,
+      "start_secs": 479.72,
+      "end_secs": 481.06
+    },
+    {
+      "after_word_index": 1007,
+      "after_word_text": "hardware.",
+      "gap_secs": 0.8,
+      "start_secs": 482.9,
+      "end_secs": 483.7
+    },
+    {
+      "after_word_index": 1017,
+      "after_word_text": "themselves,",
+      "gap_secs": 0.88,
+      "start_secs": 487.74,
+      "end_secs": 488.62
+    },
+    {
+      "after_word_index": 1021,
+      "after_word_text": "contention.",
+      "gap_secs": 0.821,
+      "start_secs": 490.839,
+      "end_secs": 491.66
+    },
+    {
+      "after_word_index": 1025,
+      "after_word_text": "control,",
+      "gap_secs": 0.74,
+      "start_secs": 493.02,
+      "end_secs": 493.76
+    },
+    {
+      "after_word_index": 1030,
+      "after_word_text": "elasticity.",
+      "gap_secs": 0.82,
+      "start_secs": 495.52,
+      "end_secs": 496.34
+    },
+    {
+      "after_word_index": 1034,
+      "after_word_text": "auto-scaling,",
+      "gap_secs": 0.76,
+      "start_secs": 497.7,
+      "end_secs": 498.46
+    },
+    {
+      "after_word_index": 1035,
+      "after_word_text": "so",
+      "gap_secs": 0.42,
+      "start_secs": 498.74,
+      "end_secs": 499.16
+    },
+    {
+      "after_word_index": 1048,
+      "after_word_text": "trick.",
+      "gap_secs": 0.82,
+      "start_secs": 504.32,
+      "end_secs": 505.14
+    },
+    {
+      "after_word_index": 1057,
+      "after_word_text": "system,",
+      "gap_secs": 0.88,
+      "start_secs": 508.1,
+      "end_secs": 508.98
+    },
+    {
+      "after_word_index": 1063,
+      "after_word_text": "restart",
+      "gap_secs": 0.56,
+      "start_secs": 510.98,
+      "end_secs": 511.54
+    },
+    {
+      "after_word_index": 1068,
+      "after_word_text": "stop.",
+      "gap_secs": 0.8,
+      "start_secs": 513.22,
+      "end_secs": 514.02
+    },
+    {
+      "after_word_index": 1074,
+      "after_word_text": "claim.",
+      "gap_secs": 0.96,
+      "start_secs": 515.84,
+      "end_secs": 516.8
+    },
+    {
+      "after_word_index": 1082,
+      "after_word_text": "invincible.",
+      "gap_secs": 1.22,
+      "start_secs": 519.56,
+      "end_secs": 520.78
+    },
+    {
+      "after_word_index": 1088,
+      "after_word_text": "2014,",
+      "gap_secs": 0.52,
+      "start_secs": 522.84,
+      "end_secs": 523.36
+    },
+    {
+      "after_word_index": 1097,
+      "after_word_text": "deal,",
+      "gap_secs": 0.509,
+      "start_secs": 526.34,
+      "end_secs": 526.849
+    },
+    {
+      "after_word_index": 1107,
+      "after_word_text": "hours.",
+      "gap_secs": 1.0,
+      "start_secs": 529.12,
+      "end_secs": 530.12
+    },
+    {
+      "after_word_index": 1115,
+      "after_word_text": "it.",
+      "gap_secs": 2.36,
+      "start_secs": 533.46,
+      "end_secs": 535.82
+    },
+    {
+      "after_word_index": 1119,
+      "after_word_text": "message,",
+      "gap_secs": 0.5,
+      "start_secs": 536.9,
+      "end_secs": 537.4
+    },
+    {
+      "after_word_index": 1126,
+      "after_word_text": "envelope.",
+      "gap_secs": 0.55,
+      "start_secs": 541.83,
+      "end_secs": 542.38
+    },
+    {
+      "after_word_index": 1129,
+      "after_word_text": "it.",
+      "gap_secs": 0.62,
+      "start_secs": 543.74,
+      "end_secs": 544.36
+    },
+    {
+      "after_word_index": 1137,
+      "after_word_text": "connection.",
+      "gap_secs": 0.44,
+      "start_secs": 547.52,
+      "end_secs": 547.96
+    },
+    {
+      "after_word_index": 1140,
+      "after_word_text": "millions.",
+      "gap_secs": 0.96,
+      "start_secs": 549.38,
+      "end_secs": 550.34
+    },
+    {
+      "after_word_index": 1143,
+      "after_word_text": "2011,",
+      "gap_secs": 0.5,
+      "start_secs": 551.46,
+      "end_secs": 551.96
+    },
+    {
+      "after_word_index": 1150,
+      "after_word_text": "million.",
+      "gap_secs": 0.92,
+      "start_secs": 554.54,
+      "end_secs": 555.46
+    },
+    {
+      "after_word_index": 1152,
+      "after_word_text": "2012,",
+      "gap_secs": 0.44,
+      "start_secs": 556.46,
+      "end_secs": 556.9
+    },
+    {
+      "after_word_index": 1157,
+      "after_word_text": "Reed",
+      "gap_secs": 0.44,
+      "start_secs": 559.3,
+      "end_secs": 559.74
+    },
+    {
+      "after_word_index": 1160,
+      "after_word_text": "past",
+      "gap_secs": 0.42,
+      "start_secs": 560.8,
+      "end_secs": 561.22
+    },
+    {
+      "after_word_index": 1167,
+      "after_word_text": "talk.",
+      "gap_secs": 0.86,
+      "start_secs": 563.68,
+      "end_secs": 564.54
+    },
+    {
+      "after_word_index": 1169,
+      "after_word_text": "production,",
+      "gap_secs": 0.52,
+      "start_secs": 565.22,
+      "end_secs": 565.74
+    },
+    {
+      "after_word_index": 1177,
+      "after_word_text": "purpose,",
+      "gap_secs": 0.74,
+      "start_secs": 568.3,
+      "end_secs": 569.04
+    },
+    {
+      "after_word_index": 1183,
+      "after_word_text": "spikes.",
+      "gap_secs": 0.72,
+      "start_secs": 571.16,
+      "end_secs": 571.88
+    },
+    {
+      "after_word_index": 1190,
+      "after_word_text": "it,",
+      "gap_secs": 0.66,
+      "start_secs": 573.92,
+      "end_secs": 574.58
+    },
+    {
+      "after_word_index": 1196,
+      "after_word_text": "2012,",
+      "gap_secs": 0.96,
+      "start_secs": 576.76,
+      "end_secs": 577.72
+    },
+    {
+      "after_word_index": 1201,
+      "after_word_text": "2014,",
+      "gap_secs": 0.96,
+      "start_secs": 579.72,
+      "end_secs": 580.68
+    },
+    {
+      "after_word_index": 1206,
+      "after_word_text": "2020.",
+      "gap_secs": 0.68,
+      "start_secs": 583.54,
+      "end_secs": 584.22
+    },
+    {
+      "after_word_index": 1216,
+      "after_word_text": "small,",
+      "gap_secs": 1.0,
+      "start_secs": 587.04,
+      "end_secs": 588.04
+    },
+    {
+      "after_word_index": 1219,
+      "after_word_text": "servers,",
+      "gap_secs": 0.94,
+      "start_secs": 589.98,
+      "end_secs": 590.92
+    },
+    {
+      "after_word_index": 1223,
+      "after_word_text": "cores,",
+      "gap_secs": 0.799,
+      "start_secs": 592.83,
+      "end_secs": 593.629
+    },
+    {
+      "after_word_index": 1230,
+      "after_word_text": "once",
+      "gap_secs": 0.68,
+      "start_secs": 596.66,
+      "end_secs": 597.34
+    },
+    {
+      "after_word_index": 1232,
+      "after_word_text": "peak,",
+      "gap_secs": 1.1,
+      "start_secs": 597.88,
+      "end_secs": 598.98
+    },
+    {
+      "after_word_index": 1242,
+      "after_word_text": "it.",
+      "gap_secs": 1.06,
+      "start_secs": 601.32,
+      "end_secs": 602.38
+    },
+    {
+      "after_word_index": 1247,
+      "after_word_text": "this?",
+      "gap_secs": 0.8,
+      "start_secs": 603.77,
+      "end_secs": 604.57
+    },
+    {
+      "after_word_index": 1252,
+      "after_word_text": "2009",
+      "gap_secs": 0.49,
+      "start_secs": 606.59,
+      "end_secs": 607.08
+    },
+    {
+      "after_word_index": 1259,
+      "after_word_text": "culture.",
+      "gap_secs": 0.65,
+      "start_secs": 609.77,
+      "end_secs": 610.42
+    },
+    {
+      "after_word_index": 1265,
+      "after_word_text": "gimmicks.",
+      "gap_secs": 0.7,
+      "start_secs": 612.34,
+      "end_secs": 613.04
+    },
+    {
+      "after_word_index": 1273,
+      "after_word_text": "code.",
+      "gap_secs": 0.98,
+      "start_secs": 615.5,
+      "end_secs": 616.48
+    },
+    {
+      "after_word_index": 1283,
+      "after_word_text": "team.",
+      "gap_secs": 0.96,
+      "start_secs": 619.26,
+      "end_secs": 620.22
+    },
+    {
+      "after_word_index": 1287,
+      "after_word_text": "process,",
+      "gap_secs": 0.68,
+      "start_secs": 621.38,
+      "end_secs": 622.06
+    },
+    {
+      "after_word_index": 1293,
+      "after_word_text": "breaks,",
+      "gap_secs": 1.24,
+      "start_secs": 623.92,
+      "end_secs": 625.16
+    },
+    {
+      "after_word_index": 1299,
+      "after_word_text": "pipe,",
+      "gap_secs": 0.5,
+      "start_secs": 627.2,
+      "end_secs": 627.7
+    },
+    {
+      "after_word_index": 1306,
+      "after_word_text": "choice",
+      "gap_secs": 0.56,
+      "start_secs": 628.94,
+      "end_secs": 629.5
+    },
+    {
+      "after_word_index": 1314,
+      "after_word_text": "night.",
+      "gap_secs": 0.72,
+      "start_secs": 632.24,
+      "end_secs": 632.96
+    },
+    {
+      "after_word_index": 1319,
+      "after_word_text": "accident.",
+      "gap_secs": 0.42,
+      "start_secs": 634.84,
+      "end_secs": 635.26
+    },
+    {
+      "after_word_index": 1337,
+      "after_word_text": "factor",
+      "gap_secs": 0.54,
+      "start_secs": 640.6,
+      "end_secs": 641.14
+    },
+    {
+      "after_word_index": 1340,
+      "after_word_text": "happen.",
+      "gap_secs": 0.78,
+      "start_secs": 642.4,
+      "end_secs": 643.18
+    },
+    {
+      "after_word_index": 1349,
+      "after_word_text": "decision.",
+      "gap_secs": 1.64,
+      "start_secs": 645.96,
+      "end_secs": 647.6
+    },
+    {
+      "after_word_index": 1354,
+      "after_word_text": "day",
+      "gap_secs": 0.78,
+      "start_secs": 648.98,
+      "end_secs": 649.76
+    },
+    {
+      "after_word_index": 1361,
+      "after_word_text": "32.",
+      "gap_secs": 0.98,
+      "start_secs": 651.78,
+      "end_secs": 652.76
+    },
+    {
+      "after_word_index": 1368,
+      "after_word_text": "thinking,",
+      "gap_secs": 0.54,
+      "start_secs": 655.06,
+      "end_secs": 655.6
+    },
+    {
+      "after_word_index": 1373,
+      "after_word_text": "trip.",
+      "gap_secs": 0.52,
+      "start_secs": 656.98,
+      "end_secs": 657.5
+    },
+    {
+      "after_word_index": 1375,
+      "after_word_text": "socket,",
+      "gap_secs": 0.42,
+      "start_secs": 658.1,
+      "end_secs": 658.52
+    },
+    {
+      "after_word_index": 1379,
+      "after_word_text": "envelope",
+      "gap_secs": 0.41,
+      "start_secs": 660.13,
+      "end_secs": 660.54
+    },
+    {
+      "after_word_index": 1386,
+      "after_word_text": "open.",
+      "gap_secs": 2.601,
+      "start_secs": 662.679,
+      "end_secs": 665.28
+    },
+    {
+      "after_word_index": 1392,
+      "after_word_text": "go.",
+      "gap_secs": 0.88,
+      "start_secs": 666.56,
+      "end_secs": 667.44
+    },
+    {
+      "after_word_index": 1408,
+      "after_word_text": "subscribe.",
+      "gap_secs": 0.72,
+      "start_secs": 672.2,
+      "end_secs": 672.92
+    },
+    {
+      "after_word_index": 1412,
+      "after_word_text": "channel.",
+      "gap_secs": 0.78,
+      "start_secs": 673.98,
+      "end_secs": 674.76
+    },
+    {
+      "after_word_index": 1416,
+      "after_word_text": "curious,",
+      "gap_secs": 0.55,
+      "start_secs": 676.17,
+      "end_secs": 676.72
+    }
+  ],
+  "scene_boundaries": [
+    {
+      "after_word_index": 10,
+      "after_word_text": "it.",
+      "gap_secs": 0.7,
+      "start_secs": 4.12,
+      "end_secs": 4.82
+    },
+    {
+      "after_word_index": 26,
+      "after_word_text": "day.",
+      "gap_secs": 1.14,
+      "start_secs": 11.92,
+      "end_secs": 13.06
+    },
+    {
+      "after_word_index": 34,
+      "after_word_text": "server.",
+      "gap_secs": 1.26,
+      "start_secs": 16.2,
+      "end_secs": 17.46
+    },
+    {
+      "after_word_index": 41,
+      "after_word_text": "it.",
+      "gap_secs": 0.8,
+      "start_secs": 21.34,
+      "end_secs": 22.14
+    },
+    {
+      "after_word_index": 54,
+      "after_word_text": "much.",
+      "gap_secs": 0.76,
+      "start_secs": 26.24,
+      "end_secs": 27.0
+    },
+    {
+      "after_word_index": 62,
+      "after_word_text": "much?",
+      "gap_secs": 0.84,
+      "start_secs": 29.76,
+      "end_secs": 30.6
+    },
+    {
+      "after_word_index": 72,
+      "after_word_text": "send.",
+      "gap_secs": 0.8,
+      "start_secs": 34.7,
+      "end_secs": 35.5
+    },
+    {
+      "after_word_index": 88,
+      "after_word_text": "connection.",
+      "gap_secs": 0.94,
+      "start_secs": 43.5,
+      "end_secs": 44.44
+    },
+    {
+      "after_word_index": 99,
+      "after_word_text": "hours.",
+      "gap_secs": 1.06,
+      "start_secs": 50.8,
+      "end_secs": 51.86
+    },
+    {
+      "after_word_index": 104,
+      "after_word_text": "message.",
+      "gap_secs": 0.97,
+      "start_secs": 53.61,
+      "end_secs": 54.58
+    },
+    {
+      "after_word_index": 111,
+      "after_word_text": "price.",
+      "gap_secs": 1.0,
+      "start_secs": 56.9,
+      "end_secs": 57.9
+    },
+    {
+      "after_word_index": 131,
+      "after_word_text": "said.",
+      "gap_secs": 1.22,
+      "start_secs": 65.96,
+      "end_secs": 67.18
+    },
+    {
+      "after_word_index": 151,
+      "after_word_text": "part.",
+      "gap_secs": 2.28,
+      "start_secs": 77.52,
+      "end_secs": 79.8
+    },
+    {
+      "after_word_index": 180,
+      "after_word_text": "battery.",
+      "gap_secs": 0.66,
+      "start_secs": 94.92,
+      "end_secs": 95.58
+    },
+    {
+      "after_word_index": 198,
+      "after_word_text": "you.",
+      "gap_secs": 1.24,
+      "start_secs": 102.66,
+      "end_secs": 103.9
+    },
+    {
+      "after_word_index": 205,
+      "after_word_text": "design.",
+      "gap_secs": 0.9,
+      "start_secs": 106.14,
+      "end_secs": 107.04
+    },
+    {
+      "after_word_index": 210,
+      "after_word_text": "model.",
+      "gap_secs": 1.1,
+      "start_secs": 109.16,
+      "end_secs": 110.26
+    },
+    {
+      "after_word_index": 227,
+      "after_word_text": "world.",
+      "gap_secs": 1.0,
+      "start_secs": 116.7,
+      "end_secs": 117.7
+    },
+    {
+      "after_word_index": 239,
+      "after_word_text": "machine.",
+      "gap_secs": 1.0,
+      "start_secs": 122.52,
+      "end_secs": 123.52
+    },
+    {
+      "after_word_index": 262,
+      "after_word_text": "open.",
+      "gap_secs": 2.48,
+      "start_secs": 132.2,
+      "end_secs": 134.68
+    },
+    {
+      "after_word_index": 266,
+      "after_word_text": "everything.",
+      "gap_secs": 1.16,
+      "start_secs": 136.42,
+      "end_secs": 137.58
+    },
+    {
+      "after_word_index": 291,
+      "after_word_text": "it.",
+      "gap_secs": 0.88,
+      "start_secs": 148.18,
+      "end_secs": 149.06
+    },
+    {
+      "after_word_index": 298,
+      "after_word_text": "crash.",
+      "gap_secs": 0.94,
+      "start_secs": 151.74,
+      "end_secs": 152.68
+    },
+    {
+      "after_word_index": 304,
+      "after_word_text": "though.",
+      "gap_secs": 1.1,
+      "start_secs": 153.92,
+      "end_secs": 155.02
+    },
+    {
+      "after_word_index": 325,
+      "after_word_text": "speed.",
+      "gap_secs": 0.76,
+      "start_secs": 162.28,
+      "end_secs": 163.04
+    },
+    {
+      "after_word_index": 340,
+      "after_word_text": "over.",
+      "gap_secs": 0.8,
+      "start_secs": 167.72,
+      "end_secs": 168.52
+    },
+    {
+      "after_word_index": 346,
+      "after_word_text": "made.",
+      "gap_secs": 1.74,
+      "start_secs": 170.24,
+      "end_secs": 171.98
+    },
+    {
+      "after_word_index": 352,
+      "after_word_text": "destination.",
+      "gap_secs": 0.98,
+      "start_secs": 173.94,
+      "end_secs": 174.92
+    },
+    {
+      "after_word_index": 364,
+      "after_word_text": "now?",
+      "gap_secs": 1.14,
+      "start_secs": 180.88,
+      "end_secs": 182.02
+    },
+    {
+      "after_word_index": 373,
+      "after_word_text": "database.",
+      "gap_secs": 1.62,
+      "start_secs": 188.4,
+      "end_secs": 190.02
+    },
+    {
+      "after_word_index": 385,
+      "after_word_text": "server.",
+      "gap_secs": 0.84,
+      "start_secs": 194.14,
+      "end_secs": 194.98
+    },
+    {
+      "after_word_index": 394,
+      "after_word_text": "RAM.",
+      "gap_secs": 1.14,
+      "start_secs": 198.68,
+      "end_secs": 199.82
+    },
+    {
+      "after_word_index": 417,
+      "after_word_text": "demands.",
+      "gap_secs": 1.26,
+      "start_secs": 208.28,
+      "end_secs": 209.54
+    },
+    {
+      "after_word_index": 438,
+      "after_word_text": "speed.",
+      "gap_secs": 2.72,
+      "start_secs": 220.42,
+      "end_secs": 223.14
+    },
+    {
+      "after_word_index": 448,
+      "after_word_text": "person.",
+      "gap_secs": 0.88,
+      "start_secs": 226.02,
+      "end_secs": 226.9
+    },
+    {
+      "after_word_index": 461,
+      "after_word_text": "once.",
+      "gap_secs": 0.69,
+      "start_secs": 231.2,
+      "end_secs": 231.89
+    },
+    {
+      "after_word_index": 469,
+      "after_word_text": "ID.",
+      "gap_secs": 1.2,
+      "start_secs": 235.04,
+      "end_secs": 236.24
+    },
+    {
+      "after_word_index": 475,
+      "after_word_text": "server.",
+      "gap_secs": 1.12,
+      "start_secs": 238.2,
+      "end_secs": 239.32
+    },
+    {
+      "after_word_index": 488,
+      "after_word_text": "one.",
+      "gap_secs": 1.14,
+      "start_secs": 243.98,
+      "end_secs": 245.12
+    },
+    {
+      "after_word_index": 502,
+      "after_word_text": "up.",
+      "gap_secs": 1.5,
+      "start_secs": 251.22,
+      "end_secs": 252.72
+    },
+    {
+      "after_word_index": 519,
+      "after_word_text": "delivered.",
+      "gap_secs": 1.26,
+      "start_secs": 260.22,
+      "end_secs": 261.48
+    },
+    {
+      "after_word_index": 525,
+      "after_word_text": "day.",
+      "gap_secs": 1.04,
+      "start_secs": 263.24,
+      "end_secs": 264.28
+    },
+    {
+      "after_word_index": 547,
+      "after_word_text": "typing.",
+      "gap_secs": 1.94,
+      "start_secs": 272.64,
+      "end_secs": 274.58
+    },
+    {
+      "after_word_index": 557,
+      "after_word_text": "person.",
+      "gap_secs": 0.84,
+      "start_secs": 277.78,
+      "end_secs": 278.62
+    },
+    {
+      "after_word_index": 576,
+      "after_word_text": "socket.",
+      "gap_secs": 1.12,
+      "start_secs": 285.64,
+      "end_secs": 286.76
+    },
+    {
+      "after_word_index": 584,
+      "after_word_text": "directly.",
+      "gap_secs": 0.66,
+      "start_secs": 289.3,
+      "end_secs": 289.96
+    },
+    {
+      "after_word_index": 596,
+      "after_word_text": "forward.",
+      "gap_secs": 0.76,
+      "start_secs": 295.22,
+      "end_secs": 295.98
+    },
+    {
+      "after_word_index": 602,
+      "after_word_text": "there.",
+      "gap_secs": 0.98,
+      "start_secs": 298.32,
+      "end_secs": 299.3
+    },
+    {
+      "after_word_index": 611,
+      "after_word_text": "asleep.",
+      "gap_secs": 0.72,
+      "start_secs": 303.4,
+      "end_secs": 304.12
+    },
+    {
+      "after_word_index": 633,
+      "after_word_text": "days.",
+      "gap_secs": 0.96,
+      "start_secs": 312.3,
+      "end_secs": 313.26
+    },
+    {
+      "after_word_index": 641,
+      "after_word_text": "drains.",
+      "gap_secs": 0.78,
+      "start_secs": 316.5,
+      "end_secs": 317.28
+    },
+    {
+      "after_word_index": 647,
+      "after_word_text": "gone.",
+      "gap_secs": 0.66,
+      "start_secs": 319.42,
+      "end_secs": 320.08
+    },
+    {
+      "after_word_index": 655,
+      "after_word_text": "mailbox.",
+      "gap_secs": 0.9,
+      "start_secs": 322.62,
+      "end_secs": 323.52
+    },
+    {
+      "after_word_index": 666,
+      "after_word_text": "back.",
+      "gap_secs": 0.96,
+      "start_secs": 327.16,
+      "end_secs": 328.12
+    },
+    {
+      "after_word_index": 674,
+      "after_word_text": "it.",
+      "gap_secs": 1.32,
+      "start_secs": 330.14,
+      "end_secs": 331.46
+    },
+    {
+      "after_word_index": 682,
+      "after_word_text": "device.",
+      "gap_secs": 1.12,
+      "start_secs": 333.96,
+      "end_secs": 335.08
+    },
+    {
+      "after_word_index": 690,
+      "after_word_text": "read.",
+      "gap_secs": 1.18,
+      "start_secs": 337.48,
+      "end_secs": 338.66
+    },
+    {
+      "after_word_index": 700,
+      "after_word_text": "screen.",
+      "gap_secs": 1.52,
+      "start_secs": 341.94,
+      "end_secs": 343.46
+    },
+    {
+      "after_word_index": 708,
+      "after_word_text": "everything.",
+      "gap_secs": 0.94,
+      "start_secs": 346.7,
+      "end_secs": 347.64
+    },
+    {
+      "after_word_index": 720,
+      "after_word_text": "backlog.",
+      "gap_secs": 1.06,
+      "start_secs": 352.2,
+      "end_secs": 353.26
+    },
+    {
+      "after_word_index": 726,
+      "after_word_text": "stops.",
+      "gap_secs": 1.16,
+      "start_secs": 355.68,
+      "end_secs": 356.84
+    },
+    {
+      "after_word_index": 740,
+      "after_word_text": "Protocol.",
+      "gap_secs": 0.74,
+      "start_secs": 363.8,
+      "end_secs": 364.54
+    },
+    {
+      "after_word_index": 755,
+      "after_word_text": "users.",
+      "gap_secs": 1.06,
+      "start_secs": 370.08,
+      "end_secs": 371.14
+    },
+    {
+      "after_word_index": 775,
+      "after_word_text": "offline.",
+      "gap_secs": 1.44,
+      "start_secs": 378.06,
+      "end_secs": 379.5
+    },
+    {
+      "after_word_index": 789,
+      "after_word_text": "message.",
+      "gap_secs": 0.86,
+      "start_secs": 386.16,
+      "end_secs": 387.02
+    },
+    {
+      "after_word_index": 797,
+      "after_word_text": "rest.",
+      "gap_secs": 1.58,
+      "start_secs": 389.36,
+      "end_secs": 390.94
+    },
+    {
+      "after_word_index": 812,
+      "after_word_text": "read.",
+      "gap_secs": 0.84,
+      "start_secs": 398.46,
+      "end_secs": 399.3
+    },
+    {
+      "after_word_index": 819,
+      "after_word_text": "envelope.",
+      "gap_secs": 0.84,
+      "start_secs": 400.9,
+      "end_secs": 401.74
+    },
+    {
+      "after_word_index": 825,
+      "after_word_text": "inside.",
+      "gap_secs": 0.76,
+      "start_secs": 403.56,
+      "end_secs": 404.32
+    },
+    {
+      "after_word_index": 831,
+      "after_word_text": "bill.",
+      "gap_secs": 1.1,
+      "start_secs": 406.14,
+      "end_secs": 407.24
+    },
+    {
+      "after_word_index": 855,
+      "after_word_text": "device.",
+      "gap_secs": 2.54,
+      "start_secs": 414.94,
+      "end_secs": 417.48
+    },
+    {
+      "after_word_index": 872,
+      "after_word_text": "device.",
+      "gap_secs": 1.0,
+      "start_secs": 423.86,
+      "end_secs": 424.86
+    },
+    {
+      "after_word_index": 883,
+      "after_word_text": "fanout.",
+      "gap_secs": 0.88,
+      "start_secs": 429.94,
+      "end_secs": 430.82
+    },
+    {
+      "after_word_index": 903,
+      "after_word_text": "own.",
+      "gap_secs": 0.98,
+      "start_secs": 440.52,
+      "end_secs": 441.5
+    },
+    {
+      "after_word_index": 917,
+      "after_word_text": "live.",
+      "gap_secs": 1.16,
+      "start_secs": 446.02,
+      "end_secs": 447.18
+    },
+    {
+      "after_word_index": 948,
+      "after_word_text": "laptop.",
+      "gap_secs": 1.44,
+      "start_secs": 456.18,
+      "end_secs": 457.62
+    },
+    {
+      "after_word_index": 976,
+      "after_word_text": "deep.",
+      "gap_secs": 0.8,
+      "start_secs": 469.82,
+      "end_secs": 470.62
+    },
+    {
+      "after_word_index": 1000,
+      "after_word_text": "scaling.",
+      "gap_secs": 1.34,
+      "start_secs": 479.72,
+      "end_secs": 481.06
+    },
+    {
+      "after_word_index": 1007,
+      "after_word_text": "hardware.",
+      "gap_secs": 0.8,
+      "start_secs": 482.9,
+      "end_secs": 483.7
+    },
+    {
+      "after_word_index": 1021,
+      "after_word_text": "contention.",
+      "gap_secs": 0.821,
+      "start_secs": 490.839,
+      "end_secs": 491.66
+    },
+    {
+      "after_word_index": 1030,
+      "after_word_text": "elasticity.",
+      "gap_secs": 0.82,
+      "start_secs": 495.52,
+      "end_secs": 496.34
+    },
+    {
+      "after_word_index": 1048,
+      "after_word_text": "trick.",
+      "gap_secs": 0.82,
+      "start_secs": 504.32,
+      "end_secs": 505.14
+    },
+    {
+      "after_word_index": 1068,
+      "after_word_text": "stop.",
+      "gap_secs": 0.8,
+      "start_secs": 513.22,
+      "end_secs": 514.02
+    },
+    {
+      "after_word_index": 1074,
+      "after_word_text": "claim.",
+      "gap_secs": 0.96,
+      "start_secs": 515.84,
+      "end_secs": 516.8
+    },
+    {
+      "after_word_index": 1082,
+      "after_word_text": "invincible.",
+      "gap_secs": 1.22,
+      "start_secs": 519.56,
+      "end_secs": 520.78
+    },
+    {
+      "after_word_index": 1107,
+      "after_word_text": "hours.",
+      "gap_secs": 1.0,
+      "start_secs": 529.12,
+      "end_secs": 530.12
+    },
+    {
+      "after_word_index": 1115,
+      "after_word_text": "it.",
+      "gap_secs": 2.36,
+      "start_secs": 533.46,
+      "end_secs": 535.82
+    },
+    {
+      "after_word_index": 1129,
+      "after_word_text": "it.",
+      "gap_secs": 0.62,
+      "start_secs": 543.74,
+      "end_secs": 544.36
+    },
+    {
+      "after_word_index": 1140,
+      "after_word_text": "millions.",
+      "gap_secs": 0.96,
+      "start_secs": 549.38,
+      "end_secs": 550.34
+    },
+    {
+      "after_word_index": 1150,
+      "after_word_text": "million.",
+      "gap_secs": 0.92,
+      "start_secs": 554.54,
+      "end_secs": 555.46
+    },
+    {
+      "after_word_index": 1167,
+      "after_word_text": "talk.",
+      "gap_secs": 0.86,
+      "start_secs": 563.68,
+      "end_secs": 564.54
+    },
+    {
+      "after_word_index": 1183,
+      "after_word_text": "spikes.",
+      "gap_secs": 0.72,
+      "start_secs": 571.16,
+      "end_secs": 571.88
+    },
+    {
+      "after_word_index": 1206,
+      "after_word_text": "2020.",
+      "gap_secs": 0.68,
+      "start_secs": 583.54,
+      "end_secs": 584.22
+    },
+    {
+      "after_word_index": 1242,
+      "after_word_text": "it.",
+      "gap_secs": 1.06,
+      "start_secs": 601.32,
+      "end_secs": 602.38
+    },
+    {
+      "after_word_index": 1247,
+      "after_word_text": "this?",
+      "gap_secs": 0.8,
+      "start_secs": 603.77,
+      "end_secs": 604.57
+    },
+    {
+      "after_word_index": 1259,
+      "after_word_text": "culture.",
+      "gap_secs": 0.65,
+      "start_secs": 609.77,
+      "end_secs": 610.42
+    },
+    {
+      "after_word_index": 1265,
+      "after_word_text": "gimmicks.",
+      "gap_secs": 0.7,
+      "start_secs": 612.34,
+      "end_secs": 613.04
+    },
+    {
+      "after_word_index": 1273,
+      "after_word_text": "code.",
+      "gap_secs": 0.98,
+      "start_secs": 615.5,
+      "end_secs": 616.48
+    },
+    {
+      "after_word_index": 1283,
+      "after_word_text": "team.",
+      "gap_secs": 0.96,
+      "start_secs": 619.26,
+      "end_secs": 620.22
+    },
+    {
+      "after_word_index": 1314,
+      "after_word_text": "night.",
+      "gap_secs": 0.72,
+      "start_secs": 632.24,
+      "end_secs": 632.96
+    },
+    {
+      "after_word_index": 1340,
+      "after_word_text": "happen.",
+      "gap_secs": 0.78,
+      "start_secs": 642.4,
+      "end_secs": 643.18
+    },
+    {
+      "after_word_index": 1349,
+      "after_word_text": "decision.",
+      "gap_secs": 1.64,
+      "start_secs": 645.96,
+      "end_secs": 647.6
+    },
+    {
+      "after_word_index": 1361,
+      "after_word_text": "32.",
+      "gap_secs": 0.98,
+      "start_secs": 651.78,
+      "end_secs": 652.76
+    },
+    {
+      "after_word_index": 1386,
+      "after_word_text": "open.",
+      "gap_secs": 2.601,
+      "start_secs": 662.679,
+      "end_secs": 665.28
+    },
+    {
+      "after_word_index": 1392,
+      "after_word_text": "go.",
+      "gap_secs": 0.88,
+      "start_secs": 666.56,
+      "end_secs": 667.44
+    },
+    {
+      "after_word_index": 1408,
+      "after_word_text": "subscribe.",
+      "gap_secs": 0.72,
+      "start_secs": 672.2,
+      "end_secs": 672.92
+    },
+    {
+      "after_word_index": 1412,
+      "after_word_text": "channel.",
+      "gap_secs": 0.78,
+      "start_secs": 673.98,
+      "end_secs": 674.76
+    }
+  ],
+  "emphatic_words": [
+    {
+      "word_index": 1043,
+      "text": "yourself.",
+      "start": 501.34,
+      "end": 503.22,
+      "duration_secs": 1.88
+    },
+    {
+      "word_index": 735,
+      "text": "SystemsThe",
+      "start": 360.46,
+      "end": 361.82,
+      "duration_secs": 1.36
+    },
+    {
+      "word_index": 531,
+      "text": "visible",
+      "start": 266.52,
+      "end": 267.82,
+      "duration_secs": 1.3
+    },
+    {
+      "word_index": 434,
+      "text": "durability",
+      "start": 217.78,
+      "end": 219.06,
+      "duration_secs": 1.28
+    },
+    {
+      "word_index": 82,
+      "text": "text.",
+      "start": 38.74,
+      "end": 40.0,
+      "duration_secs": 1.26
+    },
+    {
+      "word_index": 275,
+      "text": "own",
+      "start": 141.08,
+      "end": 142.34,
+      "duration_secs": 1.26
+    },
+    {
+      "word_index": 963,
+      "text": "FreeBSD,",
+      "start": 463.16,
+      "end": 464.42,
+      "duration_secs": 1.26
+    },
+    {
+      "word_index": 309,
+      "text": "language",
+      "start": 156.34,
+      "end": 157.4,
+      "duration_secs": 1.06
+    },
+    {
+      "word_index": 1329,
+      "text": "either.",
+      "start": 637.44,
+      "end": 638.44,
+      "duration_secs": 1.0
+    },
+    {
+      "word_index": 1425,
+      "text": "differently?",
+      "start": 678.84,
+      "end": 679.82,
+      "duration_secs": 0.98
+    },
+    {
+      "word_index": 589,
+      "text": "middle",
+      "start": 291.42,
+      "end": 292.38,
+      "duration_secs": 0.96
+    },
+    {
+      "word_index": 1012,
+      "text": "runtime",
+      "start": 484.74,
+      "end": 485.7,
+      "duration_secs": 0.96
+    },
+    {
+      "word_index": 1256,
+      "text": "lean",
+      "start": 608.06,
+      "end": 609.0,
+      "duration_secs": 0.94
+    },
+    {
+      "word_index": 1154,
+      "text": "engineer",
+      "start": 557.06,
+      "end": 557.96,
+      "duration_secs": 0.9
+    },
+    {
+      "word_index": 45,
+      "text": "small",
+      "start": 22.8,
+      "end": 23.7,
+      "duration_secs": 0.9
+    }
+  ]
+}

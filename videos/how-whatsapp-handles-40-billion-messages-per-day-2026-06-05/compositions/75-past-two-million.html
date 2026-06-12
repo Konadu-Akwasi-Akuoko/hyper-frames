@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 75 — pushed one past two million at an Erlang Factory talk</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-75-2m { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-75-2m .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-75-2m .kick {
+      position: absolute; left: 0; right: 0; top: 322px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 32px;
+      color: var(--muted); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-75-2m .big {
+      position: absolute; left: 0; right: 0; top: 376px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 130px; line-height: 1;
+      color: var(--accent); letter-spacing: -0.025em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+
+    #scene-75-2m .track {
+      position: absolute; left: 50%; margin-left: -450px; top: 580px; width: 900px; height: 16px;
+      border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      opacity: 0; will-change: opacity;
+    }
+    #scene-75-2m .fill {
+      position: absolute; left: 0; top: 0; width: 765px; height: 100%;
+      border-radius: 8px; background: linear-gradient(90deg, rgba(37,211,102,0.5), var(--accent));
+      box-shadow: 0 0 16px rgba(37,211,102,0.45);
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    #scene-75-2m .mark {
+      position: absolute; left: 648px; top: -12px; width: 2px; height: 40px;
+      background: var(--accent-2); opacity: 0; will-change: opacity;
+    }
+    #scene-75-2m .marklbl {
+      position: absolute; left: 624px; top: -44px; width: 60px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      color: var(--accent-2); opacity: 0; will-change: opacity;
+    }
+
+    #scene-75-2m .badge {
+      position: absolute; left: 50%; top: 672px; transform: translateX(-50%);
+      padding: 12px 26px; border-radius: 999px; border: 1.5px solid rgba(125,211,252,0.45);
+      background: rgba(125,211,252,0.06); white-space: nowrap;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px;
+      color: var(--accent-2); letter-spacing: 0.08em;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-75-2m" data-composition-id="scene-75-2m" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="kick" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500" data-sfx-volume="0.35">one box — pushed past</div>
+      <div class="big" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2160" data-sfx-volume="0.35">2,000,000+</div>
+
+      <div class="track" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1240">
+        <div class="fill"></div>
+        <div class="mark"></div>
+        <div class="marklbl">2M</div>
+      </div>
+
+      <div class="badge" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3140" data-sfx-volume="0.35">ERLANG FACTORY &middot; 2012</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-75-2m";
+
+    // Host data-start = 559.24 → scene-local = global − 559.24. Chunk first word "pushed" 559.74 = local 0.50.
+
+    // Entrance crossfade over scene 74's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "pushed one past" 559.74→560.48 (local 0.50→1.24) — the kicker, then the track
+    tl.fromTo(root + " .kick", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .track", { opacity: 0 }, { opacity: 1, duration: 0.36, ease: "power2.out" }, 1.24);
+    tl.fromTo(root + " .mark", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.30);
+    tl.fromTo(root + " .marklbl", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.30);
+
+    // "two million" 561.22→561.40 (local 1.98→2.16) — the bar races past 2M, the number slams
+    tl.fromTo(root + " .fill", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 1.60);
+    tl.fromTo(root + " .big", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.46, ease: "back.out(1.5)" }, 2.16);
+    tl.fromTo(root + " .big", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 42px rgba(37,211,102,0.45)", duration: 0.5, ease: "power2.out" }, 2.36);
+
+    // "at an Erlang Factory talk." 562.38→563.36 (local 3.14→4.12) — the attribution badge
+    tl.fromTo(root + " .badge", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 3.14);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.4);
+
+    window.__timelines["scene-75-2m"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 01 — cold open</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-01-cold-open { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+
+    /* Stage 1 — the quiet setup, a centered stack of phrase lines */
+    #scene-01-cold-open .setup {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px; text-align: center;
+    }
+    #scene-01-cold-open .setup .line {
+      font-size: 76px; font-weight: 500; color: var(--fg);
+      letter-spacing: -0.01em;
+    }
+    #scene-01-cold-open .setup .g { display: inline-block; opacity: 0; will-change: transform, opacity; }
+    #scene-01-cold-open .setup .l2 { opacity: 0; }
+    #scene-01-cold-open .setup .wa {
+      color: var(--fg);
+    }
+    #scene-01-cold-open .setup .quiet { color: var(--soft); font-weight: 300; }
+
+    /* Stage 2 — the machine line, then the number detonation */
+    #scene-01-cold-open .machine-line {
+      position: absolute; left: 50%; top: 250px; transform: translateX(-50%);
+      width: 1100px; text-align: center; font-size: 48px; font-weight: 300;
+      line-height: 1.35; color: var(--soft); opacity: 0;
+    }
+    #scene-01-cold-open .machine-line b { font-weight: 700; color: var(--fg); }
+
+    #scene-01-cold-open .payoff {
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding-top: 90px;
+    }
+    #scene-01-cold-open .stat-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      will-change: transform;
+    }
+    #scene-01-cold-open .big {
+      font-size: 200px; font-weight: 900; color: var(--fg);
+      letter-spacing: -0.03em; line-height: 0.95;
+      font-variant-numeric: tabular-nums;
+      display: flex; align-items: baseline; gap: 36px;
+    }
+    #scene-01-cold-open .big .n40 { opacity: 0; }
+    #scene-01-cold-open .big .billion { opacity: 0; }
+    #scene-01-cold-open .mad {
+      margin-top: 30px; font-size: 64px; font-weight: 700;
+      color: var(--soft); letter-spacing: 0.01em; opacity: 0;
+    }
+    /* the green wash that blooms outward when "billion" lands */
+    #scene-01-cold-open .bloom {
+      position: absolute; left: 50%; top: 50%; width: 1400px; height: 1400px;
+      transform: translate(-50%, -50%) scale(0.2);
+      border-radius: 50%; pointer-events: none; opacity: 0;
+      background: radial-gradient(circle, rgba(37, 211, 102, 0.20) 0%, rgba(37, 211, 102, 0.0) 60%);
+      filter: blur(30px); will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-01-cold-open" data-composition-id="scene-01-cold-open" data-width="1920" data-height="1080">
+    <div class="setup">
+      <div class="line l1"><span class="g g1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="960">You sent a message</span> <span class="g g2 wa" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="2000">on WhatsApp</span> <span class="g g3" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2580">today</span></div>
+      <div class="line l2 quiet" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3400">without thinking about it.</div>
+    </div>
+
+    <div class="machine-line" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5600">Back in <b>2014</b>, the machine behind that little tap was moving</div>
+
+    <div class="bloom" data-layout-allow-overflow></div>
+    <div class="payoff">
+      <div class="stat-wrap">
+        <div class="big"><span class="n40" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="10340">40</span><span class="billion" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="10880" data-sfx-hook="true">BILLION</span></div>
+        <div class="mad" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="11570">messages a day</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-01-cold-open";
+
+    // Scene 01 host data-start = 0, so scene-local time == global transcript time.
+
+    // Entrance crossfade for the whole scene (first scene: from black/substrate)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // word-group reveals tracking the narration:
+    // "You sent a message" 0.36 / "on WhatsApp" 1.56 / "today" 2.08
+    tl.fromTo(root + " .g1", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.36);
+    tl.fromTo(root + " .g2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 1.56);
+    tl.fromTo(root + " .g3", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.08);
+    // "WhatsApp" lands 1.70 — brief green bloom on the phrase
+    tl.to(root + " .wa", { textShadow: "0 0 28px rgba(37,211,102,0.85)", color: "#7fe8a8", duration: 0.3, ease: "power2.out" }, 1.70);
+    tl.to(root + " .wa", { textShadow: "0 0 0px rgba(37,211,102,0)", color: "#e9edeb", duration: 0.9, ease: "power2.inOut" }, 2.6);
+
+    // "without thinking about it." — "without" 2.70
+    tl.fromTo(root + " .l2",
+      { opacity: 0, y: 22 },
+      { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 2.70);
+
+    // setup stack clears as "Back" lands 4.82 — outgoing clears before payoff
+    tl.to(root + " .setup", { opacity: 0, y: -50, duration: 0.6, ease: "power2.in" }, 4.62);
+
+    // "Back in 2014, the machine behind that little tap was moving" — "Back" 4.82
+    tl.fromTo(root + " .machine-line",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 4.92);
+
+    // "40" lands 9.92 — slams in
+    tl.fromTo(root + " .n40",
+      { opacity: 0, scale: 2.4 },
+      { opacity: 1, scale: 1, duration: 0.42, ease: "power4.out" }, 9.92);
+    // "billion" lands 10.48 — the focal frame of the cold open
+    tl.fromTo(root + " .billion",
+      { opacity: 0, scale: 2.0 },
+      { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 10.48);
+    // green bloom expands outward from the number at "billion" 10.48
+    tl.fromTo(root + " .bloom",
+      { opacity: 0, scale: 0.2 },
+      { opacity: 1, scale: 1.0, duration: 0.9, ease: "power2.out" }, 10.52);
+    tl.to(root + " .bloom", { opacity: 0.35, scale: 1.15, duration: 1.6, ease: "sine.out" }, 11.45);
+    // number ignites green as the bloom passes through it
+    tl.to(root + " .billion", { color: "#25d366", textShadow: "0 0 46px rgba(37,211,102,0.55)", duration: 0.35, ease: "power2.out" }, 10.62);
+
+    // "messages a day" — "messages" 11.02
+    tl.fromTo(root + " .mad",
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 11.02);
+
+    // machine-line steps back once the number owns the frame
+    tl.to(root + " .machine-line", { opacity: 0.4, duration: 0.6, ease: "sine.inOut" }, 10.48);
+
+    // idle — the stat breathes gently so nothing sits still (finite yoyo;
+    // scales the content wrapper, never the full-frame container)
+    tl.to(root + " .stat-wrap", { scale: 1.012, duration: 1.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 10.9);
+
+    window.__timelines["scene-01-cold-open"] = tl;
+  </script>
+</body>
+</html>

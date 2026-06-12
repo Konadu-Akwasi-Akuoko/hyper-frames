@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 18 — where does the recipient live?</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-18-routing-question { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-18-routing-question .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* setup lead-in */
+    #scene-18-routing-question .setup {
+      position: absolute; left: 0; right: 0; top: 262px; text-align: center;
+      font-size: 36px; font-weight: 400; color: var(--soft); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-18-routing-question .setup .dest { color: var(--fg); font-weight: 600; }
+
+    /* faint sky-blue continuity glow behind the process node */
+    #scene-18-routing-question .glow {
+      position: absolute; left: 360px; top: 320px; width: 260px; height: 260px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(125,211,252,0.12), rgba(125,211,252,0) 70%);
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the per-user process node (sky-blue, carried over from the actor-model subtopic) */
+    #scene-18-routing-question .proc {
+      position: absolute; left: 442px; top: 398px; width: 96px; height: 96px;
+      background: rgba(125, 211, 252, 0.06);
+      border: 1.5px solid rgba(125, 211, 252, 0.5); border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 22px rgba(125, 211, 252, 0.12);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-18-routing-question .proc .core {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--accent-2); box-shadow: 0 0 16px rgba(125, 211, 252, 0.6);
+    }
+    /* the message it holds — green, reserved for THE message */
+    #scene-18-routing-question .msg {
+      position: absolute; left: 512px; top: 380px; width: 46px; height: 32px;
+      border-radius: 7px; background: rgba(37, 211, 102, 0.16);
+      border: 1.5px solid var(--accent); box-shadow: 0 0 14px rgba(37, 211, 102, 0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-18-routing-question .plabel {
+      position: absolute; left: 372px; top: 510px; width: 236px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 22px; color: var(--muted); letter-spacing: 0.04em;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the question beam — dashed, drawn rightward */
+    #scene-18-routing-question .beam {
+      position: absolute; left: 560px; top: 444px; width: 0; height: 3px;
+      background: repeating-linear-gradient(90deg, rgba(125,211,252,0.75) 0 13px, rgba(125,211,252,0) 13px 24px);
+      will-change: width;
+    }
+
+    /* the unresolved destination */
+    #scene-18-routing-question .qnode {
+      position: absolute; left: 1322px; top: 398px; width: 96px; height: 96px;
+      background: rgba(125, 211, 252, 0.02);
+      border: 2px dashed rgba(125, 211, 252, 0.35); border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-18-routing-question .qnode .qm {
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 52px; color: var(--accent-2);
+    }
+    #scene-18-routing-question .qlabel {
+      position: absolute; left: 1262px; top: 510px; width: 216px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 22px; color: var(--muted); letter-spacing: 0.04em;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the payoff question — the hook */
+    #scene-18-routing-question .q {
+      position: absolute; left: 0; right: 0; top: 640px; text-align: center;
+      font-size: 74px; font-weight: 700; color: var(--fg); letter-spacing: 0.005em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-18-routing-question .q .live { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-18-routing-question" data-composition-id="scene-18-routing-question" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="setup" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="520" data-sfx-volume="0.35">
+        Now, the message needs a <span class="dest">destination</span>.
+      </div>
+
+      <div class="glow"></div>
+      <div class="proc"><div class="core"></div></div>
+      <div class="msg"></div>
+      <div class="plabel">your process</div>
+
+      <div class="beam" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4200"></div>
+
+      <div class="qnode" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5060"><div class="qm">?</div></div>
+      <div class="qlabel">recipient</div>
+
+      <div class="q" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="6740" data-sfx-volume="0.35">
+        Where does the recipient <span class="live">live right now?</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-18-routing-question";
+
+    // Host data-start = 171.48 → scene-local = global − 171.48.
+
+    // Entrance crossfade over scene 17's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Now, the message needs a destination." 171.98 (local 0.50) — the lead-in
+    tl.fromTo(root + " .setup", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.50);
+
+    // "Your process" 174.92 (local 3.44) — the process node surfaces, holding its green message
+    tl.fromTo(root + " .glow", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, 3.30);
+    tl.fromTo(root + " .proc", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.44);
+    tl.fromTo(root + " .msg", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.70);
+    tl.fromTo(root + " .plabel", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 3.86);
+
+    // "asks one question:" 175.68→176.54 (local 4.20→5.06) — the question beam draws rightward
+    tl.to(root + " .beam", { width: 762, duration: 0.85, ease: "power2.inOut" }, 4.20);
+    // the destination resolves only as a "?" — the answer is unknown (Mnesia answers it next)
+    tl.fromTo(root + " .qnode", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 5.06);
+    tl.fromTo(root + " .qlabel", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 5.30);
+    // the "?" pulses faintly — the open question
+    tl.to(root + " .qnode .qm", { textShadow: "0 0 22px rgba(125, 211, 252, 0.55)", duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 5.5);
+
+    // "Where does the recipient live right now?" 178.22 (local 6.74) — the hook lands large
+    tl.fromTo(root + " .q", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 6.74);
+    // "live right now?" 179.62 (local 8.14) — sky-blue lands on the locational pivot
+    tl.fromTo(root + " .q .live", { textShadow: "0 0 0 rgba(125,211,252,0)" }, { textShadow: "0 0 26px rgba(125, 211, 252, 0.4)", duration: 0.5, ease: "power2.out" }, 8.14);
+
+    // idle — the diagram drifts faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 3.4, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-18-routing-question"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 47 — that blindness has a bill</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-47-bill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-47-bill .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-47-bill .eyeb { position: absolute; left: 50%; top: 354px; margin-left: -40px; opacity: 0; will-change: transform, opacity; }
+    #scene-47-bill .eyeb .slash { stroke-dasharray: 44; stroke-dashoffset: 44; will-change: stroke-dashoffset; }
+
+    #scene-47-bill .l1 {
+      position: absolute; left: 0; right: 0; top: 470px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 60px;
+      color: var(--soft); letter-spacing: -0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-47-bill .l1 .b { color: var(--muted); }
+
+    #scene-47-bill .l2 {
+      position: absolute; left: 0; right: 0; top: 560px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 96px;
+      color: var(--cost); letter-spacing: -0.018em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+
+    /* the amber receipt that slams in on "bill" */
+    #scene-47-bill .receipt {
+      position: absolute; left: 50%; top: 556px; margin-left: 318px;
+      opacity: 0; transform: scale(0.6) rotate(-8deg); transform-origin: center center;
+      will-change: transform, opacity, filter;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-47-bill" data-composition-id="scene-47-bill" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <svg class="eyeb" viewBox="0 0 48 48" width="80" height="80" fill="none">
+        <path d="M6 24 C13 14 35 14 42 24 C35 34 13 34 6 24 Z" stroke="#79857f" stroke-width="2.4"></path>
+        <circle cx="24" cy="24" r="5.5" stroke="#79857f" stroke-width="2.4"></circle>
+        <line class="slash" x1="9" y1="39" x2="39" y2="9" stroke="#79857f" stroke-width="2.6" stroke-linecap="round"></line>
+      </svg>
+
+      <div class="l1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="500">That <span class="b">blindness</span></div>
+      <div class="l2">has a bill.</div>
+
+      <svg class="receipt" viewBox="0 0 44 56" width="92" height="116" fill="none" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2000" data-sfx-volume="0.42">
+        <path d="M8 4 h28 v44 l-5 -3 -5 3 -5 -3 -5 3 -5 -3 -3 3 Z" stroke="#f0b429" stroke-width="2.4" fill="rgba(240,180,41,0.08)" stroke-linejoin="round"></path>
+        <line x1="14" y1="16" x2="30" y2="16" stroke="#f0b429" stroke-width="2.2" stroke-linecap="round"></line>
+        <line x1="14" y1="24" x2="30" y2="24" stroke="#f0b429" stroke-width="2.2" stroke-linecap="round"></line>
+        <line x1="14" y1="32" x2="24" y2="32" stroke="#f0b429" stroke-width="2.2" stroke-linecap="round"></line>
+      </svg>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-47-bill";
+
+    // Host data-start = 403.82 → scene-local = global − 403.82. Chunk first word "But" 404.32 = local 0.50.
+
+    // Entrance crossfade over scene 46's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "But that" 404.32→404.48 (local 0.50→0.66) — the blind-eye motif carries over, the line sets up
+    tl.fromTo(root + " .eyeb", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .eyeb .slash", { strokeDashoffset: 44 }, { strokeDashoffset: 0, duration: 0.36, ease: "power2.out" }, 0.58);
+    tl.fromTo(root + " .l1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+
+    // "blindness" 404.80 (local 0.98) — the word settles muted
+    tl.fromTo(root + " .l1 .b", { textShadow: "0 0 0px rgba(121,133,127,0)" }, { textShadow: "0 0 16px rgba(121, 133, 127, 0.4)", duration: 0.4, ease: "power2.out" }, 0.98);
+
+    // "has a bill." 405.50→405.82 (local 1.68→2.00) — the bill lands hard, amber
+    tl.fromTo(root + " .l2", { opacity: 0, y: 22, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 1.68);
+    // "bill" 405.82 (local 2.00) — the amber stamp + receipt slam
+    tl.fromTo(root + " .l2", { textShadow: "0 0 0px rgba(240,180,41,0)" }, { textShadow: "0 0 34px rgba(240, 180, 41, 0.5)", duration: 0.4, ease: "power2.out" }, 2.00);
+    tl.fromTo(root + " .receipt", { opacity: 0, scale: 0.6, rotation: -8 }, { opacity: 1, scale: 1, rotation: 6, duration: 0.4, ease: "back.out(2.2)" }, 2.00);
+    tl.fromTo(root + " .receipt", { filter: "drop-shadow(0 0 0px rgba(240,180,41,0))" }, { filter: "drop-shadow(0 0 16px rgba(240, 180, 41, 0.5))", duration: 0.4, ease: "power2.out" }, 2.00);
+    tl.to(root + " .receipt", { rotation: 4, duration: 0.6, ease: "sine.inOut" }, 2.4);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.4);
+
+    window.__timelines["scene-47-bill"] = tl;
+  </script>
+</body>
+</html>

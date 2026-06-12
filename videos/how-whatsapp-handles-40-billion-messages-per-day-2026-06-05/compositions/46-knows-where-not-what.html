@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 46 — knows where to send, never learns what's inside</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-46-env { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-46-env .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the envelope, split into address (visible) and contents (sealed) */
+    #scene-46-env .env {
+      position: absolute; left: 590px; top: 318px; width: 740px; height: 432px;
+      background: var(--panel); border: 1.5px solid var(--border); border-radius: 16px;
+      box-shadow: 0 22px 56px rgba(0, 0, 0, 0.42);
+      opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+    #scene-46-env .div {
+      position: absolute; left: 28px; right: 28px; top: 196px; height: 1px;
+      background: var(--border);
+    }
+
+    #scene-46-env .zlabel {
+      position: absolute; left: 36px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 21px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    #scene-46-env .zlabel.top { top: 30px; color: var(--accent-2); }
+    #scene-46-env .zlabel.bot { top: 224px; color: var(--accent); }
+
+    /* address zone — what the server reads */
+    #scene-46-env .addr {
+      position: absolute; left: 36px; top: 96px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 38px;
+      color: var(--accent-2); letter-spacing: 0.04em; opacity: 0; will-change: opacity, text-shadow;
+    }
+    #scene-46-env .eopen { position: absolute; right: 34px; top: 28px; opacity: 0; will-change: opacity; }
+
+    /* contents zone — sealed */
+    #scene-46-env .lock { position: absolute; left: 40px; top: 286px; opacity: 0; will-change: transform, opacity, filter; }
+    #scene-46-env .scram {
+      position: absolute; left: 116px; top: 296px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 42px;
+      color: var(--accent); letter-spacing: 0.22em; opacity: 0; will-change: opacity;
+    }
+    #scene-46-env .peek { position: absolute; right: 40px; top: 284px; opacity: 0; will-change: transform, opacity; }
+    #scene-46-env .peek .slash { stroke-dasharray: 42; stroke-dashoffset: 42; will-change: stroke-dashoffset; }
+
+    /* routing arrow + destination */
+    #scene-46-env .route {
+      position: absolute; inset: 0; overflow: visible;
+    }
+    #scene-46-env .route .rl {
+      fill: none; stroke: var(--accent-2); stroke-width: 2.4; stroke-linecap: round;
+      stroke-dasharray: 200; stroke-dashoffset: 200; will-change: stroke-dashoffset;
+    }
+    #scene-46-env .dest {
+      position: absolute; left: 1392px; top: 300px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-46-env .dest .dl {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 19px;
+      color: var(--accent-2); letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-46-env" data-composition-id="scene-46-env" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <svg class="route" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+        <path class="rl" d="M1330 400 H1404 M1392 392 l14 8 l-14 8" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1620" data-sfx-volume="0.35"></path>
+      </svg>
+
+      <div class="dest">
+        <svg viewBox="0 0 32 48" width="58" height="86" fill="none">
+          <rect x="6" y="4" width="20" height="40" rx="4" stroke="#7dd3fc" stroke-width="2.2"></rect>
+          <line x1="13" y1="39" x2="19" y2="39" stroke="#7dd3fc" stroke-width="2.2" stroke-linecap="round"></line>
+        </svg>
+        <div class="dl">device · 7f</div>
+      </div>
+
+      <div class="env" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500">
+        <div class="zlabel top">where it goes</div>
+        <svg class="eopen" viewBox="0 0 48 32" width="56" height="38" fill="none">
+          <path d="M3 16 C11 5 37 5 45 16 C37 27 11 27 3 16 Z" stroke="#7dd3fc" stroke-width="2.2"></path>
+          <circle cx="24" cy="16" r="5.5" stroke="#7dd3fc" stroke-width="2.2"></circle>
+          <circle cx="24" cy="16" r="2" fill="#7dd3fc"></circle>
+        </svg>
+        <div class="addr">TO  d7 · a4 · c1</div>
+
+        <div class="div"></div>
+
+        <div class="zlabel bot">what's inside</div>
+        <svg class="lock" viewBox="0 0 32 32" width="54" height="54" fill="none" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3280">
+          <rect x="7" y="14" width="18" height="13" rx="2.6" stroke="#25d366" stroke-width="2.4" fill="rgba(37,211,102,0.08)"></rect>
+          <path d="M10.4 14 v-3.4 a5.6 5.6 0 0 1 11.2 0 v3.4" stroke="#25d366" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="16" cy="20" r="1.9" fill="#25d366"></circle>
+        </svg>
+        <div class="scram">•••• •••••• ••••</div>
+        <svg class="peek" viewBox="0 0 48 48" width="62" height="62" fill="none" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4000" data-sfx-volume="0.42">
+          <path d="M6 24 C13 14 35 14 42 24 C35 34 13 34 6 24 Z" stroke="#79857f" stroke-width="2.2"></path>
+          <circle cx="24" cy="24" r="5" stroke="#79857f" stroke-width="2.2"></circle>
+          <line class="slash" x1="9" y1="39" x2="39" y2="9" stroke="#ff6b5d" stroke-width="2.6" stroke-linecap="round"></line>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-46-env";
+
+    // Host data-start = 398.80 → scene-local = global − 398.80. Chunk first word "It" 399.30 = local 0.50.
+
+    // Entrance crossfade over scene 45's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "It knows" 399.30 (local 0.50) — the envelope settles in
+    tl.fromTo(root + " .env", { opacity: 0, y: 18, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 0.50);
+
+    // "where to send" 399.78→400.10 (local 0.98→1.30) — the address lights up, the server reads it
+    tl.fromTo(root + " .addr", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.98);
+    tl.fromTo(root + " .eopen", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.06);
+    tl.fromTo(root + " .addr", { textShadow: "0 0 0px rgba(125,211,252,0)" }, { textShadow: "0 0 20px rgba(125, 211, 252, 0.4)", duration: 0.4, ease: "power2.out" }, 1.06);
+
+    // "the envelope" 400.32→400.44 (local 1.52→1.64) — the routing arrow finds its destination
+    tl.fromTo(root + " .route .rl", { strokeDashoffset: 200 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 1.52);
+    tl.fromTo(root + " .dest", { opacity: 0, x: 14 }, { opacity: 1, x: 0, duration: 0.42, ease: "back.out(1.3)" }, 1.7);
+
+    // "It just never" 401.74→402.08 (local 2.94→3.28) — the contents zone seals: green lock clamps
+    tl.fromTo(root + " .zlabel.bot", { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.out" }, 2.94);
+    tl.fromTo(root + " .lock", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.8)" }, 3.28);
+    tl.fromTo(root + " .scram", { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "power2.out" }, 3.34);
+    tl.fromTo(root + " .lock", { filter: "drop-shadow(0 0 0px rgba(37,211,102,0))" }, { filter: "drop-shadow(0 0 12px rgba(37, 211, 102, 0.55))", duration: 0.36, ease: "power2.out" }, 3.28);
+    tl.to(root + " .lock", { filter: "drop-shadow(0 0 4px rgba(37, 211, 102, 0.22))", duration: 0.6, ease: "power2.inOut" }, 3.7);
+
+    // "learns what's inside" 402.40→403.08 (local 3.60→4.28) — the server tries to peek, and is blocked
+    tl.fromTo(root + " .peek", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.6)" }, 3.72);
+    tl.fromTo(root + " .peek .slash", { strokeDashoffset: 42 }, { strokeDashoffset: 0, duration: 0.34, ease: "power2.out" }, 4.0);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
+
+    window.__timelines["scene-46-env"] = tl;
+  </script>
+</body>
+</html>

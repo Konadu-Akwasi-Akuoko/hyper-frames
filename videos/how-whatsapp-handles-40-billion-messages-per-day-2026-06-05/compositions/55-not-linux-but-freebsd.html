@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 55 — it ran on metal you can point to: not Linux, but FreeBSD</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-55-bsd { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-55-bsd .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the bare-metal rack you can point to */
+    #scene-55-bsd .metal {
+      position: absolute; left: 50%; top: 232px; margin-left: -118px; width: 236px; height: 248px;
+      background: var(--panel); border: 1.7px solid #2b3a44; border-radius: 14px;
+      opacity: 0; will-change: transform, opacity, filter;
+    }
+    #scene-55-bsd .metal .slot { position: absolute; left: 24px; right: 24px; height: 28px; border: 1.4px solid #243843; border-radius: 5px; }
+    #scene-55-bsd .metal .s1 { top: 26px; } #scene-55-bsd .metal .s2 { top: 68px; } #scene-55-bsd .metal .s3 { top: 110px; }
+    #scene-55-bsd .metal .dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); right: 40px; }
+    #scene-55-bsd .metal .mlbl {
+      position: absolute; left: 0; right: 0; bottom: 22px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 21px;
+      color: var(--accent-2); letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    /* the pointer that points to it */
+    #scene-55-bsd .pin {
+      position: absolute; left: 50%; top: 512px; margin-left: 64px;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the os swap line */
+    #scene-55-bsd .osline {
+      position: absolute; left: 0; right: 0; top: 632px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 58px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-55-bsd .osline .lxwrap { position: relative; display: inline-block; }
+    #scene-55-bsd .osline .lx { color: var(--muted); will-change: color; }
+    #scene-55-bsd .osline .strike {
+      position: absolute; left: -6px; top: 52%; height: 5px; width: calc(100% + 12px);
+      background: var(--danger); border-radius: 3px; margin-top: -2.5px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    #scene-55-bsd .osline .bsd {
+      color: var(--accent-2); font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 54px;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-55-bsd" data-composition-id="scene-55-bsd" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="metal" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500">
+        <div class="slot s1"><span class="dot"></span></div>
+        <div class="slot s2"><span class="dot"></span></div>
+        <div class="slot s3"><span class="dot"></span></div>
+        <div class="mlbl">bare metal</div>
+      </div>
+
+      <svg class="pin" viewBox="0 0 32 40" width="44" height="55" fill="none" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1920" data-sfx-volume="0.42">
+        <path d="M16 38 C6 26 4 18 4 13 a12 12 0 0 1 24 0 c0 5 -2 13 -12 25 Z" stroke="#c3cbc7" stroke-width="2.4" stroke-linejoin="round" fill="rgba(195,203,199,0.06)"></path>
+        <circle cx="16" cy="13" r="4.4" stroke="#c3cbc7" stroke-width="2.4"></circle>
+      </svg>
+
+      <div class="osline">
+        not <span class="lxwrap"><span class="lx">Linux</span><span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4280" data-sfx-volume="0.42"></span></span>, but <span class="bsd" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5380" data-sfx-volume="0.35">FreeBSD</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-55-bsd";
+
+    // Host data-start = 457.12 → scene-local = global − 457.12. Chunk first word "And" 457.62 = local 0.50.
+
+    // Entrance crossfade over scene 54's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "And all of this ran on metal" 457.62→459.04 (local 0.50→1.92) — the bare-metal rack appears
+    tl.fromTo(root + " .metal", { opacity: 0, y: 14, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 0.50);
+    // "metal" 459.04 (local 1.92) — it lights, real and physical
+    tl.fromTo(root + " .metal", { filter: "drop-shadow(0 0 0px rgba(125,211,252,0))" }, { filter: "drop-shadow(0 0 14px rgba(125, 211, 252, 0.4))", duration: 0.4, ease: "power2.out" }, 1.92);
+    tl.to(root + " .metal", { filter: "drop-shadow(0 0 4px rgba(125, 211, 252, 0.2))", duration: 0.5, ease: "power2.inOut" }, 2.5);
+
+    // "you can point to" 459.78→460.06 (local 2.66→2.94) — the pin points to it
+    tl.fromTo(root + " .pin", { opacity: 0, y: -14, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 2.66);
+
+    // "not Linux" 461.16→461.40 (local 4.04→4.28) — the os line appears, Linux is struck out
+    tl.fromTo(root + " .osline", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 3.70);
+    tl.fromTo(root + " .osline .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power2.out" }, 4.28);
+    tl.to(root + " .osline .lx", { color: "#5a635e", duration: 0.4, ease: "power2.out" }, 4.36);
+
+    // "but FreeBSD" 462.50→463.16 (local 5.38→6.04) — FreeBSD rises, sky and named
+    tl.fromTo(root + " .osline .bsd", { opacity: 0, y: 10, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.44, ease: "back.out(1.5)" }, 5.38);
+    tl.fromTo(root + " .osline .bsd", { textShadow: "0 0 0px rgba(125,211,252,0)" }, { textShadow: "0 0 24px rgba(125, 211, 252, 0.5)", duration: 0.44, ease: "power2.out" }, 5.52);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.0);
+
+    window.__timelines["scene-55-bsd"] = tl;
+  </script>
+</body>
+</html>

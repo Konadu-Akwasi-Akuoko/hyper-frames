@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 92 — That message you sent earlier without thinking, it made this exact trip</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-92-trip { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-92-trip .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-92-trip .bubble {
+      position: absolute; left: 50%; top: 300px; transform: translateX(-50%);
+      width: 320px; padding: 26px 28px 20px; border-radius: 22px 22px 6px 22px;
+      background: rgba(37,211,102,0.16); border: 1.5px solid rgba(37,211,102,0.5);
+      box-shadow: 0 0 26px rgba(37,211,102,0.18);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-92-trip .bar { height: 16px; border-radius: 8px; background: rgba(195,203,199,0.5); margin-bottom: 14px; }
+    #scene-92-trip .bar.w1 { width: 86%; }
+    #scene-92-trip .bar.w2 { width: 58%; }
+    #scene-92-trip .ticks {
+      display: flex; align-items: center; justify-content: flex-end; gap: 2px; height: 18px;
+    }
+    #scene-92-trip .ticks svg { width: 30px; height: 18px; }
+
+    #scene-92-trip .sent {
+      position: absolute; left: 0; right: 0; top: 478px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 38px;
+      color: var(--muted); letter-spacing: -0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-92-trip svg.path { position: absolute; left: 0; top: 548px; width: 1920px; height: 60px; }
+    #scene-92-trip .dline { stroke-dasharray: 6 14; stroke-dashoffset: 700; will-change: stroke-dashoffset; }
+
+    #scene-92-trip .trip {
+      position: absolute; left: 0; right: 0; top: 596px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 70px;
+      color: var(--accent); letter-spacing: -0.022em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-92-trip" data-composition-id="scene-92-trip" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="bubble" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="740" data-sfx-volume="0.35">
+        <div class="bar w1"></div>
+        <div class="bar w2"></div>
+        <div class="ticks">
+          <svg viewBox="0 0 30 18" fill="none">
+            <path d="M2 9 L7 14 L16 4" stroke="#53bdeb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11 9 L16 14 L25 4" stroke="#53bdeb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="sent">you sent it &mdash; without thinking</div>
+
+      <svg class="path" viewBox="0 0 1920 60" fill="none">
+        <path class="dline" d="M660 30 L1260 30" stroke="#25d366" stroke-width="3" stroke-linecap="round"
+              data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3340"></path>
+      </svg>
+
+      <div class="trip" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4440" data-sfx-volume="0.42">it made this exact trip</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-92-trip";
+
+    // Host data-start = 652.26 → scene-local = global − 652.26. Chunk first word "That" 652.76 = local 0.50.
+
+    // Entrance crossfade over scene 91's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "That message you sent" 652.76→653.46 (local 0.50→1.20) — the bubble
+    tl.fromTo(root + " .bubble", { opacity: 0, y: 16, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 0.74);
+
+    // "earlier without thinking," 653.78→654.55 (local 1.52→2.29)
+    tl.fromTo(root + " .sent", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 1.52);
+
+    // "it made this exact trip." 655.60→656.70 (local 3.34→4.44) — the journey
+    tl.fromTo(root + " .dline", { strokeDashoffset: 700 }, { strokeDashoffset: 0, duration: 1.0, ease: "power2.out" }, 3.34);
+    tl.fromTo(root + " .trip", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.10);
+    tl.fromTo(root + " .trip", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 30px rgba(37,211,102,0.45)", duration: 0.5, ease: "power2.out" }, 4.44);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.9);
+
+    window.__timelines["scene-92-trip"] = tl;
+  </script>
+</body>
+</html>

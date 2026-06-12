@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 02 — two million connections</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-02-two-million { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-02-two-million .diagram { position: absolute; inset: 0; will-change: transform; }
+
+    /* connection strokes fan in from the left edge toward the server panel */
+    #scene-02-two-million svg.fan { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-02-two-million svg.fan line {
+      stroke: var(--accent-2); stroke-width: 2.5; stroke-linecap: round;
+      opacity: 0.5;
+    }
+
+    /* the stat block riding above the fan, left-of-center */
+    #scene-02-two-million .conn-stat {
+      position: absolute; left: 150px; top: 270px;
+    }
+    #scene-02-two-million .conn-stat .num {
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 124px; color: var(--accent-2); letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums; opacity: 0;
+      text-shadow: 0 0 32px rgba(125, 211, 252, 0.25);
+    }
+    #scene-02-two-million .conn-stat .lbl {
+      margin-top: 10px; font-size: 40px; font-weight: 500; color: var(--soft); opacity: 0;
+    }
+
+    /* the server — a panel rect, faint until the word "server" lands */
+    #scene-02-two-million .server {
+      position: absolute; left: 1180px; top: 380px; width: 330px; height: 320px;
+      background: var(--panel); border: 1.5px solid var(--border); border-radius: 14px;
+      opacity: 0; will-change: transform, opacity;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      padding: 46px 56px; align-content: center; justify-items: center;
+    }
+    #scene-02-two-million .server .dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--dim); will-change: opacity, transform;
+    }
+    #scene-02-two-million .server-lbl {
+      position: absolute; left: 1180px; top: 726px; width: 330px; text-align: center;
+      font-size: 34px; font-weight: 500; color: var(--soft); opacity: 0;
+    }
+
+    /* the counterweight — quiet, lower-left, deliberately understated */
+    #scene-02-two-million .eng {
+      position: absolute; left: 150px; top: 800px;
+      display: flex; align-items: baseline; gap: 26px; opacity: 0;
+      will-change: transform, opacity;
+    }
+    #scene-02-two-million .eng .n {
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 86px; color: var(--fg); font-variant-numeric: tabular-nums;
+    }
+    #scene-02-two-million .eng .t {
+      font-size: 38px; font-weight: 500; color: var(--soft);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-02-two-million" data-composition-id="scene-02-two-million" data-width="1920" data-height="1080">
+    <div class="diagram">
+      <svg class="fan" viewBox="0 0 1920 1080" data-layout-allow-overflow data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1250">
+        <!-- seven strokes from the left edge converging on the server's left face -->
+        <line x1="-40" y1="140"  x2="1180" y2="430" pathLength="1" />
+        <line x1="-40" y1="280"  x2="1180" y2="465" pathLength="1" />
+        <line x1="-40" y1="420"  x2="1180" y2="500" pathLength="1" />
+        <line x1="-40" y1="560"  x2="1180" y2="540" pathLength="1" />
+        <line x1="-40" y1="700"  x2="1180" y2="580" pathLength="1" />
+        <line x1="-40" y1="840"  x2="1180" y2="615" pathLength="1" />
+        <line x1="-40" y1="975"  x2="1180" y2="650" pathLength="1" />
+      </svg>
+
+      <div class="conn-stat">
+        <div class="num">0</div>
+        <div class="lbl">live connections</div>
+      </div>
+
+      <div class="server" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3670">
+        <div class="dot" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="7890"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="server-lbl">one single server</div>
+
+      <div class="eng" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6190">
+        <span class="n">32</span>
+        <span class="t">engineers running all of it</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-02-two-million";
+
+    // Host data-start = 12.56 → scene-local = global − 12.56.
+
+    // Entrance crossfade over scene 01's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Two" 13.06 (local 0.50) — strokes draw in from the left, tight stagger
+    tl.fromTo(root + " svg.fan line",
+      { strokeDasharray: 1, strokeDashoffset: 1, opacity: 0 },
+      { strokeDashoffset: 0, opacity: 0.5, duration: 0.75, ease: "power2.out", stagger: 0.08 }, 0.50);
+
+    // count-up 0 → 2,000,000 across "Two million live connections" 13.06–15.04 (local 0.50–2.48)
+    const counter = { v: 0 };
+    const numEl = () => document.querySelector(root + " .conn-stat .num");
+    tl.fromTo(root + " .conn-stat .num", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.50);
+    tl.to(counter, {
+      v: 2000000, duration: 1.98, ease: "power1.out",
+      onUpdate: () => {
+        const s = String(Math.round(counter.v)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        numEl().textContent = s;
+      }
+    }, 0.50);
+
+    // "connections" 14.34 (local 1.78) — label fades up under the figure
+    tl.fromTo(root + " .conn-stat .lbl", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.78);
+
+    // server outline ghosts in early so the strokes converge on something — "single" 15.36 ahead
+    tl.fromTo(root + " .server", { opacity: 0, scale: 0.96 }, { opacity: 0.35, scale: 1, duration: 0.6, ease: "power2.out" }, 1.0);
+    // "server." lands 15.78 (local 3.22) — the panel ignites
+    tl.to(root + " .server", { opacity: 1, borderColor: "#2c3a45", boxShadow: "0 0 44px rgba(125, 211, 252, 0.12)", duration: 0.45, ease: "power2.out" }, 3.22);
+    tl.fromTo(root + " .server-lbl", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.34);
+    // strokes brighten at their destination as the server claims them
+    tl.to(root + " svg.fan line", { opacity: 0.7, duration: 0.4, ease: "sine.out", stagger: 0.04 }, 3.22);
+
+    // "32" 18.10 (local 5.54) — the counterweight slides in, quiet, no bloom
+    tl.fromTo(root + " .eng",
+      { opacity: 0, x: -46 },
+      { opacity: 1, x: 0, duration: 0.65, ease: "power3.out" }, 5.54);
+
+    // "running" 20.10 (local 7.54) — process dots inside the server come alive
+    tl.to(root + " .server .dot", {
+      backgroundColor: "#7dd3fc", opacity: 0.9, duration: 0.35,
+      ease: "power2.out", stagger: { each: 0.07, from: "center" }
+    }, 7.54);
+    tl.to(root + " .server .dot", {
+      opacity: 0.55, duration: 0.8, ease: "sine.inOut",
+      repeat: 1, yoyo: true, stagger: 0.05
+    }, 8.0);
+
+    // idle — whole diagram drifts a touch so nothing sits still (finite yoyo)
+    tl.to(root + " .diagram", { y: -7, duration: 3.2, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.6);
+
+    window.__timelines["scene-02-two-million"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 25 — server-side fan-out, named</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-25-fan-out-named { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-25-fan-out-named .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* a ghost of the fan-out shape — context watermark only, never an active diagram (<8% opacity) */
+    #scene-25-fan-out-named .ghost {
+      position: absolute; left: 460px; top: 322px; width: 1000px; height: 460px;
+      opacity: 0; will-change: opacity, transform;
+    }
+    #scene-25-fan-out-named .ghost path { fill: none; stroke: var(--accent-2); stroke-width: 2; }
+    #scene-25-fan-out-named .ghost circle { fill: var(--accent-2); }
+
+    /* the title group */
+    #scene-25-fan-out-named .wrap {
+      position: absolute; left: 0; right: 0; top: 352px; text-align: center;
+    }
+    #scene-25-fan-out-named .eyebrow {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 26px; color: var(--muted); letter-spacing: 0.34em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-25-fan-out-named .hero {
+      display: inline-block; margin-top: 22px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 112px; line-height: 1.05; color: var(--accent-2); letter-spacing: 0.01em;
+      text-shadow: 0 0 36px rgba(125, 211, 252, 0.22);
+      clip-path: inset(0 100% 0 0); opacity: 0; will-change: clip-path, opacity;
+    }
+    #scene-25-fan-out-named .sub {
+      max-width: 1180px; margin: 40px auto 0;
+      font-size: 38px; font-weight: 500; color: var(--soft); line-height: 1.3; letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-25-fan-out-named .sub .em { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <div id="scene-25-fan-out-named" data-composition-id="scene-25-fan-out-named" data-width="1920" data-height="1080">
+    <div class="stage">
+      <svg class="ghost" viewBox="0 0 1000 460" preserveAspectRatio="xMidYMid meet">
+        <path d="M120 230 C 360 230 380 60 760 60"></path>
+        <path d="M120 230 C 360 230 380 145 760 145"></path>
+        <path d="M120 230 C 360 230 380 230 760 230"></path>
+        <path d="M120 230 C 360 230 380 315 760 315"></path>
+        <path d="M120 230 C 360 230 380 400 760 400"></path>
+        <circle cx="120" cy="230" r="13"></circle>
+        <circle cx="760" cy="60" r="10"></circle>
+        <circle cx="760" cy="145" r="10"></circle>
+        <circle cx="760" cy="230" r="10"></circle>
+        <circle cx="760" cy="315" r="10"></circle>
+        <circle cx="760" cy="400" r="10"></circle>
+      </svg>
+
+      <div class="wrap">
+        <div class="eyebrow" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="500" data-sfx-volume="0.35">This is</div>
+        <div class="hero" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2140" data-sfx-volume="0.42">SERVER-SIDE FAN-OUT</div>
+        <div class="sub" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3500" data-sfx-volume="0.42">and it is why the numbers <span class="em">never quite add up</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-25-fan-out-named";
+
+    // Host data-start = 244.62 → scene-local = global − 244.62. Chunk first word 245.12 = local 0.50.
+
+    // Entrance crossfade over scene 24's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    // the ghost fan-out settles in as a faint backdrop watermark
+    tl.fromTo(root + " .ghost", { opacity: 0, scale: 0.98 }, { opacity: 0.07, scale: 1, duration: 1.1, ease: "sine.out" }, 0.2);
+
+    // "This is" 245.12 (local 0.50) — the eyebrow
+    tl.fromTo(root + " .eyebrow", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.50);
+
+    // "server-side fan-out" 245.76→247.16 (local 1.14→2.54) — the term is uncovered left-to-right (mask wipe).
+    // opacity is gated to 0 until exactly the wipe start, so nothing of the hero shows during the 0.5s
+    // seam overlap (the clip alone can't be trusted to hide it under the snapshot/render seek).
+    tl.set(root + " .hero", { opacity: 1 }, 1.14);
+    tl.to(root + " .hero", { clipPath: "inset(0 0% 0 0)", duration: 1.0, ease: "power2.inOut" }, 1.14);
+
+    // "and it is why the numbers never quite add up." 247.72→251.22 (local 3.10→6.60) —
+    // the consequence line slides up, settled (no bounce — stillness after motion)
+    tl.fromTo(root + " .sub", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 3.50);
+    // "never quite add up." 250.08→250.98 (local 5.46→6.36) — a soft brightening on the kept words
+    tl.to(root + " .sub .em", { textShadow: "0 0 20px rgba(233, 237, 235, 0.28)", duration: 0.5, ease: "power2.out" }, 5.46);
+
+    // idle — a barely-there drift; this beat is a pause, not a motion
+    tl.to(root + " .stage", { y: -3, duration: 4.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+    tl.to(root + " .ghost", { scale: 1.03, duration: 5.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.4);
+
+    window.__timelines["scene-25-fan-out-named"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 89 — A team that small is a bus factor waiting to happen</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-89-bus { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-89-bus .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-89-bus .team {
+      position: absolute; left: 0; right: 0; top: 340px; height: 130px;
+      display: flex; align-items: flex-end; justify-content: center; gap: 44px;
+    }
+    #scene-89-bus .person { position: relative; width: 84px; height: 104px; opacity: 0; will-change: transform, opacity; }
+    #scene-89-bus .head {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 42px; height: 42px; border-radius: 50%; border: 2.6px solid var(--soft);
+    }
+    #scene-89-bus .body {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 72px; height: 48px; border-radius: 36px 36px 0 0;
+      border: 2.6px solid var(--soft); border-bottom: none;
+    }
+    #scene-89-bus .ring {
+      position: absolute; inset: -14px -10px -10px -10px; border-radius: 18px;
+      border: 2.4px solid var(--danger); box-shadow: 0 0 18px rgba(255,107,93,0.45);
+      opacity: 0; will-change: opacity;
+    }
+
+    #scene-89-bus .term {
+      position: absolute; left: 0; right: 0; top: 510px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 56px;
+      color: var(--soft); letter-spacing: -0.015em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-89-bus .term .bf { color: var(--cost); font-weight: 800; will-change: text-shadow; }
+
+    #scene-89-bus .cap {
+      position: absolute; left: 0; right: 0; top: 600px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 32px;
+      color: var(--danger); letter-spacing: 0.08em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-89-bus" data-composition-id="scene-89-bus" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="team">
+        <div class="person p1"><div class="head"></div><div class="body"></div></div>
+        <div class="person p2"><div class="head"></div><div class="body"></div><div class="ring"></div></div>
+        <div class="person p3"><div class="head"></div><div class="body"></div></div>
+        <div class="person p4"><div class="head"></div><div class="body"></div></div>
+      </div>
+
+      <div class="term" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1950" data-sfx-volume="0.35">is a <span class="bf">bus factor</span></div>
+
+      <div class="cap" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3170" data-sfx-volume="0.35">waiting to happen</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-89-bus";
+
+    // Host data-start = 637.97 → scene-local = global − 637.97. Chunk first word "A" 638.47 = local 0.50.
+
+    // Entrance crossfade over scene 88's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "A team that small" 638.47→639.02 (local 0.50→1.05) — the tiny team
+    tl.fromTo(root + " .person", { opacity: 0, y: 16, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)", stagger: 0.09 }, 0.50);
+
+    // "is a bus factor" 639.58→640.26 (local 1.61→2.29) — the term
+    tl.fromTo(root + " .term", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 1.61);
+    tl.fromTo(root + " .term .bf", { textShadow: "0 0 0px rgba(240,180,41,0)" }, { textShadow: "0 0 26px rgba(240,180,41,0.55)", duration: 0.4, ease: "power2.out" }, 2.0);
+
+    // "waiting to happen." 641.14→641.92 (local 3.17→3.95) — the risk flags red
+    tl.fromTo(root + " .cap", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 3.17);
+    tl.fromTo(root + " .ring", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 3.17);
+    // ominous flicker on the single point of failure
+    tl.to(root + " .ring", { opacity: 0.35, duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 3.5);
+
+    window.__timelines["scene-89-bus"] = tl;
+  </script>
+</body>
+</html>

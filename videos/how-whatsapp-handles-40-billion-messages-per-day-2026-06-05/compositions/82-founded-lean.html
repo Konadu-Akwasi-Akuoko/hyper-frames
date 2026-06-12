@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 82 — WhatsApp was founded in 2009 on a deliberately lean, do-less culture</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-82-lean { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-82-lean .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-82-lean .brand {
+      position: absolute; left: 0; right: 0; top: 296px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 90px;
+      color: var(--accent); letter-spacing: -0.028em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+
+    #scene-82-lean .est {
+      position: absolute; left: 50%; top: 424px; transform: translateX(-50%);
+      padding: 9px 22px; border-radius: 999px; border: 1.4px solid rgba(125,211,252,0.4);
+      background: rgba(125,211,252,0.08); white-space: nowrap;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px;
+      color: var(--accent-2); letter-spacing: 0.1em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-82-lean .est .yr { color: var(--fg); font-weight: 500; }
+
+    #scene-82-lean .lean {
+      position: absolute; left: 0; right: 0; top: 540px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 46px;
+      color: var(--soft); letter-spacing: -0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-82-lean .lean .em { color: var(--accent); font-weight: 700; will-change: text-shadow; }
+
+    #scene-82-lean .doless {
+      position: absolute; left: 0; right: 0; top: 612px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 112px; line-height: 1;
+      color: var(--accent); letter-spacing: -0.03em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-82-lean" data-composition-id="scene-82-lean" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="brand" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">WhatsApp</div>
+
+      <div class="est" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1750" data-sfx-volume="0.42">founded &middot; <span class="yr">2009</span></div>
+
+      <div class="lean" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3290" data-sfx-volume="0.35">a deliberately <span class="em">lean</span> culture</div>
+
+      <div class="doless" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4950" data-sfx-volume="0.35">do less</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-82-lean";
+
+    // Host data-start = 604.07 → scene-local = global − 604.07. Chunk first word "WhatsApp" 604.57 = local 0.50.
+
+    // Entrance crossfade over scene 81's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "WhatsApp" 604.57 (local 0.50) — the brand
+    tl.fromTo(root + " .brand", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 0.50);
+    tl.fromTo(root + " .brand", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 30px rgba(37,211,102,0.35)", duration: 0.5, ease: "power2.out" }, 0.72);
+
+    // "was founded in 2009" 605.18→605.82 (local 1.11→1.75) — the est badge
+    tl.fromTo(root + " .est", { opacity: 0, y: 10, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.44, ease: "back.out(1.6)" }, 1.29);
+
+    // "on a deliberately lean" 607.08→608.06 (local 3.01→3.99) — the culture line
+    tl.fromTo(root + " .lean", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 3.29);
+    tl.fromTo(root + " .lean .em", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 24px rgba(37,211,102,0.55)", duration: 0.4, ease: "power2.out" }, 3.99);
+
+    // "do-less culture." 609.02→609.44 (local 4.95→5.37) — the ethos punch
+    tl.fromTo(root + " .doless", { opacity: 0, y: 16, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 4.95);
+    tl.fromTo(root + " .doless", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 44px rgba(37,211,102,0.45)", duration: 0.5, ease: "power2.out" }, 5.2);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 5.6);
+
+    window.__timelines["scene-82-lean"] = tl;
+  </script>
+</body>
+</html>

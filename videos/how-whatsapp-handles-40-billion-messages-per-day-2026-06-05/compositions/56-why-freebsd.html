@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 56 — FreeBSD chosen for its mature TCP stack and a deeply tunable kernel</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-56-why { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-56-why .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-56-why .hd {
+      position: absolute; left: 0; right: 0; top: 222px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 56px;
+      color: var(--accent-2); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-56-why .sub {
+      position: absolute; left: 0; right: 0; top: 308px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 28px;
+      color: var(--muted); letter-spacing: 0.01em;
+      opacity: 0; will-change: opacity;
+    }
+
+    #scene-56-why .card {
+      position: absolute; top: 400px; width: 460px; height: 348px;
+      background: rgba(16,22,19,0.55); border: 1.5px solid #2b3a44; border-radius: 18px;
+      display: flex; flex-direction: column; align-items: center; padding-top: 54px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-56-why .c1 { left: 460px; }
+    #scene-56-why .c2 { left: 1000px; }
+    #scene-56-why .card .ic { display: block; margin-bottom: 40px; }
+    #scene-56-why .card .ttl {
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 38px; color: var(--soft);
+      text-align: center; letter-spacing: -0.008em; line-height: 1.24;
+    }
+    #scene-56-why .card .ttl .em { color: var(--accent-2); }
+    #scene-56-why .card .ttl .deep { color: var(--accent); will-change: text-shadow; }
+
+    /* draw-on accents */
+    #scene-56-why .c1 .seg { stroke-dasharray: 120; stroke-dashoffset: 120; will-change: stroke-dashoffset; }
+    #scene-56-why .c2 .slider { stroke-dasharray: 56; stroke-dashoffset: 56; will-change: stroke-dashoffset; }
+    #scene-56-why .c2 .knob { opacity: 0; will-change: transform, opacity; }
+  </style>
+</head>
+<body>
+  <div id="scene-56-why" data-composition-id="scene-56-why" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="hd" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">FreeBSD</div>
+      <div class="sub">chosen for —</div>
+
+      <!-- card 1: mature TCP stack -->
+      <div class="card c1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1220" data-sfx-volume="0.42">
+        <svg class="ic" viewBox="0 0 96 96" width="118" height="118" fill="none">
+          <rect x="20" y="20" width="56" height="15" rx="3.5" stroke="#7dd3fc" stroke-width="2.4"></rect>
+          <rect x="20" y="42" width="56" height="15" rx="3.5" stroke="#7dd3fc" stroke-width="2.4"></rect>
+          <rect x="20" y="64" width="56" height="15" rx="3.5" stroke="#7dd3fc" stroke-width="2.4"></rect>
+          <path class="seg" d="M48 35 V42 M48 57 V64" stroke="#25d366" stroke-width="2.6" stroke-linecap="round"></path>
+          <circle cx="48" cy="27.5" r="2.4" fill="#7dd3fc"></circle>
+          <circle cx="48" cy="71.5" r="2.4" fill="#25d366"></circle>
+        </svg>
+        <div class="ttl"><span class="em">mature</span> TCP stack</div>
+      </div>
+
+      <!-- card 2: a kernel you could tune deep -->
+      <div class="card c2" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2720">
+        <svg class="ic" viewBox="0 0 96 96" width="118" height="118" fill="none">
+          <circle cx="40" cy="40" r="17" stroke="#7dd3fc" stroke-width="2.4"></circle>
+          <circle cx="40" cy="40" r="5.5" stroke="#7dd3fc" stroke-width="2.4"></circle>
+          <path d="M40 16 v8 M40 56 v8 M16 40 h8 M56 40 h8 M23 23 l5.6 5.6 M51.4 51.4 l5.6 5.6 M57 23 l-5.6 5.6 M28.6 51.4 l-5.6 5.6" stroke="#7dd3fc" stroke-width="2.2" stroke-linecap="round"></path>
+          <line class="slider" x1="74" y1="22" x2="74" y2="74" stroke="#39443f" stroke-width="3" stroke-linecap="round"></line>
+          <rect class="knob" x="68" y="58" width="12" height="9" rx="2.5" fill="#0a0f0d" stroke="#25d366" stroke-width="2.4"></rect>
+        </svg>
+        <div class="ttl">a kernel you<br>could <span class="deep">tune deep</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-56-why";
+
+    // Host data-start = 465.10 → scene-local = global − 465.10. Chunk first word "chosen" 465.60 = local 0.50.
+
+    // Entrance crossfade over scene 55's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "chosen for its" 465.60→466.10 (local 0.50→1.00) — the header + framing
+    tl.fromTo(root + " .hd", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .sub", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.80);
+
+    // "mature TCP stack" 466.32→467.36 (local 1.22→2.26) — reason one
+    tl.fromTo(root + " .c1", { opacity: 0, y: 16, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 1.22);
+    tl.fromTo(root + " .c1 .seg", { strokeDashoffset: 120 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 1.7);
+
+    // "and a kernel you could tune deep" 467.82→469.52 (local 2.72→4.42) — reason two
+    tl.fromTo(root + " .c2", { opacity: 0, y: 16, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 2.72);
+    // "tune deep" 469.12→469.52 (local 4.02→4.42) — the slider knob drops deep, the word glows
+    tl.fromTo(root + " .c2 .slider", { strokeDashoffset: 56 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 3.3);
+    tl.fromTo(root + " .c2 .knob", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.02);
+    tl.fromTo(root + " .c2 .ttl .deep", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 22px rgba(37, 211, 102, 0.5)", duration: 0.44, ease: "power2.out" }, 4.02);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.0);
+
+    window.__timelines["scene-56-why"] = tl;
+  </script>
+</body>
+</html>

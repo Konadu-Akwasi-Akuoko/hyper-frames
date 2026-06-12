@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 27 — cost scales with the group, not the typing</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-27-cost-scales-with-group { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-27-cost-scales-with-group .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the quiet callback to the numbers we just saw — setup, not payoff */
+    #scene-27-cost-scales-with-group .callback {
+      position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 400;
+      font-size: 30px; color: var(--soft); letter-spacing: 0.006em;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-27-cost-scales-with-group .callback .vis { color: var(--accent-2); }
+
+    /* the chart canvas — axes + two data lines */
+    #scene-27-cost-scales-with-group .chart { position: absolute; inset: 0; }
+    #scene-27-cost-scales-with-group .axes { stroke: var(--border); stroke-width: 2.5; opacity: 0; }
+    #scene-27-cost-scales-with-group .axes .head { fill: var(--dim); stroke: none; }
+    #scene-27-cost-scales-with-group .climb {
+      fill: none; stroke: var(--cost); stroke-width: 5; stroke-linecap: round;
+      filter: drop-shadow(0 0 10px rgba(240, 180, 41, 0.4));
+      opacity: 0; will-change: opacity;
+    }
+    #scene-27-cost-scales-with-group .flat {
+      fill: none; stroke: var(--muted); stroke-width: 4; stroke-linecap: round;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the big amber COST anchor at the top of the cost axis */
+    #scene-27-cost-scales-with-group .cost {
+      position: absolute; left: 470px; top: 214px;
+      font-family: "Inter", sans-serif; font-weight: 700;
+      font-size: 80px; color: var(--cost); letter-spacing: 0.02em; line-height: 1;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-27-cost-scales-with-group .cost .arr {
+      display: inline-block; margin-left: 14px; font-size: 52px; vertical-align: 6px;
+      color: var(--cost); opacity: 0.7;
+    }
+
+    /* the driver line's label — group size, sky (a system property) */
+    #scene-27-cost-scales-with-group .glabel {
+      position: absolute; left: 1404px; top: 332px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 24px; color: var(--accent-2); letter-spacing: 0.04em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-27-cost-scales-with-group .glabel .sub {
+      display: block; margin-top: 4px; font-size: 17px; color: var(--muted); letter-spacing: 0.02em;
+    }
+
+    /* the rejected factor's label — typing activity, muted, struck through on "not" */
+    #scene-27-cost-scales-with-group .tlabel {
+      position: absolute; left: 1404px; top: 712px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 24px; color: var(--muted); letter-spacing: 0.04em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-27-cost-scales-with-group .tlabel .sub {
+      display: block; margin-top: 4px; font-size: 18px; color: var(--muted); letter-spacing: 0.02em;
+    }
+    #scene-27-cost-scales-with-group .tlabel .strike {
+      position: absolute; left: -6px; top: 16px; width: 268px; height: 2.5px;
+      background: var(--danger); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+
+    /* x-axis floor label — what the horizontal axis means */
+    #scene-27-cost-scales-with-group .xlabel {
+      position: absolute; left: 470px; top: 812px; width: 980px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 19px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase;
+      opacity: 0; will-change: opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-27-cost-scales-with-group" data-composition-id="scene-27-cost-scales-with-group" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="callback">That gap is fan-out, <span class="vis">made visible</span>.</div>
+
+      <svg class="chart" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+        <g class="axes">
+          <line x1="470" y1="300" x2="470" y2="790"></line>
+          <line x1="470" y1="790" x2="1450" y2="790"></line>
+          <polygon class="head" points="470,286 462,306 478,306"></polygon>
+          <polygon class="head" points="1464,790 1444,782 1444,798"></polygon>
+        </g>
+        <path class="flat" d="M470,748 L1380,742"></path>
+        <path class="climb" d="M470,790 C 740,784 940,656 1380,352"></path>
+      </svg>
+
+      <div class="cost" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4380" data-sfx-volume="0.35">COST<span class="arr">&uarr;</span></div>
+
+      <div class="glabel">group size<span class="sub">the driver</span></div>
+      <div class="tlabel">typing activity<span class="sub">no effect on cost</span><span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="7200" data-sfx-volume="0.42"></span></div>
+
+      <div class="xlabel">more of the factor &rarr;</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-27-cost-scales-with-group";
+
+    // Host data-start = 263.78 → scene-local = global − 263.78. Chunk first word "That" 264.28 = local 0.50.
+
+    // prime the two data lines for draw-on
+    document.querySelectorAll(root + " .climb, " + root + " .flat").forEach((p) => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+    });
+
+    // Entrance crossfade over scene 26's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "That gap is fan-out, made visible." 264.28→266.52 (local 0.50→2.74) — the quiet callback
+    tl.fromTo(root + " .callback", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.50);
+
+    // the axes settle in just before the cost claim
+    tl.fromTo(root + " .axes", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, 3.9);
+    tl.fromTo(root + " .xlabel", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, 4.0);
+
+    // "the cost" 268.16→268.44 (local 4.38→4.66) — the amber anchor ignites
+    tl.fromTo(root + " .cost", { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 4.38);
+
+    // "scales with the size of the group" 268.62→270.40 (local 4.84→6.62) — the driver line climbs.
+    // opacity is gated to the draw start so the primed path's round-cap can't leave a stray dot at the origin.
+    tl.set(root + " .climb", { opacity: 1 }, 4.84);
+    tl.to(root + " .climb", { strokeDashoffset: 0, duration: 1.5, ease: "power2.out" }, 4.84);
+    // "the size of the group" 269.50→270.40 (local 5.72→6.62) — its label arrives at the apex
+    tl.fromTo(root + " .glabel", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 5.86);
+
+    // the flat line draws on quietly — cost barely moves with typing
+    tl.set(root + " .flat", { opacity: 1 }, 6.5);
+    tl.to(root + " .flat", { strokeDashoffset: 0, duration: 0.7, ease: "power1.out" }, 6.5);
+    tl.fromTo(root + " .tlabel", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 6.7);
+
+    // "not how many people are typing" 270.98→272.64 (local 7.20→8.86) — the pivot:
+    // the rejected factor is struck through and dimmed hard on "not"
+    tl.fromTo(root + " .tlabel .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power3.inOut" }, 7.20);
+    tl.to(root + " .tlabel", { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 7.30);
+    tl.to(root + " .flat", { opacity: 0.5, duration: 0.4, ease: "power2.out" }, 7.30);
+    // the driver line pulses once to reassert it's the real cause
+    tl.to(root + " .climb", { filter: "drop-shadow(0 0 18px rgba(240, 180, 41, 0.6))", duration: 0.5, ease: "power2.out", repeat: 1, yoyo: true }, 7.4);
+
+    // idle — the whole chart drifts faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 4.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-27-cost-scales-with-group"] = tl;
+  </script>
+</body>
+</html>

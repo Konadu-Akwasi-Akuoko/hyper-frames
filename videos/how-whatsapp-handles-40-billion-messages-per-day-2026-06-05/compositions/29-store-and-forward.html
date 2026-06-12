@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 29 — store and forward: everything routes through the middle</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-29-store-and-forward { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-29-store-and-forward .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the routing network — arcs, the forbidden direct line, the X */
+    #scene-29-store-and-forward .net { position: absolute; inset: 0; }
+    #scene-29-store-and-forward .arc {
+      fill: none; stroke: var(--accent-2); stroke-width: 3; stroke-linecap: round;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-29-store-and-forward .forbid {
+      stroke: var(--danger); stroke-width: 3; stroke-dasharray: 11 12; stroke-linecap: round;
+      opacity: 0; will-change: opacity;
+    }
+    /* the X over the forbidden line — HTML divs (SVG line scaling collapses to the origin) */
+    #scene-29-store-and-forward .xmark {
+      position: absolute; left: 932px; top: 592px; width: 56px; height: 56px;
+      opacity: 0; transform: scale(0); will-change: transform, opacity;
+    }
+    #scene-29-store-and-forward .xmark .bar {
+      position: absolute; top: 25px; left: 0; width: 56px; height: 6px;
+      background: var(--danger); border-radius: 3px;
+      box-shadow: 0 0 12px rgba(255, 107, 93, 0.5);
+    }
+    #scene-29-store-and-forward .xmark .b1 { transform: rotate(45deg); }
+    #scene-29-store-and-forward .xmark .b2 { transform: rotate(-45deg); }
+
+    /* the server hub at the apex — the middle everything routes through (sky-blue system node) */
+    #scene-29-store-and-forward .hub {
+      position: absolute; left: 850px; top: 196px; width: 220px; height: 138px;
+      border-radius: 18px; background: rgba(16, 22, 19, 0.7);
+      border: 2px solid rgba(125, 211, 252, 0.45);
+      box-shadow: 0 0 40px rgba(125, 211, 252, 0.08);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-29-store-and-forward .hub .hlabel {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 30px;
+      color: var(--accent-2); letter-spacing: 0.03em;
+    }
+    #scene-29-store-and-forward .hub .hsub {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 16px;
+      color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase;
+    }
+
+    /* the two recipient phones at the base corners — neutral (people, not system components) */
+    #scene-29-store-and-forward .phone {
+      position: absolute; top: 525px; width: 110px; height: 190px;
+      border-radius: 20px; background: var(--panel);
+      border: 2px solid rgba(195, 203, 199, 0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-29-store-and-forward .phone .screen {
+      position: absolute; inset: 9px; border-radius: 12px;
+      background: rgba(10, 15, 13, 0.6); border: 1px solid rgba(195, 203, 199, 0.12);
+      box-shadow: inset 0 0 0 rgba(37, 211, 102, 0); will-change: box-shadow;
+    }
+    #scene-29-store-and-forward .pl { left: 329px; }
+    #scene-29-store-and-forward .pr { left: 1481px; }
+
+    /* the named pattern — the payoff, the only bright sky text, stamped under the hub */
+    #scene-29-store-and-forward .pattern {
+      position: absolute; left: 0; right: 0; top: 372px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 36px;
+      color: var(--accent-2); letter-spacing: 0.06em;
+      text-shadow: 0 0 26px rgba(125, 211, 252, 0.25);
+      clip-path: inset(0 100% 0 0); opacity: 0; will-change: clip-path, opacity;
+    }
+    #scene-29-store-and-forward .pattern .q {
+      display: block; margin-top: 7px; font-family: "Inter", sans-serif; font-weight: 400;
+      font-size: 19px; color: var(--muted); letter-spacing: 0.02em; text-shadow: none;
+    }
+
+    /* the message — one green chip, routed phone → hub → phone */
+    #scene-29-store-and-forward .msg {
+      position: absolute; left: 367px; top: 505px; width: 36px; height: 34px;
+      border-radius: 9px 9px 9px 3px; background: var(--accent);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.55);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* narration captions */
+    #scene-29-store-and-forward .cap {
+      position: absolute; left: 0; right: 0; top: 858px; text-align: center;
+    }
+    #scene-29-store-and-forward .cap .l1 {
+      font-size: 38px; font-weight: 500; color: var(--fg); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-29-store-and-forward .cap .l1 .neg { color: var(--danger); }
+    #scene-29-store-and-forward .cap .l2 {
+      margin-top: 16px; font-size: 33px; font-weight: 400; color: var(--soft); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-29-store-and-forward .cap .l2 .mid { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-29-store-and-forward" data-composition-id="scene-29-store-and-forward" data-width="1920" data-height="1080">
+    <div class="stage">
+      <svg class="net" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+        <path class="arc arcL" d="M960,334 C 720,374 540,452 384,525"></path>
+        <path class="arc arcR" d="M960,334 C 1200,374 1380,452 1536,525"></path>
+        <line class="forbid" x1="447" y1="620" x2="1473" y2="620"></line>
+      </svg>
+
+      <div class="xmark" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2400" data-sfx-volume="0.42"><span class="bar b1"></span><span class="bar b2"></span></div>
+
+      <div class="hub" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500">
+        <div class="hlabel">service</div>
+        <div class="hsub">the middle</div>
+      </div>
+
+      <div class="pattern" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="7680">store and forward<span class="q">park it, deliver it when they're back</span></div>
+
+      <div class="phone pl"><div class="screen"></div></div>
+      <div class="phone pr"><div class="screen" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="5850"></div></div>
+
+      <div class="msg" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3800" data-sfx-volume="0.42"></div>
+
+      <div class="cap">
+        <div class="l1">Two phones <span class="neg">never</span> talk directly.</div>
+        <div class="l2">Everything routes through the <span class="mid">middle</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-29-store-and-forward";
+
+    // Host data-start = 286.26 → scene-local = global − 286.26. Chunk first word "The" 286.76 = local 0.50.
+
+    // prime the two routing arcs for draw-on (opacity gated so the round caps can't leave a stray dot)
+    document.querySelectorAll(root + " .arc").forEach((p) => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+    });
+
+    // Entrance crossfade over scene 28's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "The service" 286.76 (local 0.50) — the hub pops into the apex; the first narration line rises
+    tl.fromTo(root + " .hub", { opacity: 0, scale: 0.85, y: -10 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)" }, 0.50);
+    tl.fromTo(root + " .cap .l1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.50);
+
+    // "never let two phones talk directly" 287.30→289.30 (local 1.04→3.04) —
+    // the two phones settle at the base corners; the routing arcs draw outward from the hub
+    tl.fromTo(root + " .pl", { opacity: 0, x: -22, y: 12 }, { opacity: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out" }, 1.04);
+    tl.fromTo(root + " .pr", { opacity: 0, x: 22, y: 12 }, { opacity: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out" }, 1.20);
+    tl.set(root + " .arc", { opacity: 1 }, 1.30);
+    tl.to(root + " .arcL", { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }, 1.30);
+    tl.to(root + " .arcR", { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }, 1.30);
+    // the tempting direct path appears between the phones — dashed, doomed
+    tl.fromTo(root + " .forbid", { opacity: 0 }, { opacity: 0.8, duration: 0.5, ease: "sine.out" }, 1.70);
+    // "directly." 288.66→289.30 (local 2.40→3.04) — the direct path is struck out: the X stamps
+    tl.fromTo(root + " .xmark", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 2.40);
+    tl.to(root + " .forbid", { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 2.70);
+
+    // "Everything routes through the middle" 289.96→292.38 (local 3.70→6.12) —
+    // the second line rises; a green message routes from the left phone UP to the hub and back DOWN to the right phone
+    tl.fromTo(root + " .cap .l2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.70);
+    tl.fromTo(root + " .msg", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, 3.70);
+    // route up the left arc to the hub
+    tl.to(root + " .msg", { x: 336, y: -152, duration: 0.55, ease: "power1.in" }, 3.80);
+    tl.to(root + " .msg", { x: 576, y: -192, duration: 0.45, ease: "power1.out" }, 4.35);
+    // "the middle" 291.42→292.38 (local 5.16→6.12) — it passes through the hub, which pulses
+    tl.to(root + " .hub", { boxShadow: "0 0 56px rgba(125, 211, 252, 0.2)", borderColor: "rgba(125, 211, 252, 0.7)", duration: 0.3, ease: "power2.out", repeat: 1, yoyo: true }, 4.86);
+    // route down the right arc to the right phone
+    tl.to(root + " .msg", { x: 816, y: -152, duration: 0.5, ease: "power1.in" }, 4.95);
+    tl.to(root + " .msg", { x: 1152, y: 0, duration: 0.6, ease: "power1.out" }, 5.45);
+    // the right phone receives — its screen glows green
+    tl.to(root + " .pr .screen", { boxShadow: "inset 0 0 26px rgba(37, 211, 102, 0.45)", borderColor: "rgba(37,211,102,0.4)", duration: 0.5, ease: "power2.out" }, 5.85);
+    tl.to(root + " .pr", { scale: 1.05, duration: 0.18, ease: "power2.out" }, 5.90);
+    tl.to(root + " .pr", { scale: 1, duration: 0.45, ease: "back.out(2)" }, 6.06);
+    tl.to(root + " .msg", { opacity: 0, duration: 0.3, ease: "power1.in" }, 6.00);
+
+    // "a pattern called store and forward" 292.66→295.22 (local 6.40→8.96) —
+    // the named pattern is the terminal payoff, mask-revealed under the hub on "store and forward"
+    tl.set(root + " .pattern", { opacity: 1 }, 7.68);
+    tl.to(root + " .pattern", { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power2.inOut" }, 7.68);
+
+    // idle — the whole network drifts faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 4.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-29-store-and-forward"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 08 — multiply by hundreds of millions</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-08-multiply-by-millions { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-08-multiply-by-millions .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the counter — hundreds of millions */
+    #scene-08-multiply-by-millions .counter {
+      position: absolute; left: 0; right: 0; top: 56px; text-align: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-08-multiply-by-millions .counter .v {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 92px; color: var(--cost); font-variant-numeric: tabular-nums;
+      text-shadow: 0 0 34px rgba(240, 180, 41, 0.25);
+    }
+    #scene-08-multiply-by-millions .counter .sub {
+      margin-top: 6px; font-size: 28px; font-weight: 400; color: var(--muted);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the field — one tiny cell per connection, mostly idle */
+    #scene-08-multiply-by-millions .grid {
+      position: absolute; left: 60px; top: 230px; width: 1800px; height: 580px;
+      display: grid; grid-template-columns: repeat(20, 1fr);
+      grid-template-rows: repeat(12, 1fr); gap: 6px;
+      will-change: opacity;
+    }
+    #scene-08-multiply-by-millions .cell {
+      border-radius: 4px; background: rgba(57, 68, 63, 0.30);
+      border: 1px solid rgba(57, 68, 63, 0.5);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-08-multiply-by-millions .cell.lit {
+      background: rgba(240, 180, 41, 0.14);
+      border: 1px solid rgba(240, 180, 41, 0.45);
+    }
+
+    /* the seed — scene 07's single cost cell, before it multiplies */
+    #scene-08-multiply-by-millions .seed {
+      position: absolute; left: 917px; top: 496px; width: 86px; height: 47px;
+      border-radius: 4px; background: rgba(240, 180, 41, 0.30);
+      border: 1px solid rgba(240, 180, 41, 0.75);
+      box-shadow: 0 0 26px rgba(240, 180, 41, 0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* amber breath overlay — the machine under load */
+    #scene-08-multiply-by-millions .breath {
+      position: absolute; left: 60px; top: 230px; width: 1800px; height: 580px;
+      border-radius: 8px; background: radial-gradient(ellipse at center, rgba(240, 180, 41, 0.5), transparent 70%);
+      opacity: 0; pointer-events: none; will-change: opacity;
+    }
+
+    /* legibility scrim behind the closing statement */
+    #scene-08-multiply-by-millions .scrim {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 360px;
+      background: linear-gradient(to top, rgba(10, 15, 13, 0.92) 30%, transparent);
+      opacity: 0; pointer-events: none; will-change: opacity;
+    }
+
+    /* the closing statement of the cost subtopic */
+    #scene-08-multiply-by-millions .statement {
+      position: absolute; left: 0; right: 0; top: 880px; text-align: center;
+      font-size: 54px; font-weight: 700; color: var(--fg);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-08-multiply-by-millions .statement .hard { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <div id="scene-08-multiply-by-millions" data-composition-id="scene-08-multiply-by-millions" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="counter">
+        <div class="v">1</div>
+        <div class="sub">mostly-idle phones &mdash; every one still held</div>
+      </div>
+
+      <div class="grid" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="980" data-sfx-volume="0.42"></div>
+      <div class="seed"></div>
+      <div class="breath"></div>
+
+      <div class="scrim"></div>
+      <div class="statement" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="7400">
+        Keeping the connection alive becomes <span class="hard" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="10190" data-sfx-volume="0.42">the hard part.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const root = "#scene-08-multiply-by-millions";
+
+    // build the 20x12 connection field deterministically (240 nodes; ~16% lit amber)
+    const gridEl = document.querySelector(root + " .grid");
+    for (let i = 0; i < 240; i++) {
+      const c = document.createElement("div");
+      c.className = "cell" + ((i * 7 + 3) % 19 < 3 ? " lit" : "");
+      gridEl.appendChild(c);
+    }
+
+    const tl = gsap.timeline({ paused: true });
+
+    // Host data-start = 66.68 → scene-local = global − 66.68.
+
+    // Entrance crossfade over scene 07's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Multiply" 67.18 (local 0.50) — the single cost cell from scene 07, alone at center
+    tl.fromTo(root + " .seed",
+      { opacity: 0, scale: 0.5 },
+      { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.50);
+
+    // the lone cell pulses once while "that by" passes — tension before the flood
+    tl.to(root + " .seed", { scale: 1.14, duration: 0.22, ease: "power2.out" }, 1.20);
+    tl.to(root + " .seed", { scale: 1, duration: 0.3, ease: "sine.inOut" }, 1.42);
+
+    // "hundreds" 68.62 (local 1.94) — the multiplication wave radiates from the seed
+    tl.fromTo(root + " .cell",
+      { opacity: 0, scale: 0.55 },
+      { opacity: 1, scale: 1, duration: 0.3, ease: "power1.out",
+        stagger: { grid: [12, 20], from: "center", amount: 2.8 } }, 1.94);
+    // the seed dissolves into the field it spawned
+    tl.to(root + " .seed", { opacity: 0, duration: 0.4, ease: "sine.in" }, 2.3);
+
+    // counter climbs with the wave — lands on "millions" 69.66–70.34 (local ~3.66)
+    const cnt = { v: 1 };
+    const cntEl = () => document.querySelector(root + " .counter .v");
+    const fmt = (n) => {
+      n = Math.round(n);
+      if (n >= 100000000) return "100,000,000+";
+      return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+    tl.fromTo(root + " .counter", { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.94);
+    tl.to(cnt, {
+      v: 100000000, duration: 1.75, ease: "power3.in",
+      onUpdate: () => { cntEl().textContent = fmt(cnt.v); }
+    }, 1.94);
+
+    // "mostly idle phones" — "mostly" 71.08 (local 4.40): the sub-line lands the irony
+    tl.fromTo(root + " .counter .sub", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.40);
+
+    // "keeping" 73.84 (local 7.16) — field recedes, the closing statement owns the frame
+    tl.to(root + " .grid", { opacity: 0.4, duration: 0.7, ease: "sine.inOut" }, 7.0);
+    tl.to(root + " .scrim", { opacity: 1, duration: 0.6, ease: "sine.out" }, 7.0);
+    tl.fromTo(root + " .statement", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 7.16);
+
+    // "hard part." — "hard" 76.82 (local 10.14): amber ignition on the phrase
+    tl.to(root + " .statement .hard", {
+      color: "#f0b429", textShadow: "0 0 20px rgba(240, 180, 41, 0.5)",
+      duration: 0.4, ease: "power2.out"
+    }, 10.14);
+
+    // after "part." 77.52 — the field breathes once under load (single slow pulse)
+    tl.to(root + " .breath", { opacity: 0.10, duration: 1.0, ease: "sine.inOut" }, 11.0);
+    tl.to(root + " .breath", { opacity: 0, duration: 1.0, ease: "sine.inOut" }, 12.0);
+
+    // idle — stage drifts slightly (finite yoyo)
+    tl.to(root + " .stage", { y: -6, duration: 3.2, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-08-multiply-by-millions"] = tl;
+  </script>
+</body>
+</html>

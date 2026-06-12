@@ -1,6 +1,6 @@
 # How WhatsApp Handles 40 Billion Messages Per Day — substrate notes
 
-Runtime target: **10 min · ~1700 words** · **system-design style** (architecture, components, message flow, scaling). Expanded from the 5-min cut (2026-06-05).
+Runtime target: **7 min · ~1200 words** · **system-design style** (architecture, components, message flow, scaling). Recut from the 13-min expansion down to a tighter engineer-focused 7-min cut (2026-06-10). History: 5-min original → 10-13-min expansion → this 7-min recut.
 
 ## Named concepts
 - **One persistent TCP connection** — each phone holds a single long-lived socket to a chat server, not a request-per-message. Reconnecting from scratch is expensive in battery and time, so the socket stays open for hours.

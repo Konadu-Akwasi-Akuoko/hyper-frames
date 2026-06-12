@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 07 — the cost of a warm pipe</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-07-cost-of-warm-pipe { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-07-cost-of-warm-pipe .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the server from scenes 05-06, pushed from its corridor corner to center-frame */
+    #scene-07-cost-of-warm-pipe .server-box {
+      position: absolute; left: 660px; top: 230px; width: 600px; height: 520px;
+      background: var(--panel); border: 1.5px solid #2c3a45; border-radius: 18px;
+      box-shadow: 0 0 40px rgba(125, 211, 252, 0.10);
+      padding: 30px 34px; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-07-cost-of-warm-pipe .server-box .hdr {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 24px; color: var(--muted); letter-spacing: 0.16em;
+      margin-bottom: 26px;
+    }
+
+    /* amber cost rows — the per-socket resources the server has to hold */
+    #scene-07-cost-of-warm-pipe .row {
+      height: 104px; border-radius: 12px; margin-bottom: 20px;
+      background: rgba(240, 180, 41, 0.07);
+      border: 1px solid rgba(240, 180, 41, 0.35);
+      border-left: 4px solid var(--cost);
+      display: flex; align-items: center; gap: 22px; padding: 0 26px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-07-cost-of-warm-pipe .row .glyph { flex: 0 0 auto; }
+    #scene-07-cost-of-warm-pipe .row .lbl {
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 32px; color: var(--cost); letter-spacing: 0.12em;
+    }
+    #scene-07-cost-of-warm-pipe .row .sub {
+      margin-left: auto; font-size: 24px; font-weight: 400; color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* the idle row — silence, yet the cost stays held */
+    #scene-07-cost-of-warm-pipe .row.idle {
+      background: rgba(57, 68, 63, 0.18);
+      border: 1px solid var(--border); border-left: 4px solid var(--dim);
+      height: 88px;
+    }
+    #scene-07-cost-of-warm-pipe .row.idle .lbl { color: var(--muted); }
+    #scene-07-cost-of-warm-pipe .row.idle svg line {
+      stroke: var(--dim); stroke-width: 3; stroke-linecap: round;
+    }
+
+    /* narration captions */
+    #scene-07-cost-of-warm-pipe .cap {
+      position: absolute; left: 0; right: 0; top: 832px; text-align: center;
+    }
+    #scene-07-cost-of-warm-pipe .cap .l1 {
+      font-size: 46px; font-weight: 500; color: var(--soft);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-07-cost-of-warm-pipe .cap .l1 .price-word { color: var(--soft); }
+    #scene-07-cost-of-warm-pipe .cap .l2 {
+      margin-top: 14px; font-size: 38px; font-weight: 700; color: var(--fg);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-07-cost-of-warm-pipe .cap .l2 .em-cost { color: var(--cost); }
+  </style>
+</head>
+<body>
+  <div id="scene-07-cost-of-warm-pipe" data-composition-id="scene-07-cost-of-warm-pipe" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="server-box" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1300" data-sfx-volume="0.35">
+        <div class="hdr">SERVER&nbsp;&middot;&nbsp;PER&nbsp;OPEN&nbsp;SOCKET</div>
+
+        <div class="row mem" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="5600" data-sfx-volume="0.42">
+          <svg class="glyph" width="52" height="44" viewBox="0 0 52 44">
+            <rect x="6" y="8" width="40" height="24" rx="4" fill="none" stroke="#f0b429" stroke-width="2.5"/>
+            <line x1="14" y1="32" x2="14" y2="40" stroke="#f0b429" stroke-width="2.5"/>
+            <line x1="26" y1="32" x2="26" y2="40" stroke="#f0b429" stroke-width="2.5"/>
+            <line x1="38" y1="32" x2="38" y2="40" stroke="#f0b429" stroke-width="2.5"/>
+          </svg>
+          <div class="lbl">MEMORY</div>
+          <div class="sub">held per socket</div>
+        </div>
+
+        <div class="row fd" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="7660" data-sfx-volume="0.42">
+          <svg class="glyph" width="44" height="48" viewBox="0 0 44 48">
+            <path d="M 10 6 H 26 L 36 16 V 42 H 10 Z" fill="none" stroke="#f0b429" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 26 6 V 16 H 36" fill="none" stroke="#f0b429" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div class="lbl">FILE&nbsp;HANDLE</div>
+          <div class="sub">held per socket</div>
+        </div>
+
+        <div class="row idle" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="10260" data-sfx-volume="0.42">
+          <svg class="glyph" width="52" height="20" viewBox="0 0 52 20">
+            <line x1="4" y1="10" x2="48" y2="10"/>
+          </svg>
+          <div class="lbl">TRAFFIC</div>
+          <div class="sub">idle &mdash; still held</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap">
+      <div class="l1">But a warm pipe has a <span class="price-word" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2480">price.</span></div>
+      <div class="l2">Every open socket is <span class="em-cost">memory</span> and a <span class="em-cost">file handle</span> the server has to hold.</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-07-cost-of-warm-pipe";
+
+    // Host data-start = 54.08 → scene-local = global − 54.08.
+
+    // Entrance crossfade over scene 06's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "But" 54.58 (local 0.50) — the server pushes in from its scene-06 corridor
+    // position (center ~1645,470 at 230px wide) to own the frame
+    tl.fromTo(root + " .server-box",
+      { opacity: 0, x: 685, y: -60, scale: 0.4 },
+      { opacity: 1, x: 0, y: 0, scale: 1, duration: 0.9, ease: "power2.inOut" }, 0.50);
+    tl.fromTo(root + " .cap .l1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+
+    // "price." 56.46 (local 2.38) — amber enters: the border ignites cost-colored
+    tl.to(root + " .server-box", {
+      borderColor: "rgba(240, 180, 41, 0.55)",
+      boxShadow: "0 0 50px rgba(240, 180, 41, 0.14)",
+      duration: 0.55, ease: "power2.out"
+    }, 2.38);
+    tl.to(root + " .cap .l1 .price-word", {
+      color: "#f0b429", textShadow: "0 0 18px rgba(240, 180, 41, 0.5)",
+      duration: 0.35, ease: "power2.out"
+    }, 2.38);
+
+    // "Every open socket..." — "Every" 57.90 (local 3.82)
+    tl.fromTo(root + " .cap .l2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.82);
+    tl.to(root + " .cap .l1", { opacity: 0.45, duration: 0.6, ease: "sine.inOut" }, 4.1);
+
+    // "memory" 59.58 (local 5.50) — first cost row slides in, measured settle
+    tl.fromTo(root + " .row.mem",
+      { opacity: 0, x: -34 },
+      { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 5.50);
+
+    // "file handle" — "handle" 61.64 (local 7.56) — second row follows the cascade
+    tl.fromTo(root + " .row.fd",
+      { opacity: 0, x: -34 },
+      { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 7.56);
+
+    // "hold" 63.06 (local 8.98) — the box takes the weight: a settle, the glow deepens
+    tl.to(root + " .server-box", { y: 7, duration: 0.3, ease: "power2.out" }, 8.98);
+    tl.to(root + " .server-box", { y: 0, duration: 0.5, ease: "sine.inOut" }, 9.28);
+    tl.to(root + " .server-box", { boxShadow: "0 0 64px rgba(240, 180, 41, 0.20)", duration: 0.5, ease: "power2.out" }, 8.98);
+
+    // "even when nothing's being said." — "even" 64.14 (local 10.06):
+    // the idle row appears dim and flat — silence, but the amber rows stay lit
+    tl.fromTo(root + " .row.idle",
+      { opacity: 0, x: -34 },
+      { opacity: 0.85, x: 0, duration: 0.55, ease: "power2.out" }, 10.06);
+
+    // "said." 65.62 (local 11.54) — the cost rows pulse once: still held
+    tl.to(root + " .row.mem, " + root + " .row.fd", {
+      backgroundColor: "rgba(240, 180, 41, 0.13)", duration: 0.35, ease: "sine.out"
+    }, 11.54);
+    tl.to(root + " .row.mem, " + root + " .row.fd", {
+      backgroundColor: "rgba(240, 180, 41, 0.07)", duration: 0.6, ease: "sine.inOut"
+    }, 11.94);
+
+    // idle — stage drifts slightly (finite yoyo)
+    tl.to(root + " .stage", { y: -6, duration: 3.2, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-07-cost-of-warm-pipe"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 35 — decoding the tick states</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-35-tick-states { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-35-tick-states .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-35-tick-states .legend {
+      position: absolute; left: 50%; top: 330px; transform: translateX(-50%);
+      width: 1000px; display: flex; flex-direction: column; gap: 50px;
+    }
+    #scene-35-tick-states .row {
+      display: flex; align-items: center; gap: 34px; opacity: 0.16;
+      will-change: opacity;
+    }
+    #scene-35-tick-states .gly {
+      width: 132px; flex: none; display: flex; align-items: center; justify-content: flex-start;
+      will-change: filter;
+    }
+    #scene-35-tick-states .lab {
+      width: 268px; flex: none;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 32px;
+      color: var(--soft); letter-spacing: 0.002em;
+    }
+    #scene-35-tick-states .arr {
+      width: 44px; flex: none; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 400; font-size: 30px; color: #5b6862;
+    }
+    #scene-35-tick-states .dec {
+      flex: 1;
+      font-family: "Inter", sans-serif; font-weight: 400; font-size: 28px;
+      color: var(--fg); letter-spacing: 0.003em; will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-35-tick-states" data-composition-id="scene-35-tick-states" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="legend">
+
+        <div class="row r1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="500" data-sfx-volume="0.35">
+          <div class="gly">
+            <svg viewBox="0 0 24 18" width="50" height="38" fill="none">
+              <polyline points="3,9 9,15 20,4" stroke="#79857f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            </svg>
+          </div>
+          <div class="lab">One gray tick</div>
+          <div class="arr">&rarr;</div>
+          <div class="dec">the server has it</div>
+        </div>
+
+        <div class="row r2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3840">
+          <div class="gly">
+            <svg viewBox="0 0 30 18" width="62" height="37" fill="none">
+              <polyline points="2,9 7,15 16,4" stroke="#c3cbc7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+              <polyline points="11,9 16,15 27,4" stroke="#c3cbc7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            </svg>
+          </div>
+          <div class="lab">Two gray ticks</div>
+          <div class="arr">&rarr;</div>
+          <div class="dec">it reached the device</div>
+        </div>
+
+        <div class="row r3" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="7660" data-sfx-volume="0.35">
+          <div class="gly">
+            <svg viewBox="0 0 30 18" width="62" height="37" fill="none">
+              <polyline points="2,9 7,15 16,4" stroke="#53bdeb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+              <polyline points="11,9 16,15 27,4" stroke="#53bdeb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            </svg>
+          </div>
+          <div class="lab" style="color: var(--read);">Two blue ticks</div>
+          <div class="arr">&rarr;</div>
+          <div class="dec">it has been read</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-35-tick-states";
+
+    // Host data-start = 327.62 → scene-local = global − 327.62. Chunk first word "One" 328.12 = local 0.50.
+
+    // Entrance crossfade over scene 34's tail — gates the dim baseline rows so nothing bleeds
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // BEAT 1 — "One gray tick means the server has it" 328.12→330.14 (local 0.50→2.52)
+    tl.fromTo(root + " .r1", { opacity: 0.16 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .r1 .dec", { x: -8 }, { x: 0, duration: 0.5, ease: "power2.out" }, 0.50);
+
+    // BEAT 2 — "Two gray ticks means it reached the device" 331.46→333.96 (local 3.84→6.34)
+    tl.fromTo(root + " .r2", { opacity: 0.16 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 3.84);
+    tl.fromTo(root + " .r2 .dec", { x: -8 }, { x: 0, duration: 0.5, ease: "power2.out" }, 3.84);
+
+    // BEAT 3 — "Two blue ticks means it has been read" 335.08→337.48 (local 7.46→9.86) — the read payoff blooms blue
+    tl.fromTo(root + " .r3", { opacity: 0.16 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 7.46);
+    tl.fromTo(root + " .r3 .dec", { x: -8 }, { x: 0, duration: 0.5, ease: "power2.out" }, 7.46);
+    tl.fromTo(root + " .r3 .gly", { filter: "drop-shadow(0 0 0px rgba(83,189,235,0))" }, { filter: "drop-shadow(0 0 14px rgba(83, 189, 235, 0.6))", duration: 0.6, ease: "power2.out" }, 7.66);
+
+    // idle — barely-there drift
+    tl.to(root + " .legend", { y: -3, duration: 3.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
+
+    window.__timelines["scene-35-tick-states"] = tl;
+  </script>
+</body>
+</html>

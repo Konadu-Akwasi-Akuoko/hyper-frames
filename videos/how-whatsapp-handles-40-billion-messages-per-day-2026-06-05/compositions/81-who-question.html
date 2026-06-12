@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 81 — which leaves the one question hanging over all of it. Who was actually running this?</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-81-q { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-81-q .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-81-q .ghost {
+      position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 620px; line-height: 1;
+      color: rgba(125,211,252,0.05); user-select: none;
+      opacity: 0; will-change: opacity;
+    }
+
+    #scene-81-q .kick {
+      position: absolute; left: 0; right: 0; top: 354px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px;
+      color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-81-q .qwrap { position: absolute; left: 0; right: 0; top: 470px; will-change: transform; }
+    #scene-81-q .q {
+      text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 88px; line-height: 1.1;
+      color: var(--fg); letter-spacing: -0.02em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-81-q .q .wh { color: var(--cost); will-change: text-shadow; }
+  </style>
+</head>
+<body>
+  <div id="scene-81-q" data-composition-id="scene-81-q" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="ghost">?</div>
+
+      <div class="kick" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">one question — hanging over all of it</div>
+
+      <div class="qwrap">
+        <div class="q" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3900" data-sfx-volume="0.35"><span class="wh">Who</span> was actually running this?</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-81-q";
+
+    // Host data-start = 598.48 → scene-local = global − 598.48. Chunk first word "which" 598.98 = local 0.50.
+
+    // Entrance crossfade over scene 80's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "which leaves the one question hanging over all of it." 598.98→601.12 (local 0.50→2.64) — the framing
+    tl.fromTo(root + " .kick", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+
+    // "Who was actually running this?" 602.38→603.55 (local 3.90→5.07) — the question lands
+    tl.fromTo(root + " .ghost", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 3.70);
+    tl.fromTo(root + " .q", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 3.90);
+    tl.fromTo(root + " .q .wh", { textShadow: "0 0 0px rgba(240,180,41,0)" }, { textShadow: "0 0 34px rgba(240,180,41,0.55)", duration: 0.5, ease: "power2.out" }, 4.1);
+
+    // "hanging over all of it" — the question sways gently, as if hanging
+    tl.to(root + " .qwrap", { rotation: 1.1, transformOrigin: "50% 0%", duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.4);
+
+    window.__timelines["scene-81-q"] = tl;
+  </script>
+</body>
+</html>

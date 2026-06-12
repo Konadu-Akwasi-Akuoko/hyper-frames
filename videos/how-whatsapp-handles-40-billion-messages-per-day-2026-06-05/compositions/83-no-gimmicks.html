@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 83 — No ads, no games, no gimmicks</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-83-no { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-83-no .stage { position: absolute; inset: 0; }
+
+    #scene-83-no .row {
+      position: absolute; left: 0; right: 0; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 84px; line-height: 1;
+      letter-spacing: -0.02em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-83-no .r1 { top: 376px; }
+    #scene-83-no .r2 { top: 488px; }
+    #scene-83-no .r3 { top: 600px; }
+
+    #scene-83-no .no { color: var(--muted); font-weight: 600; }
+    #scene-83-no .word { position: relative; display: inline-block; color: var(--soft); }
+    #scene-83-no .word .strike {
+      position: absolute; left: -6px; right: -6px; top: 52%; height: 6px; border-radius: 3px;
+      background: var(--danger); box-shadow: 0 0 12px rgba(255,107,93,0.5);
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-83-no" data-composition-id="scene-83-no" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="row r1"><span class="no">no</span> <span class="word">ads<span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="740" data-sfx-volume="0.35"></span></span></div>
+      <div class="row r2"><span class="no">no</span> <span class="word">games<span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1400" data-sfx-volume="0.35"></span></span></div>
+      <div class="row r3"><span class="no">no</span> <span class="word">gimmicks<span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2000" data-sfx-volume="0.35"></span></span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-83-no";
+
+    // Host data-start = 609.92 → scene-local = global − 609.92. Chunk first word "No" 610.42 = local 0.50.
+
+    // Entrance crossfade over scene 82's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "No ads," 610.42→610.66 (local 0.50→0.74)
+    tl.fromTo(root + " .r1", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.32, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .r1 .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.26, ease: "power2.in" }, 0.74);
+
+    // "no games," 611.10→611.32 (local 1.18→1.40)
+    tl.fromTo(root + " .r2", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.32, ease: "power2.out" }, 1.18);
+    tl.fromTo(root + " .r2 .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.26, ease: "power2.in" }, 1.40);
+
+    // "no gimmicks." 611.76→611.92 (local 1.84→2.00)
+    tl.fromTo(root + " .r3", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.32, ease: "power2.out" }, 1.84);
+    tl.fromTo(root + " .r3 .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.28, ease: "power2.in" }, 2.00);
+
+    // settle — struck words dim slightly
+    tl.to(root + " .word", { color: "#79857f", duration: 0.5, ease: "power2.out" }, 2.4);
+
+    window.__timelines["scene-83-no"] = tl;
+  </script>
+</body>
+</html>

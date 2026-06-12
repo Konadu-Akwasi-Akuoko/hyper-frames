@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 42 — the X3DH prekey handshake</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-42-x3dh { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-42-x3dh .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-42-x3dh .hdr {
+      position: absolute; left: 0; right: 0; top: 224px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 66px;
+      color: var(--accent-2); letter-spacing: 0.06em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+    #scene-42-x3dh .sub {
+      position: absolute; left: 0; right: 0; top: 322px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px;
+      color: var(--muted); letter-spacing: 0.26em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the two people */
+    #scene-42-x3dh .person {
+      position: absolute; top: 470px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 16px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-42-x3dh .pa { left: 412px; }
+    #scene-42-x3dh .pb { left: 1412px; }
+    #scene-42-x3dh .person .av { display: block; will-change: filter, opacity; }
+    #scene-42-x3dh .person .nm {
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 26px; letter-spacing: 0.01em;
+    }
+    #scene-42-x3dh .pa .nm { color: var(--accent); }
+    #scene-42-x3dh .pb .nm { color: var(--soft); }
+
+    /* offline badge on person B */
+    #scene-42-x3dh .badge {
+      position: absolute; left: 1466px; top: 452px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 18px;
+      color: var(--muted); letter-spacing: 0.08em;
+      background: rgba(57, 68, 63, 0.4); border: 1px solid var(--dim); border-radius: 8px;
+      padding: 4px 10px; opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the traveling keys */
+    #scene-42-x3dh .key { position: absolute; top: 506px; will-change: transform, opacity; }
+    #scene-42-x3dh .keyA { left: 540px; opacity: 0; }
+    #scene-42-x3dh .keyB { left: 1316px; opacity: 0; }
+
+    /* the shared key */
+    #scene-42-x3dh .shared {
+      position: absolute; left: 920px; top: 478px; opacity: 0;
+      transform: scale(0); transform-origin: center center; will-change: transform, opacity, filter;
+    }
+    #scene-42-x3dh .sklabel {
+      position: absolute; left: 0; right: 0; top: 624px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 32px;
+      color: var(--accent); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-42-x3dh" data-composition-id="scene-42-x3dh" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="hdr" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="2020" data-sfx-volume="0.42">X3DH</div>
+      <div class="sub">prekey handshake</div>
+
+      <div class="person pa">
+        <svg class="av" viewBox="0 0 48 48" width="96" height="96" fill="none">
+          <circle cx="24" cy="17" r="8.5" stroke="#25d366" stroke-width="2.2"></circle>
+          <path d="M9 42 a15 15 0 0 1 30 0" stroke="#25d366" stroke-width="2.2" stroke-linecap="round"></path>
+        </svg>
+        <div class="nm">you</div>
+      </div>
+
+      <div class="person pb">
+        <svg class="av" viewBox="0 0 48 48" width="96" height="96" fill="none">
+          <circle cx="24" cy="17" r="8.5" stroke="#c3cbc7" stroke-width="2.2"></circle>
+          <path d="M9 42 a15 15 0 0 1 30 0" stroke="#c3cbc7" stroke-width="2.2" stroke-linecap="round"></path>
+        </svg>
+        <div class="nm">them</div>
+      </div>
+
+      <div class="badge" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="6860" data-sfx-volume="0.42">offline</div>
+
+      <svg class="key keyA" viewBox="0 0 32 32" width="46" height="46" fill="none" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3640" data-sfx-volume="0.42">
+        <circle cx="10.5" cy="10.5" r="6" stroke="#25d366" stroke-width="2.2"></circle>
+        <path d="M14.8 14.8 L26 26 M22 22 l3 3 M25 25 l3 3" stroke="#25d366" stroke-width="2.2" stroke-linecap="round"></path>
+      </svg>
+
+      <svg class="key keyB" viewBox="0 0 32 32" width="46" height="46" fill="none">
+        <circle cx="21.5" cy="10.5" r="6" stroke="#c3cbc7" stroke-width="2.2"></circle>
+        <path d="M17.2 14.8 L6 26 M10 22 l-3 3 M7 25 l-3 3" stroke="#c3cbc7" stroke-width="2.2" stroke-linecap="round"></path>
+      </svg>
+
+      <svg class="shared" viewBox="0 0 40 40" width="80" height="80" fill="none" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4180" data-sfx-volume="0.42">
+        <circle cx="13" cy="13" r="7.5" stroke="#25d366" stroke-width="2.6"></circle>
+        <path d="M18.3 18.3 L32 32 M27.5 27.5 l3.5 3.5 M31 31 l3.5 3.5" stroke="#25d366" stroke-width="2.6" stroke-linecap="round"></path>
+      </svg>
+      <div class="sklabel">shared key</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-42-x3dh";
+
+    // Host data-start = 370.64 → scene-local = global − 370.64. Chunk first word "A" 371.14 = local 0.50.
+
+    // Entrance crossfade over scene 41's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "A prekey handshake" 371.14→372.03 (local 0.50→1.39) — the subtitle sets the frame
+    tl.fromTo(root + " .sub", { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.66);
+
+    // "called X3DH" 372.66→373.22 (local 2.02→2.58) — the protocol names itself
+    tl.fromTo(root + " .hdr", { opacity: 0, y: 12, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(1.5)" }, 2.02);
+    tl.fromTo(root + " .hdr", { textShadow: "0 0 0px rgba(125,211,252,0)" }, { textShadow: "0 0 26px rgba(125, 211, 252, 0.34)", duration: 0.5, ease: "power2.out" }, 2.02);
+
+    // "two people" 373.72→374.22 (local 3.08→3.58) — the two parties appear, each with a key
+    tl.fromTo(root + " .pa", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.42, ease: "back.out(1.3)" }, 3.08);
+    tl.fromTo(root + " .pb", { opacity: 0, x: 14 }, { opacity: 1, x: 0, duration: 0.42, ease: "back.out(1.3)" }, 3.20);
+    tl.fromTo(root + " .keyA", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 3.30);
+    tl.fromTo(root + " .keyB", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 3.42);
+
+    // "agree on a shared key" 374.28→375.32 (local 3.64→4.68) — the keys converge and fuse
+    tl.to(root + " .keyA", { x: 374, duration: 0.62, ease: "power2.inOut" }, 3.64);
+    tl.to(root + " .keyB", { x: -350, duration: 0.62, ease: "power2.inOut" }, 3.64);
+    tl.to(root + " .keyA", { opacity: 0, duration: 0.2, ease: "power2.in" }, 4.12);
+    tl.to(root + " .keyB", { opacity: 0, duration: 0.2, ease: "power2.in" }, 4.12);
+    // the shared key snaps into being
+    tl.fromTo(root + " .shared", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2.2)" }, 4.18);
+    tl.fromTo(root + " .shared", { filter: "drop-shadow(0 0 0px rgba(37,211,102,0))" }, { filter: "drop-shadow(0 0 18px rgba(37, 211, 102, 0.6))", duration: 0.45, ease: "power2.out" }, 4.18);
+    tl.fromTo(root + " .sklabel", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 4.46);
+
+    // "even when one of them is offline" 376.30→378.06 (local 5.66→7.42) — person B dims, yet the key holds
+    tl.to(root + " .pb .av", { opacity: 0.32, filter: "grayscale(0.4)", duration: 0.5, ease: "power2.out" }, 5.66);
+    tl.to(root + " .pb .nm", { color: "#79857f", duration: 0.5, ease: "power2.out" }, 5.66);
+    tl.fromTo(root + " .badge", { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.86);
+    // the shared key reasserts — still secure, still there
+    tl.to(root + " .shared", { filter: "drop-shadow(0 0 22px rgba(37, 211, 102, 0.7))", duration: 0.4, ease: "power2.out" }, 6.86);
+    tl.to(root + " .shared", { filter: "drop-shadow(0 0 10px rgba(37, 211, 102, 0.35))", duration: 0.7, ease: "power2.inOut" }, 7.3);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.4);
+
+    window.__timelines["scene-42-x3dh"] = tl;
+  </script>
+</body>
+</html>

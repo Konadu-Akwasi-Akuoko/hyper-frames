@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 23 — a single tagged copy, on the server</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-23-tagged-copy-on-server { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-23-tagged-copy-on-server .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the SERVER box — the frame the scene lives inside; expansion will happen here (next scene) */
+    #scene-23-tagged-copy-on-server .server {
+      position: absolute; left: 650px; top: 240px; width: 620px; height: 440px;
+      border-radius: 20px; background: rgba(16, 22, 19, 0.6);
+      border: 2px solid rgba(125, 211, 252, 0.18);
+      box-shadow: 0 0 40px rgba(125, 211, 252, 0.06);
+      overflow: hidden; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-23-tagged-copy-on-server .header {
+      position: absolute; left: 0; top: 0; width: 100%; height: 66px;
+      display: flex; align-items: center; gap: 16px; padding: 0 28px;
+      border-bottom: 1px solid rgba(125, 211, 252, 0.12);
+    }
+    #scene-23-tagged-copy-on-server .glyph { display: flex; flex-direction: column; gap: 5px; }
+    #scene-23-tagged-copy-on-server .glyph i {
+      display: block; width: 30px; height: 5px; border-radius: 2px;
+      background: rgba(125, 211, 252, 0.5);
+    }
+    #scene-23-tagged-copy-on-server .slabel {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 22px; color: var(--accent-2); letter-spacing: 0.10em; text-transform: uppercase;
+    }
+    #scene-23-tagged-copy-on-server .shost {
+      margin-left: auto; font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 18px; color: var(--muted); letter-spacing: 0.04em;
+    }
+
+    /* very-low-amplitude pending-expansion glow at the server's output edge — anticipation only */
+    #scene-23-tagged-copy-on-server .pending {
+      position: absolute; left: 60px; top: 250px; width: 500px; height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 60%, rgba(125,211,252,0.16), rgba(125,211,252,0) 72%);
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the single message copy — green, the payload, dropped into the server */
+    /* NB: .copy is a child of .server — left/top are RELATIVE to the server box (650,240). */
+    #scene-23-tagged-copy-on-server .copy {
+      position: absolute; left: 160px; top: 168px; width: 300px; height: 96px;
+      border-radius: 14px; background: rgba(37, 211, 102, 0.12);
+      border: 1.5px solid var(--accent); box-shadow: 0 0 22px rgba(37, 211, 102, 0.28);
+      padding: 22px 22px 0; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-23-tagged-copy-on-server .copy .pl {
+      height: 11px; border-radius: 6px; background: rgba(37, 211, 102, 0.55);
+    }
+    #scene-23-tagged-copy-on-server .copy .pl.a { width: 72%; }
+    #scene-23-tagged-copy-on-server .copy .pl.b { width: 44%; margin-top: 14px; opacity: 0.7; }
+
+    /* the group-ID tag chip — system metadata, snaps onto the copy */
+    #scene-23-tagged-copy-on-server .tag {
+      position: absolute; left: 1002px; top: 386px;
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 14px; border-radius: 9px;
+      background: rgba(125, 211, 252, 0.12); border: 1px solid rgba(125, 211, 252, 0.5);
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 22px; color: var(--accent-2); letter-spacing: 0.02em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-23-tagged-copy-on-server .tag .k { color: var(--muted); }
+
+    /* narration caption beneath the server */
+    #scene-23-tagged-copy-on-server .cap {
+      position: absolute; left: 0; right: 0; top: 748px; text-align: center;
+    }
+    #scene-23-tagged-copy-on-server .cap .l1 {
+      font-size: 37px; font-weight: 500; color: var(--soft); letter-spacing: 0.005em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-23-tagged-copy-on-server .cap .l1 .gid { color: var(--accent-2); }
+    #scene-23-tagged-copy-on-server .cap .l2 {
+      margin-top: 14px; font-size: 41px; font-weight: 600; color: var(--fg); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-23-tagged-copy-on-server .cap .l2 .sv { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-23-tagged-copy-on-server" data-composition-id="scene-23-tagged-copy-on-server" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="server" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="500">
+        <div class="header">
+          <div class="glyph"><i></i><i></i><i></i></div>
+          <div class="slabel">Server</div>
+          <div class="shost">srv-04</div>
+        </div>
+        <div class="pending"></div>
+        <div class="copy" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1110" data-sfx-volume="0.42">
+          <div class="pl a"></div>
+          <div class="pl b"></div>
+        </div>
+      </div>
+
+      <div class="tag" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1930"><span class="k">gid:</span>7f3a&middot;9c</div>
+
+      <div class="cap">
+        <div class="l1">A single copy, tagged with a <span class="gid">group ID</span>.</div>
+        <div class="l2" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="6470">The expansion happens on the <span class="sv">server</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-23-tagged-copy-on-server";
+
+    // Host data-start = 231.39 → scene-local = global − 231.39. Chunk first word 231.89 = local 0.50.
+
+    // Entrance crossfade over scene 22's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "A single" 231.89→232.12 (local 0.50→0.73) — the server box arrives, dim-bordered
+    tl.fromTo(root + " .server", { opacity: 0, scale: 0.96, y: 12 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .cap .l1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.66);
+
+    // "copy" 232.50 (local 1.11) — the one green copy drops vertically into the server and settles
+    tl.fromTo(root + " .copy",
+      { opacity: 0, y: -150 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.4)" }, 1.11);
+    // the server takes responsibility — its border brightens as the payload lands
+    tl.to(root + " .server", { borderColor: "rgba(125, 211, 252, 0.5)", boxShadow: "0 0 48px rgba(125, 211, 252, 0.12)", duration: 0.5, ease: "power2.out" }, 1.40);
+
+    // "tagged" 233.32 (local 1.93) — the group-ID chip snaps onto the copy with an overshoot
+    tl.fromTo(root + " .tag", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1.15, duration: 0.22, ease: "back.out(2.2)" }, 1.93);
+    tl.to(root + " .tag", { scale: 1, duration: 0.3, ease: "power2.out" }, 2.15);
+    // "group ID." 234.44→234.66 (local 3.05→3.27) — faint sky bloom on the identifier
+    tl.to(root + " .tag", { boxShadow: "0 0 18px rgba(125, 211, 252, 0.4)", duration: 0.5, ease: "power2.out" }, 3.05);
+    tl.to(root + " .cap .l1 .gid", { textShadow: "0 0 18px rgba(125, 211, 252, 0.4)", duration: 0.5, ease: "power2.out" }, 3.05);
+
+    // "The expansion happens on the server." 236.24→237.86 (local 4.85→6.47) —
+    // caption line 2; the pending-expansion glow breathes faintly (anticipation, not fan-out)
+    tl.fromTo(root + " .cap .l2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.85);
+    tl.fromTo(root + " .pending", { opacity: 0 }, { opacity: 0.4, duration: 0.7, ease: "sine.out" }, 5.01);
+    tl.to(root + " .pending", { opacity: 0.6, duration: 1.4, ease: "sine.inOut", repeat: 3, yoyo: true }, 5.7);
+    // "server." 237.86 (local 6.47) — sky bloom on the word
+    tl.to(root + " .cap .l2 .sv", { textShadow: "0 0 24px rgba(125, 211, 252, 0.5)", duration: 0.5, ease: "power2.out" }, 6.47);
+
+    // idle — the box drifts faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 3.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-23-tagged-copy-on-server"] = tl;
+  </script>
+</body>
+</html>

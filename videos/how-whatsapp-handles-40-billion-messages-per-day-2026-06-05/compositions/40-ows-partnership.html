@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 40 — WhatsApp partners with Open Whisper Systems</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-40-ows { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-40-ows .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-40-ows .date {
+      position: absolute; left: 0; right: 0; top: 236px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 27px;
+      color: var(--muted); letter-spacing: 0.3em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-40-ows .mark {
+      position: absolute; top: 408px; display: flex; flex-direction: column; align-items: center; gap: 22px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-40-ows .mleft { left: 400px; width: 240px; }
+    #scene-40-ows .mright { left: 1280px; width: 240px; }
+    #scene-40-ows .mark .glyph { display: block; will-change: filter; }
+    #scene-40-ows .mark .name {
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 30px;
+      letter-spacing: -0.005em; text-align: center; line-height: 1.18;
+    }
+    #scene-40-ows .mleft .name { color: var(--accent); }
+    #scene-40-ows .mright .name { color: var(--accent-2); font-size: 27px; }
+
+    /* the partnership bond */
+    #scene-40-ows .link { position: absolute; inset: 0; overflow: visible; }
+    #scene-40-ows .ln {
+      fill: none; stroke-width: 2.4; stroke-linecap: round;
+      stroke-dasharray: 320; stroke-dashoffset: 320; will-change: stroke-dashoffset;
+    }
+    #scene-40-ows .lnL { stroke: var(--accent); stroke-opacity: 0.8; }
+    #scene-40-ows .lnR { stroke: var(--accent-2); stroke-opacity: 0.8; }
+    #scene-40-ows .bond {
+      position: absolute; left: 948px; top: 488px; width: 24px; height: 24px;
+      border-radius: 50%; background: #d7f5e6;
+      box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+      transform: scale(0); transform-origin: center center;
+      will-change: transform, box-shadow;
+    }
+
+    #scene-40-ows .cred {
+      position: absolute; left: 0; right: 0; top: 808px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 33px;
+      color: var(--soft); letter-spacing: 0.002em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-40-ows .cred .sig { color: var(--accent-2); font-weight: 600; will-change: filter; }
+  </style>
+</head>
+<body>
+  <div id="scene-40-ows" data-composition-id="scene-40-ows" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="date" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">November 2014</div>
+
+      <svg class="link" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+        <line class="ln lnL" x1="640" y1="500" x2="952" y2="500"></line>
+        <line class="ln lnR" x1="1280" y1="500" x2="968" y2="500"></line>
+      </svg>
+
+      <div class="mark mleft" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2300" data-sfx-volume="0.35">
+        <svg class="glyph" viewBox="0 0 48 48" width="120" height="120" fill="none">
+          <path d="M24 6 C13.5 6 5 13.6 5 23 c0 3.4 1.1 6.6 3 9.2 L6 42 l10.2 -2.1 C19 41.3 21.4 42 24 42 c10.5 0 19 -7.6 19 -17 S34.5 6 24 6 Z" stroke="#25d366" stroke-width="2.4" fill="rgba(37,211,102,0.1)" stroke-linejoin="round"></path>
+          <path d="M18.5 19 c0 6 4.5 10.5 10.5 10.5 l2.4 -2.6 -4 -1.8 -2 1.6 c-2.5 -1 -4.4 -2.9 -5.4 -5.4 l1.6 -2 -1.8 -4 Z" fill="#25d366"></path>
+        </svg>
+        <div class="name">WhatsApp</div>
+      </div>
+
+      <div class="mark mright" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3360">
+        <svg class="glyph" viewBox="0 0 48 48" width="120" height="120" fill="none">
+          <rect x="12" y="22" width="24" height="18" rx="3.5" stroke="#7dd3fc" stroke-width="2.4"></rect>
+          <path d="M17 22 v-5 a7 7 0 0 1 14 0 v5" stroke="#7dd3fc" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="24" cy="29.5" r="2.4" fill="#7dd3fc"></circle>
+          <line x1="24" y1="31.5" x2="24" y2="35" stroke="#7dd3fc" stroke-width="2.4" stroke-linecap="round"></line>
+        </svg>
+        <div class="name">Open Whisper Systems</div>
+      </div>
+
+      <div class="bond" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="4120"></div>
+
+      <div class="cred" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="6440" data-sfx-volume="0.42">the people behind the <span class="sig">Signal Protocol</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-40-ows";
+
+    // Host data-start = 356.34 → scene-local = global − 356.34. Chunk first word "In" 356.84 = local 0.50.
+
+    // Entrance crossfade over scene 39's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "In November 2014" 356.84→358.06 (local 0.50→1.72) — the date stamps in
+    tl.fromTo(root + " .date", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.50);
+
+    // "WhatsApp" 358.64 (local 2.30) — the left mark settles
+    tl.fromTo(root + " .mleft", { opacity: 0, y: 16, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(1.5)" }, 2.30);
+
+    // "partnered" 359.04 (local 2.70) — the green strand reaches toward center
+    tl.fromTo(root + " .lnL", { strokeDashoffset: 320 }, { strokeDashoffset: 0, duration: 0.42, ease: "power2.out" }, 2.70);
+
+    // "Open Whisper" 359.70 (local 3.36) — the right mark settles, its strand reaches back
+    tl.fromTo(root + " .mright", { opacity: 0, y: 16, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(1.5)" }, 3.36);
+    tl.fromTo(root + " .lnR", { strokeDashoffset: 320 }, { strokeDashoffset: 0, duration: 0.42, ease: "power2.out" }, 3.70);
+
+    // "Systems" 360.46 (local 4.12) — the bond forms where the strands meet
+    tl.fromTo(root + " .bond", { scale: 0 }, { scale: 1, duration: 0.34, ease: "back.out(2.4)" }, 4.12);
+    tl.fromTo(root + " .bond", { boxShadow: "0 0 0px rgba(255,255,255,0)" }, { boxShadow: "0 0 22px rgba(125, 211, 252, 0.55), 0 0 12px rgba(37, 211, 102, 0.5)", duration: 0.4, ease: "power2.out" }, 4.12);
+
+    // "the people behind the Signal Protocol" 361.92→363.80 (local 5.58→7.46) — the credential
+    tl.fromTo(root + " .cred", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.58);
+    // "Signal Protocol" 362.78 (local 6.44) — the pedigree glows sky
+    tl.fromTo(root + " .cred .sig", { filter: "drop-shadow(0 0 0px rgba(125,211,252,0))" }, { filter: "drop-shadow(0 0 12px rgba(125, 211, 252, 0.5))", duration: 0.45, ease: "power2.out" }, 6.44);
+    tl.to(root + " .cred .sig", { filter: "drop-shadow(0 0 4px rgba(125, 211, 252, 0.22))", duration: 0.6, ease: "power2.inOut" }, 6.95);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 2.0);
+
+    window.__timelines["scene-40-ows"] = tl;
+  </script>
+</body>
+</html>

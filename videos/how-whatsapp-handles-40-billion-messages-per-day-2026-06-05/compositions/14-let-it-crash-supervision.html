@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 14 — crash isolation under a supervisor</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-14-let-it-crash-supervision { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-14-let-it-crash-supervision .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* supervisor node — the parent that keeps the tree alive */
+    #scene-14-let-it-crash-supervision .sup {
+      position: absolute; left: 760px; top: 196px; width: 400px; height: 96px;
+      background: rgba(125, 211, 252, 0.06);
+      border: 1.5px solid rgba(125, 211, 252, 0.5); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 24px rgba(125, 211, 252, 0.10);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-14-let-it-crash-supervision .sup .lbl {
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 28px; color: var(--accent-2); letter-spacing: 0.14em;
+    }
+
+    /* tree links */
+    #scene-14-let-it-crash-supervision svg.links { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-14-let-it-crash-supervision svg.links line {
+      stroke: rgba(125, 211, 252, 0.35); stroke-width: 2.5; stroke-linecap: round;
+      opacity: 0; will-change: opacity;
+    }
+
+    /* worker process nodes */
+    #scene-14-let-it-crash-supervision .worker {
+      position: absolute; top: 460px; width: 150px; height: 150px;
+      background: rgba(125, 211, 252, 0.05);
+      border: 1.5px solid rgba(125, 211, 252, 0.45); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-14-let-it-crash-supervision .worker .core {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent-2); box-shadow: 0 0 18px rgba(125, 211, 252, 0.6);
+      will-change: transform, opacity;
+    }
+    #scene-14-let-it-crash-supervision .worker .pid,
+    #scene-14-let-it-crash-supervision .respawn .pid {
+      position: absolute; left: 0; right: 0; top: 162px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 19px; color: var(--muted);
+    }
+    /* the respawned process carries a fresh pid — proof it's a new one, not the old */
+    #scene-14-let-it-crash-supervision .respawn .pid { color: var(--accent-2); opacity: 0.85; }
+    #scene-14-let-it-crash-supervision .w1 { left: 525px; }
+    #scene-14-let-it-crash-supervision .w2 { left: 765px; }
+    #scene-14-let-it-crash-supervision .w3 { left: 1005px; }
+    #scene-14-let-it-crash-supervision .w4 { left: 1245px; }
+
+    /* crash tag on the dying node */
+    #scene-14-let-it-crash-supervision .crash-tag {
+      position: absolute; left: 765px; top: 405px; width: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 22px; color: var(--danger);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* respawn — a fresh node pops into the vacated slot */
+    #scene-14-let-it-crash-supervision .respawn {
+      position: absolute; left: 765px; top: 460px; width: 150px; height: 150px;
+      background: rgba(125, 211, 252, 0.05);
+      border: 1.5px solid rgba(125, 211, 252, 0.45); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-14-let-it-crash-supervision .respawn .core {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent-2); box-shadow: 0 0 22px rgba(125, 211, 252, 0.7);
+    }
+
+    /* respawn pulse travels supervisor → vacant slot */
+    #scene-14-let-it-crash-supervision .pulse {
+      position: absolute; left: 952px; top: 284px; width: 16px; height: 16px;
+      border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 20px rgba(125, 211, 252, 0.8);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* caption stack */
+    #scene-14-let-it-crash-supervision .cl {
+      position: absolute; left: 0; right: 0; text-align: center;
+      will-change: transform, opacity;
+    }
+    #scene-14-let-it-crash-supervision .setup {
+      top: 770px; font-size: 44px; font-weight: 500; color: var(--soft); opacity: 0;
+    }
+    #scene-14-let-it-crash-supervision .mid {
+      top: 838px; font-size: 38px; font-weight: 500; color: var(--soft); opacity: 0;
+    }
+    #scene-14-let-it-crash-supervision .mid .die { color: var(--danger); }
+    #scene-14-let-it-crash-supervision .mid .fresh { color: var(--accent-2); }
+    #scene-14-let-it-crash-supervision .pay {
+      top: 906px; font-size: 50px; font-weight: 700; color: var(--fg); opacity: 0;
+    }
+    #scene-14-let-it-crash-supervision .pay .up { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <div id="scene-14-let-it-crash-supervision" data-composition-id="scene-14-let-it-crash-supervision" data-width="1920" data-height="1080">
+    <div class="stage">
+      <svg class="links" viewBox="0 0 1920 1080">
+        <line class="lk1" x1="960" y1="292" x2="600" y2="460" />
+        <line class="lk2" x1="960" y1="292" x2="840" y2="460" />
+        <line class="lk3" x1="960" y1="292" x2="1080" y2="460" />
+        <line class="lk4" x1="960" y1="292" x2="1320" y2="460" />
+      </svg>
+
+      <div class="sup" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="800">
+        <div class="lbl">SUPERVISOR</div>
+      </div>
+
+      <div class="worker w1"><div class="core"></div><div class="pid">&lt;0.31.0&gt;</div></div>
+      <div class="worker w2" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4480" data-sfx-volume="0.42"><div class="core"></div><div class="pid">&lt;0.44.0&gt;</div></div>
+      <div class="worker w3"><div class="core"></div><div class="pid">&lt;0.57.0&gt;</div></div>
+      <div class="worker w4"><div class="core"></div><div class="pid">&lt;0.70.0&gt;</div></div>
+
+      <div class="crash-tag">&times; crashed</div>
+
+      <div class="pulse" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="8550"></div>
+      <div class="respawn" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9420"><div class="core"></div><div class="pid">&lt;0.91.0&gt;</div></div>
+
+      <div class="cl setup">That isolation is everything.</div>
+      <div class="cl mid">
+        One process <span class="die">crashes and dies on its own</span> &mdash; the supervisor respawns a <span class="fresh">clean one</span>.
+      </div>
+      <div class="cl pay" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="11440" data-sfx-volume="0.42">
+        The whole box <span class="up">stays up.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-14-let-it-crash-supervision";
+
+    // Host data-start = 134.18 → scene-local = global − 134.18.
+
+    // Entrance crossfade over scene 13's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "That isolation" 134.68 (local 0.50) — setup + the supervisor draws in
+    tl.fromTo(root + " .setup", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+    tl.fromTo(root + " .sup", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.82);
+
+    // "everything." 135.92 (local 1.74) — the links draw and the four workers stagger in
+    tl.fromTo(root + " svg.links line", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out", stagger: 0.1 }, 1.74);
+    tl.fromTo(root + " .worker",
+      { opacity: 0, y: 22, scale: 0.85 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)", stagger: 0.12 }, 1.9);
+
+    // setup recedes as the mechanism takes over
+    tl.to(root + " .setup", { opacity: 0, duration: 0.45, ease: "sine.in" }, 3.2);
+    // "When one process crashes," 137.58 (local 3.40) — narration line enters
+    tl.fromTo(root + " .mid", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 3.40);
+
+    // "crashes," 138.66 (local 4.48) — w2 ignites danger-red, a sharp scale-bloom
+    tl.to(root + " .w2", {
+      borderColor: "rgba(255, 107, 93, 0.85)",
+      backgroundColor: "rgba(255, 107, 93, 0.10)",
+      duration: 0.25, ease: "power2.out"
+    }, 4.48);
+    tl.to(root + " .w2 .core", {
+      backgroundColor: "#ff6b5d", boxShadow: "0 0 26px rgba(255, 107, 93, 0.8)",
+      scale: 1.25, duration: 0.25, ease: "back.out(2)"
+    }, 4.48);
+    tl.to(root + " .lk2", { attr: { stroke: "rgba(255, 107, 93, 0.7)" }, duration: 0.25, ease: "power2.out" }, 4.48);
+    tl.fromTo(root + " .crash-tag", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 4.62);
+
+    // "dies on its own" 140.18 (local 6.00) — the red node collapses and dissolves;
+    // its neighbours sit perfectly calm — that stillness IS the isolation
+    tl.to(root + " .w2 .core", { scale: 0.2, opacity: 0, duration: 0.6, ease: "power2.in" }, 6.00);
+    tl.to(root + " .w2", { opacity: 0.12, scale: 0.92, duration: 0.7, ease: "power2.in" }, 6.10);
+    tl.to(root + " .lk2", { opacity: 0.12, duration: 0.6, ease: "sine.in" }, 6.10);
+    tl.to(root + " .crash-tag", { opacity: 0.35, duration: 0.6, ease: "sine.in" }, 6.40);
+
+    // "supervisor" 142.70 (local 8.52) — the parent pulses, a fresh process travels down
+    tl.to(root + " .sup", {
+      boxShadow: "0 0 40px rgba(125, 211, 252, 0.30)", borderColor: "rgba(125, 211, 252, 0.85)",
+      duration: 0.3, ease: "power2.out"
+    }, 8.52);
+    tl.to(root + " .sup", { boxShadow: "0 0 24px rgba(125, 211, 252, 0.10)", borderColor: "rgba(125, 211, 252, 0.5)", duration: 0.6, ease: "sine.inOut" }, 8.9);
+    tl.fromTo(root + " .pulse", { opacity: 0, x: 0, y: 0 }, { opacity: 1, duration: 0.15, ease: "sine.out" }, 8.55);
+    tl.to(root + " .pulse", { x: -112, y: 248, duration: 0.7, ease: "power2.in" }, 8.7);
+
+    // "respawns" 143.60 (local 9.42) — pulse lands, the dead node clears, a clean one pops in
+    tl.to(root + " .pulse", { opacity: 0, duration: 0.15, ease: "sine.in" }, 9.40);
+    tl.to(root + " .w2", { opacity: 0, duration: 0.2, ease: "sine.in" }, 9.36);
+    tl.to(root + " .crash-tag", { opacity: 0, duration: 0.2, ease: "sine.in" }, 9.36);
+    tl.fromTo(root + " .respawn",
+      { opacity: 0, scale: 0.3 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 9.42);
+    // "clean one" 144.28 (local 10.10) — the link heals back to sky-blue
+    tl.to(root + " .lk2", { opacity: 1, attr: { stroke: "rgba(125, 211, 252, 0.35)" }, duration: 0.5, ease: "sine.out" }, 10.10);
+
+    // "instead of taking the whole box down with it." 145.62 (local 11.44) — the payoff:
+    // the supervisor + all four workers sit whole and calm
+    tl.to(root + " .mid", { opacity: 0.22, duration: 0.5, ease: "sine.inOut" }, 11.44);
+    tl.fromTo(root + " .pay", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 11.44);
+    // "box" 146.82 (local 12.64) — emphasis on staying up
+    tl.to(root + " .pay .up", { textShadow: "0 0 20px rgba(233, 237, 235, 0.4)", duration: 0.4, ease: "power2.out" }, 12.64);
+
+    // idle — the surviving nodes breathe gently (alive, undisturbed)
+    tl.to(root + " .w1 .core, " + root + " .w3 .core, " + root + " .w4 .core", {
+      scale: 1.12, duration: 1.5, ease: "sine.inOut", repeat: 5, yoyo: true, stagger: { each: 0.2 }
+    }, 3.0);
+    tl.to(root + " .stage", { y: -5, duration: 3.4, ease: "sine.inOut", repeat: 3, yoyo: true }, 0.7);
+
+    window.__timelines["scene-14-let-it-crash-supervision"] = tl;
+  </script>
+</body>
+</html>

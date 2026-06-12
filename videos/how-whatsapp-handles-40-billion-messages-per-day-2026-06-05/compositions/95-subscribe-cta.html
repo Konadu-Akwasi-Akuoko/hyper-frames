@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 95 — If taking a system apart like this is your idea of a good time, please subscribe</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-95-sub { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-95-sub .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-95-sub .lead {
+      position: absolute; left: 0; right: 0; top: 286px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 48px; line-height: 1.28;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-95-sub .lead .em { color: var(--fg); font-weight: 800; }
+
+    #scene-95-sub .btnwrap {
+      position: absolute; left: 50%; top: 476px; transform: translateX(-50%);
+    }
+    #scene-95-sub .btn {
+      display: flex; align-items: center; gap: 18px;
+      padding: 22px 44px; border-radius: 999px;
+      background: var(--accent); box-shadow: 0 0 0px rgba(37,211,102,0);
+      opacity: 0; will-change: transform, opacity, box-shadow;
+    }
+    #scene-95-sub .btn svg { width: 36px; height: 36px; display: block; }
+    #scene-95-sub .btn .label {
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 42px; color: #07120c; letter-spacing: -0.01em;
+    }
+
+    #scene-95-sub .whole {
+      position: absolute; left: 0; right: 0; top: 632px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 44px;
+      color: var(--muted); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-95-sub .whole .ch { color: var(--soft); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div id="scene-95-sub" data-composition-id="scene-95-sub" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="lead">if taking a system apart like this<br>is your <span class="em">idea of a good time</span></div>
+
+      <div class="btnwrap">
+        <div class="btn" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3980" data-sfx-volume="0.42">
+          <svg viewBox="0 0 24 24" fill="#07120c">
+            <path d="M12 3a2 2 0 0 0-2 2v.6A6 6 0 0 0 6 11v3.2l-1.4 1.6a1 1 0 0 0 .75 1.66h13.3a1 1 0 0 0 .75-1.66L18 14.2V11a6 6 0 0 0-4-5.4V5a2 2 0 0 0-2-2z"/>
+            <path d="M10 19a2 2 0 0 0 4 0z"/>
+          </svg>
+          <span class="label">Subscribe</span>
+        </div>
+      </div>
+
+      <div class="whole" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5980" data-sfx-volume="0.42">that&rsquo;s the <span class="ch">whole channel</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-95-sub";
+
+    // Host data-start = 666.94 → scene-local = global − 666.94. Chunk first word "If" 667.44 = local 0.50.
+
+    // Entrance crossfade over scene 94's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "If taking a system apart like this is your idea of a good time," 667.44→670.42 (local 0.50→3.48)
+    tl.fromTo(root + " .lead", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.50);
+
+    // "please subscribe." 670.92→671.52 (local 3.98→4.58) — the button lands + fills
+    tl.fromTo(root + " .btn", { opacity: 0, y: 18, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 3.80);
+    tl.fromTo(root + " .btn", { boxShadow: "0 0 0px rgba(37,211,102,0)" }, { boxShadow: "0 0 38px rgba(37,211,102,0.55)", duration: 0.5, ease: "power2.out" }, 4.0);
+    // a confident press-pulse
+    tl.to(root + " .btn", { scale: 1.06, duration: 0.42, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.3);
+
+    // "That's the whole channel." 672.92→673.54 (local 5.98→6.60)
+    tl.fromTo(root + " .whole", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 5.98);
+
+    window.__timelines["scene-95-sub"] = tl;
+  </script>
+</body>
+</html>

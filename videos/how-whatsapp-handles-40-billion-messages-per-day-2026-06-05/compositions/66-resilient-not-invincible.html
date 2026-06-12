@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 66 — resilient is not the same as invincible</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-66-resi { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-66-resi .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-66-resi .shield {
+      position: absolute; left: 50%; margin-left: -110px; top: 244px; width: 220px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-66-resi .shield .crack {
+      stroke-dasharray: 200; stroke-dashoffset: 200; will-change: stroke-dashoffset;
+    }
+
+    #scene-66-resi .word {
+      position: absolute; left: 0; right: 0; top: 540px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 70px;
+      color: var(--accent); letter-spacing: -0.02em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-66-resi .cap {
+      position: absolute; left: 0; right: 0; top: 648px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 40px;
+      color: var(--muted); letter-spacing: -0.008em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-66-resi .cap .iwrap { position: relative; display: inline-block; }
+    #scene-66-resi .cap .inv { color: var(--soft); will-change: color; }
+    #scene-66-resi .cap .strike {
+      position: absolute; left: -6px; top: 54%; height: 4px; width: calc(100% + 12px);
+      background: var(--danger); border-radius: 2px; margin-top: -2px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-66-resi" data-composition-id="scene-66-resi" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <svg class="shield" viewBox="0 0 120 142" width="220" height="260" fill="none" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="940" data-sfx-volume="0.42">
+        <path d="M60 8 L110 28 V72 C110 106 88 126 60 135 C32 126 10 106 10 72 V28 Z"
+              stroke="#25d366" stroke-width="2.8" fill="rgba(37,211,102,0.05)" stroke-linejoin="round"></path>
+        <path d="M40 60 l14 14 26 -28" stroke="#25d366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path class="crack" d="M62 14 L53 52 L68 74 L57 108 L63 132" stroke="#ff6b5d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+
+      <div class="word">resilient</div>
+
+      <div class="cap">not the same as <span class="iwrap"><span class="inv">invincible</span><span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2680"></span></span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-66-resi";
+
+    // Host data-start = 516.30 → scene-local = global − 516.30. Chunk first word "But" 516.80 = local 0.50.
+
+    // Entrance crossfade over scene 65's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "But resilient" 516.80→517.24 (local 0.50→0.94) — the shield + word: they are resilient
+    tl.fromTo(root + " .shield", { opacity: 0, y: 16, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 0.50);
+    tl.fromTo(root + " .word", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.80);
+
+    // "is not the same as" 517.98→518.72 (local 1.68→2.42) — the qualifier
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 1.68);
+
+    // "invincible" 518.98 (local 2.68) — struck out, and a hairline crack draws down the shield
+    tl.fromTo(root + " .cap .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power2.out" }, 2.68);
+    tl.to(root + " .cap .inv", { color: "#79857f", duration: 0.4, ease: "power2.out" }, 2.76);
+    tl.fromTo(root + " .shield .crack", { strokeDashoffset: 200 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.in" }, 2.68);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.6);
+
+    window.__timelines["scene-66-resi"] = tl;
+  </script>
+</body>
+</html>

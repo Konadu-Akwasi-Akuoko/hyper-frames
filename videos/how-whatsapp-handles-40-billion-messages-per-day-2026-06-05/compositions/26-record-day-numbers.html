@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 26 — the record day, in numbers</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-26-record-day-numbers { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-26-record-day-numbers .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* a soft dark vignette to focus weight on the three numbers */
+    #scene-26-record-day-numbers .focus {
+      position: absolute; left: 50%; top: 540px; width: 1500px; height: 900px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.55), rgba(0,0,0,0) 66%);
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the date stamp — context metadata, small and muted */
+    #scene-26-record-day-numbers .date {
+      position: absolute; left: 0; right: 0; top: 168px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 24px; color: var(--muted); letter-spacing: 0.34em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-26-record-day-numbers .date .dot { color: var(--dim); margin: 0 14px; }
+
+    /* the ledger — three stat rows, numbers aligned on the left */
+    #scene-26-record-day-numbers .ledger {
+      position: absolute; left: 540px; top: 286px; width: 860px;
+    }
+    #scene-26-record-day-numbers .row {
+      display: flex; align-items: baseline; gap: 40px; height: 150px;
+    }
+    #scene-26-record-day-numbers .row.crown { height: 190px; margin-top: 26px; }
+    #scene-26-record-day-numbers .fig {
+      display: flex; align-items: baseline; gap: 16px; width: 380px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-26-record-day-numbers .n {
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 116px; line-height: 1; font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
+    }
+    #scene-26-record-day-numbers .row.crown .n { font-size: 178px; }
+    #scene-26-record-day-numbers .u {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 32px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+    }
+    #scene-26-record-day-numbers .lbl {
+      font-family: "Inter", sans-serif; font-weight: 400;
+      font-size: 31px; color: var(--soft); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* row 1 = messages sent (green = the user's messages) */
+    #scene-26-record-day-numbers .r1 .n { color: var(--accent); text-shadow: 0 0 30px rgba(37,211,102,0.22); }
+    /* row 2 = delivered (sky = the server's fan-out output) */
+    #scene-26-record-day-numbers .r2 .n { color: var(--accent-2); text-shadow: 0 0 30px rgba(125,211,252,0.22); }
+    /* row 3 = total in a single day (white = the arithmetic payoff, brightest) */
+    #scene-26-record-day-numbers .r3 .n { color: var(--fg); text-shadow: 0 0 40px rgba(233,237,235,0.26); }
+
+    /* the fan-out connective between sent and delivered — the gap IS the fan-out */
+    #scene-26-record-day-numbers .fan {
+      position: absolute; left: 250px; top: 436px;
+      display: flex; align-items: center; gap: 12px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 23px; color: var(--accent-2); letter-spacing: 0.08em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-26-record-day-numbers .fan .arc {
+      width: 46px; height: 2px; border-radius: 2px;
+      background: linear-gradient(90deg, rgba(125,211,252,0), var(--accent-2));
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-26-record-day-numbers" data-composition-id="scene-26-record-day-numbers" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="focus"></div>
+
+      <div class="date" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="600" data-sfx-volume="0.42">2 April 2014<span class="dot">&middot;</span>one day</div>
+
+      <div class="ledger">
+        <div class="row r1">
+          <div class="fig"><span class="n" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4020" data-sfx-volume="0.42">0</span><span class="u">billion</span></div>
+          <div class="lbl">messages people sent</div>
+        </div>
+        <div class="row r2">
+          <div class="fig"><span class="n" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="7280">0</span><span class="u">billion</span></div>
+          <div class="lbl">fanned out, delivered</div>
+        </div>
+        <div class="row r3 crown">
+          <div class="fig"><span class="n" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="10360">0</span><span class="u">billion</span></div>
+          <div class="lbl">in a single day</div>
+        </div>
+      </div>
+
+      <div class="fan"><span class="arc"></span>fanned out into</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-26-record-day-numbers";
+
+    // Host data-start = 252.22 → scene-local = global − 252.22. Chunk first word "On" 252.72 = local 0.50.
+
+    // deterministic count-up helper: tween an object's .v 0→target, write rounded value into the .n span
+    function countUp(rowSel, target, at, dur) {
+      const el = document.querySelector(root + " " + rowSel + " .n");
+      const o = { v: 0 };
+      tl.to(o, {
+        v: target, duration: dur, ease: "power2.out",
+        onUpdate: () => { el.textContent = Math.round(o.v); }
+      }, at);
+    }
+
+    // Entrance crossfade over scene 25's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(root + " .focus", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "sine.out" }, 0.1);
+
+    // "On the 2nd of April 2014" 252.72→254.30 (local 0.50→2.08) — the date stamp sets the moment
+    tl.fromTo(root + " .date", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.50);
+
+    // "20 billion" 255.32 (local 3.10) — the first figure: messages sent (green). Frame anticipates, then counts.
+    tl.fromTo(root + " .r1 .fig", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.78);
+    countUp(".r1", 20, 3.10, 0.92);
+    // "messages people sent" 255.98→256.84 (local 3.76→4.62) — the label lands under the settled number
+    tl.fromTo(root + " .r1 .lbl", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 3.86);
+
+    // "fanned out into" 257.42→258.26 (local 5.20→6.04) — the connective; the gap between sent and delivered
+    tl.fromTo(root + " .fan", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 5.20);
+
+    // "44 billion delivered" 258.50→259.62 (local 6.28→7.40) — the fanned-out figure (sky). Pops in, counts up.
+    tl.fromTo(root + " .r2 .fig", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }, 6.00);
+    countUp(".r2", 44, 6.28, 1.0);
+    tl.fromTo(root + " .r2 .lbl", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 6.90);
+    // the already-settled first row breathes faintly while the second counts (alive, not noisy)
+    tl.to(root + " .r1 .n", { textShadow: "0 0 22px rgba(37,211,102,0.30)", duration: 1.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.3);
+
+    // "64 billion" 261.48 (local 9.26) — the crown total (white, brightest, largest). Scale-blooms, then counts.
+    tl.fromTo(root + " .r3 .fig", { opacity: 0, scale: 0.8, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(1.7)" }, 8.96);
+    countUp(".r3", 64, 9.26, 1.1);
+    // "in a single day" 262.64→263.24 (local 10.42→11.02) — the label + a final bloom on the crown number
+    tl.fromTo(root + " .r3 .lbl", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 10.30);
+    tl.to(root + " .r3 .n", { textShadow: "0 0 56px rgba(233,237,235,0.45)", duration: 0.6, ease: "power2.out" }, 10.42);
+    tl.to(root + " .r3 .fig", { scale: 1.04, duration: 0.2, ease: "power2.out" }, 10.42);
+    tl.to(root + " .r3 .fig", { scale: 1, duration: 0.5, ease: "back.out(2)" }, 10.62);
+
+    // idle — the whole ledger drifts faintly (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 4.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-26-record-day-numbers"] = tl;
+  </script>
+</body>
+</html>

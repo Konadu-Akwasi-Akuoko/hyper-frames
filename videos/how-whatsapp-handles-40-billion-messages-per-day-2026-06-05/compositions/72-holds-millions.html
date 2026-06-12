@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 72 — a single chat server doesn't hold one connection, it holds millions</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-72-mill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-72-mill .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* radial burst rays — generated in script */
+    #scene-72-mill .raywrap {
+      position: absolute; left: 960px; top: 392px; width: 0; height: 0;
+      transform-origin: left center;
+    }
+    #scene-72-mill .ray {
+      position: absolute; left: 0; top: -1.5px; width: 150px; height: 3px;
+      transform-origin: left center; transform: scaleX(0);
+      background: linear-gradient(90deg, rgba(37,211,102,0.55), rgba(37,211,102,0.05));
+      will-change: transform;
+    }
+    #scene-72-mill .ray::after {
+      content: ""; position: absolute; right: -3px; top: 50%; margin-top: -4px;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 7px rgba(37,211,102,0.7);
+    }
+
+    /* the single connection (sky) shown first */
+    #scene-72-mill .single {
+      position: absolute; left: 960px; top: 392px; width: 150px; height: 3px; margin-top: -1.5px;
+      transform-origin: left center; transform: scaleX(0);
+      background: linear-gradient(90deg, rgba(125,211,252,0.7), rgba(125,211,252,0.1));
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-72-mill .single::after {
+      content: ""; position: absolute; right: -3px; top: 50%; margin-top: -5px;
+      width: 10px; height: 10px; border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 8px rgba(125,211,252,0.7);
+    }
+    #scene-72-mill .onelbl {
+      position: absolute; left: 1124px; top: 372px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      color: var(--accent-2); white-space: nowrap;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-72-mill .onelbl .strike {
+      position: absolute; left: -4px; top: 54%; height: 3px; width: calc(100% + 8px);
+      background: var(--danger); border-radius: 2px; margin-top: -1.5px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+
+    /* the server core */
+    #scene-72-mill .server {
+      position: absolute; left: 960px; top: 392px; margin: -34px 0 0 -34px;
+      width: 68px; height: 68px; border-radius: 16px;
+      border: 2.4px solid var(--accent-2); background: rgba(125,211,252,0.12);
+      box-shadow: 0 0 22px rgba(125,211,252,0.4); z-index: 5;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-72-mill .slabel {
+      position: absolute; left: 0; right: 0; top: 470px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      color: var(--accent-2); letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0; will-change: opacity;
+    }
+
+    #scene-72-mill .kick {
+      position: absolute; left: 0; right: 0; top: 612px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 30px;
+      color: var(--muted); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-72-mill .big {
+      position: absolute; left: 0; right: 0; top: 648px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 104px; line-height: 1;
+      color: var(--accent); letter-spacing: -0.02em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-72-mill" data-composition-id="scene-72-mill" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="rays"></div>
+
+      <div class="single"></div>
+      <div class="onelbl">one connection<span class="strike"></span></div>
+
+      <div class="server" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="500"></div>
+      <div class="slabel">chat server</div>
+
+      <div class="kick" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4100">it holds</div>
+      <div class="big" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4780" data-sfx-volume="0.35">MILLIONS</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-72-mill";
+
+    // Host data-start = 543.86 → scene-local = global − 543.86. Chunk first word "A" 544.36 = local 0.50.
+
+    // generate the radial burst (deterministic — fixed count & angles)
+    const raysHost = document.querySelector(root + " .rays");
+    const N = 48;
+    for (let i = 0; i < N; i++) {
+      const wrap = document.createElement("div");
+      wrap.className = "raywrap";
+      wrap.style.transform = "rotate(" + ((360 / N) * i) + "deg)";
+      const ray = document.createElement("div");
+      ray.className = "ray";
+      // vary length slightly by index for an organic burst (deterministic)
+      ray.style.width = (118 + (i % 5) * 16) + "px";
+      wrap.appendChild(ray);
+      raysHost.appendChild(wrap);
+    }
+
+    // Entrance crossfade over scene 71's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "A single chat server" 544.36→545.20 (local 0.50→1.34) — the server core
+    tl.fromTo(root + " .server", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.44, ease: "back.out(1.6)" }, 0.50);
+    tl.fromTo(root + " .slabel", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.90);
+
+    // "doesn't hold one connection" 546.00→547.04 (local 2.14→3.18) — a single connection, then the idea of "one" is struck
+    tl.fromTo(root + " .single", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.34, ease: "power2.out" }, 2.14);
+    tl.fromTo(root + " .onelbl", { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.36, ease: "power2.out" }, 2.40);
+    tl.fromTo(root + " .onelbl .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 3.18);
+    tl.to(root + " .onelbl", { color: "#79857f", duration: 0.36, ease: "power2.out" }, 3.26);
+
+    // "It holds" 547.96→548.08 (local 4.10→4.22) — the kicker
+    tl.fromTo(root + " .kick", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, 4.10);
+
+    // "millions." 548.64 (local 4.78) — the radial burst blooms; the single dims into the swarm; MILLIONS slams
+    tl.to(root + " .single", { opacity: 0, duration: 0.3, ease: "power2.in" }, 4.62);
+    tl.to(root + " .onelbl", { opacity: 0, duration: 0.3, ease: "power2.in" }, 4.62);
+    tl.fromTo(root + " .ray", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out", stagger: { each: 0.006, from: "start" } }, 4.78);
+    tl.fromTo(root + " .big", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.46, ease: "back.out(1.5)" }, 4.78);
+    tl.fromTo(root + " .big", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 40px rgba(37,211,102,0.45)", duration: 0.5, ease: "power2.out" }, 5.0);
+    // the server pulses as the swarm connects
+    tl.to(root + " .server", { scale: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 4.78);
+
+    window.__timelines["scene-72-mill"] = tl;
+  </script>
+</body>
+</html>

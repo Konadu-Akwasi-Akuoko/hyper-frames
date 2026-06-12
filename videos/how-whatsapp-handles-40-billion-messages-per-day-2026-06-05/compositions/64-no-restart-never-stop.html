@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 64 — fixes ship without a restart and the processes never stop</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-64-never { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-64-never .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the fix that ships in */
+    #scene-64-never .fix {
+      position: absolute; left: 50%; margin-left: -130px; top: 250px; width: 260px; height: 60px;
+      border: 1.8px solid var(--accent); border-radius: 11px; background: rgba(37,211,102,0.09);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; color: var(--accent);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* left: the restart that never happens */
+    #scene-64-never .restart {
+      position: absolute; left: 472px; top: 432px; width: 300px; text-align: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-64-never .restart .ricon { position: relative; display: inline-block; }
+    #scene-64-never .restart .rx {
+      position: absolute; left: 50%; top: 50%; margin: -38px 0 0 -38px; opacity: 0;
+      transform: scale(0.5); transform-origin: center center; will-change: transform, opacity;
+    }
+    #scene-64-never .restart .rlbl {
+      margin-top: 22px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px;
+      color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; will-change: color;
+    }
+
+    /* divider */
+    #scene-64-never .div {
+      position: absolute; left: 50%; top: 412px; width: 1.5px; height: 200px; background: #1e2722;
+      transform: scaleY(0); transform-origin: top center; will-change: transform;
+    }
+
+    /* right: the processes that never stop */
+    #scene-64-never .procs {
+      position: absolute; left: 1080px; top: 432px; width: 420px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-64-never .procs .lane {
+      position: relative; height: 26px; margin-bottom: 22px;
+      background: rgba(37,211,102,0.07); border: 1.3px solid #243843; border-radius: 6px; overflow: hidden;
+    }
+    #scene-64-never .procs .lane .pulse {
+      position: absolute; top: 50%; left: 6px; width: 18px; height: 12px; margin-top: -6px;
+      border-radius: 3px; background: var(--accent); will-change: transform;
+      box-shadow: 0 0 10px rgba(37,211,102,0.6);
+    }
+    #scene-64-never .procs .plbl {
+      margin-top: 4px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px;
+      color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    #scene-64-never .cap {
+      position: absolute; left: 0; right: 0; top: 720px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 46px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-64-never .cap .never { color: var(--accent); will-change: text-shadow; }
+  </style>
+</head>
+<body>
+  <div id="scene-64-never" data-composition-id="scene-64-never" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="fix" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="700" data-sfx-volume="0.42">fix shipped</div>
+
+      <div class="div"></div>
+
+      <!-- the restart that doesn't happen -->
+      <div class="restart" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1620" data-sfx-volume="0.42">
+        <div class="ricon">
+          <svg viewBox="0 0 96 96" width="118" height="118" fill="none">
+            <path d="M72 34 a30 30 0 1 0 6 24" stroke="#79857f" stroke-width="3" stroke-linecap="round"></path>
+            <path d="M72 18 v18 h-18" stroke="#79857f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <svg class="rx" viewBox="0 0 48 48" width="76" height="76" fill="none">
+            <circle cx="24" cy="24" r="21" stroke="#ff6b5d" stroke-width="2.6" fill="rgba(10,15,13,0.5)"></circle>
+            <line x1="15" y1="15" x2="33" y2="33" stroke="#ff6b5d" stroke-width="3.4" stroke-linecap="round"></line>
+            <line x1="33" y1="15" x2="15" y2="33" stroke="#ff6b5d" stroke-width="3.4" stroke-linecap="round"></line>
+          </svg>
+        </div>
+        <div class="rlbl">no restart</div>
+      </div>
+
+      <!-- the processes that never stop -->
+      <div class="procs" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3320">
+        <div class="lane"><div class="pulse p1"></div></div>
+        <div class="lane"><div class="pulse p2"></div></div>
+        <div class="lane"><div class="pulse p3"></div></div>
+        <div class="plbl">processes</div>
+      </div>
+
+      <div class="cap">the processes <span class="never">never stop</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-64-never";
+
+    // Host data-start = 508.48 → scene-local = global − 508.48. Chunk first word "so" 508.98 = local 0.50.
+
+    // Entrance crossfade over scene 63's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "so fixes ship" 508.98→509.64 (local 0.50→1.16) — a fix ships in
+    tl.fromTo(root + " .fix", { opacity: 0, y: -32 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.70);
+
+    // "without a restart" 510.10→510.52 (local 1.62→2.04) — the restart icon appears and is struck out: it doesn't happen
+    tl.fromTo(root + " .div", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.out" }, 1.40);
+    tl.fromTo(root + " .restart", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 1.40);
+    tl.fromTo(root + " .restart .rx", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(2)" }, 1.86);
+
+    // "and the processes never stop" 511.54→512.81 (local 3.06→4.33) — the process lanes light up and keep flowing
+    tl.fromTo(root + " .procs", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 3.06);
+    // pulses travel along the lanes and keep going — never stop (finite repeats spanning to the scene end)
+    tl.fromTo(root + " .procs .p1", { x: 0 }, { x: 380, duration: 1.0, ease: "sine.inOut", repeat: 3, yoyo: true }, 3.3);
+    tl.fromTo(root + " .procs .p2", { x: 0 }, { x: 380, duration: 1.2, ease: "sine.inOut", repeat: 3, yoyo: true }, 3.4);
+    tl.fromTo(root + " .procs .p3", { x: 0 }, { x: 380, duration: 0.86, ease: "sine.inOut", repeat: 3, yoyo: true }, 3.2);
+
+    // "never stop" 512.50→512.81 (local 4.02→4.33) — the line lands, green
+    tl.fromTo(root + " .cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" }, 3.9);
+    tl.fromTo(root + " .cap .never", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 20px rgba(37, 211, 102, 0.5)", duration: 0.42, ease: "power2.out" }, 4.02);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.6);
+
+    window.__timelines["scene-64-never"] = tl;
+  </script>
+</body>
+</html>

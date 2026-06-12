@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0f0d;
+        --panel: #101613;
+        --border: #1e2722;
+        --fg: #e9edeb;
+        --soft: #c3cbc7;
+        --muted: #79857f;
+        --dim: #39443f;
+        --accent: #25d366;
+        --accent-2: #7dd3fc;
+        --cost: #f0b429;
+        --danger: #ff6b5d;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="682.789"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Persistent subject-toned background behind every scene (no logo). -->
+      <div
+        id="substrate-layer"
+        data-composition-id="substrate"
+        data-composition-src="compositions/substrate.html"
+        data-start="0"
+        data-duration="682.789"
+        data-track-index="7"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 0"
+      ></div>
+
+      <!-- Voiceover — the timing source of truth for every scene. -->
+      <audio
+        id="voiceover"
+        src="audio/voiceover.mp3"
+        data-start="0"
+        data-duration="682.789"
+        data-track-index="9"
+        data-volume="1"
+      ></audio>
+
+      <!-- Scene hosts are appended below as each chunk is authored. -->
+
+      <!-- Scene 01 — cold open (chunk 0.36–11.92s; next chunk starts 13.06). -->
+      <div
+        id="scene-01"
+        data-composition-id="scene-01-cold-open"
+        data-composition-src="compositions/01-cold-open.html"
+        data-start="0"
+        data-duration="13.06"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 02 — two million connections (chunk 13.06–21.34; next chunk 22.14). -->
+      <div
+        id="scene-02"
+        data-composition-id="scene-02-two-million"
+        data-composition-src="compositions/02-two-million.html"
+        data-start="12.56"
+        data-duration="9.58"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 03 — the question (chunk 22.14–29.76; next chunk 30.6). -->
+      <div
+        id="scene-03"
+        data-composition-id="scene-03-the-question"
+        data-composition-src="compositions/03-the-question.html"
+        data-start="21.64"
+        data-duration="8.96"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 04 — follow one message (chunk 30.6–34.7; next chunk 35.5). -->
+      <div
+        id="scene-04"
+        data-composition-id="scene-04-follow-one-message"
+        data-composition-src="compositions/04-follow-one-message.html"
+        data-start="30.1"
+        data-duration="5.4"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 05 — persistent TCP connection (chunk 35.5–43.5; next chunk 44.44). -->
+      <div
+        id="scene-05"
+        data-composition-id="scene-05-persistent-socket"
+        data-composition-src="compositions/05-persistent-socket.html"
+        data-start="35.0"
+        data-duration="9.44"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 06 — long-lived socket (chunk 44.44–53.61; next chunk 54.58). -->
+      <div
+        id="scene-06"
+        data-composition-id="scene-06-long-lived-socket"
+        data-composition-src="compositions/06-long-lived-socket.html"
+        data-start="43.94"
+        data-duration="10.64"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 07 — the cost of a warm pipe (chunk 54.58–65.96; next chunk 67.18). -->
+      <div
+        id="scene-07"
+        data-composition-id="scene-07-cost-of-warm-pipe"
+        data-composition-src="compositions/07-cost-of-warm-pipe.html"
+        data-start="54.08"
+        data-duration="13.10"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 08 — multiply by hundreds of millions (chunk 67.18–77.52; next chunk 79.8). -->
+      <div
+        id="scene-08"
+        data-composition-id="scene-08-multiply-by-millions"
+        data-composition-src="compositions/08-multiply-by-millions.html"
+        data-start="66.68"
+        data-duration="13.12"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 09 — FunXMPP squeeze (chunk 79.8–94.92; next chunk 95.58). -->
+      <div
+        id="scene-09"
+        data-composition-id="scene-09-funxmpp-squeeze"
+        data-composition-src="compositions/09-funxmpp-squeeze.html"
+        data-start="79.3"
+        data-duration="16.28"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 10 — up the socket, into your process (chunk 95.58–102.66; next chunk 103.9). -->
+      <div
+        id="scene-10"
+        data-composition-id="scene-10-up-the-socket"
+        data-composition-src="compositions/10-up-the-socket.html"
+        data-start="95.08"
+        data-duration="8.82"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 11 — the actor model title beat (chunk 103.9–109.16; next chunk 110.26). -->
+      <div
+        id="scene-11"
+        data-composition-id="scene-11-actor-model-title"
+        data-composition-src="compositions/11-actor-model-title.html"
+        data-start="103.4"
+        data-duration="6.86"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 12 — Erlang heritage (chunk 110.26–116.70; next chunk 117.70). -->
+      <div
+        id="scene-12"
+        data-composition-id="scene-12-erlang-heritage"
+        data-composition-src="compositions/12-erlang-heritage.html"
+        data-start="109.76"
+        data-duration="7.94"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 13 — BEAM process field (chunk 117.7–132.2; next chunk 134.68). -->
+      <div
+        id="scene-13"
+        data-composition-id="scene-13-beam-process-field"
+        data-composition-src="compositions/13-beam-process-field.html"
+        data-start="117.20"
+        data-duration="17.48"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 14 — crash isolation / supervision tree (chunk 134.68–148.18; next chunk 149.06). -->
+      <div
+        id="scene-14"
+        data-composition-id="scene-14-let-it-crash-supervision"
+        data-composition-src="compositions/14-let-it-crash-supervision.html"
+        data-start="134.18"
+        data-duration="14.88"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 15 — "let it crash" quote beat (chunk 149.06–151.74; next chunk 152.68). -->
+      <div
+        id="scene-15"
+        data-composition-id="scene-15-let-it-crash-quote"
+        data-composition-src="compositions/15-let-it-crash-quote.html"
+        data-start="148.56"
+        data-duration="4.12"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 16 — the cost ledger (chunk 152.68–162.28; next chunk 163.04). -->
+      <div
+        id="scene-16"
+        data-composition-id="scene-16-the-cost-ledger"
+        data-composition-src="compositions/16-the-cost-ledger.html"
+        data-start="152.18"
+        data-duration="10.86"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 17 — what it was built for (chunk 163.04–170.24; next chunk 171.98). -->
+      <div
+        id="scene-17"
+        data-composition-id="scene-17-what-it-was-built-for"
+        data-composition-src="compositions/17-what-it-was-built-for.html"
+        data-start="162.54"
+        data-duration="9.44"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 18 — the routing question (chunk 171.98–180.62; next chunk 182.02). -->
+      <div
+        id="scene-18"
+        data-composition-id="scene-18-routing-question"
+        data-composition-src="compositions/18-routing-question.html"
+        data-start="171.48"
+        data-duration="10.54"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 19 — Mnesia routing table (chunk 182.02–198.36; next chunk 199.82). -->
+      <div
+        id="scene-19"
+        data-composition-id="scene-19-mnesia-routing-table"
+        data-composition-src="compositions/19-mnesia-routing-table.html"
+        data-start="181.52"
+        data-duration="18.30"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 20 — lookup stream, fast enough for every message (chunk 199.82–208.28; next chunk 209.54). -->
+      <div
+        id="scene-20"
+        data-composition-id="scene-20-lookup-stream"
+        data-composition-src="compositions/20-lookup-stream.html"
+        data-start="199.32"
+        data-duration="10.22"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 21 — trade scale, durability+cost for speed (chunk 209.54–220.42; next chunk 223.14). -->
+      <div
+        id="scene-21"
+        data-composition-id="scene-21-trade-scale"
+        data-composition-src="compositions/21-trade-scale.html"
+        data-start="209.04"
+        data-duration="14.10"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 22 — one upload, to a group (chunk 223.14–230.82; next chunk 231.89). -->
+      <div
+        id="scene-22"
+        data-composition-id="scene-22-one-upload-to-a-group"
+        data-composition-src="compositions/22-one-upload-to-a-group.html"
+        data-start="222.64"
+        data-duration="9.25"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 23 — a single tagged copy, on the server (chunk 231.89–238.20; next chunk 239.32). -->
+      <div
+        id="scene-23"
+        data-composition-id="scene-23-tagged-copy-on-server"
+        data-composition-src="compositions/23-tagged-copy-on-server.html"
+        data-start="231.39"
+        data-duration="7.93"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 24 — server-side fan-out, a copy per member (chunk 239.32–243.98; next chunk 245.12). -->
+      <div
+        id="scene-24"
+        data-composition-id="scene-24-server-fan-out"
+        data-composition-src="compositions/24-server-fan-out.html"
+        data-start="238.82"
+        data-duration="6.30"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 25 — "server-side fan-out", named (title beat) (chunk 245.12–251.22; next chunk 252.72). -->
+      <div
+        id="scene-25"
+        data-composition-id="scene-25-fan-out-named"
+        data-composition-src="compositions/25-fan-out-named.html"
+        data-start="244.62"
+        data-duration="8.10"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 26 — the record day in numbers (chunk 252.72–263.24; next chunk "That" 264.28). -->
+      <div
+        id="scene-26"
+        data-composition-id="scene-26-record-day-numbers"
+        data-composition-src="compositions/26-record-day-numbers.html"
+        data-start="252.22"
+        data-duration="12.06"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 27 — cost scales with group size, not typing (chunk 264.28–272.64; next chunk "Either" 274.58). -->
+      <div
+        id="scene-27"
+        data-composition-id="scene-27-cost-scales-with-group"
+        data-composition-src="compositions/27-cost-scales-with-group.html"
+        data-start="263.78"
+        data-duration="10.80"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 28 — the online delivery path: process → DS → open socket → recipient (chunk 274.58–285.64; next chunk "The service" 286.76). -->
+      <div
+        id="scene-28"
+        data-composition-id="scene-28-online-delivery-path"
+        data-composition-src="compositions/28-online-delivery-path.html"
+        data-start="274.08"
+        data-duration="12.68"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 29 — store and forward: phones never talk directly, everything routes through the middle (chunk 286.76–295.22; next chunk "But" 296.10). -->
+      <div
+        id="scene-29"
+        data-composition-id="scene-29-store-and-forward"
+        data-composition-src="compositions/29-store-and-forward.html"
+        data-start="286.26"
+        data-duration="9.84"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 30 — the recipient isn't always there: phones die, tunnels swallow signal, people fall asleep (chunk 296.10–303.40; next chunk "If" 304.12). -->
+      <div
+        id="scene-30"
+        data-composition-id="scene-30-recipient-not-there"
+        data-composition-src="compositions/30-recipient-not-there.html"
+        data-start="295.60"
+        data-duration="8.52"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 31 — encrypted offline queue: the message drops into an encrypted offline queue and waits up to 30 days (chunk 304.12–312.30; next chunk "Come" 313.26). -->
+      <div
+        id="scene-31"
+        data-composition-id="scene-31-offline-queue"
+        data-composition-src="compositions/31-offline-queue.html"
+        data-start="303.62"
+        data-duration="9.64"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 32 — drains or gone: come back inside the window and it drains; come back after and it's gone (chunk 313.26–319.42; next chunk "The" 320.08). -->
+      <div
+        id="scene-32"
+        data-composition-id="scene-32-drains-or-gone"
+        data-composition-src="compositions/32-drains-or-gone.html"
+        data-start="312.76"
+        data-duration="7.32"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 33 — relay not mailbox: the server passes messages through, it doesn't store them (chunk 320.08–322.62; next chunk "And" 323.52). -->
+      <div
+        id="scene-33"
+        data-composition-id="scene-33-relay-not-mailbox"
+        data-composition-src="compositions/33-relay-not-mailbox.html"
+        data-start="319.58"
+        data-duration="3.94"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 34 — the ticks are the relay reporting back: the delivery checkmarks you watch are the relay's status report (chunk 323.52–327.16; next chunk "One" 328.12). -->
+      <div
+        id="scene-34"
+        data-composition-id="scene-34-ticks-relay"
+        data-composition-src="compositions/34-ticks-relay-reporting.html"
+        data-start="323.02"
+        data-duration="5.10"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 35 — decoding the tick states: one gray = server has it, two gray = reached device, two blue = read (chunk 328.12–337.48; next chunk "The" 338.66). -->
+      <div
+        id="scene-35"
+        data-composition-id="scene-35-tick-states"
+        data-composition-src="compositions/35-tick-states-decode.html"
+        data-start="327.62"
+        data-duration="11.04"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 36 — the ticks are the architecture: the tiny UI tick is the whole distributed system surfacing (chunk 338.66–341.94; next chunk "Up" 343.46). -->
+      <div
+        id="scene-36"
+        data-composition-id="scene-36-ticks-arch"
+        data-composition-src="compositions/36-ticks-are-architecture.html"
+        data-start="338.16"
+        data-duration="5.30"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 37 — up to now the server has known everything: topic reset into privacy/encryption (chunk 343.46–346.70; next chunk "Where" 347.64). -->
+      <div
+        id="scene-37"
+        data-composition-id="scene-37-server-knew"
+        data-composition-src="compositions/37-server-knew-everything.html"
+        data-start="342.96"
+        data-duration="4.68"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 38 — what the server knows: itemizes "everything" into three records it holds (chunk 347.64–352.20; next chunk "Encryption" 353.26). -->
+      <div
+        id="scene-38"
+        data-composition-id="scene-38-server-knows"
+        data-composition-src="compositions/38-what-the-server-knows.html"
+        data-start="347.14"
+        data-duration="6.12"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 39 — encryption is where that knowing stops: the reversal, a green wall severs the server's gaze (chunk 353.26–355.68; next chunk "In" 356.84). -->
+      <div
+        id="scene-39"
+        data-composition-id="scene-39-enc-stops"
+        data-composition-src="compositions/39-encryption-stops-knowing.html"
+        data-start="352.76"
+        data-duration="4.08"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 40 — WhatsApp partners with Open Whisper Systems: dated partnership-formation, Signal Protocol credential (chunk 356.84–363.80; next chunk "And" 364.54). -->
+      <div
+        id="scene-40"
+        data-composition-id="scene-40-ows"
+        data-composition-src="compositions/40-ows-partnership.html"
+        data-start="356.34"
+        data-duration="8.20"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 41 — end-to-end encryption on by default (April 2016): toggle flips ON, scale "a billion users" (chunk 364.54–370.08; next chunk "A" 371.14). -->
+      <div
+        id="scene-41"
+        data-composition-id="scene-41-enc-default"
+        data-composition-src="compositions/41-encryption-on-by-default.html"
+        data-start="364.04"
+        data-duration="7.10"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 42 — the X3DH prekey handshake: two people's keys converge into a shared key, holds even when one is offline (chunk 371.14–378.06; next chunk "Then" 379.50). -->
+      <div
+        id="scene-42"
+        data-composition-id="scene-42-x3dh"
+        data-composition-src="compositions/42-x3dh-handshake.html"
+        data-start="370.64"
+        data-duration="8.86"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 43 — the Double Ratchet: gear clicks forward, stamping a fresh key per message (chunk 379.50–386.16; next chunk "So" 387.02). -->
+      <div
+        id="scene-43"
+        data-composition-id="scene-43-ratchet"
+        data-composition-src="compositions/43-double-ratchet.html"
+        data-start="379.00"
+        data-duration="8.02"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 44 — forward secrecy: a red thief-key cracks one message-lock; the rest hold green (chunk 387.02–389.36; next chunk "Now" 390.94). -->
+      <div
+        id="scene-44"
+        data-composition-id="scene-44-steal"
+        data-composition-src="compositions/44-steal-one-key.html"
+        data-start="386.52"
+        data-duration="4.42"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 45 — encryption callback: routing/queue/fan-out all carry ciphertext into the server, which can't read it (chunk 390.94–398.46; next chunk "It" 399.30). -->
+      <div
+        id="scene-45"
+        data-composition-id="scene-45-cipher"
+        data-composition-src="compositions/45-ciphertext-everywhere.html"
+        data-start="390.44"
+        data-duration="8.86"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 46 — knows where, not what: envelope split into a visible sky address and a sealed green message the server can't peek into (chunk 399.30–403.42; next chunk "But" 404.32). -->
+      <div
+        id="scene-46"
+        data-composition-id="scene-46-env"
+        data-composition-src="compositions/46-knows-where-not-what.html"
+        data-start="398.80"
+        data-duration="5.52"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 47 — cost pivot: the blind-eye motif carries over, then an amber receipt slams in on "bill" (chunk 404.32–406.0; next chunk "A" 407.24). -->
+      <div
+        id="scene-47"
+        data-composition-id="scene-47-bill"
+        data-composition-src="compositions/47-blindness-has-a-bill.html"
+        data-start="403.82"
+        data-duration="3.42"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 48 — the cost enumeration: a blind server can't search / scan for spam / rebuild history — three capabilities struck out in red (chunk 407.24–414.38; next chunk "That" 417.48). -->
+      <div
+        id="scene-48"
+        data-composition-id="scene-48-cant"
+        data-composition-src="compositions/48-server-cant.html"
+        data-start="406.74"
+        data-duration="10.74"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 49 — assumption vs reality: the sealed envelope assumed one key/person, but one person lives across many devices (chunk 417.48–423.26; next chunk "So" 424.86). -->
+      <div
+        id="scene-49"
+        data-composition-id="scene-49-multi"
+        data-composition-src="compositions/49-one-key-many-devices.html"
+        data-start="416.98"
+        data-duration="7.88"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 50 — solution reveal: in 2021 Meta solved it with "client-side fan-out", the named concept blooming as the glyph branches one→many (chunk 424.86–429.34; next chunk "Every" 430.82). -->
+      <div
+        id="scene-50"
+        data-composition-id="scene-50-fanout"
+        data-composition-src="compositions/50-client-side-fanout.html"
+        data-start="424.36"
+        data-duration="6.46"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 51 — the per-device mechanism: every device gets its own identity key, and the sender encrypts each message separately, once for every device (chunk 430.82–440.26; next chunk "The server" 441.50). -->
+      <div
+        id="scene-51"
+        data-composition-id="scene-51-keys"
+        data-composition-src="compositions/51-own-identity-key.html"
+        data-start="430.32"
+        data-duration="11.18"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 52 — the server still holds no key, just a directory of where each device's key lives (chunk 441.50–445.68; next chunk "And when you link" 447.18). -->
+      <div
+        id="scene-52"
+        data-composition-id="scene-52-dir"
+        data-composition-src="compositions/52-server-holds-directory.html"
+        data-start="441.00"
+        data-duration="6.18"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 53 — linking a new laptop: your history doesn't come from the server (the attempt is blocked) (chunk 447.18–450.26; next chunk "Your phone encrypts" 451.06). -->
+      <div
+        id="scene-53"
+        data-composition-id="scene-53-nfs"
+        data-composition-src="compositions/53-not-from-server.html"
+        data-start="446.68"
+        data-duration="4.38"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 54 — your phone encrypts a slice of recent chat and hands it directly to your laptop, bypassing the server (chunk 451.06–455.70; next chunk "And all of this ran" 457.62). -->
+      <div
+        id="scene-54"
+        data-composition-id="scene-54-direct"
+        data-composition-src="compositions/54-phone-hands-directly.html"
+        data-start="450.56"
+        data-duration="7.06"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 55 — the OS reveal: it ran on bare metal you can point to, not Linux but FreeBSD (chunk 457.62–463.16; next chunk "chosen for its" 465.60). -->
+      <div
+        id="scene-55"
+        data-composition-id="scene-55-bsd"
+        data-composition-src="compositions/55-not-linux-but-freebsd.html"
+        data-start="457.12"
+        data-duration="8.48"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 56 — why FreeBSD: chosen for its mature TCP stack and a kernel you could tune deep (chunk 465.60–469.52; next chunk "They bought" 470.62). -->
+      <div
+        id="scene-56"
+        data-composition-id="scene-56-why"
+        data-composition-src="compositions/56-why-freebsd.html"
+        data-start="465.10"
+        data-duration="5.52"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 57 — the vertical-scaling choice: they bought big bare-metal boxes and tuned them hard (chunk 470.62–473.66; next chunk "instead of spreading" 474.66). -->
+      <div
+        id="scene-57"
+        data-composition-id="scene-57-boxes"
+        data-composition-src="compositions/57-big-boxes-tuned-hard.html"
+        data-start="470.12"
+        data-duration="4.54"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 58 — the rejected path: not spreading out lots of small nodes, not horizontal scaling (chunk 474.66–479.32; next chunk "And they didn't" 481.06). -->
+      <div
+        id="scene-58"
+        data-composition-id="scene-58-horiz"
+        data-composition-src="compositions/58-not-horizontal-scaling.html"
+        data-start="474.16"
+        data-duration="6.90"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 59 — they didn't just rent the hardware, they owned it (chunk 481.06–482.34; next chunk "They patched" 483.70). -->
+      <div
+        id="scene-59"
+        data-composition-id="scene-59-rent"
+        data-composition-src="compositions/59-didnt-just-rent.html"
+        data-start="480.56"
+        data-duration="3.14"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 60 — they patched the BEAM runtime and the FreeBSD kernel themselves, hunting down lock contention (chunk 483.70–490.12; next chunk "That bought them control" 491.66). -->
+      <div
+        id="scene-60"
+        data-composition-id="scene-60-patch"
+        data-composition-src="compositions/60-patched-beam-kernel.html"
+        data-start="483.20"
+        data-duration="8.46"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 61 — that bought them control, but it cost them elasticity (chunk 491.66–494.78; next chunk "There is no auto-scaling" 496.34). -->
+      <div
+        id="scene-61"
+        data-composition-id="scene-61-trade"
+        data-composition-src="compositions/61-control-vs-elasticity.html"
+        data-start="491.16"
+        data-duration="5.18"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 62 — there is no auto-scaling, so you carry the capacity and the failures yourself (chunk 496.34–501.34; next chunk "And there's one last" 503.25). -->
+      <div
+        id="scene-62"
+        data-composition-id="scene-62-carry"
+        data-composition-src="compositions/62-carry-it-yourself.html"
+        data-start="495.84"
+        data-duration="7.41"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 63 — one last trick: Erlang can load new code into a running system (chunk 503.25–507.66; next chunk "so fixes ship" 508.98). -->
+      <div
+        id="scene-63"
+        data-composition-id="scene-63-hot"
+        data-composition-src="compositions/63-hot-code-load.html"
+        data-start="502.75"
+        data-duration="6.23"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 64 — fixes ship without a restart and the processes never stop (chunk 508.98–512.81; next chunk "That's the near zero downtime claim" 514.02). -->
+      <div
+        id="scene-64"
+        data-composition-id="scene-64-never"
+        data-composition-src="compositions/64-no-restart-never-stop.html"
+        data-start="508.48"
+        data-duration="5.54"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 65 — that's the near-zero downtime claim (chunk 514.02–515.52; next chunk "But resilient is not the same as invincible" 516.80). -->
+      <div
+        id="scene-65"
+        data-composition-id="scene-65-zero"
+        data-composition-src="compositions/65-near-zero-downtime.html"
+        data-start="513.52"
+        data-duration="3.28"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 66 — resilient is not the same as invincible (chunk 516.80–518.98; next chunk "On the 22nd of February 2014" 520.78). -->
+      <div
+        id="scene-66"
+        data-composition-id="scene-66-resi"
+        data-composition-src="compositions/66-resilient-not-invincible.html"
+        data-start="516.30"
+        data-duration="4.48"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 67 — on the 22nd of February 2014, three days after the $19 billion Facebook deal (chunk 520.78–526.02; next chunk "WhatsApp went dark" 526.85). -->
+      <div
+        id="scene-67"
+        data-composition-id="scene-67-deal"
+        data-composition-src="compositions/67-feb-2014-deal.html"
+        data-start="520.28"
+        data-duration="6.57"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- Scene 68 — WhatsApp went dark for about three and a half hours (chunk 526.85–528.76; next chunk "The architecture absorbs failures" 530.12). -->
+      <div
+        id="scene-68"
+        data-composition-id="scene-68-dark"
+        data-composition-src="compositions/68-went-dark.html"
+        data-start="526.35"
+        data-duration="3.77"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 69 — the architecture absorbs failures, it doesn't abolish them -->
+      <div
+        id="scene-69"
+        data-composition-id="scene-69-abs"
+        data-composition-src="compositions/69-absorbs-not-abolish.html"
+        data-start="529.62"
+        data-duration="6.20"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 70 — so that's one: message, socket, process, lookup, handoff, queue, text envelope -->
+      <div
+        id="scene-70"
+        data-composition-id="scene-70-recap"
+        data-composition-src="compositions/70-recap-chain.html"
+        data-start="535.32"
+        data-duration="7.06"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 71 — now, multiply it -->
+      <div
+        id="scene-71"
+        data-composition-id="scene-71-mult"
+        data-composition-src="compositions/71-multiply-it.html"
+        data-start="541.88"
+        data-duration="2.48"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 72 — a single chat server doesn't hold one connection, it holds millions -->
+      <div
+        id="scene-72"
+        data-composition-id="scene-72-mill"
+        data-composition-src="compositions/72-holds-millions.html"
+        data-start="543.86"
+        data-duration="6.48"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 73 — back in 2011, one box already held around a million -->
+      <div
+        id="scene-73"
+        data-composition-id="scene-73-box"
+        data-composition-src="compositions/73-one-box-2011.html"
+        data-start="549.84"
+        data-duration="5.62"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 74 — by 2012, an engineer named Rick Reed -->
+      <div
+        id="scene-74"
+        data-composition-id="scene-74-reed"
+        data-composition-src="compositions/74-rick-reed-2012.html"
+        data-start="554.96"
+        data-duration="4.78"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 75 — pushed one past two million at an Erlang Factory talk -->
+      <div
+        id="scene-75"
+        data-composition-id="scene-75-2m"
+        data-composition-src="compositions/75-past-two-million.html"
+        data-start="559.24"
+        data-duration="5.30"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 76 — they ran each near a million on purpose, leaving headroom for failover and spikes -->
+      <div
+        id="scene-76"
+        data-composition-id="scene-76-head"
+        data-composition-src="compositions/76-headroom.html"
+        data-start="564.04"
+        data-duration="7.84"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 77 — and the volume climbed right alongside it -->
+      <div
+        id="scene-77"
+        data-composition-id="scene-77-climb"
+        data-composition-src="compositions/77-volume-climbed.html"
+        data-start="571.38"
+        data-duration="3.20"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 78 — 10 billion in 2012, 40 billion by 2014, roughly 100 billion by 2020 -->
+      <div
+        id="scene-78"
+        data-composition-id="scene-78-grow"
+        data-composition-src="compositions/78-growth-chart.html"
+        data-start="574.08"
+        data-duration="10.14"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 79 — and the fleet that held the 2014 numbers was small -->
+      <div
+        id="scene-79"
+        data-composition-id="scene-79-small"
+        data-composition-src="compositions/79-fleet-was-small.html"
+        data-start="583.72"
+        data-duration="4.32"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 80 — around 550 servers, over 11,000 CPU cores, 147 million phones connected at peak -->
+      <div
+        id="scene-80"
+        data-composition-id="scene-80-stats"
+        data-composition-src="compositions/80-fleet-stats.html"
+        data-start="587.54"
+        data-duration="11.44"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 81 — which leaves the one question hanging over all of it. Who was actually running this? -->
+      <div
+        id="scene-81"
+        data-composition-id="scene-81-q"
+        data-composition-src="compositions/81-who-question.html"
+        data-start="598.48"
+        data-duration="6.09"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 82 — WhatsApp was founded in 2009 on a deliberately lean, do-less culture -->
+      <div
+        id="scene-82"
+        data-composition-id="scene-82-lean"
+        data-composition-src="compositions/82-founded-lean.html"
+        data-start="604.07"
+        data-duration="6.35"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 83 — No ads, no games, no gimmicks -->
+      <div
+        id="scene-83"
+        data-composition-id="scene-83-no"
+        data-composition-src="compositions/83-no-gimmicks.html"
+        data-start="609.92"
+        data-duration="3.12"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 84 — The architecture is that culture written in code -->
+      <div
+        id="scene-84"
+        data-composition-id="scene-84-code"
+        data-composition-src="compositions/84-culture-in-code.html"
+        data-start="612.54"
+        data-duration="3.94"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 85 — Roughly 40 million users for every engineer on the team -->
+      <div
+        id="scene-85"
+        data-composition-id="scene-85-ratio"
+        data-composition-src="compositions/85-ratio-per-engineer.html"
+        data-start="615.98"
+        data-duration="4.24"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 86 — the per-user process, the supervisor, the in-RAM lookup, the blind pipe -->
+      <div
+        id="scene-86"
+        data-composition-id="scene-86-recap"
+        data-composition-src="compositions/86-recap-mechanisms.html"
+        data-start="619.72"
+        data-duration="7.98"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 87 — every one of those was a choice that let a tiny team sleep at night -->
+      <div
+        id="scene-87"
+        data-composition-id="scene-87-sleep"
+        data-composition-src="compositions/87-sleep-at-night.html"
+        data-start="627.20"
+        data-duration="5.76"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 88 — The leverage wasn't an accident. It was the whole point, and it wasn't free either -->
+      <div
+        id="scene-88"
+        data-composition-id="scene-88-lev"
+        data-composition-src="compositions/88-leverage-not-free.html"
+        data-start="632.46"
+        data-duration="6.01"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 89 — A team that small is a bus factor waiting to happen -->
+      <div
+        id="scene-89"
+        data-composition-id="scene-89-bus"
+        data-composition-src="compositions/89-bus-factor.html"
+        data-start="637.97"
+        data-duration="5.21"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 90 — The leverage and the limits were the same decision -->
+      <div
+        id="scene-90"
+        data-composition-id="scene-90-same"
+        data-composition-src="compositions/90-same-decision.html"
+        data-start="642.68"
+        data-duration="4.92"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+      <!-- scene 91 — 40 billion messages a day ran by a team of roughly 32 -->
+      <div
+        id="scene-91"
+        data-composition-id="scene-91-payoff"
+        data-composition-src="compositions/91-40b-by-32.html"
+        data-start="647.10"
+        data-duration="5.66"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- scene 92 — That message you sent earlier without thinking, it made this exact trip -->
+      <div
+        id="scene-92"
+        data-composition-id="scene-92-trip"
+        data-composition-src="compositions/92-your-message-trip.html"
+        data-start="652.26"
+        data-duration="5.24"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- scene 93 — One socket, one process, one envelope the server queries but can never open -->
+      <div
+        id="scene-93"
+        data-composition-id="scene-93-seal"
+        data-composition-src="compositions/93-sealed-envelope.html"
+        data-start="657.00"
+        data-duration="8.28"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- scene 94 — One more thing before you go -->
+      <div
+        id="scene-94"
+        data-composition-id="scene-94-more"
+        data-composition-src="compositions/94-one-more-thing.html"
+        data-start="664.78"
+        data-duration="2.66"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- scene 95 — If taking a system apart like this is your idea of a good time, please subscribe. That's the whole channel -->
+      <div
+        id="scene-95"
+        data-composition-id="scene-95-sub"
+        data-composition-src="compositions/95-subscribe-cta.html"
+        data-start="666.94"
+        data-duration="7.82"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+
+      <!-- scene 96 — And I'm genuinely curious, which of WhatsApp's trades would you have made differently? Tell me in the comments -->
+      <div
+        id="scene-96"
+        data-composition-id="scene-96-sign"
+        data-composition-src="compositions/96-comment-signoff.html"
+        data-start="674.26"
+        data-duration="8.529"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0; z-index: 1"
+      ></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div
+        id="sfx-layer"
+        data-composition-id="sfx-layer"
+        data-composition-src="compositions/sfx.html"
+        data-start="0"
+        data-duration="682.789"
+        data-track-index="19"
+      ></div>
+</body>
+</html>

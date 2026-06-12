@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 33 — the server is a relay, not a mailbox</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-33-relay-not-mailbox { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-33-relay-not-mailbox .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* priming narration */
+    #scene-33-relay-not-mailbox .prime {
+      position: absolute; left: 0; right: 0; top: 268px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500;
+      font-size: 34px; color: var(--soft); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the affirmed model — hero glyph + label */
+    #scene-33-relay-not-mailbox .relaywrap {
+      position: absolute; left: 50%; top: 344px; transform: translateX(-50%);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-33-relay-not-mailbox .relaylabel {
+      position: absolute; left: 0; right: 0; top: 536px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 64px; color: var(--accent-2); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+
+    /* the rejected model — muted, struck */
+    #scene-33-relay-not-mailbox .neg {
+      position: absolute; left: 0; right: 0; top: 676px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 34px;
+      color: var(--soft); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-33-relay-not-mailbox .mbox {
+      position: relative; display: inline-block; vertical-align: middle;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 44px; color: var(--muted); letter-spacing: 0.01em;
+    }
+    #scene-33-relay-not-mailbox .mboxicon { vertical-align: middle; margin-right: 10px; margin-top: -6px; }
+    #scene-33-relay-not-mailbox .strike {
+      position: absolute; left: -4px; right: -4px; top: 52%; height: 4px; border-radius: 2px;
+      background: var(--danger); box-shadow: 0 0 12px rgba(255, 107, 93, 0.5);
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-33-relay-not-mailbox" data-composition-id="scene-33-relay-not-mailbox" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="prime">The server is a&hellip;</div>
+
+      <svg class="relaywrap" viewBox="0 0 160 120" width="232" height="174">
+        <line x1="6" y1="60" x2="150" y2="60" stroke="#7dd3fc" stroke-width="2.5" opacity="0.5"></line>
+        <polygon points="152,60 138,52 138,68" fill="#7dd3fc"></polygon>
+        <circle cx="80" cy="60" r="30" fill="rgba(125,211,252,0.06)" stroke="#7dd3fc" stroke-width="3"></circle>
+        <circle class="msgdot" cx="-12" cy="60" r="9" fill="#25d366"></circle>
+      </svg>
+      <div class="relaylabel" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1380" data-sfx-volume="0.35">relay</div>
+
+      <div class="neg">not a <span class="mbox"><svg class="mboxicon" viewBox="0 0 24 18" width="32" height="24"><rect x="1" y="1" width="22" height="16" rx="2" fill="none" stroke="#79857f" stroke-width="1.6"></rect><path d="M1.5 3 L12 11 L22.5 3" fill="none" stroke="#79857f" stroke-width="1.6"></path></svg>mailbox<span class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2480" data-sfx-volume="0.42"></span></span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-33-relay-not-mailbox";
+
+    // Host data-start = 319.58 → scene-local = global − 319.58. Chunk first word "The" 320.08 = local 0.50.
+
+    // Entrance crossfade over scene 32's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "The server is a" 320.08→320.96 (local 0.50→1.38) — prime the frame
+    tl.fromTo(root + " .prime", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.20);
+
+    // "relay" 320.96→321.30 (local 1.38→1.72) — the affirmed model blooms in, dominant
+    tl.fromTo(root + " .relaywrap", { opacity: 0, scale: 0.82 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.18);
+    tl.fromTo(root + " .relaylabel", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.38);
+    tl.fromTo(root + " .relaylabel", { textShadow: "0 0 0px rgba(125,211,252,0)" }, { textShadow: "0 0 26px rgba(125, 211, 252, 0.45)", duration: 0.5, ease: "power2.out" }, 1.38);
+    // the message passes THROUGH the relay node — never stored
+    tl.fromTo(root + " .msgdot", { attr: { cx: -12 } }, { attr: { cx: 172 }, duration: 0.78, ease: "power1.inOut" }, 1.40);
+
+    // "not a mailbox" 321.55→322.62 (local 1.97→3.04) — the rejected model slides in muted, then struck
+    tl.fromTo(root + " .neg", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.97);
+    // "mailbox" 322.06→322.62 (local 2.48→3.04) — a fast strike dismisses it
+    tl.to(root + " .strike", { scaleX: 1, duration: 0.18, ease: "power2.in" }, 2.48);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 1.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.0);
+
+    window.__timelines["scene-33-relay-not-mailbox"] = tl;
+  </script>
+</body>
+</html>

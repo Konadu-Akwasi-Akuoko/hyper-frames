@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 03 — the question</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-03-the-question { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    /* left zone — the tiny counterweight, dim, referencing scene 02 */
+    #scene-03-the-question .team-zone {
+      position: absolute; left: 150px; top: 0; bottom: 0; width: 240px;
+      display: flex; flex-direction: column; justify-content: center; gap: 8px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-03-the-question .team-zone .rule {
+      position: absolute; right: -60px; top: 220px; bottom: 220px; width: 1px;
+      background: var(--border);
+    }
+    #scene-03-the-question .team-zone .n {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 34px; color: var(--muted); font-variant-numeric: tabular-nums;
+    }
+    #scene-03-the-question .team-zone .t {
+      font-size: 24px; font-weight: 400; color: var(--dim);
+    }
+
+    /* right zone — the argument in type */
+    #scene-03-the-question .arg {
+      position: absolute; left: 470px; right: 140px; top: 0; bottom: 0;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    #scene-03-the-question .setup-line {
+      font-size: 42px; font-weight: 400; color: var(--soft); line-height: 1.5;
+      margin-bottom: 90px; max-width: 1100px;
+    }
+    #scene-03-the-question .setup-line .ph { display: inline-block; opacity: 0; will-change: transform, opacity; }
+
+    #scene-03-the-question .q { display: flex; flex-direction: column; gap: 10px; }
+    #scene-03-the-question .q .qa {
+      font-size: 52px; font-weight: 400; color: var(--soft); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-03-the-question .q .ql {
+      font-size: 84px; font-weight: 700; color: var(--fg); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-03-the-question .q .qm {
+      font-size: 136px; font-weight: 800; color: var(--fg); letter-spacing: -0.02em;
+      line-height: 1.05; opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-03-the-question" data-composition-id="scene-03-the-question" data-width="1920" data-height="1080">
+    <div class="team-zone" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1660">
+      <div class="rule"></div>
+      <div class="n">32</div>
+      <div class="t">engineers</div>
+    </div>
+
+    <div class="arg">
+      <div class="setup-line">
+        <span class="ph p1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1100">A team that small</span>
+        <span class="ph p2">should not have been able to move that much.</span>
+      </div>
+      <div class="q" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="5960">
+        <div class="qa">So how does</div>
+        <div class="ql">so little</div>
+        <div class="qm" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="8030">run so much?</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-03-the-question";
+
+    // Host data-start = 21.64 → scene-local = global − 21.64.
+
+    // Entrance crossfade over scene 02's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "A team that small" 22.14 (local 0.50)
+    tl.fromTo(root + " .p1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+    // "32" counterweight echoes scene 02 — "small" 22.80 (local 1.16)
+    tl.fromTo(root + " .team-zone", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 1.16);
+    // "should not have been able to move that much." — "should" 23.82 (local 2.18)
+    tl.fromTo(root + " .p2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 2.18);
+
+    // the question, three staged lines — sizes embody "little" vs "much"
+    // "So how does" 27.00 (local 5.36) — slides in from the right edge
+    tl.fromTo(root + " .qa", { opacity: 0, x: 70 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 5.36);
+    // "so little" 27.74 (local 6.10)
+    tl.fromTo(root + " .ql", { opacity: 0, x: 70 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 6.10);
+    // "run so much?" — "run" 28.58 (local 6.94), hero scale, slight overshoot settle
+    tl.fromTo(root + " .qm", { opacity: 0, x: 110, scale: 0.94 }, { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: "back.out(1.4)" }, 6.94);
+    // "much?" 29.46 (local 7.82) — a quiet bloom on the hero line as the question hangs
+    tl.to(root + " .qm", { textShadow: "0 0 38px rgba(233,237,235,0.28)", duration: 0.45, ease: "power2.out" }, 7.82);
+    tl.to(root + " .qm", { textShadow: "0 0 0px rgba(233,237,235,0)", duration: 1.2, ease: "sine.inOut" }, 8.5);
+
+    // setup recedes once the question owns the frame
+    tl.to(root + " .setup-line", { opacity: 0.45, duration: 0.7, ease: "sine.inOut" }, 6.94);
+
+    // idle — the argument drifts a touch (finite yoyo)
+    tl.to(root + " .arg", { y: -6, duration: 2.9, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.6);
+
+    window.__timelines["scene-03-the-question"] = tl;
+  </script>
+</body>
+</html>

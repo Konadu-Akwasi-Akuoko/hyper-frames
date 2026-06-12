@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 21 — traded durability and cost for speed</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-21-trade-scale { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-21-trade-scale .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* fulcrum post + base */
+    #scene-21-trade-scale .post {
+      position: absolute; left: 953px; top: 402px; width: 14px; height: 300px;
+      background: linear-gradient(180deg, var(--dim), #2a332e);
+      border-radius: 4px; opacity: 0; will-change: opacity;
+    }
+    #scene-21-trade-scale .base {
+      position: absolute; left: 866px; top: 694px; width: 188px; height: 14px;
+      background: var(--dim); border-radius: 7px; opacity: 0; will-change: opacity;
+    }
+    #scene-21-trade-scale .cap {
+      position: absolute; left: 948px; top: 388px; width: 24px; height: 24px;
+      border-radius: 50%; background: var(--soft); box-shadow: 0 0 14px rgba(195,203,199,0.3);
+      opacity: 0; will-change: opacity;
+    }
+
+    /* the beam — pivots about its centre (screen 960,400) */
+    #scene-21-trade-scale .beam {
+      position: absolute; left: 660px; top: 394px; width: 600px; height: 12px;
+      border-radius: 6px; background: var(--soft);
+      transform-origin: 300px 6px; opacity: 0; will-change: transform, opacity;
+    }
+
+    /* hanging pans — anchored at the beam ends, moved to follow the tilt */
+    #scene-21-trade-scale .pan { position: absolute; will-change: transform, opacity; opacity: 0; }
+    #scene-21-trade-scale .pan.amber { left: 660px; top: 400px; }
+    #scene-21-trade-scale .pan.sky   { left: 1260px; top: 400px; }
+
+    #scene-21-trade-scale .cord {
+      position: absolute; left: -1.5px; top: 6px; width: 3px; height: 138px;
+      background: rgba(255,255,255,0.10);
+    }
+    #scene-21-trade-scale .tray {
+      position: absolute; left: -128px; top: 142px; width: 256px; height: 16px;
+      border-radius: 0 0 18px 18px / 0 0 30px 30px;
+      border: 2px solid; border-top: none;
+    }
+    #scene-21-trade-scale .pan.amber .tray { border-color: rgba(240,180,41,0.55); background: rgba(240,180,41,0.05); }
+    #scene-21-trade-scale .pan.sky   .tray { border-color: rgba(125,211,252,0.55); background: rgba(125,211,252,0.05); }
+    #scene-21-trade-scale .pan.amber .cord { background: rgba(240,180,41,0.30); }
+    #scene-21-trade-scale .pan.sky   .cord { background: rgba(125,211,252,0.30); }
+
+    /* weight chips resting on the trays */
+    #scene-21-trade-scale .wt {
+      position: absolute; left: -118px; width: 236px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 24px; letter-spacing: 0.08em; padding: 8px 0; border-radius: 9px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-21-trade-scale .wt.cost { top: 96px; color: var(--cost); border: 1px solid rgba(240,180,41,0.4); background: rgba(240,180,41,0.08); }
+    #scene-21-trade-scale .wt.dur  { top: 46px; color: var(--cost); border: 1px solid rgba(240,180,41,0.4); background: rgba(240,180,41,0.08); }
+    #scene-21-trade-scale .wt.speed { top: 96px; color: var(--accent-2); border: 1px solid rgba(125,211,252,0.4); background: rgba(125,211,252,0.08); }
+
+    /* soft kicker below the scale — the honest trade */
+    #scene-21-trade-scale .kicker {
+      position: absolute; left: 0; right: 0; top: 840px; text-align: center;
+      font-size: 34px; font-weight: 600; color: var(--soft); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-21-trade-scale .kicker .sp { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-21-trade-scale" data-composition-id="scene-21-trade-scale" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="base"></div>
+      <div class="post"></div>
+
+      <div class="beam"></div>
+      <div class="cap"></div>
+
+      <div class="pan amber">
+        <div class="cord"></div>
+        <div class="tray"></div>
+        <div class="wt dur" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4520">DURABILITY</div>
+        <div class="wt cost" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1800">COST</div>
+      </div>
+
+      <div class="pan sky">
+        <div class="cord"></div>
+        <div class="tray"></div>
+        <div class="wt speed" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="10980">SPEED</div>
+      </div>
+
+      <div class="kicker" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="7940">A deliberate trade &mdash; bought with <span class="sp">speed</span>.</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-21-trade-scale";
+
+    // Host data-start = 209.04 → scene-local = global − 209.04.
+
+    gsap.set(root + " .beam", { rotation: 0 });
+
+    // Entrance crossfade over scene 20's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "But RAM is expensive" 209.54 (local 0.50) — the empty balance settles in, level
+    tl.fromTo(root + " .post, " + root + " .base, " + root + " .cap", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, 0.30);
+    tl.fromTo(root + " .beam", { opacity: 0, scaleX: 0.6 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.40);
+    tl.fromTo(root + " .pan.amber, " + root + " .pan.sky", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "sine.out" }, 0.55);
+
+    // "expensive" 210.84 (local 1.80) — COST drops onto the amber pan; the beam tilts hard,
+    // amber side falls, sky side lifts (adapted from tilting-balance-scale-compare:
+    // the cost side drops first and the beam locks lopsided with a weighted settle)
+    tl.fromTo(root + " .wt.cost", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.in" }, 1.80);
+    tl.to(root + " .beam", { rotation: -9, duration: 0.7, ease: "back.out(1.5)" }, 1.86);
+    tl.to(root + " .pan.amber", { top: 444, duration: 0.7, ease: "back.out(1.5)" }, 1.86);
+    tl.to(root + " .pan.sky", { top: 356, duration: 0.7, ease: "back.out(1.5)" }, 1.86);
+
+    // "an in-memory store has to be replicated carefully" — "store" 213.56 (local 4.52) —
+    // DURABILITY is the second weight on the price side; the beam dips a touch further
+    tl.fromTo(root + " .wt.dur", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.in" }, 4.52);
+    tl.to(root + " .beam", { rotation: -11, duration: 0.5, ease: "back.out(1.6)" }, 4.58);
+    tl.to(root + " .pan.amber", { top: 453, duration: 0.5, ease: "back.out(1.6)" }, 4.58);
+    tl.to(root + " .pan.sky", { top: 347, duration: 0.5, ease: "back.out(1.6)" }, 4.58);
+
+    // "so they traded ... " 216.98 (local 7.94) — the kicker frames it as a deliberate trade
+    tl.fromTo(root + " .kicker", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 7.94);
+
+    // "for speed." 220.02 (local 10.98) — SPEED lands on the lifted sky pan: what they bought
+    tl.fromTo(root + " .wt.speed", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 10.98);
+    tl.to(root + " .pan.sky", { top: 340, duration: 0.22, ease: "power2.out" }, 10.98);
+    tl.to(root + " .pan.sky", { top: 347, duration: 0.4, ease: "sine.inOut" }, 11.20);
+    tl.fromTo(root + " .kicker .sp",
+      { textShadow: "0 0 0 rgba(125,211,252,0)" },
+      { textShadow: "0 0 24px rgba(125, 211, 252, 0.45)", duration: 0.5, ease: "power2.out" }, 10.98);
+
+    // idle — the loaded scale settles with a faint breath (finite yoyo)
+    tl.to(root + " .stage", { y: -4, duration: 3.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.0);
+
+    window.__timelines["scene-21-trade-scale"] = tl;
+  </script>
+</body>
+</html>

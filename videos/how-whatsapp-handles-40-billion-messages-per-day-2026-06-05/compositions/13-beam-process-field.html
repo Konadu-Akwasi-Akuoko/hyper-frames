@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 13 — one process per connection on the BEAM</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-13-beam-process-field { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-13-beam-process-field .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the BEAM VM — a server interior that fills with living processes */
+    #scene-13-beam-process-field .box {
+      position: absolute; left: 210px; top: 150px; width: 1500px; height: 560px;
+      background: var(--panel); border: 1.5px solid #2c3a45; border-radius: 18px;
+      box-shadow: 0 0 40px rgba(125, 211, 252, 0.08);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-13-beam-process-field .box .hdr {
+      position: absolute; left: 40px; top: 28px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 26px; color: var(--muted); letter-spacing: 0.18em;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-13-beam-process-field .box .counter {
+      position: absolute; right: 40px; top: 28px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 26px; color: var(--muted); font-variant-numeric: tabular-nums;
+      opacity: 0; will-change: opacity;
+    }
+    #scene-13-beam-process-field .box .counter .n { color: var(--accent-2); }
+
+    /* the process field — loose dots, alive, light (NOT scene 08's amber burden) */
+    #scene-13-beam-process-field .field {
+      position: absolute; left: 40px; top: 86px; width: 1420px; height: 440px;
+      display: grid; grid-template-columns: repeat(18, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      justify-items: center; align-items: center;
+    }
+    #scene-13-beam-process-field .dot {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 8px rgba(125, 211, 252, 0.45);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-13-beam-process-field .hero-dot {
+      box-shadow: 0 0 8px rgba(125, 211, 252, 0.45);
+    }
+
+    /* pid tag next to the hero process — continuity with scene 10 */
+    #scene-13-beam-process-field .pid-label {
+      position: absolute; left: 900px; top: 372px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 22px; color: var(--muted);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* caption zone — three stacked beats */
+    #scene-13-beam-process-field .cap-l1 {
+      position: absolute; left: 0; right: 0; top: 858px; text-align: center;
+      font-size: 40px; font-weight: 500; color: var(--soft);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-13-beam-process-field .neg {
+      position: absolute; left: 0; right: 0; top: 845px; text-align: center;
+      display: flex; justify-content: center; gap: 70px;
+      will-change: transform;
+    }
+    #scene-13-beam-process-field .neg .ni {
+      position: relative; font-size: 36px; font-weight: 400; color: var(--soft);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-13-beam-process-field .neg .ni .bar {
+      position: absolute; left: -4px; right: -4px; top: 52%; height: 3px;
+      background: var(--muted); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    #scene-13-beam-process-field .pay {
+      position: absolute; left: 0; right: 0; top: 908px; text-align: center;
+      font-size: 46px; font-weight: 700; color: var(--fg);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-13-beam-process-field .pay .em { color: var(--fg); }
+    #scene-13-beam-process-field .alive-line {
+      position: absolute; left: 0; right: 0; top: 988px; text-align: center;
+      font-size: 30px; font-weight: 400; color: var(--soft);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-13-beam-process-field" data-composition-id="scene-13-beam-process-field" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="box" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="900">
+        <div class="hdr">BEAM&nbsp;VM</div>
+        <div class="counter"><span class="n">0</span>&nbsp;processes</div>
+        <div class="field"></div>
+        <div class="pid-label" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="9900">pid &lt;0.4417.0&gt;</div>
+      </div>
+
+      <div class="cap-l1">Every connection becomes its own lightweight process&hellip;</div>
+
+      <div class="neg">
+        <div class="ni n1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6450">not a thread<div class="bar"></div></div>
+        <div class="ni n2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="7750" data-sfx-volume="0.42">not a request handler<div class="bar"></div></div>
+      </div>
+
+      <div class="pay" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="8950">
+        just one tiny <span class="em">isolated worker</span> per phone
+      </div>
+
+      <div class="alive-line" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="12350" data-sfx-volume="0.35">
+        alive for as long as your circuit stays open
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const root = "#scene-13-beam-process-field";
+
+    // build the 18x6 process field deterministically (108 dots, varied brightness)
+    const fieldEl = document.querySelector(root + " .field");
+    const HERO = 64; // row 3, col 10 — sits beside the pid label
+    for (let i = 0; i < 108; i++) {
+      const d = document.createElement("div");
+      d.className = "dot" + (i === HERO ? " hero-dot" : "");
+      d.dataset.v = String((i * 7) % 3); // brightness variant
+      fieldEl.appendChild(d);
+    }
+
+    const tl = gsap.timeline({ paused: true });
+
+    // Host data-start = 117.20 → scene-local = global − 117.20.
+
+    // Entrance crossfade over scene 12's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Every" 117.70 (local 0.50)
+    tl.fromTo(root + " .cap-l1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.50);
+
+    // "connection" 117.94 (local 0.74) — the VM interior materialises
+    tl.fromTo(root + " .box",
+      { opacity: 0, scale: 0.96 },
+      { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 0.74);
+
+    // "becomes" 119.02 (local 1.82) — the field populates in a column cascade
+    const dots = gsap.utils.toArray(root + " .dot");
+    dots.forEach((d, i) => {
+      const v = Number(d.dataset.v);
+      const target = i === HERO ? 0.9 : [0.85, 0.55, 0.7][v];
+      const col = i % 18, row = (i / 18) | 0;
+      tl.fromTo(d,
+        { opacity: 0, scale: 0.4 },
+        { opacity: target, scale: 1, duration: 0.3, ease: "power1.out" },
+        1.82 + col * 0.16 + row * 0.022);
+    });
+
+    // counter climbs with the fill — representative scale, not the dot count
+    const cnt = { v: 0 };
+    const cntEl = () => document.querySelector(root + " .counter .n");
+    tl.fromTo(root + " .counter", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 1.82);
+    tl.to(cnt, {
+      v: 25614, duration: 3.2, ease: "power1.inOut",
+      onUpdate: () => { cntEl().textContent = String(Math.round(cnt.v)).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+    }, 1.82);
+
+    // the VM nameplate is the box's identity — present as soon as the box materialises
+    tl.fromTo(root + " .hdr", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, 0.9);
+
+    // "BEAM" 121.19 (local 3.99) — the spoken name lands; the nameplate pulses to acknowledge it
+    tl.to(root + " .hdr", { color: "#7dd3fc", duration: 0.35, ease: "power2.out" }, 3.99);
+    tl.to(root + " .hdr", { color: "#79857f", duration: 0.6, ease: "sine.inOut" }, 4.5);
+
+    // caption clears before the negation cadence
+    tl.to(root + " .cap-l1", { opacity: 0, duration: 0.45, ease: "sine.in" }, 5.85);
+
+    // "Not a thread," 123.52–124.16 (local 6.32) — first rejection ghosts in, then strikes
+    tl.fromTo(root + " .n1", { opacity: 0, y: 12 }, { opacity: 0.8, y: 0, duration: 0.4, ease: "power2.out" }, 6.32);
+    tl.to(root + " .n1 .bar", { scaleX: 1, duration: 0.3, ease: "power2.inOut" }, 6.60);
+
+    // "not a request handler," 124.80–125.84 (local 7.60)
+    tl.fromTo(root + " .n2", { opacity: 0, y: 12 }, { opacity: 0.8, y: 0, duration: 0.4, ease: "power2.out" }, 7.60);
+    tl.to(root + " .n2 .bar", { scaleX: 1, duration: 0.3, ease: "power2.inOut" }, 8.34);
+
+    // "just" 126.04 (local 8.84) — the rejections have done their rhythmic work; they recede,
+    // then fully clear so the payoff owns the lower third uncluttered
+    tl.to(root + " .ni", { opacity: 0.35, duration: 0.35, ease: "sine.inOut" }, 8.84);
+    tl.to(root + " .ni", { opacity: 0, y: -22, duration: 0.5, ease: "power2.in" }, 9.30);
+    tl.fromTo(root + " .pay", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.84);
+
+    // "isolated" 127.04 (local 9.84) — ONE process ignites; the field steps back
+    tl.to(root + " .dot:not(.hero-dot)", { opacity: 0.3, duration: 0.7, ease: "sine.inOut" }, 9.84);
+    tl.to(root + " .hero-dot", {
+      scale: 2.1, opacity: 1,
+      boxShadow: "0 0 26px rgba(125, 211, 252, 0.85)",
+      duration: 0.5, ease: "back.out(1.7)"
+    }, 9.84);
+    tl.to(root + " .pay .em", {
+      color: "#7dd3fc", textShadow: "0 0 18px rgba(125, 211, 252, 0.45)",
+      duration: 0.4, ease: "power2.out"
+    }, 9.84);
+
+    // "per phone," 128.56 (local 11.36) — the hero process gets its pid tag
+    tl.fromTo(root + " .pid-label", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 11.36);
+
+    // "alive" 129.44 (local 12.24) — the whole field breathes back up: all of them alive
+    tl.fromTo(root + " .alive-line", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 12.24);
+    tl.to(root + " .dot:not(.hero-dot)", { opacity: 0.65, duration: 1.1, ease: "sine.inOut" }, 12.24);
+
+    // "stays open." 131.56–132.20 (local 14.36) — the VM's glow settles warm and steady
+    tl.to(root + " .box", { boxShadow: "0 0 56px rgba(125, 211, 252, 0.14)", duration: 0.8, ease: "sine.out" }, 14.36);
+
+    // idle — the field drifts gently so it reads alive, not static
+    tl.to(root + " .dot", {
+      y: -3, duration: 1.4, ease: "sine.inOut", repeat: 7, yoyo: true,
+      stagger: { each: 0.012 }
+    }, 5.2);
+    tl.to(root + " .stage", { y: -5, duration: 3.4, ease: "sine.inOut", repeat: 3, yoyo: true }, 0.7);
+
+    window.__timelines["scene-13-beam-process-field"] = tl;
+  </script>
+</body>
+</html>

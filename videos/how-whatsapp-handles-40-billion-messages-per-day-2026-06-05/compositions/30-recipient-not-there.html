@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 30 — the recipient isn't always there</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-30-recipient-not-there { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-30-recipient-not-there .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the setup line — secondary narration, soft */
+    #scene-30-recipient-not-there .setup {
+      position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500;
+      font-size: 42px; color: var(--soft); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the three staccato failure rows — each arrives on its own hard-stop sentence */
+    #scene-30-recipient-not-there .rows {
+      position: absolute; left: 0; right: 0; top: 432px; text-align: center;
+    }
+    #scene-30-recipient-not-there .row {
+      font-family: "Inter", sans-serif; font-weight: 700;
+      font-size: 86px; line-height: 1.28; color: var(--fg); letter-spacing: -0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    /* the failure word in each row — neutral until its hard stop, then it ignites red */
+    #scene-30-recipient-not-there .fw {
+      color: var(--fg); will-change: color, text-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-30-recipient-not-there" data-composition-id="scene-30-recipient-not-there" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="setup">But the recipient isn't always there.</div>
+
+      <div class="rows">
+        <div class="row r1">Phones <span class="fw" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4080" data-sfx-volume="0.35">die</span>.</div>
+        <div class="row r2">Tunnels swallow the <span class="fw" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5740" data-sfx-volume="0.42">signal</span>.</div>
+        <div class="row r3">People fall <span class="fw" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="7210" data-sfx-volume="0.35">asleep</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-30-recipient-not-there";
+
+    // Host data-start = 295.60 → scene-local = global − 295.60. Chunk first word "But" 296.10 = local 0.50.
+
+    // Entrance crossfade over scene 29's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "But the recipient isn't always there." 296.10→298.32 (local 0.50→2.72) — the soft setup
+    tl.fromTo(root + " .setup", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 0.74);
+
+    // staccato — each row holds empty, then slides in fast on its sentence; the failure word ignites red on the hard stop.
+    // "Phones die." 299.30→300.02 (local 3.70→4.42)
+    tl.fromTo(root + " .r1", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.70);
+    tl.to(root + " .r1 .fw", { color: "#ff6b5d", textShadow: "0 0 26px rgba(255, 107, 93, 0.5)", duration: 0.3, ease: "power2.out" }, 4.08);
+
+    // "Tunnels swallow the signal." 300.54→301.80 (local 4.94→6.20)
+    tl.fromTo(root + " .r2", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.94);
+    tl.to(root + " .r2 .fw", { color: "#ff6b5d", textShadow: "0 0 26px rgba(255, 107, 93, 0.5)", duration: 0.3, ease: "power2.out" }, 5.74);
+
+    // "People fall asleep." 302.32→303.40 (local 6.72→7.80)
+    tl.fromTo(root + " .r3", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.72);
+    tl.to(root + " .r3 .fw", { color: "#ff6b5d", textShadow: "0 0 26px rgba(255, 107, 93, 0.5)", duration: 0.3, ease: "power2.out" }, 7.21);
+
+    // idle — a barely-there drift; this scene earns its quiet
+    tl.to(root + " .stage", { y: -3, duration: 4.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-30-recipient-not-there"] = tl;
+  </script>
+</body>
+</html>

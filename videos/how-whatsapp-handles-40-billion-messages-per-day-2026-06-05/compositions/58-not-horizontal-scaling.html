@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 58 — not spreading out lots of small nodes, not horizontal scaling</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-58-horiz { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-58-horiz .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the sprawl of many small nodes */
+    #scene-58-horiz .grid {
+      position: absolute; left: 50%; top: 300px; margin-left: -372px; width: 744px;
+      display: grid; grid-template-columns: repeat(6, 84px); grid-template-rows: repeat(3, 84px);
+      gap: 40px; will-change: opacity;
+    }
+    #scene-58-horiz .node {
+      width: 84px; height: 84px; border-radius: 12px;
+      border: 1.6px solid #2b3a44; background: rgba(16,22,19,0.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-58-horiz .node .nd { width: 9px; height: 9px; border-radius: 50%; background: var(--accent-2); }
+
+    /* the rejection mark */
+    #scene-58-horiz .bigx {
+      position: absolute; left: 50%; top: 360px; margin-left: -72px; opacity: 0;
+      transform: scale(0.5); transform-origin: center center; will-change: transform, opacity;
+    }
+
+    /* the rejected-approach label */
+    #scene-58-horiz .label {
+      position: absolute; left: 0; right: 0; top: 728px; text-align: center;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-58-horiz .label .lwrap { position: relative; display: inline-block; }
+    #scene-58-horiz .label .ltxt {
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 50px; color: var(--soft); letter-spacing: -0.01em; will-change: color;
+    }
+    #scene-58-horiz .label .strike {
+      position: absolute; left: -8px; top: 52%; height: 5px; width: calc(100% + 16px);
+      background: var(--danger); border-radius: 3px; margin-top: -2.5px;
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-58-horiz" data-composition-id="scene-58-horiz" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="grid" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="840" data-sfx-volume="0.35">
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+        <div class="node"><span class="nd"></span></div><div class="node"><span class="nd"></span></div>
+      </div>
+
+      <svg class="bigx" viewBox="0 0 48 48" width="144" height="144" fill="none" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4460" data-sfx-volume="0.35">
+        <circle cx="24" cy="24" r="21" stroke="#ff6b5d" stroke-width="2.6" fill="rgba(10,15,13,0.4)"></circle>
+        <line x1="15" y1="15" x2="33" y2="33" stroke="#ff6b5d" stroke-width="3.4" stroke-linecap="round"></line>
+        <line x1="33" y1="15" x2="15" y2="33" stroke="#ff6b5d" stroke-width="3.4" stroke-linecap="round"></line>
+      </svg>
+
+      <div class="label" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3420">
+        <span class="lwrap"><span class="ltxt">horizontal scaling</span><span class="strike"></span></span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-58-horiz";
+
+    // Host data-start = 474.16 → scene-local = global − 474.16. Chunk first word "instead" 474.66 = local 0.50.
+
+    // Entrance crossfade over scene 57's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "instead of spreading out lots of small nodes" 474.66→476.88 (local 0.50→2.72) — the sprawl spreads out
+    tl.fromTo(root + " .node", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)", stagger: 0.075 }, 0.84);
+
+    // "or instead of doing horizontal scaling" 477.58→479.32 (local 3.42→5.16) — the label names the rejected approach
+    tl.fromTo(root + " .label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 3.42);
+
+    // "horizontal scaling" 478.62→479.32 (local 4.46→5.16) — marked as not-their-way: the grid dims, the big ✗ stamps, the label is struck
+    tl.to(root + " .grid", { opacity: 0.3, duration: 0.5, ease: "power2.out" }, 4.46);
+    tl.fromTo(root + " .bigx", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 4.46);
+    tl.fromTo(root + " .label .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power2.out" }, 4.62);
+    tl.to(root + " .label .ltxt", { color: "#79857f", duration: 0.4, ease: "power2.out" }, 4.7);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.8);
+
+    window.__timelines["scene-58-horiz"] = tl;
+  </script>
+</body>
+</html>

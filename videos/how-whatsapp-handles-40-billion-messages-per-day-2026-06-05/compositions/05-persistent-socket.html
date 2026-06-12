@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 05 — persistent TCP connection</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-05-persistent-socket { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-05-persistent-socket .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* phone node — left end of the corridor */
+    #scene-05-persistent-socket .phone-node {
+      position: absolute; left: 250px; top: 370px; width: 112px; height: 200px;
+      border: 2px solid var(--border); border-radius: 18px;
+      background: rgba(16, 22, 19, 0.6); opacity: 0; will-change: transform, opacity;
+    }
+    /* the message chip, arrived from scene 04, resting on the phone */
+    #scene-05-persistent-socket .chip-dot {
+      position: absolute; left: 290px; top: 455px; width: 20px; height: 20px;
+      border-radius: 50%; background: var(--accent); opacity: 0;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.4); will-change: opacity;
+    }
+    #scene-05-persistent-socket .node-lbl {
+      position: absolute; font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 26px; color: var(--muted); opacity: 0; will-change: opacity;
+    }
+    #scene-05-persistent-socket .lbl-phone { left: 250px; top: 590px; width: 112px; text-align: center; }
+    #scene-05-persistent-socket .lbl-server { left: 1530px; top: 622px; width: 230px; text-align: center; }
+
+    /* server panel — right end */
+    #scene-05-persistent-socket .server {
+      position: absolute; left: 1530px; top: 350px; width: 230px; height: 240px;
+      background: var(--panel); border: 1.5px solid var(--border); border-radius: 14px;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the corridor SVG: failed request arcs + the persistent socket line */
+    #scene-05-persistent-socket svg.wire { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-05-persistent-socket svg.wire path.arc {
+      fill: none; stroke: var(--dim); stroke-width: 2.5; stroke-dasharray: 10 12;
+      opacity: 0;
+    }
+    #scene-05-persistent-socket svg.wire line.socket {
+      stroke: var(--accent-2); stroke-width: 3; stroke-linecap: round; opacity: 0;
+    }
+
+    /* protocol token above the line */
+    #scene-05-persistent-socket .tcp {
+      position: absolute; left: 0; right: 0; top: 386px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 38px; color: var(--accent-2); letter-spacing: 0.14em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* narration captions */
+    #scene-05-persistent-socket .cap {
+      position: absolute; left: 0; right: 0; top: 800px; text-align: center;
+    }
+    #scene-05-persistent-socket .cap .neg {
+      font-size: 38px; font-weight: 400; color: var(--soft); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-05-persistent-socket .cap .pos {
+      margin-top: 16px; font-size: 50px; font-weight: 600; color: var(--fg);
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-05-persistent-socket" data-composition-id="scene-05-persistent-socket" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="phone-node" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1160"></div>
+      <div class="chip-dot"></div>
+      <div class="node-lbl lbl-phone">phone</div>
+
+      <svg class="wire" viewBox="0 0 1920 1080" data-layout-allow-overflow>
+        <!-- the wrong model: short request arcs that flare and die mid-corridor -->
+        <g class="arcs" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="2250">
+          <path class="arc a1" d="M 370 460 Q 560 360 740 450" pathLength="1" />
+          <path class="arc a2" d="M 370 480 Q 620 390 880 470" pathLength="1" />
+          <path class="arc a3" d="M 370 470 Q 580 380 800 462" pathLength="1" />
+          <path class="arc a4" d="M 370 465 Q 640 372 930 458" pathLength="1" />
+        </g>
+        <!-- the right model: one persistent socket -->
+        <line class="socket" x1="368" y1="470" x2="1524" y2="470" pathLength="1"
+              data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="6100" data-sfx-volume="0.42" />
+      </svg>
+
+      <div class="server" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6450"></div>
+      <div class="node-lbl lbl-server">server</div>
+
+      <div class="tcp" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="7720">PERSISTENT&nbsp;TCP</div>
+    </div>
+
+    <div class="cap">
+      <div class="neg">Your phone isn&rsquo;t making a fresh request for every text.</div>
+      <div class="pos">It holds one persistent TCP connection.</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-05-persistent-socket";
+
+    // Host data-start = 35.0 → scene-local = global − 35.0.
+
+    // Entrance crossfade over scene 04's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // continuity: the chip from scene 04 lands on the phone, then dims (green stays rationed)
+    tl.fromTo(root + " .chip-dot", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.30);
+    tl.to(root + " .chip-dot", { opacity: 0.4, duration: 0.8, ease: "sine.inOut" }, 1.4);
+
+    // "Your phone" 35.50–36.08 (local 0.50) — phone node slides in from the left
+    tl.fromTo(root + " .phone-node", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.65, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .lbl-phone", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 0.95);
+    tl.fromTo(root + " .cap .neg", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.60);
+
+    // server ghosts in dim so the corridor has a destination
+    tl.fromTo(root + " .server", { opacity: 0, x: 40 }, { opacity: 0.3, x: 0, duration: 0.6, ease: "power2.out" }, 1.0);
+    tl.fromTo(root + " .lbl-server", { opacity: 0 }, { opacity: 0.5, duration: 0.4, ease: "sine.out" }, 1.3);
+
+    // the wrong model — "fresh request" 37.22, "every text." 38.38–40.0:
+    // dashed arcs flare from the phone and die mid-corridor, never arriving
+    [[1.70, ".a1"], [2.25, ".a2"], [2.85, ".a3"], [3.45, ".a4"]].forEach(([t, sel]) => {
+      tl.fromTo(root + " " + sel,
+        { strokeDasharray: "10 12", strokeDashoffset: 0, opacity: 0 },
+        { opacity: 0.75, duration: 0.22, ease: "power1.out" }, t);
+      tl.to(root + " " + sel, { opacity: 0, duration: 0.4, ease: "power2.in" }, t + 0.28);
+    });
+
+    // "holds" 40.14 (local 5.14) — THE persistent socket draws across the corridor
+    tl.fromTo(root + " .socket",
+      { strokeDasharray: 1, strokeDashoffset: 1, opacity: 1 },
+      { strokeDashoffset: 0, duration: 0.95, ease: "power2.inOut" }, 5.14);
+
+    // line lands ~6.1 — the server wakes to full presence
+    tl.to(root + " .server", { opacity: 1, borderColor: "#2c3a45", boxShadow: "0 0 40px rgba(125, 211, 252, 0.12)", duration: 0.45, ease: "power2.out" }, 6.10);
+    tl.to(root + " .lbl-server", { opacity: 1, duration: 0.3, ease: "sine.out" }, 6.10);
+
+    // "persistent" 41.44 (local 6.44) — the line breathes with held light
+    tl.to(root + " .socket", { strokeWidth: 4, filter: "drop-shadow(0 0 8px rgba(125,211,252,0.5))", duration: 0.5, ease: "sine.out" }, 6.44);
+
+    // "TCP" 42.42 (local 7.42) — protocol token ignites above the line
+    tl.fromTo(root + " .tcp", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 7.42);
+
+    // "It holds one persistent TCP connection." — payoff caption at "It" 40.06 (local 5.06)
+    tl.fromTo(root + " .cap .pos", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.06);
+    // negation recedes once the right model owns the frame
+    tl.to(root + " .cap .neg", { opacity: 0.45, duration: 0.6, ease: "sine.inOut" }, 5.5);
+
+    // idle — stage drifts slightly (finite yoyo)
+    tl.to(root + " .stage", { y: -6, duration: 3.0, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-05-persistent-socket"] = tl;
+  </script>
+</body>
+</html>

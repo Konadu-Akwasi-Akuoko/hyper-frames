@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 70 — so that's one: message, socket, process, lookup, handoff, queue, text envelope</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-70-recap { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-70-recap .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-70-recap .kick {
+      position: absolute; left: 0; right: 0; top: 372px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 34px;
+      color: var(--muted); letter-spacing: 0.01em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-70-recap .chain {
+      position: absolute; left: 0; right: 0; top: 480px; height: 80px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    #scene-70-recap .node {
+      padding: 13px 22px; border-radius: 999px; border: 1.6px solid var(--dim);
+      background: rgba(255,255,255,0.015); white-space: nowrap;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      color: var(--soft); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-70-recap .node.g { border-color: rgba(37,211,102,0.55); color: var(--accent); }
+    #scene-70-recap .node.s { border-color: rgba(125,211,252,0.5); color: var(--accent-2); }
+    #scene-70-recap .conn {
+      width: 28px; height: 2px; border-radius: 1px; background: var(--dim);
+      opacity: 0; transform: scaleX(0); transform-origin: left center; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-70-recap" data-composition-id="scene-70-recap" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="kick" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">so that's one —</div>
+
+      <div class="chain">
+        <div class="node g n1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1100" data-sfx-volume="0.42">message</div>
+        <div class="conn c1"></div>
+        <div class="node s n2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2080" data-sfx-volume="0.42">socket</div>
+        <div class="conn c2"></div>
+        <div class="node s n3" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2960" data-sfx-volume="0.42">process</div>
+        <div class="conn c3"></div>
+        <div class="node s n4" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3760" data-sfx-volume="0.35">lookup</div>
+        <div class="conn c4"></div>
+        <div class="node s n5" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4340" data-sfx-volume="0.42">handoff</div>
+        <div class="conn c5"></div>
+        <div class="node s n6" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5060" data-sfx-volume="0.42">queue</div>
+        <div class="conn c6"></div>
+        <div class="node g n7" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5580" data-sfx-volume="0.42">text envelope</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-70-recap";
+
+    // Host data-start = 535.32 → scene-local = global − 535.32. Chunk first word "So" 535.82 = local 0.50.
+
+    // Entrance crossfade over scene 69's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "So that's one —" 535.82→536.42 (local 0.50→1.10) — the kicker
+    tl.fromTo(root + " .kick", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+
+    // the seven terms pop in, each anchored to its word; connectors draw between them
+    const nodes = [
+      { sel: ".n1", at: 1.10 },  // message  536.42
+      { sel: ".n2", at: 2.08, c: ".c1" },  // socket   537.40
+      { sel: ".n3", at: 2.96, c: ".c2" },  // process  538.28
+      { sel: ".n4", at: 3.76, c: ".c3" },  // lookup   539.08
+      { sel: ".n5", at: 4.34, c: ".c4" },  // handoff  539.66
+      { sel: ".n6", at: 5.06, c: ".c5" },  // queue    540.38
+      { sel: ".n7", at: 5.58, c: ".c6" },  // text envelope 540.90→541.32
+    ];
+    nodes.forEach(n => {
+      if (n.c) tl.fromTo(root + " " + n.c, { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.18, ease: "power2.out" }, n.at - 0.12);
+      tl.fromTo(root + " " + n.sel, { opacity: 0, scale: 0.8, y: 6 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "back.out(1.7)" }, n.at);
+    });
+
+    // closing settle — the whole chain breathes once
+    tl.to(root + " .chain", { y: -3, duration: 1.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.0);
+
+    window.__timelines["scene-70-recap"] = tl;
+  </script>
+</body>
+</html>

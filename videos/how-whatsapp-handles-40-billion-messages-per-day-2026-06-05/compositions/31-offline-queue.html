@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 31 — encrypted offline queue, 30 days</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-31-offline-queue { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-31-offline-queue .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* setup narration — soft, clears before the number hero arrives */
+    #scene-31-offline-queue .setup {
+      position: absolute; left: 0; right: 0; top: 250px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 300;
+      font-size: 36px; color: var(--soft); letter-spacing: 0.004em;
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the queue — a compact buffer bar anchored lower-center */
+    #scene-31-offline-queue .qbar {
+      position: absolute; left: 726px; top: 600px;
+      width: 468px; height: 110px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; padding: 12px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-31-offline-queue .slot {
+      width: 64px; height: 86px; flex: none;
+      border: 1px solid rgba(125, 211, 252, 0.4);
+      border-radius: 8px; background: rgba(16, 22, 19, 0.6);
+      will-change: transform, opacity, border-color, box-shadow;
+    }
+    /* the waiting message — drops into slot 1 and settles flat */
+    #scene-31-offline-queue .chip {
+      position: absolute; left: 18px; top: 23px;
+      width: 52px; height: 64px; border-radius: 11px;
+      background: var(--accent);
+      box-shadow: 0 0 26px rgba(37, 211, 102, 0.4);
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-31-offline-queue .qlabel {
+      position: absolute; left: 0; right: 0; top: 736px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 27px; color: var(--muted); letter-spacing: 0.01em;
+      opacity: 0; will-change: opacity, transform;
+    }
+    #scene-31-offline-queue .enc { color: var(--muted); will-change: color, text-shadow; }
+
+    /* the payoff — retention window dominates the upper frame */
+    #scene-31-offline-queue .hero {
+      position: absolute; left: 0; right: 0; top: 220px;
+      display: flex; align-items: baseline; justify-content: center; gap: 18px;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-31-offline-queue .num {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 132px; line-height: 1; color: var(--fg);
+      font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+    }
+    #scene-31-offline-queue .unit {
+      font-family: "Inter", sans-serif; font-weight: 500;
+      font-size: 52px; color: var(--cost); letter-spacing: 0.004em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-31-offline-queue" data-composition-id="scene-31-offline-queue" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="setup">If no one's there to receive it&hellip;</div>
+
+      <div class="qbar">
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="chip" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3200"></div>
+      </div>
+      <div class="qlabel"><span class="enc" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="3740">encrypted</span> offline queue</div>
+
+      <div class="hero"><span class="num">0</span><span class="unit">days</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-31-offline-queue";
+
+    // Host data-start = 303.62 → scene-local = global − 303.62. Chunk first word "If" 304.12 = local 0.50.
+
+    // Entrance crossfade over scene 30's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "If no one's there to receive it," 304.12→305.50 (local 0.50→1.88)
+    tl.fromTo(root + " .setup", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.74);
+
+    // the buffer bar slides in from the left, slots populate additively (before the drop)
+    tl.fromTo(root + " .qbar", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 1.5);
+    tl.fromTo(root + " .slot", { opacity: 0, scaleY: 0.4 }, { opacity: 1, scaleY: 1, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 1.7);
+
+    // "the message drops" 305.94→306.82 (local 2.32→3.20) — the chip falls into slot 1 and settles flat
+    tl.fromTo(root + " .chip", { opacity: 0, y: -150 }, { opacity: 1, y: 0, duration: 0.52, ease: "power3.out" }, 2.74);
+
+    // "an encrypted offline queue" 307.16→309.10 (local 3.54→5.48) — caption rises, "encrypted" ignites sky
+    tl.fromTo(root + " .qlabel", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 3.30);
+    // "encrypted" 307.36 (local 3.74) — property acknowledged: word lights sky + the buffer border pulses once
+    tl.to(root + " .enc", { color: "#7dd3fc", textShadow: "0 0 22px rgba(125, 211, 252, 0.5)", duration: 0.3, ease: "power2.out" }, 3.74);
+    tl.to(root + " .slot", { borderColor: "rgba(125, 211, 252, 0.85)", boxShadow: "0 0 18px rgba(125, 211, 252, 0.25)", duration: 0.28, ease: "power2.out" }, 3.74);
+    tl.to(root + " .slot", { borderColor: "rgba(125, 211, 252, 0.4)", boxShadow: "0 0 0px rgba(125, 211, 252, 0)", duration: 0.6, ease: "power2.inOut" }, 4.3);
+
+    // setup clears before the number hero takes the upper frame
+    tl.to(root + " .setup", { opacity: 0, y: -10, duration: 0.5, ease: "power2.in" }, 6.0);
+
+    // "up to 30 days" 310.68→312.30 (local 7.06→8.68) — the retention window ascends and counts to 30
+    tl.fromTo(root + " .hero", { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.4);
+    // "30" 311.28 (local 7.66) — deterministic count-up 0→30
+    tl.to({ v: 0 }, {
+      v: 30, duration: 0.72, ease: "power2.out",
+      onUpdate: function () {
+        const e = document.querySelector(root + " .num");
+        if (e) e.textContent = Math.round(this.targets()[0].v);
+      }
+    }, 7.66);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 4.5, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.2);
+
+    window.__timelines["scene-31-offline-queue"] = tl;
+  </script>
+</body>
+</html>

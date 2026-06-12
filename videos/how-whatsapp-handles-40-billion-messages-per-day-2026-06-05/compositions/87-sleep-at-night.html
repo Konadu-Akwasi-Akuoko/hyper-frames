@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 87 — every one of those was a choice that let a tiny team sleep at night</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-87-sleep { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-87-sleep .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-87-sleep .moon {
+      position: absolute; left: 50%; top: 250px; transform: translateX(-50%);
+      width: 78px; height: 78px; border-radius: 50%;
+      box-shadow: inset -22px -9px 0 0 var(--soft);
+      filter: drop-shadow(0 0 18px rgba(195,203,199,0.28));
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    #scene-87-sleep .l1 {
+      position: absolute; left: 0; right: 0; top: 408px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 52px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-87-sleep .l1 .ch { color: var(--accent-2); font-weight: 700; will-change: text-shadow; }
+
+    #scene-87-sleep .l2 {
+      position: absolute; left: 0; right: 0; top: 488px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 600; font-size: 52px;
+      color: var(--soft); letter-spacing: -0.012em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-87-sleep .l2 .tt { color: var(--accent); font-weight: 800; will-change: text-shadow; }
+
+    #scene-87-sleep .l3 {
+      position: absolute; left: 0; right: 0; top: 580px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 94px; line-height: 1;
+      color: var(--soft); letter-spacing: -0.025em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-87-sleep" data-composition-id="scene-87-sleep" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="moon"></div>
+
+      <div class="l1" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">every one was a <span class="ch">choice</span></div>
+      <div class="l2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3020" data-sfx-volume="0.35">that let a <span class="tt">tiny team</span></div>
+      <div class="l3" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4140" data-sfx-volume="0.35">sleep at night</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-87-sleep";
+
+    // Host data-start = 627.20 → scene-local = global − 627.20. Chunk first word "every" 627.70 = local 0.50.
+
+    // Entrance crossfade over scene 86's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "every one of those was a choice" 627.70→628.56 (local 0.50→1.36)
+    tl.fromTo(root + " .l1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+    tl.fromTo(root + " .l1 .ch", { textShadow: "0 0 0px rgba(125,211,252,0)" }, { textShadow: "0 0 24px rgba(125,211,252,0.5)", duration: 0.4, ease: "power2.out" }, 1.36);
+
+    // "that let a tiny team" 629.50→630.70 (local 2.30→3.50)
+    tl.fromTo(root + " .l2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 2.30);
+    tl.fromTo(root + " .l2 .tt", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 24px rgba(37,211,102,0.55)", duration: 0.4, ease: "power2.out" }, 3.02);
+
+    // "sleep at night." 631.34→631.88 (local 4.14→4.68) — the calm resolve
+    tl.fromTo(root + " .moon", { opacity: 0, scale: 0.8, y: 8 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power2.out" }, 3.9);
+    tl.fromTo(root + " .l3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 4.14);
+    tl.fromTo(root + " .l3", { textShadow: "0 0 0px rgba(195,203,199,0)" }, { textShadow: "0 0 34px rgba(195,203,199,0.3)", duration: 0.7, ease: "power2.out" }, 4.4);
+
+    // idle — gentle breathing on the moon
+    tl.to(root + " .moon", { y: -6, duration: 2.6, ease: "sine.inOut", repeat: 1, yoyo: true }, 4.8);
+
+    window.__timelines["scene-87-sleep"] = tl;
+  </script>
+</body>
+</html>

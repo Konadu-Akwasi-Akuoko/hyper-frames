@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 11 — the actor model</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-11-actor-model-title { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+
+    #scene-11-actor-model-title .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* setup clause — arrives word by word */
+    #scene-11-actor-model-title .setup {
+      position: absolute; left: 0; right: 0; top: 380px; text-align: center;
+      font-size: 56px; font-weight: 500; color: var(--soft);
+      will-change: opacity;
+    }
+    #scene-11-actor-model-title .setup .w {
+      display: inline-block; opacity: 0; will-change: transform, opacity;
+    }
+    #scene-11-actor-model-title .setup .w.heart { color: var(--fg); }
+
+    /* bridge phrase */
+    #scene-11-actor-model-title .bridge {
+      position: absolute; left: 0; right: 0; top: 488px; text-align: center;
+      font-size: 44px; font-weight: 500; color: var(--muted);
+      opacity: 0; will-change: transform, opacity;
+    }
+
+    /* the hero term — the video's conceptual pivot */
+    #scene-11-actor-model-title .hero {
+      position: absolute; left: 0; right: 0; top: 556px; text-align: center;
+      font-size: 122px; font-weight: 900; letter-spacing: 0.01em; color: var(--fg);
+      opacity: 0; will-change: transform, opacity, clip-path;
+    }
+
+    /* underline bar — snaps wide as the term lands */
+    #scene-11-actor-model-title .bar {
+      position: absolute; left: 560px; top: 730px; width: 800px; height: 4px;
+      border-radius: 2px; background: var(--accent-2);
+      box-shadow: 0 0 16px rgba(125, 211, 252, 0.45);
+      transform-origin: center; opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-11-actor-model-title" data-composition-id="scene-11-actor-model-title" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="setup">
+        <span class="w">This</span> <span class="w">is</span> <span class="w">the</span>
+        <span class="w heart" data-sfx-on-anchor="card-blip" data-sfx-at-scene-ms="1600" data-sfx-volume="0.42">heart</span>
+        <span class="w">of</span> <span class="w">the</span> <span class="w">design.</span>
+      </div>
+
+      <div class="bridge">It&rsquo;s called</div>
+
+      <div class="hero" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4800" data-sfx-volume="0.42">the actor model.</div>
+
+      <div class="bar" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5400" data-sfx-volume="0.42"></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-11-actor-model-title";
+
+    // Host data-start = 103.4 → scene-local = global − 103.4.
+
+    // Entrance crossfade over scene 10's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // setup clause word by word, each on its own transcript timestamp:
+    // This 0.50 / is 1.16 / the 1.32 / heart 1.48 / of 1.96 / the 2.08 / design. 2.18
+    const words = gsap.utils.toArray(root + " .setup .w");
+    const at = [0.50, 1.16, 1.32, 1.48, 1.96, 2.08, 2.18];
+    words.forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, at[i]);
+    });
+
+    // "It's called" 107.04 (local 3.64) — the bridge sets up the reveal
+    tl.fromTo(root + " .bridge", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.64);
+
+    // "actor" 108.12 (local 4.72) — the hero term stamps in: mask reveal + scale settle
+    tl.fromTo(root + " .hero",
+      { opacity: 0, scale: 0.92, clipPath: "inset(0 50% 0 50%)" },
+      { opacity: 1, scale: 1, clipPath: "inset(0 0% 0 0%)", duration: 0.7, ease: "power3.out" }, 4.72);
+    tl.to(root + " .setup", { opacity: 0.45, duration: 0.5, ease: "sine.inOut" }, 4.72);
+
+    // "model." 108.74 (local 5.34) — sky bloom on the machine term + the bar snaps wide
+    tl.to(root + " .hero", {
+      textShadow: "0 0 34px rgba(125, 211, 252, 0.35)",
+      duration: 0.45, ease: "power2.out"
+    }, 5.34);
+    tl.fromTo(root + " .bar",
+      { opacity: 0, scaleX: 0.05 },
+      { opacity: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 5.40);
+
+    // idle — stage drifts slightly (finite yoyo)
+    tl.to(root + " .stage", { y: -5, duration: 2.6, ease: "sine.inOut", repeat: 2, yoyo: true }, 0.7);
+
+    window.__timelines["scene-11-actor-model-title"] = tl;
+  </script>
+</body>
+</html>

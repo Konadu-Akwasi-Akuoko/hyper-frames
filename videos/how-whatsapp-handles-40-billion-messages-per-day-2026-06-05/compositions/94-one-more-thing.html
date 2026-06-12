@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 94 — One more thing before you go</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-94-more { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-94-more .stage { position: absolute; inset: 0; will-change: transform; }
+
+    #scene-94-more .dot {
+      position: absolute; left: 50%; top: 412px; transform: translateX(-50%);
+      width: 16px; height: 16px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 22px rgba(37,211,102,0.5); opacity: 0; will-change: transform, opacity;
+    }
+    #scene-94-more .main {
+      position: absolute; left: 0; right: 0; top: 466px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 96px; line-height: 1;
+      color: var(--fg); letter-spacing: -0.03em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-94-more .kick {
+      position: absolute; left: 0; right: 0; top: 596px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px;
+      color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase;
+      opacity: 0; will-change: transform, opacity;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-94-more" data-composition-id="scene-94-more" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <div class="dot"></div>
+      <div class="main" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">one more thing</div>
+      <div class="kick" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1020">before you go</div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-94-more";
+
+    // Host data-start = 664.78 → scene-local = global − 664.78. Chunk first word "One" 665.28 = local 0.50.
+
+    // Entrance crossfade over scene 93's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "One more thing" 665.28→665.66 (local 0.50→0.88)
+    tl.fromTo(root + " .dot", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2)" }, 0.40);
+    tl.fromTo(root + " .main", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.46, ease: "power2.out" }, 0.50);
+
+    // "before you go." 665.80→666.30 (local 1.02→1.52)
+    tl.fromTo(root + " .kick", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.02);
+
+    // gentle pulse on the dot — a held beat
+    tl.to(root + " .dot", { scale: 1.25, duration: 0.6, ease: "sine.inOut", repeat: 2, yoyo: true }, 1.0);
+
+    window.__timelines["scene-94-more"] = tl;
+  </script>
+</body>
+</html>

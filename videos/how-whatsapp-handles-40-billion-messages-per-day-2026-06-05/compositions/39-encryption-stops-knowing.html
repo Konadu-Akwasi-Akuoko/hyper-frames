@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Scene 39 — encryption is where that knowing stops</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f0d; --panel: #101613; --border: #1e2722;
+      --fg: #e9edeb; --soft: #c3cbc7; --muted: #79857f; --dim: #39443f;
+      --accent: #25d366; --accent-2: #7dd3fc; --read: #53bdeb; --cost: #f0b429; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    #scene-39-enc-stops { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #scene-39-enc-stops .stage { position: absolute; inset: 0; will-change: transform; }
+
+    /* the server's gaze, reaching from the left */
+    #scene-39-enc-stops .gaze { position: absolute; inset: 0; overflow: visible; }
+    #scene-39-enc-stops .beam {
+      fill: none; stroke: var(--accent-2); stroke-width: 3; stroke-linecap: round;
+      stroke-dasharray: 760; stroke-dashoffset: 760; will-change: stroke-dashoffset, opacity;
+    }
+    #scene-39-enc-stops .beamhead { fill: var(--accent-2); opacity: 0; will-change: opacity; }
+    #scene-39-enc-stops .eye { opacity: 0; will-change: opacity, filter; }
+
+    /* the encryption barrier — HTML div so transform-origin is respected */
+    #scene-39-enc-stops .wall {
+      position: absolute; left: 947px; top: 538px; width: 6px; height: 124px;
+      background: var(--accent); border-radius: 3px;
+      box-shadow: 0 0 0px rgba(37, 211, 102, 0);
+      transform: scaleY(0); transform-origin: center center;
+      will-change: transform, box-shadow;
+    }
+    #scene-39-enc-stops .spark {
+      position: absolute; left: 916px; top: 568px; width: 68px; height: 68px;
+      border-radius: 50%; pointer-events: none; opacity: 0;
+      background: radial-gradient(circle, rgba(37,211,102,0.85), rgba(37,211,102,0) 70%);
+      will-change: transform, opacity;
+    }
+
+    #scene-39-enc-stops .hero {
+      position: absolute; left: 0; right: 0; top: 322px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 800; font-size: 128px; line-height: 1;
+      color: var(--accent); letter-spacing: -0.02em;
+      opacity: 0; will-change: transform, opacity, text-shadow;
+    }
+    #scene-39-enc-stops .cap {
+      position: absolute; left: 0; right: 0; top: 726px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 34px;
+      color: var(--soft); letter-spacing: 0.002em;
+      opacity: 0; will-change: transform, opacity;
+    }
+    #scene-39-enc-stops .cap .stop { color: var(--accent); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="scene-39-enc-stops" data-composition-id="scene-39-enc-stops" data-width="1920" data-height="1080">
+    <div class="stage">
+
+      <svg class="gaze" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+        <circle class="eye" cx="165" cy="600" r="9" fill="#7dd3fc"></circle>
+        <line class="beam" x1="185" y1="600" x2="940" y2="600"></line>
+        <polygon class="beamhead" points="940,592 956,600 940,608"></polygon>
+      </svg>
+
+      <div class="wall" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2520" data-sfx-volume="0.42"></div>
+      <div class="spark"></div>
+
+      <div class="hero" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="500" data-sfx-volume="0.42">Encryption</div>
+      <div class="cap">is where that knowing <span class="stop">stops</span></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const root = "#scene-39-enc-stops";
+
+    // Host data-start = 352.76 → scene-local = global − 352.76. Chunk first word "Encryption" 353.26 = local 0.50.
+
+    // Entrance crossfade over scene 38's tail (overlap 0–0.5)
+    tl.fromTo(root, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Encryption" 353.26→353.96 (local 0.50→1.20) — the hero lands, green; the server's gaze starts reaching in
+    tl.fromTo(root + " .hero", { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(1.6)" }, 0.50);
+    tl.fromTo(root + " .eye", { opacity: 0 }, { opacity: 0.9, duration: 0.4, ease: "power2.out" }, 0.40);
+    tl.fromTo(root + " .beam", { strokeDashoffset: 760 }, { strokeDashoffset: 0, duration: 1.8, ease: "power1.inOut" }, 0.55);
+    tl.fromTo(root + " .beamhead", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.9);
+
+    // "is where that knowing" 354.10→355.15 (local 1.34→2.39) — the caption fills in
+    tl.fromTo(root + " .cap", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.34);
+
+    // "stops" 355.28→355.68 (local 2.52→2.92) — the encryption wall SNAPS up, severing the gaze
+    tl.fromTo(root + " .wall", { scaleY: 0 }, { scaleY: 1, duration: 0.18, ease: "back.out(2.2)" }, 2.52);
+    tl.fromTo(root + " .wall", { boxShadow: "0 0 0px rgba(37,211,102,0)" }, { boxShadow: "0 0 22px rgba(37, 211, 102, 0.7)", duration: 0.3, ease: "power2.out" }, 2.52);
+    tl.fromTo(root + " .spark", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1.1, duration: 0.16, ease: "power2.out" }, 2.52);
+    tl.to(root + " .spark", { opacity: 0, scale: 1.4, duration: 0.34, ease: "power2.in" }, 2.68);
+    // the gaze, cut off — it dims and loses its glow
+    tl.to(root + " .beam", { opacity: 0.28, duration: 0.4, ease: "power2.out" }, 2.56);
+    tl.to(root + " .beamhead", { opacity: 0.28, duration: 0.4, ease: "power2.out" }, 2.56);
+    tl.to(root + " .eye", { opacity: 0.4, duration: 0.4, ease: "power2.out" }, 2.56);
+    // "Encryption" blooms green — the content is protected
+    tl.fromTo(root + " .hero", { textShadow: "0 0 0px rgba(37,211,102,0)" }, { textShadow: "0 0 32px rgba(37, 211, 102, 0.4)", duration: 0.5, ease: "power2.out" }, 2.52);
+
+    // idle — barely-there drift
+    tl.to(root + " .stage", { y: -3, duration: 2.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.0);
+
+    window.__timelines["scene-39-enc-stops"] = tl;
+  </script>
+</body>
+</html>
