@@ -160,6 +160,12 @@ is the three-part gate in `visual-language.md` §2 (named + recognisable-on-sigh
 words-can't, else stay type/diagram); this section is *where the asset comes from* once you've
 decided it's earned.
 
+**The on-camera take is neither kind** — when a talking-head source is present, its
+footage is a **non-asset-box media source** outside this `reaction`/`logo`/`glyph`/`photo`/
+`background` routing entirely: creator-supplied, transcoded once, **never image-sourced and
+never on the shopping list**. It mounts as the seek-driven `#face-layer` host, not a box you
+fill; see `reference/talking-head.md`.
+
 | `class` | the beat | primary source | fallback | saved as |
 |---|---|---|---|---|
 | `logo` | names a product/language/company with a known mark ("JavaScript", "React", "Netflix") | **local `assets/icons/`** (the project ships many tech logos — check first) → Iconify `logos:` set (true coloured mark) | open-web (`<name> logo png transparent`) | static **SVG** → `assets/icons/<id>.svg` |
@@ -215,7 +221,11 @@ id/class/box geometry and the same timeline target so motion is untouched:
 
 Video: `<video class="asset" src="assets/video/<id>.mp4" autoplay muted loop
 playsinline>` — but the player owns timing, so prefer short loops and keep determinism;
-a still cutout is usually enough and cheaper than a clip.
+a still cutout is usually enough and cheaper than a clip. **One video is NOT an
+asset-box clip: the continuous talking-head take.** When a talking-head source is
+present it is the single seek-driven `#face-layer` host — `currentTime` bound to
+hf-seek, never `autoplay`/`loop` — not this decorative-clip model; see
+`reference/talking-head.md`.
 
 A **referent SVG** (`logo`/`glyph`) swaps to an `<img>` pointing at the static file — or, for a
 monochrome glyph you want tinted to the palette, **inline the SVG** so CSS `currentColor` reaches
@@ -263,6 +273,11 @@ treated asset the box swaps to.
 **A `background` image is the exception to `--remove-bg`** — it *is* the backdrop, so
 never cut it out. Treat it only for palette/feel (a light `grain`, or `duotone` toward
 the `bg`/`accent` tokens) and, if needed, scale to the 1920×1080 frame.
+
+**The talking-head take is a second exception — it bypasses `image-prep` entirely.** When
+a talking-head source is present, the take is **transcoded 4K H.264**, not a raster run
+through this tool; its PIP border + drop shadow are **live CSS on the `#face-layer` host**,
+not baked-in treatment. See `reference/talking-head.md`.
 
 ## When imagery earns its place — and when it doesn't
 

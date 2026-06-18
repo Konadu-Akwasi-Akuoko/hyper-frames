@@ -38,6 +38,12 @@ rules:
   (deterministic, long yoyo loops) and is allowed to dim further behind a busy scene so
   foreground content always wins contrast. Static backgrounds read as dead.
 
+**When a talking-head source is present**, the persistent **face-layer host
+(track-index 8)** sits in the same z-stack — hidden in GRAPHICS mode, full-frame in
+FACE, inset in PIP. It is a continuous take, not a substrate gesture; the full layer
+order lives in `composition-structure.md` and the mode policy in
+`reference/talking-head.md`.
+
 Avoid the generic technical grid as the *primary* background gesture — a faint grid can
 be one ingredient, but a grid alone is the "flat slideshow" smell this whole file
 exists to kill.
@@ -66,6 +72,15 @@ Two hard habits:
 - **Pick an archetype from the menu below, fitted to the beat's meaning.**
 - **Never repeat the previous scene's archetype back-to-back.** Adjacent scenes must
   *look* different at a glance. Variety is the style, not a garnish.
+
+**When a talking-head source is present**, the per-chunk choice also picks one of three
+**presentation modes** (FACE / GRAPHICS / PIP — `reference/talking-head.md`). Mode sits
+*orthogonally on top* of this menu: the archetype is what fills the frame in GRAPHICS and
+the live graphic in PIP, while FACE shows the take instead. **GRAPHICS is the default and
+the majority** for an explainer, so most beats still pick an archetype here exactly as
+below — and the back-to-back rule still binds: the underlying archetype must vary even
+across a run of GRAPHICS beats. The mode itself is decided per the verdict in
+`reference/talking-head.md`, never by a fixed slot.
 
 ### Archetype menu (not exhaustive — invent when the sentence calls for it)
 
@@ -126,6 +141,24 @@ logo-stamped nouns is the same inertia smell as a run of bare-text cards. The tr
 property of the *sentence*, never a scene index and never a quota. Where each kind of referent
 image actually comes from — local icons, Iconify, Wikimedia — is in `assets-and-media.md`.
 
+**The talking-head layer is not a side-cutout image asset.** When a talking-head source is
+present, the live **face-layer host (track-index 8)** is a continuous seek-driven take
+(`reference/talking-head.md`) — it is **not** a sourced side-cutout/referent image and is **not**
+subject to the three-part referent gate above. So a real human reaction can now come from
+*revealing the take* (FACE or PIP) rather than sourcing a reaction cutout — the take is the
+creator's own face, already on the beat's audio. The gate above still governs every *other*
+picture you place (logos, photos, glyphs); it just doesn't touch the face layer.
+
+**PIP mode constrains the archetype: reserve a face-box safe zone, never occlude the graphic.**
+When the verdict picks PIP (`reference/talking-head.md`), the chosen archetype must lay the live
+graphic out to leave a bordered, drop-shadowed inset in genuine dead space — the graphic stays
+fully visible, the face sits beside it, never on top of it. A full-bleed archetype (full-frame
+kinetic type, edge-to-edge diagram) cannot host a PIP unless it is **reflowed** to leave that dead
+space (the same make-room-don't-stack reflow as §3). The reservation is a structural input the
+archetype declares (`composition-structure.md`); the per-region safe-zone geometry — and, in
+portrait, how it dodges the phone-UI danger zones — is the layout call here in §2 and
+`portrait-mode.md` §safe-areas.
+
 Emphasis primitives to vary across scenes (don't reuse the same one every beat):
 **highlighter marker chips** (solid rounded rect behind a keyword, dark text on top),
 **hand-drawn scribble underline** (Excalifont/SVG, for human/quote moments),
@@ -139,7 +172,11 @@ the difference between *synced* and *alive*. (Entrance is non-negotiable: **ever
 appearing element enters — nothing sits solid at scene-local t=0, or it bleeds across
 the seam onto the previous scene. The element either rides the scene-root crossfade or
 carries its own `opacity:0` + fade-in. See the **Entrance invariant** in
-`composition-structure.md`.)
+`composition-structure.md`. **When a talking-head source is present**, a mode change
+(FACE↔GRAPHICS↔PIP) is a **seam-class event** — it lands on a natural pause / sentence
+boundary via crossfade or clean push, never mid-clause, and the locked face layer is
+exempt from the invariant while the graphics/PIP revealed on top still obey it; the full
+policy is in `reference/talking-head.md`, not restated here.)
 
 - **Slide-in from the edge an element belongs to.** A right-side cutout enters from the
   right; a bottom logo rises from the bottom; a list row slides from where the list

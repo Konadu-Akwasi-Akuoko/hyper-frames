@@ -82,6 +82,13 @@ it. If a local block proves useful across 2+ videos, consider promoting it to th
 shared `design-catalog/` (via `design-catalog-add`) — but prove the abstraction
 with the second video first; don't optimize for reuse prematurely.
 
+When a talking-head source is present (`reference/talking-head.md`), a **PIP-capable
+archetype must accept a "face safe-zone" region input** — a declared variable
+reserving the dead space the bordered face inset sits in, so the live graphic is
+never occluded. That reservation is a *structural input* the block declares here; the
+safe-zone **geometry** (where the band sits, portrait danger-zone dodging) defers to
+`visual-language.md`. A full-bleed archetype that leaves no such region cannot host PIP.
+
 ## The block template — a full HTML document
 
 A composition block is a **full HTML document**, not a `<template>` wrapper. The
@@ -145,7 +152,12 @@ Notes that matter:
   `data-asset-scope="substrate"` (a backdrop that should persist across scenes, e.g.
   a blueprint grid or sky), promoted here instead of into a single block. It's
   still toned down behind busy scenes so foreground always wins contrast. Contract:
-  `assets-and-media.md`.
+  `assets-and-media.md`. **When a talking-head source is present
+  (`reference/talking-head.md`), this transparent background is load-bearing for the
+  GRAPHICS→FACE hand-off** — the running `#face-layer` is revealed by clearing the
+  scene above it, so an opaque scene background would wall the face off permanently and
+  break the mode transition. Keep it transparent; tint via scene-local fills, never an
+  opaque `html, body`.
 - **Scope CSS** under the composition root id (`#scene-NN-slug .thing`), because
   all blocks render into the same document tree at runtime.
 - The timeline is **paused** and registered as
@@ -209,6 +221,23 @@ inside `#root`. The shape (from the shipped js-king `index.html`):
   <audio id="voiceover" src="audio/voiceover.mp3"
          data-start="0" data-duration="<full>" data-track-index="9" data-volume="1"></audio>
 
+  <!-- Face layer — ONLY when a talking-head source is present (`reference/talking-head.md`).
+       One persistent host spanning the whole runtime, sized to the ROOT dims (not the
+       source's), seek-driven, never autoplay/loop. The inner <video> is MUTED — this is
+       the one case where the source audio IS the voiceover, so the muted picture rides
+       above while the <audio id="voiceover"> still drives all timing. Omit this host
+       entirely on the default graphics-only pipeline. -->
+  <div id="face-layer" data-composition-id="face"
+       data-start="0" data-duration="<full>" data-track-index="8"
+       data-width="1920" data-height="1080"
+       style="position: absolute; inset: 0; z-index: 1">
+    <video src="assets/video/talking-head.mp4" muted preload="auto"
+           style="width: 100%; height: 100%; object-fit: cover"></video>
+    <!-- currentTime tracks GLOBAL composition time on every hf-seek (zero offset —
+         see talking-head.md §seek); never autoplay/loop. z-index + geometry animate
+         per mode (below). -->
+  </div>
+
   <!-- One host per scene block. Append these as you author each chunk. -->
   <div id="scene-NN" data-composition-id="scene-NN-slug"
        data-composition-src="compositions/NN-slug.html"
@@ -256,5 +285,20 @@ Wiring rules:
   gap where no scene is mounted.
 - Keep `#root` `data-duration` at the full voiceover length from the start, so
   the timeline length is stable as you add scenes.
+- **Face-layer mode + z behavior — only when a talking-head source is present**
+  (`reference/talking-head.md` owns the full policy). The `#face-layer` host (track-index
+  8) is one element whose **geometry animates and whose z-index flips per mode**: in
+  GRAPHICS mode it sits **below** the scene graphics (the opaque-enough scene covers it,
+  face running hidden underneath); in PIP it **lifts above** to a bordered, drop-shadowed
+  corner inset; in FACE it fills the frame with the scene transparent over it. The
+  GRAPHICS↔PIP z-flip is a **discrete jump fired only while the face is covered** (never
+  tweened, never on screen); while the face is visible only opacity + geometry move. The FACE/GRAPHICS/PIP
+  mode is *realized here* by revealing / hiding / insetting that one host at the exact
+  transcript word-boundary timestamps from the `MODE:` verdict line — transitions
+  **crossfade or clean-push on natural pauses, never mid-clause** (same seam discipline
+  as scene entrances above). The locked face layer is **exempt from the Entrance
+  invariant** — it is supposed to persist across every seam; the invariant governs the
+  graphics/PIP revealed *on top*. See `talking-head.md` for the verdict grammar, the
+  seek-with-global-timestamps rule, and the PIP hard rules.
 - Never start/restart the preview to check wiring — see
   `reference/verify-and-preview.md`.
