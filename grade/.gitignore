@@ -1,0 +1,8 @@
+# grade/ — color-grading workspace.
+# Keep the reproducible INPUTS (scripts, .cube LUTs, reference/base/frames stills);
+# ignore the heavy regenerable OUTPUTS, build logs, and OS cruft. The renders in
+# out/ (incl. a 348MB 4K mp4) are derivable from the scripts + LUTs and exceed
+# GitHub's per-file limit, so they never go in history.
+out/
+*.log
+.DS_Store
