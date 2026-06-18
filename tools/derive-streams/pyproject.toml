@@ -25,3 +25,6 @@ build-backend = "uv_build"
 venvPath = "."
 venv = ".venv"
 extraPaths = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
