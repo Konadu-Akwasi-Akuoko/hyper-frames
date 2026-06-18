@@ -108,6 +108,16 @@ The `hyperframes-media tts` (Kokoro) path stays parallel for any non-ElevenLabs
 use case. Either way, the Scribe v2 `transcript.json` is the timing source of
 truth. See `learnings/pipeline.html` (Stage 3) for the full recorded-voice vs. TTS split.
 
+Two **render-safe deterministic CLIs own the talking-head prep's video-cutting +
+stream-derivation** (pure segment/argv math, pinned encoder flags, no RNG/clock —
+like `tools/cut-snap`): `tools/cut-video` applies a `cuts.json` to a take —
+`--mode audio` renders the cut `voiceover.mp3` from `raw.mp3` (the rendering step
+`transcribe-and-plan-cuts` hands off), and the default video mode concats the kept
+segments into a frame-locked cut master; `tools/derive-streams` then splits that
+cut master into the muted seek-driven picture layer (`assets/video/talking-head.mp4`)
+and the `audio/voiceover.mp3` in one pass. `video-director`'s
+`reference/talking-head.md` drives both as the one-time Step-A video prep.
+
 ## Hard rules (composition authoring)
 
 These always apply when authoring a composition; `video-director` carries the

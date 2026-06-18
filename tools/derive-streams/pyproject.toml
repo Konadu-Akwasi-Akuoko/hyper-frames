@@ -1,0 +1,30 @@
+[project]
+name = "derive-streams"
+version = "0.14.0"
+description = "Derive both delivered streams (muted picture + voiceover audio) from a single cut master in one deterministic ffmpeg run, frame-identical by construction."
+readme = "README.md"
+authors = [
+    { name = "Akwasi Konadu Akuoko", email = "akwasikonadueverlasting@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+derive-streams = "derive_streams.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.10,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+extraPaths = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

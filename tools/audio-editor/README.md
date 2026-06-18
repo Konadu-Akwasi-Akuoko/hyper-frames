@@ -1,9 +1,13 @@
 # audio-editor
 
 Local web tool for fine-tuning voiceover cuts after the `cut-decider` agent
-generates an initial `cuts.json`. Reads `videos/<slug>-<date>/audio/voiceover.mp3`
-+ `transcript.json` + `cuts.json`, lets the user scrub / zoom / drag region
-edges with snap-to-word, then writes the updated `cuts.json` back.
+generates an initial `cuts.json`. Reads the *uncut* source
+`videos/<slug>-<date>/audio/raw.mp3` (preferring `transcript.raw.json` when
+present, so cuts stay re-editable after a render) + `transcript.json` +
+`cuts.json`, lets the user scrub / zoom / drag region edges with snap-to-word,
+then writes the updated `cuts.json` back. Saving only writes `cuts.json`; it
+does not render — applying the cuts to produce `voiceover.mp3` is the
+`cut-video --mode audio` pass below.
 
 ## Quickstart
 
@@ -58,9 +62,12 @@ Follow-up plans add:
 - Real backend routes (path-safe `videos/<slug>/` loader, Zod-validated
   transcript/cuts parsing, save endpoint, audio file serving)
 - The cut-decider Claude agent at `.claude/agents/cut-decider.md`
-- The splice CLI (`tools/audio-splice/`)
 - The actual editor UI (waveform with regions plugin, drag handles,
   snap-to-word, karaoke highlight, zoom)
+
+The audio-splice follow-up has **shipped** as `cut-video --mode audio` — apply
+the saved `cuts.json` to `raw.mp3` with one deterministic pass:
+`uv run --project tools/cut-video cut-video <cuts.json> audio/raw.mp3 --mode audio -o audio/voiceover.mp3`.
 
 For the design rationale, see `playgrounds/audio-editor-pipeline.html` at the
 repo root.

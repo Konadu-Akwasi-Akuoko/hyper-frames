@@ -63,6 +63,14 @@ the wrong cue — use `pop`. (A whoosh's swell would read as sound-before-visual
 If you need a cue the palette doesn't have, stop and surface the gap — adding a cue
 is catalog work (`tools/sfx-catalog`), not a per-pass decision.
 
+**When a talking-head source is present** (see `talking-head.md`), a **mode
+transition** scores onto the **existing** cues by its on-screen verb — there is **no
+new "mode-switch" cue**. A **FACE reveal or a PIP inset appearing in place** is a
+thing that *appears* → **`pop`** (onset). A **push / slide / crossfade-with-travel
+between modes** is a transition that *travels* → **`whoosh`** (peak). A **gentle
+dissolve with no travel** is texture — leave it **silent**, exactly like a held face
+or a continuous drift.
+
 ## Timing — `data-sfx-at-scene-ms` is the impact frame
 
 Every cue carries exactly one timing reference: **`data-sfx-at-scene-ms`** — the
@@ -91,6 +99,15 @@ The impact frame by motion type:
 | **stagger** (`stagger: { each: N }`) | each target's `start` shifts by N; compute each independently |
 
 So for the tween above: `start 4.9s + duration 0.55s = 5.45s → data-sfx-at-scene-ms="5450"`.
+
+**Mode-transition impact frame (talking-head only, `talking-head.md`):** a mode
+cue's impact frame is the **settle point** — the frame the reveal/push finishes
+landing. Because mode transitions land on a **natural pause / sentence boundary**,
+the `at-scene-ms` aligns to that pause, not a round number. The cue lives on the
+**graphics host** that owns the seam (never the persistent `#face-layer`, which has
+no per-scene tween), so the usual **scene-local = global − host `data-start`** still
+governs: read the boundary as global ms from the transcript, subtract the graphics
+host's `data-start`, write that as `data-sfx-at-scene-ms`.
 
 That's all you supply. **`sfx-plan` does the rest** — it lands the cue's transient
 on that frame, biased a hair late so it is **never early** (onset cues), or lands
@@ -143,6 +160,12 @@ uv run --project ../../tools/sfx-level sfx-level audio/voiceover.mp3 --at <t>
 `gap` → leave 0.5; `active-speech` with a hot window → set `data-sfx-volume` to the
 recommended ducked value (never above 0.5). At the final reconcile, sweep all cues
 (`--batch compositions/sfx.html`).
+
+**Talking-head caution (`talking-head.md`):** the take's audio **is** the continuous
+voiceover, so a mode-transition cue fires **over live narration** far more often than
+in a faceless explainer — there are no silent graphics-only stretches to land in.
+Always `sfx-level`-probe the boundary and **expect `active-speech`**; duck below 0.5
+accordingly.
 
 ## Worked example — a three-card stagger *(illustrative)*
 

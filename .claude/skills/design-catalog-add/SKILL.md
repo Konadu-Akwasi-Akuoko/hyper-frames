@@ -166,6 +166,16 @@ Self-contained HTML doc. Use this scaffold and fill in the marked sections:
 Use `border-beam/preview.html` as the canonical reference for the scaffold
 shape. Static-type entries omit the `<script>` blocks.
 
+> **White-substrate viability.** With white now the composition **default**, an
+> effect extracted from a dark scene may not survive the switch — additive
+> **glow/bloom** mechanics that read on dark go invisible on white. This is
+> advisory, NOT a default flip: the dark preview scaffold above can stay
+> (effects are showcased in isolation, decoupled from any video's substrate).
+> But when cataloging a newly-harvested effect, **check it for white-substrate
+> viability** — ideally preview it on both backdrops — and if it only works on
+> one, carry a `designed-for: dark` / `designed-for: light` tag so consumers
+> know before they wire it onto a white canvas.
+
 ### Step 5 — Regenerate the index
 
 Run:
