@@ -1,6 +1,6 @@
 ---
 name: transcribe-and-plan-cuts
-description: Take a raw voice recording at `videos/<slug>/audio/raw.mp3`, transcribe it with ElevenLabs Scribe v2, dispatch the audio-cut-decider sub-agent to plan first-pass cuts, and write both `transcript.json` and `cuts.json` so the user can preview and refine in `tools/audio-editor`. Use when the user says "transcribe my recording", "plan cuts for this audio", "prep this recording for the editor", or hands you a path to a raw recording and asks to clean it up. This skill does NOT render the final `audio/voiceover.mp3` — saving cuts in the editor only writes `cuts.json`; rendering (apply cuts → cut audio) is a separate manual ffmpeg step. The inverse flow (re-transcribing an already-rendered `voiceover.mp3`) is documented under "After the cuts are applied".
+description: Take a raw voice recording at `videos/<slug>/audio/raw.mp3`, transcribe it with ElevenLabs Scribe v2, dispatch the audio-cut-decider sub-agent to plan first-pass cuts, and write both `transcript.json` and `cuts.json` so the user can preview and refine in `tools/audio-editor`. Use when the user says "transcribe my recording", "plan cuts for this audio", "prep this recording for the editor", or hands you a path to a raw recording and asks to clean it up. This skill does NOT render the final `audio/voiceover.mp3` — saving cuts in the editor only writes `cuts.json`; rendering (apply cuts → cut audio) is a one-line `cut-video --mode audio` pass it hands off. The inverse flow (re-transcribing an already-rendered `voiceover.mp3`) is documented under "After the cuts are applied".
 ---
 
 # transcribe-and-plan-cuts
@@ -46,10 +46,13 @@ to the editor:
 **Does not:**
 - Render `audio/voiceover.mp3` (i.e., apply the cuts to produce the final
   audio). The editor's **Save cuts** only PUTs `cuts.json` — it does not
-  render. Rendering is a separate manual step today: ffmpeg `atrim` + `concat`
-  of the kept (inverse-of-cuts) segments from `raw.mp3`, leaving `raw.mp3`
-  untouched. See "After the cuts are applied" below for the re-transcribe that
-  follows a render.
+  render. Rendering is a one-line `cut-video` pass over the kept
+  (inverse-of-cuts) segments, leaving `raw.mp3` untouched:
+  `cut-video <cuts.json> audio/raw.mp3 --mode audio -o audio/voiceover.mp3`.
+  See "After the cuts are applied" below for the re-transcribe that follows
+  a render. (For a VIDEO talking-head source the cuts land on the picture
+  first — follow the prep order in `video-director`'s
+  `reference/talking-head.md` instead of cutting the audio standalone.)
 - Start, restart, or kill `bun dev` for the audio-editor. The user already
   has it running on `:5173` / `:3001` (per `tools/audio-editor/CLAUDE.md`).
 - Touch the raw recording. `audio/raw.mp3` is the source of truth and is
@@ -224,8 +227,19 @@ user at the editor:
 > disagree with, add any I missed. Click **Save cuts** when you're done —
 > the editor PUTs the updated `cuts.json` back.
 
-This skill stops here. Rendering the cleaned `audio/voiceover.mp3` from
-`audio/raw.mp3` + approved cuts is a separate concern.
+This skill stops here. Once the user has saved their cuts, render the cleaned
+`audio/voiceover.mp3` from `audio/raw.mp3` + approved cuts with one `cut-video`
+pass (it applies the inverse-of-cuts keep-windows, leaving `raw.mp3` untouched):
+
+```bash
+uv run --project /Users/akwasikonaduakuoko/Projects/WebDev/hyper-frames/tools/cut-video \
+  cut-video <video-dir>/cuts.json <video-dir>/audio/raw.mp3 \
+  --mode audio -o <video-dir>/audio/voiceover.mp3
+```
+
+For a VIDEO (talking-head) source, don't cut the audio standalone — the cuts
+land on the picture first so the mouth stays synced. Follow the prep order in
+`video-director`'s `reference/talking-head.md` instead.
 
 ## After the cuts are applied — re-transcribing the cut audio
 

@@ -58,9 +58,12 @@ Follow-up plans add:
 - Real backend routes (path-safe `videos/<slug>/` loader, Zod-validated
   transcript/cuts parsing, save endpoint, audio file serving)
 - The cut-decider Claude agent at `.claude/agents/cut-decider.md`
-- The splice CLI (`tools/audio-splice/`)
 - The actual editor UI (waveform with regions plugin, drag handles,
   snap-to-word, karaoke highlight, zoom)
+
+The audio-splice follow-up has **shipped** as `cut-video --mode audio` — apply
+the saved `cuts.json` to `raw.mp3` with one deterministic pass:
+`uv run --project tools/cut-video cut-video <cuts.json> audio/raw.mp3 --mode audio -o audio/voiceover.mp3`.
 
 For the design rationale, see `playgrounds/audio-editor-pipeline.html` at the
 repo root.
