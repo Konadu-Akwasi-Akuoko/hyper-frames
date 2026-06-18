@@ -2,7 +2,7 @@
 
 Code-and-text scenes can only go so far. The beats that land hardest use **real
 imagery** — an emotion-matched reaction shot, a product logo, a photo of the thing
-being described, a short clip — placed as a full-height side cutout against the void.
+being described, a short clip — placed as a full-height side cutout against the substrate.
 You can't generate those photos. The user can: *"put in the box what you want and I'll
 make it happen."* This file is the contract for that handoff.
 
@@ -245,8 +245,10 @@ A **`background` box** swaps the same way — to a full-frame `<img>` behind the
 foreground (`z-index:0`), keeping the box geometry and timeline target. But if its
 `data-asset-scope` is `substrate`, the supplied image doesn't swap into *this* block at all:
 it's wired into `compositions/substrate.html` (the persistent layer) so it sits behind every
-scene — see `composition-structure.md`. Either way, keep foreground contrast winning (dim the
-backdrop behind busy text — `visual-language.md` §1).
+scene — see `composition-structure.md`. Either way, keep foreground contrast winning by making
+the backdrop **recede behind busy text** — direction-neutrally: on a white canvas it lightens
+toward the base tone and its decorative alpha drops; on a dark canvas it dims toward black. Same
+yield, opposite mechanic (`visual-language.md` §1).
 
 Re-run the visual-QA loop after swapping — a real image changes contrast and edges; the
 emphasis and legibility checks must pass against the actual pixels, not the placeholder.
@@ -266,9 +268,18 @@ uv run --project tools/image-prep image-prep \
 
 Presets (`grain`, `duotone`, `halftone`, `vintage`) read the `bg`/`accent` tokens so
 the cutout sits in the palette. See `tools/image-prep/README.md`. Background removal
-(`--remove-bg`) is what makes a photo read as a cutout on the void rather than a pasted
+(`--remove-bg`) is what makes a photo read as a cutout on the substrate rather than a pasted
 rectangle. The user supplies raw files; you (or they) run image-prep to produce the
 treated asset the box swaps to.
+
+**White-canvas note.** Cutout and duotone presets tuned against a dark substrate read as a
+halo'd **sticker** on white — the matte-edge fringe and the dark-toward-`bg` duotone target
+that vanished on black now ring the subject. On a white canvas, re-tune the **duotone target
+lighter** (toward the light `bg`/`panel` tones) so the wash darkens-and-saturates into the
+palette rather than glowing, and run an **edge despill/defringe pass** after `--remove-bg` to
+erode the cool matte halo (consistent with the cutout despill memory — kill the cool ring,
+darken the warm-hair edge). A subject tint on white is a low-opacity **dark-on-light wash /
+desaturated texture, never an additive glow** (a glow is invisible on white).
 
 **A `background` image is the exception to `--remove-bg`** — it *is* the backdrop, so
 never cut it out. Treat it only for palette/feel (a light `grain`, or `duotone` toward
@@ -284,7 +295,7 @@ not baked-in treatment. See `reference/talking-head.md`.
 **A worked case — reaction (the *yes* side).** An ironic payoff — a line whose humour is the
 twist, e.g. a language nobody wanted now running the world's infrastructure — is a prime imagery
 beat. The move is a web-searched laughing-reaction cutout (a celebrity mid-laugh,
-background-removed, dropped on the void beside the line) reacting *for* the viewer, which
+background-removed, dropped on the substrate beside the line) reacting *for* the viewer, which
 makes the irony land funnier and keeps watch-time up. Note what you do **not** add there:
 with the laughing face carrying the contrast, leave the opposing line at full strength and
 don't divide the frame (see `visual-language.md` §2). Phrase the trigger to yourself as a
