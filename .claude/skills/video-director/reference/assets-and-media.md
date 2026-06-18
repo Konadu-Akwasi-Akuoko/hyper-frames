@@ -2,7 +2,7 @@
 
 Code-and-text scenes can only go so far. The beats that land hardest use **real
 imagery** — an emotion-matched reaction shot, a product logo, a photo of the thing
-being described, a short clip — placed as a full-height side cutout against the void.
+being described, a short clip — placed as a full-height side cutout against the substrate.
 You can't generate those photos. The user can: *"put in the box what you want and I'll
 make it happen."* This file is the contract for that handoff.
 
@@ -160,6 +160,12 @@ is the three-part gate in `visual-language.md` §2 (named + recognisable-on-sigh
 words-can't, else stay type/diagram); this section is *where the asset comes from* once you've
 decided it's earned.
 
+**The on-camera take is neither kind** — when a talking-head source is present, its
+footage is a **non-asset-box media source** outside this `reaction`/`logo`/`glyph`/`photo`/
+`background` routing entirely: creator-supplied, transcoded once, **never image-sourced and
+never on the shopping list**. It mounts as the seek-driven `#face-layer` host, not a box you
+fill; see `reference/talking-head.md`.
+
 | `class` | the beat | primary source | fallback | saved as |
 |---|---|---|---|---|
 | `logo` | names a product/language/company with a known mark ("JavaScript", "React", "Netflix") | **local `assets/icons/`** (the project ships many tech logos — check first) → Iconify `logos:` set (true coloured mark) | open-web (`<name> logo png transparent`) | static **SVG** → `assets/icons/<id>.svg` |
@@ -215,7 +221,11 @@ id/class/box geometry and the same timeline target so motion is untouched:
 
 Video: `<video class="asset" src="assets/video/<id>.mp4" autoplay muted loop
 playsinline>` — but the player owns timing, so prefer short loops and keep determinism;
-a still cutout is usually enough and cheaper than a clip.
+a still cutout is usually enough and cheaper than a clip. **One video is NOT an
+asset-box clip: the continuous talking-head take.** When a talking-head source is
+present it is the single seek-driven `#face-layer` host — `currentTime` bound to
+hf-seek, never `autoplay`/`loop` — not this decorative-clip model; see
+`reference/talking-head.md`.
 
 A **referent SVG** (`logo`/`glyph`) swaps to an `<img>` pointing at the static file — or, for a
 monochrome glyph you want tinted to the palette, **inline the SVG** so CSS `currentColor` reaches
@@ -235,8 +245,10 @@ A **`background` box** swaps the same way — to a full-frame `<img>` behind the
 foreground (`z-index:0`), keeping the box geometry and timeline target. But if its
 `data-asset-scope` is `substrate`, the supplied image doesn't swap into *this* block at all:
 it's wired into `compositions/substrate.html` (the persistent layer) so it sits behind every
-scene — see `composition-structure.md`. Either way, keep foreground contrast winning (dim the
-backdrop behind busy text — `visual-language.md` §1).
+scene — see `composition-structure.md`. Either way, keep foreground contrast winning by making
+the backdrop **recede behind busy text** — direction-neutrally: on a white canvas it lightens
+toward the base tone and its decorative alpha drops; on a dark canvas it dims toward black. Same
+yield, opposite mechanic (`visual-language.md` §1).
 
 Re-run the visual-QA loop after swapping — a real image changes contrast and edges; the
 emphasis and legibility checks must pass against the actual pixels, not the placeholder.
@@ -256,20 +268,34 @@ uv run --project tools/image-prep image-prep \
 
 Presets (`grain`, `duotone`, `halftone`, `vintage`) read the `bg`/`accent` tokens so
 the cutout sits in the palette. See `tools/image-prep/README.md`. Background removal
-(`--remove-bg`) is what makes a photo read as a cutout on the void rather than a pasted
+(`--remove-bg`) is what makes a photo read as a cutout on the substrate rather than a pasted
 rectangle. The user supplies raw files; you (or they) run image-prep to produce the
 treated asset the box swaps to.
+
+**White-canvas note.** Cutout and duotone presets tuned against a dark substrate read as a
+halo'd **sticker** on white — the matte-edge fringe and the dark-toward-`bg` duotone target
+that vanished on black now ring the subject. On a white canvas, re-tune the **duotone target
+lighter** (toward the light `bg`/`panel` tones) so the wash darkens-and-saturates into the
+palette rather than glowing, and run an **edge despill/defringe pass** after `--remove-bg` to
+erode the cool matte halo (consistent with the cutout despill memory — kill the cool ring,
+darken the warm-hair edge). A subject tint on white is a low-opacity **dark-on-light wash /
+desaturated texture, never an additive glow** (a glow is invisible on white).
 
 **A `background` image is the exception to `--remove-bg`** — it *is* the backdrop, so
 never cut it out. Treat it only for palette/feel (a light `grain`, or `duotone` toward
 the `bg`/`accent` tokens) and, if needed, scale to the 1920×1080 frame.
+
+**The talking-head take is a second exception — it bypasses `image-prep` entirely.** When
+a talking-head source is present, the take is **transcoded 4K H.264**, not a raster run
+through this tool; its PIP border + drop shadow are **live CSS on the `#face-layer` host**,
+not baked-in treatment. See `reference/talking-head.md`.
 
 ## When imagery earns its place — and when it doesn't
 
 **A worked case — reaction (the *yes* side).** An ironic payoff — a line whose humour is the
 twist, e.g. a language nobody wanted now running the world's infrastructure — is a prime imagery
 beat. The move is a web-searched laughing-reaction cutout (a celebrity mid-laugh,
-background-removed, dropped on the void beside the line) reacting *for* the viewer, which
+background-removed, dropped on the substrate beside the line) reacting *for* the viewer, which
 makes the irony land funnier and keeps watch-time up. Note what you do **not** add there:
 with the laughing face carrying the contrast, leave the opposing line at full strength and
 don't divide the frame (see `visual-language.md` §2). Phrase the trigger to yourself as a

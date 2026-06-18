@@ -70,12 +70,20 @@ the loop survives a fresh session.
    with `data-composition-src="compositions/..."` on a scene track. For each,
    note `data-composition-id`, `data-start`, `data-duration`, `data-track-index`.
    Ignore the voiceover `<audio>`, the `substrate-layer`, `sfx-layer`,
-   `music-layer` — those are not scenes. Also read the **root `#root` host's
+   `music-layer`, and the `face-layer` (track-index 8, present only in
+   talking-head mode) — those are not scenes (the face layer is full-runtime, so
+   it must stay out of the frontier math). Also read the **root `#root` host's
    `data-width`/`data-height`** to fix the **canvas orientation**: default is
    landscape **1920×1080**; a **1080×1920** root means this is a **portrait**
    video (a Short / vertical) — read `reference/portrait-mode.md` once and author
    every block at 1080×1920. You don't choose orientation; you honor whatever the
-   root declares (the `shorts-creator` skill scaffolds the portrait root).
+   root declares (the `shorts-creator` skill scaffolds the portrait root). And
+   **detect a talking-head source** the same way: if `design.md` declares a
+   `talking-head:` field **or** `assets/video/talking-head.mp4` exists, read
+   `reference/talking-head.md` once and treat the face video as a **locked
+   seek-driven layer beneath every scene** for the whole runtime. You detect it,
+   you don't decide it (the human declares it), and it **composes with portrait**
+   — a face-led Short is both.
 4. Compute the **frontier** = the max of (`data-start` + `data-duration`) across
    scene hosts. That's how far into the audio the video is already authored. An
    index with only the scaffold (root + voiceover + maybe substrate, zero scene
@@ -176,7 +184,15 @@ the slug), reading it as the same *family*, never reproducing it; and route each
 to the verdict's **font** (a verbatim quote → the human-voice font, never system
 narration). If the verdict is genuinely wrong for the beat, you may **overrule it — but say
 so explicitly in your authoring note**, so the override is on the record too; never
-silently diverge. The full policy the decider applies (the §2 imagery gate, the archetype
+silently diverge.
+
+**When a talking-head source is present** (Step A), the decider also returns the
+chunk's **presentation mode** — FACE / GRAPHICS / PIP — as the verbatim `MODE:`
+verdict line; content decides it per chunk, never a fixed slot
+(`reference/talking-head.md`). The chosen mode **constrains the archetype pick**:
+GRAPHICS runs the face hidden underneath (the archetype is unconstrained), PIP
+requires the archetype to **reserve a safe zone** for the inset, and FACE leaves
+the graphics scene empty/transparent (archetype + imagery moot). The full policy the decider applies (the §2 imagery gate, the archetype
 menu, the motion-adapt rule, the type roles) lives in `reference/visual-language.md` and
 `reference/decision-examples.md` — read them when you need to sanity-check a verdict.
 
@@ -244,7 +260,16 @@ Defer the mechanics to the `hyperframes` skill; this is what's specific here:
   `image-sourcer`. Request one only when it actually helps; ration it like any imagery
   (Step D / `reference/visual-language.md`). Contract: `reference/assets-and-media.md`.
 - Time inside the block is **scene-local**: subtract `chunk_start` from each
-  global word timestamp.
+  global word timestamp. **Exception — the face layer seeks with GLOBAL
+  timestamps, zero offset** (it spans the whole runtime); never apply the
+  scene-local subtraction to its seek (`reference/talking-head.md`).
+- **Talking-head mode (when present) — author the chunk to its `MODE:` verdict.**
+  A **FACE** reveal = show the `face-layer` host (track-index 8) at the exact
+  global word timestamp; **GRAPHICS** = the same footage runs **hidden
+  underneath** while the archetype covers the frame (nothing about the take
+  moves); **PIP** = a **bordered, drop-shadowed inset** in the archetype's
+  reserved safe zone, **never occluding** the live graphic. Policy +
+  border/shadow + safe-zone geometry: `reference/talking-head.md`.
 - Entrance animation + a transition into the scene. **No exit animation** unless
   this is the final chunk of the whole script (the transition is the exit) — but
   if this scene's foreground text must clear before the *next* scene's text comes
@@ -257,6 +282,10 @@ Defer the mechanics to the `hyperframes` skill; this is what's specific here:
   whole scene in) **or** a per-element `opacity:0` + `fromTo`. A tween that animates
   only `height`/`x`/`color` is not an entrance. Details + the seam consequence:
   `reference/composition-structure.md` ("Notes that matter" + wiring rules).
+  **Carve-out (talking-head):** the locked `face-layer` is **exempt** — it is
+  *supposed* to persist across every seam, so the invariant governs only the
+  graphics/PIP revealed *on top* of it, not the continuous take
+  (`reference/talking-head.md`).
 - **Motion language** beyond entrance: edge slide-ins, layout reflow (new elements
   push existing ones aside rather than stacking on them), and a constant
   low-amplitude idle (tilt/drift) so nothing sits perfectly still.
@@ -287,6 +316,10 @@ from `reference/composition-structure.md`:
   text is legible, or the incoming scene occludes with a wipe/slide/panel. Two
   readable text blocks never share the frame at a seam — verify by snapshotting at
   `prev_end − 0.25`. Detail: `reference/composition-structure.md` wiring rules.
+- **Talking-head mode transitions (when present) are seam-class events** — a mode
+  change (FACE↔GRAPHICS↔PIP) lands on a **natural pause / sentence boundary**
+  (after `.!?` primary, `>400ms` gaps secondary) via **crossfade or clean push**,
+  never mid-clause (`reference/talking-head.md`).
 
 Leave `#root` `data-duration` at the full voiceover length from the start.
 
@@ -464,6 +497,7 @@ never author yourself.
 | SFX scoring: cue choice, the impact-frame timing, the per-pass + final-reconcile passes | **you** (Step H, this skill) | Own it — score each scene's sound after its visual QA; each cue is independent and element-bound (no cross-cue rules) |
 | SFX mechanics: `data-sfx-*` resolution → `compositions/sfx.html`; VO loudness at a cue | `tools/sfx-plan` / `tools/sfx-level` / `sfx-catalog.yml` | Annotate + run them; never hand-edit `sfx.html` |
 | Music bed | `audio-bed-music` | Hand off only after the final SFX reconcile; never author the music yourself |
+| **Talking-head (when present)**: per-chunk presentation mode (FACE/GRAPHICS/PIP) + face-reveal timing; the one-time cut-and-derive prep | **you** (mode choice + reveal) / **ffmpeg** (delegated Step-A prep) | Detect the source in Step A (`design.md` `talking-head:` / `assets/video/talking-head.mp4`); as Step-A prep, plan cuts (`transcribe-and-plan-cuts`), apply them to the **video**, derive the muted picture + voiceover from the one cut master, then re-transcribe the cut audio (full order in `reference/talking-head.md`); own the per-chunk mode (rides the `scene-design-decider` `MODE:` verdict) and seek-driven face reveal on global timestamps (`reference/talking-head.md`) |
 
 ## Reference files
 
@@ -513,6 +547,14 @@ that used to live in the root `CLAUDE.md`:
   areas**, how each archetype family reflows landscape→vertical, the faster cut
   cadence, and the subscribe-CTA beat (the native portrait registry blocks +
   where the "Subscribe" cue sits). Read once when Step A finds a portrait root.
+- `reference/talking-head.md` — the **talking-head delta** for a continuous
+  on-camera take: the one-time prep (cut the video first, then derive the muted
+  picture layer + the voiceover from one cut master, re-transcribe), the
+  **seek-driven face layer** (`#face-layer`, track-index 8, full runtime), the
+  three modes **FACE / GRAPHICS / PIP**, the content-decides-mode policy, the PIP
+  safe-zone + border/shadow rules, and the boundary-snapped mode transitions.
+  Read once when Step A detects a talking-head source (composable with
+  portrait-mode).
 - `reference/house-rules.md` — no editorial chrome; the music bed is the last
   pass (and is someone else's pass).
 - `reference/state-and-resume.md` — reading `index.html` into a frontier,

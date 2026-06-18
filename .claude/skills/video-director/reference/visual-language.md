@@ -16,27 +16,48 @@ rules:
 
 - **Tint it to the subject, rationed.** The video is *about* something — let the
   backdrop whisper it. For JavaScript that's a faint warm **JS-yellow** presence: a
-  low-opacity glow, a tint on the drift, a hair of warmth in a texture. Enough that
-  a viewer feels "this is a JS video" without being able to point at why. Pull the hue
-  from the `accent` token in `design.md` so the next video tints to *its* subject
-  automatically (a Python video leans on its accent, etc.).
-- **No vignette.** Never darken the substrate edges with a radial/elliptical vignette
-  (`radial-gradient(... , transparent, #000)`, an inset `box-shadow` darkening, a
-  corner-darkening overlay, etc.). A soft tonal ramp over near-black is the worst case
-  for YouTube's codec: at low bitrate it quantizes into chunky concentric **banding**
-  rings and its feathered edge **smears into any motion graphics** drifting over it —
-  exactly the choppy, bleeding look this whole file exists to kill. If you want depth,
-  reach for a small, *contained* accent glow (kept well inside the frame, not an
-  edge-to-center ramp) or a textured drift — and if any soft radial ramp on a dark
-  field is unavoidable, dither it with low-opacity grain/noise so it can't band. This
-  is a hard rule: the visual-QA reviewer treats an edge vignette as a defect.
+  low-opacity accent **WASH** (accent token at low alpha over the light field), a
+  tint on the drift, a desaturated accent-tinted texture. Enough that a viewer feels
+  "this is a JS video" without being able to point at why. Pull the hue from the
+  `accent` token in `design.md` so the next video tints to *its* subject automatically
+  (a Python video leans on its accent, etc.). On white, an accent used as **TEXT/thin
+  emphasis** needs a darker **accent-ink** variant (a pale accent like JS-yellow is too
+  low-contrast as ink on white) — reserve the pale accent for fills/washes.
+- **No vignette.** Never darken (or lighten) the substrate edges with a radial/elliptical
+  vignette (`radial-gradient(... , transparent, #000)`, an inset `box-shadow` darkening, a
+  corner overlay, etc.). An edge-to-center tonal ramp is a worst case for YouTube's codec
+  on **ANY** canvas: a ramp toward `#fff` **bands** as a ramp toward `#000` does — at low
+  bitrate it quantizes into chunky concentric **banding** rings and its feathered edge
+  **smears into any motion graphics** drifting over it, exactly the choppy, bleeding look
+  this whole file exists to kill. If you want depth, reach for a small, *contained* accent
+  **WASH** (kept well inside the frame, not an edge-to-center ramp) or a textured drift —
+  and if any soft radial ramp is unavoidable, dither it with low-opacity grain/noise so it
+  can't band. This is a hard rule: the visual-QA reviewer treats an edge vignette as a defect.
 - **No literal logo or brand mark in the background.** A JS logo (or any product mark)
-  sitting in the substrate is too loud and dates instantly. Tone, glow, texture — yes.
-  Iconography — no. (Logos belong *in a scene*, as a deliberate foreground asset, not
-  baked into the floor.)
+  sitting in the substrate is too loud and dates instantly. Tone, texture, a low-alpha
+  wash — yes (on the light default this is a SUBTLE DARK-ON-LIGHT gesture, never an
+  additive glow, which is invisible on white). Iconography — no. (Logos belong *in a
+  scene*, as a deliberate foreground asset, not baked into the floor.)
 - **It moves and it yields.** The substrate breathes/drifts/fades slowly
-  (deterministic, long yoyo loops) and is allowed to dim further behind a busy scene so
-  foreground content always wins contrast. Static backgrounds read as dead.
+  (deterministic, long yoyo loops) and **YIELDS contrast to the foreground** behind a busy
+  scene so foreground content always wins. The invariant is direction-neutral; only the
+  mechanic flips with the canvas: on the light canvas it **RECEDES** toward base white and
+  its decoratives/tint drop in opacity (the dark equivalent dimmed toward black) — either
+  way the substrate gives up contrast so foreground wins. Static backgrounds read as dead.
+
+  On the **light default**, the grid / ghost-type / drift are subtle **DARK-on-light** —
+  faint low-alpha dark-gray hairlines, low-alpha dark ghost type; light-on-dark decoratives
+  vanish on white. (The grid-alone = flat-slideshow caution below still binds either way.)
+
+  With a talking-head source present, the **face-layer's PIP separation on white** comes
+  from a **NON-white border** (accent or dark-gray) + drop shadow, never a light border or
+  a glow (a glow is invisible on white) — colors deferred to `reference/talking-head.md`.
+
+**When a talking-head source is present**, the persistent **face-layer host
+(track-index 8)** sits in the same z-stack — hidden in GRAPHICS mode, full-frame in
+FACE, inset in PIP. It is a continuous take, not a substrate gesture; the full layer
+order lives in `composition-structure.md` and the mode policy in
+`reference/talking-head.md`.
 
 Avoid the generic technical grid as the *primary* background gesture — a faint grid can
 be one ingredient, but a grid alone is the "flat slideshow" smell this whole file
@@ -53,6 +74,26 @@ substrate layer — `composition-structure.md`); one tied to a single beat is a
 **scene-local** full-frame box. Request a background only when it genuinely helps — most
 beats are better served by the rationed subject tone above than by a literal photo floor.
 
+### Default light-canvas token recipe
+
+The in-video substrate is **light by default** — copy these into the substrate's `:root`,
+keeping the token *names* and flipping only the values. **GOING-FORWARD default only**:
+existing videos under `videos/` keep their committed dark tokens, do not retro-flip them.
+The **in-video substrate is light by default**, but the **YouTube thumbnail / Short cover
+stays on its locked dark Specimen base** — that cover/substrate mismatch is deliberate, do
+not "fix" it.
+
+| Token | Value | Note |
+|---|---|---|
+| `--bg` | `#f7f8fa` | warm near-white, **not** pure `#fff` (pure white clips/blooms at codec edges) |
+| `--panel` | `#ffffff` | cards **LIGHTER** than bg — the inverse relationship |
+| `--border` | `#d8dbe0` | visible light-gray hairline — but the **PIP frame NEVER uses `--border`** |
+| `--fg` | `#14171c` | near-black ink |
+| `--soft` | `#3a4150` | dark mid-gray secondary text |
+| `--muted` | `#6b7280` | mid-gray that reads on white |
+| `--accent` / `--accent-2` | subject-tinted (e.g. `#f7df1e` / `#67e8f9`) | keep the subject hue; for accent-colored **TEXT/thin emphasis** on white derive a darker/saturated **accent-ink** variant (a pale accent is too low-contrast as ink) |
+| `danger` / `ok` | dark/saturated values that read on white | a pale pastel fails on white |
+
 ## 2. Every scene gets its own shape — driven by the sentence
 
 The single most important instruction in this skill: **let the sentence decide how the
@@ -66,6 +107,15 @@ Two hard habits:
 - **Pick an archetype from the menu below, fitted to the beat's meaning.**
 - **Never repeat the previous scene's archetype back-to-back.** Adjacent scenes must
   *look* different at a glance. Variety is the style, not a garnish.
+
+**When a talking-head source is present**, the per-chunk choice also picks one of three
+**presentation modes** (FACE / GRAPHICS / PIP — `reference/talking-head.md`). Mode sits
+*orthogonally on top* of this menu: the archetype is what fills the frame in GRAPHICS and
+the live graphic in PIP, while FACE shows the take instead. **GRAPHICS is the default and
+the majority** for an explainer, so most beats still pick an archetype here exactly as
+below — and the back-to-back rule still binds: the underlying archetype must vary even
+across a run of GRAPHICS beats. The mode itself is decided per the verdict in
+`reference/talking-head.md`, never by a fixed slot.
 
 ### Archetype menu (not exhaustive — invent when the sentence calls for it)
 
@@ -93,6 +143,13 @@ and **adapt the cadence — never reproduce the scene.** It should read as the s
 not the same shot (the "design original; copy the reasoning, not the scene" rule). It's a
 source of taste, not a quota: most beats won't draw on one. Where a reference's look needs
 a real backdrop you can't draw, that's a `background` box (§1 + `assets-and-media.md`).
+
+**Split / contrast — what "lit vs muted" means on white.** The lit-vs-muted contrast in a
+text-only split inverts its direction on the light canvas: **LIT** gains **WEIGHT /
+SATURATION / DARKNESS** (it ignites toward `fg`/`accent-ink`), while **MUTED** recedes
+*toward the light field* (a lighter gray). `ok`/`danger` must be dark/saturated enough to
+read on white. The principle below survives unchanged — "dim is a crutch" still holds; only
+the *direction* of the dim inverts.
 
 **When an image carries a contrast beat, let it carry — don't double up.** If a
 reaction/emotion cutout is doing the editorial work of an "X vs Y", the *image* is the
@@ -126,11 +183,34 @@ logo-stamped nouns is the same inertia smell as a run of bare-text cards. The tr
 property of the *sentence*, never a scene index and never a quota. Where each kind of referent
 image actually comes from — local icons, Iconify, Wikimedia — is in `assets-and-media.md`.
 
+**The talking-head layer is not a side-cutout image asset.** When a talking-head source is
+present, the live **face-layer host (track-index 8)** is a continuous seek-driven take
+(`reference/talking-head.md`) — it is **not** a sourced side-cutout/referent image and is **not**
+subject to the three-part referent gate above. So a real human reaction can now come from
+*revealing the take* (FACE or PIP) rather than sourcing a reaction cutout — the take is the
+creator's own face, already on the beat's audio. The gate above still governs every *other*
+picture you place (logos, photos, glyphs); it just doesn't touch the face layer.
+
+**PIP mode constrains the archetype: reserve a face-box safe zone, never occlude the graphic.**
+When the verdict picks PIP (`reference/talking-head.md`), the chosen archetype must lay the live
+graphic out to leave a bordered, drop-shadowed inset in genuine dead space — the graphic stays
+fully visible, the face sits beside it, never on top of it. A full-bleed archetype (full-frame
+kinetic type, edge-to-edge diagram) cannot host a PIP unless it is **reflowed** to leave that dead
+space (the same make-room-don't-stack reflow as §3). The reservation is a structural input the
+archetype declares (`composition-structure.md`); the per-region safe-zone geometry — and, in
+portrait, how it dodges the phone-UI danger zones — is the layout call here in §2 and
+`portrait-mode.md` §safe-areas.
+
 Emphasis primitives to vary across scenes (don't reuse the same one every beat):
-**highlighter marker chips** (solid rounded rect behind a keyword, dark text on top),
-**hand-drawn scribble underline** (Excalifont/SVG, for human/quote moments),
-**colour ignition** (a fragment shifting `muted → fg`/`accent`/`danger` on its word),
-**scale-pulse bloom** on a payoff word, **green-check badges** for list rows.
+**highlighter marker chips** (solid rounded rect behind a keyword, dark text on top —
+works on white), **hand-drawn scribble underline** (Excalifont/SVG, for human/quote
+moments — works on white), **colour ignition** (a fragment that **DARKENS + saturates**
+on its word, `muted → fg`/`accent-ink`/`danger`, never *brightens*), **a WEIGHT bump or
+a soft DARK text-shadow** on a payoff word (a drop shadow, **NOT** a luminous bloom),
+**green-check badges** for list rows (work on white). The luminous text-shadow **bloom is
+invisible on white** — do not reach for it as the inline default; and do **NOT** fall back
+to **scale-pulse on inline words** (it eats the word's whitespace mid-pulse). Reserve scale
+for **block-level** elements only.
 
 ## 3. Keep it alive — the motion language
 
@@ -139,7 +219,11 @@ the difference between *synced* and *alive*. (Entrance is non-negotiable: **ever
 appearing element enters — nothing sits solid at scene-local t=0, or it bleeds across
 the seam onto the previous scene. The element either rides the scene-root crossfade or
 carries its own `opacity:0` + fade-in. See the **Entrance invariant** in
-`composition-structure.md`.)
+`composition-structure.md`. **When a talking-head source is present**, a mode change
+(FACE↔GRAPHICS↔PIP) is a **seam-class event** — it lands on a natural pause / sentence
+boundary via crossfade or clean push, never mid-clause, and the locked face layer is
+exempt from the invariant while the graphics/PIP revealed on top still obey it; the full
+policy is in `reference/talking-head.md`, not restated here.)
 
 - **Slide-in from the edge an element belongs to.** A right-side cutout enters from the
   right; a bottom logo rises from the bottom; a list row slides from where the list
