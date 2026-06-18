@@ -34,9 +34,10 @@ rules:
   and if any soft radial ramp is unavoidable, dither it with low-opacity grain/noise so it
   can't band. This is a hard rule: the visual-QA reviewer treats an edge vignette as a defect.
 - **No literal logo or brand mark in the background.** A JS logo (or any product mark)
-  sitting in the substrate is too loud and dates instantly. Tone, glow, texture — yes.
-  Iconography — no. (Logos belong *in a scene*, as a deliberate foreground asset, not
-  baked into the floor.)
+  sitting in the substrate is too loud and dates instantly. Tone, texture, a low-alpha
+  wash — yes (on the light default this is a SUBTLE DARK-ON-LIGHT gesture, never an
+  additive glow, which is invisible on white). Iconography — no. (Logos belong *in a
+  scene*, as a deliberate foreground asset, not baked into the floor.)
 - **It moves and it yields.** The substrate breathes/drifts/fades slowly
   (deterministic, long yoyo loops) and **YIELDS contrast to the foreground** behind a busy
   scene so foreground content always wins. The invariant is direction-neutral; only the
