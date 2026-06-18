@@ -133,3 +133,73 @@ def test_summarize() -> None:
     assert kept == 8.0
     assert removed == 2.0
     assert count == 2
+
+
+def test_duplicate_cuts_are_idempotent() -> None:
+    once = keep_windows([(2.0, 5.0)], duration=DUR, fps=FPS)
+    twice = keep_windows([(2.0, 5.0), (2.0, 5.0)], duration=DUR, fps=FPS)
+    assert once == twice == [Keep(0.0, 2.0), Keep(5.0, 10.0)]
+
+
+def test_many_cuts_alternating_keeps() -> None:
+    # Remove the first half of every integer second: 0-0.5, 1-1.5, ... 9-9.5.
+    cuts = [(float(i), i + 0.5) for i in range(10)]
+    keeps = keep_windows(cuts, duration=DUR, fps=FPS)
+    assert keeps == [Keep(i + 0.5, float(i + 1)) for i in range(10)]
+    assert all(abs(k.duration - 0.5) < 1e-9 for k in keeps)
+
+
+def test_single_keep_when_two_cuts_bracket_the_middle() -> None:
+    keeps = keep_windows([(0.0, 3.0), (7.0, 10.0)], duration=DUR, fps=FPS)
+    assert keeps == [Keep(3.0, 7.0)]
+
+
+def test_cut_extending_past_eof_is_clamped() -> None:
+    keeps = keep_windows([(8.0, 20.0)], duration=DUR, fps=FPS)
+    assert keeps == [Keep(0.0, 8.0)]
+
+
+def test_cut_entirely_past_eof_is_noop() -> None:
+    keeps = keep_windows([(12.0, 20.0)], duration=DUR, fps=FPS)
+    assert keeps == [Keep(0.0, 10.0)]
+
+
+def test_cut_starting_before_zero_is_clamped() -> None:
+    keeps = keep_windows([(-3.0, 4.0)], duration=DUR, fps=FPS)
+    assert keeps == [Keep(4.0, 10.0)]
+
+
+def test_cut_entirely_before_zero_is_noop() -> None:
+    keeps = keep_windows([(-5.0, -1.0)], duration=DUR, fps=FPS)
+    assert keeps == [Keep(0.0, 10.0)]
+
+
+def test_reversed_span_is_dropped() -> None:
+    # end < start is not a removed span; it must be ignored, not crash.
+    keeps = keep_windows([(5.0, 3.0)], duration=DUR, fps=FPS)
+    assert keeps == [Keep(0.0, 10.0)]
+
+
+def test_cut_spanning_the_whole_source_from_outside_raises() -> None:
+    with pytest.raises(WholeDurationRemovedError):
+        keep_windows([(-1.0, 11.0)], duration=DUR, fps=FPS)
+
+
+def test_zero_duration_source_raises() -> None:
+    with pytest.raises(WholeDurationRemovedError):
+        keep_windows([(1.0, 2.0)], duration=0.0, fps=FPS)
+
+
+def test_non_positive_fps_raises() -> None:
+    with pytest.raises(ValueError):
+        keep_windows([(1.0, 2.0)], duration=DUR, fps=0.0)
+
+
+def test_keep_windows_deterministic_on_fractional_input() -> None:
+    cuts = [(1.0 / 7.0, 3.0 / 7.0), (5.123456789, 6.987654321)]
+    first = keep_windows(cuts, duration=DUR, fps=FPS)
+    second = keep_windows(cuts, duration=DUR, fps=FPS)
+    assert first == second
+    for k in first:
+        assert k.start == round(k.start, 6)
+        assert k.end == round(k.end, 6)

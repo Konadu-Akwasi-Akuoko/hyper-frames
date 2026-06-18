@@ -26,7 +26,7 @@ def _load_cuts(path: str) -> list[tuple[float, float]]:
     data: dict[str, Any] = json.loads(Path(path).read_text())
     if data.get("version") != 1:
         raise ValueError(
-            f"{TOOL}: unsupported cuts.json version {data.get('version')!r} "
+            f"unsupported cuts.json version {data.get('version')!r} "
             "(expected 1)"
         )
     out: list[tuple[float, float]] = []
@@ -101,7 +101,7 @@ def _extract_audio(args: argparse.Namespace) -> int:
     p = ffmpeg.probe(args.source)
     if p.n_audio < 1:
         raise ffmpeg.StreamError(
-            f"{TOOL}: source has no audio stream to extract"
+            "source has no audio stream to extract"
         )
     argv = ffmpeg.extract_audio_argv(
         args.source, args.out, args.bitrate, args.mono, args.ar

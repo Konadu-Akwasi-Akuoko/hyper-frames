@@ -64,3 +64,17 @@ uv run --project tools/cut-video cut-video extract-audio source.mp4 \
 - `extract-audio`: `--bitrate` (default `64k`), `--mono`, `--ar`.
 
 Requires `ffmpeg` (and `ffprobe`) on PATH.
+
+## Tests
+
+Run the suite scoped to this tool (the repo is a flat collection of `uv`
+projects with no root config, so collect from the project, not the repo root):
+
+```bash
+uv run --directory tools/cut-video pytest -q
+# or, equivalently, from inside the tool: cd tools/cut-video && uv run pytest -q
+```
+
+The pure keep-math + filtergraph tests run anywhere; the CLI integration tests
+(real ffmpeg cut, byte-identical re-run, A/V-sync, extract-audio) self-skip when
+`ffmpeg`/`ffprobe` are not on PATH.

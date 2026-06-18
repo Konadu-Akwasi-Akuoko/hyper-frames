@@ -39,3 +39,16 @@ uv run --project tools/derive-streams derive-streams \
 `--dry-run` prints both ffmpeg argv lists and exits without running anything.
 
 Requires `ffmpeg` (and `ffprobe`) on PATH.
+
+## Tests
+
+Run the suite scoped to this tool (collect from the project, not the repo root):
+
+```bash
+uv run --directory tools/derive-streams pytest -q
+# or, from inside the tool: cd tools/derive-streams && uv run pytest -q
+```
+
+The argv-contract tests run anywhere; the integration tests (real two-stream
+derive, byte-identical re-run, stream-count assertions) self-skip when
+`ffmpeg`/`ffprobe` are not on PATH.
