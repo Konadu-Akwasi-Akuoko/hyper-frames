@@ -38,7 +38,10 @@ when they're not good.
    talking-head source is present (`reference/talking-head.md`), add each **mode
    transition's** global timestamp to the beat list so the reviewer sees the
    reveal/hide frame — the frame where the face appears, disappears, or flips to
-   PIP is exactly where a mid-clause cut or an occluding inset shows up.
+   PIP is exactly where a mid-clause cut or an occluding inset shows up. For a flip
+   to PIP, also add a **held-graphics** timestamp (a beat where the PIP is settled
+   on-screen, not mid-flip) — the inset border/shadow and the cover's opacity only
+   read clearly once the PIP has landed.
 
 4. **If the reviewer flags anything → fix the block and re-run 1-3 on this scene
    only.** Loop until the frames look right. This is the self-correcting heart of
@@ -59,9 +62,17 @@ What to check:
 - **Legibility.** Is every piece of text comfortably readable at 1080p? Flag
   anything that reads as too small, too thin, or too low-contrast against its
   background. (Body text below ~24px or thin weights on busy backgrounds are
-  usual offenders.)
+  usual offenders.) On the **white** substrate default the offenders invert: flag
+  **dark text that's too thin/small to hold on white** (a hairline near-black weight
+  disappears into a light field the way a light/thin one did on dark), and flag
+  **very-light or pale text washing out** against the near-white base.
 - **Contrast / accessibility.** Text-to-background contrast should be clearly
-  sufficient. Flag muted-on-muted, accent-on-accent, or anything that strains.
+  sufficient. Flag muted-on-muted, accent-on-accent, or anything that strains. On
+  the **white** default add the inverse offenders: flag **pale-accent-on-white** (a
+  JS-yellow / pale-cyan accent that reads fine as ink on dark but vanishes on white —
+  it needs the darker/saturated accent-**ink** variant, see `visual-language.md`),
+  **muted-gray-on-white strain** (`--muted` mid-gray text fighting the near-white
+  base), and any **light-on-light** pairing.
 - **Anchor landing.** The emphasized element (highlight, scale pulse, reveal)
   should be visibly active on the frame captured at the word it punctuates. Flag
   emphasis that lands a beat early/late or on the wrong element.
@@ -80,12 +91,21 @@ What to check:
   filler where a visual was warranted.
 - **No editorial chrome.** Flag any corner metadata strip, scene label, running
   timecode, or footer rule (see `reference/house-rules.md`). Ambient decoratives
-  (glows, grids, drifting ghost type) are fine.
-- **No edge vignette / gradient banding.** Flag any darkening vignette around the
-  frame edges, and flag visible **banding** (concentric/stair-stepped rings in a soft
-  dark gradient) on the substrate — both compress badly and smear into motion graphics
-  at YouTube bitrates (see `visual-language.md` §1). A small contained accent glow is
-  fine; an edge-to-center ramp into black is a defect.
+  (grids, drifting ghost type, contained shapes) are fine — but on the **white**
+  default a **glow has no equivalent** (an additive bloom is invisible on white), so
+  author **contained dark/accent shapes** instead, and keep grids / ghost type as
+  **subtle dark-on-light**.
+- **Substrate present (white-default tell).** On the white default a **missing
+  substrate renders as a plausible white frame** — the dark-substrate tell (scenes
+  popping on a black field) is gone, so a clean white frame is **not** proof the
+  substrate exists. Confirm `#substrate-layer` is actually mounted in `index.html`;
+  don't read an empty white capture as a passing background.
+- **No edge vignette / gradient banding.** Flag any **edge-to-center tonal ramp** on
+  the substrate — into **white OR black** (both band at YouTube bitrates), and flag a
+  **gray corner vignette** — and flag visible **banding** (concentric/stair-stepped
+  rings in a soft gradient). All compress badly and smear into motion graphics
+  (see `visual-language.md` §1). A small **contained accent wash** is fine; a full-frame
+  ramp into either tonal extreme is a defect.
 - **Layout integrity.** Flag clipping, overlap, or content escaping the
   1920x1080 frame that `inspect` didn't already catch.
 - **Seam bleed (the seam frame).** On the mid-overlap frame, flag **any element
@@ -101,13 +121,20 @@ What to check:
   "Notes that matter").
 - **Talking-head mode (only when a talking-head source is present).** When the
   project mounts the `#face-layer` host (track-index 8), also check the mode
-  call per `reference/talking-head.md`. Flag as **blocking defects**: **(a)** a
-  PIP inset missing its **border color + drop shadow** (it reads as a glitch,
-  not a deliberate framing); **(b)** a PIP face box **occluding or overlapping
-  the live graphic** instead of sitting in its reserved safe zone. Flag as a
-  **regenerate/revisit** judgment: **(c)** a mode that doesn't best deliver the
+  call per `reference/talking-head.md`. When the scene flips to PIP, **capture a
+  HELD-GRAPHICS frame, not only the transition frames** — a defect in the inset
+  border, shadow, or graphic opacity only shows clearly while the PIP is settled and
+  on-screen, not mid-flip. Flag as **blocking defects**: **(a)** a PIP inset missing
+  its **border + drop shadow**, OR whose border is **white / near-white / invisible on
+  white** (a frameless inset reads as a glitch — the border must bind to `--fg` or
+  `--accent`, never `--border` or `--bg`/white; the drop shadow is the primary depth
+  cue and reads fine on white); **(b)** a PIP face box **occluding or overlapping
+  the live graphic** instead of sitting in its reserved safe zone; **(c)** a covering
+  **GRAPHICS scene that isn't genuinely opaque** — dark face footage **ghosting
+  through** a low-opacity white cover during the hand-off. Flag as a
+  **regenerate/revisit** judgment: **(d)** a mode that doesn't best deliver the
   beat (a face talking *about* a thing where a graphic lands harder, or a graphic
-  burying words spoken *to* the viewer); **(d)** a **face reveal landing
+  burying words spoken *to* the viewer); **(e)** a **face reveal landing
   mid-clause** instead of on a word/sentence boundary. **FACE full-frame is a
   valid, deliberate mode** — do not penalize it under the "reads as a diagram"
   or imagery-fit bullets; a bare on-camera take *is* the picture there, not a

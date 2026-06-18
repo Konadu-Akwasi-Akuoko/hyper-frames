@@ -104,15 +104,17 @@ canonical skeleton (matching the project's shipped blocks):
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <style>
     :root {
-      /* design.md tokens — copy the palette so the block is self-contained */
-      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
-      --fg: #e8eaed; --soft: #c2c9d4; --muted: #7a8493;
-      --accent: #f7df1e; --accent-2: #67e8f9; /* ... */
+      /* design.md tokens — copy the palette so the block is self-contained.
+         Light-canvas default; on white --fg is dark ink, --panel is lighter-than-bg,
+         --border is a light hairline. See visual-language.md §1. */
+      --bg: #f7f8fa; --panel: #ffffff; --border: #d8dbe0;
+      --fg: #14171c; --soft: #3a4150; --muted: #6b7280;
+      --accent: #f7df1e; --accent-2: #67e8f9; /* subject-tinted — but for accent-colored TEXT/thin emphasis on white, derive a darker/saturated accent-INK variant; a pale accent is too low-contrast as ink on white */
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
       width: 1920px; height: 1080px; overflow: hidden;
-      background: transparent;          /* lets the substrate show through */
+      background: transparent;          /* lets the (now light) substrate show through */
       font-family: "Inter", system-ui, sans-serif;
     }
     /* Scope every selector under the composition root id to avoid collisions */
@@ -146,13 +148,19 @@ Notes that matter:
 
 - `background: transparent` on `html, body` — the persistent substrate layer
   sits behind every scene; an opaque block would hide it. That substrate is not a
-  generic dark grid: it carries a **rationed subject tone** (a faint accent glow,
-  no logo) and drifts slowly. See `visual-language.md` §1. The substrate may also
-  host a **human-supplied background image** — a `background` box with
+  generic grid: on the **light-canvas default** it carries a **rationed subject
+  tone** as a SUBTLE DARK-ON-LIGHT gesture — a low-opacity accent-tinted wash or a
+  faint dark hairline grid, never an additive glow (invisible on white) — and drifts
+  slowly. See `visual-language.md` §1. The substrate may also host a
+  **human-supplied background image** — a `background` box with
   `data-asset-scope="substrate"` (a backdrop that should persist across scenes, e.g.
-  a blueprint grid or sky), promoted here instead of into a single block. It's
-  still toned down behind busy scenes so foreground always wins contrast. Contract:
-  `assets-and-media.md`. **When a talking-head source is present
+  a blueprint grid or sky), promoted here instead of into a single block. It still
+  **RECEDES** (lightens toward base, decorative alpha drops) behind busy scenes so
+  dark foreground always wins contrast. Contract: `assets-and-media.md`. **QA hazard:
+  on the white default a MISSING/unmounted substrate renders as a correct-looking
+  white frame — the old dark tell is gone — so verify `#substrate-layer` is actually
+  mounted by inspecting `index.html`, not by glancing at a frame.** **When a
+  talking-head source is present
   (`reference/talking-head.md`), this transparent background is load-bearing for the
   GRAPHICS→FACE hand-off** — the running `#face-layer` is revealed by clearing the
   scene above it, so an opaque scene background would wall the face off permanently and
@@ -290,7 +298,11 @@ Wiring rules:
   8) is one element whose **geometry animates and whose z-index flips per mode**: in
   GRAPHICS mode it sits **below** the scene graphics (the opaque-enough scene covers it,
   face running hidden underneath); in PIP it **lifts above** to a bordered, drop-shadowed
-  corner inset; in FACE it fills the frame with the scene transparent over it. The
+  corner inset — the **PIP inset border traces `--fg` or `--accent`, NEVER `--border`
+  (now a light hairline that disappears against the frame) and NEVER `--bg`/white
+  (vanishes on white → reads as a glitch); the drop shadow is the primary depth cue
+  on white** (see `reference/talking-head.md`). In FACE it fills the frame with the
+  scene transparent over it. The
   GRAPHICS↔PIP z-flip is a **discrete jump fired only while the face is covered** (never
   tweened, never on screen); while the face is visible only opacity + geometry move. The FACE/GRAPHICS/PIP
   mode is *realized here* by revealing / hiding / insetting that one host at the exact
