@@ -1,9 +1,13 @@
 # audio-editor
 
 Local web tool for fine-tuning voiceover cuts after the `cut-decider` agent
-generates an initial `cuts.json`. Reads `videos/<slug>-<date>/audio/voiceover.mp3`
-+ `transcript.json` + `cuts.json`, lets the user scrub / zoom / drag region
-edges with snap-to-word, then writes the updated `cuts.json` back.
+generates an initial `cuts.json`. Reads the *uncut* source
+`videos/<slug>-<date>/audio/raw.mp3` (preferring `transcript.raw.json` when
+present, so cuts stay re-editable after a render) + `transcript.json` +
+`cuts.json`, lets the user scrub / zoom / drag region edges with snap-to-word,
+then writes the updated `cuts.json` back. Saving only writes `cuts.json`; it
+does not render — applying the cuts to produce `voiceover.mp3` is the
+`cut-video --mode audio` pass below.
 
 ## Quickstart
 
