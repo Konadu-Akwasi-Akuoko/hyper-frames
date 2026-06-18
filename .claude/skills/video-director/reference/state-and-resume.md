@@ -10,10 +10,17 @@ the next uncovered sentence.
 
 1. Parse `index.html` and collect the **scene** hosts: `<div>`s with
    `data-composition-src="compositions/..."` that sit on a scene track. For each,
-   capture `{id, composition-id, src, start, duration, track-index}`.
+   capture `{id, composition-id, src, start, duration, track-index}`. When a
+   talking-head source is present, the per-chunk **MODE is not a sidecar** — it is
+   re-derived from the mounted hosts (whether a graphics scene covers the chunk,
+   plus the `face-layer`'s reveal/hide state at that time), so the hosts stay the
+   single source of truth (`talking-head.md`).
 2. **Exclude non-scenes:** the voiceover `<audio>`, the `substrate-layer`
-   (track-index ~7), `sfx-layer` (~19), `music-layer`. These span the full audio
-   and would otherwise look like "everything is covered."
+   (track-index ~7), `sfx-layer` (~19), `music-layer`, and — when a talking-head
+   source is present — the `face-layer` host (track-index 8). These span the full
+   audio and would otherwise look like "everything is covered." The `face-layer`
+   in particular runs the whole runtime, so leaving it in would peg the frontier
+   at full duration and break resume (`talking-head.md`).
 3. The **frontier** = `max(start + duration)` over the scene hosts. That's the
    global audio time the video is authored up to. A scaffold-only index (root +
    voiceover + maybe substrate, zero scene hosts) has frontier = 0.
@@ -61,12 +68,20 @@ if they ever disagree (e.g. the comment is stale), believe the hosts.
   next chunk's first word leaves a flash of empty frame. When you wire host N,
   set its duration to run into chunk N+1's first word (the overlap covers the
   transition); when you author N+1, confirm it starts 0.5s before its first word.
+- **Talking-head gap.** When a talking-head source is present, an uncovered
+  frontier stretch is not a blank flash — the continuous `face-layer` shows the
+  FACE through it. It is still **owed mode authoring** (graphics/PIP on top, or a
+  deliberate FACE beat), so treat it as unfinished work, not as covered
+  (`talking-head.md`).
 - **Script edited after authoring.** If `script.md` no longer matches the
   transcript (the user rewrote a line after you'd already animated it), the
   transcript timings won't line up with the new text. **Flag this to the user —
   do not silently re-author.** The transcript is the timing truth; a script edit
   that postdates the recording needs a re-record/re-transcribe, or an explicit
-  decision to animate against the old timing.
+  decision to animate against the old timing. In **talking-head mode** the
+  transcript is the take's *own* audio, so a post-record script edit also desyncs
+  the revealed face from the spoken words — a re-record/re-transcribe is the only
+  fix (`talking-head.md`).
 - **Reordered scenes.** If the user wants scenes reordered, the host `data-start`
   values (tied to transcript time) are the constraint — you can't freely reorder
   without breaking sync. Reordering means re-anchoring, which is a deliberate

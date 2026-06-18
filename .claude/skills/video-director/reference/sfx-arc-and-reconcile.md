@@ -30,6 +30,15 @@ Read each beat's verb and reach for the cue (full palette in
 Texture is not an event: a continuous drift, an ambient pulse, a per-character
 typewriter, a swarm of markers populating — leave them silent.
 
+When a talking-head source is present (`talking-head.md`), a **FACE↔GRAPHICS↔PIP
+mode transition is a scorable visual event** — score it off the table like any
+reveal (`pop` on a graphics arrival, `whoosh` on a push). But **a held
+talking-head shot with no graphic change is texture and stays silent** — a held
+talking-head shot is not an event. Guard against double-scoring the seam: the
+transition *into* graphics **is** that scene's entrance cue — score **one cue per
+reveal**, not two stacked at the seam (a transition cue and a separate entrance
+cue for the same arriving graphic).
+
 ## The hook tag (one per video, for the music pass)
 
 Mark the single largest beat of the whole video — its one biggest emotional or
@@ -52,6 +61,11 @@ onset/peak and aligns. `data-sfx-lead-ms` is a ±100 ms tuning knob only.
 Each cue's signature `default_asset` applies automatically — pin `data-sfx-asset`
 only to deliberately diverge for one beat.
 
+For a talking-head mode-transition cue (`talking-head.md`), the **impact frame is
+the crossfade midpoint / push settle** — which coincides with the pause boundary
+the transition lands on. The scene-local ms math is unchanged: it's still
+`data-sfx-at-scene-ms`, just measured at that midpoint/settle frame.
+
 ## The compact per-pass proposal + standing approval
 
 The approval gate stays — annotations are written only on `yes` / `approve` /
@@ -70,6 +84,10 @@ Approve to write?  [yes / refine / abort]   (or "auto-approve SFX for the rest")
   when you pin a divergence).
 - `at <NNNNms>` is the scene-local impact frame.
 - Skips matter as much as writes — they make the editorial reasoning legible.
+- In talking-head mode (`talking-head.md`), a transition cue's reason-string reads
+  as the transition itself (`graphics crossfades over face`); a held-face beat is a
+  logged skip with the texture rationale (`held talking-head shot, no graphic
+  change`).
 - **Standing approval:** if the user replies *"auto-approve SFX for the rest"*,
   drop the per-pass gate for the remainder of the loop and write directly each
   pass — but still print the proposal block for the record and run the backstops.
@@ -127,9 +145,16 @@ one reconcile pass before handing off:
    ```bash
    grep -rn 'data-sfx-hook' compositions/
    ```
+   In talking-head mode (`talking-head.md`), the single hook must map to a **real
+   motion-graphic beat**, never a **bare face reveal** — a held or revealed face is
+   texture, not the video's biggest event; pin the hook to the graphic that carries
+   the moment.
 4. **sfx-level sweep.** Run `tools/sfx-level` across every cue's landing time
    (`--batch compositions/sfx.html`) to catch any cue fighting loud VO; duck the
-   offenders below 0.5 with `data-sfx-volume` and re-run `sfx-plan`.
+   offenders below 0.5 with `data-sfx-volume` and re-run `sfx-plan`. When a
+   talking-head source is present (`talking-head.md`) this sweep matters **more**:
+   the on-camera audio is near-omnipresent (no graphics-only stretches where VO
+   drops out), so more cues land over live voice — sweep every landing.
 5. **Full-runtime mount.** Verify the `sfx-layer` host's `data-duration` spans the
    full runtime so no late cue is clipped.
 

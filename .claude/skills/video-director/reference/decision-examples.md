@@ -17,6 +17,10 @@ and the font roles:
            — OR —  text-only — <named candidate> weighed, rejected because <principled reason>
   Type-role: <role→font assignments for this chunk; verbatim human quote → human-voice font, never system font>
 
+When a talking-head source is detected (Step A), a **presentation-mode** line joins the
+verdict — decided **alongside** imagery and type-role, not instead of them; the policy lives
+in `reference/talking-head.md` and the worked verdicts are Set C below.
+
 A reaction box uses `emotion=` (primary) + `desc=` and omits `referent=`; the other classes use `referent=` and omit `emotion=`. `treatment=` carries image-prep presets only (grain, cutout, duotone); source/licence notes live in their own clause, never crammed into `treatment`.
 
 ## Set A — does this beat earn an image?
@@ -141,6 +145,62 @@ A deep-sea cable documentary narrates the bandwidth a single fiber pair carries,
   Imagery: text-only — a submarine-cable-map glyph was weighed, rejected because the map is decorative backdrop, not the subject of this beat (the bandwidth claim is), and a literal cable icon would be abstract chrome that competes with the number the line lands on
   Type-role: narration line → system font (Inter), fg weight; the source credit beneath it → mono (JetBrains Mono) in the muted color (label/metadata role, never narration)
 
+## Set C — which presentation mode delivers this beat?
+
+Three worked verdicts on the **presentation-mode** line — emitted **only when a talking-head
+source is present** (`reference/talking-head.md`), inert on the default graphics-only
+pipeline. The discipline mirrors Set A: name the mode you weighed and **rejected** and why,
+and land the transition on a real transcript pause / sentence boundary — never a round number,
+never mid-clause. These beats are deliberately on *other* topics so the instinct generalises;
+each emits the verbatim MODE line. GRAPHICS being the majority is an *outcome* of explainer
+content, not a slot to fill.
+
+### GRAPHICS full-frame — the default, face runs hidden underneath
+
+A talking-head explainer on how TLS handshakes work lands on: *"The client and server trade
+certificates, agree on a cipher, and only then does a single byte of your data move."* The
+beat is a three-step mechanism — the information lives in the *sequence*, which a staged
+diagram carries far harder than a face describing it. So the graphics archetype covers the
+frame and the take keeps running **hidden underneath, audio unbroken** — the majority case for
+a mechanism beat. FACE full-frame was weighed and rejected: the words are *about* a process,
+not *to* the viewer, so a talking head would bury the steps it's narrating; PIP was rejected
+too — there's no reaction or aside to inset, the diagram wants the whole frame. The transition
+lands on the sentence boundary after the *prior* line ("…that's the part most people skip.")
+at 41280 ms, a clean full stop, not mid-handshake.
+
+  MODE: graphics — transition at "skip" (41280) via crossfade
+
+### FACE full-frame — direct address, the words are *to* the viewer
+
+A talking-head video on burnout lands on: *"And if you've felt that creeping dread on a Sunday
+night — I'm telling you, you are not broken, and you are not alone."* This is direct address:
+the line is *to* the viewer, not *about* a thing, and the sincerity pays off on the creator's
+face, where any graphic would feel like hiding from the moment. So the take fills the frame —
+archetype and imagery are moot here. GRAPHICS full-frame was weighed and rejected: there is no
+referent to show, and covering the face would mute the one beat that earns eye contact; PIP was
+rejected because shrinking this line into a corner inset undercuts the intimacy it's built on.
+The transition lands on the `>400ms` pause before "And if you've felt…" at 138640 ms — a
+held breath the narration-map flags — so the reveal breathes rather than whip-cuts.
+
+  MODE: face — transition at "And" (138640) via crossfade
+
+### PIP — a quick aside beside a live graphic, face inset in the reserved zone
+
+A talking-head explainer on inflation freezes on a line chart of CPI climbing, and the creator
+adds: *"Now — full disclosure, I lived through the '08 crunch, so this one hits different for
+me."* The chart is the subject and stays live and fully visible, but the aside is *personal* —
+a wink to the viewer that wants the face present without surrendering the data. So the face
+lifts into a **bordered, drop-shadowed inset** in the chart's reserved **lower-right** safe
+zone (the archetype reflowed its axis labels left to clear it), reading as deliberate framing,
+never occluding a single plotted point. FACE full-frame was weighed and rejected — it would
+throw away the chart the aside is layered over; GRAPHICS full-frame was rejected because hiding
+the face drops the personal-aside register entirely. The transition lands on the em-dash pause
+after "Now" at 232900 ms.
+
+  MODE: pip — transition at "Now" (232900) via push; pip-safe-zone: lower-right
+
 ## Reading these
 
 `text-only` is a first-class verdict — but only when it names the candidate it weighed and the principled reason it lost (literal/cheesy, not the subject, abstract with no mark, already carried by a neighbour); a `text-only` with no named candidate is the silent skip this pass exists to kill. None of this is a quota: a run of YES boxes and a run of bare-text cards are equally a smell, and the gate, not a target count, decides each beat. The trigger is always the sentence in front of you, never the scene number.
+
+The same no-quota / name-your-rejection discipline governs the **presentation-mode** verdict when a talking-head source is present (Set C): a mode call — *especially* the default GRAPHICS — is first-class only when it names the mode it weighed and rejected and why, just as `text-only` must name its declined candidate; an unjustified "graphics" is the same silent skip. An all-one-mode run (every beat graphics, or every beat face) is a smell exactly like an all-imagery run — content, not a fixed slot, decides each beat, and GRAPHICS leading is an outcome to *earn*, not a target to hit.

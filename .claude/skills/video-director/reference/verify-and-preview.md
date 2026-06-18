@@ -34,7 +34,11 @@ when they're not good.
    Agent tool with `model: sonnet`) to `Read` the batch of PNGs and grade them
    against the rubric below. Offloading the image read to Sonnet keeps the loop
    cheap — the director (often on Opus) doesn't burn its own context staring at
-   pixels. **Claude does the looking — do not use `--describe` / Gemini.**
+   pixels. **Claude does the looking — do not use `--describe` / Gemini.** When a
+   talking-head source is present (`reference/talking-head.md`), add each **mode
+   transition's** global timestamp to the beat list so the reviewer sees the
+   reveal/hide frame — the frame where the face appears, disappears, or flips to
+   PIP is exactly where a mid-clause cut or an occluding inset shows up.
 
 4. **If the reviewer flags anything → fix the block and re-run 1-3 on this scene
    only.** Loop until the frames look right. This is the self-correcting heart of
@@ -95,6 +99,19 @@ What to check:
   belong during the overlap. The transition must cover/occlude, and every element
   must obey the entrance invariant (see `composition-structure.md` wiring rules +
   "Notes that matter").
+- **Talking-head mode (only when a talking-head source is present).** When the
+  project mounts the `#face-layer` host (track-index 8), also check the mode
+  call per `reference/talking-head.md`. Flag as **blocking defects**: **(a)** a
+  PIP inset missing its **border color + drop shadow** (it reads as a glitch,
+  not a deliberate framing); **(b)** a PIP face box **occluding or overlapping
+  the live graphic** instead of sitting in its reserved safe zone. Flag as a
+  **regenerate/revisit** judgment: **(c)** a mode that doesn't best deliver the
+  beat (a face talking *about* a thing where a graphic lands harder, or a graphic
+  burying words spoken *to* the viewer); **(d)** a **face reveal landing
+  mid-clause** instead of on a word/sentence boundary. **FACE full-frame is a
+  valid, deliberate mode** — do not penalize it under the "reads as a diagram"
+  or imagery-fit bullets; a bare on-camera take *is* the picture there, not a
+  missed asset box.
 - **Per-scene distinctness.** Compare this scene's archetype to its neighbour's.
   Flag a scene that repeats the previous one's shape (e.g. a second centered text
   card in a row) — adjacent scenes should look different at a glance
