@@ -38,35 +38,44 @@ So the cut master is the single source both the picture layer and the voiceover
 derive from. The director runs this as a one-time Step-A prep when it finds an
 un-transcoded source; it does not own it as composition mechanics.
 
-1. **Plan the cuts on the raw take.** Extract a scratch audio track, transcribe
-   it, and plan cuts exactly as the recorded-voice path already does — the
-   `transcribe-and-plan-cuts` skill + `tools/audio-editor` produce `cuts.json`.
-   (This is the *only* step that touches the standalone audio, and only to decide
-   cut points.)
-
-2. **Apply `cuts.json` to the *video*.** The audio-editor renders audio cuts;
-   the picture needs the **same** keep-windows applied with one more ffmpeg pass —
-   select the kept segments from `cuts.json` and concat them into a cut master.
-   Same timestamps, applied to the video stream, so picture and embedded audio
-   are cut together and stay locked.
-
-3. **Derive both streams from the cut master** — guaranteed frame-identical
-   because they share one source and one set of cuts:
+1. **Plan the cuts on the raw take.** Extract a scratch audio track from the take
+   with `cut-video`, then transcribe + plan cuts exactly as the recorded-voice
+   path already does — `transcribe-and-plan-cuts` + `tools/audio-editor` produce
+   `cuts.json`. (The extracted audio is *only* for deciding cut points; the cuts
+   land on the video, not on it.)
 
    ```bash
-   # Picture layer: cut master -> H.264, keep native resolution (visually
-   # lossless), DROP audio (the <video> is muted picture-only), fast-start seek.
-   ffmpeg -i cut-master.mov -an -c:v libx264 -crf 18 -preset slow \
-     -pix_fmt yuv420p -movflags +faststart assets/video/talking-head.mp4
+   uv run --project tools/cut-video cut-video extract-audio <raw-take> -o audio/raw.mp3
+   ```
 
-   # Voiceover: the cut master's audio — HyperFrames' timing + render audio
-   # comes from THIS <audio> element, never the muted seek-driven <video>.
-   ffmpeg -i cut-master.mov -vn -c:a libmp3lame -q:a 2 audio/voiceover.mp3
+2. **Apply `cuts.json` to the *video*.** The same keep-windows that clean the
+   audio must clean the picture, or the mouth desyncs on the first cut. `cut-video`
+   selects the kept segments from `cuts.json` and concats them into a cut master —
+   same timestamps, applied to the video stream, so picture and embedded audio are
+   cut together and stay locked.
+
+   ```bash
+   uv run --project tools/cut-video cut-video cuts.json <raw-take.mov> -o assets/video/cut-master.mov
+   ```
+
+3. **Derive both streams from the cut master** — `derive-streams` splits the cut
+   master into the muted picture layer and the voiceover in one deterministic pass,
+   guaranteed frame-identical because they share one source and one set of cuts.
+   The picture transcodes to H.264 at native resolution (visually lossless),
+   audio-dropped (the `<video>` is muted picture-only), fast-start for seek; the
+   voiceover is the cut master's audio (HyperFrames' timing + render audio come
+   from THIS `<audio>` element, never the muted seek-driven `<video>`).
+
+   ```bash
+   uv run --project tools/derive-streams derive-streams assets/video/cut-master.mov \
+     --video-out assets/video/talking-head.mp4 --audio-out audio/voiceover.mp3
    ```
 
 4. **Re-transcribe the cut `voiceover.mp3`** → the final `transcript.json`. After
    cuts every timestamp has shifted, so timing truth must reflect the **cut**
-   timeline, not the raw take (the "after the cuts are applied" re-transcribe).
+   timeline, not the raw take. This is the `transcribe-and-plan-cuts` re-transcribe
+   under "After the cuts are applied" — preserve `transcript.raw.json` first, then
+   run it on `audio/voiceover.mp3`; don't restate that skill here.
 
 Keep **native resolution** through the transcode: the face host is sized to
 whatever the root declares (Step A's host-matching rule), and a 4K root wants a
@@ -117,7 +126,10 @@ Per chunk, the take is presented one of three ways:
 - **GRAPHICS full-frame** — a motion-graphics scene (the normal archetype menu,
   `visual-language.md` §2) covers the frame; the face footage keeps running
   **hidden underneath**, audio unbroken. **This is the default and the majority**
-  for an explainer — the graphics carry the information, the face is texture.
+  for an explainer — the graphics carry the information, the face is texture. On
+  white the covering GRAPHICS scene must be genuinely **opaque** (an opaque light
+  fill), not a tinted-transparent white, or the dark face footage ghosts through;
+  verify on a **held-graphics** frame, not just the transition frame.
 - **PIP** — the face in a **bordered, drop-shadowed inset** beside or around the
   live motion graphic, in a reserved safe zone.
 
@@ -146,12 +158,21 @@ rhythm, not a new gate.
 
 ## PIP — must stand out, must never occlude
 
+Canvas color, emphasis primitives, and decoratives are governed centrally in
+`visual-language.md` §1/§2 + the `design.md` token recipe — this file adds only
+the PIP-border-not-white guard and the FACE/GRAPHICS opacity-on-white note; do
+not restate the palette here.
+
 Two hard rules, both reviewer-enforced defects (`verify-and-preview.md`):
 
 - **Stand out.** The inset carries a **border color + drop shadow** so it reads
-  as a deliberate framing of the face, not a glitch. This is content-bearing
-  framing, **not** editorial chrome — it is exempt from the no-chrome house rule
-  the way a labeled diagram is, because the face *is* the subject.
+  as a deliberate framing of the face, not a glitch. On the **light-canvas
+  default** the border must be a **non-white color** (bind to `--fg` or
+  `--accent`, never `--border`/`--bg`), or it vanishes into white and reads as
+  the glitch this rule prevents; the drop shadow reads fine on white and is the
+  primary depth cue. This is content-bearing framing, **not** editorial chrome —
+  it is exempt from the no-chrome house rule the way a labeled diagram is,
+  because the face *is* the subject.
 - **Never occlude the live graphic.** The chosen archetype must **reserve a safe
   zone** for the inset, or the face sits in genuine dead space — the graphic
   stays fully visible. The reservation is a structural input the archetype
@@ -169,7 +190,9 @@ boundaries (after `.!?`) are the strong signal, `>400ms` pause gaps the
 secondary one (`transcript-timing.md` narration-map). It **crossfades or
 clean-pushes**, never a mid-clause whip-cut. The reveal/hide is itself an
 entrance and obeys the seam discipline (cover, don't cross-dissolve;
-`composition-structure.md`).
+`composition-structure.md`). On white the FACE↔GRAPHICS crossfade gap reads as a
+**white flash** (it read black on dark); prefer a clean push or opaque cover over
+a cross-dissolve through bare substrate.
 
 **The locked face layer is the one exception to the Entrance invariant.** The
 invariant ("nothing renders solid at scene-local t=0", to stop seam bleed)
