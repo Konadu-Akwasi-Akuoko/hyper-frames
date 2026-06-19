@@ -67,8 +67,11 @@ the plugin — do not delete them when refreshing it):
 - **Script & research:** `script-writer`, `youtube-seo-research`.
 - **Voiceover:** `transcribe-and-plan-cuts` (recorded voice, the default),
   `voiceover-elevenlabs-v2` / `voiceover-elevenlabs-v3` (TTS).
-- **Packaging:** `thumbnail-and-title-generator`, `description-writer`,
-  `create-srt-and-translate`.
+- **Packaging:** `thumbnail-and-title-generator` (now **reference-driven** — every
+  variant replicates the layout of a proven thumbnail picked from the
+  `thumbnailInspo/` library rather than designing from scratch; composition from
+  the reference, the locked "Specimen" style vocabulary for the voice),
+  `description-writer`, `create-srt-and-translate`.
 - **Publishing:** `youtube-studio`, `video-publish-qa`, `shorts-creator`.
 - **Music & catalog growth:** `audio-bed-music`, `design-catalog-add`, and
   `motion-inspo-add` — which grows TWO repo-root inspiration libraries on
@@ -78,7 +81,14 @@ the plugin — do not delete them when refreshing it):
   (whole-video scene-change × narration pacing studies; `script-writer` cites
   its measured numbers when calibrating reset cadence). A bare whole-video URL
   defaults to combined ingest into both from one download; see each library's
-  CLAUDE.md for the curation contract.
+  CLAUDE.md for the curation contract. A **third** repo-root inspiration library,
+  `thumbnailInspo/` (top YouTube thumbnails harvested from proven creators —
+  one tagged entry per thumbnail with a replication-grade `Layout map`), is grown
+  by `tools/thumbnail-inspo/` (`fetch.py` harvests from the CDN bot-wall-free;
+  `grid.py` overlays a measuring grid; `build_readme.py` renders the index from
+  the cataloging pass) and consumed by `thumbnail-and-title-generator`, which
+  picks + grids + replicates a reference for every variant. See
+  `thumbnailInspo/CLAUDE.md` for the pick-and-mimic contract.
 
 The **publishing + retention skills** are grounded in `docs/creator-patterns.md`
 — a synthesized reference distilled from 237 transcripts across 12 channels
