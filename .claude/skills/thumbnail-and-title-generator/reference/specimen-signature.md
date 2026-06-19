@@ -4,10 +4,19 @@ The channel's thumbnail brand: the **Specimen** face-forward signature. These
 constants do not change per video. Changing them is a rebrand exercise, not a
 per-video parameter.
 
-The brand identity lives in **base + mono tell + layout + pointer grammar** —
-that fixed silhouette is what makes the channel recognizable in a crowded feed.
+The brand identity lives in **base + mono tell + type voice + pointer grammar**.
 Exactly one variable is tunable per video: the **accent hue** (a palette, not a
-single locked color). Everything else holds.
+single locked color). These style constants hold.
+
+> **Layout is no longer a fixed constant.** The generator now *replicates the
+> composition of a proven thumbnail* picked from `thumbnailInspo/` per variant
+> (see `reference/inspiration-mimicry.md`), so the **layout / silhouette is
+> reference-driven**, not the single face-right shape this doc originally locked.
+> What stays locked is the **style vocabulary** below — the type voice (Inter 900
+> 2-tone + JetBrains Mono tell), the accent palette, the green-tinted near-black
+> base, the precision annotation kit, and the face compositing recipe. Read the
+> "Face — bled to the right" / "face-right layout" notes as the *default* slot the
+> token scaffold fills, overridden per variant to match the chosen reference.
 
 If you ever rebrand, re-run the visual-signature design exercise (propose 3
 candidate signatures from a fresh corpus read, pick one, update both this file

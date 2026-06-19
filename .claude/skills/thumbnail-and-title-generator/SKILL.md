@@ -3,10 +3,12 @@ name: thumbnail-and-title-generator
 description: >-
   Guided generator that turns a hyper-frames video's working title into three
   production-ready YouTube thumbnails (1280x720) or Shorts/TikTok covers
-  (1080x1920) in the channel's locked "Specimen" signature — a big emotional
-  face still + a 2-tone headline + a monospace stat tell + a precision pointer —
-  each PAIRED with a corpus-derived YouTube title, in an iterative
-  render-and-score review loop. Use whenever the user wants to create, draft,
+  (1080x1920). Each variant REPLICATES the layout of a real, high-performing
+  thumbnail picked from the `thumbnailInspo/` reference library (composition
+  from the reference; the channel's "Specimen" style vocabulary — Inter 900
+  2-tone headline + JetBrains Mono stat tell + precision pointer + accent
+  palette — for the voice), PAIRED with a corpus-derived YouTube title, in an
+  iterative render-and-score review loop. Use whenever the user wants to create, draft,
   generate, design, or A/B test thumbnails AND/OR titles for a hyper-frames
   video — phrases like "make a thumbnail", "I need thumbnails", "generate
   thumbnail variants", "design a cover", "write the title", "title this video",
@@ -24,12 +26,26 @@ a YouTube title — for a single hyper-frames video. Output per round: three HTM
 variants + a contact-sheet review page + three rendered PNGs, scored by a
 subagent; on approval, three PNGs ready for YouTube's native A/B test.
 
-The visual signature is **locked** ("Specimen") and documented in
-`reference/specimen-signature.md` + `templates/styles.css`. You do **not**
-redesign it per video. The ONE per-video brand variable is the **accent hue**
-(a palette class). Per video you choose: the headline text, the accent word +
-hue, the face still, the annotation, the (optional) brand chip, and the paired
-title.
+**You never design a thumbnail from a blank canvas.** Every variant *replicates
+the layout of a proven thumbnail* picked from the `thumbnailInspo/` reference
+library (top thumbnails harvested from creators who win this niche's click), then
+rebuilds that same composition with OUR content. Read
+`reference/inspiration-mimicry.md` — it is the spine of this skill — and the
+library contract in `thumbnailInspo/CLAUDE.md`.
+
+Two halves, kept distinct:
+
+- **Composition comes from the chosen reference** — archetype, where each element
+  sits, the device that stops the scroll, the size hierarchy. Read off a measuring
+  grid (`tools/thumbnail-inspo/grid.py`) so positions are exact.
+- **Style vocabulary comes from the locked "Specimen" signature**
+  (`reference/specimen-signature.md` + `templates/styles.css`) — the Inter 900
+  2-tone headline, the JetBrains Mono stat tell, the precision annotation kit, the
+  face compositing, and the accent **palette** (the one per-video hue variable).
+
+We copy the *arrangement* (a public, uncopyrightable pattern) and swap ALL the
+content — our headline, accent hue, face still, icons, stat. We never reproduce a
+reference's face, artwork, screenshot, or text.
 
 ## Pre-flight check
 
@@ -38,6 +54,14 @@ Verify the signature is locked: `templates/styles.css` contains real CSS and
 
 > "Visual signature not yet locked. See `reference/specimen-signature.md` for
 > the rebrand process before generating thumbnails."
+
+Verify the reference library exists: `thumbnailInspo/README.md` has a populated
+`## Quick index` table. If it's missing or empty, refuse and point at the
+harvester:
+
+> "Thumbnail reference library empty. Run `python3 tools/thumbnail-inspo/fetch.py`
+> then catalog it (see `thumbnailInspo/CLAUDE.md`) before generating thumbnails —
+> this skill replicates a reference, it does not design from scratch."
 
 ## Division of labor (hard rule)
 
@@ -78,23 +102,54 @@ From `<video-dir>`: read `outline.md` (H1 = working title) and `script.md`
 mono tell). If `outline.md` is missing/unusable, ask for the title + a 2-line
 summary. If `script.md` is missing, warn but proceed.
 
-Then probe `<video-dir>/seo/research.json`: **present** → load it for Step 4
+Then probe `<video-dir>/seo/research.json`: **present** → load it for Step 5
 (`Using SEO research from <date>.`); **missing** → ask once: run the
 `youtube-seo-research` skill now (~25s)? On yes, invoke it and load the result;
 on no/skip, proceed without and don't re-prompt this session. Never block on it.
 
-### Step 3 — Write three 2-tone headlines
+### Step 3 — Pick + grid the reference layouts (drives Steps 4–8)
+
+**Load `reference/inspiration-mimicry.md` now** — it is the spine of the build.
+Then open `thumbnailInspo/README.md` and scan the `## Quick index` table only.
+
+Pick **three references**, one per variant, deliberately spread across different
+archetypes/devices so the round is a real choice (e.g. a face-reaction, a
+giant-number stat, a comparison-vs) — matched to the video's beats via each row's
+`archetype` / `device` / `mimic-for`. (If the user asked for variations on a
+single idea, pick ONE reference and vary headline/accent/face across a/b/c.) In
+vertical mode, prefer references that survive a 9:16 crop. Print the picks:
+
+`A ← thumbnailInspo/<channel>/<file> (<slug>): <archetype>/<device> — why it fits.`
+
+Then **grid each picked reference** and read its element positions in the same
+1280×720 space the templates use:
+
+```bash
+python3 tools/thumbnail-inspo/grid.py thumbnailInspo/<channel>/<file>.jpg \
+  --out <video-dir>/thumbnails/round-N/ref/<letter>.grid.png
+```
+
+`Read` each gridded PNG and record, per variant: the face/object zone (cells +
+x,y + fill), the headline zone (cells + baseline y + which word pops), and the
+device/stat/badge position. Cross-check against that entry's `Layout map:` line.
+These positions drive the headline sizing (Step 4), accent (Step 6), face side
+(Step 7), and the composition (Step 8). Picking + gridding a reference is
+**mandatory** for every variant — never design a layout from scratch.
+
+### Step 4 — Write the 2-tone headlines (shaped to each reference's text zone)
 
 Load `reference/headline-recipes.md`. Produce three headline texts that differ
 on **direction** (direct upgrade / sweeping reframe / punchy declarative). Each
 is the Specimen 2-tone shape: white flanking row(s) + ONE accent **punch** row
 + a monospace `// tell` (carry a concrete stat/number when one exists). ALL
-CAPS for the headline rows. Size so the longest effective row fits the ~738px
-left column (face cleared on the right); if it won't, rewrite shorter — never
-overflow. Sizing: flanking base on `.thumbnail-text`, `.punch` = 1.7em, mono
-tell = 0.42em.
+CAPS for the headline rows. **Size + shape each headline to fit its variant's
+reference text zone** (the cells/width you read in Step 3) — a centered big-text
+reference wants a short punchy line; a text-left-face-right reference wants the
+multi-row stack in the left column. If a line won't fit its zone, rewrite shorter
+— never overflow. Sizing: flanking base on `.thumbnail-text`, `.punch` = 1.7em,
+mono tell = 0.42em.
 
-### Step 4 — Pair a YouTube title to each headline
+### Step 5 — Pair a YouTube title to each headline
 
 Load `reference/title-engine.md`. Write **one** paired YouTube title per
 variant — the searchable, grounded version of the thumbnail's bigger claim
@@ -105,17 +160,24 @@ demand phrases, saturation warning) and let it inform — not dictate — the
 titles. The thumbnail and title do different jobs; never make the title a
 sentence-cased copy of the headline.
 
-### Step 5 — Pick the accent word + accent hue
+### Step 6 — Pick the accent word + accent hue
 
 Load `reference/accent-recipes.md`. Per variant: (a) which word is the **punch/
 accent** (Tier 1 topic noun always; Tier 2 tension verb/adjective; ≤2 accent
 regions); (b) which **hue** from the palette (`acc-teal` default; choose by
 topic/emotion). Use `acc-red` only for emotionally-red beats — it is the
-niche's most-saturated accent; lean cooler/unclaimed hues for contrast.
+niche's most-saturated accent; lean cooler/unclaimed hues for contrast. If the
+reference's device is a danger/worst beat in red, `acc-red` is the right call;
+otherwise keep the reference's *role* (one hot accent) in our cooler palette.
 
-### Step 6 — Source-prep the face (+ optional brand chip)
+### Step 7 — Source-prep the face (+ optional brand chip)
 
-The user supplies the face still. Cut it out and **defringe/despill** per
+Only if the chosen reference has a face. **Faceless references** (logo-grid,
+object-hero, code-screenshot, diagram, big-text) take **no** face — do not force
+one in; build their hero element instead (Step 8).
+
+When the reference has a face, the user supplies the still. Cut it out and
+**defringe/despill** per
 `reference/compositing.md` (`npx hyperframes remove-background`, then the
 ImageMagick erode/despill recipes). Save the cleaned cutout under
 `<video-dir>/thumbnails/cutouts/`. Same face across a round's three variants
@@ -125,12 +187,26 @@ matte fringe — fix the PNG.
 Optional brand chip: load `reference/brand-chip.md` only if the topic IS a
 nameable brand (JS, React, Docker…). Most thumbnails need none.
 
-### Step 7 — Compose + write the variant HTML + contact sheet
+### Step 8 — Compose by replication + write the variant HTML + contact sheet
 
-Create `<video-dir>/thumbnails/round-N/` (or `round-N-vertical/`). Read
-`templates/variant.html` + `templates/contact-sheet.html` and substitute
-tokens **globally** (regex `/g` in JS, `re.sub` in Python — token names appear
-in both the doc comment and the markup).
+Create `<video-dir>/thumbnails/round-N/` (or `round-N-vertical/`). Each variant
+**rebuilds its Step-3 reference's composition** with our content, in the Specimen
+style vocabulary. Per `reference/inspiration-mimicry.md`: land OUR elements at the
+positions you read off the reference grid — face/object on the reference's side
+(override the CSS default via inline `style`), headline in its zone, the
+scroll-stopping device reproduced with a signature primitive (annotation kit,
+`.chip`, mono `.stat`, or a bespoke absolutely-positioned hero block) at the
+reference's coordinates. Faceless references get no face. Copy the arrangement;
+never the reference's face/artwork/screenshot/text.
+
+`templates/variant.html` is the scaffold — read `variant.html` +
+`templates/contact-sheet.html` and substitute tokens **globally** (regex `/g` in
+JS, `re.sub` in Python — token names appear in both the doc comment and the
+markup). For layouts that differ from the default Specimen silhouette, add inline
+`style` position overrides to the `.thumbnail-text` / `.face-wrap` / `.anno` /
+`.chip` elements (and bespoke hero `div`s) so the composition matches the
+reference — the token slots cover the common face-right case; the overrides cover
+the rest.
 
 `variant.html` tokens: `STYLES_HREF` (absolute file:// to `templates/styles.css`),
 `TITLE_PLAIN`, `THUMBNAIL_CLASS` (`""`|`vertical`), `ACCENT_CLASS` (`acc-*`),
@@ -140,12 +216,13 @@ cutout), `ROW_FONT_SIZE_PX` (flanking base), `TITLE_ROW_1..5` + `ROW_1..3_CLASS`
 `MONO_TELL`, `CHIP_HTML` (`""` or a positioned `.chip`), `ANNOTATION_SVG`
 (`""` or a positioned `.anno` inline-SVG from `reference/annotation-kit.md`).
 
-**Place the face, pointer, chip, and any annotation by reading the numbered
-coordinate grid**: append `?grid` to a variant URL in the browser to see the
-20px/100px graph + numbered x/y axes + title-safe border, read the target
-(x, y), and set the element's `left/top` + the annotation endpoint to it. Use
-the precision pointer / bracket / ring from the kit — **never a hand-drawn
-scribble arrow**, never the `leader-line` library.
+**Place every element against BOTH grids**: read the target (x, y) off the
+reference's `ref/<letter>.grid.png` (Step 3), then append `?grid` to our variant
+URL to see the 20px/100px graph + numbered x/y axes + title-safe border and set
+the element's `left/top` (+ any annotation endpoint) to the matching coordinate.
+Our position should mirror the reference's. Use the precision pointer / bracket /
+ring from the kit — **never a hand-drawn scribble arrow**, never the `leader-line`
+library.
 
 Write `a.html`, `b.html`, `c.html`, `contact-sheet.html` into the round folder.
 In vertical mode use the per-variant block from `reference/vertical-mode.md`;
@@ -180,7 +257,7 @@ markup (the `<div class="thumbnail …">…</div>` block **without** the trailin
 `<script>`), inlined in both wraps; `{{TITLE_PLAIN}}` = the headline text,
 `{{YOUTUBE_TITLE}}` = the paired title.
 
-### Step 8 — Render the round + self-verify + score
+### Step 9 — Render the round + self-verify + score
 
 Render each variant to `round-N/out/{a,b,c}.png` (single-file mode):
 
@@ -192,12 +269,16 @@ node <repo-root>/tools/thumbnail-render/bin/render.mjs \
 
 Then load `reference/qa-loop.md` and run it: **Read each PNG yourself**,
 **crop-zoom the risky edges** (`magick … -crop … +repage`), then spawn a
-subagent to **score** each (Sonnet to iterate, Opus to verify). Fix the top
+subagent to **score** each (Sonnet to iterate, Opus to verify). Add a
+**resemblance check**: put each rendered PNG next to its reference's
+`ref/<letter>.grid.png` and confirm the *composition* matches (element positions,
+size hierarchy, device, reading path) — content is all ours, layout is the
+reference's. If it doesn't read as the same layout family, re-place. Fix the top
 issues (cutout fringe is priority), re-render, re-score. Do not present until
-each variant is **≥8/10 AND zero FAIL on cutout edges** AND your own eyes
-agree. Never report unverified output.
+each variant is **≥8/10 AND zero FAIL on cutout edges AND the composition matches
+its reference** AND your own eyes agree. Never report unverified output.
 
-### Step 9 — Present + iterate
+### Step 10 — Present + iterate
 
 Tell the user the round is ready: the `file://` contact-sheet URL (each card
 shows the paired YouTube title; `?grid` overlays the numbered coord grid), plus
@@ -208,7 +289,7 @@ Never pick a winner among the three, and never declare "good enough" — the use
 judges and YouTube's A/B mechanism measures. The loop ends only when the user
 says "ship it" / "export" / "approved".
 
-### Step 10 — Final export
+### Step 11 — Final export
 
 On approval, render the chosen round to the video folder:
 
@@ -228,8 +309,14 @@ sources (description/credits).
 
 ## Hard rules (always in effect)
 
+- **Every variant replicates a `thumbnailInspo/` reference — never design from
+  scratch.** Pick the reference (Step 3), grid it, read positions, rebuild the
+  composition with our content. Copy the *arrangement*; swap ALL content. Never
+  reproduce a reference's face, artwork, screenshot, or text. Spread the three
+  variants across different archetypes.
 - **The user supplies + credits the face; you composite.** Never source
-  third-party imagery yourself. Always defringe/despill the cutout.
+  third-party imagery yourself. Always defringe/despill the cutout. Faceless
+  references take no face.
 - **2-tone headline:** white flanking + ONE accent punch row + a mono `// tell`.
   ALL CAPS headline. ≤2 accent regions.
 - **Accent = one palette hue per video** (`acc-*`). Red is available but is the
@@ -250,15 +337,16 @@ sources (description/credits).
 
 ## Reference files (load on demand)
 
-- `reference/specimen-signature.md` — the locked signature + accent palette + why. Load at pre-flight / rebrand discussion.
-- `reference/headline-recipes.md` — the 2-tone headline patterns. Load at Step 3.
-- `reference/title-engine.md` — corpus-derived paired-title formulas. Load at Step 4.
-- `reference/accent-recipes.md` — accent word + hue selection. Load at Step 5.
-- `reference/compositing.md` — cutout / defringe / despill / rim-light + source-image requirements. Load at Step 6.
-- `reference/brand-chip.md` — the optional per-topic brand chip. Load at Step 6 only if the topic is a brand.
-- `reference/annotation-kit.md` — the inline-SVG primitives + coord-grid placement. Load at Step 7.
-- `reference/qa-loop.md` — the subagent QA checklist + ship threshold. Load at Step 8.
-- `reference/iteration-recipes.md` — feedback interpretation. Load at Step 9.
+- `reference/inspiration-mimicry.md` — **the spine: pick a `thumbnailInspo/` reference, grid it, replicate the layout with our content.** Load at Step 3.
+- `reference/specimen-signature.md` — the locked style vocabulary (type/color/annotation/face) + accent palette + why. Load at pre-flight / rebrand discussion.
+- `reference/headline-recipes.md` — the 2-tone headline patterns. Load at Step 4.
+- `reference/title-engine.md` — corpus-derived paired-title formulas. Load at Step 5.
+- `reference/accent-recipes.md` — accent word + hue selection. Load at Step 6.
+- `reference/compositing.md` — cutout / defringe / despill / rim-light + source-image requirements. Load at Step 7.
+- `reference/brand-chip.md` — the optional per-topic brand chip. Load at Step 7 only if the topic is a brand.
+- `reference/annotation-kit.md` — the inline-SVG primitives + coord-grid placement. Load at Step 8.
+- `reference/qa-loop.md` — the subagent QA checklist + ship threshold. Load at Step 9.
+- `reference/iteration-recipes.md` — feedback interpretation. Load at Step 10.
 - `reference/vertical-mode.md` — portrait (1080×1920) overrides. Load at Step 1 if mode is vertical.
 
 ## Things this skill does NOT do
