@@ -26,11 +26,14 @@ about it:
   each animation beat, the `index.html` wiring math, and the per-pass quality
   gate.
 - **You delegate** every piece of composition mechanics to the plugin skills.
-  How a GSAP timeline is built, the data-attribute contract, the
-  transition/entrance/exit rules, the determinism constraints — that is the
-  `hyperframes` skill's job. The CLI commands are the `hyperframes-cli` skill's
-  job. Installing a registry block is the `hyperframes-registry` skill's job.
-  Invoke them; don't reimplement them.
+  How a motion timeline is built depends on the **library you pick for that
+  beat** — GSAP for choreography, anime.js for swarms, three for 3D, etc. (Step
+  D). Once the lane is chosen, **invoke the matching `hyperframes:<adapter>`
+  skill before authoring** so its seek-safe patterns load. The data-attribute
+  contract, the transition/entrance/exit rules, the determinism constraints —
+  that is the `hyperframes` skill's job. The CLI commands are the
+  `hyperframes-cli` skill's job. Installing a registry block is the
+  `hyperframes-registry` skill's job. Invoke them; don't reimplement them.
 
 ## Preconditions
 
@@ -172,8 +175,34 @@ verdict** — the per-chunk record that Step G checks:
   IMAGERY: box: class=<logo|glyph|photo|reaction|background> referent="<thing>" [emotion=…]
            — OR —  text-only — <named candidate> rejected because <reason>
   MOTION-REF: <slug> — adapting <cadence>   — OR —   none — <nearest considered / "no fit" / "index empty">
+  MOTION-LANE: <gsap|animejs|three|typegpu|lottie|waapi|css-animations> — <why this motion shape fits>
   TYPE-ROLE: <role→font; verbatim quote → human-voice font, never system font>
   NOTES: <optional authoring guidance>
+
+**Match the motion library to the SHAPE of the motion**, per the verdict's
+`MOTION-LANE` — never auto-default to GSAP:
+- **`hyperframes:gsap`** — CHOREOGRAPHY: a few named elements in a precise
+  multi-step sequence (enter → grow → count → settle); timelines, labels,
+  position parameter, nesting. The pre-wired default; most text/graphic tweens.
+- **`hyperframes:animejs`** — SWARM: many small elements moving as one
+  coordinated field via `stagger()` (2D grid ripple, radial dial, particle/dot
+  field, traveling wave). Tell: if you're writing a GSAP stagger over a grid and
+  fighting it, switch.
+- **`hyperframes:three`** — 3D/depth, camera moves, shader/displacement, WebGL.
+- **`hyperframes:typegpu`** — GPU/WGSL shaders, compute, liquid-glass, thousands
+  of particles.
+- **`hyperframes:lottie`** — hand-illustrated / After-Effects-export loops.
+- **`hyperframes:waapi`** / **`hyperframes:css-animations`** — ONE simple native
+  enter/exit, cheap.
+- **`hyperframes:tailwind`** — utility styling; pair it with a motion lane, it's
+  not a lane itself.
+
+**Once you pick the lane, invoke its `hyperframes:<lane>` skill BEFORE authoring
+this beat's motion** — its `window.__hf*` registration + determinism patterns are
+not in video-director, and default GSAP still means invoking `hyperframes:gsap`.
+The lane governs **motion only**; it does nothing for **composition correctness**
+(layout collisions, leaders crossing text) — that stays the inspect/snapshot
+visual-QA loop's job (Step G).
 
 **Author from the verdict.** It is the design spec for this block: build the named
 **archetype**; declare the **asset box** with the verdict's `data-asset-class` (`reaction`
@@ -234,9 +263,11 @@ block's inventions are not.
 Defer the mechanics to the `hyperframes` skill; this is what's specific here:
 
 - One **full HTML document** at `compositions/<NN>-<slug>.html` — **not a
-  `<template>` wrapper**. The canonical skeleton (head + GSAP + scoped style +
-  `<div data-composition-id>` root + paused timeline registered on
-  `window.__timelines["<id>"]`) is in `reference/composition-structure.md`.
+  `<template>` wrapper**. The canonical skeleton (head + motion-library setup +
+  scoped style + `<div data-composition-id>` root + paused timeline registered on
+  `window.__timelines["<id>"]`) is in `reference/composition-structure.md`; it
+  shows the GSAP default — invoke the verdict's `hyperframes:<lane>` skill first
+  for the adapter's registration + seek-drive patterns.
 - Layout before animation: build the static hero frame first, then add the GSAP
   keyed to the Step-C word timestamps.
 - **Real imagery → labeled asset box.** Where the beat wants a photo/clip you
@@ -363,11 +394,13 @@ ever sees it. Per pass:
 **Verdict check.** Confirm each chunk in this pass has a `scene-design-decider` verdict
 (Step D) on the record, and that the verdict carries its **`MOTION-REF:` line** — a cited
 slug-with-cadence or a named `none` (nearest-considered / no-fit / index-empty) — alongside
-a resolved **`IMAGERY:` line** (a declared asset box or a candidate-named `text-only`). The
-`MOTION-REF:` line *existing* (not its content) is the checkpoint that converts a silently
-skipped motion-library consultation into a logged decision; the `IMAGERY:` line is the same
-checkpoint for the image-vs-text call. If you overruled the verdict while authoring, that
-note is part of the record too.
+a resolved **`IMAGERY:` line** (a declared asset box or a candidate-named `text-only`) and a
+named **`MOTION-LANE:` line** (the library the director then invoked before authoring this
+beat's motion). The `MOTION-REF:` line *existing* (not its content) is the checkpoint that
+converts a silently skipped motion-reference consultation into a logged decision; the
+`IMAGERY:` line is the same checkpoint for the image-vs-text call; the `MOTION-LANE:` line is
+the checkpoint that the library was a deliberate motion-shape choice, not a reflexive GSAP
+default. If you overruled the verdict while authoring, that note is part of the record too.
 
 **Never start, restart, or kill the preview server.** The user always has
 `npx hyperframes preview` running in another window and reloads it themselves.
@@ -488,9 +521,9 @@ never author yourself.
 | Composition mechanics: data-attrs, `class="clip"`, `window.__timelines`, layout-before-animation, transition/entrance/exit rules, determinism | `hyperframes` | Tell it *which chunk*, *what design*, *which word timestamps* to key to |
 | CLI loop: `init` / `lint` / `inspect` / `snapshot` / `preview` / `render` | `hyperframes-cli` | Decide *when* (lint+inspect+snapshot every pass, blocking); run the snapshot→Sonnet-review→regenerate loop; never touch preview; surface a seek target |
 | Registry: `catalog`, `add`, snippet-merge, `hyperframes.json` | `hyperframes-registry` | Check it before authoring; hand off the install/wire |
-| **Scene design decision**: per-chunk archetype + imagery + motion-ref + type-role | **`scene-design-decider` subagent** | Assemble the payload (chunk + ±3 sentences, prior 1-2 scenes as source **+ images**, last archetypes, `design.md` + motion-index paths); dispatch per chunk (Step D, `model: sonnet`); author from the returned structured verdict; overrule it only with an on-record note. Its verdict is the audit log Step G checks |
+| **Scene design decision**: per-chunk archetype + imagery + motion-ref + motion-lane + type-role | **`scene-design-decider` subagent** | Assemble the payload (chunk + ±3 sentences, prior 1-2 scenes as source **+ images**, last archetypes, `design.md` + motion-index paths); dispatch per chunk (Step D, `model: sonnet`); author from the returned structured verdict; overrule it only with an on-record note. Its verdict is the audit log Step G checks |
 | Motion inspiration: the repo-root `motionGraphicsInspo/` **two-tier index** — a Quick-index scan table over `Motion:`-note entries + strips (a *motion-technique* source, distinct from the registry/design-catalog *code-reuse* sources) | `scene-design-decider` (reads it) over `motionGraphicsInspo/README.md` | You **never read the index yourself** — the decider scans the Quick index, drills into a fitting entry, and opens its strip per chunk; **adapt the cadence, never reproduce the scene**; non-quota. Add references via the `motion-inspo-add` skill |
-| Animation adapters (gsap / three / lottie / css / waapi / animejs) | those skills | Pick the lane per beat; don't re-document them |
+| Animation adapters (gsap / animejs / three / typegpu / lottie / waapi / css-animations / tailwind) | those skills | Decide the library per beat per the verdict's `MOTION-LANE` (match motion shape, not auto-GSAP); **invoke the matching `hyperframes:<lane>` skill to load its seek-safe patterns before authoring that beat's motion**; don't re-document them |
 | Image sourcing: find + fetch a real asset for a box, routed by `data-asset-class` — `reaction`→Pinterest, `logo`/`glyph`→Iconify (static SVG), `photo`→Wikimedia (licensed), web as catch-all — then treat it | `image-sourcer` agent | Declare the box with its `class`/`referent`, then dispatch `image-sourcer` (`model: sonnet`) with the `data-asset-*` spec + `video_dir`; weigh its confidence, swap the pick in (or leave the box standing + shopping-list on failure), surface any required attribution (`reference/assets-and-media.md`). **`background`-class boxes are excluded — they're human-supply via the shopping list, never sent to `image-sourcer`.** |
 | Image treatment: background removal + VFX presets (grain/duotone/halftone/vintage) | `tools/image-prep` | Declare asset boxes + the shopping list; the `image-sourcer` agent runs image-prep for you, or run it directly on a human-supplied raster for a consistent cutout look (`reference/assets-and-media.md`) |
 | Voiceover / transcript | voiceover-* / `transcribe-and-plan-cuts` | Precondition; refuse to run if missing |
