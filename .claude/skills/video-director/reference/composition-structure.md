@@ -45,8 +45,13 @@ fills). A structurally-correct block that ignores those reads as a flat slidesho
    word-timeable** — a direct fit for transcript-as-timing-truth, usually better
    than hand-rolling text emphasis. If a registry item matches, invoke the
    `hyperframes-registry` skill and use `hyperframes add` — don't hand-roll over
-   it. And don't default every beat to GSAP: `three`, `lottie`, `css-animations`,
-   `waapi`, and `animejs` each own a lane.
+   it. And don't default every beat to GSAP — choose the library by the **shape**
+   of the motion: `gsap` (choreography / multi-step sequence), `animejs` (swarms /
+   coordinated grids via stagger), `three` (3D / depth / camera), `typegpu`
+   (GPU/WGSL shaders), `lottie` (hand-illustrated loops), `waapi` /
+   `css-animations` (one simple native enter/exit). The verdict's `MOTION-LANE`
+   carries the call; once chosen, invoke the matching `hyperframes:<adapter>`
+   skill before authoring that beat's motion.
 
 2. **The user's personal `design-catalog/`** — an optional glance, separate from
    the official registry. It's the user's own library of reusable motion
@@ -204,9 +209,13 @@ Notes that matter:
   transition into the next scene IS the exit. The final block is the one place a
   fade-to-black is allowed.
 
-For the GSAP specifics (easing, stagger, position parameter, timeline nesting),
-invoke the `hyperframes` skill and its `gsap` adapter — this file only covers
-what's project-specific.
+For the chosen library's specifics, invoke the matching `hyperframes:<adapter>`
+skill **before authoring that beat's motion** — `hyperframes:gsap` (easing,
+stagger, position parameter, timeline nesting), `hyperframes:animejs`,
+`hyperframes:three`, `hyperframes:typegpu`, `hyperframes:lottie`,
+`hyperframes:waapi`, `hyperframes:css-animations`. Each carries the adapter's
+`window.__hf*` registration + seek-safe determinism patterns; this file only
+covers what's project-specific.
 
 ## The host-wiring template — index.html
 

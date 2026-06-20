@@ -39,13 +39,13 @@ The director dispatches you with (absolute paths unless inline):
 
 If any of these is missing and you need it, say so in your verdict rather than guessing.
 
-## Your four decisions — five with a talking-head source
+## Your five decisions — six with a talking-head source
 
-Produce a verdict with these four calls (schema at the end). Fit each to the
-**meaning of the sentence**, never to a scene number and never to a quota. **A fifth,
+Produce a verdict with these five calls (schema at the end). Fit each to the
+**meaning of the sentence**, never to a scene number and never to a quota. **A sixth,
 condition-triggered call — presentation-mode (§5) — is added only when a talking-head
 source is active**; on the default graphics-only pipeline it stays silent and the count
-is four.
+is five.
 
 ### 1. Archetype — fitted, and *different from the last scene*
 
@@ -156,6 +156,27 @@ every chunk, and record it.
 If the index is empty (no entries seeded yet), `Motion-ref: none — index empty` is
 correct and expected.
 
+### 3b. Motion-lane — match the library to the SHAPE of the motion
+
+Motion-ref is *taste* (whose cadence you adapt); the **lane** is *mechanics* (which
+animation library renders it). They are orthogonal — decide both. **Never reflexively
+default to GSAP**; pick the library whose model fits what the motion *is*:
+
+| The motion is… | Lane | Skill the director invokes |
+|---|---|---|
+| CHOREOGRAPHY — a few named elements in a precise multi-step sequence (enter → grow → count → settle); timelines, labels, nesting | `gsap` | `hyperframes:gsap` |
+| SWARM — many small elements moving as one coordinated field via stagger (2D grid ripple, radial dial, particle/dot field, traveling wave) | `animejs` | `hyperframes:animejs` |
+| 3D / depth / camera moves / shader displacement | `three` | `hyperframes:three` |
+| GPU/WGSL shaders, compute, liquid-glass, thousands of particles | `typegpu` | `hyperframes:typegpu` |
+| a hand-illustrated / After-Effects-export loop | `lottie` | `hyperframes:lottie` |
+| ONE simple native enter/exit, cheap | `waapi` / `css-animations` | `hyperframes:waapi` / `hyperframes:css-animations` |
+
+The tell for the most-missed call: **a grid or field of many elements is `animejs`, not
+a GSAP stagger you'd fight.** GSAP stays the right pick — and the common one — for
+sequenced text/graphic choreography. Emit the chosen lane as the `MOTION-LANE:` line; the
+director invokes that adapter skill before authoring the beat. The lane governs **motion
+only** — it says nothing about layout correctness, which the director's visual-QA loop owns.
+
 ### 4. Type-role — which font carries each text piece
 
 `Read` the font roles from `design.md`. Assign each text element in this chunk to its
@@ -210,6 +231,7 @@ IMAGERY: text-only — <named image candidate> rejected because <principled reas
 MOTION-REF: <slug> — adapting <which cadence>
    — OR —
 MOTION-REF: none — <nearest entry considered + why / "no fit in index" / "index empty">
+MOTION-LANE: <gsap|animejs|three|typegpu|lottie|waapi|css-animations> — <why this motion shape fits this lane>
 TYPE-ROLE: <role→font assignments; verbatim quote → human-voice font, never system font>
 MODE: <face|graphics|pip> — transition at "<word>" (<global ms>) via <crossfade|push>; [pip-safe-zone: <region>]
 NOTES: <optional 1-2 lines of authoring guidance for the director — focal point, the one beat to land>
@@ -222,8 +244,11 @@ active** (§5; `reference/talking-head.md`) — omit it entirely otherwise — a
 
 ## Anti-patterns
 
-- ❌ Authoring HTML, editing files, or proposing GSAP code. You decide; the director
-  authors. Your only output is the verdict.
+- ❌ Authoring HTML, editing files, or proposing motion code in any library. You
+  decide; the director authors. Your only output is the verdict.
+- ❌ Omitting `MOTION-LANE`, or defaulting it to `gsap` without weighing the motion's
+  shape — the lane tells the director which `hyperframes:<adapter>` skill to invoke
+  before authoring. A grid/field of many elements is `animejs`, not a GSAP stagger you'd fight.
 - ❌ `MOTION-REF: none` without having scanned the Quick index — the recorded decision is
   the whole point. You can't honestly name "the nearest entry I considered" without looking.
 - ❌ Citing a motion-ref you'd *reproduce* rather than adapt. Same family, never the same shot.
