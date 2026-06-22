@@ -22,6 +22,33 @@ When starting a new video:
 The first video, `videos/why-text-is-hard-2026-05-07/`, is the canonical example
 of this layout.
 
+## Idea tracking & production board — `tools/studio`
+
+`tools/studio` is the channel's single surface for **what to make** and **where
+each video is**: a full-stack app (Hono `:3273` + Vite/React `:5273`, local
+SQLite, no Docker) with two views — **The Wire** (an idea aggregator backlog) and
+**The Desk** (the 12-stage production board whose progress is derived by scanning
+`videos/`). It **supersedes** the old root `kanban.html` and
+`tools/topic-pipeline/` — both retired (left in git history; do not maintain
+them).
+
+The flow: `studio-discover` (Python CLI) fetches raw signal from the seed YouTube
+channels (videos + top comments) and the text aggregators (HN/Reddit/Lobsters/
+daily.dev) into `raw_signal`; the **`studio-ideas` skill** curates that delta into
+the idea backlog (qualitative keep/discard + a one-line rationale, **never a
+grade**); promoting an idea on The Wire pops it out of the backlog and lands a
+card on The Desk. All intelligence lives in the skill, never the server. Run it:
+
+```bash
+cd tools/studio && bun dev                       # Wire :5273, Desk + API :3273
+cd tools/studio/discovery && uv run studio-discover --db ../studio.db   # then invoke studio-ideas to curate
+```
+
+Design + plan: `docs/superpowers/specs/2026-06-22-studio-idea-board-design.md`
+(§10.1 = the "The Wire Desk" visual language) and
+`docs/superpowers/plans/2026-06-22-studio-implementation.md`. Tool-local rules:
+`tools/studio/CLAUDE.md`.
+
 ## Authoring workflow
 
 This project is a HyperFrames pipeline: voiceover → transcript → composition → render. The full stage-by-stage map — topic → publish, plus the

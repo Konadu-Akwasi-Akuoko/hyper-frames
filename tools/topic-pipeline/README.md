@@ -1,5 +1,10 @@
 # tools/topic-pipeline
 
+> **RETIRED 2026-06-22** — superseded by `tools/studio` (idea aggregator + board).
+> Its free-API fetchers and channel yt-dlp approach were harvested into
+> `tools/studio/discovery/`; the scoring rubric / LLM judgment / daily cron were
+> dropped by design. Kept for reference only; no longer maintained.
+
 Daily topic-discovery + popularity-scoring system for the hyper-frames
 YouTube channel.
 
