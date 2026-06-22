@@ -61,11 +61,42 @@ export function migrate(db: Database): void {
   db.exec(SCHEMA);
 }
 
+/** Seed channels (spec §7.1) on first boot. `[handle, kind, note]`; `shorts`
+ *  channels are mined from /shorts. Idempotent: only runs when the table is empty. */
+const SEED_CHANNELS: [string, "videos" | "shorts", string | null][] = [
+  ["@Shadeofcode", "videos", "house-style match"],
+  ["@devforgehq", "videos", null],
+  ["@Fireship", "videos", "format reference"],
+  ["@thecodingkoalaa", "videos", null],
+  ["@technetiumm", "videos", null],
+  ["@TheCodingSloth", "videos", null],
+  ["@awesome-coding", "videos", null],
+  ["@codehead01", "videos", null],
+  ["@SwagProfessorExplain", "videos", null],
+  ["@Latticx", "videos", null],
+  ["@CleoAbram", "shorts", "shorts CTA reference"],
+  ["@ByteByteGo", "videos", "system-design lane"],
+  ["@pawel_code_stuff", "videos", null],
+  ["@CodeSource", "videos", null],
+];
+
+export function seedChannelsIfEmpty(db: Database): void {
+  const row = db.query("SELECT count(*) AS c FROM channels").get() as { c: number };
+  if (row.c > 0) return;
+  const stmt = db.prepare(
+    "INSERT OR IGNORE INTO channels (handle,url,note,active) VALUES (?,?,?,1)",
+  );
+  for (const [handle, seg, note] of SEED_CHANNELS) {
+    stmt.run(handle, `https://www.youtube.com/${handle}/${seg}`, note);
+  }
+}
+
 /** Open a fresh (non-singleton) database — used by tests and tools. */
 export function openDb(dbPath: string): Database {
   const db = new Database(dbPath, { create: true });
   if (dbPath !== ":memory:") db.exec("PRAGMA journal_mode = WAL;");
   migrate(db);
+  seedChannelsIfEmpty(db);
   return db;
 }
 
