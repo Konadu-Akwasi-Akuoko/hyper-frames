@@ -59,8 +59,8 @@ useful bones of both and drops the parts that made `topic-pipeline` heavy
 | D1 | **Combine** ideas + production into one web app | The two halves are one flow: mined idea → drag into production → track to publish. |
 | D2 | **Full client+server stack** — Bun + Vite + React + Hono, matching `tools/audio-editor` | User chose "powerful"; reuse the house full-stack pattern. |
 | D3 | **SQLite, server-owned** store | Kills the token-bloat fear: the AI queries bounded rows, never loads the whole store. |
-| D4 | **Aggregator, not judge — no scoring** | No numeric grade, no rank, no 6-axis rubric. The human decides make-or-not and long/short/series. |
-| D5 | **Intelligence lives in the skill** | The skill decides *worth pursuing or not* (qualitative keep/discard with a one-line rationale), not the server, not a number. |
+| D4 | **Aggregator, not judge — no scoring** | No numeric grade, no rank, no 6-axis rubric. The human decides make-or-not. The AI **suggests** a format (long / short / series) with a one-line reason; the human confirms or overrides (amended 2026-06-22, see `2026-06-22-studio-kind-suggestion-design.md`). |
+| D5 | **Intelligence lives in the skill** | The skill decides *worth pursuing or not* (qualitative keep/discard with a one-line rationale) and *suggests a format* (qualitative, with a one-line reason) — not the server, never a number. |
 | D6 | **Absorb the text aggregators too** | HN / Reddit / Lobsters / daily.dev folded into discovery as raw `trend` ideas (no scoring). |
 | D7 | **Retire both** `kanban.html` and `topic-pipeline` | Harvest channel list + free-API fetchers + prune idea; drop the rubric/judgment/cron. Old files stay in git history. |
 | D8 | **Distinct ports** — server `:3273`, client `:5273` | Avoid collision with `audio-editor` (`:3001` / `:5173`). Configurable via env. |
@@ -76,11 +76,13 @@ useful bones of both and drops the parts that made `topic-pipeline` heavy
   does this today).
 - Skill-driven, qualitative idea curation (keep/discard + why).
 - Flat AI token cost regardless of backlog size.
-- The human keeps full control: make-or-not, long/short/series, stage.
+- The human keeps full control: make-or-not, the final long/short/series format
+  (the AI only *suggests* it), stage.
 
 **Non-goals**
 - No numeric scoring, ranking, or rubric of any kind.
-- No automatic decision to make a video, or of its format.
+- No automatic decision to make a video. (The format is AI-*suggested* but the
+  human confirms or overrides it — still no numeric grade.)
 - No editorial chrome beyond what the board needs (consistent with project
   house rules for compositions; not applicable to this internal tool, but the
   aesthetic restraint carries over).
@@ -193,7 +195,9 @@ CREATE INDEX idx_raw_unjudged ON raw_signal(judged_at) WHERE judged_at IS NULL;
 CREATE TABLE ideas (
   id            TEXT PRIMARY KEY,
   type          TEXT NOT NULL,       -- 'mirror' | 'comment_demand' | 'trend' | 'manual'
-  kind          TEXT NOT NULL DEFAULT 'unset',  -- 'unset' | 'long' | 'short' | 'series'  (HUMAN sets)
+  kind          TEXT NOT NULL DEFAULT 'unset',  -- 'unset' | 'long' | 'short' | 'series'  (AI suggests, human confirms)
+  kind_source   TEXT,                -- 'ai' | 'human' | NULL  (provenance of current kind; NULL = none / 'unset')
+  kind_why      TEXT,                -- one-line reason for an AI format pick (only meaningful when kind_source='ai')
   status        TEXT NOT NULL DEFAULT 'new',    -- 'new' | 'keep' | 'rejected' | 'promoted'
   title         TEXT NOT NULL,
   rationale     TEXT,                -- the skill's one-line "why pursue"
@@ -215,6 +219,8 @@ CREATE TABLE board_overlay (
   title       TEXT,
   stage       TEXT,                  -- manual stage when it differs from detected
   notes       TEXT,
+  kind        TEXT,                  -- 'unset' | 'long' | 'short' | 'series' | NULL  (promote-time snapshot; display-only on the Desk in v1)
+  kind_source TEXT,                  -- 'ai' | 'human' | NULL  (promote-time snapshot)
   created_from_idea TEXT,            -- ideas.id provenance (nullable)
   updated_at  TEXT NOT NULL
 );
@@ -269,9 +275,15 @@ built via `/skill-creator`. Flow:
      made** (scan `videos/` slugs). Don't resurface what's covered.
    - **Demand shape** — cluster raw comments into themes ("viewers keep asking
      about ‹X›") with representative quotes + a count.
+   - **Format fit** — suggest a `kind` (long / short / series) from the topic's
+     shape (short = single tight mechanism / Cleo-style quick hit; long = full
+     system-design / deep explainer needing build-up; series = too big for one
+     video / multi-part; when ambiguous, the safer single-video format). A
+     suggestion, qualitative — no number, no rank.
    - **Verdict: keep or discard.** No number, no rank.
-4. Insert **only keepers** into `ideas` with `type`, `evidence_json`, and a
-   one-line `rationale`. Leave `kind = 'unset'` (the human decides format).
+4. Insert **only keepers** into `ideas` with `type`, `evidence_json`, a one-line
+   `rationale`, and a suggested `kind` + `kind_source='ai'` + a one-line
+   `kind_why` (the human confirms or overrides the format on The Wire).
 5. Mark every judged raw row: `judged_at = now`, `judged_verdict = 'kept'|'discarded'`.
    Discarded rows stay in `raw_signal` (audit trail; never resurfaced, never nag).
 
@@ -281,7 +293,8 @@ The server can **trigger a raw fetch** (`POST /api/discovery/run` → shells out
 the CLI) and the UI can show incoming raw counts. But the curated **Ideas
 backlog is skill-produced** — the server never fabricates intelligence with a
 mechanical dump. After a run, the human asks the skill to curate (or reviews raw
-directly). Final triage (keep/reject, set `kind`, promote) is always the human's.
+directly). Final triage (keep/reject, confirm or override the AI-suggested
+`kind`, promote) is always the human's.
 
 ### 7.4 Bot-wall guardrail (load-bearing, #1 feasibility risk)
 
@@ -384,9 +397,10 @@ request. That pass appends its output to this doc as §10.1.**
   (mirror / comment_demand / trend) and `status` (new / keep). Each card shows:
   title, the skill's `rationale`, source + evidence (views / points / comment
   quotes + count / date), and a duration hint for YouTube sources. Per-card
-  actions: **keep**, **reject**, set **kind** (long / short / series), add
-  **notes**, **promote**. A "run discovery" affordance surfaces incoming raw
-  counts.
+  actions: **keep**, **reject**, **confirm or override the suggested kind**
+  (long / short / series; the AI suggestion shows a `·ai` marker until the human
+  confirms), add **notes**, **promote**. A "run discovery" affordance surfaces
+  incoming raw counts.
 - **Pipeline view** — the 12-stage board, ported behavior: draggable cards
   across stages, click-to-open detail panel (title/slug/folder, stage selector,
   artifact checklist, notes, delete), Sync to rescan `videos/`, drift flag,
@@ -468,6 +482,7 @@ views one app.
 6. **The meter must encode real data, not a fake score** — wire = a 2–3 state lean notch; desk = artifact-completion from the actual `videos/` scan.
 7. **One shared token layer** (one radius `6px`, one shadow scale, one type scale) across both views from the start, so they never read as two bolted-together apps.
 8. **Keyboard-first** — wire the core triage keys (navigate, keep, reject, promote, set-kind) + a `⌘K` palette; an unwired hint strip is editorial chrome.
+9. **The AI-suggested-format marker is muted, never the saved color** — an AI `kind` suggestion shows a small mono `·ai` marker on the format chip (graphite / `--press-ink` on `--card-sunk`), with `kind_why` as the hover tooltip; confirming clears the marker. On-Air Red stays rationed to the meter peak / ON-AIR / commit — the format chip and its `·ai` marker are never red. (Full interface contract: `2026-06-22-studio-kind-suggestion-design.md`.)
 
 ---
 
@@ -500,8 +515,8 @@ views one app.
   the `ApiResponse` envelope, dedup hashing, and promote/prune transitions
   against a temp SQLite file.
 - **Skill** — exercise the worth-pursuing flow on a small fixture `raw_signal`
-  set; assert it reads only unjudged rows, writes `rationale`, leaves `kind`
-  unset, and marks rows judged.
+  set; assert it reads only unjudged rows, writes `rationale`, suggests a `kind`
+  with `kind_source='ai'` + `kind_why`, and marks rows judged.
 - **Feasibility spike (before build)** — the single-video comment fetch (§7.4) is
   validated first; the whole discovery feature depends on it.
 

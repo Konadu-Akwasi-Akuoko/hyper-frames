@@ -142,6 +142,7 @@ button { font: inherit; }
 .chip { font-size: 11px; color: var(--graphite); border: 1px solid var(--graphite-2); border-radius: 999px; padding: 2px 9px; background: transparent; }
 .chip.kind { font-family: var(--font-mono); cursor: pointer; }
 .chip.kind.set { border-color: transparent; background: var(--card-sunk); color: var(--press-ink); }
+.chip.kind .ai { font-family: var(--font-mono); font-size: 9px; color: var(--graphite); margin-left: 3px; opacity: .85; }
 
 .d-evid { text-align: right; white-space: nowrap; padding-top: 2px; }
 .d-evid .big { font-size: 13px; color: var(--press-ink); }
@@ -186,6 +187,8 @@ button { font: inherit; }
 .card:hover { box-shadow: var(--shadow-lift); }
 .card.dragging { opacity: .4; }
 .card .c-title { font-family: var(--font-display); font-weight: 700; font-size: 13.5px; line-height: 1.25; letter-spacing: -.01em; }
+.card .c-kind { display: inline-block; font-family: var(--font-mono); font-size: 10px; color: var(--press-ink); background: var(--card-sunk); border-radius: 999px; padding: 1px 8px; margin-top: 4px; }
+.card .c-kind .ai { color: var(--graphite); opacity: .85; }
 .card .c-slug { font-size: 10.5px; color: var(--graphite); margin-top: 3px; word-break: break-all; }
 .card .drift { display: inline-block; margin-left: 5px; color: var(--meter-hot); font-size: 10px; }
 

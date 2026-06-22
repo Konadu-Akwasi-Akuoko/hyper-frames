@@ -35,6 +35,8 @@ export interface IdeaRow {
   first_seen: string;
   notes: string | null;
   promoted_slug: string | null;
+  kind_source: string | null;
+  kind_why: string | null;
 }
 
 export function mapIdeaRow(r: IdeaRow) {
@@ -61,5 +63,7 @@ export function mapIdeaRow(r: IdeaRow) {
     first_seen: r.first_seen,
     notes: r.notes,
     promoted_slug: r.promoted_slug,
+    kind_source: r.kind_source,
+    kind_why: r.kind_why,
   };
 }

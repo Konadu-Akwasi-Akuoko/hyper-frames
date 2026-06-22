@@ -15,6 +15,7 @@ export default function Dispatch({
   onReject,
   onPromote,
   onCycleKind,
+  onAcceptKind,
 }: {
   idea: Idea;
   selected: boolean;
@@ -24,6 +25,7 @@ export default function Dispatch({
   onReject: () => void;
   onPromote: () => void;
   onCycleKind: () => void;
+  onAcceptKind: () => void;
 }) {
   const ev = evidenceLines(idea);
   const quote = idea.evidence?.quotes?.[0]?.text;
@@ -52,13 +54,18 @@ export default function Dispatch({
         </div>
         <div className="d-tags">
           <span className="chip">{TYPE_LABEL[idea.type]}</span>
+          {/* On an AI suggestion a click ACCEPTS it (locks the same value as human,
+              clearing the ·ai mark); to change an AI pick use 1/2/3 or the action
+              button. A human/unset chip cycles as before. */}
           <span
             className={"chip kind" + (idea.kind !== "unset" ? " set" : "")}
-            onClick={onCycleKind}
+            onClick={idea.kind_source === "ai" ? onAcceptKind : onCycleKind}
+            title={idea.kind_source === "ai" ? (idea.kind_why ?? undefined) : undefined}
             role="button"
             tabIndex={-1}
           >
             {idea.kind !== "unset" ? idea.kind : "set kind"}
+            {idea.kind_source === "ai" ? <span className="ai">·ai</span> : null}
           </span>
         </div>
         <div className="d-actions">

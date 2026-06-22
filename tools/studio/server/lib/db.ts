@@ -43,7 +43,9 @@ CREATE TABLE IF NOT EXISTS ideas (
   raw_signal_id TEXT,
   first_seen    TEXT NOT NULL,
   notes         TEXT,
-  promoted_slug TEXT
+  promoted_slug TEXT,
+  kind_source   TEXT,
+  kind_why      TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_ideas_status ON ideas(status);
 
@@ -53,12 +55,34 @@ CREATE TABLE IF NOT EXISTS board_overlay (
   stage             TEXT,
   notes             TEXT,
   created_from_idea TEXT,
-  updated_at        TEXT NOT NULL
+  updated_at        TEXT NOT NULL,
+  kind              TEXT,
+  kind_source       TEXT
 );
 `;
 
+/** Columns added after the initial schema shipped (spec §3.1). Applied as
+ *  idempotent `ALTER TABLE ... ADD COLUMN` guards so existing DBs migrate. */
+const ADDED_COLUMNS: [table: string, column: string, decl: string][] = [
+  ["ideas", "kind_source", "TEXT"],
+  ["ideas", "kind_why", "TEXT"],
+  ["board_overlay", "kind", "TEXT"],
+  ["board_overlay", "kind_source", "TEXT"],
+];
+
+/** Add each missing column from `ADDED_COLUMNS`, checking `PRAGMA table_info`
+ *  first so re-running `migrate()` is a no-op. */
+export function ensureColumns(db: Database): void {
+  for (const [table, column, decl] of ADDED_COLUMNS) {
+    const cols = db.query(`PRAGMA table_info(${table})`).all() as { name: string }[];
+    if (cols.some((c) => c.name === column)) continue;
+    db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${decl}`);
+  }
+}
+
 export function migrate(db: Database): void {
   db.exec(SCHEMA);
+  ensureColumns(db);
 }
 
 /** Seed channels (spec §7.1) on first boot. `[handle, kind, note]`; `shorts`

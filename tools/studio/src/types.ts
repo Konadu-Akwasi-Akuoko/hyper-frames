@@ -28,6 +28,8 @@ export interface Idea {
   id: string;
   type: IdeaType;
   kind: IdeaKind;
+  kind_source: "ai" | "human" | null;
+  kind_why: string | null;
   status: IdeaStatus;
   title: string;
   rationale: string | null;
@@ -47,6 +49,9 @@ export interface BoardCard {
   /** folder key `<slug>-<date>` — the board_overlay PK and API route param. */
   name: string;
   title: string;
+  /** promote-time snapshot of the idea's format; "unset" when no overlay kind. */
+  kind: IdeaKind;
+  kindSource: "ai" | "human" | null;
   stage: string;
   artifacts: Record<string, ArtifactStatus>;
   suggestedStage: string | null;
