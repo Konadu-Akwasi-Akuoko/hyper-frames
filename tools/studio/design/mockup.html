@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>studio — The Wire Desk (design mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============ TOKEN LAYER — one set, shared by The Wire + The Desk ============ */
+  :root {
+    /* Surfaces (light — daylight newsroom, NOT cream #F4F1EA) */
+    --newsprint:  #EDE9E0;   /* app background — cool rag paper */
+    --card-stock: #FBFAF6;   /* raised: cards, lanes, panels */
+    --card-sunk:  #E5E0D6;   /* inset troughs on the desk */
+
+    /* Ink */
+    --press-ink:  #1C1A17;   /* primary text + display */
+    --graphite:   #6F6A61;   /* secondary text, metadata, mono readouts */
+    --graphite-2: #9A938763; /* faint dividers / disabled */
+
+    /* The ONLY two data colors — the meter ramp. Used by meters + commit ONLY. */
+    --meter-cold: #2C6E6A;   /* Signal Teal — raw / incoming / low level */
+    --meter-hot:  #D6402E;   /* On-Air Red — committed / live / peak */
+
+    /* Neutral interaction (teal does NOT do these — the Chanel cut) */
+    --focus:      #1C1A17;   /* ink focus ring */
+    --affordance: #6F6A61;   /* keep/hover affordances = graphite, never teal */
+
+    /* type-muted source clays (categorical, low-chroma — not the meter ramp) */
+    --clay-mirror:  #B07A4E;
+    --slate-demand: #5C6B72;
+
+    --radius: 6px;
+    --radius-lg: 10px;
+    --shadow-sheet: 0 1px 2px rgba(28,26,23,.07), 0 4px 14px rgba(28,26,23,.06);
+    --shadow-lift:  0 2px 6px rgba(28,26,23,.10), 0 12px 30px rgba(28,26,23,.12);
+    --trough: inset 0 1px 3px rgba(28,26,23,.10);
+
+    --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--newsprint);
+    color: var(--press-ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    /* faint paper tooth */
+    background-image: radial-gradient(rgba(28,26,23,.018) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+  .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  ::selection { background: rgba(44,110,106,.18); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    height: 56px; display: flex; align-items: center; gap: 22px;
+    padding: 0 22px; background: var(--card-stock);
+    box-shadow: var(--shadow-sheet); position: sticky; top: 0; z-index: 20;
+  }
+  .wordmark { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; }
+  .wordmark .bars { display: inline-flex; gap: 2px; align-items: flex-end; height: 16px; }
+  .wordmark .bars i { width: 3px; background: var(--press-ink); border-radius: 1px; }
+  .wordmark .bars i:nth-child(1){height:7px} .wordmark .bars i:nth-child(2){height:12px} .wordmark .bars i:nth-child(3){height:16px;background:var(--meter-hot)}
+
+  .viewtoggle { display: flex; gap: 2px; background: var(--card-sunk); padding: 3px; border-radius: var(--radius); box-shadow: var(--trough); }
+  .viewtoggle button {
+    font-family: var(--font-display); font-weight: 700; font-size: 12.5px; letter-spacing: .02em;
+    text-transform: uppercase; border: 0; background: transparent; color: var(--graphite);
+    padding: 6px 14px; border-radius: 4px; cursor: pointer;
+  }
+  .viewtoggle button.active { background: var(--card-stock); color: var(--press-ink); box-shadow: var(--shadow-sheet); }
+
+  .masthead .spacer { flex: 1; }
+  .masthead .meta { display: flex; align-items: center; gap: 16px; color: var(--graphite); font-size: 12px; }
+  .masthead .meta .key { border: 1px solid var(--graphite-2); border-radius: 4px; padding: 2px 6px; font-size: 11px; }
+  .onair { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: .08em; color: var(--meter-hot); }
+  .onair .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--meter-hot); box-shadow: 0 0 0 0 rgba(214,64,46,.5); animation: onair 2s ease-out infinite; }
+  @keyframes onair { 0%{box-shadow:0 0 0 0 rgba(214,64,46,.45)} 70%{box-shadow:0 0 0 7px rgba(214,64,46,0)} 100%{box-shadow:0 0 0 0 rgba(214,64,46,0)} }
+
+  /* ============ LAYOUT SHELL ============ */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ---------- THE WIRE (Ideas) ---------- */
+  #wire .wrap { display: grid; grid-template-columns: 232px 1fr; gap: 22px; max-width: 1160px; margin: 0 auto; padding: 24px 22px 64px; }
+
+  .rail { position: sticky; top: 80px; align-self: start; display: flex; flex-direction: column; gap: 22px; }
+  .rail h4 { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--graphite); margin-bottom: 10px; }
+  .band { display: flex; flex-direction: column; gap: 2px; }
+  .band button {
+    display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+    border: 0; background: transparent; color: var(--press-ink); cursor: pointer;
+    padding: 7px 9px; border-radius: var(--radius); font-size: 13px;
+  }
+  .band button:hover { background: var(--card-stock); }
+  .band button.on { background: var(--card-stock); box-shadow: var(--shadow-sheet); font-weight: 500; }
+  .band .glyph { width: 18px; height: 18px; flex: none; color: var(--graphite); }
+  .band .lbl { flex: 1; }
+  .band .ct { color: var(--graphite); }
+  .band.temps .swatch { width: 14px; height: 8px; border-radius: 2px; flex: none; }
+
+  .legend { background: var(--card-stock); border-radius: var(--radius); box-shadow: var(--shadow-sheet); padding: 12px; }
+  .legend .ramp { height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--meter-cold), #8a6a3e 55%, var(--meter-hot)); margin: 8px 0 6px; }
+  .legend .ends { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--graphite); letter-spacing: .04em; text-transform: uppercase; }
+  .legend .cap { font-size: 11px; color: var(--graphite); }
+
+  .keys { font-size: 12px; color: var(--graphite); line-height: 1.9; }
+  .keys kbd { font-family: var(--font-mono); font-size: 11px; background: var(--card-sunk); border-radius: 3px; padding: 1px 5px; color: var(--press-ink); }
+
+  .feed h3 { font-family: var(--font-display); font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .feed h3 .ct { color: var(--press-ink); }
+
+  /* a wire row = a Card-Stock dispatch sheet */
+  .dispatch {
+    display: grid; grid-template-columns: 20px 1fr auto; gap: 0 16px; align-items: start;
+    background: var(--card-stock); border-radius: var(--radius); box-shadow: var(--shadow-sheet);
+    padding: 13px 16px 13px 12px; margin-bottom: 9px; position: relative; cursor: default;
+    transition: box-shadow .14s, transform .14s, opacity .3s;
+  }
+  .dispatch:hover, .dispatch.sel { box-shadow: var(--shadow-lift); }
+  .dispatch.sel { transform: translateX(2px); }
+  .dispatch.sel::before { content:""; position:absolute; left:-1px; top:10px; bottom:10px; width:3px; border-radius:2px; background: var(--press-ink); }
+
+  /* vertical 5-segment signal meter (the wire = discrete) */
+  .wire-meter { display: flex; flex-direction: column-reverse; gap: 3px; height: 44px; width: 8px; margin-top: 2px; }
+  .wire-meter i { flex: 1; border-radius: 1.5px; background: var(--card-sunk); }
+  /* one meter law: each segment carries its spot on the shared cold->hot ramp */
+  .wire-meter i:nth-child(1){ --c: #2C6E6A; }
+  .wire-meter i:nth-child(2){ --c: #4f7a52; }
+  .wire-meter i:nth-child(3){ --c: #8a6a3e; }
+  .wire-meter i:nth-child(4){ --c: #bb5a37; }
+  .wire-meter i:nth-child(5){ --c: #D6402E; }
+  /* fill height = rationale lean; lit segments take their ramp color */
+  .wire-meter[data-lean="hold"]   i:nth-child(-n+2),
+  .wire-meter[data-lean="lean"]   i:nth-child(-n+3),
+  .wire-meter[data-lean="strong"] i:nth-child(-n+5) { background: var(--c); }
+
+  .d-main { min-width: 0; }
+  .d-title { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: -.01em; line-height: 1.25; display: flex; align-items: center; gap: 8px; }
+  .d-title .tg { width: 15px; height: 15px; flex: none; color: var(--graphite); }
+  .d-rat { color: var(--graphite); font-size: 12.5px; margin-top: 3px; }
+  .d-rat .q { color: var(--press-ink); }
+  .d-tags { display: flex; gap: 6px; margin-top: 9px; align-items: center; }
+  .chip { font-size: 11px; color: var(--graphite); border: 1px solid var(--graphite-2); border-radius: 999px; padding: 2px 9px; }
+  .chip.kind { font-family: var(--font-mono); }
+  .chip.kind.set { border-color: transparent; background: var(--card-sunk); color: var(--press-ink); }
+
+  .d-evid { text-align: right; white-space: nowrap; padding-top: 2px; }
+  .d-evid .big { font-size: 13px; color: var(--press-ink); }
+  .d-evid .sub { font-size: 11px; color: var(--graphite); margin-top: 3px; }
+  .d-evid .src { font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--graphite); margin-top: 5px; }
+
+  .d-actions { grid-column: 2 / 4; display: flex; gap: 6px; margin-top: 11px; opacity: 0; max-height: 0; overflow: hidden; transition: opacity .14s; }
+  .dispatch:hover .d-actions, .dispatch.sel .d-actions { opacity: 1; max-height: 40px; }
+  .act { font-family: var(--font-body); font-size: 12px; border: 1px solid var(--graphite-2); background: transparent; color: var(--press-ink); border-radius: var(--radius); padding: 5px 11px; cursor: pointer; }
+  .act:hover { background: var(--newsprint); }
+  .act.keep:hover { border-color: var(--affordance); }
+  .act.reject:hover { color: var(--graphite); }
+  .act.promote { margin-left: auto; border-color: transparent; background: var(--press-ink); color: var(--card-stock); font-weight: 500; }
+  .act.promote:hover { background: var(--meter-hot); }
+
+  /* squelch (reject) + commit (promote) */
+  .dispatch.squelched { filter: grayscale(.7) opacity(.45); transform: translateX(0); }
+  .dispatch.committing { animation: commit .5s ease forwards; }
+  .dispatch.committing .wire-meter i { background: var(--meter-hot) !important; transition: background .2s; }
+  @keyframes commit { 0%{} 30%{box-shadow:0 0 0 2px var(--meter-hot), var(--shadow-lift)} 100%{transform:translateX(60px); opacity:0; max-height:0; margin:0; padding-top:0; padding-bottom:0} }
+
+  /* ---------- THE DESK (Pipeline) ---------- */
+  #desk .deskwrap { padding: 20px 22px 40px; overflow-x: auto; }
+  .lanes { display: flex; gap: 14px; min-width: max-content; }
+  .lane { width: 224px; flex: none; }
+  .lane-head { display: flex; align-items: baseline; justify-content: space-between; padding: 2px 4px 10px; }
+  .lane-head .name { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: -.01em; }
+  .lane-head .who { font-size: 10px; color: var(--graphite); margin-left: 5px; }
+  .lane-head .ct { color: var(--graphite); }
+  .trough { background: var(--card-sunk); border-radius: var(--radius-lg); box-shadow: var(--trough); min-height: 90px; padding: 8px; display: flex; flex-direction: column; gap: 8px; }
+  .lane.published .trough { background: linear-gradient(180deg, rgba(214,64,46,.10), rgba(214,64,46,.04)); }
+
+  .card { background: var(--card-stock); border-radius: var(--radius); box-shadow: var(--shadow-sheet); padding: 11px 12px; cursor: grab; }
+  .card:hover { box-shadow: var(--shadow-lift); }
+  .card .c-title { font-family: var(--font-display); font-weight: 700; font-size: 13.5px; line-height: 1.25; letter-spacing: -.01em; }
+  .card .c-slug { font-size: 10.5px; color: var(--graphite); margin-top: 3px; }
+  /* horizontal continuous level bar = the desk meter */
+  .desk-meter { height: 5px; border-radius: 3px; background: var(--card-sunk); margin-top: 9px; overflow: hidden; }
+  .desk-meter > span { display: block; height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--meter-cold), var(--meter-hot)); background-size: 760px 100%; background-position: left; }
+  .card .c-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+  .card .arts { display: flex; gap: 3px; }
+  .card .arts i { width: 13px; height: 4px; border-radius: 2px; background: var(--card-sunk); }
+  .card .arts i.on { background: var(--meter-cold); }
+  .card .c-date { font-size: 10.5px; color: var(--graphite); }
+  .card.live { box-shadow: var(--shadow-lift); }
+  .card .onair-tag { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-display); font-weight: 700; font-size: 9.5px; letter-spacing: .08em; color: var(--meter-hot); }
+  .card .onair-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--meter-hot); }
+
+  .deskhead { max-width: 100%; padding: 18px 22px 0; display: flex; align-items: center; gap: 14px; }
+  .deskhead .legend { width: 220px; }
+
+  .note { max-width: 1160px; margin: 0 auto; padding: 8px 22px 40px; color: var(--graphite); font-size: 11.5px; }
+  .note code { font-family: var(--font-mono); color: var(--press-ink); }
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wordmark"><span class="bars"><i></i><i></i><i></i></span> studio</div>
+    <div class="viewtoggle">
+      <button id="t-wire" class="active" onclick="show('wire')">The Wire</button>
+      <button id="t-desk" onclick="show('desk')">The Desk</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="meta">
+      <span><span class="key">⌘K</span> search the signal</span>
+      <span class="num">⟳ 4m ago</span>
+      <span class="onair"><span class="dot"></span> 2 ON-AIR</span>
+    </div>
+  </header>
+
+  <!-- ============ THE WIRE ============ -->
+  <section id="wire" class="view active">
+    <div class="wrap">
+      <aside class="rail">
+        <div>
+          <h4>Signal</h4>
+          <div class="band">
+            <button class="on"><span class="glyph"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="6.5"/><circle cx="9" cy="9" r="2"/></svg></span><span class="lbl">All signal</span><span class="ct num">42</span></button>
+            <button><span class="glyph"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M2 9h14M9 2v14"/></svg></span><span class="lbl">Mirror</span><span class="ct num">9</span></button>
+            <button><span class="glyph"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9h2l2-5 3 11 3-9 2 5 1-2h2"/></svg></span><span class="lbl">Comment-demand</span><span class="ct num">14</span></button>
+            <button><span class="glyph"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 15l5-6 3 3 6-9"/><path d="M16 6V3h-3"/></svg></span><span class="lbl">Trend</span><span class="ct num">19</span></button>
+          </div>
+        </div>
+        <div>
+          <h4>Temperature</h4>
+          <div class="band temps">
+            <button><span class="swatch" style="background:var(--meter-cold)"></span><span class="lbl">Raw</span><span class="ct num">31</span></button>
+            <button><span class="swatch" style="background:#8a6a3e"></span><span class="lbl">Leaning</span><span class="ct num">8</span></button>
+            <button><span class="swatch" style="background:var(--meter-hot)"></span><span class="lbl">Hold</span><span class="ct num">3</span></button>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="cap">Meter = rationale lean. Never a score.</div>
+          <div class="ramp"></div>
+          <div class="ends"><span>raw</span><span>pursue</span></div>
+        </div>
+        <div class="keys">
+          <div><kbd>j</kbd> <kbd>k</kbd> move · <kbd>k</kbd> keep · <kbd>x</kbd> reject</div>
+          <div><kbd>p</kbd> promote → the desk</div>
+          <div><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> kind: long·short·series</div>
+        </div>
+      </aside>
+
+      <main class="feed">
+        <h3>Incoming <span class="ct num">42 on the wire</span></h3>
+
+        <article class="dispatch sel" tabindex="0">
+          <div class="wire-meter" data-type="comment" data-lean="strong"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="d-main">
+            <div class="d-title"><span class="tg"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9h2l2-5 3 11 3-9 2 5 1-2h2"/></svg></span>Why your transcript drifts from the audio</div>
+            <div class="d-rat">recurring confusion across your last 3 comment sections — a clear explainer gap. <span class="q">“…why is it off by a second?”</span></div>
+            <div class="d-tags"><span class="chip">comment-demand</span><span class="chip kind set">long</span></div>
+            <div class="d-actions">
+              <button class="act keep">Keep</button>
+              <button class="act reject" onclick="squelch(this)">Reject</button>
+              <button class="act">long · short · series</button>
+              <button class="act promote" onclick="commit(this)">↑ Promote</button>
+            </div>
+          </div>
+          <div class="d-evid">
+            <div class="big num">×37 asks</div>
+            <div class="sub num">across 3 vids</div>
+            <div class="src">comment · 06·19</div>
+          </div>
+        </article>
+
+        <article class="dispatch" tabindex="0">
+          <div class="wire-meter" data-type="trend" data-lean="strong"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="d-main">
+            <div class="d-title"><span class="tg"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 15l5-6 3 3 6-9"/><path d="M16 6V3h-3"/></svg></span>Cloudflare: one company, 20% of the web</div>
+            <div class="d-rat">the “single point of failure for the internet” frenzy lands square in your system-design lane — strong fit.</div>
+            <div class="d-tags"><span class="chip">trend</span><span class="chip kind">set kind</span></div>
+            <div class="d-actions">
+              <button class="act keep">Keep</button>
+              <button class="act reject" onclick="squelch(this)">Reject</button>
+              <button class="act">long · short · series</button>
+              <button class="act promote" onclick="commit(this)">↑ Promote</button>
+            </div>
+          </div>
+          <div class="d-evid">
+            <div class="big num">5.2k ▲</div>
+            <div class="sub num">312 ◷</div>
+            <div class="src">HN · 06·20</div>
+          </div>
+        </article>
+
+        <article class="dispatch" tabindex="0">
+          <div class="wire-meter" data-type="mirror" data-lean="lean"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="d-main">
+            <div class="d-title"><span class="tg"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M2 9h14M9 2v14"/></svg></span>Fireship dropped “Bun 2.0 in 100 Seconds”</div>
+            <div class="d-rat">your audience keeps asking Bun-vs-Node — a natural your-take angle, not a re-upload.</div>
+            <div class="d-tags"><span class="chip">mirror</span><span class="chip kind">set kind</span></div>
+            <div class="d-actions">
+              <button class="act keep">Keep</button>
+              <button class="act reject" onclick="squelch(this)">Reject</button>
+              <button class="act">long · short · series</button>
+              <button class="act promote" onclick="commit(this)">↑ Promote</button>
+            </div>
+          </div>
+          <div class="d-evid">
+            <div class="big num">▶ 2.4M</div>
+            <div class="sub num">1:42</div>
+            <div class="src">@Fireship · 06·17</div>
+          </div>
+        </article>
+
+        <article class="dispatch" tabindex="0">
+          <div class="wire-meter" data-type="trend" data-lean="hold"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="d-main">
+            <div class="d-title"><span class="tg"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 15l5-6 3 3 6-9"/><path d="M16 6V3h-3"/></svg></span>Rust just shipped async closures</div>
+            <div class="d-rat">hot on HN, but you’ve covered async twice — likely a re-tread. Hold.</div>
+            <div class="d-tags"><span class="chip">trend</span><span class="chip kind">set kind</span></div>
+            <div class="d-actions">
+              <button class="act keep">Keep</button>
+              <button class="act reject" onclick="squelch(this)">Reject</button>
+              <button class="act">long · short · series</button>
+              <button class="act promote" onclick="commit(this)">↑ Promote</button>
+            </div>
+          </div>
+          <div class="d-evid">
+            <div class="big num">4.1k ▲</div>
+            <div class="sub num">218 ◷</div>
+            <div class="src">HN · 06·18</div>
+          </div>
+        </article>
+
+        <article class="dispatch" tabindex="0">
+          <div class="wire-meter" data-type="comment" data-lean="strong"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="d-main">
+            <div class="d-title"><span class="tg"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9h2l2-5 3 11 3-9 2 5 1-2h2"/></svg></span>A full Zed editor tutorial</div>
+            <div class="d-rat">a direct, repeated request under your Zed clips — proven lane. <span class="q">“I have to come for full Zed tutorial ooh”</span></div>
+            <div class="d-tags"><span class="chip">comment-demand</span><span class="chip kind">set kind</span></div>
+            <div class="d-actions">
+              <button class="act keep">Keep</button>
+              <button class="act reject" onclick="squelch(this)">Reject</button>
+              <button class="act">long · short · series</button>
+              <button class="act promote" onclick="commit(this)">↑ Promote</button>
+            </div>
+          </div>
+          <div class="d-evid">
+            <div class="big num">×12 asks</div>
+            <div class="sub num">+ 1.4k vid</div>
+            <div class="src">comment · 06·14</div>
+          </div>
+        </article>
+      </main>
+    </div>
+    <p class="note">Mockup · meter on the wire encodes the AI’s <em>lean</em> (raw → pursue) as a 3-state notch — never a number, never a grade. Evidence (views, points, comment counts, dates) is the only <code>mono</code> layer.</p>
+  </section>
+
+  <!-- ============ THE DESK ============ -->
+  <section id="desk" class="view">
+    <div class="deskhead">
+      <div class="legend" style="background:var(--card-stock)">
+        <div class="cap">Card meter = artifact progress, scanned from <code style="font-family:var(--font-mono)">videos/</code></div>
+        <div class="ramp"></div>
+        <div class="ends"><span>idea</span><span>on-air</span></div>
+      </div>
+    </div>
+    <div class="deskwrap">
+      <div class="lanes">
+        <div class="lane"><div class="lane-head"><span><span class="name">Idea</span><span class="who">you</span></span><span class="ct num">2</span></div>
+          <div class="trough">
+            <div class="card"><div class="c-title">Cloudflare: who runs the internet</div><div class="c-slug num">cloudflare-spof-2026-06-22</div><div class="desk-meter"><span style="width:6%"></span></div><div class="c-foot"><div class="arts"><i></i><i></i><i></i><i></i></div><span class="c-date num">06·22</span></div></div>
+            <div class="card"><div class="c-title">Why your transcript drifts</div><div class="c-slug num">— promoted from the wire</div><div class="desk-meter"><span style="width:6%"></span></div><div class="c-foot"><div class="arts"><i></i><i></i><i></i><i></i></div><span class="c-date num">06·19</span></div></div>
+          </div></div>
+
+        <div class="lane"><div class="lane-head"><span><span class="name">Research</span><span class="who">you</span></span><span class="ct num">1</span></div>
+          <div class="trough">
+            <div class="card"><div class="c-title">Postgres for 10M rows, no sweat</div><div class="c-slug num">pg-scale-2026-06-15</div><div class="desk-meter"><span style="width:16%"></span></div><div class="c-foot"><div class="arts"><i class="on"></i><i></i><i></i><i></i></div><span class="c-date num">06·15</span></div></div>
+          </div></div>
+
+        <div class="lane"><div class="lane-head"><span><span class="name">Script</span><span class="who">ai</span></span><span class="ct num">1</span></div>
+          <div class="trough">
+            <div class="card"><div class="c-title">CAPTCHAs are quietly dying</div><div class="c-slug num">captcha-death-2026-06-10</div><div class="desk-meter"><span style="width:28%"></span></div><div class="c-foot"><div class="arts"><i class="on"></i><i class="on"></i><i></i><i></i></div><span class="c-date num">06·10</span></div></div>
+          </div></div>
+
+        <div class="lane"><div class="lane-head"><span><span class="name">Voiceover</span><span class="who">ai</span></span><span class="ct num">0</span></div><div class="trough"></div></div>
+
+        <div class="lane"><div class="lane-head"><span><span class="name">Compose</span><span class="who">ai</span></span><span class="ct num">1</span></div>
+          <div class="trough">
+            <div class="card"><div class="c-title">Why text rendering is hard</div><div class="c-slug num">why-text-is-hard-2026-05-07</div><div class="desk-meter"><span style="width:52%"></span></div><div class="c-foot"><div class="arts"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span class="c-date num">05·07</span></div></div>
+          </div></div>
+
+        <div class="lane"><div class="lane-head"><span><span class="name">Review</span><span class="who">you</span></span><span class="ct num">0</span></div><div class="trough"></div></div>
+        <div class="lane"><div class="lane-head"><span><span class="name">Thumbnail</span><span class="who">ai</span></span><span class="ct num">0</span></div><div class="trough"></div></div>
+        <div class="lane"><div class="lane-head"><span><span class="name">Captions</span><span class="who">ai</span></span><span class="ct num">0</span></div><div class="trough"></div></div>
+
+        <div class="lane"><div class="lane-head"><span><span class="name">Render</span><span class="who">ai</span></span><span class="ct num">1</span></div>
+          <div class="trough">
+            <div class="card"><div class="c-title">JavaScript ate every platform</div><div class="c-slug num">js-the-king-2026-05-15</div><div class="desk-meter"><span style="width:82%"></span></div><div class="c-foot"><div class="arts"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span class="c-date num">05·15</span></div></div>
+          </div></div>
+
+        <div class="lane published"><div class="lane-head"><span><span class="name">Published</span><span class="who">you</span></span><span class="ct num">2</span></div>
+          <div class="trough">
+            <div class="card live"><div class="c-title">How WhatsApp Handles 40B Messages</div><div class="c-slug num">whatsapp-40b-2026-06-05</div><div class="desk-meter"><span style="width:100%"></span></div><div class="c-foot"><span class="onair-tag"><span class="dot"></span> ON-AIR</span><span class="c-date num">06·11</span></div></div>
+            <div class="card live"><div class="c-title">Why you can’t escape JavaScript</div><div class="c-slug num">escape-js-2026-06-04</div><div class="desk-meter"><span style="width:100%"></span></div><div class="c-foot"><span class="onair-tag"><span class="dot"></span> ON-AIR</span><span class="c-date num">06·04</span></div></div>
+          </div></div>
+
+        <div class="lane"><div class="lane-head"><span><span class="name">Publish QA</span><span class="who">ai</span></span><span class="ct num">0</span></div><div class="trough"></div></div>
+        <div class="lane"><div class="lane-head"><span><span class="name">Shorts</span><span class="who">ai</span></span><span class="ct num">1</span></div>
+          <div class="trough">
+            <div class="card"><div class="c-title">WhatsApp ticks — what they mean</div><div class="c-slug num">wa-ticks-short-2026-06-12</div><div class="desk-meter"><span style="width:100%"></span></div><div class="c-foot"><div class="arts"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span class="c-date num">06·12</span></div></div>
+          </div></div>
+      </div>
+    </div>
+    <p class="note">The Desk · same meter, now horizontal — a glance across the board reads as a row of VU meters climbing from cold idea to red ON-AIR. Zero hairlines: separation is soft shadow + inset trough only.</p>
+  </section>
+
+<script>
+  function show(v){
+    document.querySelectorAll('.view').forEach(s=>s.classList.toggle('active', s.id===v));
+    document.getElementById('t-wire').classList.toggle('active', v==='wire');
+    document.getElementById('t-desk').classList.toggle('active', v==='desk');
+  }
+  // band filter visual toggle
+  document.querySelectorAll('.band button').forEach(b=>b.addEventListener('click',()=>{
+    const grp=b.closest('.band'); grp.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  }));
+  // squelch (reject) + commit (promote) gestures
+  function squelch(el){ el.closest('.dispatch').classList.add('squelched'); }
+  function commit(el){
+    const row=el.closest('.dispatch'); row.classList.remove('sel'); row.classList.add('committing');
+    setTimeout(()=>{ row.style.display='none'; }, 520);
+  }
+  // keyboard: j/k select, x reject, p promote
+  let rows=[...document.querySelectorAll('#wire .dispatch')], i=0;
+  function sel(n){ rows=rows.filter(r=>r.style.display!=='none'&&!r.classList.contains('committing')); if(!rows.length)return; i=(n+rows.length)%rows.length; rows.forEach(r=>r.classList.remove('sel')); rows[i].classList.add('sel'); rows[i].scrollIntoView({block:'nearest'}); }
+  addEventListener('keydown',e=>{
+    if(document.getElementById('wire').classList.contains('active')===false) return;
+    if(e.key==='j'){sel(i+1)} else if(e.key==='k'){/* keep no-op in mock */ if(e.shiftKey)return; sel(i-1)}
+    else if(e.key==='J'){sel(i+1)} else if(e.key==='x'){rows[i]&&squelch(rows[i].querySelector('.reject'))}
+    else if(e.key==='p'){rows[i]&&commit(rows[i].querySelector('.promote'))}
+  });
+  sel(0);
+</script>
+</body>
+</html>
