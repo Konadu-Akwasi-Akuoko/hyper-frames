@@ -16,6 +16,12 @@ export interface Evidence {
   published_at?: string;
   count?: number;
   quotes?: { text: string; likes?: number }[];
+  /**
+   * Categorical rationale lean (raw → pursue), set by the skill. A 3-state
+   * notch, NOT a number/grade — drives the wire meter fill. Optional; absent
+   * for manual ideas (defaults from triage status).
+   */
+  lean?: "hold" | "lean" | "strong";
 }
 
 export interface Idea {
@@ -37,8 +43,10 @@ export interface Idea {
 
 export interface BoardCard {
   slug: string;
-  title: string;
   date: string;
+  /** folder key `<slug>-<date>` — the board_overlay PK and API route param. */
+  name: string;
+  title: string;
   stage: string;
   artifacts: Record<string, ArtifactStatus>;
   suggestedStage: string | null;
