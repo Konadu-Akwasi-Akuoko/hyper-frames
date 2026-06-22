@@ -400,6 +400,75 @@ together); restraint over decoration; the existing `kanban.html` warm-dark /
 copper palette is a *reference point to evaluate*, not a mandate — the pass
 rethinks from scratch.
 
+### 10.1 Visual language — **The Wire Desk** (decided)
+
+The frontend-design pass ran three independent directions through an adversarial
+judge panel. The winner (26/30) is **The Wire Desk**. It was the only direction
+to break the dark-mode monoculture entirely — a *daylight assignment desk, ink
+on newsprint* — which is the cleanest single move away from both the old
+copper-on-charcoal identity and the near-black-plus-one-accent AI default. A
+working mockup of both views with sample data lives at
+**`tools/studio/design/mockup.html`** — it is the visual source of truth for the
+build.
+
+**Thesis.** The whole app is a *meter*. Raw dispatches arrive on **The Wire**
+(Ideas) cold and unleveled; as a story commits and moves down **The Desk**
+(Pipeline) its meter fills and warms toward a single saturated broadcast-red
+**ON-AIR** at Published. Editorial confidence (a characterful display voice, real
+measure, generous radius) gives it assignment-desk gravity with zero broadsheet
+hairlines.
+
+**Palette (final — after cutting teal's accent-creep so it does ONE job).**
+
+| Token | Hex | Role |
+|---|---|---|
+| Newsprint | `#EDE9E0` | App background — cool rag paper (NOT cream `#F4F1EA`) |
+| Card Stock | `#FBFAF6` | Raised surfaces: cards, lanes, panels (lifted by soft shadow, never a border) |
+| Card Sunk | `#E5E0D6` | Inset troughs on the desk; empty meter segments |
+| Press Ink | `#1C1A17` | Primary text + display (warm near-black, never `#000`) |
+| Graphite | `#6F6A61` | Secondary text, metadata, all mono readouts |
+| **Signal Teal** | `#2C6E6A` | **Meter ramp COLD pole only** (raw / low level) |
+| **On-Air Red** | `#D6402E` | **The one saved color** — meter peak, ON-AIR, the commit/promote moment. Strictly rationed; never a wash, header, or background |
+
+Interaction neutrals (the Chanel cut): focus rings and the keep affordance are
+**ink/graphite**, never teal. The only two *data* colors in the whole app are the
+meter ramp `Signal Teal → On-Air Red`.
+
+**Type (three tiers, hard boundaries).**
+- **Display — Bricolage Grotesque** (700/800): wordmark, idea titles, stage names. The deliberate anti-Fraunces, characterful-but-mechanical voice.
+- **Body — Inter**: UI chrome, rationale lines, notes, panel copy.
+- **Utility — JetBrains Mono**: scoped to a `.num` / `[data-mono]` class for *measured/coded* values ONLY (timecodes, view/point/comment counts, durations, slugs, paths, dates). Never body — that was the old tool's mistake.
+
+**Signature — THE LEVEL METER (one law across both views).** A tiny VU/signal
+meter is the single shared gene. On **The Wire** it stands *vertical* as a
+5-segment notch on each dispatch's left edge: **fill height = the AI's rationale
+lean** (raw → pursue), segments colored along the shared ramp (cold teal at the
+base, warming to red at the top) — a lean, never a number, never a grade. On
+**The Desk** it lies *horizontal* as a continuous level-bar under each card title:
+**fill width = artifact progress derived from the `videos/` scan** (real files on
+disk, not a hand-set value). Both run the identical `teal → red` ramp, so the
+whole cockpit reads at a glance as a wall of meters at different levels, and
+"committing" a story is literally a meter peaking into the red. The **commit
+animation** — a dispatch's strip flashing On-Air Red as it leaves the wire ==
+a card peaking red as it lands in Published — is the seam that makes the two
+views one app.
+
+**Grafted from the runner-up directions (judge's synthesis):**
+- **Left-rail band filter** (Mirror / Comment-demand / Trend, each with a live count + a subject glyph) — the best triage affordance for a single power user scanning mixed signal.
+- **Subject type-glyphs**, inline before each idea title: a vectorscope target = *mirror*, a waveform tick = *comment-demand*, a rising-trace = *trend*. These carry source type so the meter stays pure-lean.
+- **A meter legend/key** in both views that teaches the `raw → pursue` / `idea → on-air` ramp on sight.
+- **Squelch reject**: a rejected dispatch desaturates and drops out of the wire — a crisp "cut from feed" gesture.
+
+**Build watchouts (carried into the plan):**
+1. **Don't drift into the cream default** — `#EDE9E0` is only ~7–10/channel off the forbidden cream; lock body to Inter, Bricolage at display sizes only, and never let On-Air Red become a decorative wash (it appears solely on the meter peak, the commit flash, and the ON-AIR dot).
+2. **Two data-color tokens** (`--meter-cold`, `--meter-hot`) used ONLY by meter/commit; a separate neutral `--focus`. If teal appears outside a meter/progress fill, it's a regression.
+3. **Mono is a scoped utility**, document default Inter — never `font-family:mono` on `body` (the old kanban's exact sin).
+4. **Namespace every component class** (`.wire-meter`, `.desk-meter`, `.band-filter`); never a bare generic class (`.hot`, `.cold`, `.x`) that could match a nested container — per project memory on scene-class collisions.
+5. **Light-mode shadow discipline** — soft Card-Stock shadows + inset troughs with enough spread to register on `#EDE9E0`; zero hairlines (the anti-default-#3 promise).
+6. **The meter must encode real data, not a fake score** — wire = a 2–3 state lean notch; desk = artifact-completion from the actual `videos/` scan.
+7. **One shared token layer** (one radius `6px`, one shadow scale, one type scale) across both views from the start, so they never read as two bolted-together apps.
+8. **Keyboard-first** — wire the core triage keys (navigate, keep, reject, promote, set-kind) + a `⌘K` palette; an unwired hint strip is editorial chrome.
+
 ---
 
 ## 11. Migration & retirement
