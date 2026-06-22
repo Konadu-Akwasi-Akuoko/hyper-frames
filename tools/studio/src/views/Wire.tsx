@@ -272,6 +272,7 @@ export default function Wire({
                 onReject={() => reject(idea.id)}
                 onPromote={() => promote(idea.id)}
                 onCycleKind={() => cycleKind(idea)}
+                onAcceptKind={() => setKind(idea.id, idea.kind)}
               />
             ))
           )}

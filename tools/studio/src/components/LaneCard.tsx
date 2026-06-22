@@ -39,6 +39,12 @@ export default function LaneCard({
           </span>
         ) : null}
       </div>
+      {card.kind && card.kind !== "unset" ? (
+        <span className="c-kind">
+          {card.kind}
+          {card.kindSource === "ai" ? <span className="ai">·ai</span> : null}
+        </span>
+      ) : null}
       <div className="c-slug num">
         {card.onDisk ? card.name : card.fromIdea ? "— promoted from the wire" : card.name}
       </div>

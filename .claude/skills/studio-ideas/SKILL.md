@@ -15,13 +15,16 @@ on **The Wire**. The full design is
 - **Aggregator, never a judge.** NEVER assign a number, score, rank, percentage,
   or rubric to an idea. The verdict is binary qualitative: **keep** or
   **discard**, with a one-line *why-pursue* rationale. The human decides
-  make-or-not and long/short/series.
+  make-or-not.
 - **Flat token cost — read only the delta.** Only ever
   `SELECT ... WHERE judged_at IS NULL`. NEVER read the whole `raw_signal` or
   `ideas` table into context. This is the entire reason the store is
   server-owned SQLite.
-- **Leave `kind` unset.** Insert ideas with `kind = 'unset'`. The human picks
-  long / short / series on The Wire.
+- **Suggest a format.** Set `kind` to your best guess (long / short / series),
+  `kind_source='ai'`, and a one-line `kind_why`. This is a *suggestion*, not a
+  verdict — the human confirms it with one tap on The Wire (which flips
+  provenance to `human`) or overrides to any value. It is still qualitative:
+  **never a grade, rank, or score** — same bar as the keep/discard rationale.
 - **Discarded rows stay.** Mark them `judged_verdict='discarded'` — they remain
   in `raw_signal` as an audit trail and are never resurfaced or re-judged.
 - **Mark everything you read.** Every row you pull this pass MUST end with a
@@ -93,6 +96,17 @@ For every unjudged row decide **keep** or **discard** on three lenses:
 - **Demand shape** (comment rows) — cluster the comments into themes. A
   *recurring* ask ("keeps asking X", "when full tutorial") is a strong keep;
   capture 1-2 representative quotes and the count. One-off praise → not demand.
+- **Format fit** (keepers only) — suggest a `kind` from the shape of the topic:
+  - **short** — a single tight mechanism / broad-appeal "how it works" quick hit
+    (Cleo-style; e.g. *"what happens when you tap your card"*, a ~1–2 min mirror).
+  - **long** — a full system-design / deep explainer that needs build-up (e.g.
+    *"How Google Docs lets everyone type at once (CRDTs)"*, an 8-min
+    ByteByteGo-lane topic).
+  - **series** — a topic too big for one video / naturally multi-part (e.g.
+    *"How LLMs actually work"* as a multi-parter).
+
+  When genuinely ambiguous, pick the safer single-video format and say so in
+  `kind_why`. This is a suggestion the human confirms — not a grade.
 
 Keep the bar honest: the backlog is small on purpose. When unsure, discard — it
 stays in the audit trail and costs nothing to skip.
@@ -116,12 +130,15 @@ drives the wire meter's fill height.
 - `mirror`: `{"lean":"lean","views":2400000,"duration_s":102}`
 - `comment_demand`: `{"lean":"strong","count":37,"quotes":[{"text":"…why is it off by a second?"}]}`
 
-Insert (id = random hex; `kind='unset'`, `status='new'`; one-line rationale):
+Insert (id = random hex; `status='new'`; one-line rationale; suggested `kind`
+with `kind_source='ai'` + a one-line `kind_why`):
 
 ```bash
 sqlite3 tools/studio/studio.db "INSERT INTO ideas
- (id,type,kind,status,title,rationale,source,source_url,source_title,evidence_json,raw_signal_id,first_seen)
- VALUES (lower(hex(randomblob(8))),'trend','unset','new',
+ (id,type,kind,kind_source,kind_why,status,title,rationale,source,source_url,source_title,evidence_json,raw_signal_id,first_seen)
+ VALUES (lower(hex(randomblob(8))),'trend','long','ai',
+  'a full system-design build-up — single-point-of-failure → anycast → blast radius.',
+  'new',
   'Cloudflare: one company, 20% of the web',
   'the single-point-of-failure frenzy lands square in your system-design lane — strong fit.',
   'hn','https://news.ycombinator.com/item?id=123', NULL,
@@ -161,8 +178,10 @@ sqlite3 tools/studio/studio.db "UPDATE raw_signal
 ## Step 7 — report and hand off
 
 Tell the user a compact summary: kept N (by type), discarded M, with the new idea
-titles. Then they triage on **The Wire** (keep/reject, set kind, promote). Do not
-set `kind`, do not promote, do not score — those are the human's calls.
+titles and your suggested `kind` for each. Then they triage on **The Wire**
+(keep/reject, confirm or override the suggested kind, promote). You suggest the
+format; do not promote, do not score — the make-or-not call, the final format,
+and the promote are the human's.
 
 ## Prune (housekeeping, optional)
 

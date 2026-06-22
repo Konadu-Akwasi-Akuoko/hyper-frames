@@ -71,9 +71,15 @@ app.patch("/:id", async (c) => {
     throw new ApiError("NOT_FOUND", "idea not found", 404);
   }
   db.run(
-    "UPDATE ideas SET status=COALESCE(?,status), kind=COALESCE(?,kind), notes=COALESCE(?,notes) WHERE id=?",
-    [body.status ?? null, body.kind ?? null, body.notes ?? null, id],
+    "UPDATE ideas SET status=COALESCE(?,status), notes=COALESCE(?,notes) WHERE id=?",
+    [body.status ?? null, body.notes ?? null, id],
   );
+  if (body.kind !== undefined) {
+    db.run(
+      "UPDATE ideas SET kind=?, kind_source=?, kind_why=NULL WHERE id=?",
+      [body.kind, body.kind === "unset" ? null : "human", id],
+    );
+  }
   const row = db.query("SELECT * FROM ideas WHERE id=?").get(id) as IdeaRow;
   return ok(c, mapIdeaRow(row));
 });
@@ -95,8 +101,8 @@ app.post("/:id/promote", (c) => {
     n++;
   }
   db.run(
-    "INSERT INTO board_overlay (slug,title,stage,notes,created_from_idea,updated_at) VALUES (?,?,?,?,?,?)",
-    [slug, idea.title, "idea", null, id, nowISO()],
+    "INSERT INTO board_overlay (slug,title,stage,notes,created_from_idea,kind,kind_source,updated_at) VALUES (?,?,?,?,?,?,?,?)",
+    [slug, idea.title, "idea", null, id, idea.kind, idea.kind_source, nowISO()],
   );
   db.run("UPDATE ideas SET status='promoted', promoted_slug=? WHERE id=?", [
     slug,

@@ -20,6 +20,8 @@ interface OverlayRow {
   stage: string | null;
   notes: string | null;
   created_from_idea: string | null;
+  kind: string | null;
+  kind_source: string | null;
   updated_at: string;
 }
 
@@ -65,6 +67,8 @@ async function buildBoard() {
       title: o?.title ?? s?.title ?? slug,
       notes: o?.notes ?? null,
       fromIdea: o?.created_from_idea ?? null,
+      kind: o?.kind ?? "unset",
+      kindSource: o?.kind_source ?? null,
       onDisk: s != null,
     });
   }

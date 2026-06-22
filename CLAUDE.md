@@ -36,7 +36,8 @@ The flow: `studio-discover` (Python CLI) fetches raw signal from the seed YouTub
 channels (videos + top comments) and the text aggregators (HN/Reddit/Lobsters/
 daily.dev) into `raw_signal`; the **`studio-ideas` skill** curates that delta into
 the idea backlog (qualitative keep/discard + a one-line rationale, **never a
-grade**); promoting an idea on The Wire pops it out of the backlog and lands a
+grade** — and a suggested format, long/short/series, the human confirms);
+promoting an idea on The Wire pops it out of the backlog and lands a
 card on The Desk. All intelligence lives in the skill, never the server. Run it:
 
 ```bash

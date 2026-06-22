@@ -41,7 +41,8 @@ Inspect with the system `sqlite3 studio.db`.
 ## Hard rules
 
 - **Aggregator, never a judge.** No numeric score / rank / rubric anywhere. The
-  human decides make-or-not and long/short/series.
+  human decides make-or-not; the AI suggests format (long/short/series) and the
+  human confirms/overrides.
 - **Flat AI token cost.** The skill reads only `WHERE judged_at IS NULL`; never
   loads the whole store. Promote/reject leave the active view; prune trims old
   judged `raw_signal`.
