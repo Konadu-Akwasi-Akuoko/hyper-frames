@@ -1,0 +1,24 @@
+[project]
+name = "studio-discovery"
+version = "0.1.0"
+description = "Zero-AI discovery: fetch raw signal (yt-dlp channels+comments, HN/Reddit/Lobsters/daily.dev) into studio.db raw_signal."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+studio-discover = "studio_discovery.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
