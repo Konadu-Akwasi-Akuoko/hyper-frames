@@ -1,0 +1,43 @@
+# Hook
+Redis
+one at a time, on a single thread
+
+# What it is
+Salvatore Sanfilippo
+REmote DIctionary Server
+in memory
+data structure server
+
+# Why it's fast
+single-threaded command execution
+atomic
+a million operations a second
+
+# The structures
+sorted set
+leaderboard
+twelve kilobytes
+the right structure
+
+# Why every backend reaches for it
+cache-aside
+thundering herd
+rate limiter
+Sidekiq and BullMQ
+5.8 billion cache hits
+one dependency
+
+# The honest cost
+periodic snapshots
+append every change to a log
+Martin Kleppmann
+boot path
+a database you have to respect
+
+# The license twist
+open source
+Valkey
+nearly split in two
+
+# Landing
+both eyes open
