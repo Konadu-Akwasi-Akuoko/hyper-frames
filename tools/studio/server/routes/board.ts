@@ -4,10 +4,10 @@ import { scanVideos } from "../lib/scan";
 import { VIDEOS_ROOT } from "../lib/paths";
 import { ok, ApiError } from "../lib/response";
 import {
-  MILESTONE_STAGES,
   stageProgress,
   stageIndex,
   isStage,
+  stageDriftsFrom,
 } from "../lib/stages";
 import { nowISO } from "../lib/util";
 import { BoardCardCreateBody, SetCardBody } from "../lib/schemas";
@@ -51,10 +51,8 @@ async function buildBoard() {
     const stage = manualStage ?? suggestedStage ?? "idea";
     const hasDrift =
       manualStage != null &&
-      suggestedStage != null &&
-      suggestedStage !== manualStage &&
-      !MILESTONE_STAGES.includes(manualStage) &&
-      suggestedStage !== "idea";
+      s != null &&
+      stageDriftsFrom(manualStage, s.artifacts);
     cards.push({
       slug,
       date,

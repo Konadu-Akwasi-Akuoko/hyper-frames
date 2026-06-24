@@ -41,6 +41,26 @@ async function voiceoverStatus(dir: string): Promise<ArtifactStatus> {
   return "partial";
 }
 
+/**
+ * present iff index.html has real mounted content — a `.clip` element or a
+ * `data-composition-src` host — outside HTML comments. An empty `hyperframes
+ * init` scaffold (whose only such markers live inside its placeholder comment)
+ * is `partial`, never present; a missing file is `missing`.
+ */
+async function composeStatus(dir: string): Promise<ArtifactStatus> {
+  let html: string;
+  try {
+    html = await readFile(path.join(dir, "index.html"), "utf8");
+  } catch (e) {
+    return isENOENT(e) ? "missing" : "unknown";
+  }
+  const withoutComments = html.replace(/<!--[\s\S]*?-->/g, "");
+  const hasRealContent =
+    /class\s*=\s*["'][^"']*\bclip\b/.test(withoutComments) ||
+    /data-composition-src\s*=/.test(withoutComments);
+  return hasRealContent ? "present" : "partial";
+}
+
 /** present if either compositions/sfx.html or compositions/music.html exists. */
 async function reviewStatus(dir: string): Promise<ArtifactStatus> {
   const sfx = await exists(dir, "compositions/sfx.html");
@@ -106,7 +126,7 @@ export async function scanVideos(root: string): Promise<ScannedVideo[]> {
       research: await exists(full, "seo/research.json"),
       script: await exists(full, "script.md"),
       voiceover: await voiceoverStatus(full),
-      compose: await exists(full, "index.html"),
+      compose: await composeStatus(full),
       review: await reviewStatus(full),
       thumbnail: await thumbnailStatus(full),
       render: await renderStatus(full),
