@@ -50,6 +50,15 @@ where theirs sits, our headline in Inter 900 in their headline zone, `acc-red`
 because the beat is genuinely red — but rendered in OUR type, OUR palette value,
 OUR mono tell. It reads as ours and as a proven layout at once.
 
+## The same principle applies to the title
+
+The reference drives the **title shape** the same way it drives the layout: we copy
+the *shape* (the skeleton — `speed-primer`, `comparison-vs`, `assumption-flip`, …)
+and swap the *words* (the flesh — our noun, our claim). The reference's real title,
+catalogued as `title_shape` + `title_pattern`, is a worked example of the
+claim/ground split, not a script to copy. See `title-engine.md` →
+"Reference title shape — a prior, not a mandate" for how strongly it binds.
+
 ## Step-by-step
 
 ### 1. Pick the reference(s)
