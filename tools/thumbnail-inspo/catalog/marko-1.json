@@ -357,5 +357,68 @@
     "title": "Macbook Neo vs. M4 Air - Real World Test",
     "title_shape": "comparison-vs",
     "title_pattern": "concrete-noun-verb"
+  },
+  {
+    "slug": "marko-macbook-desk-codeeditor-textless",
+    "archetype": "object-hero",
+    "layout": "full-bleed-object",
+    "device": [
+      "glow-accent"
+    ],
+    "face": false,
+    "accent": "amber",
+    "text": "low",
+    "reads_as": "An open MacBook running a dark code editor sits on a warm wooden cafe desk with a coffee cup and a hand resting nearby \u2014 a real software-engineer workspace, no text.",
+    "layout_map": "No headline, no badge, no face \u2014 fully text-free lifestyle hero. MacBook centered-low, lid open and angled, body fills cells 6-7-10-11 (laptop base ~x430-900, y330-560), dark code-editor screen glowing in cells 6-7 (~x440-820, y90-330) as the brightest focal block. Latte cup + saucer lower-left cell 5 (~x120,y330). Human hand/forearm enters from bottom-left edge cell 13 (~x60-260, y620-720), thumb near laptop base. Blurred bokeh cafe/window background fills top row cells 1-4 (warm browns, out of focus). Secondary device (phone/charger stand) right side cell 8/12 (~x980,y300). Warm amber/wood tonal wash overall.",
+    "why_it_works": "The single brightest element \u2014 the dark glowing code editor \u2014 anchors the eye dead-center against a warm blurred cafe backdrop, selling an aspirational \"this could be your dev setup\" mood with zero text clutter.",
+    "mimic_for": "a long-term hardware/laptop review or \"my real coding setup\" desk-tour beat",
+    "title_shape": "first-person-feat",
+    "title_pattern": "identity-status",
+    "channel": "marko",
+    "file": "06-Hw-PDMca6o4.jpg",
+    "title": "Macbook Air M4 Long Term Review - As a Software Engineer",
+    "watch_url": "https://www.youtube.com/watch?v=Hw-PDMca6o4"
+  },
+  {
+    "slug": "marko-pov-laptop-code-cafe-window",
+    "archetype": "object-hero",
+    "layout": "centered-stack",
+    "device": [
+      "glow-accent"
+    ],
+    "face": false,
+    "accent": "amber",
+    "text": "low",
+    "reads_as": "A first-person POV of your own hands typing code on a MacBook at a cafe window table, with a glowing night-city street behind the glass and a coffee cup beside you.",
+    "layout_map": "No text overlay. Hero MacBook centered, screen filling cells 6-7 (~x420-680, top edge ~y120, base ~y300) showing a dark-theme code editor with red/orange syntax tokens; both forearms enter from bottom frame in a V, wrists ~y460, hands on keyboard cells 10-11 center ~x500,y375; takeaway coffee cup lower-right cell 12 ~x780,y330; warm wooden table fills bottom third (cells 9-16, y~300-720); full-width window behind the laptop (cells 1-8, y0-300) shows a blurred night street with red neon signage upper-left ~x230,y55 and amber/white storefront bokeh across the top band; no badge, no headline, no logo.",
+    "why_it_works": "The immersive first-person POV puts the viewer's own hands on the keyboard, and the warm night-city bokeh behind the glowing code screen sells an aspirational \"coding in the city\" mood that stops the scroll on vibe rather than text.",
+    "mimic_for": "a day-in-the-life / build-vlog beat showing the author actually working \u2014 POV at the desk",
+    "title_shape": "first-person-feat",
+    "title_pattern": "identity-status",
+    "channel": "marko",
+    "file": "08-_axgQk_2ZQE.jpg",
+    "title": "The Day I Published My App (OneMenu) \ud83d\ude03 Day in The Life of a Software Engineer (ep. 17)",
+    "watch_url": "https://www.youtube.com/watch?v=_axgQk_2ZQE"
+  },
+  {
+    "slug": "marko-pov-laptop-coffee-shop-no-text",
+    "archetype": "code-screenshot",
+    "layout": "full-bleed-object",
+    "device": [
+      "glow-accent"
+    ],
+    "face": false,
+    "accent": "amber",
+    "text": "low",
+    "reads_as": "A first-person POV of hands typing on a MacBook in a warm cafe, code editor and an iPhone simulator glowing on screen with a coffee cup beside it.",
+    "layout_map": "No headline text at all. Full-bleed POV photo. MacBook screen dominates center, cells 5-11, occupying ~x290-700 by y115-385; left half is a dark code editor (amber/white syntax) cells 5-6, right half a black iPhone-simulator wireframe cells 6-7 (~x500-690). Own hands typing on keyboard in the foreground lower-left/center, cells 13-15, ~x40-560,y390-540. White coffee cup + saucer lower-right, cell 16, center ~x800,y450. Warm wood table surface runs along the bottom edge; bokeh cafe background with star-shaped string lights across the top, cells 1-4, y0-100. Light wooden divider panel at far left, cells 1,5,9. Amber screen glow + warm ambient cafe light is the only accent.",
+    "why_it_works": "The intimate first-person POV plus a cozy cafe-coding atmosphere (warm lights, real coffee, hands mid-keystroke) sells an aspirational day-in-the-life vibe that pulls viewers in without a single word of text.",
+    "mimic_for": "a day-in-the-life or workflow vlog beat showing the act of coding in an aspirational setting",
+    "title_shape": "first-person-feat",
+    "title_pattern": "identity-status",
+    "channel": "marko",
+    "file": "14-3xdnZS0NHkY.jpg",
+    "title": "Day in The Life of a Software Engineer (ep. 37)",
+    "watch_url": "https://www.youtube.com/watch?v=3xdnZS0NHkY"
   }
 ]
