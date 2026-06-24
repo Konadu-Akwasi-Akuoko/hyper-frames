@@ -91,6 +91,39 @@ def _video_rate(svc: Any, video_id: str, rating: str, confirm: bool) -> dict:
     return {"rated": video_id, "rating": rating, "quota_units_spent": 50}
 
 
+def _video_schedule(svc: Any, video_id: str, publish_at: str,
+                    confirm: bool) -> dict:
+    """Arm a scheduled publish. Gated. Sets status.publishAt + forces
+    privacyStatus=private (re-sent even if already private). Video must never
+    have been published. Source: https://developers.google.com/youtube/v3/docs/videos"""
+    refusal = gate.require(
+        confirm, effect=(f"This schedules video {video_id} to go PUBLIC "
+                         f"automatically at {publish_at}."),
+        video_id=video_id, publish_at=publish_at)
+    if refusal:
+        return refusal
+    try:
+        resp = mutate.fetch_merge_update(
+            svc, resource="videos", id=video_id, parts="status",
+            patch={"status": {"privacyStatus": "private", "publishAt": publish_at}},
+            record_list="videos.list", record_update="videos.update")
+    except KeyError:
+        return {"error": "video_not_found", "video_id": video_id}
+    return {"scheduled": video_id, "publish_at": publish_at, "response": resp}
+
+
+def _video_cancel_schedule(svc: Any, video_id: str) -> dict:
+    """Cancel a pending schedule: keep private, clear publishAt. Ungated."""
+    try:
+        resp = mutate.fetch_merge_update(
+            svc, resource="videos", id=video_id, parts="status",
+            patch={"status": {"privacyStatus": "private", "publishAt": None}},
+            record_list="videos.list", record_update="videos.update")
+    except KeyError:
+        return {"error": "video_not_found", "video_id": video_id}
+    return {"schedule_cancelled": video_id, "response": resp}
+
+
 def register(app: FastMCP) -> None:
     @app.tool()
     @clients.http_safe
@@ -257,3 +290,20 @@ def register(app: FastMCP) -> None:
         """Set your channel's like/dislike on a video. Quota: 50 units. Gated
         (social). rating is like, dislike, or none."""
         return _video_rate(clients.youtube_data(), video_id, rating, confirm)
+
+    @app.tool()
+    @clients.http_safe
+    def video_schedule(video_id: str, publish_at: str,
+                       confirm: bool = False) -> dict:
+        """Schedule a private video to auto-publish at publish_at (ISO-8601, e.g.
+        2026-07-01T12:00:00Z). Quota ~51 units. Gated: arms a future PUBLIC
+        release. Video must be private and never previously published. To
+        reschedule, call again with a new publish_at."""
+        return _video_schedule(clients.youtube_data(), video_id, publish_at, confirm)
+
+    @app.tool()
+    @clients.http_safe
+    def video_cancel_schedule(video_id: str) -> dict:
+        """Cancel a pending scheduled publish (keeps it private, clears
+        publishAt). Quota ~51 units. Ungated."""
+        return _video_cancel_schedule(clients.youtube_data(), video_id)
