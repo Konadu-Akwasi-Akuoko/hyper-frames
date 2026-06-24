@@ -46,6 +46,64 @@ test("scan infers the suggested stage from real artifacts on disk", async () => 
   }
 });
 
+test("an empty `hyperframes init` scaffold does not count as a finished compose", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "studio-scaffold-"));
+  try {
+    // research + script + full voiceover trio, plus a bare init scaffold whose
+    // only clip markers live inside the placeholder comment.
+    const d = path.join(root, "scaffold-2026-04-04");
+    await mkdir(path.join(d, "audio"), { recursive: true });
+    await mkdir(path.join(d, "seo"), { recursive: true });
+    await writeFile(path.join(d, "seo", "research.json"), "{}");
+    await writeFile(path.join(d, "script.md"), "x");
+    await writeFile(
+      path.join(d, "index.html"),
+      `<!doctype html><html><body>
+        <div id="root" data-composition-id="main" data-start="0" data-duration="10">
+          <!-- Add your clips here. Example:
+            <div id="title" class="clip" data-start="0" data-duration="5">Hello</div>
+          -->
+        </div>
+      </body></html>`,
+    );
+
+    const res = await scanVideos(root);
+    const v = res[0];
+    expect(v.artifacts.compose).toBe("partial");
+    // the absurd "compose" suggestion is gone — suggested is the furthest
+    // completed rung (script), never the leapfrogged scaffold.
+    expect(v.suggestedStage).toBe("script");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("an index.html with a real mounted clip counts as compose present", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "studio-real-compose-"));
+  try {
+    const d = path.join(root, "real-2026-05-05");
+    await mkdir(path.join(d, "audio"), { recursive: true });
+    await writeFile(path.join(d, "script.md"), "x");
+    await writeFile(path.join(d, "audio", "voiceover.mp3"), "x");
+    await writeFile(path.join(d, "transcript.json"), "{}");
+    await writeFile(path.join(d, "narration-map.json"), "{}");
+    await writeFile(
+      path.join(d, "index.html"),
+      `<!doctype html><html><body>
+        <div id="root" data-composition-id="main" data-start="0" data-duration="30">
+          <div id="s1" class="clip" data-start="0" data-duration="5" data-track-index="1">Real scene</div>
+        </div>
+      </body></html>`,
+    );
+
+    const res = await scanVideos(root);
+    expect(res[0].artifacts.compose).toBe("present");
+    expect(res[0].suggestedStage).toBe("compose");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("scan returns [] for a missing root", async () => {
   const res = await scanVideos("/nonexistent/studio/videos/xyz");
   expect(res).toEqual([]);
