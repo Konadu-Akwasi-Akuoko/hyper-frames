@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=piKJOD2s8KY",
     "archetype": "meme",
     "layout": "text-center",
-    "device": ["glow-accent", "shocked-face"],
+    "device": [
+      "glow-accent",
+      "shocked-face"
+    ],
     "face": false,
     "accent": "orange",
     "text": "med",
     "reads_as": "A tired Pepe frog gremlin glued to a desktop while a giant CODE ALL DAY banner screams across the top",
     "layout_map": "Single huge headline band across the top edge spanning cells 1-4, baseline ~y75, all caps in a heavy condensed sans: 'CODE' in orange (cells 1-2, ~x20-360) butted against 'ALL DAY' in white (cells 2-4, ~x370-1180); below it a green Pepe-the-frog meme character sits center-frame at a desk filling cells 6-7 and 10-11 (face center ~x430,y330, body ~x250-620), hunched over a steaming mug, with a yellow popcorn/snack bowl bottom-left at cell 13 (~x90,y480) and a black monitor + keyboard + chair fanning out across cells 11-12,15-16 to the right; background is a flat dark desk-room scene, no gradient.",
     "why_it_works": "The relatable degen-coder meme face plus an imperative all-caps command turns a niche dev topic into an in-group joke that demands the click",
-    "mimic_for": "an addictive-grind / 'you'll do this all night' coding or hacking beat played for relatable humor"
+    "mimic_for": "an addictive-grind / 'you'll do this all night' coding or hacking beat played for relatable humor",
+    "title": "Give me 180 secs and CODING will be your addiction."
   },
   {
     "slug": "technetium-hacking-tools-logo-grid",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=5une30fIDww",
     "archetype": "logo-grid",
     "layout": "grid-tiles",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
     "reads_as": "A wall of recognizable hacking-tool logos with the Mona Lisa smoking in the corner as the absurdist hook",
-    "layout_map": "No headline at all; the frame is a loose 4x4 mosaic of bright tool logos/icons on a near-black background — eye/NMAP top-left cell 1 (~x80,y70), scissors + CobaltStrike top cells 2-3, Impacket wordmark + John the Ripper + Metasploit 'M' across the middle row cells 5-7, a blue cat and lightning/Hydra icons bottom-left cells 13-14, and a large painterly Mona Lisa holding a cigarette occupying the entire right column cells 4,8,12,16 (face center ~x1120,y250, figure ~x980-1280); a small red 7-seg 'EQ' counter sits bottom-center cell 15 (~x720,y660); each logo glows slightly against the dark substrate.",
+    "layout_map": "No headline at all; the frame is a loose 4x4 mosaic of bright tool logos/icons on a near-black background \u2014 eye/NMAP top-left cell 1 (~x80,y70), scissors + CobaltStrike top cells 2-3, Impacket wordmark + John the Ripper + Metasploit 'M' across the middle row cells 5-7, a blue cat and lightning/Hydra icons bottom-left cells 13-14, and a large painterly Mona Lisa holding a cigarette occupying the entire right column cells 4,8,12,16 (face center ~x1120,y250, figure ~x980-1280); a small red 7-seg 'EQ' counter sits bottom-center cell 15 (~x720,y660); each logo glows slightly against the dark substrate.",
     "why_it_works": "Density signals comprehensiveness ('every tool') while the incongruous smoking Mona Lisa is a pattern-break that snags the eye",
-    "mimic_for": "a roundup / 'every tool explained' survey beat where breadth of coverage is the selling point"
+    "mimic_for": "a roundup / 'every tool explained' survey beat where breadth of coverage is the selling point",
+    "title": "Every HACKING TOOL Explained in 5 minutes."
   },
   {
     "slug": "technetium-hacking-languages-logo-grid-belly",
@@ -38,14 +46,18 @@
     "watch_url": "https://www.youtube.com/watch?v=KDPctDykb6Y",
     "archetype": "logo-grid",
     "layout": "grid-tiles",
-    "device": ["neon-on-dark", "hand-point"],
+    "device": [
+      "neon-on-dark",
+      "hand-point"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
-    "reads_as": "A grid of programming-language logos beside a bare beer-belly with a pen drawing on it — gross-out curiosity bait",
-    "layout_map": "No headline text; left two-thirds is a 4x3-ish grid of language logos on a dark grid-lined substrate — Bash/shell top-left cell 1 (~x80,y80), C++ logo cell 2 (~x270,y90), SQL database cell 5 (~x90,y280), blue Rust gear cell 6, red Crab/Rust mascot cell 7 (~x470,y310), Python cell 9 (~x90,y480), Java cell 10, blue C logo cell 11 (~x470,y510); right third (cells 3-4,7-8,11-12,15-16) is a photographic bare human belly/torso (~x880-1280) with a white-gloved hand holding a marker pen reaching in from the top to 'draw' on it (pen tip ~x780,y120); background dark navy with faint grid lines.",
+    "reads_as": "A grid of programming-language logos beside a bare beer-belly with a pen drawing on it \u2014 gross-out curiosity bait",
+    "layout_map": "No headline text; left two-thirds is a 4x3-ish grid of language logos on a dark grid-lined substrate \u2014 Bash/shell top-left cell 1 (~x80,y80), C++ logo cell 2 (~x270,y90), SQL database cell 5 (~x90,y280), blue Rust gear cell 6, red Crab/Rust mascot cell 7 (~x470,y310), Python cell 9 (~x90,y480), Java cell 10, blue C logo cell 11 (~x470,y510); right third (cells 3-4,7-8,11-12,15-16) is a photographic bare human belly/torso (~x880-1280) with a white-gloved hand holding a marker pen reaching in from the top to 'draw' on it (pen tip ~x780,y120); background dark navy with faint grid lines.",
     "why_it_works": "The shocking out-of-context bare-belly photo collides with a tidy tech logo grid, forcing a double-take that drives the click",
-    "mimic_for": "a survey/roundup of languages or tools that wants a bizarre shock element to break the dev-content pattern"
+    "mimic_for": "a survey/roundup of languages or tools that wants a bizarre shock element to break the dev-content pattern",
+    "title": "Every Language For HACKING Explained in 3 minutes."
   },
   {
     "slug": "technetium-hacking-techniques-icon-grid-face-right",
@@ -54,14 +66,18 @@
     "watch_url": "https://www.youtube.com/watch?v=kJdC-f5Chw4",
     "archetype": "logo-grid",
     "layout": "grid-tiles",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "A labeled 4x3 grid of cyber-attack icons with a shadowy hooded hacker face peering in from the right edge",
     "layout_map": "Left ~80% is a neat 4-column x 3-row grid of glowing app-tile icons on dark navy, each with a small caption beneath: row1 phishing/malware/watering-hole/bruteforce (cells 1-4, captions baseline ~y185), row2 MitM/zero-day/DDoS/DDOS smoke (cells 5-8, ~y390), row3 keylogger/sim-swap/deepfake/DNS (cells 9-12, ~y600); the rightmost slot (cells 4,8,12,16, ~x1060-1280) is replaced by a dark-lit photographic male face in shadow staring left into the grid (face center ~x1160,y360); background flat dark navy with subtle dot texture.",
     "why_it_works": "The captioned icon grid promises an exhaustive catalog while the lurking human face adds menace and a focal anchor on the right",
-    "mimic_for": "an 'every technique/attack explained' enumeration beat where a labeled icon matrix conveys completeness"
+    "mimic_for": "an 'every technique/attack explained' enumeration beat where a labeled icon matrix conveys completeness",
+    "title": "Every HACKING TECHNIQUE Explained in 8 minutes."
   },
   {
     "slug": "technetium-become-a-hacker-now-mask",
@@ -70,14 +86,18 @@
     "watch_url": "https://www.youtube.com/watch?v=mB-Nysh0VX4",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "high",
     "reads_as": "BECOME A HACKER NOW stacked in red and white over a hooded anonymous figure with glowing red eyes",
     "layout_map": "Three stacked headline rows fill the left 60%, all caps heavy sans: 'BECOME A' white, baseline ~y70 (cells 1-2); 'HACKER' in red, baseline ~y180, the largest line (cells 1-2, ~x20-470); 'NOW!!' white, baseline ~y260 (cell 1-2); behind and to the right a hooded Guy-Fawkes / anonymous masked figure centered ~x780,y400 fills cells 7-8,10-12,14-16 with glowing red eyes (~x760,y330), hood up; background is a dark green-black digital-rain matrix wall with vertical code streaks; faint glow ring behind the head.",
     "why_it_works": "Urgency ('NOW') plus the iconic glowing-eyed anonymous mask sells danger and aspiration at once on a high-contrast dark field",
-    "mimic_for": "an aspirational 'start now / become X' call-to-action beat that wants urgency and a menacing identity figure"
+    "mimic_for": "an aspirational 'start now / become X' call-to-action beat that wants urgency and a menacing identity figure",
+    "title": "How to become a HACKER (Ethical)?? | ETHICAL HACKING ROADMAP!!!!"
   },
   {
     "slug": "technetium-hack-any-password-mask",
@@ -86,14 +106,18 @@
     "watch_url": "https://www.youtube.com/watch?v=u_UbwnHewRc",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "high",
     "reads_as": "HACK ANY PASSWORD in red-and-white stack beside a hooded red-eyed hacker, with a tiny lock badge top-right",
     "layout_map": "Three stacked left-aligned headline rows over the left 60%, all caps: 'HACK' large red, baseline ~y150 (cells 1-2, ~x30-330); 'ANY' smaller white, centered under it ~y300 (cell 2); 'PASSWORD' wide white, baseline ~y430 (cells 1-3, ~x20-560); a hooded masked anonymous figure with glowing red eyes sits right-of-center ~x900,y420 filling cells 8,11-12,15-16 (mask ~x830-1010); a small red padlock + binary badge in the top-right corner cell 4 (~x1180,y70); background is a dark red-black radial burst of glowing energy streaks emanating from behind the figure.",
     "why_it_works": "An impossible-sounding promise ('ANY password') in alarm red over a hacker silhouette triggers both fear and forbidden curiosity",
-    "mimic_for": "a 'how X is broken / hack any Y' capability-reveal beat that needs a dangerous, forbidden-knowledge tone"
+    "mimic_for": "a 'how X is broken / hack any Y' capability-reveal beat that needs a dangerous, forbidden-knowledge tone",
+    "title": "How to HACK PASSWORD? | PASSWORD HACKING TECHNIQUES!!!"
   },
   {
     "slug": "technetium-script-kiddie-to-pro-hacker-split",
@@ -102,14 +126,18 @@
     "watch_url": "https://www.youtube.com/watch?v=q7dIs0vlNRg",
     "archetype": "comparison-vs",
     "layout": "split-vertical",
-    "device": ["red-arrow", "shocked-face"],
+    "device": [
+      "red-arrow",
+      "shocked-face"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
     "reads_as": "A clown-wig Pepe labeled SCRIPT KIDDIE on the left transforms into a smug pink PRO HACKER on the right via a red arrow",
     "layout_map": "Vertical split down the center; left half headline 'SCRIPT KIDDIE' white all-caps top, baseline ~y70 (cells 1-2, ~x40-460) over a rainbow-wig clown Pepe frog face centered ~x300,y360 (cells 5-6,9-10); right half headline 'PRO HACKER' white all-caps top, baseline ~y70 (cells 3-4, ~x830-1240) over a smug pink 'Gigachad' Pepe face centered ~x980,y360 (cells 7-8,11-12) with a small dog/snack prop bottom cell 14-15; a thick red curved arrow sweeps from the left headline across the top-center to point right at the PRO side (arc apex ~x640,y60, arrowhead ~x780,y110); flat dark background each side.",
     "why_it_works": "The before/after transformation meme promises a level-up payoff, and the swap from loser-clown to smug-chad is instantly legible humor",
-    "mimic_for": "a beginner-to-expert glow-up / 'go from amateur to pro' transformation beat"
+    "mimic_for": "a beginner-to-expert glow-up / 'go from amateur to pro' transformation beat",
+    "title": "Become a HACKING GOD, It's NOW OR NEVER."
   },
   {
     "slug": "technetium-why-c-cpp-hacking-mask",
@@ -118,13 +146,17 @@
     "watch_url": "https://www.youtube.com/watch?v=P_ytF1Tpymw",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "high",
     "reads_as": "WHY C/C++ FOR HACKING stacked in white-yellow-red beside a red-eyed hooded hacker on a glowing red web background",
     "layout_map": "Four stacked left-aligned headline rows over the left 55%, all caps heavy sans: 'WHY' white, baseline ~y110 (cell 1); 'C/C++' large yellow, baseline ~y230 (cells 1-2, ~x30-420); 'FOR' small white, ~y330 (cell 1); 'HACKING' red, baseline ~y440 (cells 1-2, ~x30-470); a hooded anonymous mask figure with glowing red eyes sits right-of-center ~x880,y390 filling cells 7-8,11-12,15-16; a small red circular gauge/target badge top-right corner cell 4 (~x1190,y80); background is a dark red-black low-poly geometric web/network mesh glowing crimson.",
     "why_it_works": "A 3-color headline ranks the keywords by importance and the menacing hacker mask plus blood-red mesh codes the topic as elite and dangerous",
-    "mimic_for": "a 'why language/tool X matters for hackers' authority beat that wants a forbidden, elite framing"
+    "mimic_for": "a 'why language/tool X matters for hackers' authority beat that wants a forbidden, elite framing",
+    "title": "Why C/C++ is Still a Hacker's Friend in 2025"
   }
 ]

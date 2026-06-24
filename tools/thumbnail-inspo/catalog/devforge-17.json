@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=jqYnssgbrZg",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["giant-number", "x-mark"],
+    "device": [
+      "giant-number",
+      "x-mark"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
     "reads_as": "A glowing '12 TRICKS' headline floating over two faint code panels split good-vs-bad by a red X and green check",
     "layout_map": "Background is a purple-to-magenta gradient with a dark code editor panel bleeding in left (cells 1,5,9) and right (cells 4,8,12); a centered glowing white headline stack dominates cells 2,3,6,7: oversized '12' caps on top (baseline ~y95, huge, with neon-cyan outer glow) and 'TRICKS' below it (baseline ~y150, slightly tilted up-right). A red circular X-mark badge sits lower-left at ~x335,y320 (cell 9/10 boundary) tagging the left panel as bad; a green circular checkmark badge sits lower-right at ~x1075,y320 (cell 12) tagging the right panel as good. No face. Overall dark/neon-on-gradient treatment.",
     "why_it_works": "The giant glowing number promises a countable payoff while the red-X / green-check split implies a right-vs-wrong reveal in the same glance",
-    "mimic_for": "a numbered list of techniques where the hook is doing it wrong vs right"
+    "mimic_for": "a numbered list of techniques where the hook is doing it wrong vs right",
+    "title": "12 CSS Techniques That Save Hours of Work"
   },
   {
     "slug": "devforge-html5-css3-logos-8-mins",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=E9DL3G8sA5g",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["giant-number", "glow-accent"],
+    "device": [
+      "giant-number",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "low",
     "reads_as": "The HTML5 and CSS3 logo shields flank a giant glowing yellow '8 Mins' promise on a blue grid",
     "layout_map": "Deep-blue gridded background. The orange HTML5 shield logo sits left filling cells 1,5,9 (center ~x180,y230), tilted slightly; the blue CSS3 shield logo mirrors it on the right filling cells 4,8,12 (center ~x1100,y230). Dead center, a huge glowing yellow '8' (cell 6/7, center ~x640,y150) with a soft warm halo, and 'Mins' in white below it (baseline ~y300, cell 10/11). No face. Symmetric two-object flank framing a centered number; clean high-saturation treatment.",
     "why_it_works": "Two instantly-recognizable tech logos plus a tiny time promise ('8 Mins') sell a fast, complete crash-course in one read",
-    "mimic_for": "a fast crash-course covering two named technologies in a short runtime"
+    "mimic_for": "a fast crash-course covering two named technologies in a short runtime",
+    "title": "Learn HTML & CSS FAST | Step-by-Step Full Course for Beginners"
   },
   {
     "slug": "devforge-top-secret-html-logo-hand",
@@ -38,14 +46,18 @@
     "watch_url": "https://www.youtube.com/watch?v=yGE6RYxmnus",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent", "hand-point"],
+    "device": [
+      "glow-accent",
+      "hand-point"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "low",
     "reads_as": "A glowing 'TOP SECRET' banner over the HTML5 shield held up by a hand against a wall of faint code",
     "layout_map": "Dark background covered in faint cyan code text and HTML tag fragments (</stripe>, </style>, </legend>, <details>) scattered across the mid band (cells 5-12). 'TOP' (yellow, left) and 'SECRET' (white, right) span the top in bold caps, baseline ~y70 across cells 1-4. A large orange HTML5 shield logo is held by a hand from below, centered at ~x640,y300 (cells 6,7,10,11); the fingers/hand enter from bottom-center. No face. Neon-on-dark, glowing edges on the logo and headline.",
     "why_it_works": "The 'TOP SECRET' label promises hidden/insider knowledge while the held-up logo and code wall ground it in the concrete tech",
-    "mimic_for": "revealing hidden or insider features of a single named technology"
+    "mimic_for": "revealing hidden or insider features of a single named technology",
+    "title": "HTML Tags That Will Change Your Web Development Game Forever"
   },
   {
     "slug": "devforge-flexbox-3-mins-color-blocks",
@@ -54,14 +66,18 @@
     "watch_url": "https://www.youtube.com/watch?v=Q5a5ShQwlgk",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["glow-accent", "progress-bar"],
+    "device": [
+      "glow-accent",
+      "progress-bar"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
     "reads_as": "Big white 'Flexbox / In 3 mins' headline above a browser window full of bright flex-aligned color blocks",
-    "layout_map": "Purple gridded background up top. Large white 'Flexbox' headline centered, baseline ~y90 (cells 2,3,6,7), with a small cyan 'In 3 mins' subhead beneath it (~y150). Lower half is a mock browser/editor window (traffic-light dots + localhost:5500/index.html URL bar at ~y230) framing a row of saturated flex-item blocks — teal, green, red, yellow, magenta rectangles of varying heights laid out left-to-right across cells 13-16 (bottom band ~y360-460), literally demonstrating flexbox alignment. No face. Bright demo-screenshot lower third under a clean headline.",
+    "layout_map": "Purple gridded background up top. Large white 'Flexbox' headline centered, baseline ~y90 (cells 2,3,6,7), with a small cyan 'In 3 mins' subhead beneath it (~y150). Lower half is a mock browser/editor window (traffic-light dots + localhost:5500/index.html URL bar at ~y230) framing a row of saturated flex-item blocks \u2014 teal, green, red, yellow, magenta rectangles of varying heights laid out left-to-right across cells 13-16 (bottom band ~y360-460), literally demonstrating flexbox alignment. No face. Bright demo-screenshot lower third under a clean headline.",
     "why_it_works": "The headline names the concept and time-boxes it while the colorful aligned blocks below preview the exact visual result you'll learn to make",
-    "mimic_for": "a quick concept tutorial whose payoff is a clean visual layout demo"
+    "mimic_for": "a quick concept tutorial whose payoff is a clean visual layout demo",
+    "title": "Forget Everything You Know About Centering \u2014 Use Flexbox"
   },
   {
     "slug": "devforge-accept-crypto-laptop-coins",
@@ -70,14 +86,18 @@
     "watch_url": "https://www.youtube.com/watch?v=Ham1K2KKqqE",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent", "logo-grid"],
+    "device": [
+      "glow-accent",
+      "logo-grid"
+    ],
     "face": false,
     "accent": "orange",
     "text": "med",
     "reads_as": "Bold 'ACCEPT CRYPTO' banner over a laptop showing the Cryptomus logo, ringed by floating coin icons",
     "layout_map": "Vivid orange background. 'ACCEPT CRYPTO' in heavy white caps spans the top, baseline ~y55 across cells 1-4. Center is a dark laptop showing a glowing 3D cube + 'cryptomus' wordmark on its screen (~x560,y230, cells 6,7,10,11). Crypto coin/token icons float around the edges: Bitcoin top-left (~x90,y170), a teal Tether-style coin top-right (~x1180,y150), Binance/yellow coin lower-left (~x100,y330), more tokens scattered down the right side (cells 8,12). No face. Saturated single-color background with a product laptop hero plus orbiting brand coins.",
     "why_it_works": "The flat command headline plus a branded product screen and a halo of recognizable coins instantly says this is a do-it-yourself payments tutorial",
-    "mimic_for": "integrating a specific product or service into your own site/app"
+    "mimic_for": "integrating a specific product or service into your own site/app",
+    "title": "Add Crypto Payments to Your Website with Cryptomus Payment Gateway"
   },
   {
     "slug": "devforge-ai-coding-tools-robot-icons",
@@ -86,14 +106,18 @@
     "watch_url": "https://www.youtube.com/watch?v=RXKq_S0IQw4",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "logo-grid"],
+    "device": [
+      "neon-on-dark",
+      "logo-grid"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
     "reads_as": "A pensive AI robot on the right faces a cluster of glowing tool icons over a red 'AI CODING TOOLS' headline",
     "layout_map": "Dark red-tinted grid background. A photoreal blue-lit humanoid AI robot occupies the right third, hand-on-chin thinking pose, head at ~x1080,y150 filling cells 4,8,12. A cluster of bright app/tool icons floats upper-left (cells 1,2,5,6, roughly y60-210): a yellow/orange icon, a teal database icon, a purple ghost icon, a lightning-bolt, a white 'W' mark, and a 3D cube. The headline runs lower-left: 'AI CODING' in white caps (baseline ~y360) over 'TOOLS' in bold red caps (baseline ~y440), cells 9,10,13,14. Neon-on-dark; left-side text+icons balanced against the right-side robot.",
     "why_it_works": "The thinking AI robot personifies the topic while the icon swarm promises a concrete, countable toolkit to take away",
-    "mimic_for": "a roundup of multiple AI tools for developers"
+    "mimic_for": "a roundup of multiple AI tools for developers",
+    "title": "Every Developer Needs These 7 AI Tools in 2025"
   },
   {
     "slug": "devforge-coding-not-over-sprout-laptop",
@@ -102,14 +126,18 @@
     "watch_url": "https://www.youtube.com/watch?v=XUQxIRdhmVA",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "red",
     "text": "low",
-    "reads_as": "Huge 'NOT OVER' headline — 'OVER' boxed in red — above a green sprout growing from a laptop amid rubble",
+    "reads_as": "Huge 'NOT OVER' headline \u2014 'OVER' boxed in red \u2014 above a green sprout growing from a laptop amid rubble",
     "layout_map": "Near-black background with faint blue circuit lines. Massive headline across the top: 'NOT' in white caps (left, baseline ~y95) and 'OVER' in white caps inside a solid red highlight box (right, ~x720,y75), spanning cells 1-4. Center-bottom is a glowing green sprout/seedling growing out of an open laptop sitting on dark rubble (~x640,y370, cells 10,11,14,15). Small glowing tech icons float around the sprout: 'AI' badge left (~x430,y230), a brain icon right (~x900,y230), a cube and a people/group icon further right (cells 12,16). No face. Dark dramatic treatment with the red-box accent as the only hot color besides the green sprout.",
     "why_it_works": "The red-boxed 'OVER' negated by 'NOT' sets up a contrarian counter-narrative, and the sprout-from-laptop visual literally argues new life/growth",
-    "mimic_for": "a contrarian take rebutting a doom narrative ('X is dead / over')"
+    "mimic_for": "a contrarian take rebutting a doom narrative ('X is dead / over')",
+    "title": "Why the 'Coding Is Over' Narrative Is Wrong"
   },
   {
     "slug": "devforge-code-better-tool-icon-grid",
@@ -118,13 +146,17 @@
     "watch_url": "https://www.youtube.com/watch?v=i36Mq8WkYSo",
     "archetype": "logo-grid",
     "layout": "text-center",
-    "device": ["logo-grid", "glow-accent"],
+    "device": [
+      "logo-grid",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
     "reads_as": "A chunky white 'Code Better' headline floats over a scattered grid of dev-tool app icons on a soft gradient",
-    "layout_map": "Soft green-to-purple diagonal gradient background. Heavy white rounded headline stacked dead-center: 'Code' (baseline ~y210) over 'Better' (baseline ~y300), cells 6,7,10,11, with subtle drop shadow. A loose scatter of rounded-square dev-tool app icons fills the perimeter on all sides — top row across cells 1-4 (~y90), a 'VS<' style icon lower-left (~x110,y460), more icons down the right edge cells 8,12 and along the bottom cells 13-16 — framing the headline like a logo cloud. No face. Bright pastel-gradient backdrop with a bold centered headline ringed by tool logos.",
+    "layout_map": "Soft green-to-purple diagonal gradient background. Heavy white rounded headline stacked dead-center: 'Code' (baseline ~y210) over 'Better' (baseline ~y300), cells 6,7,10,11, with subtle drop shadow. A loose scatter of rounded-square dev-tool app icons fills the perimeter on all sides \u2014 top row across cells 1-4 (~y90), a 'VS<' style icon lower-left (~x110,y460), more icons down the right edge cells 8,12 and along the bottom cells 13-16 \u2014 framing the headline like a logo cloud. No face. Bright pastel-gradient backdrop with a bold centered headline ringed by tool logos.",
     "why_it_works": "The simple aspirational headline plus a ring of recognizable tool icons promises a curated toolkit without overwhelming the read",
-    "mimic_for": "a curated list of developer tools framed as a self-improvement upgrade"
+    "mimic_for": "a curated list of developer tools framed as a self-improvement upgrade",
+    "title": "Code Smarter, Not Harder: 10 Tools Every Developer Needs"
   }
 ]

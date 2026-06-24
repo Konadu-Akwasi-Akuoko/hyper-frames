@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=yIaE9lONIVI",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "med",
     "layout_map": "Dark cyan blueprint-grid background. Left two-thirds holds a large light-blue Postgres elephant logo (cells 1-2 and 5-6, center ~x230,y220, filling roughly the upper-left quadrant) with the lowercase white wordmark 'Postgres' beneath it (baseline ~y480, cells 9-10) and a mint-green rounded badge reading '18' immediately to its right (~x430,y470, cell 10). A hand-drawn coral-red script word 'huge' sits over the logo's right edge (~x420,y170, cell 6-7) with a curved red arrow pointing down-left at the elephant from ~x360,y90. A retro grinning man's photo headshot fills the right third (cells 4,8,12,16; face center ~x1080,y300) with a thin red corner-bracket frame and a faint glow.",
-    "reads_as": "Postgres got a HUGE new version 18 — vintage guy is delighted",
+    "reads_as": "Postgres got a HUGE new version 18 \u2014 vintage guy is delighted",
     "why_it_works": "Hand-scrawled 'huge' + arrow injects raw emotion onto a clean product logo, and the smiling retro face signals 'good news' before any word is read",
-    "mimic_for": "a major version/release of a tool lands and it's a big deal worth learning now"
+    "mimic_for": "a major version/release of a tool lands and it's a big deal worth learning now",
+    "title": "Postgres 18 just dropped. Now is the best time to learn it..."
   },
   {
     "slug": "awesome-coding-specs-vs-code-skeptic",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=nnUMJX9013Y",
     "archetype": "comparison-vs",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "vs-bolt"],
+    "device": [
+      "red-arrow",
+      "vs-bolt"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "layout_map": "Dark cyan grid background. Center-left mid-line carries the big lowercase headline 'specs > code' (baseline ~y360, cells 6-7), 'specs' in white, a white greater-than sign as the comparison operator, 'code' in white. A hand-drawn red script word 'really?' floats above-left at ~x300,y180 (cell 2-3) with a curved red arrow swooping down-right toward 'specs'. A black-tie skeptical/frowning man's photo headshot fills the right third (cells 4,8,12; face center ~x1080,y260) with a tiny white 'MONDAY' label tab in the top-right corner (~x1180,y40).",
-    "reads_as": "Are specs really better than code? — this guy doubts it",
+    "reads_as": "Are specs really better than code? \u2014 this guy doubts it",
     "why_it_works": "The '>' operator frames a debate in one glyph and the scrawled 'really?' plus skeptical face plant doubt, baiting the click to resolve the argument",
-    "mimic_for": "two approaches/tools pitted against each other where one supposedly beats the other"
+    "mimic_for": "two approaches/tools pitted against each other where one supposedly beats the other",
+    "title": "The new spec-driven workflow is a mess..."
   },
   {
     "slug": "awesome-coding-modern-java-is-fire",
@@ -38,14 +46,18 @@
     "watch_url": "https://www.youtube.com/watch?v=lvHR2Xc9LMU",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "mint",
     "text": "med",
     "layout_map": "Dark cyan grid background. Top-left a mint-outlined rounded badge reads 'MODERN' in white caps (~x320,y80, cell 2-3). Below it a huge white serif word 'Java' dominates the left-center (baseline ~y300, cells 5-6-9-10, the largest element). Beneath that a small hand-drawn mint-green script tag 'is fire' (~x340,y430, cell 10). A coral-red hand-drawn arrow points right from ~x640,y230 toward the subject. A shirtless older man in sunglasses smoking a cigarette fills the right third (cells 4,8,12; face center ~x1080,y230) with a faint 'TUTORIAL' watermark lower-right.",
-    "reads_as": "Modern Java is unexpectedly cool — this cocky guy proves it",
+    "reads_as": "Modern Java is unexpectedly cool \u2014 this cocky guy proves it",
     "why_it_works": "Giant single-word subject + the cheeky 'is fire' tag and arrow toward a confident character reframe a 'boring' language as desirable",
-    "mimic_for": "an old/unfashionable technology is actually good again and worth a fresh look"
+    "mimic_for": "an old/unfashionable technology is actually good again and worth a fresh look",
+    "title": "Modern Java is pretty cool and you can't avoid it anymore..."
   },
   {
     "slug": "awesome-coding-500-code-lines-199-shock",
@@ -54,14 +66,18 @@
     "watch_url": "https://www.youtube.com/watch?v=MrCh0tEnUjU",
     "archetype": "number-stat",
     "layout": "text-left-face-right",
-    "device": ["giant-number", "shocked-face"],
+    "device": [
+      "giant-number",
+      "shocked-face"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "layout_map": "Dark cyan grid background. Left-center holds a giant white number '500' (baseline ~y330, cells 5-6-9, the biggest element) with white caps 'CODE LINES' stacked beneath it (baseline ~y480, cells 9-10). Above-right of the 500 a hand-drawn coral-red script price '$199' (~x480,y130, cell 6-7) with a short red arrow curving down to the number. A shocked wide-eyed doll/woman face with parted lips fills the right third (cells 4,8,12; face center ~x1050,y300) and a small 'FRIDAY' label tab sits top-right (~x1180,y40).",
-    "reads_as": "500 code lines cost $199?! — disbelief on the face",
+    "reads_as": "500 code lines cost $199?! \u2014 disbelief on the face",
     "why_it_works": "The giant number anchors a concrete stat, the scrawled $price adds a shock value, and the bug-eyed face supplies the emotional reaction for you",
-    "mimic_for": "a surprising count or price stat lands that should feel absurd or shocking"
+    "mimic_for": "a surprising count or price stat lands that should feel absurd or shocking",
+    "title": "The dumbest thing ever..."
   },
   {
     "slug": "awesome-coding-web-killer-shining-rage",
@@ -70,14 +86,18 @@
     "watch_url": "https://www.youtube.com/watch?v=v8-yeWXCsi4",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "shocked-face"],
+    "device": [
+      "danger-red",
+      "shocked-face"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "low",
     "layout_map": "Dark grid background. Two-row headline on the left: 'WEB' in big white caps (baseline ~y180, cells 1-2-5-6) and below it 'Killer' in black caps sitting on a solid yellow highlighter block (~x180,y320, cells 9-10). A wild-eyed snarling man's face (Shining-style) fills the right third (cells 4,8,12; face center ~x1020,y260, mouth bared). A small flat Go gopher mascot sits in the bottom-left corner (~x90,y620, cell 13).",
-    "reads_as": "Something is a 'web killer' — and this guy is unhinged about it",
+    "reads_as": "Something is a 'web killer' \u2014 and this guy is unhinged about it",
     "why_it_works": "The yellow-highlighted 'Killer' word reads as a threat and the iconic rage face supplies maximum menace; the corner mascot quietly names the subject",
-    "mimic_for": "a technology threatens to kill/replace an incumbent (web, a framework, a stack)"
+    "mimic_for": "a technology threatens to kill/replace an incumbent (web, a framework, a stack)",
+    "title": "WebAssembly Explained"
   },
   {
     "slug": "awesome-coding-what-they-dont-tell-you-dog",
@@ -86,13 +106,17 @@
     "watch_url": "https://www.youtube.com/watch?v=aTXdXIEFx6c",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "red",
     "text": "high",
     "layout_map": "Near-black faint-grid background. A three-row white caps headline fills the left two-thirds: 'WHAT THEY' (baseline ~y170, cells 1-2-5), then 'DON'T' in large red caps as the accent row (baseline ~y360, cells 5-6-9, color the curiosity word), then 'TELL YOU' in white caps (baseline ~y520, cells 9-10-13). A profile of a tan dog's head (Rhodesian-ridgeback type, in lieu of a human face) fills the right third (cells 4,8,12; head center ~x1050,y300) facing left into the text.",
-    "reads_as": "There's a hidden truth nobody mentions — secret-reveal bait",
+    "reads_as": "There's a hidden truth nobody mentions \u2014 secret-reveal bait",
     "why_it_works": "The classic 'what they DON'T tell you' withhold formula with the negation word burning red triggers information-gap curiosity; the animal substitutes for an emotive face",
-    "mimic_for": "a hidden-truth / secret-reveal beat — the thing nobody warns you about"
+    "mimic_for": "a hidden-truth / secret-reveal beat \u2014 the thing nobody warns you about",
+    "title": "What's Actually Happening With JS Frameworks"
   }
 ]

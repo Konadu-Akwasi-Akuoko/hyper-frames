@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=ReNqPp3EmYk",
     "archetype": "object-hero",
     "layout": "grid-tiles",
-    "device": ["glow-accent", "danger-red"],
+    "device": [
+      "glow-accent",
+      "danger-red"
+    ],
     "face": true,
     "accent": "orange",
     "text": "low",
     "reads_as": "the actual book covers that made him good, with a fired-up reaction face in the middle",
-    "layout_map": "Four real programming-book covers fanned as a loose grid: two on the left (cells 5/9/13 region — 'Designing Data-Intensive Applications' bottom-left ~x90,y320 and 'System Design Interview' top-left ~x150,y130) and two on the right (cells 7/8/11/12 — 'The Pragmatic Programmer' ~x830,y160 and 'Clean Code' ~x1080,y200), each cover tilted slightly toward center. A man's face wearing glasses sits dead-center occupying cells 6/7/10/11 ~x560,y300 (one hand near mouth, hyped expression), partly overlapping the inner book edges. No headline text on the thumbnail — books ARE the message. Background is dark; a band of orange flames licks across the entire bottom edge (cells 13-16, y~640-720) as a danger/intensity accent.",
+    "layout_map": "Four real programming-book covers fanned as a loose grid: two on the left (cells 5/9/13 region \u2014 'Designing Data-Intensive Applications' bottom-left ~x90,y320 and 'System Design Interview' top-left ~x150,y130) and two on the right (cells 7/8/11/12 \u2014 'The Pragmatic Programmer' ~x830,y160 and 'Clean Code' ~x1080,y200), each cover tilted slightly toward center. A man's face wearing glasses sits dead-center occupying cells 6/7/10/11 ~x560,y300 (one hand near mouth, hyped expression), partly overlapping the inner book edges. No headline text on the thumbnail \u2014 books ARE the message. Background is dark; a band of orange flames licks across the entire bottom edge (cells 13-16, y~640-720) as a danger/intensity accent.",
     "why_it_works": "shows the literal artifacts (recognizable book covers) so the viewer can audit the claim, while the centered reaction face + flame band sells stakes and energy",
-    "mimic_for": "a curated-resources or 'what made me good' beat — showing the real tools/books/sources behind a result"
+    "mimic_for": "a curated-resources or 'what made me good' beat \u2014 showing the real tools/books/sources behind a result",
+    "title": "Books That Made Me A CRACKED Backend Dev"
   },
   {
     "slug": "codehead-spring-leaf-2-minutes",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=-ILh8pl5lj8",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["giant-number", "glow-accent"],
+    "device": [
+      "giant-number",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "lime",
     "text": "med",
-    "reads_as": "the Spring Boot leaf logo wearing a crown — the king of the topic, explained in 2 minutes",
-    "layout_map": "A full lime-green title banner spans the top edge (cells 1-4, y~0-75) reading a giant white '2' (JetBrains-style heavy numeral ~x250,y40) followed by 'MINUTES OF' in white caps to its right ~x520,y45. The hero object is the green Spring Boot leaf logo, large and centered occupying cells 10/11/14/15 ~x420,y230, filling roughly a third of the frame. A golden crown sits tilted on the upper-left of the leaf ~x250,y170 as a 'best/king' accent. Background is near-black with a faint dotted-grid texture. Minimal text otherwise — the logo carries the topic.",
+    "reads_as": "the Spring Boot leaf logo wearing a crown \u2014 the king of the topic, explained in 2 minutes",
+    "layout_map": "A full lime-green title banner spans the top edge (cells 1-4, y~0-75) reading a giant white '2' (JetBrains-style heavy numeral ~x250,y40) followed by 'MINUTES OF' in white caps to its right ~x520,y45. The hero object is the green Spring Boot leaf logo, large and centered occupying cells 10/11/14/15 ~x420,y230, filling roughly a third of the frame. A golden crown sits tilted on the upper-left of the leaf ~x250,y170 as a 'best/king' accent. Background is near-black with a faint dotted-grid texture. Minimal text otherwise \u2014 the logo carries the topic.",
     "why_it_works": "the crown turns a plain logo into a 'this is the king' claim, and the bold '2 MINUTES OF' banner promises a fast, low-commitment payoff",
-    "mimic_for": "a fast explainer of one named tool/framework, or crowning one option as the best in its category"
+    "mimic_for": "a fast explainer of one named tool/framework, or crowning one option as the best in its category",
+    "title": "Spring Boot Explained In 2 minutes"
   },
   {
     "slug": "codehead-sketch-face-wrong-icons",
@@ -38,14 +46,18 @@
     "watch_url": "https://www.youtube.com/watch?v=p8ghbz2WPJ4",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "x-mark"],
+    "device": [
+      "danger-red",
+      "x-mark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a giant red WRONG verdict over a sketched anxious face surrounded by dev-tool icons",
     "layout_map": "Huge red all-caps 'WRONG' fills the top-right, baseline ~y95, spanning cells 3-4 ~x640-1240 (bold sans, slight outline). A pencil-sketch line-drawing of a worried male head occupies the left third, cells 5/9/13 ~x180,y330, facing right toward the icons. Three flat dev-tool icons run as a horizontal strip across the lower-center/right: a red Git-branch diamond ~x590,y430 (cell 10/11), a grey graph/network node icon ~x770,y420 (cell 11), and a yellow calculator icon ~x980,y430 (cell 12). Background is dark charcoal with subtle grid. The red WRONG is the only colored word and the dominant scroll-stop.",
     "why_it_works": "the oversized red WRONG verdict plus an anxious face primes 'you're making a mistake', and the tool icons hint at WHICH common things are being done wrong",
-    "mimic_for": "a 'common mistakes / you're doing it wrong' beat calling out bad practices around named tools"
+    "mimic_for": "a 'common mistakes / you're doing it wrong' beat calling out bad practices around named tools",
+    "title": "The Most Common Mistakes Junior Devs Do"
   },
   {
     "slug": "codehead-anime-why-language-bars",
@@ -54,14 +66,18 @@
     "watch_url": "https://www.youtube.com/watch?v=0esScAWlWFI",
     "archetype": "code-screenshot",
     "layout": "text-left-face-right",
-    "device": ["progress-bar", "shocked-face"],
+    "device": [
+      "progress-bar",
+      "shocked-face"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "a confused anime girl reacting to a GitHub language-breakdown bar chart asking WHY?!",
     "layout_map": "White 'WHY?!' headline in caps across the top, baseline ~y60, cells 1-3 ~x60-720. A GitHub-style language-composition horizontal bar with a percentage legend fills the mid-left: the colored language bar ~x70,y130 (cell 5) with a wrapped legend beneath listing 'Shell 35.7%, Odin 3.1%, Other 21.3%' on the left and 'Dockerfile 20.0%, C++ 3.0%, Go 5%, Zig' across, ~y130-210. A blonde anime girl (Marin-style) head-and-shoulders sits in the right third, cells 4/8/12 ~x1080,y230, with a puzzled/wide-eyed expression. Behind everything is a dark blurred code/IDE screenshot. Cyan/green accents from the bar segments dominate the palette.",
     "why_it_works": "the language-breakdown bar poses a concrete puzzle (why so many languages?) and the reaction face supplies the confused emotion the title resolves",
-    "mimic_for": "a 'why does X look like this?' beat built around a real stat/breakdown screenshot plus a reacting face"
+    "mimic_for": "a 'why does X look like this?' beat built around a real stat/breakdown screenshot plus a reacting face",
+    "title": "Why Dev Projects Use Multiple Languages?"
   },
   {
     "slug": "codehead-langchain-bird-link-2min",
@@ -70,14 +86,17 @@
     "watch_url": "https://www.youtube.com/watch?v=vwlRzUddey4",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "med",
     "reads_as": "the LangChain parrot-and-chain-link logo with a sloth peeking, explained in 2 minutes",
     "layout_map": "A rounded white pill badge sits top-center (cells 2/3, ~x430,y75) holding the LangChain mark: a black parrot/bird on the left ~x380,y70 next to a cyan chain-link icon ~x500,y65. Large white 'LangChain' wordmark spans the center, baseline ~y360, cells 5-7 ~x40-760 (lowercase brand styling). Below it a cyan rounded button reads '2 Minutes' ~x150,y470 (cell 9/10). A grey cartoon sloth/whale character leans in from the right edge, cells 4/8/12 ~x1080,y360, partly cropped. Background is dark with a faint blueprint grid; cyan is the accent throughout.",
     "why_it_works": "leads with the recognizable product mark in a clean badge and pairs it with a '2 Minutes' promise, reading as a tidy, low-effort explainer of a named tool",
-    "mimic_for": "a quick branded explainer of one named library/product (logo-forward, fast-payoff)"
+    "mimic_for": "a quick branded explainer of one named library/product (logo-forward, fast-payoff)",
+    "title": "What is LangChain? (Explained In 2 minutes)"
   },
   {
     "slug": "codehead-meme-face-dumpster-fire",
@@ -86,14 +105,18 @@
     "watch_url": "https://www.youtube.com/watch?v=xiFM9bcLGn0",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a deadpan meme guy in sunglasses says 'It finally works!' next to a literal flaming dumpster fire",
-    "layout_map": "Top headline spans full width, baseline ~y55, cells 1-4: white 'It finally' ~x80,y50 then red 'works !' ~x650,y50 (the accent word in red caps). A grayscale 'Gigachad/Wojak'-style man in black sunglasses occupies the left-center, cells 5/6/9/10 ~x250,y330, holding a Monster energy can at lower-left ~x90,y480. On the right a burning green dumpster engulfed in orange flames sits in cells 11/12/15/16 ~x900,y420 — the literal 'dumpster fire'. Background is dark charcoal with faint grid. The red 'works!' and the orange fire are the twin color pops.",
-    "why_it_works": "the ironic contrast — smug 'it works' face beside a literal dumpster fire — is the whole joke, instantly readable and relatable to devs",
-    "mimic_for": "an ironic 'everything is broken but we ship anyway' / messy-codebase beat played for dark humor"
+    "layout_map": "Top headline spans full width, baseline ~y55, cells 1-4: white 'It finally' ~x80,y50 then red 'works !' ~x650,y50 (the accent word in red caps). A grayscale 'Gigachad/Wojak'-style man in black sunglasses occupies the left-center, cells 5/6/9/10 ~x250,y330, holding a Monster energy can at lower-left ~x90,y480. On the right a burning green dumpster engulfed in orange flames sits in cells 11/12/15/16 ~x900,y420 \u2014 the literal 'dumpster fire'. Background is dark charcoal with faint grid. The red 'works!' and the orange fire are the twin color pops.",
+    "why_it_works": "the ironic contrast \u2014 smug 'it works' face beside a literal dumpster fire \u2014 is the whole joke, instantly readable and relatable to devs",
+    "mimic_for": "an ironic 'everything is broken but we ship anyway' / messy-codebase beat played for dark humor",
+    "title": "How Every \u201cModern\u201d Code Base Is A DUMPSTER FIRE"
   },
   {
     "slug": "codehead-hermes-anime-5-minutes",
@@ -102,14 +125,18 @@
     "watch_url": "https://www.youtube.com/watch?v=9GpWELm3_XI",
     "archetype": "face-reaction",
     "layout": "text-center",
-    "device": ["giant-number", "glow-accent"],
+    "device": [
+      "giant-number",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "med",
     "reads_as": "a high-contrast black-and-white anime woman flanked by HERMES / AGENT, explained in 5 minutes",
     "layout_map": "A yellow title banner spans the top edge (cells 1-4, y~0-75) reading white 'IN' + a large '5' numeral ~x430,y35 + 'MINUTES' in dark caps ~x560,y40. A bold monochrome (black/white) anime woman's face-and-hair portrait is centered, cells 6/7/10/11 ~x600,y320, filling roughly the middle third. The subject word splits around her head: white 'HERMES' on the left ~x120,y280 (cells 5/9) and white 'AGENT' on the right ~x1020,y280 (cells 8/12), both caps. Background is dark with a faint grid; yellow banner is the only strong color against the black-and-white art.",
     "why_it_works": "the stark black-and-white portrait reads instantly against the yellow banner, and splitting the topic name around the face frames her as the subject while '5 MINUTES' promises a quick payoff",
-    "mimic_for": "a fast named-thing explainer where a central character/mascot anchors the topic split left/right of the face"
+    "mimic_for": "a fast named-thing explainer where a central character/mascot anchors the topic split left/right of the face",
+    "title": "Hermes Agent Explained In 5 Minutes"
   },
   {
     "slug": "codehead-fat-arch-guy-ide-icons-part2",
@@ -118,13 +145,17 @@
     "watch_url": "https://www.youtube.com/watch?v=GzFFeCKgq3c",
     "archetype": "logo-grid",
     "layout": "centered-stack",
-    "device": ["glow-accent", "corner-badge"],
+    "device": [
+      "glow-accent",
+      "corner-badge"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
-    "reads_as": "a chunky meme guy in an Arch Linux tee surrounded by floating IDE/editor logos — Part 2 of judging your IDE",
+    "reads_as": "a chunky meme guy in an Arch Linux tee surrounded by floating IDE/editor logos \u2014 Part 2 of judging your IDE",
     "layout_map": "White 'Part 2' headline top-center, baseline ~y95, cells 2/3 ~x420,y75. A heavyset bald man in sunglasses wearing a cyan 'arch' t-shirt sits center-bottom, cells 6/7/10/11/14/15 ~x600,y450, filling the lower-middle third. Floating editor/IDE logos ring him in a loose constellation: VS-style blue icon above his head ~x600,y260 (cell 6/7), a turquoise editor icon left ~x420,y330 (cell 6), a red editor 'S' icon upper-right ~x980,y310 (cell 8), a green icon lower-left ~x120,y450 (cell 13), and a cyan IDE icon lower-right ~x1080,y470 (cell 16). Background is dark navy with a subtle grid; cyan is the dominant accent.",
     "why_it_works": "the constellation of recognizable IDE logos invites the viewer to find their own editor, and the deadpan meme character signals a humorous, judgmental tier-list tone",
-    "mimic_for": "a 'what your tool/editor choice says about you' or tool-roundup beat — many recognizable logos around a reacting persona"
+    "mimic_for": "a 'what your tool/editor choice says about you' or tool-roundup beat \u2014 many recognizable logos around a reacting persona",
+    "title": "What Your IDE Says About You (Part 2)"
   }
 ]

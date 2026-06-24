@@ -1,0 +1,101 @@
+[
+  {
+    "slug": "coding-with-lewis-retro-pc-angry-stock-loss",
+    "channel": "coding-with-lewis",
+    "file": "01-zh008MNMOlo.jpg",
+    "watch_url": "https://www.youtube.com/watch?v=zh008MNMOlo",
+    "archetype": "object-hero",
+    "layout": "centered-stack",
+    "device": [
+      "neon-on-dark",
+      "danger-red"
+    ],
+    "face": false,
+    "accent": "red",
+    "text": "low",
+    "reads_as": "a cute retro 3D computer whose screen is an angry red pixel-face, backed by a falling red/green stock chart and a ghostly negative number",
+    "layout_map": "Near-black background with a magenta/red vignette glow. A huge ghosted blurry seven-segment number ('-10,000') glows dim red across the entire top half cells 1-8 y0-~y200, deliberately out-of-focus so it reads as atmosphere not headline. A candlestick stock chart (green up-ticks left, red down-ticks right) runs as a mid-ground band across cells 5-12 ~y230-y400, trending downward. The hero is a single 3D-rendered retro desktop computer (teal/pink/cream casing, rainbow keyboard) centered cells 7-14, monitor centered ~x640,y320 filling ~45% of frame; its black CRT screen displays a red pixel-art angry face (slanted angry eyes + jagged zigzag frown). Soft cyan rim-light on the monitor's left edge, warm pink on the right. No human face, no badge, no foreground text.",
+    "why_it_works": "the friendly toy-like computer rendered with a furious pixel face turns a dry finance-bot premise into an instantly readable 'this went badly' joke, and the blurred negative number plus red downtrend confirm the loss without a single legible word",
+    "mimic_for": "a self-experiment or system-design beat that ends in failure or loss, where a single charming 3D object wearing an emotion carries the whole punchline",
+    "title": "I Gave My Terrible Trading Bot $10,000 to Trade Stocks"
+  },
+  {
+    "slug": "coding-with-lewis-discord-trillions-glow",
+    "channel": "coding-with-lewis",
+    "file": "02-lLrzoyU4BPc.jpg",
+    "watch_url": "https://www.youtube.com/watch?v=lLrzoyU4BPc",
+    "archetype": "big-text",
+    "layout": "centered-stack",
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
+    "face": false,
+    "accent": "red",
+    "text": "med",
+    "reads_as": "the glowing white Discord logo floating over a dark starfield with one giant red word 'TRILLIONS' blazing across the bottom",
+    "layout_map": "Dark navy-to-black background with faint starfield specks and a soft teal/red ambient haze. The white Discord (Clyde) mascot logo glows large and centered in the upper-middle cells 6-11, center ~x640,y230, with a blue-white bloom radiating around it filling ~35% of the upper frame. One headline word 'TRILLIONS' in heavy blocky pixel/stencil caps, saturated red with a strong red neon bloom, spans nearly full width cells 1-16 baseline ~y560, occupying the bottom third. No face, no secondary text, no badge. Composition is a vertical two-element stack: glowing brand mark over one glowing number-word.",
+    "why_it_works": "stripping to one brand logo and one enormous emotionally-charged word over black maximizes contrast and legibility at thumbnail size, and the red glow makes the scale-claim feel ominous rather than informational",
+    "mimic_for": "a 'how X handles N billion/trillion of Y' system-design scale story where the hook is a single staggering quantity under a recognizable product logo",
+    "title": "How Discord Stores TRILLIONS of Messages"
+  },
+  {
+    "slug": "coding-with-lewis-gta5-15min-vs-150-facepalm",
+    "channel": "coding-with-lewis",
+    "file": "04-kG1q2LjRiT0.jpg",
+    "watch_url": "https://www.youtube.com/watch?v=kG1q2LjRiT0",
+    "archetype": "comparison-vs",
+    "layout": "split-vertical",
+    "device": [
+      "red-arrow",
+      "shocked-face"
+    ],
+    "face": true,
+    "accent": "green",
+    "text": "med",
+    "reads_as": "a GTA 5 before/after where a red '15 MIN' pill shrinks to a green '1:50' pill, with the creator face-palming in disbelief on the right",
+    "layout_map": "Three vertical bands. Left band (cells 1-5): the iconic GTA V cover art (blonde figure, black/white panel) under a glossy 'Grand Theft Auto V' logo top-left ~x40,y40. Middle band (cells 6-10): a GTA character (Franklin in green varsity jacket holding a bat) against a city scene. Right band (cells 11-16): the creator in a tan fur-collar coat doing a classic palm-to-forehead facepalm, eyes shut, lit with a green rim glow, occupying ~30% of frame on the right edge. Two rounded rectangular time pills sit along the bottom: a red pill '15 MIN' in white bold caps bottom-left ~x140,y620, a fat white right-arrow between them ~x360, then a green pill '1:50' in white bold caps ~x500,y620. The red-to-green pill pair plus arrow is the before/after spine; the facepalm is the reaction payoff.",
+    "why_it_works": "the red-then-green time pills joined by an arrow make the dramatic improvement legible in under a second, and the exaggerated facepalm supplies the emotional 'I can't believe this' that turns a dry optimization into a story",
+    "mimic_for": "a before/after performance or speed-up beat (slow build \u2192 fast result) where a red\u2192green metric pill pair carries the change and a reaction face sells the disbelief",
+    "title": "How a Random Programmer FIXED GTA 5"
+  },
+  {
+    "slug": "coding-with-lewis-40-apis-icon-orbit-face",
+    "channel": "coding-with-lewis",
+    "file": "06-YHxj3LvZoLQ.jpg",
+    "watch_url": "https://www.youtube.com/watch?v=YHxj3LvZoLQ",
+    "archetype": "face-reaction",
+    "layout": "centered-stack",
+    "device": [
+      "glow-accent"
+    ],
+    "face": true,
+    "accent": "multicolor",
+    "text": "low",
+    "reads_as": "the creator smiling warmly at a laptop while glossy glowing app/tech icons orbit his head against a moody blurred-bokeh room",
+    "layout_map": "Cinematic blurred dark room (soft green plant bokeh corners, navy ambient light). The creator's head-and-shoulders is centered, face ~x640,y330 filling ~30% of frame, smiling closed-mouth at a silver laptop whose top edge enters the bottom-center ~y660. Six glossy 3D 'squircle' app icons float in an arc around the head, each with its own colored glow: AI chip (purple) upper-left ~x370,y110, Discord (blue) left ~x150,y320, JSON (orange) lower-left ~x130,y500, target+arrow (red) upper-right ~x1000,y130, Spotify (green) right ~x1130,y330, SQL (blue) lower-right ~x1080,y540. Icons are evenly distributed so the warm face stays the focal anchor. No headline text, no badge \u2014 the title lives off-thumbnail.",
+    "why_it_works": "the friendly direct-to-laptop expression makes it feel like a trusted recommendation, and the ring of recognizable color-coded service icons promises concrete, varied tools without a word of text",
+    "mimic_for": "a roundup or 'tools every developer should know' beat where a warm presenter face anchors an orbit of recognizable service/tech logos",
+    "title": "40 APIs Every Developer Should Use (in 12 minutes)"
+  },
+  {
+    "slug": "coding-with-lewis-fullstack-roadmap-logo-orbit",
+    "channel": "coding-with-lewis",
+    "file": "08-5-MLMzbUlPY.jpg",
+    "watch_url": "https://www.youtube.com/watch?v=5-MLMzbUlPY",
+    "archetype": "logo-grid",
+    "layout": "centered-stack",
+    "device": [
+      "glow-accent",
+      "big-text"
+    ],
+    "face": true,
+    "accent": "blue",
+    "text": "med",
+    "reads_as": "the creator beaming dead-center against an electric-blue matrix-code wall, ringed by six bright tech-stack logos over a chrome '2023 GUIDE' band",
+    "layout_map": "Electric-blue background of cascading green/blue matrix digital rain with a bright blue radial glow behind the head. The creator's smiling head-and-shoulders is centered, face ~x480,y220 filling ~35% of frame (note 960x540 source frame). Six recognizable tech logos ring the head, evenly split left/right: Node.js (green hex) upper-left ~x160,y90, Linux Tux (penguin) left ~x180,y230, CSS3 (blue shield) lower-left ~x90,y330; JS (yellow square) upper-right ~x780,y100, PostgreSQL (blue elephant) right ~x760,y250, HTML5 (orange shield) lower-right ~x880,y340. A bold metallic-silver headline '2023 GUIDE' in heavy condensed caps spans the full bottom edge cells 1-16 baseline ~y510, slightly overlapping the chin. The logo ring plus a single chrome text band frames a confident face as the start of a learning path.",
+    "why_it_works": "the encircling stack logos instantly communicate 'this covers the whole toolchain' while the chrome year-stamped headline signals it is current and authoritative, and the bright blue glow pops the smiling face off the busy matrix wall",
+    "mimic_for": "a roadmap or full-curriculum beat where a confident presenter is wreathed by the technologies covered, with one short authoritative text band naming the deliverable",
+    "title": "Become a Full Stack Developer: A Roadmap for Beginners"
+  }
+]

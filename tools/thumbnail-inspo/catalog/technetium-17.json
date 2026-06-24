@@ -6,13 +6,17 @@
     "watch_url": "https://www.youtube.com/watch?v=DOTlkp_ICOA",
     "archetype": "comparison-vs",
     "layout": "split-vertical",
-    "device": ["vs-bolt", "glow-accent"],
+    "device": [
+      "vs-bolt",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "red",
     "text": "low",
     "layout_map": "Frame split vertically down the center (~x640): left half dark-red tint, right half dark-blue tint. Two big circular logo discs on the horizontal mid-line: left disc is the yellow Tux penguin on a black circle centered ~x310,y360 (cell 9/10, fills ~35% height), right disc is the blue Windows logo on a teal circle centered ~x960,y360 (cell 11/12). Word LINUX in white caps sits top-left along the upper edge baseline ~y55 (cell 1/2); WINDOWS in white caps top-right baseline ~y55 (cell 3/4). Bold red 'VS' lozenge dead-center ~x640,y360 over the seam (cell 10/11). Background is faint dimmed grid texture on each tinted half.",
     "why_it_works": "Two universally recognized logos in a red-vs-blue split force an instant pick-a-side reaction before a word is read.",
-    "mimic_for": "two platforms or tools pitted head-to-head, each carrying a known logo"
+    "mimic_for": "two platforms or tools pitted head-to-head, each carrying a known logo",
+    "title": "WINDOWS VS LINUX | Which One is BETTER?"
   },
   {
     "slug": "technetium-lang-logo-grid-vs-smoking-kid",
@@ -21,13 +25,16 @@
     "watch_url": "https://www.youtube.com/watch?v=a2WESQ_sdUc",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["shocked-face"],
+    "device": [
+      "shocked-face"
+    ],
     "face": true,
     "accent": "blue",
     "text": "low",
-    "layout_map": "Left ~60% of frame is a tight grid of programming-language logos on near-black: Python (top-left ~x60,y90), C++ and JS across the top row (cells 1-3), C / Rust-crab / a smoke wisp in the middle row (cells 5-7), PHP and Java logos along the bottom row ~y620 (cells 13-15). Right ~40% (cells 4,8,12,16, from ~x880 to x1280) is a photo of a chubby young kid smirking and holding a cigarette to his lips, face centered ~x1080,y300, filling the right column edge-to-edge top to bottom. No headline text — the logos ARE the message. Background black.",
+    "layout_map": "Left ~60% of frame is a tight grid of programming-language logos on near-black: Python (top-left ~x60,y90), C++ and JS across the top row (cells 1-3), C / Rust-crab / a smoke wisp in the middle row (cells 5-7), PHP and Java logos along the bottom row ~y620 (cells 13-15). Right ~40% (cells 4,8,12,16, from ~x880 to x1280) is a photo of a chubby young kid smirking and holding a cigarette to his lips, face centered ~x1080,y300, filling the right column edge-to-edge top to bottom. No headline text \u2014 the logos ARE the message. Background black.",
     "why_it_works": "A meme-y smug smoking kid pinned beside a wall of dev-language logos sets up a what-does-your-language-say-about-you stereotype joke that demands the click.",
-    "mimic_for": "a roundup of tools/languages framed as a personality or stereotype joke"
+    "mimic_for": "a roundup of tools/languages framed as a personality or stereotype joke",
+    "title": "What your programming language says about you."
   },
   {
     "slug": "technetium-hackers-use-linux-mask-vs-distro",
@@ -36,13 +43,17 @@
     "watch_url": "https://www.youtube.com/watch?v=CdT5FkBVJOU",
     "archetype": "object-hero",
     "layout": "split-vertical",
-    "device": ["glow-accent", "hand-point"],
+    "device": [
+      "glow-accent",
+      "hand-point"
+    ],
     "face": true,
     "accent": "orange",
     "text": "med",
     "layout_map": "Full-width white caps headline across the very top, baseline ~y45: 'WHY HACKERS USE LINUX?' (LINUX glows orange, rest white) spanning cells 1-4. Below, two-object split: left half (cells 5/6/9/10) a glowing white Guy Fawkes / Anonymous mask floating centered ~x320,y320; right half (cells 7/8/11/12) the orange Kali Linux dragon logo glowing on black centered ~x960,y280. Bottom-right an open upturned human hand cups a small red object ~x980,y560 (cell 16). Background flat black with subtle glow halos behind both objects.",
     "why_it_works": "The anonymous mask plus glowing Kali dragon over a top-banner question reads instantly as forbidden-knowledge hacker content.",
-    "mimic_for": "an explainer revealing why a tool/OS is the insider's choice"
+    "mimic_for": "an explainer revealing why a tool/OS is the insider's choice",
+    "title": "What is KALI LINUX? | Know Everything About LINUX."
   },
   {
     "slug": "technetium-white-hat-vs-black-hat-hoodies",
@@ -51,13 +62,17 @@
     "watch_url": "https://www.youtube.com/watch?v=aPKM8c7ReNw",
     "archetype": "comparison-vs",
     "layout": "split-vertical",
-    "device": ["vs-bolt", "neon-on-dark"],
+    "device": [
+      "vs-bolt",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "med",
     "layout_map": "Vertical Shorts frame (~640 wide, ~480+ tall). Split down the center: left half a hooded figure (face partly lit, cyan tint) seated at a screen, centered ~x160,y180; right half a darker hooded figure (face shadowed, red screen-glow behind) centered ~x480,y200. Bright cyan/white 'VS' stacked dead-center on the vertical seam ~x320,y150 (cells 6/7/10/11). Yellow caps labels along the lower third: 'WHITE HAT' bottom-left baseline ~y290 (cells 9/10), 'BLACK HAT' bottom-right baseline ~y290 (cells 11/12). Background is a dim hacker-den room split warm-cyan vs red.",
     "why_it_works": "Two near-identical hooded hackers, one cool-lit one menacing-red, split by VS sells a good-vs-evil duel in one glance.",
-    "mimic_for": "an ethical-vs-malicious or good-vs-bad-actor comparison"
+    "mimic_for": "an ethical-vs-malicious or good-vs-bad-actor comparison",
+    "title": "BLACK HAT HACKER VS WHITE HAT HACKER!!!"
   },
   {
     "slug": "technetium-meet-hacker-gpt-text-left-logo-right",
@@ -66,13 +81,16 @@
     "watch_url": "https://www.youtube.com/watch?v=s0QwnfGy2Ck",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "orange",
     "text": "high",
     "layout_map": "Vertical Shorts frame (~640 wide). Left ~55% is a stacked 3-line headline on dark-red textured background: 'MEET' in white caps baseline ~y90 (cell 1/2), 'HACKER' in orange caps baseline ~y150 (cell 5/6), 'GPT' in large orange caps baseline ~y240 (cell 9/10). Right ~45% is a white-outlined rounded rectangle panel (~x420-x600, y70-y310, cells 7/8/11/12) framing a red pinwheel/swirl logo glowing on black, centered ~x510,y190. Background dark crimson grid.",
     "why_it_works": "A bold MEET / HACKER GPT name reveal beside a mysterious red logo badge sells a named new AI tool you haven't heard of.",
-    "mimic_for": "introducing a named tool/model as a must-try discovery"
+    "mimic_for": "introducing a named tool/model as a must-try discovery",
+    "title": "Hacker GPT, You won't regret using it!!!"
   },
   {
     "slug": "technetium-why-hackers-use-python-red-eye-mask",
@@ -81,13 +99,17 @@
     "watch_url": "https://www.youtube.com/watch?v=pbaJnAa-34Q",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "layout_map": "Dark teal/black tech background. Left third carries a stacked white+red caps headline: 'WHY' white baseline ~y40, 'HACKERS' red baseline ~y95, 'USE' white baseline ~y150, 'PYTHON' red baseline ~y205 (cells 1/2/5/6/9/10). Center-right a black hooded Anonymous-style figure with glowing red eyes faces forward, hood and shoulders filling cells 3/7/11 centered ~x760,y220, top of hood near y20. Background is faint scrolling code/circuit texture. The face's red eyes match the red accent words.",
     "why_it_works": "A menacing red-eyed hooded hacker staring out, with the answer word PYTHON glowing the same red as its eyes, ties the threat directly to the topic.",
-    "mimic_for": "an explainer on why pros/attackers favor a specific language or tool"
+    "mimic_for": "an explainer on why pros/attackers favor a specific language or tool",
+    "title": "Why HACKERS Use PYTHON? | PYTHON USES!!"
   },
   {
     "slug": "technetium-deepseek-devil-whale-hacker",
@@ -96,13 +118,17 @@
     "watch_url": "https://www.youtube.com/watch?v=JOa6Exw_d5Y",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent", "danger-red"],
+    "device": [
+      "glow-accent",
+      "danger-red"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
-    "layout_map": "Black background with faint cyan grid. Top banner two-word headline split across the top, baseline ~y50: 'HACKER' in red caps top-left (cells 1/2) and 'DEEPSEEK' in blue caps top-right (cells 3/4). Center hero is the blue DeepSeek whale logo, large, centered ~x600,y360, given two red devil horns on its head and a curling red devil tail trailing right (cells 10/11/12), filling the middle band cells 9-12. Minimal else — the horned-whale mascot is the focal object.",
+    "layout_map": "Black background with faint cyan grid. Top banner two-word headline split across the top, baseline ~y50: 'HACKER' in red caps top-left (cells 1/2) and 'DEEPSEEK' in blue caps top-right (cells 3/4). Center hero is the blue DeepSeek whale logo, large, centered ~x600,y360, given two red devil horns on its head and a curling red devil tail trailing right (cells 10/11/12), filling the middle band cells 9-12. Minimal else \u2014 the horned-whale mascot is the focal object.",
     "why_it_works": "The friendly DeepSeek whale given red devil horns turns a known AI into something dangerous/forbidden, sparking curiosity.",
-    "mimic_for": "framing a popular AI/tool as secretly dangerous or rule-breaking"
+    "mimic_for": "framing a popular AI/tool as secretly dangerous or rule-breaking",
+    "title": "Deep Seek will turn you into a HACKER | Watch this or REGRET forever."
   },
   {
     "slug": "technetium-ai-engineer-2026-crying-pepe",
@@ -111,12 +137,16 @@
     "watch_url": "https://www.youtube.com/watch?v=HGYOqGPGn4o",
     "archetype": "meme",
     "layout": "text-center",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "layout_map": "Vertical Shorts frame (~640 wide). Background near-black with faint scrolling code and a blue ChatGPT/OpenAI swirl glyph top-left ~x90,y60 plus a small white robot doodle ~x200,y55. Left half dominated by a crying green Pepe-the-frog meme face, bloodshot teary eyes, centered ~x150,y260, filling cells 5/6/9/10/13/14 from ~y100 down to bottom. Headline stacked right-of-center in red caps: 'AI ENGINEER' baseline ~y70 (cells 3/4), 'IN' baseline ~y200 (cell 8), and large '2026' in bright red baseline ~y330 (cells 11/12). A blue bar runs across the bottom edge ~y420.",
     "why_it_works": "A sobbing Pepe meme beside a doom-red 'AI ENGINEER IN 2026' taps career-anxiety dread and meme humor at once.",
-    "mimic_for": "a is-X-still-worth-it career-doubt or doom-vs-hope take on a job/skill"
+    "mimic_for": "a is-X-still-worth-it career-doubt or doom-vs-hope take on a job/skill",
+    "title": "Is AI Engineering Still Worth It in 2026?"
   }
 ]

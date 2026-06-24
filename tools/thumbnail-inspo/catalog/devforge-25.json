@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=QE712dd9r3o",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "A cartoon developer at his laptop under a giant FULL WORKFLOW banner, glowing tech HUD around him",
     "layout_map": "Dark near-black tech-grid background. Headline 'FULL WORKFLOW' in white heavy uppercase sans spans the full top band across cells 1-4, baseline ~y75, two words on one line. A stylized cartoon developer (blue tee, brown desk) sits center-bottom at a glowing laptop, body filling cells 6-7 and 10-11, head center ~x310,y200, desk and translucent cyan HUD popups fanned out around him in cells 9-12. A red bird/icon glows upper-left at ~x195,y90 (cell 6) and assorted cyan UI cards float across cells 7-8. No stat or badge; the glow accents and dark substrate carry the scroll-stop.",
     "why_it_works": "Big plain promise word ('FULL WORKFLOW') plus a friendly mascot-dev and neon HUD signals a complete hands-on build without any clutter",
-    "mimic_for": "an end-to-end build or setup walkthrough where you show the whole pipeline at once"
+    "mimic_for": "an end-to-end build or setup walkthrough where you show the whole pipeline at once",
+    "title": "I Built an AI Workflow with OpenClaw on a Hostinger VPS, Here's Exactly How"
   },
   {
     "slug": "devforge-html-3-mins-logo-hero",
@@ -22,14 +26,17 @@
     "watch_url": "https://www.youtube.com/watch?v=9qoVvtZ_MEA",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "orange",
     "text": "low",
     "reads_as": "The giant orange HTML5 shield logo dead-center, ringed by floating tag names, under HTML in 3 Mins",
     "layout_map": "Deep blue radial-glow background. Headline 'HTML in 3 Mins' in white sans, centered across cells 2-3, baseline ~y70 ('3' tinted). The orange HTML5 shield logo is the hero, dead-center filling cells 6-7 and 10-11, center ~x640,y360, occupying ~40% of frame. Cyan code-tag labels float at the four corners around it: '<h2>' cell 5 (~x90,y170), '<p>' cell 8 (~x1120,y170), '<div>' cell 9 (~x100,y330), '<img>' cell 12 (~x1130,y330), '<title>' cell 13 (~x120,y510), '<article>' cell 16 (~x1110,y510). No face. Glow halo behind the logo carries depth.",
     "why_it_works": "One iconic brand logo as a single fixation point, framed by the actual tags you'll learn, promises a fast tidy primer",
-    "mimic_for": "a single-technology quick-explainer where one recognizable logo IS the subject"
+    "mimic_for": "a single-technology quick-explainer where one recognizable logo IS the subject",
+    "title": "HTML Basics Explained in 180 Seconds"
   },
   {
     "slug": "devforge-master-js-three-step-flow",
@@ -38,14 +45,18 @@
     "watch_url": "https://www.youtube.com/watch?v=7_k1SUNIyfY",
     "archetype": "diagram-arch",
     "layout": "centered-stack",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "low",
     "reads_as": "MASTER JS in big yellow over a three-box flow: JS to if/else to loops, joined by arrows",
     "layout_map": "Dark grid background. Headline 'MASTER JS' in big bold yellow uppercase, centered across cells 2-3, baseline ~y95. Below sits a three-stage horizontal flow diagram on row 3: white dashed-outline boxes each with a small caption label above. Box 1 'BASICS' = yellow JS logo at ~x190,y395 (cell 9); Box 2 'CONDITIONALS' = 'if else' text at ~x640,y395 (cell 10-11); Box 3 'LOOPS' = cyan circular-arrows loop icon at ~x1090,y395 (cell 12). White arrows connect box 1 to 2 and 2 to 3 at ~y395. No face, no stat. Symmetric centered flow on dark substrate.",
     "why_it_works": "A left-to-right progression diagram promises a clear ordered curriculum (basics, conditionals, loops) you can absorb at a glance",
-    "mimic_for": "a 'master this topic' lesson laid out as an ordered multi-step progression or learning path"
+    "mimic_for": "a 'master this topic' lesson laid out as an ordered multi-step progression or learning path",
+    "title": "JavaScript Basics Everyone Gets Wrong"
   },
   {
     "slug": "devforge-which-is-best-three-phones",
@@ -54,14 +65,18 @@
     "watch_url": "https://www.youtube.com/watch?v=Tm5pTJqmanc",
     "archetype": "comparison-vs",
     "layout": "grid-tiles",
-    "device": ["vs-bolt", "glow-accent"],
+    "device": [
+      "vs-bolt",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "purple",
     "text": "low",
     "reads_as": "Three smartphones in a row, each showing a rival AI logo, under WHICH IS BEST?",
     "layout_map": "Purple grid background. Headline 'WHICH IS BEST?' in white bold uppercase spanning cells 1-4, baseline ~y75. Three identical white smartphone mockups stand side by side across the lower two-thirds: phone 1 center ~x270,y430 (cells 5,9,13) showing the black ChatGPT swirl logo; phone 2 center ~x640,y430 (cells 6-7,10-11,14-15) showing the blue DeepSeek whale; phone 3 center ~x1010,y430 (cells 8,12,16) showing the orange Claude/Anthropic burst. Each phone fills roughly a vertical third-column. No face, no numbers; the three-way phone lineup IS the comparison.",
     "why_it_works": "Three equal contenders displayed as identical devices forces a 'which one wins' question and invites picking a side",
-    "mimic_for": "a three-way head-to-head comparison of competing tools, models, or products"
+    "mimic_for": "a three-way head-to-head comparison of competing tools, models, or products",
+    "title": "ChatGPT vs Deepseek R1 vs Claude 3.7 Sonnet: Insane AI Battle"
   },
   {
     "slug": "devforge-browser-url-matrix-rain",
@@ -70,14 +85,18 @@
     "watch_url": "https://www.youtube.com/watch?v=g-HYxpUM7Rs",
     "archetype": "code-screenshot",
     "layout": "text-center",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "lime",
     "text": "low",
     "reads_as": "A browser URL pill resolving to a raw IP address, floating over green Matrix-rain binary code",
     "layout_map": "Full-bleed green Matrix-style falling-binary code on black fills the whole frame. A white rounded browser address-bar pill sits center-left across cells 5-7, center ~x420,y185, reading 'https://your 8.65.153.23' (domain morphing into a raw IP). A bright white diagonal slash/beam cuts from lower-left up through the middle behind the pill. No face, no headline text band, no stat badge; the lone URL pill on the digital-rain substrate is the entire focal point.",
     "why_it_works": "A familiar URL bar dissolving into cryptic IP numbers over hacker-green code teases the hidden machinery behind something you do every day",
-    "mimic_for": "a 'what really happens under the hood' explainer that exposes the hidden internals of a common action"
+    "mimic_for": "a 'what really happens under the hood' explainer that exposes the hidden internals of a common action",
+    "title": "Why Your Browser Does This When You Type a URL"
   },
   {
     "slug": "devforge-react-hooks-are-easy-atom",
@@ -86,13 +105,16 @@
     "watch_url": "https://www.youtube.com/watch?v=bNvs64b2yew",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
     "reads_as": "The cyan React atom logo with a fishhook on the left, stacked headline React Hooks are easy on the right",
     "layout_map": "Dark navy grid background. Left half is the object: the glowing cyan React atom (orbital-rings) logo center ~x300,y370 filling cells 5-6 and 9-10, with a hook-shaped fishhook curling up out of the top ring (~x300,y150) as a visual pun on 'Hooks'. Right half is a left-aligned three-line stacked headline in heavy sans across cells 7-8,11-12: 'React' (white) baseline ~y230, 'Hooks' (coral-red, the accent word) baseline ~y330, 'are easy' (white with 'easy' in coral-red) baseline ~y430. No human face; no stat badge.",
     "why_it_works": "A literal hook pun on the React logo plus the reassuring 'are easy' promise lowers the intimidation of a tricky topic",
-    "mimic_for": "a 'this scary-sounding concept is actually easy' reassurance video on one specific framework feature"
+    "mimic_for": "a 'this scary-sounding concept is actually easy' reassurance video on one specific framework feature",
+    "title": "Learn React Hooks in JUST 4 Minutes!"
   }
 ]

@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=horxXJR0_CE",
     "archetype": "before-after",
     "layout": "split-vertical",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
-    "reads_as": "Left half = a confident coder in 2022; right half = the same sloth flipping burgers in fast food in 2024 — the CS degree collapse told in two frames.",
+    "reads_as": "Left half = a confident coder in 2022; right half = the same sloth flipping burgers in fast food in 2024 \u2014 the CS degree collapse told in two frames.",
     "layout_map": "Frame split down the center at ~x640 into two pixel-art scenes. LEFT half (cells 1,2,5,6,9,10): a blue-tinted office desk with a sloth in glasses coding on a laptop, second monitor at right showing a video-call dog; big year label 2022 in white block caps with blue gradient fill sits top-left ~x60-280, baseline ~y45. RIGHT half (cells 3,4,7,8,11,12): a red-tinted fast-food scene, sloth in red cap behind a counter with burger, fries and soda cup ~center x960,y400; big year label 2024 in white block caps with red gradient fill top-right ~x900-1130, baseline ~y45. No headline text, the story is carried entirely by the two year labels + scene contrast; backgrounds are detailed pixel-art interiors, left cool/blue, right warm/red.",
     "why_it_works": "Two dated scenes side by side force a then-vs-now read; the cool-to-warm, office-to-fast-food shift implies a grim downgrade you must click to explain.",
-    "mimic_for": "a then-vs-now decline or trajectory beat — 'X used to be great, now look at it', a market or career collapse framed across two dates"
+    "mimic_for": "a then-vs-now decline or trajectory beat \u2014 'X used to be great, now look at it', a market or career collapse framed across two dates",
+    "title": "Is Computer Science Still Worth It?"
   },
   {
     "slug": "coding-sloth-github-logo-peek",
@@ -22,14 +26,17 @@
     "watch_url": "https://www.youtube.com/watch?v=cgOPg5cCr2g",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": true,
     "accent": "white",
     "text": "low",
-    "reads_as": "A cartoon sloth peeks from the left edge holding a boombox while a giant GitHub logo + wordmark fills the right — 'cool repos you'll use'.",
-    "layout_map": "White background. A large hand-drawn cartoon sloth face fills the left third (cells 1,2,5,6,9,10), head ~x150,y260, smiling, with a cassette boombox held up at its chest ~x330,y430 (cell 10). A dark/black browser window panel occupies the right two-thirds from ~x520 to x1240, with a tiny tab caption 'I use arch btw' along its top edge ~y40. Inside it: the GitHub octocat mark ~center x720,y330 (cell 7) next to the white 'GitHub' wordmark spanning ~x800-1180 (cell 8), baseline ~y360. Minimal text density — the brand logo IS the message; clean white-on-dark contrast.",
+    "reads_as": "A cartoon sloth peeks from the left edge holding a boombox while a giant GitHub logo + wordmark fills the right \u2014 'cool repos you'll use'.",
+    "layout_map": "White background. A large hand-drawn cartoon sloth face fills the left third (cells 1,2,5,6,9,10), head ~x150,y260, smiling, with a cassette boombox held up at its chest ~x330,y430 (cell 10). A dark/black browser window panel occupies the right two-thirds from ~x520 to x1240, with a tiny tab caption 'I use arch btw' along its top edge ~y40. Inside it: the GitHub octocat mark ~center x720,y330 (cell 7) next to the white 'GitHub' wordmark spanning ~x800-1180 (cell 8), baseline ~y360. Minimal text density \u2014 the brand logo IS the message; clean white-on-dark contrast.",
     "why_it_works": "A single trusted brand logo blown up huge promises a curated list of real tools; the peeking mascot + 'arch btw' joke adds personality without clutter.",
-    "mimic_for": "a roundup of tools/repos/resources anchored to one recognizable platform — 'N github repos', 'best X on Y', a curated-list beat that leans on a known logo"
+    "mimic_for": "a roundup of tools/repos/resources anchored to one recognizable platform \u2014 'N github repos', 'best X on Y', a curated-list beat that leans on a known logo",
+    "title": "16 Cool GitHub Repos You WILL Use (no pressure)"
   },
   {
     "slug": "coding-sloth-money-rain-suit",
@@ -38,14 +45,17 @@
     "watch_url": "https://www.youtube.com/watch?v=tjW_5ZAttGo",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": true,
     "accent": "green",
     "text": "low",
-    "reads_as": "A sloth in a business suit stands arms-open under a downpour of cash on a dark code background — get rich as a programmer.",
-    "layout_map": "Dark background filled edge-to-edge with faint green/blue source-code text. Centered hero: a pixel-art sloth in a black suit and red tie, arms spread wide, occupying the middle vertical band ~x500-820, head ~x640,y300 (cell 6/7 boundary), body down through cells 10-11. Dozens of green dollar bills rain across the whole frame (cells 1-8 heaviest at top), some clustered around the sloth's open hands. No headline text — the money rain + suit do all the talking; green is the dominant accent against the dark code wall.",
+    "reads_as": "A sloth in a business suit stands arms-open under a downpour of cash on a dark code background \u2014 get rich as a programmer.",
+    "layout_map": "Dark background filled edge-to-edge with faint green/blue source-code text. Centered hero: a pixel-art sloth in a black suit and red tie, arms spread wide, occupying the middle vertical band ~x500-820, head ~x640,y300 (cell 6/7 boundary), body down through cells 10-11. Dozens of green dollar bills rain across the whole frame (cells 1-8 heaviest at top), some clustered around the sloth's open hands. No headline text \u2014 the money rain + suit do all the talking; green is the dominant accent against the dark code wall.",
     "why_it_works": "Cash physically raining over a suited mascot is pure aspiration; the code backdrop ties the wealth fantasy to programming so the promise feels concrete.",
-    "mimic_for": "a make-money / high-income beat — 'get rich doing X', salary or earnings upside, a wealth-fantasy payoff tied to a skill"
+    "mimic_for": "a make-money / high-income beat \u2014 'get rich doing X', salary or earnings upside, a wealth-fantasy payoff tied to a skill",
+    "title": "5 Ways to Get Disgustingly Rich As A Programmer"
   },
   {
     "slug": "coding-sloth-crying-notepad-tutorial",
@@ -54,14 +64,17 @@
     "watch_url": "https://www.youtube.com/watch?v=F_wX3RJFPBM",
     "archetype": "code-screenshot",
     "layout": "text-left-face-right",
-    "device": ["shocked-face"],
+    "device": [
+      "shocked-face"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "med",
-    "reads_as": "A teary, glazed-eyed sloth slumps at an old CRT typing a clumsy 'hey guys today im gonna' tutorial script — the bad-tutorial parody.",
+    "reads_as": "A teary, glazed-eyed sloth slumps at an old CRT typing a clumsy 'hey guys today im gonna' tutorial script \u2014 the bad-tutorial parody.",
     "layout_map": "A beige/cream bulky CRT monitor fills the left two-thirds (cells 1,2,3,5,6,7,9,10,11); its screen shows hand-typed cyan-on-dark tutorial text starting 'hey guys today im gonna' with a numbered '1.step 2.step...' list below (lines from ~y40 down to ~y300). A sad pixel-art sloth in a blue shirt sits at the right of the monitor (cells 7,8,11,12), head ~x980,y320, with visible tears/wet eyes and a keyboard in front ~y360. A small coffee mug labeled 'SLAY' sits bottom-right ~x1060,y430. Cluttered desktop-tutorial vibe; cyan screen text on warm machine = the meme of low-effort tutorials.",
-    "why_it_works": "The crying mascot plus the cringe 'hey guys today' script instantly signals self-aware parody of tutorial culture — you click to see the joke land.",
-    "mimic_for": "a meta / anti-tutorial or 'stop doing X the bad way' beat — mocking a tired format, a relatable coding-frustration moment"
+    "why_it_works": "The crying mascot plus the cringe 'hey guys today' script instantly signals self-aware parody of tutorial culture \u2014 you click to see the joke land.",
+    "mimic_for": "a meta / anti-tutorial or 'stop doing X the bad way' beat \u2014 mocking a tired format, a relatable coding-frustration moment",
+    "title": "a tutorial on how to stop watching tutorials"
   },
   {
     "slug": "coding-sloth-tech-stack-logo-window",
@@ -70,14 +83,17 @@
     "watch_url": "https://www.youtube.com/watch?v=gFWZM0saGGI",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["hand-point"],
+    "device": [
+      "hand-point"
+    ],
     "face": true,
     "accent": "white",
     "text": "low",
-    "reads_as": "A cartoon sloth points up beside a 'Money Printer' app window holding a 2x2 grid of framework logos — the money-making tech stack.",
-    "layout_map": "White background. Cartoon sloth fills the left third (cells 1,2,5,6,9,10), head ~x150,y230, one finger raised pointing up at ~x300,y170 (hand-point device). A dark app window titled 'Money Printer' (title bar ~y50, with a small printer icon) occupies the right two-thirds ~x540-1240. Inside it a 2x2 grid of four framework logos in dark rounded tiles: top-left Next.js black circle ~x720,y230 (cell 7), top-right a slash/black icon ~x1000,y230 (cell 8), bottom-left a purple/Convex-style mark ~x720,y430 (cell 11), bottom-right an orange/red radial logo ~x1000,y430 (cell 12). Minimal text — the window title + logo grid carry it.",
+    "reads_as": "A cartoon sloth points up beside a 'Money Printer' app window holding a 2x2 grid of framework logos \u2014 the money-making tech stack.",
+    "layout_map": "White background. Cartoon sloth fills the left third (cells 1,2,5,6,9,10), head ~x150,y230, one finger raised pointing up at ~x300,y170 (hand-point device). A dark app window titled 'Money Printer' (title bar ~y50, with a small printer icon) occupies the right two-thirds ~x540-1240. Inside it a 2x2 grid of four framework logos in dark rounded tiles: top-left Next.js black circle ~x720,y230 (cell 7), top-right a slash/black icon ~x1000,y230 (cell 8), bottom-left a purple/Convex-style mark ~x720,y430 (cell 11), bottom-right an orange/red radial logo ~x1000,y430 (cell 12). Minimal text \u2014 the window title + logo grid carry it.",
     "why_it_works": "Framing the stack as a literal 'Money Printer' app turns dry tooling into a get-rich promise; the 2x2 logo grid signals a concrete, copyable recipe.",
-    "mimic_for": "a tool-stack / 'best setup' beat — the exact combination of tools/frameworks to use, a 'this stack makes money' or recommended-toolkit reveal"
+    "mimic_for": "a tool-stack / 'best setup' beat \u2014 the exact combination of tools/frameworks to use, a 'this stack makes money' or recommended-toolkit reveal",
+    "title": "The Tech Stack To Make Money FAST"
   },
   {
     "slug": "coding-sloth-brain-idiot-code",
@@ -86,14 +102,17 @@
     "watch_url": "https://www.youtube.com/watch?v=cvK0__7wmtM",
     "archetype": "code-screenshot",
     "layout": "text-left-face-right",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "med",
-    "reads_as": "A smug sloth holds up a glowing pink brain next to a Python function literally named look_an_idiot_can_code() — you don't need to be smart.",
+    "reads_as": "A smug sloth holds up a glowing pink brain next to a Python function literally named look_an_idiot_can_code() \u2014 you don't need to be smart.",
     "layout_map": "Dark navy editor background with a faint grid; cyan/teal Python code fills the top-left and spans wide: line one 'ef look_an_idiot_can_code():' ~x40,y70 (cells 1-3), line two 'print(\"yippee thats right i programur\")' ~x60,y150 (cells 1-4). A pixel-art sloth occupies the right third (cells 7,8,11,12), head ~x980,y300, smiling, holding up a glowing pink/magenta brain in its hands ~x830,y330 (cell 7). Tiny '1/' page marker bottom-right ~x1230,y430. Code-on-dark with the brain as the one bright colored object.",
     "why_it_works": "A self-deprecating function name plus a held-up brain reframes coding as easy-for-anyone; the cheeky misspelled string invites a knowing click.",
-    "mimic_for": "an 'anyone can do this / you don't need to be a genius' reassurance beat — lowering the barrier, demystifying a skill people think is hard"
+    "mimic_for": "an 'anyone can do this / you don't need to be a genius' reassurance beat \u2014 lowering the barrier, demystifying a skill people think is hard",
+    "title": "You Don't Have To Be Smart To Code"
   },
   {
     "slug": "coding-sloth-html-15-min-banner",
@@ -102,14 +121,17 @@
     "watch_url": "https://www.youtube.com/watch?v=vY2xUc4TVmY",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": true,
     "accent": "orange",
     "text": "high",
-    "reads_as": "A bold stacked banner — 'HTML FOR BEGINNERS / In 15 Minutes' — with a tiny sloth lounging by a CRT, the speed-run tutorial promise.",
+    "reads_as": "A bold stacked banner \u2014 'HTML FOR BEGINNERS / In 15 Minutes' \u2014 with a tiny sloth lounging by a CRT, the speed-run tutorial promise.",
     "layout_map": "Dark teal/black gridded background. Stacked left-aligned headline: 'HTML' in huge white block caps inside an orange rounded pill/highlight box top-left ~x40-300, baseline ~y110 (cells 1-2); 'FOR BEGINNERS' in white caps directly beneath ~x45,y180; then 'In 15 Minutes' in white text inside a black bar ~x40,y260 (cell 5). A beige/cream pixel-art CRT monitor sits right-of-center ~x780-1000,y260 (cell 8/12), with a small cartoon sloth reclining beside it bottom-right ~x1130,y430 (cell 12). Text-dominant left, small prop+mascot right; orange highlight is the single accent.",
     "why_it_works": "A concrete time bound ('15 Minutes') on a beginner topic promises a fast complete win; the big stacked banner reads instantly at thumbnail size.",
-    "mimic_for": "a fast tutorial / 'learn X in N minutes' beat — a beginner crash-course, a time-boxed complete walkthrough of one topic"
+    "mimic_for": "a fast tutorial / 'learn X in N minutes' beat \u2014 a beginner crash-course, a time-boxed complete walkthrough of one topic",
+    "title": "HTML Tutorial For Beginners"
   },
   {
     "slug": "coding-sloth-cant-code-without-ai-meme",
@@ -118,13 +140,17 @@
     "watch_url": "https://www.youtube.com/watch?v=jeCDCbqqmes",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "danger-red"],
+    "device": [
+      "red-arrow",
+      "danger-red"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
-    "reads_as": "A sloth points at a guy-points-at-himself meme captioned 'THIS MF CAN'T CODE WITHOUT AI' — the call-out roast about AI dependency.",
+    "reads_as": "A sloth points at a guy-points-at-himself meme captioned 'THIS MF CAN'T CODE WITHOUT AI' \u2014 the call-out roast about AI dependency.",
     "layout_map": "White background. Cartoon sloth fills the left third (cells 1,2,5,6,9,10), head ~x130,y230, finger raised pointing right at ~x290,y180. A meme photo panel (the 'guy gesturing at himself' format, bald man in striped tank) occupies the center-right ~x520-940,y90-460 (cells 6,7,10,11), head ~x720,y230. Overlaid on the right edge of that panel in red outlined caps: 'THIS MF / CAN'T CODE / WITHOUT AI' stacked ~x980-1180, baseline lines ~y210/250/290 (cell 8/12). A faint top caption 'Help me become a 0.1x progammer' ~x460,y35. Mascot-points-at-meme layout; red caption is the only accent on white/photo.",
-    "why_it_works": "A familiar reaction-meme plus a blunt red call-out about needing AI to code is a relatable roast — viewers click to see if it's them being dragged.",
-    "mimic_for": "a call-out / roast or relatable-shame beat — 'this is you', AI-dependency or bad-habit shaming, a meme-driven self-recognition hook"
+    "why_it_works": "A familiar reaction-meme plus a blunt red call-out about needing AI to code is a relatable roast \u2014 viewers click to see if it's them being dragged.",
+    "mimic_for": "a call-out / roast or relatable-shame beat \u2014 'this is you', AI-dependency or bad-habit shaming, a meme-driven self-recognition hook",
+    "title": "THIS Is How You ACTUALLY Use AI For Programming"
   }
 ]

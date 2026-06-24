@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=ZM2c33qy16U",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "red-arrow"],
+    "device": [
+      "shocked-face",
+      "red-arrow"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "med",
     "reads_as": "A grimacing man clutching his chest while a cyan AI TRUTH slab and a scrawled 'finally!' land the gut-punch admission",
     "layout_map": "Dark navy graph-paper background full-bleed. A man in a grey suit, eyes shut and hand on chest (pained/relieved), occupies the right third, face center ~x1010,y330, body filling cells 8+12+16 and bleeding off the right edge. Lower-left holds a two-tone headline band on row 3: a solid cyan rounded slab reading 'AI' in black caps at ~x70-230,y290 (cell 9), butted against white outline-stroked 'TRUTH' caps ~x250-560,y290 (cells 9-10), baseline ~y330. Above it a hand-drawn pink-magenta script 'finally!' sits at ~x340-560,y120 (cell 6) with a curved pink arrow sweeping down-left from the word toward the AI slab. Tiny white 'MONDAY' wordmark badge top-right corner cell 4 ~x1170,y30.",
     "why_it_works": "The pained face plus the handwritten 'finally!' frame the topic as a long-awaited confession, and the colored AI/TRUTH split telegraphs the subject in one glance",
-    "mimic_for": "an authority figure finally admits an uncomfortable truth / a long-suspected fact gets confirmed"
+    "mimic_for": "an authority figure finally admits an uncomfortable truth / a long-suspected fact gets confirmed",
+    "title": "An AI CEO finally said something honest..."
   },
   {
     "slug": "awesome-coding-brutal-interviews-shocked",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=yeuJ4hSmT3s",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "red-circle"],
+    "device": [
+      "shocked-face",
+      "red-circle"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
-    "reads_as": "A bug-eyed terrified face beside a huge red BRUTAL — interviews are a nightmare",
+    "reads_as": "A bug-eyed terrified face beside a huge red BRUTAL \u2014 interviews are a nightmare",
     "layout_map": "Dark navy graph-paper background full-bleed. A wide-eyed alarmed man's face fills the right quarter, face center ~x1130,y300, cropped tight, spanning cells 8+12 and bleeding off the right edge. Headline stacks left-of-center across two rows: huge red bold caps 'BRUTAL' on row 2, baseline ~y360, spanning ~x60-720 (cells 5-7); below it lowercase white italic 'interviews' on row 3, baseline ~y470, ~x70-620 (cells 9-11). Tiny white 'MONDAY' wordmark badge top-right corner cell 4 ~x1170,y30. No stat or icons.",
     "why_it_works": "The exaggerated panic face is pure emotional contagion, and red BRUTAL over plain 'interviews' makes an everyday word feel like a threat",
-    "mimic_for": "something ordinary has become punishingly hard / a process is described as brutal or merciless"
+    "mimic_for": "something ordinary has become punishingly hard / a process is described as brutal or merciless",
+    "title": "Software interviews are getting insane..."
   },
   {
     "slug": "awesome-coding-csharp-dotnet-cool-again",
@@ -38,14 +46,18 @@
     "watch_url": "https://www.youtube.com/watch?v=zHNxbJeEaVM",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "med",
     "reads_as": "A grizzled cowboy stares down the C# / .NET logos while 'cool again' is scrawled overhead",
     "layout_map": "Dark navy graph-paper background full-bleed. A weathered older man in a wide-brim hat and denim shirt fills the right third, face center ~x1050,y260, body spanning cells 4+8+12+16, bleeding off the right edge. Bottom-left holds the two big logo-glyphs on row 3: the purple C# hexagon (white '#') at ~x40-240,y360 (cell 9) and white '.NET' wordmark caps to its right ~x260-560,y360 (cells 9-10), baseline ~y420, both with a soft glow. Top-left a hand-drawn cyan script 'cool again' at ~x100-430,y110 (cells 1-2) with a curved red arrow sweeping down-right from the words toward the logos. No stat/badge.",
     "why_it_works": "Pairing a rugged skeptical face with the 'cool again' tag stages an unlikely-comeback narrative, and the recognizable tech logos instantly name the subject",
-    "mimic_for": "an old/uncool technology is suddenly relevant again / a comeback story"
+    "mimic_for": "an old/uncool technology is suddenly relevant again / a comeback story",
+    "title": "C# is cool again and you can't avoid it anymore..."
   },
   {
     "slug": "awesome-coding-go-htmx-easy-web-badge",
@@ -54,14 +66,18 @@
     "watch_url": "https://www.youtube.com/watch?v=jeT8m7490Pg",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "hand-point"],
+    "device": [
+      "glow-accent",
+      "hand-point"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "high",
     "reads_as": "GO + HTMX over a bold yellow EASY WEB badge with a bespectacled guy gesturing approval",
     "layout_map": "Near-black background with faint grid. A bearded man in glasses occupies the right third, face center ~x1050,y230, hand raised gesturing near chin lower-right, body spanning cells 4+8+12, bleeding off the right edge. Upper-left headline on row 2: cyan caps 'GO' + white '+' + white caps 'HTMX', baseline ~y260, spanning ~x60-700 (cells 1-3). Below it a solid yellow rounded pill badge with black caps 'EASY WEB' centered ~x80-620,y390 (cells 9-10), baseline ~y420. No stat/wordmark.",
     "why_it_works": "Two named tools plus a yellow EASY WEB promise frames a hard-sounding stack as effortless, and the friendly gesturing face signals it's approachable",
-    "mimic_for": "two tools combine into a surprisingly simple workflow / 'X made easy' tutorial"
+    "mimic_for": "two tools combine into a surprisingly simple workflow / 'X made easy' tutorial",
+    "title": "Intro to Go and HTMX"
   },
   {
     "slug": "awesome-coding-js-new-era-logo-strip",
@@ -70,14 +86,18 @@
     "watch_url": "https://www.youtube.com/watch?v=wkXvv0iJffg",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "neon-on-dark"],
+    "device": [
+      "red-arrow",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "med",
     "reads_as": "JS ERA headline over a row of framework logos, a VR-goggled kid staring into the future",
     "layout_map": "Dark navy graph-paper background full-bleed. A child wearing reflective VR/ski goggles fills the right third, face center ~x1040,y300, spanning cells 4+8+12+16, bleeding off the right edge. Mid-left headline on row 2: yellow JS square logo glyph beside white caps 'ERA', ~x70-560,y230 (cells 5-7), baseline ~y280. Above it a hand-drawn pink script 'new' at ~x150-360,y100 (cell 1) with a short curved red arrow pointing down-right to the JS logo. Along the bottom a horizontal strip of small framework logos on row 4 ~y450-560: React (cyan), Svelte (orange), Angular/Astro, a blue glyph, and Vue (green V), spanning cells 13-15 ~x60-640. White 'MONDAY' wordmark badge top-right corner cell 4.",
     "why_it_works": "The logo strip promises a roundup of all the players while 'new ERA' plus the futuristic goggles signals a paradigm shift worth catching up on",
-    "mimic_for": "a new era / generation of competing tools, with a lineup roundup"
+    "mimic_for": "a new era / generation of competing tools, with a lineup roundup",
+    "title": "Frameworks don't matter anymore..."
   },
   {
     "slug": "awesome-coding-next-2-years-red-stat",
@@ -86,14 +106,18 @@
     "watch_url": "https://www.youtube.com/watch?v=fQeybL6w-Wo",
     "archetype": "face-reaction",
     "layout": "text-center",
-    "device": ["danger-red", "giant-number"],
+    "device": [
+      "danger-red",
+      "giant-number"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "A suited man pinching his brow in dread under a stark NEXT 2 YEARS, half in red",
     "layout_map": "Very dark near-black background with faint blue grid and a subtle financial-chart line low. A man in a dark suit, eyes closed pinching the bridge of his nose (stressed/bracing), occupies the right-center, face center ~x780,y360, body spanning cells 7+11+15 and bleeding to bottom. Single headline row across the top, row 1, baseline ~y90: white caps 'NEXT' at ~x40-300 (cells 1-2) butted against large red bold caps '2 YEARS' at ~x320-820 (cells 2-3). No badge or logos; the bold red '2' carries the giant-number weight.",
     "why_it_works": "The dread-stricken face turns a neutral timeframe into a foreboding prophecy, and the red half of the headline marks the period as dangerous",
-    "mimic_for": "a forecast / what's coming over the next N years, with an ominous tone"
+    "mimic_for": "a forecast / what's coming over the next N years, with an ominous tone",
+    "title": "The next two years of software dev..."
   },
   {
     "slug": "awesome-coding-ha-ha-laughing-mockery",
@@ -102,14 +126,18 @@
     "watch_url": "https://www.youtube.com/watch?v=klK3mfDMkiA",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "hand-point"],
+    "device": [
+      "shocked-face",
+      "hand-point"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "The laughing-DiCaprio meme pointing and cackling, the screen littered with scattered 'ha ha' in white and red",
     "layout_map": "Dark navy graph-paper background full-bleed. The Django-Leonardo-DiCaprio laughing meme (man in cravat, mouth open laughing, finger pointing) fills the right third, face center ~x1080,y280, pointing hand lower at ~x980,y430, spanning cells 8+12+16 and bleeding off the right edge. The word 'ha' is scattered across the left two-thirds at varied sizes/angles: small white 'ha' top-left cell 1 ~x150,y90; small white 'ha' cell 2 ~x520,y90; the dominant large red bold italic 'ha ha!' mid-left ~x140-620,y330 (cells 5-7); a small white 'ha' bottom-left cell 13 ~x150,y560; a mid white 'ha' cell 14-15 ~x540,y540. No stat/badge.",
-    "why_it_works": "The instantly recognizable laughing meme plus mockingly scattered 'ha ha' signals the subject is being ridiculed — pure derision bait that invites you to share the laugh",
-    "mimic_for": "mocking / laughing at a hyped idea that flopped / 'X is a joke'"
+    "why_it_works": "The instantly recognizable laughing meme plus mockingly scattered 'ha ha' signals the subject is being ridiculed \u2014 pure derision bait that invites you to share the laugh",
+    "mimic_for": "mocking / laughing at a hyped idea that flopped / 'X is a joke'",
+    "title": "Vibe coding is dead"
   },
   {
     "slug": "awesome-coding-postgres-replaces-stack-logo-orbit",
@@ -118,13 +146,17 @@
     "watch_url": "https://www.youtube.com/watch?v=1qs9bQ0MlpQ",
     "archetype": "logo-grid",
     "layout": "centered-stack",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
     "reads_as": "The giant Postgres elephant logo center-stage surrounded by the tool logos it's about to swallow",
     "layout_map": "Dark teal-navy graph-paper background full-bleed, no face, no headline text. The large blue Postgres elephant-head logo dominates the center, ~x430-720,y230-520 (cells 6+7+10+11), with a short curved red arrow pointing down into the top of the elephant from ~x560,y150. Four satellite tech logos orbit the corners: Kafka (white circular-node glyph) top-left cell 1 ~x130,y130; PostGIS (colored globe + 'PostGIS' wordmark) top-right cells 3-4 ~x980-1180,y150; Redis (red 'Redis' wordmark + cube) bottom-left cell 13 ~x120,y560; an orange RabbitMQ-style bracket glyph bottom-center cell 15 ~x720,y560; a green MongoDB-leaf left-center cell 10 ~x250,y370.",
     "why_it_works": "Putting Postgres physically at the center with rival tools orbiting it visually asserts 'one tool replaces all these' before you read a word",
-    "mimic_for": "one tool/platform replaces several others / consolidation of a stack into one"
+    "mimic_for": "one tool/platform replaces several others / consolidation of a stack into one",
+    "title": "Postgres can replace your entire stack..."
   }
 ]
