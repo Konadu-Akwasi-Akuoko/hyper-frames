@@ -1,6 +1,6 @@
 ---
 name: video-publish-qa
-description: Post-publish packaging QA for an uploaded YouTube video. Reads the live metadata via the youtube-studio MCP, checks title / tags / description / captions against the channel's packaging rules (docs/creator-patterns.md §5–§6), and FIXES what the MCP allows — title, description, tags, thumbnail — under a strict preview-then-confirm gate. What the MCP cannot do (upload captions, upload video, schedule) it detects and hands off with exact manual Studio steps. Use after a video is uploaded, or when the user says "QA my upload", "check this video's packaging/metadata", "audit my latest upload", "did I publish that right", "run the publish checklist", "check the tags/title/description/captions on <video>". Takes an explicit video ID or defaults to the channel's latest upload.
+description: Post-publish packaging QA for an uploaded YouTube video. Reads the live metadata via the youtube-studio MCP, checks title / tags / description / captions against the channel's packaging rules (docs/creator-patterns.md §5–§6), and FIXES what the MCP allows — title, description, tags, thumbnail, and captions — under a strict preview-then-confirm gate. Use after a video is uploaded, or when the user says "QA my upload", "check this video's packaging/metadata", "audit my latest upload", "did I publish that right", "run the publish checklist", "check the tags/title/description/captions on <video>". Takes an explicit video ID or defaults to the channel's latest upload.
 ---
 
 # video-publish-qa
@@ -16,14 +16,13 @@ This skill builds **on top of** the `youtube-studio` skill. Follow that skill's
 conventions verbatim — auth + quota first, cheap reads, and the preview→confirm
 write-gate. This file is only the packaging-specific checklist that rides on it.
 
-## Hard constraint — the MCP is v1
+## MCP write surface
 
 `video_update_metadata` (50u) can WRITE title, description, tags, category, and
-privacy. `video_set_thumbnail` (50u) can write the thumbnail. The MCP **cannot**
-upload or edit captions, upload a video, or schedule a publish — those are
-deferred to v2 (`tools/youtube-studio-mcp/CLAUDE.md`). So **captions are always a
-detect-and-hand-off, never an auto-fix.** Don't try to write them; instruct the
-manual Studio path instead.
+privacy. `video_set_thumbnail` (50u) can write the thumbnail. `caption_insert` /
+`caption_update` (400u each — confirm the quota cost before calling) can write
+captions directly. `video_upload` and `video_schedule` are also available for
+upload and scheduling.
 
 ## Step 1 — Auth, quota, and resolve the video
 
@@ -81,11 +80,12 @@ titles).
 
 ### E. Captions — `contentDetails.caption` ("true" / "false")
 - Must be **"true"**. If "false" → FLAG (this was the flagship's regression).
-  This is a detect-and-hand-off — the MCP can't write captions:
   - Offer to run `create-srt-and-translate` (English only) to produce
-    `captions.srt`.
-  - Then give the exact manual upload path:
-    `Studio → Subtitles → Add language → English → Upload file → With timing`.
+    `captions.srt` if it doesn't already exist.
+  - Then call `caption_insert(video_id, path="captions.srt", language="en")`
+    (400u — show `cost_preview` and wait for explicit approval before calling).
+  - If the user prefers the manual path: `Studio → Subtitles → Add language →
+    English → Upload file → With timing`.
   - Note the payoff: English captions also unlock YouTube auto-translate and the
     Hindi auto-dub the channel's India-heavy audience benefits from.
 
@@ -114,12 +114,10 @@ affirmative.
 Summarize three buckets:
 - **Passed** — checks that were already good.
 - **Fixed** — the diff applied and the units spent.
-- **Manual** — what needs the user in Studio (captions upload, plus anything the
-  MCP can't do), with the exact click path so they can finish it now.
+- **Manual** — anything the user chose to handle in Studio themselves (e.g. preferred not to spend the 400u on caption_insert), with the exact click path so they can finish it now.
 
 ## This skill does NOT
-- Upload or edit captions, upload videos, or schedule publishes (MCP v1 cap —
-  manual Studio only).
+- A/B test titles or thumbnails (no YouTube API support — Studio UI only).
 - Auto-apply any metadata change without an explicit affirmative.
 - Triage comments (that's the `youtube-studio` comment-triage workflow).
 - Author titles/descriptions from scratch beyond proposing fixes — for a full

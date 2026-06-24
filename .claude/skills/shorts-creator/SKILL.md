@@ -1,6 +1,6 @@
 ---
 name: shorts-creator
-description: Turn a finished long-form hyper-frames video into ~5 (up to 10) vertical 9:16 Shorts that funnel back to it, each ending on a Cleo-Abram-style subscribe CTA. Two-phase and human-in-the-loop — Phase 1 selects self-contained beats from the parent and drafts each clip's script + a staggered upload plan for review; Phase 2 builds one approved Short at a time (voiceover → portrait HyperFrames composition → vertical cover → 1080×1920 render). Publishing is a MANUAL hand-off (the youtube-studio MCP v1 can't upload or schedule). Use when the user says "make shorts from this video", "cut this into shorts", "generate the shorts", "create vertical clips", "turn this into reels/tiktoks", or names a finished `videos/<slug>-<date>/` folder and asks for Shorts. Runs after a long-form video's script.md + transcript.json exist (ideally after it's rendered).
+description: Turn a finished long-form hyper-frames video into ~5 (up to 10) vertical 9:16 Shorts that funnel back to it, each ending on a Cleo-Abram-style subscribe CTA. Two-phase and human-in-the-loop — Phase 1 selects self-contained beats from the parent and drafts each clip's script + a staggered upload plan for review; Phase 2 builds one approved Short at a time (voiceover → portrait HyperFrames composition → vertical cover → 1080×1920 render). Publishing can be done via the MCP (`video_upload` + `video_schedule`) or manually in Studio. Use when the user says "make shorts from this video", "cut this into shorts", "generate the shorts", "create vertical clips", "turn this into reels/tiktoks", or names a finished `videos/<slug>-<date>/` folder and asks for Shorts. Runs after a long-form video's script.md + transcript.json exist (ideally after it's rendered).
 ---
 
 # shorts-creator
@@ -29,10 +29,11 @@ human.
 
 ## Hard constraints
 
-1. **Publishing is manual.** The `youtube-studio` MCP is v1 — it **cannot upload
-   a video or schedule a publish** (`tools/youtube-studio-mcp/CLAUDE.md`). This
-   skill renders the MP4s and writes a stagger plan + per-Short copy; the user
-   uploads and schedules in Studio. Don't attempt MCP upload/scheduling.
+1. **Publishing can use the MCP or Studio.** The `youtube-studio` MCP now supports
+   `video_upload` (uploads as private by default) and `video_schedule`. This skill
+   renders the MP4s and writes a stagger plan + per-Short copy; the user can then
+   publish via `video_upload` + `video_schedule` (under the standard write-gate)
+   or upload manually in Studio — either path is valid.
 2. **Shorts scripts are NOT written by `script-writer`.** That skill is the
    long-form house voice and deliberately carries **no CTA**. A Short is a
    different artifact — single-idea, ~130–260 words, a 5–9-word hook, and it
@@ -158,7 +159,9 @@ one technical thing worth eyeballing per Short). Save under `out/`.
 **Step F — Publish hand-off.** Write `publish.md` for this Short: title,
 description (lead with the hook, link the parent video, comment-bait sequel
 offer), 3–5 hashtags (`#Shorts` + topic nouns), and the scheduled date from the
-stagger plan. Then instruct the manual Studio upload — the MCP can't do it:
+stagger plan. Then offer the publish path: either call `video_upload(path="out/<mp4>",
+privacy_status="private")` + `video_schedule(video_id, publish_at=<plan date>)`
+under the standard write-gate, or instruct the manual Studio path:
 `Studio → Create → Upload videos → (the out/ MP4) → set title/description/
 hashtags → Visibility → Schedule → (the plan date)`. Optionally run
 `video-publish-qa` against the Short once it's live to catch thin tags / captions
@@ -169,11 +172,11 @@ off.
 Default **5 Shorts, one every ~3 days** (configurable up to 10). The plan
 staggers them so the channel gets a sustained drip feeding the parent, not a
 single-day dump. Each Short's `publish.md` carries its own copy; `PLAN.md`
-carries the schedule table. Uploading and scheduling stay **manual in Studio**
-until a youtube-studio MCP v2 lands.
+carries the schedule table. Uploading and scheduling can be done via the MCP
+(`video_upload` + `video_schedule` under the write-gate) or manually in Studio.
 
 ## This skill does NOT
-- Upload or schedule videos (MCP v1 cap — manual Studio).
+- A/B test titles or thumbnails (no YouTube API support — Studio UI only).
 - Write Shorts scripts with `script-writer` (wrong shape — no CTA, too long).
 - Re-run the visual-QA or SFX loop — that's `video-director`'s job on the Short.
 - Author the parent long-form video, its voiceover, or its music bed.
