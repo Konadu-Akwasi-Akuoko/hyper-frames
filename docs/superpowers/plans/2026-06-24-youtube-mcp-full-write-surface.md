@@ -2060,7 +2060,7 @@ def test_unset_watermark_runs(isolated_config):
 
 - [ ] **Step 2: Run to verify fail** — FAIL.
 
-- [ ] **Step 3a: Add to `uploads.py`** — extend imports to include `mutate`: `from .. import clients, gate, mutate, quota, uploadmedia`. Add module-level constants + functions:
+- [ ] **Step 3a: Add to `uploads.py`** — the existing import (`from .. import clients, gate, quota, uploadmedia`) is sufficient; do not add `mutate` (banner/watermark use `clients.run` directly, not the merge helper). Add module-level constants + functions:
 
 ```python
 MAX_BANNER_BYTES = 6 * 1024 * 1024  # 6 MB, 16:9, >=2048x1152
