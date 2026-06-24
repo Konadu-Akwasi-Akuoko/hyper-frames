@@ -35,6 +35,13 @@ _DEFAULT_ALIGN = "onset"
 # the editing timeline tidy and mean the overlap note never trips).
 _TRACK_BASE = 20
 
+# Every SFX cue plays at this fixed gain — a hard peg, identical "no matter the
+# sfx." It is applied uniformly in `build_cue`, so the catalog's per-cue
+# `default_volume` and any `data-sfx-volume` override no longer affect loudness;
+# SFX level is uniform by design. The baked layer then mounts at unity
+# (`data-volume="1"` in emit.py), so each cue's 0.4 gain is the net level.
+PEG_VOLUME = 0.4
+
 
 @dataclass(frozen=True)
 class Cue:
@@ -161,7 +168,9 @@ def build_cue(
     # How far the audible onset sits before the impact frame (peak cues only).
     preroll_s = t_ref - (raw_start + onset_s)
 
-    volume = ann.volume if ann.volume is not None else float(recipe.get("default_volume", 1.0))
+    # Hard peg: every cue at the same fixed level, regardless of the catalog's
+    # `default_volume` or a `data-sfx-volume` override. See PEG_VOLUME.
+    volume = PEG_VOLUME
 
     return Cue(
         data_start=round(data_start, 4),

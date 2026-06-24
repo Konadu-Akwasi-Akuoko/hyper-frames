@@ -86,9 +86,24 @@ def test_pinned_asset_overrides_default_and_pool(catalog_path: Path) -> None:
                asset="Whooshes/whoosh-mid-01.wav")
     cue = build_cue(ann, catalog=cat)
     assert cue.src == "Whooshes/whoosh-mid-01.wav"
-    # Cue defaults still apply: ui-tick volume 0.8, lanes start at 20.
-    assert cue.volume == 0.8
+    # Volume is hard-pegged at 0.4 (catalog default ignored); lanes start at 20.
+    assert cue.volume == 0.4
     assert cue.track_index == 20
+
+
+def test_volume_is_hard_pegged_ignoring_override_and_default(catalog_path: Path) -> None:
+    """Every cue plays at the fixed 0.4 peg. Neither the catalog's per-cue
+    `default_volume` nor a `data-sfx-volume` override changes it — SFX volume is
+    uniform by design ("no matter the sfx")."""
+    cat = load_catalog(catalog_path)
+    # ui-tick's catalog default_volume is 0.8 and this annotation pins 0.9 — both ignored.
+    overridden = build_cue(
+        _ann("ui-tick", at_scene_ms=8400, source="index.html:9", volume=0.9), catalog=cat
+    )
+    assert overridden.volume == 0.4
+    # No override either: still 0.4, not the catalog's 0.8.
+    plain = build_cue(_ann("ui-tick", at_scene_ms=8400, source="index.html:9"), catalog=cat)
+    assert plain.volume == 0.4
 
 
 def test_pinned_asset_not_in_catalog_raises(catalog_path: Path) -> None:

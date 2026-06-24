@@ -198,7 +198,8 @@ def render_sfx_html_baked(
 ) -> str:
     """Baked (finalize) sfx.html: ONE `<audio>` backed by the pre-mixed track.
 
-    Per-cue gains are already baked into the mix, so `data-volume="1"`. No
+    Every cue's fixed 0.4 peg (`plan.PEG_VOLUME`) is already baked into the mix,
+    so the single mounted layer plays at unity — `data-volume="1"`. No
     `preload="none"` — a single media element never overruns the player budget,
     and deferring it would only delay the SFX. Mirrors the music.html single-bed
     shape used elsewhere in the project.

@@ -1,14 +1,17 @@
 """CLI entry point for sfx-level.
 
-Probe the voiceover's loudness at a moment so an SFX cue is placed in a real
-narration gap and ducked correctly. Two modes:
+Probe the voiceover's loudness at a moment so you can see whether an SFX cue
+lands in a real narration gap or on top of a spoken word. Two modes:
 
   sfx-level audio/voiceover.mp3 --at 12.84
   sfx-level audio/voiceover.mp3 --batch compositions/sfx.html
 
-The project volume baseline is a flat 0.5 (set as each cue's default_volume in
-sound-effects/sfx-catalog.yml). 0.5 is the default AND the ceiling: this tool
-only ever recommends a volume at or BELOW 0.5 (a duck), never above.
+Advisory only. SFX volume is a fixed 0.4 hard peg, applied uniformly in
+`tools/sfx-plan` (PEG_VOLUME) — every cue plays at 0.4 "no matter the sfx", and a
+`data-sfx-volume` override is ignored. This tool no longer recommends a volume;
+it reports the VO level and classifies the window (gap vs. active-speech) so you
+can decide whether a cue's PLACEMENT is clean, not its loudness. A cue landing
+over hot VO is fixed by retiming or rechoosing the cue, never by changing volume.
 """
 from __future__ import annotations
 
@@ -26,7 +29,6 @@ SAMPLE_RATE = 22050
 FRAME_MS = 20.0
 HOP_MS = 10.0
 GAP_MARGIN_DB = 8.0  # a window within +8 dB of the room-tone floor reads as a gap
-VOLUME_CEILING = 0.5
 
 _DATA_START = re.compile(r'data-start="([0-9.]+)"')
 _ID_ATTR = re.compile(r'id="([^"]+)"')
@@ -53,34 +55,16 @@ def classify(rms_db: float, ref: FloorRef) -> str:
     return "gap" if rms_db < ref.gap_threshold_db else "active-speech"
 
 
-def recommend_volume(rms_db: float, ref: FloorRef, classification: str) -> float:
-    """Advisory cue volume. 0.5 is the rule; duck below it only for hot VO.
-
-    The project volume is a flat 0.5 (the default AND the ceiling). A cue keeps
-    0.5 in a gap and under ordinary speech — ducking is a genuine exception,
-    reserved for windows whose loudness approaches the track's loudest-speech
-    level, where 0.5 would actually fight the word. `ref.speech_db` is the file's
-    near-peak (p90) speech level.
-    """
-    if classification == "gap":
-        return VOLUME_CEILING
-    delta = rms_db - ref.speech_db  # 0 ≈ near-peak speech, more negative = quieter
-    if delta >= -2.0:
-        return 0.35  # very hot — right under a peak syllable
-    if delta >= -6.0:
-        return 0.42  # hot
-    return VOLUME_CEILING  # ordinary speech — 0.5 still holds
-
-
 def probe(pcm: np.ndarray, ref: FloorRef, t: float, window_ms: float) -> dict:
+    """Advisory loudness probe at a moment. Reports the VO level and whether the
+    window is a narration gap or active speech — no volume recommendation, since
+    SFX volume is hard-pegged at 0.4 in tools/sfx-plan."""
     rms_db, peak_db = window_levels(pcm, SAMPLE_RATE, t, window_ms)
-    classification = classify(rms_db, ref)
     return {
         "at_s": round(t, 4),
         "rms_dbfs": round(rms_db, 1),
         "peak_dbfs": round(peak_db, 1),
-        "classification": classification,
-        "recommended_volume": recommend_volume(rms_db, ref, classification),
+        "classification": classify(rms_db, ref),
     }
 
 
@@ -151,9 +135,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"\nVO floor {ref.floor_db:.1f} dBFS · typical speech {ref.speech_db:.1f} dBFS "
                   f"· gap < {ref.gap_threshold_db:.1f} dBFS\n")
             for r in rows:
-                flag = "" if r["classification"] == "gap" else "  ⚠ duck"
+                flag = "" if r["classification"] == "gap" else "  ⚠ over speech"
                 print(f"  {r['at_s']:>7.2f}s  {r['rms_dbfs']:>6.1f} dBFS  "
-                      f"{r['classification']:<13} vol≤{r['recommended_volume']:.2f}{flag}  {r['id']}")
+                      f"{r['classification']:<13}{flag}  {r['id']}")
         return 0
 
     result = probe(pcm, ref, args.at, args.window_ms)
@@ -162,8 +146,7 @@ def main(argv: list[str] | None = None) -> int:
                           "speech_dbfs": round(ref.speech_db, 1), **result}, indent=2))
     else:
         print(f"\n  at {result['at_s']}s   rms {result['rms_dbfs']} dBFS   peak {result['peak_dbfs']} dBFS")
-        print(f"  → {result['classification']}   recommended volume ≤ {result['recommended_volume']:.2f}  "
-              f"(ceiling {VOLUME_CEILING})")
+        print(f"  → {result['classification']}   (volume is pegged at 0.4 — advisory only)")
         print(f"  ref: floor {ref.floor_db:.1f} dBFS · typical speech {ref.speech_db:.1f} dBFS\n")
     return 0
 

@@ -14,8 +14,8 @@ def test_every_cue_pins_a_default_asset_and_align() -> None:
     for name, cue in default_cues().items():
         assert cue.default_asset, f"{name} must pin a default_asset"
         assert cue.align in ("onset", "peak"), f"{name} align must be onset|peak"
-        # 0.5 is both the house level and the ceiling; lead is a tuning knob only.
-        assert cue.default_volume == 0.5
+        # 0.4 is the fixed house level; sfx-plan hard-pegs every cue's volume there.
+        assert cue.default_volume == 0.4
         assert cue.default_lead_ms == 0
 
 

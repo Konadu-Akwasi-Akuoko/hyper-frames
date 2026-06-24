@@ -40445,7 +40445,7 @@ cues:
     align: onset
     default_asset: Mister Horse Free SFX/Click/Mouse Click 01.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   pop:
     filter:
       auto_role: accent
@@ -40456,7 +40456,7 @@ cues:
     align: onset
     default_asset: Mister Horse Free SFX/Pop/Hollow Pop 06.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   msg-ding:
     filter:
       category_in:
@@ -40470,7 +40470,7 @@ cues:
     align: onset
     default_asset: Mister Horse Free SFX/Rewards/Bells 1 Upward 03.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   boom:
     filter:
       low_energy_pct_min: 50
@@ -40478,7 +40478,7 @@ cues:
     align: onset
     default_asset: Mister Horse Free SFX/Bass/Clean Bass Drop 01.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   whoosh:
     filter:
       auto_role: transition
@@ -40488,7 +40488,7 @@ cues:
     align: peak
     default_asset: Whooshes/fast woosh 2.mp3
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   riser:
     filter:
       auto_role: riser
@@ -40496,7 +40496,7 @@ cues:
     align: peak
     default_asset: Risers/Riser Stop.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   snap:
     filter:
       category_in:
@@ -40508,7 +40508,7 @@ cues:
     align: onset
     default_asset: Mister Horse Free SFX/Click/Camera Shutter Click 01.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   card-tap:
     filter:
       category_in:
@@ -40517,7 +40517,7 @@ cues:
     align: onset
     default_asset: Mister Horse Free SFX/Tap _ Knock/Single Tap 01.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4
   card-blip:
     filter:
       category_in:
@@ -40532,4 +40532,4 @@ cues:
     align: onset
     default_asset: Mister Horse Free SFX/Blip/Synthetic Blip 01.wav
     default_lead_ms: 0
-    default_volume: 0.5
+    default_volume: 0.4

@@ -136,14 +136,17 @@ sound-effects/>"` on an element **only** to deliberately diverge from the
 signature for that one beat. For a per-video pool change across many cues, use
 `sfx-overrides.yml` at the video root, not a `data-sfx-asset` on every element.
 
-## Volume — 0.5 is the default and the ceiling
+## Volume — a fixed 0.4 hard peg
 
-Every cue's volume is a flat **0.5**, set once as `default_volume: 0.5` in the
-catalog. **Do not write `data-sfx-volume="0.5"`.** A cue never goes above 0.5;
-write `data-sfx-volume` **only to duck below 0.5** when the cue is fighting hot VO.
-Probe the narration under a cue with `tools/sfx-level` (next).
+Every cue plays at a flat **0.4**, hard-pegged in `tools/sfx-plan` (`PEG_VOLUME`).
+The level is uniform by design — *no matter the sfx*. **Do not write
+`data-sfx-volume`**: it is ignored, as is the catalog's `default_volume`. There is
+no per-cue volume control and no ducking. When the layer is baked it mounts at
+unity (`data-volume="1"`), so 0.4 is the net level of every cue. If a cue clashes
+with hot VO, fix it by retiming or rechoosing the cue — not by changing volume.
+Probe placement with `tools/sfx-level` (next).
 
-## Reading `tools/sfx-level` — the VO-amplitude probe
+## Reading `tools/sfx-level` — the VO-amplitude probe (advisory)
 
 SFX correctness is partly **ear-only** — a snapshot can't show sound, so the human
 listen-in-preview audit stays the gate each pass. `tools/sfx-level` is the
@@ -156,16 +159,19 @@ uv run --project ../../tools/sfx-level sfx-level audio/voiceover.mp3 --at <t>
 ```
 
 `<t>` is the **global** time the cue lands at (host `data-start` + `at-scene-ms`
-÷ 1000). Use it to confirm a cue lands where you expect and to decide a duck:
-`gap` → leave 0.5; `active-speech` with a hot window → set `data-sfx-volume` to the
-recommended ducked value (never above 0.5). At the final reconcile, sweep all cues
+÷ 1000). The probe is **advisory** — volume is pegged at 0.4 and it recommends no
+level. Use it to confirm a cue lands where you expect and whether it sits over a
+word: `gap` → clean; `active-speech` → the cue plays at 0.4 over live narration,
+usually fine, but if it muddies the word, **retime or rechoose the cue** (there is
+no volume override to reach for). At the final reconcile, sweep all cues
 (`--batch compositions/sfx.html`).
 
 **Talking-head caution (`talking-head.md`):** the take's audio **is** the continuous
 voiceover, so a mode-transition cue fires **over live narration** far more often than
 in a faceless explainer — there are no silent graphics-only stretches to land in.
-Always `sfx-level`-probe the boundary and **expect `active-speech`**; duck below 0.5
-accordingly.
+Always `sfx-level`-probe the boundary and **expect `active-speech`**; if a cue
+genuinely fights the word, move it to the cleanest nearby pause rather than
+quieting it.
 
 ## Worked example — a three-card stagger *(illustrative)*
 
@@ -192,6 +198,7 @@ cards, three pops — independence in action). The impact frame for each is its 
 
 You write three `pop` annotations, one per card, each with its own `at-scene-ms`.
 No pinned asset needed (the `pop` signature applies); no spacing to worry about
-(independence); `sfx-plan` lands each pop's transient on its card's frame, never
-early. If the narration is hot under them, `sfx-level` may suggest a duck — set
-`data-sfx-volume` below 0.5 on each. Done.
+(independence); no volume to set (every cue is the fixed 0.4 peg); `sfx-plan`
+lands each pop's transient on its card's frame, never early. If the narration is
+hot under them, `sfx-level` flags it — retime or rechoose if a pop muddies a word,
+but the level stays 0.4. Done.

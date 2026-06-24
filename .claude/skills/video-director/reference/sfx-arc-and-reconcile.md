@@ -149,12 +149,14 @@ one reconcile pass before handing off:
    motion-graphic beat**, never a **bare face reveal** — a held or revealed face is
    texture, not the video's biggest event; pin the hook to the graphic that carries
    the moment.
-4. **sfx-level sweep.** Run `tools/sfx-level` across every cue's landing time
-   (`--batch compositions/sfx.html`) to catch any cue fighting loud VO; duck the
-   offenders below 0.5 with `data-sfx-volume` and re-run `sfx-plan`. When a
-   talking-head source is present (`talking-head.md`) this sweep matters **more**:
-   the on-camera audio is near-omnipresent (no graphics-only stretches where VO
-   drops out), so more cues land over live voice — sweep every landing.
+4. **sfx-level sweep (advisory).** Run `tools/sfx-level` across every cue's landing
+   time (`--batch compositions/sfx.html`) to catch any cue fighting loud VO. Volume
+   is a fixed 0.4 peg and not adjustable, so the fix for an offender is to **retime
+   or rechoose the cue** (move it to a cleaner nearby pause, or drop it if it's
+   texture), then re-run `sfx-plan`. When a talking-head source is present
+   (`talking-head.md`) this sweep matters **more**: the on-camera audio is
+   near-omnipresent (no graphics-only stretches where VO drops out), so more cues
+   land over live voice — sweep every landing.
 5. **Full-runtime mount.** Verify the `sfx-layer` host's `data-duration` spans the
    full runtime so no late cue is clipped.
 
