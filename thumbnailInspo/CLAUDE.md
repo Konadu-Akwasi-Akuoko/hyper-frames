@@ -63,6 +63,12 @@ mechanical work; **you (Claude) author the judgment** the tool can't:
   block — the `Tags:`, `Reads as:`, `Layout map:`, `Why it works:`, and
   `Mimic for:` lines — then add the matching `## Quick index` row. The tool never
   writes prose.
+- **Titles + title shape** (mechanical + judgment): `fetch.py` already records each
+  thumbnail's real YouTube `title` in the manifest. After cataloging, run
+  `python3 tools/thumbnail-inspo/backfill_titles.py` to inject `title` into every
+  catalog entry, then classify each into `title_shape` (surface formula) +
+  `title_pattern` (the title-engine pattern it rides). These let the skill pair a
+  proven title shape with the layout — the shape is a prior, not a script to copy.
 
 Keep filenames ↔ index entries in sync: every harvested `<channel>/<file>.jpg`
 that earns a place has exactly one `README.md` entry (Quick-index row + Entries
@@ -83,5 +89,14 @@ indexed — drop weak/duplicate ones; a lean, diverse index beats a padded one.
   `vs-bolt`, `danger-red`, `neon-on-dark`, `hand-point`, `progress-bar`.
 - **face**: `yes` / `no`. **accent**: dominant accent color word.
 - **text**: headline text density `low` / `med` / `high`.
+- **title_shape** (the title's surface formula, exactly one of 14):
+  `speed-primer`, `x-explained`, `every-x-explained`, `comparison-vs`,
+  `what-is-x`, `open-why-how`, `listicle-n`, `assumption-flip`, `panic-threat`,
+  `curiosity-reversal`, `scale-story`, `first-person-feat`, `identity-advice`,
+  `meme-skit`. Two carry corpus caveats: `every-x-explained` wins only on
+  maximally-searched nouns; `meme-skit` is a documented floor.
+- **title_pattern** (which of `title-engine.md`'s 5 patterns it rides):
+  `concrete-noun-verb`, `curiosity-gap-reversal`, `open-what-why-how`,
+  `assumption-flip`, `identity-status`.
 
 Prefer an existing tag; extend a dimension only when nothing fits.

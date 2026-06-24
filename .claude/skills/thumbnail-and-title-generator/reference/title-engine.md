@@ -154,6 +154,24 @@ For each of the 3 thumbnail variants:
    shows them side by side; identical-shaped titles waste the review
    surface. Ideally each of the 3 carries a *different* top-3 noun.
 
+## Reference title shape — a prior, not a mandate
+
+Every `thumbnailInspo/` entry now carries the real title that ran with that
+layout, classified as `title_shape` + `title_pattern`. When you pick a reference
+for a variant, read its `title_shape` and **default to writing the paired title in
+that shape** — the layout and the title shape are a proven pair, so they should
+move together.
+
+But the shape is a *prior*, not a lock. Override it when the engine says so:
+
+- If SEO data (`signals.top_nouns`, `signals.saturation_warnings`) or one of the
+  five winning patterns makes a different shape stronger for OUR noun, take it.
+- Never inherit `every-x-explained` unless the noun is maximally searched, and
+  never inherit `meme-skit` for our lane — both are documented floors.
+- **Never copy the reference's actual title words.** The shape transfers; the words
+  are always ours, grounded and searchable per the rules above. This is the title
+  analogue of "lift the layout, never the pixels."
+
 ## Using SEO research
 
 When `seo/research.json` is loaded, apply these in addition to the base
