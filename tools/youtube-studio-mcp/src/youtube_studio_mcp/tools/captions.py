@@ -64,6 +64,9 @@ def _caption_insert(svc: Any, *, video_id: str, file_path: str, language: str,
 def _caption_update(svc: Any, *, caption_id: str, file_path: str | None,
                     is_draft: bool | None, confirm: bool, media_factory) -> dict:
     """captions.update — 450 units, quota-guarded. Replace file and/or draft."""
+    if file_path is None and is_draft is None:
+        return {"error": "no_changes_provided",
+                "reason": "Pass file_path and/or is_draft to update a caption."}
     refusal = gate.quota_guard("captions.update", 1, confirm)
     if refusal:
         return refusal
