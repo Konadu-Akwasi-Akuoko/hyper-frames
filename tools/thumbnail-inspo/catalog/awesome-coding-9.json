@@ -6,14 +6,20 @@
     "watch_url": "https://www.youtube.com/watch?v=mb5Lx4auBKI",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "danger-red"],
+    "device": [
+      "shocked-face",
+      "danger-red"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "Shrek pulls a grimacing wince while 'failed' is scrawled in red over the brand name",
     "layout_map": "Dark blueprint-grid background fills the whole frame. A wide-eyed grimacing Shrek face occupies the right third (cells 4/8/12/16, face center ~x1080,y330, filling roughly the right 30% and bleeding off the top/right edges). Three-row headline stacks on the left: thin white serif 'the new' small at top (cells 1-2, baseline ~y55, 'new' bolded), then a huge white serif 'Claude' across the middle (cells 5-7, baseline ~y200), then a hand-scrawled red script 'failed' overlapping the lower-left (cells 9-10, baseline ~y280). Red is the only accent, reserved for the verdict word. No badge/stat.",
     "why_it_works": "A meme face mid-cringe plus a red hand-written 'failed' turns a product test into a verdict you have to see",
-    "mimic_for": "a hyped new tool or model is put to the test and flops"
+    "mimic_for": "a hyped new tool or model is put to the test and flops",
+    "title": "The new Claude just generated the worst C compiler ever...",
+    "title_shape": "first-person-feat",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "awesome-coding-facepalm-its-bad",
@@ -22,14 +28,20 @@
     "watch_url": "https://www.youtube.com/watch?v=DLwyGjFsPPM",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "danger-red"],
+    "device": [
+      "shocked-face",
+      "danger-red"
+    ],
     "face": true,
     "accent": "red",
     "text": "low",
     "reads_as": "Jonah Hill facepalm next to a hand-scrawled 'it's bad.' verdict",
     "layout_map": "Dark blue grid background. A man pinching the bridge of his nose in a facepalm fills the right third (cells 4/8/12/16, face center ~x1070,y300, hand over eyes, bleeding off the right edge). Two-row hand-written headline on the left-center: white casual script 'it's' (cells 5-6, baseline ~y150) above a larger red script 'bad.' (cells 9-10, baseline ~y260), red carrying the verdict word and its period. Small white block-caps day-tag 'MONDAY' badge in the top-right corner (cell 4, ~x1180,y40). Background otherwise empty.",
     "why_it_works": "A universal facepalm gesture paired with a blunt two-word verdict reads disappointment instantly with almost no text",
-    "mimic_for": "a personal hands-on disappointment — 'I tried it and it's bad'"
+    "mimic_for": "a personal hands-on disappointment \u2014 'I tried it and it's bad'",
+    "title": "I actually tried AI coding and it's worse than I thought...",
+    "title_shape": "first-person-feat",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "awesome-coding-huge-java-update",
@@ -38,14 +50,20 @@
     "watch_url": "https://www.youtube.com/watch?v=UuQQVY9jxSs",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "red-arrow"],
+    "device": [
+      "glow-accent",
+      "red-arrow"
+    ],
     "face": true,
     "accent": "mint",
     "text": "med",
     "reads_as": "Big white 'Java' with a red-circled 'huge' scrawl and a mint UPDATE chip next to Picasso",
     "layout_map": "Dark grid background. A monochrome photo of an older man (Picasso) smoking sits in the right third (cells 4/8/12/16, face center ~x1090,y300, bleeding off the right edge). Left two-thirds carry a three-element stack: a red hand-scrawled 'huge' with an underline/circle flourish near the top (cells 5-6, baseline ~y90), a huge white serif 'Java' across the middle (cells 5-7, baseline ~y210), and a mint-green rounded chip with dark caps 'UPDATE' below (cells 9-10, ~x150-430, center y~290). Small white block-caps 'MONDAY' tag top-right corner (cell 4, ~x1190,y35).",
     "why_it_works": "A scribbled red 'huge' over a staid language name plus a glowing chip sells importance and freshness at once",
-    "mimic_for": "a major version or feature drop for an established language/tool"
+    "mimic_for": "a major version or feature drop for an established language/tool",
+    "title": "Java\u2019s biggest upgrade in decades",
+    "title_shape": "scale-story",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "awesome-coding-perfect-rest-apis",
@@ -54,14 +72,19 @@
     "watch_url": "https://www.youtube.com/watch?v=CVBpYfPKGlE",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "med",
     "reads_as": "Mr Bean smug-faced beside a yellow PERFECT label over big white REST APIs",
     "layout_map": "Dark blueprint-grid background. A man (Mr Bean) tilting his head with a smug closed-eye smile fills the right third (cells 4/8/12/16, face center ~x1080,y320, bleeding off the right edge). Left two-thirds carry a two-row caps headline: a yellow solid block-caps 'PERFECT' on top (cells 5-7, baseline ~y190) and a larger white block-caps 'REST APIs' below (cells 9-11, baseline ~y300). Yellow is the single accent on the authority word. No badge/stat.",
     "why_it_works": "A smug face plus an absolute 'PERFECT' claim promises the one correct way and dares you to disagree",
-    "mimic_for": "a definitive best-practice / 'the right way to do X' tutorial"
+    "mimic_for": "a definitive best-practice / 'the right way to do X' tutorial",
+    "title": "The Right Way To Build REST APIs",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "awesome-coding-go-wow-speech-bubble",
@@ -70,14 +93,20 @@
     "watch_url": "https://www.youtube.com/watch?v=TGz4Osgk7AQ",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "shocked-face"],
+    "device": [
+      "glow-accent",
+      "shocked-face"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "Glowing cyan Go gopher logo wordmark and an open-mouthed face shouting WOW! in a bubble",
     "layout_map": "Dark grid background. A surprised open-mouthed man's face fills the right third (cells 4/8/12/16, face center ~x1130,y320, bleeding off the right edge). A large cyan-to-mint gradient glowing 'GO' wordmark dominates the left-center (cells 5-6/9-10, center ~x300,y330). A white rounded speech bubble with black caps 'WOW!' overlaps between text and face (cells 7/11, center ~x800,y260, tail pointing toward the face). No stat/badge.",
     "why_it_works": "A glowing brand logo plus a cartoon WOW bubble from a real face frames a language as exciting and endorsed",
-    "mimic_for": "an enthusiastic 'why I switched to X' endorsement of a language/tool"
+    "mimic_for": "an enthusiastic 'why I switched to X' endorsement of a language/tool",
+    "title": "Why I\u2019m Switching To Go",
+    "title_shape": "first-person-feat",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "awesome-coding-lua-wow-speech-bubble",
@@ -86,14 +115,20 @@
     "watch_url": "https://www.youtube.com/watch?v=f5MpjDtnFP4",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "shocked-face"],
+    "device": [
+      "glow-accent",
+      "shocked-face"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "low",
     "reads_as": "Yellow Lua logo wordmark and an open-mouthed face shouting WOW! in a bubble",
     "layout_map": "Dark grid background. A surprised open-mouthed man's face fills the right third (cells 4/8/12/16, face center ~x1130,y330, bleeding off the right edge). A large yellow Lua logo/wordmark sits in the left-center (cells 5-6/9-10, center ~x270,y300). A white rounded speech bubble with grey caps 'wow!' overlaps between logo and face (cells 7, center ~x780,y200, tail toward the face). Same skeleton as the Go entry with a yellow accent. No stat/badge.",
     "why_it_works": "A glowing logo plus a WOW reaction bubble makes a niche language look surprisingly worth a look",
-    "mimic_for": "an explainer on why a niche/underrated language is popular"
+    "mimic_for": "an explainer on why a niche/underrated language is popular",
+    "title": "Why Is Lua So Popular?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "awesome-coding-run-js-everywhere",
@@ -102,14 +137,20 @@
     "watch_url": "https://www.youtube.com/watch?v=c9AdYHfQtP8",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "glow-accent"],
+    "device": [
+      "shocked-face",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "med",
     "reads_as": "A bug-eyed doll face gawks next to the yellow JS badge in RUN JS everywhere",
     "layout_map": "Dark grid background. A bug-eyed, parted-lips doll/uncanny face fills the right third (cells 4/8/12/16, face center ~x1110,y330, bleeding off the right edge). A sentence wraps the JS logo as a word: white block-caps 'RUN' on the left (cells 5, baseline ~y210), the yellow rounded-square JS badge as the middle word (cell 6-7, center ~x650,y210), then a red hand-scrawled script 'everywhere' below spanning under both (cells 9-11, baseline ~y300). Yellow on the logo, red on the scrawled adverb. No stat/badge.",
     "why_it_works": "An uncanny shocked face plus a logo built into the sentence makes a familiar tech feel newly alarming and ubiquitous",
-    "mimic_for": "a tech/runtime is spreading into places it didn't belong"
+    "mimic_for": "a tech/runtime is spreading into places it didn't belong",
+    "title": "Native app development is in big trouble...",
+    "title_shape": "panic-threat",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "awesome-coding-everybody-loves-vite-bolt",
@@ -118,13 +159,19 @@
     "watch_url": "https://www.youtube.com/watch?v=sHpcMNhuSFI",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "purple",
     "text": "med",
     "reads_as": "A big Vite lightning bolt logo glows beside the stacked phrase everybody loves VITE",
     "layout_map": "Dark purple grid background. A large purple-and-yellow Vite lightning-bolt logo sits in the right third (cells 4/8/12/16, center ~x1050,y360, glowing, no face). Left two-thirds carry a three-row stacked phrase: lowercase white script 'everybody' at top (cells 1-2, baseline ~y70), 'loves' in white caps inside a purple rounded chip in the middle (cells 5-6, center ~x300,y200), and a large white block-caps 'VITE' at the bottom (cells 13-14, baseline ~y310). Purple is the dominant accent; the bolt logo is the hero object. No human face, no stat.",
     "why_it_works": "A glowing hero logo plus an 'everybody loves' phrase manufactures consensus FOMO around a build tool",
-    "mimic_for": "a tool everyone is adopting — bandwagon / why is everyone using X"
+    "mimic_for": "a tool everyone is adopting \u2014 bandwagon / why is everyone using X",
+    "title": "Why is Everyone Using Vite?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   }
 ]

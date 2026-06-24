@@ -6,13 +6,19 @@
     "watch_url": "https://www.youtube.com/watch?v=_7q_NAaI__A",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "high",
     "layout_map": "Dark matrix/code-rain background full-bleed. A dim, near-silhouette hooded figure sits in the LEFT third (cells 1,5,9; face center ~x150,y160) with a glowing 'fsociety' wordmark plate over his chest at ~x130,y170. Headline occupies the right two-thirds in stacked rows: bright yellow 'TURN' top-right (cells 3-4, baseline ~y70, all-caps), white 'INTO' mid (cell 7, baseline ~y150), small yellow 'A' beside it (cell 8, ~x290,y150), then a large grunge-distressed white 'HACKER' across the bottom-right (cells 11-12, baseline ~y190, all-caps). Yellow is the accent word color; HACKER is the textured payoff word.",
     "why_it_works": "The dim hacker silhouette plus glowing 'fsociety' tag sets an ominous mood while the bold yellow-on-black command 'TURN INTO A HACKER' promises transformation.",
-    "mimic_for": "an aspirational 'become X' transformation promise where a moody subject sits left and a bold command-style headline fills the right"
+    "mimic_for": "an aspirational 'become X' transformation promise where a moody subject sits left and a bold command-style headline fills the right",
+    "title": "This will make you a Hacker!!!",
+    "title_shape": "first-person-feat",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "technetium-level-0-to-infinity-pepe-comparison",
@@ -21,13 +27,19 @@
     "watch_url": "https://www.youtube.com/watch?v=-BrkiY0Mjc0",
     "archetype": "comparison-vs",
     "layout": "split-vertical",
-    "device": ["red-arrow", "before-after"],
+    "device": [
+      "red-arrow",
+      "before-after"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
-    "layout_map": "Vertical 50/50 split. LEFT half: a green Pepe-style frog character hunched at a laptop on a toilet, lit normally (cell 5-6-9-10 region, character center ~x180,y260). RIGHT half: a sickly blue-tinted distressed version of the same character at a messy multi-monitor desk, red-vignette danger lighting (cells 7-8-11-12, center ~x950,y260). Top row carries the comparison label: white 'LEVEL 0' top-left (cells 1-2, baseline ~y45, caps) and white 'LEVEL ∞' top-right (cells 3-4, baseline ~y45, caps) with a curved red arrow sweeping between them across the top-center (~x560-680,y40) pointing left→right.",
+    "layout_map": "Vertical 50/50 split. LEFT half: a green Pepe-style frog character hunched at a laptop on a toilet, lit normally (cell 5-6-9-10 region, character center ~x180,y260). RIGHT half: a sickly blue-tinted distressed version of the same character at a messy multi-monitor desk, red-vignette danger lighting (cells 7-8-11-12, center ~x950,y260). Top row carries the comparison label: white 'LEVEL 0' top-left (cells 1-2, baseline ~y45, caps) and white 'LEVEL \u221e' top-right (cells 3-4, baseline ~y45, caps) with a curved red arrow sweeping between them across the top-center (~x560-680,y40) pointing left\u2192right.",
     "why_it_works": "A meme-format before/after of the same character (chill noob vs deranged grind god) with the red arrow makes the absurd 0-to-infinity escalation instantly legible and funny.",
-    "mimic_for": "a humorous progression/escalation beat — beginner versus obsessed expert, same subject transformed, low-stakes meme energy"
+    "mimic_for": "a humorous progression/escalation beat \u2014 beginner versus obsessed expert, same subject transformed, low-stakes meme energy",
+    "title": "From SCRIPT KIDDIE to PRO HACKER.",
+    "title_shape": "scale-story",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "technetium-hack-any-wifi-3tier-text",
@@ -36,13 +48,19 @@
     "watch_url": "https://www.youtube.com/watch?v=-5OV8_1nbrM",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "high",
     "layout_map": "Dark code-stream background. A dimly lit man's face (Mr-Robot-style, hand near mouth) sits in the LEFT third behind a slight scanline overlay (cells 1,5,9; face center ~x190,y200). Right two-thirds hold a three-row stacked headline, all-caps, right-aligned: white 'HACK' top (cells 3-4, baseline ~y90), red accent 'ANY' middle (cell 7-8, baseline ~y200) as the colored payoff word, white 'WiFi' bottom (cells 11-12, baseline ~y300). Thin glitch/scanline texture across the type.",
-    "why_it_works": "The moody hacker face plus the stark white-red-white 'HACK ANY WiFi' stack reads as a forbidden how-to in one glance — 'ANY' in red is the dangerous promise.",
-    "mimic_for": "a how-to / capability claim with a danger edge — moody subject left, three-word stacked headline right with the middle word colored as the hook"
+    "why_it_works": "The moody hacker face plus the stark white-red-white 'HACK ANY WiFi' stack reads as a forbidden how-to in one glance \u2014 'ANY' in red is the dangerous promise.",
+    "mimic_for": "a how-to / capability claim with a danger edge \u2014 moody subject left, three-word stacked headline right with the middle word colored as the hook",
+    "title": "Hack Any Wifi in 3 minutes.",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "technetium-phone-camera-hacked-anonymous-mask",
@@ -51,13 +69,19 @@
     "watch_url": "https://www.youtube.com/watch?v=Q4lcNJGuHlQ",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "layout_map": "640x480 frame, red-on-black circuit/lightning background. A hooded Anonymous Guy-Fawkes-mask figure with glowing red eyes is centered low (cells 10-11-14-15, mask center ~x320,y330, filling the lower-center). Top-left a pair of hands holds up a smartphone with a glowing red rear camera (cells 1-2-5-6, phone ~x130,y90). Right side carries a stacked headline: red 'HACKING' (cells 3-4, baseline ~y50, caps), purple/blue 'PHONE' (cell 8, baseline ~y110, caps), red 'CAMERA' (cell 8-area, baseline ~y160, caps). Heavy red danger glow throughout.",
-    "why_it_works": "The anonymous mask with red eyes plus a phone showing its camera lit red triggers an invasion-of-privacy fear — your own camera weaponized against you.",
-    "mimic_for": "a privacy/security-threat beat — a menacing anonymous figure and a familiar device shown compromised, red danger palette"
+    "why_it_works": "The anonymous mask with red eyes plus a phone showing its camera lit red triggers an invasion-of-privacy fear \u2014 your own camera weaponized against you.",
+    "mimic_for": "a privacy/security-threat beat \u2014 a menacing anonymous figure and a familiar device shown compromised, red danger palette",
+    "title": "How Phone Cameras Are Hacked???",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "technetium-never-stop-coding-wolverine",
@@ -66,13 +90,19 @@
     "watch_url": "https://www.youtube.com/watch?v=SxfiuU7nx5s",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "orange",
     "text": "high",
     "layout_map": "Dark teal grid/tech background. A stylized scowling Wolverine-style illustrated face fills the LEFT third (cells 1,5,9; face center ~x180,y230, intense glare). Right two-thirds hold a three-row right-aligned stacked headline, all-caps bold: orange-red 'NEVER' top (cells 3-4, baseline ~y90), white 'STOP' middle (cells 7-8, baseline ~y190), large orange-red 'CODING' bottom (cells 11-12, baseline ~y300). Orange-red is the dominant accent on the first and last words; white middle word breaks the rhythm.",
-    "why_it_works": "The aggressive Wolverine glare plus the imperative 'NEVER STOP CODING' channels grind-culture intensity — pure motivational dare energy.",
-    "mimic_for": "a motivational / grind-mindset call to action — an intense character left, a three-word imperative stacked right with outer words colored hot"
+    "why_it_works": "The aggressive Wolverine glare plus the imperative 'NEVER STOP CODING' channels grind-culture intensity \u2014 pure motivational dare energy.",
+    "mimic_for": "a motivational / grind-mindset call to action \u2014 an intense character left, a three-word imperative stacked right with outer words colored hot",
+    "title": "Warning: This Video Will Make You Code All Night.",
+    "title_shape": "panic-threat",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "technetium-hacked-social-logo-grid",
@@ -81,12 +111,18 @@
     "watch_url": "https://www.youtube.com/watch?v=m8BlsTyE5zg",
     "archetype": "logo-grid",
     "layout": "centered-stack",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "red",
     "text": "low",
     "layout_map": "Dark circuit/world-map background with red danger glow. A single huge red distressed 'HACKED' headline spans the top, all-caps, centered (cells 1-4, baseline ~y95). Below sits a row of three large app logos: Facebook 'f' on the left (cell 9-13 area, ~x150,y360), a glowing red-tinted Instagram camera icon centered and largest (cells 14-15, ~x320,y360), and a red TikTok note icon on the right (cell 12-16 area, ~x550,y360). All logos washed in the same red hostile tint to read as compromised.",
-    "why_it_works": "Recognizable social logos rendered in alarm-red under a bleeding 'HACKED' headline makes the threat personal — these are the accounts you actually use.",
-    "mimic_for": "a beat about multiple familiar platforms/tools all affected by one thing — a logo row under a single big alarm word"
+    "why_it_works": "Recognizable social logos rendered in alarm-red under a bleeding 'HACKED' headline makes the threat personal \u2014 these are the accounts you actually use.",
+    "mimic_for": "a beat about multiple familiar platforms/tools all affected by one thing \u2014 a logo row under a single big alarm word",
+    "title": "How social media accounts get HACKED???",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   }
 ]
