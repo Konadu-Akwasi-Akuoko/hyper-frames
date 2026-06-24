@@ -50,25 +50,64 @@ for every write:
 4. Then call the write tool with `confirm=True` or `confirm_publish=True`
    where required.
 
-### Specific gates baked into the tools
+### The gate map — which writes need `confirm`, and why
 
-- `comment_moderate(comment_ids=[>5 ids])` → requires `confirm=True`. The tool
-  also refuses any batch that would cost > 25% of remaining daily quota.
-- `comment_delete(comment_ids=[>5 ids])` → same gate.
-- `video_update_metadata(privacy_status="public")` when previous status was
-  `private` or `unlisted` → requires `confirm_publish=True`. Treat going-public
-  as a higher-friction action than any other edit.
+Per-tool params (full signatures, exact costs) live in the tool descriptions —
+fetch them when you call. This is the map the descriptions can't give you: which
+writes are gated and the *reason*, so you know when to stop and ask.
+
+| Tool(s) | Gate | Reason |
+|---|---|---|
+| `video_update_metadata` (tags/title/desc/category), `video_set_thumbnail`, `video_set_localizations`, `playlist_create`/`update`/`add_video`/`item_update`, `channel_section_create`/`update`, `caption_list`/`download` | **none** | trivially reversible edits — still *preview* user-visible changes per the generic gate above |
+| `video_update_metadata(privacy_status="public")` from private/unlisted | `confirm_publish=True` | the audience sees it the instant it fires |
+| `video_upload` | `confirm=True` **only if** `privacy="public"` or a `publish_at` is set; a private upload is **ungated** | a private draft is harmless; a public/scheduled one is a release |
+| `video_schedule` | `confirm=True` | arms an autonomous public release at a future time |
+| `caption_insert` (400u), `caption_update` (450u) | `confirm=True` + always `cost_preview` first | the two most expensive writes in the API |
+| `video_delete`, `caption_delete`, `playlist_delete`, `playlist_item_remove`, `playlist_delete_image`, `channel_section_delete` | `confirm=True` | irreversible |
+| `channel_update_branding`, `channel_set_banner`, `channel_set_watermark`/`unset`, `playlist_set_image` | `confirm=True` | channel-visible, public-facing |
+| `subscription_add`/`remove`, `video_rate` | `confirm=True` | acts socially **as your channel** |
+| `comment_moderate`/`comment_delete` (>5 ids) | `confirm=True` | bulk; also refuses if >25% of remaining quota |
+
+### Operating notes for the higher-friction writes
+
+These three carry constraints the API enforces but the tool description states
+only tersely — get them wrong and the call fails or surprises the user:
+
+- **Upload (`video_upload`).** Defaults to `privacy="private"` — keep it there
+  unless the user explicitly wants it public now. A Short is just a vertical
+  video ≤3 min: same call, no special flag. Resumable, so large files are fine.
+  Gate fires only for public/scheduled (see map).
+- **Schedule (`video_schedule`).** Sets `publish_at` (ISO-8601) and forces the
+  video to `private`; YouTube auto-flips it public at that time. **The video
+  must be private and never previously published** — you can't schedule a video
+  that has been public. Convert the user's local time to an explicit offset
+  (e.g. `2026-06-26T09:00:00-04:00`), never a bare wall-clock. Reschedule by
+  calling again with a new `publish_at`; cancel with `video_cancel_schedule`
+  (ungated — it only ever makes the video *less* public).
+- **Captions (`caption_insert` / `caption_update`).** Insert a new track with
+  `caption_insert(video_id, file_path, language, name)` — an `.srt` uploads
+  fine. To *replace* an existing track you need its id: call `caption_list(video_id)`
+  first, then `caption_update(caption_id, file_path=...)`. Both are cost-gated
+  (400/450u) — `cost_preview` and an affirmative before every call.
+
+Playlists, channel branding, and subscriptions follow the same
+preview→`confirm` pattern; lean on the gate map above for which need it.
 
 ## YouTube API gaps you'll hit
 
-If the user asks for these, tell them up front — don't waste a turn searching:
+If the user asks for these, tell them up front — there is no endpoint, so don't
+waste a turn searching or reaching for a write tool:
 
 - **Heart a comment** — no API. Studio UI only.
 - **Pin a comment** — no API. Studio UI only.
-- **Upload a video** — `video_upload` is available (v2 write surface); uploads as private by default.
-- **Schedule a publish** — `video_schedule` is available (v2 write surface).
-- **Insert / update / delete captions** — `caption_insert`, `caption_update`, `caption_delete` are available (v2); each costs 400u — show `cost_preview` and require explicit approval.
-- **Schedule a livestream** — no API. Studio UI only.
+- **A/B "Test & Compare" titles/thumbnails** — no API. Studio UI only.
+- **Schedule a livestream** (`liveBroadcasts`) — no API. Studio UI only.
+- **Comment settings** (allow/hold/disable), **end screens**, **info cards**,
+  **age restriction**, **monetization**, **multi-language *audio* dubs** — all
+  Studio-only (only *text* localizations are writable, via `video_set_localizations`).
+
+(Uploads, scheduling, and captions are NOT gaps anymore — see the write surface
+and operating notes above.)
 
 ## Three canonical workflows
 
