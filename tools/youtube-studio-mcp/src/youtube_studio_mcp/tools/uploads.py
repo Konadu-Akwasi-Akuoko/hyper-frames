@@ -20,6 +20,10 @@ MAX_VIDEO_BYTES = 256 * 1024 * 1024 * 1024  # 256 GB
 VIDEO_MIMES = {"video/*"}
 ALLOWED_PRIVACY = {"private", "unlisted", "public"}
 
+MAX_BANNER_BYTES = 6 * 1024 * 1024  # 6 MB, 16:9, >=2048x1152
+MAX_WATERMARK_BYTES = 10 * 1024 * 1024  # 10 MB
+WATERMARK_TIMINGS = {"offsetFromStart", "offsetFromEnd"}
+
 
 def _default_media_factory(path: str, mime: str) -> Any:
     return MediaFileUpload(path, mimetype=mime, resumable=True)
@@ -67,6 +71,65 @@ def _video_upload(svc: Any, *, path: str, title: str, description: str,
             "publish_at": publish_at, "response": resp}
 
 
+def _channel_set_banner(svc: Any, *, image_path: str, confirm: bool,
+                        media_factory: Callable[[str, str], Any]) -> dict:
+    """Two-step: channelBanners.insert (upload) -> channels.update
+    brandingSettings.image.bannerExternalUrl."""
+    refusal = gate.require(
+        confirm, effect="This replaces your channel banner (visible channel-wide).")
+    if refusal:
+        return refusal
+    pre = uploadmedia.validate(image_path, max_bytes=MAX_BANNER_BYTES,
+                               allowed_mimes={"image/jpeg", "image/png"})
+    if not pre["ok"]:
+        return pre
+    media = media_factory(pre["path"], pre["mime"])
+    request = svc.channelBanners().insert(media_body=media)
+    banner = uploadmedia.execute_resumable(request)
+    quota.record("channelBanners.insert")
+    url = banner.get("url")
+    if not url:
+        return {"error": "banner_upload_failed", "response": banner}
+    current = clients.run(lambda y: y.channels().list(part="id", mine=True), svc)
+    quota.record("channels.list")
+    channel_id = (current.get("items") or [{}])[0].get("id")
+    body = {"id": channel_id,
+            "brandingSettings": {"image": {"bannerExternalUrl": url}}}
+    resp = clients.run(
+        lambda y: y.channels().update(part="brandingSettings", body=body), svc)
+    quota.record("channels.update")
+    return {"banner_set": True, "channel_id": channel_id, "banner_url": url,
+            "response": resp}
+
+
+def _channel_set_watermark(svc: Any, *, image_path: str, timing_type: str,
+                           offset_ms: int, duration_ms: int, confirm: bool,
+                           media_factory: Callable[[str, str], Any]) -> dict:
+    """watermarks.set — branding watermark overlay (topRight). Gated."""
+    if timing_type not in WATERMARK_TIMINGS:
+        return {"error": f"timing_type must be one of {sorted(WATERMARK_TIMINGS)}"}
+    refusal = gate.require(
+        confirm, effect="This sets a channel watermark on all your videos.")
+    if refusal:
+        return refusal
+    pre = uploadmedia.validate(image_path, max_bytes=MAX_WATERMARK_BYTES,
+                               allowed_mimes={"image/jpeg", "image/png"})
+    if not pre["ok"]:
+        return pre
+    media = media_factory(pre["path"], pre["mime"])
+    current = clients.run(lambda y: y.channels().list(part="id", mine=True), svc)
+    quota.record("channels.list")
+    channel_id = (current.get("items") or [{}])[0].get("id")
+    body = {"timing": {"type": timing_type, "offsetMs": offset_ms,
+                       "durationMs": duration_ms},
+            "position": {"type": "corner", "cornerPosition": "topRight"}}
+    request = svc.watermarks().set(channelId=channel_id, body=body,
+                                   media_body=media)
+    uploadmedia.execute_resumable(request)
+    quota.record("watermarks.set")
+    return {"watermark_set": channel_id}
+
+
 def register(app: FastMCP) -> None:
     @app.tool()
     @clients.http_safe
@@ -93,4 +156,25 @@ def register(app: FastMCP) -> None:
             description=description, tags=tags, category_id=category_id,
             privacy=privacy, publish_at=publish_at, made_for_kids=made_for_kids,
             contains_synthetic_media=contains_synthetic_media, confirm=confirm,
+            media_factory=_default_media_factory)
+
+    @app.tool()
+    @clients.http_safe
+    def channel_set_banner(image_path: str, confirm: bool = False) -> dict:
+        """Set the channel banner (JPEG/PNG, 16:9, >=2048x1152, <=6 MB). Quota:
+        ~101 units (upload + channels.update). Gated (channel-wide)."""
+        return _channel_set_banner(
+            clients.youtube_data(), image_path=image_path, confirm=confirm,
+            media_factory=_default_media_factory)
+
+    @app.tool()
+    @clients.http_safe
+    def channel_set_watermark(image_path: str, timing_type: str = "offsetFromEnd",
+                              offset_ms: int = 0, duration_ms: int = 15000,
+                              confirm: bool = False) -> dict:
+        """Set the channel branding watermark (JPEG/PNG <=10 MB, shown topRight).
+        Quota: ~51 units. Gated. timing_type is offsetFromStart or offsetFromEnd."""
+        return _channel_set_watermark(
+            clients.youtube_data(), image_path=image_path, timing_type=timing_type,
+            offset_ms=offset_ms, duration_ms=duration_ms, confirm=confirm,
             media_factory=_default_media_factory)

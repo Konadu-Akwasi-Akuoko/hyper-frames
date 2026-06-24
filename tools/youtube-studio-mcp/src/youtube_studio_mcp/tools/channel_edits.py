@@ -91,6 +91,17 @@ def _channel_section_delete(svc: Any, section_id: str, confirm: bool) -> dict:
     return {"section_deleted": section_id, "quota_units_spent": 50}
 
 
+def _channel_unset_watermark(svc: Any, channel_id: str, confirm: bool) -> dict:
+    refusal = gate.require(
+        confirm, effect=f"This removes the watermark from channel {channel_id}.",
+        channel_id=channel_id)
+    if refusal:
+        return refusal
+    clients.run(lambda y: y.watermarks().unset(channelId=channel_id), svc)
+    quota.record("watermarks.unset")
+    return {"watermark_unset": channel_id, "quota_units_spent": 50}
+
+
 def register(app: FastMCP) -> None:
     @app.tool()
     @clients.http_safe
@@ -134,3 +145,9 @@ def register(app: FastMCP) -> None:
     def channel_section_delete(section_id: str, confirm: bool = False) -> dict:
         """Delete a channel section. Quota: 50 units. Gated: irreversible."""
         return _channel_section_delete(clients.youtube_data(), section_id, confirm)
+
+    @app.tool()
+    @clients.http_safe
+    def channel_unset_watermark(channel_id: str, confirm: bool = False) -> dict:
+        """Remove the channel branding watermark. Quota: 50 units. Gated."""
+        return _channel_unset_watermark(clients.youtube_data(), channel_id, confirm)
