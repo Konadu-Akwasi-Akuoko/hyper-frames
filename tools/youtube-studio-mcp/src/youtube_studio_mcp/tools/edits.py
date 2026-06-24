@@ -14,7 +14,7 @@ from typing import Any
 from googleapiclient.http import MediaFileUpload
 from mcp.server.fastmcp import FastMCP
 
-from .. import clients, quota
+from .. import clients, gate, mutate, quota
 
 MAX_THUMBNAIL_BYTES = 2 * 1024 * 1024  # YouTube hard cap
 RECOMMENDED_THUMB_W = 1280
@@ -58,6 +58,37 @@ def _read_image_dimensions(path: Path) -> tuple[int, int] | None:
     except Exception:
         return None
     return None
+
+
+ALLOWED_RATINGS = {"like", "dislike", "none"}
+
+
+def _video_delete(svc: Any, video_id: str, confirm: bool) -> dict:
+    """videos.delete — irreversible, gated.
+    Source: https://developers.google.com/youtube/v3/docs/videos/delete"""
+    refusal = gate.require(
+        confirm, effect=f"This permanently deletes video {video_id}.",
+        video_id=video_id)
+    if refusal:
+        return refusal
+    clients.run(lambda y: y.videos().delete(id=video_id), svc)
+    quota.record("videos.delete")
+    return {"deleted": video_id, "quota_units_spent": 50}
+
+
+def _video_rate(svc: Any, video_id: str, rating: str, confirm: bool) -> dict:
+    """videos.rate — like/dislike/none as the channel; gated (social).
+    Source: https://developers.google.com/youtube/v3/docs/videos/rate"""
+    if rating not in ALLOWED_RATINGS:
+        return {"error": f"rating must be one of {sorted(ALLOWED_RATINGS)}"}
+    refusal = gate.require(
+        confirm, effect=f"This sets your channel's rating on {video_id} to "
+                        f"{rating!r}.", video_id=video_id, rating=rating)
+    if refusal:
+        return refusal
+    clients.run(lambda y: y.videos().rate(id=video_id, rating=rating), svc)
+    quota.record("videos.rate")
+    return {"rated": video_id, "rating": rating, "quota_units_spent": 50}
 
 
 def register(app: FastMCP) -> None:
@@ -213,3 +244,16 @@ def register(app: FastMCP) -> None:
         if warnings:
             out["warnings"] = warnings
         return out
+
+    @app.tool()
+    @clients.http_safe
+    def video_delete(video_id: str, confirm: bool = False) -> dict:
+        """Permanently delete a video. Quota: 50 units. Gated: irreversible."""
+        return _video_delete(clients.youtube_data(), video_id, confirm)
+
+    @app.tool()
+    @clients.http_safe
+    def video_rate(video_id: str, rating: str, confirm: bool = False) -> dict:
+        """Set your channel's like/dislike on a video. Quota: 50 units. Gated
+        (social). rating is like, dislike, or none."""
+        return _video_rate(clients.youtube_data(), video_id, rating, confirm)
