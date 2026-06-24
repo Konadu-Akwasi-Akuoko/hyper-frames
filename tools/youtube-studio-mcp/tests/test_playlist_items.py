@@ -42,8 +42,18 @@ def test_set_image_runs(tmp_path, isolated_config, monkeypatch):
     monkeypatch.setattr(playlists.uploadmedia, "execute_resumable",
                         lambda req: {"id": "IMG1"})
     r = playlists._playlist_set_image(svc, playlist_id="PL1", file_path=str(f),
-                                      media_factory=_mf)
+                                      confirm=True, media_factory=_mf)
     assert r["image_set"] == "IMG1"
+
+
+def test_set_image_gated(tmp_path):
+    f = tmp_path / "cover.png"; f.write_bytes(b"\x00" * 4)
+    svc = MagicMock()
+    r = playlists._playlist_set_image(svc, playlist_id="PL1",
+                                      file_path=str(f), confirm=False,
+                                      media_factory=_mf)
+    assert r["error"] == "confirm_required"
+    svc.playlistImages.return_value.insert.assert_not_called()
 
 
 def test_delete_image_gated():

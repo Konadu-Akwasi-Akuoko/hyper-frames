@@ -91,8 +91,14 @@ def _playlist_item_remove(svc: Any, item_id: str, confirm: bool) -> dict:
 
 
 def _playlist_set_image(svc: Any, *, playlist_id: str, file_path: str,
-                        media_factory) -> dict:
+                        confirm: bool, media_factory) -> dict:
     """playlistImages.insert — square 1:1 JPEG/PNG <=2 MB."""
+    refusal = gate.require(
+        confirm,
+        effect=f"This sets the cover image for playlist {playlist_id} (channel-visible).",
+        playlist_id=playlist_id)
+    if refusal:
+        return refusal
     pre = uploadmedia.validate(file_path, max_bytes=MAX_PLAYLIST_IMAGE_BYTES,
                                allowed_mimes=IMAGE_MIMES)
     if not pre["ok"]:
@@ -161,11 +167,13 @@ def register(app: FastMCP) -> None:
 
     @app.tool()
     @clients.http_safe
-    def playlist_set_image(playlist_id: str, file_path: str) -> dict:
+    def playlist_set_image(playlist_id: str, file_path: str,
+                           confirm: bool = False) -> dict:
         """Set a playlist cover image (square 1:1 JPEG/PNG <=2 MB). Quota: 50
-        units. Ungated."""
+        units. Gated (channel-visible)."""
         return _playlist_set_image(
             clients.youtube_data(), playlist_id=playlist_id, file_path=file_path,
+            confirm=confirm,
             media_factory=lambda p, m: MediaFileUpload(p, mimetype=m, resumable=True))
 
     @app.tool()
