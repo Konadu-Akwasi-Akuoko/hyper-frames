@@ -11,7 +11,8 @@ from mcp.server.fastmcp import FastMCP
 
 from . import logging_setup
 from .resources import workflows
-from .tools import analytics, comments, data, edits, meta, reporting
+from .tools import (analytics, captions, channel_edits, comments, data, edits,
+                    meta, playlists, reporting, subscriptions, uploads)
 
 logging_setup.configure()
 
@@ -22,5 +23,10 @@ data.register(app)
 analytics.register(app)
 comments.register(app)
 edits.register(app)
+uploads.register(app)
+captions.register(app)
+playlists.register(app)
+channel_edits.register(app)
+subscriptions.register(app)
 reporting.register(app)
 workflows.register(app)
