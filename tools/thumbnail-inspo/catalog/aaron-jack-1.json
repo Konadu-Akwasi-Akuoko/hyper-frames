@@ -17,7 +17,9 @@
     "layout_map": "Dark room photo split into two color-graded halves inside a thin grey border. LEFT half cells 1-7 graded cold blue with a rim glow; same man seated at a MacBook looking down, head ~x270,y280, torso to bottom. RIGHT half cells 9-15 graded lime green with rim glow; same man chin-on-hand looking left, head ~x1020,y280. Headline 'PROGRAMMING' top-left in chunky white caps with purple outline+glow, baseline ~y95 across cells 1-6; 'CODING' top-right same style cells 11-15 baseline ~y95. A large white paint-stroke 'VS' (red speckle, ~280px tall) centered ~x640,y330 splitting the two halves. Three stacked rounded dark label chips bottom-left: 'MATH' (red), 'LOGIC' (teal), 'SYSTEMS' (white) at x70-240, y400/500/600. Two circular tech badges (CSS3 blue, HTML5 orange) stacked bottom-right ~x1180,y430/560.",
     "why_it_works": "the mirrored same-person split plus a violent VS stroke turns an abstract definition question into a head-to-head fight the eye must resolve",
     "mimic_for": "a video pitting two concepts our audience conflates against each other (e.g. authentication vs authorization, SQL vs NoSQL)",
-    "title": "Programming vs Coding - What's the difference?"
+    "title": "Programming vs Coding - What's the difference?",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "aaron-jack-google-quit-crying-wojak",
@@ -37,7 +39,9 @@
     "layout_map": "Photo background of a blurred corporate open-plan office with rows of workers, desaturated. A hand-drawn crying-wojak cutout dominates the left, head+shoulders cells 3-9, face center ~x430,y330, wearing the four-color Google beanie/cap, bright-blue tear streams and gritted teeth, red bloodshot eyes. To the right a dark laptop seen from behind at cells 11-14 with a large four-color Google 'G' logo on the lid ~x1010,y470 and a small 'G' Chromebook mark top edge. Wood desk strip across the bottom ~y640. No text overlay; the meme face and Google branding carry the whole frame.",
     "why_it_works": "a recognizable distress meme branded with the company logo says 'working here actually sucks' before a single word is read",
     "mimic_for": "a disillusionment/quit-story beat where a famous employer or hyped tool secretly disappoints",
-    "title": "Why Most Google Employees Quit After 1.1 Years (On Average)"
+    "title": "Why Most Google Employees Quit After 1.1 Years (On Average)",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "aaron-jack-javascript-in-5-mins-blackbars",
@@ -57,7 +61,9 @@
     "layout_map": "Bright near-white flat-lay background. Headline stacked left in three lines: 'JAVASCRIPT' in white italic caps on a solid black bar cells 1-7 ~y90-200; lowercase 'in' in plain black (no bar) cells 3-4 ~y260-360; '5 mins' in white italic on a second solid black bar cells 1-7 ~y400-560. Top-right a white coffee cup on saucer ~x1000,y110 with two dark cherries to its right ~x1130,y170. Lower-right an aluminium Apple wireless keyboard angled into frame cells 11-16 ~x1050,y450 with a thin gold pen lying diagonally below it ~y560-660. No face, no badge; the black bars on white are the entire device.",
     "why_it_works": "maximum contrast black-on-white highlighter bars plus a tidy lifestyle prop reads instantly and promises a tiny time cost",
     "mimic_for": "a fast single-topic primer where the hook is brevity ('X in 5 minutes') and we want a clean high-contrast type treatment",
-    "title": "Learn JAVASCRIPT in just 5 MINUTES (2020)"
+    "title": "Learn JAVASCRIPT in just 5 MINUTES (2020)",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "aaron-jack-overemployed-logo-juggle",
@@ -77,7 +83,9 @@
     "layout_map": "Background of dark server racks washed in lime-green light with faint white JavaScript source code overlaid edge to edge. Centered a hand-drawn smug-sweating wojak bust, head+shoulders cells 6-10, face ~x480,y290, arms spread to bottom corners. One headline word 'OVEREMPLOYED' in heavy white caps with grey 3D extrude across the very top cells 1-15 baseline ~y90. Four company logos float around the head in a diamond: white Apple top-left ~x215,y185, blue Twitter bird top-right ~x745,y200, four-color Google 'G' bottom-left ~x150,y360, blue Meta infinity bottom-right ~x790,y360. Loose dollar bills tumble in from both lower corners ~x60,y460 and ~x780,y490.",
     "why_it_works": "the multi-logo juggle plus flying cash on hacker-green code makes 'working several jobs at once' look both illicit and lucrative",
     "mimic_for": "a money/career beat about exploiting multiple platforms or stacking income streams in tech",
-    "title": "How \u201cOveremployed\u201d Programmers Are Earning Multiple FULL TIME Salaries"
+    "title": "How \u201cOveremployed\u201d Programmers Are Earning Multiple FULL TIME Salaries",
+    "title_shape": "scale-story",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "aaron-jack-what-is-api-puzzle-face",
@@ -97,6 +105,8 @@
     "layout_map": "Dark teal/purple ambient room background. RIGHT side a real bearded host in glasses, head+shoulders cells 9-15, face ~x980,y260, ringed by a soft cyan rim glow, dark jacket, a mic boom rising from bottom-right ~x780,y640. LEFT headline stacked in white caps with a green drop-edge and black outline: 'WHAT IS AN' cells 1-7 baseline ~y200, then huge 'API?' cells 1-6 baseline ~y360. Below the text two red interlocking jigsaw pieces sit ~x180,y530 and ~x400,y540 as the concept glyph. Negative-space left third lets the type breathe against the host's blue key light.",
     "why_it_works": "the friendly lit face plus an oversized question and a literal puzzle glyph frames a jargon term as something about to be made simple",
     "mimic_for": "a 'what is X?' explainer where our host fronts the camera and a single concept icon anchors the term",
-    "title": "What is an API (in 5 minutes)"
+    "title": "What is an API (in 5 minutes)",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   }
 ]

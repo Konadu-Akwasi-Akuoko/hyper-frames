@@ -17,7 +17,9 @@
     "layout_map": "Dark charcoal grid background. Two-row headline stacked top-left across cells 1-3: row 1 'MY BIGGEST' white Inter-900 caps baseline ~y90, row 2 'REGRET' red caps slightly larger baseline ~y185. Cyan React atom logo sits lower-left in cell 6, center ~x215,y405, ~150px wide. A grayscale sketched human skull with black hollow eye sockets fills the right third (cells 4,8,12 bleeding to edge), face center ~x1010,y310, occupying ~35% of frame. Background is faint dark teal graph-paper grid.",
     "why_it_works": "white-to-red color break on the headline plus a death-skull morph of the React logo makes 'regret' read as visceral dread",
     "mimic_for": "a confession/regret beat about a tech choice that went wrong",
-    "title": "Why I REGRET Learning React First"
+    "title": "Why I REGRET Learning React First",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "shade-of-code-youre-stuck-wojak-logo-flank",
@@ -37,7 +39,9 @@
     "layout_map": "Dark grid background. Single-row headline across the top spanning cells 1-4, baseline ~y75: 'You're' white Inter-900 then 'STUCK.' red caps. Centered a sketched grayscale wojak head-in-hands, sweat drops, anguished, face center ~x640,y420 filling ~30% of frame (cells 6,7,10,11). Left column of app/tool logos stacked vertically in cells 5/9: freeCodeCamp, a cloud icon, StackOverflow orange, around x130-x230. Right column of logos in cells 8/12: LinkedIn blue and a ChatGPT/OpenAI mark, around x1130. Faint teal graph grid behind everything.",
     "why_it_works": "the universal 'overwhelmed by too many tools' wojak plus a hard-red verdict word names the viewer's own frustration",
     "mimic_for": "a beat about being overwhelmed/plateaued and not knowing which resource to pick",
-    "title": "Why Most Developers NEVER Improve"
+    "title": "Why Most Developers NEVER Improve",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "shade-of-code-this-feels-rigged-react-vs-angular",
@@ -57,7 +61,9 @@
     "layout_map": "Dark grid background. Two-row headline top-left across cells 1-3: row 1 'THIS FEELS' white Inter-900 caps baseline ~y90, row 2 'RIGGED' red caps baseline ~y180. Lower-left a small cyan React atom logo and red Angular shield sit side by side in cell 9-10, centers ~x130,y360 and ~x250,y360. A large sketched grayscale wojak face, eyes scrunched and grimacing/crying, fills the right half (cells 3,4,7,8,11,12), face center ~x920,y360, occupying ~40% of frame and bleeding off the right edge. Faint teal graph grid.",
     "why_it_works": "the anguished wojak plus 'RIGGED' frames a framework choice as an unfair trap, hooking the aggrieved learner",
     "mimic_for": "a beat where two competing tools/frameworks feel like an unfair or stacked choice",
-    "title": "Why Frontend Dev Is a Pyramid SCHEME"
+    "title": "Why Frontend Dev Is a Pyramid SCHEME",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "shade-of-code-this-sucks-standup-roster",
@@ -77,7 +83,9 @@
     "layout_map": "Background is a dark grid up top fading into a cartoon orange-flame band along the bottom edge. Single-row headline top-center-left across cells 1-3, baseline ~y75: 'This' white Inter-900 then 'SUCKS' red caps. A grimacing pink-tinted sketched wojak in a suit/tie gestures from lower-left, face center ~x300,y360, occupying ~30% of frame (cells 5,6,9,10). On the right a 2x2 labeled roster card grid in cells 8/12, around x950-x1180, y200-y480: small simple face icons captioned 'Lead Dev', 'PM', and 'Scrum Daddy' in white. Flames lick the bottom suggesting the standup is hell.",
     "why_it_works": "relatable corporate-ritual misery plus named character labels makes the standup roster instantly legible and funny",
     "mimic_for": "a satirical beat mocking a team ritual or a cast of workplace archetypes",
-    "title": "How Every Dev Standup ACTUALLY Feels"
+    "title": "How Every Dev Standup ACTUALLY Feels",
+    "title_shape": "meme-skit",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "shade-of-code-worst-devs-three-archetypes",
@@ -97,7 +105,9 @@
     "layout_map": "Dark grid background. Single-row headline across the very top spanning cells 1-4, baseline ~y70: 'The' white, 'WORST' red caps, 'Devs' white, all Inter-900. Below it a horizontal row of three sketched character heads filling the bottom two-thirds: left a blue-hooded smug figure in cells 5/9 center ~x230,y430; center a large gray bearded soyjak face open-mouthed in cells 6,7,10,11 center ~x640,y430 (the biggest, ~30% of frame); right a sunglasses/cap 'cool' caricature with a small NFT/pixel sticker in cells 8/12 center ~x1050,y430. Faint teal graph grid behind.",
     "why_it_works": "three instantly-recognizable dev caricatures invite the viewer to spot themselves or a colleague among the 'worst'",
     "mimic_for": "a beat enumerating a small set of negative archetypes or personality types",
-    "title": "The WORST Kind of Programmers"
+    "title": "The WORST Kind of Programmers",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-angry-pink-wojak-tool-targets",
@@ -117,7 +127,9 @@
     "layout_map": "Dark grid background, no headline text (title lives in the chrome). A large veiny bright-pink screaming wojak face fills the center, face center ~x600,y360, occupying ~40% of frame (cells 6,7,10,11). Four logos pinned in the corners: top-left white GitHub octocat in cell 1 ~x150,y130; bottom-left blue TypeScript 'TS' tile in cell 5 ~x140,y360; top-right a red Scala/spiral logo ringed by a red crosshair circle in cell 4 ~x1080,y140; right cyan React atom in cell 8 ~x1130,y360. Faint teal graph grid behind.",
     "why_it_works": "pure rage-face energy plus red crosshairs on the logos signals 'these technologies make me furious', high-arousal scroll-stop",
     "mimic_for": "a high-energy ranty beat targeting specific tools/technologies the host loves to hate",
-    "title": "10 Concepts That CHANGED How I Code"
+    "title": "10 Concepts That CHANGED How I Code",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "shade-of-code-web-devs-are-back-relieved",
@@ -137,7 +149,9 @@
     "layout_map": "Dark grid background. Single-row headline across the top spanning cells 1-4, baseline ~y70: 'Web Devs are' white Inter-900 then 'BACK' red caps. Centered a sketched smiling/smug wojak in a blue hoodie, arms crossed, face center ~x640,y400, torso filling ~35% of frame (cells 6,7,10,11). Surrounding logos: cyan React atom mid-left cell 5 ~x180,y330; orange spiky/Svelte-style burst top-center-right cell 3 ~x720,y150; white stylized 'N' (Next.js) bottom-right cell 16 ~x1180,y480. Faint teal graph grid.",
     "why_it_works": "relaxed confident body language plus an upbeat red 'BACK' flips the usual doom-framing into a triumphant comeback hook",
     "mimic_for": "an optimistic comeback/resurgence beat about a domain or stack regaining relevance",
-    "title": "Why Web Dev has SUDDENLY EXPLODED"
+    "title": "Why Web Dev has SUDDENLY EXPLODED",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "shade-of-code-job-crisis-hooded-figure-search",
@@ -157,6 +171,8 @@
     "layout_map": "Very dark near-black background. Two-word headline across the top spanning cells 1-3, baseline ~y70: 'JOB' white Inter-900 caps then 'CRISIS' red caps. Centered-bottom a small lone figure in a brown/khaki hood with a pale anxious face, face center ~x640,y360, occupying ~20% of frame (cells 10,11). Behind it large faint ghosted Google-colored letters ('N','G' fragments, dim red/yellow/green) span the lower band as decorative texture, around y280-y520. Sparse, mostly empty dark grid emphasizing isolation.",
     "why_it_works": "a small isolated figure swallowed by dark negative space plus the red 'CRISIS' word reads as dread and scarcity",
     "mimic_for": "a doom/scarcity beat about a shrinking job market or an existential career threat",
-    "title": "Why Junior Devs are DOOMED"
+    "title": "Why Junior Devs are DOOMED",
+    "title_shape": "panic-threat",
+    "title_pattern": "concrete-noun-verb"
   }
 ]

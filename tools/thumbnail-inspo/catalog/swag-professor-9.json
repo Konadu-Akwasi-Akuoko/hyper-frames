@@ -16,7 +16,9 @@
     "layout_map": "8 large circular icon badges on a near-white background, arranged 4 columns x 2 rows; top row centers approx x160/x480/x800/x1120 at y~110 (cells 1,2,3,4), bottom row same x columns at y~440 (cells 9,10,11,12). Each circle is ~150px diameter, vividly colored (blue cylinder=Relational, green=NoSQL, orange key=Key-Value, purple table=Column Base; cyan node graph=Graph, red clock=Time Series, teal stacked=Distributed). A small black caption label in 2 lines sits directly beneath each circle (e.g. 'Relational/database' baseline ~y200 top row, ~y530 bottom row). No headline overlay, no face, no number badge; bottom-right cell (cells 8/16 area) left empty. Background is flat off-white with faint grid texture.",
     "why_it_works": "the grid of 7-8 distinct colorful logos signals comprehensive coverage and lets the viewer spot a familiar icon, pulling the click on recognition + completeness",
     "mimic_for": "a roundup/survey video that enumerates every variant of a category (every type of X explained), where many distinct option-icons beat a single hero",
-    "title": "Every Type of Database Explained in 5 Minutes!"
+    "title": "Every Type of Database Explained in 5 Minutes!",
+    "title_shape": "every-x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "swag-professor-language-logo-grid-8up",
@@ -35,7 +37,9 @@
     "layout_map": "8 circular brand-logo badges on a dark/black background, 4 columns x 2 rows; top row centers x~160/x480/x800/x1120 at y~110 (cells 1-4: Python, JavaScript yellow JS, Java, C# purple), bottom row same columns at y~440 (cells 9-12: C++ blue, Golang cyan, Rust orange gear, TypeScript blue TS). Circles ~150px diameter with the official logo filling each. White caption label centered beneath each circle in one line ('Python','JavaScript','Java','C#' baseline ~y200; 'C++','Golang','Rust','TypeScript' ~y530). No headline text, no face. Dark background makes the saturated logo circles glow/pop.",
     "why_it_works": "high-recognition brand logos on dark ground each act as a hook; the viewer scans for their language and clicks to see where it ranks/fits, with the dark backdrop maximizing icon contrast",
     "mimic_for": "an enumerate-the-options explainer covering many well-known named tools/languages where each official logo is itself a scroll-stopper",
-    "title": "Every Programming Language Explained in 5 Minutes!"
+    "title": "Every Programming Language Explained in 5 Minutes!",
+    "title_shape": "every-x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "swag-professor-database-brands-6up",
@@ -54,7 +58,9 @@
     "layout_map": "6 circular brand-logo badges on a dark background, arranged 3 columns x 2 rows (wider 3-up spacing); top row centers x~310/x640/x970 at y~140 (cells 2,3 area: postgresql blue elephant, mongodb green leaf, mysql blue/orange dolphin), bottom row same columns at y~470 (cells 9-10 area: neo4j green, couchDB red, cassandra blue eye). Circles ~150px diameter. Lowercase white caption beneath each ('postgresql','mongodb','mysql' baseline ~y230; 'neo4j','couchDB','cassandra' ~y560). No headline, no face. Dark background; saturated logos glow against it. Note this is the 3x2 variant of the same 8-up template.",
     "why_it_works": "named real products (vs abstract categories) raise the personal stakes \u2014 viewers click to check their tool of choice; the 3x2 layout enlarges each logo for stronger recognition",
     "mimic_for": "a comparison/roundup of specific named real-world tools or products (not abstract categories) where brand recognition drives the click",
-    "title": "Every Database Explained in 5 Minutes!"
+    "title": "Every Database Explained in 5 Minutes!",
+    "title_shape": "every-x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "swag-professor-mobile-framework-logo-grid-8up",
@@ -73,7 +79,9 @@
     "layout_map": "8 circular brand-logo badges on a dark background, 4 columns x 2 rows; top row centers x~160/x480/x800/x1120 at y~110 (cells 1-4: Flutter blue, React Native cyan atom, Swift orange, Kotlin gradient), bottom row same columns at y~440 (cells 9-12: Xamarin blue X, Ionic blue ring, SwiftUI, Expo arrow). Circles ~150px diameter. White single-line caption centered beneath each ('Flutter','React Native','Swift','Kotlin' baseline ~y200; 'Xamarin','Ionic','SwiftUI','Expo' ~y530). No headline overlay, no face. Dark background for logo glow/contrast.",
     "why_it_works": "a full 2x4 wall of framework logos promises exhaustive coverage and triggers the viewer's hunt for their preferred or unfamiliar option, both of which pull the click",
     "mimic_for": "an explainer that catalogs every framework/library in a domain, where the breadth of named options is the appeal",
-    "title": "Every Mobile App Framework Explained in 5 Minutes!"
+    "title": "Every Mobile App Framework Explained in 5 Minutes!",
+    "title_shape": "every-x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "swag-professor-package-manager-logo-grid-8up",
@@ -92,7 +100,9 @@
     "layout_map": "8 circular icon badges on a near-white/light background, 4 columns x 2 rows; top row centers x~160/x480/x800/x1120 at y~110 (cells 1-4: npm red box, yarn blue cat, pnpm purple blocks, pip python), bottom row same columns at y~440 (cells 9-12: homebrew beer mug, maven feather, apt Debian red spiral, poetry green). Circles ~150px diameter. Black lowercase caption centered beneath each ('npm','yarn','pnpm','pip' baseline ~y200; 'homebrew','maven','apt','poetry' ~y530). No headline, no face. Light off-white background; npm red and apt red anchor the palette.",
     "why_it_works": "lining up eight package-manager icons signals a complete comparison and lets devs spot the one they use vs the ones they don't, driving curiosity clicks",
     "mimic_for": "a comprehensive tool roundup where the value proposition is 'all of them, compared in one place' and each tool's icon is recognizable",
-    "title": "Every Package Manager Explained in 6 Minutes!"
+    "title": "Every Package Manager Explained in 6 Minutes!",
+    "title_shape": "every-x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "swag-professor-data-structure-diagram-grid-8up",
@@ -111,6 +121,8 @@
     "layout_map": "8 circular badges each containing a mini schematic diagram (not brand logos) on a near-white background, 4 columns x 2 rows; top row centers x~160/x480/x800/x1120 at y~110 (cells 1-4: Array purple boxes 0-4, Linked List green chained arrows, Stack blue layers, Queue orange cells with arrows), bottom row same columns at y~440 (cells 9-12: Hash Table green key/value table, Tree red node tree, Heap blue node tree, Graph purple node-edge mesh). Circles ~150px diameter with a small colored diagram inside each. Black caption centered beneath each ('Array','Linked List','Stack','Queue' baseline ~y200; 'Hash Table','Tree','Heap','Graph' ~y530). No headline, no face. Off-white background.",
     "why_it_works": "the mini-diagrams inside each circle preview the concept visually, signaling a digestible illustrated explainer and rewarding a scan of the abstract structures",
     "mimic_for": "an explainer cataloging abstract concepts (not branded products) where a small custom diagram per item visually previews each one",
-    "title": "Every Data Structure Explained in 4 Minutes!"
+    "title": "Every Data Structure Explained in 4 Minutes!",
+    "title_shape": "every-x-explained",
+    "title_pattern": "concrete-noun-verb"
   }
 ]

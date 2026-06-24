@@ -16,7 +16,9 @@
     "layout_map": "White background. Headline 'Design / a proximity / service' in heavy black sans, left-justified, 3 stacked rows in cells 1/5/9, left edge marked by a thin teal vertical accent bar (~x12), baselines ~y45/y90/y135; only the left third holds text. Right two-thirds is the diagram: a single rounded-rect root node (a teal-outlined grid/quadtree glyph) centered top in cell 3 (~x230,y40), with teal arrows fanning DOWN to a row of 4 child nodes across cells 10-12 (~y140), each a rounded rect with a small grid glyph, then arrows down again to a bottom row of 3 nodes across cells 14-16 (~y260). All nodes teal-outlined on white, sparse. No numbers or badges.",
     "why_it_works": "the recursive branching tree signals 'real architecture, properly decomposed' and the clean whitespace reads as authoritative engineering",
     "mimic_for": "a hierarchical decomposition or tree/quadtree structure being explained from a root concept down",
-    "title": "FAANG System Design Interview: Design A Location Based Service (Yelp, Google Places)"
+    "title": "FAANG System Design Interview: Design A Location Based Service (Yelp, Google Places)",
+    "title_shape": "what-is-x",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-http-versions-four-column-vs",
@@ -35,7 +37,9 @@
     "layout_map": "Dark slate/navy background. Headline 'HTTP/1 vs HTTP/2 vs HTTP/3' in white sans across the very top spanning cells 1-4, baseline ~y30, with the version numbers reading as the key terms. Below, the frame splits into 4 vertical columns each with a cyan section header on a colored band: 'HTTP 1.0' (cell 1, ~x40), 'HTTP 1.1' (cell 2, ~x340), 'HTTP 2.0' (cell 3, ~x640), 'HTTP 3.0 on QUIC' (cell 4, ~x960, header tinted cyan). Each column holds a small Client/Server sequence diagram with handshake arrows and tiny labels (TCP SYN, HTTP Request/Response) filling cells 5-16. Dense technical detail, low-readability by design \u2014 the column COUNT and headers carry the message.",
     "why_it_works": "three (then four) labeled columns instantly signal an evolution/comparison and the dark technical diagrams promise depth for engineers",
     "mimic_for": "comparing 3-4 versions or generations of the same technology side by side",
-    "title": "HTTP 1 Vs HTTP 2 Vs HTTP 3!"
+    "title": "HTTP 1 Vs HTTP 2 Vs HTTP 3!",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-graphql-flow-client-server",
@@ -54,7 +58,9 @@
     "layout_map": "Top ~22% is a black band with headline 'What Is GraphQL?' in white sans, left-justified after a thin yellow accent bar (~x20), baseline ~y50, spanning cells 1-3. Below on white: three zones. LEFT \u2014 a 'Client' card (mint-green header) in cells 5/9/13 (~x40-180) holding stacked device glyphs (browser, phone, desktop). CENTER \u2014 a large amber/yellow rounded panel labeled 'GraphQL' (cell 7, ~x340-560) containing a node graph of three orange circles 'User'/'Order'/'Order' linked into a tree (~x420,y190 center). RIGHT \u2014 a 'Microservices' card (blue header) in cells 8/12/16 (~x800-1180) listing 'User Service' and 'Order Service' rounded rects. Black 'Request' arrow flows left-to-center (~y180), 'Response' arrow center-to-left (~y260), and small arrows center-to-right. Amber panel is the visual hero.",
     "why_it_works": "the glowing central graph node visually IS the concept (graph queries) sitting literally between client and services, making the abstraction concrete",
     "mimic_for": "explaining a middleware/gateway layer that sits between a client and backend services",
-    "title": "What Is GraphQL? REST vs. GraphQL"
+    "title": "What Is GraphQL? REST vs. GraphQL",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-7-ways-10x-api-seven-columns",
@@ -73,7 +79,9 @@
     "layout_map": "White background. Headline '7 Ways to 10x Your API Performance' in heavy black sans across the top spanning cells 1-4, left-justified after a thin teal accent bar (~x16), baseline ~y32; the numeral '7' and '10x' are the click hooks. Below, a single horizontal strip of 7 equal columns each with a small label header in dark text and a mini diagram beneath: 'Caching' (cell 5, ~x60), 'Connection Pool' (~x230, with a yellow-highlighted 'connection pool' sub-box), 'Avoid N+1 Problem' (~x400), 'Pagination' (~x560), 'JSON serializers' (~x720, yellow JSON tag), 'Payload Compression' (~x900), 'Asynchronous Logging' (cell 8, ~x1080, Load/Buffer/Flush stack). Icons are tiny pastel server/db/queue glyphs filling cells 9-16. Column count = the '7'.",
     "why_it_works": "the explicit count in the headline matched by exactly that many visible columns promises a complete, listable payoff (a checklist you can screenshot)",
     "mimic_for": "a numbered list video where the count itself is the hook ('7 ways', '5 tricks') laid out as parallel tiles",
-    "title": "Top 7 Ways to 10x Your API Performance"
+    "title": "Top 7 Ways to 10x Your API Performance",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-process-vs-thread-mirror-vs-bolt",
@@ -93,7 +101,9 @@
     "layout_map": "Top ~18% black band with headline 'Process vs. Thread' in white sans, left-justified after a thin yellow accent bar (~x18), baseline ~y40. Below on a teal/mint field, the frame is split into two near-identical halves. LEFT half (cells 5-6,9-10,13-14) and RIGHT half (cells 7-8,11-12,15-16) each show a memory-block diagram: yellow rounded rects 'code / data / files' in a top row (~y90), 'registers' + 'stack' boxes (~y150), and curly-brace 'thread' groupings (~y230). Left shows ONE thread, right shows MULTIPLE stack columns (the distinction). Dead-center a glowing yellow-rimmed circular 'VS' bolt badge (~x320,y150, cell 11/6 boundary) sits on the split seam as the focal point.",
     "why_it_works": "the mirrored-but-not-identical halves invite a spot-the-difference compare, and the centered glowing VS badge is the universal 'two things in conflict' scroll-stopper",
     "mimic_for": "two closely-related concepts contrasted where the structures look similar but differ in one key way",
-    "title": "FANG Interview Question | Process vs Thread"
+    "title": "FANG Interview Question | Process vs Thread",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-8-concepts-must-know-tile-grid",
@@ -112,6 +122,8 @@
     "layout_map": "Dark navy/slate background. Headline '8 System Design Concepts You MUST Know' in white sans across the top spanning cells 1-4, roughly centered, baseline ~y28; the '8' and 'MUST' are the hook. Below, an 8-tile grid arranged 4 columns x 2 rows, each tile a small captioned diagram. TOP ROW: 'Use caching for faster reads' (cell 5, ~x40,y110), 'Use database indexing' (~x350), 'Implement redundancy and failover' (~x650), 'Use load balancing / replication' (cell 8, ~x960). BOTTOM ROW: 'Use proper indexes' (cell 13, ~x40,y280), 'Use sharding to horizontally scale' (~x350), 'Use centralized logging solution' (~x650), 'Use Block Storage and Object Storage' + 'Use CDN to reduce latency' (cell 16, ~x960). Each tile has tiny cyan/teal/orange server-db-queue glyphs and a small caption. Cyan accents on dark; the tile COUNT delivers the '8'.",
     "why_it_works": "'MUST Know' + a hard number creates fear-of-missing-out, and eight distinct labeled tiles promise a dense, save-worthy cheat sheet",
     "mimic_for": "a roundup of N essential concepts presented as a save-able grid of mini-explainers",
-    "title": "8 Most Important System Design Concepts You Should Know"
+    "title": "8 Most Important System Design Concepts You Should Know",
+    "title_shape": "listicle-n",
+    "title_pattern": "identity-status"
   }
 ]

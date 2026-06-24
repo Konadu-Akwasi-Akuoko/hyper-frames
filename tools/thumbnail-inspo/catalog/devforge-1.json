@@ -17,7 +17,9 @@
     "layout_map": "Near-black dark-grid background spanning the full frame. Headline 'WHAT HAPPENED?' in white Inter-style bold ALL-CAPS across the top band, cells 1-4, baseline ~y70, spanning x40-x1240 nearly edge to edge. Hero object is a cracked/exploding white robot head with X-shaped dead eyes, centered cells 6-7-10-11, head center ~x600,y400, filling roughly the lower-center 45% of the frame with debris fragments flying off. Cluster of small glowing tech/language logos (Python, JS, npm, etc.) orbit the robot at cells 9, 11, 12, 14, 16, ~x250-x1100 in the y330-y560 band as accent confetti. No stat badge. Cyan glow bleeds off the robot against the dark substrate.",
     "why_it_works": "a recognizable 'AI/automation' avatar literally falling apart pairs with a bare question to force the curiosity gap",
     "mimic_for": "a hyped technology or tool visibly failing or breaking down; a 'what went wrong' reveal beat",
-    "title": "AI Was Supposed to Replace Developers... Until It Couldn't"
+    "title": "AI Was Supposed to Replace Developers... Until It Couldn't",
+    "title_shape": "curiosity-reversal",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "devforge-the-vibe-trap-cage",
@@ -37,7 +39,9 @@
     "layout_map": "Dark near-black gridded background with faint ghost human silhouettes outlined at far left (cell 13) and far right (cell 16). Headline 'THE VIBE TRAP' in white bold ALL-CAPS across the top, cells 1-4, baseline ~y75, spanning ~x60-x1180. Hero object is a purple/violet neon wireframe cube cage with crackling electric edges, centered cells 6-7-10-11, cage center ~x600,y410, occupying about 40% of the frame in the center-lower zone. A small glowing figure and colored orbs sit trapped inside the cage. No stat badge. Purple electric glow radiates against the dark substrate.",
     "why_it_works": "the metaphor of being literally caged by a trendy practice creates dread and curiosity in one image",
     "mimic_for": "a tempting shortcut or trend framed as a trap; warning against a seductive-but-dangerous approach",
-    "title": "Vibe Coding is a Trap (What Senior Devs See That You Don't)"
+    "title": "Vibe Coding is a Trap (What Senior Devs See That You Don't)",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "devforge-ai-proof-skills-thinker",
@@ -57,7 +61,9 @@
     "layout_map": "Dark slate gridded background full frame. Headline 'AI-PROOF SKILLS' in white bold ALL-CAPS across the top, cells 1-4, baseline ~y75, spanning ~x50-x1190. Center-bottom holds a real man in glasses and a light kurta in a thinking/chin-touch pose, head ~x640,y430, occupying cells 10-11 and lower center, about 30% of frame. Ring of hand-drawn cyan/white code icons (</> code, cloud, brain, gears, database, htva tag) arranged around him at cells 9, 10, 12, 13, 16. A bold RED X strike crosses out the '</>' code-bracket icon at cell 7, ~x560,y210 \u2014 the single accent mark. Cyan line-art tone throughout.",
     "why_it_works": "the red X negating one skill while a human ponders sells 'which skills survive AI' as a sorting puzzle",
     "mimic_for": "a skills-that-survive / what-still-matters list; ruling one option out among several",
-    "title": "AI Replaced 80% of Coding, Only These 5 Skills Are Left"
+    "title": "AI Replaced 80% of Coding, Only These 5 Skills Are Left",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "devforge-no-bullsht-guide-steps",
@@ -77,7 +83,9 @@
     "layout_map": "Flat saturated orange/yellow background, no photo. Headline stacked across the top two-thirds: 'NO' in purple at cell 1 (~x60,y95) abutting 'BULLSH*T' in white ALL-CAPS cells 2-4 (~x300-x1230, baseline ~y110), then 'GUIDE' in white below at cells 5-6 (~x60,y230). All Inter-style heavy caps. Lower third holds a roadmap of three rounded purple buttons connected by dashed white arrows: 'Step 1' at cell 14 (~x180,y560), 'Step 2' at cell 15 (~x600,y560), 'Step ??' at cell 16 (~x1040,y560), arrows curving between them left to right. The trailing 'Step ??' is the curiosity payload.",
     "why_it_works": "the visible step-by-step path with a question-mark final step promises a clear roadmap while hiding the destination",
     "mimic_for": "a step-by-step roadmap or guide reveal; a learning path where the endpoint is the hook",
-    "title": "The Web Dev Roadmap I Wish I Had (No One Tells You This!)"
+    "title": "The Web Dev Roadmap I Wish I Had (No One Tells You This!)",
+    "title_shape": "open-why-how",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "devforge-react-3-minutes-bolts",
@@ -97,7 +105,9 @@
     "layout_map": "Dark teal circuit-board grid background full frame. Hero is the cyan React atom logo (orbital ellipses + nucleus) centered cells 6-7-10-11, center ~x640,y320, glowing and filling about 40% of frame. Two white lightning bolts strike diagonally inward from the top corners, one at cell 2 (~x430,y90) and one at cell 4 (~x980,y90). Bottom banner 'MINUTES' word in chunky lime-green outlined ALL-CAPS spanning cells 13-16, baseline ~y640, with a large lime '3' numeral at far left cell 13 (~x90,y600) as the giant-number tell. No face. High-contrast neon on dark.",
     "why_it_works": "the instantly recognizable React logo plus a speed promise ('3 minutes') signals a fast, complete tutorial",
     "mimic_for": "a fast tutorial on one named technology; a 'learn X in N minutes' speed-promise beat",
-    "title": "Want to MASTER React JS? Watch This Now"
+    "title": "Want to MASTER React JS? Watch This Now",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "devforge-devs-are-done-tombstone",
@@ -117,7 +127,9 @@
     "layout_map": "Dark gridded background full frame. Headline 'DEVS ARE DONE' in white bold ALL-CAPS across the top, cells 1-4, baseline ~y70, spanning ~x55-x1175. Hero object is a grey RIP tombstone centered cells 6-7-10-11, center ~x620,y400, filling about 40% of frame, with a small laptop showing a red error/X embedded in its face and green vines/ivy creeping up both sides. A row of small dying tech-stack logos (HTML, JS, CSS, React, etc.) litters the ground line at the bottom, cells 14-16, ~x120-x1130,y560. Green vine accents against the dark substrate.",
     "why_it_works": "the gravestone-for-a-profession metaphor is pure death-of-X dread, the strongest doom framing in the niche",
     "mimic_for": "a 'X is dead' obituary framing; declaring an old skill or role obsolete",
-    "title": "Web Development is Dead... And That's Your Opportunity"
+    "title": "Web Development is Dead... And That's Your Opportunity",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "devforge-tech-crashed-salary-fire",
@@ -137,7 +149,9 @@
     "layout_map": "Dark gridded background full frame. Headline 'TECH CRASHED' in white bold ALL-CAPS across the top, cells 1-4, baseline ~y70, spanning ~x60-x1130 with 'CRASHED' tinting toward red. Center scene on a cracked grey plinth, cells 10-11, center ~x600,y420: a burning wooden '$200k SALARY' signboard engulfed in orange flames at left (~x420,y400), a small figure beside it, and a laptop showing a red declining/X graph at right (~x780,y400). Faint red/grey code glyphs scatter behind. Debris and cracks ring the base, cells 14-16. Orange fire is the dominant accent against the dark substrate.",
     "why_it_works": "burning money plus a crashing salary graph turns an abstract market story into visceral loss",
     "mimic_for": "a salary/market collapse or scary financial stat; the value of something burning down",
-    "title": "Why $200k Developer Salaries Are Vanishing (And Where They're Going)"
+    "title": "Why $200k Developer Salaries Are Vanishing (And Where They're Going)",
+    "title_shape": "panic-threat",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "devforge-css-too-easy-shield",
@@ -157,6 +171,8 @@
     "layout_map": "Dark blue circuit/code background full frame with a bright blue glow vignette. Hero is the CSS3 shield badge (blue with the '3') on the LEFT, cells 5-6-9-10, center ~x330,y360, glowing intensely and filling about 35% of the left half. Headline 'TOO EASY!' stacked on the RIGHT in white bold ALL-CAPS: 'TOO' cell 3 (~x830,y210), 'EASY!' cells 7-8 (~x800,y360). A bold RED underline bar sits beneath 'EASY!' spanning cells 15-16, ~x780-x1180,y480, as the accent mark. No face. Cool blue neon-on-dark with one red accent stroke.",
     "why_it_works": "a single bold logo plus a dismissive two-word claim sells an intimidating topic as trivially simple",
     "mimic_for": "a 'this topic is easier than you think' beat; one named technology demystified",
-    "title": "Learn CSS in 5 Minutes (Seriously)"
+    "title": "Learn CSS in 5 Minutes (Seriously)",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   }
 ]

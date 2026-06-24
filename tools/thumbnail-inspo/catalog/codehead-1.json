@@ -17,7 +17,9 @@
     "layout_map": "Dark graph-paper background. A crude white line-art crying wojak (stressed dev at a desktop monitor) fills the lower-left quadrant, cells 9-10-13-14, head center ~x150,y230, body+monitor spanning to ~x300. Headline is two rows top-right area: row 1 white 'How is this' caps-mixed baseline ~y55 spanning cells 1-2-3; row 2 large bold red 'JUNIOR..' baseline ~y125 in cells 6-7, the red word is the accent. Three tech logos (blue bull/CockroachDB, magenta hexagon/GraphQL-like, blue Kubernetes helm) sit in a row across cells 11-12, center ~x800-1000,y310. No badge or number. Devices: the shocked/crying face + the red accent word.",
     "why_it_works": "The defeated face plus the red 'JUNIOR' frames an absurd skill expectation, baiting devs who feel the same overwhelm",
     "mimic_for": "an overwhelming expectation or skill bar that a beginner is unfairly held to",
-    "title": "The RIDICULOUS Expectations For Junior Devs..."
+    "title": "The RIDICULOUS Expectations For Junior Devs...",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "codehead-brain-xray-become-a-freak",
@@ -37,7 +39,9 @@
     "layout_map": "Dark graph-paper background. A blue medical X-ray of a human head in profile fills center, cells 6-7-10-11-14-15, skull center ~x560,y360. A hand-drawn red ellipse rings the brain region, center ~x640,y150, cells 7. Headline two rows across the top: row 1 white 'Become a' caps-mixed baseline ~y50 cells 1-2-3; row 2 large red 'FREAK' baseline ~y50 cell 4 right side, the red word is accent (right-aligned, sharing the top line). Bottom-left a blue Azure/VS-style logo at ~x120,y150 cell 5. Right side a black Linux Tux penguin at ~x1080,y200 cell 8, with a small arrow pointing to it. Devices: the red circle marking the brain + the glow on logos.",
     "why_it_works": "X-ray-the-brain visual literalizes 'unlock your potential' while the red circle directs the eye to the payoff",
     "mimic_for": "leveling up your mind / unlocking hidden capability or potential",
-    "title": "How to reach your potential as a programmer"
+    "title": "How to reach your potential as a programmer",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "codehead-clown-the-worst-platform-linkedin",
@@ -57,7 +61,9 @@
     "layout_map": "Dark graph-paper background. A crude blue line-art clown (sad face, frizzy hair, red nose, frowning) fills the left half, cells 1-5-9-13 through 6-10-14, head center ~x250,y330. Headline upper-right two rows: row 1 white 'The' + larger 'WORST' baseline ~y95 across cells 6-7-8, 'WORST' the emphasis word; row 2 white 'Platform' baseline ~y150 cell 7. The blue LinkedIn 'in' square logo sits lower-right, center ~x1080,y330, cell 12-16. No number/badge. Devices: the sad clown reaction face + glow accent on logo. Accent hue is LinkedIn blue.",
     "why_it_works": "Branding LinkedIn 'the WORST' with a clown avatar is a contrarian, cringe-bait take devs love to click",
     "mimic_for": "trashing a popular platform/tool as overrated or embarrassing",
-    "title": "How LinkedIn Became The CRINGIEST Professional Platform"
+    "title": "How LinkedIn Became The CRINGIEST Professional Platform",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "codehead-arch-belly-ide-logo-grid-fire",
@@ -77,7 +83,9 @@
     "layout_map": "Dark graph-paper background with orange FLAME graphics burning up both left and right edges (cells 5-9-13 and 8-12-16). A photo-real obese man in a blue 'Arch Linux' t-shirt with a pale mask face sits dead center, cells 6-7-10-11, body center ~x560,y370, filling the lower-middle. Six editor/IDE logos ring him in the corners and sides: Vim (green, top-left ~x230,y100), VS Code (blue, top-center ~x560,y80), Emacs (purple circle, top-right ~x1080,y110), IntelliJ (top-left lower ~x120,y280), Sublime/other (right ~x1130,y360). No headline text in image. No number. Devices: danger-red flames + glow on the logos. Accent is the Arch/VS-Code blue.",
     "why_it_works": "The 'your editor = this stereotype' meme plus the flaming roast tone bait every developer's tribal IDE loyalty",
     "mimic_for": "a roast/meme that maps tools to stereotypes or stirs a tribal tool war",
-    "title": "What Does Your IDE Say About You (Part 1)"
+    "title": "What Does Your IDE Say About You (Part 1)",
+    "title_shape": "meme-skit",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "codehead-pope-spring-boot-the-best",
@@ -96,7 +104,9 @@
     "layout_map": "Dark graph-paper background. A photo of the Pope in white vestments occupies the right half, cells 7-8-11-12-15-16, raising both hands toward center ~x780,y260. The green Spring Boot leaf logo hovers as the held object, center ~x560,y90, cell 7, glowing. Headline two rows on the left: row 1 bold white 'THE' baseline ~y90 cell 1-5; row 2 bold green/lime 'BEST' baseline ~y170 cells 5-9, the lime word is accent. No number. Devices: glow-accent on the held logo. Accent is Spring lime green.",
     "why_it_works": "The sacred-relic gag elevates a niche framework to holy status, an absurd endorsement that stops the scroll",
     "mimic_for": "an over-the-top endorsement crowning one tool/framework as supreme",
-    "title": "Why You SHOULD Learn Spring Boot"
+    "title": "Why You SHOULD Learn Spring Boot",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "codehead-n8n-workflow-node-2-minutes",
@@ -116,7 +126,9 @@
     "layout_map": "Dark graph-paper background. A top pink/red banner strip spans the full width across cells 1-4, holding a giant white '2' at ~x250,y45 followed by white caps 'MINUTES OF' to ~x900. A large pink node-and-pipe workflow diagram (n8n branching graph: chained circles splitting into two branches) fills the center-lower area, cells 10-11 spanning ~x350-x950, y180-y260. A small white line-art wojak face peeks from the bottom-right corner, cell 16, ~x1180,y290, hand-pointing left into frame. Devices: the giant '2' number + the small reaction face. Accent is the n8n pink/magenta.",
     "why_it_works": "The '2 MINUTES OF' time promise plus a literal workflow diagram signals a fast, concrete explainer payoff",
     "mimic_for": "a fast explainer of a tool/concept that hinges on a flow or pipeline diagram",
-    "title": "n8n Explained In 2 Minutes"
+    "title": "n8n Explained In 2 Minutes",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "codehead-white-rabbit-backend-roadmap-tiers",
@@ -136,7 +148,9 @@
     "layout_map": "Dark tech background. A vertical stack of ~5 rounded language pills runs down the far left, cells 1-5-9, each a colored chip with a logo+label (Java, Python, JavaScript, C#, Go, Rust) centered ~x90, from y50 down to y330. A teal/cyan glowing 'Backend Development' two-line headline sits center-left over a translucent panel, baseline rows ~y90 and ~y130, cells 6-7, cyan accent. A lower 'Databases & Data Management' chip sits center-bottom ~x560,y290 cell 11. A photoreal white rabbit in a waistcoat holding a gold pocket watch fills the right third, cells 8-12-16, rabbit head ~x1050,y150, pocket watch ~x1140,y260. Devices: glowing panel text + the rabbit/watch hand-point cue. Accent cyan.",
     "why_it_works": "The curated stack of backend skills plus the 'down the rabbit hole' visual promises a complete ordered learning map",
     "mimic_for": "a ranked or ordered list of skills/concepts that form a learning roadmap",
-    "title": "10 Concepts EVERY Backend Dev Should Know"
+    "title": "10 Concepts EVERY Backend Dev Should Know",
+    "title_shape": "listicle-n",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "codehead-npc-ai-engineer-career-question",
@@ -155,6 +169,8 @@
     "layout_map": "Dark graph-paper background. A line-art NPC/wojak dev in pink floral pajamas sits at the lower-left holding a coffee mug, cells 5-9-13 through 6-10, head center ~x220,y150, body to ~y330. Headline two rows top-center/right: row 1 white 'AI Engineering' baseline ~y70 cells 2-3; row 2 white 'Career ?' baseline ~y150 cells 6-7-8, the trailing '?' is the hook. The orange TensorFlow logo sits center-bottom ~x780,y330 cell 11, the orange/red PyTorch flame logo right of it ~x900,y330 cell 12. Background is plain dark grid, no badge/number. Devices: subtle glow on logos; headline is white (no colored accent word). Accent reads as white-on-dark.",
     "why_it_works": "The deadpan NPC avatar plus the open 'Career?' question taps career anxiety and FOMO about the AI gold rush",
     "mimic_for": "a should-you-do-this career-path question weighing a hyped field",
-    "title": "Should YOU Become An AI Engineer?"
+    "title": "Should YOU Become An AI Engineer?",
+    "title_shape": "open-why-how",
+    "title_pattern": "identity-status"
   }
 ]

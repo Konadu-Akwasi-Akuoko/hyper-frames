@@ -17,7 +17,9 @@
     "layout_map": "Top ~18% (cells 1-4, y0-130) is a near-black header bar with a thin teal vertical accent bar at far left x~20 and white title-case headline 'How ChatGPT Works Technically' baseline ~y95 spanning cells 1-4; below it a light mint/teal diagram canvas fills the rest. A circular ChatGPT/OpenAI logo glyph sits left-center cell 5 ~x55,y330. Two horizontal pipeline rows: top row 'Stage 1 Pre-training' (cell 5) feeding white rounded boxes 'two plus two is' (cell 6 ~x270), 'GPT 3.5' (cell 7 ~x500), 'equal to four' (cell 8 ~x740); bottom row 'Stage 2 Fine-tuning' (cell 13) feeding 'GPT 3.5' -> 'Finetuned GPT' -> 'Reward model' across cells 14-16 with an orange 'ChatGPT Model' box at far right ~x780,y360, plus small colored sub-nodes (Demonstration data, RM, PPO) on row 2. Background is flat pale mint; arrows connect boxes left-to-right. No face, no big number; the device is the dark-header + neon-accent template framing a clean diagram.",
     "why_it_works": "the dark header bar isolates a plain-language promise above a credible, real architecture diagram, signaling depth without clutter",
     "mimic_for": "an explainer that walks through a multi-stage system or pipeline end to end",
-    "title": "How ChatGPT Works Technically | ChatGPT Architecture"
+    "title": "How ChatGPT Works Technically | ChatGPT Architecture",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-microservice-architecture-diagram",
@@ -37,7 +39,9 @@
     "layout_map": "Dark header bar top ~18% (cells 1-4, y0-120) with teal vertical accent bar far left x~18 and white headline 'Microservice Architecture' baseline ~y90 spanning cells 1-3. Below, a light mint canvas holds a left-to-right service map: a 'Client' device stack at far left cell 5 ~x60,y260; 'Identity Provider' box cell 6 ~x300,y230 with a small cyan/orange routing glyph above it cell 7; a 'Management' box top-right cell 8 ~x720,y200. Center spine: 'API Gateway' box cell 10 ~x300,y360 feeding a 'Microservices' cluster (cells 11-12) drawn as orange-tabbed service cards labeled 'Domain A' and 'Domain B' (cells 11/15), with two blue database cylinders 'DB A' and 'DB B' at far right cells 12/16 ~x780. A 'CDN' box sits lower-left cell 14 ~x300,y460. Background flat pale mint with thin connector arrows. No face, no stat number; device is the dark-header template plus glowing teal node outlines.",
     "why_it_works": "showing the entire system map at once promises a complete mental model, and the clean template keeps a busy diagram legible at thumbnail scale",
     "mimic_for": "an overview video mapping all the moving parts of a system or architecture",
-    "title": "What Are Microservices Really All About? (And When Not To Use It)"
+    "title": "What Are Microservices Really All About? (And When Not To Use It)",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-sso-login-flow-diagram",
@@ -57,7 +61,9 @@
     "layout_map": "Dark header bar top ~18% (cells 1-4) with teal accent bar far left x~18 and white question headline 'How Does Single Sign-On Work?' baseline ~y90 spanning cells 1-4. Light mint canvas below shows a numbered sequence flow (steps 1-8 as small circled numbers along arrows). Left: a phone/login-screen mockup cell 5 ~x60,y340 and a user-avatar icon cell 9 ~x90,y420. Center-top: a yellow-bordered 'Workday Login Page' card with the green Workday wordmark logo cell 11 ~x430,y230, and a 'Service Provider' box with avatar cell 12 ~x720,y230. Bottom-center: an 'Identity Provider' box cell 14 ~x430,y440 carrying a row of real brand logos \u2014 Okta, Auth0, OneLogin \u2014 as a logo strip ~x500-780,y440. Curved numbered arrows connect screen -> IdP -> SP. Background flat pale mint. No face; device is the recognizable-logo row plus the dark-header template.",
     "why_it_works": "real product logos (Okta/Auth0/Workday) give instant credibility and recognition, and numbered arrows promise a clear step-by-step",
     "mimic_for": "explaining an authentication or integration flow where naming the actual tools/brands adds trust",
-    "title": "What Is Single Sign-on (SSO)? How It Works"
+    "title": "What Is Single Sign-on (SSO)? How It Works",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-git-commands-flow-diagram",
@@ -77,7 +83,9 @@
     "layout_map": "Dark header bar top ~18% (cells 1-4) with teal vertical accent bar far left x~18 and white headline 'How Git Actually Works' baseline ~y90 spanning cells 1-3. Light mint canvas below holds four labeled column zones across the top as database/box icons: 'Working Directory' (orange box, cell 5 ~x120,y180), 'Staging Area' (green, cell 6 ~x330), 'Local Repo' (purple, cell 7 ~x560), 'Remote Repo' (blue cylinder, cell 8 ~x790). Beneath them a stack of colored directional arrow-bars each labeled with a git command: 'git add' (cell 6), 'git commit' (cell 11), 'git push' (cell 7-8), 'git merge', 'git fetch', a long orange 'git pull' bar spanning cells 14-15, 'git checkout' (cell 14), 'git clone' (cell 16) \u2014 arrows point left or right to show which zones each command connects. Small 'Local'/'Remote' labels at the bottom divide the space. Background flat pale mint. No face, no stat; device is the dark-header template plus color-coded directional arrow bars.",
     "why_it_works": "compressing a confusing command set into one color-coded directional map promises clarity on something viewers find muddy",
     "mimic_for": "a cheat-sheet style video that organizes many commands/operations into a single visual map",
-    "title": "How Git Works: Explained in 4 Minutes"
+    "title": "How Git Works: Explained in 4 Minutes",
+    "title_shape": "x-explained",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-oauth2-numbered-token-flow",
@@ -97,7 +105,9 @@
     "layout_map": "Dark header bar top ~18% (cells 1-4) with teal accent bar far left x~18 and white question headline 'But What Is Oauth 2 Really About?' baseline ~y90 spanning cells 1-4. Light mint canvas below lists a vertical numbered sequence of six labeled arrows down the left-center: '1. Authorization request', '2. Authorization grant' (this row's text is RED for emphasis ~x250,y260), '3. Authorization grant', '4. access token', '5. access token', '6. protected resource', each with a left-pointing arrow, stacked cells 9/10/14/15 from ~y210 to y470. Right column holds three actor boxes: 'Resource Owner' with a person icon (cell 8 ~x760,y230), an orange 'Authorization server' box (cell 12 ~x760,y330), and an orange 'Resource server' box (cell 16 ~x760,y430) with a small Google logo. A 'Client' device box sits far left cell 5 ~x70,y260. Background flat pale mint, dashed group border around the right actor stack. No face; device is the dark-header template plus a single red-highlighted step.",
     "why_it_works": "the numbered handshake promises a precise step-by-step, and the one red step teases the part people get wrong",
     "mimic_for": "a protocol/handshake walkthrough where one step is the tricky or commonly-misunderstood one",
-    "title": "OAuth 2 Explained In Simple Terms"
+    "title": "OAuth 2 Explained In Simple Terms",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-forward-vs-reverse-proxy-split-vs",
@@ -117,7 +127,9 @@
     "layout_map": "Dark header bar top ~18% (cells 1-4) with teal accent bar far left x~18 and white headline 'Forward Proxy vs. Reverse Proxy' baseline ~y90 spanning cells 1-4. Below, the light canvas is split into two near-identical halves by a centered red lightning 'VS' badge at the exact midline cell 11/center ~x640,y320. Left half (cells 5-6,9-10,13-14) titled 'Forward Proxy' ~x180,y180: user-avatar icons -> a green 'LAN' grouped 'Forward Proxy' box (~x230,y320) -> a globe -> 'Web Server A' / 'Web Server B' boxes at the bottom. Right half (cells 7-8,11-12,15-16) titled 'Reverse Proxy' ~x830,y180: a globe and users -> a green 'NGINX'-labeled reverse-proxy box (~x830,y320) inside a 'LAN' group -> 'Web Server A/B'. The mirrored symmetry makes the two topologies directly comparable. Background flat pale mint. No face; device is the centered red vs-bolt badge dividing two mirrored diagrams.",
     "why_it_works": "the mirrored layout plus a center VS badge makes the difference between two near-identical concepts the whole point, inviting the click to learn which is which",
     "mimic_for": "two similar tools or architectures that are easily confused and need to be set side by side",
-    "title": "Proxy vs Reverse Proxy (Real-world Examples)"
+    "title": "Proxy vs Reverse Proxy (Real-world Examples)",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-rpc-vs-grpc-mirrored-stack",
@@ -137,7 +149,9 @@
     "layout_map": "Dark header bar top ~18% (cells 1-4) with teal accent bar far left x~18 and white short headline 'RPC vs. gRPC' baseline ~y90 spanning cells 1-2 only (sparse text, lots of dark header empty). Light mint canvas below holds two mirrored vertical layer-stacks. Left stack under 'Order Service' (cell 6 ~x300,y180): orange 'Client Application', then blue layers 'Encoding/Decoding' (cell 10), 'gRPC Runtime', 'Transport' (cell 14) descending ~y220-y470; a 'Client App' device + 'JSON' box sit far left cell 5/13 ~x70. Right stack under 'Payment Service' (cell 8 ~x800,y180): mirror set 'Service Application' / 'Encoding/Decoding' (cell 12) / 'gRPC Runtime' / 'Transport' (cell 16). Center column carries connection labels 'Binary Encoding - ProtoBuf' (cell 11 ~x600,y230) and 'HTTP 2' (cell 15 ~x600,y430) bridging the two stacks. Background flat pale mint. No face, no number; device is the dark-header template plus glowing mirrored protocol stacks.",
     "why_it_works": "two mirrored stacks bridged by labeled protocols show exactly where the technology lives in the layers, promising a concrete mental model",
     "mimic_for": "comparing two protocols or layered stacks and showing what bridges them",
-    "title": "What is RPC? gRPC Introduction."
+    "title": "What is RPC? gRPC Introduction.",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-http-versions-progression-tiers",
@@ -157,6 +171,8 @@
     "layout_map": "Dark header bar top ~18% (cells 1-4, y0-130) with teal accent bar far left x~18 and white arrow-chained headline 'HTTP/1 -> HTTP/2 -> HTTP/3' baseline ~y95 spanning cells 1-4. Below, a single white rounded banner runs across (~y150-220) split into four chevron-arrow segments labeled 'HTTP/1' (cell 5), 'HTTP/1.1' (cell 6), 'HTTP/2' (cell 7), 'HTTP/3' (cell 8), the chevrons pointing rightward to imply progression. Underneath, four diagram panels (cells 9-12 / 13-16) sit in a row on a pale mint band, each illustrating that version's connection behavior with small blue/orange/purple/yellow request blocks and dashed timing lines \u2014 leftmost shows sequential zig-zag arrows (HTTP/1), next parallel bars (HTTP/2 multiplexing), rightmost scattered independent blocks (HTTP/3). Background flat mint below, near-black header above. No face, no big stat; device is the rightward chevron progression plus the dark-header template.",
     "why_it_works": "the chevron progression frames it as an evolution story and the per-version mini-diagrams promise to show concretely what changed each generation",
     "mimic_for": "a versions-over-time or generational-evolution video where each step improves on the last",
-    "title": "HTTP/1 to HTTP/2 to HTTP/3"
+    "title": "HTTP/1 to HTTP/2 to HTTP/3",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   }
 ]

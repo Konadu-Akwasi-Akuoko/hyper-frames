@@ -16,7 +16,9 @@
     "layout_map": "Dark near-black grid background. A single all-caps word headline POLYMATH in heavy white Inter sits across the top band, baseline ~y75, spanning cells 1-4 nearly edge to edge (x60 to x1230). Below it a horizontal row of three large tech logos centered vertically around y360 (cells 6-7-8 row): a cyan React atom on the left at ~x115,y360, a green Spring leaf in the middle at ~x590,y360, and a yellow huggingface/hugging-emoji on the right at ~x930,y360. Each logo carries a soft glow on the dark grid. No stat, no badge, no face.",
     "why_it_works": "One big word states the promise, the three glowing tech logos below imply the breadth/stack you'd master, reading as a curated skill set.",
     "mimic_for": "a single-concept headline backed by a row of representative tech/tool logos (a stack roundup or 'learn all of these')",
-    "title": "become a polymath programmer"
+    "title": "become a polymath programmer",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-crying-dev-discord-insult",
@@ -35,7 +37,9 @@
     "layout_map": "Dark grid background. Top-left headline in two tones reads 'Why Devs QUIT' across the top band, baseline ~y55, cells 1-2-3: 'Why Devs' in white and 'QUIT' in red as the accent word at the right end (~x230,y50). Bottom-left a hunched crying cartoon figure hugging its knees, line-art style with a single teardrop, sitting in cells 9-10 around x150,y300, filling roughly the lower-left quarter. Right half holds a phone/notification mockup card (dark rounded rectangle, cells 7-8-11-12) showing a lock-screen clock '9:41' and a red Discord notification badge '1,374' with the message 'You suck at coding'. The toxic message is the payload.",
     "why_it_works": "The red insult notification names the emotional gut-punch while the crying figure shows the cost, framing dev burnout as something done to you.",
     "mimic_for": "an emotional/toxic-culture beat where an outside message or comment crushes the developer (burnout, harassment, quitting)",
-    "title": "How Dev Culture Got So TOXIC"
+    "title": "How Dev Culture Got So TOXIC",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "shade-of-code-outcode-them-all-mecha",
@@ -54,7 +58,9 @@
     "layout_map": "Dark desaturated background. Two-line all-caps headline fills the left two-thirds: 'OUT CODE' in red sits on the upper line, baseline ~y95, cells 1-2-3, encircled by a hand-drawn red ellipse loop; 'THEM ALL' in white sits on the lower line, baseline ~y200, cells 5-6-7, in heavy Inter. Right third holds a green armored mecha/turtle character mascot in 3/4 view at ~x1080,y280, filling cells 4-8-12 (right edge), tilted forward. Headline left, character right.",
     "why_it_works": "The red-circled OUT CODE plus the aggressive armored mascot reads as a competitive war-cry to dominate everyone else.",
     "mimic_for": "an aggressive competitive/self-improvement beat about outperforming all other developers",
-    "title": "The Secret to Getting Better at Coding"
+    "title": "The Secret to Getting Better at Coding",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-wojak-its-rigged-job-logos",
@@ -73,7 +79,9 @@
     "layout_map": "Dark grid background. A large smug brainlet wojak face (white head, cigarette in mouth, suit collar) fills the entire left half, head centered ~x230,y280, occupying cells 1-2-5-6-9-10 (face) down into 13-14. Right side carries a two-line headline: 'It's' in white, baseline ~y110, cells 7-8 around x880,y90, then 'RIGGED' in big bold red caps on the line below, baseline ~y210, cells 7-8 spanning ~x720 to x1230. Bottom-right corner shows a row of three small job-platform logos in cells 15-16: LinkedIn, GitHub, and Indeed, each a small rounded square around y620 from x650 to x1230. The logos ground the 'rigged' claim in hiring.",
     "why_it_works": "The smug clueless wojak plus a red RIGGED verdict and the hiring-site logos says the job game is fixed against you no matter what you do.",
     "mimic_for": "a cynical 'the system is rigged' beat about hiring, recruiters, or job-platform gatekeeping",
-    "title": "Why Every Dev HATES Recruiters"
+    "title": "Why Every Dev HATES Recruiters",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "shade-of-code-glasses-glare-book-collage",
@@ -92,7 +100,9 @@
     "layout_map": "Full-bleed collage of programming book covers tiled across the whole frame as the background (a red 'THE LEAN COMMANDMENTS'-type cover at far left cells 1-5-9, a white 'DEBUGGING' cover upper-right cells 3-4, more spines lower-left). Centered over them a person's face in 3/4 view, glasses catching a bright cyan/white lens glare, head ~x640,y300 in cells 6-7-10-11 (center). No headline text; the stacked book covers ARE the message. A small glowing code/binary accent floats near center-right ~x760,y330.",
     "why_it_works": "A wall of real book covers behind a knowing glasses-glare face promises a hand-picked stack of underrated resources from someone who's read them.",
     "mimic_for": "a resource-roundup / 'underrated books or tools' beat fronted by a knowing presenter face",
-    "title": "Criminally Underrated Programming Resources"
+    "title": "Criminally Underrated Programming Resources",
+    "title_shape": "listicle-n",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "shade-of-code-i-wish-i-knew-stressed-ide-logos",
@@ -111,6 +121,8 @@
     "layout_map": "Dark grid background. Top band carries a two-tone all-caps headline across the full width, baseline ~y55, cells 1-2-3-4: 'I WISH' in white on the left, 'I KNEW' in red as the accent on the right (~x680 onward). Center of the frame holds a sketch-style stressed/sweating person clutching their head with both hands, head ~x640,y330, cells 6-7-10-11. Flanking the head are four small dev-tool/IDE logos floating in the mid-band: a red Git/branch icon lower-left (~x90,y330, cell 9), a JetBrains 'IJ' badge upper-left of center (~x420,y230, cell 6), a dark Unity/3D cube upper-right (~x900,y230, cell 8), and a VS Code blue chevron lower-right (~x1180,y360, cell 12). The logos surround the overwhelmed figure.",
     "why_it_works": "The two-tone regret headline over a head-clutching figure ringed by IDE logos says 'these tools/lessons would have saved past me the pain.'",
     "mimic_for": "a regret/hindsight beat ('things I wish I knew') about tools, IDEs, or skills surrounding an overwhelmed developer",
-    "title": "Programming Skills NOBODY Talks About\u2026"
+    "title": "Programming Skills NOBODY Talks About\u2026",
+    "title_shape": "listicle-n",
+    "title_pattern": "curiosity-gap-reversal"
   }
 ]

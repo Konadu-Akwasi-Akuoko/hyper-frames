@@ -17,7 +17,9 @@
     "layout_map": "Dark charcoal grid-paper background. Top half holds a single horizontal row of four white rounded-square app-icon tiles (VLC, Linux/Tux, Chrome, VS Code), each ~150px, evenly spaced across cells 1-4 centered at ~y95, spanning x90 to x1190. Thin white guide lines fan down from each icon converging toward the center. Bottom half: a giant white bold dollar figure '$10,000,000' centered at ~x640, baseline ~y560, filling cells 9-12 width, dollar-sign leading. No face. Background is the dominant dark neon-grid treatment.",
     "why_it_works": "Familiar free tools sit right above an enormous money number, forcing the question of where the money comes from",
     "mimic_for": "revealing the surprising revenue or scale behind something users assume is free",
-    "title": "How do Free Software Actually Make Money"
+    "title": "How do Free Software Actually Make Money",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-two-doors-crowd-webdev-vs-other",
@@ -37,7 +39,9 @@
     "layout_map": "White sketch-style background. Two label columns near top: black 'Other Tech Jobs' two-line label at left in cell 5 (~x150, y150) over an empty narrow doorway, and orange 'Web Dev' label at center in cell 7 (~x560, y150) over a wide door. A dense black-ink crowd of stick/silhouette people floods the right half and lower-center, packed from cell 11 across cells 12,15,16 and pouring toward the labeled web-dev door. Contrast is visual: empty left vs mobbed right. Orange is the lone accent on the chosen word.",
     "why_it_works": "The lopsided crowd visually screams that everyone is piling into one option, triggering FOMO and the why question",
     "mimic_for": "showing one career/tool/path is wildly oversaturated or overcrowded versus the alternatives",
-    "title": "Why People Are Obsessed With Web Development?"
+    "title": "Why People Are Obsessed With Web Development?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-face-left-ilovepdf-logo-right",
@@ -57,7 +61,9 @@
     "layout_map": "Dark red lightning-streaked background (danger-red glow). Left half: a real man's head-and-shoulders photo, neutral expression, face center ~x230,y200, filling the left third (cells 1,5,9,13 region). Right half: a large white rounded-rectangle card centered ~x900,y360 spanning cells 7,8,11,12, containing the 'I [red heart] PDF' wordmark in heavy black caps, two lines, with the heart as the red accent. No headline text; the logo IS the text. Strong left-face / right-logo split.",
     "why_it_works": "Pairing an ordinary face with a wildly familiar free tool's logo promises the untold money story behind it",
     "mimic_for": "a product/founder success story where a recognizable brand logo is the hook",
-    "title": "Success Story of iLovePDF: PDF Tool Became a Million-Dollar Business"
+    "title": "Success Story of iLovePDF: PDF Tool Became a Million-Dollar Business",
+    "title_shape": "scale-story",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-koala-secret-ai-api-free-toolgrid-check-x",
@@ -77,7 +83,9 @@
     "layout_map": "White grid background. Two-line headline across the top: line 1 ~y45 'Secret Way to Use AI API For FREE' with 'Secret', 'AI API', and 'FREE' in red accent and the rest black; line 2 ~y95 parenthetical '(GPT, Gemini, Deepseek...)' smaller. Center band: a black recycle/transfer arrow icon in a white square at cell 10 (~x300,y330), and to its right a 2x2 cluster of AI logos (OpenAI, etc.) in cells 11-12 (~x900,y340). Bottom: a large green checkmark in a square at cell 14 (~x300,y560) and a large red X at cell 15-16 (~x720,y570) \u2014 check-vs-X verdict device.",
     "why_it_works": "SECRET plus FREE in red over a clear right-way/wrong-way check-vs-X tells you there is a trick worth clicking for",
     "mimic_for": "a tutorial revealing a free/secret method, contrasting the correct approach against the wrong one",
-    "title": "How to Use AI Models API for Free | OpenRouter Tutorial"
+    "title": "How to Use AI Models API for Free | OpenRouter Tutorial",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-webdev-2026-stacklogos-confused-stickman",
@@ -97,7 +105,9 @@
     "layout_map": "White grid background. Headline top-center two lines: red bold caps 'WEB DEVELOPMENT' ~y45 across cells 1-4, then black 'in 2026?' with '2026' in red ~y115 centered. Lower-left: a 3x2 grid of framework logos (Spring, JS, VS Code top; React, Python, Django bottom) in cells 9-10 / 13-14, centered ~x230,y480, each ~110px. Lower-right: a hand-drawn grey monitor with a grumpy white stick-figure character and a floating '?' question mark in cells 11-12 / 15-16 (~x950,y450). Question mark is the curiosity device.",
     "why_it_works": "The dated year plus a confused character asks if this whole skill is still worth learning, baiting the doubters",
     "mimic_for": "questioning whether a skill/career/tech is still worth it in a specific upcoming year",
-    "title": "Is Web Development Good Career in 2026?"
+    "title": "Is Web Development Good Career in 2026?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-programmers-before-vs-now-meme-split",
@@ -116,7 +126,9 @@
     "layout_map": "White background, vertical split down the center ~x640. Left column: black label 'programmers before' two-line at top (~x300,y40), with a muscular buff koala/bear character in a plaid shirt holding a clipboard filling cells 5,9,13 (~x300,y360). Right column: black label 'programmers now' two-line at top (~x900,y40), an OpenAI logo top-right (cell 8), a small Stack Overflow wordmark mid (~x800,y330), and a scrawny dog mascot in a hoodie next to a laptop in cells 12,15,16 (~x900,y430). Classic strong-vs-weak meme contrast, no color accent.",
     "why_it_works": "The buff-vs-weak before/now meme makes a generational quality claim instantly and humorously, daring you to disagree",
     "mimic_for": "a then-vs-now decline narrative \u2014 how a craft or generation got softer/worse over time",
-    "title": "Why were 90s programmers so legendary compared to today's?"
+    "title": "Why were 90s programmers so legendary compared to today's?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-microsoft-github-valuation-arrow-jump",
@@ -136,7 +148,9 @@
     "layout_map": "White grid background. Top band: black bold '$7.5B' at left ~x180,y95 (cell 1-2), a thick red right-pointing arrow spanning the center ~x430-x600 at y90, and black bold '$100B' at right ~x980,y95 (cell 3-4) \u2014 the before-to-after number jump. Bottom band: the four-color Microsoft window logo at left center ~x300,y460 (cells 6,10,14), a large black '+' plus sign at center ~x620,y510, and the black GitHub octocat logo at right ~x950,y470 (cells 7-8,11-12). Red arrow plus giant figures carry the payoff.",
     "why_it_works": "A small number arrowing up into a huge one frames a clear acquisition-to-jackpot story you want explained",
     "mimic_for": "a valuation/revenue multiplier story \u2014 X acquired Y and turned it into a fortune",
-    "title": "How Microsoft Used Github To Make Crazy Money"
+    "title": "How Microsoft Used Github To Make Crazy Money",
+    "title_shape": "scale-story",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-koala-best-tech-jobs-numbered-list-face-right",
@@ -155,6 +169,8 @@
     "layout_map": "White grid background. Headline top: 'Best TECH JOBS For Upcoming Years' two lines ~y40 and ~y95, with 'TECH JOBS' in red accent and the rest black caps. Lower-left: a cream/boxed numbered list in cells 9,13 (~x180,y360) reading '1.CyberSecurity / 2.Web Dev? / 3.******* / 4.*******' \u2014 items 3 and 4 blurred/censored as the curiosity bait. Center-right: a hand-drawn beige retro monitor on a desk filling cells 10-11,14-15 (~x600,y430). Far right: a real smiling man's head-and-shoulders photo, face center ~x1050,y330, cells 8,12.",
     "why_it_works": "A partly-censored ranked list makes you click to uncover the hidden top jobs the creator won't show upfront",
     "mimic_for": "a ranked list / top-N where the best items are teased but hidden to force the click",
-    "title": "5 Tech Jobs That Will Dominate Now and Future"
+    "title": "5 Tech Jobs That Will Dominate Now and Future",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   }
 ]
