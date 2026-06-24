@@ -30,3 +30,12 @@ build-backend = "uv_build"
 venvPath = "."
 venv = ".venv"
 extraPaths = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
