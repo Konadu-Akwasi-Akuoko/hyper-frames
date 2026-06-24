@@ -223,6 +223,37 @@ The face layer is one continuous element spanning the whole runtime, so it is
 inside a chunk host, and using it on the take lands every face reveal at the
 wrong frame. Per-scene tweens stay local; the face seek stays global.
 
+## Rendering — always 4K SDR (`--resolution 4k --sdr`)
+
+The render step (`npx hyperframes render`, the final step) has **one standing choice
+and one hard requirement** for a phone-shot talking-head source. Both are easy to
+miss until a multi-minute render fails or ships the wrong quality.
+
+- **Always render 4K SDR — `npx hyperframes render --resolution 4k --sdr`.** This is
+  the channel's standing preference: **every** render is 4K (3840×2160), **never**
+  1080p. `--resolution 4k` supersamples the 1920×1080 composition at
+  `deviceScaleFactor 2`, so the vector/graphics scenes render natively sharp; if the
+  talking-head source is only 1080p the face is upscaled, and **that is accepted**
+  (YouTube also grants 4K uploads a higher bitrate). Do **not** offer 1080p, stop to
+  weigh the tradeoff, or default to native resolution — render 4K SDR every time.
+- **HDR source → render with `--sdr`.** Phone takes are routinely **HDR** (HLG /
+  BT.2020 — `ffprobe -show_entries stream=color_transfer,color_primaries` reports
+  `color_transfer=arib-std-b67`, `color_primaries=bt2020`). The renderer
+  auto-detects HDR and takes the `capture_hdr_layered` path, which extracts **raw
+  uncompressed frames** — ~3.5 GB per 10 s at 4K, i.e. **170+ GB** for a full video —
+  and aborts with `No space left on device`. Always render an HDR talking-head with
+  **`--sdr`** (forces the normal compressed/streamed capture path); it tone-maps to
+  SDR and the disk cost drops to a few GB. This is mandatory **regardless of
+  resolution** — the HDR path blows the disk at 1080p too.
+- **Clean up between attempts.** A killed or failed render leaves a large
+  `renders/work-*` temp dir (tens of GB of extracted frames). `rm -rf renders/work-*`
+  before retrying to reclaim space.
+- **Sparse keyframes are a usually-benign warning.** The compiler often warns the
+  take has sparse keyframes (e.g. 8.39 s apart) that "cause seek failures and frame
+  freezing." Frame pre-extraction usually still succeeds; if seeks misbehave,
+  re-encode with dense keyframes once:
+  `ffmpeg -i talking-head.mp4 -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy out.mp4`.
+
 ## What does NOT change
 
 The incremental A–I loop, transcript-as-timing-truth, the `scene-design-decider`
