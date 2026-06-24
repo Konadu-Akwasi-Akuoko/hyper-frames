@@ -42,7 +42,7 @@ def test_set_image_runs(tmp_path, isolated_config, monkeypatch):
     monkeypatch.setattr(playlists.uploadmedia, "execute_resumable",
                         lambda req: {"id": "IMG1"})
     r = playlists._playlist_set_image(svc, playlist_id="PL1", file_path=str(f),
-                                      confirm=False, media_factory=_mf)
+                                      media_factory=_mf)
     assert r["image_set"] == "IMG1"
 
 
