@@ -5,7 +5,7 @@ description: Guided generator that turns a topic + research notes into a TTS-rea
 
 # script-writer
 
-You are guiding the user through writing a single video script in the project's house style. The style is a voice — sentence rhythm, "But" pivots, three-part lists, personification, named concepts, dated incidents as evidence, 170 wpm. It is **not** a structural template. The script's shape emerges from the topic's substrate, not from a pre-decided arc.
+You are guiding the user through writing a single video script in the project's house style. The style is a voice — sentence rhythm, "But" pivots, three-part lists, personification, named concepts, dated incidents as evidence, 170 wpm. It is **not** a structural template. The script's shape emerges from the topic's substrate, not from a pre-decided arc. And the voice **serves** comprehension — it never substitutes for it: a passage that sounds right but leaves its mechanism unclear has failed, however clean the cadence. The skill works in **two passes** — a first pass for voice and retention (Steps 1–4c), then a second **comprehension pass** (Step 4d) that cold-reads the finished script and rewrites anything a first-time viewer couldn't follow.
 
 Read this whole file before you start. Then load the reference files only when their step calls for them.
 
@@ -18,6 +18,7 @@ Read this whole file before you start. Then load the reference files only when t
 - Draft the body of the script as one continuous prose pass against the voice rules, then carve the hook from the body, then write the landing.
 - TTS-proof every sentence as it's written, not as a post-pass.
 - Extract anchor words for the project's `tools/narration-map/` workflow.
+- Run a second comprehension pass over the assembled script — dispatch a `script-comprehension-auditor` sub-agent (a cold reader standing in for a first-time viewer) that flags every mechanism a newcomer couldn't follow and proposes plain-language rewrites, applied under the user's approval.
 - Dispatch a fact-verifier sub-agent after the script is approved end-to-end.
 - Append newly discovered TTS failures to `reference/tts-gotchas.md` so the next video benefits.
 
@@ -135,6 +136,8 @@ Show `substrate-notes.md` to the user. Single approval gate. Invite the user to 
 
 **Do not draft prose from anything not in `substrate-notes.md`.** If during drafting you find yourself reaching for an incident or number that isn't in the notes, stop. Either it's in the substrate and needs to be added to the notes, or it's invention and needs to be cut.
 
+**Mechanism claims about named real systems need primary evidence.** When the script will assert *how a specific named product behaves* — "Claude Code's cap is a fixed window", "Nginx queues requests", "Stripe caps near 100/s" — that claim is load-bearing: the whole explanation is built on it, and getting it wrong means rewriting the section. Verify it against *primary or authoritative* sources — official docs, the product's own UI/dashboard, the source — not a blog summary or secondhand explainer. Blog posts paraphrase, and they routinely blur exactly the distinction the script hangs on (fixed vs rolling window, queue vs drop). If the user shows you primary evidence (a screenshot of the product's own UI, an official doc), trust it over any secondary summary that contradicts it. Record the verified behaviour in `substrate-notes.md` so the draft rests on it.
+
 ### Step 4 — Body draft, single pass
 
 Before drafting, load `reference/sentence-rhythm.md` and `reference/tts-gotchas.md`. Those rules apply to every sentence you write from here forward.
@@ -162,6 +165,8 @@ Target word count: runtime × 170. A 5-min script is ~900 words of body (the hoo
 **Phrase moves are optional, not required.** Phrases like "Today we are going to look at...", "Let's start with...", "But here is where the nightmare begins.", "The next time you..." are available moves — use them only when the prose naturally arrives at the moment they fit. Forcing them into a script that didn't earn them produces the script-layer chrome the audience can feel.
 
 After the body is drafted, show the **full body** to the user. Single approval gate at the body level. No per-beat checkpoints inside the body. If the user redirects — different shape, different emphasis, missing the load-bearing moment — revise the body and re-show. Iterate until they approve.
+
+Draft for voice and retention here — do **not** also try to bullet-proof every mechanism for a first-time viewer in this pass. That is Step 4d's job, and keeping the two concerns apart is deliberate: it stops the comprehension worry from flattening the voice mid-draft.
 
 ### Step 4b — Hook carved from body
 
@@ -210,6 +215,35 @@ Show, approve. Assemble the final `script.md`:
 The HTML comments are anchors for downstream tools, not voiceover text. The script reads as one continuous piece of writing from open to close.
 
 **Optional — story spine.** The script is now approved end-to-end: you have the hook (Step 4b carved it from the body's strongest concrete moment), the body, and the landing. If this video is going through the full pipeline (motion, SFX, music), you may offer the user a `story-spine.md`: *"Want me to drop a 3–4 line `story-spine.md` in the folder? It records where the hook beat, the climax, and the landing landed — the motion, SFX, and music skills can read it later so all three point at the same beat. It's optional; nothing downstream requires it."* If the user says yes, load `reference/story-spine.md` and write the file in the strict shape it defines — 3–4 lines, quoted script phrases, descriptive glosses, never a per-scene list. If the user declines or doesn't reply, skip it; the video is not broken without one. Never write it unprompted, and never before the script is approved.
+
+### Step 4d — Comprehension pass (the second pass)
+
+The script is now voice-complete: hook, body, and landing assembled into `script.md`. That was the first pass — it made the script *sound* right and *hold* attention. The second pass makes it *understood*. These are different jobs, and separating them is deliberate: folding "could someone who's never seen this follow it?" into the first draft flattens the voice, so the comprehension work waits until the voice is locked.
+
+Dispatch the `script-comprehension-auditor` sub-agent via the `Agent` tool. It runs in its own context window and reads the script **cold** — as someone who has never seen the topic — which is exactly the perspective the writer (saturated in the substrate, attached to their own clever lines) cannot fake. For every mechanism the script explains, it applies the rubric:
+
+- **Concrete before elegant** — each non-obvious mechanism earns a literal, picturable analogy (a bucket of ten tokens, a bouncer with a clicker, two labeled jars) on first mention; abstract description alone ("the counter ticks down at a steady rate") is not enough.
+- **A worked example for anything counterintuitive** — a behaviour that's easy to get backwards gets one case traced with real numbers, not just described.
+- **Clever lines cap, they don't carry** — an aphoristic reveal that is the *only* place an idea is taught reads as filler to a viewer who never got the literal version; flag it.
+- **The re-explain test** — could you re-explain each mechanism using only what the script gives the viewer? If not, it's missing a picture or an example.
+
+Dispatch:
+
+```
+Agent(
+  description: "Comprehension-audit the assembled script",
+  subagent_type: "script-comprehension-auditor",
+  prompt: "Cold-read the assembled script at <absolute-path>/script.md as a first-time viewer. Substrate notes are at <absolute-path>/substrate-notes.md — use them to keep any proposed analogy or worked example faithful to the real mechanism and free of invented facts. Write <absolute-path>/comprehension-pass.md per your format and return the one-paragraph summary."
+)
+```
+
+The agent writes `comprehension-pass.md` — each opaque passage quoted, where a newcomer stalls, and a proposed plain-language rewrite in the house voice — and returns a summary. **It never edits the script.** Read the summary, then walk the user through the findings:
+
+> *"Comprehension pass: N blocking, M slowing, P polish (see `comprehension-pass.md`). The blocking ones — <named passages> — are spots a first-time viewer would lose the thread. Want me to apply the proposed rewrites (all / select), or leave any?"*
+
+Apply the approved rewrites to `script.md` yourself with `Edit`, preserving voice and TTS-safety, then re-show the touched passages. The blocking findings are the bar: the script isn't done while a mechanism a newcomer can't follow is still in it. The slowing and polish findings are the user's call.
+
+If a `story-spine.md` was written in Step 4c and an applied rewrite changes a phrase it quotes, update the spine to match.
 
 ### Step 5 — Anchor extraction
 
@@ -266,9 +300,10 @@ Advisory only — never block voiceover hand-off. The user decides whether to re
 
 You're done when:
 
-- `videos/<slug>-<YYYY-MM-DD>/` exists with `substrate-notes.md`, `script.md`, `anchors.txt`, and `fact-check.md`.
+- `videos/<slug>-<YYYY-MM-DD>/` exists with `substrate-notes.md`, `script.md`, `anchors.txt`, `comprehension-pass.md`, and `fact-check.md`.
 - The user has approved the body, hook, and landing.
 - The script reads at the target runtime (count words / 170 to verify).
+- The comprehension pass has run, and every blocking finding is either fixed or explicitly waved off by the user.
 - The fact-verifier has run and the user has been told whether to revise before voiceover.
 - Any TTS gotchas surfaced during the session have been appended to `reference/tts-gotchas.md`.
 
