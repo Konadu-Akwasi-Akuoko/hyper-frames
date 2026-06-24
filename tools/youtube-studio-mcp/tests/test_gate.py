@@ -26,3 +26,10 @@ def test_quota_guard_refuses_when_over_fraction(isolated_config):
 
 def test_quota_guard_allows_when_affordable(isolated_config):
     assert gate.quota_guard("videos.update", 1, confirm=True) is None
+
+
+def test_quota_guard_refuses_when_quota_exhausted(isolated_config):
+    quota.record("search.list", multiplier=100)  # 100 * 100 = 10000 spent, 0 remaining
+    r = gate.quota_guard("videos.update", 1, confirm=True)
+    assert r["error"] == "quota_safety_refused"
+    assert r["remaining_quota_units"] == 0

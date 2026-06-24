@@ -37,7 +37,7 @@ def quota_guard(endpoint: str, multiplier: int, confirm: bool, *,
                            "confirm=True after user approval."),
                 "estimated_cost_units": cost}
     rem = quota.remaining()
-    if rem > 0 and cost > rem * fraction_limit:
+    if cost > rem * fraction_limit:
         return {"error": "quota_safety_refused",
                 "reason": (f"This would cost {cost} units, more than "
                            f"{int(fraction_limit * 100)}% of the {rem} units "
