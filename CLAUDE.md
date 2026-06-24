@@ -11,9 +11,12 @@ shared concerns (CLAUDE.md, README, .claude/, docs/, the videos/ index).
 When starting a new video:
 
 1. Pick a kebab-case slug from the working title (short and recognizable, not
-   the full sentence).
+   the full sentence). **Exception — a video promoted from a `tools/studio` idea
+   already owns its slug; match it exactly (see "From a promoted idea" below),
+   don't invent a shorter one.**
 2. Create `videos/<slug>-<YYYY-MM-DD>/` (date = today, when work begins).
-3. Run `npx hyperframes init` from inside that folder.
+3. Run `npx hyperframes init` from inside that folder. It scaffolds into a nested
+   `my-video/` subdir — move its contents up into the folder root and remove it.
 4. Drop the source audio in `audio/` and the user-supplied transcript at the
    folder root as `transcript.json`.
 5. All subsequent CLI commands (`lint`, `inspect`, `preview`, `render`) run
@@ -49,6 +52,22 @@ Design + plan: `docs/superpowers/specs/2026-06-22-studio-idea-board-design.md`
 (§10.1 = the "The Wire Desk" visual language) and
 `docs/superpowers/plans/2026-06-22-studio-implementation.md`. Tool-local rules:
 `tools/studio/CLAUDE.md`.
+
+**From a promoted idea → video folder.** A promoted idea already has a Desk card
+and a fixed slug — find it, don't re-derive it:
+
+```bash
+sqlite3 -json tools/studio/studio.db \
+  "SELECT id,kind,status,title,rationale,source_url,promoted_slug \
+   FROM ideas WHERE title LIKE '%<term>%';"
+```
+
+The video folder **must be named exactly `promoted_slug`** (it already ends in
+`-<date>`). The Desk joins on-disk progress to the card **by exact folder name**
+(`server/routes/board.ts` matches `board_overlay.slug` ↔ `videos/<name>`); any
+other slug splits it into two cards. The slug is title-derived and long — keep it,
+a shorter folder name loses board tracking. The card's `kind` (long/short/series)
+and `source_url` (the seed video) are the brief.
 
 ## Authoring workflow
 
