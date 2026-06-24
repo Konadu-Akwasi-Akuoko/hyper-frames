@@ -161,7 +161,8 @@ runs only when re-called with `confirm=True`. Three gate categories:
 - **Public-facing / channel-wide:** `video_upload` (only when `privacyStatus=public` or a
   `publishAt` is set), `video_schedule` (arming the schedule), private→public transitions
   (existing), `channel_update_branding`, `channel_set_banner`, `channel_set_watermark` /
-  `channel_unset_watermark`.
+  `channel_unset_watermark`, `playlist_set_image` (a playlist cover is channel-visible —
+  gated for parity with `channel_set_banner`).
 - **Acts socially as the channel:** `subscription_add`, `subscription_remove`,
   `video_rate`.
 
@@ -205,7 +206,7 @@ This is the natural consumer of the `create-srt-and-translate` skill output (Eng
 - `playlist_add_video(playlist_id, video_id, position=None)` — **U**. Body needs `snippet.playlistId` + `snippet.resourceId{kind:"youtube#video", videoId}`; `position` 0-indexed and requires manual-sort playlists. Source: [playlistItems.insert](https://developers.google.com/youtube/v3/docs/playlistItems/insert).
 - `playlist_item_update(item_id, …)` — **U**. Re-send `snippet.playlistId` + `resourceId`. Source: [update](https://developers.google.com/youtube/v3/docs/playlistItems/update).
 - `playlist_item_remove(item_id, confirm=False)` — **G**, irreversible-ish. `id` = **playlist item id**, not video id. Source: [delete](https://developers.google.com/youtube/v3/docs/playlistItems/delete).
-- `playlist_set_image / update_image / delete_image` — playlistImages.* (square 1:1 JPEG/PNG ≤2 MB; delete **G**). Source: [playlistImages](https://developers.google.com/youtube/v3/docs/playlistImages).
+- `playlist_set_image / update_image / delete_image` — playlistImages.* (square 1:1 JPEG/PNG ≤2 MB; **set + delete both G** — a cover image is channel-visible). Source: [playlistImages](https://developers.google.com/youtube/v3/docs/playlistImages).
 
 ### 7.4 Channel-level — `channel_edits.py` + `uploads.py`
 - `channel_update_branding(description=None, keywords=None, country=None, unsubscribed_trailer=None, default_language=None, localizations=None, confirm=False)` — **G**, channel-wide. channels.update `part=brandingSettings` (or `localizations`) — **only `brandingSettings` / `invideoPromotion` / `localizations` parts are writable**; `snippet`/title is **not** arbitrarily settable (`brandingSettings.channel.title` must equal current title or be omitted). Read-modify-write. Source: [channels.update](https://developers.google.com/youtube/v3/docs/channels/update).
