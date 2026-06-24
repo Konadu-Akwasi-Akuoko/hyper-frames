@@ -37,6 +37,8 @@ COSTS: dict[str, int] = {
     "i18nRegions.list": 1,
 
     # writes
+    "videos.insert": 1,  # 100/day Uploads bucket; 1 unit/call (NOT the 10k pool)
+    "videos.delete": 50,
     "videos.update": 50,
     "videos.rate": 50,
     "videos.reportAbuse": 50,
@@ -69,6 +71,28 @@ COSTS: dict[str, int] = {
 
     # members
     "members.list": 1,
+
+    # playlists / items / images
+    "playlists.insert": 50,
+    "playlists.update": 50,
+    "playlists.delete": 50,
+    "playlistItems.insert": 50,
+    "playlistItems.update": 50,
+    "playlistItems.delete": 50,
+    "playlistImages.list": 1,
+    "playlistImages.insert": 50,
+    "playlistImages.update": 50,
+    "playlistImages.delete": 50,
+
+    # channel-level
+    "channels.update": 50,
+    "channelSections.list": 1,
+    "channelSections.insert": 50,
+    "channelSections.update": 50,
+    "channelSections.delete": 50,
+    "channelBanners.insert": 50,
+    "watermarks.set": 50,
+    "watermarks.unset": 50,
 }
 
 
