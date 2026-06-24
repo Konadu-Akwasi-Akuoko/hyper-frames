@@ -20,7 +20,7 @@ human.
 - **You own:** picking the ~5 beats from the parent; the **Shorts script shape**
   (hook / counter-twist / pivot chain / Cleo CTA — this is *not* `script-writer`,
   see below); the per-Short folder scaffold; the staggered upload plan; and the
-  **manual publish hand-off**.
+  **publish hand-off** (via MCP or manually in Studio).
 - **You delegate:** voiceover + transcript (`voiceover-elevenlabs-v2` /
   `transcribe-and-plan-cuts`), the **portrait composition build**
   (`video-director` — now dimension-aware; it authors any root declared
