@@ -34,10 +34,25 @@ hand-edit below this line.
 | slug | channel | archetype | layout | device | face | accent | title_shape | use-when |
 |---|---|---|---|---|---|---|---|---|
 | [aaron-jack-programming-vs-coding-split](#aaron-jack-programming-vs-coding-split) | aaron-jack | comparison-vs | split-vertical | vs-bolt, glow-accent | yes | green | comparison-vs | a video pitting two concepts our audience conflates against each other (e.g. authentication vs authorization, SQL vs NoSQL) |
+| [aaron-jack-laptop-object-creepy-face-right](#aaron-jack-laptop-object-creepy-face-right) | aaron-jack | object-hero | text-left-face-right | shocked-face, neon-on-dark | yes | yellow | open-why-how | a course or long-haul tutorial framed around the fear or grind of learning to code |
 | [aaron-jack-google-quit-crying-wojak](#aaron-jack-google-quit-crying-wojak) | aaron-jack | meme | face-left | shocked-face, glow-accent | no | google-multicolor | open-why-how | a disillusionment/quit-story beat where a famous employer or hyped tool secretly disappoints |
 | [aaron-jack-javascript-in-5-mins-blackbars](#aaron-jack-javascript-in-5-mins-blackbars) | aaron-jack | big-text | text-left-face-right | big-text, strike-through | no | black | speed-primer | a fast single-topic primer where the hook is brevity ('X in 5 minutes') and we want a clean high-contrast type treatment |
 | [aaron-jack-overemployed-logo-juggle](#aaron-jack-overemployed-logo-juggle) | aaron-jack | logo-grid | centered-stack | neon-on-dark, money-stack | no | green | scale-story | a money/career beat about exploiting multiple platforms or stacking income streams in tech |
 | [aaron-jack-what-is-api-puzzle-face](#aaron-jack-what-is-api-puzzle-face) | aaron-jack | face-reaction | text-left-face-right | glow-accent, big-text | yes | green | what-is-x | a 'what is X?' explainer where our host fronts the camera and a single concept icon anchors the term |
+| [aaron-jack-glow-headline-face-left-dark-grid](#aaron-jack-glow-headline-face-left-dark-grid) | aaron-jack | big-text | text-left-face-right | neon-on-dark, glow-accent | yes | cyan | speed-primer | a fast single-technology primer ("X in 5 minutes") |
+| [aaron-jack-meme-face-ds-diagram-tiles](#aaron-jack-meme-face-ds-diagram-tiles) | aaron-jack | meme | text-left-face-right | shocked-face, glow-accent | yes | magenta | identity-advice | a survey episode that walks through every core data structure with a self-deprecating "it's not that scary" framing |
+| [aaron-jack-split-vs-buy-this-not-this-laptops](#aaron-jack-split-vs-buy-this-not-this-laptops) | aaron-jack | comparison-vs | split-vertical | red-arrow, vs-bolt | no | green | comparison-vs | a buy-this-not-that product recommendation or right-tool-vs-wrong-tool comparison beat |
+| [aaron-jack-tier-column-logos-doomer-face](#aaron-jack-tier-column-logos-doomer-face) | aaron-jack | tier-ranking | text-left-face-right | glow-accent, danger-red | yes | red | listicle-n | Ranking N programming languages or tools into a best-to-worst tier list with an emotional "what this means for you" face. |
+| [aaron-jack-dual-face-center-logos](#aaron-jack-dual-face-center-logos) | aaron-jack | logo-grid | centered-stack | glow-accent | yes | blue | first-person-feat | a tutorial pairing two well-known brand/tech logos with a human subject — "build X for [Platform] with [Language]" |
+| [aaron-jack-meme-face-grid-lang-stereotypes](#aaron-jack-meme-face-grid-lang-stereotypes) | aaron-jack | meme | grid-tiles | shocked-face | yes | black | listicle-n | a listicle/tier video assigning a stereotype or persona to each item in a set (languages, frameworks, dev types) |
+| [aaron-jack-tier-column-headline-face-circles](#aaron-jack-tier-column-headline-face-circles) | aaron-jack | tier-ranking | text-center | glow-accent | yes | red | identity-advice | A ranked roundup beat naming the top people, tools, or languages in a category. |
+| [aaron-jack-wojak-progression-row-headline-top](#aaron-jack-wojak-progression-row-headline-top) | aaron-jack | meme | split-vertical | shocked-face | yes | white | listicle-n | a multi-stage skill-journey or before-during-after progression payoff |
+| [aaron-jack-full-title-overlay-face-right](#aaron-jack-full-title-overlay-face-right) | aaron-jack | big-text | text-left-face-right | glow-accent | yes | white | identity-advice | a personal talking-head advice video promising the quickest path to a skill or outcome |
+| [aaron-jack-soyjak-vs-chad-degree-no](#aaron-jack-soyjak-vs-chad-degree-no) | aaron-jack | meme | split-vertical | red-arrow, shocked-face | yes | red | identity-advice | Debunking a widely-held programming gatekeeping myth (the "you need X to succeed" belief). |
+| [aaron-jack-face-left-laptop-lineup-question-marks](#aaron-jack-face-left-laptop-lineup-question-marks) | aaron-jack | object-hero | text-left-face-right | glow-accent | yes | cyan | identity-advice | a "which tool/device should you buy" buyer's-guide roundup with candidate options on display |
+| [aaron-jack-before-after-money-drop-chart](#aaron-jack-before-after-money-drop-chart) | aaron-jack | before-after | text-left-face-right | red-arrow, giant-number | yes | blue | first-person-feat | a first-person career or money reversal where a high number collapses to near-zero |
+| [aaron-jack-tinder-match-two-circles-handwritten](#aaron-jack-tinder-match-two-circles-handwritten) | aaron-jack | comparison-vs | split-vertical | red-circle, glow-accent | yes | cyan | first-person-feat | a build/automation video pairing a tool or language with a playful real-world target ("X meets Y") |
+| [aaron-jack-gold-balloon-number-centered-face-python-logo](#aaron-jack-gold-balloon-number-centered-face-python-logo) | aaron-jack | number-stat | centered-stack | giant-number | yes | gold | listicle-n | a numbered listicle of language/tool tips where the count and the tech logo carry the whole pitch |
 | [awesome-coding-ai-truth-handdrawn-finally](#awesome-coding-ai-truth-handdrawn-finally) | awesome-coding | face-reaction | text-left-face-right | shocked-face, red-arrow | yes | cyan | first-person-feat | an authority figure finally admits an uncomfortable truth / a long-suspected fact gets confirmed |
 | [awesome-coding-brutal-interviews-shocked](#awesome-coding-brutal-interviews-shocked) | awesome-coding | face-reaction | text-left-face-right | shocked-face, red-circle | yes | red | panic-threat | something ordinary has become punishingly hard / a process is described as brutal or merciless |
 | [awesome-coding-csharp-dotnet-cool-again](#awesome-coding-csharp-dotnet-cool-again) | awesome-coding | object-hero | text-left-face-right | red-arrow, glow-accent | yes | cyan | assumption-flip | an old/uncool technology is suddenly relevant again / a comeback story |
@@ -220,9 +235,24 @@ hand-edit below this line.
 | [coding-sloth-claude-code-terminal-point](#coding-sloth-claude-code-terminal-point) | coding-sloth | code-screenshot | text-left-face-right | neon-on-dark, hand-point | yes | orange | panic-threat | a brand-new AI model or developer tool release the video reviews |
 | [coding-with-lewis-retro-pc-angry-stock-loss](#coding-with-lewis-retro-pc-angry-stock-loss) | coding-with-lewis | object-hero | centered-stack | neon-on-dark, danger-red | no | red | first-person-feat | a self-experiment or system-design beat that ends in failure or loss, where a single charming 3D object wearing an emotion carries the whole punchline |
 | [coding-with-lewis-discord-trillions-glow](#coding-with-lewis-discord-trillions-glow) | coding-with-lewis | big-text | centered-stack | neon-on-dark, glow-accent | no | red | scale-story | a 'how X handles N billion/trillion of Y' system-design scale story where the hook is a single staggering quantity under a recognizable product logo |
+| [coding-with-lewis-object-hero-printer-glowing-logo](#coding-with-lewis-object-hero-printer-glowing-logo) | coding-with-lewis | object-hero | full-bleed-object | glow-accent, neon-on-dark | no | yellow | first-person-feat | an unexpected physical-object build or hardware-meets-code project reveal |
 | [coding-with-lewis-gta5-15min-vs-150-facepalm](#coding-with-lewis-gta5-15min-vs-150-facepalm) | coding-with-lewis | comparison-vs | split-vertical | red-arrow, shocked-face | yes | green | first-person-feat | a before/after performance or speed-up beat (slow build → fast result) where a red→green metric pill pair carries the change and a reaction face sells the disbelief |
+| [coding-with-lewis-laser-strikes-bank-object](#coding-with-lewis-laser-strikes-bank-object) | coding-with-lewis | object-hero | split-vertical | danger-red, neon-on-dark | no | red | first-person-feat | a tool or script forcefully beating/defeating an institution (bank, fee, system) |
 | [coding-with-lewis-40-apis-icon-orbit-face](#coding-with-lewis-40-apis-icon-orbit-face) | coding-with-lewis | face-reaction | centered-stack | glow-accent | yes | multicolor | listicle-n | a roundup or 'tools every developer should know' beat where a warm presenter face anchors an orbit of recognizable service/tech logos |
+| [coding-with-lewis-banned-neon-word-reddit-logo](#coding-with-lewis-banned-neon-word-reddit-logo) | coding-with-lewis | big-text | centered-stack | neon-on-dark, danger-red | no | red | panic-threat | A platform/policy reckoning beat — a single charged verdict word over the offending product's logo. |
 | [coding-with-lewis-fullstack-roadmap-logo-orbit](#coding-with-lewis-fullstack-roadmap-logo-orbit) | coding-with-lewis | logo-grid | centered-stack | glow-accent, big-text | yes | blue | identity-advice | a roadmap or full-curriculum beat where a confident presenter is wreathed by the technologies covered, with one short authoritative text band naming the deliverable |
+| [coding-with-lewis-glowing-bulb-idea-bubbles](#coding-with-lewis-glowing-bulb-idea-bubbles) | coding-with-lewis | object-hero | centered-stack | glow-accent | no | amber | listicle-n | a "project ideas" or brainstorm roundup beat — one glowing idea-hero surrounded by sample concept icons |
+| [coding-with-lewis-back-of-head-ultrawide-code-wall](#coding-with-lewis-back-of-head-ultrawide-code-wall) | coding-with-lewis | code-screenshot | face-right | neon-on-dark, glow-accent | yes | purple | first-person-feat | A first-person hardware/setup-regret or deep-focus coding-life beat where the environment is the story |
+| [coding-with-lewis-logo-tile-ticker-bg](#coding-with-lewis-logo-tile-ticker-bg) | coding-with-lewis | object-hero | full-bleed-object | glow-accent, neon-on-dark | no | green | scale-story | a company/system scale-story beat — one product's logo against a backdrop conveying massive transaction or data volume |
+| [coding-with-lewis-doodle-object-on-head-question-marks](#coding-with-lewis-doodle-object-on-head-question-marks) | coding-with-lewis | object-hero | centered-stack | shocked-face, glow-accent | yes | black | scale-story | A scale/system-design reveal where a recognizable product or logo is the hero and the emotion is bewildered awe |
+| [coding-with-lewis-roadmap-stacked-headline-icon-column](#coding-with-lewis-roadmap-stacked-headline-icon-column) | coding-with-lewis | roadmap | text-left-face-right | glow-accent | no | orange | identity-advice | A learning-path or roadmap video laying out the ordered stack of tools and skills to master a role |
+| [coding-with-lewis-meme-feed-learning-progress-bar](#coding-with-lewis-meme-feed-learning-progress-bar) | coding-with-lewis | meme | full-bleed-object | progress-bar, neon-on-dark | no | green | first-person-feat | a build/training montage beat where messy input is poured into a system that processes or "learns" from it |
+| [coding-with-lewis-fullbleed-sort-bars-no-text](#coding-with-lewis-fullbleed-sort-bars-no-text) | coding-with-lewis | object-hero | full-bleed-object | glow-accent, danger-red | no | red | listicle-n | an algorithm or data-structure explainer where the visual concept itself (sorted vs unsorted) carries the whole thumbnail without words |
+| [coding-with-lewis-shocked-face-left-cyan-headline-logo-hero](#coding-with-lewis-shocked-face-left-cyan-headline-logo-hero) | coding-with-lewis | face-reaction | text-left-face-right | shocked-face, glow-accent | yes | cyan | first-person-feat | A first-person "I built/tried X with [AI tool]" feat reveal where the result is impressive or shocking. |
+| [coding-with-lewis-dual-logo-glow-dark](#coding-with-lewis-dual-logo-glow-dark) | coding-with-lewis | logo-grid | split-vertical | glow-accent, neon-on-dark | no | green | curiosity-reversal | A tool/product reveal or origin-story beat pitting two technologies against each other |
+| [coding-with-lewis-code-comment-object-hero-feather-icon](#coding-with-lewis-code-comment-object-hero-feather-icon) | coding-with-lewis | object-hero | centered-stack | neon-on-dark, glow-accent | no | cyan | curiosity-reversal | unmasking the hidden tool or library behind something everyone uses |
+| [coding-with-lewis-giant-stat-phone-hero-shocked-face](#coding-with-lewis-giant-stat-phone-hero-shocked-face) | coding-with-lewis | number-stat | text-left-face-right | giant-number, shocked-face | yes | yellow | first-person-feat | a build-and-it-went-viral payoff where a bot/tool produced a huge measurable result |
+| [coding-with-lewis-headline-left-api-hub-face-right](#coding-with-lewis-headline-left-api-hub-face-right) | coding-with-lewis | diagram-arch | text-left-face-right | glow-accent, red-arrow | yes | cyan | listicle-n | a tooling/API roundup where one central concept connects to a delighted host |
 | [devforge-what-happened-broken-robot](#devforge-what-happened-broken-robot) | devforge | object-hero | centered-stack | glow-accent, neon-on-dark | no | cyan | curiosity-reversal | a hyped technology or tool visibly failing or breaking down; a 'what went wrong' reveal beat |
 | [devforge-the-vibe-trap-cage](#devforge-the-vibe-trap-cage) | devforge | object-hero | centered-stack | neon-on-dark, glow-accent | no | purple | assumption-flip | a tempting shortcut or trend framed as a trap; warning against a seductive-but-dangerous approach |
 | [devforge-ai-proof-skills-thinker](#devforge-ai-proof-skills-thinker) | devforge | big-text | text-center | x-mark, neon-on-dark | yes | cyan | listicle-n | a skills-that-survive / what-still-matters list; ruling one option out among several |
@@ -286,23 +316,83 @@ hand-edit below this line.
 | [forrest-knight-things-i-wish-blackbox-face](#forrest-knight-things-i-wish-blackbox-face) | forrest-knight | face-reaction | text-left-face-right | shocked-face, glow-accent | yes | white | first-person-feat | a reflective 'mistakes I made' or 'what I'd do differently' opener where our own face carries the regret beside a stacked black-box confession headline |
 | [forrest-knight-what-they-dont-tell-setup](#forrest-knight-what-they-dont-tell-setup) | forrest-knight | face-reaction | full-bleed-object | glow-accent, big-text | yes | white | what-is-x | an insider-reality beat about a role or technology where an immersive real-workspace photo plus a single bottom 'what they don't tell you' line sells hidden truth |
 | [forrest-knight-linux-history-tux-meme](#forrest-knight-linux-history-tux-meme) | forrest-knight | object-hero | text-left-face-right | glow-accent, neon-on-dark | yes | orange | x-explained | an origin-story or history-of explainer where layered retro type, the subject's logo/mascot, and a vintage founder photo together promise a nostalgic deep dive |
+| [forrest-knight-fullbleed-code-webcam-inset-label](#forrest-knight-fullbleed-code-webcam-inset-label) | forrest-knight | code-screenshot | corner-badge | glow-accent | yes | magenta | identity-advice | An IDE or tooling setup/config walkthrough where the actual screen is the proof and a small presenter corner adds credibility. |
 | [forrest-knight-7-design-patterns-code-overlay](#forrest-knight-7-design-patterns-code-overlay) | forrest-knight | code-screenshot | text-center | big-text, glow-accent | yes | white | listicle-n | a numbered 'N patterns/concepts every developer should know' video where floating real code cards behind a big-number headline promise hands-on examples |
+| [forrest-knight-fullbleed-desktop-centered-headline-corner-webcam](#forrest-knight-fullbleed-desktop-centered-headline-corner-webcam) | forrest-knight | code-screenshot | full-bleed-object | glow-accent | yes | cyan | comparison-vs | A first-person "why I use this tool/OS" pitch where a real working environment screenshot is the evidence and the creator narrates from a corner cam. |
+| [forrest-knight-phone-mockup-app-corner-badge](#forrest-knight-phone-mockup-app-corner-badge) | forrest-knight | object-hero | corner-badge | glow-accent | no | magenta | x-explained | a product or app demo showing a finished mobile mockup on-device for a design-tool tutorial |
 | [forrest-knight-5-things-hand-up-number](#forrest-knight-5-things-hand-up-number) | forrest-knight | number-stat | text-left-face-right | giant-number, hand-point | yes | white | listicle-n | a numbered personal-lessons listicle where our own raised hand mirrors the giant headline number and a single accent bar lands the payoff word |
+| [forrest-knight-fullbleed-workspace-centered-headline](#forrest-knight-fullbleed-workspace-centered-headline) | forrest-knight | face-reaction | text-center | glow-accent | yes | white | first-person-feat | a productivity/focus or 'how I work' beat shown as a genuine candid workspace scene |
+| [forrest-knight-centered-face-project-screens-no-text](#forrest-knight-centered-face-project-screens-no-text) | forrest-knight | face-reaction | text-center | glow-accent | yes | rust | identity-advice | a "here are the projects/portfolio I built" or credibility-establishing personal-advice beat where real on-screen artifacts carry the message instead of text |
+| [forrest-knight-architecture-diagram-face-right](#forrest-knight-architecture-diagram-face-right) | forrest-knight | diagram-arch | text-left-face-right | red-circle, red-arrow | yes | red | open-why-how | a web-app / system-architecture explainer that walks through client-server-database components |
+| [forrest-knight-photo-headline-overlay-profile-right](#forrest-knight-photo-headline-overlay-profile-right) | forrest-knight | big-text | text-left-face-right | glow-accent | yes | blue | identity-advice | A behind-the-scenes "day in the life" or workflow-routine video grounded in a real workspace photo. |
+| [forrest-knight-os-screenshots-stack-face-right](#forrest-knight-os-screenshots-stack-face-right) | forrest-knight | object-hero | text-left-face-right | glow-accent | yes | white | identity-advice | a "pick the best X" roundup where stacked product/OS screenshots flank a presenter |
+| [forrest-knight-centered-face-flanked-algorithm-cards](#forrest-knight-centered-face-flanked-algorithm-cards) | forrest-knight | code-screenshot | centered-stack | glow-accent | yes | orange | listicle-n | an algorithms/data-structures explainer that surveys several techniques at once |
+| [forrest-knight-split-objects-hacking-vs-coding-pointing-face](#forrest-knight-split-objects-hacking-vs-coding-pointing-face) | forrest-knight | comparison-vs | split-vertical | red-arrow, hand-point | yes | red | identity-advice | a "this discipline vs that discipline" career-path comparison beat with two on-screen artifacts |
+| [forrest-knight-split-code-face-bottom-banner](#forrest-knight-split-code-face-bottom-banner) | forrest-knight | code-screenshot | split-vertical | glow-accent | yes | white | identity-advice | A career/advice beat pairing a concrete coding context with a contrarian one-line claim from the host. |
+| [forrest-knight-desk-photo-white-band-headline](#forrest-knight-desk-photo-white-band-headline) | forrest-knight | face-reaction | text-left-face-right | glow-accent | yes | white | identity-advice | A personal advice-to-beginners talking-head video where authenticity and approachability beat graphic punch. |
+| [forrest-knight-deskmate-portrait-no-text](#forrest-knight-deskmate-portrait-no-text) | forrest-knight | face-reaction | face-right | glow-accent | yes | teal | identity-advice | A personal learning-technique or workflow tutorial where the creator is the authority and the workspace sets the tone. |
+| [forrest-knight-code-bg-headline-face-right](#forrest-knight-code-bg-headline-face-right) | forrest-knight | code-screenshot | text-left-face-right | glow-accent | yes | orange | speed-primer | a hands-on language tutorial that teaches the whole thing fast from real code on screen |
+| [forrest-knight-curriculum-table-face-right](#forrest-knight-curriculum-table-face-right) | forrest-knight | code-screenshot | text-left-face-right | glow-accent | yes | cyan | x-explained | a "build your own curriculum / free learning path" reveal where the on-screen resource itself is the proof |
 | [internet-made-coder-zero-to-software-engineer-arrow](#internet-made-coder-zero-to-software-engineer-arrow) | internet-made-coder | before-after | text-center | red-arrow, big-text | yes | yellow | first-person-feat | a learning-journey or transformation explainer that promises a fast path from a beginner state to a senior outcome |
 | [internet-made-coder-power-of-python-code-hero](#internet-made-coder-power-of-python-code-hero) | internet-made-coder | code-screenshot | centered-stack | big-text, glow-accent | no | yellow | listicle-n | a hands-on coding tutorial or project video where the payoff is real source code producing tangible outputs |
 | [internet-made-coder-be-lazy-reaction-arrow](#internet-made-coder-be-lazy-reaction-arrow) | internet-made-coder | face-reaction | text-left-face-right | red-arrow, big-text | yes | yellow | first-person-feat | an automation or do-it-for-you tooling video whose hook is 'let the machine do the boring work while you relax' |
+| [internet-made-coder-yellow-headline-dummies-badge-node-tree](#internet-made-coder-yellow-headline-dummies-badge-node-tree) | internet-made-coder | diagram-arch | text-center | glow-accent | yes | yellow | x-explained | a beginner-friendly explainer that visualizes the core data structure (tree/linked nodes) right over the host's footage |
+| [internet-made-coder-object-hero-step-stack-right](#internet-made-coder-object-hero-step-stack-right) | internet-made-coder | object-hero | full-bleed-object | glow-accent | no | yellow | speed-primer | a three-step "how I'd do X" roadmap video built around a single hero device or screenshot |
 | [internet-made-coder-cs50-harvard-logo-block](#internet-made-coder-cs50-harvard-logo-block) | internet-made-coder | object-hero | face-left | hand-point, big-text | yes | yellow | what-is-x | a review or verdict video judging a famous course, tool, or framework where a recognizable logo carries the authority |
+| [internet-made-coder-giant-yellow-headline-book-hero-code-bg](#internet-made-coder-giant-yellow-headline-book-hero-code-bg) | internet-made-coder | big-text | text-center | glow-accent | yes | yellow | x-explained | a beginner-friendly explainer of an intimidating CS topic (algorithms, data structures) framed as "made simple" |
 | [internet-made-coder-2023-zero-hero-neon](#internet-made-coder-2023-zero-hero-neon) | internet-made-coder | before-after | centered-stack | neon-on-dark, giant-number | yes | green | first-person-feat | a year-stamped roadmap or zero-to-mastery video where the hook is a dramatic before/after journey on a cinematic dark stage |
+| [internet-made-coder-headline-banner-laptop-js-logo](#internet-made-coder-headline-banner-laptop-js-logo) | internet-made-coder | object-hero | text-center | glow-accent | no | yellow | speed-primer | A "fastest way to learn X language/tool" tutorial or speedrun primer anchored to a real coding setup. |
+| [internet-made-coder-checkmark-vs-x-tool-faceoff](#internet-made-coder-checkmark-vs-x-tool-faceoff) | internet-made-coder | comparison-vs | text-center | checkmark, x-mark | yes | green | first-person-feat | A tool-vs-tool switch verdict where one option wins and the other is rejected (e.g. "I switched from X to Y"). |
+| [internet-made-coder-giant-money-number-face-right-python-logo](#internet-made-coder-giant-money-number-face-right-python-logo) | internet-made-coder | number-stat | text-left-face-right | giant-number, red-arrow | yes | green | listicle-n | a project/skill payoff beat that promises an earnings or value number tied to a concrete tool |
+| [internet-made-coder-js-logo-laptop-step-banners](#internet-made-coder-js-logo-laptop-step-banners) | internet-made-coder | roadmap | grid-tiles | glow-accent | no | yellow | speed-primer | A numbered "N steps to learn X" beginner roadmap tutorial grounded in a real coding setup. |
+| [internet-made-coder-vs-logos-center-face-pointing](#internet-made-coder-vs-logos-center-face-pointing) | internet-made-coder | comparison-vs | text-center | hand-point, vs-bolt | yes | yellow | comparison-vs | a head-to-head language/tool comparison where the host frames the viewer's choice |
+| [internet-made-coder-top-banner-python-logo-hero](#internet-made-coder-top-banner-python-logo-hero) | internet-made-coder | object-hero | centered-stack | giant-number | no | yellow | listicle-n | a Python automation / library tutorial roundup intro |
+| [internet-made-coder-yellow-headline-left-desk-pov-notion-logo](#internet-made-coder-yellow-headline-left-desk-pov-notion-logo) | internet-made-coder | big-text | text-left-face-right | glow-accent | yes | yellow | first-person-feat | a first-person "how I taught/built myself X" study-setup or workflow reveal beat |
+| [internet-made-coder-stop-this-red-x-frustrated-face](#internet-made-coder-stop-this-red-x-frustrated-face) | internet-made-coder | face-reaction | text-left-face-right | x-mark, red-arrow | yes | red | identity-advice | a beat calling out a specific habit or mistake to stop doing |
+| [internet-made-coder-three-panel-face-center-yellow-bar](#internet-made-coder-three-panel-face-center-yellow-bar) | internet-made-coder | face-reaction | split-vertical | glow-accent | yes | yellow | scale-story | an on-the-ground product or event walkthrough where a host reveals a company's new AI capability |
+| [internet-made-coder-logo-verdict-face-center](#internet-made-coder-logo-verdict-face-center) | internet-made-coder | comparison-vs | text-center | x-mark, checkmark | yes | green | identity-advice | A tool shootout where one contender beats several name-brand rivals. |
+| [internet-made-coder-yellow-banner-headline-contemplative-face](#internet-made-coder-yellow-banner-headline-contemplative-face) | internet-made-coder | big-text | text-center | glow-accent | yes | yellow | first-person-feat | A vulnerable first-person confession or post-mortem beat (a project that failed, what went wrong). |
+| [internet-made-coder-stacked-3line-headline-face-right](#internet-made-coder-stacked-3line-headline-face-right) | internet-made-coder | big-text | text-left-face-right | glow-accent | yes | yellow | first-person-feat | a self-improvement or skill-building beat where a short imperative verb-object phrase is the whole hook |
+| [joma-tech-textless-lounging-home-office-scene](#joma-tech-textless-lounging-home-office-scene) | joma-tech | face-reaction | face-right | glow-accent | yes | purple | first-person-feat | a relaxed day-in-the-life / work-from-home lifestyle intro beat where the candid scene itself is the hook |
 | [joma-tech-junior-engineer-label-deadpan](#joma-tech-junior-engineer-label-deadpan) | joma-tech | face-reaction | text-center | shocked-face, big-text | yes | white | first-person-feat | a persona or role-archetype beat where we caption a deadpan seated face with a simple white role/title label along the bottom to set up a workplace character |
 | [joma-tech-code-vs-anime-action-lines](#joma-tech-code-vs-anime-action-lines) | joma-tech | code-screenshot | split-vertical | neon-on-dark, shocked-face | yes | navy | meme-skit | a beat where we show real code or an algorithm but want the energy of a dramatic reveal — split our editor capture against a reacting face with burst lines |
 | [joma-tech-math-glass-overlay-thinking](#joma-tech-math-glass-overlay-thinking) | joma-tech | diagram-arch | face-right | glow-accent, shocked-face | yes | chalk-green | identity-advice | a conceptual or math-heavy beat where we want a thinking-face still wrapped in a translucent layer of the actual formulas or diagram the video unpacks |
 | [joma-tech-apple-parody-object-logo](#joma-tech-apple-parody-object-logo) | joma-tech | object-hero | centered-stack | neon-on-dark, glow-accent | yes | white | meme-skit | a satirical or hype beat where we present a mundane tech thing as a faux product launch — black void, presenter, a borrowed brand mark, and the object spotlit center |
+| [joma-tech-full-bleed-stressed-face-no-text](#joma-tech-full-bleed-stressed-face-no-text) | joma-tech | face-reaction | text-center | shocked-face | yes | none | identity-advice | A relatable pain/frustration beat — the moment a developer is overwhelmed or exasperated by a situation. |
 | [joma-tech-shotgun-caption-question](#joma-tech-shotgun-caption-question) | joma-tech | meme | face-right | shocked-face, big-text | yes | yellow | curiosity-reversal | a comedic or confrontational hook beat where a startled face plus a short lowercase overheard-question caption (yellow on the lower frame) poses the video's premise |
+| [joma-tech-candid-desk-skeptical-face-right](#joma-tech-candid-desk-skeptical-face-right) | joma-tech | face-reaction | face-right | shocked-face | yes | black | identity-advice | a candid first-person confession or reality-check about the grind behind a skill or career move |
+| [joma-tech-masked-coder-at-desk-no-text](#joma-tech-masked-coder-at-desk-no-text) | joma-tech | face-reaction | centered-stack | shocked-face | yes | black | panic-threat | a documentary-style beat showing how an external event (pandemic, layoffs, policy) reshapes a programmer's daily work environment |
+| [joma-tech-cinematic-face-left-gold-laurel-badge](#joma-tech-cinematic-face-left-gold-laurel-badge) | joma-tech | face-reaction | text-left-face-right | glow-accent | yes | gold | meme-skit | a deadpan character-driven skit beat that mock-awards a "best/worst [role]" title |
+| [joma-tech-two-figures-deadpan-empty-office](#joma-tech-two-figures-deadpan-empty-office) | joma-tech | face-reaction | centered-stack | shocked-face | yes | navy | meme-skit | a deadpan two-person skit beat or awkward interview reaction in a workplace setting |
+| [joma-tech-shocked-face-monitors-bottom-headline](#joma-tech-shocked-face-monitors-bottom-headline) | joma-tech | face-reaction | centered-stack | shocked-face, glow-accent | yes | white | speed-primer | A retrospective or "everything I learned" beat summarizing a long stretch of work in one overwhelmed reaction. |
+| [joma-tech-split-code-vs-intense-face-speedlines](#joma-tech-split-code-vs-intense-face-speedlines) | joma-tech | face-reaction | split-vertical | shocked-face, neon-on-dark | yes | green | meme-skit | a dramatized "coding under pressure" or programming-as-battle beat pitting raw code against an intensely-focused reaction face |
+| [joma-tech-twitch-chat-overlay-face-right](#joma-tech-twitch-chat-overlay-face-right) | joma-tech | face-reaction | text-left-face-right | glow-accent | yes | purple | first-person-feat | A build or experiment where an audience/chat drives a live system in real time |
+| [joma-tech-split-reject-stamp-vs-news-clip](#joma-tech-split-reject-stamp-vs-news-clip) | joma-tech | comparison-vs | split-vertical | danger-red | yes | red | first-person-feat | A first-person rejection or underdog story pitting the creator's skepticism against a real success clip or news headline. |
+| [joma-tech-stacked-headline-left-face-right](#joma-tech-stacked-headline-left-face-right) | joma-tech | big-text | text-left-face-right | glow-accent, shocked-face | yes | white | what-is-x | defining or demystifying a broad field/role from personal experience ("what X really is") |
+| [joma-tech-trading-desk-screen-wall](#joma-tech-trading-desk-screen-wall) | joma-tech | object-hero | full-bleed-object | glow-accent | no | cyan | meme-skit | A scene-setting beat establishing an obsessive trader or quant at a monitor-heavy battlestation. |
+| [joma-tech-held-phone-code-face-right](#joma-tech-held-phone-code-face-right) | joma-tech | object-hero | split-vertical | glow-accent, shocked-face | yes | blue | first-person-feat | a first-person stunt build done on unlikely/constrained hardware |
+| [joma-tech-word-doc-code-face-right-logo-bridge](#joma-tech-word-doc-code-face-right-logo-bridge) | joma-tech | code-screenshot | text-left-face-right | glow-accent | yes | blue | assumption-flip | a deliberately-absurd "wrong tool for the job" demo where a familiar app's UI is the punchline |
+| [joma-tech-wfh-desk-scene-monitor-facecall](#joma-tech-wfh-desk-scene-monitor-facecall) | joma-tech | face-reaction | full-bleed-object | glow-accent | yes | blue | first-person-feat | a day-in-the-life / work-from-home intro beat showing the real workstation and a live remote-call moment |
+| [keep-on-coding-code-screenshot-webcam-corner-reaction](#keep-on-coding-code-screenshot-webcam-corner-reaction) | keep-on-coding | code-screenshot | corner-badge | shocked-face | yes | teal | first-person-feat | a live coding-interview / problem-solving walkthrough where the on-screen code IS the subject and your reaction sells the difficulty |
 | [keep-on-coding-programmers-be-like-matrix](#keep-on-coding-programmers-be-like-matrix) | keep-on-coding | meme | text-left-face-right | neon-on-dark, big-text | yes | green | every-x-explained | a tongue-in-cheek 'every backend dev be like' cold open that caricatures a developer stereotype before the real explainer |
 | [keep-on-coding-5-things-wish-i-knew-boxed](#keep-on-coding-5-things-wish-i-knew-boxed) | keep-on-coding | number-stat | text-left-face-right | giant-number, hand-point | yes | purple | listicle-n | a numbered-lessons retrospective ('5 things I wish I knew before X') where the count is the hook and a hand gesture reinforces it |
+| [keep-on-coding-headline-left-laptop-guy-right-matrix](#keep-on-coding-headline-left-laptop-guy-right-matrix) | keep-on-coding | big-text | text-left-face-right | glow-accent, neon-on-dark | yes | green | assumption-flip | a "what coding interviews are really like" developer-relatability cold open |
 | [keep-on-coding-java-classes-objects-logo](#keep-on-coding-java-classes-objects-logo) | keep-on-coding | big-text | text-left-face-right | glow-accent, big-text | yes | purple | what-is-x | a language- or framework-specific tutorial where the topic words ARE the hook and a single recognizable tech logo tags the stack |
 | [keep-on-coding-code-equals-money-cash](#keep-on-coding-code-equals-money-cash) | keep-on-coding | object-hero | centered-stack | money-stack, big-text | yes | purple | listicle-n | a make-money-with-code / dev-income beat where the payoff is earnings and a code-operator pun ties cash to the craft |
+| [keep-on-coding-three-line-headline-left-face-right](#keep-on-coding-three-line-headline-left-face-right) | keep-on-coding | big-text | text-left-face-right | glow-accent | yes | white | identity-advice | A talking-head advice or how-to beat whose topic is a plain multi-word noun phrase |
 | [keep-on-coding-pros-cons-shrug](#keep-on-coding-pros-cons-shrug) | keep-on-coding | comparison-vs | text-center | big-text, glow-accent | yes | green | comparison-vs | a balanced tradeoff video weighing two sides of a choice (a stack, a career path, a tool) where the body language sells the even-handed comparison |
+| [keep-on-coding-fullframe-code-facecam-corner](#keep-on-coding-fullframe-code-facecam-corner) | keep-on-coding | code-screenshot | corner-badge | neon-on-dark, shocked-face | yes | teal | identity-advice | A live coding walkthrough or interview-problem screencast where the real screen IS the thumbnail. |
+| [keep-on-coding-arms-wide-grin-no-overlay](#keep-on-coding-arms-wide-grin-no-overlay) | keep-on-coding | face-reaction | text-center | shocked-face | yes | gray | meme-skit | a relatable comedic-relief beat — the punchline reaction, the "we've all been there" payoff, or a triumphant "finally it works" moment |
+| [keep-on-coding-stacked-white-headline-face-right](#keep-on-coding-stacked-white-headline-face-right) | keep-on-coding | face-reaction | text-left-face-right | glow-accent | yes | blue | x-explained | a foundational concept explainer where the topic name is the whole hook and a friendly presenter anchors trust |
+| [keep-on-coding-google-logo-headline-panel-face-right](#keep-on-coding-google-logo-headline-panel-face-right) | keep-on-coding | face-reaction | text-left-face-right | glow-accent | yes | multicolor | first-person-feat | A first-person company interview / experience story told to camera |
+| [keep-on-coding-headline-left-shrug-face-right-logo-row](#keep-on-coding-headline-left-shrug-face-right-logo-row) | keep-on-coding | face-reaction | text-left-face-right | shocked-face, hand-point | yes | purple | first-person-feat | a first-person experiment recapping outcomes across several well-known companies/brands |
+| [keep-on-coding-code-bg-shrug-face-java-logo](#keep-on-coding-code-bg-shrug-face-java-logo) | keep-on-coding | code-screenshot | text-left-face-right | glow-accent, shocked-face | yes | orange | what-is-x | A "should you still learn / is X worth it" verdict video where the host weighs a language or tool |
+| [keep-on-coding-logo-headline-left-face-right](#keep-on-coding-logo-headline-left-face-right) | keep-on-coding | face-reaction | text-left-face-right | glow-accent, hand-point | yes | orange | first-person-feat | a first-person FAANG/big-company interview-experience or day-in-the-life recap |
+| [keep-on-coding-stacked-headline-scrim-face-right](#keep-on-coding-stacked-headline-scrim-face-right) | keep-on-coding | face-reaction | text-left-face-right | glow-accent | yes | gradient-pink-orange | open-why-how | a how-to/tutorial build video where the host walks you through making a specific tool or bot |
+| [keep-on-coding-meme-caption-top-bottom-face-right](#keep-on-coding-meme-caption-top-bottom-face-right) | keep-on-coding | meme | text-left-face-right | glow-accent | yes | white | first-person-feat | a reaction/commentary beat riffing on a well-known programming meme |
+| [keep-on-coding-stacked-headline-terminal-face-right](#keep-on-coding-stacked-headline-terminal-face-right) | keep-on-coding | code-screenshot | text-left-face-right | neon-on-dark, danger-red | yes | cyan | identity-advice | A beginner command-line / Linux tutorial that wants a real terminal next to a reassuring host. |
+| [keep-on-coding-logos-weighed-on-palms-textless-vs](#keep-on-coding-logos-weighed-on-palms-textless-vs) | keep-on-coding | comparison-vs | text-center | glow-accent | yes | blue | comparison-vs | A head-to-head tech comparison where the host visibly weighs option A against option B |
+| [keep-on-coding-headline-top-logo-card-photo-bg](#keep-on-coding-headline-top-logo-card-photo-bg) | keep-on-coding | object-hero | centered-stack | glow-accent | no | white | speed-primer | A short how-to/tutorial primer anchored to one recognizable tool or brand logo. |
 | [latticx-dont-code-like-this-bigtext](#latticx-dont-code-like-this-bigtext) | latticx | big-text | text-center | neon-on-dark, glow-accent | no | white | identity-advice | a blunt prescriptive takeaway or rule lands ('don't build it like this'), where one clean line on emptiness should carry the click |
 | [latticx-lock-in-now-code-collage](#latticx-lock-in-now-code-collage) | latticx | code-screenshot | text-center | neon-on-dark, glow-accent | no | cyan | identity-advice | a coding/technical-hustle beat where dense code as backdrop sells rigor and a 2-3 word command sells urgency |
 | [latticx-lock-in-fast-code-collage](#latticx-lock-in-fast-code-collage) | latticx | code-screenshot | text-center | neon-on-dark, glow-accent | no | cyan | identity-advice | a learn-it-quickly / speed-up beat sitting over a technical code backdrop |
@@ -326,23 +416,41 @@ hand-edit below this line.
 | [marko-new-mac-unwrap-reveal-tissue](#marko-new-mac-unwrap-reveal-tissue) | marko | object-hero | full-bleed-object | glow-accent | no | warm-amber | first-person-feat | a reveal or 'first look' beat where the payoff is hidden mid-motion and curiosity (not text) drives the click |
 | [marko-chatgpt-workflow-dual-editor-open-palm](#marko-chatgpt-workflow-dual-editor-open-palm) | marko | code-screenshot | centered-stack | hand-point, glow-accent | no | green | first-person-feat | a workflow or tooling explainer where a presenting hand gesture toward the screen frames 'here's how I actually do it' |
 | [marko-m4-mbp-open-palm-window-cafe](#marko-m4-mbp-open-palm-window-cafe) | marko | object-hero | centered-stack | hand-point | no | wood-tan | first-person-feat | a long-term review or recommendation beat in a bright, optimistic register where a welcoming hand gesture says 'let me show you' |
+| [marko-macbook-desk-codeeditor-textless](#marko-macbook-desk-codeeditor-textless) | marko | object-hero | full-bleed-object | glow-accent | no | amber | first-person-feat | a long-term hardware/laptop review or "my real coding setup" desk-tour beat |
 | [marko-coffee-thumbsup-cafe-coding-pov](#marko-coffee-thumbsup-cafe-coding-pov) | marko | object-hero | centered-stack | hand-point | no | warm-amber | assumption-flip | a cozy day-in-the-life or routine beat where symmetric hands plus a warm beverage sell the lived-in workspace mood |
+| [marko-pov-laptop-code-cafe-window](#marko-pov-laptop-code-cafe-window) | marko | object-hero | centered-stack | glow-accent | no | amber | first-person-feat | a day-in-the-life / build-vlog beat showing the author actually working — POV at the desk |
 | [marko-notion-setup-ipad-held-planner-tea](#marko-notion-setup-ipad-held-planner-tea) | marko | object-hero | centered-stack | hand-point | no | amber | first-person-feat | a setup/system or productivity-app showcase where the on-device dashboard itself is the hero and the click promise is 'copy my system' |
 | [marko-classic-coding-vlog-keyboard-frontview-iced](#marko-classic-coding-vlog-keyboard-frontview-iced) | marko | object-hero | centered-stack | glow-accent | no | wood-tan | first-person-feat | a clean, low-drama vlog or 'normal work session' beat where symmetry and minimalism signal a relaxed, premium production |
 | [marko-they-pay-me-to-google-night-window-latte](#marko-they-pay-me-to-google-night-window-latte) | marko | object-hero | centered-stack | glow-accent | no | warm-amber | assumption-flip | a reflective, after-hours or 'the real job is reading/learning' beat where moody night staging and a warm drink carry the mood |
 | [marko-career-money-lessons-side-profile-laptop-bokeh](#marko-career-money-lessons-side-profile-laptop-bokeh) | marko | object-hero | split-vertical | glow-accent | no | warm-amber | identity-advice | a reflective lessons/advice or 'what I learned' beat where a calm cinematic side-profile signals gravity rather than a how-to |
 | [marko-own-app-store-backend-diagram-poinsettia](#marko-own-app-store-backend-diagram-poinsettia) | marko | diagram-arch | centered-stack | glow-accent | no | blue | first-person-feat | a system-design or 'how I built X' beat where a glimpse of a real architecture diagram on the laptop screen is the substance hook |
+| [marko-pov-laptop-coffee-shop-no-text](#marko-pov-laptop-coffee-shop-no-text) | marko | code-screenshot | full-bleed-object | glow-accent | no | amber | first-person-feat | a day-in-the-life or workflow vlog beat showing the act of coding in an aspirational setting |
 | [marko-dualup-monitor-portrait-open-palm-setup](#marko-dualup-monitor-portrait-open-palm-setup) | marko | object-hero | centered-stack | hand-point, glow-accent | no | orange | first-person-feat | a desk-setup or unusual-hardware review where the device's distinctive silhouette is the scroll-stopper and a hand presents it |
 | [marko-day-in-the-life-script-collage-overlay](#marko-day-in-the-life-script-collage-overlay) | marko | big-text | grid-tiles | glow-accent | no | white | first-person-feat | a montage or 'whole journey at a glance' video where a multi-panel collage plus one friendly script headline previews the variety inside |
 | [marko-apple-watch-hero-wrist-laptop-blur](#marko-apple-watch-hero-wrist-laptop-blur) | marko | object-hero | full-bleed-object | glow-accent | no | blue | first-person-feat | a single-accessory or wearable spotlight where one macro hero object against heavy blur is the entire composition |
 | [marko-salary-expenses-phone-order-history-checkmark](#marko-salary-expenses-phone-order-history-checkmark) | marko | number-stat | centered-stack | checkmark | no | green | first-person-feat | a salary, expenses or money-breakdown beat where actual numbers on a held screen are the substance and a checkmark signals legitimacy |
 | [marko-backend-flowchart-diagram-carwall-open-palm](#marko-backend-flowchart-diagram-carwall-open-palm) | marko | diagram-arch | centered-stack | hand-point | no | green | open-why-how | a design-decision or 'how should I architect this' beat where a colorful flowchart on screen is the hook and a hand frames the open question |
 | [marko-macbook-neo-vs-m4-air-gold-keyboard-beanie](#marko-macbook-neo-vs-m4-air-gold-keyboard-beanie) | marko | object-hero | centered-stack | glow-accent | no | gold | comparison-vs | a device-comparison or finish/color review where the product's distinctive color is the at-a-glance differentiator in an otherwise neutral scene |
+| [mayuko-photo-vlog-mono-title-upper-right](#mayuko-photo-vlog-mono-title-upper-right) | mayuko | face-reaction | text-left-face-right | glow-accent | yes | white | identity-advice | A first-person day-in-the-life / behind-the-scenes vlog-style intro beat. |
 | [mayuko-question-textbox-pointing-face](#mayuko-question-textbox-pointing-face) | mayuko | face-reaction | text-left-face-right | hand-point | yes | blue | what-is-x | a what-is / what-do-I-do explainer where our presenter poses the title question in a bordered text box beside a thoughtful face |
 | [mayuko-keebs-held-product-lowercase-word](#mayuko-keebs-held-product-lowercase-word) | mayuko | object-hero | full-bleed-object | big-text | yes | white | listicle-n | a best-of / roundup or single-product hero beat where our presenter holds the lead item and a one-word lowercase label names the category |
 | [mayuko-salary-dollar-speech-bubbles](#mayuko-salary-dollar-speech-bubbles) | mayuko | comparison-vs | centered-stack | money-stack, hand-drawn-bubble | yes | green | listicle-n | a how-much-does-X-cost / earnings / pricing-tier beat where escalating dollar amounts around the presenter pose the money question |
+| [mayuko-photo-desk-script-overlay](#mayuko-photo-desk-script-overlay) | mayuko | object-hero | full-bleed-object | glow-accent | no | white | listicle-n | a workspace / gear / tools tour or setup-reveal beat shot on real footage |
 | [mayuko-face-over-code-wallpaper](#mayuko-face-over-code-wallpaper) | mayuko | code-screenshot | centered-stack | neon-on-dark, glow-accent | yes | slate-blue | open-why-how | a learn-to-code / behind-the-code explainer where a faded real code wall behind our presenter sets the technical context with no headline text |
+| [mayuko-face-left-object-held-handlettered-headline](#mayuko-face-left-object-held-handlettered-headline) | mayuko | face-reaction | text-left-face-right | hand-point | yes | mustard | first-person-feat | a personal show-and-tell / gear-tour intro where the host holds the hero item next to their face |
 | [mayuko-faang-logos-orbit-face](#mayuko-faang-logos-orbit-face) | mayuko | logo-grid | centered-stack | glow-accent, neon-on-dark | yes | multicolor | open-why-how | a video naming the big tech companies or a set of well-known tools/brands, where the logos themselves carry the hook around our presenter |
+| [mayuko-handdrawn-headline-centered-face-shrug](#mayuko-handdrawn-headline-centered-face-shrug) | mayuko | face-reaction | centered-stack | glow-accent, hand-point | yes | gold | speed-primer | A first-person, candid recap of a personal experience or credential (degree, job, year in review) |
+| [mayuko-handwritten-headline-right-face-left-lang-logos](#mayuko-handwritten-headline-right-face-left-lang-logos) | mayuko | face-reaction | text-left-face-right | hand-point | yes | white | identity-advice | a beginner-advice beat weighing which language or tool to pick |
+| [mayuko-stacked-headline-face-left-pointing](#mayuko-stacked-headline-face-left-pointing) | mayuko | big-text | text-left-face-right | hand-point | yes | white | speed-primer | A friendly "explained fast" primer intro where the host introduces the single topic. |
+| [mayuko-face-left-stacked-headline-right](#mayuko-face-left-stacked-headline-right) | mayuko | face-reaction | text-left-face-right | glow-accent | yes | white | listicle-n | A first-person personal-take or reasons-I-love video where the creator's likeable on-camera presence is the draw. |
+| [mayuko-object-hero-face-left-handwritten-annotation](#mayuko-object-hero-face-left-handwritten-annotation) | mayuko | object-hero | face-left | hand-point | yes | mustard | first-person-feat | a first-person gear/tool review where the product is the hero and the creator delivers a personal "is it worth it" verdict |
+| [mayuko-centered-face-lowercase-headline-bottom](#mayuko-centered-face-lowercase-headline-bottom) | mayuko | face-reaction | text-center | glow-accent | yes | white | first-person-feat | a personal "day in my life" or behind-the-scenes vlog intro beat |
+| [mayuko-handwritten-title-left-face-right](#mayuko-handwritten-title-left-face-right) | mayuko | face-reaction | text-left-face-right | glow-accent | yes | white | first-person-feat | A first-person career or origin-story video where the creator's face and a warm hand-lettered title carry the whole frame. |
+| [mayuko-math-equations-thinking-face-question](#mayuko-math-equations-thinking-face-question) | mayuko | face-reaction | text-center | shocked-face, red-circle | yes | green | identity-advice | A reassuring identity-question beat asking whether a prerequisite skill is actually required for a career. |
+| [mayuko-notion-screenshot-centered-face-logo](#mayuko-notion-screenshot-centered-face-logo) | mayuko | code-screenshot | centered-stack | hand-point | yes | black | first-person-feat | A tool or workspace walkthrough revealing the actual app dashboard being shared as a template. |
+| [mayuko-handwritten-phrase-arrow-to-face-right](#mayuko-handwritten-phrase-arrow-to-face-right) | mayuko | face-reaction | text-left-face-right | red-arrow, glow-accent | yes | white | first-person-feat | a first-person reflective beat where the creator opts out of a grind/expectation |
+| [mayuko-centered-face-lowercase-question-skyline-band](#mayuko-centered-face-lowercase-question-skyline-band) | mayuko | face-reaction | centered-stack | glow-accent | yes | cream | open-why-how | a calm personal-essay opener posing an open question about a country, company, or trend's decline |
+| [mayuko-handwritten-banner-centered-face](#mayuko-handwritten-banner-centered-face) | mayuko | face-reaction | centered-stack | glow-accent, shocked-face | yes | teal | first-person-feat | a personal life-update or career-change confession opener |
 | [shade-of-code-devs-are-back-claude-vs-gpt](#shade-of-code-devs-are-back-claude-vs-gpt) | shade-of-code | big-text | text-center | glow-accent, hand-point | yes | red | panic-threat | a reassuring verdict after a panic — 'the tool/role survives', a calmed take on a feared trend |
 | [shade-of-code-i-wish-i-knew-shocked-anime](#shade-of-code-i-wish-i-knew-shocked-anime) | shade-of-code | face-reaction | text-left-face-right | shocked-face, logo-grid | yes | red | identity-advice | a regret/hindsight beat — 'things I wish I knew', a costly lesson learned too late |
 | [shade-of-code-missing-semester-resources-wojak](#shade-of-code-missing-semester-resources-wojak) | shade-of-code | object-hero | centered-stack | glow-accent | yes | orange | listicle-n | an underrated-resource roundup — 'tools/books/sites nobody mentions', a curated stash reveal |
@@ -419,9 +527,24 @@ hand-edit below this line.
 | [technetium-hacked-social-logo-grid](#technetium-hacked-social-logo-grid) | technetium | logo-grid | centered-stack | danger-red, neon-on-dark | no | red | open-why-how | a beat about multiple familiar platforms/tools all affected by one thing — a logo row under a single big alarm word |
 | [tiff-in-tech-text-to-video-3d-icon-arrow](#tiff-in-tech-text-to-video-3d-icon-arrow) | tiff-in-tech | object-hero | text-left-face-right | red-arrow, glow-accent | yes | yellow | identity-advice | a tool-spotlight beat naming one app and who it's for, with our 3D-rendered product glyph as the hero |
 | [tiff-in-tech-better-than-chatgpt-check-vs-x](#tiff-in-tech-better-than-chatgpt-check-vs-x) | tiff-in-tech | comparison-vs | split-vertical | checkmark, x-mark | yes | green | listicle-n | a 'lesser-known tools beat the obvious one' beat — our alternatives clustered under a check, the incumbent logo under an X |
+| [tiff-in-tech-face-left-python-logo-badge](#tiff-in-tech-face-left-python-logo-badge) | tiff-in-tech | face-reaction | face-left | neon-on-dark, glow-accent | yes | blue | first-person-feat | a "code with me" / learn-this-language tutorial intro where the host's presence sells the tone |
 | [tiff-in-tech-fullstack-2020-desk-corner-block](#tiff-in-tech-fullstack-2020-desk-corner-block) | tiff-in-tech | big-text | corner-badge | giant-number | yes | white | open-why-how | a day-in-the-life or career-path beat where a real workspace photo carries the mood and a corner block holds the title + year |
+| [tiff-in-tech-outlined-face-left-code-laptop-right](#tiff-in-tech-outlined-face-left-code-laptop-right) | tiff-in-tech | face-reaction | text-left-face-right | glow-accent | yes | orange | first-person-feat | a first-person "how I got into coding / became an engineer" story beat showing the creator at their real workstation |
 | [tiff-in-tech-copper-is-dead-bold-text-glasses](#tiff-in-tech-copper-is-dead-bold-text-glasses) | tiff-in-tech | big-text | text-left-face-right | neon-on-dark, glow-accent | yes | green | curiosity-reversal | a provocative 'the old way is dead' tech-shift beat — declarative two-word verdict, the relevant vendor logo, our reacting face right |
+| [tiff-in-tech-centered-face-no-text-code-city-bg](#tiff-in-tech-centered-face-no-text-code-city-bg) | tiff-in-tech | face-reaction | centered-stack | glow-accent | yes | pink | speed-primer | a personal build-it-with-me coding tutorial where the creator's face carries the thumbnail and the title does the explaining |
 | [tiff-in-tech-python-chatgpt-dual-logo-flank](#tiff-in-tech-python-chatgpt-dual-logo-flank) | tiff-in-tech | logo-grid | centered-stack | glow-accent | yes | green | first-person-feat | a 'tool A plus tool B' tutorial beat — our two technology logos flanking our presenter over a faint code/context backdrop |
+| [tiff-in-tech-coding-roadmap-icons-face-right](#tiff-in-tech-coding-roadmap-icons-face-right) | tiff-in-tech | roadmap | text-left-face-right | glow-accent, red-arrow | yes | cyan | identity-advice | a beginner learning-roadmap / "start from scratch" step-by-step video |
+| [tiff-in-tech-yellow-number-blue-bottom-bar-center-face](#tiff-in-tech-yellow-number-blue-bottom-bar-center-face) | tiff-in-tech | big-text | centered-stack | giant-number, glow-accent | yes | yellow | listicle-n | A future-prediction list video naming the year and the skills or trends it covers |
+| [tiff-in-tech-face-left-yellow-headline-robot-lineup](#tiff-in-tech-face-left-yellow-headline-robot-lineup) | tiff-in-tech | face-reaction | face-left | glow-accent | yes | yellow | open-why-how | A first-person reaction to seeing a new robot or hardware product line in person at a factory or demo. |
+| [tiff-in-tech-cyan-headline-block-face-right](#tiff-in-tech-cyan-headline-block-face-right) | tiff-in-tech | big-text | text-left-face-right | glow-accent, neon-on-dark | yes | cyan | first-person-feat | A first-person experience review of a program, course, or career path with cost/outcome breakdown. |
+| [tiff-in-tech-zuck-interview-two-tone-banner](#tiff-in-tech-zuck-interview-two-tone-banner) | tiff-in-tech | face-reaction | text-center | glow-accent | yes | blue | first-person-feat | A long-form interview or sit-down with a named, recognizable guest. |
+| [tiff-in-tech-two-face-centered-quote-headline](#tiff-in-tech-two-face-centered-quote-headline) | tiff-in-tech | face-reaction | text-center | glow-accent, neon-on-dark | yes | cyan | scale-story | A founder/expert interview where a provocative one-line quote is the hook |
+| [tiff-in-tech-centered-two-line-headline-flanked-faces](#tiff-in-tech-centered-two-line-headline-flanked-faces) | tiff-in-tech | face-reaction | text-center | glow-accent | yes | green | identity-advice | A guest-interview or two-person conversation episode where one named person is the draw. |
+| [tiff-in-tech-headline-broll-grid-face-right](#tiff-in-tech-headline-broll-grid-face-right) | tiff-in-tech | logo-grid | grid-tiles | glow-accent | yes | orange | x-explained | a tutorial beat showing the variety of outputs a single AI tool can generate |
+| [tiff-in-tech-stacked-headline-face-right-diagram-left](#tiff-in-tech-stacked-headline-face-right-diagram-left) | tiff-in-tech | big-text | text-left-face-right | glow-accent, neon-on-dark | yes | cyan | identity-advice | a skill/concept payoff beat that equates one practice with an outsized advantage |
+| [tiff-in-tech-split-headline-center-face-chalkboard](#tiff-in-tech-split-headline-center-face-chalkboard) | tiff-in-tech | big-text | text-center | glow-accent, neon-on-dark | yes | green | identity-advice | An AI-assisted learning or study-method tutorial fronted by a presenter |
+| [tiff-in-tech-split-lifestyle-diptych-no-text](#tiff-in-tech-split-lifestyle-diptych-no-text) | tiff-in-tech | before-after | split-vertical | glow-accent | yes | grey | first-person-feat | A "day in the life / realistic routine" video contrasting the work grind with the payoff or downtime. |
+| [tiff-in-tech-skills-block-headline-yellow-subbar-face-left](#tiff-in-tech-skills-block-headline-yellow-subbar-face-left) | tiff-in-tech | big-text | text-left-face-right | glow-accent, neon-on-dark | yes | blue | listicle-n | a skills/career list video where one keyword carries the hook |
 
 ## Entries
 
@@ -433,6 +556,15 @@ hand-edit below this line.
 - Why it works: the mirrored same-person split plus a violent VS stroke turns an abstract definition question into a head-to-head fight the eye must resolve
 - Mimic for: a video pitting two concepts our audience conflates against each other (e.g. authentication vs authorization, SQL vs NoSQL)
 - Original pair (shape to mimic, not copy): "Programming vs Coding - What's the difference?" · title_shape=comparison-vs · title_pattern=concrete-noun-verb
+
+### aaron-jack-laptop-object-creepy-face-right
+- Image: `aaron-jack/02-T7aSI-E1fCE.jpg` · Source: https://www.youtube.com/watch?v=T7aSI-E1fCE
+- Tags: archetype=object-hero · layout=text-left-face-right · device=[shocked-face, neon-on-dark] · face=yes · accent=yellow · text=med
+- Reads as: A laptop showing a yellow-tile "100 HOUR JavaScript Course" cover sits at left while a hollow-eyed black-and-white etched face looms on the right over a blurred dark code editor.
+- Layout map: Blurred dark code-editor background fills the whole frame (faint cyan/gray syntax, "function" + "$popular" along the top edge cells 1-3, y~30-60). Hero object = silver MacBook angled, occupying cells 1,2,5,6,9,10 — screen spans x~30-440,y~80-300, keyboard/base x~80-470,y~300-540. Laptop screen content: navy cover; bright yellow "JS" tile lower-left of screen ~x60-200,y150-250; white headline stack right of tile — "100 HOUR" Inter-bold caps ~x215,y130, "JavaScript" ~x215,y175, "Course" italic-serif ~x215,y215; small freeCodeCamp flame badge "(triangle)" top-right of screen ~x395,y70; tiny "7:44:20" duration tag ~x430,y235. Face right ~45% — black-and-white high-contrast etched/engraved human head, bald, hollow black eye sockets, grim mouth; head fills cells 3,4,7,8,11,12 centered ~x720,y300, skull top y~40 to chin y~520. No headline overlay, no badge, no arrow.
+- Why it works: The uncanny hollow-eyed monochrome face hijacks the eye with an unsettling human stare while the yellow JS tile and "100 HOUR" promise anchor concrete value, fusing dread with a clear offer.
+- Mimic for: a course or long-haul tutorial framed around the fear or grind of learning to code
+- Original pair (shape to mimic, not copy): "Why Most People FAIL to Learn Programming" · title_shape=open-why-how · title_pattern=open-what-why-how
 
 ### aaron-jack-google-quit-crying-wojak
 - Image: `aaron-jack/03-IZCfP13twxk.jpg` · Source: https://www.youtube.com/watch?v=IZCfP13twxk
@@ -469,6 +601,132 @@ hand-edit below this line.
 - Why it works: the friendly lit face plus an oversized question and a literal puzzle glyph frames a jargon term as something about to be made simple
 - Mimic for: a 'what is X?' explainer where our host fronts the camera and a single concept icon anchors the term
 - Original pair (shape to mimic, not copy): "What is an API (in 5 minutes)" · title_shape=what-is-x · title_pattern=open-what-why-how
+
+### aaron-jack-glow-headline-face-left-dark-grid
+- Image: `aaron-jack/07-salY_Sm6mv4.jpg` · Source: https://www.youtube.com/watch?v=salY_Sm6mv4
+- Tags: archetype=big-text · layout=text-left-face-right · device=[neon-on-dark, glow-accent] · face=yes · accent=cyan · text=med
+- Reads as: A neutral-faced developer on the left, with a huge glowing cyan "HTML" wordmark and a handwritten "in 5 mins" filling the right two-thirds over a dark engineering-grid backdrop.
+- Layout map: Dark near-black background with faint teal blueprint grid full-bleed. Face: man, head-and-shoulders, left edge, cells 1,5,9 plus into 2,6,10, occupying ~38% width, eyes center ~x150,y80, neutral closed-mouth expression. Headline "HTML" in heavy condensed sans, white core with bright cyan outer glow, large caps spanning cells 6-8, baseline ~y110, top ~y45, dominant right-of-center. Subline "in 5 mins" in cyan script/italic handwriting, cells 10-12, baseline ~y165. No badge, no logo.
+- Why it works: The glowing neon wordmark on a dark grid punches the topic instantly while the calm face anchors a human teacher, and the cursive "in 5 mins" promises a fast, low-cost payoff.
+- Mimic for: a fast single-technology primer ("X in 5 minutes")
+- Original pair (shape to mimic, not copy): "HTML in 5 minutes" · title_shape=speed-primer · title_pattern=concrete-noun-verb
+
+### aaron-jack-meme-face-ds-diagram-tiles
+- Image: `aaron-jack/08-sVxBVvlnJsM.jpg` · Source: https://www.youtube.com/watch?v=sVxBVvlnJsM
+- Tags: archetype=meme · layout=text-left-face-right · device=[shocked-face, glow-accent] · face=yes · accent=magenta · text=med
+- Reads as: A grinning wojak meme face overlaps a grid of hand-drawn data-structure diagrams (linked list, graph, tree, BST), each captioned in colored caps.
+- Layout map: Right half: smiling wojak/brainlet meme line-drawing in a teal hoodie, head crowns near top ~y20, face center ~x880,y180, body fills cells 8,12 down to the bottom edge, occupies right ~45% (cells 4,8,12 plus into 3,7,11). Left + back: a 2x3 grid of boxed hand-drawn DS diagrams on white. Top-left tile = linked-list nodes (X/15/20 boxes, magenta arrows) cells 1-2 ~x130-470,y20-280; label 'Link list' magenta serif caps cells 5-6 baseline ~y310 x130-470. Center-top tile = blue BST (A/B/E nodes) cells 6-7 ~x520-760,y30-280; partial label 'list' muted serif cells 6-7 ~y310. Right-top behind face = pink tree nodes cells 3-4 ~x1040-1280,y40-260; partial label 'tree' magenta caps right edge ~y310. Bottom-left tile = yellow/orange graph (4-node diamond) cells 9-10 ~x120-470,y360-600; label 'Graph' orange serif caps cells 13-14 baseline ~y640. Center-bottom behind body = faint green array/list boxes cells 10-11 ~x520-760,y360-520. Far-left edge cropped magenta box tiles cells 1,9. No badge, no big headline overlay; all text is the diagram labels.
+- Why it works: The instantly recognizable smiling brainlet wojak signals "this is easy, you already get it" while the dense wall of real DS diagrams behind it promises comprehensive coverage, pairing meme relatability with substance.
+- Mimic for: a survey episode that walks through every core data structure with a self-deprecating "it's not that scary" framing
+- Original pair (shape to mimic, not copy): "DATA STRUCTURES you MUST know (as a Software Developer)" · title_shape=identity-advice · title_pattern=identity-status
+
+### aaron-jack-split-vs-buy-this-not-this-laptops
+- Image: `aaron-jack/09-rNy1tg1p3xg.jpg` · Source: https://www.youtube.com/watch?v=rNy1tg1p3xg
+- Tags: archetype=comparison-vs · layout=split-vertical · device=[red-arrow, vs-bolt] · face=no · accent=green · text=low
+- Reads as: A vertically split green-vs-red comparison: a bright laptop labeled "buy this" on the green left, a dimmed laptop labeled "not this" on the red right, each with a down-arrow pointing at its product.
+- Layout map: Hard vertical split at x~640: left half flat green (cells 1,2,5,6,9,10,13,14), right half flat red (cells 3,4,7,8,11,12,15,16). Left label "buy this" lowercase white handwritten-marker font, top-left cells 1-2 baseline ~y40, with a thin white curved down-right arrow beneath it (cells 1,5) pointing toward the laptop. Right label "not this" same marker font, top-right cells 3-4 baseline ~y40, white curved down-left arrow beneath (cell 8) pointing at the dark laptop. Left product: a bright open MacBook, centered in left half cells 6,10 center ~x320,y360, fully lit. Right product: a near-identical laptop rendered dark/dimmed, centered in right half cells 7,11 center ~x960,y360. No badge, no face.
+- Why it works: The hard green/red color split plus the parallel "buy this"/"not this" verdict and twin pointing arrows force an instant good-vs-bad read with no reading required.
+- Mimic for: a buy-this-not-that product recommendation or right-tool-vs-wrong-tool comparison beat
+- Original pair (shape to mimic, not copy): "Best Laptop For Programming in 2020? (a few things to be aware of)" · title_shape=comparison-vs · title_pattern=assumption-flip
+
+### aaron-jack-tier-column-logos-doomer-face
+- Image: `aaron-jack/10-9U684GbFST4.jpg` · Source: https://www.youtube.com/watch?v=9U684GbFST4
+- Tags: archetype=tier-ranking · layout=text-left-face-right · device=[glow-accent, danger-red] · face=yes · accent=red · text=med
+- Reads as: A programming-language tier list (S down to PHP) with glowing tech logos ranked in rows, and a deadpan "doomer" meme face smoking a cigarette on the right.
+- Layout map: Five stacked tier-label cells down the far left edge, ~x10-150, Inter-900 black caps on a vertical color-graded column (S=red ~y65, A=orange ~y215, B=yellow ~y360, C=pale-yellow ~y505, PHP=green ~y650); each label cell ~150px tall spanning cells 1,5,9,13. Dark near-black ranking field cells 2-3,6-7,10-11 with thin white horizontal divider lines at the tier boundaries (~y145,290,435,580). Logos float in two loose columns within the field, each on a soft colored glow: Dart cyan ~x255,y185 and C# purple ~x415,y75 in top band; Python ~x575,y185 just below; JS yellow ~x355,y355 and Java ~x620,y360 mid; Swift orange-red ~x260,y505 and C++ blue ~x570,y505 lower; PHP blue ~x395,y635 bottom. Meme doomer face right ~40% of frame, cells 4,8,12 plus lower-right, head center ~x920,y260 on a moody blue-grey gradient, blue shirt and brown striped tie filling lower-right corner ~y560-720, cigarette in mouth. No badge, no headline text overlaid on the art.
+- Why it works: The recognizable color-coded tier ladder promises a rankable verdict at a glance while the burnt-out doomer face injects relatable dread, so viewers click to see where their language landed.
+- Mimic for: Ranking N programming languages or tools into a best-to-worst tier list with an emotional "what this means for you" face.
+- Original pair (shape to mimic, not copy): "Top 5 Programming Languages in 2022 to Get a Job" · title_shape=listicle-n · title_pattern=identity-status
+
+### aaron-jack-dual-face-center-logos
+- Image: `aaron-jack/11-d2GBO_QjRlo.jpg` · Source: https://www.youtube.com/watch?v=d2GBO_QjRlo
+- Tags: archetype=logo-grid · layout=centered-stack · device=[glow-accent] · face=yes · accent=blue · text=low
+- Reads as: A woman's face on the left glances toward two big tech logos (Instagram + Python) floating center-top, while the creator grins from the right — no text, the icons tell the story.
+- Layout map: Two-tone flat split background: light sky-blue upper band (top to ~y360), warm peach lower band (~y360 to bottom). Woman's cutout face left, cells 1,5,9,13 (into 2,6,10), eyes at ~x250,y370 glancing right toward center; hair/shoulder bleed off the left and bottom edges. Two cutout logos centered-top side by side: Instagram glyph cells 6-7 center ~x550,y170 (~210px tall); Python logo cells 7-8 center ~x780,y170 (~210px tall). Creator's smiling cutout face right, cells 4,8,12,16 (into 3,7,11,15), face center ~x1050,y330, eyes ~x1050,y300; head bleeds off top, body off bottom-right edges. No headline text, no badge, no numerals.
+- Why it works: Two human faces book-ending two instantly-recognizable brand logos turns the thumbnail into a wordless equation — "this person + Instagram + Python" — that the eye decodes faster than any caption, and the woman's sideways glance funnels attention onto the logos.
+- Mimic for: a tutorial pairing two well-known brand/tech logos with a human subject — "build X for [Platform] with [Language]"
+- Original pair (shape to mimic, not copy): "Building a simple Instagram bot with Python tutorial" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### aaron-jack-meme-face-grid-lang-stereotypes
+- Image: `aaron-jack/12--AAA68uZuWU.jpg` · Source: https://www.youtube.com/watch?v=-AAA68uZuWU
+- Tags: archetype=meme · layout=grid-tiles · device=[shocked-face] · face=yes · accent=black · text=high
+- Reads as: A 3x3 grid of wojak/NPC meme faces on plain white, each labeled with a programming language, assigning a stereotype character to every language.
+- Layout map: White background, no border. 3x3 grid of captioned meme-face tiles; each cell = bold serif label above a hand-drawn meme face. Row 1 (labels ~y28, faces ~y60-220): 'C++' caps cell 1 center ~x290,y28 over cyan-bg coping wojak ~x290,y140; 'Scratch' cell 2 ~x655,y28 over edgy-haircut wojak ~x655,y140; 'Java' cell 3 ~x1015,y28 over cyan-bg gray NPC ~x1015,y140. Row 2 (labels ~y265, faces ~y300-470): 'Python' ~x290,y265 over screaming-glasses wojak; 'C#' ~x655,y265 over smoking beanie wojak; 'Typescript' ~x1015,y265 over brainlet wojak. Row 3 (labels ~y510, faces ~y540-720): 'Go' ~x290,y510 over orange-hair yerba-mate hipster-girl wojak; 'Rust' ~x655,y510 over dark muscular gigachad-NPC; 'Ruby' ~x1015,y510 over pink-hair girl wojak. All labels Times/serif bold ~40px black; faces are line-art memes. No accent color, no number badge.
+- Why it works: The instantly recognizable wojak meme format invites viewers to judge whether each language's stereotype matches their own, a tribal-identity argument bait that demands a click to defend 'your' language.
+- Mimic for: a listicle/tier video assigning a stereotype or persona to each item in a set (languages, frameworks, dev types)
+- Original pair (shape to mimic, not copy): "Top 10 Types of Software Developers" · title_shape=listicle-n · title_pattern=identity-status
+
+### aaron-jack-tier-column-headline-face-circles
+- Image: `aaron-jack/13-KnAEIEnnvAQ.jpg` · Source: https://www.youtube.com/watch?v=KnAEIEnnvAQ
+- Tags: archetype=tier-ranking · layout=text-center · device=[glow-accent] · face=yes · accent=red · text=med
+- Reads as: A tier-list color ladder pins the left edge while bold white "S-TIER PROGRAMMERS" text and three circular headshots of famous coders fill the rest.
+- Layout map: Vertical tier-rank column pinned to far-left edge, cells 1,5,9,13 ~x0-55: five stacked color bars top-to-bottom S(red)/A(orange)/B(yellow)/C(green)/D(blue), each labeled with a white letter, spanning full height y0-720; two-line white headline center-left, "S-TIER" Inter-900 caps cells 5-6 baseline ~y320 and "PROGRAMMERS" Inter-900 caps cells 9-10 baseline ~y400, slight drop shadow, x~120-460; three circular face portraits with thin white rings on right third — top-right face cells 3-4 center ~x900,y90 (~30% dia), mid-right face cells 8,12 center ~x1180,y220 (~28% dia), bottom-center-right face cells 14-15 center ~x650,y620 (~26% dia); dark slate/black background; no badge.
+- Why it works: The instantly-recognizable S-tier color ladder paired with real human faces promises a ranked verdict with named winners, baiting the "who made the cut" curiosity.
+- Mimic for: A ranked roundup beat naming the top people, tools, or languages in a category.
+- Original pair (shape to mimic, not copy): "The Most Legendary Programmers Of All Time" · title_shape=identity-advice · title_pattern=identity-status
+
+### aaron-jack-wojak-progression-row-headline-top
+- Image: `aaron-jack/14-hUdB232fIXM.jpg` · Source: https://www.youtube.com/watch?v=hUdB232fIXM
+- Tags: archetype=meme · layout=split-vertical · device=[shocked-face] · face=yes · accent=white · text=med
+- Reads as: A left-to-right row of meme faces evolving from a crying clueless beginner to a smug bearded chad, under a bold white headline.
+- Layout map: White headline "5 STAGES TO LEARN CODING" Inter/sans-900 caps, single line across the top, cells 1-4 baseline ~y45 (x~25 to x~1255); hand-drawn wojak/soyjak meme faces fill the full lower band as a four-figure progression row on white, cells 5-16, vertical span ~y90-720 — figure 1 (tiger-hat crying nerd) ~x150, figure 2 (crying wojak) ~x460, figure 3 (crying wojak) ~x760, figure 4 (gray bearded smug chad) ~x1100; no badge, no accent shapes.
+- Why it works: The left-to-right emotional arc from crybaby to chad is a self-contained visual joke the eye reads as a story instantly, and the meme faces signal relatable in-group humor.
+- Mimic for: a multi-stage skill-journey or before-during-after progression payoff
+- Original pair (shape to mimic, not copy): "The 5 stages of learning to code" · title_shape=listicle-n · title_pattern=identity-status
+
+### aaron-jack-full-title-overlay-face-right
+- Image: `aaron-jack/15-4kgoEphreRc.jpg` · Source: https://www.youtube.com/watch?v=4kgoEphreRc
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=high
+- Reads as: A close-up face on the right with the full sentence headline sprawled in big white text across the dim left side, with "FASTEST" emphasized.
+- Layout map: Headline is the entire title rendered as overlay text on the dark left/center half, sans-serif lowercase plus one CAPS emphasis: "the" cells 1-2 ~x40,y40; "FASTEST" (largest, caps) cells 1-3 baseline ~y95; "way" cell 2 ~x90,y165; "to become a developer" full bottom band cells 9-15 baseline ~y330. Face right-of-center, head and shoulders ~45% of frame, cells 3,4,7,8 center ~x720,y260, eyes ~y150, lit warm against a dark room. No badge, no box; text sits directly on the photo.
+- Why it works: The single CAPS word "FASTEST" spikes out of an otherwise calm lowercase sentence while the warmly-lit face anchors a trust read, so the speed promise and a real person land in one glance.
+- Mimic for: a personal talking-head advice video promising the quickest path to a skill or outcome
+- Original pair (shape to mimic, not copy): "The FASTEST way to become a software developer" · title_shape=identity-advice · title_pattern=identity-status
+
+### aaron-jack-soyjak-vs-chad-degree-no
+- Image: `aaron-jack/16-bAt2oyIGUYA.jpg` · Source: https://www.youtube.com/watch?v=bAt2oyIGUYA
+- Tags: archetype=meme · layout=split-vertical · device=[red-arrow, shocked-face] · face=yes · accent=red · text=med
+- Reads as: A crying soyjak insisting "YOU NEED A DEGREE TO CODE!" on the left faces a calm bearded chad replying "NO." amid floating cash on the right.
+- Layout map: Vertical split at center (~x640). LEFT half: crying open-mouth soyjak line-drawing fills cells 1,2,5,6,9,10 center ~x320,y380; black caps caption 'YOU NEED A DEGREE TO CODE!' Inter-800 two lines top-left cells 1-3 baseline ~y30 and ~y65; big red down-right arrow over soyjak cells 6,10 from ~x230,y280 to ~x430,y460. RIGHT half: bearded chad illustrated head cells 3,7,11 center ~x980,y360 ~45% frame height; black caps 'NO.' Inter-900 top cell 4 ~x980,y45; green dollar bills scattered around chad cells 4,8,12 (top-right ~x1180,y90 and right edge ~x1230,y360); notebook-paper grid texture background throughout; no badge.
+- Why it works: The soyjak-vs-chad meme template plus a giant red arrow and floating cash instantly signals a mocked-belief-vs-confident-truth reversal that demands the click for the punchline.
+- Mimic for: Debunking a widely-held programming gatekeeping myth (the "you need X to succeed" belief).
+- Original pair (shape to mimic, not copy): "How to Make F**k-You Money with Coding" · title_shape=identity-advice · title_pattern=identity-status
+
+### aaron-jack-face-left-laptop-lineup-question-marks
+- Image: `aaron-jack/17-ZGADxPLGyHE.jpg` · Source: https://www.youtube.com/watch?v=ZGADxPLGyHE
+- Tags: archetype=object-hero · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=cyan · text=high
+- Reads as: A wide-eyed host on the left with a bold multi-color headline arcing across the top over a row of candidate laptops flanked by question marks.
+- Layout map: Three-line stacked headline across the top: "THE BEST LAPTOPS" cyan+white Inter-900 caps cells 2-3 baseline ~y55; "FOR PROGRAMMING" yellow+cyan condensed slab caps cells 6-7 baseline ~y150 with slight upward tilt; "IN 2021" small magenta caps cell 8 ~x1150,y205. Host face left ~40% of frame, cells 1,5,9 bleeding into 2,6,10, head centered ~x230,y180, eyes wide behind glasses, arms crossed across lower body cells 9-10. Laptop lineup along bottom-right: three laptops in a row cells 6-7-8 centered ~y460, white/silver/space-gray devices; floating cyan "?" question marks above and between the laptops at cells 6,7,8 ~y330. Dark navy gridded tech-line background with horizontal data streaks. No badge.
+- Why it works: The wide-eyed face paired with a row of laptops capped by question marks frames a buy-decision the viewer must scroll to resolve, while the high-saturation multi-color headline pops off the dark grid.
+- Mimic for: a "which tool/device should you buy" buyer's-guide roundup with candidate options on display
+- Original pair (shape to mimic, not copy): "Best Laptops for Programming in 2021" · title_shape=identity-advice · title_pattern=identity-status
+
+### aaron-jack-before-after-money-drop-chart
+- Image: `aaron-jack/18-7FLZO2hidHs.jpg` · Source: https://www.youtube.com/watch?v=7FLZO2hidHs
+- Tags: archetype=before-after · layout=text-left-face-right · device=[red-arrow, giant-number] · face=yes · accent=blue · text=med
+- Reads as: A developer looks down, dejected, on the left while a "$200k -> $0" banner and a crashing downward chart on the right spell out a money collapse.
+- Layout map: Face fills left half: talking-head subject head-and-shoulders, cells 1-2,5-6,9-10, eyes-down center ~x400,y300, neutral home-office background. Dark charcoal banner upper-right, white "$200k [blue right-arrow emoji] $0" Inter-900 caps cells 3-4 baseline ~y130, banner spans ~x615-1215 / y55-185; the arrow is a glossy blue right-arrow emoji mid-banner ~x1000,y115. Below it a charcoal-bordered tile holding the blue downward-trend chart emoji (graph crashing left-to-right), cells 7-8,11-12 centered ~x935,y380, occupying ~x780-1095 / y200-545. No badge, no logo.
+- Why it works: The literal "$200k -> $0" plunge plus a nosediving chart conveys the loss in one glance, while the subject's downcast gaze sells the emotional cost of the decision.
+- Mimic for: a first-person career or money reversal where a high number collapses to near-zero
+- Original pair (shape to mimic, not copy): "Why I left my $200k job as a Software Developer" · title_shape=first-person-feat · title_pattern=identity-status
+
+### aaron-jack-tinder-match-two-circles-handwritten
+- Image: `aaron-jack/19-lvFAuUcowT4.jpg` · Source: https://www.youtube.com/watch?v=lvFAuUcowT4
+- Tags: archetype=comparison-vs · layout=split-vertical · device=[red-circle, glow-accent] · face=yes · accent=cyan · text=low
+- Reads as: A Tinder-style "It's a Match!" screen pairing the Python logo with a woman in two big circles, flames licking the dark edges.
+- Layout map: Handwritten cursive headline "It's a Match!" white, top-center spanning cells 1-3, baseline ~y70 (~x640,y45); two large circular portraits side by side on lower half — left circle = Python logo on teal, cells 5-6 + 9-10, center ~x430,y390, diameter ~340px; right circle = woman cropped at laptop, cells 7-8 + 11-12, center ~x850,y390, diameter ~340px; small pink Tinder-flame heart icon between the circles top, cell 6/7 seam ~x640,y185; orange flame graphics bleeding up both vertical edges (cells 1,4,5,8,9,12); near-black graph-paper background; no badge.
+- Why it works: It hijacks the instantly recognizable Tinder "It's a Match!" UI so a scroller's brain decodes the meme before reading a word, with two glowing circles forcing a same/different comparison.
+- Mimic for: a build/automation video pairing a tool or language with a playful real-world target ("X meets Y")
+- Original pair (shape to mimic, not copy): "Automate TINDER with Python tutorial" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### aaron-jack-gold-balloon-number-centered-face-python-logo
+- Image: `aaron-jack/20-5tcs2qXP3Pg.jpg` · Source: https://www.youtube.com/watch?v=5tcs2qXP3Pg
+- Tags: archetype=number-stat · layout=centered-stack · device=[giant-number] · face=yes · accent=gold · text=low
+- Reads as: A man looks at camera between a giant gold balloon "5" on the left and the Python logo on the right, over a stormy sky.
+- Layout map: Centered face, head-and-shoulders, filling cells 6-7/10-11, face center ~x320,y170, shoulders in light tee spanning x180-460 down to the bottom edge; gold foil-balloon numeral "5" upper-left cells 1-2/5-6, occupying ~x95-235,y55-260, glossy metallic gold; raised left hand making a small gesture lower-left ~x95-175,y260-330 just under the balloon; Python logo (blue+yellow snakes) in a white-ringed dark circle upper-right cells 3-4/7-8, center ~x500,y140, diameter ~150px; condenser microphone on shockmount centered at bottom ~x300,y360-440; full-bleed moody grey storm-cloud sky background; thin black letterbox bars top and bottom (~y0-25 and y455-480); no headline text, no badge.
+- Why it works: A glossy gold party-balloon numeral against a brooding sky pops the count instantly while the centered eye-contact face plus the unmistakable Python logo state the topic in one beat, no reading required.
+- Mimic for: a numbered listicle of language/tool tips where the count and the tech logo carry the whole pitch
+- Original pair (shape to mimic, not copy): "5 Python tricks that will improve your life" · title_shape=listicle-n · title_pattern=identity-status
 
 ### awesome-coding-ai-truth-handdrawn-finally
 - Image: `awesome-coding/01-ZM2c33qy16U.jpg` · Source: https://www.youtube.com/watch?v=ZM2c33qy16U
@@ -2108,6 +2366,15 @@ hand-edit below this line.
 - Mimic for: a 'how X handles N billion/trillion of Y' system-design scale story where the hook is a single staggering quantity under a recognizable product logo
 - Original pair (shape to mimic, not copy): "How Discord Stores TRILLIONS of Messages" · title_shape=scale-story · title_pattern=concrete-noun-verb
 
+### coding-with-lewis-object-hero-printer-glowing-logo
+- Image: `coding-with-lewis/03-xg45b8UXoZI.jpg` · Source: https://www.youtube.com/watch?v=xg45b8UXoZI
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent, neon-on-dark] · face=no · accent=yellow · text=low
+- Reads as: A real receipt printer spitting out a printed receipt sits beside a glowing blue-and-yellow Python logo on a dark scattered-receipt background, with no headline text.
+- Layout map: No headline text. Dark near-black background scattered with out-of-focus receipt slips in all four corners (cells 1,4,13,16). Hero object = receipt printer, center-right, ~80% frame height, cells 6,7,10,11 spanning ~x540-980, y60-700, with a printed receipt curling up out of its top into cells 6,7 (~x600-880, y50-330) carrying legible mono text 'GOURMET COFFEE ... AMOUNT $44.61'. Python logo at left, ~40% height, cells 5,6,9,10 centered ~x350,y310, wrapped in a warm yellow/orange neon glow halo against the dark field. No badge, no number, no caption.
+- Why it works: A single hyper-real glowing object pairing (printer plus receipt vs. a neon Python logo) on a moody dark field telegraphs the absurd premise with zero text, forcing the curiosity to resolve in the title.
+- Mimic for: an unexpected physical-object build or hardware-meets-code project reveal
+- Original pair (shape to mimic, not copy): "I Fixed My ADHD with a Receipt Printer" · title_shape=first-person-feat · title_pattern=curiosity-gap-reversal
+
 ### coding-with-lewis-gta5-15min-vs-150-facepalm
 - Image: `coding-with-lewis/04-kG1q2LjRiT0.jpg` · Source: https://www.youtube.com/watch?v=kG1q2LjRiT0
 - Tags: archetype=comparison-vs · layout=split-vertical · device=[red-arrow, shocked-face] · face=yes · accent=green · text=med
@@ -2116,6 +2383,15 @@ hand-edit below this line.
 - Why it works: the red-then-green time pills joined by an arrow make the dramatic improvement legible in under a second, and the exaggerated facepalm supplies the emotional 'I can't believe this' that turns a dry optimization into a story
 - Mimic for: a before/after performance or speed-up beat (slow build → fast result) where a red→green metric pill pair carries the change and a reaction face sells the disbelief
 - Original pair (shape to mimic, not copy): "How a Random Programmer FIXED GTA 5" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### coding-with-lewis-laser-strikes-bank-object
+- Image: `coding-with-lewis/05-VTB0_SBltDw.jpg` · Source: https://www.youtube.com/watch?v=VTB0_SBltDw
+- Tags: archetype=object-hero · layout=split-vertical · device=[danger-red, neon-on-dark] · face=no · accent=red · text=low
+- Reads as: A giant glowing object on the right fires a red laser beam across the frame that smashes into a small bank-with-dollar-coin on the lower left, sparks flying.
+- Layout map: No headline text, fully illustrative, dark near-black background with a faint blue perspective grid floor. Left actor: small 3D white bank/temple icon, base cells 9,13 spanning ~x130-510, y390-620, footprint ~30% width; a yellow dollar-coin emoji sits on its facade cells 9-10 center ~x305,y480. Right actor: large 3D blue rounded slab/laser object filling the upper-right quadrant, cells 3,4,7,8 spanning ~x620-1280, y20-440, with a hot white-red muzzle glow at ~x800,y135 (cell 3). Red laser beam: a bright diagonal streak from the muzzle glow down-left to the bank impact point ~x460,y410 (cell 10/11 border), crossing cells 7 then 10. Impact: white-red spark burst + flying debris shards clustered at the bank roof ~x460,y400. Dominant accent red along the full beam + muzzle; cool blue rim-light on the object. No badge, no logo, no caption.
+- Why it works: A single saturated red diagonal laser slicing dark negative space toward a tiny vulnerable target reads as violence/conflict at thumbnail scale, and the empty top-left lets the beam and muzzle glow pop with zero text competing.
+- Mimic for: a tool or script forcefully beating/defeating an institution (bank, fee, system)
+- Original pair (shape to mimic, not copy): "My Bank Wanted $17.63 so I Used Python Instead." · title_shape=first-person-feat · title_pattern=concrete-noun-verb
 
 ### coding-with-lewis-40-apis-icon-orbit-face
 - Image: `coding-with-lewis/06-YHxj3LvZoLQ.jpg` · Source: https://www.youtube.com/watch?v=YHxj3LvZoLQ
@@ -2126,6 +2402,15 @@ hand-edit below this line.
 - Mimic for: a roundup or 'tools every developer should know' beat where a warm presenter face anchors an orbit of recognizable service/tech logos
 - Original pair (shape to mimic, not copy): "40 APIs Every Developer Should Use (in 12 minutes)" · title_shape=listicle-n · title_pattern=concrete-noun-verb
 
+### coding-with-lewis-banned-neon-word-reddit-logo
+- Image: `coding-with-lewis/07-ikhGvUpdu40.jpg` · Source: https://www.youtube.com/watch?v=ikhGvUpdu40
+- Tags: archetype=big-text · layout=centered-stack · device=[neon-on-dark, danger-red] · face=no · accent=red · text=low
+- Reads as: A single huge red neon-glowing word "BANNED" blazes across a dark grid background above a glowing pixel-art Reddit alien, reading as a damning verdict on the platform.
+- Layout map: Full-bleed near-black background with faint dark-teal grid lines across all 16 cells. Giant red neon headline "BANNED" centered horizontally, spanning cells 5-8, condensed bold serif/slab caps with heavy outer glow, baseline ~y210, glyph height ~y130-y230. Pixelated red Reddit Snoo (head + antenna) glowing at bottom-center, cells 14-15, antenna tip ~y540, body ~y560-y690, centered ~x650. No badge, no face, no secondary text.
+- Why it works: The lone word in searing red neon against pure dark maximizes contrast and reads as a one-word verdict in a fraction of a second, while the glowing platform logo names the target without any clutter.
+- Mimic for: A platform/policy reckoning beat — a single charged verdict word over the offending product's logo.
+- Original pair (shape to mimic, not copy): "How Reddit Crushed the Internet's Largest Protest" · title_shape=panic-threat · title_pattern=concrete-noun-verb
+
 ### coding-with-lewis-fullstack-roadmap-logo-orbit
 - Image: `coding-with-lewis/08-5-MLMzbUlPY.jpg` · Source: https://www.youtube.com/watch?v=5-MLMzbUlPY
 - Tags: archetype=logo-grid · layout=centered-stack · device=[glow-accent, big-text] · face=yes · accent=blue · text=med
@@ -2134,6 +2419,114 @@ hand-edit below this line.
 - Why it works: the encircling stack logos instantly communicate 'this covers the whole toolchain' while the chrome year-stamped headline signals it is current and authoritative, and the bright blue glow pops the smiling face off the busy matrix wall
 - Mimic for: a roadmap or full-curriculum beat where a confident presenter is wreathed by the technologies covered, with one short authoritative text band naming the deliverable
 - Original pair (shape to mimic, not copy): "Become a Full Stack Developer: A Roadmap for Beginners" · title_shape=identity-advice · title_pattern=identity-status
+
+### coding-with-lewis-glowing-bulb-idea-bubbles
+- Image: `coding-with-lewis/09-FCNg8KyMmGI.jpg` · Source: https://www.youtube.com/watch?v=FCNg8KyMmGI
+- Tags: archetype=object-hero · layout=centered-stack · device=[glow-accent] · face=no · accent=amber · text=low
+- Reads as: A brilliantly glowing lightbulb floats dead-center, ringed by translucent bubbles each holding a different project icon (pomodoro tomato, chatbot, joystick, recipe book) hanging on strings — pure "ideas" with zero text.
+- Layout map: No headline text. Hero glowing lightbulb dead-center cells 6-7-10-11, filament burning at ~x640,y250, base/screw tapering to ~y560, warm amber glow bleeding into surrounding dark-navy field; bulb hangs from a string descending from top edge. Ring of ~12 translucent project-icon bubbles orbiting the bulb: tomato/pomodoro timer left cell 5 ~x140,y260; clipboard-checklist bubble lower-left cells 5-9 ~x360,y430; recipe book bubble upper-mid cells 2-6 ~x470,y130; tile-grid app icon top cell 2 ~x290,y130; small chat bubble mid cell 6 ~x435,y300; web globe top-mid cell 3 ~x720,y95; blue chatbot square (no bubble) cell 7 ~x900,y150; www gear badge cells 7-11 ~x910,y390; tamagotchi keychain bubble bottom-center cells 10-14 ~x800,y560; purple chat icon partial bottom-center cell 10 ~x500,y690; lego/printer object bleeding off bottom-left corner cells 9-13 ~x60,y560; red joystick bubble right cells 8-12 ~x1090,y540; large purple 'A' speech icon half-cropped off right edge cells 4-8 ~x1230,y130. Faint vertical hanging strings descend from top edge to several bubbles. Dark navy-to-steel-blue gradient backdrop with a subtle lighter desk-plane horizon at ~y490.
+- Why it works: The single luminous bulb is the only bright point in a dark frame so the eye locks instantly, then the orbiting bubble-icons promise a smorgasbord of buildable projects without a word of text to read.
+- Mimic for: a "project ideas" or brainstorm roundup beat — one glowing idea-hero surrounded by sample concept icons
+- Original pair (shape to mimic, not copy): "21 Programming Project Ideas (Beginner to Advanced)" · title_shape=listicle-n · title_pattern=concrete-noun-verb
+
+### coding-with-lewis-back-of-head-ultrawide-code-wall
+- Image: `coding-with-lewis/10-2fzXqSU858I.jpg` · Source: https://www.youtube.com/watch?v=2fzXqSU858I
+- Tags: archetype=code-screenshot · layout=face-right · device=[neon-on-dark, glow-accent] · face=yes · accent=purple · text=low
+- Reads as: A programmer shot from behind, hand on chin in contemplation, dwarfed by a giant curved ultrawide monitor glowing with walls of purple code.
+- Layout map: No headline text at all (zero-text environmental thumbnail). Curved ultrawide monitor fills left + center, cells 1-3,5-7,9-11 — dense purple/syntax-colored code editor panes spanning x0-x870, slightly bowed (ultrawide curve), full vertical y0-y400; a third terminal/log pane top-right of screen cells 3,4 (~x870-1080, y0-y180). Subject (young man, gray tee) shot from behind-right in profile, head + shoulders fill right third cells 4,8,12 into 7,11 — head crown ~y20, hand-to-chin contemplative gesture center ~x680,y330; near ear ~x900,y210. Black gaming-chair headrest far right cells 8,12 x1100-1280. Dark studio backdrop with cool blue rim-light glow upper-right corner cell 4 (~x1000,y40). Foreground desk + keyboard silhouette bottom edge cells 14,15 y660-720. No badge, no logo, no caption.
+- Why it works: The viewer-as-over-the-shoulder framing plus the contemplative chin-on-hand pose creates relatable "this is me at my desk" identification, while the sheer scale of the glowing code wall does all the text-free storytelling.
+- Mimic for: A first-person hardware/setup-regret or deep-focus coding-life beat where the environment is the story
+- Original pair (shape to mimic, not copy): "I Regret Buying an Ultrawide Monitor (as a programmer)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### coding-with-lewis-logo-tile-ticker-bg
+- Image: `coding-with-lewis/11-qGAPokt6Buo.jpg` · Source: https://www.youtube.com/watch?v=qGAPokt6Buo
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent, neon-on-dark] · face=no · accent=green · text=low
+- Reads as: A glossy dark Uber-logo tile floats dead-center over a dense, glowing red/green stock-ticker number grid.
+- Layout map: Centered hero tile: a dark glossy rounded square occupying cells 5-7 and 9-11, ~x340,y20 to ~x960,y700, tilted slightly; white "Uber" wordmark (brand glyph, lowercase) centered on the tile baseline ~y360, spanning ~x430-x900. Background is a full-bleed scrolling stock-ticker number grid in green (dominant), red, and blue digits over near-black, visible in all four corners (cells 1-4 and 13-16). Subtle rim glow on the tile edges where it catches ticker color (warm/green spill bottom-right ~x900,y450). No headline, no badge, no face.
+- Why it works: A single instantly-recognizable brand logo on a glossy 3D tile, framed by a chaotic glowing wall of financial numbers, signals scale-of-money without a word of headline.
+- Mimic for: a company/system scale-story beat — one product's logo against a backdrop conveying massive transaction or data volume
+- Original pair (shape to mimic, not copy): "How Uber Handles TRILLIONS of Transactions" · title_shape=scale-story · title_pattern=open-what-why-how
+
+### coding-with-lewis-doodle-object-on-head-question-marks
+- Image: `coding-with-lewis/12-NwZ26lxl8wU.jpg` · Source: https://www.youtube.com/watch?v=NwZ26lxl8wU
+- Tags: archetype=object-hero · layout=centered-stack · device=[shocked-face, glow-accent] · face=yes · accent=black · text=low
+- Reads as: A wide-eyed hand-drawn doodle face with a giant 3D Notion "N" cube balanced on its head and scribbled question marks beside it, all in sketchy black-on-white.
+- Layout map: No headline text. Hand-drawn doodle character fills the lower half: a huge round face with two big surprised eyes cells 13-15 (left eye ~x340,y560; right eye ~x780,y560), forehead/head outline arcing across cells 9-11. The hero object is a 3D Notion logo cube (white face with serif "N", black outline, small battery/cap detail on top carrying tiny red+green dots) centered-top straddling cells 6-7, spanning roughly x460-x830, y40-y450, sitting ON the character's head. Radiating sketch lines (paper-plane / speed-line doodles) burst outward from center across all four corners: top-left cells 1-2, top-right cells 3-4, bottom-right cell 16. Hand-drawn double question marks "??" upper-right cell 8, ~x1030-x1190, y260-y430. Background is a crumpled-paper white texture. No badge, no accent color block.
+- Why it works: The oversized surprised doodle eyes plus the unmistakable Notion cube balanced precariously overhead, framed by burst lines and question marks, telegraphs "this product is doing something shocking" in pure sketch with zero text to read.
+- Mimic for: A scale/system-design reveal where a recognizable product or logo is the hero and the emotion is bewildered awe
+- Original pair (shape to mimic, not copy): "How Notion Handles 200 BILLION Notes (Without Crashing)" · title_shape=scale-story · title_pattern=curiosity-gap-reversal
+
+### coding-with-lewis-roadmap-stacked-headline-icon-column
+- Image: `coding-with-lewis/13-Q0prVO3DCtU.jpg` · Source: https://www.youtube.com/watch?v=Q0prVO3DCtU
+- Tags: archetype=roadmap · layout=text-left-face-right · device=[glow-accent] · face=no · accent=orange · text=high
+- Reads as: A four-line stacked headline reading "2022 BACKEND DEVELOPER ROADMAP" fills the left two-thirds over a dark blue grid, while a vertical chain of tech icons (laptop, Postgres elephant, pixel art) runs down the right edge like a connected pipeline.
+- Layout map: Dark navy textured-grid background full-bleed. Headline stacked left-aligned in four rows: "2022" white Inter-900 caps huge cells 1-2 baseline ~y150; "BACKEND DEVELOPER" orange Inter-900 caps cells 5-7 baseline ~y320 spanning x40-x590; "ROADMAP" white caps on a skewed light-blue parallelogram banner cells 9-13 baseline ~y490, with a small hardhat-worker emoji ~x300,y490 abutting the banner's right end. Right column = a vertical pipeline of node graphics centered ~x1080: blue laptop-with-code-tag icon cell 8 ~y110; Postgres elephant logo cell 12 ~y360; yellow pixel-glitch tile cell 16 ~x1080,y620; thin connector lines link the three nodes. A white pointing-hand emoji cell 16 ~x640,y630 points right toward the bottom node. No badge.
+- Why it works: The giant stacked white-and-orange headline owns the left two-thirds for instant readability while the connected icon pipeline on the right visually promises a step-by-step path, both anchored by the techy dark-grid backdrop.
+- Mimic for: A learning-path or roadmap video laying out the ordered stack of tools and skills to master a role
+- Original pair (shape to mimic, not copy): "2022 Backend Developer Roadmap | Begin your journey as a backend developer." · title_shape=identity-advice · title_pattern=identity-status
+
+### coding-with-lewis-meme-feed-learning-progress-bar
+- Image: `coding-with-lewis/14-5GfgrYz9z9A.jpg` · Source: https://www.youtube.com/watch?v=5GfgrYz9z9A
+- Tags: archetype=meme · layout=full-bleed-object · device=[progress-bar, neon-on-dark] · face=no · accent=green · text=med
+- Reads as: A boxy retro machine is being stuffed with printed memes through its top slot while its neon-green screen reads "LEARNING..." over a glowing progress bar.
+- Layout map: Full-bleed 3D machine fills the frame on a purple starfield background. Top half = open intake slot (cells 1-8) holding three tilted printed meme cards: card A left with black-on-white caption "Girl: Says hi to me / My mom:" cells 1-3 (~x60-330, captions y95-160) over a blue creature image; card B center photo (dog/lure) cells 3-5 (~x300-470); card C right with caption "Me: *Bends a ruler* / Ruler: *Snaps*" cells 5-8 (~x500-800, y90-150) over a cartoon Squidward face. Bottom half = the machine's screen panel (cells 9-16): pixel/retro green "LEARNING..." headline centered cells 10-15, baseline ~y440; horizontal segmented green progress bar directly below, cells 10-15, ~x150-590 y465-510. A dark cable loops from the machine's left side. No human face, no badge.
+- Why it works: The literal "feed memes into a machine that says LEARNING" visual gag tells the whole story at a glance, and the glowing green text + segmented progress bar against the dark machine read as a high-contrast scroll-stopper.
+- Mimic for: a build/training montage beat where messy input is poured into a system that processes or "learns" from it
+- Original pair (shape to mimic, not copy): "I Trained an AI with 10,000 Memes" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### coding-with-lewis-fullbleed-sort-bars-no-text
+- Image: `coding-with-lewis/15-rbbTd-gkajw.jpg` · Source: https://www.youtube.com/watch?v=rbbTd-gkajw
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent, danger-red] · face=no · accent=red · text=low
+- Reads as: A full-frame sorting-algorithm bar chart — a clean sorted ramp glowing red on the left, a bright divider line, then jagged unsorted bars on the right — with no text or face at all.
+- Layout map: No headline text, no badge, no face. Full-bleed visualization on near-black bg (cells 1-16). LEFT HALF (cells 1,2,5,6,9,10,13,14): dense vertical bars rising as a smooth diagonal ramp from lower-left (~x40,y700) to an upper-center peak (~x740,y40); bars are white but bathed in a red/orange glow, with the most saturated orange glow column at cells 9-10 (~x180-340). The ramp's diagonal top edge runs through cell 6 (~x520,y110) up to the peak at the top of the cell 3/7 boundary (~x740,y40). DIVIDER: a vivid yellow-cored red vertical line at ~x745, full height (cells 3,7,11,15), marking the sorted/unsorted seam. RIGHT HALF (cells 3,4,7,8,11,12,15,16): tall jagged white bars of random heights (unsorted) on black, peaks varying ~y40-y450, spanning x760-x1280. BACKGROUND: faint ghost monospace digits tiled across the whole dark canvas, most visible in the black upper-left and right margins.
+- Why it works: The instantly-legible sorted-ramp-vs-chaos split reads as "sorting" at a glance with zero text, and the glowing yellow-red divider line is a single bright focal point that stops the scroll on an otherwise dark frame.
+- Mimic for: an algorithm or data-structure explainer where the visual concept itself (sorted vs unsorted) carries the whole thumbnail without words
+- Original pair (shape to mimic, not copy): "10 Sorting Algorithms Easily Explained" · title_shape=listicle-n · title_pattern=concrete-noun-verb
+
+### coding-with-lewis-shocked-face-left-cyan-headline-logo-hero
+- Image: `coding-with-lewis/16-nrC07M2XV1I.jpg` · Source: https://www.youtube.com/watch?v=nrC07M2XV1I
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[shocked-face, glow-accent] · face=yes · accent=cyan · text=med
+- Reads as: A stunned developer clutches his head on the left while a neon-cyan "GPT-4 / IN 72 HOURS" headline and the glowing ChatGPT logo dominate the right.
+- Layout map: Shocked face left ~40%, hand-to-head, eyes wide, cells 1,5,9 center ~x230,y360 against a teal tech-grid background. Multi-line headline upper-right: white "App with" Inter-800 caps lower-case mix cells 6-7 baseline ~y70, cyan "GPT-4" Inter-900 caps oversized cells 7-8 ~x1050,y55 with glow; cyan-filled box "IN 72 HOURS" white Inter-800 caps cells 7-8 ~x1020,y140. Object hero lower-center-right: glowing cyan ChatGPT spiral logo cells 10-11 center ~x760,y430; small white robot mascot beside it cells 11-12 ~x980,y430; faint robotic-arm decoratives bottom edge cells 13-16. No badge.
+- Why it works: The over-the-top shocked face sells stakes while the glowing cyan brand logo and oversized "GPT-4" instantly telegraph the topic, both popping off the dark teal background.
+- Mimic for: A first-person "I built/tried X with [AI tool]" feat reveal where the result is impressive or shocking.
+- Original pair (shape to mimic, not copy): "I Made an App with GPT-4 in 72 Hours" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### coding-with-lewis-dual-logo-glow-dark
+- Image: `coding-with-lewis/17-QsTYFsmCL5E.jpg` · Source: https://www.youtube.com/watch?v=QsTYFsmCL5E
+- Tags: archetype=logo-grid · layout=split-vertical · device=[glow-accent, neon-on-dark] · face=no · accent=green · text=low
+- Reads as: A glossy green Atom logo glowing on the right of a dark stage, faced off against a faint blue X-shaped logo bleeding in from the left.
+- Layout map: No headline text. Faded blue "X" / VS Code-style angular logo fills left half, cells 1-2,5-6,9-10, centered ~x300,y300, low-opacity edge-lit blue on near-black; glossy 3D green Atom logo (atom-orbit glyph) right-of-center, cells 7-8,11-12, beveled chrome ring, center ~x800,y360, radius ~140px with a bright rim glow; dark blue grid/glow tech backdrop full-bleed; reflective floor lower third (cells 13-16); no badge, no text overlay.
+- Why it works: The lone bright, beveled green logo glowing against an almost-black stage with only a ghostly rival logo opposite reads as a silent showdown that demands a click to learn the story.
+- Mimic for: A tool/product reveal or origin-story beat pitting two technologies against each other
+- Original pair (shape to mimic, not copy): "Atom: The Editor That Accidentally Built Its Own Killer" · title_shape=curiosity-reversal · title_pattern=curiosity-gap-reversal
+
+### coding-with-lewis-code-comment-object-hero-feather-icon
+- Image: `coding-with-lewis/18-lSVgeMoXJTs.jpg` · Source: https://www.youtube.com/watch?v=lSVgeMoXJTs
+- Tags: archetype=object-hero · layout=centered-stack · device=[neon-on-dark, glow-accent] · face=no · accent=cyan · text=low
+- Reads as: A glowing monospace code comment "/*do good not evil*/" runs across the top of a dark CRT-grid screen, above a big glassy blue 3D app icon with a teal feather, a small arrow pointing at the feather.
+- Layout map: Dark near-black background with faint CRT/scanline grid texture, full bleed. Single-line neon-white monospace code comment "/*do good not evil*/" JetBrains-Mono caps across the top band, cells 1-8, baseline ~y100, with bloom/glow + faint cyan fringe, spanning almost full width x60-x910. Object hero centered-low: glassy blue 3D rounded-square app icon (Photoshop-style) cells 6,7,10,11 center ~x440,y330, occupying ~30% of width; a teal/cyan 3D feather overlaps its right edge, cells 7,11 center ~x600,y300, tip extending down to ~y480. Small white hand-drawn curved up-right arrow points at the feather top, cell 8 ~x740,y150. No face, no badge, no headline block beyond the top comment line.
+- Why it works: The single glowing line of literal source-code-comment text reframes a familiar app icon as a moral mystery object, and the small arrow forces the eye onto the feather detail the title is teasing.
+- Mimic for: unmasking the hidden tool or library behind something everyone uses
+- Original pair (shape to mimic, not copy): "The Code Inside Everything (That Gets Zero Credit)" · title_shape=curiosity-reversal · title_pattern=curiosity-gap-reversal
+
+### coding-with-lewis-giant-stat-phone-hero-shocked-face
+- Image: `coding-with-lewis/19-3gjcY_00U1w.jpg` · Source: https://www.youtube.com/watch?v=3gjcY_00U1w
+- Tags: archetype=number-stat · layout=text-left-face-right · device=[giant-number, shocked-face] · face=yes · accent=yellow · text=med
+- Reads as: A shocked guy on the right stares out while a hand-held phone showing a Reddit post sits left, and a giant yellow "VIEWS 4,000,000" stat fills the bottom-left.
+- Layout map: Phone mockup held in hand upper-left, tilted slightly, screen showing a Reddit/social post, cells 1-2 + 5-6, occupying ~x40-330, y30-300; shocked face right ~32% frame, cells 3-4,7-8 center ~x1010,y200, wide-eyed open-mouth expression looking at camera; TikTok logos scattered far-right edge cells 4,8 ~x1180-1250,y90-300 over neon-purple/pink backdrop; giant 2-line stat lower-left over the phone area: "VIEWS" Inter-900 caps yellow cells 5-6 baseline ~y560, "4,000,000" Inter-900 caps yellow larger cells 5-7 baseline ~y660, both with heavy black outline; no badge; background is glitchy magenta/cyan gradient with grid texture.
+- Why it works: The eye-line of the shocked face plus a 7-figure yellow view count promises a viral result, while the held phone shows the literal product that earned it.
+- Mimic for: a build-and-it-went-viral payoff where a bot/tool produced a huge measurable result
+- Original pair (shape to mimic, not copy): "I Created a Bot That Makes Reddit Videos" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### coding-with-lewis-headline-left-api-hub-face-right
+- Image: `coding-with-lewis/20-2SNTChycLo8.jpg` · Source: https://www.youtube.com/watch?v=2SNTChycLo8
+- Tags: archetype=diagram-arch · layout=text-left-face-right · device=[glow-accent, red-arrow] · face=yes · accent=cyan · text=med
+- Reads as: A grinning developer on the right beams at a glowing cyan "API" hub diagram with curved arrows, under a punchy "5 FREE APIs" headline top-left.
+- Layout map: Headline top band over left half: white outlined "5 FREE" Inter-900 caps cells 1-2 baseline ~y70 (the "5" oversized ~x55, "FREE" ~x90-330); yellow script "APIs" italic just below-right cells 2-3 ~x300-430,y130. Central glowing cyan ring labeled "API" Inter-bold caps cell 10 center ~x560,y360, ringed by faint tech-circuit icons across cells 6,9,11. Two white curved arrows sweep from the face toward the ring (~x740,y290 and ~x620,y480). Face right ~38% width, head+shoulders cells 3,4,7,8 center ~x1000,y210, mouth open smiling, framed by a thin red corner-bracket reticle. Dark navy circuit-board background full bleed. No badge.
+- Why it works: The glowing cyan hub plus an excited open-mouth face and arrows pointing toward the payoff create a clear "here's the cool thing" focal pull against the dark techy field.
+- Mimic for: a tooling/API roundup where one central concept connects to a delighted host
+- Original pair (shape to mimic, not copy): "These FREE APIs are AWESOME" · title_shape=listicle-n · title_pattern=concrete-noun-verb
 
 ### devforge-what-happened-broken-robot
 - Image: `devforge/01-MjSUCg2NN4g.jpg` · Source: https://www.youtube.com/watch?v=MjSUCg2NN4g
@@ -2702,6 +3095,15 @@ hand-edit below this line.
 - Mimic for: an origin-story or history-of explainer where layered retro type, the subject's logo/mascot, and a vintage founder photo together promise a nostalgic deep dive
 - Original pair (shape to mimic, not copy): "The Making of Linux: The World's First Open-Source Operating System" · title_shape=x-explained · title_pattern=concrete-noun-verb
 
+### forrest-knight-fullbleed-code-webcam-inset-label
+- Image: `forrest-knight/04-H2gvHxC9gFY.jpg` · Source: https://www.youtube.com/watch?v=H2gvHxC9gFY
+- Tags: archetype=code-screenshot · layout=corner-badge · device=[glow-accent] · face=yes · accent=magenta · text=low
+- Reads as: A real VS Code editor fills the screen with a smiling creator webcam pinned top-right above a black "VS CODE SETUP" label bar.
+- Layout map: Full-bleed dark VS Code screenshot fills all 16 cells: syntax-highlighted code editor left/center, blue VS Code logo bottom-left cell 13 ~x60,y620, magenta-tinted neofetch terminal panel bottom-right cells 15-16 ~x950-1280,y560-720. Webcam face inset top-right, hands raised open-palm, smiling, ~28% width, cells 4,8 ~x1040,y200, framed by a thin magenta/pink rim border. Black label bar directly under the inset spanning right edge cells 8,12 ~x830-1280,y385-450, white "VS CODE SETUP" mono-bold caps centered in bar baseline ~y420. No number, no badge.
+- Why it works: The authentic full-screen editor signals a real setup walkthrough while the human webcam corner adds a trustworthy face and the high-contrast black label bar names the payoff in one glance.
+- Mimic for: An IDE or tooling setup/config walkthrough where the actual screen is the proof and a small presenter corner adds credibility.
+- Original pair (shape to mimic, not copy): "My Visual Studio Code Setup for Web Development" · title_shape=identity-advice · title_pattern=identity-status
+
 ### forrest-knight-7-design-patterns-code-overlay
 - Image: `forrest-knight/05-BJatgOiiht4.jpg` · Source: https://www.youtube.com/watch?v=BJatgOiiht4
 - Tags: archetype=code-screenshot · layout=text-center · device=[big-text, glow-accent] · face=yes · accent=white · text=med
@@ -2711,6 +3113,24 @@ hand-edit below this line.
 - Mimic for: a numbered 'N patterns/concepts every developer should know' video where floating real code cards behind a big-number headline promise hands-on examples
 - Original pair (shape to mimic, not copy): "7 Design Patterns EVERY Developer Should Know" · title_shape=listicle-n · title_pattern=concrete-noun-verb
 
+### forrest-knight-fullbleed-desktop-centered-headline-corner-webcam
+- Image: `forrest-knight/06-HrYtwz0Xe2Q.jpg` · Source: https://www.youtube.com/watch?v=HrYtwz0Xe2Q
+- Tags: archetype=code-screenshot · layout=full-bleed-object · device=[glow-accent] · face=yes · accent=cyan · text=med
+- Reads as: A real Linux coding desktop (IDE plus terminal) fills the frame with a centered white headline across it and a cyan-bordered webcam of the creator gesturing in the lower-right corner.
+- Layout map: Full-bleed Linux desktop screenshot as canvas (green nature wallpaper at edges, taskbar bottom). Code editor window fills left two-thirds, cells 1,2,5,6,9,10,13,14 (~x40-630, y35-615), with a yellow highlight band ~y395-435; terminal panel upper-right, cells 3,4 (~x650-1270, y20-260). Centered white headline 'WHY LINUX IS BETTER FOR PROGRAMMING' Inter/Helvetica-light caps, single line, cells 5-8 spanning ~x315-1245, baseline ~y345. Webcam talking-head box with bright cyan rim lower-right, cells 11,12,15,16 (~x680-1255, y365-680), creator center-right ~x950,y500 mid-gesture. No badge, no stat tell.
+- Why it works: The authentic full-screen Linux dev environment is itself the argument, the centered light headline floats legibly over the dark editor, and the cyan-glowing webcam corner adds a human face and a color pop without crowding the evidence.
+- Mimic for: A first-person "why I use this tool/OS" pitch where a real working environment screenshot is the evidence and the creator narrates from a corner cam.
+- Original pair (shape to mimic, not copy): "Why I Code on Linux Instead of Windows" · title_shape=comparison-vs · title_pattern=assumption-flip
+
+### forrest-knight-phone-mockup-app-corner-badge
+- Image: `forrest-knight/07-Yt2troF-Eyc.jpg` · Source: https://www.youtube.com/watch?v=Yt2troF-Eyc
+- Tags: archetype=object-hero · layout=corner-badge · device=[glow-accent] · face=no · accent=magenta · text=low
+- Reads as: A black smartphone on a warm wooden desk showing a dark-mode app screen, with the Adobe Xd logo badged in the top-right corner.
+- Layout map: Hero phone slightly right-of-center, upright black smartphone spanning cells 2,3,6,7,10,11 ~x500-820, y60-650; screen shows dark app UI with a magenta/purple circular profile glow ~x640,y200; warm wood-desk background full-bleed; Adobe Xd logo badge top-right corner, magenta-to-purple gradient rounded square with white "Xd" glyph cell 4 center ~x1190,y55, ~110px square; soft ambient glow orb lower-left cell 5 ~x110,y330; silver laptop edge bleeds in from right cell 8 ~x1240,y260; no headline text.
+- Why it works: The single brightly-lit phone screen isolated against a dark wood field, anchored by the unmistakable Adobe Xd brand badge, instantly signals a hands-on mobile-app design tutorial.
+- Mimic for: a product or app demo showing a finished mobile mockup on-device for a design-tool tutorial
+- Original pair (shape to mimic, not copy): "How to Design & Prototype a Mobile App - Adobe Xd Tutorial" · title_shape=x-explained · title_pattern=concrete-noun-verb
+
 ### forrest-knight-5-things-hand-up-number
 - Image: `forrest-knight/08-jfxcJH_OWgE.jpg` · Source: https://www.youtube.com/watch?v=jfxcJH_OWgE
 - Tags: archetype=number-stat · layout=text-left-face-right · device=[giant-number, hand-point] · face=yes · accent=white · text=med
@@ -2719,6 +3139,114 @@ hand-edit below this line.
 - Why it works: the literal five-finger hand gesture doubling the giant '5' makes the listicle count instant, and the personal hooded-to-camera shot keeps it a confession
 - Mimic for: a numbered personal-lessons listicle where our own raised hand mirrors the giant headline number and a single accent bar lands the payoff word
 - Original pair (shape to mimic, not copy): "5 THINGS I WISH I KNEW When I Started Programming" · title_shape=listicle-n · title_pattern=identity-status
+
+### forrest-knight-fullbleed-workspace-centered-headline
+- Image: `forrest-knight/09-H68Iqm6c36U.jpg` · Source: https://www.youtube.com/watch?v=H68Iqm6c36U
+- Tags: archetype=face-reaction · layout=text-center · device=[glow-accent] · face=yes · accent=white · text=med
+- Reads as: A guy coding in profile at a glowing multi-monitor desk setup, with a white slab-serif headline laid across the middle.
+- Layout map: Full-bleed candid workspace photo, no border/badge. Subject in right profile coding at desk, occupying the right third cells 4,8,12, head ~x720,y90 looking left at the screens, torso/forearms reaching to the keyboard at center-bottom cells 10-11 ~y450. Dual monitors fill the left half: a dark IDE with colored code lines cells 1,5,9 (~x60-310), and a center monitor showing a neon pink/cyan PC-build wallpaper cells 2,6 (~x350-560) supplying the glow. White slab-serif headline 'How I Focus While Coding' in title case, centered horizontally, baseline ~y285, spanning cells 5-8 (~x190 to ~x780), sitting over the desk/monitor midground with a subtle dark outline for legibility. Coffee mug + headphones clustered bottom-left cells 9,13 (~x130,y480). No stat, no arrow, no badge.
+- Why it works: The authentic over-the-shoulder 'real focused coder' scene plus the neon monitor glow draws the eye, while the centered slab headline sits cleanly in the photo's calm midground so the promise reads instantly.
+- Mimic for: a productivity/focus or 'how I work' beat shown as a genuine candid workspace scene
+- Original pair (shape to mimic, not copy): "Why I’m able to Code 4 Hours with NO breaks (how to stay focused & productive)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### forrest-knight-centered-face-project-screens-no-text
+- Image: `forrest-knight/10-8XVI_Zrvz3c.jpg` · Source: https://www.youtube.com/watch?v=8XVI_Zrvz3c
+- Tags: archetype=face-reaction · layout=text-center · device=[glow-accent] · face=yes · accent=rust · text=low
+- Reads as: A bearded developer talks directly to camera, hands gesturing mid-explanation, framed by floating screenshots of his GitHub profile, code editors, and a retro game — pure "here are the projects" credibility, no headline.
+- Layout map: Centered face, large ~45% of frame: head cells 6-7 (~x640,y160), eyes ~y150, beard/chin spanning cells 10-11 (~x640,y320); two open gesturing hands at bottom-center cell 15 (~x640,y570). No headline text anywhere. Environmental project screenshots ring the subject: GitHub profile UI card overlaps lower-left, cells 9-10-13-14 (~x150-575, y430-680) showing repo list "dev-notes-platform / ForrestKnight / hostinger-hunt / open-source-cs"; dark Java code editor cell 12, right edge (~x850-1280, y350-590); colorful syntax code editor top-left cells 1-5 (~x115-360, y120-330); retro Sonic game screen top-right cells 4,8 (~x920-1200, y45-210). Rust/brown overshirt fills mid-frame torso. Warm home-office background (shelves, books, duck decoys, cardboard boxes). No badge, no number, no arrow.
+- Why it works: The presenter's direct eye contact and open-hand gesture pull a trust read while the surrounding live project screenshots (GitHub repos, real code, a built game) prove the "projects" promise instantly without a single word of overlay.
+- Mimic for: a "here are the projects/portfolio I built" or credibility-establishing personal-advice beat where real on-screen artifacts carry the message instead of text
+- Original pair (shape to mimic, not copy): "These Coding Projects Will Set You Apart as a Programmer (w/ Instructions Included)" · title_shape=identity-advice · title_pattern=identity-status
+
+### forrest-knight-architecture-diagram-face-right
+- Image: `forrest-knight/11-sDlCSIDwpDs.jpg` · Source: https://www.youtube.com/watch?v=sDlCSIDwpDs
+- Tags: archetype=diagram-arch · layout=text-left-face-right · device=[red-circle, red-arrow] · face=yes · accent=red · text=med
+- Reads as: A hand-drawn web-app architecture diagram (Client / Server / Database boxes with HTTP arrows) fills the left two-thirds against a muted teal board, the presenter sits diagonally cropped on the right, and a pixel-font headline runs across the middle.
+- Layout map: Muted teal/sage diagram board fills left ~65% (cells 1-3,5-7,9-11); black "Microservice Architecture" Inter-900 caps top edge cells 1-3 baseline ~y45; three red-outlined rounded boxes labeled "Client" (cells 1,5,9 ~x90,y100), "Server / Application Server / Business Logic" (center cells 2,6,10 ~x370,y110), and "Da[tabase]" (cell 3 ~x600,y100), boxes spanning ~y60-490; black line-icon phone+monitor in Client box, two columns of gear/server icons in Server box; dashed black HTTP Request/Response arrows pointing left between Client and Server ~x230,y270 and y330; presenter diagonally cropped right ~38% on a hard black diagonal seam from top-center to bottom-left, head cells 4,8 center ~x780,y180, plaid shirt torso to bottom, hands clasped ~y490; full-width pixel/monospace headline "How to Structure your Web App" white with subtle outline, cells 5-8 vertically centered baseline ~y285, overlapping both diagram and face; no badge.
+- Why it works: The familiar boxes-and-arrows architecture sketch promises a concrete how-to payload while the red box outlines and diagonal face crop add energy and a trustworthy human teacher, so a scrolling developer recognizes the diagram instantly and stops to read it.
+- Mimic for: a web-app / system-architecture explainer that walks through client-server-database components
+- Original pair (shape to mimic, not copy): "Everything You NEED to Know About WEB APP Architecture" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### forrest-knight-photo-headline-overlay-profile-right
+- Image: `forrest-knight/12-eQBvBtJd6wE.jpg` · Source: https://www.youtube.com/watch?v=eQBvBtJd6wE
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=blue · text=high
+- Reads as: A bearded engineer sits in profile at his desk while a blue-tinted left panel carries the white headline "A DAY IN THE LIFE OF A SOFTWARE ENGINEER."
+- Layout map: Full-bleed candid desk photo as background; subject (bearded man, profile facing right, grey tee) occupies right half cells 3-4,7-8,11-12 centered ~x900,y320, body cropped at bottom edge. Left ~40% has a semi-transparent blue gradient panel over cells 1-2,5-6 darkening the photo for legibility. White headline left-aligned, three lines Inter/Helvetica-800 caps: line 1 "A DAY IN THE LIFE OF" smaller cells 1-3 baseline ~y55; line 2 "OF A SOFTWARE" cells 1-3 baseline ~y110; line 3 "ENGINEER" largest, cells 1-2 baseline ~y170. No badge, no number, no logo.
+- Why it works: The relatable real-workspace candid plus a translucent blue scrim that lets a bold white headline sit cleanly over the photo signals an authentic behind-the-scenes vlog at a glance.
+- Mimic for: A behind-the-scenes "day in the life" or workflow-routine video grounded in a real workspace photo.
+- Original pair (shape to mimic, not copy): "A Day in the Life of a Software Engineer" · title_shape=identity-advice · title_pattern=identity-status
+
+### forrest-knight-os-screenshots-stack-face-right
+- Image: `forrest-knight/13-2gSs2lenxQA.jpg` · Source: https://www.youtube.com/watch?v=2gSs2lenxQA
+- Tags: archetype=object-hero · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=med
+- Reads as: A vertical stack of three Linux desktop screenshots on the left, the creator's calm face on the right, and a bold black "LINUX / IS THE BEST" headline filling the white gap up top.
+- Layout map: Left third = vertical split of three OS-desktop screenshots stacked floor-to-ceiling (Ubuntu/orange top cells 1-2 ~y0-180, Zorin/blue mid cells 5-6 ~y180-360, dark Manjaro bottom cells 9-13 ~y360-540) each carrying a distro logo at its right edge ~x300; a black studio mic boom angles up from lower-center cells 10-11 ~x420,y480 into the white gap. Headline two-tone black, left-aligned, top-center over white: "LINUX" Inter-900 caps huge cells 2-3 baseline ~y95 from ~x355; "IS THE BEST" Inter-700 caps half-height cells 2-4 baseline ~y150. Face right ~45% of frame, long-haired man chest-up, head center cells 4,8 ~x780,y200, facing camera, warm painting + bookshelf bokeh behind; no badge, no stat number.
+- Why it works: The bright clean white headline gap wedged between busy colorful screenshots and a human face creates a high-contrast reading lane the eye locks onto before the OS tiles sell the "which distro" payoff.
+- Mimic for: a "pick the best X" roundup where stacked product/OS screenshots flank a presenter
+- Original pair (shape to mimic, not copy): "The Best Linux Distro for You" · title_shape=identity-advice · title_pattern=identity-status
+
+### forrest-knight-centered-face-flanked-algorithm-cards
+- Image: `forrest-knight/14-Uym4-KhP3Lc.jpg` · Source: https://www.youtube.com/watch?v=Uym4-KhP3Lc
+- Tags: archetype=code-screenshot · layout=centered-stack · device=[glow-accent] · face=yes · accent=orange · text=low
+- Reads as: A long-haired creator centered at a mic, surrounded by orange-outlined floating cards of code snippets and graph diagrams, with two labeled search-algorithm code panels anchoring the lower corners.
+- Layout map: Face centered full-height, cells 6,7,10,11, head ~x520-650 y90-300, mic + chest fill bottom-center cells 10,11,14,15; LEFT cluster of 3 orange-bordered code-snippet cards, top card cells 2-3 ~x150-360 y10-150, mid card cells 1-2 ~x40-230 y90-200, lower diamond-rotated card cell 1 ~x20-150 y160-290; TOP-RIGHT cluster of 3 white graph-diagram cards with orange/blue nodes, top card cells 7-8 ~x620-760 y10-110, mid card cell 8 ~x700-810 y90-200, lower card cells 8,12 ~x780-880 y190-290; LOWER-LEFT dark code panel 'Binary search' header centered with green-highlighted index row + def binary_search code, cells 9,13 ~x20-300 y300-430; LOWER-RIGHT dark code panel 'Linear search' header centered with green-highlighted index row + def linear_search code, cells 12,16 ~x640-960 y300-430; no overlaid headline, no badge.
+- Why it works: The centered talking-head is ringed by glowing orange-bordered artifact cards that visualize the exact algorithms named, so the topic reads instantly without any headline text crowding the frame.
+- Mimic for: an algorithms/data-structures explainer that surveys several techniques at once
+- Original pair (shape to mimic, not copy): "3 Types of Algorithms Every Programmer Needs to Know" · title_shape=listicle-n · title_pattern=identity-status
+
+### forrest-knight-split-objects-hacking-vs-coding-pointing-face
+- Image: `forrest-knight/15-3hcQKZ774QQ.jpg` · Source: https://www.youtube.com/watch?v=3hcQKZ774QQ
+- Tags: archetype=comparison-vs · layout=split-vertical · device=[red-arrow, hand-point] · face=yes · accent=red · text=med
+- Reads as: A bearded creator on the right leans in and gestures across a real desk scene split into two stacked white captions, "HACKING" up top and "OR CODING" below, with red arrows pointing at a red threat-screen monitor and a code laptop.
+- Layout map: Full-bleed real desk photo on a green wall. White Inter-900 caps headline in two stacked lines: "HACKING" upper-left/center cells 1-3 baseline ~y70; "OR CODING" lower-left/center cells 9-11 baseline ~y400. Hero objects: dark monitor running a red "PRIMARY THREAT" UI center-left cells 2,3,6,7 (~x90-470, y90-330); silver code laptop lower-right cells 11,12,15,16 (~x520-790, y300-470). Creator at right edge in dark hoodie + grey cap, leaning in with open-hand gesture toward the laptop, cells 4,8,12 (~x560-940, y0-470). Red arrows: top-left curved arrow pointing down-right at the monitor (~x80,y90); center-bottom arrow pointing up-right at the laptop (~x470,y470). Bold white outline-shadowed "?" glyph top-right corner cell 4 (~x900,y60). No badge bar.
+- Why it works: The literal split (a red hacking screen vs a coding laptop) plus three red arrows and the creator's pointing hand force a binary "which one?" question, and the floating "?" seals the curiosity.
+- Mimic for: a "this discipline vs that discipline" career-path comparison beat with two on-screen artifacts
+- Original pair (shape to mimic, not copy): "Career Paths for Computer Science Majors" · title_shape=identity-advice · title_pattern=identity-status
+
+### forrest-knight-split-code-face-bottom-banner
+- Image: `forrest-knight/16-Otr3Up8wRn0.jpg` · Source: https://www.youtube.com/watch?v=Otr3Up8wRn0
+- Tags: archetype=code-screenshot · layout=split-vertical · device=[glow-accent] · face=yes · accent=white · text=med
+- Reads as: A dark laptop full of colorful code on the left, a serious arms-crossed creator with a studio mic on the right, and a bold white claim banded across the bottom.
+- Layout map: Frame split ~50/50 vertical at x~620. LEFT half: photographed MacBook angled toward camera filling cells 1-2,5-6,9-10, screen full of multicolor syntax-highlighted HTML code on near-black editor, blurred warm window light behind, screen spanning ~x40-x600,y40-y360. RIGHT half: creator three-quarter portrait cells 3-4,7-8,11-12, long blonde hair, beige long-sleeve, arms crossed at chest ~y380, face centered ~x720,y150, black studio mic boom intruding top-left of his head ~x600,y20, cool window light behind. BOTTOM headline band: white Anton/Inter-900 condensed caps 'IGNORE THE JOB LISTING' single line across full width, cells 13-16, baseline ~y490, glyph height ~70px, x~30-x950, soft drop shadow on the darkened lower image (no solid bar, text sits directly on the dark base photo). No badge, no number.
+- Why it works: The clean code-vs-creator split sells real-programmer-with-real-advice instantly, while the lone heavy white imperative reads in one glance against the darkened bottom edge.
+- Mimic for: A career/advice beat pairing a concrete coding context with a contrarian one-line claim from the host.
+- Original pair (shape to mimic, not copy): "How to ACTUALLY Get an Entry Level Programming Job" · title_shape=identity-advice · title_pattern=identity-status
+
+### forrest-knight-desk-photo-white-band-headline
+- Image: `forrest-knight/17-LV_r2ahaKto.jpg` · Source: https://www.youtube.com/watch?v=LV_r2ahaKto
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=med
+- Reads as: A real photo of a friendly long-haired programmer seated at his coding desk with a hand on the keyboard, a single plain white sentence-case headline laid across the middle.
+- Layout map: Full-bleed real desk photo, no graphic background. Subject (man, long hair, beard, dark tee) seated right of center, body in cells 3,4,7,8,11,12, face ~cells 4,8 center ~x500,y110; he faces camera with a slight smile, right hand resting on a yellow-accent mechanical keyboard mid-frame (cells 6,7,10,11 ~x340,y200). Code-editor monitor fills left third, cells 1,2,5,6,9 ~x40-220, dark IDE with colored syntax and file tree. Single-line white headline 'watch if you're a new programmer' bold Helvetica/Inter-style lowercase with soft drop shadow, spanning cells 5-7 baseline ~y185 (~x100-560), left-aligned. Coffee mug lower-left cell 9 ~x90,y285. PC tower with blue glow behind keyboard ~x300,y90. No badge, no icons, no accent shapes - the headline is the only graphic overlay.
+- Why it works: The authentic, lived-in desk photo with direct eye contact and a warm smile reads as a real person giving honest advice, and the plain white sentence-band promises a casual low-pressure watch rather than a hyped tutorial.
+- Mimic for: A personal advice-to-beginners talking-head video where authenticity and approachability beat graphic punch.
+- Original pair (shape to mimic, not copy): "So, you want to be a programmer?" · title_shape=identity-advice · title_pattern=identity-status
+
+### forrest-knight-deskmate-portrait-no-text
+- Image: `forrest-knight/18-vWNa15pjzi4.jpg` · Source: https://www.youtube.com/watch?v=vWNa15pjzi4
+- Tags: archetype=face-reaction · layout=face-right · device=[glow-accent] · face=yes · accent=teal · text=low
+- Reads as: A relaxed young creator sitting at his home desk beside an open laptop, looking straight at the camera in a warm, lived-in workspace.
+- Layout map: No headline text. Subject (chest-up, dark tee, beard) occupies the right third, cells 4,8,12 plus center cells 7,11, face centered ~x900,y150 looking directly at the lens; warm-lit room background (door, framed art) fills cells 5-8 behind him. Left half is a desk flatlay: open silver laptop with a landscape-photo wallpaper across cells 1-2,5-6 ~x180,y300, a second laptop/notebook lower-left cells 9-10, scattered desk objects (mouse, papers, cables) along the bottom cells 13-14. Cool teal-gray daylight on the desk side contrasts the warmer right side. No badge, no logo, no arrows.
+- Why it works: Direct eye contact from a friendly, ordinary creator at a real desk reads as a personal, trustworthy invitation rather than a hyped pitch, and the clean flatlay signals a hands-on tutorial.
+- Mimic for: A personal learning-technique or workflow tutorial where the creator is the authority and the workspace sets the tone.
+- Original pair (shape to mimic, not copy): "Learn Code Faster with the Feynman Technique" · title_shape=identity-advice · title_pattern=concrete-noun-verb
+
+### forrest-knight-code-bg-headline-face-right
+- Image: `forrest-knight/19-b5l5UodFzMo.jpg` · Source: https://www.youtube.com/watch?v=b5l5UodFzMo
+- Tags: archetype=code-screenshot · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=orange · text=med
+- Reads as: A real Java IDE filling the screen with a smiling capped guy on the right and a bold white headline stamped across the middle.
+- Layout map: Full-bleed dark code-editor screenshot is the background across the whole frame, syntax-colored Java in a Main.java tab top-left, file tabs ('Main.java', 'MathUtils.java') along top ~y20, line numbers down the left gutter; face occupies right ~32%, capped smiling man cells 4,8,12 head center ~x980,y130 with mic + hands visible lower; Java coffee-cup logo (orange/brown) mid-left-center ~x500,y150 cells 6-7; single white outlined headline 'WORLD'S SHORTEST JAVA COURSE' condensed-900 caps spanning center cells 5-9 as one wide line, baseline ~y260, sitting over the code; thin vertical seam splits the code panel from the face at ~x800; no badge.
+- Why it works: The authentic full-screen IDE signals 'real code you'll actually learn' while the friendly face and bold centered claim promise it's fast and approachable.
+- Mimic for: a hands-on language tutorial that teaches the whole thing fast from real code on screen
+- Original pair (shape to mimic, not copy): "Learn Java in 15 Minutes (seriously)" · title_shape=speed-primer · title_pattern=concrete-noun-verb
+
+### forrest-knight-curriculum-table-face-right
+- Image: `forrest-knight/20-NyOvFSP_IpQ.jpg` · Source: https://www.youtube.com/watch?v=NyOvFSP_IpQ
+- Tags: archetype=code-screenshot · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=cyan · text=high
+- Reads as: A dark, cyan-tinted course-curriculum webpage fills the left half while the smiling creator with a podcast mic occupies the right, reading as a real "degree" you can browse.
+- Layout map: Full-bleed dark screenshot of a curriculum site spans the frame; the dense readable content (cyan section headers "Computer Science Basics"/"Programming", multi-column course-listing tables with linked cyan rows) occupies cells 1-3,5-7,9-11,13-15 (left ~0-820px) over near-black bg; small white site title top-left cell 1 ~y12. Creator face center-right ~40% frame, cells 4,8,12 bleeding into 7,11 — head top ~y20, chin ~y180, eye-line ~y90, centered ~x980; black cap, dark hoodie, beard, smiling at camera; large podcast mic foreground lower-center ~x900,y150 cells 11,12. No headline overlay, no badge — the on-screen page text IS the headline.
+- Why it works: The literal, browsable curriculum table makes the abstract "degree" feel like a real resource you could click into right now, while the warm smiling face plus mic signals a trustworthy human guide curating it.
+- Mimic for: a "build your own curriculum / free learning path" reveal where the on-screen resource itself is the proof
+- Original pair (shape to mimic, not copy): "The Open Source Computer Science Degree" · title_shape=x-explained · title_pattern=concrete-noun-verb
 
 ### internet-made-coder-zero-to-software-engineer-arrow
 - Image: `internet-made-coder/01--VDXBHLU8q4.jpg` · Source: https://www.youtube.com/watch?v=-VDXBHLU8q4
@@ -2747,6 +3275,24 @@ hand-edit below this line.
 - Mimic for: an automation or do-it-for-you tooling video whose hook is 'let the machine do the boring work while you relax'
 - Original pair (shape to mimic, not copy): "Start Automating Your Life Using Python! (File Management with Python Tutorial)" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
 
+### internet-made-coder-yellow-headline-dummies-badge-node-tree
+- Image: `internet-made-coder/04-SFEROgwxicA.jpg` · Source: https://www.youtube.com/watch?v=SFEROgwxicA
+- Tags: archetype=diagram-arch · layout=text-center · device=[glow-accent] · face=yes · accent=yellow · text=high
+- Reads as: "Data Structures for DUMMIES" in big yellow type banners the top with the parody dummies-book mascot top-right, while a tree of numbered circles drawn over the creator's live desk footage spells out the topic.
+- Layout map: Yellow Anton/heavy-condensed caps headline "Data Structures" spans full width across the top, cells 1-4, baseline ~y55, slight black drop-shadow over the live footage; creator at his desk fills the center, head cells 2,6 center ~x420,y150 looking right; yellow torn-ribbon badge "for DUMMIES" rotated ~-8deg cells 7-8 center ~x1000,y200 with the round cartoon dummies-book owl mascot pointing left at ~x1180,y200 cells 8/12; node-tree diagram overlaid lower-right — numbered black-ring circle "6" cell 11 ~x720,y395, "4" cell 11 ~x820,y430 (root-ish), "3" cell 11 ~x800,y560, red-ring circles "5" ~x1010,y410 and an empty red circle ~x1175,y430 plus another red ring ~x1150,y560, all joined by thin connector lines forming a tree/linked-node graph; faint code editor + hand-drawn schematic ghosted along the left edge cells 1,5,9.
+- Why it works: The instantly-recognizable "for Dummies" parody branding plus a hand-built node-tree drawn right onto real footage promises a friendly, visual, from-scratch walkthrough rather than a dry lecture.
+- Mimic for: a beginner-friendly explainer that visualizes the core data structure (tree/linked nodes) right over the host's footage
+- Original pair (shape to mimic, not copy): "Data Structures Explained for Beginners - How I Wish I was Taught" · title_shape=x-explained · title_pattern=identity-status
+
+### internet-made-coder-object-hero-step-stack-right
+- Image: `internet-made-coder/05-rwWCyXYwPhA.jpg` · Source: https://www.youtube.com/watch?v=rwWCyXYwPhA
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent] · face=no · accent=yellow · text=low
+- Reads as: A real laptop showing code on a clean desk, with the Python logo at left and three "STEP 1 / STEP 2 / STEP 3" badges stacked at the right, thin pointer lines tying them to the screen.
+- Layout map: Hero object: photographed space-grey laptop open with blue VS Code screen, center-front, cells 6-7-10-11, screen ~x430-790 y170-410, body filling lower-center to ~y620. Background: white wall + sheet curtain, faint purple/green ghost-code wash bleeding in right edge cells 8,12,16. Python two-tone logo (blue top + yellow bottom snakes) left-mid, cells 5-9, center ~x190,y330, ~180px tall; a thin black square pointer line drops from logo down-right toward the laptop base ~x300-390,y330-520. Three stacked badge bars upper-right: each = yellow Inter-900 caps label "STEP 1" / "STEP 2" / "STEP 3" on a navy-blue solid block, right-aligned cells 3-4,7-8,11-12, badge 1 ~x900-1245 y65-140, badge 2 ~y155-230, badge 3 ~y245-330. Three thin black leader lines fan from the laptop screen's right edge (~x790,y260) out to the left edge of each badge. No face, no corner badge.
+- Why it works: The three numbered navy-and-yellow badges promise a finite, easy roadmap while the leader lines and real-laptop photo make it feel concrete and personal rather than a generic stock graphic.
+- Mimic for: a three-step "how I'd do X" roadmap video built around a single hero device or screenshot
+- Original pair (shape to mimic, not copy): "How I Would Learn Python FAST in 2023 (from zero)" · title_shape=speed-primer · title_pattern=identity-status
+
 ### internet-made-coder-cs50-harvard-logo-block
 - Image: `internet-made-coder/06--Zj1kepwRuw.jpg` · Source: https://www.youtube.com/watch?v=-Zj1kepwRuw
 - Tags: archetype=object-hero · layout=face-left · device=[hand-point, big-text] · face=yes · accent=yellow · text=low
@@ -2756,6 +3302,15 @@ hand-edit below this line.
 - Mimic for: a review or verdict video judging a famous course, tool, or framework where a recognizable logo carries the authority
 - Original pair (shape to mimic, not copy): "CS50 FULL REVIEW  - Best Course to Learn Computer Science in 2022? (edX, Harvard)" · title_shape=what-is-x · title_pattern=open-what-why-how
 
+### internet-made-coder-giant-yellow-headline-book-hero-code-bg
+- Image: `internet-made-coder/07-JJkWemM03Lg.jpg` · Source: https://www.youtube.com/watch?v=JJkWemM03Lg
+- Tags: archetype=big-text · layout=text-center · device=[glow-accent] · face=yes · accent=yellow · text=med
+- Reads as: A huge yellow serif "Algorithms" banner across the top over a dim code-screenshot wall, with a guy mid-center holding a "Cracking the Coding Interview" book, a "FOR DUMMIES" lockup on his shirt, and a yellow Dummies-style cartoon badge bottom-right.
+- Layout map: Giant yellow serif headline "Algorithms" spanning the full top band, bold display serif (Times/Playfair feel), cells 1-4 baseline ~y130, sitting on a smudged dark paint-stroke plate ~y20-150; dim dark code-editor screenshot fills the entire background (yellow line-numbers + Python at left, cells 5,9,13). Subject male figure center, ~40% width, head cells 2-3 (~x500,y150) down to torso cells 6-7,10-11, holding a green book "Cracking the Coding Interview" angled in left hand ~x360,y300 (cells 5-6). Hand-scrawled white "FOR DUMMIES" on his t-shirt — "FOR" small ~x560,y260, "DUMMIES" large grunge caps cells 6-7 ~x560,y310. Round yellow cartoon "Dummies" mascot badge bottom-right corner, cell 12 ~x1180,y320, ~140px. Faint node-graph network overlay right side cells 4,8. No separate text badge; no red.
+- Why it works: The oversized warm-yellow serif word pops off the cold dim code wall while the "FOR DUMMIES" shirt plus mascot badge inject a familiar self-deprecating brand joke that promises a beginner-friendly take on an intimidating topic.
+- Mimic for: a beginner-friendly explainer of an intimidating CS topic (algorithms, data structures) framed as "made simple"
+- Original pair (shape to mimic, not copy): "Algorithms Explained for Beginners - How I Wish I Was Taught" · title_shape=x-explained · title_pattern=identity-status
+
 ### internet-made-coder-2023-zero-hero-neon
 - Image: `internet-made-coder/08-tcpO1UWP2Mg.jpg` · Source: https://www.youtube.com/watch?v=tcpO1UWP2Mg
 - Tags: archetype=before-after · layout=centered-stack · device=[neon-on-dark, giant-number] · face=yes · accent=green · text=med
@@ -2764,6 +3319,123 @@ hand-edit below this line.
 - Why it works: the dark neon palette reads premium and the red-to-green ZERO-to-HERO framing promises a full transformation in one glance
 - Mimic for: a year-stamped roadmap or zero-to-mastery video where the hook is a dramatic before/after journey on a cinematic dark stage
 - Original pair (shape to mimic, not copy): "How I Would Learn to Code in 2023 (if I had to start over)" · title_shape=first-person-feat · title_pattern=curiosity-gap-reversal
+
+### internet-made-coder-headline-banner-laptop-js-logo
+- Image: `internet-made-coder/09-uaWYRL0g1iw.jpg` · Source: https://www.youtube.com/watch?v=uaWYRL0g1iw
+- Tags: archetype=object-hero · layout=text-center · device=[glow-accent] · face=no · accent=yellow · text=low
+- Reads as: A photographed laptop running code sits center frame with a bold yellow "FASTEST WAY" banner across the top and a glowing yellow JS logo emblem on the right.
+- Layout map: Top banner: "FASTEST WAY" yellow Anton/Inter-900 caps with black outline, cells 1-4, baseline ~y55, spanning full width x40-x1240 on a dark/black strip; laptop hero photo center, screen showing colored code cells 5-7 + 9-11 centered ~x500,y330, keyboard lower cells 13-15; glowing yellow energy beam streaks from the screen rightward toward the logo across cells 7,11; JS logo emblem (yellow rounded square, black "JS" lettering) right side cells 8,12 center ~x1075,y290, ~17% of width with soft yellow glow halo; wooden desk surface across bottom cells 13-16; no face, no badge.
+- Why it works: The high-contrast yellow-on-black top banner paired with the instantly recognizable glowing JS logo emblem delivers topic and urgency in one glance against a real-world laptop scene.
+- Mimic for: A "fastest way to learn X language/tool" tutorial or speedrun primer anchored to a real coding setup.
+- Original pair (shape to mimic, not copy): "How to MASTER Javascript FAST in 2023" · title_shape=speed-primer · title_pattern=concrete-noun-verb
+
+### internet-made-coder-checkmark-vs-x-tool-faceoff
+- Image: `internet-made-coder/10-tcZ1BR6WXN8.jpg` · Source: https://www.youtube.com/watch?v=tcZ1BR6WXN8
+- Tags: archetype=comparison-vs · layout=text-center · device=[checkmark, x-mark] · face=yes · accent=green · text=low
+- Reads as: A centered host points toward the green-checkmarked Cursor app icon on the left while a red-X'd VS Code icon sits rejected on the right, a wordless this-not-that verdict.
+- Layout map: No headline text. Centered host bust fills cells 6,7,10,11, head crown ~y90 face center ~x640,y210, white tee, right hand points down-left toward the left icon ~x600,y480 (cells 10-11). LEFT verdict column: green checkmark circle ~140px dia upper-left, cells 1-2 center ~x320,y130; black rounded-square Cursor app icon (white folded-cube glyph) ~250px, cells 5-6 center ~x300,y410. RIGHT verdict column: red X circle ~120px dia upper-right, cell 4 center ~x1000,y130; blue VS Code chevron logo ~300px, cells 8,12 center ~x995,y430. Symmetric two-column flank around the centered face; no badge, no wordmark.
+- Why it works: The green-check/red-X color pairing flanking a real pointing face delivers an instant verdict with zero reading, and the recognizable app icons let niche viewers decode the whole argument at a glance.
+- Mimic for: A tool-vs-tool switch verdict where one option wins and the other is rejected (e.g. "I switched from X to Y").
+- Original pair (shape to mimic, not copy): "Why I QUIT VS Code for Cursor AI (Honest Review + Beginner Tutorial)" · title_shape=first-person-feat · title_pattern=assumption-flip
+
+### internet-made-coder-giant-money-number-face-right-python-logo
+- Image: `internet-made-coder/11-O3zh_mViWbc.jpg` · Source: https://www.youtube.com/watch?v=O3zh_mViWbc
+- Tags: archetype=number-stat · layout=text-left-face-right · device=[giant-number, red-arrow] · face=yes · accent=green · text=low
+- Reads as: A giant neon-green dollar figure "$123...00" stretches across the top of a near-black scene, a red arrow points up to it from a Python-logo laptop, and a calm creator sits on the right.
+- Layout map: Giant green money number across the top band, Inter-900 caps with soft glow: "$123" left half cells 1-3/5-6 (~x40-560, baseline ~y160), occluded mid-frame by the head, then "00" resumes upper-right cells 8/12 right edge (~x1040-1240, baseline ~y130); red upward arrow lower-left cells 5,9 curving from laptop up to the number (~x210, y180-340); large blue+yellow Python logo as full-bleed object over a laptop showing an IDE, lower-left cells 6,7,10,11 (~x300-580, y370-630); creator chest-up, white polo, neutral expression, right ~40% cells 4,8,12 centered ~x880,y360, head crossing up into the number band ~y40-300; near-black low-poly faceted background; no badge.
+- Why it works: The oversized neon-green money figure broken by the face creates a curiosity gap (the eye reconstructs the hidden digits) while the red arrow physically wires the dollar amount to the relatable Python-laptop object.
+- Mimic for: a project/skill payoff beat that promises an earnings or value number tied to a concrete tool
+- Original pair (shape to mimic, not copy): "5 IMPRESSIVE Python Resume Projects (You Can Finish in A Weekend)" · title_shape=listicle-n · title_pattern=concrete-noun-verb
+
+### internet-made-coder-js-logo-laptop-step-banners
+- Image: `internet-made-coder/12-cYNVVspXUdA.jpg` · Source: https://www.youtube.com/watch?v=cYNVVspXUdA
+- Tags: archetype=roadmap · layout=grid-tiles · device=[glow-accent] · face=no · accent=yellow · text=med
+- Reads as: A bright yellow "JS" logo and a real laptop running code, with three stacked black "Step 1/2/3" banners promising a numbered path to learn JavaScript.
+- Layout map: Yellow square tile left, ~x30-410 / y170-565 (cells 5,9 + lower 1), black "JS" Inter-900 caps centered in it ~x215,y460; photographed MacBook on stand fills center, screen cells 6,7 ~x430-830 showing VS Code; three black torn-paper banners stacked along right edge cells 4,8,12, each ~x900-1265: "Step 1" serif (Playfair-style) yellow caps top banner baseline ~y150, "Step 2" middle ~y360, "Step 3" bottom ~y480; thin dashed white pointer line links the step stack down toward the laptop ~x850,y300; no face, no badge.
+- Why it works: The saturated yellow JS block anchors the topic instantly while the numbered Step 1/2/3 stack promises a finite, do-able roadmap, and the real desk photo signals an authentic "here's my setup" tutorial.
+- Mimic for: A numbered "N steps to learn X" beginner roadmap tutorial grounded in a real coding setup.
+- Original pair (shape to mimic, not copy): "How I Would Learn Javascript FAST in 2023 (from zero)" · title_shape=speed-primer · title_pattern=identity-status
+
+### internet-made-coder-vs-logos-center-face-pointing
+- Image: `internet-made-coder/13-_qxhff3mHZc.jpg` · Source: https://www.youtube.com/watch?v=_qxhff3mHZc
+- Tags: archetype=comparison-vs · layout=text-center · device=[hand-point, vs-bolt] · face=yes · accent=yellow · text=low
+- Reads as: A wide-eyed coder centered between the Python logo and a yellow JS logo, pointing up at each one as if asking the viewer to choose.
+- Layout map: Centered face from chest up, head cells 2-3/6-7 (~x640,y200), eyes wide ~y260; Python logo upper-left cells 1-2/5-6 (~x270,y260, ~290px wide); yellow JS square upper-right cells 3-4/7-8 (~x1080,y320, ~260px square, black "JS" Helvetica-bold); both raised index fingers point up at the logos from the lower band, left hand cell 9 (~x340,y530) under Python, right hand cell 12 (~x980,y530) under JS; navy v-neck tee fills bottom center; soft-focus desk/monitor background; no headline text on image, no badge.
+- Why it works: The two flanking brand logos plus the literal pointing hands stage an explicit "pick one" tension while the wide-eyed face supplies the human hook, all with zero text to read.
+- Mimic for: a head-to-head language/tool comparison where the host frames the viewer's choice
+- Original pair (shape to mimic, not copy): "PYTHON vs JAVASCRIPT // What I Would Choose as a Beginner…" · title_shape=comparison-vs · title_pattern=identity-status
+
+### internet-made-coder-top-banner-python-logo-hero
+- Image: `internet-made-coder/14-QjAHcKPUaFM.jpg` · Source: https://www.youtube.com/watch?v=QjAHcKPUaFM
+- Tags: archetype=object-hero · layout=centered-stack · device=[giant-number] · face=no · accent=yellow · text=low
+- Reads as: A bold yellow "PYTHON MAGIC" banner runs across the top with the giant Python logo centered over a desk-coding scene below.
+- Layout map: Top headline band full-width cells 1-4 on black bar y0-90: "PYTHON MAGIC" yellow condensed-bold (Impact-style) caps with thin white outline, baseline ~y70, spanning x40-1240; giant blue/yellow Python snake logo centered cells 6,7,10,11 ~x640,y370 occupying ~45% of height; faint blurred IDE/code window upper-left-center cells 2,3,6,7 ~x450,y220 behind the logo; two hands on a keyboard at the bottom edge cells 13-16 ~y660 over a wooden desk; no badge, no face.
+- Why it works: The high-contrast yellow-on-black top banner grabs the eye instantly while the oversized brand logo signals the exact tech stack with zero reading.
+- Mimic for: a Python automation / library tutorial roundup intro
+- Original pair (shape to mimic, not copy): "5 Amazing Ways to Automate Your Life using Python" · title_shape=listicle-n · title_pattern=concrete-noun-verb
+
+### internet-made-coder-yellow-headline-left-desk-pov-notion-logo
+- Image: `internet-made-coder/15-gE5DVOfXy1s.jpg` · Source: https://www.youtube.com/watch?v=gE5DVOfXy1s
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=yellow · text=high
+- Reads as: A back-of-head silhouette at a dark glowing desk facing a Notion screen, with a four-line yellow all-caps headline stacked down the left and the Notion logo badged in the corner.
+- Layout map: Four-line yellow Inter-900 caps headline stacked upper/mid-left: "TEACHING" cells 1-2 baseline ~y70, "MYSELF" baseline ~y150, "COMPUTER" cells 1-2 baseline ~y230, "SCIENCE" baseline ~y300 — all left-aligned at ~x15. Subject is a back-of-head/shoulders silhouette, center-bottom, cells 6,7,10,11 peaking ~x600,y360 (rim-lit by screen glow). Workspace POV: a Notion document on a large bright monitor upper-right, cells 3-4 ~x780-1180,y40-260, with a glowing teal/cyan ambient cast across the desk and laptops lower-center cells 9-12. Notion logo (white square, black N) corner-badge bottom-right cell 16 center ~x1200,y560. No subtitle, no number badge.
+- Why it works: The high-contrast yellow caps headline punches against the moody teal-lit over-the-shoulder desk scene, and the back-of-head POV pulls the viewer into the creator's actual learning setup.
+- Mimic for: a first-person "how I taught/built myself X" study-setup or workflow reveal beat
+- Original pair (shape to mimic, not copy): "How I'm Teaching Myself Computer Science using Notion (OSSU)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### internet-made-coder-stop-this-red-x-frustrated-face
+- Image: `internet-made-coder/16-33QcgtOSoQY.jpg` · Source: https://www.youtube.com/watch?v=33QcgtOSoQY
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[x-mark, red-arrow] · face=yes · accent=red · text=low
+- Reads as: A frustrated coder holds his head beside a glowing red X on a code editor, with a bold red "STOP THIS!" command top-right and a curved red arrow pointing at the mistake.
+- Layout map: Dark IDE/desk backdrop full-bleed. Red ring-with-X mark center-left over the code editor, cells 5-6, center ~x300,y210, diameter ~140px. Curved red arrow swooping from the headline down-left toward the X, cells 2-3 & 6-7, arrowhead ~x290,y110 pointing at the X. Headline "STOP THIS!" two stacked lines on a white rounded rectangle plate, red Inter-900 caps, top-right corner cells 4 & 8, "STOP" baseline ~y70, "THIS!" baseline ~y150, right edge ~x1255. Frustrated young man (hand on temple) right-third, cells 8 & 12, head center ~x980,y220, framed mid-chest. Keyboard + desk objects across the lower band cells 13-16. No badge.
+- Why it works: The white-plate red "STOP THIS!" command plus a red arrow physically aimed at a glowing red X stages an unmistakable "you're doing this wrong" gesture that the worried face emotionally seals.
+- Mimic for: a beat calling out a specific habit or mistake to stop doing
+- Original pair (shape to mimic, not copy): "Coding Learning MISTAKES that Hold Beginners Back" · title_shape=identity-advice · title_pattern=identity-status
+
+### internet-made-coder-three-panel-face-center-yellow-bar
+- Image: `internet-made-coder/17-hiO8fkRhEvA.jpg` · Source: https://www.youtube.com/watch?v=hiO8fkRhEvA
+- Tags: archetype=face-reaction · layout=split-vertical · device=[glow-accent] · face=yes · accent=yellow · text=med
+- Reads as: A reporter stands at a tech expo flanked by product and booth panels, with a bold yellow two-line headline declaring a big new AI reveal.
+- Layout map: Three equal vertical panels split the frame. LEFT panel cells 1,5,9 (x0-427) = Huawei booth with red Huawei logo top-left cell 1 (~x70,y70) over a classroom UI display. CENTER panel cells 2,6,10 (x427-853) = presenter mid-shot, head at cells 2/6 center ~x620,y200 holding a mic at chest, blue 'ALL INTELLIGENCE' booth signage behind top cells 2-3 (~y60). RIGHT panel cells 4,8,12 (x853-1280) = white-coat AI avatar woman on a large display centered ~x1010,y230. Headline = yellow Inter-900 italic caps on black rounded pill bars, two lines lower-center spanning cells 6-12: line 1 'HUAWEI'S NEW' baseline ~y430, line 2 'GAMECHANGING AI' baseline ~y490, text x range ~210-940. No badge, no number.
+- Why it works: The center presenter gives a human anchor between two information-dense product panels, and the high-contrast yellow-on-black two-line bar resolves the busy collage into one bold claim.
+- Mimic for: an on-the-ground product or event walkthrough where a host reveals a company's new AI capability
+- Original pair (shape to mimic, not copy): "Inside Huawei’s Plan to Solve Tech Education, Healthcare & Government with AI" · title_shape=scale-story · title_pattern=open-what-why-how
+
+### internet-made-coder-logo-verdict-face-center
+- Image: `internet-made-coder/18-U8NlnL1hYiI.jpg` · Source: https://www.youtube.com/watch?v=U8NlnL1hYiI
+- Tags: archetype=comparison-vs · layout=text-center · device=[x-mark, checkmark] · face=yes · accent=green · text=low
+- Reads as: A coder weighs rival AI logos that each get a red X against one winner, Genspark.ai, that gets a green check.
+- Layout map: Center: creator face in chin-on-hand thinking pose, ~40% of frame, cells 6,7,10,11, head crown ~y40, eyes ~x640,y160, hand at chin ~y270; desk + red-chair coding background full-bleed behind. Left rejects column cells 5,9: OpenAI logo pill top ~x130,y95, 'Gemini' wordmark pill below ~x110,y150, orange burst mark ~x250,y160, all condemned by a single red circle-X ~x230,y245 in cell 9. Right winner: 'Genspark.ai' dark logo lockup with bracket icon, cells 7-8 baseline ~x990,y150; large green circle-checkmark lower-right cell 12 ~x1185,y330. No background headline text — branding carried entirely by logos.
+- Why it works: The instant red-X-versus-green-check verdict stamped on recognizable AI brand logos resolves the "which tool wins" question in a half-second of scrolling.
+- Mimic for: A tool shootout where one contender beats several name-brand rivals.
+- Original pair (shape to mimic, not copy): "Genspark Super AI Agent: The AI Tool to Rule them All" · title_shape=identity-advice · title_pattern=identity-status
+
+### internet-made-coder-yellow-banner-headline-contemplative-face
+- Image: `internet-made-coder/19-6TQg96fFM0A.jpg` · Source: https://www.youtube.com/watch?v=6TQg96fFM0A
+- Tags: archetype=big-text · layout=text-center · device=[glow-accent] · face=yes · accent=yellow · text=low
+- Reads as: A creator sits at his desk hand-on-chin under a full-width yellow banner screaming "I FAILED" in bold black italic caps.
+- Layout map: Full-bleed warm-toned room photo fills frame; subject centered mid-frame in hand-on-chin contemplative pose, cells 6,7,10,11, head ~x650,y300, open MacBook (colorful lid + Apple logo) in foreground cells 10,11 ~x720,y560. Yellow banner block spans full width across the top, cells 1-4 top band ~y40 to y210. Black italic Inter-900 caps headline "I FAILED" sits inside the banner, cells 1-4, baseline ~y160, left edge ~x180 right edge ~x1120. No badge, no stat, no pointer.
+- Why it works: The saturated full-width yellow bar with two stark black words is a single high-contrast confession that plays against the calm contemplative face, telegraphing a candid failure story in under a second.
+- Mimic for: A vulnerable first-person confession or post-mortem beat (a project that failed, what went wrong).
+- Original pair (shape to mimic, not copy): "My App Failed - My Brutal 6 Months Building a Startup" · title_shape=first-person-feat · title_pattern=identity-status
+
+### internet-made-coder-stacked-3line-headline-face-right
+- Image: `internet-made-coder/20-fiHrbnT1NTY.jpg` · Source: https://www.youtube.com/watch?v=fiHrbnT1NTY
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=yellow · text=high
+- Reads as: A neutral-faced coder at his desk on the right, with a bold three-line "TRAIN YOUR BRAIN" headline stacked down the left in alternating black-on-yellow and yellow-on-black bars.
+- Layout map: Three stacked left-aligned headline bars, each word on its own line in a heavy condensed sans (Inter-900 caps), filling the left ~55% (cells 1-3, 5-7, 9-11). Line 1 "TRAIN" yellow text on solid black bar, cells 1-3, baseline ~y160, left edge ~x70. Line 2 "YOUR" yellow text on solid black bar, cells 5-7, baseline ~y290. Line 3 "BRAIN" black text on solid yellow bar (inverted, the punch line), cells 9-11, baseline ~y450, the yellow bar slightly tilted CCW. Bars are tight hugging boxes around each word. Face: creator seated at desk, head upper-right cells 3-4, torso/shoulders cells 7-8 & 11-12, face center ~x900,y180; hands on keyboard at bottom edge ~y660. Cool blue-grey room behind, warm pink lamp glow lower-left ~cell 9. No badge, no logo.
+- Why it works: The high-contrast alternating black/yellow bars build a rhythmic top-to-bottom stack the eye reads like a command, and the inverted final line ("BRAIN") lands the payload while the neutral direct-gaze face anchors it as personal advice.
+- Mimic for: a self-improvement or skill-building beat where a short imperative verb-object phrase is the whole hook
+- Original pair (shape to mimic, not copy): "How I FORCED Myself to Learn to Code" · title_shape=first-person-feat · title_pattern=identity-status
+
+### joma-tech-textless-lounging-home-office-scene
+- Image: `joma-tech/01-Rgx8dpiPwpA.jpg` · Source: https://www.youtube.com/watch?v=Rgx8dpiPwpA
+- Tags: archetype=face-reaction · layout=face-right · device=[glow-accent] · face=yes · accent=purple · text=low
+- Reads as: A guy in a purple tee and headband slumps lazily in an office chair inside a sunlit high-rise home office with a city skyline behind him.
+- Layout map: No headline text, no badge — pure candid scene. Subject seated in office chair right-of-center, body in cells 7,11 and head ~x780,y230 (cell 7 lower edge); purple shirt + bright-yellow shorts are the color anchor, legs sprawling into cell 11 ~x680,y480. White/navy ergonomic chair fills cells 11,12,15,16. Environment fills the frame left-to-right: floor-to-ceiling window with hazy city skyline across the top band (cells 1-8, y0-200) with a soft sun-bloom glow upper-center ~x560,y90; desk with dual dark monitors + boom mic occupying left third, mic ~x90,y260 (cell 5), monitors cells 5-6; patterned area rug across the bottom (cells 13-16); dark bookshelf along far-right edge cells 8,12. Eye-level wide shot, no overlays.
+- Why it works: The relatable slouched, eyes-half-closed body language paired with an aspirational skyline-view home office creates an instant "this is the chill WFH day I want" mood that stops the scroll with zero text.
+- Mimic for: a relaxed day-in-the-life / work-from-home lifestyle intro beat where the candid scene itself is the hook
+- Original pair (shape to mimic, not copy): "a day in the life of an engineer working from home" · title_shape=first-person-feat · title_pattern=identity-status
 
 ### joma-tech-junior-engineer-label-deadpan
 - Image: `joma-tech/02-rR4n-0KYeKQ.jpg` · Source: https://www.youtube.com/watch?v=rR4n-0KYeKQ
@@ -2801,6 +3473,15 @@ hand-edit below this line.
 - Mimic for: a satirical or hype beat where we present a mundane tech thing as a faux product launch — black void, presenter, a borrowed brand mark, and the object spotlit center
 - Original pair (shape to mimic, not copy): "if Apple made window blinds..." · title_shape=meme-skit · title_pattern=curiosity-gap-reversal
 
+### joma-tech-full-bleed-stressed-face-no-text
+- Image: `joma-tech/06-lpcpsCY4Mco.jpg` · Source: https://www.youtube.com/watch?v=lpcpsCY4Mco
+- Tags: archetype=face-reaction · layout=text-center · device=[shocked-face] · face=yes · accent=none · text=low
+- Reads as: A young programmer grips his own head with both hands in stressed exasperation, filling the frame against a blurred office desk-setup, with no text at all.
+- Layout map: Single full-bleed face dominating center, cells 6,7,10,11; head/hairline tops at ~y20, eyes ~y90, chin ~y150, face center ~x160,y100; both hands raised gripping the sides of his head — left hand cells 5-6 ~x110,y50, right hand cells 7-8 ~x210,y50; pale gray turtleneck collar lower-center cells 10-11 ~y150; blurred office background — monitors/desk-setup upper-right cell 8 ~x270,y40, blurred room left cells 1,5 ~x40,y60; no headline, no badge, no accent graphics.
+- Why it works: The pure no-text, head-in-hands stress expression filling the entire frame reads as instant relatable frustration, forcing the viewer to lean on the title for the punchline.
+- Mimic for: A relatable pain/frustration beat — the moment a developer is overwhelmed or exasperated by a situation.
+- Original pair (shape to mimic, not copy): "how programmers attend meetings at big tech companies" · title_shape=identity-advice · title_pattern=identity-status
+
 ### joma-tech-shotgun-caption-question
 - Image: `joma-tech/07-synJZAtH58E.jpg` · Source: https://www.youtube.com/watch?v=synJZAtH58E
 - Tags: archetype=meme · layout=face-right · device=[shocked-face, big-text] · face=yes · accent=yellow · text=med
@@ -2809,6 +3490,132 @@ hand-edit below this line.
 - Why it works: the prop plus a startled face creates instant 'what is going on here' tension, and the casual lowercase yellow question reads like overheard dialogue that demands the click to resolve
 - Mimic for: a comedic or confrontational hook beat where a startled face plus a short lowercase overheard-question caption (yellow on the lower frame) poses the video's premise
 - Original pair (shape to mimic, not copy): "when you rob a big tech company, but the employees are..." · title_shape=curiosity-reversal · title_pattern=curiosity-gap-reversal
+
+### joma-tech-candid-desk-skeptical-face-right
+- Image: `joma-tech/08-5bId3N7QZec.jpg` · Source: https://www.youtube.com/watch?v=5bId3N7QZec
+- Tags: archetype=face-reaction · layout=face-right · device=[shocked-face] · face=yes · accent=black · text=low
+- Reads as: A coder turns from a wall of interview-prep monitors to face the camera with a skeptical, worried look, caught mid-thought.
+- Layout map: No text overlay. Subject (Joma) seated right, body in black sweater turned over-the-shoulder toward camera; head cells 4,8 center ~x830,y230, hands clasped at chin cells 11,12 ~x720,y400; subject occupies right ~40% (cells 4,8,12,16). Hero context = curved ultrawide monitor full of code plus a top diagram monitor (Google PM interview sketch-notes) filling left-center cells 1-3,5-7,9-11; MacBook lid bottom-center cells 13-15; RODE shotgun mic top-center cell 4 ~x740,y60; blown-out window light upper-right and warm lemons/orange decor far-right edge cell 16. Natural ambient light, no graphics, no badge, no headline.
+- Why it works: Direct over-the-shoulder eye contact with a faintly worried, skeptical face set against an overwhelming wall of interview-prep screens makes the viewer feel the subject's stress before reading a word.
+- Mimic for: a candid first-person confession or reality-check about the grind behind a skill or career move
+- Original pair (shape to mimic, not copy): "how programmers overprepare for job interviews" · title_shape=identity-advice · title_pattern=identity-status
+
+### joma-tech-masked-coder-at-desk-no-text
+- Image: `joma-tech/09-vT3GUKuAzIs.jpg` · Source: https://www.youtube.com/watch?v=vT3GUKuAzIs
+- Tags: archetype=face-reaction · layout=centered-stack · device=[shocked-face] · face=yes · accent=black · text=low
+- Reads as: A programmer in a black cap and face mask sits typing at a laptop in an empty office, with no text at all.
+- Layout map: No headline text anywhere. Masked figure centered-upper: head + black cap cells 2-3 center ~x190,y55, torso fills cells 6-7,10-11 down to ~y360; black face mask covers nose/mouth ~x190,y90 (the pandemic tell). Laptop + typing hands lower-right, cells 11-12,15-16 ~x235,y150. Office background — desks, windows, a fluorescent light streak top-right cell 4 ~x290,y15 — fills the full 1280x720 frame; no badge, no overlay, no headline.
+- Why it works: The single incongruous detail — a face mask worn at an office desk while coding — instantly signals the pandemic angle without a word of text, letting the viewer infer the whole premise at a glance.
+- Mimic for: a documentary-style beat showing how an external event (pandemic, layoffs, policy) reshapes a programmer's daily work environment
+- Original pair (shape to mimic, not copy): "how coronavirus affects programmers in big tech companies" · title_shape=panic-threat · title_pattern=concrete-noun-verb
+
+### joma-tech-cinematic-face-left-gold-laurel-badge
+- Image: `joma-tech/10-uHt01D6rOLI.jpg` · Source: https://www.youtube.com/watch?v=uHt01D6rOLI
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=gold · text=low
+- Reads as: A deadpan bespectacled programmer stares from the left half while a gold laurel-wreath "BEST PROGRAMMER" award badge sits on the bright right half, reading as a film-festival award parody.
+- Layout map: Cinematic photographic face fills the left half: head + glasses cells 1,2,5,6 occupying roughly x40-640, eyes ~y330 (cells 5-6), gray collar/shoulders bottom cells 9,10,13,14; subject is a real full-bleed still on a blown-out white/neutral background, no cutout. Gold laurel-wreath badge centered on the right half: two facing curved wreaths span cells 7,8,11 from ~x700 to x1230, vertical center ~y340. Inside the wreath sits a two-line serif gold wordmark: "BEST" (large Times/serif caps, cells 7-8, ~x840-1130, baseline ~y320) stacked over "PROGRAMMER" (smaller serif caps, cells 7-8, ~x810-1160, baseline ~y390). No headline outside the badge, no number, no border chrome.
+- Why it works: The contrast between the subject's flat, unimpressed expression and the prestigious gold award-laurel framing lands an ironic punchline the eye gets in a single beat.
+- Mimic for: a deadpan character-driven skit beat that mock-awards a "best/worst [role]" title
+- Original pair (shape to mimic, not copy): "If American Psycho were about Programmers" · title_shape=meme-skit · title_pattern=curiosity-gap-reversal
+
+### joma-tech-two-figures-deadpan-empty-office
+- Image: `joma-tech/11-314OLE6mKOo.jpg` · Source: https://www.youtube.com/watch?v=314OLE6mKOo
+- Tags: archetype=face-reaction · layout=centered-stack · device=[shocked-face] · face=yes · accent=navy · text=low
+- Reads as: Two guys standing awkwardly in an empty office computer lab, both staring off-camera with stiff deadpan expressions; a candid skit still with no text or graphics.
+- Layout map: No text, no badge, no graphics; pure cinematic still. Subject A (suit jacket over black tee, glasses, hands in pockets) center-left, head in cells 5-6 (~x520,y200), body filling cells 5,9,13 to frame bottom, knees ~y620. Subject B (navy polo, glasses, holding white papers + pen) center-right, head in cell 7 (~x840,y230), body in cells 7,11,15, papers held at waist cells 11-12 (~x800,y560). Both gaze off-frame to viewer's right (~30deg). Background: rows of black desktop monitors on white desks plus black office chairs, empty lab, cool grey-white tone with a small blue wall screen upper-right cell 3 (~x800,y60). Eyeline horizon ~y200 (upper third); negative headroom above heads cells 1-4. Subjects sharp, lab softly receding.
+- Why it works: The deadpan two-shot in a sterile empty office reads as a frozen comedy beat; the awkward shared off-camera stare and the held papers imply a cringe interview moment, baiting the click to find out what they're reacting to without a word of overlay.
+- Mimic for: a deadpan two-person skit beat or awkward interview reaction in a workplace setting
+- Original pair (shape to mimic, not copy): "interviewing at a startup be like... (ft. Steven He)" · title_shape=meme-skit · title_pattern=identity-status
+
+### joma-tech-shocked-face-monitors-bottom-headline
+- Image: `joma-tech/12-1fPWr0d5zBE.jpg` · Source: https://www.youtube.com/watch?v=1fPWr0d5zBE
+- Tags: archetype=face-reaction · layout=centered-stack · device=[shocked-face, glow-accent] · face=yes · accent=white · text=med
+- Reads as: A strained, open-mouthed coder sits centered amid a wall of glowing code monitors with a giant white "10 Years of Coding" headline running across the bottom.
+- Layout map: Shocked open-mouth face dead-center, cells 6,7,10,11, head ~x640,y320, ~30% frame height, body in light grey tee; full-bleed environment of stacked glowing code/visual monitors fills all corners behind him (cells 1-4 top, 9-12 mid-sides); bottom white headline "10 Years of Coding" Inter-700 mixed-case, cells 13-16, spanning full width, baseline ~y690, cap-height ~70px, left edge ~x10; no badge, no number stat, no accent color.
+- Why it works: The centered shocked human face surrounded by an overwhelming glowing wall of code triggers an empathetic "what happened to him?" curiosity while the oversized white caption names the payoff.
+- Mimic for: A retrospective or "everything I learned" beat summarizing a long stretch of work in one overwhelmed reaction.
+- Original pair (shape to mimic, not copy): "10 years of coding in 13 minutes" · title_shape=speed-primer · title_pattern=identity-status
+
+### joma-tech-split-code-vs-intense-face-speedlines
+- Image: `joma-tech/13-OTfp2_SwxHk.jpg` · Source: https://www.youtube.com/watch?v=OTfp2_SwxHk
+- Tags: archetype=face-reaction · layout=split-vertical · device=[shocked-face, neon-on-dark] · face=yes · accent=green · text=low
+- Reads as: A diagonal split: a Python tree-traversal code editor fills the left, an intensely-focused man glares at a laptop on the right, manga speed-lines bursting across both halves.
+- Layout map: Diagonal split-vertical, seam runs top-center (~x640,y0) down to lower-left (~x430,y720). LEFT slab = full code editor screenshot (dark IDE, green-comment Python tree code "class Node / inorder / root = Node(12)") filling cells 1,2,5,6,9,10,13,14 plus lower wedge of 3; line numbers 1-22 down the far left ~x60. RIGHT slab = intense head-and-shoulders man (black headband, black tee, furrowed-brow glare) cells 4,8 and upper 3,7, face centered ~x900,y220 occupying ~45% width; grey laptop lid foreground rises across bottom-right cells 12,16 ~y560-720. Manga speed-lines (thin white radial streaks) emanate from the face region across all right-half cells and bleed left over the code in cells 2,3,7. No headline text, no badge, no overlaid title.
+- Why it works: The diagonal code-vs-intense-face split plus manga speed-lines turns a mundane coding screen into high-stakes drama, the glaring eyes and motion streaks reading as conflict the instant the eye lands.
+- Mimic for: a dramatized "coding under pressure" or programming-as-battle beat pitting raw code against an intensely-focused reaction face
+- Original pair (shape to mimic, not copy): "If Programming Was An Anime 2" · title_shape=meme-skit · title_pattern=identity-status
+
+### joma-tech-twitch-chat-overlay-face-right
+- Image: `joma-tech/14--UdWguw90g4.jpg` · Source: https://www.youtube.com/watch?v=-UdWguw90g4
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=purple · text=high
+- Reads as: A guy sits calmly at a glowing purple trading-monitor desk while a live Twitch chat of "!buy"/"!sell" stock commands scrolls down the left side.
+- Layout map: Faux Twitch-chat list stacked down the full left edge, ~9 colored username:command lines in a JetBrains-Mono-style face, occupying cells 1-2,5-6,9-10; top line baseline ~y40 descending to ~y355, left-aligned at ~x40. Each line = small chat badge icon + bright-colored username (red/green/blue/orange) + white "!buy/!sell TICKER" command (GME, TSLA, AMC, AAPL, etc.). Subject seated right, large ~45% of frame across cells 3-4,7-8,11-12,15-16; head/face centered ~x920,y130 with hand to temple, body filling the lower-right quadrant. Multi-monitor trading desk (candlestick charts + code editor) fills the mid-ground behind the chat across cells 5-7,9-11. Purple ambient wall glow throughout the background. No headline, no badge, no big text - narrative carried entirely by the chat overlay plus the scene.
+- Why it works: The stacked stream of recognizable meme tickers (GME, TSLA, AMC) framed as live "!buy" chat commands reads instantly as "viewers are controlling real money," while the calm seated subject against a glowing wall of trading screens sells the stakes without a single headline word.
+- Mimic for: A build or experiment where an audience/chat drives a live system in real time
+- Original pair (shape to mimic, not copy): "I Built a Trading Bot to let Subscribers Trade $25,000 on Twitch" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### joma-tech-split-reject-stamp-vs-news-clip
+- Image: `joma-tech/15-HTXTVfBCeSY.jpg` · Source: https://www.youtube.com/watch?v=HTXTVfBCeSY
+- Tags: archetype=comparison-vs · layout=split-vertical · device=[danger-red] · face=yes · accent=red · text=low
+- Reads as: A split screen: a skeptical hand-on-chin creator stamped REJECT in red on the left, facing a stone-faced young CEO in a Bloomberg news interview on the right.
+- Layout map: Vertical split at center ~x640 (thin black gutter). LEFT half = creator face, hand-on-chin skeptical, in a navy cap, cells 1,2,5,6,9,10, head center ~x340,y230, podcast mic foreground lower-center ~x300,y560. Red distressed "REJECT" rubber-stamp graphic rotated ~-12deg upper-left, cells 1-2, spanning ~x20-300, baseline ~y130. RIGHT half = young CEO face front-on against brick/Bloomberg-set backdrop, cells 3,4,7,8,11,12, head center ~x940,y230. Bottom news chyron band full-width across cells 13-16, ~y620-700: blue "Bloomberg" tab lower-left cell 13 ~x60-230, white bar with black caps "SCALE AI RAISES $100M IN SERIES C FUNDING" cells 14-16 baseline ~y670, thin teal accent rule beneath. No headline overlay beyond the chyron.
+- Why it works: The hard vertical split plus a red REJECT stamp pits a doubting reactor against a real Bloomberg news clip, manufacturing instant tension the eye must resolve.
+- Mimic for: A first-person rejection or underdog story pitting the creator's skepticism against a real success clip or news headline.
+- Original pair (shape to mimic, not copy): "I Got Rejected By 22-Year old CEO" · title_shape=first-person-feat · title_pattern=identity-status
+
+### joma-tech-stacked-headline-left-face-right
+- Image: `joma-tech/16-xC-c7E5PK0Y.jpg` · Source: https://www.youtube.com/watch?v=xC-c7E5PK0Y
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent, shocked-face] · face=yes · accent=white · text=med
+- Reads as: A creator looking back over his shoulder on the right while a giant two-line white "DATA SCIENCE" headline fills the left half over a dim desk-room scene.
+- Layout map: Two-line white headline left half, "DATA" Inter-900 caps cells 1-2 baseline ~y90 (~x10-300), "SCIENCE" Inter-900 caps cells 1-3 baseline ~y200 (~x10-400), both with subtle drop shadow for legibility on dark frame; face right-of-center, head + shoulders, looking back toward camera over right shoulder, ~40% frame width, cells 3,4,7,8 head center ~x800,y170; dim ambient bedroom/desk background full-bleed behind everything, slightly brighter midframe glow on subject; small handwritten white script wordmark lower-mid ~cell 11 ~x680,y430; no badge, no number.
+- Why it works: The oversized two-line headline owns the left reading zone while the candid over-the-shoulder glance creates a personal "let me tell you" pull, so the topic and the human land in one beat.
+- Mimic for: defining or demystifying a broad field/role from personal experience ("what X really is")
+- Original pair (shape to mimic, not copy): "What REALLY is Data Science? Told by a Data Scientist" · title_shape=what-is-x · title_pattern=curiosity-gap-reversal
+
+### joma-tech-trading-desk-screen-wall
+- Image: `joma-tech/17-oCqkVZVPOe8.jpg` · Source: https://www.youtube.com/watch?v=oCqkVZVPOe8
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent] · face=no · accent=cyan · text=low
+- Reads as: A trader sits in a dark room facing a wall of glowing monitors packed with crypto charts and candlestick data, with no text at all.
+- Layout map: Full-bleed cinematic photo, no headline text and no badge. Triple-monitor wall fills the left two-thirds, cells 1-3,5-7,9-11 (x~0-820): leftmost screen a dense data table with red/green tickers cells 5,9 (~x130,y320), center monitor a large cyan/teal candlestick chart cells 6-7,10 (~x420,y330), right monitor more charts cell 11 (~x720,y330); a small laptop screen lower-left cell 13 (~x120,y560). Trader shown from behind/profile, dark silhouette, head upper-right cells 8,12 center ~x1090,y170, shoulder/body extending down cells 12,16 (~x1100,y450); a podcast-style boom mic crosses center-right cells 11-12 (~x900,y360). Desk surface with papers along the bottom edge cells 13-16 (y~640). Overall low-key lighting, screen glow is the only light source.
+- Why it works: The dark room lit only by a wall of dense glowing trading charts instantly signals obsessive day-trading, and the textless cinematic frame plus a relatable back-of-head silhouette pulls the eye to decode the screens.
+- Mimic for: A scene-setting beat establishing an obsessive trader or quant at a monitor-heavy battlestation.
+- Original pair (shape to mimic, not copy): "crypto traders be like..." · title_shape=meme-skit · title_pattern=identity-status
+
+### joma-tech-held-phone-code-face-right
+- Image: `joma-tech/18-0KmUoTfGa34.jpg` · Source: https://www.youtube.com/watch?v=0KmUoTfGa34
+- Tags: archetype=object-hero · layout=split-vertical · device=[glow-accent, shocked-face] · face=yes · accent=blue · text=low
+- Reads as: A hand holds up a phone running real code while the creator stares down at it, skeptical, as if doing something that shouldn't be possible.
+- Layout map: Hero object = hand-held phone screen filling the left half, tilted slightly, cells 1,5,9,13 plus into 2,6,10,14; phone body spans ~x40-x560, screen center ~x300,y360; screen shows a dark IDE with blue/white monospace code and a yellow status bar at bottom (~y560), red error text mid-screen. Holding hand wraps the lower-left corner cells 13,14. Face = creator on the right half, head/shoulders cells 3,4,7,8 (into 11,12), face center ~x950,y200, looking down-left toward the phone with a concerned/skeptical expression, lit warm against a beige grid-paper wall backdrop. No headline text, no badge — title carried entirely by object + face.
+- Why it works: The literal proof object (a phone running a full code editor) plus the creator's down-cast disbelief stages a "this shouldn't work but it does" tension that begs the click without a single word.
+- Mimic for: a first-person stunt build done on unlikely/constrained hardware
+- Original pair (shape to mimic, not copy): "Coding a whole web app ONLY using my Phone." · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### joma-tech-word-doc-code-face-right-logo-bridge
+- Image: `joma-tech/19-X34ZmkeZDos.jpg` · Source: https://www.youtube.com/watch?v=X34ZmkeZDos
+- Tags: archetype=code-screenshot · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=blue · text=med
+- Reads as: A Microsoft Word window full of Python code (red spell-check squiggles and all) fills the left half while a calm headbanded creator clasps his hands on the right, the Word logo floating between them.
+- Layout map: Full-bleed blurred office/monitor backdrop. Left half: a Microsoft Word window (blue title bar + ribbon toolbar) occupying cells 1,2,5,6,9,10,13,14, spanning ~x15-625, y30-700; white doc page inside shows purple-keyword Python imports and a class def in ~14px lines from y200 down to y640, with red/blue spell-check squiggle underlines under identifiers. Right half: creator chest-up, black headband, purple t-shirt, hands clasped at chest, face centered ~x1010,y230, body filling cells 4,7,8,11,12,15,16 (right ~48%). Bridging the seam: Microsoft Word logo (blue rounded square with white 'W' + lighter blue page tab) centered ~x600,y360, cells 6-7 area, sitting over the doc's right edge with a soft drop shadow. No text headline, no badge; the Word UI itself is the headline.
+- Why it works: The incongruity of real Python code living inside a Microsoft Word document (complete with red spell-check squiggles under the code) instantly signals an absurd premise, and the floating Word logo over the seam labels the joke without a single headline word.
+- Mimic for: a deliberately-absurd "wrong tool for the job" demo where a familiar app's UI is the punchline
+- Original pair (shape to mimic, not copy): "Why Microsoft Word is the best IDE for programming" · title_shape=assumption-flip · title_pattern=assumption-flip
+
+### joma-tech-wfh-desk-scene-monitor-facecall
+- Image: `joma-tech/20-TLysAkFM4cA.jpg` · Source: https://www.youtube.com/watch?v=TLysAkFM4cA
+- Tags: archetype=face-reaction · layout=full-bleed-object · device=[glow-accent] · face=yes · accent=blue · text=low
+- Reads as: A man sits at his home desk facing dual monitors, one showing a colleague's face on a video call, reading instantly as a candid work-from-home moment.
+- Layout map: No headline text — full-bleed candid photo. Primary subject: man seated three-quarter back-to-camera at desk, left-center, cells 5,6,9,10,13,14, head ~x130,y90, body filling the lower-left quadrant; dark navy top (the dominant accent). Desk surface lower band cells 13-16 ~y480-720 with keyboard and an open laptop (laptop screen lower-center cell 10 ~x350,y330). Dual monitors fill the right half: left monitor cells 7,11 ~x640-880 showing a chart/trading screen; right monitor cells 8,12 ~x900-1180 displaying a video-call window with a second man's face centered ~x1080,y110, head-and-shoulders on a neutral background — the secondary face. Bright window/wall daylight top-left cells 1-2. No badge, no logo, no caption.
+- Why it works: The over-the-shoulder framing seats the viewer in the engineer's chair while the colleague's face on the monitor adds a second pair of eyes and the implied story of a live call, turning an ordinary desk into a candid behind-the-scenes window.
+- Mimic for: a day-in-the-life / work-from-home intro beat showing the real workstation and a live remote-call moment
+- Original pair (shape to mimic, not copy): "a day in the life of a startup engineer working from home" · title_shape=first-person-feat · title_pattern=identity-status
+
+### keep-on-coding-code-screenshot-webcam-corner-reaction
+- Image: `keep-on-coding/01-jma9hFQSCDk.jpg` · Source: https://www.youtube.com/watch?v=jma9hFQSCDk
+- Tags: archetype=code-screenshot · layout=corner-badge · device=[shocked-face] · face=yes · accent=teal · text=low
+- Reads as: A real coding-interview screen: a dark C++ editor full of code fills the frame while a webcam tile top-right shows the candidate with hands clutched on his head mid-struggle.
+- Layout map: Full-bleed dark code editor (charcoal ~#2b2b2b) as the whole canvas cells 1-16; syntax-highlighted C++ with line numbers 12-41 down the left gutter, code body cells 1-3,5-7,9-11,13-15 in teal/purple/red tokens; tool dock (Content/Code/Video buttons) on the far-left edge cell 1 ~x40; webcam overlay tile top-right cells 4,8 spanning ~x865-1270,y45-355 (~32% width), large self-cam (subject, hands on head, glasses, dark sweater) filling it with a small peer-cam picture-in-picture lower-right of the tile ~x1130,y300; 'You / Peer / Legend' status bar under the cam ~y336; yellow-outlined 'Drag me' tooltip callout below the cam cell 8 center ~x1072,y380; no headline text, no badge.
+- Why it works: The authentic over-the-shoulder live-interview framing plus the hands-on-head stress pose promises real, unscripted pressure-test footage the viewer can measure themselves against.
+- Mimic for: a live coding-interview / problem-solving walkthrough where the on-screen code IS the subject and your reaction sells the difficulty
+- Original pair (shape to mimic, not copy): "Coding Interview | Software Engineer @ Bloomberg (Part 1)" · title_shape=first-person-feat · title_pattern=identity-status
 
 ### keep-on-coding-programmers-be-like-matrix
 - Image: `keep-on-coding/02-ttcflCFd5B8.jpg` · Source: https://www.youtube.com/watch?v=ttcflCFd5B8
@@ -2828,6 +3635,15 @@ hand-edit below this line.
 - Mimic for: a numbered-lessons retrospective ('5 things I wish I knew before X') where the count is the hook and a hand gesture reinforces it
 - Original pair (shape to mimic, not copy): "5 Things I Wish I Knew Before Becoming a Software Engineer" · title_shape=listicle-n · title_pattern=concrete-noun-verb
 
+### keep-on-coding-headline-left-laptop-guy-right-matrix
+- Image: `keep-on-coding/04-rqEHkFYB9qg.jpg` · Source: https://www.youtube.com/watch?v=rqEHkFYB9qg
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent, neon-on-dark] · face=yes · accent=green · text=med
+- Reads as: A guy hunched over a laptop on a wooden chair against a green Matrix code-rain backdrop, with a bold two-line white headline reading "THE CODING INTERVIEW" filling the top-left.
+- Layout map: Two-line white headline upper-left, condensed bold caps: "THE CODING" cells 1-2 baseline ~y55, "INTERVIEW" cells 1-2 baseline ~y120, left-aligned starting ~x20; full-body subject seated on a wooden chair hunched over a laptop, occupies right-center cells 6,7,10,11, head ~x720,y90, laptop ~x560,y320; wooden chair back juts into cells 11-12 ~x880,y280; background is green falling Matrix digital-rain over near-black, full-bleed; no badge, no stat tell.
+- Why it works: The instantly-recognizable Matrix green code-rain signals "hacker/coding" at a glance while the relatable hunched-coder silhouette and high-contrast white two-line headline let genre, subject, and topic land in one read.
+- Mimic for: a "what coding interviews are really like" developer-relatability cold open
+- Original pair (shape to mimic, not copy): "If Coding Interviews Kept It Real" · title_shape=assumption-flip · title_pattern=assumption-flip
+
 ### keep-on-coding-java-classes-objects-logo
 - Image: `keep-on-coding/05-IUqKuGNasdM.jpg` · Source: https://www.youtube.com/watch?v=IUqKuGNasdM
 - Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent, big-text] · face=yes · accent=purple · text=high
@@ -2846,6 +3662,15 @@ hand-edit below this line.
 - Mimic for: a make-money-with-code / dev-income beat where the payoff is earnings and a code-operator pun ties cash to the craft
 - Original pair (shape to mimic, not copy): "25 Ways To Make MONEY With CODE" · title_shape=listicle-n · title_pattern=concrete-noun-verb
 
+### keep-on-coding-three-line-headline-left-face-right
+- Image: `keep-on-coding/07-ld0cvWnrVsU.jpg` · Source: https://www.youtube.com/watch?v=ld0cvWnrVsU
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=high
+- Reads as: A big three-line white headline fills the left half while a smiling presenter sits on the right in a softly blurred home office.
+- Layout map: Three-line white Inter-900 caps headline, all left-aligned, occupying the left ~45% (cells 1-2, 5-6, 9-10): "SOFTWARE" baseline ~y95, "BEHAVIORAL" baseline ~y190, "INTERVIEW" baseline ~y310; left margin ~x35, type reaches ~x540; soft black drop-shadow under each line for legibility against the bright room. Presenter occupies the right ~55% (cells 3-4, 7-8, 11-12, 15-16), head centered ~x690,y150 with shoulders and teal polo filling lower-right; subject sharp, background blurred (kitchen counter + door behind). No badge, no number, no chromatic accent.
+- Why it works: The dense three-line all-caps headline reads instantly at thumbnail scale while the warm eye-contact smile humanizes the advice and pulls the click.
+- Mimic for: A talking-head advice or how-to beat whose topic is a plain multi-word noun phrase
+- Original pair (shape to mimic, not copy): "Cracking the Behavioral Interview for Software Developers" · title_shape=identity-advice · title_pattern=identity-status
+
 ### keep-on-coding-pros-cons-shrug
 - Image: `keep-on-coding/08-aRnXLrS6C1U.jpg` · Source: https://www.youtube.com/watch?v=aRnXLrS6C1U
 - Tags: archetype=comparison-vs · layout=text-center · device=[big-text, glow-accent] · face=yes · accent=green · text=low
@@ -2854,6 +3679,114 @@ hand-edit below this line.
 - Why it works: the literal two-palms-up shrug turns the body into the comparison scale, so 'PROS' vs 'CONS' is read as a balanced tradeoff before any text is parsed
 - Mimic for: a balanced tradeoff video weighing two sides of a choice (a stack, a career path, a tool) where the body language sells the even-handed comparison
 - Original pair (shape to mimic, not copy): "Pros & Cons of Being a Software Engineer" · title_shape=comparison-vs · title_pattern=concrete-noun-verb
+
+### keep-on-coding-fullframe-code-facecam-corner
+- Image: `keep-on-coding/09-5xuvqBjRkok.jpg` · Source: https://www.youtube.com/watch?v=5xuvqBjRkok
+- Tags: archetype=code-screenshot · layout=corner-badge · device=[neon-on-dark, shocked-face] · face=yes · accent=teal · text=high
+- Reads as: A full-screen dark C++ code editor mid-interview with a smiling webcam face cam tucked into the top-right corner.
+- Layout map: Full-bleed dark code editor fills the entire frame; syntax-highlighted C++ source spans cells 1-3,5-7,9-11,13-15 with line numbers 17-46 down the left at ~x130 and a left tool rail (Content/Code/Video) cells 1,5,9 at ~x50. Webcam face cam PiP in the top-right corner, cells 4,8 roughly x865-1280 / y15-295, smiling face centered ~x1075,y150; a smaller nested peer cam inside its lower-right ~x1185,y250. Status strip 'You / Peer / Legend' just under the cam ~y305 cell 8; a yellow 'Drag me' tooltip ~x1080,y348. 'CONSOLE' footer bar bottom-left ~x170,y688 cell 13. No headline overlay, no badge, no big-text.
+- Why it works: The raw code-plus-facecam frame promises an authentic, unedited over-the-shoulder look at a real interview, and the smiling face cam adds a human anchor that says this is approachable rather than intimidating.
+- Mimic for: A live coding walkthrough or interview-problem screencast where the real screen IS the thumbnail.
+- Original pair (shape to mimic, not copy): "Coding Interview | Software Engineer @ Bloomberg (Part 2)" · title_shape=identity-advice · title_pattern=identity-status
+
+### keep-on-coding-arms-wide-grin-no-overlay
+- Image: `keep-on-coding/10-Vdax0Gj80-M.jpg` · Source: https://www.youtube.com/watch?v=Vdax0Gj80-M
+- Tags: archetype=face-reaction · layout=text-center · device=[shocked-face] · face=yes · accent=gray · text=low
+- Reads as: A grinning developer leans back in his chair with both arms thrown wide open, no text overlay at all — the only words are "EAT. SLEEP. CODE." printed across his gray t-shirt.
+- Layout map: No graphic overlay text — pure photographic. Subject centered and large: head cells 2-3 center ~x680,y120 (eyes ~y160); open-mouth grin ~x650,y250. Both arms stretched fully wide in a "ta-da" pose — left hand exits frame upper-left cell 5 ~x250,y150, right arm sweeps up and out of frame upper-right cells 4/8 ~x1180,y140, forming a wide V across the top third. Torso fills lower-center cells 10-11, gray t-shirt with stacked dark caps tee-print "EAT. / SLEEP. / CODE." cells 10-11 ~x600,y490 (the only legible text). Dark dim home-office background (door, monitor edge at far left cell 1) with heavy vignette on all corners isolating the lit subject. No badge, no headline, no accent shape.
+- Why it works: The wide-open-arms "ta-da" pose plus a big open-mouthed grin reads as pure relatable triumph at a glance, and the bare photo (the only words sit on the shirt) lets the human expression do 100% of the click work.
+- Mimic for: a relatable comedic-relief beat — the punchline reaction, the "we've all been there" payoff, or a triumphant "finally it works" moment
+- Original pair (shape to mimic, not copy): "Stuff Programmers Don't Say" · title_shape=meme-skit · title_pattern=identity-status
+
+### keep-on-coding-stacked-white-headline-face-right
+- Image: `keep-on-coding/11-1ONhXmQuWP8.jpg` · Source: https://www.youtube.com/watch?v=1ONhXmQuWP8
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=blue · text=high
+- Reads as: A friendly creator smiles on the right against a blue-lit room while three stacked lines of bold white caps fill the left half.
+- Layout map: Three-line white headline filling the left two-thirds on dark translucent slab backings, Inter-900 caps, left-aligned flush ~x30: "OBJECT" cells 1-4 baseline ~y180; "ORIENTED" cells 1-5 baseline ~y320; "PROGRAMMING" cells 1-7 (widest, runs to ~x900) baseline ~y490. Face right ~40%, head+shoulders, black LA cap, beard, white tee, cells 7,8,11,12, face center ~x1010,y280. Blue gradient room background (darker top-left, brighter mid-right) with soft glow. Small Mario question-block lamp prop lower-left corner ~x300,y630. No badge, no stat, no pointer.
+- Why it works: The three-deck wall of heavy white caps on dark slabs reads instantly at any size while the warm smiling face on saturated blue adds approachable contrast that pulls the click.
+- Mimic for: a foundational concept explainer where the topic name is the whole hook and a friendly presenter anchors trust
+- Original pair (shape to mimic, not copy): "Object Oriented Programming - The Four Pillars of OOP" · title_shape=x-explained · title_pattern=concrete-noun-verb
+
+### keep-on-coding-google-logo-headline-panel-face-right
+- Image: `keep-on-coding/12-J49el9Fl8lM.jpg` · Source: https://www.youtube.com/watch?v=J49el9Fl8lM
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=multicolor · text=med
+- Reads as: A smiling guy in a Warriors cap at his desk next to a dark panel reading "Google Interview Experience" with the real Google logo on top.
+- Layout map: Dark charcoal text panel fills the upper-left, cells 1-2 and 5-6 (~x60 to x630, y50 to y430). Inside it: real 4-color Google wordmark (blue/red/yellow/blue/green) at top, cells 1-2, baseline ~y160, spanning ~x130-x540. Below it a stacked white headline, Inter-900 title-case on two lines "Interview" / "Experience", left-aligned, cells 5-6, baselines ~y290 and ~y385. Face/upper body fills the right half: smiling man in blue+grey Warriors cap and navy bomber over grey henley, occupies cells 3-4, 7-8, 11-12, head center ~x780,y220; gaming chair and desk with laptop+mic fill the rest. No badge.
+- Why it works: The instantly recognizable real Google logo plus a warm direct-to-camera smile promises an authentic insider story, while the dark panel makes the white headline pop against the bright room.
+- Mimic for: A first-person company interview / experience story told to camera
+- Original pair (shape to mimic, not copy): "Google Interview Experience | Accepted... then Rejected" · title_shape=first-person-feat · title_pattern=curiosity-gap-reversal
+
+### keep-on-coding-headline-left-shrug-face-right-logo-row
+- Image: `keep-on-coding/13-l25SPaOlpXY.jpg` · Source: https://www.youtube.com/watch?v=l25SPaOlpXY
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[shocked-face, hand-point] · face=yes · accent=purple · text=med
+- Reads as: A wide-eyed guy shrugs at the camera beside a bold "I APPLIED TO 50 JOBS" headline, with TikTok/Netflix/Tesla logos lined up along his outstretched hand.
+- Layout map: Two-line white Inter-900 caps headline upper-left, black outline: "I APPLIED" cells 1-2 baseline ~y150, "TO 50 JOBS" cells 1-3 baseline ~y270, left edge ~x40. Shrugging presenter (backward cap, wide eyes, both palms open) fills right half ~55%, head cells 3-4 center ~x870,y180, body cells 7-8,11-12; left palm reaches into cell 11 ~x1010,y560. Brand-logo row lower-center sitting above his outstretched hand: TikTok glitch note cell 9 ~x180,y540; Netflix red "N" in black circle cell 10 ~x350,y540; Tesla red "T" wordmark cell 11 ~x560,y530. Purple-lit room background, no badge.
+- Why it works: The eyebrows-up shrug reads as honest uncertainty about a relatable experiment, and the recognizable big-brand logos promise specific stakes (did he get into Netflix/Tesla?), baiting the click to find out.
+- Mimic for: a first-person experiment recapping outcomes across several well-known companies/brands
+- Original pair (shape to mimic, not copy): "I applied to 50 jobs (social experiment)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### keep-on-coding-code-bg-shrug-face-java-logo
+- Image: `keep-on-coding/14--fY3g-DUtks.jpg` · Source: https://www.youtube.com/watch?v=-fY3g-DUtks
+- Tags: archetype=code-screenshot · layout=text-left-face-right · device=[glow-accent, shocked-face] · face=yes · accent=orange · text=low
+- Reads as: A presenter shrugging skeptically in front of a dark Java code editor, with the Java logo floating top-right, posing an implicit "is this worth it?" with zero headline text.
+- Layout map: Full-bleed dark IDE code screenshot fills the left ~60% (cells 1-2,5-6,9-10), white/orange syntax-highlighted Java spanning top to bottom, a highlighted `while` line ~cells 5-6 baseline y530; presenter cut out right ~45%, shoulders-up, head center ~x900,y210 (cells 3-4,7-8), both hands raised in an open shrug at chest level ~y520 reaching into the code; Java steaming-cup logo top-right ~x1130,y150 cell 4 (orange flames over blue cup); a vertical orange neon light strip glows the far-right edge ~x1280 cells 4,8,12; no headline text, no badge.
+- Why it works: The open-palm shrug pose plus a topic-only Java logo poses an implicit "is it worth it?" question while the real code screenshot signals genuine depth, creating curiosity without a single word of headline.
+- Mimic for: A "should you still learn / is X worth it" verdict video where the host weighs a language or tool
+- Original pair (shape to mimic, not copy): "Is Java Still Worth Learning in 2022?" · title_shape=what-is-x · title_pattern=assumption-flip
+
+### keep-on-coding-logo-headline-left-face-right
+- Image: `keep-on-coding/15-baT3OzbOg5s.jpg` · Source: https://www.youtube.com/watch?v=baT3OzbOg5s
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent, hand-point] · face=yes · accent=orange · text=med
+- Reads as: A man speaking to camera at his desk on the right, with the recognizable Amazon logo and a stacked white "Interview Experience" headline filling the left.
+- Layout map: "amazon" brand wordmark (lowercase, white, with orange smile arc beneath the word) top-left cells 1-2, baseline ~y95, spanning x40-360; stacked white headline directly below, "Interview" Inter-700 caps-initial cell 1-2 baseline ~y180 x40, "Experience" Inter-700 cell 1-2 baseline ~y245 x40; presenter occupies the right half, head ~x800,y150 in upper-right cells 3,4 region, torso filling cells 7,8,11,12, with a pointing/gesturing hand entering lower-center ~x600,y670 cells 13-14; laptops and desk in lower-left cells 9-10 ~x130,y560; no badge.
+- Why it works: The instantly recognizable Amazon wordmark plus its orange smile reads "FAANG" in a fraction of a second, while the direct eye-contact face and pointing gesture frame it as a first-person insider story.
+- Mimic for: a first-person FAANG/big-company interview-experience or day-in-the-life recap
+- Original pair (shape to mimic, not copy): "Amazon Interview Experience | Software Engineer" · title_shape=first-person-feat · title_pattern=identity-status
+
+### keep-on-coding-stacked-headline-scrim-face-right
+- Image: `keep-on-coding/16-_k8Xmwi88RA.jpg` · Source: https://www.youtube.com/watch?v=_k8Xmwi88RA
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=gradient-pink-orange · text=high
+- Reads as: A smiling host at his desk on the right, with a four-line "HOW TO CREATE AN Instagram BOT" headline stacked on a dark panel at the left, the brand word rendered in flaming Instagram-gradient script.
+- Layout map: Dark semi-transparent scrim panel covers left ~45%, cells 1,2,5,6,9,10, x~40-460 y~30-430. Headline left-aligned inside it: "HOW TO" Inter-900 caps cells 1-2 baseline ~y95; "CREATE AN" Inter-900 caps cells 1-2 baseline ~y175; "Instagram" lowercase italic script, pink-to-orange vertical gradient, cells 1-2 baseline ~y285; "BOT" Inter-900 caps cells 1-2 baseline ~y385. Host face/torso right ~50%, head center ~x690,y150 (cells 3,7), grey tee + camo cap, occupies cells 3,4,7,8,11,12. Small Instagram-camera robot icon top-right corner cell 4 center ~x870,y95. Faint red YouTube Subscribe button mid-low behind laptop ~x470,y360. Laptop on desk lower-left foreground cells 9-10.
+- Why it works: The dark scrim makes a dense white headline pop at any size while the warm Instagram-gradient on the single brand word pulls the eye straight to the payload, and the friendly approachable face anchors trust on the right.
+- Mimic for: a how-to/tutorial build video where the host walks you through making a specific tool or bot
+- Original pair (shape to mimic, not copy): "How to Create an Instagram Bot | Get More Followers" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### keep-on-coding-meme-caption-top-bottom-face-right
+- Image: `keep-on-coding/17-g_BH_N36VO0.jpg` · Source: https://www.youtube.com/watch?v=g_BH_N36VO0
+- Tags: archetype=meme · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=high
+- Reads as: A classic top-and-bottom meme caption wraps a sweating-guy reaction meme on the left, with the host reacting on the right.
+- Layout map: Two-line white Impact/Inter-900 caps caption top, "YOU DON'T EVER HAVE TO PASS PARAMETERS" cells 1-3 baseline ~y55; two-line white caps caption bottom "IF EVERY VARIABLE IS A GLOBAL VARIABLE" cells 9-11 baseline ~y655; sweating-man reaction meme cutout center-left cells 6-7 center ~x320,y360 (~40% width); host face right cells 4,8,12 head ~x1080,y150 looking left toward meme; dark teal/purple gradient studio backdrop with faint blue vertical light streaks at left edge; no badge.
+- Why it works: The instantly recognizable meme format paired with a host reaction face signals funny commentary on a relatable dev joke, and the bold white block caption stays legible at scroll size.
+- Mimic for: a reaction/commentary beat riffing on a well-known programming meme
+- Original pair (shape to mimic, not copy): "I Explain Programming Memes" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### keep-on-coding-stacked-headline-terminal-face-right
+- Image: `keep-on-coding/18-16d2lHc0Pe8.jpg` · Source: https://www.youtube.com/watch?v=16d2lHc0Pe8
+- Tags: archetype=code-screenshot · layout=text-left-face-right · device=[neon-on-dark, danger-red] · face=yes · accent=cyan · text=high
+- Reads as: A "LEARN LINUX IN ONE HOUR" headline stacked over a dark terminal running a sudo rm -rf command, with the Tux penguin top-left and a smiling presenter on the right.
+- Layout map: Full-bleed near-black background with a thin white inner border framing the whole 1280x720 canvas. Terminal window (titlebar "sam@sam-VirtualBox" + ToolBox tab; prompt line "sam@sam-VirtualBox: $ sudo rm -rf /") fills upper-left/center, cells 1-2,5-7, top edge ~y20 down to ~y310. Tiny Tux penguin logo top-left corner, cell 1, ~x40,y45. Stacked headline lower-left: "LEARN" Inter-900 white caps, cells 5-6, baseline ~y390; "LINUX" same weight in cyan, larger, cells 5-7, baseline ~y490; "IN ONE HOUR" white smaller caps, cells 5-6, baseline ~y560. Presenter face (man, dark hair, smiling, blue collar) right ~38% of frame, cells 4,8,12 plus 3,7,11 edge, head center ~x1020,y210, body extends to bottom. No badge.
+- Why it works: The real terminal screenshot of a destructive "rm -rf /" command paired with one bright cyan keyword gives instant credibility plus a flash of danger, while the smiling face reassures it is a friendly beginner walkthrough.
+- Mimic for: A beginner command-line / Linux tutorial that wants a real terminal next to a reassuring host.
+- Original pair (shape to mimic, not copy): "Linux Command Line for Beginners" · title_shape=identity-advice · title_pattern=identity-status
+
+### keep-on-coding-logos-weighed-on-palms-textless-vs
+- Image: `keep-on-coding/19-9wWgw9smBJs.jpg` · Source: https://www.youtube.com/watch?v=9wWgw9smBJs
+- Tags: archetype=comparison-vs · layout=text-center · device=[glow-accent] · face=yes · accent=blue · text=low
+- Reads as: A creator shrug-weighing two tech logos, one floating above each upturned palm, asking "which one?" with no text.
+- Layout map: Centered presenter, hat + grey-striped sweater, smiling, both arms spread with palms up in a "weighing" shrug; head cells 2-3 center ~x640,y110, torso fills cells 6-7-10-11. Left logo (Kotlin K mark, blue+orange square) hovers above the left palm upper-left cells 1,5 center ~x150,y230, ~210px square. Right logo (Java steam-cup, orange flames + grey cup) hovers above right palm upper-right cells 4,8 center ~x1110,y245, ~190px wide. Small green Android mascot perched atop the mic dead-center cells 10/14 ~x640,y470. Blue studio mic rises from bottom edge center. Neon vertical light bars in background (cool blue left ~x290, warm orange/red right ~x950). No headline text, no badge, no arrows.
+- Why it works: The literal balance-scale shrug pose with one logo over each upturned palm states the "X vs Y, which wins?" question wordlessly, while the cool-left / warm-right neon split visually halves the frame into the two competing sides.
+- Mimic for: A head-to-head tech comparison where the host visibly weighs option A against option B
+- Original pair (shape to mimic, not copy): "Java vs Kotlin for Android App Development" · title_shape=comparison-vs · title_pattern=concrete-noun-verb
+
+### keep-on-coding-headline-top-logo-card-photo-bg
+- Image: `keep-on-coding/20-jRLGobWwA3Y.jpg` · Source: https://www.youtube.com/watch?v=jRLGobWwA3Y
+- Tags: archetype=object-hero · layout=centered-stack · device=[glow-accent] · face=no · accent=white · text=med
+- Reads as: A dim desk-setup photo with a big white two-line headline across the top and a bright white GitHub logo card sitting lower-left.
+- Layout map: Full-bleed dark photographic background (moody desk: monitor right, laptop+keyboard center-bottom, plant lower-left) fills the frame. Headline two-line block, drop-shadowed white rounded sans (Poppins/Montserrat-like): line 1 'Pull Request' bold ~800 mixed-case cells 1-4 spanning x90-x1190 baseline ~y190; line 2 'in 3 Minutes' lighter ~600 cells 1-2 x90-x710 baseline ~y300. Bright white GitHub logo card (octocat mark over black 'GitHub' wordmark, black-on-white) lower-left, a rounded rectangle roughly x175-x540, y385-y630, center ~x355,y505 (cells 5-6/9-10). No badge, no face, no number callout.
+- Why it works: The single bright-white logo card punches out of the near-black desk photo as the only high-contrast object, while the oversized top headline states the topic instantly with no clutter.
+- Mimic for: A short how-to/tutorial primer anchored to one recognizable tool or brand logo.
+- Original pair (shape to mimic, not copy): "How To Pull Request in 3 Minutes" · title_shape=speed-primer · title_pattern=concrete-noun-verb
 
 ### latticx-dont-code-like-this-bigtext
 - Image: `latticx/01-kQUwImj32PA.jpg` · Source: https://www.youtube.com/watch?v=kQUwImj32PA
@@ -3062,6 +3995,15 @@ hand-edit below this line.
 - Mimic for: a long-term review or recommendation beat in a bright, optimistic register where a welcoming hand gesture says 'let me show you'
 - Original pair (shape to mimic, not copy): "M4 MacBook Pro Long-term Review as a Software Engineer" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
 
+### marko-macbook-desk-codeeditor-textless
+- Image: `marko/06-Hw-PDMca6o4.jpg` · Source: https://www.youtube.com/watch?v=Hw-PDMca6o4
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent] · face=no · accent=amber · text=low
+- Reads as: An open MacBook running a dark code editor sits on a warm wooden cafe desk with a coffee cup and a hand resting nearby — a real software-engineer workspace, no text.
+- Layout map: No headline, no badge, no face — fully text-free lifestyle hero. MacBook centered-low, lid open and angled, body fills cells 6-7-10-11 (laptop base ~x430-900, y330-560), dark code-editor screen glowing in cells 6-7 (~x440-820, y90-330) as the brightest focal block. Latte cup + saucer lower-left cell 5 (~x120,y330). Human hand/forearm enters from bottom-left edge cell 13 (~x60-260, y620-720), thumb near laptop base. Blurred bokeh cafe/window background fills top row cells 1-4 (warm browns, out of focus). Secondary device (phone/charger stand) right side cell 8/12 (~x980,y300). Warm amber/wood tonal wash overall.
+- Why it works: The single brightest element — the dark glowing code editor — anchors the eye dead-center against a warm blurred cafe backdrop, selling an aspirational "this could be your dev setup" mood with zero text clutter.
+- Mimic for: a long-term hardware/laptop review or "my real coding setup" desk-tour beat
+- Original pair (shape to mimic, not copy): "Macbook Air M4 Long Term Review - As a Software Engineer" · title_shape=first-person-feat · title_pattern=identity-status
+
 ### marko-coffee-thumbsup-cafe-coding-pov
 - Image: `marko/07-ZFs6_BIBE7s.jpg` · Source: https://www.youtube.com/watch?v=ZFs6_BIBE7s
 - Tags: archetype=object-hero · layout=centered-stack · device=[hand-point] · face=no · accent=warm-amber · text=low
@@ -3070,6 +4012,15 @@ hand-edit below this line.
 - Why it works: the symmetric two-hand framing with a warm drink turns a plain coding moment into a calming, relatable cafe-ritual the audience wants to sit inside
 - Mimic for: a cozy day-in-the-life or routine beat where symmetric hands plus a warm beverage sell the lived-in workspace mood
 - Original pair (shape to mimic, not copy): "Apple Makes Coding Difficult 😅 - Day in the Life of a Software Engineer (ep. 22)" · title_shape=assumption-flip · title_pattern=assumption-flip
+
+### marko-pov-laptop-code-cafe-window
+- Image: `marko/08-_axgQk_2ZQE.jpg` · Source: https://www.youtube.com/watch?v=_axgQk_2ZQE
+- Tags: archetype=object-hero · layout=centered-stack · device=[glow-accent] · face=no · accent=amber · text=low
+- Reads as: A first-person POV of your own hands typing code on a MacBook at a cafe window table, with a glowing night-city street behind the glass and a coffee cup beside you.
+- Layout map: No text overlay. Hero MacBook centered, screen filling cells 6-7 (~x420-680, top edge ~y120, base ~y300) showing a dark-theme code editor with red/orange syntax tokens; both forearms enter from bottom frame in a V, wrists ~y460, hands on keyboard cells 10-11 center ~x500,y375; takeaway coffee cup lower-right cell 12 ~x780,y330; warm wooden table fills bottom third (cells 9-16, y~300-720); full-width window behind the laptop (cells 1-8, y0-300) shows a blurred night street with red neon signage upper-left ~x230,y55 and amber/white storefront bokeh across the top band; no badge, no headline, no logo.
+- Why it works: The immersive first-person POV puts the viewer's own hands on the keyboard, and the warm night-city bokeh behind the glowing code screen sells an aspirational "coding in the city" mood that stops the scroll on vibe rather than text.
+- Mimic for: a day-in-the-life / build-vlog beat showing the author actually working — POV at the desk
+- Original pair (shape to mimic, not copy): "The Day I Published My App (OneMenu) 😃 Day in The Life of a Software Engineer (ep. 17)" · title_shape=first-person-feat · title_pattern=identity-status
 
 ### marko-notion-setup-ipad-held-planner-tea
 - Image: `marko/09-7z0HYLZX8Xg.jpg` · Source: https://www.youtube.com/watch?v=7z0HYLZX8Xg
@@ -3115,6 +4066,15 @@ hand-edit below this line.
 - Why it works: showing an actual architecture diagram on screen promises real engineering substance, while the festive cafe keeps the day-in-the-life warmth — substance plus vibe
 - Mimic for: a system-design or 'how I built X' beat where a glimpse of a real architecture diagram on the laptop screen is the substance hook
 - Original pair (shape to mimic, not copy): "Coding My Own App Store 😃 - Day in the Life of a Software Engineer (ep. 20)" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### marko-pov-laptop-coffee-shop-no-text
+- Image: `marko/14-3xdnZS0NHkY.jpg` · Source: https://www.youtube.com/watch?v=3xdnZS0NHkY
+- Tags: archetype=code-screenshot · layout=full-bleed-object · device=[glow-accent] · face=no · accent=amber · text=low
+- Reads as: A first-person POV of hands typing on a MacBook in a warm cafe, code editor and an iPhone simulator glowing on screen with a coffee cup beside it.
+- Layout map: No headline text at all. Full-bleed POV photo. MacBook screen dominates center, cells 5-11, occupying ~x290-700 by y115-385; left half is a dark code editor (amber/white syntax) cells 5-6, right half a black iPhone-simulator wireframe cells 6-7 (~x500-690). Own hands typing on keyboard in the foreground lower-left/center, cells 13-15, ~x40-560,y390-540. White coffee cup + saucer lower-right, cell 16, center ~x800,y450. Warm wood table surface runs along the bottom edge; bokeh cafe background with star-shaped string lights across the top, cells 1-4, y0-100. Light wooden divider panel at far left, cells 1,5,9. Amber screen glow + warm ambient cafe light is the only accent.
+- Why it works: The intimate first-person POV plus a cozy cafe-coding atmosphere (warm lights, real coffee, hands mid-keystroke) sells an aspirational day-in-the-life vibe that pulls viewers in without a single word of text.
+- Mimic for: a day-in-the-life or workflow vlog beat showing the act of coding in an aspirational setting
+- Original pair (shape to mimic, not copy): "Day in The Life of a Software Engineer (ep. 37)" · title_shape=first-person-feat · title_pattern=identity-status
 
 ### marko-dualup-monitor-portrait-open-palm-setup
 - Image: `marko/15-rydAjmwaOAE.jpg` · Source: https://www.youtube.com/watch?v=rydAjmwaOAE
@@ -3170,6 +4130,15 @@ hand-edit below this line.
 - Mimic for: a device-comparison or finish/color review where the product's distinctive color is the at-a-glance differentiator in an otherwise neutral scene
 - Original pair (shape to mimic, not copy): "Macbook Neo vs. M4 Air - Real World Test" · title_shape=comparison-vs · title_pattern=concrete-noun-verb
 
+### mayuko-photo-vlog-mono-title-upper-right
+- Image: `mayuko/01-rqX8PFcOpxA.jpg` · Source: https://www.youtube.com/watch?v=rqX8PFcOpxA
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=med
+- Reads as: A real photo of a woman working at her laptop in a sunlit cafe, with the video title typed in clean monospace across the top-right.
+- Layout map: Full-bleed lifestyle photo, no graphic background. Subject: woman with headphones at a laptop, occupying center-left, head/face cells 2-3 (~x230,y90), torso/hands-on-laptop cells 6-7,10-11; she fills roughly the left-center 55% of frame. White monospace title block upper-right, three left-aligned lines: 'a day in the life' cells 4-8 baseline ~y55 (~x350-630), then 'as a' + 'software engineer' wrapping cells 5-8 baselines ~y95 and ~y115 (~x350-630, y45-125); JetBrains-Mono-style, lowercase, no caps, soft drop-shadow for legibility over the bright window light. Warm cafe bokeh / sunlit window fills the right and lower thirds (cells 8,12,16). No badge, no number, no arrow.
+- Why it works: An authentic candid lifestyle photo (real person mid-work) paired with quiet lowercase monospace type signals a genuine day-in-the-life doc rather than a hyped tutorial, pulling in viewers who want a relatable insider POV.
+- Mimic for: A first-person day-in-the-life / behind-the-scenes vlog-style intro beat.
+- Original pair (shape to mimic, not copy): "a day in the life of a software engineer" · title_shape=identity-advice · title_pattern=identity-status
+
 ### mayuko-question-textbox-pointing-face
 - Image: `mayuko/02-5kas2jBObUY.jpg` · Source: https://www.youtube.com/watch?v=5kas2jBObUY
 - Tags: archetype=face-reaction · layout=text-left-face-right · device=[hand-point] · face=yes · accent=blue · text=high
@@ -3197,6 +4166,15 @@ hand-edit below this line.
 - Mimic for: a how-much-does-X-cost / earnings / pricing-tier beat where escalating dollar amounts around the presenter pose the money question
 - Original pair (shape to mimic, not copy): "Tips for negotiating your salary (from an ex-FAANG recruiter)" · title_shape=listicle-n · title_pattern=concrete-noun-verb
 
+### mayuko-photo-desk-script-overlay
+- Image: `mayuko/05-dCmGBOgSjtg.jpg` · Source: https://www.youtube.com/watch?v=dCmGBOgSjtg
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent] · face=no · accent=white · text=low
+- Reads as: A warm photo of a real desk workstation (monitor with code, person at the keyboard) with a casual handwritten "desk setup" scrawl over the right side.
+- Layout map: Full-bleed lifestyle photo fills frame 0,0-1280,720; coding monitor center cells 6-7 ~x540,y220 showing colorful code on a dark editor; person silhouetted at left edge cells 1,5,9,13 ~x110 (back/shoulder, soft-focus, not a face-forward subject); desk surface with peripherals (keyboard, trackpad, gadget) lower band cells 13-16 y540-720; hand-lettered white brush-script "desk" cells 11-12 baseline ~x1010,y150 and "setup" cells 12,16 baseline ~x1050,y330 with a long trailing cursive descender flourish; no badge, no box, no Inter caps.
+- Why it works: The authentic aspirational real-workspace photo triggers lifestyle envy while the loose handwritten label reads personal and editorial rather than clickbait, signaling a calm cozy setup-tour.
+- Mimic for: a workspace / gear / tools tour or setup-reveal beat shot on real footage
+- Original pair (shape to mimic, not copy): "Desk Setups for Programmers in 2020 | Coding, Productivity, Creative Work" · title_shape=listicle-n · title_pattern=identity-status
+
 ### mayuko-face-over-code-wallpaper
 - Image: `mayuko/06-6ptI5B4a-ag.jpg` · Source: https://www.youtube.com/watch?v=6ptI5B4a-ag
 - Tags: archetype=code-screenshot · layout=centered-stack · device=[neon-on-dark, glow-accent] · face=yes · accent=slate-blue · text=low
@@ -3206,6 +4184,15 @@ hand-edit below this line.
 - Mimic for: a learn-to-code / behind-the-code explainer where a faded real code wall behind our presenter sets the technical context with no headline text
 - Original pair (shape to mimic, not copy): "How to Start Coding (and Keep Up With It)" · title_shape=open-why-how · title_pattern=open-what-why-how
 
+### mayuko-face-left-object-held-handlettered-headline
+- Image: `mayuko/07-nbLeQyuMlME.jpg` · Source: https://www.youtube.com/watch?v=nbLeQyuMlME
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[hand-point] · face=yes · accent=mustard · text=low
+- Reads as: A creator looks into the camera holding a mechanical keyboard up beside her head, with a hand-lettered "Desk Tour" scrawled across the bottom.
+- Layout map: Face center-left, calm direct-to-camera, head fills cells 1-2,5-6 with eyes ~x500,y150; held hero object (dark Logitech keyboard) raised in the right hand, angled, occupies cells 3-4,7-8 spanning ~x680-1080,y180-440 with hand gripping the top edge ~x800,y180; hand-lettered white chalk-script headline "Desk Tour" across the bottom band cells 13-16, baseline ~x640,y600, large casual brush font with grainy edge; mustard paint-swatch stroke behind the headline left of "D" ~x380,y540 cells 13-14; faint ghost watermark text "IT DEPENDS" repeated under the headline ~y560 and ~y620; soft grey home-office background (lamp, monitor, blinds); no badge, no border.
+- Why it works: The held-up object beside a calm direct gaze creates a show-and-tell moment that invites curiosity about the gear, while the warm hand-lettered headline and mustard swatch read as personal and editorial against the cool grey room.
+- Mimic for: a personal show-and-tell / gear-tour intro where the host holds the hero item next to their face
+- Original pair (shape to mimic, not copy): "What's on my desk? Desk Tour 2019" · title_shape=first-person-feat · title_pattern=identity-status
+
 ### mayuko-faang-logos-orbit-face
 - Image: `mayuko/08-ZxCUnxwR89Q.jpg` · Source: https://www.youtube.com/watch?v=ZxCUnxwR89Q
 - Tags: archetype=logo-grid · layout=centered-stack · device=[glow-accent, neon-on-dark] · face=yes · accent=multicolor · text=low
@@ -3214,6 +4201,114 @@ hand-edit below this line.
 - Why it works: spelling FAANG out of its five real logos around a neutral face turns the acronym into instant recognition with zero typography and signals an insider topic
 - Mimic for: a video naming the big tech companies or a set of well-known tools/brands, where the logos themselves carry the hook around our presenter
 - Original pair (shape to mimic, not copy): "Why everyone wants to work at FAANG (Facebook/Meta, Amazon, Apple, Netflix, and Google)" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### mayuko-handdrawn-headline-centered-face-shrug
+- Image: `mayuko/09-CTcG81FK9xs.jpg` · Source: https://www.youtube.com/watch?v=CTcG81FK9xs
+- Tags: archetype=face-reaction · layout=centered-stack · device=[glow-accent, hand-point] · face=yes · accent=gold · text=med
+- Reads as: A woman in a cartoon graduation cap shrugs with both palms up while a hand-drawn white headline arcs across her chest and a UCSD trident logo sits top-right.
+- Layout map: Centered subject filling the frame: head/face cells 2-3 ~x640,y180, dark hair, slight smile; both open palms shrug out — left hand cell 5 ~x200,y430, right hand cell 8 ~x1110,y540. Cartoon black graduation cap with gold tassel pinned atop the head cell 2 ~x500,y90. Hand-drawn marker headline in two reading bands overlapping the torso: 'MY' white-with-navy-outline brushed caps lower-left cells 5-6 ~x250,y400; 'CS DEGREE' large white brush caps with soft gold glow halo spanning cells 6-8 baseline ~y500, 'CS' ~x540 then 'DEGREE' trailing to ~x1080. Each word backed by a hand-painted gold-and-navy scribble glow, not a solid box. Top-right: navy+gold UCSD trident logo + 'UCSD' wordmark cells 4/8 ~x1100,y150. Small painted gold/navy accent strokes (motion ticks) flank the hands ~x1180,y330 and ~x340,y560. No number, no badge box; blurred living-room background.
+- Why it works: The exaggerated two-palm shrug plus the playful cartoon grad cap signal a candid here's-the-honest-truth tone, while the loose glowing hand-drawn headline sits right over the warm smiling face so the eyes and the message land together.
+- Mimic for: A first-person, candid recap of a personal experience or credential (degree, job, year in review)
+- Original pair (shape to mimic, not copy): "My Computer Science Degree in 19 Minutes" · title_shape=speed-primer · title_pattern=identity-status
+
+### mayuko-handwritten-headline-right-face-left-lang-logos
+- Image: `mayuko/10-2FgvaJJayyA.jpg` · Source: https://www.youtube.com/watch?v=2FgvaJJayyA
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[hand-point] · face=yes · accent=white · text=med
+- Reads as: A smiling woman points up-right at a handwritten white question "The best programming language?" while three language logos float down the left edge.
+- Layout map: Handwritten white script headline stacked upper-right, right-aligned to ~x1255: "The best" cells 3-4 baseline ~y55; "programming" cells 3-4 baseline ~y115; "language?" cells 3-4 baseline ~y170. Face center-left, woman head+shoulders ~45% frame, cells 6,7,10,11, head center ~x430,y230, eyeline up-right toward text. Right hand pointing up-right, index-finger tip cells 11-12 ~x900,y330. Language logos stacked down far-left edge: Ruby red gem cell 1 ~x55,y45; Python blue/yellow cell 5 ~x55,y150; Swift orange bird cell 9 ~x60,y310. Dark wood-shelf room background. No badge.
+- Why it works: The pointing hand plus upward eyeline drag the eye along a diagonal from face to the handwritten question, while the floating logos pose the exact choice the title asks.
+- Mimic for: a beginner-advice beat weighing which language or tool to pick
+- Original pair (shape to mimic, not copy): "Python? Javascript? What programming language should you learn? // helloMayuko" · title_shape=identity-advice · title_pattern=identity-status
+
+### mayuko-stacked-headline-face-left-pointing
+- Image: `mayuko/11-cbSrsYiRamo.jpg` · Source: https://www.youtube.com/watch?v=cbSrsYiRamo
+- Tags: archetype=big-text · layout=text-left-face-right · device=[hand-point] · face=yes · accent=white · text=high
+- Reads as: A smiling presenter on the left points up at a big bold white two-line headline reading "BACKEND DEVELOPMENT (in 2 minutes)" over a blue code-streaked background.
+- Layout map: Stacked white headline occupies the right half: "BACKEND" Inter-900 caps cells 6-8 baseline ~y90; "DEVELOPMENT" Inter-900 caps cells 6-8 baseline ~y175; script-style accent "(in 2 minutes)" cells 7-8 ~y260. Face left ~45% width, head cells 1-2 and 5-6 centered ~x300,y200, body fills lower-left to bottom edge. Index finger pointing up toward the headline, fingertip cells 11-12 ~x1100,y330. Background = flat blue wash with faint white code text along top and bottom edges. No badge.
+- Why it works: The presenter's upward-pointing finger physically routes the eye straight into the giant bold white headline, fusing a warm human face with a high-contrast white-on-blue title that stays readable at thumbnail scale.
+- Mimic for: A friendly "explained fast" primer intro where the host introduces the single topic.
+- Original pair (shape to mimic, not copy): "Backend Development explained in 2 minutes // Tech in 2" · title_shape=speed-primer · title_pattern=concrete-noun-verb
+
+### mayuko-face-left-stacked-headline-right
+- Image: `mayuko/12-lfTwqw_gyKs.jpg` · Source: https://www.youtube.com/watch?v=lfTwqw_gyKs
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=high
+- Reads as: A smiling woman fills the left two-thirds of the frame against a warm out-of-focus room, with a four-line white headline stacked down the right edge.
+- Layout map: Face: warm-toned smiling woman, head + shoulders, occupies left ~60% cells 1,2,5,6,9,10,13,14, face center ~x300,y150, looking at camera. Headline: white sans-serif bold caps, left-aligned, stacked four lines down the right third, cells 3-4/7-8/11/15-16 right edge; "6 REASONS WHY I LOVE" top ~y50, "BEING A" ~y95, "SOFTWARE" ~y150, "ENGINEER" ~y210; right margin flush ~x1230. Background: soft-focus warm interior (wood/window) behind subject. No badge, no number graphic, no pointer.
+- Why it works: A genuine eye-contact smile carries warmth and trust while the clean white headline stacked in the negative space stays fully legible at feed size.
+- Mimic for: A first-person personal-take or reasons-I-love video where the creator's likeable on-camera presence is the draw.
+- Original pair (shape to mimic, not copy): "6 reasons why i love being a software engineer" · title_shape=listicle-n · title_pattern=identity-status
+
+### mayuko-object-hero-face-left-handwritten-annotation
+- Image: `mayuko/13-DDDhTKSPbo0.jpg` · Source: https://www.youtube.com/watch?v=DDDhTKSPbo0
+- Tags: archetype=object-hero · layout=face-left · device=[hand-point] · face=yes · accent=mustard · text=low
+- Reads as: A smiling creator on the left points up at a giant ultrawide monitor that fills the frame, its screen hand-labeled "ULTRA WIDE" with a measuring bracket, and a handwritten "IS IT WORTH IT?" question below.
+- Layout map: Vertical dark-navy sidebar pinned to the left edge, cells 1,5,9,13, ~x0-150, carrying rotated outlined "REVIEW RE..." caps reading bottom-to-top. Creator face/torso lower-left over the sidebar, cells 5,9,13 plus into 6,10, head center ~x230,y310, occupying ~30% width, looking at camera smiling. The ultrawide monitor is the hero object, cells 2,3,4,6,7,8,10,11, screen spanning ~x340-1160,y90-430, webcam clip on top bezel ~x715,y70; sits on a desk (keyboard, mouse, speaker) across the bottom third. On-screen hand-drawn mustard annotation: "ULTRA WIDE" two-line marker font centered on screen ~x745,y260, flanked by a horizontal measuring bracket spanning the screen width ~x390-1130,y265. Hand-drawn off-white scribbled frame loosely outlines the monitor area, cells 2-12. Handwritten slate-blue "IS IT WORTH IT?" caps lower-right, cells 11-12, baseline ~x870,y545. Creator's hand with thumb/finger pointing upward toward the monitor at bottom-center ~x540,y560. No badge.
+- Why it works: The product fills the frame as a clean hero while the friendly pointing face and the hand-drawn "ULTRA WIDE" label plus "IS IT WORTH IT?" question turn a static desk shot into a personal verdict the viewer wants answered.
+- Mimic for: a first-person gear/tool review where the product is the hero and the creator delivers a personal "is it worth it" verdict
+- Original pair (shape to mimic, not copy): "I finally tried an Ultrawide Monitor... and I LOVE IT" · title_shape=first-person-feat · title_pattern=identity-status
+
+### mayuko-centered-face-lowercase-headline-bottom
+- Image: `mayuko/14-a5GMRrEJaVo.jpg` · Source: https://www.youtube.com/watch?v=a5GMRrEJaVo
+- Tags: archetype=face-reaction · layout=text-center · device=[glow-accent] · face=yes · accent=white · text=med
+- Reads as: A softly-smiling person centered in a warm home interior with a big white "a day in the life / weekend edition" headline banded across the bottom.
+- Layout map: Full-bleed photo of person centered, face cells 6-7 (~x640,y170), warm-lit living-room/window backdrop filling all 16 cells; main headline "a day in the life" lowercase serif (Playfair-style) white, cells 13-16 spanning full width, baseline ~y620, large ~110px cap-height; subtitle "weekend edition" italic serif white centered cell 14-15 below headline baseline ~y685; subtle dark-to-transparent gradient over lower third for text legibility; no badge, no number.
+- Why it works: The genuine relaxed smile makes warm eye contact while the clean full-width lowercase serif banner reads instantly as a calm, intimate lifestyle vlog rather than a hype tutorial.
+- Mimic for: a personal "day in my life" or behind-the-scenes vlog intro beat
+- Original pair (shape to mimic, not copy): "a day in the life of a software engineer | weekend edition" · title_shape=first-person-feat · title_pattern=identity-status
+
+### mayuko-handwritten-title-left-face-right
+- Image: `mayuko/15-U8pBOsx--d0.jpg` · Source: https://www.youtube.com/watch?v=U8pBOsx--d0
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=white · text=med
+- Reads as: A creator seated at a warm-lit desk, chin resting on her hand, with a friendly handwritten title beside her naming her software-engineering journey.
+- Layout map: Two-line handwritten white title upper-left: "My journey into" cells 1-2 baseline ~y55, "Software Engineering" cells 1-3 baseline ~y100, casual marker/Excalifont script ~46px, x range ~30-370; a few faint orange hand-drawn arrow doodles scattered around the type (near cells 3, 6, 10) as ambient marks; subject seated right-of-center, head + shoulders, chin on hand, face center ~x880,y320 occupying cells 7,8,11,12 (~45% frame width); warm-lit home/bookshelf background fills full bleed; no badge, no stat tell.
+- Why it works: The relaxed direct-gaze pose plus a casual hand-lettered title reads as a personal confessional story rather than a tutorial, inviting a parasocial click.
+- Mimic for: A first-person career or origin-story video where the creator's face and a warm hand-lettered title carry the whole frame.
+- Original pair (shape to mimic, not copy): "My journey into Software Engineering" · title_shape=first-person-feat · title_pattern=identity-status
+
+### mayuko-math-equations-thinking-face-question
+- Image: `mayuko/16-HWAHs003-hU.jpg` · Source: https://www.youtube.com/watch?v=HWAHs003-hU
+- Tags: archetype=face-reaction · layout=text-center · device=[shocked-face, red-circle] · face=yes · accent=green · text=med
+- Reads as: A puzzled woman with hand to her chin sits surrounded by floating green math equations and a red question mark, over a two-line white-and-yellow question headline.
+- Layout map: Center-frame face, thinking/quizzical expression with right hand raised to chin, head fills cells 2,3,6,7 centered ~x640,y230 occupying ~40% width; green chalk-style math equations float over a light room backdrop on the left third — "y = mx + b" cells 1,5 ~x70,y95, "a^2 + b^2 = c^2" cell 5 ~x90,y200, small "TT^2" near cell 6 ~x430,y180; red question mark top-center cell 3 ~x590,y55; two-line lowercase Inter-700 headline across the bottom band — line 1 "do you have to be good at math" cells 9-12 baseline ~y560 (white), line 2 "to be a " white + "Software Engineer?" yellow cells 10-12 baseline ~y640; no badge.
+- Why it works: The relatable thinking face plus literal scattered math scribbles instantly stages the on-screen question, while the yellow keyword "Software Engineer" pins the target audience.
+- Mimic for: A reassuring identity-question beat asking whether a prerequisite skill is actually required for a career.
+- Original pair (shape to mimic, not copy): "Do you need to be good at math to be a Software Engineer?" · title_shape=identity-advice · title_pattern=identity-status
+
+### mayuko-notion-screenshot-centered-face-logo
+- Image: `mayuko/17-3r0OGNy4NGg.jpg` · Source: https://www.youtube.com/watch?v=3r0OGNy4NGg
+- Tags: archetype=code-screenshot · layout=centered-stack · device=[hand-point] · face=yes · accent=black · text=low
+- Reads as: A creator pointing upward beside her real Notion planner dashboard, with the Notion logo branding the top-right corner.
+- Layout map: Full-bleed Notion app screenshot as background (planner UI: "Muko's Planner" dark header top-left cells 1-2 ~x140,y115 with blue date subline ~y160; calendar header band and task/day rows fill the mid-lower right cells 7-12); face centered-slightly-left, woman ~40% frame height across cells 6,7,10,11, head center ~x600,y230, right index finger pointing up at ~x625,y360 (hand-point device); large black Notion "N" rounded-square logo top-right cell 4 center ~x1140,y95, ~150px square; no badge, no headline text overlay.
+- Why it works: The real product screenshot promises a concrete, copyable template while the centered face and upward-pointing hand add human warmth and steer the eye toward the branded corner logo.
+- Mimic for: A tool or workspace walkthrough revealing the actual app dashboard being shared as a template.
+- Original pair (shape to mimic, not copy): "My Complete Notion Setup 2021 (Template included!) // Video Planning, Organization and Productivity" · title_shape=first-person-feat · title_pattern=identity-status
+
+### mayuko-handwritten-phrase-arrow-to-face-right
+- Image: `mayuko/18-b2z4EvK9h0M.jpg` · Source: https://www.youtube.com/watch?v=b2z4EvK9h0M
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[red-arrow, glow-accent] · face=yes · accent=white · text=low
+- Reads as: A woman sits relaxed on the right against warm wood paneling while a handwritten "not hustling" label with a curved arrow points across to her.
+- Layout map: Handwritten lowercase phrase "not hustling" upper-left, casual script font, cells 1-2 baseline ~y55 (x40-330); thin curved hand-drawn arrow sweeping from under the phrase down-right toward the subject, cells 2-3 spanning ~x250,y95 to ~x440,y150 with arrowhead pointing at her; subject seated 3/4-turned right side, occupies right ~45% cells 3,4,7,8,11,12, head center ~x900,y130, body filling lower-right through ~x1280,y720; warm wood-plank wall behind subject right half, muted gray sofa + dark glass-wall background left half; no badge.
+- Why it works: The hand-drawn arrow physically links the casual confession-style caption to the subject's calm, un-hustling posture, creating a personal vlog intimacy that stops the scroll.
+- Mimic for: a first-person reflective beat where the creator opts out of a grind/expectation
+- Original pair (shape to mimic, not copy): "I realized that Hustle Culture isn't for me." · title_shape=first-person-feat · title_pattern=identity-status
+
+### mayuko-centered-face-lowercase-question-skyline-band
+- Image: `mayuko/19-GqMSWuSeDPA.jpg` · Source: https://www.youtube.com/watch?v=GqMSWuSeDPA
+- Tags: archetype=face-reaction · layout=centered-stack · device=[glow-accent] · face=yes · accent=cream · text=low
+- Reads as: A woman in glasses gazes calmly down the lens above a faint city skyline, with the soft question "what happened to Japan?" floating across her chest.
+- Layout map: Centered head-and-shoulders portrait fills the frame, face in cells 2-3,6-7, eyes ~x640,y180, subject ~55% of width; warm desk/bookshelf room background bleeds full-bleed behind her. Lowercase cream headline "what happened to Japan?" rounded sans (Poppins/Quicksand ~600 weight) on one line, cells 5-7, baseline ~y475, x range ~165-1090, sitting over her chest/lower face. Tokyo skyline silhouette band (greyed, semi-transparent, Tokyo Tower at ~x330) spans full width across the bottom ~y540-720, cells 9-16. No badge, no border, no stat.
+- Why it works: A direct, slightly worried eye-contact gaze plus a soft lowercase question creates a quiet, editorial "what's wrong?" curiosity that stands apart from loud niche thumbnails and pulls a thoughtful viewer in.
+- Mimic for: a calm personal-essay opener posing an open question about a country, company, or trend's decline
+- Original pair (shape to mimic, not copy): "Why Japanese Technology Fell Behind" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### mayuko-handwritten-banner-centered-face
+- Image: `mayuko/20-lncbay-6HYU.jpg` · Source: https://www.youtube.com/watch?v=lncbay-6HYU
+- Tags: archetype=face-reaction · layout=centered-stack · device=[glow-accent, shocked-face] · face=yes · accent=teal · text=low
+- Reads as: A woman with a wide-eyed, side-glancing expression stands in a sunlit kitchen under a hand-lettered teal headline reading "I left my job."
+- Layout map: Handwritten teal headline "I left my job." spanning full width across the top band, cells 1-4, baseline ~y45, casual brush-script caps-and-lowercase; centered female face/torso, dark hair, white top, wide-eyed side glance, cells 6-7,10-11,14-15 occupying center column ~x640, face center ~x640,y150, torso runs to bottom; soft kitchen interior background (wooden table left cells 5,9; cabinets right cells 8,12) lightly blurred behind; no badge, no stat tell.
+- Why it works: The intimate, hand-lettered confession-style headline paired with a candid uncertain facial expression signals a vulnerable personal-story vlog, which stops scrollers wanting the backstory.
+- Mimic for: a personal life-update or career-change confession opener
+- Original pair (shape to mimic, not copy): "I left my job (and where I've been)" · title_shape=first-person-feat · title_pattern=identity-status
 
 ### shade-of-code-devs-are-back-claude-vs-gpt
 - Image: `shade-of-code/01-5os_nalLwvI.jpg` · Source: https://www.youtube.com/watch?v=5os_nalLwvI
@@ -3899,6 +4994,15 @@ hand-edit below this line.
 - Mimic for: a 'lesser-known tools beat the obvious one' beat — our alternatives clustered under a check, the incumbent logo under an X
 - Original pair (shape to mimic, not copy): "Top 5 AI Tools That Are BETTER Than ChatGPT, But Nobody is Using Them | Coding & Productivity Tools" · title_shape=listicle-n · title_pattern=concrete-noun-verb
 
+### tiff-in-tech-face-left-python-logo-badge
+- Image: `tiff-in-tech/03-LXsdt6RMNfY.jpg` · Source: https://www.youtube.com/watch?v=LXsdt6RMNfY
+- Tags: archetype=face-reaction · layout=face-left · device=[neon-on-dark, glow-accent] · face=yes · accent=blue · text=low
+- Reads as: A calm presenter on the left over a dark code editor with a city-night skyline, the Python logo badged top-right — a "learn Python with me" course cover.
+- Layout map: Presenter cut-out fills left third, head cells 1-2 (~x40-280) with shoulders to bottom edge, face center ~x180,y210; background is a dark code editor (Lisp/AutoLISP source in cyan-on-navy) across cells 2-8, code lines run ~y40-260; bottom-right quadrant blends into a night city skyline cells 11-12,15-16 (~y360-720); Python logo (blue+yellow two-snake mark) top-right corner cells 3-4 center ~x1130,y90, ~150px wide; no headline text, no badge frame.
+- Why it works: A friendly human face on the dense blue code field gives an instant approachable-vs-technical contrast, and the single Python logo badge declares the exact topic with zero reading.
+- Mimic for: a "code with me" / learn-this-language tutorial intro where the host's presence sells the tone
+- Original pair (shape to mimic, not copy): "Automating My Life with Python: The Ultimate Guide | Code With Me" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
 ### tiff-in-tech-fullstack-2020-desk-corner-block
 - Image: `tiff-in-tech/04-uD27CZEiuGk.jpg` · Source: https://www.youtube.com/watch?v=uD27CZEiuGk
 - Tags: archetype=big-text · layout=corner-badge · device=[giant-number] · face=yes · accent=white · text=med
@@ -3907,6 +5011,15 @@ hand-edit below this line.
 - Why it works: the documentary desk shot sells lifestyle authenticity while the corner text block keeps the title legible without covering the scene
 - Mimic for: a day-in-the-life or career-path beat where a real workspace photo carries the mood and a corner block holds the title + year
 - Original pair (shape to mimic, not copy): "How To Become a Full Stack Developer In 2020" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### tiff-in-tech-outlined-face-left-code-laptop-right
+- Image: `tiff-in-tech/05-8Xsn4-EwYc0.jpg` · Source: https://www.youtube.com/watch?v=8Xsn4-EwYc0
+- Tags: archetype=face-reaction · layout=text-left-face-right · device=[glow-accent] · face=yes · accent=orange · text=low
+- Reads as: A calm, glasses-wearing woman cut out with a thick orange outline sits at left while a MacBook full of code and a phone fill the right — a real coder at a real workspace, no text.
+- Layout map: No headline text at all. Subject: woman, head-on-hand pose, occupying the entire left ~38% — cells 1,5,9,13 plus into 2,6,10,14; head top ~y50, chin/hand ~y420, body runs to the bottom edge; traced by a thick (~10px) solid orange organic outline that follows her silhouette from the top-left down the right contour of her body. Hero object: open MacBook with a dark code editor (Brackets, syntax-highlighted CSS) filling the right ~62% — screen spans cells 3,4,7,8 (laptop top ~y60, screen bottom ~y430), silver keyboard base cells 11,12 + 15,16. Secondary object: a white iPhone lying face-up on the trackpad/keyboard, center-bottom near cell 14/15 boundary ~x600,y560. Bright blurred window light behind the laptop, upper-right. No badge, no number, no logo.
+- Why it works: The thick orange outline pops the human subject off the busy code-and-laptop background, so a face plus a real coding setup register instantly with zero text to read.
+- Mimic for: a first-person "how I got into coding / became an engineer" story beat showing the creator at their real workstation
+- Original pair (shape to mimic, not copy): "How I Became a Software Engineer Without a Computer Science Degree" · title_shape=first-person-feat · title_pattern=identity-status
 
 ### tiff-in-tech-copper-is-dead-bold-text-glasses
 - Image: `tiff-in-tech/06-dytkmA61Fmg.jpg` · Source: https://www.youtube.com/watch?v=dytkmA61Fmg
@@ -3917,6 +5030,15 @@ hand-edit below this line.
 - Mimic for: a provocative 'the old way is dead' tech-shift beat — declarative two-word verdict, the relevant vendor logo, our reacting face right
 - Original pair (shape to mimic, not copy): "The Wire Problem Nobody In AI Is Talking About" · title_shape=curiosity-reversal · title_pattern=curiosity-gap-reversal
 
+### tiff-in-tech-centered-face-no-text-code-city-bg
+- Image: `tiff-in-tech/07-B8Ihv3xsWYs.jpg` · Source: https://www.youtube.com/watch?v=B8Ihv3xsWYs
+- Tags: archetype=face-reaction · layout=centered-stack · device=[glow-accent] · face=yes · accent=pink · text=low
+- Reads as: A glasses-wearing woman in a thoughtful hand-on-chin pose fills the frame, set against syntax-highlighted code up top and a pink-glowing city skyline below.
+- Layout map: No headline text. Subject is a single person occupying ~55% width, head-and-shoulders centered: face cells 6-7 center ~x630,y150; hand resting on chin lower-center cells 10-11 ~x420,y470; body/torso fills cells 6,7,10,11,14,15 down to the bottom edge. Background is two-band: dark editor with multicolor syntax-highlighted code (purple/teal/pink tokens on near-black) across the top half cells 1-8 (~y0-180); pink/magenta dusk city skyline filling the lower half cells 9-16 (~y360-720) behind and beside the subject. No badge, no logo, no overlay text, no accent shapes.
+- Why it works: A direct, approachable human face in a curiosity-signaling thinking pose anchors the eye, while the code-plus-glowing-city backdrop instantly telegraphs the dev-lifestyle topic with no text competing for attention.
+- Mimic for: a personal build-it-with-me coding tutorial where the creator's face carries the thumbnail and the title does the explaining
+- Original pair (shape to mimic, not copy): "CODE WITH ME: Build a Chrome Extension | How to Build & Publish a Chrome Extension in 10 Minutes?" · title_shape=speed-primer · title_pattern=concrete-noun-verb
+
 ### tiff-in-tech-python-chatgpt-dual-logo-flank
 - Image: `tiff-in-tech/08-zzW5z2r9Fh0.jpg` · Source: https://www.youtube.com/watch?v=zzW5z2r9Fh0
 - Tags: archetype=logo-grid · layout=centered-stack · device=[glow-accent] · face=yes · accent=green · text=low
@@ -3925,4 +5047,112 @@ hand-edit below this line.
 - Why it works: two instantly-recognized tech logos bracketing a warm, approachable face reads as 'I'll combine these two for you' with no text needed
 - Mimic for: a 'tool A plus tool B' tutorial beat — our two technology logos flanking our presenter over a faint code/context backdrop
 - Original pair (shape to mimic, not copy): "Automating My Life with Python & ChatGPT: Coding My Own Virtual Voice Assistant | Code With Me" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### tiff-in-tech-coding-roadmap-icons-face-right
+- Image: `tiff-in-tech/09-A8ldqcFS5S8.jpg` · Source: https://www.youtube.com/watch?v=A8ldqcFS5S8
+- Tags: archetype=roadmap · layout=text-left-face-right · device=[glow-accent, red-arrow] · face=yes · accent=cyan · text=med
+- Reads as: A two-tone "CODING FROM ZERO" headline sits top-left above a curved chain of learning-step icons (Java, gears, docs) connected by arrows, with a smiling woman occupying the right third.
+- Layout map: Headline upper-left, two stacked lines: "CODING" Inter-900 caps cyan-fill with black outline, cells 1-2, baseline ~y70; "FROM ZERO" line two, "FROM" white + "ZERO" cyan, cells 1-3, baseline ~y150. Below it a curved roadmap of 4 flat icon tiles connected by cyan arrows occupying lower-left/center cells 5-7 and 9-11: JAVA code tile bottom-left ~x90,y480; arrow up-right to a gear/learn icon ~x300,y330; arrow down-right to gears icon ~x300,y480; arrow up-right to a document icon ~x470,y330; numbered ghost labels 10/11/12/14/15 scattered (grid artifacts/inspo). Face right ~33%, woman from ~x880 to x1280, head top ~y40, smiling arms crossed, centered ~x1080,y360; thin cyan rule lines radiate behind her. No badge.
+- Why it works: The bright cyan two-tone headline plus a literal arrow-connected step path tells the eye "here is the path from nothing to coding" in one beat, while the friendly face anchors trust.
+- Mimic for: a beginner learning-roadmap / "start from scratch" step-by-step video
+- Original pair (shape to mimic, not copy): "How I Would Learn To Code If I Was To Start Over" · title_shape=identity-advice · title_pattern=identity-status
+
+### tiff-in-tech-yellow-number-blue-bottom-bar-center-face
+- Image: `tiff-in-tech/10-srz2Wll4gmQ.jpg` · Source: https://www.youtube.com/watch?v=srz2Wll4gmQ
+- Tags: archetype=big-text · layout=centered-stack · device=[giant-number, glow-accent] · face=yes · accent=yellow · text=med
+- Reads as: A blonde woman centered against a glowing futuristic city of pixelated coins, with a bold bottom bar reading "2030 IN-DEMAND SKILLS" in a yellow number block plus a blue headline.
+- Layout map: Face centered, woman framed head-to-chest cells 2-3,6-7,10-11, eyes ~x500,y150, occupying ~40% width; full-bleed background of blurred neon city skyline + pixelated glowing coin/token icons fill all top cells. Bottom banner spans full width, top edge ~y385 to y475 (cells 13-16): left segment is a YELLOW filled block cells 13-14 holding "2030" in black Inter-800/JetBrains-Mono caps, baseline ~y450, x40-260; right segment is a BLUE filled bar cells 14-16 holding "IN-DEMAND SKILLS" in white Inter-900 caps, baseline ~y450, x290-1240. A small yellow notch tab sits atop the yellow/blue seam ~x270,y382. No face badge, no arrows.
+- Why it works: The two-tone bottom bar — a punchy yellow year block butted against a high-contrast blue headline — anchors the eye while the centered face and glowing coin field signal aspiration and "future money," giving an instant year-plus-promise read.
+- Mimic for: A future-prediction list video naming the year and the skills or trends it covers
+- Original pair (shape to mimic, not copy): "What are the top IT skills for 2030 from expert predictions | Future tech" · title_shape=listicle-n · title_pattern=concrete-noun-verb
+
+### tiff-in-tech-face-left-yellow-headline-robot-lineup
+- Image: `tiff-in-tech/11-Uh1bj4nZvXg.jpg` · Source: https://www.youtube.com/watch?v=Uh1bj4nZvXg
+- Tags: archetype=face-reaction · layout=face-left · device=[glow-accent] · face=yes · accent=yellow · text=med
+- Reads as: A smiling blonde host on the left reacts to a receding line-up of humanoid robots, with a bright yellow "FIRST HUMANOID FACTORY" headline banded across the lower-center.
+- Layout map: Face: smiling host head-and-shoulders far-left, cells 1,5,9, eyes ~x150,y180, occupying ~28% width on the left edge. Background: chained metallic humanoid robots cluster center cells 2,3,6,7 (tallest robot head ~x430,y90), receding into a smooth white humanoid right cells 4,8 (~x1080,y200), in an industrial bay. Headline: two-line Inter-900 caps lower-center, "FIRST HUMANOID" cells 6-8 baseline ~y460 solid yellow on a tight dark contact-shadow, "FACTORY" cells 6-8 baseline ~y560 with "F" yellow and "ACTORY" white-knockout for two-tone emphasis; headline left edge starts ~x420, clearing the face. No badge, no logo.
+- Why it works: The host's bright genuine smile anchors a human face against an uncanny robot crowd, and the saturated yellow headline cuts a high-contrast read line through the muted industrial scene.
+- Mimic for: A first-person reaction to seeing a new robot or hardware product line in person at a factory or demo.
+- Original pair (shape to mimic, not copy): "The Engineering Reason this Robot Feels Human | 1X Neo Factory" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### tiff-in-tech-cyan-headline-block-face-right
+- Image: `tiff-in-tech/12-JdIykKy0Vfo.jpg` · Source: https://www.youtube.com/watch?v=JdIykKy0Vfo
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent, neon-on-dark] · face=yes · accent=cyan · text=high
+- Reads as: A big cyan-highlighted "CODING BOOTCAMPS" headline fills the left two-thirds with a thoughtful woman on the right.
+- Layout map: Two-line cyan-highlighted headline upper-left: "CODING" bold serif caps cells 1-2 baseline ~y65 on a translucent cyan bar, "BOOTCAMPS" cells 1-3 baseline ~y130 on a wider cyan bar (both bars span x10-x600); cyan-script subtitle "My Experience, Cost, Jobs Afterwards" two lines lower-left cells 5-7 ~x20-x440, y280-y340; face right ~40% width, cells 4,8,12 (head top ~y20, hand-to-chin gesture ~y200), centered ~x1050,y180; warm indoor blurred background; no badge.
+- Why it works: The high-contrast cyan highlight bars on the bold headline create a poster-like text block that reads instantly while the chin-resting face signals a candid first-person story.
+- Mimic for: A first-person experience review of a program, course, or career path with cost/outcome breakdown.
+- Original pair (shape to mimic, not copy): "CODING BOOTCAMPS | My experience, cost, jobs afterwards" · title_shape=first-person-feat · title_pattern=identity-status
+
+### tiff-in-tech-zuck-interview-two-tone-banner
+- Image: `tiff-in-tech/13-VuSozCGlMoE.jpg` · Source: https://www.youtube.com/watch?v=VuSozCGlMoE
+- Tags: archetype=face-reaction · layout=text-center · device=[glow-accent] · face=yes · accent=blue · text=low
+- Reads as: A mid-interview candid of Mark Zuckerberg gesturing as he talks to an off-camera host, stamped with a bold blue-and-white two-line "ZUCK INTERVIEW" banner in the upper-left.
+- Layout map: Two-line stacked headline upper-left: "ZUCK" Inter-900 caps white on a saturated blue slab, cells 1-2 baseline ~y95; "INTERVIEW" Inter-900 caps white on a darker blue slab directly below, cells 1-2 baseline ~y165; banner block spans x35-x540, top y35 to y200. Subject (Zuckerberg) right-of-center ~55% frame, face cells 7-8 center ~x880,y175, gesturing hands lower-right cells 15-16 ~x1010,y560. Interviewer back-of-head plus denim shoulder lower-left, cells 5,9,13 ~x250,y470. Standing mic mid-frame cell 10 ~x720,y430. Warm-lit room background full-bleed; faint vertical grid/ghost-timecode decoratives in the dark right third, cells 11-16. No badge.
+- Why it works: The high-saturation blue banner punches a clean two-word claim against a soft warm interview backdrop, while the recognizable mid-gesture face of a tech celebrity supplies instant authority and implied motion.
+- Mimic for: A long-form interview or sit-down with a named, recognizable guest.
+- Original pair (shape to mimic, not copy): "Mark Zuckerberg On The Future of AI, His Programming Days, and Orion AR" · title_shape=first-person-feat · title_pattern=identity-status
+
+### tiff-in-tech-two-face-centered-quote-headline
+- Image: `tiff-in-tech/14-gTgBcZzBzU4.jpg` · Source: https://www.youtube.com/watch?v=gTgBcZzBzU4
+- Tags: archetype=face-reaction · layout=text-center · device=[glow-accent, neon-on-dark] · face=yes · accent=cyan · text=high
+- Reads as: An interviewer and a tech founder flank a centered three-line quote, "EVERYONE DESERVES A 2ND BRAIN," with the last line glowing cyan.
+- Layout map: Two faces edge-to-edge bracketing the frame: female host left ~28% (cells 1,5,9, face center ~x180,y210), male guest right ~25% (cells 4,8,12, face center ~x1110,y230), both on a dark/blurred background. Centered white quote headline Inter-900 caps across cells 6-7, three lines: line 1 "EVERYONE" baseline ~y115 (curly open-quote glyph upper-left ~x415,y75), line 2 "DESERVES A" baseline ~y200, line 3 "2ND BRAIN" cyan-glow baseline ~y285 with closing curly-quote ~x880,y250. Small HyperFrames-style cube logo bottom-left corner ~x55,y405. No badge.
+- Why it works: Two human faces in a stare-down create instant social pull, and the punchy centered quote with one cyan-glow payoff line gives a single readable promise between them.
+- Mimic for: A founder/expert interview where a provocative one-line quote is the hook
+- Original pair (shape to mimic, not copy): "The Future of Search: Inside Perplexity’s $20B Bet on AI | Aravind Srinivas, CEO of Perplexity" · title_shape=scale-story · title_pattern=identity-status
+
+### tiff-in-tech-centered-two-line-headline-flanked-faces
+- Image: `tiff-in-tech/15-Z_DR1_zhmCU.jpg` · Source: https://www.youtube.com/watch?v=Z_DR1_zhmCU
+- Tags: archetype=face-reaction · layout=text-center · device=[glow-accent] · face=yes · accent=green · text=med
+- Reads as: A two-line centered headline "JENSEN INTERVIEW" with green highlight blocks sits between an older man's face on the left and a second person seen from behind on the right, reading as a one-on-one interview.
+- Layout map: Centered two-line headline: "JENSEN" Inter-900 white caps on a green highlight block, cells 6-7, baseline ~y150; "INTERVIEW" Inter-900 white caps on a green highlight block, cells 6-7, baseline ~y230; headline horizontally centered ~x640, vertically upper-third. Left subject (older man, dark jacket) ~30% frame, head cells 1-2 center ~x190,y160, body fills cells 5-9. Right subject (back of head/shoulders) ~25% frame, cells 4,8,12 center ~x1050,y180, facing inward toward center. Both subjects flank the centered text creating an interview face-off. No badge, no logo.
+- Why it works: The green highlight blocks behind bold white caps punch the title out of a soft warm interview backdrop while the two inward-facing figures frame the words and signal a real conversation.
+- Mimic for: A guest-interview or two-person conversation episode where one named person is the draw.
+- Original pair (shape to mimic, not copy): "NVIDIA CEO Jensen Huang on Robotics, AI, And The Next Big Emerging Technologies" · title_shape=identity-advice · title_pattern=identity-status
+
+### tiff-in-tech-headline-broll-grid-face-right
+- Image: `tiff-in-tech/16-EsOwYkuSXgo.jpg` · Source: https://www.youtube.com/watch?v=EsOwYkuSXgo
+- Tags: archetype=logo-grid · layout=grid-tiles · device=[glow-accent] · face=yes · accent=orange · text=low
+- Reads as: A presenter works at a laptop on the right while a mosaic of glowing AI-generated B-roll image tiles fills the left under a bold "UNLIMITED B-ROLL" headline, with the Adobe Firefly logo badged top-right.
+- Layout map: Yellow-to-white headline "UNLIMITED B-ROLL" Inter-900 caps top band, cells 1-3, baseline ~y45, x60-x780, thin dark outline; grid of ~6 AI image tiles fills left+center cells 1-3,5-7,9-11 (abstract teal swirl top-left ~x80,y110; classical statue center ~x430,y130; eye macro lower-left ~x150,y370; child face bottom-left ~x90,y560; reptile lower-center ~x430,y560) each with subtle neon glow edges; female presenter right-third in white shirt at silver laptop, cells 4,8,12, head center ~x980,y130, hands on keyboard lower-right; Adobe Firefly "Fi" rounded-square logo badge top-right corner ~x1210,y55.
+- Why it works: The dense mosaic of vivid, distinct AI-generated images signals abundance ("unlimited") at a glance while the working presenter and branded logo badge promise a concrete how-to payoff.
+- Mimic for: a tutorial beat showing the variety of outputs a single AI tool can generate
+- Original pair (shape to mimic, not copy): "AI Video Generator Tutorial: Create B-Roll with Adobe Firefly" · title_shape=x-explained · title_pattern=concrete-noun-verb
+
+### tiff-in-tech-stacked-headline-face-right-diagram-left
+- Image: `tiff-in-tech/17-hMarCPjGEuw.jpg` · Source: https://www.youtube.com/watch?v=hMarCPjGEuw
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent, neon-on-dark] · face=yes · accent=cyan · text=high
+- Reads as: A glowing yellow-and-white three-line headline ("THIS SKILL= TECH SUPERPOWER") stacks left over a dark cyan grid/node-diagram backdrop, with a calm woman's face filling the right third.
+- Layout map: Dark near-black background with faint cyan rule grid. Left margin holds a cyan systems-diagram cluster (nodes, lines, triangle/balance glyphs) cells 1,5,9 spanning ~x10-150, y60-340. Headline stacked left-center: line 1 "THIS SKILL=" in glowing yellow Inter-900 caps cells 2-3, baseline ~y95; line 2 "TECH" oversized white Inter-900 caps cells 2-3 baseline ~y200 (the dominant word); line 3 "SUPERPOWER" cyan/white Inter-800 caps cells 2-3 baseline ~y280. Face: young blonde woman, head-and-shoulders, occupying right ~30% cells 4,8,12, face center ~x1130,y150, warm-lit against the dark field. No badge, no border.
+- Why it works: The neon cyan-on-black diagram plus a single giant glowing white word "TECH" creates instant high-contrast hierarchy, while the calm human face on the right anchors trust and balances the dense type.
+- Mimic for: a skill/concept payoff beat that equates one practice with an outsized advantage
+- Original pair (shape to mimic, not copy): "Why Systems Thinking Is the Most Powerful Tech Skill" · title_shape=identity-advice · title_pattern=identity-status
+
+### tiff-in-tech-split-headline-center-face-chalkboard
+- Image: `tiff-in-tech/18-p9PK4zQE0Ak.jpg` · Source: https://www.youtube.com/watch?v=p9PK4zQE0Ak
+- Tags: archetype=big-text · layout=text-center · device=[glow-accent, neon-on-dark] · face=yes · accent=green · text=low
+- Reads as: A blonde woman stares out from a green chalkboard of handwritten equations, flanked by a split white/yellow "LEARN FASTER" headline across the top with glowing ChatGPT logos scattered behind her.
+- Layout map: Two-word split headline along top edge: "LEARN" Inter-900 caps WHITE, upper-left cells 1-2, baseline ~y75, x ~30-285; "FASTER" Inter-900 caps YELLOW, upper-right cells 3-4, baseline ~y75, x ~960-1255. Centered subject: blonde woman, head/face cells 2-3,6-7 centered ~x640,y150, torso fills cells 6-7,10-11 down to bottom. Background: green chalkboard covered edge-to-edge in white handwritten math equations (integrals, vectors), cells 1,4,5,8,9,12,13,16. Glowing green ChatGPT/OpenAI flower logos: one cell 5 ~x110,y310; one cell 15 center ~x640,y540 (largest); smaller ones cells 1,12,16 corners. Overall soft green vignette glow around frame edges. No badge, no stat tell.
+- Why it works: The eye-contact face split by a two-tone headline against a dense glowing-green chalkboard signals "smart + AI" instantly while the neon ChatGPT marks brand the subject without any extra copy.
+- Mimic for: An AI-assisted learning or study-method tutorial fronted by a presenter
+- Original pair (shape to mimic, not copy): "How to Learn Anything Fast with AI | Full Study Guide With ChatGPT" · title_shape=identity-advice · title_pattern=concrete-noun-verb
+
+### tiff-in-tech-split-lifestyle-diptych-no-text
+- Image: `tiff-in-tech/19-5u9XNH2Qps4.jpg` · Source: https://www.youtube.com/watch?v=5u9XNH2Qps4
+- Tags: archetype=before-after · layout=split-vertical · device=[glow-accent] · face=yes · accent=grey · text=low
+- Reads as: A two-panel lifestyle diptych of a programmer: grinding at a code-filled desk on the left, then arms-up celebrating on the floor with a laptop on the right.
+- Layout map: Vertical 50/50 split at x~640. LEFT panel cells 1,2,5,6,9,10,13,14: person shot from behind seated at desk, long brown hair down center-left ~x320,y top-to-mid, grey sweater, facing dual monitors; dark IDE/code screen bleeds in at left edge cells 1,5,9 ~x20-140. Slight motion blur. RIGHT panel cells 3,4,7,8,11,12,15,16: same person facing camera, both arms thrown up triumphantly above head ~x900-1000,y0-120 (hands at top edge cells 3,7), grey hoodie, seated on floor; silver MacBook with Apple logo lower-right cell 16 ~x1080,y620; warm home interior bokeh behind. No headline text, no badge, no number, no arrows.
+- Why it works: The before/after contrast — head-down grind vs. arms-up release — tells a complete day-in-the-life story in one glance with zero text, and the triumphant arms read instantly as relatable relief.
+- Mimic for: A "day in the life / realistic routine" video contrasting the work grind with the payoff or downtime.
+- Original pair (shape to mimic, not copy): "My Realistic Working from Home Day (as a Programmer) | Tech & Coding" · title_shape=first-person-feat · title_pattern=identity-status
+
+### tiff-in-tech-skills-block-headline-yellow-subbar-face-left
+- Image: `tiff-in-tech/20--f-1oOjmR_E.jpg` · Source: https://www.youtube.com/watch?v=-f-1oOjmR_E
+- Tags: archetype=big-text · layout=text-left-face-right · device=[glow-accent, neon-on-dark] · face=yes · accent=blue · text=high
+- Reads as: A composed woman in glasses stands at the left over a code-wall backdrop while a giant white "SKILLS" word on a blue block plus a yellow subtitle bar dominate the right.
+- Layout map: Face: woman head-to-shoulders at left edge, ~40% width, cells 1,5,9 (spilling into 2), eyeline ~x180,y200, bottom-cropped at frame bottom. Background: full-bleed dark code wall (syntax-colored monospace + faint white IT/security icons) behind everything. Primary word "SKILLS" Inter-900 white caps on a solid blue rectangle block, right-center, cells 6-8 (block spans ~x370-880, y200-360), word baseline ~y320, very large ~150px cap height. Subtitle bar: solid yellow horizontal band across lower-mid, cells 5-8 (~x340-940, y380-445), black Inter-900 caps "TO FUTURE PROOF YOUR CAREER" centered in it, baseline ~y415. No badge, no number.
+- Why it works: The single huge white word on a saturated blue block reads instantly at thumbnail scale, and the yellow subtitle bar lands a second high-contrast hit that completes the promise without crowding the headline.
+- Mimic for: a skills/career list video where one keyword carries the hook
+- Original pair (shape to mimic, not copy): "Top 5 IT Skills For 2023 To Future Proof Your Career" · title_shape=listicle-n · title_pattern=identity-status
 
