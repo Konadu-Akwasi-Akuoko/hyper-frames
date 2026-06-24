@@ -66,6 +66,57 @@ def _playlist_delete(svc: Any, playlist_id: str, confirm: bool) -> dict:
     return {"playlist_deleted": playlist_id, "quota_units_spent": 50}
 
 
+def _playlist_add_video(svc: Any, *, playlist_id: str, video_id: str,
+                        position: int | None) -> dict:
+    snippet: dict[str, Any] = {
+        "playlistId": playlist_id,
+        "resourceId": {"kind": "youtube#video", "videoId": video_id}}
+    if position is not None:
+        snippet["position"] = position
+    resp = clients.run(
+        lambda y: y.playlistItems().insert(part="snippet",
+                                           body={"snippet": snippet}), svc)
+    quota.record("playlistItems.insert")
+    return {"item_added": resp.get("id"), "response": resp}
+
+
+def _playlist_item_remove(svc: Any, item_id: str, confirm: bool) -> dict:
+    refusal = gate.require(
+        confirm, effect=f"This removes playlist item {item_id}.", item_id=item_id)
+    if refusal:
+        return refusal
+    clients.run(lambda y: y.playlistItems().delete(id=item_id), svc)
+    quota.record("playlistItems.delete")
+    return {"item_removed": item_id, "quota_units_spent": 50}
+
+
+def _playlist_set_image(svc: Any, *, playlist_id: str, file_path: str,
+                        confirm: bool, media_factory) -> dict:
+    """playlistImages.insert — square 1:1 JPEG/PNG <=2 MB."""
+    pre = uploadmedia.validate(file_path, max_bytes=MAX_PLAYLIST_IMAGE_BYTES,
+                               allowed_mimes=IMAGE_MIMES)
+    if not pre["ok"]:
+        return pre
+    media = media_factory(pre["path"], pre["mime"])
+    body = {"snippet": {"playlistId": playlist_id, "type": "hero"}}
+    request = svc.playlistImages().insert(part="snippet", body=body,
+                                          media_body=media)
+    resp = uploadmedia.execute_resumable(request)
+    quota.record("playlistImages.insert")
+    return {"image_set": resp.get("id"), "response": resp}
+
+
+def _playlist_delete_image(svc: Any, image_id: str, confirm: bool) -> dict:
+    refusal = gate.require(
+        confirm, effect=f"This deletes playlist image {image_id}.",
+        image_id=image_id)
+    if refusal:
+        return refusal
+    clients.run(lambda y: y.playlistImages().delete(id=image_id), svc)
+    quota.record("playlistImages.delete")
+    return {"image_deleted": image_id, "quota_units_spent": 50}
+
+
 def register(app: FastMCP) -> None:
     @app.tool()
     @clients.http_safe
@@ -90,3 +141,37 @@ def register(app: FastMCP) -> None:
     def playlist_delete(playlist_id: str, confirm: bool = False) -> dict:
         """Delete a playlist. Quota: 50 units. Gated: irreversible."""
         return _playlist_delete(clients.youtube_data(), playlist_id, confirm)
+
+    @app.tool()
+    @clients.http_safe
+    def playlist_add_video(playlist_id: str, video_id: str,
+                           position: int | None = None) -> dict:
+        """Add a video to a playlist. Quota: 50 units. Ungated. position is
+        0-indexed (requires a manual-sort playlist)."""
+        return _playlist_add_video(clients.youtube_data(),
+                                   playlist_id=playlist_id, video_id=video_id,
+                                   position=position)
+
+    @app.tool()
+    @clients.http_safe
+    def playlist_item_remove(item_id: str, confirm: bool = False) -> dict:
+        """Remove an item from a playlist. Quota: 50 units. Gated. item_id is the
+        PLAYLIST ITEM id (from playlistItems.list), not the video id."""
+        return _playlist_item_remove(clients.youtube_data(), item_id, confirm)
+
+    @app.tool()
+    @clients.http_safe
+    def playlist_set_image(playlist_id: str, file_path: str,
+                           confirm: bool = False) -> dict:
+        """Set a playlist cover image (square 1:1 JPEG/PNG <=2 MB). Quota: 50
+        units. Gated (channel-visible)."""
+        return _playlist_set_image(
+            clients.youtube_data(), playlist_id=playlist_id, file_path=file_path,
+            confirm=confirm,
+            media_factory=lambda p, m: MediaFileUpload(p, mimetype=m, resumable=True))
+
+    @app.tool()
+    @clients.http_safe
+    def playlist_delete_image(image_id: str, confirm: bool = False) -> dict:
+        """Delete a playlist cover image. Quota: 50 units. Gated: irreversible."""
+        return _playlist_delete_image(clients.youtube_data(), image_id, confirm)
