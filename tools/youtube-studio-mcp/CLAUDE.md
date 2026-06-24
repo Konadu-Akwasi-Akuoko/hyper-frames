@@ -4,18 +4,32 @@ Python MCP server (FastMCP, stdio) wrapping the YouTube **Analytics API v2**,
 **Reporting API v1**, and **Data API v3** for a single creator. Started by
 Claude Code via the `.mcp.json` at the repo root.
 
-## Scope cap (locked)
+## Scope (v2 — full write surface open)
 
-This is a **v1**. The following are deliberately NOT exposed:
+Exposed write tools (all gated writes need `confirm=True`):
+- Videos/Shorts: video_upload (resumable), video_update_metadata, video_set_thumbnail,
+  video_delete, video_rate, video_schedule / video_cancel_schedule,
+  video_set_localizations.
+- Captions: caption_list, caption_insert (400u), caption_update (450u),
+  caption_delete, caption_download.
+- Playlists: playlist_create/update/delete, playlist_add_video,
+  playlist_item_remove, playlist_set_image / playlist_delete_image.
+- Channel: channel_update_branding, channel_section_create/update/delete,
+  channel_set_banner, channel_set_watermark / channel_unset_watermark.
+- Subscriptions: subscription_add / subscription_remove.
 
-- `videos.insert` (full video upload)
-- Captions CRUD (`captions.insert/update/delete/download`)
-- Livestream scheduling (`liveBroadcasts.*`, `liveStreams.*`)
-- CMS / content-owner reports
-- Multi-channel support
+Gated (confirm=True): all deletes, video_rate, public/scheduled upload,
+video_schedule, private->public, channel branding/banner/watermark,
+subscriptions. captions insert/update are quota-guarded (cost gate).
 
-The OAuth scope `youtube.upload` is NOT requested. If the user asks to upload
-videos or edit captions, say "deferred to v2 — use Studio UI for now".
+Still NO API anywhere (do not attempt; no endpoint exists): A/B Test & Compare,
+comment settings (allow/hold/disable), end screens, info cards, age restriction,
+monetization, multi-language AUDIO dubs (only text localizations are writable),
+recording location. Still deferred by choice: live streaming
+(liveBroadcasts/liveStreams), CMS/content-owner, multi-channel.
+
+OAuth: `youtube.force-ssl` (already granted) authorizes every write; we also
+request `youtube.upload`. No re-consent required for existing tokens.
 
 ## YouTube API gaps (not our bugs)
 
