@@ -6,14 +6,19 @@
     "watch_url": "https://www.youtube.com/watch?v=TlHvYWVUZyc",
     "archetype": "diagram-arch",
     "layout": "text-center",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "teal",
     "text": "low",
     "reads_as": "a clean labeled Kubernetes architecture map promising a whole system explained at a glance",
     "layout_map": "Dark navy top banner (~y0-58) spans full width; a short teal vertical tick at ~x18 precedes the white headline 'What is Kubernetes?' set left-aligned, baseline ~y42, cells 1-2, mixed-case sans. Below it the body fills cells 5-16 on a light mint-tinted grid substrate: left column has 'Admin UI' card (cell 9, ~x90,y230) and a black 'CLI' terminal card (cell 13, ~x90,y330); a 'Control Plane' boxed cluster centers in cells 10-11 (~x310-430,y180-340) holding stacked yellow cards Control Manager / Scheduler / etcd plus a teal 'API Server' node at ~x450,y260; a black arrow flows left-to-right; two teal-headed 'Worker Node 1/2' panels stack on the right in cells 11-12 and 15-16 (~x720-1180), each with Pod cards and kubelet/kube-proxy chips. No big number; the diagram itself is the payload.",
     "why_it_works": "the labeled box-and-arrow map signals a complete mental model is about to be handed over, rewarding the click with structure",
-    "mimic_for": "an architecture/system walkthrough where the whole component map is the promise"
+    "mimic_for": "an architecture/system walkthrough where the whole component map is the promise",
+    "title": "Kubernetes Explained in 6 Minutes | k8s Architecture",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-rest-api-three-node-flow",
@@ -22,14 +27,19 @@
     "watch_url": "https://www.youtube.com/watch?v=-mN3VyJuCjM",
     "archetype": "diagram-arch",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
     "reads_as": "a simple three-node Client-API-Server flow with glowing halos that says the whole concept fits in one picture",
     "layout_map": "Dark navy top banner (~y0-55) full width; teal vertical tick at ~x18 then white headline 'Why is RESTful API so popular' left-aligned, baseline ~y40, cells 1-3. Body sits on a clean white substrate, cells 5-16. Three large icons sit on one horizontal row at ~y180: a laptop+phone 'Client' on the left (cell 6, ~x150,y190), a cyan-glowing cloud '{...}' 'REST API' node centered (cell 7, ~x500,y190), and a stacked-disk 'Server' on the right (cell 7-8, ~x830,y190); each icon sits inside a soft cyan radial glow halo. Black double-headed arrows connect the three nodes left-to-right. Bold black caps-case labels 'Client / REST API / Server' sit on a baseline ~y320 directly under each icon (cells 14-16). No number/badge; minimal three-beat flow.",
     "why_it_works": "reducing a buzzword to three glowing nodes and two arrows promises an explanation simple enough to actually finish",
-    "mimic_for": "a request/response or A-to-B-to-C flow distilled to three labeled nodes"
+    "mimic_for": "a request/response or A-to-B-to-C flow distilled to three labeled nodes",
+    "title": "What Is REST API? Examples And How To Use It: Crash Course System Design #3",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-kafka-conveyor-sketch",
@@ -38,14 +48,19 @@
     "watch_url": "https://www.youtube.com/watch?v=UNUz1-msbOM",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "teal",
     "text": "low",
     "reads_as": "one bold hand-drawn conveyor sketch with a question headline that poses a curiosity gap (why fast?)",
     "layout_map": "Light white substrate with a faint teal grid; no dark top bar here, the title rides directly on white. Teal vertical tick at ~x150 precedes the gray bold headline 'Why is Kafka fast?' centered-ish across cells 2-3, baseline ~y90, large mixed-case. The hero is a single hand-drawn black-ink isometric conveyor/parallelogram lane chart occupying the center-lower frame, cells 10-11-15 (~x180-440, y150-310): a slatted rolling-belt with looping bounce arcs over the top and a teal-filled trailing cell at the front-right (~x400,y250) with a down-arrow. Pale teal decorative blob bleeds in bottom-right corner (cell 12/16). Lots of negative white space; minimal text, single illustrative object carries it.",
     "why_it_works": "a bare question headline plus one striking sketch creates a clean curiosity gap with nothing else to distract the eye",
-    "mimic_for": "a 'why is X fast/slow/cheap?' curiosity hook anchored by a single hero illustration"
+    "mimic_for": "a 'why is X fast/slow/cheap?' curiosity hook anchored by a single hero illustration",
+    "title": "System Design: Why is Kafka fast?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-https-handshake-steps-flow",
@@ -54,14 +69,19 @@
     "watch_url": "https://www.youtube.com/watch?v=j9QmMEWmcfo",
     "archetype": "diagram-arch",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "orange",
     "text": "med",
     "reads_as": "a numbered Client-Server handshake sequence promising the full HTTPS process step by step",
     "layout_map": "Dark navy top banner (~y0-55) full width; teal vertical tick at ~x18 then white headline 'How Does HTTPS Work?' left-aligned baseline ~y40, cells 1-2. Body on light substrate, cells 5-16. Left edge has stacked 'session key' and 'encrypted session key' cards (cells 9 & 13, ~x90,y190 and ~x90,y300). Center column is a vertical numbered step list in orange-headed cards: 1.TCP Handshake / 2.Certificate Check / 3.Key Exchange / 4.Data Transmission (cells 6,10,14, ~x300, y130-310). Right column shows 'Asymmetric Encryption / encrypted session key / Symmetric Encryption' cards (cells 7-8 & 11-12, ~x780-1100) with small key/thermometer glyphs. Black arrows crisscross between Client and Server lanes (labeled at bottom ~y330). Orange is the accent on the numbered step headers.",
     "why_it_works": "numbered sequence cards signal a digestible step-by-step decode of an intimidating security topic",
-    "mimic_for": "a numbered protocol/handshake or step-by-step process explainer"
+    "mimic_for": "a numbered protocol/handshake or step-by-step process explainer",
+    "title": "SSL, TLS, HTTPS Explained",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-api-styles-6col-comparison-grid",
@@ -70,14 +90,19 @@
     "watch_url": "https://www.youtube.com/watch?v=4vLxWqE94l4",
     "archetype": "comparison-vs",
     "layout": "grid-tiles",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "teal",
     "text": "med",
     "reads_as": "a six-column comparison table of API styles that promises a head-to-head survey of every option",
-    "layout_map": "Dark navy top banner (~y0-55) full width; teal tick at ~x18 then white headline 'Top 6 Most Popular API Architecture Patterns' left-aligned baseline ~y40, cells 1-4 (spans nearly full width). Body is a 6-column comparison grid on a light substrate, cells 5-16. Top row is a teal-tinted header band (~y95-130) with column labels SOAP / RESTful / GraphQL / gRPC / WebSocket / Webhook spaced evenly across x~120,330,540,720,930,1140. A left 'Style' / 'Illustration' row-label gutter sits at far left (~x40). Below each column header is a small icon-illustration tile (cells 9-16, ~y160-300) — XML doc, Resource node tree, GraphQL star, gRPC stub, 'push' socket, 'async' webhook — each with a small teal icon. Number '6' lives only in the headline text, not as a badge.",
+    "layout_map": "Dark navy top banner (~y0-55) full width; teal tick at ~x18 then white headline 'Top 6 Most Popular API Architecture Patterns' left-aligned baseline ~y40, cells 1-4 (spans nearly full width). Body is a 6-column comparison grid on a light substrate, cells 5-16. Top row is a teal-tinted header band (~y95-130) with column labels SOAP / RESTful / GraphQL / gRPC / WebSocket / Webhook spaced evenly across x~120,330,540,720,930,1140. A left 'Style' / 'Illustration' row-label gutter sits at far left (~x40). Below each column header is a small icon-illustration tile (cells 9-16, ~y160-300) \u2014 XML doc, Resource node tree, GraphQL star, gRPC stub, 'push' socket, 'async' webhook \u2014 each with a small teal icon. Number '6' lives only in the headline text, not as a badge.",
     "why_it_works": "a full side-by-side grid promises an exhaustive 'see them all at once' comparison, a strong completionist pull",
-    "mimic_for": "a 'top N options compared' or N-way side-by-side survey of competing approaches"
+    "mimic_for": "a 'top N options compared' or N-way side-by-side survey of competing approaches",
+    "title": "Top 6 Most Popular API Architecture Styles",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-linux-boot-numbered-flow-dark",
@@ -86,14 +111,19 @@
     "watch_url": "https://www.youtube.com/watch?v=XpFsMB6FoOs",
     "archetype": "diagram-arch",
     "layout": "centered-stack",
-    "device": ["neon-on-dark"],
+    "device": [
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "green",
     "text": "med",
     "reads_as": "a glowing numbered boot-sequence flow on a dark techy backdrop, promising the full Linux startup chain decoded",
     "layout_map": "Dark navy top banner (~y0-55) full width; teal tick at ~x18 then white headline 'Linux Boot Process Explained' left-aligned baseline ~y40, cells 1-3. Body is a dark/black technical substrate (cells 5-16) with faint neon circuit decoration. A numbered left-to-right then wrap flow of green-numbered stages: 1.Power On / 2.BIOS-UEFI / 3.Detect Devices / 4.Choose Boot Device along the top row (cells 5-8, ~y150) with green circled step numbers; a green 'GRUB Boot Loader' badge highlighted at far right (cell 8, ~x1150,y180). Second row continues 5.users can log in / 6.Run Startup scripts / 7.Run target files / 8.Execute systemd (cells 9-16, ~y260) with tiny code/file glyphs. Numbers are small green circled step markers, not one giant number. Green is the accent against the dark substrate.",
     "why_it_works": "neon-on-dark plus numbered stages reads as deep technical authority while still promising a digestible ordered walkthrough",
-    "mimic_for": "a low-level/technical boot or pipeline sequence explained as ordered numbered stages on a dark substrate"
+    "mimic_for": "a low-level/technical boot or pipeline sequence explained as ordered numbered stages on a dark substrate",
+    "title": "How Does Linux Boot Process Work?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-sysdesign-interview-bigflow-logos",
@@ -102,14 +132,19 @@
     "watch_url": "https://www.youtube.com/watch?v=i7twT3x5yv8",
     "archetype": "diagram-arch",
     "layout": "centered-stack",
-    "device": ["logo-grid"],
+    "device": [
+      "logo-grid"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
     "reads_as": "a dense real-world architecture studded with recognizable tech logos that promises a FAANG-grade system design template",
     "layout_map": "Dark navy top banner (~y0-55) full width; teal tick at ~x18 then white headline 'System Design Interview - Step by Step Guide' left-aligned baseline ~y40, cells 1-4. Body on light substrate, cells 5-16. Far left a phone/'Client App' icon (cell 5, ~x80,y180) flows via black arrows through a CDN/load-balancer/gateway column (cells 9-10, ~x180-330) into a large dashed-bordered central cluster (cells 6-7-10-11, ~x430-720) packed with blue service tiles and real brand logos (Kafka, Redis, ElasticSearch, AWS, Netflix, Nvidia, gRPC/Thrift) plus a 'Management & Monitoring' header. A right column shows database brand logos (Cassandra, DynamoDB/Amazon, MySQL, etc.) in cells 8 & 12 (~x1050-1200). Recognizable logos are the device; no big number. Blue is the dominant tile accent.",
     "why_it_works": "the wall of familiar brand logos inside a real architecture reads as a battle-tested, FAANG-real reference worth saving",
-    "mimic_for": "a real-world reference architecture or 'how the pros build it' interview/system-design beat showing recognizable tools"
+    "mimic_for": "a real-world reference architecture or 'how the pros build it' interview/system-design beat showing recognizable tools",
+    "title": "System Design Interview: A Step-By-Step Guide",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-diagram-as-code-tools-canvas-dark",
@@ -118,13 +153,18 @@
     "watch_url": "https://www.youtube.com/watch?v=jCd6XfWLZsg",
     "archetype": "diagram-arch",
     "layout": "text-center",
-    "device": ["neon-on-dark"],
+    "device": [
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
     "reads_as": "a dark design-canvas crammed with colorful generated diagram nodes, promising tools that auto-draw beautiful architecture",
-    "layout_map": "No light banner; the headline 'Diagram as Code' rides white directly on a dark slate canvas, large mixed-case, left-aligned baseline ~y60, cells 1-2. The entire body (cells 5-16) is a dark graph-paper design canvas filled edge-to-edge with multiple small colorful node clusters — purple/orange/blue/pink rounded icon boxes connected by faint lines, a small yellow 'Rubber Ducking' tooltip card near center (cell 11, ~x320,y130), grouped sub-clusters in each quadrant (cells 9, 10, 13, 14 bottom-left; 8, 12 right). Tiny user/avatar glyphs scattered as collaborators. The crowded colorful-on-dark canvas itself is the hero; no number/badge, blue-purple is the dominant accent against near-black.",
+    "layout_map": "No light banner; the headline 'Diagram as Code' rides white directly on a dark slate canvas, large mixed-case, left-aligned baseline ~y60, cells 1-2. The entire body (cells 5-16) is a dark graph-paper design canvas filled edge-to-edge with multiple small colorful node clusters \u2014 purple/orange/blue/pink rounded icon boxes connected by faint lines, a small yellow 'Rubber Ducking' tooltip card near center (cell 11, ~x320,y130), grouped sub-clusters in each quadrant (cells 9, 10, 13, 14 bottom-left; 8, 12 right). Tiny user/avatar glyphs scattered as collaborators. The crowded colorful-on-dark canvas itself is the hero; no number/badge, blue-purple is the dominant accent against near-black.",
     "why_it_works": "the busy colorful node-canvas on dark looks like the polished output the tool promises, selling the result before a word is read",
-    "mimic_for": "a 'tools that generate X' roundup where the rich generated output canvas is the selling visual"
+    "mimic_for": "a 'tools that generate X' roundup where the rich generated output canvas is the selling visual",
+    "title": "Top 6 Tools to Turn Code into Beautiful Diagrams",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   }
 ]

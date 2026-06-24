@@ -6,14 +6,20 @@
     "watch_url": "https://www.youtube.com/watch?v=pEfrdAtAmqk",
     "archetype": "iceberg",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "high",
     "reads_as": "a dense field of programming-language logos descending into the deep, with a worried submerged face and a big two-line title",
     "layout_map": "Dark teal grid background fills the whole frame. A loose grid of ~40 colorful language/tech logos (SQL, Dart, Go, Scala, C, Nim, Erlang, COBOL, etc.) is scattered across the upper-right two-thirds, cells 2-4, 6-8, 11-12, densest near top. Stacked white headline lower-left: 'THE' small caps at cell 5 ~y55, 'PROGRAMMING' Inter-900 white caps across cells 5-7 baseline ~y150, then 'ICEBERG' in the same heavy caps but cyan-outlined/gradient across cells 9-11 baseline ~y270 (the accent word). A dim worried human face is half-submerged at far left, cell 9 ~x55,y360, partly behind the ICEBERG word, filling ~12% of frame. No badge.",
     "why_it_works": "the iceberg metaphor plus a flood of recognizable logos promises hidden depth and completeness; the submerged face adds dread",
-    "mimic_for": "a deep-dive / 'everything ranked from common to obscure' explainer where the payoff is breadth and hidden complexity"
+    "mimic_for": "a deep-dive / 'everything ranked from common to obscure' explainer where the payoff is breadth and hidden complexity",
+    "title": "God-Tier Developer Roadmap",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "fireship-100-seconds-skull-redbar",
@@ -22,14 +28,20 @@
     "watch_url": "https://www.youtube.com/watch?v=hdHjjBS4cs8",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["danger-red", "big-text"],
+    "device": [
+      "danger-red",
+      "big-text"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
     "reads_as": "a stark white skull under a blood-red '100 SECONDS OF' bar with one ominous red word",
     "layout_map": "Near-black background. A solid red horizontal bar spans the full top edge, cells 1-4 from y0 to ~y75, holding '100' in bold white (cell 2 ~x230) and 'SECONDS OF' in white italic caps to its right (~x420). Below it, big red caps headline 'BRAINF**K' centered across cells 6-8 baseline ~y150. A large white side-profile human skull sits centered-bottom, cells 10-15, skull center ~x340,y450, filling ~40% of the lower frame, jaw and teeth reaching the bottom edge. No face, no badge.",
     "why_it_works": "the red danger bar plus a skull frames a quirky niche topic as dangerous/forbidden, and the '100 seconds' promise sets a low time cost",
-    "mimic_for": "a short fast explainer of an esoteric or 'cursed' topic where the hook is brevity plus a touch of menace"
+    "mimic_for": "a short fast explainer of an esoteric or 'cursed' topic where the hook is brevity plus a touch of menace",
+    "title": "Brainf**k in 100 Seconds",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-how-to-build-her-arrow-portrait",
@@ -38,14 +50,20 @@
     "watch_url": "https://www.youtube.com/watch?v=ky5ZB-mqZKM",
     "archetype": "before-after",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a curved white arrow swooping from a 'HOW TO build' title over to a glamorous AI-looking woman labeled HER",
     "layout_map": "Dark grid background, left half. Headline block at left: 'HOW TO' white caps in a small dark pill at cell 5 ~y55, 'build' in white lowercase inside a dark box just below ~y110, then 'HER' in big bold red caps cells 9-10 baseline ~y160 (accent word). A thick white hand-drawn curved arrow arcs from above the title rightward and points down at the woman, peaking ~x520,y30 and tipping toward cell 7. A pink-haired young woman portrait occupies the right third, cells 4,8,12,16, face center ~x1000,y150, filling the full-height right ~35% of frame, looking back over her shoulder. Small 'CODE REPORT' badge bottom-left corner, cell 13.",
     "why_it_works": "the arrow physically connects an instruction ('how to build') to a too-real human result, selling the uncanny payoff of the build",
-    "mimic_for": "a 'we built X and here's the surprisingly real result' reveal that points from process to an impressive human-like output"
+    "mimic_for": "a 'we built X and here's the surprisingly real result' reveal that points from process to an impressive human-like output",
+    "title": "AI influencers are getting filthy rich... let's build one",
+    "title_shape": "first-person-feat",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-deepseek-fallout-logos-smoker",
@@ -54,14 +72,20 @@
     "watch_url": "https://www.youtube.com/watch?v=Nl7aCUsWykg",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "OpenAI and Nvidia logos hovering over a blue 'deepseek' wordmark and a red FALLOUT, with a stressed guy vaping at the right",
     "layout_map": "Dark grid background. Top-center: OpenAI flower logo (cell 2 ~x540,y90) and the green Nvidia eye logo (cell 3 ~x700,y90) sit side by side. Below them the blue DeepSeek whale icon + blue 'deepseek' wordmark span cells 6-7 ~y200. Big red bold caps 'FALLOUT' across cells 9-10 baseline ~y350 (accent word). A young man with glasses vaping (smoke plume across his face) occupies the right ~28%, cells 4,8,12, face center ~x1080,y150, looking nervously aside. 'CODE REPORT' badge bottom-left corner cell 13.",
     "why_it_works": "a challenger logo toppling incumbent logos plus the word FALLOUT and an anxious face frames a news beat as an industry-shaking disruption",
-    "mimic_for": "a tech-news beat where a new player threatens the established giants and the framing is panic / market fallout"
+    "mimic_for": "a tech-news beat where a new player threatens the established giants and the framing is panic / market fallout",
+    "title": "Big Tech in panic mode... Did DeepSeek R1 just pop the AI bubble?",
+    "title_shape": "panic-threat",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "fireship-10-code-editors-logo-grid-reaction",
@@ -70,14 +94,20 @@
     "watch_url": "https://www.youtube.com/watch?v=8PhdfcX9tG0",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["giant-number", "neon-on-dark"],
+    "device": [
+      "giant-number",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a giant '10' over 'CODE EDITORS' beside a wall of editor app icons and a skeptical reaction face",
     "layout_map": "Dark grid background. Far left: giant white '10' in heavy mono/block caps, cell 1-5 ~x60,y90 filling ~20% of frame height. Below it stacked headline 'CODE' in red caps cell 5 baseline ~y200 and 'EDITORS' in white caps cell 5 baseline ~y260. Center: a tight 3x3 cluster of code-editor app icons (Neovim, Zed, VS Code, WebStorm, Dreamweaver, etc.) cells 2-3,6-7,10-11, centered ~x560,y200. Right ~22%: a Black man's skeptical sidelong reaction face, cells 4,8,12, face center ~x1120,y220. No badge.",
     "why_it_works": "the giant count promises a complete roundup, the icon wall proves breadth, and the doubtful face teases a verdict/ranking",
-    "mimic_for": "a 'I tried N tools' roundup where the hook is the count plus a personal verdict on a category of products"
+    "mimic_for": "a 'I tried N tools' roundup where the hook is the count plus a personal verdict on a category of products",
+    "title": "I tried 10 code editors",
+    "title_shape": "first-person-feat",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-c-100-seconds-blue-letter",
@@ -86,14 +116,20 @@
     "watch_url": "https://www.youtube.com/watch?v=U3aXWizDbQ4",
     "archetype": "big-text",
     "layout": "centered-stack",
-    "device": ["big-text", "neon-on-dark"],
+    "device": [
+      "big-text",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
     "reads_as": "one enormous letter C filling the frame under a blue '100 SECONDS OF' banner",
     "layout_map": "Near-black background. A solid blue horizontal banner spans the full top, cells 1-4 from y0 to ~y95, with '100' in bold white (cell 2-3 ~x380) and 'SECONDS OF' in white italic caps to its right (~x520); a thin grey underline runs beneath the banner ~y100. One giant light-grey letter 'C' is centered, cells 6-15, glyph center ~x490,y360, occupying ~55% of the whole frame. No face, no badge, no other text.",
-    "why_it_works": "extreme minimalism — a single colossal glyph plus the 100-seconds promise — reads instantly and signals a clean, fast primer",
-    "mimic_for": "a quick single-subject primer where the brand/letter/logo of the subject IS the whole visual and the promise is speed"
+    "why_it_works": "extreme minimalism \u2014 a single colossal glyph plus the 100-seconds promise \u2014 reads instantly and signals a clean, fast primer",
+    "mimic_for": "a quick single-subject primer where the brand/letter/logo of the subject IS the whole visual and the promise is speed",
+    "title": "C in 100 Seconds",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-programmer-stereotypes-faces-arrow",
@@ -102,14 +138,20 @@
     "watch_url": "https://www.youtube.com/watch?v=_k-F-MMvQV4",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "neon-on-dark"],
+    "device": [
+      "red-arrow",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "high",
     "reads_as": "a green-highlighted 'PROGRAMMER STEREOTYPES' title with a white arrow swinging to grinning celebrity faces",
-    "layout_map": "Dark grid background, left half holds a stacked headline: 'PROGRAMMER' in white caps on a green highlight bar cell 1-2 ~y45, 'STEREO' in white caps cell 1-2 baseline ~y110, 'TYPES' in red caps cell 1-2 baseline ~y175 (accent word). A thin white hand-drawn arrow curves from top-center rightward, peaking ~x560,y35, pointing at the faces. Right half: two laughing-celebrity face cutouts overlapping — a man top-right cells 3-4,7-8 face center ~x1050,y80, and a second man (cap, headphones) center-bottom cells 6-7,10-11 face center ~x640,y330; a small red Tesla 'T' logo sits cell 8 ~x1140,y330. Faces fill the right ~50%.",
+    "layout_map": "Dark grid background, left half holds a stacked headline: 'PROGRAMMER' in white caps on a green highlight bar cell 1-2 ~y45, 'STEREO' in white caps cell 1-2 baseline ~y110, 'TYPES' in red caps cell 1-2 baseline ~y175 (accent word). A thin white hand-drawn arrow curves from top-center rightward, peaking ~x560,y35, pointing at the faces. Right half: two laughing-celebrity face cutouts overlapping \u2014 a man top-right cells 3-4,7-8 face center ~x1050,y80, and a second man (cap, headphones) center-bottom cells 6-7,10-11 face center ~x640,y330; a small red Tesla 'T' logo sits cell 8 ~x1140,y330. Faces fill the right ~50%.",
     "why_it_works": "recognizable meme faces plus relatable 'which one are you' stereotypes invite self-identification and laughter",
-    "mimic_for": "a humorous archetypes/personalities listicle where viewers recognize themselves or famous figures in the categories"
+    "mimic_for": "a humorous archetypes/personalities listicle where viewers recognize themselves or famous figures in the categories",
+    "title": "10 Programmer Stereotypes",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-claude-cracked-tamagotchi-hero",
@@ -118,13 +160,19 @@
     "watch_url": "https://www.youtube.com/watch?v=mBHRPeg8zPU",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
     "reads_as": "a cream-and-white 'CLAUDE CRACKED' headline next to an orange Tamagotchi toy with a glitchy pixel creature on its screen",
     "layout_map": "Dark grid background. Left ~55% holds a stacked headline: 'CLAUDE' in cream Inter-900 caps cells 1-2 baseline ~y130, 'CRACKED' in red bold caps just below cells 1-2 baseline ~y200 (accent word). A small orange burst/asterisk glow sits above the title ~x215,y45 and another near the toy ~x720,y75. Right-center: an orange egg-shaped Tamagotchi handheld toy, cells 7-8,11-12, body center ~x880,y230, filling ~30% of frame, its little screen showing a pixelated green/blue glitch creature. 'CODE REPORT' badge bottom-left corner cell 13.",
     "why_it_works": "casting a serious AI leak as a cute retro toy that's 'cracked' makes a heavy news beat playful and irresistibly odd",
-    "mimic_for": "a news/leak beat reframed through a single quirky hero object that makes a serious story feel toy-like or absurd"
+    "mimic_for": "a news/leak beat reframed through a single quirky hero object that makes a serious story feel toy-like or absurd",
+    "title": "Tragic mistake... Anthropic leaks Claude\u2019s source code",
+    "title_shape": "panic-threat",
+    "title_pattern": "curiosity-gap-reversal"
   }
 ]

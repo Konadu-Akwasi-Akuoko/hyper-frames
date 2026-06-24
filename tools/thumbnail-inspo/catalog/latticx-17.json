@@ -6,14 +6,20 @@
     "watch_url": "https://www.youtube.com/watch?v=JdPw5UP57LE",
     "archetype": "diagram-arch",
     "layout": "centered-stack",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "red",
     "text": "low",
     "reads_as": "a tidy stack of horizontal bars floating on near-black, with a bold white verdict pinned across the bottom",
     "layout_map": "Near-black background (very dark charcoal, ~#161616) with a faint cyan-grey grid feel; centered vertical stack of ~7 short rounded horizontal bars in alternating muted colors (dusty red, pale yellow, slate-blue) running from ~y180 down to ~y480, each bar ~120-200px wide, clustered around the horizontal center x600-x780, occupying cells 6-7 and 10-11 (a compact code-block / list silhouette, no readable text). Bars step slightly left/right like indented code lines. Single headline row sits across the bottom band, baseline ~y620, spanning cells 13-16 nearly full width (x180 to x1080): 'Always code like this' in heavy white sans, sentence case (cap A only), no accent-colored word. No face, no number badge; the colored bars are the only chroma, the red bars reading as the dominant accent.",
     "why_it_works": "the wordless colored-bar stack poses an unspoken 'this vs everything else' while the blunt bottom verdict promises one correct way to do it",
-    "mimic_for": "a best-practice / correct-pattern beat where you show a clean code or list structure and assert one right way to do something"
+    "mimic_for": "a best-practice / correct-pattern beat where you show a clean code or list structure and assert one right way to do something",
+    "title": "How to learn to code anything",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "latticx-three-panel-code-collage-code-easily",
@@ -22,13 +28,19 @@
     "watch_url": "https://www.youtube.com/watch?v=Q2KxTcXlvss",
     "archetype": "code-screenshot",
     "layout": "text-center",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
     "reads_as": "three stacked screens of real code under a giant centered white title, signaling dense hands-on programming",
     "layout_map": "Full-bleed background split into three vertical photo panels: left third (cells 1,5,9,13) a dark editor screenshot of TSX login code in cyan/green/orange syntax highlight; center third (cells 2-3,6-7,10-11,14-15) a tilted laptop/tablet showing green-on-black and ChatGPT code shots; right third (cells 4,8,12,16) a navy laptop screen plus a handwritten graph-theory notebook bottom-right. All three panels are real code/dev photography, dark and busy, giving a neon-on-dark code-collage texture. One huge headline runs centered across the vertical middle, baseline ~y300, spanning cells 6-7-8 roughly x90 to x920: 'Code Easily' in heavy white rounded sans, title case, thick black stroke + soft drop shadow lifting it off the busy code; no accent-colored word, the cyan/green syntax highlighting behind it supplies the accent. No face, no number badge.",
     "why_it_works": "the wall of three real code screens screams difficulty while the two-word white promise 'Code Easily' offers the shortcut, the tension that stops the scroll",
-    "mimic_for": "a learn-to-code / make-the-hard-thing-easy beat where dense real code is the backdrop and the title promises an easier path"
+    "mimic_for": "a learn-to-code / make-the-hard-thing-easy beat where dense real code is the backdrop and the title promises an easier path",
+    "title": "How to Study Programming the Smart Way",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   }
 ]

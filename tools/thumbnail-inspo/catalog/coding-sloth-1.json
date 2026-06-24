@@ -6,14 +6,20 @@
     "watch_url": "https://www.youtube.com/watch?v=q-_ezD9Swz4",
     "archetype": "object-hero",
     "layout": "face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
-    "reads_as": "A grinning cartoon sloth in starry shades coding at a glowing pixel-art desk — fun, cozy, aspirational mastery.",
+    "reads_as": "A grinning cartoon sloth in starry shades coding at a glowing pixel-art desk \u2014 fun, cozy, aspirational mastery.",
     "layout_map": "Full-bleed pixel-art illustrated scene, no overlaid headline text at all. Left half (cells 5-6,9-10) holds a blue retro CRT monitor showing colorful syntax-highlighted code, the sloth's paw on a teal mouse below it. The hero sloth occupies the right-center (cells 6-7,10-11, center ~x900,y360) filling roughly the right 45% of frame, seated in a yellow chair, wearing star-pupil sunglasses with a wide open-mouth grin. Bright white sparkle/star glints flank its head (~x820,y150 and ~x1050,y260) as the glow accent. Background is a purple-blue cozy room with shelves, plants, and a framed sloth picture top-right (cell 4). Whole image is saturated cyan/purple neon pixel art; mood carried entirely by the character, zero text device.",
-    "why_it_works": "Pure character charm and an aspirational 'genius at work' pose carry the click with no text — the star-shades sloth is instantly the channel's mascot and the cozy neon scene reads as effortless coding flow.",
-    "mimic_for": "an inviting 'learn this the smart/effortless way' beat where the channel mascot or hero object sells competence without a stat or claim"
+    "why_it_works": "Pure character charm and an aspirational 'genius at work' pose carry the click with no text \u2014 the star-shades sloth is instantly the channel's mascot and the cozy neon scene reads as effortless coding flow.",
+    "mimic_for": "an inviting 'learn this the smart/effortless way' beat where the channel mascot or hero object sells competence without a stat or claim",
+    "title": "Learn To Code Like a GENIUS and Not Waste Time",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "coding-sloth-code-editor-print-statements",
@@ -22,14 +28,19 @@
     "watch_url": "https://www.youtube.com/watch?v=jTJvyKZDFsY",
     "archetype": "code-screenshot",
     "layout": "text-center",
-    "device": ["neon-on-dark"],
+    "device": [
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "lime",
     "text": "high",
-    "reads_as": "A fake code editor where the function name and print strings ARE the joke/hook — 'God_level_Programming_Projects' with sassy comments.",
+    "reads_as": "A fake code editor where the function name and print strings ARE the joke/hook \u2014 'God_level_Programming_Projects' with sassy comments.",
     "layout_map": "The whole frame mimics a dark IDE pane. Top rows carry monospaced code: line 1 (~y45) reads 'def God_level_Programming_Projects():' with 'def' in pink-magenta keyword color and the function name in lime/yellow; lines 2-4 (~y85,~y125,~y160) are print() statements whose string args ('Watch this video to find out...', 'I bet you have skill issues too', '1. AI Girlfriend/Boyfriend') are the orange/tan-colored payload doing the headline work. Code occupies cells 1-8 (left + center). A small sloth peeks bottom-left (cell 9, ~x180,y330) beside a blue coffee mug, and a large furry sloth body sits bottom-center (cells 10-11, ~x640,y360) as foreground. Dark teal-green editor background throughout; the joke lives entirely in the syntax-colored text.",
-    "why_it_works": "Reading code that talks back ('skill issues too') is an in-group inside joke that makes the programmer audience grin, and the function name promises a ranked god-tier list — curiosity plus belonging.",
-    "mimic_for": "a list/tutorial beat aimed at programmers where the hook is best delivered as cheeky fake code or terminal text rather than a poster headline"
+    "why_it_works": "Reading code that talks back ('skill issues too') is an in-group inside joke that makes the programmer audience grin, and the function name promises a ranked god-tier list \u2014 curiosity plus belonging.",
+    "mimic_for": "a list/tutorial beat aimed at programmers where the hook is best delivered as cheeky fake code or terminal text rather than a poster headline",
+    "title": "20 Programming Projects That Will Make You A God At Coding",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-sloth-kahoot-god-sticky-notes",
@@ -38,14 +49,19 @@
     "watch_url": "https://www.youtube.com/watch?v=G0i_xx-6G-4",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "med",
     "reads_as": "A tilted white sticky-note card screaming 'kahoot god' over a confetti Kahoot win screen with a gold pentagon answer tile.",
-    "layout_map": "Background is a real Kahoot results screen: white top band (cells 1-4) and a deep purple lower field (cells 9-16) sprinkled with multicolor confetti. The headline 'kahoot god' sits on a slightly rotated white card spanning cells 2-3,6-7 (center ~x560,y120), black lowercase sans, two stacked rows ('kahoot' then 'god'). A gold/yellow pentagon answer-shape tile sits dead center-bottom (cell 15, ~x690,y470) as the glow accent — the one saturated element on the purple. Faint white player-name cards bleed in from the left edge (cell 9, '...yn') and right edge (cell 16, 'Nam...'). Clean, screenshot-grounded, the white card vs purple gives instant contrast.",
-    "why_it_works": "The literal app screenshot plus an absurd 'god'-tier brag tells you the video is someone dominating a familiar game — relatable arena, outrageous flex, instant 'how?'",
-    "mimic_for": "a 'I cheated/dominated a familiar online game/tool' beat — ground it in a real screenshot of that app with a tilted brag card on top"
+    "layout_map": "Background is a real Kahoot results screen: white top band (cells 1-4) and a deep purple lower field (cells 9-16) sprinkled with multicolor confetti. The headline 'kahoot god' sits on a slightly rotated white card spanning cells 2-3,6-7 (center ~x560,y120), black lowercase sans, two stacked rows ('kahoot' then 'god'). A gold/yellow pentagon answer-shape tile sits dead center-bottom (cell 15, ~x690,y470) as the glow accent \u2014 the one saturated element on the purple. Faint white player-name cards bleed in from the left edge (cell 9, '...yn') and right edge (cell 16, 'Nam...'). Clean, screenshot-grounded, the white card vs purple gives instant contrast.",
+    "why_it_works": "The literal app screenshot plus an absurd 'god'-tier brag tells you the video is someone dominating a familiar game \u2014 relatable arena, outrageous flex, instant 'how?'",
+    "mimic_for": "a 'I cheated/dominated a familiar online game/tool' beat \u2014 ground it in a real screenshot of that app with a tilted brag card on top",
+    "title": "Using AI to NEVER LOSE in KAHOOT",
+    "title_shape": "first-person-feat",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-sloth-cookie-god-shocked-face",
@@ -54,14 +70,20 @@
     "watch_url": "https://www.youtube.com/watch?v=dQf0rQslJmE",
     "archetype": "face-reaction",
     "layout": "text-center",
-    "device": ["shocked-face", "glow-accent"],
+    "device": [
+      "shocked-face",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "A guy palming his shocked face over a wall of cookies, with steely 'COOKIE GOD' text banner across the middle.",
     "layout_map": "Background is a tiled full-bleed field of glossy chocolate-chip cookies. Real human face is centered-top (cells 2-3,6-7, center ~x640,y190) inside a soft dark circular vignette, hand raised to forehead in an overwhelmed/shocked reaction. The headline 'COOKIE GOD' runs as a horizontal metallic-cyan caps banner across the vertical middle (cells 6-7-8, baseline ~y260, ~x640 center) with a dark translucent bar behind it for legibility. A small Cookie Clicker game-art thumbnail (golden cookie / wizard art) sits inset left (cell 9, ~x130,y260) as a secondary object. Cyan steel text is the accent against warm brown cookies.",
-    "why_it_works": "The overwhelmed human reaction plus a 'GOD' program name promises someone breaking an idle game spectacularly — face emotion + a literal flood of cookies = stakes you can feel.",
-    "mimic_for": "a 'my program absolutely broke/destroyed this game' beat where a shocked human reaction over the flooded result sells the spectacle"
+    "why_it_works": "The overwhelmed human reaction plus a 'GOD' program name promises someone breaking an idle game spectacularly \u2014 face emotion + a literal flood of cookies = stakes you can feel.",
+    "mimic_for": "a 'my program absolutely broke/destroyed this game' beat where a shocked human reaction over the flooded result sells the spectacle",
+    "title": "DESTROYING Cookie Clicker With My Cookie God Program",
+    "title_shape": "first-person-feat",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-sloth-world-record-wpm-stat",
@@ -70,14 +92,20 @@
     "watch_url": "https://www.youtube.com/watch?v=WMtUvsxLqbE",
     "archetype": "number-stat",
     "layout": "text-left-face-right",
-    "device": ["giant-number", "glow-accent"],
+    "device": [
+      "giant-number",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "med",
     "reads_as": "An impossible '37,821 wpm' typing-test result with 'WORLD RECORD SPEED' overhead and a fierce dashing sloth on the left.",
-    "layout_map": "Background is a real Monkeytype/typing-test screen on blue gradient. 'WORLD RECORD SPEED' runs as a white caps headline across the top (cells 5-6-7-8, baseline ~y70, center-right ~x780). The giant stat '37,821 wpm' is the hero — large white numerals center-right (cells 7-8, ~x830,y260) with the absurd magnitude doing the work. Below it small grey UI text ('Save your score...', a yellow 'Save score' button, a 'Try again' button) anchors it as a real result screen (cells 11-12, ~y330-400). A motion-blurred angry sloth with green-feathered arms lunges from the left edge (cells 1-2,5-6,9-10, center ~x200,y360) filling the left ~30%. The impossible number on a familiar UI is the whole hook.",
-    "why_it_works": "A laughably impossible number on a tool the viewer has personally used triggers instant 'that's fake — how?' curiosity, and the lunging sloth adds energy/speed motif.",
-    "mimic_for": "a 'I broke the world record / hit an absurd number on a real tool' beat — put the impossible stat on the genuine result UI"
+    "layout_map": "Background is a real Monkeytype/typing-test screen on blue gradient. 'WORLD RECORD SPEED' runs as a white caps headline across the top (cells 5-6-7-8, baseline ~y70, center-right ~x780). The giant stat '37,821 wpm' is the hero \u2014 large white numerals center-right (cells 7-8, ~x830,y260) with the absurd magnitude doing the work. Below it small grey UI text ('Save your score...', a yellow 'Save score' button, a 'Try again' button) anchors it as a real result screen (cells 11-12, ~y330-400). A motion-blurred angry sloth with green-feathered arms lunges from the left edge (cells 1-2,5-6,9-10, center ~x200,y360) filling the left ~30%. The impossible number on a familiar UI is the whole hook.",
+    "why_it_works": "A laughably impossible number on a tool the viewer has personally used triggers instant 'that's fake \u2014 how?' curiosity, and the lunging sloth adds energy/speed motif.",
+    "mimic_for": "a 'I broke the world record / hit an absurd number on a real tool' beat \u2014 put the impossible stat on the genuine result UI",
+    "title": "Using My Programming Skills To Destroy Typing Games",
+    "title_shape": "first-person-feat",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-sloth-the-end-question-discovery",
@@ -86,14 +114,19 @@
     "watch_url": "https://www.youtube.com/watch?v=g-U2st6-MZI",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
-    "reads_as": "'The End?' with a checkered finish flag and a 'First Discovery' tag — a determined sloth on the left, clean whiteboard look.",
+    "reads_as": "'The End?' with a checkered finish flag and a 'First Discovery' tag \u2014 a determined sloth on the left, clean whiteboard look.",
     "layout_map": "Clean near-white/light-grid background, almost a whiteboard. The hero illustrated sloth (brown, hand-on-hip determined pose) sits on the left (cells 1-2,5-6,9-10,13-14, center ~x230,y360) filling the left ~30%. A black-and-white checkered racing/finish flag icon sits upper-center (cell 7, ~x720,y90). The headline 'The End?' is large black serif/clean text center-right (cells 7-8, baseline ~y110, ~x920). Below it a thin horizontal divider line, then a sparkle icon plus 'First Discovery' subtitle in black (cells 11-12, baseline ~y230, ~x900). Restrained black-on-white with a finish-flag motif; the question mark carries the intrigue.",
-    "why_it_works": "The finish-flag plus questioned 'The End?' implies a game everyone thinks is unbeatable might have a real ending — the '?' and 'First Discovery' promise a genuine reveal/world-first.",
-    "mimic_for": "a 'is this actually beatable / I found the hidden ending' beat — a clean question headline with a finish/goal icon and a discovery tag"
+    "why_it_works": "The finish-flag plus questioned 'The End?' implies a game everyone thinks is unbeatable might have a real ending \u2014 the '?' and 'First Discovery' promise a genuine reveal/world-first.",
+    "mimic_for": "a 'is this actually beatable / I found the hidden ending' beat \u2014 a clean question headline with a finish/goal icon and a discovery tag",
+    "title": "Using \"My\" Programming Skills To Beat An Infinite Game",
+    "title_shape": "first-person-feat",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-sloth-i-cant-do-this-defeated-sloth",
@@ -102,14 +135,20 @@
     "watch_url": "https://www.youtube.com/watch?v=SS19Q-_saCc",
     "archetype": "big-text",
     "layout": "centered-stack",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
-    "reads_as": "Big glowing red 'I CAN'T DO THIS' over a defeated sloth face-palming at a desk in a dark blue room — burnout/frustration.",
+    "reads_as": "Big glowing red 'I CAN'T DO THIS' over a defeated sloth face-palming at a desk in a dark blue room \u2014 burnout/frustration.",
     "layout_map": "Dark moody blue pixel-art room as background (desk, lamp, monitor at the desk). Headline 'I CAN'T DO THIS' is large red glowing caps stacked across the top two rows: 'I CAN'T' on row 1 (cells 1-4, baseline ~y55) and 'DO THIS' on row 2 (cells 5-8, baseline ~y130), spanning nearly full width, with a soft red bloom (danger/neon accent). The defeated sloth sits center-bottom at its desk (cells 10-11,14-15, center ~x640,y390), both paws over its face in despair. A blue monitor at left of the desk and a coffee mug + books at lower-right (cell 16) flesh out the scene. Red-on-dark-blue maximizes the alarm; the slumped sloth mirrors the headline's defeat.",
-    "why_it_works": "Naming the viewer's exact frustration ('I CAN'T DO THIS') in alarm-red plus a relatably defeated character creates instant emotional recognition — 'that's me, tell me why.'",
-    "mimic_for": "a 'why this is so hard / the struggle is real' empathy beat — pair a frustrated character with the viewer's quoted complaint in danger-red caps"
+    "why_it_works": "Naming the viewer's exact frustration ('I CAN'T DO THIS') in alarm-red plus a relatably defeated character creates instant emotional recognition \u2014 'that's me, tell me why.'",
+    "mimic_for": "a 'why this is so hard / the struggle is real' empathy beat \u2014 pair a frustrated character with the viewer's quoted complaint in danger-red caps",
+    "title": "This is Why Programming Is Hard For you",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-sloth-docker-two-sloths-point",
@@ -118,13 +157,18 @@
     "watch_url": "https://www.youtube.com/watch?v=DQdB7wFEygo",
     "archetype": "logo-grid",
     "layout": "centered-stack",
-    "device": ["hand-point"],
+    "device": [
+      "hand-point"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
-    "reads_as": "The big blue Docker whale logo dead-center with two hand-drawn pointing sloths flanking it — 'this is THE Docker tutorial.'",
-    "layout_map": "Clean white/light-grid background. The official Docker logo (blue whale carrying stacked containers + 'docker' wordmark) is the centered hero (cells 6-7,10-11, center ~x640,y230) filling the middle ~40%. Two crude hand-drawn doodle sloths flank it and both point inward at the logo (hand-point device): one bottom-left (cells 9-10,13-14, center ~x230,y360) gesturing right, one mid-right (cells 8,12, center ~x1070,y330) pointing left toward the whale. No headline text — the logo IS the subject and the pointing sloths supply the 'this one, pay attention' energy. Minimal, brand-forward, meme-doodle tone.",
-    "why_it_works": "A bare authoritative logo plus crude pointing doodles reads as 'the definitive, no-nonsense tutorial on exactly this tool' — the meme-sloths keep it approachable while the centered logo signals focused authority.",
-    "mimic_for": "a definitive single-tool/tech tutorial beat — center the tool's logo and use pointing characters to say 'this exact thing, the only guide you need'"
+    "reads_as": "The big blue Docker whale logo dead-center with two hand-drawn pointing sloths flanking it \u2014 'this is THE Docker tutorial.'",
+    "layout_map": "Clean white/light-grid background. The official Docker logo (blue whale carrying stacked containers + 'docker' wordmark) is the centered hero (cells 6-7,10-11, center ~x640,y230) filling the middle ~40%. Two crude hand-drawn doodle sloths flank it and both point inward at the logo (hand-point device): one bottom-left (cells 9-10,13-14, center ~x230,y360) gesturing right, one mid-right (cells 8,12, center ~x1070,y330) pointing left toward the whale. No headline text \u2014 the logo IS the subject and the pointing sloths supply the 'this one, pay attention' energy. Minimal, brand-forward, meme-doodle tone.",
+    "why_it_works": "A bare authoritative logo plus crude pointing doodles reads as 'the definitive, no-nonsense tutorial on exactly this tool' \u2014 the meme-sloths keep it approachable while the centered logo signals focused authority.",
+    "mimic_for": "a definitive single-tool/tech tutorial beat \u2014 center the tool's logo and use pointing characters to say 'this exact thing, the only guide you need'",
+    "title": "The Only Docker Tutorial You Need To Get Started",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   }
 ]

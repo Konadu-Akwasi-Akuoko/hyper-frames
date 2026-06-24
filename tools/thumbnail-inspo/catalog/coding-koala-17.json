@@ -6,14 +6,20 @@
     "watch_url": "https://www.youtube.com/watch?v=1HDrk9SJSM0",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "low",
     "reads_as": "a wall of glowing project-tech app icons next to a real bearded developer",
     "layout_map": "Dark navy background. Left two-thirds (cells 1,2,3,5,6,7,9,10) holds a 3x3-ish matrix of rounded-square app/tech icons (each ~110px tile with soft colored glow): top row a pink/red flame icon ~x55,y55, a red origami-bird ~x170,y55, a yellow 'JS' badge ~x290,y55; mid row a white cube/dollar ~x55,y180, an orange burst ~x170,y180, a purple swirl ~x290,y180; bottom row a red flag/marker ~x55,y320, a blue/purple flame ~x170,y320. A real bearded long-haired man in a plaid shirt occupies the right third (cells 4,8,12,16), face center ~x980,y130 filling the right edge to bottom. No headline text on the image itself.",
     "why_it_works": "the dense glowing icon wall signals 'many concrete projects' while the human face anchors the promise of becoming hireable",
-    "mimic_for": "a roundup of tools/projects/stacks paired with a human authority face"
+    "mimic_for": "a roundup of tools/projects/stacks paired with a human authority face",
+    "title": "Programming Projects To Make You a Hireable Developer",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "coding-koala-average-developers-pepe-point",
@@ -22,14 +28,20 @@
     "watch_url": "https://www.youtube.com/watch?v=_Cx6_A599pE",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["hand-point", "glow-accent"],
+    "device": [
+      "hand-point",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "orange",
     "text": "med",
     "reads_as": "a smug Pepe frog pointing at the accusatory words 'Average Developers'",
     "layout_map": "Light off-white background. Two-line headline upper-left: 'Average' in black Inter-heavy ~baseline y90 across cells 1-2, 'Developers' in bright orange directly below ~baseline y175 across cells 1-2-3. A large green Pepe-the-frog meme fills the right third (cells 4,8,12,16), head/shoulders center ~x1050,y200. Pepe's green arm/hand reaches down-left to point at a glowing cyan React atom logo centered ~x430,y370 (cell 10), pointing finger ~x340,y400. Faint cyan glow ring behind the React logo.",
     "why_it_works": "the meme face plus the word 'Average' creates a mild insult/callout that dares the viewer to prove they're not average",
-    "mimic_for": "a callout or roast of a developer mistake / mediocre habit"
+    "mimic_for": "a callout or roast of a developer mistake / mediocre habit",
+    "title": "Why Most Developers Stay Average?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-skill-monetization-money-rain",
@@ -38,14 +50,20 @@
     "watch_url": "https://www.youtube.com/watch?v=vHxw5Z5rLHI",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a man laughing with money raining down beside the phrase 'The Art of Skill Monetization'",
     "layout_map": "Dark navy/charcoal background with subtle grid texture. Stacked headline left-center: 'The Art of' in thin white serif ~baseline y75 (cells 1-2), 'Skill' large in red ~baseline y150 (cell 6), 'Monetization' in white heavy ~baseline y235 (cells 5-6-7), small '(Coding)' subcaption ~y290 below. Right third holds a smiling/laughing dark-skinned man wearing sunglasses, head tilted up, face center ~x1010,y210, filling cells 4,8,12. Cash banknotes fall from the top-right corner (cells 3,4) raining over and around his head ~x1000,y40. Red ambient glow lower-right.",
     "why_it_works": "money raining over a joyful face is pure aspirational reward; the red 'Skill' isolates the one thing that buys it",
-    "mimic_for": "a money/income or monetization payoff beat"
+    "mimic_for": "a money/income or monetization payoff beat",
+    "title": "How To Become Financially Comfortable As a Developer | The Complete Guide",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "coding-koala-finally-quitting-logo-grid",
@@ -54,14 +72,20 @@
     "watch_url": "https://www.youtube.com/watch?v=fSs9ZoOpVJk",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "danger-red"],
+    "device": [
+      "neon-on-dark",
+      "danger-red"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a faceless ghostly figure beside 'FINALLY QUITTING' over a row of dev-tool logos",
     "layout_map": "Off-white/grey background. Two-line all-caps headline upper-left: 'FINALLY' in black bold ~baseline y75 (cells 1-2), 'QUITTING' in red bold directly below ~baseline y150 (cells 1-2-3). A horizontal row of ~8 dev-tool logos sits across the lower-left (cell band 9-10-11): Node, MongoDB leaf, MySQL dolphin, Angular shield, then React atom, Notion N, VS Code blue, Figma, each ~80px, centered band ~y340. A faceless dark charcoal-sketch silhouette of a head-and-shoulders person fills the right third (cells 4,8,12,16), head center ~x1010,y180 with no visible facial features (eerie void face).",
     "why_it_works": "the blank faceless figure plus 'QUITTING' implies burnout/loss of identity; the logo row names exactly what is being abandoned",
-    "mimic_for": "a developer-burnout or leaving-the-stack / quitting-tech beat"
+    "mimic_for": "a developer-burnout or leaving-the-stack / quitting-tech beat",
+    "title": "Why Most People Are Quitting Tech?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-crowd-silhouettes-one-gold",
@@ -70,14 +94,19 @@
     "watch_url": "https://www.youtube.com/watch?v=xF2J-L7NhoM",
     "archetype": "big-text",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "low",
     "reads_as": "a sea of grey crowd silhouettes with one glowing gold figure standing out in the center",
     "layout_map": "Full-bleed field of overlapping translucent human silhouettes in muted blue/grey/teal tones, packed edge-to-edge across all 16 cells like a faded crowd. Dead center (cells 7,11) one single standing figure is lit warm gold/amber, glowing and saturated ~x340,y200, clearly distinct from the desaturated bodies around it. No headline text baked into the image (title sits outside). Background reads as a subtle gradient lightening toward the top.",
     "why_it_works": "the single illuminated figure in a grey crowd is an instant 'be the one who stands out' visual metaphor with zero text needed",
-    "mimic_for": "standing out from the crowd / the rare person who wins beat"
+    "mimic_for": "standing out from the crowd / the rare person who wins beat",
+    "title": "Most Distracted Generation: Why Winning Has Never Been This Easy",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-5-low-competitive-jobs-orange-circles",
@@ -86,14 +115,20 @@
     "watch_url": "https://www.youtube.com/watch?v=dg_QhCtcr3g",
     "archetype": "number-stat",
     "layout": "text-left-face-right",
-    "device": ["giant-number", "red-circle"],
+    "device": [
+      "giant-number",
+      "red-circle"
+    ],
     "face": false,
     "accent": "orange",
     "text": "med",
     "reads_as": "a giant orange '5' beside a grid of orange circle badges, some with question marks",
     "layout_map": "White background. Giant orange numeral '5' lower-left, baseline ~y220, huge (cell 9). Headline stacked right of it: 'Low Competitive' in black bold ~baseline y200 (cells 10-11), then 'Tech Jobs 2025' below ~baseline y255 with 'Tech Jobs' in orange and '2025' in black (cells 10-11). Right half holds a 3x2 cluster of solid orange circular badges (~150px each): top-center a CRT monitor icon ~x520,y90; mid row a blue server rack ~x520,y230 and a white '?' ~x680,y230; bottom row three white '?' circles ~x520,y390, ~x680,y390, ~x870,y390. The '?' circles tease the hidden careers.",
     "why_it_works": "the giant number promises a finite listicle and the question-mark badges create curiosity gaps for each unrevealed job",
-    "mimic_for": "a numbered listicle where some items are teased/hidden"
+    "mimic_for": "a numbered listicle where some items are teased/hidden",
+    "title": "Underrated Tech Careers That Pay $100K+ (And Have Less Competition!)",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-koala-good-news-but-market-chart",
@@ -102,14 +137,20 @@
     "watch_url": "https://www.youtube.com/watch?v=8_qhiv4EDOk",
     "archetype": "diagram-arch",
     "layout": "text-left-face-right",
-    "device": ["red-circle", "glow-accent"],
+    "device": [
+      "red-circle",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "low",
     "reads_as": "'GOOD NEWS, But...' over a market chart with a cheering cartoon figure on the right",
     "layout_map": "Dark charcoal background. Top headline spanning full width ~baseline y55: 'GOOD' in white, 'NEWS' in red, ', But...' in white (cells 1-2-3-4, caps). Center-left a white line-chart panel (cells 6,7,10,11) showing a 'Peak of the market' label top-left with a circled peak point ~x230,y260 and a declining line dipping to a circled 'Bottom of the market' point ~x340,y360. Right third holds a cheering yellow-skinned Simpsons-style cartoon man (glasses, raised fists) ~x1040,y300 filling cells 12,16. A cyan/teal gear+spark icon sits upper-right ~x1010,y200.",
     "why_it_works": "the 'But...' undercuts the good news to create tension, while the chart and circled bottom-of-market point promise a concrete data payoff",
-    "mimic_for": "a hopeful-but-qualified market/trend update with a chart"
+    "mimic_for": "a hopeful-but-qualified market/trend update with a chart",
+    "title": "Why Tech Hiring Is Booming Again? But Not ...",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-nobody-knows-anime-point",
@@ -118,13 +159,19 @@
     "watch_url": "https://www.youtube.com/watch?v=5hzX-SvYBwk",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["hand-point", "neon-on-dark"],
+    "device": [
+      "hand-point",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a smug anime girl adjusting glasses and pointing toward 'Nobody Knows' over dev logos",
     "layout_map": "Dark navy background with faint grid. An anime girl (white hair, monocle/glasses, smug smile) fills the left third (cells 1,5,9,13), face center ~x150,y150, with her gloved hand raised and finger pointing right ~x320,y230. Cluster of dev-tool logos upper-center-right: React atom ~x720,y70, VS Code ~x870,y70, Docker whale ~x720,y190, Node hexagon ~x870,y190. Two-line headline lower-right: 'Nobody' in red bold ~baseline y310 (cells 11-12), 'Knows' in white bold below ~baseline y385 (cells 11-12). Caps-mixed.",
     "why_it_works": "the smug 'I know something you don't' anime meme plus 'Nobody Knows' weaponizes the curiosity gap about hidden fundamentals",
-    "mimic_for": "a hidden-knowledge / fundamentals-nobody-teaches-you reveal beat"
+    "mimic_for": "a hidden-knowledge / fundamentals-nobody-teaches-you reveal beat",
+    "title": "Foundational Programming Principles Nobody Taught You",
+    "title_shape": "curiosity-reversal",
+    "title_pattern": "curiosity-gap-reversal"
   }
 ]

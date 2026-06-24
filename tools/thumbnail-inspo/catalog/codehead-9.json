@@ -6,14 +6,20 @@
     "watch_url": "https://www.youtube.com/watch?v=A3IQj0LCocA",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
-    "reads_as": "a hooded shadowy figure confesses 'I am a FRAUD' in screaming red — the imposter-syndrome gut-punch",
+    "reads_as": "a hooded shadowy figure confesses 'I am a FRAUD' in screaming red \u2014 the imposter-syndrome gut-punch",
     "layout_map": "Hooded illustrated figure (sketch/cutout style, eyes closed, head bowed) fills the left third, occupying cells 1-2-5-6-9-10-13-14, face center ~x180,y330, bleeding off the bottom edge against a near-black grid-textured background. Two-row headline sits right of the figure across the top and middle: row 1 'I am a' in white Inter-bold, baseline ~y90, spanning cells 6-7-8 (x420-1180); row 2 'FRAUD...' in giant bold RED caps, baseline ~y190, spanning cells 6-7-8, the accent payoff word. Bottom-right has two small app/logo icons on the baseline ~y560: a Stack Overflow icon in cell 15 (~x355) and a green OpenAI/ChatGPT rounded-square icon in cell 16 (~x490). Background is dark charcoal with a faint blueprint grid.",
     "why_it_works": "the shadowed faceless figure plus a one-word red confession ('FRAUD') turns a private fear into a public scroll-stopping admission",
-    "mimic_for": "a self-doubt / imposter-syndrome confession beat, or any moment admitting a hidden insecurity in the dev journey"
+    "mimic_for": "a self-doubt / imposter-syndrome confession beat, or any moment admitting a hidden insecurity in the dev journey",
+    "title": "Why Every Dev Has Imposter Syndrome",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "codehead-wojak-100k-to-860k-salary",
@@ -22,14 +28,20 @@
     "watch_url": "https://www.youtube.com/watch?v=oHu_xWe0agI",
     "archetype": "before-after",
     "layout": "centered-stack",
-    "device": ["red-arrow", "giant-number"],
+    "device": [
+      "red-arrow",
+      "giant-number"
+    ],
     "face": true,
     "accent": "red",
     "text": "low",
-    "reads_as": "a straining wojak between two salaries with a big red arrow swooping $100K up to $860K — the money-glow-up",
-    "layout_map": "Crying/straining wojak face centered, cells 6-7-10-11, face center ~x640,y360, filling the middle third over a split code-editor background (dark IDE on the left half, light/white IDE on the right half). A bold red curved arrow arcs across the top from upper-left down to upper-right, peak ~y60, pointing at the right number. Two giant yellow stat numbers flank the face on the lower-middle band, baseline ~y260: '$100K' on the left in cell 5 (~x110) over the dark editor, '$860K' on the right in cells 7-8 (~x980) over the light editor — the red-arrow target. Bottom-left a Python logo icon in cell 9 (~x110,y500); bottom-right a red rounded-square AI/LangChain-style icon in cell 12 (~x1160,y500). Background is split code-screenshot text.",
+    "reads_as": "a straining wojak between two salaries with a big red arrow swooping $100K up to $860K \u2014 the money-glow-up",
+    "layout_map": "Crying/straining wojak face centered, cells 6-7-10-11, face center ~x640,y360, filling the middle third over a split code-editor background (dark IDE on the left half, light/white IDE on the right half). A bold red curved arrow arcs across the top from upper-left down to upper-right, peak ~y60, pointing at the right number. Two giant yellow stat numbers flank the face on the lower-middle band, baseline ~y260: '$100K' on the left in cell 5 (~x110) over the dark editor, '$860K' on the right in cells 7-8 (~x980) over the light editor \u2014 the red-arrow target. Bottom-left a Python logo icon in cell 9 (~x110,y500); bottom-right a red rounded-square AI/LangChain-style icon in cell 12 (~x1160,y500). Background is split code-screenshot text.",
     "why_it_works": "the arrow's left-to-right rise plus the 8.6x salary jump promises a concrete transformation, and the straining wojak signals the effort-reward payoff",
-    "mimic_for": "a salary or metric glow-up, a before/after transformation, or 'how I went from X to Y' value-leap beat"
+    "mimic_for": "a salary or metric glow-up, a before/after transformation, or 'how I went from X to Y' value-leap beat",
+    "title": "A Practical Guide To Becoming An AI Engineer (2026)",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "codehead-tier-ranking-jobs-letter-grades",
@@ -38,14 +50,20 @@
     "watch_url": "https://www.youtube.com/watch?v=oKZKdK6szOU",
     "archetype": "tier-ranking",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "lime",
     "text": "med",
     "reads_as": "a tier-list rubric (S/A/B/C/D) with job titles being ranked, a contemplative brain-wojak weighing them on the right",
-    "layout_map": "Left two-thirds is a vertical tier-list: colored letter-grade chips stacked down the left edge in cells 1/5/9/13 — 'S' red (~y40), 'A' orange (~y110), 'B' yellow (~y180), 'C' green (~y245), 'D' blue (~y300) — each with a white job-label row to its right (e.g. 'ML Engineer' baseline ~y115 cell 2-3, 'Game Dev' baseline ~y250 cell 2-3, smaller blurred rows between). Big-brain wojak (exaggerated forehead, glasses, hand-on-chin thinking pose) fills the right third, cells 4-8-12-16, face center ~x1080,y360, bleeding off the right and bottom against a light grid-paper background. Background is white/light blueprint grid (note: brighter than the channel's usual dark substrate).",
+    "layout_map": "Left two-thirds is a vertical tier-list: colored letter-grade chips stacked down the left edge in cells 1/5/9/13 \u2014 'S' red (~y40), 'A' orange (~y110), 'B' yellow (~y180), 'C' green (~y245), 'D' blue (~y300) \u2014 each with a white job-label row to its right (e.g. 'ML Engineer' baseline ~y115 cell 2-3, 'Game Dev' baseline ~y250 cell 2-3, smaller blurred rows between). Big-brain wojak (exaggerated forehead, glasses, hand-on-chin thinking pose) fills the right third, cells 4-8-12-16, face center ~x1080,y360, bleeding off the right and bottom against a light grid-paper background. Background is white/light blueprint grid (note: brighter than the channel's usual dark substrate).",
     "why_it_works": "the S-tier ranking ladder promises a definitive verdict and the thinking-wojak invites you to argue the placements",
-    "mimic_for": "a tier-list / ranking video ranking tools, languages, or job roles best-to-worst"
+    "mimic_for": "a tier-list / ranking video ranking tools, languages, or job roles best-to-worst",
+    "title": "Ranking the Hottest Tech Jobs for 2026",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "codehead-learn-backend-logo-flow",
@@ -54,14 +72,20 @@
     "watch_url": "https://www.youtube.com/watch?v=69Js7sUocf8",
     "archetype": "diagram-arch",
     "layout": "text-center",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "med",
     "reads_as": "a learning roadmap of tech logos chained by arrows, bookended top/bottom by 'LEARN ... BACKEND'",
     "layout_map": "No face. Headline split top and bottom: 'LEARN' bold white caps top-left, baseline ~y70, cells 1-2 (~x180); '(2026)' in cyan top-right, baseline ~y60, cell 4 (~x1140); 'BACKEND' bold white caps bottom-center, baseline ~y650, cells 14-15 (~x700). The middle band is a left-to-right logo flow connected by white curved arrows at ~y330: yellow 'JS' square in cell 5 (~x110), Node.js hexagon in cell 6 (~x440), Java/coffee logo in cell 7 (~x700), green Spring leaf in cell 11 (~x980), red rounded-square logo (Git/redis-style) far right in cell 8 (~x1160). Background is dark navy with a faint dotted grid.",
     "why_it_works": "the arrow-chained logo path reads as a complete step-by-step curriculum you can follow, and the year badge signals freshness",
-    "mimic_for": "a roadmap / learning-path beat showing an ordered sequence of tools or technologies to learn"
+    "mimic_for": "a roadmap / learning-path beat showing an ordered sequence of tools or technologies to learn",
+    "title": "Learn Backend Development in 5 minutes (NO PRIOR KNOWLEDGE)",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "codehead-web-scraping-tool-flow",
@@ -70,14 +94,20 @@
     "watch_url": "https://www.youtube.com/watch?v=hHQlcnubuFI",
     "archetype": "diagram-arch",
     "layout": "text-center",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "med",
-    "reads_as": "a web-scraping toolchain — Python to scraper to Selenium to Playwright — laid out as an arrow flow under a big title",
+    "reads_as": "a web-scraping toolchain \u2014 Python to scraper to Selenium to Playwright \u2014 laid out as an arrow flow under a big title",
     "layout_map": "No face. Headline 'WEB SCRAPING' bold white caps across the top-center, baseline ~y75, cells 2-3 (~x420); '(2026)' in cyan to its right, baseline ~y115, cell 4 (~x1130). Middle band is a left-to-right tool flow joined by white curved arrows at ~y320: blue/yellow Python logo far left in cell 9 (~x90), a white medical/caduceus-style scraper icon in cell 6 (~x440), a 'B' beautifulsoup-style mark in cell 11 (~x700,lower ~y430), green/blue Selenium 'Se' badge in cell 7 (~x980), red/black Playwright theater-masks icon far right in cell 8 (~x1180). Background is dark navy with a faint dotted grid.",
     "why_it_works": "the icon flow makes a multi-tool workflow legible at a glance and promises a complete practical stack, year badge for recency",
-    "mimic_for": "a toolchain / workflow walkthrough beat chaining several libraries or tools into one pipeline"
+    "mimic_for": "a toolchain / workflow walkthrough beat chaining several libraries or tools into one pipeline",
+    "title": "Learn Web Scraping in 5 Minutes (NO PRIOR KNOWLEDGE)",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "codehead-backend-dev-career-wojak",
@@ -86,14 +116,20 @@
     "watch_url": "https://www.youtube.com/watch?v=MuA2kmCkH1s",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "med",
     "reads_as": "'Backend Dev Career?' posed as a question over a calm wojak, two backend tool icons hinting what's involved",
     "layout_map": "Glasses wojak (calm, neutral) fills the lower-left, cells 5-9-10-13-14, face center ~x230,y430, bleeding off the bottom-left against a dark grid background. Two-row headline along the top-right: row 1 'Backend Dev' in yellow bold, baseline ~y90, cells 6-7-8 (~x560); row 2 'Career ?' in white bold with the '?' the curiosity hook, baseline ~y200, cells 7-8 (~x820). Two app icons sit center-right on the mid band ~y460: blue Kubernetes helm wheel in cell 11 (~x720) and a purple/code-editor rounded-square icon in cell 12 (~x1160). Background is dark charcoal blueprint grid.",
     "why_it_works": "framing the career path as an open 'Career?' question with a 2-color headline invites the viewer to self-qualify ('is this me?')",
-    "mimic_for": "a 'should YOU do X?' career-decision beat that asks the viewer to weigh a path"
+    "mimic_for": "a 'should YOU do X?' career-decision beat that asks the viewer to weigh a path",
+    "title": "Should YOU Become a Backend Dev?",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "codehead-netflix-is-java-astronaut-meme",
@@ -102,14 +138,20 @@
     "watch_url": "https://www.youtube.com/watch?v=8inhakY1q9w",
     "archetype": "meme",
     "layout": "split-vertical",
-    "device": ["neon-on-dark", "danger-red"],
+    "device": [
+      "neon-on-dark",
+      "danger-red"
+    ],
     "face": false,
     "accent": "red",
     "text": "low",
-    "reads_as": "the 'always has been' astronaut-with-gun meme — one astronaut realizing Netflix is secretly all Java",
+    "reads_as": "the 'always has been' astronaut-with-gun meme \u2014 one astronaut realizing Netflix is secretly all Java",
     "layout_map": "Classic two-astronaut 'always has been' meme staged across a starfield-space background. Left astronaut stands center-left, cells 6-7-10-11, ~x560,y360, facing the big red Java coffee-cup logo + 'Java' wordmark that fills the left third (cells 5-9-13, logo center ~x150,y330). Right astronaut at the far right edge, cells 8-12, ~x1140,y360, pointing a handgun leftward. Red Netflix 'N' logo behind/right of him in cell 12 (~x1140,y330). Meme caption text in white: 'Always has been' top-right baseline ~y40 cell 4; 'it's all JAVA?' center baseline ~y230 cell 7 (~x720). Background is a dark purple-black star field.",
     "why_it_works": "a universally-recognized meme format does the comedic framing for free and the 'wait, it's all Java?' reveal sells a surprising-truth hook",
-    "mimic_for": "a 'wait, it was X all along' surprise-reveal beat, or any punchline best delivered through a recognizable meme template"
+    "mimic_for": "a 'wait, it was X all along' surprise-reveal beat, or any punchline best delivered through a recognizable meme template",
+    "title": "Wait, Netflix is... Java?!",
+    "title_shape": "curiosity-reversal",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "codehead-you-dont-understand-spring-crown",
@@ -118,13 +160,19 @@
     "watch_url": "https://www.youtube.com/watch?v=HL5XucT21Zg",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "glow-accent"],
+    "device": [
+      "danger-red",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "'You DON'T Understand' as a callout over a stylized face, with a crowned Spring Boot leaf as the subject you're missing",
     "layout_map": "Stylized high-contrast illustrated face (light/posterized, looking up-left) fills the left third, cells 1-2-5-6-9-10-13-14, face center ~x230,y300, bleeding off the left and bottom against a dark navy grid background. Two-row headline top-right: row 1 'You DON'T' with 'You' white and 'DON'T' in bold RED (the accent word), baseline ~y90, cells 6-7-8 (~x780); row 2 'Understand' white bold, baseline ~y190, cells 6-7 (~x680). A green Spring Boot leaf logo wearing a small yellow crown sits center-right on the mid band, cell 12 (~x980,y430), the crowned 'subject' you supposedly don't get. Background is dark navy blueprint grid.",
     "why_it_works": "the accusatory '99%/You DON'T understand' framing provokes a defensive must-watch reaction, and the crown elevates the topic to king-of-the-niche stakes",
-    "mimic_for": "a contrarian 'most devs get X wrong' or 'you don't really understand Y' authority-callout beat"
+    "mimic_for": "a contrarian 'most devs get X wrong' or 'you don't really understand Y' authority-callout beat",
+    "title": "99% Of Devs Don't Understand Spring Boot",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   }
 ]

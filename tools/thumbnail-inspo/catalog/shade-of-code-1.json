@@ -6,14 +6,20 @@
     "watch_url": "https://www.youtube.com/watch?v=5os_nalLwvI",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["glow-accent", "hand-point"],
+    "device": [
+      "glow-accent",
+      "hand-point"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "DEVS ARE BACK over a relieved wojak while a magnifier hovers AI logos",
-    "layout_map": "Black grid-paper background scattered with confetti dots. Two-tone Inter-900 headline spans the full top edge, baseline ~y55, cells 1-4: 'Devs are' in white then 'BACK' in red caps, BACK sitting in cell 3-4 (~x430-x600). A blue line-art bald wojak (relieved/teary) fills the left-center, head in cells 5-6 (~x120-x300, head center ~x180,y160), shoulders to bottom. Right of center a white circular magnifier lens (~x430-x600, y90-y180, cells 7-8) frames three AI logos in a row — a colored model glyph, 'Claude' sunburst, and a green OpenAI/Gemini spiral mark (~x560,y150, cell 12). A photo hand with pointing finger enters from bottom-right corner (~x600,y180, cell 12) aimed at the lens.",
-    "why_it_works": "The relieved face plus magnified logo cluster says 'I investigated the AI tools so you don't have to' — reassurance after a scare.",
-    "mimic_for": "a reassuring verdict after a panic — 'the tool/role survives', a calmed take on a feared trend"
+    "layout_map": "Black grid-paper background scattered with confetti dots. Two-tone Inter-900 headline spans the full top edge, baseline ~y55, cells 1-4: 'Devs are' in white then 'BACK' in red caps, BACK sitting in cell 3-4 (~x430-x600). A blue line-art bald wojak (relieved/teary) fills the left-center, head in cells 5-6 (~x120-x300, head center ~x180,y160), shoulders to bottom. Right of center a white circular magnifier lens (~x430-x600, y90-y180, cells 7-8) frames three AI logos in a row \u2014 a colored model glyph, 'Claude' sunburst, and a green OpenAI/Gemini spiral mark (~x560,y150, cell 12). A photo hand with pointing finger enters from bottom-right corner (~x600,y180, cell 12) aimed at the lens.",
+    "why_it_works": "The relieved face plus magnified logo cluster says 'I investigated the AI tools so you don't have to' \u2014 reassurance after a scare.",
+    "mimic_for": "a reassuring verdict after a panic \u2014 'the tool/role survives', a calmed take on a feared trend",
+    "title": "The AI Bubble is BURSTING\u2026",
+    "title_shape": "panic-threat",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "shade-of-code-i-wish-i-knew-shocked-anime",
@@ -22,14 +28,20 @@
     "watch_url": "https://www.youtube.com/watch?v=QJH0n5rMs28",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "logo-grid"],
+    "device": [
+      "shocked-face",
+      "logo-grid"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "wide-eyed gritted-teeth anime face on the right, I WISH / I KNEW stacked on the left",
-    "layout_map": "Dark teal grid-paper background. A bug-eyed, gritted-teeth anime/manga face (purple irises, sweat) fills the entire right half, face center ~x460,y170, cells 7-8-11-12, cropped at the right edge and bleeding off top and bottom. Stacked two-row Inter-900 headline on the left half: 'I Wish' in white caps, baseline ~y90 (cells 5-6, ~x20-x250) and 'I Knew' in red caps directly below, baseline ~y160 (cells 9-10). Top-left corner holds a small horizontal row of three brand logos — Slack, GitHub octocat, Docker whale — at ~x40-x180,y30, cell 1-2.",
-    "why_it_works": "The terror on the face plus 'I Wish I Knew' weaponizes regret — viewer fears they share the same blind spot.",
-    "mimic_for": "a regret/hindsight beat — 'things I wish I knew', a costly lesson learned too late"
+    "layout_map": "Dark teal grid-paper background. A bug-eyed, gritted-teeth anime/manga face (purple irises, sweat) fills the entire right half, face center ~x460,y170, cells 7-8-11-12, cropped at the right edge and bleeding off top and bottom. Stacked two-row Inter-900 headline on the left half: 'I Wish' in white caps, baseline ~y90 (cells 5-6, ~x20-x250) and 'I Knew' in red caps directly below, baseline ~y160 (cells 9-10). Top-left corner holds a small horizontal row of three brand logos \u2014 Slack, GitHub octocat, Docker whale \u2014 at ~x40-x180,y30, cell 1-2.",
+    "why_it_works": "The terror on the face plus 'I Wish I Knew' weaponizes regret \u2014 viewer fears they share the same blind spot.",
+    "mimic_for": "a regret/hindsight beat \u2014 'things I wish I knew', a costly lesson learned too late",
+    "title": "Programming Principles NOBODY Taught Me",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-missing-semester-resources-wojak",
@@ -38,14 +50,19 @@
     "watch_url": "https://www.youtube.com/watch?v=u_SJcg673fA",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": true,
     "accent": "orange",
     "text": "low",
     "reads_as": "thinking wojak center, flanked by real resource screenshots over a fiery glow",
-    "layout_map": "Dark grid background with a warm orange flame glow blooming from the lower edge. A white line-art bespectacled 'thinking' wojak fills the center, head ~x300,y130, cells 6-7-10-11, hand to chin, bleeding off bottom. Flanking it are real resource artifacts used as object heroes: top-left a webpage/PDF screenshot titled 'The Missing Semester of Your CS Education' (~x40-x250,y60-y180, cells 5-9); top-right a 'COMPUTER SYSTEMS' textbook cover with rainbow spine (~x430-x600,y40-y130, cells 7-8); bottom-right a dark code/site screenshot card (~x500,y170, cell 16). No large headline text — the resource titles carry the words.",
-    "why_it_works": "The pondering face surrounded by half-hidden real resources triggers FOMO — proven sources you haven't found yet.",
-    "mimic_for": "an underrated-resource roundup — 'tools/books/sites nobody mentions', a curated stash reveal"
+    "layout_map": "Dark grid background with a warm orange flame glow blooming from the lower edge. A white line-art bespectacled 'thinking' wojak fills the center, head ~x300,y130, cells 6-7-10-11, hand to chin, bleeding off bottom. Flanking it are real resource artifacts used as object heroes: top-left a webpage/PDF screenshot titled 'The Missing Semester of Your CS Education' (~x40-x250,y60-y180, cells 5-9); top-right a 'COMPUTER SYSTEMS' textbook cover with rainbow spine (~x430-x600,y40-y130, cells 7-8); bottom-right a dark code/site screenshot card (~x500,y170, cell 16). No large headline text \u2014 the resource titles carry the words.",
+    "why_it_works": "The pondering face surrounded by half-hidden real resources triggers FOMO \u2014 proven sources you haven't found yet.",
+    "mimic_for": "an underrated-resource roundup \u2014 'tools/books/sites nobody mentions', a curated stash reveal",
+    "title": "Extremely Underrated Programming Resources",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "shade-of-code-lock-in-determined-wojak-logos",
@@ -54,14 +71,20 @@
     "watch_url": "https://www.youtube.com/watch?v=ZrVIyCAJHNE",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["danger-red", "logo-grid"],
+    "device": [
+      "danger-red",
+      "logo-grid"
+    ],
     "face": true,
     "accent": "red",
     "text": "low",
     "reads_as": "huge red LOCK IN across the top over a determined wojak ringed by career logos",
     "layout_map": "Dark grid-paper background. Massive red Inter-900 'LOCK IN' caps span the full top, letters ~y20-y90, cells 1-2-3-4 (L starts ~x10, N ends ~x630), partly overlapping the head below. A white line-art determined/serious wojak fills the lower-center, head ~x290,y150, cells 6-7-10-11, shoulders to bottom. Career/job brand logos ring the face: a green location/Indeed-style pin lower-left (~x80,y150, cell 9-13); a black GitHub octocat upper-right of head (~x430,y110, cell 8); a blue LinkedIn 'in' tile lower-right (~x560,y180, cell 12-16).",
-    "why_it_works": "Single imperative command plus a steely face is pure motivation — the 'get serious now' grindset trigger.",
-    "mimic_for": "a get-serious / grind motivation beat — 'time to lock in', a discipline or focus call-to-action"
+    "why_it_works": "Single imperative command plus a steely face is pure motivation \u2014 the 'get serious now' grindset trigger.",
+    "mimic_for": "a get-serious / grind motivation beat \u2014 'time to lock in', a discipline or focus call-to-action",
+    "title": "Things CS Majors Learn Too Late\u2026",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-full-stack-scam-strikethrough",
@@ -70,14 +93,20 @@
     "watch_url": "https://www.youtube.com/watch?v=xQMigZK5gAY",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["strike-through", "red-arrow"],
+    "device": [
+      "strike-through",
+      "red-arrow"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "FULL STACK then red SCAM with a strike-ellipse, a worried wojak pointing at it",
     "layout_map": "Dark grid-paper background. Left two-thirds holds a stacked headline: 'FULL STACK' in white Inter-900 caps, baseline ~y70 (cells 5-6, ~x30-x350); below it 'SCAM' in big red caps, baseline ~y150 (cells 9-10, ~x110-x350), encircled/struck by a red elliptical loop. A curved red arrow sweeps from the wojak down to the SCAM word (~x380,y90). A white line-art worried/wide-eyed wojak fills the right, head ~x500,y110, cells 8-12, body to bottom, hand gesturing toward the word.",
-    "why_it_works": "Branding a respected term a 'SCAM' with a red strike is contrarian myth-busting — provokes a defensive click.",
-    "mimic_for": "a contrarian myth-bust — 'X is a scam/lie', debunking a respected industry term or career path"
+    "why_it_works": "Branding a respected term a 'SCAM' with a red strike is contrarian myth-busting \u2014 provokes a defensive click.",
+    "mimic_for": "a contrarian myth-bust \u2014 'X is a scam/lie', debunking a respected industry term or career path",
+    "title": "Why Being Full Stack Is a Career SCAM",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "shade-of-code-brain-dead-devs-monster-meme",
@@ -86,14 +115,20 @@
     "watch_url": "https://www.youtube.com/watch?v=35UKj8_ljBs",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "BRAIN DEAD DEVS over a melted-brain sunglasses wojak with energy drink, arrow to a logo",
     "layout_map": "Light/dark grid-paper background. Two-tone Inter-900 headline spans the full top, baseline ~y55, cells 1-4: 'Brain Dead' in white then 'Devs' in red caps (Devs in cell 4, ~x500-x630). A meme wojak with exposed wrinkled brain, black sunglasses and stubble fills the center-left, head ~x250,y160, cells 6-10-11; a pink Monster energy can stands at lower-left (~x60,y170, cell 13-14). A gray curved arrow points from the face rightward (~x330-x470,y110) toward a teal Shade-of-Code 'C' bracket logo glowing in the lower-right (~x590,y170, cell 12-16).",
-    "why_it_works": "Absurd melted-brain meme plus an insult headline is a self-deprecating in-joke — niche audience clicks to see who's roasted.",
-    "mimic_for": "a roast / self-deprecating community meme — 'devs who do X are brain-dead', a bad-habit callout"
+    "why_it_works": "Absurd melted-brain meme plus an insult headline is a self-deprecating in-joke \u2014 niche audience clicks to see who's roasted.",
+    "mimic_for": "a roast / self-deprecating community meme \u2014 'devs who do X are brain-dead', a bad-habit callout",
+    "title": "How LeetCode is KILLING Devs",
+    "title_shape": "panic-threat",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "shade-of-code-wtf-saitama-ml-math-plot",
@@ -102,14 +137,20 @@
     "watch_url": "https://www.youtube.com/watch?v=EmbYkOg0qTA",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "glow-accent"],
+    "device": [
+      "shocked-face",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "white",
     "text": "low",
     "reads_as": "blank-staring Saitama on the right, big WTF. on the left over a 3D math surface plot",
     "layout_map": "Dark blurred math-formula background. A bald blank-eyed Saitama (One Punch Man) face fills the right half, face center ~x470,y170, cells 7-8-11-12, cropped at right edge, lab-coat shoulders at bottom. Big white Inter-900 'WTF.' caps sit upper-left, baseline ~y110 (cells 5-6, ~x40-x300), period included. Lower-left corner holds a rainbow 3D surface/mesh ML plot as the object hero (~x20-x230,y260-y440 in true space, cells 13-14, ~x30,y330), glowing against the dark.",
-    "why_it_works": "Deadpan confused hero face plus 'WTF.' and an intimidating 3D plot says 'this math breaks everyone' — relatable bafflement.",
-    "mimic_for": "an intimidating-math / hard-concept beat — 'nobody actually gets X', a baffling technical topic"
+    "why_it_works": "Deadpan confused hero face plus 'WTF.' and an intimidating 3D plot says 'this math breaks everyone' \u2014 relatable bafflement.",
+    "mimic_for": "an intimidating-math / hard-concept beat \u2014 'nobody actually gets X', a baffling technical topic",
+    "title": "99% of Devs DON'T GET ML Math",
+    "title_shape": "assumption-flip",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-secret-frauds-hoodie-bigtech",
@@ -118,13 +159,19 @@
     "watch_url": "https://www.youtube.com/watch?v=kBuc4_dW_iM",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["danger-red", "logo-grid"],
+    "device": [
+      "danger-red",
+      "logo-grid"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "SECRET FRAUDS across the top, a shadowy hooded figure center over faint FAANG logos",
-    "layout_map": "Very dark grid background. Two-tone Inter-900 headline spans the full top, baseline ~y50, cells 1-4: 'SECRET' in white caps then 'FRAUDS' in red caps (FRAUDS in cells 3-4, ~x400-x630). A shadowy hooded figure (face obscured/anonymous) stands center, head ~x300,y130, cells 6-7-10-11, torso to bottom. Faint desaturated FAANG/big-tech brand logos sit behind across the mid-band — an Apple mark left of figure (~x120,y150, cell 9), Google-colored letters fading off the right (~x520,y150, cells 8-12).",
-    "why_it_works": "Anonymous hooded figure plus 'SECRET FRAUDS' over big-tech logos promises an insider exposé — conspiracy curiosity.",
-    "mimic_for": "an exposé / insider-takedown beat — 'the truth about FAANG/elites', revered names aren't what they seem"
+    "layout_map": "Very dark grid background. Two-tone Inter-900 headline spans the full top, baseline ~y50, cells 1-4: 'SECRET' in white caps then 'FRAUDS' in red caps (FRAUDS in cells 3-4, ~x400-x630). A shadowy hooded figure (face obscured/anonymous) stands center, head ~x300,y130, cells 6-7-10-11, torso to bottom. Faint desaturated FAANG/big-tech brand logos sit behind across the mid-band \u2014 an Apple mark left of figure (~x120,y150, cell 9), Google-colored letters fading off the right (~x520,y150, cells 8-12).",
+    "why_it_works": "Anonymous hooded figure plus 'SECRET FRAUDS' over big-tech logos promises an insider expos\u00e9 \u2014 conspiracy curiosity.",
+    "mimic_for": "an expos\u00e9 / insider-takedown beat \u2014 'the truth about FAANG/elites', revered names aren't what they seem",
+    "title": "Why FAANG Devs Aren\u2019t That Special",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   }
 ]

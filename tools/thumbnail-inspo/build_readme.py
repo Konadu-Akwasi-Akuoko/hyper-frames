@@ -97,15 +97,16 @@ def load_entries() -> list[dict]:
 
 def render(entries: list[dict]) -> str:
     out = [HEADER, "\n## Quick index\n"]
-    out.append("| slug | channel | archetype | layout | device | face | accent | use-when |")
-    out.append("|---|---|---|---|---|---|---|---|")
+    out.append("| slug | channel | archetype | layout | device | face | accent | title_shape | use-when |")
+    out.append("|---|---|---|---|---|---|---|---|---|")
     for e in entries:
         slug = e["slug"]
         dev = ", ".join(as_list(e.get("device")))
         out.append(
             f"| [{slug}](#{slug}) | {e.get('channel','')} | {e.get('archetype','')} "
             f"| {e.get('layout','')} | {dev} | {face_str(e.get('face'))} "
-            f"| {e.get('accent','')} | {e.get('mimic_for', e.get('use_when','')).replace(chr(10),' ')} |"
+            f"| {e.get('accent','')} | {e.get('title_shape','')} "
+            f"| {e.get('mimic_for', e.get('use_when','')).replace(chr(10),' ')} |"
         )
 
     out.append("\n## Entries\n")
@@ -124,6 +125,11 @@ def render(entries: list[dict]) -> str:
         out.append(f"- Layout map: {e.get('layout_map','')}")
         out.append(f"- Why it works: {e.get('why_it_works','')}")
         out.append(f"- Mimic for: {e.get('mimic_for','')}")
+        if e.get("title"):
+            out.append(
+                f"- Original pair (shape to mimic, not copy): \"{e.get('title','')}\" "
+                f"· title_shape={e.get('title_shape','')} · title_pattern={e.get('title_pattern','')}"
+            )
         out.append("")
     return "\n".join(out) + "\n"
 
