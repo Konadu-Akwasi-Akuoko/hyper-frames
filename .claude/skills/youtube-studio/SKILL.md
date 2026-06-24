@@ -1,6 +1,6 @@
 ---
 name: youtube-studio
-description: Read YouTube channel analytics, moderate comments, and edit video metadata via the youtube-studio MCP server. Use when the user asks "how is my channel doing", "what's working / what's not", "moderate my held comments", "rewrite this video's title/description/tags", "set a thumbnail on this video", "what should I do next on YouTube", "weekly channel review", or anything that requires reading or acting on YouTube Studio data. The skill encodes the cheap-quota call orders and the write-gate rules — invoke it before reaching for any `mcp__youtube-studio__*` tool.
+description: Read YouTube channel analytics, moderate comments, edit video metadata, upload videos, schedule publishes, and insert/update captions via the youtube-studio MCP server. Use when the user asks "how is my channel doing", "what's working / what's not", "moderate my held comments", "rewrite this video's title/description/tags", "set a thumbnail on this video", "upload this video", "schedule this video", "add captions to this video", "what should I do next on YouTube", "weekly channel review", or anything that requires reading or acting on YouTube Studio data. The skill encodes the cheap-quota call orders and the write-gate rules — invoke it before reaching for any `mcp__youtube-studio__*` tool.
 ---
 
 # youtube-studio
@@ -65,9 +65,10 @@ If the user asks for these, tell them up front — don't waste a turn searching:
 
 - **Heart a comment** — no API. Studio UI only.
 - **Pin a comment** — no API. Studio UI only.
-- **Upload a video** — deferred to v2 of this MCP. Studio/desktop only for now.
-- **Edit / upload captions** — deferred to v2.
-- **Schedule a livestream** — deferred to v2.
+- **Upload a video** — `video_upload` is available (v2 write surface); uploads as private by default.
+- **Schedule a publish** — `video_schedule` is available (v2 write surface).
+- **Insert / update / delete captions** — `caption_insert`, `caption_update`, `caption_delete` are available (v2); each costs 400u — show `cost_preview` and require explicit approval.
+- **Schedule a livestream** — no API. Studio UI only.
 
 ## Three canonical workflows
 
