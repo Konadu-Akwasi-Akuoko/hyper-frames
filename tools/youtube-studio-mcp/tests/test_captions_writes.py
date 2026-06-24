@@ -49,3 +49,20 @@ def test_delete_runs(isolated_config):
     svc = MagicMock()
     svc.captions.return_value.delete.return_value.execute.return_value = ""
     assert captions._caption_delete(svc, "capA", confirm=True)["caption_deleted"] == "capA"
+
+
+def test_update_noop_returns_error():
+    svc = MagicMock()
+    r = captions._caption_update(svc, caption_id="capA", file_path=None,
+                                 is_draft=None, confirm=True, media_factory=_mf)
+    assert r["error"] == "no_changes_provided"
+    svc.captions.return_value.update.assert_not_called()
+
+
+def test_update_bad_file_returns_validate_error(tmp_path):
+    svc = MagicMock()
+    r = captions._caption_update(svc, caption_id="capA",
+                                 file_path=str(tmp_path / "missing.srt"),
+                                 is_draft=None, confirm=True, media_factory=_mf)
+    assert r["error"] == "file_not_found"
+    svc.captions.return_value.update.assert_not_called()
