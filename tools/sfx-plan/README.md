@@ -28,10 +28,12 @@ it the many `<audio>` elements exhaust Chrome's WebMediaPlayer budget and **free
 preview Play** (scrubbing still works).
 
 `--bake` is the **one-shot finalize**: it mixes every cue (delayed to its
-`data-start`, scaled by its volume, equal-power panned) into a single
-`audio/sfx-mix.mp3` (48 kHz stereo, 320 kbps) via ffmpeg, emits **one** `<audio
-id="sfx-mix">`, and writes `compositions/sfx.cues.json` so per-cue tooling
-(`sfx-level --batch`) still recovers every cue's timing. The result is a clean,
+`data-start`, scaled to the fixed **0.4** volume peg, equal-power panned) into a
+single `audio/sfx-mix.mp3` (48 kHz stereo, 320 kbps) via ffmpeg, emits **one**
+`<audio id="sfx-mix">` at `data-volume="1"` (the per-cue 0.4 peg is already baked
+into the mix, so the layer mounts at unity), and writes `compositions/sfx.cues.json`
+so per-cue tooling (`sfx-level --batch`) still recovers every cue's timing. The
+result is a clean,
 lint-silent, single-player artifact for the committed/published video. Requires
 ffmpeg (so does `npm run render`). `--bake-format wav` emits PCM instead.
 
@@ -61,7 +63,7 @@ breadcrumb.
 | `data-sfx-anchor-index`    | no       | 1-indexed occurrence of the anchor word in the transcript (default `1`).    |
 | `data-sfx-asset`           | no       | Path under `sound-effects/` to pin a specific file, bypassing the cue's filter+hash resolver. Must exist in the catalog. |
 | `data-sfx-lead-ms`         | no       | Peak-tuning nudge. ±100 ms is normal. ≥200 ms on an anchor-mode cue triggers a warning — use `data-sfx-at-scene-ms` instead. |
-| `data-sfx-volume`          | no       | 0.0–1.0 override of the cue's `default_volume`.                             |
+| `data-sfx-volume`          | no       | **Ignored.** SFX volume is a fixed 0.4 hard peg (`PEG_VOLUME` in `plan.py`); this attribute no longer changes loudness. |
 | `data-sfx-pan`             | no       | −1.0 (left) to 1.0 (right). Defaults to 0.                                  |
 | `data-sfx-hook`            | no       | `"true"` marks the single hook moment. Phase A breadcrumb only.             |
 
@@ -79,9 +81,9 @@ moment), pin it on the element:
      data-sfx-at-scene-ms="7575">…</div>
 ```
 
-The cue still supplies the default volume and track index — pinning only
-short-circuits the asset picker. Do not add a one-off cue to the global catalog
-just to force a file; that's catalog pollution.
+The cue still supplies the track index, and the volume is the fixed 0.4 peg —
+pinning only short-circuits the asset picker. Do not add a one-off cue to the
+global catalog just to force a file; that's catalog pollution.
 
 ## Per-video cue overrides (`sfx-overrides.yml`)
 
@@ -90,22 +92,22 @@ for one video without touching the shared catalog. Loaded automatically.
 
 ```yaml
 cues:
-  # Override an existing cue's pool or defaults for this video.
+  # Override an existing cue's pool for this video.
   ui-tick:
     filter:
       brightness_in: ["bright"]
-    default_volume: 0.7
 
   # Register a brand-new cue available only inside this video.
   panel-clang-05:
     default_lead_ms: -50
-    default_volume: 0.8
     filter:
       path: Mister Horse Free SFX/Clang/Synthetic Clang 05.wav
 ```
 
 Per-cue semantics: `filter` is replaced wholesale (not deep-merged); other
-fields are shallow-replaced. New cues must include a non-empty `filter`.
+fields are shallow-replaced. New cues must include a non-empty `filter`. A
+`default_volume` in an override is accepted but **ignored** — SFX volume is the
+fixed 0.4 hard peg.
 
 ## Source contract
 

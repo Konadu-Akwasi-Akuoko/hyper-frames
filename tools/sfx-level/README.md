@@ -2,13 +2,15 @@
 
 A deterministic **voiceover-loudness probe** for SFX cue placement. Given a
 voiceover track and a moment, it tells you how loud the narration is right there
-— so a cue lands in a real gap (or ducks correctly) instead of fighting a spoken
+— so you can see whether a cue lands in a real gap or on top of a spoken
 syllable. It reuses `tools/cut-snap`'s numpy short-time RMS so the two tools
 measure loudness identically (no librosa / pyloudnorm stack).
 
 It is the audio-level half of the video-director SFX step (Step H): `tools/sfx-plan`
 aligns each cue's own `peak_time_s` onto the moment; `sfx-level` reads the
-voiceover *at* that moment to set the duck.
+voiceover *at* that moment so you can confirm the placement. SFX volume itself is
+a fixed **0.4** hard peg in `tools/sfx-plan` — this probe is advisory and never
+sets a level.
 
 ## Usage
 
@@ -36,14 +38,12 @@ Flags:
 - `classification` — `gap` (room-tone quiet, the cue sits in the clear) vs
   `active-speech` (a word is being spoken here). Calibrated per file: a window
   within `+8 dB` of the track's room-tone floor reads as a gap.
-- `recommended_volume` — advisory, **capped at the project's `0.5` ceiling**.
-  `0.5` is the flat default for every cue (set as each cue's `default_volume` in
-  `sound-effects/sfx-catalog.yml`); this tool only ever recommends `≤ 0.5`. `0.5`
-  is the rule: a cue keeps `0.5` in a gap *and* under ordinary speech. Ducking is
-  a genuine exception — it drops below `0.5` only when the window approaches the
-  track's loudest-speech level, where `0.5` would fight the word. When the tool
-  recommends a duck, write that value as an explicit `data-sfx-volume` on the cued
-  element; otherwise leave it off and the cue stays `0.5`.
+**Advisory only — no volume recommendation.** SFX volume is a fixed **0.4** hard
+peg, applied uniformly in `tools/sfx-plan` (`PEG_VOLUME`): every cue plays at 0.4
+"no matter the sfx", and a `data-sfx-volume` override is ignored. This tool does
+not recommend a level — it tells you whether a cue lands in a clean gap or on top
+of a word so you can judge its *placement*. A cue fighting hot VO is fixed by
+retiming or rechoosing the cue, never by changing its volume.
 
 ## Notes
 

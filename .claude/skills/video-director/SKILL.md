@@ -453,12 +453,15 @@ including repeatedly within one scene.
    across the video. If this pass has no clear hook, omit it — a later scene may
    own it.
 
-5. **VO check + the 0.5 rule.** Optionally probe the narration under a cue —
-   `uv run --project ../../tools/sfx-level sfx-level audio/voiceover.mp3 --at <t>`
-   (VO RMS/peak dBFS, gap vs. active speech) — to catch one fighting hot VO.
-   Volume is a flat **0.5 default *and* ceiling** (`default_volume: 0.5` in the
-   catalog) — do **not** write `data-sfx-volume="0.5"`. Write `data-sfx-volume`
-   **only to duck below 0.5** when the VO is hot under the cue; never above.
+5. **VO check (advisory) + the 0.4 peg.** SFX volume is a fixed **0.4 hard peg**
+   — every cue plays at 0.4 "no matter the sfx", set in `tools/sfx-plan`
+   (`PEG_VOLUME`). **Do not write `data-sfx-volume`** — it is ignored (so is the
+   catalog's `default_volume`). `tools/sfx-level` is now **advisory only**: probe
+   the narration under a cue — `uv run --project ../../tools/sfx-level sfx-level
+   audio/voiceover.mp3 --at <t>` (VO RMS/peak dBFS, gap vs. active speech) — to
+   see whether a cue's *placement* lands in the clear or on top of a word. A cue
+   fighting hot VO is fixed by **retiming or rechoosing the cue**, never by
+   changing volume.
 
 6. **Compact proposal + approval gate.** Print one terse line per cue — `cue= /
    asset= / at-scene-ms= / on <element> / <short reason>`. **Write `data-sfx-*`
@@ -498,9 +501,10 @@ H), and you've surfaced the last seek target. Then run the **final SFX
 reconcile** — one whole-video pass that re-runs `tools/sfx-plan` over everything
 and verifies: every `pre-roll` note is intended (a whoosh leading a real
 motion, not punctuating an appearance — fix those to `pop`/`ding`), that
-**exactly one** `data-sfx-hook` exists, that the `tools/sfx-level` sweep finds no
-cue fighting loud VO (duck the offenders below 0.5), and that the `sfx-layer`
-mount spans the full runtime (checklist: `reference/sfx-arc-and-reconcile.md`).
+**exactly one** `data-sfx-hook` exists, that the `tools/sfx-level` sweep (advisory)
+finds no cue fighting loud VO — retime or rechoose any offender, since volume is
+pegged at 0.4 and not adjustable — and that the `sfx-layer` mount spans the full
+runtime (checklist: `reference/sfx-arc-and-reconcile.md`).
 
 Once the SFX is locked and the final reconcile passes, **bake it** as the last
 SFX action: `uv run --project ../../tools/sfx-plan sfx-plan . --bake`. This mixes
@@ -568,8 +572,8 @@ that used to live in the root `CLAUDE.md`:
   independence principle (each cue element-bound, no cross-cue rules), the
   verb→cue palette with each cue's signature `default_asset` + `align` mode, the
   **impact-frame** `data-sfx-at-scene-ms` timing (the tool lands the transient
-  there, never early), and reading `tools/sfx-level` for the 0.5-default-and-
-  ceiling volume.
+  there, never early), and the fixed **0.4 volume peg** (with `tools/sfx-level` as
+  an advisory placement probe).
 - `reference/sfx-arc-and-reconcile.md` — the SFX workflow layer for **Step H**:
   the single hook tag (for the music pass), the compact proposal + standing
   approval, the per-pass write/regenerate steps (and the informational notes
