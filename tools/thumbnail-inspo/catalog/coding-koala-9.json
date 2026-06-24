@@ -17,7 +17,9 @@
     "layout_map": "Left ~40% (cells 1,5,9,13) filled by a dark pencil/charcoal-textured human head-and-shoulders silhouette in profile facing right, anchored to the left edge, head center ~x150,y280, eye socket black void; on the right ~60% over a light graph-paper background sits the headline 'Just Quit' on one baseline ~y90 (cells 6-7), 'Just' in black Inter, 'Quit' in orange to the right at ~x520; below it a 2x3 cluster of dev-stack logos occupies cells 7-8,11-12,15-16: VS Code (cell 11 ~x720,y360), Node.js (cell 7 ~x830,y360), Docker (cell 8 ~x1020,y360), React (cell 11-15 ~x830,y440), and Next.js black circle (cell 16 ~x1020,y440).",
     "why_it_works": "the despairing ash-grey figure plus a blunt two-word command frames the whole tech stack as something to abandon, daring the click",
     "mimic_for": "a despair/burnout beat where a whole field or toolset is framed as not worth it",
-    "title": "Web Developers Have Only 2 Options Now..."
+    "title": "Web Developers Have Only 2 Options Now...",
+    "title_shape": "panic-threat",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "coding-koala-api-economy-pricing-tiers",
@@ -37,7 +39,9 @@
     "layout_map": "Top headline on one baseline ~y45 spanning cells 1-4, 'Chance' in orange + 'For Developers' in black Inter caps, with a hand-drawn orange underline swoosh sweeping under it ~y75; below, centered on a white card, the words 'API Economy' as a panel title ~y150 (cell 6-7); a 3-column pricing-card grid fills the lower two-thirds (cells 9-16): left column 'Launch' with price $299 (~x230,y360), center 'Growth' $599 (~x640,y360), right 'Enterprise' Custom (~x1050,y360), each card with feature bullets and a teal 'Get started' button row near y430; background light grey graph-paper.",
     "why_it_works": "rendering an abstract topic as a familiar pricing table makes the 'goldmine' concrete and scannable, signaling money on the table",
     "mimic_for": "a tiers/pricing/business-model beat where a topic is broken into ranked plans or levels",
-    "title": "API Economy Explained (Goldmine for Developers)"
+    "title": "API Economy Explained (Goldmine for Developers)",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-koala-software-dev-equals-crud",
@@ -57,7 +61,9 @@
     "layout_map": "Right ~40% (cells 4,8,12,16) holds a real bearded man in glasses and brown jacket, head-and-shoulders, face center ~x1010,y150, gazing toward the text; left ~60% over light graph-paper carries a stacked equation-style headline: 'Software Dev' on baseline ~y70 with 'Software' in red and 'Dev' in black (cells 1-2), a large '=' sign at ~x230,y180 (cell 6), then 'Just CRUD?' on baseline ~y230 with 'Just' black + 'CRUD?' red (cells 5-6); a thinking-face emoji sits lower-left at ~x250,y480 (cell 14).",
     "why_it_works": "the reductive equation insults the viewer's craft while the skeptical face invites them to argue back, triggering defensive clicks",
     "mimic_for": "a provocative reductive claim ('X is just Y?') that challenges the audience's identity or expertise",
-    "title": "Is Software Development Just CRUD? | Truth About Highly Paid Engineers"
+    "title": "Is Software Development Just CRUD? | Truth About Highly Paid Engineers",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-programmer-mindset-bald-head",
@@ -76,7 +82,9 @@
     "layout_map": "Headline on one baseline across the top ~y45 (cells 1-4): 'Mindset' orange + 'of Successful' black + 'Programmers' orange, Inter caps; dead-center sits a real man's head-and-bare-shoulders, face center ~x640,y310 (cell 10), filling roughly the middle third, with a cyan circuit-board / brain pattern overlaid on his forehead and scalp as a glow accent; background near-black at the bottom (cell 13-16) fading to light graph-paper at top; symmetric centered composition.",
     "why_it_works": "the circuit-brain overlay literalizes 'mindset' and the centered direct framing promises a transferable mental upgrade",
     "mimic_for": "a mindset/psychology/how-the-best-think beat centered on one person's mental model",
-    "title": "This Changes Everything | Mindset of a Successful Programmer"
+    "title": "This Changes Everything | Mindset of a Successful Programmer",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "coding-koala-biggest-programming-paradox",
@@ -95,7 +103,9 @@
     "layout_map": "Right ~40% (cells 4,8,12,16) holds a real bearded man in a plaid shirt, arms crossed, head center ~x1010,y150, looking left/down thoughtfully; left ~55% over a light graph-paper background carries a left-aligned three-line headline: 'The' black ~y150, 'Biggest' orange ~y210, 'Programming' orange ~y260 (cells 5-6,9-10), then 'Paradox..' black ~y310; the trailing ellipsis sustains curiosity; clean minimal background.",
     "why_it_works": "the unresolved word 'Paradox..' plus a man who looks like he's wrestling with it creates an open loop the viewer wants closed",
     "mimic_for": "a counterintuitive-truth/paradox beat where the hook is an unresolved contradiction",
-    "title": "First Computer Program Written Without Programming Language? | Programming"
+    "title": "First Computer Program Written Without Programming Language? | Programming",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-programming-myths-checklist",
@@ -115,7 +125,9 @@
     "layout_map": "Top-left headline stacked: 'Programming' white ~y55 + 'Myths' cyan ~y110 (cells 1-2); a large blue VS Code infinity/ribbon logo floats top-right ~x1110,y110 (cells 3-4) with a small spinner/loading glyph above it; a white rounded checklist card fills the lower-left two-thirds (cells 5-6,9-10,13-14) listing 'Be Good At Maths', 'Solve 500 Leetcode', '....', '.....' as bullet items ~y220-y420; a young blond man's face peeks from the far right edge, face center ~x1180,y400 (cell 16); dark/black background behind the neon elements.",
     "why_it_works": "presenting myths as a literal checklist of things you believed primes the viewer to check whether they're guilty, and the partial '...' bullets imply more inside",
     "mimic_for": "a myth-busting / common-mistakes listicle beat enumerating wrong beliefs to debunk",
-    "title": "5 Programming Myths You NEED to Stop Believing"
+    "title": "5 Programming Myths You NEED to Stop Believing",
+    "title_shape": "listicle-n",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "coding-koala-vercel-200m-green-chart",
@@ -135,7 +147,9 @@
     "layout_map": "Full-bleed dark/black background with a lime-green rising line/area stock chart climbing left-to-right across the lower half (cells 9-16); top-left the Vercel black triangle logo + 'Vercel' white wordmark on baseline ~y55 (cells 1-2); directly below, the giant stat '$200M' in bold lime-green ~y180 (cells 5-6) as the hero number; right ~30% holds a real man in dark clothing, monochrome, head center ~x1080,y200 (cells 4,8,12), looking forward sternly; the green-on-black palette signals money/markets.",
     "why_it_works": "the giant green money figure over a soaring chart promises a precise, surprising revenue reveal about a tool the audience uses for free",
     "mimic_for": "a big-revenue / surprising-money-stat reveal beat about a company or product",
-    "title": "How Vercel Makes $200M a Year Giving Away Free Hosting"
+    "title": "How Vercel Makes $200M a Year Giving Away Free Hosting",
+    "title_shape": "scale-story",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "coding-koala-web-dev-too-much-logo-swarm",
@@ -154,6 +168,8 @@
     "layout_map": "Top headline on one baseline ~y40 (cells 1-4): 'Web Development' yellow + 'Is Becoming' white + 'Too Much' yellow, Inter caps; center sits a black-hoodie crying wojak/soyjak figure, face center ~x600,y360 (cells 6-7,10-11), hand to face; flanking and surrounding it a dense swarm of framework/tool logos in two vertical columns and clusters filling cells 1,5,9,13 (left: npm red, Figma, React-Native, VS Code) and cells 4,8,12,16 (right: React, JS, triangle/Vercel, Angular, Docker, Spring, Nuxt, Django) plus Node and others mid-frame; light graph-paper background behind the logo swarm; the logos crowd the human, visualizing overload.",
     "why_it_works": "the literal wall of logos crushing a crying figure makes 'too much' viscerally felt before a word is read, validating the viewer's own fatigue",
     "mimic_for": "an overwhelm / tool-fatigue / ecosystem-bloat beat where too many technologies pile up",
-    "title": "Why Modern Web Development is Getting Out of Hand\u2026"
+    "title": "Why Modern Web Development is Getting Out of Hand\u2026",
+    "title_shape": "panic-threat",
+    "title_pattern": "assumption-flip"
   }
 ]

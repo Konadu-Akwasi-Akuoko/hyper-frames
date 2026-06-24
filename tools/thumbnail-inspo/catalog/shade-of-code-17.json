@@ -17,7 +17,9 @@
     "layout_map": "Dark blue graph-paper grid background full-bleed. A distorted, sweating yellow-haired anime crying face (Naruto deep-fried meme) fills the left ~40% of frame, cells 1-2-5-6-9-10, head center ~x230,y220, jaw/'luh?' caption tag near cell 13 ~y600. Two-line headline sits right-center: 'I Wish' in white Inter-900 caps on row 1 baseline ~y230 cells 7-8, 'I Knew' below it on a red filled block, white text, baseline ~y330 cells 7-8. Floating tech logos decorate the right margin: Python logo top-right cell 4 ~x1180,y110, a C/C++ blue badge cell 13-14 lower-left ~x200,y640, a red Reddit/snapchat-style icon bottom-right cell 16 ~x1180,y660. Device = shocked deep-fried face plus red accent block.",
     "why_it_works": "the deep-fried sweating regret face triggers second-hand panic; the red 'I Knew' block lands the FOMO payoff word",
     "mimic_for": "a regret/hindsight beat \u2014 things you wish you'd known earlier about a topic",
-    "title": "Programming Concepts NOBODY Taught Me"
+    "title": "Programming Concepts NOBODY Taught Me",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "shade-of-code-fck-studying-coding-wojak-beer",
@@ -37,7 +39,9 @@
     "layout_map": "Dark near-black graph-paper grid full-bleed. Three-line quoted headline stacked on the left ~60% of frame, all Inter-900 caps, white for two lines and red for the third: '\"F*CK' on row 1 baseline ~y110 cells 1-2, 'STUDYING' row 2 baseline ~y230 cells 1-2-3, 'CODING\"' in red on row 3 baseline ~y360 cells 5-6-7. A line-art doomer/brainlet wojak head occupies the top-right corner cell 4 ~x1150,y110, with its hand holding a frothy beer mug rendered bottom-right cells 12 and 16 ~x1150,y560. A green beer bottle stands at center-bottom ~x640,y640 cell 15. Quote marks frame the headline as a defiant statement.",
     "why_it_works": "the profane quoted hot-take plus the slacker wojak-with-beer sells permission to skip studying \u2014 provocative contrarian bait",
     "mimic_for": "a contrarian hot-take beat that rejects the conventional advice (stop doing X, just do Y)",
-    "title": "STOP Studying. Start Coding."
+    "title": "STOP Studying. Start Coding.",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "shade-of-code-rewired-brain-confused-anime-stacks",
@@ -57,7 +61,9 @@
     "layout_map": "Light blue graph-paper grid full-bleed. A confused, blank-eyed yellow-haired anime face (Zenitsu) is centered and fills the middle ~45% of frame, cells 6-7-10-11, head center ~x640,y330. Four tech logos float at the corners framing the face: yellow JS badge top-left cell 1 ~x110,y90; blue TS badge top-right cell 4 ~x1150,y100; PostgreSQL elephant lower-left cell 9 ~x150,y430; React atom lower-right cell 12 ~x1150,y430. No headline text \u2014 the logo halo plus the overwhelmed stare carries the whole frame.",
     "why_it_works": "the overwhelmed thousand-yard anime stare ringed by competing framework logos mirrors the viewer's own tech-stack confusion",
     "mimic_for": "a beat about being overwhelmed by too many tools/frameworks/concepts at once",
-    "title": "Programming Concepts That REWIRED MY BRAIN"
+    "title": "Programming Concepts That REWIRED MY BRAIN",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "shade-of-code-grind-rock-lee-green-aura",
@@ -77,7 +83,9 @@
     "layout_map": "Dark grid background full-bleed. One-word headline 'GRIND' in huge white Inter-900 caps spans the top, baseline ~y90, cells 2-3-4-5-6-7. A screaming, veins-bulging anime character (Rock Lee) erupting in a radial green energy aura is centered-bottom, cells 10-11-12-14-15, body center ~x640,y460, the green glow blooming outward behind him. Tool/app logos ring the lower corners: a green Hammerspoon-style icon top-right cell 8 ~x1150,y120, GitHub octocat lower-left cell 13 ~x140,y560, an orange app icon mid-left cell 5 ~x180,y300, blue LinkedIn badge bottom-right cell 16 ~x1180,y660. Green aura = the dominant accent.",
     "why_it_works": "the explosive green power-up aura and one-word GRIND command channel pure hustle/effort energy \u2014 aspirational intensity",
     "mimic_for": "a beat about extreme effort, grinding, or out-working everyone to survive/level up",
-    "title": "You MUST OUTCODE EVERYONE to survive"
+    "title": "You MUST OUTCODE EVERYONE to survive",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-nahhh-wojak-no-clean-code-books",
@@ -97,7 +105,9 @@
     "layout_map": "Dark blue graph-paper grid full-bleed. Giant red Inter-900 'Nahhh' headline across the top, baseline ~y120, cells 2-3-4-5-6-7. A line-art crying doomer wojak with both hands raised in a 'no/stop' gesture occupies the left ~40%, cells 5-6-9-10, head center ~x250,y230, hands waving lower-center cells 9-10 ~y560. Right half is a cluster of real programming-book covers tiled at angles: a 'Clean Code' book mid-right cell 7-8 ~x900,y330, an 'AI Engineering' O'Reilly owl book lower-right cell 12 ~x1100,y480, a LinkedIn badge above them cell 8 ~x900,y230. Red 'Nahhh' = the dismissive accent.",
     "why_it_works": "the crying-wojak refusal plus the dismissive red 'Nahhh' over respected textbooks sells anti-establishment relatability \u2014 rejecting the 'right' way",
     "mimic_for": "a beat dismissing/rejecting the conventional respected resources or best-practice canon",
-    "title": "The Programming Mistakes That RUINED MY LIFE"
+    "title": "The Programming Mistakes That RUINED MY LIFE",
+    "title_shape": "first-person-feat",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "shade-of-code-ranking-tier-list-smug-anime",
@@ -116,7 +126,9 @@
     "layout_map": "A vertical S-A-B-C-D tier-list ladder fills the left ~75% of frame: stacked colored row labels down the left edge \u2014 S red ~y70 cell row top, A orange ~y180, B yellow ~y290, C green ~y400, D ~y510 \u2014 each in its own cell-1 colored chip. Habit labels sit in the rows in black/white text: 'Using AI to Code' on the A row baseline ~y200 cells 6-7, 'Coding Daily' on the C row baseline ~y430 cells 6-7, other rows have blurred placeholder bars. A smug, glasses-wearing dark-haired anime student fills the right ~25%, cells 4-8-12-16, head center ~x1130,y230. Background is the dark grid.",
     "why_it_works": "the recognizable S-tier ladder format promises a definitive verdict and invites argument over the placements \u2014 ranking debate bait",
     "mimic_for": "a tier-list / ranking beat where habits, tools, or skills get sorted into S-to-D tiers",
-    "title": "RANKING CRACKED PROGRAMMER HABITS"
+    "title": "RANKING CRACKED PROGRAMMER HABITS",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "shade-of-code-become-elite-pointing-anime",
@@ -136,7 +148,9 @@
     "layout_map": "Light grid background full-bleed. A refined silver-haired anime girl with a monocle occupies the left ~40%, cells 1-2-5-6-9-10, head center ~x300,y280, her arm and pointing index finger extended rightward into cell 7 ~x700,y330 (the hand-point device aims at the text). Two-line headline center-right: 'Become' in white Inter-900 baseline ~y310 cells 7-8, 'ELITE' below it in bold red caps baseline ~y420 cells 7-8. Tech/language logos ring the top and right: a blue '4'/.NET-style badge top-center cell 3 ~x640,y90, Python logo top-right cell 4 ~x1150,y90, a red Git/branch icon bottom-right cell 16 ~x1150,y640. Red 'ELITE' is the payoff accent.",
     "why_it_works": "the elegant character literally pointing at the red 'ELITE' word directs the eye to the aspirational payoff \u2014 you, become this",
     "mimic_for": "an aspirational level-up beat \u2014 become the top 1%, reach an elite tier, the payoff is a status word",
-    "title": "Become the Top 0.1% Dev"
+    "title": "Become the Top 0.1% Dev",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "shade-of-code-dev-crisis-sweating-wojak-ai",
@@ -156,6 +170,8 @@
     "layout_map": "Dark grid background full-bleed. Two-tone headline across the top: 'Dev' in white Inter-900 then 'CRISIS' in red caps, baseline ~y90, cells 2-3-4-5-6. A large sweating, worried line-art bald wojak face is centered, fills the middle-bottom ~40%, cells 10-11-14-15, head center ~x640,y460, sweat drops visible. AI-tool logos float at the flanks: an orange asterisk/Claude-style spark mid-left cell 10 ~x300,y280, a ChatGPT/OpenAI swirl mid-right cell 12 ~x1080,y360, a Gemini sparkle bottom-left cell 13 ~x140,y620. Red 'CRISIS' word is the alarm accent.",
     "why_it_works": "the sweating anxious face plus the red CRISIS word and surrounding AI logos personifies dread that AI is coming for dev jobs",
     "mimic_for": "an existential-threat beat \u2014 a technology or trend is causing panic/crisis for the audience",
-    "title": "What AI has done to Devs\u2026"
+    "title": "What AI has done to Devs\u2026",
+    "title_shape": "panic-threat",
+    "title_pattern": "curiosity-gap-reversal"
   }
 ]

@@ -17,7 +17,9 @@
     "layout_map": "Dark charcoal grid-paper background fills frame. Headline block sits left-center across cells 5-6-9-10: huge white slab-serif 'CS' (caps, ~x60-200, baseline ~y110) butts against a red rounded rectangle holding white '101' (red box ~x210-380, y55-130), so the two read as one lockup. Below it a thin white lowercase subtitle 'computer science for ret...' runs along baseline ~y160 (cells 9-10-11), trailing off behind the face. A grinning man (\u00c9tienne/'genius' meme crop) occupies the right ~28% of frame in cells 8 and 12, face center ~x980,y90, suit-and-tie shoulders filling lower right to the edge.",
     "why_it_works": "The oversized course-code badge promises a complete syllabus in one image while the smug face injects personality and an in-joke.",
     "mimic_for": "an authoritative '101' / fundamentals explainer that covers a whole field in one video",
-    "title": "100+ Computer Science Concepts Explained"
+    "title": "100+ Computer Science Concepts Explained",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-java-100-seconds-logo-hero",
@@ -37,7 +39,9 @@
     "layout_map": "Dark charcoal grid background. A red horizontal banner caps the top edge (cells 1-4, y0-45) with white text: bold '100' then thinner 'SECONDS OF' (~x300-560, baseline ~y30). The blue-and-red Java steaming-coffee logo is the hero, centered in cells 6-7-10-11, logo center ~x560,y330, filling roughly the middle third. A small distressed/crying child face is cropped into the top-right corner (cell 4 into 8, face center ~x1180,y90), bleeding off the right edge as the emotional tell.",
     "why_it_works": "Clean centered logo gives instant topic ID; the '100 seconds' banner sets the fast-format promise and the crying face signals the 'haters' angle.",
     "mimic_for": "a fast single-technology explainer (the '100 seconds of X' format) with a hint of controversy",
-    "title": "Java for the Haters in 100 Seconds"
+    "title": "Java for the Haters in 100 Seconds",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-linux-101-badge-wojak",
@@ -57,7 +61,9 @@
     "layout_map": "Dark charcoal grid background. Top-left headline: large white serif 'Linux' (caps L, ~x40-300, baseline ~y90) with an orange paint-swoosh sweeping under and right beneath it (~y110-130). Below, a red rounded rectangle holds white slab '101' (box ~x110-300, y130-200, cells 5-9). Right half is a fat wojak/soyjak meme character (cell 8-12), face center ~x1010,y75, wearing a teal 'archlinux' t-shirt whose chest logo sits ~x980,y230, body bleeding off the bottom-right.",
     "why_it_works": "The badge-style title signals a complete primer while the bloated Arch wojak is an instant insider meme that rewards the niche audience.",
     "mimic_for": "a fundamentals/primer on a developer tool or OS, with a self-aware community in-joke",
-    "title": "100+ Linux Things you Need to Know"
+    "title": "100+ Linux Things you Need to Know",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-deepseek-r1-first-look-shocked",
@@ -77,7 +83,9 @@
     "layout_map": "Dark charcoal grid background. Left-center: blue DeepSeek whale logo (~x60-230,y70-150) immediately followed by huge white lowercase 'r1' (~x250-470, baseline ~y150, cells 5-6). Below that, bold red caps 'FIRST LOOK' on baseline ~y230 (cells 9-10). A small black 'CODE REPORT' badge sits bottom-left corner (~x30,y290). Right ~30% of frame is a shocked open-mouthed man's face (Sam Altman crop) in cells 8 and 12, face center ~x1050,y150, holding a mic at chin, shoulders bleeding off the right/bottom edge.",
     "why_it_works": "The shocked face reads as 'this changes everything' breaking news while the logo+version lockup nails exactly which model dropped.",
     "mimic_for": "a breaking-news 'first look' at a newly released tool/model with a stunned-reaction tone",
-    "title": "This free Chinese AI just crushed OpenAI's $200 o1 model..."
+    "title": "This free Chinese AI just crushed OpenAI's $200 o1 model...",
+    "title_shape": "panic-threat",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "fireship-intel-vs-m1-chip-hero",
@@ -97,7 +105,9 @@
     "layout_map": "Black tech-grid background with faint blue rim glow. Red banner caps the top edge (cells 1-4, y0-45): white bold '100' + thin 'SECONDS OF' + a chip glyph (~x300-620, baseline ~y30). Left hero: a glowing Intel CPU package with blue 'intel' label, chip center ~x300,y360 (cells 9-13-ish, lower-left quadrant). Center: bold white 'VS' at ~x560,y360. Right hero: a magenta/pink-glowing Apple M1 die with 'M1 8-core CPU' label, chip center ~x900,y360 (cells 11-12-15-16). Both chips emit colored bloom on the dark floor.",
     "why_it_works": "Two glowing chips with a VS bolt instantly frames a head-to-head benchmark, and the color split (blue vs pink) tells the rivalry at a glance.",
     "mimic_for": "a head-to-head comparison/benchmark of two competing products or technologies",
-    "title": "How a CPU Works in 100 Seconds // Apple Silicon M1 vs Intel i9"
+    "title": "How a CPU Works in 100 Seconds // Apple Silicon M1 vs Intel i9",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-python-100-seconds-logo-only",
@@ -116,7 +126,9 @@
     "layout_map": "Dark navy-charcoal grid background. Top: white bold '100' + italic thin 'SECONDS OF' on baseline ~y45 (centered, cells 2-3, ~x280-560), with a thin yellow horizontal rule running full width just beneath at ~y75. The two-snake blue/yellow Python logo is the sole hero, centered across cells 6-7-10-11-14-15, logo center ~x560,y380, filling the middle ~40% of the frame. No face, no extra text \u2014 maximal negative space, single object.",
     "why_it_works": "Stripped-down single-logo centering is unmistakable brand ID and the format banner sells the fast-watch promise with zero clutter.",
     "mimic_for": "a clean single-technology explainer where the logo alone carries instant recognition",
-    "title": "Python in 100 Seconds"
+    "title": "Python in 100 Seconds",
+    "title_shape": "speed-primer",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-make-3d-websites-three-mascot",
@@ -136,7 +148,9 @@
     "layout_map": "Dark blue tech-grid background with a faint wireframe ground plane and a floating low-poly diamond top-left (~x90,y90). Stacked headline left-center: 'MAKE' white caps (~x150-310, baseline ~y95) with '3D' in red beside it (~x320-440), then 'WEBSITES' white caps on the next line (baseline ~y175, cells 9-10), all in heavy extruded/3D lettering. A small white-and-red 'with THREE.js' subtitle sits below at baseline ~y235. Right side: a green-and-tan low-poly voxel llama/giraffe mascot, body center ~x1080,y160 (cells 8-12), facing left into the text.",
     "why_it_works": "The 3D-extruded headline visually demonstrates the payoff (3D) and the playful voxel mascot promises a fun, achievable build.",
     "mimic_for": "a build-something-impressive tutorial where the headline itself shows off the visual technique",
-    "title": "Build a Mindblowing 3D Portfolio Website // Three.js Beginner\u2019s Tutorial"
+    "title": "Build a Mindblowing 3D Portfolio Website // Three.js Beginner\u2019s Tutorial",
+    "title_shape": "first-person-feat",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "fireship-tech-stacks-explained-logo-grid",
@@ -155,6 +169,8 @@
     "layout_map": "Left 55% is a dark charcoal grid panel holding a three-line stacked headline: 'TECH' white caps (baseline ~y110, cells 1-2), 'STACKS' in red caps below (baseline ~y190, cells 5-6), 'EXPLAINED' white caps below that (baseline ~y260, cells 9-10), all heavy sans. A ragged white torn-paper vertical tear runs down the center ~x640 separating the halves. Right 45% is a stack of four white rounded pill-cards in cells 4-8-12-16, each holding a row of colorful framework/language logos (Solid/Svelte/Vue row near top ~y90, Tailwind/Bootstrap ~y170, Node/etc ~y250, PHP/Go/Rust ~y320), with green-and-orange paint splatters bleeding off the bottom-right edge.",
     "why_it_works": "The torn-paper split contrasts a bold thesis (left) against a dense logo wall (right), promising a complete map of an overwhelming ecosystem.",
     "mimic_for": "a survey/landscape video cataloging many tools or frameworks in one ecosystem",
-    "title": "How to OVER Engineer a Website // What is a Tech Stack?"
+    "title": "How to OVER Engineer a Website // What is a Tech Stack?",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   }
 ]

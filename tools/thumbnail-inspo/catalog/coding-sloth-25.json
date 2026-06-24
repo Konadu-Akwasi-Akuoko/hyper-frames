@@ -17,7 +17,9 @@
     "layout_map": "White background, no headline text. The cartoon sloth face fills the left third \u2014 head centered ~x150,y230 spanning cells 1-2 and 5-6, eyes narrowed in a skeptical side-glance toward the right. Right half is a 2x2 verdict grid of icons: top-left a large red X over cell 7 (~x600,y90), top-right a green checkmark circle in cell 8 (~x870,y80), bottom-left the blue/yellow Python logo in cell 11 (~x600,y330), bottom-right the orange Rust/crab (Ferris) icon in cell 12 (~x880,y330). The X sits above Python and the check above the crab, so the verdict reads column-wise (Python = bad, the other = good). No glow, flat white canvas, icons crisp and saturated.",
     "why_it_works": "the skeptical face plus a bare X/check verdict over two logos forces the viewer to resolve which tech 'won' \u2014 pure curiosity gap with zero reading",
     "mimic_for": "two tools or languages judged against each other, one endorsed and one rejected",
-    "title": "10 Programming Mistakes That Will RUIN YOUR LIFE"
+    "title": "10 Programming Mistakes That Will RUIN YOUR LIFE",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-sloth-skill-issues-headline-touch-grass-button",
@@ -36,7 +38,9 @@
     "layout_map": "Light grey background. Bold black headline upper-left across cells 1-2: 'Do you have' on row1 baseline ~y45, 'skill issues' row2 ~y100, 'with projects?' row3 ~y150, all caps-weight sans, no color accent on the headline. A smaller grey sub-line under it ~y210 'All you need to do is watch this video!'. A blue rounded CTA button sits at lower-left cell 13 (~x120,y300) reading 'Let's touch some grass!' in white. Right-center cells 7-11 holds a pixel-art grinning sloth in a brown hoodie, head ~x540,y300 filling the lower-middle. Top-right cell 8 (~x880,y90) has a small inset green-field pixel scene with a 'TOUCH GRASS' label glowing. Text-heavy left, character anchored right of center.",
     "why_it_works": "the meme insult 'skill issues' as a direct second-person question is confrontational and funny, and the button plus 'touch grass' promises a punchline",
     "mimic_for": "calling out a common beginner failing or self-deprecating gap the video fixes",
-    "title": "How To Start Programming Projects The Lazy Way"
+    "title": "How To Start Programming Projects The Lazy Way",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "coding-sloth-kiss-ai-robot-make-me-10x",
@@ -56,7 +60,9 @@
     "layout_map": "Dark near-black background with a faint grid. Top-left cell 1 (~x70,y70) a green ChatGPT/OpenAI rounded logo tile. Headline in plain white sans across the top cells 2-4, baseline ~y70: 'Make me a 10x programmer'. Center of frame is the hero: a pixel-art orange sloth (left half, head ~x300,y360 cells 5-6-9-10) leaning in to kiss a cyan-glowing humanoid AI robot (right half, head ~x830,y340 cells 7-8-11-12), their faces meeting at dead center ~x560,y330 where a small red heart floats (~x560,y260). The two figures form a symmetrical split-vertical embrace; robot lit electric cyan, sloth warm orange, heart the red focal pop.",
     "why_it_works": "the absurd romance between a coder-mascot and AI is an instant meme that frames the human-AI relationship as intimate and slightly cursed",
     "mimic_for": "an affectionate or codependent take on adopting an AI tool into your workflow",
-    "title": "How To Use AI Before It Uses You"
+    "title": "How To Use AI Before It Uses You",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-sloth-unpaid-intern-frown-vim-logo",
@@ -75,7 +81,9 @@
     "layout_map": "White background. Left half is a cartoon humanoid sloth from the chest up, frowning unhappily, head ~x230,y200 filling cells 1-2 and 5-6; it wears a black t-shirt with handwritten white text 'Unpaid Intern' across the chest at lower-left cell 13-14 (~x180,y360). Right half holds the large green-and-grey diamond Vim logo, centered ~x900,y230 spanning cells 7-8 and 11-12, with a subtle green glow. No headline text \u2014 the frown plus the shirt gag plus the lone logo carry it. Flat white canvas, two-element face-left-object-right balance.",
     "why_it_works": "the dejected face plus the 'Unpaid Intern' shirt gag makes the lone editor logo read as the source of pain \u2014 relatable suffering bait",
     "mimic_for": "a tool or topic the video hates on or finds painful to use",
-    "title": "Things I ABSOLUTELY Hate About Programming"
+    "title": "Things I ABSOLUTELY Hate About Programming",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-sloth-google-search-clone-wordmark",
@@ -94,7 +102,9 @@
     "layout_map": "White background, no face. Giant centered wordmark 'Sloth' across cells 2-3-4, baseline ~y130, in the Google palette letter-by-letter (blue S, red l, yellow o, blue t, green h) with a heavy drop shadow \u2014 a direct Google logo parody. Below it a long rounded search bar spanning cells 10-11-12, centered ~y200, with a grey magnifier icon at its left (~x70,y195) and a Google-Lens-style camera icon at its right (~x980,y195). Under the bar, two grey pill buttons side by side at cells 14-15, baseline ~y300: 'Sloth Search' (~x210,y270) and 'I'm Feeling Unlucky' (~x430,y270). Pixel-perfect Google homepage clone with the brand swapped to the channel mascot name.",
     "why_it_works": "an exact replica of the world's most recognizable homepage with one word swapped is instantly legible and the 'I built Google' flex promises a build payoff",
     "mimic_for": "a from-scratch clone of a famous app or website",
-    "title": "How To Make Your Own Google Search"
+    "title": "How To Make Your Own Google Search",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-sloth-claude-code-terminal-point",
@@ -114,6 +124,8 @@
     "layout_map": "Dark terminal-window background filling the frame, with a faux titlebar (red/yellow/green dots) and a top line 'Welcome to the Claude Code research preview!' ~y45. Dominant element is a huge two-line ASCII/block headline 'CLAUDE' (row1 ~y130) over 'CODE' (row2 ~y200) in cream block letters across cells 6-7-8 / 10-11-12. A green-and-white pixel sloth stands at the left, head ~x150,y230 cells 5-9, its arm raised and finger pointing right toward the CLAUDE CODE text. Bottom terminal line in orange/green ~y320: 'Login successful. Press Enter to continue'. Neon-on-dark terminal aesthetic, the mascot hand-pointing at the product name as the focal gesture.",
     "why_it_works": "the authentic terminal frame signals 'real new tool just dropped' and the mascot's point directs the eye straight to the product name",
     "mimic_for": "a brand-new AI model or developer tool release the video reviews",
-    "title": "The Best AI Model For Programming Just Dropped..."
+    "title": "The Best AI Model For Programming Just Dropped...",
+    "title_shape": "panic-threat",
+    "title_pattern": "curiosity-gap-reversal"
   }
 ]

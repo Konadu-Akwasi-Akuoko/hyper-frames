@@ -17,7 +17,9 @@
     "layout_map": "Vertical 50/50 split on a dark grid-textured background. LEFT half (cells 1,2,5,6,9,10,13,14): a desaturated black-and-white photo portrait of a bespectacled man, face centered ~x310,y330, filling the full left column shoulders-up, eyes near grid mid-height ~y300 with faint red iris dots as a subtle device. RIGHT half (cells 3,4,7,8,11,12,15,16): the orange Brave lion-head logo centered ~x960,y360, glowing, filling ~45% of frame width on a slightly darker right panel. No headline text at all \u2014 the two objects ARE the message. Background is a fine dark-charcoal grid.",
     "why_it_works": "Wordless face-vs-brand confrontation; the monochrome human against the saturated orange logo forces a 'what's the conflict' question",
     "mimic_for": "a profile of one product or company set against a skeptic/critic, or a person-vs-brand controversy beat",
-    "title": "Most Controversial Browser: Success Story of Brave"
+    "title": "Most Controversial Browser: Success Story of Brave",
+    "title_shape": "scale-story",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "coding-koala-100-seconds-cockroachdb-mascot",
@@ -36,7 +38,9 @@
     "layout_map": "Light off-white/pale-blue background. TOP: an orange banner strip across cells 1-4 (~y40) holding the headline '100 Seconds of' \u2014 '100' in bold black, 'Seconds of' lighter, baseline ~y55, centered slightly left of frame center. CENTER: the blue CockroachDB shield/leaf logo glyph centered ~x575,y330, cell 7/11, in thin blue outline strokes. BOTTOM-CENTER: subhead 'Cockroach DB' in black, baseline ~y460, cell 15. RIGHT EDGE: a cartoon astronaut-monkey mascot in a spacesuit, half-cropped at the right border ~x1180,y330, cells 8,12,16, peeking in. Clean bright background, no grid texture.",
     "why_it_works": "The familiar '100 Seconds of X' format promises a fast digestible explainer; the cute mascot adds warmth and personality to a dry DB topic",
     "mimic_for": "a short, time-boxed explainer of one tool/technology ('X in N minutes'), with a logo as the hero",
-    "title": "Cockroach DB Explained In 2 Minutes"
+    "title": "Cockroach DB Explained In 2 Minutes",
+    "title_shape": "x-explained",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "coding-koala-fullstack-multiarm-framework-logos",
@@ -55,7 +59,9 @@
     "layout_map": "LEFT third (cells 1,5,9,13): three-line headline top-left, baseline rows ~y60/y110/y160 \u2014 'How To' (white), 'Start' (orange) on row 1, 'FullStack' (orange) / 'Project...' (white) stacked below, mixed caps. Below it a cartoon overwhelmed man at a laptop, ~x230,y370, cells 9/13. RIGHT half: a multi-armed Doctor-Strange-style figure centered ~x780,y360, each arm holding/orbited by a ring of framework logos (Django, JS, Node, React, Angular, etc.) arranged in an arc across cells 3,4,8 ~x900-1180,y90-200. Dark background. The logo halo (top-right arc) is the eye magnet.",
     "why_it_works": "The juggling many-armed figure visualizes the chaos of choosing a full-stack; the logo swarm signals 'all these technologies' and the worried dev mirrors the viewer's anxiety",
     "mimic_for": "an overwhelming-choice or 'how to approach a big project' beat where many tools/technologies must be juggled at once",
-    "title": "How to Approach a Fullstack Project? | Web Development"
+    "title": "How to Approach a Fullstack Project? | Web Development",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "coding-koala-avoid-docs-code-screenshot",
@@ -74,7 +80,9 @@
     "layout_map": "Split layout on dark background. LEFT half (cells 1,2,5,6,9,10,13,14): three-line headline top-left, baselines ~y55/y105 \u2014 'Why' (white) 'Developers' (orange), then 'Avoid Docs...' ('Docs' orange) on row 2 ~y110; below it a black-and-white hand-drawn sketch of a grimacing/uneasy man, ~x250,y400, cells 9/13, framed in front of a doorway. RIGHT half (cells 3,4,7,8,11,12,15,16): a real light/white API-documentation screenshot panel filling the right column, titled 'Api Documentation' ~x870,y70, with grey code text \u2014 HTTP 200 OK, Content-Type, Allow, a JSON body \u2014 running down ~x870-1180,y100-460. The documentation text wall reads as 'real reference material'.",
     "why_it_works": "The contrast between the avoidant sketched human and the dense real docs panel dramatizes the 'developers dodge documentation' tension; the code panel signals legitimacy",
     "mimic_for": "a beat about reading/avoiding documentation, code reviews, or any 'developers neglect X technical habit' topic \u2014 pair a reaction face with a real code/docs panel",
-    "title": "Hidden Cost of Avoiding Docs as a Developer | Programming"
+    "title": "Hidden Cost of Avoiding Docs as a Developer | Programming",
+    "title_shape": "scale-story",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "coding-koala-no-ai-cant-code-pepe-openai",
@@ -94,7 +102,9 @@
     "layout_map": "Light grey background. TOP: big bold headline across full width cells 1-4, baseline ~y110 \u2014 'No' (black) 'AI' (orange) '=' (black) 'Can't' (black) 'Code' (orange), an equation phrasing, ALL words ~72px bold. CENTER-RIGHT: a smug seated Pepe-frog character, ~x780,y450, cells 11,15, in a blue shirt, occupying the center-right and bottom. LEFT-CENTER: the Pepe's hand/finger points at a small green OpenAI logo tile floating ~x350,y490, cell 10/14 \u2014 the hand-point device links frog to the AI brand. Headline sits in the clear top band, mascot fills the lower two-thirds.",
     "why_it_works": "The math-equation headline ('No AI = Can't Code') is a punchy meme claim, and the smug frog pointing at OpenAI mocks AI-reliant devs \u2014 relatable, shareable, slightly provocative",
     "mimic_for": "a provocative AI-dependence or skill-decay take, or any spicy 'X equals Y' equation-style claim you want to land as a meme",
-    "title": "Why Developers Can't Code Anymore..."
+    "title": "Why Developers Can't Code Anymore...",
+    "title_shape": "assumption-flip",
+    "title_pattern": "assumption-flip"
   },
   {
     "slug": "coding-koala-cant-code-anymore-reddit-pepe",
@@ -114,6 +124,8 @@
     "layout_map": "Dark background. UPPER-LEFT: a mock Reddit post card, cells 1,2,5,6 ~x60-560,y60-220 \u2014 'r/devops \u00b7 1y ago' header with avatar, username 'pathless_walker', then the post title 'I Can't Code Anymore' in white with a small slightly-frowning yellow emoji at line end ~y150. LOWER-LEFT: two app-logo tiles side by side ~x150,y360 (green ChatGPT/OpenAI) and ~x300,y360 (a black diamond/Vercel-style tile), cells 9/13/10. RIGHT third (cells 4,8,12,16): a robed, hood-down melancholy Pepe-monk figure ~x1080,y360 filling the right column. The Reddit card is the read-magnet (social proof framing).",
     "why_it_works": "The fake Reddit post frames the claim as a real confession from a peer (social proof + relatability), the sad emoji adds emotional tone, and the AI logos hint at the cause",
     "mimic_for": "a relatable confession / community-sentiment beat ('everyone feels X') framed as a screenshot of a forum post, especially around AI eroding a skill",
-    "title": "How To Keep Up Your Coding Skills In The Age of AI?"
+    "title": "How To Keep Up Your Coding Skills In The Age of AI?",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   }
 ]

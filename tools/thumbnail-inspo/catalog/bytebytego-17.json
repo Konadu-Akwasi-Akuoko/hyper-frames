@@ -17,7 +17,9 @@
     "layout_map": "Dark navy near-black background filling the full frame. Top-left headline 'How to Learn SQL' in white sentence-case, baseline ~y50, occupying cells 1-2. A glowing magenta/cyan rounded 'SQL' hub node sits dead-center, cell 6-7, ~x640,y180, acting as the root of a mind-map. Dozens of small pill-shaped labeled nodes (DDL, DCL, DQL, TCL, Functions, Operators, Data types, etc.) radiate outward across cells 5-16, connected by thin cyan/magenta neon edges; the right half (cells 7-8,11-12) is the densest cluster of node pills (SELECT, FROM, WHERE, GROUP BY, ORDER BY, LIMIT). Branch group labels (Target, Operators, Functions, Data types) in small caps sit at the left, cells 5,9,13. No face, no big number \u2014 the device is the neon-on-dark glowing graph itself.",
     "why_it_works": "the dense glowing node web signals 'comprehensive curriculum' and the bright central hub gives the eye an anchor \u2014 promises a complete map of a sprawling topic",
     "mimic_for": "a full learning roadmap or topic map where the beat is 'here's the whole landscape of X laid out'",
-    "title": "Roadmap for Learning SQL"
+    "title": "Roadmap for Learning SQL",
+    "title_shape": "what-is-x",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-git-merge-vs-rebase-two-graph-rows",
@@ -37,7 +39,9 @@
     "layout_map": "Soft mint/white background. Headline 'Git MERGE vs REBASE' top-left in dark text, baseline ~y45, cells 1-2 with MERGE and REBASE in bolder weight. Two horizontal git commit-graph rows: TOP row (cells 5-8, centered ~y110) shows colored circular commit nodes A-B-C-D-...-G connected by arrows, labeled 'main' and 'feature branch' on the right at cells 8,12, with a 'git merge' caption mid-row; BOTTOM row (cells 13-16, ~y280) shows the rebase variant A-B-C-D-E-F-G with a dashed-box rebased segment and 'main' label at right. A small red circular VS / '18' badge sits at far left edge between the two rows, ~x40,y210, cell 9. Nodes use blue/orange/green fills with subtle glow.",
     "why_it_works": "the stacked before/after graph layout makes the structural difference between two operations instantly visible without reading \u2014 the eye compares top vs bottom",
     "mimic_for": "two approaches/operations contrasted structurally, especially 'method A vs method B' where the difference is in the shape of a process",
-    "title": "Git MERGE vs REBASE: Everything You Need to Know"
+    "title": "Git MERGE vs REBASE: Everything You Need to Know",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-learn-the-secrets-system-design-clutter",
@@ -56,7 +60,9 @@
     "layout_map": "Off-white/pale background with faint hand-sketched system-design icons (servers, databases, clouds) scattered low across cells 9-16. Two stacked centered headline rows fill the upper-middle: row 1 'Learn The Secrets' baseline ~y75 (cells 5-7), with 'Secrets' rendered large in red script as the accent word while 'Learn The' is dark; row 2 'System Design' baseline ~y150 (cells 6-7) in blue. A small cartoon owl mascot peeks at top-right corner ~x1180,y60, cell 4. A faint flow of sketched icons and arrows runs along the bottom third (cells 13-16) as decorative texture. Text is the hero; icons are ghosted background.",
     "why_it_works": "the word 'Secrets' in bold red against an otherwise muted sketch promises insider knowledge \u2014 pure curiosity gap, the faint diagram says 'technical but approachable'",
     "mimic_for": "a tips/secrets/insider-knowledge video where the hook is the promise of hidden know-how rather than a specific diagram",
-    "title": "How to Crack Any System Design Interview"
+    "title": "How to Crack Any System Design Interview",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "bytebytego-python-java-cpp-three-column-vs",
@@ -76,7 +82,9 @@
     "layout_map": "Pale teal/white background. Headline 'How Do Python, Java, C++ Work?' top-center, baseline ~y45, cells 1-3, dark text on a thin bar. Three equal vertical columns each in a rounded panel: LEFT 'Python' (cells 5,9,13, ~x215), MIDDLE 'Java' (cells 6-7,10-11, ~x640), RIGHT 'C++' (cells 8,12,16, ~x1065), each labeled in a colored header pill. Each column stacks a top-to-bottom icon flow (source code \u2192 interpreter/VM \u2192 machine code \u2192 OS \u2192 hardware) with small labeled icons and arrows. Two yellow/red 'VS' bolt badges sit in the gutters between columns at ~x430,y190 (cell 9-10 boundary) and ~x855,y190 (cell 11-12 boundary). Symmetric three-panel grid.",
     "why_it_works": "three parallel columns plus VS bolts frame it as a competition between familiar names \u2014 viewers self-select to defend their language and see who 'wins'",
     "mimic_for": "a three-way comparison of tools/languages/options where the beat is 'X vs Y vs Z, side by side'",
-    "title": "Python Vs C++ Vs Java!"
+    "title": "Python Vs C++ Vs Java!",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-sql-execution-order-numbered-step-grid",
@@ -95,7 +103,9 @@
     "layout_map": "Solid mint/teal background with white rounded stage cards. Headline 'SQL Query Execution Order' top-left in white on the teal, baseline ~y50, cells 1-2. Eight white rounded stage cards arranged in two rows of four: TOP row Source / Merged / Filtered / Grouped at ~y120 across cells 5-8 (~x180,440,700,1010); BOTTOM row Limited / Ordered / Selected / Filtered at ~y260 across cells 13-16. Each card holds a small grid-of-squares icon and a label. Green SQL-keyword arrows connect the cards (FROM&JOIN, WHERE, GROUP BY, HAVING, LIMIT&OFFSET, ORDER BY, SELECT) sitting in the gutters between cards, cells 9-12. Very orderly, evenly spaced eight-tile lattice.",
     "why_it_works": "numbering an invisible internal order as a clean linear pipeline promises to demystify something most developers get wrong \u2014 the tidy grid reads as 'finally, the correct sequence'",
     "mimic_for": "explaining the hidden internal order/steps of a process, where the payoff is 'the real sequence, in order'",
-    "title": "Secret To Optimizing SQL Queries - Understand The SQL Execution Order"
+    "title": "Secret To Optimizing SQL Queries - Understand The SQL Execution Order",
+    "title_shape": "open-why-how",
+    "title_pattern": "curiosity-gap-reversal"
   },
   {
     "slug": "bytebytego-sessions-vs-jwt-red-blue-split-vs",
@@ -115,7 +125,9 @@
     "layout_map": "Frame split into two vertical color halves: LEFT half (cells 5,9,13, x0-640) is a red/maroon panel headed 'Session-based Authentication', RIGHT half (cells 7-8,11-12,15-16, x640-1280) is a cyan/teal panel headed 'JWT-based Authentication'. Headline 'Sessions Vs JWTs' runs across the very top, baseline ~y40, cells 1-3, dark text. A large white-outlined 'VS' bolt sits dead-center on the seam, ~x640,y95, cell 2-3 boundary, repeated lower at center. Each half contains its own numbered request/response sequence diagram (Log in \u2192 Authenticate \u2192 Create Session/JWT \u2192 Backend Service) with small user/server icons and arrows, mirrored left-right. The red-vs-cyan color split is the dominant device.",
     "why_it_works": "the hard red/blue color split plus center VS bolt frames two auth methods as opposing teams \u2014 the diagram density signals depth while the color coding makes the comparison instant",
     "mimic_for": "two competing technical approaches contrasted head-to-head, especially security/auth choices where you want a clear 'pick a side' framing",
-    "title": "Session Vs JWT: The Differences You May Not Know!"
+    "title": "Session Vs JWT: The Differences You May Not Know!",
+    "title_shape": "comparison-vs",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "bytebytego-cache-systems-fanout-logo-list",
@@ -134,7 +146,9 @@
     "layout_map": "Bright teal/aqua background. Headline 'Cache Systems Every Developer Should Know' across the top in white, baseline ~y50, spanning cells 1-4 full width. Left side: a white 'Client App' card with monitor + phone icons, cells 5,9,13, ~x110,y180. Black arrows fan rightward from the client through small server/router icons (cells 6,10) to a right-side vertical stack of white rounded backend rows: Kafka (cell 7, ~y130), elastic (cell 7,11, ~y180), redis (cell 11, ~y230), then two 'Service' rows (cells 11,15, ~y260,300), each row carrying its brand logo plus colored placeholder bars. A small dark/red database-style icon card sits bottom-right, cell 16, ~x1130,y290. Left-to-right flow architecture with recognizable logos as the hook.",
     "why_it_works": "recognizable tech logos (Kafka, Redis, Elastic) in a clean fan-out diagram signal 'real, name-brand systems you'll actually use' \u2014 comprehensiveness plus credibility",
     "mimic_for": "a survey/overview of named tools or components in a category, where logos and a fan-out architecture say 'the ones that matter, mapped'",
-    "title": "Cache Systems Every Developer Should Know"
+    "title": "Cache Systems Every Developer Should Know",
+    "title_shape": "identity-advice",
+    "title_pattern": "identity-status"
   },
   {
     "slug": "bytebytego-osi-model-seven-layer-stack-mirror",
@@ -153,6 +167,8 @@
     "layout_map": "Pale mint background. Headline 'What is OSI Model?' top-left in white on the teal bar, baseline ~y45, cells 1-2. Two mirrored vertical 7-row stacks: LEFT stack 'Device A' (cells 1,5,9,13, x~10-200) and RIGHT stack 'Device B' (cells 4,8,12,16, x~1080-1270), each listing the seven OSI layers (Application, Presentation, Session, Transport, Network, Data Link, Physical) numbered 7 down to 1, each layer a distinctly colored pill (yellow, green, blue, orange tones). Between the two devices, center cells 6-7,10-11,14-15, sit horizontal data-packet bars / encapsulation rows with green down-arrows (left) and a path back up, plus monitor icons for the two devices at top-center ~y95. Symmetric ladder framing emphasizing the mirror between sender and receiver.",
     "why_it_works": "the mirrored seven-color layer ladder turns an abstract networking model into a concrete climbable structure \u2014 the symmetry and color-coding promise a tidy, memorable mental model",
     "mimic_for": "explaining a layered/stacked model or protocol where the beat is 'the full stack of N layers, color-coded and in order'",
-    "title": "What is OSI Model | Real World Examples"
+    "title": "What is OSI Model | Real World Examples",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   }
 ]

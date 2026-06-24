@@ -17,7 +17,9 @@
     "layout_map": "Bright soft-lit home-office background (plant, shelf, honeycomb wall) lightly darkened at the side edges with semi-transparent overlay panels x0-x160 and x1120-x1280. Presenter centered, head-and-shoulders, crop from chest up, head top ~y70, face occupying center cells 6-10 (~x520-x760), navy crew-tee. Five oversized brand logos arc across her eye/shoulder line at ~y180-y360: Facebook blue circle 'f' far left ~x70-x230, black Amazon 'a' with orange swoosh ~x310-x470, rainbow Apple logo partly behind her head ~x760, red Netflix 'N' ~x870-x1010, multicolor Google 'G' far right ~x1090-x1250. No headline text \u2014 the logos ARE the text. No badge.",
     "why_it_works": "spelling FAANG out of its five real logos around a neutral face turns the acronym into instant recognition with zero typography and signals an insider topic",
     "mimic_for": "a video naming the big tech companies or a set of well-known tools/brands, where the logos themselves carry the hook around our presenter",
-    "title": "Why everyone wants to work at FAANG (Facebook/Meta, Amazon, Apple, Netflix, and Google)"
+    "title": "Why everyone wants to work at FAANG (Facebook/Meta, Amazon, Apple, Netflix, and Google)",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "mayuko-salary-dollar-speech-bubbles",
@@ -37,7 +39,9 @@
     "layout_map": "Warm beige bedroom-office background (floor lamp, framed art). Presenter centered, head-and-shoulders, ponytail and amber glasses, navy 'code' hoodie, head top ~y60, face center cells 7-9 (~x560-x720). Three hand-drawn black marker speech bubbles around her: top-left scribble-outline bubble x60-x380 y40-y370 holding green '$?' bold ~x200,y200; bottom-left smaller bubble x70-x290 y440-y620 holding single green '$' ~x180,y520; right-side large bubble x830-x1230 y110-y400 holding green '$$$?' ~x1030,y290. All dollar symbols green bold, all bubbles hand-sketched stroke. No rectangular text panel, no badge.",
     "why_it_works": "the three bubbles escalating $ to $$$? stage the salary-range tension visually and the marker-sketch style feels candid and approachable rather than clickbait",
     "mimic_for": "a how-much-does-X-cost / earnings / pricing-tier beat where escalating dollar amounts around the presenter pose the money question",
-    "title": "Tips for negotiating your salary (from an ex-FAANG recruiter)"
+    "title": "Tips for negotiating your salary (from an ex-FAANG recruiter)",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   },
   {
     "slug": "mayuko-face-over-code-wallpaper",
@@ -57,7 +61,9 @@
     "layout_map": "Full-bleed background is a desaturated slate-blue screenshot of source code \u2014 syntax-highlighted JS/Swift lines (function, let, if/else, document.getElementById) with faint line numbers 88-107 running down the left edge x10-x60, text muted to ~40% so it reads as texture. Presenter centered, head-and-shoulders, long dark hair, white top, crop chest-up, head top ~y50, face center cells 7-9 (~x560-x760) over cells rows 2-8; her body masks out the code behind her. No headline panel, no badge \u2014 the code IS the backdrop.",
     "why_it_works": "draping a real code screenshot behind a neutral face instantly frames the video as hands-on programming while keeping the human as the focal anchor",
     "mimic_for": "a learn-to-code / behind-the-code explainer where a faded real code wall behind our presenter sets the technical context with no headline text",
-    "title": "How to Start Coding (and Keep Up With It)"
+    "title": "How to Start Coding (and Keep Up With It)",
+    "title_shape": "open-why-how",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "mayuko-question-textbox-pointing-face",
@@ -76,7 +82,9 @@
     "layout_map": "Soft home background (warm wall left, wooden bookshelf right). Presenter occupies the LEFT half, head-and-shoulders, crop chest-up, head top ~y20, face cells 5-9 (~x230-x430), index finger raised to her chin at ~x340,y380 (thoughtful hand-point gesture), navy print top. Headline sits in a white rounded rectangle with thin blue border, panel x480-x950 y70-y260, three centered lines monospace dark-grey caps: 'What do I do' / 'as a' / 'Software Engineer?' baseline ~y130/y175/y220. No badge.",
     "why_it_works": "the questioning chin-touch pose plus a clean framed monospace question reads as a sincere first-person explainer, inviting rather than shouting",
     "mimic_for": "a what-is / what-do-I-do explainer where our presenter poses the title question in a bordered text box beside a thoughtful face",
-    "title": "What do I do as a Software Engineer?"
+    "title": "What do I do as a Software Engineer?",
+    "title_shape": "what-is-x",
+    "title_pattern": "open-what-why-how"
   },
   {
     "slug": "mayuko-keebs-held-product-lowercase-word",
@@ -95,6 +103,8 @@
     "layout_map": "Warm cozy living-room background (lamp top-left, monstera plant left). Presenter LEFT-of-center, head-and-shoulders in tan sherpa jacket, head top ~y130, face cells 5-9 (~x340-x560), right hand raised holding a large grey 75% mechanical keyboard (red esc key) angled across the upper-right, keyboard spanning x590-x1260 y200-y460. A fourth full-size Logitech keyboard pinned top-right x740-x1270 y20-y170. Two more compact ergo keyboards lined along the bottom edge y480-y690 (~x630-x920) plus a split ergo board bottom-right x980-x1270. Headline single lowercase word 'keebs.' bold white Helvetica, bottom-left, baseline ~y690, spanning x20-x460. No badge.",
     "why_it_works": "one held hero keyboard plus a row of contenders below and a single playful lowercase word makes a roundup feel curated and effortless",
     "mimic_for": "a best-of / roundup or single-product hero beat where our presenter holds the lead item and a one-word lowercase label names the category",
-    "title": "Best Keyboards for Programming 2021"
+    "title": "Best Keyboards for Programming 2021",
+    "title_shape": "listicle-n",
+    "title_pattern": "concrete-noun-verb"
   }
 ]
