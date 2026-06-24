@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 17 — token bucket title (FACE)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    /* FACE scene — transparent so the seek-driven face layer shows through. */
+    #scene-17 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+
+    /* opaque cover crossfades out at the seam to reveal the face beneath (matches scene 16 bg). */
+    #scene-17 .cover { position: absolute; inset: 0; background: var(--bg); z-index: 5; }
+
+    /* lower-third */
+    #scene-17 .lt { position: absolute; left: 0; bottom: 130px; width: 760px;
+      padding: 30px 60px; background: rgba(17,20,27,0.82); border-left: 4px solid var(--accent);
+      backdrop-filter: blur(2px); }
+    #scene-17 .lt .eyebrow { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-17 .lt .title { margin-top: 12px; font-family: "JetBrains Mono", monospace; font-weight: 500;
+      font-size: 60px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+      clip-path: inset(0 100% 0 0); }
+  </style>
+</head>
+<body>
+  <div id="scene-17" data-composition-id="scene-17" data-width="1920" data-height="1080">
+    <div class="cover"></div>
+    <div class="lt" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1150">
+      <div class="eyebrow">Approach 01</div>
+      <div class="title" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="4320">Token Bucket</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // FACE reveal: the cover (opaque, matching scene 16 bg) crossfades out once scene 16 unmounts,
+    // revealing the continuous face take beneath. (no animation on the face itself.)
+    tl.to(".cover", { opacity: 0, duration: 0.7, ease: "power2.inOut" }, 0.5);
+
+    // lower-third rises ("Let's start with the first one" 163.82; local 0.5).
+    tl.fromTo(".lt", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.6);
+    tl.fromTo(".eyebrow", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.95);
+
+    // "the token bucket" (167.14; local 3.82) — the name stamps in via left-to-right mask-reveal.
+    tl.to(".title", { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power2.out" }, 3.82);
+    tl.fromTo(".title", { textShadow: "0 0 0 rgba(255,181,71,0)" }, { textShadow: "0 0 30px rgba(255,181,71,0.4)", duration: 0.3 }, 4.1);
+
+    window.__timelines["scene-17"] = tl;
+  </script>
+</body>
+</html>

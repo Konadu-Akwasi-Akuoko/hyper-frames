@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 40 — under the cap, waved through</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-40 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-40 .eyebrow { position: absolute; left: 200px; top: 130px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-40 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+
+    /* gauge */
+    #scene-40 .gauge { position: absolute; left: 360px; top: 270px; width: 140px; height: 440px;
+      border: 3px solid var(--accent-2); border-radius: 12px; opacity: 0; }
+    #scene-40 .fill { position: absolute; left: 360px; top: 270px; width: 140px; height: 440px;
+      border-radius: 12px; overflow: hidden; opacity: 0; }
+    #scene-40 .fill .lvl { position: absolute; left: 0; right: 0; bottom: 0; height: 70%;
+      background: linear-gradient(to top, rgba(103,232,249,0.35), rgba(103,232,249,0.14)); }
+    #scene-40 .capline { position: absolute; left: 330px; top: 268px; width: 200px; height: 0;
+      border-top: 3px dashed var(--accent-2); opacity: 0; }
+    #scene-40 .capnum { position: absolute; left: 230px; top: 224px; width: 100px; text-align: right;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 30px; color: var(--accent-2); opacity: 0; }
+    #scene-40 .capnum small { display: block; font-size: 18px; color: var(--muted); letter-spacing: 0.1em; }
+    /* amber "also ten" ghost callback */
+    #scene-40 .ghost { position: absolute; left: 330px; top: 268px; width: 200px; height: 0;
+      border-top: 2px dashed var(--accent); opacity: 0; }
+    #scene-40 .ghostlbl { position: absolute; left: 330px; top: 210px; width: 360px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 18px; color: var(--accent); opacity: 0; letter-spacing: 0.04em; }
+
+    #scene-40 .count { position: absolute; left: 560px; top: 380px; width: 360px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 110px; color: var(--accent-2); font-variant-numeric: tabular-nums; line-height: 1; opacity: 0; }
+    #scene-40 .count .cap { color: var(--muted); font-size: 60px; }
+    #scene-40 .countlbl { position: absolute; left: 564px; top: 520px; width: 360px;
+      font-family: "Inter"; font-weight: 400; font-size: 26px; color: var(--muted); opacity: 0; }
+
+    /* waved-through requests (right) */
+    #scene-40 .wt-head { position: absolute; left: 1060px; top: 250px; width: 600px;
+      font-family: "Inter"; font-weight: 600; font-size: 34px; color: var(--fg); opacity: 0; }
+    #scene-40 .wt-head b { color: var(--ok); }
+    #scene-40 .row { position: absolute; left: 1060px; width: 540px; height: 64px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; opacity: 0; }
+    #scene-40 .row .dot { width: 16px; height: 16px; border-radius: 50%; background: var(--accent-2); margin-right: 18px; flex: none; }
+    #scene-40 .row .t { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--muted); }
+    #scene-40 .row .ok { margin-left: auto; font-family: "Inter"; font-weight: 600; font-size: 24px; color: var(--ok); }
+  </style>
+</head>
+<body>
+  <div id="scene-40" data-composition-id="scene-40" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Kind 02 &middot; under the cap</div>
+
+    <div class="ghostlbl">same cap as the token bucket</div>
+    <div class="ghost"></div>
+    <div class="gauge"></div>
+    <div class="fill"><div class="lvl"></div></div>
+    <div class="capline" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1020"></div>
+    <div class="capnum">10<small>CAP</small></div>
+
+    <div class="count" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3450">7<span class="cap"> / 10</span></div>
+    <div class="countlbl">the count sits under the cap</div>
+
+    <div class="wt-head">while under ten, every request is <b>waved through</b></div>
+    <div class="row r1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6060"><span class="dot"></span><span class="t">request</span><span class="ok">&check; allowed</span></div>
+    <div class="row r2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6380"><span class="dot"></span><span class="t">request</span><span class="ok">&check; allowed</span></div>
+    <div class="row r3" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6700"><span class="dot"></span><span class="t">request</span><span class="ok">&check; allowed</span></div>
+    <div class="row r4" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7020"><span class="dot"></span><span class="t">request</span><span class="ok">&check; allowed</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    gsap.set(".row.r1", { top: 330 }); gsap.set(".row.r2", { top: 410 });
+    gsap.set(".row.r3", { top: 490 }); gsap.set(".row.r4", { top: 570 });
+
+    // GRAPHICS crossfade (lands in 347.42->347.82 pause).
+    tl.fromTo("#scene-40", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4 }, 0.3);
+
+    // "The cap is also ten" (347.94/348.76; local 0.62/1.44) — gauge + cap line + the amber callback.
+    tl.fromTo(".gauge, .fill", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.5);
+    tl.fromTo(".capline", { opacity: 0, scaleX: 0.6 }, { opacity: 1, scaleX: 1, duration: 0.4, transformOrigin: "0% 50%" }, 0.62);
+    tl.fromTo(".capnum", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.4 }, 0.8);
+    // the "also ten" ghost: amber cap line + label flash in, then fade (the parallel acknowledged).
+    tl.fromTo(".ghost, .ghostlbl", { opacity: 0 }, { opacity: 0.6, duration: 0.4 }, 1.44);
+    tl.to(".ghost, .ghostlbl", { opacity: 0, duration: 0.7 }, 2.6);
+
+    // "While the counter sits under ten" (350.82; local 3.50) — the count, under the cap.
+    tl.fromTo(".count", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 3.0);
+    tl.fromTo(".countlbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.5);
+
+    // "every request is waved through the moment it arrives" (353.06/354.30; local 5.74/6.98).
+    tl.fromTo(".wt-head", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.45 }, 5.3);
+    [".row.r1", ".row.r2", ".row.r3", ".row.r4"].forEach((r, i) => {
+      tl.fromTo(r, { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.32, ease: "power2.out" }, 5.74 + i * 0.32);
+    });
+
+    window.__timelines["scene-40"] = tl;
+  </script>
+</body>
+</html>

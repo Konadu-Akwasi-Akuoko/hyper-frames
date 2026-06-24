@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 31 — 100 requests, won't flinch</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-31 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-31 .eyebrow { position: absolute; left: 200px; top: 110px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-31 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+
+    /* burst swarm field (left-center) */
+    #scene-31 #swarm { position: absolute; inset: 0; }
+    #scene-31 .rq { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 6px rgba(103,232,249,0.5); opacity: 0; }
+
+    /* the "100 / 1ms" callout (upper-center) */
+    #scene-31 .callout { position: absolute; left: 200px; top: 300px; width: 760px; text-align: center; opacity: 0; }
+    #scene-31 .callout .n { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 150px; color: var(--accent-2); line-height: 1; font-variant-numeric: tabular-nums; }
+    #scene-31 .callout .u { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 44px; color: var(--muted); margin-top: 8px; }
+
+    /* the leaky bucket (right), drip unchanged */
+    #scene-31 svg.bk { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-31 svg.bk .wall { fill: none; stroke: var(--accent-2); stroke-width: 4; stroke-linecap: round; }
+    #scene-31 svg.bk .rim { fill: rgba(103,232,249,0.04); stroke: var(--accent-2); stroke-width: 4; }
+    #scene-31 .bfill { position: absolute; left: 1372px; top: 430px; width: 136px; height: 200px;
+      background: linear-gradient(to bottom, rgba(103,232,249,0.16), rgba(103,232,249,0.32)); border-radius: 0 0 18px 18px;
+      transform-origin: 50% 100%; transform: scaleY(0.55); opacity: 0; }
+    #scene-31 #bdrip { position: absolute; inset: 0; }
+
+    #scene-31 .calm { position: absolute; left: 1230px; top: 690px; width: 460px; opacity: 0;
+      font-family: "Inter"; font-weight: 700; font-size: 40px; color: var(--ok); }
+    #scene-31 .calm small { display: block; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--muted); margin-top: 6px; letter-spacing: 0.05em; }
+  </style>
+</head>
+<body>
+  <div id="scene-31" data-composition-id="scene-31" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Leaky bucket &middot; stress test</div>
+
+    <div id="swarm" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1200"></div>
+
+    <div class="callout" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2420"><div class="n">100</div><div class="u">requests / 1 ms</div></div>
+
+    <svg class="bk" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <ellipse class="rim" cx="1440" cy="410" rx="74" ry="12" />
+      <path class="wall wallL" d="M 1366 410 L 1366 622 Q 1366 630 1374 630 L 1418 630" />
+      <path class="wall wallR" d="M 1514 410 L 1514 622 Q 1514 630 1506 630 L 1462 630" />
+    </svg>
+    <div class="bfill"></div>
+    <div id="bdrip"></div>
+
+    <div class="calm" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="4740">won't flinch<small>output: unchanged &mdash; steady drip</small></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // build the burst swarm (~88 dots, deterministic scatter over the left-center field).
+    const swarm = document.getElementById("swarm");
+    const dots = [];
+    for (let i = 0; i < 88; i++) {
+      const d = document.createElement("div"); d.className = "rq";
+      const x = 170 + ((i * 97 + (i % 7) * 53) % 900);
+      const y = 180 + ((i * 53 + (i % 5) * 71) % 520);
+      d.style.left = x + "px"; d.style.top = y + "px"; swarm.appendChild(d); dots.push(d);
+    }
+    // build the bucket's steady drip (even intervals, spanning the burst — unchanged).
+    const bdrip = document.getElementById("bdrip");
+    const bd = [];
+    for (let i = 0; i < 7; i++) {
+      const d = document.createElement("div"); d.className = "rq";
+      d.style.left = "1432px"; d.style.top = "632px"; bdrip.appendChild(d); bd.push(d);
+    }
+
+    // GRAPHICS crossfade (continues the cyan bucket; lands in 284.30->285.10 pause).
+    tl.fromTo("#scene-31", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45 }, 0.3);
+    tl.fromTo(".bfill", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+
+    // the bucket's drip runs steady from the start, UNCHANGED through the burst.
+    bd.forEach((d, i) => {
+      const t = 0.6 + i * 0.62;                 // fixed interval, never changes
+      tl.fromTo(d, { opacity: 0, y: 0 }, { opacity: 1, duration: 0.08 }, t);
+      tl.to(d, { y: 110, opacity: 0, duration: 0.5, ease: "power1.in" }, t + 0.03);
+    });
+
+    // "Throw a hundred requests" (285.62; local 1.02) — the swarm SLAMS in (one instant).
+    tl.fromTo(dots, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power2.out",
+      stagger: { amount: 0.32, from: "center" } }, 1.02);
+    // the bucket absorbs them — drift toward the bucket and fade.
+    tl.to(dots, { x: "+=420", y: "+=140", opacity: 0, duration: 0.7, ease: "power1.in",
+      stagger: { amount: 0.4, from: "edges" } }, 2.6);
+
+    // "at a single millisecond" (286.72; local 2.12) — the 100/1ms callout blooms.
+    tl.fromTo(".callout", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out", transformOrigin: "50% 50%" }, 2.12);
+    tl.to(".callout .n", { textShadow: "0 0 44px rgba(103,232,249,0.5)", duration: 0.3 }, 2.4);
+
+    // "and it won't flinch" (288.84; local 4.24) — the calm output, unchanged.
+    tl.fromTo(".calm", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 4.24);
+
+    window.__timelines["scene-31"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 79 — the same bucket throttles you at the gate and keeps a system from strangling itself</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-79 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-79 .eyebrow { position: absolute; left: 0; right: 0; top: 175px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); opacity: 0; }
+
+    #scene-79 .bucketwrap { position: absolute; left: 855px; top: 380px; opacity: 0; }
+    #scene-79 .bkt { fill: rgba(255,181,71,0.07); stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; }
+    #scene-79 .rim { fill: none; stroke: var(--accent); stroke-width: 3.5; }
+
+    #scene-79 .role { position: absolute; top: 430px; width: 600px; opacity: 0; }
+    #scene-79 .roleL { left: 120px; text-align: right; }
+    #scene-79 .roleR { left: 1200px; text-align: left; }
+    #scene-79 .role .arrow { font-family: "Inter"; font-weight: 700; font-size: 40px; color: var(--dim); }
+    #scene-79 .role .t { font-family: "Inter"; font-weight: 700; font-size: 38px; color: var(--fg); line-height: 1.25; margin-top: 6px; }
+    #scene-79 .role .s { font-family: "Inter"; font-weight: 400; font-size: 26px; color: var(--muted); margin-top: 10px; }
+    #scene-79 .role .strangle { color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div id="scene-79" data-composition-id="scene-79" data-width="1920" data-height="1080">
+    <div class="eyebrow">the same bucket</div>
+
+    <div class="bucketwrap" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="720">
+      <svg width="210" height="220" viewBox="0 0 210 220">
+        <ellipse class="rim" cx="105" cy="40" rx="78" ry="14" />
+        <path class="bkt" d="M27,40 L183,40 L160,200 L50,200 Z" />
+        <circle cx="84" cy="150" r="12" fill="#ffb547" /><circle cx="112" cy="135" r="12" fill="#ffb547" />
+        <circle cx="124" cy="168" r="12" fill="#ffb547" /><circle cx="92" cy="178" r="12" fill="#ffb547" />
+      </svg>
+    </div>
+
+    <div class="role roleL" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1540">
+      <span class="arrow">&larr;</span>
+      <div class="t">throttles you at the gate</div>
+      <div class="s">the rate limit you hit</div>
+    </div>
+    <div class="role roleR" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="5440">
+      <span class="arrow">&rarr;</span>
+      <div class="t">keeps a system from <span class="strangle">strangling itself</span></div>
+      <div class="s">self-protection, inside</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-79", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "The same bucket" (629.01->629.59; local 0.72->1.30) — the eyebrow + the bucket center.
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.45 }, 0.5);
+    tl.fromTo(".bucketwrap", { opacity: 0, scale: 0.85, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.72);
+
+    // "that throttles you at the gate" (629.83->630.63; local 1.54->2.34) — the left role.
+    tl.fromTo(".roleL", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 1.54);
+
+    // "keeps a system from strangling itself" (633.73->634.69; local 5.44->6.40) — the right role.
+    tl.fromTo(".roleR", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 5.44);
+
+    window.__timelines["scene-79"] = tl;
+  </script>
+</body>
+</html>

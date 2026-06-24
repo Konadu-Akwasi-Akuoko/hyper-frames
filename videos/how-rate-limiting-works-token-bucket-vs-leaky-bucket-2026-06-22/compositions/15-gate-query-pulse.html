@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 15 — the gate's relentless query</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-15 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+    #scene-15 .eyebrow { position: absolute; top: 200px; left: 0; right: 0; text-align: center;
+      font-family: "Inter"; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-15 .stage { position: relative; width: 360px; height: 360px; display: flex; align-items: center; justify-content: center; margin-top: -60px; }
+    #scene-15 .ring { position: absolute; width: 110px; height: 110px; border-radius: 50%;
+      border: 2px solid var(--accent); opacity: 0; }
+    #scene-15 .gate-node { position: relative; width: 110px; height: 110px; border-radius: 50%; opacity: 0;
+      background: var(--panel); border: 2.5px solid var(--accent);
+      display: flex; align-items: center; justify-content: center; z-index: 2;
+      box-shadow: 0 0 36px rgba(255,181,71,0.28); }
+    #scene-15 .gate-node .glyph { width: 38px; height: 38px; border-radius: 7px; border: 2.5px solid var(--accent); position: relative; }
+    #scene-15 .gate-node .glyph::before, #scene-15 .gate-node .glyph::after { content: ""; position: absolute; background: var(--accent); }
+    #scene-15 .gate-node .glyph::before { left: 50%; top: 6px; bottom: 6px; width: 2.5px; transform: translateX(-50%); }
+    #scene-15 .gate-node .glyph::after { top: 50%; left: 6px; right: 6px; height: 2.5px; transform: translateY(-50%); }
+
+    #scene-15 .counter { position: absolute; top: 660px; left: 0; right: 0; text-align: center; opacity: 0; }
+    #scene-15 .counter .num { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 92px; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
+    #scene-15 .counter .unit { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 34px; color: var(--muted); margin-top: 14px; }
+    #scene-15 .counter .unit b { color: var(--accent); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div id="scene-15" data-composition-id="scene-15" data-width="1920" data-height="1080">
+    <div class="eyebrow">one simple question</div>
+
+    <div class="stage">
+      <div class="ring r0" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3160"></div>
+      <div class="ring r1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3300"></div>
+      <div class="ring r2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3440"></div>
+      <div class="ring r3" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3580"></div>
+      <div class="gate-node" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1150"><div class="glyph"></div></div>
+    </div>
+
+    <div class="counter" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5660">
+      <div class="num">0</div>
+      <div class="unit">queries <b>/ second</b></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const fmt = (n) => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    // GRAPHICS crossfade cover (lands in 147.48->148.14 pause).
+    tl.fromTo("#scene-15", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.5);
+
+    // "The gate asks..." (local 0.5) — the gate node arrives (same amber element as scene 14).
+    tl.fromTo(".gate-node", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)", transformOrigin: "50% 50%" }, 0.7);
+
+    // Relentless machine-speed pulse: 4 concentric rings emanate, fast finite repeat for ~4.5s.
+    tl.set(".ring", { scale: 0.5, opacity: 0 }, 1.0);
+    tl.to(".ring", { scale: 3.0, opacity: 0, keyframes: [
+        { opacity: 0.7, duration: 0.02 }, { opacity: 0, duration: 0.43 }
+      ], duration: 0.45, ease: "power1.out", stagger: 0.11, repeat: 7, transformOrigin: "50% 50%" }, 1.0);
+
+    // counter accelerates to a million, locking on "second" (153.28; local 5.64).
+    tl.fromTo(".counter", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 1.0);
+    const c = { v: 0 };
+    tl.to(c, { v: 1000000, duration: 4.3, ease: "power2.in",
+      onUpdate: () => { document.querySelector("#scene-15 .counter .num").textContent = fmt(c.v) + "+"; } }, 1.2);
+    // settle pop on the locked rate.
+    tl.to(".counter .num", { scale: 1.05, duration: 0.16, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 5.5);
+
+    window.__timelines["scene-15"] = tl;
+  </script>
+</body>
+</html>

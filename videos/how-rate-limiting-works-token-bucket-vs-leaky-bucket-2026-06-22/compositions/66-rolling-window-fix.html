@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 66 — the fix: the rolling window, the kind Cloudflare reaches for</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-66 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+    #scene-66 .eyebrow { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); opacity: 0; margin-bottom: 36px; }
+
+    #scene-66 .hero { font-family: "Inter"; font-weight: 900; font-size: 124px; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
+    #scene-66 .hero .roll { color: var(--accent-2); opacity: 0; display: inline-block; }
+    #scene-66 .hero .win { color: var(--fg); opacity: 0; display: inline-block; }
+
+    #scene-66 .attr { display: flex; align-items: center; gap: 14px; margin-top: 56px; opacity: 0; }
+    #scene-66 .attr .pre { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); }
+    #scene-66 .attr .chip { display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px; border-radius: 12px;
+      background: rgba(244,129,32,0.08); border: 1.5px solid rgba(244,129,32,0.4); }
+    #scene-66 .attr .chip img { width: 38px; height: 38px; display: block; }
+    #scene-66 .attr .chip .nm { font-family: "Inter"; font-weight: 600; font-size: 32px; color: var(--fg); }
+    #scene-66 .attr .post { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div id="scene-66" data-composition-id="scene-66" data-width="1920" data-height="1080">
+    <div class="eyebrow" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="500">the fix</div>
+    <div class="hero"><span class="roll" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1960">rolling&nbsp;</span><span class="win">window</span></div>
+    <div class="attr">
+      <span class="pre">the kind</span>
+      <span class="chip" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4440"><img src="../assets/icons/cloudflare.svg" alt="Cloudflare" /><span class="nm">Cloudflare</span></span>
+      <span class="post">reaches for</span>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — clean section pivot from the dense problem scenes.
+    tl.fromTo("#scene-66", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "To fix this" (536.25; local 0.50) — the eyebrow slides in.
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.50);
+
+    // "the rolling window" (537.71; local 1.96) — ROLLING slides in laterally (the roll), WINDOW scale-blooms.
+    tl.fromTo(".hero .roll", { opacity: 0, x: -34 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.96);
+    tl.fromTo(".hero .win", { opacity: 0, scale: 0.75, transformOrigin: "0% 50%" }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.4)" }, 2.3);
+
+    // "the kind Cloudflare reaches for" (539.89->540.19; local 4.14->4.44) — the attribution chip pops in.
+    tl.fromTo(".attr", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 4.14);
+    tl.fromTo(".attr .chip", { scale: 0.7, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 4.44);
+
+    window.__timelines["scene-66"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 41 — at the cap, 429 dropped on the spot</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-41 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-41 .eyebrow { position: absolute; left: 200px; top: 130px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-41 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+
+    /* gauge — already full at 10/10 */
+    #scene-41 .gauge { position: absolute; left: 360px; top: 270px; width: 140px; height: 440px;
+      border: 3px solid var(--accent-2); border-radius: 12px; opacity: 0; overflow: hidden; }
+    #scene-41 .gauge .lvl { position: absolute; left: 0; right: 0; bottom: 0; top: 0;
+      background: linear-gradient(to top, rgba(103,232,249,0.34), rgba(103,232,249,0.18)); }
+    #scene-41 .capline { position: absolute; left: 330px; top: 268px; width: 200px; height: 0;
+      border-top: 3px solid var(--danger); opacity: 0; }
+    #scene-41 .capnum { position: absolute; left: 230px; top: 224px; width: 100px; text-align: right;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 30px; color: var(--danger); opacity: 0; }
+    #scene-41 .capnum small { display: block; font-size: 18px; color: var(--muted); letter-spacing: 0.1em; }
+
+    #scene-41 .count { position: absolute; left: 560px; top: 380px; width: 380px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 110px; color: var(--accent-2); font-variant-numeric: tabular-nums; line-height: 1; opacity: 0; }
+    #scene-41 .count .cap { color: var(--danger); font-size: 60px; }
+    #scene-41 .countlbl { position: absolute; left: 564px; top: 520px; width: 380px;
+      font-family: "Inter"; font-weight: 400; font-size: 26px; color: var(--muted); opacity: 0; }
+    #scene-41 .countlbl b { color: var(--danger); font-weight: 600; }
+
+    /* incoming request that gets rejected */
+    #scene-41 .req { position: absolute; left: 1080px; top: 320px; width: 460px; height: 78px; border-radius: 14px;
+      background: var(--panel); border: 1.5px solid var(--border); display: flex; align-items: center; padding: 0 26px; opacity: 0; }
+    #scene-41 .req .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--accent-2); margin-right: 18px; flex: none; }
+    #scene-41 .req .t { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; color: var(--fg); }
+
+    #scene-41 .stamp { position: absolute; left: 1230px; top: 430px; padding: 10px 28px; border-radius: 12px;
+      background: rgba(255,107,93,0.14); border: 2px solid var(--danger); opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 44px; color: var(--danger); }
+    #scene-41 .stamp small { font-family: "Inter"; font-weight: 600; font-size: 24px; display: block; color: var(--danger); margin-top: 2px; }
+
+    /* no-queue contrast ghost */
+    #scene-41 .noqueue { position: absolute; left: 1000px; top: 640px; width: 620px; opacity: 0; }
+    #scene-41 .noqueue .qdots { position: relative; height: 40px; }
+    #scene-41 .noqueue .qd { position: absolute; top: 8px; width: 24px; height: 24px; border-radius: 50%; background: var(--dim); }
+    #scene-41 .noqueue .slash { position: absolute; left: -10px; top: 18px; width: 420px; height: 3px; background: var(--danger); transform: rotate(-6deg); transform-origin: left center; }
+    #scene-41 .noqueue .nql { margin-top: 26px; font-family: "Inter"; font-weight: 400; font-size: 28px; color: var(--muted); }
+    #scene-41 .noqueue .nql b { color: var(--danger); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-41" data-composition-id="scene-41" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Kind 02 &middot; at the cap</div>
+
+    <div class="gauge"><div class="lvl"></div></div>
+    <div class="capline" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1100"></div>
+    <div class="capnum">10<small>MAX</small></div>
+
+    <div class="count">10<span class="cap"> / 10</span></div>
+    <div class="countlbl">full &mdash; <b>one more would push past ten</b></div>
+
+    <div class="req" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3100"><span class="dot"></span><span class="t">one more request</span></div>
+    <div class="stamp" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6100">429<small>turned away</small></div>
+
+    <div class="noqueue">
+      <div class="qdots">
+        <div class="qd" style="left:0"></div><div class="qd" style="left:44px"></div>
+        <div class="qd" style="left:88px"></div><div class="qd" style="left:132px"></div>
+        <div class="qd" style="left:176px"></div>
+        <div class="slash" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="8800"></div>
+      </div>
+      <div class="nql">dropped on the spot &mdash; <b>never parked in a line</b></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade. The gauge enters ALREADY full at 10/10 (no fill-up here).
+    tl.fromTo("#scene-41", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".gauge", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.5);
+    tl.fromTo(".capline, .capnum", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.7);
+
+    // "one more would push it past ten" (357.70; local 2.70) — the count at cap + the incoming request.
+    tl.fromTo(".count", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45 }, 1.2);
+    tl.fromTo(".countlbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.4);
+    tl.fromTo(".req", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 2.7);
+
+    // "turned away" (359.52; local 4.52) — the request reddens (rejected).
+    tl.to(".req", { borderColor: "#ff6b5d", duration: 0.3 }, 4.52);
+    tl.to(".req .dot", { backgroundColor: "#ff6b5d", duration: 0.3 }, 4.52);
+
+    // "429" (360.76; local 5.76) — the red stamp overshoots onto it.
+    tl.fromTo(".stamp", { opacity: 0, scale: 1.35 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2.2)", transformOrigin: "50% 50%" }, 5.76);
+
+    // "dropped" (361.78; local 6.78) — the request drops away on the spot.
+    tl.to(".req, .stamp", { y: 240, opacity: 0, rotation: 7, duration: 0.6, ease: "power1.in" }, 6.78);
+
+    // "never parked in a line" (~363.4; local 8.40) — the no-queue contrast.
+    tl.fromTo(".noqueue", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 8.0);
+    tl.fromTo(".noqueue .slash", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 8.4);
+
+    window.__timelines["scene-41"] = tl;
+  </script>
+</body>
+</html>

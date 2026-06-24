@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 44 — no burst, every request filed into one single even line</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-44 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* left half — the burst, negated */
+    #scene-44 .blabel { position: absolute; left: 200px; top: 250px; width: 560px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-44 #burst { position: absolute; left: 160px; top: 340px; width: 620px; height: 360px; }
+    #scene-44 .bn { position: absolute; width: 124px; height: 58px; border-radius: 12px;
+      background: rgba(103,232,249,0.12); border: 1.5px solid var(--accent-2); display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--accent-2); opacity: 0; }
+    #scene-44 .strike { position: absolute; left: 170px; top: 520px; width: 540px; height: 4px; background: var(--danger);
+      transform-origin: 0% 50%; transform: rotate(-22deg) scaleX(0); opacity: 0; border-radius: 2px; }
+
+    /* center divider */
+    #scene-44 .divider { position: absolute; left: 960px; top: 250px; width: 0; height: 540px; border-left: 1.5px solid var(--border); opacity: 0; }
+
+    /* right half — the single even line */
+    #scene-44 .tlabel { position: absolute; left: 1120px; top: 270px; width: 600px;
+      font-family: "Inter"; font-weight: 600; font-size: 32px; color: var(--fg); opacity: 0; }
+    #scene-44 .tlabel b { color: var(--accent-2); }
+    #scene-44 #column { position: absolute; left: 1180px; top: 360px; width: 420px; height: 420px; }
+    #scene-44 .cn { position: absolute; left: 40px; width: 320px; height: 60px; border-radius: 12px;
+      background: rgba(103,232,249,0.12); border: 1.5px solid var(--accent-2); display: flex; align-items: center; padding: 0 22px; opacity: 0; }
+    #scene-44 .cn .ord { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--muted); margin-right: 18px; }
+    #scene-44 .cn .t { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--accent-2); }
+    #scene-44 .connector { position: absolute; left: 28px; top: 0; width: 3px; height: 384px; background: var(--accent-2);
+      transform-origin: 50% 0%; transform: scaleY(0); opacity: 0.7; border-radius: 2px; }
+  </style>
+</head>
+<body>
+  <div id="scene-44" data-composition-id="scene-44" data-width="1920" data-height="1080">
+    <div class="blabel">no burst</div>
+    <div id="burst"></div>
+    <div class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="840"></div>
+
+    <div class="divider"></div>
+
+    <div class="tlabel" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2610">just a steady trickle &mdash; <b>one single even line</b></div>
+    <div id="column"><div class="connector" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="8150"></div></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // left: a crammed, irregular burst cluster (overlapping — visual chaos).
+    const b = document.getElementById("burst");
+    const burstPos = [[120, 0], [300, 36], [200, 130], [400, 170], [60, 210]];
+    const bnodes = [];
+    burstPos.forEach((p) => {
+      const n = document.createElement("div"); n.className = "bn";
+      n.style.left = p[0] + "px"; n.style.top = p[1] + "px"; n.textContent = "req";
+      b.appendChild(n); bnodes.push(n);
+    });
+
+    // right: the orderly vertical single-file column, evenly spaced (the even spacing IS the point).
+    const c = document.getElementById("column");
+    const cnodes = [];
+    for (let i = 0; i < 5; i++) {
+      const n = document.createElement("div"); n.className = "cn"; n.style.top = (i * 76) + "px";
+      n.innerHTML = '<span class="ord">' + String(i + 1).padStart(2, "0") + '</span><span class="t">request</span>';
+      c.appendChild(n); cnodes.push(n);
+    }
+
+    // GRAPHICS crossfade (lands in 382.69->383.35 pause).
+    tl.fromTo("#scene-44", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    // the burst cluster crams in at scene start.
+    tl.fromTo(".blabel", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.4 }, 0.1);
+    bnodes.forEach((n, i) => {
+      tl.fromTo(n, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.26, ease: "power2.out" }, 0.0 + i * 0.07);
+    });
+
+    // "No burst" (383.35; local 0.50) — diagonal strike draws across, cluster dims & reddens.
+    tl.fromTo(".strike", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 0.5);
+    tl.fromTo(".strike", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power3.out" }, 0.5);
+    tl.to(bnodes, { opacity: 0.25, borderColor: "#ff6b5d", color: "#ff6b5d", duration: 0.35 }, 0.55);
+    tl.to(".blabel", { color: "#ff6b5d", duration: 0.3 }, 0.55);
+
+    // divider settles in.
+    tl.fromTo(".divider", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.2);
+
+    // "steady trickle" (385.01; local 2.16) — the right-half label.
+    tl.fromTo(".tlabel", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 2.16);
+
+    // "filed into one single even line" (388.11->390.77; local 5.26->7.92) — column files in, evenly spaced.
+    cnodes.forEach((n, i) => {
+      tl.fromTo(n, { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, 5.26 + i * 0.46);
+    });
+    // "even line" (390.77; local 7.92) — the cyan connector draws down through all five.
+    tl.fromTo(".connector", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out" }, 7.7);
+
+    window.__timelines["scene-44"] = tl;
+  </script>
+</body>
+</html>

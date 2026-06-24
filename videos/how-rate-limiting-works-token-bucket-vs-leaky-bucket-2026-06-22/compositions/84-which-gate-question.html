@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 84 — which gate would you reach for for your own API?</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-84 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 38px; }
+
+    #scene-84 .eyebrow { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px;
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); opacity: 0; }
+    #scene-84 .setup { font-family: "Inter"; font-weight: 500; font-size: 40px; color: var(--muted); opacity: 0; }
+    #scene-84 .q { font-family: "Inter"; font-weight: 800; font-size: 96px; letter-spacing: -0.02em;
+      color: var(--fg); text-align: center; line-height: 1.08; opacity: 0; }
+    #scene-84 .q .hl { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-84" data-composition-id="scene-84" data-width="1920" data-height="1080">
+    <div class="eyebrow" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="950">your turn</div>
+    <div class="setup">if you&rsquo;re the system designer&hellip;</div>
+    <div class="q" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4590">which <span class="hl">gate</span> would you reach for<br />for your own API?</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — opaque, covers the face at the FACE->GRAPHICS seam.
+    tl.fromTo("#scene-84", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "And I'm curious" (674.42; local 0.50) — the eyebrow.
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.5);
+
+    // "if you're a system designer" (676.89; local 2.97) — the setup line.
+    tl.fromTo(".setup", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45 }, 2.97);
+
+    // "which gate would you reach for for your own API?" (677.91; local 3.99) — the payoff question.
+    tl.fromTo(".q", { opacity: 0, y: 22, scale: 0.96, transformOrigin: "50% 50%" },
+      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.4)" }, 3.99);
+
+    window.__timelines["scene-84"] = tl;
+  </script>
+</body>
+</html>

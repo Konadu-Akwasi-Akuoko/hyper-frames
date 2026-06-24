@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 39 — the counter ticks back down on its own</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-39 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-39 .eyebrow { position: absolute; left: 0; right: 0; top: 250px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 20px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); opacity: 0; }
+
+    #scene-39 .bigcount { position: absolute; left: 0; right: 0; top: 372px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 220px; color: var(--accent-2); font-variant-numeric: tabular-nums; line-height: 1; opacity: 0; }
+
+    #scene-39 .rate { position: absolute; left: 0; right: 0; top: 640px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 34px; color: var(--muted); opacity: 0; }
+    #scene-39 .rate .arrow { color: var(--accent-2); }
+
+    #scene-39 .caption { position: absolute; left: 0; right: 0; top: 730px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 32px; color: var(--muted); opacity: 0; font-style: italic; }
+  </style>
+</head>
+<body>
+  <div id="scene-39" data-composition-id="scene-39" data-width="1920" data-height="1080">
+    <div class="eyebrow">Leaky bucket &middot; the meter decays</div>
+    <div class="bigcount" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1600">8</div>
+    <div class="rate" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3630"><span class="arrow">&darr;</span> 2 a second &mdash; on its own</div>
+    <div class="caption" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5840">the gate, quietly forgetting</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const bigEl = () => document.querySelector("#scene-39 .bigcount");
+    const cnt = { v: 8 };
+    const upd = () => { bigEl().textContent = Math.round(cnt.v); };
+
+    // GRAPHICS crossfade (the climbing counter of 38 dissolves into this draining one).
+    tl.fromTo("#scene-39", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+    tl.fromTo(".bigcount", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 0.4);
+
+    // "ticks back down on its own" (342.26; local 1.10) — steps down 8 -> 1, two a second.
+    tl.fromTo(cnt, { v: 8 }, { v: 1, duration: 3.5, ease: "steps(7)", onUpdate: upd }, 1.10);
+
+    // "two a second" (344.34; local 3.18) — the decay-rate label.
+    tl.fromTo(".rate", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 3.18);
+
+    // "the gate quietly forgetting" (346.84; local 5.68) — the counter dims toward zero.
+    tl.fromTo(".caption", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 5.4);
+    tl.to(".bigcount", { opacity: 0.4, duration: 0.9, ease: "power1.inOut" }, 5.68);
+
+    window.__timelines["scene-39"] = tl;
+  </script>
+</body>
+</html>

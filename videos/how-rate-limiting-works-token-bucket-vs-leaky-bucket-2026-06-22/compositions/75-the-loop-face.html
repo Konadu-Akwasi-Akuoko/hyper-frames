@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 75 — here's the loop that ties it all off, guys (face)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-75 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+    #scene-75 .loop { font-family: "Inter"; font-weight: 800; font-size: 200px; line-height: 1; color: var(--accent-2); opacity: 0;
+      text-shadow: 0 0 60px rgba(103,232,249,0.35); }
+    #scene-75 .cap { font-family: "Inter"; font-weight: 700; font-size: 56px; color: var(--fg); opacity: 0; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div id="scene-75" data-composition-id="scene-75" data-width="1920" data-height="1080">
+    <div class="loop" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="500">&#8635;</div>
+    <div class="cap">the loop that ties it all off</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade in — a brief full-circle motif.
+    tl.fromTo("#scene-75", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+
+    // "here's the loop" (605.81; local 1.04) — the loop symbol spins in, caption lands.
+    tl.fromTo(".loop", { opacity: 0, rotation: -180, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 1, rotation: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 0.5);
+    tl.fromTo(".cap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 1.04);
+
+    // "that ties it all off, guys" (606.29; local 1.52) — FACE reveal: fade the scene out to the presenter beneath.
+    tl.to("#scene-75", { opacity: 0, duration: 0.6, ease: "power2.inOut" }, 1.52);
+
+    window.__timelines["scene-75"] = tl;
+  </script>
+</body>
+</html>

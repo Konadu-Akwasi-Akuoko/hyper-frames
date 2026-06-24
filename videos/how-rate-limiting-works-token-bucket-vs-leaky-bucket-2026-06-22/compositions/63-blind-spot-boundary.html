@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 63 — cheap to run, but one blind spot: the boundary</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-63 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-63 .eyebrow { position: absolute; left: 0; right: 0; top: 170px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* left zone — the pro */
+    #scene-63 .pro { position: absolute; left: 90px; top: 440px; width: 760px; text-align: center; opacity: 0; }
+    #scene-63 .pro .pv { font-family: "Inter"; font-weight: 700; font-size: 66px; color: var(--ok); }
+    #scene-63 .pro .ps { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); margin-top: 18px; }
+
+    #scene-63 .vdivider { position: absolute; left: 920px; top: 400px; width: 0; height: 280px; border-left: 1px solid var(--dim); opacity: 0; }
+
+    /* right zone — the flaw */
+    #scene-63 .flaw { position: absolute; left: 980px; top: 360px; width: 850px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 56px; color: var(--danger); opacity: 0; }
+
+    #scene-63 .win { position: absolute; top: 470px; width: 340px; height: 150px;
+      background: var(--panel); border: 1.5px solid var(--border); border-radius: 12px; opacity: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    #scene-63 .wa { left: 1065px; } #scene-63 .wb { left: 1415px; }
+    #scene-63 .win .wn { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    #scene-63 .win .wh { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--dim); margin-top: 8px; }
+
+    #scene-63 .seam { position: absolute; left: 1404px; top: 450px; width: 3px; height: 190px; background: var(--dim); opacity: 0; }
+    #scene-63 .pulse { position: absolute; left: 1355px; top: 505px; width: 100px; height: 100px; border-radius: 50%;
+      border: 3px solid var(--danger); opacity: 0; }
+    #scene-63 .blabel { position: absolute; left: 1255px; top: 656px; width: 300px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px; color: var(--danger); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-63" data-composition-id="scene-63" data-width="1920" data-height="1080">
+    <div class="eyebrow">fixed window &middot; the verdict</div>
+
+    <div class="pro" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="950"><div class="pv">&#10003; cheap to run</div><div class="ps">simple, almost no bookkeeping</div></div>
+
+    <div class="vdivider"></div>
+
+    <div class="flaw" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2980">but &mdash; one blind spot</div>
+    <div class="win wa"><div class="wn">window 1</div><div class="wh">5h budget</div></div>
+    <div class="win wb"><div class="wn">window 2</div><div class="wh">5h budget</div></div>
+    <div class="seam"></div>
+    <div class="pulse"></div>
+    <div class="blabel" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4860">the boundary</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-63", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+
+    // "Cheap to run" (508.07; local 0.50) — the green pro-verdict settles.
+    tl.fromTo(".pro", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.50);
+
+    // "but with one blind spot" (510.15; local 2.58) — pivot: the flaw label + the two windows draw on; pro dims.
+    tl.fromTo(".flaw", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.58);
+    tl.fromTo(".vdivider", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.58);
+    tl.to(".pro", { opacity: 0.45, duration: 0.4 }, 2.7);
+    tl.fromTo(".wa", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.4 }, 2.7);
+    tl.fromTo(".wb", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4 }, 2.85);
+    tl.fromTo(".seam", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.1);
+
+    // "the boundary" (512.03; local 4.46) — the seam fires red: the named blind spot.
+    tl.to(".seam", { backgroundColor: "#ff6b5d", duration: 0.25 }, 4.46);
+    tl.fromTo(".pulse", { opacity: 0.7, scale: 1, transformOrigin: "50% 50%" }, { opacity: 0, scale: 1.8, duration: 0.6, ease: "power2.out" }, 4.46);
+    tl.fromTo(".blabel", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 4.46);
+
+    window.__timelines["scene-63"] = tl;
+  </script>
+</body>
+</html>

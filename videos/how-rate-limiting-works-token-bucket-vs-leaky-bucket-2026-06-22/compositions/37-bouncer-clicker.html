@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 37 — picture a bouncer at the door with a clicker</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-37 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-37 .eyebrow { position: absolute; left: 200px; top: 130px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-37 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+    #scene-37 .picture { position: absolute; left: 200px; top: 178px;
+      font-family: "Inter"; font-weight: 700; font-size: 52px; color: var(--fg); opacity: 0; }
+
+    #scene-37 svg.scene { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-37 .bouncer { opacity: 0; }
+    #scene-37 .door { opacity: 0; }
+    #scene-37 .clicker { opacity: 0; }
+    #scene-37 .clk-num { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 44px; fill: var(--accent-2); }
+
+    #scene-37 .lbl { position: absolute; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; color: var(--muted); opacity: 0; text-align: center; }
+    #scene-37 .lbl.l-b { left: 470px; top: 710px; width: 260px; }
+    #scene-37 .lbl.l-d { left: 820px; top: 730px; width: 240px; }
+    #scene-37 .lbl.l-c { left: 300px; top: 626px; width: 240px; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-37" data-composition-id="scene-37" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Kind 02 &middot; the meter</div>
+    <div class="picture" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1510">Picture this&hellip;</div>
+
+    <svg class="scene" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <!-- the door (a club entrance) -->
+      <g class="door" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4400">
+        <rect x="800" y="240" width="280" height="460" rx="6" fill="none" stroke="#7a8493" stroke-width="4" />
+        <rect x="820" y="262" width="240" height="416" rx="4" fill="rgba(103,232,249,0.05)" />
+        <rect x="820" y="262" width="34" height="416" fill="rgba(103,232,249,0.16)" />
+        <circle cx="1036" cy="470" r="7" fill="#7a8493" />
+      </g>
+
+      <!-- the bouncer (stocky human silhouette: broad shoulders, straight torso, legs) -->
+      <g class="bouncer" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3270">
+        <rect x="544" y="596" width="48" height="100" rx="8" fill="#5a6470" />
+        <rect x="608" y="596" width="48" height="100" rx="8" fill="#5a6470" />
+        <rect x="528" y="398" width="144" height="210" rx="10" fill="#7a8493" />
+        <rect x="492" y="364" width="216" height="54" rx="27" fill="#7a8493" />
+        <rect x="506" y="452" width="188" height="40" rx="20" fill="#5a6470" />
+        <circle cx="600" cy="300" r="44" fill="#7a8493" />
+        <rect x="560" y="290" width="80" height="15" rx="4" fill="#11141b" />
+        <circle cx="648" cy="318" r="6" fill="#5a6470" />
+      </g>
+
+      <!-- the clicker (tally counter) in hand -->
+      <g class="clicker" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="5420">
+        <rect x="372" y="478" width="100" height="124" rx="14" fill="#11141b" stroke="#7a8493" stroke-width="2" />
+        <circle cx="422" cy="472" r="11" fill="#5a6470" />
+        <rect x="388" y="498" width="68" height="48" rx="6" fill="#0b0d12" stroke="rgba(103,232,249,0.4)" stroke-width="1.5" />
+        <text class="clk-num" x="422" y="534" text-anchor="middle">0</text>
+      </g>
+    </svg>
+
+    <div class="lbl l-b">the bouncer</div>
+    <div class="lbl l-d">the door</div>
+    <div class="lbl l-c">the clicker</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS-style opaque scene (covers the full-frame face); the face is lifted to a
+    // PIP inset by the MAIN timeline in index.html. Crossfade in (lands in 326.74->327.40 pause).
+    tl.fromTo("#scene-37", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "I want you to picture this" (327.96; local 1.06) — the cue text.
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4 }, 0.5);
+    tl.fromTo(".picture", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 1.06);
+
+    // "a bouncer" (329.72; local 2.82) — the bouncer scale-blooms up.
+    tl.fromTo(".bouncer", { opacity: 0, scale: 0.7, transformOrigin: "50% 100%" },
+      { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.5)", transformOrigin: "50% 100%" }, 2.82);
+    tl.fromTo(".lbl.l-b", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35 }, 3.2);
+
+    // "at the door" (330.80; local 3.90) — the door materializes behind.
+    tl.fromTo(".door", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 3.90);
+    tl.fromTo(".lbl.l-d", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35 }, 4.3);
+
+    // "with a clicker" (331.98; local 5.08) — the clicker pops into hand, counter at 0.
+    tl.fromTo(".clicker", { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" },
+      { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2)", transformOrigin: "50% 50%" }, 5.08);
+    tl.fromTo(".lbl.l-c", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35 }, 5.4);
+
+    window.__timelines["scene-37"] = tl;
+  </script>
+</body>
+</html>

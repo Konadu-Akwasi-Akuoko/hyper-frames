@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 74 — no seam, no line left to stand on either side of the reset</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-74 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-74 .eyebrow { position: absolute; left: 0; right: 0; top: 200px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-74 .blk { position: absolute; top: 400px; width: 400px; height: 170px;
+      background: var(--panel); border: 1.5px solid var(--border); border-radius: 12px; opacity: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    #scene-74 .b1 { left: 560px; } #scene-74 .b2 { left: 965px; }
+
+    #scene-74 .seam { position: absolute; left: 959px; top: 388px; width: 4px; height: 194px; background: var(--danger);
+      box-shadow: 0 0 20px rgba(255,107,93,0.5); transform-origin: 50% 50%; opacity: 0; }
+    #scene-74 .seamlbl { position: absolute; left: 810px; top: 600px; width: 300px; text-align: center; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; color: var(--danger); }
+
+    #scene-74 .contband { position: absolute; left: 560px; top: 457px; width: 805px; height: 56px;
+      background: rgba(103,232,249,0.16); border: 1.5px solid var(--accent-2); border-radius: 10px; transform: scaleX(0); transform-origin: 50% 50%; opacity: 0; }
+
+    #scene-74 .head { position: absolute; left: 0; right: 0; top: 640px; text-align: center; opacity: 0;
+      font-family: "Inter"; font-weight: 800; font-size: 64px; letter-spacing: -0.01em; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-74" data-composition-id="scene-74" data-width="1920" data-height="1080">
+    <div class="eyebrow">the boundary exploit &mdash; gone</div>
+
+    <div class="blk b1">window 1</div>
+    <div class="blk b2">window 2</div>
+    <div class="seam" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1960"></div>
+    <div class="seamlbl">the boundary</div>
+
+    <div class="contband" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3400"></div>
+    <div class="head" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4800">no line left to stand on</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — the two-window seam returns as a callback.
+    tl.fromTo("#scene-74", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo([".b1", ".b2"], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 0.4);
+    tl.fromTo([".seam", ".seamlbl"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.6);
+
+    // "there is no seam" (597.91->598.43; local 1.96->2.48) — the red boundary seam collapses and vanishes.
+    tl.to(".seam", { scaleY: 0, opacity: 0, duration: 0.5, ease: "power2.in" }, 1.96);
+    tl.to(".seamlbl", { opacity: 0, duration: 0.4 }, 1.96);
+
+    // "no line left to stand on" (599.35->600.51; local 3.40->4.56) — the windows merge into one continuous band.
+    tl.to([".b1", ".b2"], { borderColor: "rgba(103,232,249,0.25)", backgroundColor: "rgba(103,232,249,0.04)", color: "#3a4150", duration: 0.5 }, 3.40);
+    tl.fromTo(".contband", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.9, ease: "power2.out" }, 3.40);
+
+    // "either side ... in front of the reset window" (600.75->603.59; local 4.80->7.64) — the verdict lands.
+    tl.fromTo(".head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.80);
+
+    window.__timelines["scene-74"] = tl;
+  </script>
+</body>
+</html>

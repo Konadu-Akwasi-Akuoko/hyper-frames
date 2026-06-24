@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 86 — tell me in the comments</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-86 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; align-items: center; justify-content: center; }
+
+    #scene-86 .box { display: flex; align-items: center; gap: 30px; width: 1180px; opacity: 0; }
+    #scene-86 .avatar { flex: none; width: 96px; height: 96px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--danger)); }
+    #scene-86 .field { flex: 1; border-bottom: 3px solid var(--accent-2); padding: 18px 6px 22px;
+      display: flex; align-items: baseline; }
+    #scene-86 .field .txt { font-family: "Inter"; font-weight: 600; font-size: 56px; color: var(--fg); }
+    #scene-86 .field .cursor { display: inline-block; width: 4px; height: 56px; background: var(--accent-2);
+      margin-left: 8px; transform: translateY(8px); }
+  </style>
+</head>
+<body>
+  <div id="scene-86" data-composition-id="scene-86" data-width="1920" data-height="1080">
+    <div class="box" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="950">
+      <div class="avatar"></div>
+      <div class="field"><span class="txt">tell me in the comments</span><span class="cursor"></span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — opaque, covers the face at the seam.
+    tl.fromTo("#scene-86", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+
+    // "Tell me in the comments" (687.39; local 0.50) — the comment field types in.
+    tl.fromTo(".box", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.5);
+    // blinking cursor (finite)
+    tl.to(".cursor", { opacity: 0, duration: 0.4, ease: "steps(1)", yoyo: true, repeat: 5 }, 1.0);
+
+    window.__timelines["scene-86"] = tl;
+  </script>
+</body>
+</html>

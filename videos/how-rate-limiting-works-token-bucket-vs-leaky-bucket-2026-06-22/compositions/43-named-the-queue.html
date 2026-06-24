@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 43 — the first leaky bucket is called the queue</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-43 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-43 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-43 .eyebrow .n { color: var(--accent-2); }
+
+    #scene-43 .title { position: absolute; left: 0; right: 0; top: 256px; text-align: center;
+      font-family: "Inter"; font-weight: 900; font-size: 150px; color: var(--accent-2); letter-spacing: -0.01em; line-height: 1;
+      clip-path: inset(0 100% 0 0); }
+    #scene-43 .sub { position: absolute; left: 0; right: 0; top: 452px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 34px; color: var(--fg); opacity: 0; }
+    #scene-43 .sub b { color: var(--accent-2); font-weight: 600; }
+
+    #scene-43 .qlabel { position: absolute; left: 0; right: 0; top: 588px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--muted); letter-spacing: 0.06em; opacity: 0; }
+    #scene-43 #queue { position: absolute; left: 0; right: 0; top: 648px; height: 80px; }
+    #scene-43 .node { position: absolute; top: 0; width: 120px; height: 64px; border-radius: 12px;
+      background: rgba(103,232,249,0.12); border: 1.5px solid var(--accent-2); display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--accent-2); opacity: 0; }
+    #scene-43 .arrow { position: absolute; top: 678px; left: 1392px; width: 0; height: 0;
+      border-top: 14px solid transparent; border-bottom: 14px solid transparent; border-left: 20px solid var(--muted); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-43" data-composition-id="scene-43" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="n">01</span> &middot; leaky bucket</div>
+    <div class="title" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6390">THE QUEUE</div>
+    <div class="sub" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="8900">it does exactly what the <b>name promises</b></div>
+
+    <div class="qlabel" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1900">you can line them up &mdash; one single file</div>
+    <div id="queue"></div>
+    <div class="arrow"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // build the single-file queue (6 request nodes, centered).
+    const q = document.getElementById("queue");
+    const nodes = [];
+    const N = 6, w = 120, gap = 20, total = N * w + (N - 1) * gap, x0 = (1920 - total) / 2;
+    for (let i = 0; i < N; i++) {
+      const n = document.createElement("div"); n.className = "node";
+      n.style.left = (x0 + i * (w + gap)) + "px"; n.textContent = "req";
+      q.appendChild(n); nodes.push(n);
+    }
+
+    // GRAPHICS crossfade (lands in 372.57->373.27 pause).
+    tl.fromTo("#scene-43", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.3);
+
+    // "you can line them up" (374.47; local 1.70) — request nodes slide in, single file.
+    tl.fromTo(".qlabel", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.5);
+    nodes.forEach((n, i) => {
+      tl.fromTo(n, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 1.70 + i * 0.16);
+    });
+    tl.fromTo(".arrow", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.4 }, 2.7);
+
+    // "the queue" (378.51; local 5.74) — the name mask-wipes in, left to right.
+    tl.fromTo(".title", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.65, ease: "power2.out" }, 5.74);
+
+    // "it does exactly what the name promises" (381.49; local 8.72).
+    tl.fromTo(".sub", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 8.4);
+
+    window.__timelines["scene-43"] = tl;
+  </script>
+</body>
+</html>

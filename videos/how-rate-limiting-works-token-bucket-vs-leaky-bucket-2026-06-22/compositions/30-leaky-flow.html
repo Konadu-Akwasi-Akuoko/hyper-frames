@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 30 — leaky bucket: pour in, drain at a fixed rate</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-30 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-30 .eyebrow { position: absolute; left: 0; right: 0; top: 120px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* inflow label (top) + outflow label (bottom) */
+    #scene-30 .inlbl { position: absolute; left: 1110px; top: 300px; font-family: "Inter"; font-weight: 500; font-size: 26px; color: var(--fg); opacity: 0; }
+    #scene-30 .inlbl small { display: block; font-weight: 400; font-size: 20px; color: var(--muted); }
+    #scene-30 .outlbl { position: absolute; left: 1110px; top: 700px; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; color: var(--accent-2); opacity: 0; }
+    #scene-30 .outlbl small { display: block; font-family: "Inter"; font-weight: 400; font-size: 20px; color: var(--muted); letter-spacing: 0; }
+
+    /* bucket SVG (carried from scene 29 geometry) */
+    #scene-30 svg.bk { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-30 svg.bk .wall { fill: none; stroke: var(--accent-2); stroke-width: 4; stroke-linecap: round; }
+    #scene-30 svg.bk .rim { fill: rgba(103,232,249,0.04); stroke: var(--accent-2); stroke-width: 4; }
+
+    /* fill inside the bucket */
+    #scene-30 .fill { position: absolute; left: 880px; top: 360px; width: 200px; height: 300px;
+      background: linear-gradient(to bottom, rgba(103,232,249,0.18), rgba(103,232,249,0.34));
+      border-radius: 0 0 22px 22px; transform-origin: 50% 100%; transform: scaleY(0); }
+
+    /* drops */
+    #scene-30 .drop { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 8px rgba(103,232,249,0.6); opacity: 0; }
+    #scene-30 #in, #scene-30 #out { position: absolute; inset: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-30" data-composition-id="scene-30" data-width="1920" data-height="1080">
+    <div class="eyebrow">Approach 02 &middot; Leaky bucket</div>
+
+    <svg class="bk" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <ellipse class="rim" cx="980" cy="342" rx="104" ry="16" />
+      <path class="wall wallL" d="M 876 342 L 876 652 Q 876 662 886 662 L 944 662" />
+      <path class="wall wallR" d="M 1084 342 L 1084 652 Q 1084 662 1074 662 L 1016 662" />
+    </svg>
+    <div class="fill" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3300"></div>
+
+    <div id="in"></div>
+    <div id="out"></div>
+
+    <div class="inlbl" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1720">requests pour in<small>bursty &mdash; many at once</small></div>
+    <div class="outlbl" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6080">fixed rate<small>one drop, every tick &mdash; unchanging</small></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // build inflow drops (bursty cluster from above the rim) and outflow drops (metronomic from the hole).
+    const inWrap = document.getElementById("in");
+    const outWrap = document.getElementById("out");
+    const inX = [958, 1002, 940, 1020, 978, 996];          // jittered around the rim center
+    const inT = [1.32, 1.50, 1.70, 2.02, 2.34, 2.74];      // irregular = bursty
+    const inDrops = inX.map((x, i) => {
+      const d = document.createElement("div"); d.className = "drop";
+      d.style.left = x + "px"; d.style.top = "250px"; inWrap.appendChild(d); return d;
+    });
+    const outDrops = [];
+    const outT = [];
+    for (let i = 0; i < 8; i++) {                            // even 0.46s spacing = unchanging rate
+      const d = document.createElement("div"); d.className = "drop";
+      d.style.left = "971px"; d.style.top = "664px"; outWrap.appendChild(d); outDrops.push(d);
+      outT.push(3.50 + i * 0.46);
+    }
+
+    // GRAPHICS crossfade (continues the cyan bucket from scene 29; lands in 276.48->277.62 pause).
+    tl.fromTo("#scene-30", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.3);
+
+    // "requests pour in from the top" (278.44; local 1.32) — bursty inflow cluster.
+    tl.fromTo(".inlbl", { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.4 }, 1.32);
+    inDrops.forEach((d, i) => {
+      const t = inT[i];
+      tl.fromTo(d, { opacity: 0, y: 0 }, { opacity: 1, duration: 0.1 }, t);
+      tl.to(d, { y: 235, opacity: 0, duration: 0.5, ease: "power1.in" }, t + 0.04);
+    });
+    // bucket fills partway from the inflow.
+    tl.fromTo(".fill", { scaleY: 0 }, { scaleY: 0.5, duration: 1.6, ease: "power1.out" }, 1.6);
+
+    // "they drain out the hole at one fixed unchanging rate" (280.62/282.80/283.34; local 3.50/5.68/6.22).
+    outDrops.forEach((d, i) => {
+      const t = outT[i];
+      tl.fromTo(d, { opacity: 0, y: 0 }, { opacity: 1, duration: 0.08 }, t);
+      tl.to(d, { y: 126, opacity: 0, duration: 0.5, ease: "power1.in" }, t + 0.03);
+    });
+    // the fill slowly settles as it drains at the steady rate.
+    tl.to(".fill", { scaleY: 0.34, duration: 3.6, ease: "none" }, 3.5);
+    // rate label + a metronome pulse on the rim to mark "unchanging".
+    tl.fromTo(".outlbl", { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.4 }, 5.68);
+    tl.to(".outlbl", { textShadow: "0 0 22px rgba(103,232,249,0.4)", duration: 0.3 }, 6.22);
+
+    window.__timelines["scene-30"] = tl;
+  </script>
+</body>
+</html>

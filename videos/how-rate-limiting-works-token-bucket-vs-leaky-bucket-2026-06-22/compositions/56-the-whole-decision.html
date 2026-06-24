@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 56 — one allows a burst, the other forces a trickle: the whole decision</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-56 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-56 .line { position: absolute; left: 0; right: 0; text-align: center;
+      font-family: "Inter"; font-weight: 900; font-size: 100px; letter-spacing: -0.01em; line-height: 1.0; text-transform: uppercase; opacity: 0; }
+    #scene-56 .lA { top: 390px; color: var(--accent); }
+    #scene-56 .lB { top: 540px; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-56" data-composition-id="scene-56" data-width="1920" data-height="1080">
+    <div class="line lA" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1150">one allows a burst</div>
+    <div class="line lB" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2550">the other forces a trickle</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS — opaque canvas, the face runs hidden beneath.
+    tl.fromTo("#scene-56", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+
+    // "One allows a burst" (457.17->457.90; local 0.70->1.43) — amber line slides in from the left, plants.
+    tl.fromTo(".lA", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.70);
+
+    // "the other forces a trickle" (458.57->459.47; local 2.10->3.00) — cyan line slides in from the right, plants.
+    tl.fromTo(".lB", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.10);
+
+    // "That's the whole decision here, guys" (459.95; local 3.48) — MODE→FACE:
+    // the type clears and the whole scene fades to transparent, revealing the talking-head beneath
+    // for the direct-address closer (the face seeks global time on its own locked layer).
+    tl.to(".line", { opacity: 0, y: -20, duration: 0.35, ease: "power2.in" }, 3.28);
+    tl.to("#scene-56", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 3.48);
+
+    window.__timelines["scene-56"] = tl;
+  </script>
+</body>
+</html>

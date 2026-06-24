@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 42 — idle, decay opens headroom for two more</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-42 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-42 .eyebrow { position: absolute; left: 200px; top: 130px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-42 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+
+    #scene-42 #gauge { position: absolute; left: 360px; top: 280px; width: 130px; height: 410px; opacity: 0; }
+    #scene-42 .seg { position: absolute; left: 0; width: 130px; height: 36px; border-radius: 5px;
+      background: rgba(103,232,249,0.30); border: 1.5px solid var(--accent-2); }
+    #scene-42 .capnum { position: absolute; left: 226px; top: 252px; width: 100px; text-align: right;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--muted); opacity: 0; }
+
+    #scene-42 .count { position: absolute; left: 560px; top: 372px; width: 360px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 130px; color: var(--accent-2); font-variant-numeric: tabular-nums; line-height: 1; opacity: 0; }
+    #scene-42 .countlbl { position: absolute; left: 564px; top: 532px; width: 420px;
+      font-family: "Inter"; font-weight: 400; font-size: 28px; color: var(--muted); opacity: 0; }
+    #scene-42 .countlbl b { color: var(--ok); font-weight: 600; }
+
+    /* no-queue ghost (fades early) */
+    #scene-42 .noqueue { position: absolute; left: 564px; top: 620px; width: 460px; opacity: 0; }
+    #scene-42 .noqueue .qd { display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: var(--dim); margin-right: 14px; }
+    #scene-42 .noqueue .nql { font-family: "Inter"; font-weight: 400; font-size: 24px; color: var(--muted); font-style: italic; margin-top: 8px; }
+
+    /* the two admitted (right) */
+    #scene-42 .admit-head { position: absolute; left: 1080px; top: 320px; width: 560px;
+      font-family: "Inter"; font-weight: 600; font-size: 34px; color: var(--fg); opacity: 0; }
+    #scene-42 .admit-head b { color: var(--ok); }
+    #scene-42 .arow { position: absolute; left: 1080px; width: 520px; height: 70px; border-radius: 12px;
+      background: rgba(125,216,125,0.08); border: 1.5px solid var(--ok); display: flex; align-items: center; padding: 0 24px; opacity: 0; }
+    #scene-42 .arow .dot { width: 16px; height: 16px; border-radius: 50%; background: var(--ok); margin-right: 18px; flex: none; }
+    #scene-42 .arow .t { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--fg); }
+    #scene-42 .arow .ok { margin-left: auto; font-family: "Inter"; font-weight: 600; font-size: 24px; color: var(--ok); }
+  </style>
+</head>
+<body>
+  <div id="scene-42" data-composition-id="scene-42" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Idle &middot; the counter decays, headroom opens</div>
+
+    <div id="gauge"></div>
+    <div class="capnum">10 cap</div>
+
+    <div class="count" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5450">10</div>
+    <div class="countlbl">idle a second &mdash; <b>two slots free up</b></div>
+
+    <div class="noqueue"><span class="qd"></span><span class="qd"></span><span class="qd"></span><div class="nql">nobody waits here &mdash; no line</div></div>
+
+    <div class="admit-head" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6750">the door opens for <b>two more</b></div>
+    <div class="arow a1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7750"><span class="dot"></span><span class="t">request</span><span class="ok">&check; admitted</span></div>
+    <div class="arow a2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="8000"><span class="dot"></span><span class="t">request</span><span class="ok">&check; admitted</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // build the 10-segment gauge (bottom-up: index 0 bottom, 9 top).
+    const g = document.getElementById("gauge");
+    const segs = [];
+    for (let i = 0; i < 10; i++) {
+      const s = document.createElement("div"); s.className = "seg";
+      s.style.top = ((9 - i) * 41) + "px";
+      g.appendChild(s); segs.push(s);
+    }
+    gsap.set(".arow.a1", { top: 410 }); gsap.set(".arow.a2", { top: 492 });
+
+    const cEl = () => document.querySelector("#scene-42 .count");
+
+    // GRAPHICS crossfade — gauge enters still FULL at 10 (continuity from the at-cap beat).
+    tl.fromTo("#scene-42", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4 }, 0.3);
+    tl.fromTo("#gauge, .capnum, .count", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.4);
+
+    // "Nobody waits here" (365.20; local 0.50) — the no-queue reinforcement, fades before the decay.
+    tl.fromTo(".noqueue", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);
+    tl.to(".noqueue", { opacity: 0, duration: 0.5 }, 2.4);
+
+    // "Idle for a second" (366.77; local 2.07) — a faint idle pulse on the gauge.
+    tl.to("#gauge", { opacity: 0.78, duration: 0.4, yoyo: true, repeat: 1 }, 2.07);
+
+    // "the counter leaps from ten to eight" (369.25/369.97; local 4.55/5.27) — top 2 segs empty out.
+    // counter text via onUpdate (seek-safe — gsap.seek suppresses .call callbacks).
+    const cnt = { v: 10 };
+    const upd = () => { cEl().textContent = Math.round(cnt.v); };
+    tl.to(segs[9], { backgroundColor: "rgba(58,65,80,0)", borderColor: "#3a4150", duration: 0.2 }, 4.55);
+    tl.to(cnt, { v: 9, duration: 0.18, ease: "none", snap: { v: 1 }, onUpdate: upd }, 4.55);
+    tl.to(segs[8], { backgroundColor: "rgba(58,65,80,0)", borderColor: "#3a4150", duration: 0.2 }, 5.27);
+    tl.to(cnt, { v: 8, duration: 0.18, ease: "none", snap: { v: 1 }, onUpdate: upd }, 5.27);
+    tl.fromTo(".countlbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 5.4);
+
+    // "the door opens for two more" (371.05/372.11; local 6.35/7.41) — freed slots bloom green, 2 admitted.
+    tl.to([segs[8], segs[9]], { backgroundColor: "rgba(125,216,125,0.28)", borderColor: "#7dd87d", duration: 0.4 }, 6.35);
+    tl.fromTo(".admit-head", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4 }, 6.35);
+    tl.fromTo(".arow.a1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.34, ease: "power2.out" }, 7.41);
+    tl.fromTo(".arow.a2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.34, ease: "power2.out" }, 7.66);
+
+    window.__timelines["scene-42"] = tl;
+  </script>
+</body>
+</html>

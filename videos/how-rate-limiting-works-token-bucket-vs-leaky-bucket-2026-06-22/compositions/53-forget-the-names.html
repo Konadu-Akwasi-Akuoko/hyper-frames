@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 53 — forget the names, here's the only choice that matters</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-53 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* the three dismissed names */
+    #scene-53 .names { position: absolute; left: 0; right: 0; top: 470px; text-align: center; }
+    #scene-53 .nm { display: inline-block; margin: 0 28px; font-family: "Inter"; font-weight: 600; font-size: 40px; opacity: 0; }
+    #scene-53 .nm.lb { color: var(--accent-2); } #scene-53 .nm.tb { color: var(--accent); } #scene-53 .nm.ct { color: var(--accent-2); }
+
+    /* the pivot heading */
+    #scene-53 .heading { position: absolute; left: 0; right: 0; top: 400px; text-align: center;
+      font-family: "Inter"; font-weight: 900; font-size: 104px; color: var(--fg); letter-spacing: -0.01em; line-height: 1.05; text-transform: uppercase;
+      clip-path: inset(0 100% 0 0); }
+    #scene-53 .heading .hl { display: block; }
+    #scene-53 .heading .em { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-53" data-composition-id="scene-53" data-width="1920" data-height="1080">
+    <div class="names" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1380">
+      <span class="nm lb">leaky bucket</span><span class="nm tb">token bucket</span><span class="nm ct">counter</span>
+    </div>
+    <div class="heading" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3290"><span class="hl">the only choice</span><span class="hl">that <span class="em">matters</span></span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — the three names appear briefly (callback to what we've named).
+    tl.fromTo("#scene-53", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".nm", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.06 }, 0.1);
+
+    // "forget the names" (436.79; local 0.98) — the names sweep off-frame to the left.
+    tl.to(".nm", { opacity: 0, x: -80, duration: 0.4, ease: "power2.in", stagger: 0.05 }, 0.98);
+
+    // "the only choice that matters" (438.48; local 2.67) — the pivot heading wipes in.
+    tl.fromTo(".heading", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.62, ease: "power2.out" }, 2.67);
+
+    window.__timelines["scene-53"] = tl;
+  </script>
+</body>
+</html>

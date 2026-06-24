@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 73 — no single reset to wait for, unlike a fixed cap</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-73 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+    #scene-73 .eyebrow { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; margin-bottom: 44px; }
+
+    #scene-73 .chipwrap { position: relative; opacity: 0; margin-bottom: 56px; }
+    #scene-73 .chip { display: inline-flex; align-items: center; gap: 14px; padding: 18px 38px; border-radius: 14px;
+      background: var(--panel); border: 1.5px solid rgba(255,107,93,0.45); }
+    #scene-73 .chip .lbl { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); }
+    #scene-73 .chip .cd { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 34px; color: var(--danger); font-variant-numeric: tabular-nums; }
+    #scene-73 .xstamp { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) scale(0.5); opacity: 0;
+      font-family: "Inter"; font-weight: 900; font-size: 120px; color: var(--accent-2); text-shadow: 0 0 40px rgba(103,232,249,0.4); }
+
+    #scene-73 .head { font-family: "Inter"; font-weight: 800; font-size: 76px; letter-spacing: -0.01em; color: var(--accent-2); opacity: 0; text-align: center; }
+    #scene-73 .sub { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); opacity: 0; margin-top: 26px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="scene-73" data-composition-id="scene-73" data-width="1920" data-height="1080">
+    <div class="eyebrow">rolling window</div>
+    <div class="chipwrap">
+      <span class="chip"><span class="lbl">&#8635; reset in</span><span class="cd">3:18:00</span></span>
+      <span class="xstamp" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="850">&#10005;</span>
+    </div>
+    <div class="head" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="1650">no single reset to wait for</div>
+    <div class="sub">no fixed cap to count down to, the way Claude Code's does</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — the lockout countdown returns as a callback, then is dismissed.
+    tl.fromTo("#scene-73", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".chipwrap", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 0.4);
+
+    // "No single reset to wait for" (589.67->590.85; local 0.85->2.03) — a cyan ✕ stamps the countdown out; headline lands.
+    tl.to(".chip", { opacity: 0.4, duration: 0.4 }, 0.85);
+    tl.fromTo(".xstamp", { opacity: 0, scale: 0.5, rotation: -8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.4)" }, 0.85);
+    tl.fromTo(".head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.65);
+
+    // "as we have in CloudCode" (592.35; local 3.53) — the fixed-cap comparison subtext.
+    tl.fromTo(".sub", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 3.53);
+
+    window.__timelines["scene-73"] = tl;
+  </script>
+</body>
+</html>

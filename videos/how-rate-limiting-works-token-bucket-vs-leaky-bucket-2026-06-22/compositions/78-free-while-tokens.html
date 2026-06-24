@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 78 — free to retry while there are tokens; when they run out it stops, no piling on</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-78 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-78 .eyebrow { position: absolute; left: 0; right: 0; top: 180px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-78 .bucketwrap { position: absolute; left: 810px; top: 330px; opacity: 0; }
+    #scene-78 .bkt { fill: rgba(255,181,71,0.06); stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; }
+    #scene-78 .rim { fill: none; stroke: var(--accent); stroke-width: 3.5; }
+
+    #scene-78 .lbl { position: absolute; left: 0; right: 0; top: 640px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 44px; }
+    #scene-78 .freelbl { color: var(--ok); opacity: 0; }
+    #scene-78 .stoplbl { color: var(--danger); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-78" data-composition-id="scene-78" data-width="1920" data-height="1080">
+    <div class="eyebrow">token bucket &middot; on retry</div>
+
+    <div class="bucketwrap">
+      <svg width="300" height="280" viewBox="0 0 300 280">
+        <ellipse class="rim" cx="150" cy="50" rx="100" ry="18" />
+        <path class="bkt" d="M50,50 L250,50 L222,260 L78,260 Z" />
+        <g id="tokens">
+          <circle class="tok" cx="118" cy="180" r="15" fill="#ffb547" />
+          <circle class="tok" cx="160" cy="160" r="15" fill="#ffb547" />
+          <circle class="tok" cx="186" cy="200" r="15" fill="#ffb547" />
+          <circle class="tok" cx="128" cy="220" r="15" fill="#ffb547" />
+          <circle class="tok" cx="170" cy="225" r="15" fill="#ffb547" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="lbl freelbl" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="500">&#10003; free to retry while there are tokens</div>
+    <div class="lbl stoplbl" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4740">&#10005; tokens out &mdash; it stops, no piling on</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-78", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".bucketwrap", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 0.35);
+
+    // "Free to retry while there are tokens" (622.01->623.89; local 0.50->2.38) — retries consume tokens, allowed.
+    tl.fromTo(".freelbl", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.5);
+    tl.to(".tok", { opacity: 0, y: 34, duration: 0.32, stagger: 0.66, ease: "power1.in" }, 0.7);
+
+    // "the moment that they run out" (625.45->625.99; local 3.94->4.48) — bucket empty, the free state clears.
+    tl.to(".freelbl", { opacity: 0, duration: 0.4 }, 3.94);
+
+    // "it stops retrying instead of piling on" (626.25->627.61; local 4.74->6.10) — the stop verdict, no piling on.
+    tl.to(".bkt", { stroke: "#ff6b5d", duration: 0.35 }, 4.74);
+    tl.to(".rim", { stroke: "#ff6b5d", duration: 0.35 }, 4.74);
+    tl.fromTo(".stoplbl", { opacity: 0, y: 8, scale: 0.9, transformOrigin: "50% 50%" }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 4.74);
+
+    window.__timelines["scene-78"] = tl;
+  </script>
+</body>
+</html>

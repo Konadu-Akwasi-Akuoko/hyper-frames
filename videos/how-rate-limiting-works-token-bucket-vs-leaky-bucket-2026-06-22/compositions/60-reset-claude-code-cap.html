@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 60 — reset all at once when the stretch is up; your Claude Code cap works this way</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-60 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-60 .headline { position: absolute; left: 0; right: 0; top: 210px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 64px; color: var(--fg); letter-spacing: -0.01em; opacity: 0; }
+    #scene-60 .headline b { color: var(--ok); }
+
+    #scene-60 .win { position: absolute; top: 440px; width: 700px; height: 150px;
+      border: 1.5px solid var(--border); border-radius: 14px; opacity: 0; }
+    #scene-60 .w1 { left: 180px; } #scene-60 .w2 { left: 1040px; }
+    #scene-60 .fill { position: absolute; left: 10px; top: 10px; height: 130px; border-radius: 8px;
+      background: rgba(125,216,125,0.55); box-shadow: 0 0 24px rgba(125,216,125,0.22); }
+    #scene-60 .wlabel { position: absolute; top: 612px; width: 700px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-60 .wlabel span { color: var(--dim); }
+    #scene-60 .wl1 { left: 180px; } #scene-60 .wl2 { left: 1040px; }
+
+    #scene-60 .boundary { position: absolute; left: 939px; top: 410px; width: 2px; height: 210px; background: var(--dim); transform: scaleY(0); transform-origin: 50% 100%; }
+    #scene-60 .rtick { position: absolute; left: 840px; top: 366px; width: 200px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; color: var(--muted); opacity: 0; }
+
+    #scene-60 .ccpill { position: absolute; left: 0; right: 0; top: 712px; text-align: center; opacity: 0; }
+    #scene-60 .ccpill .cc { display: inline-block; padding: 16px 38px; border-radius: 14px;
+      background: var(--panel); border: 1.5px solid var(--border); }
+    #scene-60 .ccpill .eyb { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 20px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    #scene-60 .ccpill .nm { font-family: "Inter"; font-weight: 700; font-size: 32px; color: var(--fg); margin-left: 14px; }
+  </style>
+</head>
+<body>
+  <div id="scene-60" data-composition-id="scene-60" data-width="1920" data-height="1080">
+    <div class="headline">reset &mdash; <b>all at once</b></div>
+
+    <div class="win w1"><div class="fill f1" style="width: 96px;"></div></div>
+    <div class="win w2"><div class="fill f2" style="width: 680px;" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1100"></div></div>
+
+    <div class="boundary"></div>
+    <div class="rtick" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2480">&#8635; reset</div>
+
+    <div class="wlabel wl1">window 1 &middot; <span>almost out</span></div>
+    <div class="wlabel wl2">window 2 &middot; full again</div>
+
+    <div class="ccpill" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4390"><span class="cc"><span class="eyb">your</span><span class="nm">Claude Code</span><span class="eyb" style="margin-left:14px;">cap &mdash; same thing</span></span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — window 1 (nearly spent) + the boundary are the opening frame.
+    tl.fromTo("#scene-60", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo([".w1", ".w2"], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 }, 0.3);
+    tl.to(".boundary", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 0.4);
+    tl.fromTo(".wl1", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+
+    // window 2 starts EMPTY (its budget will snap back).
+    tl.set(".f2", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+
+    // "Reset all at once" (485.31; local 0.94) — window 2's budget SNAPS back to full in one beat.
+    tl.fromTo(".f2", { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power4.out" }, 0.94);
+    tl.fromTo(".headline", { opacity: 0, scale: 0.96, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 0.94);
+    tl.fromTo(".wl2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.1);
+
+    // "when the stretch is up" (486.45; local 2.08) — the boundary is named: the reset edge highlights.
+    tl.fromTo(".rtick", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 2.08);
+    tl.to(".boundary", { backgroundColor: "#7dd87d", duration: 0.3, yoyo: true, repeat: 1 }, 2.08);
+
+    // "Your Claude Code cap works exactly this way" (488.31->490.61; local 3.94->6.24)
+    tl.fromTo(".ccpill", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 3.94);
+    tl.to(".ccpill .cc", { borderColor: "rgba(125,216,125,0.5)", duration: 0.4 }, 5.16);
+
+    window.__timelines["scene-60"] = tl;
+  </script>
+</body>
+</html>

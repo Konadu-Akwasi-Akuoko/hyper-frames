@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 16 — the question forks into two buckets</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-16 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-16 .question { position: absolute; left: 0; right: 0; top: 150px;
+      text-align: center; opacity: 0; }
+    #scene-16 .question .qt { font-family: "Inter"; font-weight: 700; font-size: 76px; line-height: 1.15; color: var(--fg); }
+    #scene-16 .question .qm { color: var(--accent); font-weight: 700; }
+
+    /* connector svg sits behind the bucket nodes */
+    #scene-16 svg.links { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-16 svg.links line { stroke: var(--dim); stroke-width: 2.5; stroke-dasharray: 6 10; }
+
+    #scene-16 .midlabel { position: absolute; left: 0; right: 0; top: 350px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-16 .bucket { position: absolute; top: 600px; width: 320px; display: flex; flex-direction: column; align-items: center; gap: 22px; opacity: 0; }
+    #scene-16 .bucket.left { left: 360px; }
+    #scene-16 .bucket.right { left: 1240px; }
+    #scene-16 .bucket svg { width: 150px; height: 140px; }
+    #scene-16 .bucket .qmark { position: absolute; top: 56px; left: 0; right: 0; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 52px; }
+    #scene-16 .bucket .cap { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; letter-spacing: 0.12em; }
+    #scene-16 .bucket.left  .stroke { stroke: var(--accent); } #scene-16 .bucket.left  .qmark, #scene-16 .bucket.left  .cap { color: var(--accent); }
+    #scene-16 .bucket.right .stroke { stroke: var(--accent-2); } #scene-16 .bucket.right .qmark, #scene-16 .bucket.right .cap { color: var(--accent-2); }
+    #scene-16 .bucket .bwrap { position: relative; }
+  </style>
+</head>
+<body>
+  <div id="scene-16" data-composition-id="scene-16" data-width="1920" data-height="1080">
+    <div class="question" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="1050">
+      <div class="qt"><span class="qm">&ldquo;</span>Is this request allowed right now?<span class="qm">&rdquo;</span></div>
+    </div>
+
+    <svg class="links" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <line class="ln ln-l" x1="960" y1="440" x2="520" y2="640" />
+      <line class="ln ln-r" x1="960" y1="440" x2="1400" y2="640" />
+    </svg>
+
+    <div class="midlabel" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4800">two classic answers &mdash; both named after a bucket</div>
+
+    <div class="bucket left" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9050">
+      <div class="bwrap">
+        <svg viewBox="0 0 100 92"><ellipse class="stroke" cx="50" cy="12" rx="34" ry="8" fill="none" stroke-width="3"/><path class="stroke" d="M17 12 L29 84 H71 L83 12" fill="none" stroke-width="3" stroke-linejoin="round"/></svg>
+        <div class="qmark">?</div>
+      </div>
+      <div class="cap">approach 01</div>
+    </div>
+
+    <div class="bucket right" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9180">
+      <div class="bwrap">
+        <svg viewBox="0 0 100 92"><ellipse class="stroke" cx="50" cy="12" rx="34" ry="8" fill="none" stroke-width="3"/><path class="stroke" d="M17 12 L29 84 H71 L83 12" fill="none" stroke-width="3" stroke-linejoin="round"/></svg>
+        <div class="qmark">?</div>
+      </div>
+      <div class="cap">approach 02</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // connector lengths (both ~521px) for the draw-on.
+    const LEN = Math.round(Math.hypot(440, 200)); // 483
+    gsap.set("#scene-16 .ln", { attr: { "stroke-dasharray": LEN }, strokeDashoffset: LEN });
+
+    // GRAPHICS crossfade cover (lands in 153.28->153.94 pause).
+    tl.fromTo("#scene-16", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // The question lands and holds. ("Is this request allowed right now?" 153.94-156.38; local 0.5-2.94)
+    tl.fromTo(".question", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.5);
+
+    // "there are two classic ways" (158.02; local 4.58) — the question forks: connectors draw down.
+    tl.to(".question", { y: -10, scale: 0.92, duration: 0.6, ease: "power2.inOut", transformOrigin: "50% 50%" }, 4.3);
+    tl.fromTo(".midlabel", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.58);
+    tl.to("#scene-16 .ln", { strokeDashoffset: 0, duration: 1.0, ease: "power2.out" }, 4.58);
+
+    // "named after a bucket" / "bucket" (162.70; local 9.26) — the two buckets pop in as peers.
+    tl.fromTo(".bucket", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.0, transformOrigin: "50% 50%" }, 8.7);
+    tl.fromTo(".bucket .cap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 9.1);
+
+    window.__timelines["scene-16"] = tl;
+  </script>
+</body>
+</html>

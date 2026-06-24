@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 24 — the two knobs (rate + burst)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-24 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-24 .eyebrow { position: absolute; left: 200px; top: 110px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-24 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent); vertical-align: middle; margin-right: 14px; }
+    #scene-24 .subhead { position: absolute; left: 200px; top: 168px; width: 900px;
+      font-family: "Inter"; font-weight: 600; font-size: 34px; color: var(--fg); opacity: 0; }
+    #scene-24 .subhead em { color: var(--accent); font-style: normal; }
+
+    /* tap + bucket (center-left) */
+    #scene-24 .tap { position: absolute; left: 360px; top: 322px; opacity: 0; }
+    #scene-24 .tap .pipe { width: 120px; height: 14px; background: var(--accent); border-radius: 4px; }
+    #scene-24 .tap .spout { width: 14px; height: 30px; background: var(--accent); border-radius: 0 0 4px 4px; margin-left: 96px; margin-top: -2px; }
+    #scene-24 .drip { position: absolute; left: 454px; top: 366px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 10px rgba(255,181,71,0.6); opacity: 0; }
+
+    #scene-24 .bucket { position: absolute; left: 360px; top: 400px; opacity: 0; }
+    #scene-24 .bucket .rim { width: 200px; height: 22px; border-radius: 50%; border: 3px solid var(--accent); background: rgba(255,181,71,0.05); }
+    #scene-24 .bucket .body { width: 180px; height: 300px; margin: -11px auto 0;
+      border: 3px solid var(--accent); border-top: none; border-radius: 0 0 26px 26px; background: rgba(255,181,71,0.04);
+      padding: 16px; display: grid; grid-template-columns: repeat(2, 44px); gap: 11px; align-content: end; justify-content: center; }
+    #scene-24 .bucket .tok { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(255,181,71,0.4); }
+
+    /* depth bracket (knob 2 dimension) */
+    #scene-24 .depth { position: absolute; left: 318px; top: 411px; width: 14px; height: 300px;
+      border-left: 2px solid var(--accent); border-top: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+      opacity: 0; }
+
+    /* leader lines */
+    #scene-24 svg.leaders { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+    #scene-24 svg.leaders path { fill: none; stroke: var(--dim); stroke-width: 2; }
+
+    /* the two knob pills (right-center, clear of top-right PIP zone) */
+    #scene-24 .pill { position: absolute; left: 980px; width: 540px; padding: 22px 26px; border-radius: 16px;
+      border: 1.5px solid var(--border); background: var(--panel); opacity: 0; }
+    #scene-24 .pill .head { display: flex; align-items: center; gap: 14px; }
+    #scene-24 .pill .num { width: 36px; height: 36px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 20px; color: var(--bg); background: var(--accent); }
+    #scene-24 .pill .name { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg); }
+    #scene-24 .pill .desc { font-family: "Inter"; font-weight: 400; font-size: 22px; color: var(--muted); margin-top: 12px; margin-left: 50px; }
+    /* mini knob/slider glyph */
+    #scene-24 .pill .dial { position: relative; margin-top: 16px; margin-left: 50px; width: 220px; height: 6px; border-radius: 3px; background: var(--dim); }
+    #scene-24 .pill .dial .knob { position: absolute; top: -8px; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(255,181,71,0.5); }
+    #scene-24 .pill.p1 { top: 408px; }
+    #scene-24 .pill.p1 .dial .knob { left: 30px; }
+    #scene-24 .pill.p2 { top: 628px; }
+    #scene-24 .pill.p2 .dial .knob { left: 150px; }
+  </style>
+</head>
+<body>
+  <div id="scene-24" data-composition-id="scene-24" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Token bucket &middot; the two knobs</div>
+    <div class="subhead" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1760">Exactly <em>two knobs</em> &mdash; and they move apart.</div>
+
+    <div class="tap"><div class="pipe"></div><div class="spout"></div></div>
+    <div class="drip"></div>
+    <div class="bucket">
+      <div class="rim"></div>
+      <div class="body">
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+      </div>
+    </div>
+    <div class="depth"></div>
+
+    <svg class="leaders" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <path class="ld1" d="M 492 348 L 760 348 L 760 446 L 970 446" />
+      <path class="ld2" d="M 312 561 L 760 561 L 760 666 L 970 666" />
+    </svg>
+
+    <div class="pill p1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5900">
+      <div class="head"><div class="num">1</div><div class="name">Sustained rate</div></div>
+      <div class="desc">how fast the tap drips in</div>
+      <div class="dial"><div class="knob" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="8980"></div></div>
+    </div>
+    <div class="pill p2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="11400">
+      <div class="head"><div class="num">2</div><div class="name">Burst</div></div>
+      <div class="desc">how deep the bucket is</div>
+      <div class="dial"><div class="knob" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="13000"></div></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS/PIP crossfade in (face PIP is driven by the main timeline; lands in 228.94->229.46 pause).
+    tl.fromTo("#scene-24", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45 }, 0.4);
+    tl.fromTo(".tap", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);
+    tl.fromTo(".bucket", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.5);
+
+    // "two knobs ... they move apart" (230.22/231.50; local 1.26/2.54) — the framing line.
+    tl.fromTo(".subhead", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.26);
+
+    // KNOB 1 — "How fast the tap drips" (233.94; local 4.98) — leader 1 draws, pill 1 slides in.
+    tl.set(".ld1", { strokeDasharray: 760, strokeDashoffset: 760 }, 0);
+    tl.to(".ld1", { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, 4.98);
+    tl.to(".ld1", { stroke: "#ffb547", duration: 0.3 }, 5.0);
+    // a drip falls from the tap to show "drips in"
+    tl.fromTo(".drip", { opacity: 0, y: 0 }, { opacity: 1, duration: 0.12 }, 4.98);
+    tl.to(".drip", { y: 56, opacity: 0, duration: 0.5, ease: "power1.in" }, 5.1);
+    tl.fromTo(".pill.p1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, ease: "back.out(1.5)" }, 5.4);
+
+    // "which is your sustained rate" (237.44; local 8.48) — knob 1 settles, dial nudges.
+    tl.to(".pill.p1 .dial .knob", { left: 70, duration: 0.5, ease: "power2.inOut" }, 8.48);
+    tl.fromTo(".pill.p1", { boxShadow: "0 0 0 rgba(255,181,71,0)" }, { boxShadow: "0 0 30px rgba(255,181,71,0.18)", duration: 0.4 }, 8.48);
+
+    // KNOB 2 — "how deep that bucket is" (239.28; local 10.32) — depth bracket + leader 2 + pill 2.
+    tl.fromTo(".depth", { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.5, ease: "power2.out", transformOrigin: "50% 0%" }, 10.32);
+    tl.set(".ld2", { strokeDasharray: 760, strokeDashoffset: 760 }, 0);
+    tl.to(".ld2", { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, 10.5);
+    tl.to(".ld2", { stroke: "#ffb547", duration: 0.3 }, 10.6);
+    tl.fromTo(".pill.p2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5, ease: "back.out(1.5)" }, 10.9);
+
+    // "which is your burst" (241.68; local 12.72) — knob 2 settles.
+    tl.to(".pill.p2 .dial .knob", { left: 188, duration: 0.5, ease: "power2.inOut" }, 12.5);
+    tl.fromTo(".pill.p2", { boxShadow: "0 0 0 rgba(255,181,71,0)" }, { boxShadow: "0 0 30px rgba(255,181,71,0.18)", duration: 0.4 }, 12.72);
+
+    window.__timelines["scene-24"] = tl;
+  </script>
+</body>
+</html>

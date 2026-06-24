@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 25 — Stripe's gate (~100 req/s)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-25 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-25 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* Stripe logo on a light chip (left-center) */
+    #scene-25 .chip { position: absolute; left: 300px; top: 446px; width: 360px; height: 150px; border-radius: 16px;
+      background: #f4f5f7; display: flex; align-items: center; justify-content: center; opacity: 0;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    #scene-25 .chip img { width: 230px; height: auto; display: block; }
+
+    /* connector */
+    #scene-25 .link { position: absolute; left: 690px; top: 520px; width: 230px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--dim) 0 7px, transparent 7px 14px); transform-origin: left center; transform: scaleX(0); }
+
+    /* the rate stat (right-dominant) */
+    #scene-25 .statlbl { position: absolute; left: 980px; top: 392px; width: 640px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-25 .counter { position: absolute; left: 980px; top: 430px; width: 640px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 150px; color: var(--accent); font-variant-numeric: tabular-nums; opacity: 0; line-height: 1; }
+    #scene-25 .unit { position: absolute; left: 984px; top: 612px; width: 640px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 40px; color: var(--muted); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-25" data-composition-id="scene-25" data-width="1920" data-height="1080">
+    <div class="eyebrow">Seen in the wild &middot; the same gate</div>
+
+    <div class="chip" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2420"><img src="assets/icons/stripe.svg" alt="Stripe" /></div>
+    <div class="link" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3750"></div>
+
+    <div class="statlbl">caps its API near</div>
+    <div class="counter" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5940">0</div>
+    <div class="unit">requests / second</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const cntEl = () => document.querySelector("#scene-25 .counter");
+
+    // GRAPHICS crossfade (covers the now-hidden face; lands in 242.04->242.96 pause).
+    tl.fromTo("#scene-25", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.3);
+
+    // "Stripe" (244.38; local 1.92) — the brand chip scales in.
+    tl.fromTo(".chip", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)", transformOrigin: "50% 50%" }, 1.92);
+
+    // "on its API" (246.10; local 3.64) — connector + the rate label.
+    tl.fromTo(".link", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 3.3);
+    tl.fromTo(".statlbl", { opacity: 0, x: 14 }, { opacity: 1, x: 0, duration: 0.4 }, 3.64);
+
+    // "a hundred requests a second" (247.50; local 5.04) — counter rolls 0->100, unit settles.
+    tl.fromTo(".counter", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3 }, 5.0);
+    const c = { v: 0 };
+    tl.to(c, { v: 100, duration: 0.9, ease: "power2.out",
+      onUpdate: () => { cntEl().textContent = Math.round(c.v); },
+      onComplete: () => { cntEl().textContent = "~100"; } }, 5.04);
+    tl.to(".counter", { scale: 1.06, duration: 0.16, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 5.94);
+    tl.fromTo(".unit", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 5.6);
+
+    window.__timelines["scene-25"] = tl;
+  </script>
+</body>
+</html>

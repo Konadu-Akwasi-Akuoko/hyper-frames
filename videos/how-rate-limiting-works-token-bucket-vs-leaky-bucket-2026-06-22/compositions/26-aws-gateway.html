@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 26 — AWS API Gateway (10k/s + 5k burst)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-26 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-26 .eyebrow { position: absolute; left: 0; right: 0; top: 130px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* AWS logo on a light chip (left-center) */
+    #scene-26 .chip { position: absolute; left: 300px; top: 430px; width: 360px; height: 180px; border-radius: 16px;
+      background: #f4f5f7; display: flex; align-items: center; justify-content: center; opacity: 0;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    #scene-26 .chip img { width: 210px; height: auto; display: block; }
+
+    #scene-26 .link { position: absolute; left: 690px; top: 520px; width: 230px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--dim) 0 7px, transparent 7px 14px); transform-origin: left center; transform: scaleX(0); }
+
+    /* stat 1 — sustained rate (hero amber number) */
+    #scene-26 .statlbl { position: absolute; left: 980px; top: 322px; width: 720px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-26 .counter { position: absolute; left: 980px; top: 356px; width: 720px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 130px; color: var(--accent); font-variant-numeric: tabular-nums; opacity: 0; line-height: 1; }
+    #scene-26 .unit { position: absolute; left: 984px; top: 506px; width: 720px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 34px; color: var(--muted); opacity: 0; }
+
+    /* stat 2 — burst reserve (amber bordered pill, distinct from the hero number) */
+    #scene-26 .burst { position: absolute; left: 982px; top: 580px; display: inline-flex; align-items: baseline; gap: 18px;
+      padding: 18px 30px; border-radius: 14px; border: 1.5px solid var(--accent); background: rgba(255,181,71,0.06); opacity: 0; }
+    #scene-26 .burst .bnum { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 54px; color: var(--accent); font-variant-numeric: tabular-nums; }
+    #scene-26 .burst .blbl { font-family: "Inter"; font-weight: 500; font-size: 26px; color: var(--fg); }
+    #scene-26 .burst .bsub { font-family: "Inter"; font-weight: 400; font-size: 22px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div id="scene-26" data-composition-id="scene-26" data-width="1920" data-height="1080">
+    <div class="eyebrow">Seen in the wild &middot; the same gate</div>
+
+    <div class="chip" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2280"><img src="assets/icons/aws.svg" alt="AWS" /></div>
+    <div class="link" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2850"></div>
+
+    <div class="statlbl">API Gateway &mdash; sustained</div>
+    <div class="counter" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4800">0</div>
+    <div class="unit">requests / second</div>
+
+    <div class="burst" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6400">
+      <div class="bnum">+5,000</div>
+      <div class="blbl">burst</div>
+      <div class="bsub">held in the bucket for a spike</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const cntEl = () => document.querySelector("#scene-26 .counter");
+    const fmt = (n) => Math.round(n).toLocaleString("en-US");
+
+    // GRAPHICS crossfade (mirror of scene 25; lands in 248.96->249.46 pause).
+    tl.fromTo("#scene-26", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.3);
+
+    // "Amazon's API gateway" (250.74; local 1.78) — the AWS chip scales in.
+    tl.fromTo(".chip", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)", transformOrigin: "50% 50%" }, 1.78);
+    tl.fromTo(".link", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 2.4);
+
+    // "ten thousand a second" (252.86; local 3.90) — counter rolls 0->10,000.
+    tl.fromTo(".statlbl", { opacity: 0, x: 14 }, { opacity: 1, x: 0, duration: 0.4 }, 3.6);
+    tl.fromTo(".counter", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3 }, 3.9);
+    const c = { v: 0 };
+    tl.to(c, { v: 10000, duration: 0.9, ease: "power2.out",
+      onUpdate: () => { cntEl().textContent = fmt(c.v); } }, 3.9);
+    tl.to(".counter", { scale: 1.05, duration: 0.16, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 4.8);
+    tl.fromTo(".unit", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 4.5);
+
+    // "with five thousand held ... for a spike" (254.86/257.17; local 5.90/8.21) — the burst reserve pill.
+    tl.fromTo(".burst", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.5)" }, 5.9);
+    tl.fromTo(".burst", { boxShadow: "0 0 0 rgba(255,181,71,0)" }, { boxShadow: "0 0 34px rgba(255,181,71,0.2)", duration: 0.4 }, 8.21);
+
+    window.__timelines["scene-26"] = tl;
+  </script>
+</body>
+</html>

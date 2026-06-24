@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 02 — the gate</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent;
+      font-family: "Inter", sans-serif;
+    }
+    /* GRAPHICS mode — opaque fill covers the face layer underneath. */
+    #scene-02-the-gate {
+      position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden;
+      background: var(--bg);
+    }
+    #scene-02-the-gate .eyebrow {
+      position: absolute; left: 140px; top: 120px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    }
+    #scene-02-the-gate .eyebrow .bar {
+      display: inline-block; width: 46px; height: 2px; background: var(--accent);
+      vertical-align: middle; margin-right: 16px;
+    }
+    /* CLIENT endpoint, left */
+    #scene-02-the-gate .client {
+      position: absolute; left: 200px; top: 496px; width: 150px; height: 96px;
+      border: 1.5px solid var(--border); border-radius: 12px; background: var(--panel);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 24px; color: var(--muted);
+    }
+    /* The track requests travel along toward the gate */
+    #scene-02-the-gate .track {
+      position: absolute; left: 350px; top: 543px; width: 560px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--dim) 0 10px, transparent 10px 22px);
+    }
+    /* Track continuing past the gate toward the protected server */
+    #scene-02-the-gate .track2 {
+      position: absolute; left: 1060px; top: 543px; width: 380px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--dim) 0 10px, transparent 10px 22px);
+      opacity: 0.5;
+    }
+    /* The protected server — dim; the gate sits in front of the real machinery */
+    #scene-02-the-gate .server {
+      position: absolute; left: 1440px; top: 488px; width: 168px; height: 112px;
+      border: 1.5px solid var(--border); border-radius: 12px; background: var(--panel);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Inter", sans-serif; font-weight: 500; font-size: 24px; color: var(--dim);
+    }
+    /* THE GATE — a vertical barrier (grille of rails + a central bolt). The anchor shape. */
+    #scene-02-the-gate .gate {
+      position: absolute; left: 910px; top: 300px; width: 150px; height: 480px;
+      border: 2px solid var(--accent); border-radius: 16px;
+      background:
+        repeating-linear-gradient(180deg, rgba(255,181,71,0.28) 0 4px, transparent 4px 52px),
+        linear-gradient(180deg, rgba(255,181,71,0.10), rgba(255,181,71,0.02));
+      box-shadow: 0 0 40px rgba(255,181,71,0.12);
+    }
+    #scene-02-the-gate .gate .bolt {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 2.5px solid var(--accent); background: var(--bg);
+      box-shadow: 0 0 18px rgba(255,181,71,0.4);
+    }
+    #scene-02-the-gate .gate .bolt::after {
+      content: ""; position: absolute; left: 50%; top: 11px; transform: translateX(-50%);
+      width: 4px; height: 24px; background: var(--accent); border-radius: 2px;
+    }
+    #scene-02-the-gate .gate .scan {
+      position: absolute; left: 8px; right: 8px; height: 3px; top: 30px;
+      background: var(--accent); opacity: 0.5; border-radius: 2px;
+      box-shadow: 0 0 14px var(--accent);
+    }
+    #scene-02-the-gate .gate .glabel {
+      position: absolute; left: 0; right: 0; bottom: -44px; text-align: center;
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 26px; color: var(--fg);
+      letter-spacing: 0.04em;
+    }
+    /* Counter readout mounted above the gate — "how fast you knock" */
+    #scene-02-the-gate .counter {
+      position: absolute; left: 868px; top: 196px; width: 234px; padding: 14px 0 12px;
+      border: 1.5px solid var(--border); border-radius: 12px; background: var(--panel);
+      text-align: center;
+    }
+    #scene-02-the-gate .counter .clabel {
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 16px;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); display: block;
+      margin-bottom: 4px;
+    }
+    #scene-02-the-gate .counter .cval {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 46px;
+      color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1;
+    }
+    /* Red pulse ring fired on "knock" */
+    #scene-02-the-gate .pulse {
+      position: absolute; left: 910px; top: 300px; width: 150px; height: 480px;
+      border: 2px solid var(--danger); border-radius: 16px; opacity: 0;
+    }
+    /* request knock dots */
+    #scene-02-the-gate .dot {
+      position: absolute; top: 535px; left: 360px; width: 18px; height: 18px;
+      border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 12px rgba(103,232,249,0.7); opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-02-the-gate" data-composition-id="scene-02-the-gate" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>The gate</div>
+    <div class="client">Client</div>
+    <div class="track"></div>
+    <div class="track2"></div>
+    <div class="server">Server</div>
+
+    <div class="gate" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="700">
+      <div class="scan"></div>
+      <div class="bolt"></div>
+      <div class="glabel">Gate</div>
+    </div>
+    <div class="counter">
+      <span class="clabel">Knocks</span>
+      <span class="cval">0</span>
+    </div>
+    <div class="pulse" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5760"></div>
+
+    <div class="dot d1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1400"></div>
+    <div class="dot d2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2100"></div>
+    <div class="dot d3" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2800"></div>
+    <div class="dot d4" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3600"></div>
+    <div class="dot d5" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4400"></div>
+    <div class="dot d6" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5200"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Entrance crossfade FACE->GRAPHICS — covers the face layer over 0.5s (lands in the
+    // 5.92->6.60 pause). The whole scene (opaque bg + gate frame) fades in together, so
+    // every static child is covered by this (entrance invariant, option a).
+    tl.fromTo("#scene-02-the-gate", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // Eyebrow + gate settle in just after the cover completes. ("Behind that..." local ~0.5)
+    tl.fromTo(".eyebrow", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.55);
+    tl.fromTo(".client", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.7);
+    tl.fromTo(".gate",  { opacity: 0, scaleY: 0.9 }, { opacity: 1, scaleY: 1, duration: 0.6, ease: "power3.out", transformOrigin: "50% 50%" }, 0.7);
+    tl.fromTo(".gate .glabel", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.0);
+    tl.fromTo(".counter", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.1);
+    // The protected server + onward track fade in dim after the gate (it guards the real machinery)
+    tl.fromTo(".server", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 1.3);
+    tl.fromTo(".track2", { opacity: 0 }, { opacity: 0.5, duration: 0.5, ease: "power2.out" }, 1.3);
+
+    // The gate's scan line sweeps continuously (it is "quietly counting").
+    tl.fromTo(".gate .scan", { y: 0 }, { y: 420, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 2 }, 1.2);
+
+    // Six knocks travel from the client to the gate, staggered; the counter ticks on each.
+    const arrivals = [1.4, 2.1, 2.8, 3.6, 4.4, 5.2];
+    const dots = [".d1", ".d2", ".d3", ".d4", ".d5", ".d6"];
+    dots.forEach((d, i) => {
+      const t = arrivals[i] - 0.6; // start so it ARRIVES at arrivals[i]
+      tl.to(d, { opacity: 1, duration: 0.12 }, t);        // appear (CSS baseline opacity:0)
+      tl.to(d, { x: 540, duration: 0.55, ease: "power1.in" }, t + 0.05);
+      // arrive: fade the dot into the gate + tick the counter
+      tl.to(d, { opacity: 0, duration: 0.12 }, arrivals[i]);
+      tl.set(".cval", { innerText: i + 1 }, arrivals[i]);
+      tl.fromTo(".counter", { scale: 1 }, { scale: 1.08, duration: 0.12, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, arrivals[i]);
+      tl.fromTo(".gate", { boxShadow: "0 0 40px rgba(255,181,71,0.12)" },
+        { boxShadow: "0 0 56px rgba(255,181,71,0.30)", duration: 0.14, yoyo: true, repeat: 1 }, arrivals[i]);
+    });
+
+    // Red pulse on "knock." (global 11.86; local 5.76) — the gate is alive and watching.
+    tl.fromTo(".pulse", { opacity: 0, scale: 1 },
+      { opacity: 0.9, scale: 1.12, duration: 0.3, ease: "power2.out", transformOrigin: "50% 50%" }, 5.76);
+    tl.to(".pulse", { opacity: 0, scale: 1.2, duration: 0.5, ease: "power2.in" }, 6.06);
+
+    window.__timelines["scene-02-the-gate"] = tl;
+  </script>
+</body>
+</html>

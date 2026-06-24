@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 87 — FACE: have a nice day and goodbye (final)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    /* FACE beat (final): transparent scene over the face-layer; a cover handles the seam, an endcard the exit. */
+    #scene-87 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+
+    #scene-87 .cover { position: absolute; inset: 0; background: var(--bg); opacity: 0; }
+
+    #scene-87 .caption { position: absolute; left: 0; right: 0; bottom: 104px; text-align: center; opacity: 0; }
+    #scene-87 .caption .t { font-family: "Inter"; font-weight: 800; font-size: 60px; color: var(--fg);
+      text-shadow: 0 3px 22px rgba(0,0,0,0.9); }
+    #scene-87 .caption .rule { width: 132px; height: 5px; border-radius: 3px; background: var(--accent); margin: 22px auto 0; }
+
+    #scene-87 .endcard { position: absolute; inset: 0; background: #000; opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-87" data-composition-id="scene-87" data-width="1920" data-height="1080">
+    <div class="cover" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="950"></div>
+    <div class="caption" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3100">
+      <div class="t">thanks for watching</div>
+      <div class="rule"></div>
+    </div>
+    <div class="endcard"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Cover scene 86 over the seam, then reveal the presenter for the sign-off.
+    tl.fromTo(".cover", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.inOut" }, 0);
+    // "Have a nice day and goodbye." (689.15; local 0.50) — fade the cover, presenter takes the frame.
+    tl.to(".cover", { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 0.5);
+
+    // after "goodbye" (690.75; local 2.10) — the warm sign-off caption.
+    tl.fromTo(".caption", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 2.5);
+
+    // Final exit — the only exit animation in the video: fade the whole frame to black as the audio runs out (695.14; local 6.49).
+    tl.to(".endcard", { opacity: 1, duration: 0.75, ease: "power2.in" }, 5.74);
+
+    window.__timelines["scene-87"] = tl;
+  </script>
+</body>
+</html>

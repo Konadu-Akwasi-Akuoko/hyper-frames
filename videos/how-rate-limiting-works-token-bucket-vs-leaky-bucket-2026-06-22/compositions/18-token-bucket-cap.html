@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 18 — the token bucket holds ten (the cap)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-18 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-18 .eyebrow { position: absolute; left: 0; right: 0; top: 130px; text-align: center;
+      font-family: "Inter"; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-18 .bucket { position: absolute; left: 50%; top: 250px; margin-left: -100px; width: 200px; opacity: 0; }
+    /* rim lip */
+    #scene-18 .bucket .rim { width: 200px; height: 24px; border-radius: 50%;
+      border: 3px solid var(--accent); background: rgba(255,181,71,0.05); }
+    /* body */
+    #scene-18 .bucket .body { position: relative; width: 180px; height: 374px; margin: -12px auto 0;
+      border: 3px solid var(--accent); border-top: none; border-radius: 0 0 30px 30px; background: rgba(255,181,71,0.04);
+      padding: 24px; display: grid; grid-template-columns: repeat(2, 54px); gap: 14px; align-content: end; justify-content: center; }
+    #scene-18 .bucket .tok { width: 54px; height: 54px; border-radius: 50%; background: var(--accent); opacity: 0;
+      box-shadow: 0 0 10px rgba(255,181,71,0.4); }
+
+    /* ceiling cap line at the brim */
+    #scene-18 .ceiling { position: absolute; left: 50%; top: 266px; margin-left: -135px; width: 270px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--accent) 0 6px, transparent 6px 10px);
+      transform-origin: left center; transform: scaleX(0); opacity: 0.85; }
+    #scene-18 .caplbl { position: absolute; left: 50%; top: 242px; margin-left: 150px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; color: var(--accent); opacity: 0; }
+
+    #scene-18 .trick { position: absolute; left: 0; right: 0; top: 715px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); opacity: 0; }
+    #scene-18 .trick b { color: var(--fg); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-18" data-composition-id="scene-18" data-width="1920" data-height="1080">
+    <div class="eyebrow">Token bucket</div>
+
+    <div class="bucket" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2820">
+      <div class="rim"></div>
+      <div class="body">
+        <div class="tok" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5285"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5030"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4775"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4520"></div>
+      </div>
+    </div>
+    <div class="ceiling" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="8600"></div>
+    <div class="caplbl">cap = 10</div>
+
+    <div class="trick">that ceiling &mdash; <b>exactly ten, no more</b> &mdash; is the whole trick</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade cover (lands in 168.26->168.92 pause; reveals from FACE scene 17).
+    tl.fromTo("#scene-18", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.5);
+
+    // "Picture a bucket" (170.74; local 2.32) — the empty bucket arrives.
+    tl.fromTo(".bucket", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.32);
+
+    // "ten tokens" (172.94; local 4.52) — ten tokens drop in, bottom-up.
+    tl.fromTo(".tok", { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out",
+      stagger: { each: 0.085, from: "end" } }, 4.52);
+
+    // "no more, just ten" (174.58; local 6.16) — the bucket locks at full, amber glow.
+    tl.fromTo(".bucket .body", { boxShadow: "0 0 0 rgba(255,181,71,0)" }, { boxShadow: "0 0 40px rgba(255,181,71,0.22)", duration: 0.4 }, 6.16);
+
+    // "That ceiling" (176.82; local 8.40) — the cap line draws across the brim + label.
+    tl.to(".ceiling", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 8.40);
+    tl.fromTo(".caplbl", { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.4 }, 8.55);
+
+    // "the whole trick" (178.02; local 9.60) — cap glow pulse + the caption.
+    tl.fromTo(".trick", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45 }, 8.9);
+    tl.to(".ceiling", { opacity: 1, filter: "drop-shadow(0 0 8px rgba(255,181,71,0.8))", duration: 0.2, yoyo: true, repeat: 1 }, 9.60);
+
+    window.__timelines["scene-18"] = tl;
+  </script>
+</body>
+</html>

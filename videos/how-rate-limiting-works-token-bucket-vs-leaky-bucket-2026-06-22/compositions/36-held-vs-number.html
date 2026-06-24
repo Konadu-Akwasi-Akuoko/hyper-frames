@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 36 — held requests vs nothing but a number</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-36 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-36 .divider { position: absolute; left: 960px; top: 230px; width: 1px; height: 620px; background: var(--border); opacity: 0; }
+
+    #scene-36 .eyebrow { position: absolute; top: 220px; width: 540px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-36 .eyebrow.e1 { left: 210px; }
+    #scene-36 .eyebrow.e2 { left: 1170px; color: var(--accent-2); }
+
+    /* left: kind 01 — a bucket that HELD requests */
+    #scene-36 svg.bk { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-36 svg.bk .wall { fill: none; stroke: rgba(103,232,249,0.55); stroke-width: 4; stroke-linecap: round; }
+    #scene-36 svg.bk .rim { fill: none; stroke: rgba(103,232,249,0.55); stroke-width: 4; }
+    #scene-36 .chip { position: absolute; width: 150px; height: 26px; border-radius: 6px;
+      background: rgba(103,232,249,0.12); border: 1.5px solid rgba(103,232,249,0.55); opacity: 0; }
+    #scene-36 #queue { position: absolute; inset: 0; }
+
+    /* right: kind 02 — nothing but a number */
+    #scene-36 .num { position: absolute; left: 1170px; top: 412px; width: 540px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 168px; color: var(--accent-2); font-variant-numeric: tabular-nums; line-height: 1; opacity: 0;
+      text-shadow: 0 0 40px rgba(103,232,249,0.0); }
+
+    #scene-36 .cap { position: absolute; top: 720px; width: 540px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 28px; color: var(--muted); opacity: 0; }
+    #scene-36 .cap.c1 { left: 210px; }
+    #scene-36 .cap.c2 { left: 1170px; }
+  </style>
+</head>
+<body>
+  <div id="scene-36" data-composition-id="scene-36" data-width="1920" data-height="1080">
+    <div class="divider"></div>
+
+    <div class="eyebrow e1">Kind 01 &middot; kept the request</div>
+    <div class="eyebrow e2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5300">Kind 02 &middot; the meter</div>
+
+    <svg class="bk" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <ellipse class="rim" cx="480" cy="420" rx="100" ry="15" />
+      <path class="wall" d="M 380 420 L 380 640 Q 380 648 388 648 L 446 648" />
+      <path class="wall" d="M 580 420 L 580 640 Q 580 648 572 648 L 514 648" />
+    </svg>
+    <div id="queue" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="3400"></div>
+
+    <div class="num" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5860">47</div>
+
+    <div class="cap c1">held inside &mdash; waiting, queued up</div>
+    <div class="cap c2">nothing but a number</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // left: queued request chips stacked inside the kind-01 bucket.
+    const qWrap = document.getElementById("queue");
+    const chips = [];
+    for (let i = 0; i < 6; i++) {
+      const c = document.createElement("div"); c.className = "chip";
+      c.style.left = "405px"; c.style.top = (608 - i * 34) + "px";
+      qWrap.appendChild(c); chips.push(c);
+    }
+
+    // GRAPHICS crossfade (lands in 319.56->320.38 pause).
+    tl.fromTo("#scene-36", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow.e1", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".bk .rim, .bk .wall", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.5);
+    tl.fromTo(".divider", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0.6);
+
+    // "waiting inside" / "queued up" (322.08/323.12; local 2.20/3.24) — chips queue in.
+    tl.fromTo(".cap.c1", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.9);
+    chips.forEach((c, i) => {
+      tl.fromTo(c, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.22, ease: "power2.out" }, 2.2 + i * 0.2);
+    });
+
+    // "This one keeps nothing but a number" (325.40/326.48; local 5.52/6.60).
+    tl.fromTo(".eyebrow.e2", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 4.9);
+    tl.fromTo(".num", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.34, ease: "power3.out", transformOrigin: "50% 50%" }, 5.52);
+    tl.fromTo(".cap.c2", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 6.0);
+    tl.to(".num", { scale: 1.05, textShadow: "0 0 40px rgba(103,232,249,0.45)", duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 6.6);
+
+    window.__timelines["scene-36"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 69 — under the line you are inside, over the line you wait</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-69 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-69 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-69 .track { position: absolute; left: 900px; top: 230px; width: 120px; height: 540px;
+      border: 1.5px solid var(--border); border-radius: 14px; opacity: 0; overflow: hidden; background: var(--panel); }
+    #scene-69 .fill { position: absolute; left: 0; bottom: 0; width: 100%; height: 540px;
+      background: rgba(125,216,125,0.6); transform: scaleY(0); transform-origin: 50% 100%; }
+
+    /* limit line at 62% up the track (y=435) */
+    #scene-69 .limit { position: absolute; left: 854px; top: 434px; width: 212px; height: 3px; background: var(--accent); opacity: 0; }
+    #scene-69 .limitlbl { position: absolute; left: 1080px; top: 420px; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; color: var(--accent); }
+
+    #scene-69 .verdict { position: absolute; right: 1010px; width: 460px; text-align: right; opacity: 0;
+      font-family: "Inter"; font-weight: 700; font-size: 52px; }
+    #scene-69 .inside { top: 478px; color: var(--ok); }
+    #scene-69 .wait { top: 280px; color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div id="scene-69" data-composition-id="scene-69" data-width="1920" data-height="1080">
+    <div class="eyebrow">requests vs your limit</div>
+
+    <div class="track"><div class="fill" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2920"></div></div>
+    <div class="limit"></div>
+    <div class="limitlbl">your limit</div>
+
+    <div class="verdict inside" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="2000">&#10003; you're inside</div>
+    <div class="verdict wait" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4420">&#10005; you wait</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-69", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".track", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 0.35);
+    tl.fromTo([".limit", ".limitlbl"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+
+    // "Under the line, you are inside" (563.31->564.81; local 0.50->2.00) — the level sits UNDER the limit, green.
+    tl.fromTo(".fill", { scaleY: 0 }, { scaleY: 0.55, duration: 0.9, ease: "power2.out" }, 0.50);
+    tl.fromTo(".inside", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 2.00);
+
+    // "Over the line, you are going to wait" (565.73->567.23; local 2.92->4.42) — the level rises OVER the limit, flips red.
+    tl.to(".inside", { opacity: 0.25, duration: 0.4 }, 2.92);
+    tl.to(".fill", { scaleY: 0.92, backgroundColor: "rgba(255,107,93,0.6)", duration: 0.9, ease: "power2.inOut" }, 2.92);
+    tl.fromTo(".wait", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.8)" }, 4.42);
+
+    window.__timelines["scene-69"] = tl;
+  </script>
+</body>
+</html>

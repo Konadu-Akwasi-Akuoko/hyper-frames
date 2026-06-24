@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Substrate — dark base + dual subject wash</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --accent: #ffb547;   /* token bucket — amber */
+      --accent-2: #67e8f9; /* leaky bucket — cyan */
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: var(--bg); /* OPAQUE dark floor — guarantees no white/black void */
+      font-family: "Inter", sans-serif;
+    }
+    #substrate {
+      position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden;
+      background: var(--bg);
+    }
+    /* Faint technical grid — dark hairlines, low alpha (one ingredient, not the whole story) */
+    #substrate .grid {
+      position: absolute; inset: -40px;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 96px 96px;
+      will-change: transform;
+    }
+    /* Two CONTAINED subject washes — amber (token) + cyan (leaky), well inside the frame
+       (not edge-to-center → no codec banding), very low opacity, slowly drifting. */
+    #substrate .wash {
+      position: absolute; width: 1100px; height: 1100px; border-radius: 50%;
+      filter: blur(8px); will-change: transform, opacity;
+      mix-blend-mode: screen;
+    }
+    #substrate .wash.amber {
+      left: 4%; top: 2%;
+      background: radial-gradient(circle at center, rgba(255,181,71,0.075), rgba(255,181,71,0) 60%);
+    }
+    #substrate .wash.cyan {
+      right: 2%; bottom: 0%;
+      background: radial-gradient(circle at center, rgba(103,232,249,0.06), rgba(103,232,249,0) 60%);
+    }
+    /* Grain overlay — dithers the soft washes so they can't band at YouTube bitrate. */
+    #substrate .grain {
+      position: absolute; inset: 0; opacity: 0.05; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body>
+  <div id="substrate" data-composition-id="substrate" data-width="1920" data-height="1080">
+    <div class="grid" data-layout-allow-overflow="true"></div>
+    <div class="wash amber" data-layout-allow-overflow="true"></div>
+    <div class="wash cyan" data-layout-allow-overflow="true"></div>
+    <div class="grain"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Slow deterministic drift — the substrate breathes, never sits dead.
+    // Grid parallax crawl (long yoyo).
+    tl.to("#substrate .grid", { x: 28, y: 18, duration: 60, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+    // Amber wash drift + gentle breathe.
+    tl.to("#substrate .wash.amber", { x: 70, y: 40, duration: 48, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+    tl.to("#substrate .wash.amber", { opacity: 0.7, duration: 30, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+    // Cyan wash drifts the opposite way.
+    tl.to("#substrate .wash.cyan", { x: -60, y: -46, duration: 54, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+    tl.to("#substrate .wash.cyan", { opacity: 0.75, duration: 36, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+    window.__timelines["substrate"] = tl;
+  </script>
+</body>
+</html>

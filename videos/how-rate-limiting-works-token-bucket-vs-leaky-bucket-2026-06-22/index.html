@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0b0d12; /* dark base — substrate paints over this */
+      }
+      body { font-family: "Inter", sans-serif; }
+      code, pre, .monospace { font-family: "JetBrains Mono", monospace; }
+
+      /* Face layer wrapper — positioning/z container only. The <video> inside is the
+         framework-seeked clip; geometry/z animate on the WRAPPER (never the video). */
+      #face-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        will-change: transform, opacity;
+        transform-origin: 50% 50%;
+      }
+      #face-layer video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-t3zf" id="root" data-composition-id="main" data-start="0" data-duration="695.14" data-width="1920" data-height="1080">
+      <!-- Persistent dark substrate behind every scene (full length, low track). -->
+      <div data-hf-id="hf-o0xs" id="substrate-layer" data-composition-id="substrate" data-composition-src="compositions/substrate.html" data-start="0" data-duration="695.14" data-track-index="7" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 0"></div>
+
+      <!-- Talking-head face layer — one persistent seek-driven take spanning the whole
+           runtime. The framework seeks the face video to GLOBAL composition time
+           (data-start=0, zero offset). Muted (data-volume=0); audio comes from the
+           separate voiceover track. GRAPHICS scenes cover it (opaque bg); FACE scenes
+           reveal it (transparent bg); PIP lifts this wrapper to a bordered inset above
+           the scenes (driven by the main timeline). -->
+      <div data-hf-id="hf-55ke" id="face-layer">
+        <video data-hf-id="hf-l8k2" id="face-video" src="assets/video/talking-head.mp4" data-start="0" data-duration="695.14" data-track-index="8" data-volume="0" muted playsinline preload="auto"></video>
+      </div>
+
+      <!-- Voiceover — the timing source of truth. -->
+      <audio data-hf-id="hf-lxwz" id="voiceover" src="audio/voiceover.mp3" data-start="0" data-duration="695.14" data-track-index="9" data-volume="1"></audio>
+
+      <!-- Scene hosts appended below as each chunk is authored.
+           director: COMPLETE — covered through 695.14s (full runtime) / final scene 87 "Have a nice day and goodbye." -->
+      <div data-hf-id="hf-ea17" id="scene-01" data-composition-id="scene-01-cold-open" data-composition-src="compositions/01-cold-open-toast.html" data-start="0" data-duration="6.6" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 2"></div>
+      <div data-hf-id="hf-61er" id="scene-02" data-composition-id="scene-02-the-gate" data-composition-src="compositions/02-the-gate.html" data-start="6.10" data-duration="6.82" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 3"></div>
+      <div data-hf-id="hf-7cbv" id="scene-03" data-composition-id="scene-03-attack" data-composition-src="compositions/03-attack-398m.html" data-start="12.42" data-duration="11.70" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 4"></div>
+      <div data-hf-id="hf-mgkb" id="scene-04" data-composition-id="scene-04" data-composition-src="compositions/04-google-incident.html" data-start="23.62" data-duration="17.52" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 5"></div>
+      <div data-hf-id="hf-jr8h" id="scene-05" data-composition-id="scene-05" data-composition-src="compositions/05-rapid-reset.html" data-start="40.64" data-duration="11.14" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 6"></div>
+      <div data-hf-id="hf-yphr" id="scene-06" data-composition-id="scene-06" data-composition-src="compositions/06-gate-holds-flood.html" data-start="51.28" data-duration="14.60" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 7"></div>
+      <div data-hf-id="hf-16z6" id="scene-07" data-composition-id="scene-07" data-composition-src="compositions/07-face-enough.html" data-start="65.38" data-duration="6.17" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 8"></div>
+      <div data-hf-id="hf-fp7k" id="scene-08" data-composition-id="scene-08" data-composition-src="compositions/08-strangle-itself.html" data-start="71.05" data-duration="6.77" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 9"></div>
+      <div data-hf-id="hf-zml1" id="scene-09" data-composition-id="scene-09" data-composition-src="compositions/09-retry-storm.html" data-start="77.32" data-duration="15.10" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 10"></div>
+      <div data-hf-id="hf-zb5c" id="scene-10" data-composition-id="scene-10" data-composition-src="compositions/10-dynamodb-outage.html" data-start="91.92" data-duration="13.24" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 11"></div>
+      <div data-hf-id="hf-3jg9" id="scene-11" data-composition-id="scene-11" data-composition-src="compositions/11-retry-amplification.html" data-start="104.66" data-duration="12.04" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 12"></div>
+      <div data-hf-id="hf-trx3" id="scene-12" data-composition-id="scene-12" data-composition-src="compositions/12-cognitive-collapse.html" data-start="116.20" data-duration="10.30" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 13"></div>
+      <div data-hf-id="hf-j0l2" id="scene-13" data-composition-id="scene-13" data-composition-src="compositions/13-amazon-postmortem.html" data-start="126.00" data-duration="11.28" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 14"></div>
+      <div data-hf-id="hf-xpi9" id="scene-14" data-composition-id="scene-14" data-composition-src="compositions/14-edge-gate-pipeline.html" data-start="136.78" data-duration="11.36" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 15"></div>
+      <div data-hf-id="hf-hv2x" id="scene-15" data-composition-id="scene-15" data-composition-src="compositions/15-gate-query-pulse.html" data-start="147.64" data-duration="6.30" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 16"></div>
+      <div data-hf-id="hf-diyv" id="scene-16" data-composition-id="scene-16" data-composition-src="compositions/16-two-buckets-fork.html" data-start="153.44" data-duration="10.38" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 17"></div>
+      <div data-hf-id="hf-k667" id="scene-17" data-composition-id="scene-17" data-composition-src="compositions/17-token-bucket-title.html" data-start="163.32" data-duration="5.60" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 18"></div>
+      <div data-hf-id="hf-w0bn" id="scene-18" data-composition-id="scene-18" data-composition-src="compositions/18-token-bucket-cap.html" data-start="168.42" data-duration="10.70" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 19"></div>
+      <div data-hf-id="hf-j133" id="scene-19" data-composition-id="scene-19" data-composition-src="compositions/19-token-refill-overflow.html" data-start="178.62" data-duration="12.44" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 20"></div>
+      <div data-hf-id="hf-59fe" id="scene-20" data-composition-id="scene-20" data-composition-src="compositions/20-request-spends-token.html" data-start="190.56" data-duration="8.67" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 21"></div>
+      <div data-hf-id="hf-ed7h" id="scene-21" data-composition-id="scene-21" data-composition-src="compositions/21-empty-bucket-429.html" data-start="198.73" data-duration="10.33" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 22"></div>
+      <div data-hf-id="hf-zqad" id="scene-22" data-composition-id="scene-22" data-composition-src="compositions/22-idle-refill-bank.html" data-start="208.56" data-duration="10.66" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 23"></div>
+      <div data-hf-id="hf-ox5q" id="scene-23" data-composition-id="scene-23" data-composition-src="compositions/23-burst-then-settle.html" data-start="218.72" data-duration="10.74" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 24"></div>
+      <div data-hf-id="hf-1i4f" id="scene-24" data-composition-id="scene-24" data-composition-src="compositions/24-two-knobs.html" data-start="228.96" data-duration="14.00" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 25"></div>
+      <div data-hf-id="hf-k6y4" id="scene-25" data-composition-id="scene-25" data-composition-src="compositions/25-stripe-gate.html" data-start="242.46" data-duration="7.00" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 26"></div>
+      <div data-hf-id="hf-vqo7" id="scene-26" data-composition-id="scene-26" data-composition-src="compositions/26-aws-gateway.html" data-start="248.96" data-duration="9.60" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 27"></div>
+      <div data-hf-id="hf-6k05" id="scene-27" data-composition-id="scene-27" data-composition-src="compositions/27-token-bucket-maxim.html" data-start="258.06" data-duration="5.64" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 28"></div>
+      <div data-hf-id="hf-qlc7" id="scene-28" data-composition-id="scene-28" data-composition-src="compositions/28-leaky-bucket-title.html" data-start="263.20" data-duration="5.48" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 29"></div>
+      <div data-hf-id="hf-coo1" id="scene-29" data-composition-id="scene-29" data-composition-src="compositions/29-leaky-bucket-hole.html" data-start="268.18" data-duration="9.44" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 30"></div>
+      <div data-hf-id="hf-x441" id="scene-30" data-composition-id="scene-30" data-composition-src="compositions/30-leaky-flow.html" data-start="277.12" data-duration="7.98" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 31"></div>
+      <div data-hf-id="hf-0bdl" id="scene-31" data-composition-id="scene-31" data-composition-src="compositions/31-burst-wont-flinch.html" data-start="284.60" data-duration="5.44" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 32"></div>
+      <div data-hf-id="hf-drjr" id="scene-32" data-composition-id="scene-32" data-composition-src="compositions/32-smoothed-stream.html" data-start="289.54" data-duration="9.32" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 33"></div>
+      <div data-hf-id="hf-6c9l" id="scene-33" data-composition-id="scene-33" data-composition-src="compositions/33-nginx-paces.html" data-start="298.36" data-duration="7.76" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 34"></div>
+      <div data-hf-id="hf-65st" id="scene-34" data-composition-id="scene-34" data-composition-src="compositions/34-queue-overflow.html" data-start="305.62" data-duration="8.48" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 35"></div>
+      <div data-hf-id="hf-zsf1" id="scene-35" data-composition-id="scene-35" data-composition-src="compositions/35-kind-02-no-hold.html" data-start="313.60" data-duration="6.78" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 36"></div>
+      <div data-hf-id="hf-y0t9" id="scene-36" data-composition-id="scene-36" data-composition-src="compositions/36-held-vs-number.html" data-start="319.88" data-duration="7.52" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 37"></div>
+      <div data-hf-id="hf-3bq7" id="scene-37" data-composition-id="scene-37" data-composition-src="compositions/37-bouncer-clicker.html" data-start="326.90" data-duration="6.54" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 38"></div>
+      <div data-hf-id="hf-bun4" id="scene-38" data-composition-id="scene-38" data-composition-src="compositions/38-pass-through-count.html" data-start="332.94" data-duration="8.72" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 39"></div>
+      <div data-hf-id="hf-sqnt" id="scene-39" data-composition-id="scene-39" data-composition-src="compositions/39-counter-decay.html" data-start="341.16" data-duration="6.66" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 40"></div>
+      <div data-hf-id="hf-0gvk" id="scene-40" data-composition-id="scene-40" data-composition-src="compositions/40-under-the-cap.html" data-start="347.32" data-duration="8.18" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 41"></div>
+      <div data-hf-id="hf-k530" id="scene-41" data-composition-id="scene-41" data-composition-src="compositions/41-cap-429-no-queue.html" data-start="355.00" data-duration="10.20" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 42"></div>
+      <div data-hf-id="hf-5hbg" id="scene-42" data-composition-id="scene-42" data-composition-src="compositions/42-headroom-opens.html" data-start="364.70" data-duration="8.57" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 43"></div>
+      <div data-hf-id="hf-o3kd" id="scene-43" data-composition-id="scene-43" data-composition-src="compositions/43-named-the-queue.html" data-start="372.77" data-duration="10.58" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 44"></div>
+      <div data-hf-id="hf-rycv" id="scene-44" data-composition-id="scene-44" data-composition-src="compositions/44-no-burst-single-file.html" data-start="382.85" data-duration="9.50" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 45"></div>
+      <div data-hf-id="hf-ibdm" id="scene-45" data-composition-id="scene-45" data-composition-src="compositions/45-named-the-counter.html" data-start="391.85" data-duration="3.96" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 46"></div>
+      <div data-hf-id="hf-nm6u" id="scene-46" data-composition-id="scene-46" data-composition-src="compositions/46-drain-then-slam.html" data-start="395.31" data-duration="7.14" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 47"></div>
+      <div data-hf-id="hf-6vwx" id="scene-47" data-composition-id="scene-47" data-composition-src="compositions/47-all-under-the-cap.html" data-start="401.95" data-duration="6.18" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 48"></div>
+      <div data-hf-id="hf-q1sm" id="scene-48" data-composition-id="scene-48" data-composition-src="compositions/48-burst-in-disguise.html" data-start="407.63" data-duration="6.14" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 49"></div>
+      <div data-hf-id="hf-saoz" id="scene-49" data-composition-id="scene-49" data-composition-src="compositions/49-mask-comes-off.html" data-start="413.27" data-duration="5.31" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 50"></div>
+      <div data-hf-id="hf-qwwb" id="scene-50" data-composition-id="scene-50" data-composition-src="compositions/50-token-bucket-backwards.html" data-start="418.08" data-duration="5.69" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 51"></div>
+      <div data-hf-id="hf-kmqh" id="scene-51" data-composition-id="scene-51" data-composition-src="compositions/51-live-mirror.html" data-start="423.27" data-duration="6.50" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 52"></div>
+      <div data-hf-id="hf-t98k" id="scene-52" data-composition-id="scene-52" data-composition-src="compositions/52-identical-call.html" data-start="429.27" data-duration="7.04" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 53"></div>
+      <div data-hf-id="hf-bzam" id="scene-53" data-composition-id="scene-53" data-composition-src="compositions/53-forget-the-names.html" data-start="435.81" data-duration="4.36" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 54"></div>
+      <div data-hf-id="hf-jds0" id="scene-54" data-composition-id="scene-54" data-composition-src="compositions/54-the-fork.html" data-start="439.67" data-duration="9.34" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 55"></div>
+      <div data-hf-id="hf-k7eg" id="scene-55" data-composition-id="scene-55" data-composition-src="compositions/55-two-use-cases.html" data-start="448.51" data-duration="8.46" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 56"></div>
+      <div data-hf-id="hf-a368" id="scene-56" data-composition-id="scene-56" data-composition-src="compositions/56-the-whole-decision.html" data-start="456.47" data-duration="6.10" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 57"></div>
+      <div data-hf-id="hf-szw1" id="scene-57" data-composition-id="scene-57" data-composition-src="compositions/57-not-the-only-answers.html" data-start="462.07" data-duration="6.00" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 58"></div>
+      <div data-hf-id="hf-hgic" id="scene-58" data-composition-id="scene-58" data-composition-src="compositions/58-two-windows.html" data-start="467.57" data-duration="9.72" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 59"></div>
+      <div data-hf-id="hf-y8ln" id="scene-59" data-composition-id="scene-59" data-composition-src="compositions/59-fixed-window.html" data-start="476.79" data-duration="8.08" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 60"></div>
+      <div data-hf-id="hf-pvt9" id="scene-60" data-composition-id="scene-60" data-composition-src="compositions/60-reset-claude-code-cap.html" data-start="484.37" data-duration="6.96" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 61"></div>
+      <div data-hf-id="hf-vcoq" id="scene-61" data-composition-id="scene-61" data-composition-src="compositions/61-five-hour-clock.html" data-start="490.83" data-duration="4.62" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 62"></div>
+      <div data-hf-id="hf-pspi" id="scene-62" data-composition-id="scene-62" data-composition-src="compositions/62-locked-out-countdown.html" data-start="494.95" data-duration="13.12" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 63"></div>
+      <div data-hf-id="hf-nj3v" id="scene-63" data-composition-id="scene-63" data-composition-src="compositions/63-blind-spot-boundary.html" data-start="507.57" data-duration="6.00" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 64"></div>
+      <div data-hf-id="hf-j69a" id="scene-64" data-composition-id="scene-64" data-composition-src="compositions/64-boundary-exploit.html" data-start="513.07" data-duration="11.32" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 65"></div>
+      <div data-hf-id="hf-a67n" id="scene-65" data-composition-id="scene-65" data-composition-src="compositions/65-gate-is-blind.html" data-start="523.89" data-duration="12.36" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 66"></div>
+      <div data-hf-id="hf-3yaz" id="scene-66" data-composition-id="scene-66" data-composition-src="compositions/66-rolling-window-fix.html" data-start="535.75" data-duration="6.58" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 67"></div>
+      <div data-hf-id="hf-7o6n" id="scene-67" data-composition-id="scene-67" data-composition-src="compositions/67-forget-counter-watch-clock.html" data-start="541.83" data-duration="8.18" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 68"></div>
+      <div data-hf-id="hf-4nf2" id="scene-68" data-composition-id="scene-68" data-composition-src="compositions/68-rolling-lookback-example.html" data-start="549.51" data-duration="13.80" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 69"></div>
+      <div data-hf-id="hf-3077" id="scene-69" data-composition-id="scene-69" data-composition-src="compositions/69-under-over-line.html" data-start="562.81" data-duration="5.34" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 70"></div>
+      <div data-hf-id="hf-yah8" id="scene-70" data-composition-id="scene-70" data-composition-src="compositions/70-nothing-resets-slides.html" data-start="567.65" data-duration="5.68" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 71"></div>
+      <div data-hf-id="hf-nufz" id="scene-71" data-composition-id="scene-71" data-composition-src="compositions/71-window-slides-forward.html" data-start="572.83" data-duration="7.06" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 72"></div>
+      <div data-hf-id="hf-q2ip" id="scene-72" data-composition-id="scene-72" data-composition-src="compositions/72-oldest-falls-off.html" data-start="579.39" data-duration="9.93" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 73"></div>
+      <div data-hf-id="hf-sul3" id="scene-73" data-composition-id="scene-73" data-composition-src="compositions/73-no-single-reset.html" data-start="588.82" data-duration="7.63" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 74"></div>
+      <div data-hf-id="hf-uhzq" id="scene-74" data-composition-id="scene-74" data-composition-src="compositions/74-no-seam.html" data-start="595.95" data-duration="9.32" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 75"></div>
+      <div data-hf-id="hf-lnrx" id="scene-75" data-composition-id="scene-75" data-composition-src="compositions/75-the-loop-face.html" data-start="604.77" data-duration="3.64" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 76"></div>
+      <div data-hf-id="hf-14k6" id="scene-76" data-composition-id="scene-76" data-composition-src="compositions/76-remember-retry-storm.html" data-start="607.91" data-duration="5.96" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 77"></div>
+      <div data-hf-id="hf-2fa8" id="scene-77" data-composition-id="scene-77" data-composition-src="compositions/77-amazon-token-bucket-retry.html" data-start="613.37" data-duration="8.64" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 78"></div>
+      <div data-hf-id="hf-0tnu" id="scene-78" data-composition-id="scene-78" data-composition-src="compositions/78-free-while-tokens.html" data-start="621.51" data-duration="7.28" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 79"></div>
+      <div data-hf-id="hf-vy4e" id="scene-79" data-composition-id="scene-79" data-composition-src="compositions/79-same-bucket-two-jobs.html" data-start="628.29" data-duration="7.88" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 80"></div>
+      <div data-hf-id="hf-tnek" id="scene-80" data-composition-id="scene-80" data-composition-src="compositions/80-know-the-shape.html" data-start="635.67" data-duration="13.58" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 81"></div>
+      <div data-hf-id="hf-jvzm" id="scene-81" data-composition-id="scene-81" data-composition-src="compositions/81-forgives-vs-refuses.html" data-start="648.75" data-duration="6.32" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 82"></div>
+      <div data-hf-id="hf-lvuy" id="scene-82" data-composition-id="scene-82" data-composition-src="compositions/82-one-more-thing-face.html" data-start="654.57" data-duration="2.74" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 83"></div>
+      <div data-hf-id="hf-f205" id="scene-83" data-composition-id="scene-83" data-composition-src="compositions/83-subscribe-face.html" data-start="656.81" data-duration="17.61" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 84"></div>
+      <div data-hf-id="hf-38ra" id="scene-84" data-composition-id="scene-84" data-composition-src="compositions/84-which-gate-question.html" data-start="673.92" data-duration="7.03" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 85"></div>
+      <div data-hf-id="hf-1e5y" id="scene-85" data-composition-id="scene-85" data-composition-src="compositions/85-four-gates-grid.html" data-start="680.45" data-duration="6.94" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 86"></div>
+      <div data-hf-id="hf-vhwr" id="scene-86" data-composition-id="scene-86" data-composition-src="compositions/86-tell-me-comments.html" data-start="686.89" data-duration="2.26" data-track-index="2" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 87"></div>
+      <div data-hf-id="hf-kraj" id="scene-87" data-composition-id="scene-87" data-composition-src="compositions/87-goodbye-face.html" data-start="688.65" data-duration="6.49" data-track-index="1" data-width="1920" data-height="1080" style="position: absolute; inset: 0; z-index: 88"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      // Root/main timeline — drives the face-layer PIP geometry/z tweens at global
+      // mode-transition timestamps. FACE/GRAPHICS need no tween here (scene opacity
+      // handles them); only PIP windows add tweens to this timeline.
+      const __main = gsap.timeline({ paused: true });
+      window.__timelines["main"] = __main;
+
+      // Scene 24 (228.96-242.96) PIP — the face lifts to a bordered top-right inset
+      // for the "two knobs" anatomy summary, then drops back under the graphics.
+      // z is raised + geometry set WHILE the face is covered (opacity 0), so the
+      // z-flip never shows; the inset then fades in. Global timestamps (face = no offset).
+      __main.set("#face-layer", { zIndex: 26, opacity: 0, transformOrigin: "100% 0%",
+        scale: 0.17, x: -24, y: 24, borderRadius: 90, border: "18px solid #ffb547",
+        boxShadow: "0 60px 160px rgba(0,0,0,0.6)" }, 229.9);
+      __main.to("#face-layer", { opacity: 1, duration: 0.45, ease: "power2.out" }, 230.22);
+      __main.to("#face-layer", { opacity: 0, duration: 0.45, ease: "power2.in" }, 241.2);
+      __main.set("#face-layer", { zIndex: 1, opacity: 1, scale: 1, x: 0, y: 0,
+        transformOrigin: "50% 50%", borderRadius: 0, border: "0px solid #ffb547", boxShadow: "none" }, 241.8);
+
+      // Scene 37 (326.90-333.44) PIP — the face lifts to a bordered top-right inset for
+      // the direct-address "I want you to picture this... right?" while the bouncer/
+      // clicker analogy assembles on the main canvas. Cyan border (kind-02/leaky). Same
+      // covered-z-flip pattern; global timestamps (face = no offset).
+      __main.set("#face-layer", { zIndex: 39, opacity: 0, transformOrigin: "100% 0%",
+        scale: 0.18, x: -28, y: 28, borderRadius: 100, border: "18px solid #67e8f9",
+        boxShadow: "0 60px 160px rgba(0,0,0,0.6)" }, 327.5);
+      __main.to("#face-layer", { opacity: 1, duration: 0.45, ease: "power2.out" }, 327.96);
+      __main.to("#face-layer", { opacity: 0, duration: 0.45, ease: "power2.in" }, 332.6);
+      __main.set("#face-layer", { zIndex: 1, opacity: 1, scale: 1, x: 0, y: 0,
+        transformOrigin: "50% 50%", borderRadius: 0, border: "0px solid #67e8f9", boxShadow: "none" }, 333.1);
+
+      // Scene 48 (407.63-413.77) PIP — the face lifts to a bordered BOTTOM-LEFT inset to
+      // land the verdict line "That's a burst in disguise" on-camera, then crossfades out
+      // at the sentence boundary ("The very thing...") so the diagram fills the frame.
+      // Danger-red border (the burst/indictment). Bottom-left so the right-half "BURST"
+      // verdict stays unoccluded. Same covered-z-flip pattern; global timestamps.
+      __main.set("#face-layer", { zIndex: 50, opacity: 0, transformOrigin: "0% 100%",
+        scale: 0.18, x: 30, y: -30, borderRadius: 100, border: "18px solid #ff6b5d",
+        boxShadow: "0 60px 160px rgba(0,0,0,0.6)" }, 408.0);
+      __main.to("#face-layer", { opacity: 1, duration: 0.45, ease: "power2.out" }, 408.2);
+      __main.to("#face-layer", { opacity: 0, duration: 0.45, ease: "power2.in" }, 410.4);
+      __main.set("#face-layer", { zIndex: 1, opacity: 1, scale: 1, x: 0, y: 0,
+        transformOrigin: "50% 50%", borderRadius: 0, border: "0px solid #ff6b5d", boxShadow: "none" }, 411.0);
+    </script>
+        <!-- sfx-layer: generated by tools/sfx-plan, do not edit -->
+      <div data-hf-id="hf-zc7l" id="sfx-layer" data-composition-id="sfx-layer" data-composition-src="compositions/sfx.html" data-start="0" data-duration="695.14" data-track-index="19"></div>
+</body>
+</html>

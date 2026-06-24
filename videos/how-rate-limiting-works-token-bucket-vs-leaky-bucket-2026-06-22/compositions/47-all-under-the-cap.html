@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 47 — every one under the cap, all waved straight through</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-47 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* left — the counter racing to the cap */
+    #scene-47 .e1 { position: absolute; left: 230px; top: 250px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-47 .e1 .bar { display: inline-block; width: 40px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 12px; }
+    #scene-47 .count { position: absolute; left: 200px; top: 360px; width: 280px; text-align: right;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 150px; color: var(--accent-2); font-variant-numeric: tabular-nums; line-height: 1; opacity: 0; }
+    #scene-47 .capnum { position: absolute; left: 496px; top: 432px; width: 200px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 60px; color: var(--muted); opacity: 0; }
+    #scene-47 .capnote { position: absolute; left: 232px; top: 556px; width: 420px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--accent); letter-spacing: 0.04em; opacity: 0; }
+    #scene-47 .capnote b { color: var(--accent); }
+
+    /* right — the 10 nodes (continuity from scene 46), flipping green */
+    #scene-47 .e2 { position: absolute; left: 1020px; top: 268px; width: 600px;
+      font-family: "Inter"; font-weight: 400; font-size: 26px; color: var(--muted); opacity: 0; }
+    #scene-47 #grid { position: absolute; left: 1020px; top: 340px; width: 540px; height: 192px; }
+    #scene-47 .rq { position: absolute; width: 76px; height: 76px; border-radius: 50%;
+      background: rgba(103,232,249,0.16); border: 2px solid var(--accent-2); display: flex; align-items: center; justify-content: center;
+      font-family: "Inter"; font-weight: 700; font-size: 30px; color: var(--ok); }
+    #scene-47 .rq .ck { opacity: 0; }
+    #scene-47 .ring { position: absolute; left: 996px; top: 316px; width: 588px; height: 240px; border-radius: 18px;
+      border: 2.5px solid var(--accent); opacity: 0; box-shadow: 0 0 26px rgba(255,181,71,0.3); }
+    #scene-47 .payoff { position: absolute; left: 1020px; top: 596px; width: 620px;
+      font-family: "Inter"; font-weight: 700; font-size: 44px; color: var(--ok); opacity: 0; }
+    #scene-47 .payoff small { display: block; font-weight: 400; font-size: 26px; color: var(--muted); margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div id="scene-47" data-composition-id="scene-47" data-width="1920" data-height="1080">
+    <div class="e1"><span class="bar"></span>each one under the cap</div>
+    <div class="count" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="2560">0</div>
+    <div class="capnum">/ 10</div>
+    <div class="capnote">cap = 10 &mdash; <b>and it lands exactly on it</b></div>
+
+    <div class="e2">every single one is under the cap&hellip;</div>
+    <div id="grid" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="4150"></div>
+    <div class="ring"></div>
+    <div class="payoff" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4760">waved straight through<small>all ten allowed &mdash; immediately</small></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // the 10 nodes — same 2x5 grid as scene 46 (continuity), starting cyan, then flipping green.
+    const g = document.getElementById("grid");
+    const nodes = [];
+    for (let i = 0; i < 10; i++) {
+      const col = i % 5, row = Math.floor(i / 5);
+      const n = document.createElement("div"); n.className = "rq";
+      n.style.left = (col * 116) + "px"; n.style.top = (row * 116) + "px";
+      n.innerHTML = '<span class="ck">&check;</span>';
+      g.appendChild(n); nodes.push(n);
+    }
+
+    const cEl = () => document.querySelector("#scene-47 .count");
+
+    // GRAPHICS crossfade — enters in the scene-46 end state (counter 0, cyan grid, amber ring).
+    tl.fromTo("#scene-47", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".e1, .count, .capnum", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.3);
+    tl.fromTo(".e2", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+    tl.fromTo("#grid", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+    tl.fromTo(".ring", { opacity: 0 }, { opacity: 0.9, duration: 0.4 }, 0.4);
+
+    // "under the cap" (403.85->404.49; local 1.90->2.54) — the counter races 0->10.
+    const cnt = { v: 0 };
+    const upd = () => { cEl().textContent = Math.round(cnt.v); };
+    tl.to(cnt, { v: 10, duration: 0.66, ease: "power2.out", snap: { v: 1 }, onUpdate: upd }, 1.9);
+    tl.fromTo(".capnote", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.5);
+
+    // "waved straight through immediately" (405.87->407.07; local 3.92->5.12) — all 10 flip green, ring dissolves.
+    tl.to(".ring", { opacity: 0, duration: 0.5 }, 3.8);
+    tl.to(nodes, { backgroundColor: "rgba(125,216,125,0.30)", borderColor: "#7dd87d", duration: 0.3, stagger: 0.05 }, 3.92);
+    tl.to(".rq .ck", { opacity: 1, duration: 0.2, stagger: 0.05 }, 4.05);
+    // "straight through" — the payoff label.
+    tl.fromTo(".payoff", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)", transformOrigin: "0% 50%" }, 4.36);
+    // "immediately" — the counter punches to its allowed (green) outcome.
+    tl.to(".count", { color: "#7dd87d", duration: 0.3 }, 5.12);
+
+    window.__timelines["scene-47"] = tl;
+  </script>
+</body>
+</html>

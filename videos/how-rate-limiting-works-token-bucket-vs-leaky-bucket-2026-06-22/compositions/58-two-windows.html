@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 58 — two windows: two separate dials, sustained and burst</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-58 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-58 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+      clip-path: inset(0 100% 0 0); }
+
+    #scene-58 .dial { position: absolute; top: 330px; width: 320px; height: 320px; opacity: 0; }
+    #scene-58 .dialL { left: 510px; } #scene-58 .dialR { left: 1090px; }
+    #scene-58 .dial svg { width: 320px; height: 320px; }
+    #scene-58 .track { fill: none; stroke: var(--border); stroke-width: 18; }
+    #scene-58 .arc { fill: none; stroke-width: 18; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    #scene-58 .arcL { stroke: var(--accent-2); } #scene-58 .arcR { stroke: var(--accent); }
+    #scene-58 .dname { position: absolute; left: 0; right: 0; top: 142px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 34px; color: var(--dim); }
+    #scene-58 .dialL .dname.lit { color: var(--accent-2); } #scene-58 .dialR .dname.lit { color: var(--accent); }
+
+    #scene-58 .dsub { position: absolute; top: 686px; width: 320px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 24px; color: var(--muted); opacity: 0; }
+    #scene-58 .dsubL { left: 510px; } #scene-58 .dsubR { left: 1090px; }
+
+    #scene-58 .footer { position: absolute; left: 0; right: 0; top: 800px; text-align: center;
+      font-family: "Inter"; font-weight: 300; font-size: 32px; color: var(--fg); opacity: 0; }
+    #scene-58 .footer b { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-58" data-composition-id="scene-58" data-width="1920" data-height="1080">
+    <div class="eyebrow" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2070">a new answer &mdash; two windows</div>
+
+    <div class="dial dialL" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="6180">
+      <svg viewBox="0 0 320 320">
+        <circle class="track" cx="160" cy="160" r="128" />
+        <circle class="arc arcL" cx="160" cy="160" r="128" pathLength="1" transform="rotate(-90 160 160)" />
+      </svg>
+      <div class="dname">sustained</div>
+    </div>
+    <div class="dsub dsubL">steady long-run rate</div>
+
+    <div class="dial dialR" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="8660">
+      <svg viewBox="0 0 320 320">
+        <circle class="track" cx="160" cy="160" r="128" />
+        <circle class="arc arcR" cx="160" cy="160" r="128" pathLength="1" transform="rotate(-90 160 160)" />
+      </svg>
+      <div class="dname">burst</div>
+    </div>
+    <div class="dsub dsubR">short-term burst allowance</div>
+
+    <div class="footer" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9110">two <b>separate</b> dials &mdash; tuned independently</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade (lands in 467.31->468.07 pause).
+    tl.fromTo("#scene-58", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "two windows" (469.09; local 1.52) — section title wipes in; both dial faces settle (empty).
+    tl.fromTo(".eyebrow", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "power2.out" }, 1.52);
+    tl.fromTo(".dial", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.12 }, 2.0);
+
+    // "sustained" (472.55; local 4.98) — the cyan dial sweeps to a high steady fill; label lights.
+    tl.to(".arcL", { strokeDashoffset: 0.25, duration: 1.2, ease: "power2.inOut" }, 4.98);
+    tl.to(".dialL .dname", { color: "#67e8f9", duration: 0.4 }, 4.98);
+    tl.fromTo(".dsubL", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 5.4);
+
+    // "burst" (475.23; local 7.66) — the amber dial sweeps to a lower (contingency) fill; label lights.
+    tl.to(".arcR", { strokeDashoffset: 0.45, duration: 1.0, ease: "power2.inOut" }, 7.66);
+    tl.to(".dialR .dname", { color: "#ffb547", duration: 0.4 }, 7.66);
+    tl.fromTo(".dsubR", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 8.0);
+
+    // "two separate dials" (476.23; local 8.66) — the unifying footer slides up.
+    tl.fromTo(".footer", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 8.66);
+
+    window.__timelines["scene-58"] = tl;
+  </script>
+</body>
+</html>

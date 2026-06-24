@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 50 — it's the token bucket in disguise, counted backwards</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-50 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-50 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* the two nodes proven equal */
+    #scene-50 .node { position: absolute; top: 320px; width: 380px; height: 170px; border-radius: 16px;
+      background: var(--panel); border: 2.5px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
+    #scene-50 .node .nl { font-family: "Inter"; font-weight: 800; font-size: 46px; }
+    #scene-50 .node .ns { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--muted); margin-top: 8px; letter-spacing: 0.06em; }
+    #scene-50 .nA { left: 410px; border-color: var(--accent-2); }
+    #scene-50 .nA .nl { color: var(--accent-2); }
+    #scene-50 .nB { left: 1130px; border-color: var(--accent); }
+    #scene-50 .nB .nl { color: var(--accent); }
+    #scene-50 .eq { position: absolute; left: 860px; top: 352px; width: 200px; text-align: center;
+      font-family: "Inter"; font-weight: 300; font-size: 96px; color: var(--fg); opacity: 0; }
+
+    /* the direction-reversal axis */
+    #scene-50 .dir { position: absolute; top: 540px; width: 380px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 28px; color: var(--muted); opacity: 0; }
+    #scene-50 .dirA { left: 410px; } #scene-50 .dirB { left: 1130px; }
+    #scene-50 .dir .ar { font-size: 40px; display: block; margin-bottom: 6px; }
+    #scene-50 .dirA .ar { color: var(--accent-2); } #scene-50 .dirB .ar { color: var(--accent); }
+
+    #scene-50 .caption { position: absolute; left: 0; right: 0; top: 690px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 40px; color: var(--muted); opacity: 0; }
+    #scene-50 .caption b { color: var(--accent); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div id="scene-50" data-composition-id="scene-50" data-width="1920" data-height="1080">
+    <div class="eyebrow">the same machine, in disguise</div>
+
+    <div class="node nA" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3000"><span class="nl">COUNTER</span><span class="ns">cap 10</span></div>
+    <div class="eq">=</div>
+    <div class="node nB" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1380"><span class="nl">TOKEN BUCKET</span><span class="ns">cap 10</span></div>
+
+    <div class="dir dirA"><span class="ar">&darr;</span>counts down &middot; 10 &rarr; 0</div>
+    <div class="dir dirB"><span class="ar">&uarr;</span>counts up &middot; 0 &rarr; 10</div>
+
+    <div class="caption" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4720">the very same thing &mdash; just counted <b>backwards</b></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — the big equivalence reveal (resolves scene 49's amber hint).
+    tl.fromTo("#scene-50", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+
+    // "token bucket" (418.91; local 0.83) — the two nodes slide in from opposite edges.
+    tl.fromTo(".nA", { opacity: 0, x: -320 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 0.83);
+    tl.fromTo(".nB", { opacity: 0, x: 320 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 0.83);
+
+    // "in disguise" (420.29; local 2.21) — the "=" draws on, then COUNTER morphs cyan -> amber.
+    tl.fromTo(".eq", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", transformOrigin: "50% 50%" }, 2.21);
+    tl.to(".nA", { borderColor: "#ffb547", duration: 0.5 }, 2.5);
+    tl.to(".nA .nl", { color: "#ffb547", duration: 0.5 }, 2.5);
+
+    // "counted" (421.45; local 3.37) — the mirrored direction axis assembles.
+    tl.fromTo(".dirA", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 3.37);
+    tl.fromTo(".dirB", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 3.5);
+
+    // "backwards" (422.35; local 4.27) — the payoff caption lands.
+    tl.fromTo(".caption", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)", transformOrigin: "50% 50%" }, 4.27);
+
+    window.__timelines["scene-50"] = tl;
+  </script>
+</body>
+</html>

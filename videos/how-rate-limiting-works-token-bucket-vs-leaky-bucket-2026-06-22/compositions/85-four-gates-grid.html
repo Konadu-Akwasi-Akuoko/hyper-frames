@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 85 — the four gates: token bucket, leaky bucket, fixed window, sliding window</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-85 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 54px; }
+
+    #scene-85 .eyebrow { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px;
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-85 .grid { display: grid; grid-template-columns: 660px 660px; grid-template-rows: 250px 250px; gap: 44px; }
+    #scene-85 .card { position: relative; background: var(--panel); border: 1px solid var(--border);
+      border-radius: 22px; padding: 44px 48px; display: flex; flex-direction: column; justify-content: center; gap: 16px;
+      overflow: hidden; opacity: 0; }
+    #scene-85 .card::before { content: ""; position: absolute; left: 0; top: 0; height: 6px; width: 100%; background: var(--c); }
+    #scene-85 .card .tag { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--c); }
+    #scene-85 .card .name { font-family: "Inter"; font-weight: 700; font-size: 62px; letter-spacing: -0.01em; color: var(--fg); }
+
+    #scene-85 .amber { --c: var(--accent); }
+    #scene-85 .cyan { --c: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-85" data-composition-id="scene-85" data-width="1920" data-height="1080">
+    <div class="eyebrow">the four gates</div>
+    <div class="grid">
+      <div class="card amber c1" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1880"><span class="tag">allows bursts</span><span class="name">token bucket</span></div>
+      <div class="card cyan c2" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2580"><span class="tag">smooth output</span><span class="name">leaky bucket</span></div>
+      <div class="card amber c3" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="5040"><span class="tag">simple counter</span><span class="name">fixed window</span></div>
+      <div class="card cyan c4" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="6180"><span class="tag">rolling count</span><span class="name">sliding window</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — opaque, covers the face at the FACE->GRAPHICS seam.
+    tl.fromTo("#scene-85", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+
+    // Each card pops on its own beat word (overruled animejs->gsap: pops land on non-uniform word times).
+    const pop = { opacity: 0, y: 18, scale: 0.9, transformOrigin: "50% 50%" };
+    const set = { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(1.7)" };
+    // "token bucket" (681.09; local 1.46)
+    tl.fromTo(".c1", pop, set, 1.46);
+    // "leaky bucket" (682.61; local 2.16)
+    tl.fromTo(".c2", pop, set, 2.16);
+    // "fixed window" (685.07; local 4.62)
+    tl.fromTo(".c3", pop, set, 4.62);
+    // "sliding window" (686.21; local 5.76)
+    tl.fromTo(".c4", pop, set, 5.76);
+
+    window.__timelines["scene-85"] = tl;
+  </script>
+</body>
+</html>

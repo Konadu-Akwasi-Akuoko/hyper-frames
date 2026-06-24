@@ -1,0 +1,2647 @@
+{
+  "source": "transcript.json",
+  "audio_duration_secs": 695.14,
+  "language_code": "eng",
+  "word_count": 1747,
+  "config": {
+    "pause_threshold_secs": 0.4,
+    "scene_pause_threshold_secs": 0.6,
+    "emphatic_top_n": 15,
+    "anchor_phrase_count": 38
+  },
+  "anchors": [
+    {
+      "phrase": "You're doing that too much",
+      "matches": []
+    },
+    {
+      "phrase": "the gate",
+      "matches": [
+        {
+          "word_index": 354,
+          "start": 148.14,
+          "end": 148.62,
+          "matched_text": "The gate"
+        },
+        {
+          "word_index": 480,
+          "start": 200.96,
+          "end": 201.34,
+          "matched_text": "the gate"
+        },
+        {
+          "word_index": 600,
+          "start": 243.38,
+          "end": 243.88,
+          "matched_text": "the gate"
+        },
+        {
+          "word_index": 616,
+          "start": 249.58,
+          "end": 250.1,
+          "matched_text": "the gate"
+        },
+        {
+          "word_index": 847,
+          "start": 345.84,
+          "end": 346.219,
+          "matched_text": "the gate"
+        },
+        {
+          "word_index": 1321,
+          "start": 527.712,
+          "end": 528.132,
+          "matched_text": "the gate"
+        },
+        {
+          "word_index": 1596,
+          "start": 630.772,
+          "end": 631.312,
+          "matched_text": "the gate"
+        }
+      ]
+    },
+    {
+      "phrase": "three hundred and ninety-eight million requests a second",
+      "matches": []
+    },
+    {
+      "phrase": "Rapid Reset",
+      "matches": [
+        {
+          "word_index": 101,
+          "start": 42.82,
+          "end": 43.94,
+          "matched_text": "Rapid Reset."
+        }
+      ]
+    },
+    {
+      "phrase": "retry storm",
+      "matches": [
+        {
+          "word_index": 217,
+          "start": 91.0,
+          "end": 91.72,
+          "matched_text": "retry storm."
+        },
+        {
+          "word_index": 1537,
+          "start": 609.352,
+          "end": 609.992,
+          "matched_text": "retry storm,"
+        }
+      ]
+    },
+    {
+      "phrase": "DynamoDB",
+      "matches": [
+        {
+          "word_index": 227,
+          "start": 95.56,
+          "end": 96.2,
+          "matched_text": "DynamoDB"
+        }
+      ]
+    },
+    {
+      "phrase": "two hundred and forty-three times",
+      "matches": [
+        {
+          "word_index": 267,
+          "start": 113.32,
+          "end": 115.02,
+          "matched_text": "two hundred and forty-three times"
+        }
+      ]
+    },
+    {
+      "phrase": "congestive collapse",
+      "matches": []
+    },
+    {
+      "phrase": "Is this request allowed, right now?",
+      "matches": [
+        {
+          "word_index": 368,
+          "start": 153.94,
+          "end": 156.38,
+          "matched_text": "\"Is this request allowed right now?\""
+        }
+      ]
+    },
+    {
+      "phrase": "named after a bucket",
+      "matches": [
+        {
+          "word_index": 389,
+          "start": 161.66,
+          "end": 163.14,
+          "matched_text": "named after a bucket."
+        }
+      ]
+    },
+    {
+      "phrase": "the token bucket",
+      "matches": [
+        {
+          "word_index": 401,
+          "start": 166.92,
+          "end": 168.26,
+          "matched_text": "the token bucket."
+        },
+        {
+          "word_index": 636,
+          "start": 258.56,
+          "end": 259.34,
+          "matched_text": "The token bucket"
+        },
+        {
+          "word_index": 1034,
+          "start": 418.752,
+          "end": 420.052,
+          "matched_text": "the token bucket"
+        },
+        {
+          "word_index": 1115,
+          "start": 449.012,
+          "end": 450.372,
+          "matched_text": "The token bucket"
+        },
+        {
+          "word_index": 1721,
+          "start": 680.952,
+          "end": 681.912,
+          "matched_text": "The token bucket"
+        }
+      ]
+    },
+    {
+      "phrase": "ten tokens",
+      "matches": [
+        {
+          "word_index": 415,
+          "start": 172.94,
+          "end": 174.02,
+          "matched_text": "ten tokens,"
+        }
+      ]
+    },
+    {
+      "phrase": "two tokens every second",
+      "matches": []
+    },
+    {
+      "phrase": "a burst",
+      "matches": [
+        {
+          "word_index": 552,
+          "start": 224.02,
+          "end": 224.58,
+          "matched_text": "a burst."
+        },
+        {
+          "word_index": 640,
+          "start": 259.88,
+          "end": 260.399,
+          "matched_text": "a burst."
+        },
+        {
+          "word_index": 1007,
+          "start": 408.552,
+          "end": 409.192,
+          "matched_text": "a burst"
+        },
+        {
+          "word_index": 1136,
+          "start": 457.452,
+          "end": 457.902,
+          "matched_text": "a burst,"
+        }
+      ]
+    },
+    {
+      "phrase": "sustained rate",
+      "matches": [
+        {
+          "word_index": 586,
+          "start": 237.44,
+          "end": 238.32,
+          "matched_text": "sustained rate,"
+        }
+      ]
+    },
+    {
+      "phrase": "429, Too Many Requests",
+      "matches": []
+    },
+    {
+      "phrase": "Stripe",
+      "matches": [
+        {
+          "word_index": 603,
+          "start": 244.38,
+          "end": 244.69,
+          "matched_text": "Stripe"
+        }
+      ]
+    },
+    {
+      "phrase": "API Gateway",
+      "matches": [
+        {
+          "word_index": 620,
+          "start": 251.38,
+          "end": 252.329,
+          "matched_text": "API gateway,"
+        }
+      ]
+    },
+    {
+      "phrase": "the leaky bucket",
+      "matches": [
+        {
+          "word_index": 655,
+          "start": 266.6,
+          "end": 267.94,
+          "matched_text": "the leaky bucket."
+        },
+        {
+          "word_index": 659,
+          "start": 268.82,
+          "end": 269.76,
+          "matched_text": "the leaky bucket,"
+        },
+        {
+          "word_index": 1725,
+          "start": 682.392,
+          "end": 683.732,
+          "matched_text": "the leaky bucket?"
+        }
+      ]
+    },
+    {
+      "phrase": "two of them",
+      "matches": []
+    },
+    {
+      "phrase": "a bucket with a hole",
+      "matches": []
+    },
+    {
+      "phrase": "queue up inside",
+      "matches": []
+    },
+    {
+      "phrase": "Nginx",
+      "matches": [
+        {
+          "word_index": 742,
+          "start": 300.4,
+          "end": 300.86,
+          "matched_text": "Nginx,"
+        }
+      ]
+    },
+    {
+      "phrase": "a counter that leaks",
+      "matches": []
+    },
+    {
+      "phrase": "mirror images",
+      "matches": []
+    },
+    {
+      "phrase": "a single number and a timestamp",
+      "matches": []
+    },
+    {
+      "phrase": "allow bursts, or erase them",
+      "matches": []
+    },
+    {
+      "phrase": "token bucket wearing a leaky bucket's coat",
+      "matches": []
+    },
+    {
+      "phrase": "Shopify",
+      "matches": []
+    },
+    {
+      "phrase": "a fixed window",
+      "matches": [
+        {
+          "word_index": 1196,
+          "start": 479.992,
+          "end": 480.912,
+          "matched_text": "a fixed window."
+        }
+      ]
+    },
+    {
+      "phrase": "double the rate",
+      "matches": []
+    },
+    {
+      "phrase": "a thousand timestamps",
+      "matches": []
+    },
+    {
+      "phrase": "Cloudflare",
+      "matches": [
+        {
+          "word_index": 107,
+          "start": 46.56,
+          "end": 47.419,
+          "matched_text": "Cloudflare"
+        },
+        {
+          "word_index": 1352,
+          "start": 540.192,
+          "end": 540.772,
+          "matched_text": "Cloudflare"
+        }
+      ]
+    },
+    {
+      "phrase": "wrong three times in a hundred thousand",
+      "matches": []
+    },
+    {
+      "phrase": "a token bucket on its retries",
+      "matches": []
+    },
+    {
+      "phrase": "slow down",
+      "matches": [
+        {
+          "word_index": 1620,
+          "start": 639.792,
+          "end": 640.412,
+          "matched_text": "slow down,"
+        }
+      ]
+    },
+    {
+      "phrase": "A bucket filling with tokens",
+      "matches": [
+        {
+          "word_index": 1632,
+          "start": 644.232,
+          "end": 646.232,
+          "matched_text": "a bucket filling with tokens"
+        }
+      ]
+    },
+    {
+      "phrase": "a bucket leaking through a hole",
+      "matches": [
+        {
+          "word_index": 1638,
+          "start": 646.452,
+          "end": 648.312,
+          "matched_text": "a bucket leaking through a hole."
+        }
+      ]
+    }
+  ],
+  "pauses": [
+    {
+      "after_word_index": 4,
+      "after_word_text": "message.",
+      "gap_secs": 0.549,
+      "start_secs": 1.94,
+      "end_secs": 2.489
+    },
+    {
+      "after_word_index": 10,
+      "after_word_text": "much.",
+      "gap_secs": 0.46,
+      "start_secs": 3.88,
+      "end_secs": 4.34
+    },
+    {
+      "after_word_index": 15,
+      "after_word_text": "minute.\"",
+      "gap_secs": 0.68,
+      "start_secs": 5.92,
+      "end_secs": 6.6
+    },
+    {
+      "after_word_index": 23,
+      "after_word_text": "gate",
+      "gap_secs": 0.64,
+      "start_secs": 9.46,
+      "end_secs": 10.1
+    },
+    {
+      "after_word_index": 29,
+      "after_word_text": "knock.",
+      "gap_secs": 0.72,
+      "start_secs": 12.2,
+      "end_secs": 12.92
+    },
+    {
+      "after_word_index": 35,
+      "after_word_text": "annoyance,",
+      "gap_secs": 0.66,
+      "start_secs": 15.02,
+      "end_secs": 15.68
+    },
+    {
+      "after_word_index": 40,
+      "after_word_text": "away",
+      "gap_secs": 0.44,
+      "start_secs": 17.0,
+      "end_secs": 17.44
+    },
+    {
+      "after_word_index": 56,
+      "after_word_text": "you.",
+      "gap_secs": 0.86,
+      "start_secs": 23.26,
+      "end_secs": 24.12
+    },
+    {
+      "after_word_index": 62,
+      "after_word_text": "happened.",
+      "gap_secs": 0.62,
+      "start_secs": 27.04,
+      "end_secs": 27.66
+    },
+    {
+      "after_word_index": 70,
+      "after_word_text": "there,",
+      "gap_secs": 0.61,
+      "start_secs": 31.43,
+      "end_secs": 32.04
+    },
+    {
+      "after_word_index": 77,
+      "after_word_text": "requests",
+      "gap_secs": 0.54,
+      "start_secs": 34.04,
+      "end_secs": 34.58
+    },
+    {
+      "after_word_index": 79,
+      "after_word_text": "second,",
+      "gap_secs": 0.78,
+      "start_secs": 35.3,
+      "end_secs": 36.08
+    },
+    {
+      "after_word_index": 94,
+      "after_word_text": "seen.",
+      "gap_secs": 0.78,
+      "start_secs": 40.36,
+      "end_secs": 41.14
+    },
+    {
+      "after_word_index": 102,
+      "after_word_text": "Reset.",
+      "gap_secs": 0.7,
+      "start_secs": 43.94,
+      "end_secs": 44.64
+    },
+    {
+      "after_word_index": 105,
+      "after_word_text": "attack",
+      "gap_secs": 0.52,
+      "start_secs": 45.6,
+      "end_secs": 46.12
+    },
+    {
+      "after_word_index": 109,
+      "after_word_text": "Amazon,",
+      "gap_secs": 0.46,
+      "start_secs": 48.22,
+      "end_secs": 48.68
+    },
+    {
+      "after_word_index": 118,
+      "after_word_text": "wave.",
+      "gap_secs": 0.86,
+      "start_secs": 50.92,
+      "end_secs": 51.78
+    },
+    {
+      "after_word_index": 133,
+      "after_word_text": "second.",
+      "gap_secs": 0.76,
+      "start_secs": 56.82,
+      "end_secs": 57.58
+    },
+    {
+      "after_word_index": 150,
+      "after_word_text": "call",
+      "gap_secs": 0.6,
+      "start_secs": 61.88,
+      "end_secs": 62.48
+    },
+    {
+      "after_word_index": 152,
+      "after_word_text": "gate,",
+      "gap_secs": 0.58,
+      "start_secs": 63.04,
+      "end_secs": 63.62
+    },
+    {
+      "after_word_index": 157,
+      "after_word_text": "enough.",
+      "gap_secs": 0.44,
+      "start_secs": 65.44,
+      "end_secs": 65.88
+    },
+    {
+      "after_word_index": 169,
+      "after_word_text": "enough.",
+      "gap_secs": 1.39,
+      "start_secs": 70.16,
+      "end_secs": 71.55
+    },
+    {
+      "after_word_index": 176,
+      "after_word_text": "attacker.",
+      "gap_secs": 0.74,
+      "start_secs": 73.56,
+      "end_secs": 74.3
+    },
+    {
+      "after_word_index": 182,
+      "after_word_text": "itself.",
+      "gap_secs": 0.78,
+      "start_secs": 77.04,
+      "end_secs": 77.82
+    },
+    {
+      "after_word_index": 189,
+      "after_word_text": "right,",
+      "gap_secs": 0.5,
+      "start_secs": 79.76,
+      "end_secs": 80.26
+    },
+    {
+      "after_word_index": 196,
+      "after_word_text": "retry,",
+      "gap_secs": 0.52,
+      "start_secs": 83.16,
+      "end_secs": 83.68
+    },
+    {
+      "after_word_index": 203,
+      "after_word_text": "other,",
+      "gap_secs": 0.58,
+      "start_secs": 86.2,
+      "end_secs": 86.78
+    },
+    {
+      "after_word_index": 212,
+      "after_word_text": "pile.",
+      "gap_secs": 0.48,
+      "start_secs": 89.62,
+      "end_secs": 90.1
+    },
+    {
+      "after_word_index": 218,
+      "after_word_text": "storm.",
+      "gap_secs": 0.7,
+      "start_secs": 91.72,
+      "end_secs": 92.42
+    },
+    {
+      "after_word_index": 221,
+      "after_word_text": "fifteen,",
+      "gap_secs": 0.62,
+      "start_secs": 93.34,
+      "end_secs": 93.96
+    },
+    {
+      "after_word_index": 232,
+      "after_word_text": "hours,",
+      "gap_secs": 0.54,
+      "start_secs": 98.36,
+      "end_secs": 98.9
+    },
+    {
+      "after_word_index": 241,
+      "after_word_text": "failing,",
+      "gap_secs": 0.58,
+      "start_secs": 101.14,
+      "end_secs": 101.72
+    },
+    {
+      "after_word_index": 248,
+      "after_word_text": "it.",
+      "gap_secs": 0.7,
+      "start_secs": 104.46,
+      "end_secs": 105.16
+    },
+    {
+      "after_word_index": 252,
+      "after_word_text": "merciless.",
+      "gap_secs": 0.7,
+      "start_secs": 106.8,
+      "end_secs": 107.5
+    },
+    {
+      "after_word_index": 255,
+      "after_word_text": "deep,",
+      "gap_secs": 0.68,
+      "start_secs": 108.72,
+      "end_secs": 109.4
+    },
+    {
+      "after_word_index": 259,
+      "after_word_text": "times,",
+      "gap_secs": 0.58,
+      "start_secs": 110.5,
+      "end_secs": 111.08
+    },
+    {
+      "after_word_index": 274,
+      "after_word_text": "load.",
+      "gap_secs": 0.78,
+      "start_secs": 115.92,
+      "end_secs": 116.7
+    },
+    {
+      "after_word_index": 283,
+      "after_word_text": "state",
+      "gap_secs": 0.5,
+      "start_secs": 118.66,
+      "end_secs": 119.16
+    },
+    {
+      "after_word_index": 288,
+      "after_word_text": "buried",
+      "gap_secs": 0.48,
+      "start_secs": 120.86,
+      "end_secs": 121.34
+    },
+    {
+      "after_word_index": 301,
+      "after_word_text": "collapse.",
+      "gap_secs": 0.56,
+      "start_secs": 125.94,
+      "end_secs": 126.5
+    },
+    {
+      "after_word_index": 310,
+      "after_word_text": "twenty-five",
+      "gap_secs": 0.54,
+      "start_secs": 129.92,
+      "end_secs": 130.46
+    },
+    {
+      "after_word_index": 323,
+      "after_word_text": "forty",
+      "gap_secs": 0.42,
+      "start_secs": 134.76,
+      "end_secs": 135.18
+    },
+    {
+      "after_word_index": 327,
+      "after_word_text": "services.",
+      "gap_secs": 0.94,
+      "start_secs": 136.34,
+      "end_secs": 137.28
+    },
+    {
+      "after_word_index": 342,
+      "after_word_text": "edge",
+      "gap_secs": 0.4,
+      "start_secs": 142.42,
+      "end_secs": 142.82
+    },
+    {
+      "after_word_index": 353,
+      "after_word_text": "database.",
+      "gap_secs": 0.66,
+      "start_secs": 147.48,
+      "end_secs": 148.14
+    },
+    {
+      "after_word_index": 359,
+      "after_word_text": "question",
+      "gap_secs": 0.56,
+      "start_secs": 150.24,
+      "end_secs": 150.8
+    },
+    {
+      "after_word_index": 362,
+      "after_word_text": "over,",
+      "gap_secs": 0.48,
+      "start_secs": 151.52,
+      "end_secs": 152.0
+    },
+    {
+      "after_word_index": 367,
+      "after_word_text": "second.",
+      "gap_secs": 0.66,
+      "start_secs": 153.28,
+      "end_secs": 153.94
+    },
+    {
+      "after_word_index": 373,
+      "after_word_text": "now?\"",
+      "gap_secs": 1.02,
+      "start_secs": 156.38,
+      "end_secs": 157.4
+    },
+    {
+      "after_word_index": 383,
+      "after_word_text": "it,",
+      "gap_secs": 0.66,
+      "start_secs": 159.42,
+      "end_secs": 160.08
+    },
+    {
+      "after_word_index": 387,
+      "after_word_text": "them",
+      "gap_secs": 0.56,
+      "start_secs": 160.88,
+      "end_secs": 161.44
+    },
+    {
+      "after_word_index": 392,
+      "after_word_text": "bucket.",
+      "gap_secs": 0.68,
+      "start_secs": 163.14,
+      "end_secs": 163.82
+    },
+    {
+      "after_word_index": 398,
+      "after_word_text": "one.",
+      "gap_secs": 1.02,
+      "start_secs": 165.16,
+      "end_secs": 166.18
+    },
+    {
+      "after_word_index": 403,
+      "after_word_text": "bucket.",
+      "gap_secs": 0.66,
+      "start_secs": 168.26,
+      "end_secs": 168.92
+    },
+    {
+      "after_word_index": 409,
+      "after_word_text": "something.",
+      "gap_secs": 0.66,
+      "start_secs": 170.08,
+      "end_secs": 170.74
+    },
+    {
+      "after_word_index": 416,
+      "after_word_text": "tokens,",
+      "gap_secs": 0.56,
+      "start_secs": 174.02,
+      "end_secs": 174.58
+    },
+    {
+      "after_word_index": 420,
+      "after_word_text": "ten.",
+      "gap_secs": 0.74,
+      "start_secs": 175.8,
+      "end_secs": 176.54
+    },
+    {
+      "after_word_index": 426,
+      "after_word_text": "trick.",
+      "gap_secs": 0.84,
+      "start_secs": 178.28,
+      "end_secs": 179.12
+    },
+    {
+      "after_word_index": 435,
+      "after_word_text": "second.",
+      "gap_secs": 0.8,
+      "start_secs": 182.88,
+      "end_secs": 183.68
+    },
+    {
+      "after_word_index": 443,
+      "after_word_text": "ten,",
+      "gap_secs": 0.66,
+      "start_secs": 185.66,
+      "end_secs": 186.32
+    },
+    {
+      "after_word_index": 453,
+      "after_word_text": "vanishes.",
+      "gap_secs": 0.86,
+      "start_secs": 190.2,
+      "end_secs": 191.06
+    },
+    {
+      "after_word_index": 464,
+      "after_word_text": "it.",
+      "gap_secs": 0.84,
+      "start_secs": 194.64,
+      "end_secs": 195.48
+    },
+    {
+      "after_word_index": 474,
+      "after_word_text": "instantly.",
+      "gap_secs": 0.49,
+      "start_secs": 198.74,
+      "end_secs": 199.23
+    },
+    {
+      "after_word_index": 479,
+      "after_word_text": "empty,",
+      "gap_secs": 0.48,
+      "start_secs": 200.48,
+      "end_secs": 200.96
+    },
+    {
+      "after_word_index": 491,
+      "after_word_text": "requests,",
+      "gap_secs": 0.47,
+      "start_secs": 204.41,
+      "end_secs": 204.88
+    },
+    {
+      "after_word_index": 505,
+      "after_word_text": "one.",
+      "gap_secs": 0.78,
+      "start_secs": 208.28,
+      "end_secs": 209.06
+    },
+    {
+      "after_word_index": 511,
+      "after_word_text": "this",
+      "gap_secs": 0.46,
+      "start_secs": 210.6,
+      "end_secs": 211.06
+    },
+    {
+      "after_word_index": 517,
+      "after_word_text": "you.",
+      "gap_secs": 0.54,
+      "start_secs": 212.76,
+      "end_secs": 213.3
+    },
+    {
+      "after_word_index": 526,
+      "after_word_text": "seconds",
+      "gap_secs": 0.42,
+      "start_secs": 215.5,
+      "end_secs": 215.92
+    },
+    {
+      "after_word_index": 536,
+      "after_word_text": "ten.",
+      "gap_secs": 0.7,
+      "start_secs": 218.52,
+      "end_secs": 219.22
+    },
+    {
+      "after_word_index": 547,
+      "after_word_text": "back",
+      "gap_secs": 0.5,
+      "start_secs": 222.26,
+      "end_secs": 222.76
+    },
+    {
+      "after_word_index": 553,
+      "after_word_text": "burst.",
+      "gap_secs": 0.52,
+      "start_secs": 224.58,
+      "end_secs": 225.1
+    },
+    {
+      "after_word_index": 564,
+      "after_word_text": "allows.",
+      "gap_secs": 0.52,
+      "start_secs": 228.94,
+      "end_secs": 229.46
+    },
+    {
+      "after_word_index": 570,
+      "after_word_text": "here",
+      "gap_secs": 0.44,
+      "start_secs": 230.92,
+      "end_secs": 231.36
+    },
+    {
+      "after_word_index": 574,
+      "after_word_text": "apart.",
+      "gap_secs": 0.66,
+      "start_secs": 232.38,
+      "end_secs": 233.04
+    },
+    {
+      "after_word_index": 582,
+      "after_word_text": "bucket,",
+      "gap_secs": 0.5,
+      "start_secs": 236.32,
+      "end_secs": 236.82
+    },
+    {
+      "after_word_index": 593,
+      "after_word_text": "is,",
+      "gap_secs": 0.4,
+      "start_secs": 240.72,
+      "end_secs": 241.12
+    },
+    {
+      "after_word_index": 597,
+      "after_word_text": "burst.",
+      "gap_secs": 0.92,
+      "start_secs": 242.04,
+      "end_secs": 242.96
+    },
+    {
+      "after_word_index": 607,
+      "after_word_text": "API,",
+      "gap_secs": 0.58,
+      "start_secs": 246.1,
+      "end_secs": 246.68
+    },
+    {
+      "after_word_index": 614,
+      "after_word_text": "second.",
+      "gap_secs": 0.5,
+      "start_secs": 248.96,
+      "end_secs": 249.46
+    },
+    {
+      "after_word_index": 621,
+      "after_word_text": "gateway,",
+      "gap_secs": 0.531,
+      "start_secs": 252.329,
+      "end_secs": 252.86
+    },
+    {
+      "after_word_index": 625,
+      "after_word_text": "second,",
+      "gap_secs": 0.4,
+      "start_secs": 254.28,
+      "end_secs": 254.68
+    },
+    {
+      "after_word_index": 635,
+      "after_word_text": "spike.",
+      "gap_secs": 0.92,
+      "start_secs": 257.64,
+      "end_secs": 258.56
+    },
+    {
+      "after_word_index": 641,
+      "after_word_text": "burst.",
+      "gap_secs": 0.5,
+      "start_secs": 260.399,
+      "end_secs": 260.899
+    },
+    {
+      "after_word_index": 648,
+      "after_word_text": "one.",
+      "gap_secs": 1.14,
+      "start_secs": 262.56,
+      "end_secs": 263.7
+    },
+    {
+      "after_word_index": 649,
+      "after_word_text": "Now,",
+      "gap_secs": 0.54,
+      "start_secs": 264.04,
+      "end_secs": 264.58
+    },
+    {
+      "after_word_index": 652,
+      "after_word_text": "one",
+      "gap_secs": 0.56,
+      "start_secs": 265.36,
+      "end_secs": 265.92
+    },
+    {
+      "after_word_index": 657,
+      "after_word_text": "bucket.",
+      "gap_secs": 0.74,
+      "start_secs": 267.94,
+      "end_secs": 268.68
+    },
+    {
+      "after_word_index": 683,
+      "after_word_text": "bottom.",
+      "gap_secs": 1.14,
+      "start_secs": 276.48,
+      "end_secs": 277.62
+    },
+    {
+      "after_word_index": 691,
+      "after_word_text": "top",
+      "gap_secs": 0.76,
+      "start_secs": 279.48,
+      "end_secs": 280.24
+    },
+    {
+      "after_word_index": 702,
+      "after_word_text": "rate.",
+      "gap_secs": 0.8,
+      "start_secs": 284.3,
+      "end_secs": 285.1
+    },
+    {
+      "after_word_index": 710,
+      "after_word_text": "millisecond",
+      "gap_secs": 0.56,
+      "start_secs": 287.96,
+      "end_secs": 288.52
+    },
+    {
+      "after_word_index": 714,
+      "after_word_text": "flinch.",
+      "gap_secs": 0.48,
+      "start_secs": 289.56,
+      "end_secs": 290.04
+    },
+    {
+      "after_word_index": 729,
+      "after_word_text": "time,",
+      "gap_secs": 0.72,
+      "start_secs": 294.72,
+      "end_secs": 295.44
+    },
+    {
+      "after_word_index": 735,
+      "after_word_text": "stream.",
+      "gap_secs": 0.72,
+      "start_secs": 298.14,
+      "end_secs": 298.86
+    },
+    {
+      "after_word_index": 742,
+      "after_word_text": "Nginx,",
+      "gap_secs": 0.42,
+      "start_secs": 300.86,
+      "end_secs": 301.28
+    },
+    {
+      "after_word_index": 744,
+      "after_word_text": "traffic,",
+      "gap_secs": 0.6,
+      "start_secs": 302.12,
+      "end_secs": 302.72
+    },
+    {
+      "after_word_index": 749,
+      "after_word_text": "milliseconds.",
+      "gap_secs": 0.88,
+      "start_secs": 305.24,
+      "end_secs": 306.12
+    },
+    {
+      "after_word_index": 755,
+      "after_word_text": "line",
+      "gap_secs": 0.68,
+      "start_secs": 308.2,
+      "end_secs": 308.88
+    },
+    {
+      "after_word_index": 764,
+      "after_word_text": "out,",
+      "gap_secs": 0.42,
+      "start_secs": 312.1,
+      "end_secs": 312.52
+    },
+    {
+      "after_word_index": 765,
+      "after_word_text": "rejected.",
+      "gap_secs": 1.0,
+      "start_secs": 313.1,
+      "end_secs": 314.1
+    },
+    {
+      "after_word_index": 771,
+      "after_word_text": "stranger.",
+      "gap_secs": 0.8,
+      "start_secs": 316.2,
+      "end_secs": 317.0
+    },
+    {
+      "after_word_index": 781,
+      "after_word_text": "all.",
+      "gap_secs": 0.82,
+      "start_secs": 319.56,
+      "end_secs": 320.38
+    },
+    {
+      "after_word_index": 792,
+      "after_word_text": "up.",
+      "gap_secs": 0.58,
+      "start_secs": 323.64,
+      "end_secs": 324.22
+    },
+    {
+      "after_word_index": 799,
+      "after_word_text": "number.",
+      "gap_secs": 0.66,
+      "start_secs": 326.74,
+      "end_secs": 327.4
+    },
+    {
+      "after_word_index": 805,
+      "after_word_text": "this.",
+      "gap_secs": 0.72,
+      "start_secs": 328.52,
+      "end_secs": 329.24
+    },
+    {
+      "after_word_index": 811,
+      "after_word_text": "door",
+      "gap_secs": 0.42,
+      "start_secs": 331.1,
+      "end_secs": 331.52
+    },
+    {
+      "after_word_index": 815,
+      "after_word_text": "right?",
+      "gap_secs": 0.72,
+      "start_secs": 332.72,
+      "end_secs": 333.44
+    },
+    {
+      "after_word_index": 826,
+      "after_word_text": "instantly,",
+      "gap_secs": 0.52,
+      "start_secs": 337.64,
+      "end_secs": 338.16
+    },
+    {
+      "after_word_index": 835,
+      "after_word_text": "one.",
+      "gap_secs": 0.82,
+      "start_secs": 340.84,
+      "end_secs": 341.66
+    },
+    {
+      "after_word_index": 843,
+      "after_word_text": "own,",
+      "gap_secs": 0.54,
+      "start_secs": 343.8,
+      "end_secs": 344.34
+    },
+    {
+      "after_word_index": 855,
+      "after_word_text": "ten.",
+      "gap_secs": 0.66,
+      "start_secs": 349.0,
+      "end_secs": 349.66
+    },
+    {
+      "after_word_index": 861,
+      "after_word_text": "ten,",
+      "gap_secs": 0.64,
+      "start_secs": 351.4,
+      "end_secs": 352.04
+    },
+    {
+      "after_word_index": 870,
+      "after_word_text": "arrives.",
+      "gap_secs": 0.66,
+      "start_secs": 354.84,
+      "end_secs": 355.5
+    },
+    {
+      "after_word_index": 880,
+      "after_word_text": "ten,",
+      "gap_secs": 0.6,
+      "start_secs": 358.26,
+      "end_secs": 358.86
+    },
+    {
+      "after_word_index": 885,
+      "after_word_text": "away",
+      "gap_secs": 0.44,
+      "start_secs": 360.18,
+      "end_secs": 360.62
+    },
+    {
+      "after_word_index": 893,
+      "after_word_text": "spot,",
+      "gap_secs": 0.5,
+      "start_secs": 362.9,
+      "end_secs": 363.4
+    },
+    {
+      "after_word_index": 898,
+      "after_word_text": "line.",
+      "gap_secs": 0.56,
+      "start_secs": 364.64,
+      "end_secs": 365.2
+    },
+    {
+      "after_word_index": 901,
+      "after_word_text": "here",
+      "gap_secs": 0.712,
+      "start_secs": 366.06,
+      "end_secs": 366.772
+    },
+    {
+      "after_word_index": 913,
+      "after_word_text": "eight,",
+      "gap_secs": 0.54,
+      "start_secs": 370.292,
+      "end_secs": 370.832
+    },
+    {
+      "after_word_index": 920,
+      "after_word_text": "more.",
+      "gap_secs": 0.7,
+      "start_secs": 372.572,
+      "end_secs": 373.272
+    },
+    {
+      "after_word_index": 925,
+      "after_word_text": "can",
+      "gap_secs": 0.46,
+      "start_secs": 374.012,
+      "end_secs": 374.472
+    },
+    {
+      "after_word_index": 928,
+      "after_word_text": "up.",
+      "gap_secs": 0.66,
+      "start_secs": 375.192,
+      "end_secs": 375.852
+    },
+    {
+      "after_word_index": 932,
+      "after_word_text": "bucket",
+      "gap_secs": 0.42,
+      "start_secs": 377.352,
+      "end_secs": 377.772
+    },
+    {
+      "after_word_index": 936,
+      "after_word_text": "queue,",
+      "gap_secs": 0.74,
+      "start_secs": 379.072,
+      "end_secs": 379.812
+    },
+    {
+      "after_word_index": 944,
+      "after_word_text": "promises.",
+      "gap_secs": 0.66,
+      "start_secs": 382.692,
+      "end_secs": 383.352
+    },
+    {
+      "after_word_index": 946,
+      "after_word_text": "burst,",
+      "gap_secs": 0.44,
+      "start_secs": 383.932,
+      "end_secs": 384.372
+    },
+    {
+      "after_word_index": 950,
+      "after_word_text": "trickle.",
+      "gap_secs": 1.0,
+      "start_secs": 386.072,
+      "end_secs": 387.072
+    },
+    {
+      "after_word_index": 955,
+      "after_word_text": "one",
+      "gap_secs": 0.54,
+      "start_secs": 389.532,
+      "end_secs": 390.072
+    },
+    {
+      "after_word_index": 958,
+      "after_word_text": "line.",
+      "gap_secs": 0.6,
+      "start_secs": 391.752,
+      "end_secs": 392.352
+    },
+    {
+      "after_word_index": 978,
+      "after_word_text": "zero,",
+      "gap_secs": 0.62,
+      "start_secs": 398.552,
+      "end_secs": 399.172
+    },
+    {
+      "after_word_index": 988,
+      "after_word_text": "instance.",
+      "gap_secs": 0.6,
+      "start_secs": 401.852,
+      "end_secs": 402.452
+    },
+    {
+      "after_word_index": 1005,
+      "after_word_text": "immediately.",
+      "gap_secs": 0.52,
+      "start_secs": 407.612,
+      "end_secs": 408.132
+    },
+    {
+      "after_word_index": 1010,
+      "after_word_text": "disguise.",
+      "gap_secs": 0.52,
+      "start_secs": 410.032,
+      "end_secs": 410.552
+    },
+    {
+      "after_word_index": 1020,
+      "after_word_text": "forbid.",
+      "gap_secs": 0.7,
+      "start_secs": 413.072,
+      "end_secs": 413.772
+    },
+    {
+      "after_word_index": 1032,
+      "after_word_text": "bucket.",
+      "gap_secs": 0.51,
+      "start_secs": 418.072,
+      "end_secs": 418.582
+    },
+    {
+      "after_word_index": 1053,
+      "after_word_text": "other",
+      "gap_secs": 0.42,
+      "start_secs": 426.632,
+      "end_secs": 427.052
+    },
+    {
+      "after_word_index": 1061,
+      "after_word_text": "it.",
+      "gap_secs": 0.96,
+      "start_secs": 428.812,
+      "end_secs": 429.772
+    },
+    {
+      "after_word_index": 1079,
+      "after_word_text": "request.",
+      "gap_secs": 0.72,
+      "start_secs": 435.592,
+      "end_secs": 436.312
+    },
+    {
+      "after_word_index": 1083,
+      "after_word_text": "names.",
+      "gap_secs": 0.6,
+      "start_secs": 437.612,
+      "end_secs": 438.212
+    },
+    {
+      "after_word_index": 1089,
+      "after_word_text": "matters.",
+      "gap_secs": 0.62,
+      "start_secs": 439.552,
+      "end_secs": 440.172
+    },
+    {
+      "after_word_index": 1097,
+      "after_word_text": "once,",
+      "gap_secs": 0.7,
+      "start_secs": 442.412,
+      "end_secs": 443.112
+    },
+    {
+      "after_word_index": 1114,
+      "after_word_text": "line.",
+      "gap_secs": 0.68,
+      "start_secs": 448.332,
+      "end_secs": 449.012
+    },
+    {
+      "after_word_index": 1121,
+      "after_word_text": "through.",
+      "gap_secs": 0.65,
+      "start_secs": 451.762,
+      "end_secs": 452.412
+    },
+    {
+      "after_word_index": 1133,
+      "after_word_text": "flow.",
+      "gap_secs": 0.62,
+      "start_secs": 456.352,
+      "end_secs": 456.972
+    },
+    {
+      "after_word_index": 1142,
+      "after_word_text": "trickle.",
+      "gap_secs": 0.48,
+      "start_secs": 459.472,
+      "end_secs": 459.952
+    },
+    {
+      "after_word_index": 1148,
+      "after_word_text": "guys.",
+      "gap_secs": 0.94,
+      "start_secs": 461.632,
+      "end_secs": 462.572
+    },
+    {
+      "after_word_index": 1149,
+      "after_word_text": "Now,",
+      "gap_secs": 0.84,
+      "start_secs": 462.872,
+      "end_secs": 463.712
+    },
+    {
+      "after_word_index": 1162,
+      "after_word_text": "right?",
+      "gap_secs": 0.76,
+      "start_secs": 467.312,
+      "end_secs": 468.072
+    },
+    {
+      "after_word_index": 1169,
+      "after_word_text": "windows.",
+      "gap_secs": 0.66,
+      "start_secs": 469.952,
+      "end_secs": 470.612
+    },
+    {
+      "after_word_index": 1171,
+      "after_word_text": "are",
+      "gap_secs": 0.46,
+      "start_secs": 471.132,
+      "end_secs": 471.592
+    },
+    {
+      "after_word_index": 1198,
+      "after_word_text": "window.",
+      "gap_secs": 0.72,
+      "start_secs": 480.912,
+      "end_secs": 481.632
+    },
+    {
+      "after_word_index": 1207,
+      "after_word_text": "time.",
+      "gap_secs": 0.82,
+      "start_secs": 484.052,
+      "end_secs": 484.872
+    },
+    {
+      "after_word_index": 1216,
+      "after_word_text": "up.",
+      "gap_secs": 0.92,
+      "start_secs": 487.172,
+      "end_secs": 488.092
+    },
+    {
+      "after_word_index": 1223,
+      "after_word_text": "way.",
+      "gap_secs": 0.72,
+      "start_secs": 490.612,
+      "end_secs": 491.332
+    },
+    {
+      "after_word_index": 1234,
+      "after_word_text": "hours.",
+      "gap_secs": 0.76,
+      "start_secs": 494.692,
+      "end_secs": 495.452
+    },
+    {
+      "after_word_index": 1245,
+      "after_word_text": "out,",
+      "gap_secs": 0.7,
+      "start_secs": 498.392,
+      "end_secs": 499.092
+    },
+    {
+      "after_word_index": 1250,
+      "after_word_text": "down,",
+      "gap_secs": 0.46,
+      "start_secs": 500.452,
+      "end_secs": 500.912
+    },
+    {
+      "after_word_index": 1258,
+      "after_word_text": "minutes,",
+      "gap_secs": 0.96,
+      "start_secs": 503.352,
+      "end_secs": 504.312
+    },
+    {
+      "after_word_index": 1269,
+      "after_word_text": "window.",
+      "gap_secs": 1.28,
+      "start_secs": 506.792,
+      "end_secs": 508.072
+    },
+    {
+      "after_word_index": 1277,
+      "after_word_text": "spot:",
+      "gap_secs": 0.88,
+      "start_secs": 510.992,
+      "end_secs": 511.872
+    },
+    {
+      "after_word_index": 1279,
+      "after_word_text": "boundary.",
+      "gap_secs": 1.0,
+      "start_secs": 512.572,
+      "end_secs": 513.572
+    },
+    {
+      "after_word_index": 1294,
+      "after_word_text": "allowance.",
+      "gap_secs": 0.58,
+      "start_secs": 517.712,
+      "end_secs": 518.292
+    },
+    {
+      "after_word_index": 1312,
+      "after_word_text": "again.",
+      "gap_secs": 0.56,
+      "start_secs": 523.832,
+      "end_secs": 524.392
+    },
+    {
+      "after_word_index": 1316,
+      "after_word_text": "budgets",
+      "gap_secs": 0.42,
+      "start_secs": 525.832,
+      "end_secs": 526.252
+    },
+    {
+      "after_word_index": 1319,
+      "after_word_text": "back",
+      "gap_secs": 0.46,
+      "start_secs": 527.092,
+      "end_secs": 527.552
+    },
+    {
+      "after_word_index": 1328,
+      "after_word_text": "them",
+      "gap_secs": 0.42,
+      "start_secs": 530.452,
+      "end_secs": 530.872
+    },
+    {
+      "after_word_index": 1341,
+      "after_word_text": "them.",
+      "gap_secs": 1.2,
+      "start_secs": 535.052,
+      "end_secs": 536.252
+    },
+    {
+      "after_word_index": 1349,
+      "after_word_text": "window,",
+      "gap_secs": 0.94,
+      "start_secs": 538.792,
+      "end_secs": 539.732
+    },
+    {
+      "after_word_index": 1354,
+      "after_word_text": "for.",
+      "gap_secs": 1.04,
+      "start_secs": 541.292,
+      "end_secs": 542.332
+    },
+    {
+      "after_word_index": 1366,
+      "after_word_text": "schedule,",
+      "gap_secs": 0.94,
+      "start_secs": 545.232,
+      "end_secs": 546.172
+    },
+    {
+      "after_word_index": 1368,
+      "after_word_text": "rather",
+      "gap_secs": 0.49,
+      "start_secs": 546.762,
+      "end_secs": 547.252
+    },
+    {
+      "after_word_index": 1374,
+      "after_word_text": "clock.",
+      "gap_secs": 0.93,
+      "start_secs": 549.082,
+      "end_secs": 550.012
+    },
+    {
+      "after_word_index": 1382,
+      "after_word_text": "right?",
+      "gap_secs": 0.7,
+      "start_secs": 552.972,
+      "end_secs": 553.672
+    },
+    {
+      "after_word_index": 1395,
+      "after_word_text": "hours",
+      "gap_secs": 0.62,
+      "start_secs": 557.652,
+      "end_secs": 558.272
+    },
+    {
+      "after_word_index": 1402,
+      "after_word_text": "now",
+      "gap_secs": 0.44,
+      "start_secs": 560.432,
+      "end_secs": 560.872
+    },
+    {
+      "after_word_index": 1408,
+      "after_word_text": "limit.",
+      "gap_secs": 0.8,
+      "start_secs": 562.512,
+      "end_secs": 563.312
+    },
+    {
+      "after_word_index": 1411,
+      "after_word_text": "line,",
+      "gap_secs": 0.44,
+      "start_secs": 564.092,
+      "end_secs": 564.532
+    },
+    {
+      "after_word_index": 1430,
+      "after_word_text": "resets.",
+      "gap_secs": 0.6,
+      "start_secs": 570.492,
+      "end_secs": 571.092
+    },
+    {
+      "after_word_index": 1435,
+      "after_word_text": "slide.",
+      "gap_secs": 0.5,
+      "start_secs": 572.832,
+      "end_secs": 573.332
+    },
+    {
+      "after_word_index": 1443,
+      "after_word_text": "3:00,",
+      "gap_secs": 0.52,
+      "start_secs": 576.012,
+      "end_secs": 576.532
+    },
+    {
+      "after_word_index": 1451,
+      "after_word_text": "three.",
+      "gap_secs": 0.6,
+      "start_secs": 579.292,
+      "end_secs": 579.892
+    },
+    {
+      "after_word_index": 1459,
+      "after_word_text": "clock,",
+      "gap_secs": 0.46,
+      "start_secs": 582.192,
+      "end_secs": 582.652
+    },
+    {
+      "after_word_index": 1467,
+      "after_word_text": "ago",
+      "gap_secs": 0.46,
+      "start_secs": 584.792,
+      "end_secs": 585.252
+    },
+    {
+      "after_word_index": 1486,
+      "after_word_text": "for",
+      "gap_secs": 0.6,
+      "start_secs": 590.852,
+      "end_secs": 591.452
+    },
+    {
+      "after_word_index": 1494,
+      "after_word_text": "codeless",
+      "gap_secs": 1.34,
+      "start_secs": 593.552,
+      "end_secs": 594.892
+    },
+    {
+      "after_word_index": 1495,
+      "after_word_text": "subscriptions.",
+      "gap_secs": 0.76,
+      "start_secs": 595.692,
+      "end_secs": 596.452
+    },
+    {
+      "after_word_index": 1499,
+      "after_word_text": "one,",
+      "gap_secs": 0.42,
+      "start_secs": 597.192,
+      "end_secs": 597.612
+    },
+    {
+      "after_word_index": 1503,
+      "after_word_text": "seam",
+      "gap_secs": 0.42,
+      "start_secs": 598.432,
+      "end_secs": 598.852
+    },
+    {
+      "after_word_index": 1524,
+      "after_word_text": "window.",
+      "gap_secs": 1.02,
+      "start_secs": 604.252,
+      "end_secs": 605.272
+    },
+    {
+      "after_word_index": 1534,
+      "after_word_text": "guys.",
+      "gap_secs": 0.42,
+      "start_secs": 607.992,
+      "end_secs": 608.412
+    },
+    {
+      "after_word_index": 1538,
+      "after_word_text": "storm,",
+      "gap_secs": 0.54,
+      "start_secs": 609.992,
+      "end_secs": 610.532
+    },
+    {
+      "after_word_index": 1547,
+      "after_word_text": "drowned.",
+      "gap_secs": 0.58,
+      "start_secs": 613.292,
+      "end_secs": 613.872
+    },
+    {
+      "after_word_index": 1549,
+      "after_word_text": "2016,",
+      "gap_secs": 0.54,
+      "start_secs": 614.532,
+      "end_secs": 615.072
+    },
+    {
+      "after_word_index": 1559,
+      "after_word_text": "that",
+      "gap_secs": 0.58,
+      "start_secs": 617.912,
+      "end_secs": 618.492
+    },
+    {
+      "after_word_index": 1567,
+      "after_word_text": "retry.",
+      "gap_secs": 0.82,
+      "start_secs": 621.192,
+      "end_secs": 622.012
+    },
+    {
+      "after_word_index": 1574,
+      "after_word_text": "tokens,",
+      "gap_secs": 0.579,
+      "start_secs": 623.892,
+      "end_secs": 624.471
+    },
+    {
+      "after_word_index": 1588,
+      "after_word_text": "on.",
+      "gap_secs": 0.641,
+      "start_secs": 628.151,
+      "end_secs": 628.792
+    },
+    {
+      "after_word_index": 1608,
+      "after_word_text": "itself.",
+      "gap_secs": 0.9,
+      "start_secs": 635.272,
+      "end_secs": 636.172
+    },
+    {
+      "after_word_index": 1610,
+      "after_word_text": "please,",
+      "gap_secs": 0.48,
+      "start_secs": 636.792,
+      "end_secs": 637.272
+    },
+    {
+      "after_word_index": 1618,
+      "after_word_text": "you",
+      "gap_secs": 0.44,
+      "start_secs": 639.212,
+      "end_secs": 639.652
+    },
+    {
+      "after_word_index": 1621,
+      "after_word_text": "down,",
+      "gap_secs": 0.66,
+      "start_secs": 640.412,
+      "end_secs": 641.072
+    },
+    {
+      "after_word_index": 1631,
+      "after_word_text": "way,",
+      "gap_secs": 0.78,
+      "start_secs": 643.452,
+      "end_secs": 644.232
+    },
+    {
+      "after_word_index": 1643,
+      "after_word_text": "hole.",
+      "gap_secs": 0.94,
+      "start_secs": 648.312,
+      "end_secs": 649.252
+    },
+    {
+      "after_word_index": 1647,
+      "after_word_text": "burst,",
+      "gap_secs": 0.42,
+      "start_secs": 650.472,
+      "end_secs": 650.892
+    },
+    {
+      "after_word_index": 1655,
+      "after_word_text": "one.",
+      "gap_secs": 1.42,
+      "start_secs": 653.652,
+      "end_secs": 655.072
+    },
+    {
+      "after_word_index": 1662,
+      "after_word_text": "guys.",
+      "gap_secs": 0.76,
+      "start_secs": 656.552,
+      "end_secs": 657.312
+    },
+    {
+      "after_word_index": 1676,
+      "after_word_text": "fun,",
+      "gap_secs": 0.68,
+      "start_secs": 661.192,
+      "end_secs": 661.872
+    },
+    {
+      "after_word_index": 1681,
+      "after_word_text": "subscribe",
+      "gap_secs": 0.86,
+      "start_secs": 664.112,
+      "end_secs": 664.972
+    },
+    {
+      "after_word_index": 1685,
+      "after_word_text": "channel",
+      "gap_secs": 0.58,
+      "start_secs": 666.172,
+      "end_secs": 666.752
+    },
+    {
+      "after_word_index": 1692,
+      "after_word_text": "architecture,",
+      "gap_secs": 0.44,
+      "start_secs": 669.012,
+      "end_secs": 669.452
+    },
+    {
+      "after_word_index": 1698,
+      "after_word_text": "coding,",
+      "gap_secs": 0.52,
+      "start_secs": 671.732,
+      "end_secs": 672.252
+    },
+    {
+      "after_word_index": 1702,
+      "after_word_text": "between.",
+      "gap_secs": 0.89,
+      "start_secs": 673.532,
+      "end_secs": 674.422
+    },
+    {
+      "after_word_index": 1703,
+      "after_word_text": "And",
+      "gap_secs": 0.46,
+      "start_secs": 674.712,
+      "end_secs": 675.172
+    },
+    {
+      "after_word_index": 1705,
+      "after_word_text": "curious,",
+      "gap_secs": 0.84,
+      "start_secs": 675.932,
+      "end_secs": 676.772
+    },
+    {
+      "after_word_index": 1720,
+      "after_word_text": "API?",
+      "gap_secs": 0.68,
+      "start_secs": 680.272,
+      "end_secs": 680.952
+    },
+    {
+      "after_word_index": 1735,
+      "after_word_text": "window?",
+      "gap_secs": 0.48,
+      "start_secs": 686.912,
+      "end_secs": 687.392
+    }
+  ],
+  "scene_boundaries": [
+    {
+      "after_word_index": 15,
+      "after_word_text": "minute.\"",
+      "gap_secs": 0.68,
+      "start_secs": 5.92,
+      "end_secs": 6.6
+    },
+    {
+      "after_word_index": 29,
+      "after_word_text": "knock.",
+      "gap_secs": 0.72,
+      "start_secs": 12.2,
+      "end_secs": 12.92
+    },
+    {
+      "after_word_index": 56,
+      "after_word_text": "you.",
+      "gap_secs": 0.86,
+      "start_secs": 23.26,
+      "end_secs": 24.12
+    },
+    {
+      "after_word_index": 62,
+      "after_word_text": "happened.",
+      "gap_secs": 0.62,
+      "start_secs": 27.04,
+      "end_secs": 27.66
+    },
+    {
+      "after_word_index": 94,
+      "after_word_text": "seen.",
+      "gap_secs": 0.78,
+      "start_secs": 40.36,
+      "end_secs": 41.14
+    },
+    {
+      "after_word_index": 102,
+      "after_word_text": "Reset.",
+      "gap_secs": 0.7,
+      "start_secs": 43.94,
+      "end_secs": 44.64
+    },
+    {
+      "after_word_index": 118,
+      "after_word_text": "wave.",
+      "gap_secs": 0.86,
+      "start_secs": 50.92,
+      "end_secs": 51.78
+    },
+    {
+      "after_word_index": 133,
+      "after_word_text": "second.",
+      "gap_secs": 0.76,
+      "start_secs": 56.82,
+      "end_secs": 57.58
+    },
+    {
+      "after_word_index": 169,
+      "after_word_text": "enough.",
+      "gap_secs": 1.39,
+      "start_secs": 70.16,
+      "end_secs": 71.55
+    },
+    {
+      "after_word_index": 176,
+      "after_word_text": "attacker.",
+      "gap_secs": 0.74,
+      "start_secs": 73.56,
+      "end_secs": 74.3
+    },
+    {
+      "after_word_index": 182,
+      "after_word_text": "itself.",
+      "gap_secs": 0.78,
+      "start_secs": 77.04,
+      "end_secs": 77.82
+    },
+    {
+      "after_word_index": 218,
+      "after_word_text": "storm.",
+      "gap_secs": 0.7,
+      "start_secs": 91.72,
+      "end_secs": 92.42
+    },
+    {
+      "after_word_index": 248,
+      "after_word_text": "it.",
+      "gap_secs": 0.7,
+      "start_secs": 104.46,
+      "end_secs": 105.16
+    },
+    {
+      "after_word_index": 252,
+      "after_word_text": "merciless.",
+      "gap_secs": 0.7,
+      "start_secs": 106.8,
+      "end_secs": 107.5
+    },
+    {
+      "after_word_index": 274,
+      "after_word_text": "load.",
+      "gap_secs": 0.78,
+      "start_secs": 115.92,
+      "end_secs": 116.7
+    },
+    {
+      "after_word_index": 327,
+      "after_word_text": "services.",
+      "gap_secs": 0.94,
+      "start_secs": 136.34,
+      "end_secs": 137.28
+    },
+    {
+      "after_word_index": 353,
+      "after_word_text": "database.",
+      "gap_secs": 0.66,
+      "start_secs": 147.48,
+      "end_secs": 148.14
+    },
+    {
+      "after_word_index": 367,
+      "after_word_text": "second.",
+      "gap_secs": 0.66,
+      "start_secs": 153.28,
+      "end_secs": 153.94
+    },
+    {
+      "after_word_index": 373,
+      "after_word_text": "now?\"",
+      "gap_secs": 1.02,
+      "start_secs": 156.38,
+      "end_secs": 157.4
+    },
+    {
+      "after_word_index": 392,
+      "after_word_text": "bucket.",
+      "gap_secs": 0.68,
+      "start_secs": 163.14,
+      "end_secs": 163.82
+    },
+    {
+      "after_word_index": 398,
+      "after_word_text": "one.",
+      "gap_secs": 1.02,
+      "start_secs": 165.16,
+      "end_secs": 166.18
+    },
+    {
+      "after_word_index": 403,
+      "after_word_text": "bucket.",
+      "gap_secs": 0.66,
+      "start_secs": 168.26,
+      "end_secs": 168.92
+    },
+    {
+      "after_word_index": 409,
+      "after_word_text": "something.",
+      "gap_secs": 0.66,
+      "start_secs": 170.08,
+      "end_secs": 170.74
+    },
+    {
+      "after_word_index": 420,
+      "after_word_text": "ten.",
+      "gap_secs": 0.74,
+      "start_secs": 175.8,
+      "end_secs": 176.54
+    },
+    {
+      "after_word_index": 426,
+      "after_word_text": "trick.",
+      "gap_secs": 0.84,
+      "start_secs": 178.28,
+      "end_secs": 179.12
+    },
+    {
+      "after_word_index": 435,
+      "after_word_text": "second.",
+      "gap_secs": 0.8,
+      "start_secs": 182.88,
+      "end_secs": 183.68
+    },
+    {
+      "after_word_index": 453,
+      "after_word_text": "vanishes.",
+      "gap_secs": 0.86,
+      "start_secs": 190.2,
+      "end_secs": 191.06
+    },
+    {
+      "after_word_index": 464,
+      "after_word_text": "it.",
+      "gap_secs": 0.84,
+      "start_secs": 194.64,
+      "end_secs": 195.48
+    },
+    {
+      "after_word_index": 505,
+      "after_word_text": "one.",
+      "gap_secs": 0.78,
+      "start_secs": 208.28,
+      "end_secs": 209.06
+    },
+    {
+      "after_word_index": 536,
+      "after_word_text": "ten.",
+      "gap_secs": 0.7,
+      "start_secs": 218.52,
+      "end_secs": 219.22
+    },
+    {
+      "after_word_index": 574,
+      "after_word_text": "apart.",
+      "gap_secs": 0.66,
+      "start_secs": 232.38,
+      "end_secs": 233.04
+    },
+    {
+      "after_word_index": 597,
+      "after_word_text": "burst.",
+      "gap_secs": 0.92,
+      "start_secs": 242.04,
+      "end_secs": 242.96
+    },
+    {
+      "after_word_index": 635,
+      "after_word_text": "spike.",
+      "gap_secs": 0.92,
+      "start_secs": 257.64,
+      "end_secs": 258.56
+    },
+    {
+      "after_word_index": 648,
+      "after_word_text": "one.",
+      "gap_secs": 1.14,
+      "start_secs": 262.56,
+      "end_secs": 263.7
+    },
+    {
+      "after_word_index": 657,
+      "after_word_text": "bucket.",
+      "gap_secs": 0.74,
+      "start_secs": 267.94,
+      "end_secs": 268.68
+    },
+    {
+      "after_word_index": 683,
+      "after_word_text": "bottom.",
+      "gap_secs": 1.14,
+      "start_secs": 276.48,
+      "end_secs": 277.62
+    },
+    {
+      "after_word_index": 702,
+      "after_word_text": "rate.",
+      "gap_secs": 0.8,
+      "start_secs": 284.3,
+      "end_secs": 285.1
+    },
+    {
+      "after_word_index": 735,
+      "after_word_text": "stream.",
+      "gap_secs": 0.72,
+      "start_secs": 298.14,
+      "end_secs": 298.86
+    },
+    {
+      "after_word_index": 749,
+      "after_word_text": "milliseconds.",
+      "gap_secs": 0.88,
+      "start_secs": 305.24,
+      "end_secs": 306.12
+    },
+    {
+      "after_word_index": 765,
+      "after_word_text": "rejected.",
+      "gap_secs": 1.0,
+      "start_secs": 313.1,
+      "end_secs": 314.1
+    },
+    {
+      "after_word_index": 771,
+      "after_word_text": "stranger.",
+      "gap_secs": 0.8,
+      "start_secs": 316.2,
+      "end_secs": 317.0
+    },
+    {
+      "after_word_index": 781,
+      "after_word_text": "all.",
+      "gap_secs": 0.82,
+      "start_secs": 319.56,
+      "end_secs": 320.38
+    },
+    {
+      "after_word_index": 799,
+      "after_word_text": "number.",
+      "gap_secs": 0.66,
+      "start_secs": 326.74,
+      "end_secs": 327.4
+    },
+    {
+      "after_word_index": 805,
+      "after_word_text": "this.",
+      "gap_secs": 0.72,
+      "start_secs": 328.52,
+      "end_secs": 329.24
+    },
+    {
+      "after_word_index": 815,
+      "after_word_text": "right?",
+      "gap_secs": 0.72,
+      "start_secs": 332.72,
+      "end_secs": 333.44
+    },
+    {
+      "after_word_index": 835,
+      "after_word_text": "one.",
+      "gap_secs": 0.82,
+      "start_secs": 340.84,
+      "end_secs": 341.66
+    },
+    {
+      "after_word_index": 855,
+      "after_word_text": "ten.",
+      "gap_secs": 0.66,
+      "start_secs": 349.0,
+      "end_secs": 349.66
+    },
+    {
+      "after_word_index": 870,
+      "after_word_text": "arrives.",
+      "gap_secs": 0.66,
+      "start_secs": 354.84,
+      "end_secs": 355.5
+    },
+    {
+      "after_word_index": 920,
+      "after_word_text": "more.",
+      "gap_secs": 0.7,
+      "start_secs": 372.572,
+      "end_secs": 373.272
+    },
+    {
+      "after_word_index": 928,
+      "after_word_text": "up.",
+      "gap_secs": 0.66,
+      "start_secs": 375.192,
+      "end_secs": 375.852
+    },
+    {
+      "after_word_index": 944,
+      "after_word_text": "promises.",
+      "gap_secs": 0.66,
+      "start_secs": 382.692,
+      "end_secs": 383.352
+    },
+    {
+      "after_word_index": 950,
+      "after_word_text": "trickle.",
+      "gap_secs": 1.0,
+      "start_secs": 386.072,
+      "end_secs": 387.072
+    },
+    {
+      "after_word_index": 988,
+      "after_word_text": "instance.",
+      "gap_secs": 0.6,
+      "start_secs": 401.852,
+      "end_secs": 402.452
+    },
+    {
+      "after_word_index": 1020,
+      "after_word_text": "forbid.",
+      "gap_secs": 0.7,
+      "start_secs": 413.072,
+      "end_secs": 413.772
+    },
+    {
+      "after_word_index": 1061,
+      "after_word_text": "it.",
+      "gap_secs": 0.96,
+      "start_secs": 428.812,
+      "end_secs": 429.772
+    },
+    {
+      "after_word_index": 1079,
+      "after_word_text": "request.",
+      "gap_secs": 0.72,
+      "start_secs": 435.592,
+      "end_secs": 436.312
+    },
+    {
+      "after_word_index": 1089,
+      "after_word_text": "matters.",
+      "gap_secs": 0.62,
+      "start_secs": 439.552,
+      "end_secs": 440.172
+    },
+    {
+      "after_word_index": 1114,
+      "after_word_text": "line.",
+      "gap_secs": 0.68,
+      "start_secs": 448.332,
+      "end_secs": 449.012
+    },
+    {
+      "after_word_index": 1121,
+      "after_word_text": "through.",
+      "gap_secs": 0.65,
+      "start_secs": 451.762,
+      "end_secs": 452.412
+    },
+    {
+      "after_word_index": 1133,
+      "after_word_text": "flow.",
+      "gap_secs": 0.62,
+      "start_secs": 456.352,
+      "end_secs": 456.972
+    },
+    {
+      "after_word_index": 1148,
+      "after_word_text": "guys.",
+      "gap_secs": 0.94,
+      "start_secs": 461.632,
+      "end_secs": 462.572
+    },
+    {
+      "after_word_index": 1162,
+      "after_word_text": "right?",
+      "gap_secs": 0.76,
+      "start_secs": 467.312,
+      "end_secs": 468.072
+    },
+    {
+      "after_word_index": 1169,
+      "after_word_text": "windows.",
+      "gap_secs": 0.66,
+      "start_secs": 469.952,
+      "end_secs": 470.612
+    },
+    {
+      "after_word_index": 1198,
+      "after_word_text": "window.",
+      "gap_secs": 0.72,
+      "start_secs": 480.912,
+      "end_secs": 481.632
+    },
+    {
+      "after_word_index": 1207,
+      "after_word_text": "time.",
+      "gap_secs": 0.82,
+      "start_secs": 484.052,
+      "end_secs": 484.872
+    },
+    {
+      "after_word_index": 1216,
+      "after_word_text": "up.",
+      "gap_secs": 0.92,
+      "start_secs": 487.172,
+      "end_secs": 488.092
+    },
+    {
+      "after_word_index": 1223,
+      "after_word_text": "way.",
+      "gap_secs": 0.72,
+      "start_secs": 490.612,
+      "end_secs": 491.332
+    },
+    {
+      "after_word_index": 1234,
+      "after_word_text": "hours.",
+      "gap_secs": 0.76,
+      "start_secs": 494.692,
+      "end_secs": 495.452
+    },
+    {
+      "after_word_index": 1269,
+      "after_word_text": "window.",
+      "gap_secs": 1.28,
+      "start_secs": 506.792,
+      "end_secs": 508.072
+    },
+    {
+      "after_word_index": 1279,
+      "after_word_text": "boundary.",
+      "gap_secs": 1.0,
+      "start_secs": 512.572,
+      "end_secs": 513.572
+    },
+    {
+      "after_word_index": 1341,
+      "after_word_text": "them.",
+      "gap_secs": 1.2,
+      "start_secs": 535.052,
+      "end_secs": 536.252
+    },
+    {
+      "after_word_index": 1354,
+      "after_word_text": "for.",
+      "gap_secs": 1.04,
+      "start_secs": 541.292,
+      "end_secs": 542.332
+    },
+    {
+      "after_word_index": 1374,
+      "after_word_text": "clock.",
+      "gap_secs": 0.93,
+      "start_secs": 549.082,
+      "end_secs": 550.012
+    },
+    {
+      "after_word_index": 1382,
+      "after_word_text": "right?",
+      "gap_secs": 0.7,
+      "start_secs": 552.972,
+      "end_secs": 553.672
+    },
+    {
+      "after_word_index": 1408,
+      "after_word_text": "limit.",
+      "gap_secs": 0.8,
+      "start_secs": 562.512,
+      "end_secs": 563.312
+    },
+    {
+      "after_word_index": 1430,
+      "after_word_text": "resets.",
+      "gap_secs": 0.6,
+      "start_secs": 570.492,
+      "end_secs": 571.092
+    },
+    {
+      "after_word_index": 1451,
+      "after_word_text": "three.",
+      "gap_secs": 0.6,
+      "start_secs": 579.292,
+      "end_secs": 579.892
+    },
+    {
+      "after_word_index": 1495,
+      "after_word_text": "subscriptions.",
+      "gap_secs": 0.76,
+      "start_secs": 595.692,
+      "end_secs": 596.452
+    },
+    {
+      "after_word_index": 1524,
+      "after_word_text": "window.",
+      "gap_secs": 1.02,
+      "start_secs": 604.252,
+      "end_secs": 605.272
+    },
+    {
+      "after_word_index": 1567,
+      "after_word_text": "retry.",
+      "gap_secs": 0.82,
+      "start_secs": 621.192,
+      "end_secs": 622.012
+    },
+    {
+      "after_word_index": 1588,
+      "after_word_text": "on.",
+      "gap_secs": 0.641,
+      "start_secs": 628.151,
+      "end_secs": 628.792
+    },
+    {
+      "after_word_index": 1608,
+      "after_word_text": "itself.",
+      "gap_secs": 0.9,
+      "start_secs": 635.272,
+      "end_secs": 636.172
+    },
+    {
+      "after_word_index": 1643,
+      "after_word_text": "hole.",
+      "gap_secs": 0.94,
+      "start_secs": 648.312,
+      "end_secs": 649.252
+    },
+    {
+      "after_word_index": 1655,
+      "after_word_text": "one.",
+      "gap_secs": 1.42,
+      "start_secs": 653.652,
+      "end_secs": 655.072
+    },
+    {
+      "after_word_index": 1662,
+      "after_word_text": "guys.",
+      "gap_secs": 0.76,
+      "start_secs": 656.552,
+      "end_secs": 657.312
+    },
+    {
+      "after_word_index": 1702,
+      "after_word_text": "between.",
+      "gap_secs": 0.89,
+      "start_secs": 673.532,
+      "end_secs": 674.422
+    },
+    {
+      "after_word_index": 1720,
+      "after_word_text": "API?",
+      "gap_secs": 0.68,
+      "start_secs": 680.272,
+      "end_secs": 680.952
+    }
+  ],
+  "emphatic_words": [
+    {
+      "word_index": 1042,
+      "text": "backwards.",
+      "start": 422.352,
+      "end": 423.672,
+      "duration_secs": 1.32
+    },
+    {
+      "word_index": 59,
+      "text": "twenty-three,",
+      "start": 24.48,
+      "end": 25.64,
+      "duration_secs": 1.16
+    },
+    {
+      "word_index": 1636,
+      "text": "tokens",
+      "start": 645.132,
+      "end": 646.232,
+      "duration_secs": 1.1
+    },
+    {
+      "word_index": 1177,
+      "text": "sustained",
+      "start": 472.552,
+      "end": 473.652,
+      "duration_secs": 1.1
+    },
+    {
+      "word_index": 1375,
+      "text": "Say",
+      "start": 550.012,
+      "end": 551.032,
+      "duration_secs": 1.02
+    },
+    {
+      "word_index": 1105,
+      "text": "through",
+      "start": 444.232,
+      "end": 445.252,
+      "duration_secs": 1.02
+    },
+    {
+      "word_index": 1480,
+      "text": "again.",
+      "start": 588.332,
+      "end": 589.312,
+      "duration_secs": 0.98
+    },
+    {
+      "word_index": 20,
+      "text": "refuser",
+      "start": 7.86,
+      "end": 8.82,
+      "duration_secs": 0.96
+    },
+    {
+      "word_index": 669,
+      "text": "them.",
+      "start": 271.42,
+      "end": 272.38,
+      "duration_secs": 0.96
+    },
+    {
+      "word_index": 300,
+      "text": "cognitive",
+      "start": 124.46,
+      "end": 125.36,
+      "duration_secs": 0.9
+    },
+    {
+      "word_index": 1435,
+      "text": "slide.",
+      "start": 571.932,
+      "end": 572.832,
+      "duration_secs": 0.9
+    },
+    {
+      "word_index": 199,
+      "text": "retries",
+      "start": 84.06,
+      "end": 84.94,
+      "duration_secs": 0.88
+    },
+    {
+      "word_index": 1307,
+      "text": "window",
+      "start": 521.652,
+      "end": 522.532,
+      "duration_secs": 0.88
+    },
+    {
+      "word_index": 1422,
+      "text": "wait.",
+      "start": 567.232,
+      "end": 568.112,
+      "duration_secs": 0.88
+    },
+    {
+      "word_index": 432,
+      "text": "tokens",
+      "start": 180.88,
+      "end": 181.74,
+      "duration_secs": 0.86
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 08 — the threat isn't always an attacker / strangle itself</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-08 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* Right panel — the choke clip, toned to the dark-red danger register */
+    #scene-08 .clip-panel { position: absolute; left: 1020px; top: 0; right: 0; bottom: 0; z-index: 1; overflow: hidden; border-left: 1px solid rgba(255,107,93,0.4); opacity: 0; }
+    #scene-08 .broll { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.62) contrast(1.05) sepia(0.7) saturate(2.6) hue-rotate(-22deg); }
+    #scene-08 .clip-panel .tint { position: absolute; inset: 0; background: rgba(255,107,93,0.16); }
+    #scene-08 .clip-panel .blend { position: absolute; inset: 0;
+      background: linear-gradient(90deg, var(--bg) 0%, rgba(11,13,18,0) 22%); }
+
+    /* Left — the pivot text */
+    #scene-08 .eyebrow { position: absolute; left: 130px; top: 150px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 20px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-08 .eyebrow .bar { display: inline-block; width: 40px; height: 2px; background: var(--danger); vertical-align: middle; margin-right: 14px; }
+    #scene-08 .lines { position: absolute; left: 130px; top: 360px; width: 840px; }
+    #scene-08 .l { font-family: "Inter"; font-weight: 700; font-size: 58px; line-height: 1.18; color: var(--fg); opacity: 0; }
+    #scene-08 .l1 { margin-bottom: 40px; }
+    #scene-08 .l .emph { color: var(--fg); text-shadow: 0 0 0 rgba(255,107,93,0); }
+  </style>
+</head>
+<body>
+  <div id="scene-08" data-composition-id="scene-08" data-width="1920" data-height="1080">
+    <div class="clip-panel" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1250">
+      <video id="broll-choke" class="broll" src="assets/video/b-roll/man-choking-himself-with-pained-facial-expressions-2025-12-17-04-07-47-utc.mov"
+             data-start="0" data-duration="6.77" data-track-index="0" data-volume="0" muted playsinline preload="auto"></video>
+      <div class="tint"></div>
+      <div class="blend"></div>
+    </div>
+
+    <div class="eyebrow"><span class="bar"></span>Self-inflicted</div>
+    <div class="lines">
+      <div class="l l1">And the threat isn&#39;t always an attacker.</div>
+      <div class="l l2">Sometimes a system can <span class="emph" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4870">strangle itself.</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // FACE(scene07) -> GRAPHICS crossfade cover (lands in 70.16->71.55 pause).
+    tl.fromTo("#scene-08", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.to(".clip-panel", { opacity: 1, duration: 0.7, ease: "power2.out" }, 0.55);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.6);
+
+    // Line 1 slides in on "And the threat..." (local 0.55), settled by "attacker" (local 1.93).
+    tl.fromTo(".l1", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.7);
+    // Line 2 on "Sometimes a system" (global 74.30; local 3.25).
+    tl.fromTo(".l2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 3.25);
+    // "strangle itself" — danger color + bloom on the word onset (global 75.92; local 4.87).
+    tl.to(".l2 .emph", { color: "#ff6b5d", textShadow: "0 0 26px rgba(255,107,93,0.6)", duration: 0.3, ease: "power2.out" }, 4.87);
+    tl.to(".l2 .emph", { textShadow: "0 0 16px rgba(255,107,93,0.35)", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.3);
+
+    window.__timelines["scene-08"] = tl;
+  </script>
+</body>
+</html>

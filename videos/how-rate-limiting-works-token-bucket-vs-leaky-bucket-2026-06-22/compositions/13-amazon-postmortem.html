@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 13 — Amazon Oct 2025 post-mortem</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-13 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-13 .eyebrow { position: absolute; left: 200px; top: 160px; display: flex; align-items: center; gap: 20px; opacity: 0; }
+    #scene-13 .eyebrow .chip { background: #f4f5f7; border-radius: 10px; padding: 12px 18px; display: flex; align-items: center; }
+    #scene-13 .eyebrow .chip img { height: 34px; display: block; }
+    #scene-13 .eyebrow .tag { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+    #scene-13 .pillars { position: absolute; left: 0; right: 0; top: 360px; display: flex; justify-content: center; gap: 200px; }
+    #scene-13 .pillar { text-align: center; opacity: 0; }
+    #scene-13 .pillar .num { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 150px; line-height: 1; font-variant-numeric: tabular-nums; }
+    #scene-13 .pillar.l .num { color: var(--fg); }
+    #scene-13 .pillar.r .num { color: var(--danger); }
+    #scene-13 .pillar .lbl { font-family: "Inter"; font-weight: 500; font-size: 30px; color: var(--muted); margin-top: 16px; }
+
+    /* callback chip — recalls scene 12's "cognitive collapse" term */
+    #scene-13 .quote { position: absolute; left: 0; right: 0; top: 660px; text-align: center; opacity: 0; }
+    #scene-13 .quote .box { display: inline-flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 22px 40px; border: 1.5px solid rgba(255,107,93,0.45); border-radius: 14px; background: var(--panel); }
+    #scene-13 .quote .term { font-family: "Inter"; font-weight: 700; font-size: 44px; color: var(--danger); }
+    #scene-13 .quote .term .ast { font-size: 0.45em; vertical-align: super; color: var(--accent); font-weight: 700; }
+    #scene-13 .quote .attr { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 18px; letter-spacing: 0.12em; color: var(--muted); }
+    #scene-13 .quote .note { font-family: "Inter"; font-weight: 400; font-size: 19px; color: var(--muted); margin-top: 2px; }
+    #scene-13 .quote .note em { color: var(--accent); font-style: normal; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-13" data-composition-id="scene-13" data-width="1920" data-height="1080">
+    <div class="eyebrow">
+      <span class="chip"><img src="assets/icons/aws.svg" alt="AWS" /></span>
+      <span class="tag">Incident &middot; October 2025</span>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar l" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5050">
+        <div class="num n1">0h</div>
+        <div class="lbl">hours of outage</div>
+      </div>
+      <div class="pillar r" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="8160">
+        <div class="num n2">140+</div>
+        <div class="lbl">of its own services down</div>
+      </div>
+    </div>
+
+    <div class="quote" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="9400">
+      <div class="box">
+        <div class="term">&ldquo;cognitive collapse&rdquo;<span class="ast">*</span></div>
+        <div class="attr">Amazon's own post-mortem, verbatim</div>
+        <div class="note">* the correct term is <em>&ldquo;congestive collapse&rdquo;</em></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade cover (lands in 125.94->126.50 pause).
+    tl.fromTo("#scene-13", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    // "Amazon used that exact phrase in October 2025" (local 0.5-3.9) — attribution eyebrow.
+    tl.fromTo(".eyebrow", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+
+    // Left pillar 14h counts up on "fourteen-hour outage" (131.12; local 5.12), lands ~local 6.4.
+    tl.fromTo(".pillar.l", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.6);
+    const c = { v: 0 };
+    tl.to(c, { v: 14, duration: 1.1, ease: "power2.out",
+      onUpdate: () => { document.querySelector("#scene-13 .n1").textContent = Math.round(c.v) + "h"; } }, 5.2);
+
+    // Right pillar 140+ pops on "one hundred and forty" (133.76; local 7.76) — the punchline.
+    tl.fromTo(".pillar.r", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", transformOrigin: "50% 50%" }, 7.76);
+    tl.fromTo(".pillar.r .num", { textShadow: "0 0 0 rgba(255,107,93,0)" }, { textShadow: "0 0 44px rgba(255,107,93,0.55)", duration: 0.3 }, 8.0);
+
+    // pull-quote chip slides up after both stats (local 8.9) — callback to scene 12's term.
+    tl.fromTo(".quote", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.9);
+
+    window.__timelines["scene-13"] = tl;
+  </script>
+</body>
+</html>

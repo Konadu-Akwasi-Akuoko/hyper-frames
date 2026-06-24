@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 32 — smoothed into a perfect event stream</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-32 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-32 .eyebrow { position: absolute; left: 160px; top: 120px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-32 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+
+    /* bucket (left anchor, small) */
+    #scene-32 svg.bk { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-32 svg.bk .wall { fill: none; stroke: var(--accent-2); stroke-width: 4; stroke-linecap: round; }
+    #scene-32 svg.bk .rim { fill: rgba(103,232,249,0.04); stroke: var(--accent-2); stroke-width: 4; }
+    #scene-32 svg.bk .rail { fill: none; stroke: var(--accent-2); stroke-width: 2; opacity: 0.5; }
+
+    #scene-32 .qlbl { position: absolute; left: 232px; top: 320px; width: 240px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 22px; color: var(--muted); opacity: 0; }
+
+    /* dots */
+    #scene-32 .dot { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 8px rgba(103,232,249,0.55); opacity: 0; }
+    #scene-32 #queue, #scene-32 #stream { position: absolute; inset: 0; }
+
+    #scene-32 .streamlbl { position: absolute; left: 560px; top: 706px; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 30px; color: var(--accent-2); }
+    #scene-32 .streamlbl small { display: block; font-family: "Inter"; font-weight: 400; font-size: 22px; color: var(--muted); margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div id="scene-32" data-composition-id="scene-32" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Leaky bucket &middot; smoothing</div>
+
+    <svg class="bk" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <ellipse class="rim" cx="360" cy="382" rx="84" ry="13" />
+      <path class="wall wallL" d="M 276 382 L 276 632 Q 276 640 284 640 L 332 640" />
+      <path class="wall wallR" d="M 444 382 L 444 632 Q 444 640 436 640 L 388 640" />
+      <path class="rail" d="M 470 660 L 1700 660" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3600" />
+    </svg>
+    <div class="qlbl" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1220">a chaotic burst, queued</div>
+
+    <div id="queue"></div>
+    <div id="stream"></div>
+
+    <div class="streamlbl" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="7600">perfect event stream<small>one request per tick &mdash; evenly spaced</small></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const N = 8;
+    const STEP = 0.6;          // the fixed, unchanging interval — the smoothing made visible
+    const T0 = 3.62;           // "leave one at a time"
+
+    // queue dots (piled inside the bucket, chaotic) + stream dots (even output line).
+    const qWrap = document.getElementById("queue");
+    const sWrap = document.getElementById("stream");
+    const qDots = [], sDots = [];
+    for (let i = 0; i < N; i++) {
+      const q = document.createElement("div"); q.className = "dot";
+      q.style.left = (322 + (i % 2) * 38) + "px";          // 2 columns inside the bucket
+      q.style.top = (560 - Math.floor(i / 2) * 34) + "px"; // stacked bottom-up
+      qWrap.appendChild(q); qDots.push(q);
+      const s = document.createElement("div"); s.className = "dot";
+      s.style.left = "352px"; s.style.top = "650px";       // start at the drain
+      sWrap.appendChild(s); sDots.push(s);
+    }
+
+    // GRAPHICS crossfade (continues the cyan bucket; lands in 289.56->290.04 pause).
+    tl.fromTo("#scene-32", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45 }, 0.3);
+
+    // "They will queue up" (290.36; local 0.82) — chaotic burst piles into the bucket.
+    tl.fromTo(".qlbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.82);
+    qDots.forEach((q, i) => {
+      const t = 0.82 + i * 0.11 + (i % 3) * 0.04;          // irregular = chaotic arrival
+      tl.fromTo(q, { opacity: 0, y: -40, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" }, t);
+    });
+
+    // rail appears just before the even output begins.
+    tl.fromTo(".bk .rail", { opacity: 0 }, { opacity: 0.5, duration: 0.4 }, 3.2);
+    tl.to(".qlbl", { opacity: 0, duration: 0.4 }, 3.3);
+
+    // "leave one at a time" (293.16; local 3.62) — dots exit at a FIXED even interval.
+    sDots.forEach((s, i) => {
+      const t = T0 + i * STEP;                              // perfectly even spacing
+      const restX = 500 + i * 150;
+      tl.set(qDots[i], { opacity: 0 }, t);                  // the queued one leaves
+      tl.fromTo(s, { opacity: 0, left: 352, top: 650 }, { opacity: 1, duration: 0.1 }, t);
+      tl.to(s, { left: restX, top: 650, duration: 0.5, ease: "power2.out" }, t + 0.02);
+    });
+
+    // "smoothed into a perfect event stream" (295.44/296.64; local 5.90/7.10).
+    tl.fromTo(".streamlbl", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 7.10);
+
+    window.__timelines["scene-32"] = tl;
+  </script>
+</body>
+</html>

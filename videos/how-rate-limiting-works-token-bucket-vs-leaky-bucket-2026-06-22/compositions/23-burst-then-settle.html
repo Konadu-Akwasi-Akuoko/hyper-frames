@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 23 — burst then settle</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-23 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-23 .eyebrow { position: absolute; left: 200px; top: 120px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-23 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent); vertical-align: middle; margin-right: 14px; }
+
+    /* bucket (left) */
+    #scene-23 .bucket { position: absolute; left: 300px; top: 380px; opacity: 0; }
+    #scene-23 .bucket .rim { width: 200px; height: 22px; border-radius: 50%; border: 3px solid var(--accent); background: rgba(255,181,71,0.05); }
+    #scene-23 .bucket .body { width: 180px; height: 300px; margin: -11px auto 0;
+      border: 3px solid var(--accent); border-top: none; border-radius: 0 0 26px 26px; background: rgba(255,181,71,0.04);
+      padding: 18px; display: grid; grid-template-columns: repeat(2, 44px); gap: 11px; align-content: end; justify-content: center; }
+    #scene-23 .bucket .btok { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(255,181,71,0.4); }
+    #scene-23 .counter { position: absolute; left: 300px; top: 320px; width: 200px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 42px; color: var(--accent); font-variant-numeric: tabular-nums; opacity: 0; }
+
+    /* burst request dots fly out from the bucket */
+    #scene-23 #volley { position: absolute; left: 520px; top: 480px; }
+    #scene-23 .rq { position: absolute; width: 30px; height: 30px; border-radius: 50%; background: var(--ok);
+      box-shadow: 0 0 10px rgba(125,216,125,0.6); opacity: 0; }
+
+    #scene-23 .burst { position: absolute; left: 980px; top: 400px; width: 700px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 110px; letter-spacing: 0.02em; color: var(--accent); opacity: 0; }
+    #scene-23 .settle { position: absolute; left: 980px; top: 560px; width: 700px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 30px; color: var(--muted); opacity: 0; }
+    #scene-23 .settle b { color: var(--accent); font-weight: 500; }
+
+    /* steady drip cue at the bucket spout (phase B) */
+    #scene-23 .sdrip { position: absolute; left: 386px; top: 350px; width: 24px; height: 24px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 10px rgba(255,181,71,0.55); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-23" data-composition-id="scene-23" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Token bucket &middot; the burst</div>
+
+    <div class="counter">10</div>
+    <div class="bucket">
+      <div class="rim"></div>
+      <div class="body">
+        <div class="btok" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1900"></div><div class="btok"></div>
+        <div class="btok" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2200"></div><div class="btok"></div>
+        <div class="btok" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2500"></div><div class="btok"></div>
+        <div class="btok"></div><div class="btok"></div>
+        <div class="btok"></div><div class="btok" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3250"></div>
+      </div>
+    </div>
+    <div id="volley"></div>
+    <div class="sdrip" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="8750"></div>
+
+    <div class="burst" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="5680">BURST</div>
+    <div class="settle">then settles to the steady <b>2 / sec</b> the tap allows</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const cntEl = () => document.querySelector("#scene-23 .counter");
+
+    // build 10 burst request dots at the bucket mouth.
+    const volley = document.getElementById("volley");
+    const dots = [];
+    for (let i = 0; i < 10; i++) {
+      const d = document.createElement("div");
+      d.className = "rq";
+      d.style.top = (i % 2 === 0 ? 0 : 36) + "px";
+      volley.appendChild(d);
+      dots.push(d);
+    }
+
+    // GRAPHICS crossfade (continues the full bucket from scene 22; lands in 218.52->219.22 pause).
+    tl.fromTo("#scene-23", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45 }, 0.4);
+    tl.fromTo(".bucket", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.4);
+    tl.fromTo(".counter", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.6);
+
+    // "fire ten rapid requests back to back" (220.34; local 1.62) — rapid burst drains 10->0.
+    dots.forEach((d, i) => {
+      const t = 1.62 + i * 0.15;
+      tl.fromTo(d, { opacity: 0, x: 0 }, { opacity: 1, duration: 0.08 }, t);
+      tl.to(d, { x: 760, opacity: 0, duration: 0.5, ease: "power1.in" }, t + 0.04);
+    });
+    // bucket tokens drain top-first in the same staccato.
+    tl.to(".btok", { opacity: 0, scale: 0.5, duration: 0.2, ease: "power2.in", stagger: 0.15, transformOrigin: "50% 50%" }, 1.7);
+    const c = { v: 10 };
+    tl.to(c, { v: 0, duration: 1.5, ease: "none", onUpdate: () => { cntEl().textContent = Math.round(c.v); } }, 1.78);
+    tl.to(".counter", { color: "#7a8493", duration: 0.3 }, 3.3);
+
+    // "that is called a burst" (224.18; local 5.46) — the word stamps in hard.
+    tl.fromTo(".burst", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power3.out", transformOrigin: "50% 50%" }, 5.46);
+    tl.to(".burst", { textShadow: "0 0 50px rgba(255,181,71,0.5)", duration: 0.3 }, 5.6);
+
+    // "settling into the steady two a second" (226.68; local 7.96) — gear-change to slow drip.
+    tl.to(".burst", { opacity: 0.25, scale: 0.7, y: -40, duration: 0.6, ease: "power2.inOut", transformOrigin: "50% 50%" }, 7.7);
+    tl.fromTo(".settle", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, 7.96);
+    // two slow metronomic drips (the calm 2/sec steady rate)
+    tl.fromTo(".sdrip", { opacity: 0, y: 0 }, { opacity: 1, duration: 0.15 }, 8.1);
+    tl.to(".sdrip", { y: 70, opacity: 0, duration: 0.5, ease: "power1.in" }, 8.25);
+    tl.fromTo(".sdrip", { opacity: 0, y: 0 }, { opacity: 1, duration: 0.15 }, 9.1);
+    tl.to(".sdrip", { y: 70, opacity: 0, duration: 0.5, ease: "power1.in" }, 9.25);
+
+    window.__timelines["scene-23"] = tl;
+  </script>
+</body>
+</html>

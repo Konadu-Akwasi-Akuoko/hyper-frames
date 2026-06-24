@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 11 — retry amplification (243x)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-11 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-11 .eyebrow { position: absolute; left: 140px; top: 70px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-11 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--danger); vertical-align: middle; margin-right: 14px; }
+
+    /* tree rows */
+    #scene-11 .row { position: absolute; left: 360px; width: 1200px; display: flex; align-items: center; justify-content: center; gap: 10px; opacity: 0; }
+    #scene-11 .row .dot { border-radius: 50%; flex: 0 0 auto; }
+    #scene-11 .rlabel { position: absolute; left: 1600px; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; font-variant-numeric: tabular-nums; color: var(--muted); opacity: 0; transform: translateY(-50%); }
+    #scene-11 .mult { position: absolute; left: 250px; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 20px; color: var(--dim); opacity: 0; transform: translateY(-50%); }
+
+    /* payoff: the database load */
+    #scene-11 .payoff { position: absolute; left: 0; right: 0; top: 660px; text-align: center; }
+    #scene-11 .payoff .big { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 150px; line-height: 1; color: var(--danger); font-variant-numeric: tabular-nums; opacity: 0; }
+    #scene-11 .payoff .cap { font-family: "Inter"; font-weight: 400; font-size: 32px; color: var(--muted); margin-top: 16px; opacity: 0; }
+    #scene-11 .payoff .cap b { color: var(--fg); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-11" data-composition-id="scene-11" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Retry amplification &middot; &times;3 per layer</div>
+
+    <div class="row r0" style="top: 110px"></div>
+    <div class="row r1" style="top: 215px" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3400"></div>
+    <div class="row r2" style="top: 320px" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4300"></div>
+    <div class="row r3" style="top: 420px" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="5200"></div>
+    <div class="row r4" style="top: 515px" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6100"></div>
+
+    <div class="rlabel rl0" style="top: 110px">1</div>
+    <div class="rlabel rl1" style="top: 215px">3</div>
+    <div class="rlabel rl2" style="top: 320px">9</div>
+    <div class="rlabel rl3" style="top: 420px">27</div>
+    <div class="rlabel rl4" style="top: 515px">81</div>
+
+    <div class="mult m1" style="top: 162px">&times;3</div>
+    <div class="mult m2" style="top: 267px">&times;3</div>
+    <div class="mult m3" style="top: 370px">&times;3</div>
+    <div class="mult m4" style="top: 467px">&times;3</div>
+
+    <div class="payoff">
+      <div class="big" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9900">0&times;</div>
+      <div class="cap">one request becomes <b>243</b> hits on the database</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Build each tier's dots (count, size, color) deterministically.
+    const tiers = [
+      { sel: ".r0", n: 1,  size: 26, color: "#67e8f9" },
+      { sel: ".r1", n: 3,  size: 20, color: "#76dbdf" },
+      { sel: ".r2", n: 9,  size: 14, color: "#ffb547" },
+      { sel: ".r3", n: 27, size: 9,  color: "#ff9a6e" },
+      { sel: ".r4", n: 81, size: 6,  color: "#ff6b5d" },
+    ];
+    tiers.forEach(t => {
+      const row = document.querySelector("#scene-11 " + t.sel);
+      for (let i = 0; i < t.n; i++) {
+        const d = document.createElement("div");
+        d.className = "dot";
+        d.style.width = t.size + "px";
+        d.style.height = t.size + "px";
+        d.style.background = t.color;
+        d.style.boxShadow = "0 0 8px " + t.color + "66";
+        row.appendChild(d);
+      }
+    });
+
+    // GRAPHICS crossfade cover (lands in 104.46->105.16 pause).
+    tl.fromTo("#scene-11", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.55);
+
+    // "The mass is merciless." (local 0.5-2.14) — the single original request, held.
+    tl.fromTo(".r0", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)", transformOrigin: "50% 50%" }, 0.7);
+    tl.fromTo(".rl0", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.0);
+
+    // "Five services deep, each retrying three times" (107.50; local 2.84) — the tiers multiply.
+    const rows = [".r1", ".r2", ".r3", ".r4"];
+    const labels = [".rl1", ".rl2", ".rl3", ".rl4"];
+    const mults = [".m1", ".m2", ".m3", ".m4"];
+    const starts = [3.0, 3.9, 4.8, 5.7];
+    rows.forEach((r, i) => {
+      tl.fromTo(mults[i], { opacity: 0 }, { opacity: 1, duration: 0.25 }, starts[i] - 0.1);
+      tl.fromTo(r, { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, starts[i]);
+      tl.fromTo(labels[i], { opacity: 0 }, { opacity: 1, duration: 0.3 }, starts[i] + 0.15);
+    });
+
+    // "the database at the bottom sees 243x the original load" (local 6.62-10.36).
+    // count-up to 243 landing on "forty-three" (114.60; local ~9.94).
+    tl.to(".payoff .big", { opacity: 1, duration: 0.3 }, 7.6);
+    const c = { v: 0 };
+    tl.to(c, { v: 243, duration: 2.0, ease: "power2.out",
+      onUpdate: () => { document.querySelector("#scene-11 .payoff .big").textContent = Math.round(c.v) + "×"; } }, 7.9);
+    tl.to(".payoff .big", { scale: 1.06, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 9.9);
+    tl.to(".payoff .big", { textShadow: "0 0 46px rgba(255,107,93,0.6)", duration: 0.3 }, 9.9);
+    tl.fromTo(".payoff .cap", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, 10.5);
+
+    window.__timelines["scene-11"] = tl;
+  </script>
+</body>
+</html>

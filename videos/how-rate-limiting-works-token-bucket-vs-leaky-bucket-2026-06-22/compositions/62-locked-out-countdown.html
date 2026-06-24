@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 62 — spend it all, logged out, watch the countdown until a fresh window</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-62 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-62 .eyebrow { position: absolute; left: 0; right: 0; top: 200px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* budget bar */
+    #scene-62 .track { position: absolute; left: 460px; top: 330px; width: 1000px; height: 76px;
+      border: 1.5px solid var(--border); border-radius: 12px; opacity: 0; overflow: hidden; }
+    #scene-62 .fill { position: absolute; left: 0; top: 0; width: 1000px; height: 100%;
+      background: rgba(125,216,125,0.55); box-shadow: 0 0 28px rgba(125,216,125,0.22); transform-origin: 0% 50%; }
+
+    /* status banner */
+    #scene-62 .banner { position: absolute; left: 0; right: 0; top: 470px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 76px; letter-spacing: -0.01em; }
+    #scene-62 .blocked { color: var(--danger); opacity: 0; }
+    #scene-62 .bfresh { color: var(--ok); opacity: 0; }
+
+    /* countdown toast */
+    #scene-62 .toast { position: absolute; left: 0; right: 0; top: 624px; text-align: center; opacity: 0; }
+    #scene-62 .toast .box { display: inline-block; padding: 16px 34px; border-radius: 14px;
+      background: var(--panel); border: 1.5px solid rgba(255,107,93,0.4); }
+    #scene-62 .toast .lbl { font-family: "Inter"; font-weight: 400; font-size: 28px; color: var(--muted); margin-right: 16px; }
+    #scene-62 .toast .cdval { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 32px; color: var(--fg); font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <div id="scene-62" data-composition-id="scene-62" data-width="1920" data-height="1080">
+    <div class="eyebrow">spend it all inside the window</div>
+
+    <div class="track"><div class="fill" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2780"></div></div>
+
+    <div class="banner blocked" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3240">&#10005;&nbsp; locked out</div>
+    <div class="banner bfresh" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="10900">&#10003;&nbsp; full &amp; fresh window</div>
+
+    <div class="toast" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4940"><span class="box"><span class="lbl">reset in</span><span class="cdval">3:18:00</span></span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const cdEl = () => document.querySelector("#scene-62 .cdval");
+    const fmt = (s) => { const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = Math.floor(s % 60); return h + ":" + String(m).padStart(2, "0") + ":" + String(sec).padStart(2, "0"); };
+
+    // GRAPHICS crossfade — budget bar enters FULL (green).
+    tl.fromTo("#scene-62", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".track", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 0.4);
+
+    // "Spend your whole allowance" (496.03; local 1.08) — the budget drains to empty.
+    tl.fromTo(".fill", { scaleX: 1 }, { scaleX: 0, duration: 1.7, ease: "power1.in" }, 1.08);
+
+    // "you are logged out" (497.79; local 2.84) — the red LOCKED OUT banner pops with weight.
+    tl.fromTo(".blocked", { opacity: 0, scale: 0.85, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 2.84);
+
+    // "watching the timer count down ... reset in three hours, eighteen minutes" (499.49->503.35; local 4.54->8.40)
+    // — the countdown toast slides in and ticks (onUpdate, seek-safe).
+    tl.fromTo(".toast", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.54);
+    const cd = { v: 11880 };
+    tl.to(cd, { v: 11848, duration: 5.0, ease: "none", onUpdate: () => { cdEl().textContent = fmt(cd.v); } }, 4.84);
+
+    // "until it flips back to a full and a fresh window" (504.77->506.13; local 9.82->11.18)
+    // — the bar refills green, the banner flips red->green, the countdown clears.
+    tl.to(".toast", { opacity: 0, duration: 0.4 }, 9.82);
+    tl.to(".blocked", { opacity: 0, duration: 0.4 }, 9.82);
+    tl.fromTo(".fill", { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: "power2.out" }, 9.82);
+    tl.fromTo(".bfresh", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 10.4);
+
+    window.__timelines["scene-62"] = tl;
+  </script>
+</body>
+</html>

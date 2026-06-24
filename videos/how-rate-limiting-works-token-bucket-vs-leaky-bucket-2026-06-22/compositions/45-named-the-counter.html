@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 45 — the second one, the counter, quietly breaks that promise</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-45 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-45 .eyebrow { position: absolute; left: 0; right: 0; top: 250px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-45 .eyebrow .n { color: var(--accent-2); }
+
+    #scene-45 .cue { position: absolute; left: 0; right: 0; top: 318px; text-align: center;
+      font-family: "Inter"; font-weight: 300; font-size: 38px; color: var(--muted); opacity: 0; }
+
+    /* the name — quiet/dim, NOT the bright cyan of THE QUEUE */
+    #scene-45 .title { position: absolute; left: 0; right: 0; top: 386px; text-align: center;
+      font-family: "Inter"; font-weight: 900; font-size: 150px; color: #aab0bc; letter-spacing: -0.01em; line-height: 1; opacity: 0; }
+    /* the red crack through the name */
+    #scene-45 .crack { position: absolute; left: 560px; top: 470px; width: 800px; height: 6px; background: var(--danger);
+      transform-origin: 50% 50%; transform: rotate(-7deg) scaleX(0); opacity: 0; border-radius: 3px;
+      box-shadow: 0 0 22px rgba(255,107,93,0.5); }
+
+    #scene-45 .sub { position: absolute; left: 0; right: 0; top: 600px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 36px; color: var(--muted); opacity: 0; }
+    #scene-45 .sub b { color: var(--danger); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-45" data-composition-id="scene-45" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="n">02</span> &middot; leaky bucket</div>
+    <div class="cue">but the second one&hellip;</div>
+    <div class="title" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1950">THE COUNTER</div>
+    <div class="crack" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3540"></div>
+    <div class="sub">quietly <b>breaks that promise</b></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade (lands in 391.75->392.35 pause).
+    tl.fromTo("#scene-45", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "But the second one" (392.35; local 0.50) — eyebrow + the quiet cue.
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".cue", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45 }, 0.5);
+
+    // "the counter" (393.73; local 1.88) — the name slides up, quiet (dim, not a cyan bloom).
+    tl.fromTo(".title", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 1.4);
+
+    // "breaks" (395.05; local 3.20) — the red crack scales through the name, overshoot.
+    tl.fromTo(".crack", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 3.2);
+    tl.fromTo(".crack", { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "back.out(2.2)" }, 3.2);
+    tl.to(".title", { color: "#c9909a", duration: 0.3 }, 3.2);
+
+    // "promise" (395.45; local 3.60) — the broken-promise line settles.
+    tl.fromTo(".sub", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.5);
+
+    window.__timelines["scene-45"] = tl;
+  </script>
+</body>
+</html>

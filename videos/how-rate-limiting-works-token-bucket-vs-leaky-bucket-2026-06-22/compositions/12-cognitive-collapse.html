@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 12 — cognitive collapse (the end state)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-12 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-12 .eyebrow { position: absolute; left: 0; right: 0; top: 180px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-12 .setup { position: absolute; left: 0; right: 0; top: 300px; text-align: center; }
+    #scene-12 .setup .cl { font-family: "Inter"; font-weight: 600; font-size: 50px; color: var(--muted); line-height: 1.3; opacity: 0; }
+    #scene-12 .setup .cl b { color: var(--danger); font-weight: 700; }
+
+    #scene-12 .term { position: absolute; left: 0; right: 0; top: 500px; text-align: center;
+      font-family: "Inter"; font-weight: 900; font-size: 132px; line-height: 1; color: var(--danger);
+      letter-spacing: 0.005em; opacity: 0; }
+    #scene-12 .term .ast { font-size: 0.3em; vertical-align: super; color: var(--accent); font-weight: 700; }
+    #scene-12 .gloss { position: absolute; left: 0; right: 0; top: 680px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); opacity: 0; }
+    #scene-12 .note { position: absolute; left: 0; right: 0; top: 736px; text-align: center;
+      font-family: "Inter"; font-weight: 400; font-size: 26px; color: var(--muted); opacity: 0; }
+    #scene-12 .note em { color: var(--accent); font-style: normal; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-12" data-composition-id="scene-12" data-width="1920" data-height="1080">
+    <div class="eyebrow">The end state</div>
+    <div class="setup">
+      <div class="cl cl1" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="3500">A system <b>buried in retries</b>&hellip;</div>
+      <div class="cl cl2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6000">until it <b>can no longer move at all.</b></div>
+    </div>
+    <div class="term" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="8280">cognitive collapse<span class="ast">*</span></div>
+    <div class="gloss">the end state of a runaway retry storm</div>
+    <div class="note">* the correct term is <em>&ldquo;congestive collapse&rdquo;</em></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade cover (lands in 115.92->116.70 pause).
+    tl.fromTo("#scene-12", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+
+    // setup builds in clusters, keyed to the VO. "buried in retries" (~119.5; local 3.0),
+    // "can no longer move at all" (~121.7; local 5.5).
+    tl.fromTo(".cl1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 3.0);
+    tl.fromTo(".cl2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.5);
+
+    // "It's called cognitive collapse" (124.2; local ~8.0) — the term snaps in (glitch-judder -> lock),
+    // then holds dead-still (the stillness IS "can no longer move").
+    tl.to(".setup", { opacity: 0.32, y: -18, duration: 0.5, ease: "power2.inOut" }, 7.7); // clear focus to the term
+    tl.fromTo(".term", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power3.out", transformOrigin: "50% 50%" }, 8.0);
+    tl.to(".term", { x: 7, duration: 0.04, yoyo: true, repeat: 5 }, 8.0);             // glitch judder
+    tl.set(".term", { x: 0 }, 8.28);                                                  // lock
+    tl.to(".term", { textShadow: "0 0 50px rgba(255,107,93,0.55)", duration: 0.3 }, 8.3);
+    tl.fromTo(".gloss", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 8.6);
+    tl.fromTo(".note", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 8.9);
+
+    window.__timelines["scene-12"] = tl;
+  </script>
+</body>
+</html>

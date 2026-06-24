@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 34 — queue overflows, extras rejected</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-34 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-34 .eyebrow { position: absolute; left: 200px; top: 120px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-34 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+
+    #scene-34 svg.bk { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-34 svg.bk .wall { fill: none; stroke: var(--accent-2); stroke-width: 4; stroke-linecap: round; }
+    #scene-34 svg.bk .rim { fill: rgba(103,232,249,0.04); stroke: var(--accent-2); stroke-width: 4; }
+
+    #scene-34 .chip { position: absolute; width: 150px; height: 26px; border-radius: 6px;
+      background: rgba(103,232,249,0.16); border: 1.5px solid var(--accent-2); opacity: 0; }
+    #scene-34 .spill { position: absolute; width: 150px; height: 26px; border-radius: 6px;
+      background: rgba(255,107,93,0.14); border: 1.5px solid var(--danger); opacity: 0;
+      display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
+    #scene-34 .spill .x { color: var(--danger); font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 20px; opacity: 0; }
+    #scene-34 #queue, #scene-34 #spills { position: absolute; inset: 0; }
+
+    #scene-34 .rejlbl { position: absolute; left: 1080px; top: 690px; opacity: 0;
+      font-family: "Inter"; font-weight: 700; font-size: 44px; color: var(--danger); }
+    #scene-34 .rejlbl small { display: block; font-family: "Inter"; font-weight: 400; font-size: 24px; color: var(--muted); margin-top: 6px; }
+    #scene-34 .qlbl { position: absolute; left: 980px; top: 380px; width: 520px; opacity: 0;
+      font-family: "Inter"; font-weight: 400; font-size: 28px; color: var(--muted); }
+    #scene-34 .qlbl b { color: var(--accent-2); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="scene-34" data-composition-id="scene-34" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Leaky bucket &middot; the queue fills</div>
+
+    <svg class="bk" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <ellipse class="rim" cx="720" cy="322" rx="100" ry="15" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="4340" />
+      <path class="wall wallL" d="M 620 322 L 620 642 Q 620 650 628 650 L 686 650" />
+      <path class="wall wallR" d="M 820 322 L 820 642 Q 820 650 812 650 L 754 650" />
+    </svg>
+
+    <div id="queue"></div>
+    <div id="spills" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="6140"></div>
+
+    <div class="qlbl" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2000">requests wait <b>politely in line</b> &mdash; until the bucket is full</div>
+    <div class="rejlbl" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="7400">rejected<small>the queue is full &mdash; extras are dropped</small></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // queue chips (stack bottom-up inside the bucket) + spill chips (red, overflow).
+    const qWrap = document.getElementById("queue");
+    const sWrap = document.getElementById("spills");
+    const qChips = [];
+    for (let i = 0; i < 9; i++) {
+      const c = document.createElement("div"); c.className = "chip";
+      c.style.left = "645px"; c.style.top = (608 - i * 32) + "px";   // stack upward to the rim
+      qWrap.appendChild(c); qChips.push(c);
+    }
+    const sChips = [];
+    for (let i = 0; i < 3; i++) {
+      const c = document.createElement("div"); c.className = "spill";
+      c.style.left = "645px"; c.style.top = "330px";
+      c.innerHTML = '<span class="x">&#10005;</span>';
+      sWrap.appendChild(c); sChips.push(c);
+    }
+
+    // GRAPHICS crossfade (continues the cyan bucket; lands in 305.24->306.12 pause).
+    tl.fromTo("#scene-34", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45 }, 0.3);
+
+    // "waiting politely in line" (307.66; local 2.04) — queue chips stack up to the rim.
+    tl.fromTo(".qlbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.6);
+    qChips.forEach((c, i) => {
+      tl.fromTo(c, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.22, ease: "power2.out" }, 2.04 + i * 0.18);
+    });
+
+    // "until the bucket overflows" (309.84; local 4.22) — fill hits the rim, capacity snap.
+    tl.to(".bk .rim", { scaleX: 1.05, duration: 0.12, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 4.22);
+    tl.to(".bk .rim", { stroke: "#ff6b5d", duration: 0.25 }, 4.4);
+
+    // "the extras spill out" (311.54; local 5.92) — red chips arc over the rim and fall.
+    sChips.forEach((c, i) => {
+      const t = 5.92 + i * 0.22;
+      tl.fromTo(c, { opacity: 0, top: 330, left: 645 }, { opacity: 1, duration: 0.1 }, t);
+      tl.to(c, { top: 290, left: 700, duration: 0.22, ease: "power2.out" }, t);          // arc up over rim
+      tl.to(c, { top: 770 + i * 34, left: 548 + i * 46, rotation: -9 - i * 6, duration: 0.5, ease: "power1.in" }, t + 0.22);  // tumble out below-left, clear of the label
+    });
+
+    // "rejected" (312.52; local 6.90) — the X stamps + label.
+    sChips.forEach((c, i) => {
+      tl.fromTo(c.querySelector(".x"), { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 6.9 + i * 0.08);
+    });
+    tl.fromTo(".rejlbl", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 6.9);
+
+    window.__timelines["scene-34"] = tl;
+  </script>
+</body>
+</html>

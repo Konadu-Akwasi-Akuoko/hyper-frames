@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 35 — kind 02, never holds a request</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-35 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* 01 — 02 stepper (top-center) */
+    #scene-35 .stepper { position: absolute; left: 0; right: 0; top: 150px; display: flex; align-items: center; justify-content: center; gap: 0; }
+    #scene-35 .node { width: 84px; height: 84px; border-radius: 14px; border: 2px solid var(--dim);
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 34px; color: var(--muted); }
+    #scene-35 .node.on { border-color: var(--accent-2); color: var(--accent-2); background: rgba(103,232,249,0.08); }
+    #scene-35 .conn { width: 120px; height: 2px; background: var(--dim); }
+
+    #scene-35 .title { position: absolute; left: 0; right: 0; top: 286px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 66px; color: var(--fg); opacity: 0; }
+    #scene-35 .title .sub { display: block; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; color: var(--muted); margin-top: 12px; letter-spacing: 0.06em; }
+
+    /* hollow bucket (center), OPEN bottom — holds nothing */
+    #scene-35 svg.bk { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    #scene-35 svg.bk .wall { fill: none; stroke: var(--accent-2); stroke-width: 4; stroke-linecap: round; }
+    #scene-35 svg.bk .rim { fill: none; stroke: var(--accent-2); stroke-width: 4; }
+    #scene-35 svg.bk .open { fill: none; stroke: var(--accent-2); stroke-width: 3; stroke-dasharray: 10 12; opacity: 0.5; }
+
+    #scene-35 .ghost { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-2);
+      box-shadow: 0 0 10px rgba(103,232,249,0.6); opacity: 0; }
+    #scene-35 #ghosts { position: absolute; inset: 0; }
+
+    #scene-35 .payoff { position: absolute; left: 0; right: 0; top: 824px; text-align: center;
+      font-family: "Inter"; font-weight: 800; font-size: 60px; color: var(--fg); opacity: 0; }
+    #scene-35 .payoff .c { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-35" data-composition-id="scene-35" data-width="1920" data-height="1080">
+    <div class="stepper">
+      <div class="node n1">01</div>
+      <div class="conn"></div>
+      <div class="node n2" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1000">02</div>
+    </div>
+
+    <div class="title" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1800">Kind 02 &middot; the meter<span class="sub">no queue &mdash; no hold</span></div>
+
+    <svg class="bk" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <ellipse class="rim" cx="960" cy="452" rx="96" ry="15" />
+      <path class="wall" d="M 864 452 L 864 690" />
+      <path class="wall" d="M 1056 452 L 1056 690" />
+      <path class="open" d="M 864 690 L 1056 690" />
+    </svg>
+
+    <div id="ghosts" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="4180"></div>
+
+    <div class="payoff" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="5600">it <span class="c">never holds</span> a request &mdash; at all</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // ghost requests — arrive at the rim, fall straight through the open bottom, leave nothing.
+    const gWrap = document.getElementById("ghosts");
+    const ghosts = [];
+    for (let i = 0; i < 3; i++) {
+      const g = document.createElement("div"); g.className = "ghost";
+      g.style.left = (920 + i * 40) + "px"; g.style.top = "360px";
+      gWrap.appendChild(g); ghosts.push(g);
+    }
+
+    // GRAPHICS crossfade (lands in 313.10->314.10 pause).
+    tl.fromTo("#scene-35", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "The second leaky bucket" (314.10; local 0.50) — stepper advances 01 -> 02.
+    tl.to(".node.n1", { borderColor: "#3a4150", color: "#3a4150", duration: 0.4 }, 0.5);
+    tl.to(".conn", { backgroundColor: "#67e8f9", duration: 0.4 }, 0.5);
+    tl.fromTo(".node.n2", { scale: 0.9 },
+      { scale: 1, borderColor: "#67e8f9", color: "#67e8f9", backgroundColor: "rgba(103,232,249,0.08)", duration: 0.4, ease: "back.out(2)" }, 0.6);
+
+    // "is stranger" (315.70; local 2.10) — kind-02 title + the hollow (empty) bucket reveal.
+    tl.fromTo(".title", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.3);
+    tl.fromTo(".bk .rim, .bk .wall", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.7);
+    tl.fromTo(".bk .open", { opacity: 0 }, { opacity: 0.5, duration: 0.5 }, 2.0);
+
+    // "never holds a request at all" (317.66/318.70; local 4.06/5.10) — dots pass straight through.
+    ghosts.forEach((g, i) => {
+      const t = 4.06 + i * 0.26;
+      tl.fromTo(g, { opacity: 0, top: 360 }, { opacity: 1, duration: 0.18 }, t);
+      tl.to(g, { top: 820, opacity: 0, duration: 0.7, ease: "power1.in" }, t + 0.12);   // through the open bottom, gone
+    });
+
+    // the payoff lands as the bucket sits visibly bare.
+    tl.fromTo(".payoff", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.1);
+
+    window.__timelines["scene-35"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 28 — Leaky Bucket title (approach 02)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    /* FACE mode — transparent scene; the .cover reveals the face beneath. */
+    #scene-28 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+    #scene-28 .cover { position: absolute; inset: 0; background: var(--bg); }
+
+    /* lower-third title card over the revealed face */
+    #scene-28 .lt { position: absolute; left: 90px; bottom: 100px; min-width: 720px; padding: 34px 48px;
+      background: rgba(11,13,18,0.82); border-left: 5px solid var(--accent-2); border-radius: 6px;
+      backdrop-filter: blur(4px); opacity: 0; }
+    #scene-28 .lt .mask { overflow: hidden; }
+    #scene-28 .lt .eyebrow { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    #scene-28 .lt .title { font-family: "Inter"; font-weight: 800; font-size: 104px; line-height: 1.05; color: var(--accent-2);
+      margin-top: 10px; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div id="scene-28" data-composition-id="scene-28" data-width="1920" data-height="1080">
+    <div class="cover"></div>
+
+    <div class="lt" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3800">
+      <div class="mask"><div class="eyebrow">Approach 02</div></div>
+      <div class="mask"><div class="title" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="4160">Leaky Bucket</div></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // FACE reveal — the opaque cover crossfades out, exposing the face hidden since scene 17.
+    // "Now" (263.70; local 0.5).
+    tl.to(".cover", { opacity: 0, duration: 0.6, ease: "power2.inOut" }, 0.5);
+
+    // lower-third card rises (mask-wipe), keyed to "leaky bucket" (266.76; local 3.56).
+    tl.fromTo(".lt", { opacity: 0, y: 90 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 3.2);
+    tl.fromTo(".lt .eyebrow", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.45, ease: "power1.inOut", immediateRender: false }, 3.4);
+    tl.fromTo(".lt .title", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.6, ease: "power1.inOut", immediateRender: false }, 3.56);
+
+    window.__timelines["scene-28"] = tl;
+  </script>
+</body>
+</html>

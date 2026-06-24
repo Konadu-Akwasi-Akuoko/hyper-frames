@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 03 — 398 million / second</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: transparent; font-family: "Inter", sans-serif;
+    }
+    /* GRAPHICS mode — opaque fill covers the face layer. */
+    #scene-03-attack { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+    /* Cyber-attack b-roll — low-opacity threat texture behind the number (covers nothing
+       on its own; the opaque scene bg already hides the face). Seek-driven timed clip. */
+    #scene-03-attack .broll {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0;
+    }
+    /* Guaranteed-visible red "attack" wash — the world without the gate (independent of b-roll brightness) */
+    #scene-03-attack .red-wash {
+      position: absolute; inset: 0; opacity: 0;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,107,93,0.18), rgba(255,107,93,0.04) 55%, transparent 75%),
+        rgba(255,107,93,0.06);
+    }
+    #scene-03-attack .vignette-guard { /* subtle top/bottom darken to keep number legible — NOT an edge vignette ramp; flat bands */
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(11,13,18,0.55) 0%, rgba(11,13,18,0) 26%, rgba(11,13,18,0) 74%, rgba(11,13,18,0.55) 100%);
+      opacity: 0;
+    }
+    /* Gate echo (callback to scene 02) — calm, then glitches off. Centering on a static
+       wrapper so GSAP can animate y/scale on the inner without clobbering translate. */
+    #scene-03-attack .gate-echo-wrap { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+    #scene-03-attack .gate-echo {
+      width: 120px; height: 360px; border: 2px solid var(--accent); border-radius: 14px;
+      background: repeating-linear-gradient(180deg, rgba(255,181,71,0.26) 0 4px, transparent 4px 48px);
+      box-shadow: 0 0 30px rgba(255,181,71,0.14);
+    }
+    #scene-03-attack .gate-echo .glabel {
+      position: absolute; left: 0; right: 0; bottom: -40px; text-align: center;
+      font-family: "Inter"; font-weight: 500; font-size: 22px; color: var(--muted);
+    }
+    /* The giant stat — centering on a static outer wrapper, scale animates on .stat-wrap. */
+    #scene-03-attack .stat-outer { position: absolute; left: 50%; top: 46%; transform: translate(-50%,-50%); }
+    #scene-03-attack .stat-wrap { text-align: center; opacity: 0; }
+    #scene-03-attack .stat {
+      font-family: "JetBrains Mono", monospace; font-weight: 400;
+      font-size: 180px; line-height: 1; color: var(--danger);
+      font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+    }
+    #scene-03-attack .unit {
+      font-family: "Inter"; font-weight: 300; font-size: 40px; color: var(--fg);
+      margin-top: 18px; letter-spacing: 0.04em; opacity: 0;
+    }
+    #scene-03-attack .unit b { color: var(--danger); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div id="scene-03-attack" data-composition-id="scene-03-attack" data-width="1920" data-height="1080">
+    <video id="broll-cyber" class="broll" src="assets/video/b-roll/cyber-attack-warning-with-glitch-effect-and-skull-2026-01-28-05-30-37-utc.mp4"
+           data-start="0" data-duration="11.7" data-track-index="0" data-volume="0" muted playsinline></video>
+    <div class="red-wash"></div>
+    <div class="vignette-guard"></div>
+
+    <div class="gate-echo-wrap">
+      <div class="gate-echo" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3500">
+        <div class="glabel">the gate</div>
+      </div>
+    </div>
+
+    <div class="stat-outer">
+      <div class="stat-wrap">
+        <div class="stat" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="8380" data-sfx-hook="true">100,000,000</div>
+        <div class="unit"><b>requests</b> &nbsp;/&nbsp; second</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Entrance crossfade GRAPHICS->GRAPHICS — covers via the dark fill (lands in the
+    // ~15.02->15.68 pause). The gate echo rides in under the crossfade (entrance invariant a).
+    tl.fromTo("#scene-03-attack", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    // Gate echo holds calm during "it feels like a minor annoyance" (local 0.5-3.0), idle drift.
+    tl.to(".gate-echo", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.6);
+
+    // "take that gate away" (global 15.68; local 3.26) — gate glitches red, flickers, vanishes.
+    tl.to(".gate-echo", { borderColor: "#ff6b5d", boxShadow: "0 0 40px rgba(255,107,93,0.5)", duration: 0.12 }, 3.30);
+    tl.to(".gate-echo", { opacity: 0.2, duration: 0.07, yoyo: true, repeat: 5 }, 3.42); // flicker
+    tl.to(".gate-echo", { opacity: 0, scale: 0.92, duration: 0.25, ease: "power2.in", transformOrigin: "50% 50%" }, 3.85);
+    // The world without the gate — red attack wash + cyber threat texture flood in + legibility guard.
+    tl.to(".red-wash", { opacity: 1, duration: 0.7, ease: "power2.out" }, 3.5);
+    tl.to(".broll", { opacity: 0.5, duration: 0.8, ease: "power2.out" }, 3.6);
+    tl.to(".vignette-guard", { opacity: 1, duration: 0.8, ease: "power2.out" }, 3.6);
+
+    // "a single attacker can throw..." -> the number appears small, then RACES up.
+    // count-up 100M -> 398M landing on "million" (global ~20.8; local ~8.38), scale-bloom.
+    tl.fromTo(".stat-wrap", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 0.5, duration: 0.3, ease: "power2.out" }, 6.7);
+    const counter = { val: 100000000 };
+    tl.to(counter, {
+      val: 398000000, duration: 1.38, ease: "power2.out",
+      onUpdate: () => { document.querySelector("#scene-03-attack .stat").textContent = Math.round(counter.val).toLocaleString("en-US"); }
+    }, 7.0);
+    tl.to(".stat-wrap", { scale: 1.0, duration: 1.38, ease: "power2.out" }, 7.0); // ends 8.38, abuts bloom
+    // Land: overshoot + danger glow bloom on "million".
+    tl.to(".stat-wrap", { scale: 1.08, duration: 0.16, ease: "power2.out" }, 8.38);
+    tl.to(".stat-wrap", { scale: 1.0, duration: 0.5, ease: "back.out(2)" }, 8.55);
+    tl.to(".stat", { textShadow: "0 0 48px rgba(255,107,93,0.75)", duration: 0.3 }, 8.38);
+    // "requests a second at you" — unit settles below, red pulse holds.
+    tl.fromTo(".unit", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.7);
+    tl.to(".stat", { textShadow: "0 0 28px rgba(255,107,93,0.45)", duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.2);
+
+    window.__timelines["scene-03-attack"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 83 — FACE: subscribe, this channel is system design and architecture</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    /* FACE beat: transparent scene — the face-layer (already revealed by scene 82) shows through; only the CTA overlay renders. */
+    #scene-83 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+
+    #scene-83 .topics { position: absolute; left: 0; right: 0; top: 84px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px; letter-spacing: 0.14em;
+      color: var(--fg); text-shadow: 0 2px 18px rgba(0,0,0,0.85); opacity: 0; }
+    #scene-83 .topics .sep { color: var(--accent); margin: 0 14px; }
+
+    #scene-83 .subwrap { position: absolute; left: 0; right: 0; bottom: 96px; display: flex; justify-content: center; opacity: 0; }
+    #scene-83 .subbtn { display: inline-flex; align-items: center; gap: 18px;
+      background: var(--danger); color: #0b0d12; font-weight: 800; font-size: 46px;
+      padding: 22px 48px; border-radius: 999px; box-shadow: 0 14px 44px rgba(255,107,93,0.5); }
+    #scene-83 .subbtn svg { display: block; }
+  </style>
+</head>
+<body>
+  <div id="scene-83" data-composition-id="scene-83" data-width="1920" data-height="1080">
+    <div class="topics" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="11740">system design <span class="sep">&middot;</span> architecture <span class="sep">&middot;</span> coding <span class="sep">&middot;</span> everything in between</div>
+
+    <div class="subwrap" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="7240">
+      <div class="subbtn">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="#0b0d12"><path d="M12 2a7 7 0 0 0-7 7v4.586l-1.707 1.707A1 1 0 0 0 4 17h16a1 1 0 0 0 .707-1.707L19 13.586V9a7 7 0 0 0-7-7zm0 20a3 3 0 0 0 2.83-2H9.17A3 3 0 0 0 12 22z"/></svg>
+        Subscribe
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // FACE→FACE: no cover needed (scene 82 already revealed the take). Only the CTA overlay enters.
+
+    // "please give me a subscribe" (663.55->664.11; local 6.74->7.30) — the subscribe button pops in.
+    tl.fromTo(".subwrap", { opacity: 0, y: 36, scale: 0.9, transformOrigin: "50% 100%" },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 6.74);
+    // a finite attention pulse on the button
+    tl.to(".subbtn", { scale: 1.06, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 7, transformOrigin: "50% 50%" }, 7.4);
+
+    // "this whole channel is about doing system design and architecture..." (668.05; local 11.24) — topics caption.
+    tl.fromTo(".topics", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 11.24);
+
+    window.__timelines["scene-83"] = tl;
+  </script>
+</body>
+</html>

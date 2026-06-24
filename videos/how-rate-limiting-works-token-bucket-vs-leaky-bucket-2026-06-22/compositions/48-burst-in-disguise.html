@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 48 — a burst in disguise, the thing a leaky bucket forbids</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-48 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* left — what it looked like (compliant, green, already-read) */
+    #scene-48 .lcap { position: absolute; left: 230px; top: 384px; width: 600px;
+      font-family: "Inter"; font-weight: 600; font-size: 40px; color: var(--ok); opacity: 0; }
+    #scene-48 .lcap .tick { color: var(--ok); margin-right: 12px; }
+    #scene-48 .lsub { position: absolute; left: 230px; top: 452px; width: 600px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--dim); opacity: 0; }
+
+    #scene-48 .divider { position: absolute; left: 960px; top: 260px; width: 0; height: 540px; border-left: 1.5px solid var(--border); opacity: 0; }
+
+    /* right — what it was (a burst, red, the verdict) */
+    #scene-48 .burst { position: absolute; left: 1020px; top: 282px; width: 800px;
+      font-family: "Inter"; font-weight: 900; font-size: 150px; color: var(--danger); letter-spacing: -0.01em; line-height: 1; opacity: 0; }
+    #scene-48 .disg { position: absolute; left: 1026px; top: 452px; width: 700px;
+      font-family: "Inter"; font-weight: 700; font-size: 50px; color: var(--danger); letter-spacing: 0.02em; opacity: 0; }
+
+    #scene-48 .callback { position: absolute; left: 1026px; top: 568px; width: 660px;
+      font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); opacity: 0; }
+    #scene-48 .callback b { color: var(--danger); font-weight: 600; }
+
+    /* the struck-burst callback glyph (scene-44 motif) */
+    #scene-48 .forbid { position: absolute; left: 1026px; top: 640px; width: 360px; height: 80px; opacity: 0; }
+    #scene-48 .forbid .bd { position: absolute; top: 22px; width: 22px; height: 22px; border-radius: 50%; background: var(--dim); }
+    #scene-48 .forbid .slash { position: absolute; left: -8px; top: 30px; width: 220px; height: 3px; background: var(--danger); transform: rotate(-12deg); transform-origin: left center; }
+    #scene-48 .forbid .fl { position: absolute; left: 240px; top: 18px; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; color: var(--danger); letter-spacing: 0.06em; }
+  </style>
+</head>
+<body>
+  <div id="scene-48" data-composition-id="scene-48" data-width="1920" data-height="1080">
+    <div class="lcap"><span class="tick">&check;</span>compliant</div>
+    <div class="lsub">10 requests &middot; each under the cap</div>
+
+    <div class="divider"></div>
+
+    <div class="burst" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1440">BURST</div>
+    <div class="disg" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2160">in disguise</div>
+    <div class="callback">the very thing a <b>leaky bucket is supposed to forbid</b></div>
+    <div class="forbid" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="5350">
+      <div class="bd" style="left:0"></div><div class="bd" style="left:30px"></div>
+      <div class="bd" style="left:60px"></div><div class="bd" style="left:90px"></div>
+      <div class="slash"></div>
+      <div class="fl">forbidden</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // PIP mode for sentence 1 (face inset is driven by the main timeline). Graphics build underneath.
+    tl.fromTo("#scene-48", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // scene opens with the "compliant" surface (what it looked like).
+    tl.fromTo(".lcap", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.45 }, 0.3);
+    tl.fromTo(".lsub", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.55);
+    tl.fromTo(".divider", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.5);
+
+    // "burst" (408.71; local 1.08) — the red verdict stamps over the right half, overshoot.
+    tl.fromTo(".burst", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(2)", transformOrigin: "0% 50%" }, 1.08);
+    // "disguise" (409.39; local 1.76) — the qualifier slides in.
+    tl.fromTo(".disg", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 1.76);
+    // the compliant surface dims — it was a lie.
+    tl.to(".lcap", { opacity: 0.4, duration: 0.4 }, 1.8);
+
+    // "The very thing a leaky bucket forbids" (410.55->412.63; local 2.92->5.00).
+    tl.fromTo(".callback", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.92);
+    // "forbid" (412.63; local 5.00) — the struck-burst callback glyph appears, already struck.
+    tl.fromTo(".forbid", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 4.9);
+
+    window.__timelines["scene-48"] = tl;
+  </script>
+</body>
+</html>

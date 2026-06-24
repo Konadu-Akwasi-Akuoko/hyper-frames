@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 81 — one forgives your burst, the other refuses to let you have one</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-81 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 70px; }
+
+    #scene-81 .row { display: flex; align-items: center; gap: 34px; opacity: 0; }
+    #scene-81 .row svg { flex: none; }
+    #scene-81 .row .txt { font-family: "Inter"; font-weight: 800; font-size: 70px; letter-spacing: -0.01em; }
+    #scene-81 .r1 .txt { color: var(--accent); }
+    #scene-81 .r2 .txt { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-81" data-composition-id="scene-81" data-width="1920" data-height="1080">
+    <div class="row r1" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="760">
+      <svg width="120" height="80" viewBox="0 0 120 80">
+        <polyline points="6,66 40,66 56,12 72,66 114,66" fill="none" stroke="#ffb547" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span class="txt">one forgives your burst</span>
+    </div>
+    <div class="row r2" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3100">
+      <svg width="120" height="80" viewBox="0 0 120 80">
+        <polyline points="6,44 114,44" fill="none" stroke="#67e8f9" stroke-width="5" stroke-linecap="round" />
+        <line x1="56" y1="20" x2="56" y2="44" stroke="#67e8f9" stroke-width="5" stroke-linecap="round" stroke-dasharray="4 7" />
+      </svg>
+      <span class="txt">the other refuses to let you have one</span>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-81", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "One forgives your burst" (649.51->650.47; local 0.76->1.72) — amber, the burst spike allowed through.
+    tl.fromTo(".r1", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.76);
+
+    // "the other refuses to let you have one" (651.85->653.65; local 3.10->4.90) — cyan, the burst flattened.
+    tl.fromTo(".r2", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 3.10);
+
+    window.__timelines["scene-81"] = tl;
+  </script>
+</body>
+</html>

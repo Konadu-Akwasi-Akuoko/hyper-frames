@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 77 — in 2016 Amazon put a token bucket on its retry</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-77 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-77 .top { position: absolute; left: 0; right: 0; top: 180px; text-align: center; opacity: 0; }
+    #scene-77 .top .chip { display: inline-flex; align-items: center; gap: 16px; padding: 14px 30px; border-radius: 14px;
+      background: rgba(255,153,0,0.08); border: 1.5px solid rgba(255,153,0,0.4); }
+    #scene-77 .top .chip img { width: 44px; height: 44px; display: block; }
+    #scene-77 .top .chip .yr { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 38px; color: var(--accent); }
+    #scene-77 .sub { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); margin-top: 22px; }
+
+    #scene-77 .node { position: absolute; top: 540px; width: 210px; height: 110px; border-radius: 16px;
+      background: var(--panel); border: 1.5px solid var(--border); opacity: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px; color: var(--fg); }
+    #scene-77 .client { left: 300px; } #scene-77 .svc { left: 1410px; }
+    #scene-77 .wire { position: absolute; left: 510px; top: 594px; width: 900px; height: 2px; background: var(--dim); opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; }
+
+    /* the token bucket gate, dropped onto the retry path */
+    #scene-77 .bucket { position: absolute; left: 860px; top: 500px; opacity: 0; }
+    #scene-77 .blabel { position: absolute; left: 0; right: 0; top: 700px; text-align: center; opacity: 0;
+      font-family: "Inter"; font-weight: 700; font-size: 38px; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-77" data-composition-id="scene-77" data-width="1920" data-height="1080">
+    <div class="top" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="620">
+      <span class="chip"><img src="../assets/icons/amazon.svg" alt="Amazon" /><span class="yr">2016</span></span>
+      <div class="sub">Amazon taught its own software to stop doing exactly that</div>
+    </div>
+
+    <div class="node client">client</div>
+    <div class="node svc" id="svc">service</div>
+    <div class="wire"></div>
+
+    <div class="bucket" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6040">
+      <svg width="200" height="190" viewBox="0 0 200 190">
+        <path d="M34,40 L166,40 L150,180 L50,180 Z" fill="rgba(255,181,71,0.08)" stroke="#ffb547" stroke-width="3" stroke-linejoin="round" />
+        <ellipse cx="100" cy="40" rx="66" ry="12" fill="none" stroke="#ffb547" stroke-width="3" />
+        <circle cx="78" cy="120" r="11" fill="#ffb547" /><circle cx="108" cy="108" r="11" fill="#ffb547" />
+        <circle cx="120" cy="140" r="11" fill="#ffb547" /><circle cx="86" cy="150" r="11" fill="#ffb547" />
+      </svg>
+    </div>
+    <div class="blabel" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="6600">a token bucket on its retry</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-77", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "In 2016 ... Amazon" (613.99->615.49; local 0.62->2.12) — the Amazon/2016 chip + subline.
+    tl.fromTo(".top", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.62);
+
+    // the controlled client->service path (calm, not drowning) — settles under "stop doing exactly that".
+    tl.fromTo(".client", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.4 }, 2.4);
+    tl.fromTo(".svc", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4 }, 2.6);
+    tl.fromTo(".wire", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6 }, 2.8);
+
+    // "by putting a token bucket on its retry" (619.41->620.69; local 6.04->7.32) — the bucket drops onto the path.
+    tl.fromTo(".bucket", { opacity: 0, y: -40, scale: 0.85, transformOrigin: "50% 50%" }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.5)" }, 6.04);
+    tl.fromTo(".blabel", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.6);
+
+    window.__timelines["scene-77"] = tl;
+  </script>
+</body>
+</html>

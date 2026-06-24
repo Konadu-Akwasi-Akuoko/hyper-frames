@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 33 — Nginx paces traffic (1 / 100ms)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-33 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-33 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-33 .chip { position: absolute; left: 300px; top: 446px; width: 360px; height: 150px; border-radius: 16px;
+      background: #f4f5f7; display: flex; align-items: center; justify-content: center; opacity: 0;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    #scene-33 .chip img { height: 92px; width: auto; display: block; }
+
+    #scene-33 .link { position: absolute; left: 690px; top: 520px; width: 230px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--dim) 0 7px, transparent 7px 14px); transform-origin: left center; transform: scaleX(0); }
+
+    #scene-33 .statlbl { position: absolute; left: 980px; top: 392px; width: 720px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-33 .counter { position: absolute; left: 980px; top: 430px; width: 720px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 150px; color: var(--accent-2); font-variant-numeric: tabular-nums; opacity: 0; line-height: 1; }
+    #scene-33 .counter .ms { font-size: 70px; color: var(--muted); }
+    #scene-33 .unit { position: absolute; left: 984px; top: 612px; width: 720px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 38px; color: var(--muted); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-33" data-composition-id="scene-33" data-width="1920" data-height="1080">
+    <div class="eyebrow">Seen in the wild &middot; the leaky gate</div>
+
+    <div class="chip" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2540"><img src="assets/icons/nginx.svg" alt="Nginx" /></div>
+    <div class="link" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3050"></div>
+
+    <div class="statlbl">paces traffic to one request every</div>
+    <div class="counter" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6700">0<span class="ms"> ms</span></div>
+    <div class="unit">between each request &mdash; perfectly even</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const numEl = () => document.querySelector("#scene-33 .counter");
+
+    // GRAPHICS crossfade (lands in 298.14->298.86 pause).
+    tl.fromTo("#scene-33", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.3);
+
+    // "Nginx" (300.40; local 2.04) — the brand chip scales in.
+    tl.fromTo(".chip", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)", transformOrigin: "50% 50%" }, 2.04);
+
+    // "paces traffic" (301.28; local 2.92) — connector + rate label.
+    tl.fromTo(".link", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 2.6);
+    tl.fromTo(".statlbl", { opacity: 0, x: 14 }, { opacity: 1, x: 0, duration: 0.4 }, 2.92);
+
+    // "one request every hundred milliseconds" (304.16; local 5.80) — counter rolls 0->100 ms.
+    tl.fromTo(".counter", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3 }, 5.5);
+    const c = { v: 0 };
+    tl.to(c, { v: 100, duration: 0.9, ease: "power2.out",
+      onUpdate: () => { numEl().firstChild.textContent = Math.round(c.v); } }, 5.8);
+    tl.to(".counter", { scale: 1.06, duration: 0.16, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 6.7);
+    tl.fromTo(".unit", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 6.3);
+
+    window.__timelines["scene-33"] = tl;
+  </script>
+</body>
+</html>

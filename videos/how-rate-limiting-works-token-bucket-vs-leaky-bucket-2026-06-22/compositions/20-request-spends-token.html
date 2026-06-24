@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 20 — request spends a token (allowed)</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-20 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-20 .eyebrow { position: absolute; left: 0; right: 0; top: 130px; text-align: center;
+      font-family: "Inter"; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* request packet (enters left) */
+    #scene-20 .req { position: absolute; left: 150px; top: 500px; padding: 20px 34px; border-radius: 12px;
+      border: 1.5px solid var(--border); background: var(--panel); opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; color: var(--fg); }
+
+    /* bucket (center-left) */
+    #scene-20 .bucket { position: absolute; left: 700px; top: 360px; opacity: 0; }
+    #scene-20 .bucket .rim { width: 170px; height: 22px; border-radius: 50%; border: 3px solid var(--accent); background: rgba(255,181,71,0.05); }
+    #scene-20 .bucket .body { position: relative; width: 152px; height: 300px; margin: -11px auto 0;
+      border: 3px solid var(--accent); border-top: none; border-radius: 0 0 26px 26px; background: rgba(255,181,71,0.04);
+      padding: 18px; display: grid; grid-template-columns: repeat(2, 44px); gap: 11px; align-content: end; justify-content: center; }
+    #scene-20 .bucket .tok { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(255,181,71,0.4); }
+    #scene-20 .counter { position: absolute; left: 700px; top: 300px; width: 174px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 40px; color: var(--accent); font-variant-numeric: tabular-nums; opacity: 0; }
+
+    /* the token being pulled out */
+    #scene-20 .lift { position: absolute; left: 808px; top: 388px; width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 14px rgba(255,181,71,0.6); opacity: 0; }
+
+    /* allowed exit chip (right) */
+    #scene-20 .allowed { position: absolute; left: 1280px; top: 496px; display: inline-flex; align-items: center; gap: 14px;
+      padding: 20px 38px; border-radius: 999px; border: 2px solid var(--ok); background: rgba(125,216,125,0.08); opacity: 0;
+      font-family: "Inter"; font-weight: 700; font-size: 30px; color: var(--ok); }
+    #scene-20 .allowed .chk { font-size: 32px; }
+
+    /* flow connectors */
+    #scene-20 .flow { position: absolute; top: 532px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--dim) 0 7px, transparent 7px 14px); transform-origin: left center; transform: scaleX(0); }
+    #scene-20 .flow.f1 { left: 430px; width: 250px; }
+    #scene-20 .flow.f2 { left: 890px; width: 370px; }
+  </style>
+</head>
+<body>
+  <div id="scene-20" data-composition-id="scene-20" data-width="1920" data-height="1080">
+    <div class="eyebrow">Token bucket &middot; one request, one token</div>
+
+    <div class="req" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1000">request</div>
+    <div class="flow f1"></div>
+
+    <div class="counter">10</div>
+    <div class="bucket">
+      <div class="rim"></div>
+      <div class="body">
+        <div class="tok t0"></div><div class="tok t1"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+      </div>
+    </div>
+    <div class="lift" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="1940"></div>
+
+    <div class="flow f2"></div>
+    <div class="allowed" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="7350"><span class="chk">&check;</span>through instantly</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade (continues the bucket; lands in 190.20->191.06 pause).
+    tl.fromTo("#scene-20", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.3);
+    tl.fromTo(".bucket", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.3);
+    tl.fromTo(".counter", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+
+    // "Every request you make" (191.06; local 0.5) — request enters from the left.
+    tl.fromTo(".req", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+    tl.fromTo(".flow.f1", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.9);
+
+    // "pulls one token out and spends it" (192.38; local 1.82) — a token lifts out, counter ticks 10->9.
+    tl.set(".t0", { opacity: 0 }, 1.82);                                  // remove one from the bucket
+    tl.fromTo(".lift", { opacity: 0, y: 0, scale: 1 }, { opacity: 1, duration: 0.12 }, 1.82);
+    tl.to(".lift", { y: -90, scale: 0.7, opacity: 0, duration: 0.6, ease: "power2.out" }, 1.94);
+    tl.to(".counter", { scale: 1.15, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 50%",
+      onStart: () => { document.querySelector("#scene-20 .counter").textContent = "9"; } }, 1.94);
+
+    // "you are through instantly" (197.32; local 6.76) — green pass, request sails through.
+    tl.fromTo(".flow.f2", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.5);
+    tl.to(".bucket .rim", { borderColor: "#7dd87d", duration: 0.3 }, 6.76);
+    tl.to(".req", { x: 540, opacity: 0, duration: 0.6, ease: "power2.in" }, 6.76);
+    tl.fromTo(".allowed", { opacity: 0, scale: 0.82 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "50% 50%" }, 7.0);
+
+    window.__timelines["scene-20"] = tl;
+  </script>
+</body>
+</html>

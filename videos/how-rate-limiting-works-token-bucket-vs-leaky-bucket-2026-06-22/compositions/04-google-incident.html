@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 04 — Google 2023 incident</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-04 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-04 .eyebrow { position: absolute; left: 200px; top: 150px; display: flex; align-items: center; gap: 22px; }
+    #scene-04 .eyebrow img { height: 42px; display: block; }
+    #scene-04 .eyebrow .tag {
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    }
+
+    /* Headline peak number */
+    #scene-04 .peak { position: absolute; left: 200px; top: 300px; }
+    #scene-04 .peak .num {
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 132px; line-height: 1;
+      color: var(--accent); font-variant-numeric: tabular-nums; opacity: 0;
+    }
+    #scene-04 .peak .num .u { font-size: 52px; color: var(--fg); font-weight: 400; }
+    #scene-04 .peak .sub { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); margin-top: 10px; opacity: 0; }
+
+    /* Comparison bars */
+    #scene-04 .cmp { position: absolute; left: 200px; top: 600px; width: 1520px; opacity: 0; }
+    #scene-04 .row { display: flex; align-items: center; gap: 26px; margin-bottom: 30px; }
+    #scene-04 .row .rlabel { width: 250px; text-align: right; font-family: "Inter"; font-weight: 400; font-size: 26px; color: var(--muted); flex: 0 0 auto; }
+    #scene-04 .row .barwrap { position: relative; height: 46px; flex: 1 1 auto; }
+    #scene-04 .bar { position: absolute; left: 0; top: 0; height: 46px; border-radius: 8px; transform: scaleX(0); transform-origin: left center; }
+    #scene-04 .bar.prior { width: 138px; background: var(--dim); }
+    #scene-04 .bar.attack { width: 1000px; background: linear-gradient(90deg, var(--accent), #ffd07a); box-shadow: 0 0 30px rgba(255,181,71,0.25); }
+    #scene-04 .row .rval { position: absolute; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px; font-variant-numeric: tabular-nums; opacity: 0; }
+    #scene-04 .row.prior .rval { left: 158px; top: 8px; color: var(--muted); }
+    #scene-04 .row.attack .rval { left: 1020px; top: 8px; color: var(--accent); }
+
+    /* x7 multiplier callout */
+    #scene-04 .mult {
+      position: absolute; left: 1280px; top: 470px; text-align: center; opacity: 0;
+    }
+    #scene-04 .mult .x { font-family: "Inter"; font-weight: 800; font-size: 96px; color: var(--accent); line-height: 1; }
+    #scene-04 .mult .cap { font-family: "Inter"; font-weight: 400; font-size: 24px; color: var(--muted); margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div id="scene-04" data-composition-id="scene-04" data-width="1920" data-height="1080">
+    <div class="eyebrow">
+      <img src="assets/icons/google.svg" alt="Google" />
+      <span class="tag">· 2023 · HTTP/2 Rapid Reset</span>
+    </div>
+
+    <div class="peak">
+      <div class="num" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9940">0<span class="u"> req/s</span></div>
+      <div class="sub">peak Google absorbed at the edge</div>
+    </div>
+
+    <div class="cmp">
+      <div class="row prior">
+        <div class="rlabel">prior record</div>
+        <div class="barwrap"><div class="bar prior"></div><div class="rval">46,000,000</div></div>
+      </div>
+      <div class="row attack">
+        <div class="rlabel">Rapid Reset</div>
+        <div class="barwrap"><div class="bar attack" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="13100"></div><div class="rval">398,000,000</div></div>
+      </div>
+    </div>
+
+    <div class="mult" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="13560">
+      <div class="x">×7</div>
+      <div class="cap">the worst ever seen</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Crossfade cover (lands in 23.26->24.12 pause).
+    tl.fromTo("#scene-04", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    // Eyebrow (Google) in. ("In 2023 that exactly happened" local 0.5)
+    tl.fromTo(".eyebrow", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.55);
+    // "Google" emphasis (local 4.04)
+    tl.fromTo(".eyebrow img", { scale: 1 }, { scale: 1.08, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "left center" }, 4.0);
+
+    // Peak number appears as "Google absorbed a flood" (local ~4.5), whirs up landing on
+    // "million" (global 33.56; local 9.94) — the long count fills what was a dead zone.
+    tl.to(".peak .num", { opacity: 1, duration: 0.4 }, 2.0);
+    const c = { v: 0 };
+    tl.to(c, { v: 398000000, duration: 7.44, ease: "power1.in",
+      onUpdate: () => { document.querySelector("#scene-04 .peak .num").innerHTML = Math.round(c.v).toLocaleString("en-US") + '<span class="u"> req/s</span>'; }
+    }, 2.5);
+    tl.fromTo(".peak .sub", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, 10.1);
+
+    // Comparison section fades in (labels + tracks together, no orphaned labels), then bars grow
+    // on "more than seven times" (global 36.58; local 12.96).
+    tl.to(".cmp", { opacity: 1, duration: 0.4, ease: "power2.out" }, 12.0);
+    tl.fromTo(".bar.prior", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 12.4);
+    tl.to(".row.prior .rval", { opacity: 1, duration: 0.3 }, 12.7);
+    tl.fromTo(".bar.attack", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 13.0);
+    tl.to(".row.attack .rval", { opacity: 1, duration: 0.3 }, 13.6);
+    // x7 callout pops on "seven times".
+    tl.fromTo(".mult", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 13.5);
+    tl.to(".mult .x", { scale: 1.06, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 14.2);
+
+    window.__timelines["scene-04"] = tl;
+  </script>
+</body>
+</html>

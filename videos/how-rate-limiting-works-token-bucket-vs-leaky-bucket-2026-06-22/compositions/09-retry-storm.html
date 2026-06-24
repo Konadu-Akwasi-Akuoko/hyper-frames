@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 09 — the retry storm</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-09 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-09 .eyebrow { position: absolute; left: 140px; top: 120px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-09 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent-2); vertical-align: middle; margin-right: 14px; }
+
+    /* CLIENT node (left, cyan) */
+    #scene-09 .client { position: absolute; left: 200px; top: 430px; width: 190px; height: 130px;
+      border: 1.5px solid var(--accent-2); border-radius: 14px; background: var(--panel);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; opacity: 0; }
+    #scene-09 .client .t { font-family: "Inter"; font-weight: 600; font-size: 26px; color: var(--accent-2); }
+    #scene-09 .client .note { font-family: "JetBrains Mono", monospace; font-size: 15px; letter-spacing: 0.08em; color: var(--muted); opacity: 0; }
+
+    /* SERVER node (right, amber -> red), with a rising load fill */
+    #scene-09 .server { position: absolute; left: 1380px; top: 380px; width: 260px; height: 230px;
+      border: 2px solid var(--accent); border-radius: 16px; background: var(--panel); overflow: hidden; opacity: 0; }
+    #scene-09 .server .fill { position: absolute; left: 0; right: 0; bottom: 0; height: 0%;
+      background: linear-gradient(180deg, rgba(103,232,249,0.50), rgba(103,232,249,0.20));
+      border-top: 2px solid rgba(103,232,249,0.85); }
+    #scene-09 .server .t { position: absolute; left: 0; right: 0; top: 24px; text-align: center;
+      font-family: "Inter"; font-weight: 600; font-size: 26px; color: var(--fg); z-index: 2; }
+    #scene-09 .server .state { position: absolute; left: 0; right: 0; bottom: 22px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); z-index: 2; }
+
+    /* dashed track */
+    #scene-09 .track { position: absolute; left: 390px; top: 494px; width: 990px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--dim) 0 10px, transparent 10px 22px); opacity: 0; }
+    /* return arrow (server -> client) establishing the loop */
+    #scene-09 .loop { position: absolute; left: 390px; top: 410px; width: 990px; height: 2px;
+      background: repeating-linear-gradient(to right, rgba(255,107,93,0.5) 0 10px, transparent 10px 22px); opacity: 0; }
+    #scene-09 .loop .lbl { position: absolute; left: 50%; top: -34px; transform: translateX(-50%);
+      font-family: "JetBrains Mono", monospace; font-size: 15px; letter-spacing: 0.1em; color: var(--danger); white-space: nowrap; }
+
+    /* retry chevrons (cyan dashes flying client -> server) */
+    #scene-09 .retries { position: absolute; inset: 0; z-index: 1; }
+    #scene-09 .r { position: absolute; left: 390px; height: 4px; width: 30px; border-radius: 2px;
+      background: linear-gradient(90deg, rgba(103,232,249,0) 0%, rgba(103,232,249,0.95) 100%);
+      box-shadow: 0 0 8px rgba(103,232,249,0.4); }
+
+    /* retry-count ticker */
+    #scene-09 .ticker { position: absolute; left: 1380px; top: 640px; width: 260px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px; font-variant-numeric: tabular-nums; color: var(--accent-2); opacity: 0; }
+
+    /* RETRY STORM stamp */
+    #scene-09 .stamp { position: absolute; left: 0; right: 0; top: 760px; text-align: center;
+      font-family: "Inter"; font-weight: 900; font-size: 96px; letter-spacing: 0.02em; color: var(--danger); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-09" data-composition-id="scene-09" data-width="1920" data-height="1080">
+    <div class="eyebrow"><span class="bar"></span>Self-inflicted &middot; the loop</div>
+
+    <div class="loop" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="3360"><span class="lbl">slow response &rarr; client panics</span></div>
+    <div class="track"></div>
+
+    <div class="client"><span class="t">Client</span><span class="note">retry, retry, retry&hellip;</span></div>
+    <div class="server" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="10120">
+      <div class="fill"></div>
+      <span class="t">Server</span>
+      <span class="state">struggling</span>
+    </div>
+
+    <div class="retries"></div>
+    <div class="ticker" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="5000">retries 0</div>
+
+    <div class="stamp" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="13680">RETRY STORM</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Build retry chevrons (cyan) — deterministic y spread near the track.
+    const lane = document.querySelector("#scene-09 .retries");
+    const R = 26;
+    for (let i = 0; i < R; i++) {
+      const d = document.createElement("div");
+      d.className = "r";
+      d.style.top = (470 + ((i * 31) % 60)) + "px";
+      d.style.opacity = "0";
+      lane.appendChild(d);
+    }
+
+    // GRAPHICS crossfade cover (lands in 77.04->77.82 pause).
+    tl.fromTo("#scene-09", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // Act 1 — establish the loop. ("When a service starts to struggle", local 0.5)
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.55);
+    tl.fromTo(".server", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.7);
+    tl.fromTo(".track", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.9);
+    // server "struggling" — slow breathe.
+    tl.to(".server", { scale: 1.03, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 3, transformOrigin: "50% 50%" }, 1.4);
+    tl.fromTo(".client", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.0);
+    // "its own client panics" (global 80.68; local 3.36) — loop arrow + panic note.
+    tl.fromTo(".loop", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.36);
+    tl.fromTo(".client .note", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.8);
+    tl.fromTo(".client", { borderColor: "#67e8f9" }, { borderColor: "#ff6b5d", duration: 0.2, yoyo: true, repeat: 3 }, 3.8);
+
+    // Act 2 — retries accumulate. ("they retry... those retries pile onto each other", local ~5.0-9.0)
+    // Cyan chevrons fly client->server with an ESCALATING stagger (ease compresses later ones).
+    tl.to(".ticker", { opacity: 1, duration: 0.3 }, 4.8);
+    // Dense cyan retry stream — each chevron fades in at the client, travels, fades out at the
+    // server; tight stagger keeps ~7 in flight = a relentless storm (not one missile at a time).
+    gsap.set("#scene-09 .r", { x: 0, opacity: 0 });
+    tl.to("#scene-09 .r", {
+      keyframes: [
+        { x: 0, opacity: 0.95, duration: 0.08 },
+        { x: 990, opacity: 0.95, duration: 0.54, ease: "none" },
+        { opacity: 0, duration: 0.08 }
+      ],
+      repeat: 6, stagger: { each: 0.085 }
+    }, 5.0);
+    // The server load fill rises cyan->red as the pile compounds (local 5.0 -> 10.3).
+    tl.to(".server .fill", { height: "100%", duration: 5.3, ease: "power2.in" }, 5.0);
+    tl.to(".server .fill", { background: "linear-gradient(180deg, rgba(255,107,93,0.65), rgba(255,107,93,0.28))", borderTopColor: "rgba(255,107,93,0.9)", duration: 5.3, ease: "power2.in" }, 5.0);
+    tl.to(".server", { borderColor: "#ff6b5d", duration: 5.3, ease: "power2.in" }, 5.0);
+    // retry ticker climbs (compounding).
+    const tk = { n: 0 };
+    tl.to(tk, { n: 12480, duration: 5.3, ease: "power2.in",
+      onUpdate: () => { document.querySelector("#scene-09 .ticker").textContent = "retries " + Math.round(tk.n).toLocaleString("en-US"); } }, 5.0);
+
+    // "drown the server" (global 87.44; local 10.12) — server floods, state flips.
+    tl.to(".server .state", { color: "#ff6b5d", duration: 0.2 }, 10.12);
+    tl.set(".server .state", { innerText: "drowning" }, 10.12);
+    tl.to(".server", { x: "+=6", duration: 0.06, yoyo: true, repeat: 7 }, 10.12); // shudder under load
+    tl.to(".ticker", { color: "#ff6b5d", duration: 0.3 }, 10.12);
+
+    // "We call it a retry storm" (global 91.00; local 13.68) — the stamp lands.
+    tl.set(".server .state", { innerText: "overloaded" }, 13.6);
+    tl.fromTo(".stamp", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1.0, duration: 0.45, ease: "back.out(2)" }, 13.68);
+    tl.to(".stamp", { textShadow: "0 0 40px rgba(255,107,93,0.5)", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.1);
+
+    window.__timelines["scene-09"] = tl;
+  </script>
+</body>
+</html>

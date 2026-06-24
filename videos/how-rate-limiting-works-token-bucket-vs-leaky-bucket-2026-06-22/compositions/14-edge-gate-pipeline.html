@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 14 — the edge gate pipeline</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-14 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* amber edge-glow — the tone pivot from red-danger to protective-amber */
+    #scene-14 .edge-glow { position: absolute; left: 0; top: 0; bottom: 0; width: 620px; opacity: 0;
+      background: radial-gradient(ellipse at left center, rgba(255,181,71,0.12) 0%, transparent 70%); }
+
+    #scene-14 .eyebrow { position: absolute; left: 200px; top: 180px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-14 .eyebrow .bar { display: inline-block; width: 44px; height: 2px; background: var(--accent); vertical-align: middle; margin-right: 14px; }
+
+    #scene-14 .pipeline { position: absolute; left: 0; right: 0; top: 440px; display: flex; align-items: center; justify-content: center; gap: 26px; }
+
+    #scene-14 .req { display: flex; align-items: center; gap: 10px; opacity: 0; }
+    #scene-14 .req .rlbl { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    #scene-14 .req .rline { width: 70px; height: 2px; background: var(--muted); transform-origin: left center; }
+
+    #scene-14 .gate { width: 230px; height: 210px; border-radius: 16px; opacity: 0;
+      border: 2px solid var(--accent); background: rgba(255,181,71,0.07);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+    #scene-14 .gate .glyph { width: 56px; height: 56px; border-radius: 10px; border: 2.5px solid var(--accent);
+      position: relative; }
+    #scene-14 .gate .glyph::before, #scene-14 .gate .glyph::after { content: ""; position: absolute; background: var(--accent); }
+    #scene-14 .gate .glyph::before { left: 50%; top: 8px; bottom: 8px; width: 3px; transform: translateX(-50%); }
+    #scene-14 .gate .glyph::after { top: 50%; left: 8px; right: 8px; height: 3px; transform: translateY(-50%); }
+    #scene-14 .gate .glbl { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 19px; letter-spacing: 0.08em; color: var(--accent); text-align: center; line-height: 1.3; }
+
+    #scene-14 .conn { width: 44px; height: 2px; background: var(--dim); transform-origin: left center; opacity: 0; }
+
+    #scene-14 .node { height: 150px; border-radius: 14px; opacity: 0;
+      border: 1.5px solid var(--border); background: var(--panel);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 0 30px; }
+    #scene-14 .node .nlbl { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 21px; letter-spacing: 0.08em; color: var(--fg); white-space: nowrap; }
+    #scene-14 .node .ndot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+  </style>
+</head>
+<body>
+  <div id="scene-14" data-composition-id="scene-14" data-width="1920" data-height="1080">
+    <div class="edge-glow"></div>
+    <div class="eyebrow"><span class="bar"></span>The fix &middot; a gate at the edge</div>
+
+    <div class="pipeline">
+      <div class="req" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2100"><span class="rlbl">request</span><span class="rline"></span></div>
+      <div class="gate" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4860">
+        <div class="glyph"></div>
+        <div class="glbl">RATE&nbsp;LIMIT<br />GATE</div>
+      </div>
+      <div class="conn c1"></div>
+      <div class="node n-login" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6600"><span class="ndot"></span><span class="nlbl">LOGIN</span></div>
+      <div class="conn c2"></div>
+      <div class="node n-biz" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7800"><span class="ndot"></span><span class="nlbl">BUSINESS LOGIC</span></div>
+      <div class="conn c3"></div>
+      <div class="node n-db" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9600"><span class="ndot"></span><span class="nlbl">DATABASE</span></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade cover (lands in 136.34->137.28 pause).
+    tl.fromTo("#scene-14", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+    tl.fromTo(".edge-glow", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "sine.out" }, 0.8);
+
+    // request arrow flows in ("every single service" setup, local ~1.6).
+    tl.fromTo(".req", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 1.6);
+    tl.fromTo(".req .rline", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 1.9);
+
+    // "plants a gate at the very edge" (141.14; local 4.36) — the GATE plants, amber bloom.
+    tl.fromTo(".gate", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)", transformOrigin: "50% 50%" }, 4.36);
+    tl.fromTo(".gate", { boxShadow: "0 0 0 rgba(255,181,71,0)" }, { boxShadow: "0 0 50px rgba(255,181,71,0.3)", duration: 0.5 }, 4.6);
+
+    // backend layers reveal behind the gate, each on its spoken label.
+    // "before the login" (142.82; local 6.04)
+    tl.fromTo(".c1", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 6.04);
+    tl.fromTo(".n-login", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.20);
+    // "before the business logic" (144.02; local 7.24)
+    tl.fromTo(".c2", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 7.24);
+    tl.fromTo(".n-biz", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.40);
+    // "before their database" (145.82; local 9.04)
+    tl.fromTo(".c3", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 9.04);
+    tl.fromTo(".n-db", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.20);
+
+    window.__timelines["scene-14"] = tl;
+  </script>
+</body>
+</html>

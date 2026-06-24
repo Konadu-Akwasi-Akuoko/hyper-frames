@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 05 — Rapid Reset, three targets</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-05 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* Attack name — danger keyword */
+    #scene-05 .name-wrap { position: absolute; left: 0; right: 0; top: 250px; text-align: center; }
+    #scene-05 .name {
+      font-family: "Inter"; font-weight: 900; font-size: 120px; line-height: 1;
+      color: var(--danger); letter-spacing: 0.01em; opacity: 0;
+      text-shadow: 0 0 50px rgba(255,107,93,0.0);
+    }
+    #scene-05 .cve {
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px;
+      letter-spacing: 0.22em; color: var(--muted); margin-top: 22px; opacity: 0;
+    }
+
+    /* Ambient red glow behind the name */
+    #scene-05 .ambient {
+      position: absolute; left: 50%; top: 330px; transform: translateX(-50%);
+      width: 1100px; height: 420px; opacity: 0;
+      background: radial-gradient(ellipse at center, rgba(255,107,93,0.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Target logo row */
+    #scene-05 .targets { position: absolute; left: 480px; top: 580px; width: 960px; display: flex; gap: 60px; }
+    #scene-05 .tgt { width: 280px; text-align: center; opacity: 0; }
+    #scene-05 .tgt .chip {
+      height: 140px; border-radius: 16px; background: #f4f5f7; border: 1px solid #d6d9de;
+      display: flex; align-items: center; justify-content: center; padding: 28px 40px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+    }
+    #scene-05 .tgt .chip img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    #scene-05 .tgt .who {
+      font-family: "Inter"; font-weight: 500; font-size: 24px; color: var(--muted); margin-top: 18px;
+    }
+    #scene-05 .tgt.ghost { opacity: 0; }
+    #scene-05 .tgt.ghost .chip { background: #cdd1d6; }
+    #scene-05 .tgt.ghost .who::after { content: " · already shown"; color: var(--dim); }
+
+    /* Shared "same wave" danger ring around the whole roster */
+    #scene-05 .wave-ring {
+      position: absolute; left: 440px; top: 545px; width: 1040px; height: 280px;
+      border: 2px solid var(--danger); border-radius: 24px; opacity: 0;
+      box-shadow: 0 0 50px rgba(255,107,93,0.25);
+    }
+  </style>
+</head>
+<body>
+  <div id="scene-05" data-composition-id="scene-05" data-width="1920" data-height="1080">
+    <div class="ambient"></div>
+    <div class="name-wrap">
+      <div class="name" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="2180">RAPID RESET</div>
+      <div class="cve">CVE-2023-44487 · HTTP/2</div>
+    </div>
+
+    <div class="wave-ring" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9950"></div>
+    <div class="targets">
+      <div class="tgt ghost" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5950">
+        <div class="chip"><img src="assets/icons/google.svg" alt="Google" /></div>
+        <div class="who">Google</div>
+      </div>
+      <div class="tgt" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6320">
+        <div class="chip"><img src="assets/icons/cloudflare.svg" alt="Cloudflare" /></div>
+        <div class="who">Cloudflare</div>
+      </div>
+      <div class="tgt" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="7520">
+        <div class="chip"><img src="assets/icons/aws.svg" alt="Amazon AWS" /></div>
+        <div class="who">Amazon</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade cover (lands in 40.36->41.14 pause).
+    tl.fromTo("#scene-05", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // Red menace fills the void as "It came from an attack" is said (local 0.55), so the
+    // post-cover frame is never empty; the name then slams in on "called" (global 42.18; local 1.54).
+    tl.to(".ambient", { opacity: 1, duration: 0.9, ease: "power2.out" }, 0.55);
+    tl.fromTo(".name", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.54);
+    tl.to(".name", { textShadow: "0 0 50px rgba(255,107,93,0.45)", duration: 0.3 }, 2.18);
+    tl.fromTo(".cve", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.5);
+
+    // Targets pop in. google (ghost) first (local 5.6), cloudflare on its word (46.56; local 5.92),
+    // aws on "Amazon" (47.76; local 7.12).
+    tl.fromTo(".tgt.ghost", { opacity: 0, y: 22, scale: 0.92 }, { opacity: 0.55, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 5.55);
+    tl.fromTo(".targets .tgt:nth-child(2)", { opacity: 0, y: 22, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 5.92);
+    tl.fromTo(".targets .tgt:nth-child(3)", { opacity: 0, y: 22, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 7.12);
+
+    // "in the same wave" (global 50.24-50.92; "wave" 50.56; local 9.92) — shared danger ring snaps
+    // around all three, a single coordinated strike.
+    tl.fromTo(".wave-ring", { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1.0, duration: 0.35, ease: "power2.out", transformOrigin: "50% 50%" }, 9.6);
+    tl.to(".wave-ring", { opacity: 0.5, boxShadow: "0 0 70px rgba(255,107,93,0.4)", duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.95);
+
+    window.__timelines["scene-05"] = tl;
+  </script>
+</body>
+</html>

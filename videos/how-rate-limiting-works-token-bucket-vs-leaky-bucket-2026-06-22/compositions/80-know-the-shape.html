@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 80 — you know the shape: a bucket filling with tokens, or a bucket leaking through a hole</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-80 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-80 .eyebrow { position: absolute; left: 0; right: 0; top: 130px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-80 .head { position: absolute; left: 0; right: 0; top: 196px; text-align: center; opacity: 0;
+      font-family: "Inter"; font-weight: 800; font-size: 64px; letter-spacing: -0.01em; color: var(--fg); }
+
+    #scene-80 .bwrap { position: absolute; top: 420px; width: 360px; opacity: 0; }
+    #scene-80 .bL { left: 380px; } #scene-80 .bR { left: 1180px; }
+    #scene-80 .bcap { position: absolute; top: 700px; width: 360px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 34px; }
+    #scene-80 .capL { left: 380px; color: var(--accent); opacity: 0; }
+    #scene-80 .capR { left: 1180px; color: var(--accent-2); opacity: 0; }
+
+    #scene-80 .tok { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px rgba(255,181,71,0.5); opacity: 0; }
+    #scene-80 .drop { position: absolute; width: 22px; height: 28px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: var(--accent-2); box-shadow: 0 0 12px rgba(103,232,249,0.5); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-80" data-composition-id="scene-80" data-width="1920" data-height="1080">
+    <div class="eyebrow">next time your app says &ldquo;slow down&rdquo;</div>
+    <div class="head" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6100">you know the shape</div>
+
+    <div class="bwrap bL" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="9040">
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <ellipse cx="150" cy="34" rx="112" ry="18" fill="none" stroke="#ffb547" stroke-width="3.5" />
+        <path d="M38,34 L262,34 L228,238 L72,238 Z" fill="rgba(255,181,71,0.06)" stroke="#ffb547" stroke-width="3.5" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <div class="bwrap bR" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="11300">
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <ellipse cx="150" cy="34" rx="112" ry="18" fill="none" stroke="#67e8f9" stroke-width="3.5" />
+        <path d="M38,34 L262,34 L228,238 L172,238" fill="none" stroke="#67e8f9" stroke-width="3.5" stroke-linejoin="round" />
+        <path d="M128,238 L72,238 L38,34" fill="none" stroke="#67e8f9" stroke-width="3.5" stroke-linejoin="round" />
+      </svg>
+    </div>
+
+    <div class="bcap capL">filling with tokens</div>
+    <div class="bcap capR">leaking through a hole</div>
+
+    <!-- left: tokens falling IN (resting positions inside the amber bucket) -->
+    <div class="tok" style="left:470px;top:600px"></div>
+    <div class="tok" style="left:512px;top:585px"></div>
+    <div class="tok" style="left:540px;top:612px"></div>
+    <div class="tok" style="left:482px;top:560px"></div>
+    <div class="tok" style="left:516px;top:548px"></div>
+
+    <!-- right: drops leaking OUT the hole (start at the bottom gap of the cyan bucket) -->
+    <div class="drop" style="left:1316px;top:640px"></div>
+    <div class="drop" style="left:1316px;top:640px"></div>
+    <div class="drop" style="left:1316px;top:640px"></div>
+    <div class="drop" style="left:1316px;top:640px"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-80", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+
+    // "the next time ... slow down" (637.27->640.07; local 1.60->4.40) — eyebrow holds.
+    // "you know the shape of the thing in your way" (641.77->643.19; local 6.10->7.52) — the headline lands.
+    tl.fromTo(".head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 6.10);
+
+    // "a bucket filling with tokens" (644.31->646.23; local 8.64->10.56) — left amber bucket fills, tokens drop IN.
+    tl.fromTo(".bL", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 8.64);
+    tl.fromTo(".tok", { opacity: 0, y: -180 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.16, ease: "power1.in" }, 9.04);
+    tl.fromTo(".capL", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 9.6);
+
+    // "or a bucket leaking through a hole" (646.57->648.03; local 10.90->12.36) — right cyan bucket leaks OUT.
+    tl.fromTo(".bR", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 10.90);
+    tl.fromTo(".drop", { opacity: 0, y: 0 }, { opacity: 1, y: 150, duration: 0.7, stagger: 0.22, ease: "power1.in" }, 11.30);
+    tl.to(".drop", { opacity: 0, duration: 0.3, stagger: 0.22 }, 11.85);
+    tl.fromTo(".capR", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 11.60);
+
+    window.__timelines["scene-80"] = tl;
+  </script>
+</body>
+</html>

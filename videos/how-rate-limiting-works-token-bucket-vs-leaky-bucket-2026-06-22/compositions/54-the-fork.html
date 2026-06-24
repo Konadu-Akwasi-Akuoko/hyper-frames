@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 54 — the fork: let the clump through, or spread it into an even line</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-54 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-54 .eyebrow { position: absolute; left: 0; right: 0; top: 110px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-54 svg.forks { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+    #scene-54 .fork { fill: none; stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    #scene-54 .forkL { stroke: var(--accent); } #scene-54 .forkR { stroke: var(--accent-2); }
+
+    /* the incoming clump */
+    #scene-54 .clumplbl { position: absolute; left: 0; right: 0; top: 196px; text-align: center;
+      font-family: "Inter"; font-weight: 600; font-size: 28px; color: var(--fg); opacity: 0; }
+    #scene-54 #clump { position: absolute; left: 907px; top: 244px; width: 106px; height: 74px; opacity: 0; }
+    #scene-54 #clump .d { position: absolute; width: 30px; height: 30px; border-radius: 50%; background: var(--muted); }
+
+    /* arms */
+    #scene-54 .arm { position: absolute; top: 470px; width: 560px; text-align: center; opacity: 0; }
+    #scene-54 .armL { left: 230px; } #scene-54 .armR { left: 1130px; }
+    #scene-54 .arm .al { font-family: "Inter"; font-weight: 700; font-size: 38px; }
+    #scene-54 .armL .al { color: var(--accent); } #scene-54 .armR .al { color: var(--accent-2); }
+    #scene-54 .arm .cap { font-family: "Inter"; font-weight: 400; font-size: 26px; color: var(--muted); margin-top: 14px; }
+    #scene-54 .dots { position: absolute; top: 558px; height: 40px; }
+    #scene-54 .dotsL { left: 230px; width: 560px; } #scene-54 .dotsR { left: 1130px; width: 560px; }
+    #scene-54 .dots .d { position: absolute; top: 5px; width: 28px; height: 28px; border-radius: 50%; opacity: 0; }
+    #scene-54 .dotsL .d { background: var(--accent); } #scene-54 .dotsR .d { background: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-54" data-composition-id="scene-54" data-width="1920" data-height="1080">
+    <div class="eyebrow">a clump lands &mdash; two ways to answer</div>
+    <div class="clumplbl">a clump of requests, all at once</div>
+    <div id="clump" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1320"></div>
+
+    <svg class="forks" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <path class="fork forkL" pathLength="1" d="M 960 330 C 820 400, 620 410, 510 452" />
+      <path class="fork forkR" pathLength="1" d="M 960 330 C 1100 400, 1300 410, 1410 452" />
+    </svg>
+
+    <div class="arm armL" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="4560"><div class="al">let them through</div><div class="cap">the burst passes, as-is</div></div>
+    <div class="arm armR"><div class="al">spread into a line</div><div class="cap">a slow, even trickle</div></div>
+    <div class="dots dotsL"></div>
+    <div class="dots dotsR" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="7000"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // the incoming clump — 6 dots bunched (3x2).
+    const clump = document.getElementById("clump");
+    for (let i = 0; i < 6; i++) {
+      const d = document.createElement("div"); d.className = "d";
+      d.style.left = ((i % 3) * 38) + "px"; d.style.top = (Math.floor(i / 3) * 38) + "px";
+      clump.appendChild(d);
+    }
+    // left arm — 6 amber dots that STAY bunched (the clump passes through together).
+    const dl = document.querySelector("#scene-54 .dotsL");
+    const ldots = [];
+    for (let i = 0; i < 6; i++) {
+      const d = document.createElement("div"); d.className = "d";
+      d.style.left = (236 + (i % 3) * 34) + "px"; d.style.top = ((Math.floor(i / 3) * 34) + 26) + "px";
+      dl.appendChild(d); ldots.push(d);
+    }
+    // right arm — 6 cyan dots that START bunched then SPREAD to an even row.
+    const dr = document.querySelector("#scene-54 .dotsR");
+    const rdots = [];
+    for (let i = 0; i < 6; i++) {
+      const d = document.createElement("div"); d.className = "d";
+      d.style.left = "266px"; d.style.top = "0px";  // start bunched at center
+      dr.appendChild(d); rdots.push(d);
+    }
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-54", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+
+    // "a clump of requests lands at once" (440.49->441.85; local 0.82->2.18) — the clump slides in.
+    tl.fromTo(".clumplbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);
+    tl.fromTo("#clump", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.82);
+    tl.to("#clump", { scale: 1.08, duration: 0.2, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 2.18);
+
+    // "either let them through" (443.61->443.83; local 3.94->4.16) — left fork + amber arm (stays bunched).
+    tl.to(".forkL", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 3.94);
+    tl.fromTo(".armL", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 4.16);
+    tl.to(ldots, { opacity: 1, duration: 0.3, stagger: 0.04 }, 4.16);
+
+    // "or you spread them into a slow even line" (445.57->446.47; local 5.90->6.80) — right fork + cyan arm spreads.
+    tl.to(".forkR", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 5.90);
+    tl.fromTo(".armR", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 5.90);
+    tl.to(rdots, { opacity: 1, duration: 0.25, stagger: 0.03 }, 6.2);
+    // the spread — dots slide from bunched to evenly-spaced, slow and deliberate.
+    rdots.forEach((d, i) => {
+      tl.to(d, { left: (20 + i * 100) + "px", duration: 0.7, ease: "power2.out" }, 6.8 + i * 0.04);
+    });
+
+    window.__timelines["scene-54"] = tl;
+  </script>
+</body>
+</html>

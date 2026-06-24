@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 57 — the two buckets aren't the only answers to rate limiting</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-57 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-57 .umbrella { position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+      clip-path: inset(0 100% 0 0); }
+    #scene-57 .rail { position: absolute; left: 188px; top: 410px; width: 1544px; border-top: 1px solid var(--dim); opacity: 0; }
+    #scene-57 .stem { position: absolute; left: 959px; top: 350px; height: 60px; border-left: 1px solid var(--dim); opacity: 0; }
+
+    #scene-57 .chip { position: absolute; top: 470px; width: 280px; height: 130px; border-radius: 18px;
+      display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 18px;
+      font-family: "Inter"; font-weight: 600; font-size: 30px; }
+    #scene-57 .tick { position: absolute; top: 410px; height: 60px; border-left: 1px solid var(--dim); opacity: 0; }
+    #scene-57 .filled.amber { background: rgba(255,181,71,0.12); border: 2px solid var(--accent); color: var(--accent); }
+    #scene-57 .filled.cyan { background: rgba(103,232,249,0.12); border: 2px solid var(--accent-2); color: var(--accent-2); }
+    #scene-57 .ghost { background: transparent; border: 2px dashed var(--dim); color: var(--dim); font-weight: 400; font-size: 48px; }
+  </style>
+</head>
+<body>
+  <div id="scene-57" data-composition-id="scene-57" data-width="1920" data-height="1080">
+    <div class="umbrella" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="4760">rate limiting &middot; throttling</div>
+    <div class="stem"></div>
+    <div class="rail"></div>
+
+    <div class="chip filled amber" style="left: 188px;" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2440">token bucket</div>
+    <div class="chip filled cyan" style="left: 504px;" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2620">leaky bucket</div>
+    <div class="chip ghost" style="left: 820px;" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3540">?</div>
+    <div class="chip ghost" style="left: 1136px;">?</div>
+    <div class="chip ghost" style="left: 1452px;">?</div>
+
+    <div class="tick" style="left: 328px;"></div>
+    <div class="tick" style="left: 644px;"></div>
+    <div class="tick" style="left: 960px;"></div>
+    <div class="tick" style="left: 1276px;"></div>
+    <div class="tick" style="left: 1592px;"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const ghosts = gsap.utils.toArray("#scene-57 .ghost");
+    const ticks = gsap.utils.toArray("#scene-57 .tick");
+    const ghostTicks = [ticks[2], ticks[3], ticks[4]];
+
+    // GRAPHICS crossfade (lands in 461.63->462.57 pause, from scene 56's FACE close).
+    tl.fromTo("#scene-57", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "Now" (462.57; local 0.50) — the frame anchor settles: stem + rail.
+    tl.fromTo(".stem", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.50);
+    tl.fromTo(".rail", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.55);
+
+    // "the two buckets" (464.11; local 2.04) — the two KNOWN answers arrive, small and settled.
+    tl.fromTo(".filled.amber", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.04);
+    tl.fromTo(ticks[0], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.04);
+    tl.fromTo(".filled.cyan", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.22);
+    tl.fromTo(ticks[1], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.22);
+
+    // "aren't the only answers" (465.01; local 2.94) — ghost slots extend the fan: implied, not present.
+    ghosts.forEach((g, i) => {
+      tl.fromTo(g, { opacity: 0, y: 14 }, { opacity: 0.28, y: 0, duration: 0.6, ease: "power1.out" }, 2.94 + i * 0.16);
+      tl.fromTo(ghostTicks[i], { opacity: 0 }, { opacity: 0.5, duration: 0.4 }, 2.94 + i * 0.16);
+    });
+
+    // "rate limiting or throttling" (465.93->467.00; local 3.86->4.93) — the umbrella label wipes in.
+    tl.fromTo(".umbrella", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power2.out" }, 3.86);
+
+    // "right?" (467.07; local 5.00) — the rhetorical nudge: ghost slots micro-pulse.
+    tl.to(ghosts, { scale: 1.03, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 5.00);
+
+    window.__timelines["scene-57"] = tl;
+  </script>
+</body>
+</html>

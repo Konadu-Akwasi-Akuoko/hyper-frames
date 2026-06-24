@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 76 — remember the retry storm: the client that hammered a service until it drowned</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-76 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-76 .brollwrap { position: absolute; inset: 0; opacity: 0; }
+    #scene-76 .broll { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.28) contrast(1.05) sepia(0.5) saturate(2.2) hue-rotate(-18deg); }
+    #scene-76 .brollwrap .veil { position: absolute; inset: 0; background: rgba(11,13,18,0.82); }
+
+    #scene-76 .eyebrow { position: absolute; left: 130px; top: 140px;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-76 .eyebrow .bar { display: inline-block; width: 40px; height: 2px; background: var(--danger); vertical-align: middle; margin-right: 14px; }
+
+    #scene-76 .head { position: absolute; left: 0; right: 0; top: 250px; text-align: center; opacity: 0;
+      font-family: "Inter"; font-weight: 900; font-size: 104px; letter-spacing: -0.01em; color: var(--danger); text-shadow: 0 0 50px rgba(255,107,93,0.3); }
+
+    #scene-76 .node { position: absolute; top: 560px; width: 230px; height: 120px; border-radius: 16px;
+      background: var(--panel); border: 1.5px solid var(--border); opacity: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px; letter-spacing: 0.04em; color: var(--fg); }
+    #scene-76 .client { left: 330px; } #scene-76 .svc { left: 1360px; }
+    #scene-76 .wire { position: absolute; left: 560px; top: 619px; width: 800px; height: 2px; background: var(--dim); opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; }
+
+    #scene-76 .pkt { position: absolute; left: 580px; top: 611px; width: 26px; height: 18px; border-radius: 4px;
+      background: var(--danger); box-shadow: 0 0 12px rgba(255,107,93,0.6); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-76" data-composition-id="scene-76" data-width="1920" data-height="1080">
+    <div class="brollwrap">
+      <video id="broll-choke-76" class="broll" src="assets/video/b-roll/man-choking-himself-with-pained-facial-expressions-2025-12-17-04-07-47-utc.mov"
+             data-start="0" data-duration="5.96" data-track-index="0" data-volume="0" muted playsinline preload="auto"></video>
+      <div class="veil"></div>
+    </div>
+
+    <div class="eyebrow"><span class="bar"></span>callback</div>
+    <div class="head" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1440">retry storm</div>
+
+    <div class="node client">client</div>
+    <div class="node svc" id="svc" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="4440">service</div>
+    <div class="wire" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="3540"></div>
+
+    <div class="pkt" style="top:560px"></div>
+    <div class="pkt" style="top:585px"></div>
+    <div class="pkt" style="top:611px"></div>
+    <div class="pkt" style="top:637px"></div>
+    <div class="pkt" style="top:662px"></div>
+    <div class="pkt" style="top:572px"></div>
+    <div class="pkt" style="top:624px"></div>
+    <div class="pkt" style="top:650px"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade back from the FACE beat; the dimmed storm b-roll fades up.
+    tl.fromTo("#scene-76", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.to(".brollwrap", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.3);
+
+    // "Remember" (608.41; local 0.50) — eyebrow + the client node.
+    tl.fromTo(".eyebrow", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4 }, 0.5);
+    tl.fromTo(".client", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.5);
+
+    // "the retry storm" (609.35; local 1.44) — the headline + the service node + the wire.
+    tl.fromTo(".head", { opacity: 0, scale: 0.85, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 1.44);
+    tl.fromTo(".svc", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 1.7);
+    tl.fromTo(".wire", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5 }, 1.9);
+
+    // "hammered a service" (611.45; local 3.54) — a swarm of retry packets fires across to the service.
+    tl.fromTo(".pkt", { opacity: 0, x: 0 }, { opacity: 1, x: 760, duration: 0.7, stagger: 0.06, ease: "power1.in" }, 3.54);
+    tl.to(".pkt", { opacity: 0, duration: 0.2, stagger: 0.06 }, 4.18);
+
+    // "until it drowned" (612.35->613.29; local 4.44->5.38) — the service blooms red then dims out, drowned.
+    tl.to("#svc", { borderColor: "#ff6b5d", backgroundColor: "rgba(255,107,93,0.28)", boxShadow: "0 0 60px rgba(255,107,93,0.6)", duration: 0.35 }, 4.44);
+    tl.to("#svc", { backgroundColor: "rgba(0,0,0,0.55)", borderColor: "#2a1414", boxShadow: "0 0 0 rgba(0,0,0,0)", color: "#5a3434", duration: 0.8, ease: "power2.in" }, 4.95);
+
+    window.__timelines["scene-76"] = tl;
+  </script>
+</body>
+</html>

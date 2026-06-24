@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 07 — FACE: "it says enough"</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root { --bg: #0b0d12; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* FACE mode — the scene is transparent so the locked face layer (beneath) shows through. */
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-07 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+    /* Transition cover — opaque at the seam (occludes scene 06's tail during the overlap), then
+       crossfades out to reveal the talking-head take. This IS the GRAPHICS->FACE transition. */
+    #scene-07 .cover { position: absolute; inset: 0; background: var(--bg); }
+  </style>
+</head>
+<body>
+  <div id="scene-07" data-composition-id="scene-07" data-width="1920" data-height="1080">
+    <div class="cover"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS(scene06) -> FACE: the cover holds through the 0.5s overlap (scene 06 unmounts at
+    // local 0.5), then fades out so the face is revealed on "before..." (global 65.94; local 0.56).
+    tl.to(".cover", { opacity: 0, duration: 0.6, ease: "power2.inOut" }, 0.5);
+
+    window.__timelines["scene-07"] = tl;
+  </script>
+</body>
+</html>

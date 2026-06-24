@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 22 — idle refill banks tokens</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-22 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-22 .eyebrow { position: absolute; left: 0; right: 0; top: 120px; text-align: center;
+      font-family: "Inter"; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* idle timer chip */
+    #scene-22 .idle { position: absolute; left: 50%; top: 230px; margin-left: -110px; width: 220px; text-align: center;
+      padding: 12px 0; border: 1.5px solid var(--border); border-radius: 999px; background: var(--panel);
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; letter-spacing: 0.1em; color: var(--muted); opacity: 0; }
+
+    #scene-22 .counter { position: absolute; left: 0; right: 0; top: 320px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 44px; font-variant-numeric: tabular-nums; opacity: 0; }
+    #scene-22 .counter .now { color: var(--accent); }
+    #scene-22 .counter .cap { color: var(--dim); }
+
+    #scene-22 .bucket { position: absolute; left: 50%; top: 400px; margin-left: -100px; width: 200px; opacity: 0; }
+    #scene-22 .bucket .rim { width: 200px; height: 22px; border-radius: 50%; border: 3px solid var(--accent); background: rgba(255,181,71,0.05); }
+    #scene-22 .bucket .body { width: 180px; height: 300px; margin: -11px auto 0;
+      border: 3px solid var(--accent); border-top: none; border-radius: 0 0 26px 26px; background: rgba(255,181,71,0.04);
+      padding: 18px; display: grid; grid-template-columns: repeat(2, 44px); gap: 11px; align-content: end; justify-content: center; }
+    #scene-22 .bucket .tok { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(255,181,71,0.4); opacity: 0; }
+
+    #scene-22 .banked { position: absolute; left: 0; right: 0; top: 770px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 54px; letter-spacing: 0.04em; color: var(--accent); opacity: 0; }
+    #scene-22 .banked small { display: block; font-family: "Inter"; font-weight: 400; font-size: 24px; letter-spacing: 0; color: var(--muted); margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div id="scene-22" data-composition-id="scene-22" data-width="1920" data-height="1080">
+    <div class="eyebrow">Token bucket &middot; idle refill</div>
+
+    <div class="idle" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4900">idle &nbsp;5s</div>
+    <div class="counter"><span class="now">0</span><span class="cap"> / 10</span></div>
+
+    <div class="bucket">
+      <div class="rim"></div>
+      <div class="body">
+        <div class="tok"></div><div class="tok" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="8180"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="6740"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="5300"></div>
+      </div>
+    </div>
+
+    <div class="banked" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="9700">BANKED<small>quiet time tops the bucket back to ten</small></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const nowEl = () => document.querySelector("#scene-22 .counter .now");
+    const idleEl = () => document.querySelector("#scene-22 .idle");
+
+    // GRAPHICS crossfade (continues the bucket; lands in 208.28->209.06 pause).
+    tl.fromTo("#scene-22", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.4);
+    tl.fromTo(".bucket", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.4);
+    tl.fromTo(".counter", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.6);
+
+    // "stay quiet for five seconds" (213.30/214.76; local 4.74/6.20) — idle timer + silent refill begins.
+    tl.fromTo(".idle", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 4.74);
+    const timer = { v: 5 };
+    tl.to(timer, { v: 0, duration: 3.6, ease: "none",
+      onUpdate: () => { idleEl().textContent = "idle  " + Math.ceil(timer.v) + "s"; } }, 5.0);
+    // tokens silently refill bottom-up at ~2/sec; counter steps 0->10.
+    tl.fromTo(".tok", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out",
+      stagger: { each: 0.36, from: "end" } }, 5.0);
+    const c = { v: 0 };
+    tl.to(c, { v: 10, duration: 3.5, ease: "none",
+      onUpdate: () => { nowEl().textContent = Math.round(c.v); } }, 5.0);
+
+    // "refill to ten" (217.66; local 9.10) — full, banked, ready to burst.
+    tl.to(".counter .now", { scale: 1.18, color: "#ffb547", duration: 0.2, yoyo: true, repeat: 1, transformOrigin: "50% 50%",
+      onStart: () => { nowEl().textContent = "10"; } }, 9.10);
+    tl.fromTo(".bucket .body", { boxShadow: "0 0 0 rgba(255,181,71,0)" }, { boxShadow: "0 0 44px rgba(255,181,71,0.28)", duration: 0.4 }, 9.10);
+    tl.fromTo(".banked", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 9.20);
+
+    window.__timelines["scene-22"] = tl;
+  </script>
+</body>
+</html>

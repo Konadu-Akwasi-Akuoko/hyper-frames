@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 49 — under the mask, never really a leaky bucket</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-49 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-49 .eyebrow { position: absolute; left: 0; right: 0; top: 200px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* the amber hint bleeding up from underneath (token bucket — scene 50 names it) */
+    #scene-49 .glow { position: absolute; left: 700px; top: 410px; width: 520px; height: 380px; opacity: 0;
+      background: radial-gradient(ellipse at center, rgba(255,181,71,0.30), rgba(255,181,71,0) 70%); }
+
+    /* the counter node (the truth under the mask) */
+    #scene-49 .node { position: absolute; left: 780px; top: 470px; width: 360px; height: 180px; border-radius: 16px;
+      background: var(--panel); border: 2px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
+    #scene-49 .node .nl { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    #scene-49 .node .nn { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 64px; color: var(--accent-2); margin-top: 6px; }
+
+    /* the false "LEAKY BUCKET" mask plate covering it */
+    #scene-49 .mask { position: absolute; left: 640px; top: 408px; width: 640px; height: 304px; border-radius: 18px;
+      background: rgba(103,232,249,0.12); border: 2.5px solid var(--accent-2); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.5); opacity: 0; }
+    #scene-49 .mask .ml { font-family: "Inter"; font-weight: 800; font-size: 58px; color: var(--accent-2); letter-spacing: 0.01em; }
+    #scene-49 .mask .strike { position: absolute; left: 70px; top: 150px; width: 500px; height: 5px; background: var(--danger);
+      transform-origin: 0% 50%; transform: scaleX(0); border-radius: 3px; }
+
+    #scene-49 .caption { position: absolute; left: 0; right: 0; top: 740px; text-align: center;
+      font-family: "Inter"; font-weight: 600; font-size: 38px; color: var(--fg); opacity: 0; }
+    #scene-49 .caption b { color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div id="scene-49" data-composition-id="scene-49" data-width="1920" data-height="1080">
+    <div class="eyebrow">pull off the mask&hellip;</div>
+    <div class="glow"></div>
+    <div class="node" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2570"><span class="nl">the counter</span><span class="nn">7</span></div>
+    <div class="mask" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="2140"><span class="ml">LEAKY BUCKET</span><div class="strike" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3320"></div></div>
+    <div class="caption">never <b>really a leaky bucket</b></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — node + mask both enter (mask covers node).
+    tl.fromTo("#scene-49", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".node", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+    tl.fromTo(".mask", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.5);
+
+    // "under the mask" (414.79; local 1.52) — the LEAKY BUCKET plate lifts up off the node.
+    // the eyebrow clears first so the lifted plate doesn't land on top of it.
+    tl.to(".eyebrow", { opacity: 0, duration: 0.35 }, 1.35);
+    tl.to(".mask", { y: -340, duration: 0.62, ease: "power2.inOut" }, 1.52);
+
+    // "the counter" (415.59; local 2.32) — the exposed node pulses (the truth shows).
+    tl.to(".node", { scale: 1.05, duration: 0.25, yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 2.32);
+
+    // "never" (416.23; local 2.96) — a red strike draws across the false LEAKY BUCKET label.
+    tl.to(".mask .strike", { scaleX: 1, duration: 0.36, ease: "power3.out" }, 2.96);
+
+    // "leaky bucket" (417.27; local 4.00) — the false mask ghosts out, an amber hint bleeds up.
+    tl.to(".mask", { opacity: 0.16, duration: 0.5 }, 4.0);
+    tl.fromTo(".glow", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 4.0);
+    tl.fromTo(".caption", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45 }, 3.9);
+
+    window.__timelines["scene-49"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 71 — an hour later at 3:00, the window crosses forward to ten-to-three</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-71 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-71 .eyebrow { position: absolute; left: 0; right: 0; top: 160px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-71 .plus { position: absolute; left: 0; right: 0; top: 270px; text-align: center; opacity: 0; }
+    #scene-71 .plus .pill { display: inline-block; padding: 8px 26px; border-radius: 999px; background: rgba(103,232,249,0.1); border: 1.5px solid rgba(103,232,249,0.45);
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 30px; color: var(--accent-2); }
+
+    #scene-71 .band { position: absolute; left: 300px; top: 542px; width: 1100px; height: 56px;
+      background: rgba(103,232,249,0.15); border: 1.5px solid var(--accent-2); border-radius: 8px; opacity: 0; }
+    #scene-71 .axis { position: absolute; left: 300px; top: 599px; width: 1320px; height: 2px; background: var(--dim); opacity: 0; }
+    #scene-71 .tick { position: absolute; top: 590px; width: 2px; height: 20px; background: var(--dim); }
+    #scene-71 .tlabel { position: absolute; top: 648px; width: 80px; margin-left: -40px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--muted); opacity: 0; }
+
+    #scene-71 .now { position: absolute; left: 1400px; top: 510px; width: 3px; height: 130px; background: var(--accent); margin-left: -1px; opacity: 0; }
+    #scene-71 .nowlbl { position: absolute; left: 1400px; top: 462px; transform: translateX(-50%); white-space: nowrap; text-align: center; opacity: 0; }
+    #scene-71 .nowlbl .pill { display: inline-block; padding: 5px 16px; border-radius: 999px; background: rgba(255,181,71,0.12); border: 1px solid rgba(255,181,71,0.5);
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; color: var(--accent); }
+    #scene-71 .nowlbl .p3 { position: absolute; left: 50%; top: 0; transform: translateX(-50%); opacity: 0; }
+
+    #scene-71 .span { position: absolute; left: 0; right: 0; top: 700px; text-align: center; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-71" data-composition-id="scene-71" data-width="1920" data-height="1080">
+    <div class="eyebrow">an hour later</div>
+    <div class="plus" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1080"><span class="pill">+ 1 hour</span></div>
+
+    <div class="band" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1400"></div>
+    <div class="axis"></div>
+
+    <div class="tick" style="left:300px"></div><div class="tlabel" style="left:300px">9am</div>
+    <div class="tick" style="left:520px"></div><div class="tlabel" style="left:520px">10</div>
+    <div class="tick" style="left:740px"></div><div class="tlabel" style="left:740px">11</div>
+    <div class="tick" style="left:960px"></div><div class="tlabel" style="left:960px">12</div>
+    <div class="tick" style="left:1180px"></div><div class="tlabel" style="left:1180px">1</div>
+    <div class="tick" style="left:1400px"></div><div class="tlabel" style="left:1400px">2</div>
+    <div class="tick" style="left:1620px"></div><div class="tlabel" style="left:1620px">3pm</div>
+
+    <div class="now"></div>
+    <div class="nowlbl"><span class="pill p2">now 2:00</span><span class="pill p3">now 3:00</span></div>
+
+    <div class="span" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="4820">window: 10:00 AM &rarr; 3:00 PM</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade — re-enter the lookback timeline, now at 2:00 (its prior state).
+    tl.fromTo("#scene-71", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".axis", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5 }, 0.35);
+    tl.fromTo(".tlabel", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.04 }, 0.5);
+    tl.fromTo([".band", ".now", ".nowlbl"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);
+
+    // "an hour later at 3:00" (573.91->575.37; local 1.08->2.54) — the +1h pill, the whole window crosses forward.
+    tl.fromTo(".plus", { opacity: 0, scale: 0.7, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 1.08);
+    tl.to([".band", ".now", ".nowlbl"], { x: 220, duration: 1.4, ease: "power2.inOut" }, 1.4);
+    // the NOW readout flips 2:00 -> 3:00 as it lands (crossfade two pills — seek-safe, no tl.call).
+    tl.to(".nowlbl .p2", { opacity: 0, duration: 0.3 }, 2.4);
+    tl.to(".nowlbl .p3", { opacity: 1, duration: 0.3 }, 2.4);
+
+    // "from ten that morning to three" (577.65->578.91; local 4.82->6.08) — the new 10am→3pm span lands.
+    tl.fromTo(".span", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 4.82);
+
+    window.__timelines["scene-71"] = tl;
+  </script>
+</body>
+</html>

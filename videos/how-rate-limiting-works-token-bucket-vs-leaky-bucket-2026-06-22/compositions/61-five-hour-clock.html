@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 61 — the clock starts on your first message and runs five hours</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-61 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-61 .eyebrow { position: absolute; left: 0; right: 0; top: 220px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-61 .readout { position: absolute; left: 0; right: 0; top: 340px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 168px; color: var(--ok); font-variant-numeric: tabular-nums; line-height: 1;
+      text-shadow: 0 0 50px rgba(125,216,125,0.25); opacity: 0; }
+    #scene-61 .readout .colon { color: var(--dim); }
+
+    #scene-61 .trigger { position: absolute; left: 0; right: 0; top: 600px; text-align: center; opacity: 0; }
+    #scene-61 .trigger .chip { display: inline-block; padding: 14px 30px; border-radius: 12px;
+      background: var(--panel); border: 1.5px solid var(--border);
+      font-family: "Inter"; font-weight: 600; font-size: 30px; color: var(--fg); }
+    #scene-61 .trigger .chip .tri { color: var(--accent); margin-right: 12px; }
+    #scene-61 .trigger .cap { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); margin-left: 18px; }
+  </style>
+</head>
+<body>
+  <div id="scene-61" data-composition-id="scene-61" data-width="1920" data-height="1080">
+    <div class="eyebrow">claude code &middot; the 5-hour cap</div>
+    <div class="readout" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="1460"><span class="d5">5</span><span class="colon">:</span>00<span class="colon">:</span>00</div>
+    <div class="trigger" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="2000"><span class="chip"><span class="tri">&#9656;</span>your first message</span><span class="cap">starts the clock &mdash; it runs five hours</span></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-61", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+
+    // "The clock starts" (491.47->492.13; local 0.64->1.30) — the readout ignites (arrives as 5:00:00).
+    tl.fromTo(".readout", { opacity: 0, scale: 0.7, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.96);
+
+    // "on your first message" (492.69; local 1.86) — the trigger chip lands and pulses amber.
+    tl.fromTo(".trigger", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.6);
+    tl.to(".trigger .chip", { borderColor: "#ffb547", duration: 0.25, yoyo: true, repeat: 1 }, 1.86);
+
+    // "and runs five hours" (494.09; local 3.26) — the colons turn green and pulse: the clock is running.
+    tl.to(".readout .colon", { color: "#7dd87d", duration: 0.3 }, 3.26);
+    tl.to(".readout .colon", { opacity: 0.4, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.56);
+
+    window.__timelines["scene-61"] = tl;
+  </script>
+</body>
+</html>

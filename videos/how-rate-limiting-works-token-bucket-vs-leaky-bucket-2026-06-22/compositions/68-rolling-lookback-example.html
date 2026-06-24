@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 68 — it's 2pm: count every request in the last 5 hours, check against your limit</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-68 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-68 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* count-vs-limit readout */
+    #scene-68 .readout { position: absolute; left: 0; right: 0; top: 280px; text-align: center; opacity: 0; }
+    #scene-68 .readout .cnt { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 96px; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+    #scene-68 .readout .sub { font-family: "Inter"; font-weight: 400; font-size: 30px; color: var(--muted); margin-top: 4px; }
+    #scene-68 .readout .limit { color: var(--accent); opacity: 0; }
+
+    /* time axis */
+    #scene-68 .band { position: absolute; left: 300px; top: 566px; width: 1320px; height: 68px;
+      background: rgba(103,232,249,0.15); border-top: 1.5px solid var(--accent-2); border-bottom: 1.5px solid var(--accent-2);
+      transform: scaleX(0); transform-origin: 100% 50%; }
+    #scene-68 .axis { position: absolute; left: 300px; top: 599px; width: 1320px; height: 2px; background: var(--dim); transform: scaleX(0); transform-origin: 0% 50%; }
+    #scene-68 .tick { position: absolute; top: 590px; width: 2px; height: 20px; background: var(--dim); }
+    #scene-68 .tlabel { position: absolute; top: 648px; width: 80px; margin-left: -40px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--muted); opacity: 0; }
+
+    #scene-68 .req { position: absolute; top: 592px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%;
+      background: var(--accent-2); box-shadow: 0 0 12px rgba(103,232,249,0.5); opacity: 0; }
+
+    /* NOW marker at 2pm */
+    #scene-68 .now { position: absolute; left: 1620px; top: 520px; width: 3px; height: 160px; background: var(--accent); margin-left: -1px; opacity: 0; }
+    #scene-68 .nowlbl { position: absolute; left: 1620px; top: 470px; transform: translateX(-50%); white-space: nowrap; text-align: center; opacity: 0; }
+    #scene-68 .nowlbl .pill { display: inline-block; padding: 5px 16px; border-radius: 999px; background: rgba(255,181,71,0.12); border: 1px solid rgba(255,181,71,0.5);
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 20px; letter-spacing: 0.1em; color: var(--accent); }
+    #scene-68 .nowlbl .clk { display: block; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; color: var(--fg); margin-top: 8px; }
+
+    #scene-68 .ninelbl { position: absolute; left: 300px; top: 700px; transform: translateX(-50%); white-space: nowrap; text-align: center; opacity: 0;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; color: var(--accent-2); }
+  </style>
+</head>
+<body>
+  <div id="scene-68" data-composition-id="scene-68" data-width="1920" data-height="1080">
+    <div class="eyebrow">rolling window &middot; last 5 hours</div>
+
+    <div class="readout" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="11540"><div class="cnt"><span class="n">0</span><span class="limit"> / 10</span></div><div class="sub">requests in the window<span class="limit"> &middot; vs your limit</span></div></div>
+
+    <div class="band" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="7440"></div>
+    <div class="axis"></div>
+
+    <div class="tick" style="left:300px"></div><div class="tlabel" style="left:300px">9am</div>
+    <div class="tick" style="left:564px"></div><div class="tlabel" style="left:564px">10</div>
+    <div class="tick" style="left:828px"></div><div class="tlabel" style="left:828px">11</div>
+    <div class="tick" style="left:1092px"></div><div class="tlabel" style="left:1092px">12</div>
+    <div class="tick" style="left:1356px"></div><div class="tlabel" style="left:1356px">1pm</div>
+    <div class="tick" style="left:1620px"></div><div class="tlabel" style="left:1620px">2pm</div>
+
+    <div class="req" style="left:392px" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4980"></div>
+    <div class="req" style="left:520px"></div>
+    <div class="req" style="left:688px"></div>
+    <div class="req" style="left:864px"></div>
+    <div class="req" style="left:1044px"></div>
+    <div class="req" style="left:1268px"></div>
+    <div class="req" style="left:1492px"></div>
+
+    <div class="now" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="2360"></div>
+    <div class="nowlbl"><span class="pill">now</span><span class="clk">2:00 PM</span></div>
+    <div class="ninelbl">9:00 AM</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const nEl = () => document.querySelector("#scene-68 .readout .n");
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-68", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+
+    // axis draws on + tick labels.
+    tl.fromTo(".axis", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power2.out" }, 0.6);
+    tl.fromTo(".tlabel", { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.06 }, 0.9);
+
+    // "two in the afternoon" (551.87; local 2.36) — the NOW=2pm marker pops.
+    tl.fromTo(".now", { opacity: 0, scaleY: 0, transformOrigin: "50% 100%" }, { opacity: 1, scaleY: 1, duration: 0.4, ease: "power2.out" }, 2.36);
+    tl.fromTo(".nowlbl", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 2.5);
+
+    // "count every request" (554.49->555.19; local 4.98->5.68) — the requests pop along the axis; the count climbs.
+    tl.fromTo(".readout", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 4.7);
+    tl.fromTo(".req", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.42, ease: "back.out(2)" }, 4.98);
+    const cnt = { v: 0 };
+    tl.to(cnt, { v: 7, duration: 2.9, ease: "none", onUpdate: () => { nEl().textContent = Math.round(cnt.v); } }, 4.98);
+
+    // "in the last five hours" (556.95; local 7.44) — the cyan lookback band sweeps back from NOW.
+    tl.fromTo(".band", { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: "power2.inOut" }, 7.44);
+
+    // "from nine that morning" (558.49; local 8.98) — the 9:00 AM anchor slides in at the band's left edge.
+    tl.fromTo(".ninelbl", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 8.98);
+
+    // "check that against your limit" (561.05->561.87; local 11.54->12.36) — the "/ 10 · vs your limit" reference lands.
+    tl.to(".readout .limit", { opacity: 1, duration: 0.5, ease: "power2.out" }, 11.54);
+
+    window.__timelines["scene-68"] = tl;
+  </script>
+</body>
+</html>

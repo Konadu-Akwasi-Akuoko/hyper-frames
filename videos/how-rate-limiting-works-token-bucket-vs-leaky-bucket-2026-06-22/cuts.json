@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "cuts": [
+    {
+      "id": "cut_mqpzpejx_1",
+      "start": 0,
+      "end": 17.742842973528543
+    },
+    {
+      "id": "cut_0002",
+      "start": 109.787875,
+      "end": 136.718938,
+      "reason": "duplicate_take: cut earlier broken take of \"In 2015 ... DynamoDB ... Netflix and Reddit dark\", kept retake"
+    },
+    {
+      "id": "cut_0003",
+      "start": 155.468687,
+      "end": 173.88825,
+      "reason": "duplicate_take: cut false starts (\"The database at the bo...\", \"Five services deep, each re...\") + duplicate \"mass is merciless / five services deep\", kept first clean take + continuation"
+    },
+    {
+      "id": "cut_0005",
+      "start": 226.53,
+      "end": 228.935,
+      "reason": "stutter: \"Let's start with the, with the first one\""
+    },
+    {
+      "id": "cut_0006",
+      "start": 234.122938,
+      "end": 249.862687,
+      "reason": "duplicate_take: cut earlier \"picture a bucket that can hold tens of tokens\", kept clean \"that holds ten tokens, no more, just ten\""
+    },
+    {
+      "id": "cut_0007",
+      "start": 306.115437,
+      "end": 333.87194475499774,
+      "reason": "duplicate_take: cut earlier flubbed attempts at \"settling into the steady two a second, the tap allows\", kept clean final take"
+    },
+    {
+      "id": "cut_mqq00rjk_2",
+      "start": 417.4971579313291,
+      "end": 419.33386993132916
+    },
+    {
+      "id": "cut_0009",
+      "start": 437.895812,
+      "end": 463.928,
+      "reason": "duplicate_take: cut earlier bouncer paragraph + \"The gate will quiet f...\" false start, kept clean \"Picture a bouncer at the door with a clicker\""
+    },
+    {
+      "id": "cut_0010",
+      "start": 523.4772300944726,
+      "end": 527.731375,
+      "reason": "self_correction: \"Every request filled into one\" → \"filed into one\""
+    },
+    {
+      "id": "cut_0011",
+      "start": 533.096813,
+      "end": 545.372562,
+      "reason": "duplicate_take: cut earlier \"the counter quietly breaks that promise. Let it sit idle until the hor...\" false start, kept clean retake"
+    },
+    {
+      "id": "cut_mqq047tc_3",
+      "start": 547.078427,
+      "end": 547.277457
+    },
+    {
+      "id": "cut_0012",
+      "start": 602.18,
+      "end": 605.673188,
+      "reason": "stutter: \"The token bucket lets, [pause]\" before \"the token bucket lets the burst through\""
+    },
+    {
+      "id": "cut_0013",
+      "start": 609.115188,
+      "end": 624.712875,
+      "reason": "flag: duplicate_or_rhetorical: \"Perfect for a\" — kept last take (tighter by 50ms)"
+    },
+    {
+      "id": "cut_0014",
+      "start": 649.912,
+      "end": 663.592,
+      "reason": "long_silence: 13.68s"
+    },
+    {
+      "id": "cut_0015",
+      "start": 814.743687,
+      "end": 817.739,
+      "reason": "stutter: \"The same bucket that throttles you-- [pause]\" before \"The same bucket that throttles you at the gate\""
+    },
+    {
+      "id": "cut_0016",
+      "start": 852.532563,
+      "end": 852.7905,
+      "reason": "stutter: \"give me a, a subscribe\""
+    },
+    {
+      "id": "cut_0017",
+      "start": 868.892438,
+      "end": 869.03675,
+      "reason": "stutter: \"reach for for your own API\""
+    },
+    {
+      "id": "cut_0018",
+      "start": 884.38,
+      "end": 886.12,
+      "reason": "audio_event: [sighs] trailing sigh after \"goodbye\""
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 55 — token bucket lets the burst through; the trickle is calm, even flow for a fragile system</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-55 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-55 .panel { position: absolute; top: 300px; width: 760px; height: 480px; border-radius: 22px;
+      background: var(--panel); border: 2px solid var(--border); padding: 56px 52px; opacity: 0; }
+    #scene-55 .pL { left: 96px; } #scene-55 .pR { left: 1064px; }
+    #scene-55 .pL { border-color: rgba(255,181,71,0.42); }
+    #scene-55 .pR { border-color: rgba(103,232,249,0.42); }
+
+    #scene-55 .eyb { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; }
+    #scene-55 .pL .eyb { color: var(--accent); } #scene-55 .pR .eyb { color: var(--accent-2); }
+    #scene-55 .hl { font-family: "Inter"; font-weight: 800; font-size: 66px; line-height: 1.04; margin-top: 28px; letter-spacing: -0.01em; }
+    #scene-55 .pL .hl { color: var(--accent); } #scene-55 .pR .hl { color: var(--accent-2); }
+    #scene-55 .desc { font-family: "Inter"; font-weight: 400; font-size: 30px; line-height: 1.4; color: var(--muted); margin-top: 40px; opacity: 0; }
+    #scene-55 .desc b { color: var(--fg); font-weight: 600; }
+    #scene-55 .pR .desc b { color: var(--accent-2); }
+
+    #scene-55 .divider { position: absolute; left: 960px; top: 340px; width: 0; height: 400px; border-left: 1px solid var(--dim); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-55" data-composition-id="scene-55" data-width="1920" data-height="1080">
+    <div class="divider"></div>
+
+    <div class="panel pL" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1160">
+      <div class="eyb">token bucket</div>
+      <div class="hl" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="3040">lets the burst<br>through</div>
+      <div class="desc">when your system can <b>absorb a clump</b> all at once</div>
+    </div>
+
+    <div class="panel pR" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="5220">
+      <div class="eyb">the trickle &middot; queue</div>
+      <div class="hl">calm, even<br>flow</div>
+      <div class="desc" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="6830">perfect for a <b>fragile system</b> &mdash; protect it with a steady stream</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade (lands in 448.33->449.01 pause).
+    tl.fromTo("#scene-55", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".divider", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+
+    // "The token bucket lets the burst through" (449.17->451.76; local 0.66->3.25)
+    // — amber panel slides in from the left; headline punches up on "burst through".
+    tl.fromTo(".pL", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.66);
+    tl.fromTo(".pL .hl", { scale: 0.92, transformOrigin: "0% 50%" }, { scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 2.64);
+    tl.fromTo(".pL .desc", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 3.0);
+
+    // "Perfect for a fragile system that needs calm, even flow" (453.23->456.35; local 4.72->7.84)
+    // — cyan panel slides in from the right; descriptor lands on "calm"; settles on "even flow".
+    tl.fromTo(".pR", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 4.72);
+    tl.fromTo(".pR .desc", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45 }, 6.38);
+    // the fragile-system panel breathes gently — calm, protected (finite, seek-safe).
+    tl.to(".pR", { y: -6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 2 }, 7.20);
+
+    window.__timelines["scene-55"] = tl;
+  </script>
+</body>
+</html>

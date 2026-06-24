@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 72 — the request from five hours ago falls off the back and frees room again</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-72 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-72 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    #scene-72 .readout { position: absolute; left: 0; right: 0; top: 270px; text-align: center; opacity: 0; }
+    #scene-72 .readout .lbl { font-family: "Inter"; font-weight: 400; font-size: 28px; color: var(--muted); display: block; margin-bottom: 6px; }
+    #scene-72 .readout .num { position: relative; display: inline-block; width: 120px; height: 96px; vertical-align: middle; }
+    #scene-72 .readout .num span { position: absolute; left: 0; right: 0; top: 0; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 92px; color: var(--accent-2); font-variant-numeric: tabular-nums; }
+    #scene-72 .readout .n6 { opacity: 0; color: var(--ok) !important; }
+    #scene-72 .readout .slash { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 92px; color: var(--muted); }
+
+    #scene-72 .band { position: absolute; left: 500px; top: 562px; width: 1120px; height: 56px;
+      background: rgba(103,232,249,0.15); border: 1.5px solid var(--accent-2); border-radius: 8px; opacity: 0; }
+    #scene-72 .axis { position: absolute; left: 300px; top: 599px; width: 1320px; height: 2px; background: var(--dim); opacity: 0; }
+    #scene-72 .backedge { position: absolute; left: 500px; top: 540px; width: 2px; height: 110px; background: var(--dim); opacity: 0; }
+    #scene-72 .backlbl { position: absolute; left: 500px; top: 660px; transform: translateX(-50%); white-space: nowrap;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 20px; color: var(--muted); opacity: 0; }
+
+    #scene-72 .req { position: absolute; top: 582px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%;
+      background: var(--accent-2); box-shadow: 0 0 10px rgba(103,232,249,0.5); opacity: 0; }
+    #scene-72 .old { background: var(--accent); box-shadow: 0 0 16px rgba(255,181,71,0.6); width: 22px; height: 22px; top: 579px; }
+    #scene-72 .oldlbl { position: absolute; left: 410px; top: 500px; transform: translateX(-50%); white-space: nowrap; text-align: center; opacity: 0;
+      font-family: "Inter"; font-weight: 600; font-size: 26px; color: var(--accent); }
+
+    #scene-72 .freed { position: absolute; left: 0; right: 0; top: 700px; text-align: center; opacity: 0;
+      font-family: "Inter"; font-weight: 700; font-size: 40px; color: var(--ok); }
+  </style>
+</head>
+<body>
+  <div id="scene-72" data-composition-id="scene-72" data-width="1920" data-height="1080">
+    <div class="eyebrow">the window crossed forward with the clock</div>
+
+    <div class="readout"><span class="lbl">requests in the window</span><span class="num"><span class="n7">7</span><span class="n6">6</span></span><span class="slash">&nbsp;/ 10</span></div>
+
+    <div class="band"></div>
+    <div class="axis"></div>
+    <div class="backedge"></div>
+    <div class="backlbl">window back edge</div>
+
+    <div class="req" style="left:620px"></div>
+    <div class="req" style="left:800px"></div>
+    <div class="req" style="left:980px"></div>
+    <div class="req" style="left:1160px"></div>
+    <div class="req" style="left:1360px"></div>
+    <div class="req" style="left:1540px"></div>
+    <div class="req old" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="6620" style="left:410px"></div>
+    <div class="oldlbl" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="4320">made 5h ago</div>
+
+    <div class="freed" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="8300">&#10003; that much room freed up again</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-72", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".axis", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5 }, 0.4);
+    tl.fromTo([".band", ".backedge", ".backlbl"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);
+    tl.fromTo(".req:not(.old)", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.06, ease: "back.out(2)" }, 0.6);
+    tl.fromTo(".readout", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.7);
+
+    // "the request you made five hours ago" (582.75->584.79; local 3.36->5.40) — the oldest request lights up behind the back edge.
+    tl.fromTo(".old", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 3.36);
+    tl.fromTo(".oldlbl", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 4.32);
+
+    // "quietly fall off the back" (586.01->586.97; local 6.62->7.58) — it drops off the back and fades.
+    tl.to(".old", { y: 150, opacity: 0, duration: 0.8, ease: "power1.in" }, 6.62);
+    tl.to(".oldlbl", { opacity: 0, duration: 0.5 }, 6.62);
+
+    // "free up that much room again" (587.21->588.05; local 7.82->8.66) — the count drops 7 -> 6, room freed.
+    tl.to(".readout .n7", { opacity: 0, duration: 0.3 }, 7.82);
+    tl.to(".readout .n6", { opacity: 1, duration: 0.3 }, 7.82);
+    tl.fromTo(".freed", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 8.30);
+
+    window.__timelines["scene-72"] = tl;
+  </script>
+</body>
+</html>

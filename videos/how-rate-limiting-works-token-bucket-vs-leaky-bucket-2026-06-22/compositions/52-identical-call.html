@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 52 — same cap, same rate, identical call on every request</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-52 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    /* shared input params (top) */
+    #scene-52 .plabel { position: absolute; left: 0; right: 0; top: 120px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 20px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-52 .params { position: absolute; left: 0; right: 0; top: 162px; text-align: center; opacity: 0; }
+    #scene-52 .chip { display: inline-block; margin: 0 12px; padding: 12px 28px; border-radius: 12px;
+      background: var(--panel); border: 1.5px solid var(--border);
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 28px; color: var(--fg); }
+    #scene-52 .chip b { color: var(--ok); }
+
+    /* two lanes */
+    #scene-52 .header { position: absolute; top: 300px; width: 480px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 28px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0; }
+    #scene-52 .hL { left: 360px; color: var(--accent-2); } #scene-52 .hR { left: 1080px; color: var(--accent); }
+    #scene-52 .colL { position: absolute; left: 360px; top: 372px; width: 480px; }
+    #scene-52 .colR { position: absolute; left: 1080px; top: 372px; width: 480px; }
+    #scene-52 .row { position: absolute; left: 0; width: 480px; height: 70px; border-radius: 12px;
+      background: var(--panel); border: 1.5px solid var(--border); display: flex; align-items: center; padding: 0 24px; opacity: 0; }
+    #scene-52 .row .rq { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 22px; color: var(--muted); }
+    #scene-52 .row .vd { margin-left: auto; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; }
+    #scene-52 .row.allow .vd { color: var(--ok); } #scene-52 .row.allow { border-color: rgba(125,216,125,0.4); }
+    #scene-52 .row.deny .vd { color: var(--danger); } #scene-52 .row.deny { border-color: rgba(255,107,93,0.4); }
+
+    /* the matching "=" per row */
+    #scene-52 .eqcol { position: absolute; left: 880px; top: 372px; width: 160px; }
+    #scene-52 .eqr { position: absolute; left: 0; width: 160px; height: 70px; text-align: center; line-height: 70px;
+      font-family: "Inter"; font-weight: 300; font-size: 44px; color: var(--dim); opacity: 0; }
+
+    #scene-52 .caption { position: absolute; left: 0; right: 0; top: 770px; text-align: center;
+      font-family: "Inter"; font-weight: 600; font-size: 34px; color: var(--fg); opacity: 0; }
+    #scene-52 .caption b { color: var(--ok); }
+  </style>
+</head>
+<body>
+  <div id="scene-52" data-composition-id="scene-52" data-width="1920" data-height="1080">
+    <div class="plabel">same inputs &rarr; same machine</div>
+    <div class="params" data-sfx-on-anchor="card-tap" data-sfx-at-scene-ms="1650"><span class="chip">cap = <b>10</b></span><span class="chip">rate = <b>1 / s</b></span></div>
+
+    <div class="header hL">counter</div>
+    <div class="header hR">token bucket</div>
+    <div class="colL"></div>
+    <div class="colR"></div>
+    <div class="eqcol"></div>
+
+    <div class="caption" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6000">the <b>identical call</b> on every request</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // 4 request rows; both lanes return the SAME verdict each row (the match is the proof).
+    const verdicts = [
+      { rq: "req 1", call: "allow", txt: "✓ allow" },
+      { rq: "req 2", call: "allow", txt: "✓ allow" },
+      { rq: "req 3", call: "deny", txt: "✗ deny" },
+      { rq: "req 4", call: "allow", txt: "✓ allow" },
+    ];
+    const colL = document.querySelector("#scene-52 .colL");
+    const colR = document.querySelector("#scene-52 .colR");
+    const eqc = document.querySelector("#scene-52 .eqcol");
+    const rowsL = [], rowsR = [], eqs = [];
+    verdicts.forEach((v, i) => {
+      const y = i * 86;
+      ["L", "R"].forEach((side) => {
+        const r = document.createElement("div"); r.className = "row " + v.call; r.style.top = y + "px";
+        r.innerHTML = '<span class="rq">' + v.rq + '</span><span class="vd">' + v.txt + '</span>';
+        (side === "L" ? colL : colR).appendChild(r);
+        (side === "L" ? rowsL : rowsR).push(r);
+      });
+      const e = document.createElement("div"); e.className = "eqr"; e.style.top = y + "px"; e.textContent = "=";
+      eqc.appendChild(e); eqs.push(e);
+    });
+
+    // GRAPHICS crossfade (lands in 428.81->429.77 pause).
+    tl.fromTo("#scene-52", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "the same cap and the same rate" (430.47->432.19; local 1.20->2.92) — shared inputs slide in.
+    tl.fromTo(".plabel", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.7);
+    tl.fromTo(".params", { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 1.2);
+    // lane headers settle as the inputs distribute.
+    tl.fromTo(".hL", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.4 }, 2.34);
+    tl.fromTo(".hR", { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.4 }, 2.34);
+
+    // "they make the identical call on every request" (433.41->434.79; local 4.14->5.52)
+    // — verdict rows accrue, both lanes' verdict in UNISON each row (the synchrony is the argument).
+    const starts = [4.14, 4.6, 5.06, 5.52];
+    verdicts.forEach((v, i) => {
+      tl.fromTo([rowsL[i], rowsR[i]], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, starts[i]);
+      tl.fromTo(eqs[i], { opacity: 0 }, { opacity: 1, duration: 0.3 }, starts[i] + 0.1);
+    });
+    tl.fromTo(".caption", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 5.6);
+
+    window.__timelines["scene-52"] = tl;
+  </script>
+</body>
+</html>

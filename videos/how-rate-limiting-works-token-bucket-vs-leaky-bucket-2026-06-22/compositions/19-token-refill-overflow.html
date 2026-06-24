@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 19 — refill drip + overflow</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-19 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-19 .eyebrow { position: absolute; left: 0; right: 0; top: 80px; text-align: center;
+      font-family: "Inter"; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+
+    /* tap fixture */
+    #scene-19 .tap { position: absolute; left: 50%; top: 150px; margin-left: -85px; width: 170px; opacity: 0; }
+    #scene-19 .tap .pipe { width: 170px; height: 26px; border-radius: 8px; background: var(--dim); }
+    #scene-19 .tap .spout { width: 26px; height: 30px; margin: 0 auto; background: var(--dim); border-radius: 0 0 6px 6px; }
+    #scene-19 .ratelbl { position: absolute; left: 50%; top: 158px; margin-left: 110px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; letter-spacing: 0.08em; color: var(--accent); opacity: 0; }
+
+    /* falling drips (absolute, fall from the spout) */
+    #scene-19 .drip { position: absolute; left: 50%; top: 198px; margin-left: -20px; width: 40px; height: 40px;
+      border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(255,181,71,0.5); opacity: 0; }
+
+    /* bucket (continued from scene 18) */
+    #scene-19 .bucket { position: absolute; left: 50%; top: 290px; margin-left: -100px; width: 200px; opacity: 0; }
+    #scene-19 .bucket .rim { width: 200px; height: 24px; border-radius: 50%; border: 3px solid var(--accent); background: rgba(255,181,71,0.05); }
+    #scene-19 .bucket .body { position: relative; width: 180px; height: 374px; margin: -12px auto 0;
+      border: 3px solid var(--accent); border-top: none; border-radius: 0 0 30px 30px; background: rgba(255,181,71,0.04);
+      padding: 24px; display: grid; grid-template-columns: repeat(2, 54px); gap: 14px; align-content: end; justify-content: center; }
+    #scene-19 .bucket .tok { width: 54px; height: 54px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(255,181,71,0.4); }
+    #scene-19 .bucket .tok.empty { opacity: 0; }
+
+    #scene-19 .ceiling { position: absolute; left: 50%; top: 306px; margin-left: -135px; width: 270px; height: 2px;
+      background: repeating-linear-gradient(to right, var(--accent) 0 6px, transparent 6px 10px); opacity: 0.85; }
+    #scene-19 .caplbl { position: absolute; left: 50%; top: 282px; margin-left: 150px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--dim); opacity: 0.9; }
+
+    #scene-19 .ovlabel { position: absolute; left: 50%; top: 470px; margin-left: 150px;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--danger); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-19" data-composition-id="scene-19" data-width="1920" data-height="1080">
+    <div class="eyebrow">Token bucket &middot; refill &amp; overflow</div>
+
+    <div class="tap" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="1000"><div class="pipe"></div><div class="spout"></div></div>
+    <div class="ratelbl">+2 / sec</div>
+
+    <div class="drip fd1" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="2120"></div>
+    <div class="drip fd2" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="3920"></div>
+    <div class="drip od1" data-sfx-on-anchor="whoosh" data-sfx-at-scene-ms="9550"></div>
+    <div class="drip od2"></div>
+
+    <div class="bucket">
+      <div class="rim"></div>
+      <div class="body">
+        <div class="tok empty tl"></div><div class="tok empty tr"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+        <div class="tok"></div><div class="tok"></div>
+      </div>
+    </div>
+    <div class="ceiling" data-sfx-on-anchor="boom" data-sfx-at-scene-ms="6400"></div>
+    <div class="caplbl">cap = 10</div>
+
+    <div class="ovlabel">overflow &rarr; discarded</div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // GRAPHICS crossfade cover (continues the scene-18 bucket; lands in 178.28->179.12 pause).
+    tl.fromTo("#scene-19", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.4);
+    tl.fromTo(".bucket", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.3);
+
+    // "A tap drips..." (179.12; local 0.5) — the tap slides down.
+    tl.fromTo(".tap", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+
+    // "two fresh tokens in every second" (180.24 / 182.06; local 1.62 / 3.44) — +2/sec, two drips fill 8->10.
+    tl.fromTo(".ratelbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.62);
+    // drip 1 -> fills top-left slot
+    tl.fromTo(".fd1", { opacity: 0, y: 0 }, { opacity: 1, duration: 0.1 }, 1.62);
+    tl.to(".fd1", { y: 110, duration: 0.4, ease: "power1.in" }, 1.7);
+    tl.to(".fd1", { opacity: 0, duration: 0.12 }, 2.1);
+    tl.to(".tok.tl", { opacity: 1, duration: 0.2 }, 2.12);
+    // drip 2 -> fills top-right slot (the 10th, bucket now full)
+    tl.fromTo(".fd2", { opacity: 0, y: 0 }, { opacity: 1, duration: 0.1 }, 3.44);
+    tl.to(".fd2", { y: 110, duration: 0.4, ease: "power1.in" }, 3.5);
+    tl.to(".fd2", { opacity: 0, duration: 0.12 }, 3.9);
+    tl.to(".tok.tr", { opacity: 1, duration: 0.2 }, 3.92);
+
+    // "once the bucket is full at ten" (184.88; local 6.26) — full glow + cap pulse.
+    tl.fromTo(".bucket .body", { boxShadow: "0 0 0 rgba(255,181,71,0)" }, { boxShadow: "0 0 42px rgba(255,181,71,0.25)", duration: 0.4 }, 6.26);
+    tl.to(".ceiling", { filter: "drop-shadow(0 0 6px rgba(255,181,71,0.8))", duration: 0.25, yoyo: true, repeat: 1 }, 6.4);
+
+    // "the extra drip just spill over the rim and vanishes" (187.78 / 189.60; local 9.16 / 10.98)
+    // overflow drips fall to the rim, veer over the side, dim and fade.
+    function overflow(sel, t, dir) {
+      tl.fromTo(sel, { opacity: 0, x: 0, y: 0 }, { opacity: 1, duration: 0.1 }, t);
+      tl.to(sel, { y: 95, duration: 0.32, ease: "power1.in" }, t + 0.05);            // fall to rim
+      tl.to(sel, { x: dir * 150, y: 330, backgroundColor: "#3a4150", boxShadow: "none", opacity: 0, duration: 0.6, ease: "power1.in" }, t + 0.37); // spill over + vanish
+    }
+    overflow(".od1", 9.16, 1);
+    overflow(".od2", 10.1, -1);
+    tl.fromTo(".ovlabel", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45 }, 9.5);
+
+    window.__timelines["scene-19"] = tl;
+  </script>
+</body>
+</html>

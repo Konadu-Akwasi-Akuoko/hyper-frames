@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 59 — the simplest gate: a fixed window, a fixed budget over a fixed stretch of time</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d; --ok: #7dd87d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-59 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-59 .eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-59 .headline { position: absolute; left: 0; right: 0; top: 214px; text-align: center;
+      font-family: "Inter"; font-weight: 700; font-size: 92px; color: var(--fg); letter-spacing: -0.01em; opacity: 0; }
+
+    /* the bounded fixed stretch */
+    #scene-59 .track { position: absolute; left: 360px; top: 500px; width: 1200px; height: 130px;
+      border: 1.5px solid var(--border); border-radius: 14px; opacity: 0; }
+    #scene-59 .wall { position: absolute; top: 470px; width: 4px; height: 190px; background: var(--muted); transform: scaleY(0); }
+    #scene-59 .wl { left: 358px; transform-origin: 50% 100%; } #scene-59 .wr { left: 1558px; transform-origin: 50% 100%; }
+    #scene-59 .edge { position: absolute; top: 678px; width: 160px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 24px; color: var(--dim); opacity: 0; }
+    #scene-59 .el { left: 280px; } #scene-59 .er { left: 1480px; }
+
+    #scene-59 .blabel { position: absolute; left: 360px; top: 452px; width: 1200px; text-align: right;
+      font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 26px; color: var(--ok); opacity: 0; }
+
+    #scene-59 .budget { position: absolute; inset: 0; }
+    #scene-59 .unit { position: absolute; top: 522px; width: 104px; height: 86px; border-radius: 8px;
+      background: rgba(125,216,125,0.55); box-shadow: 0 0 20px rgba(125,216,125,0.25); opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="scene-59" data-composition-id="scene-59" data-width="1920" data-height="1080">
+    <div class="eyebrow">fixed window</div>
+    <div class="headline" data-sfx-on-anchor="pop" data-sfx-at-scene-ms="1810">the simplest gate</div>
+
+    <div class="track" data-sfx-on-anchor="snap" data-sfx-at-scene-ms="3780"></div>
+    <div class="wall wl"></div>
+    <div class="wall wr"></div>
+    <div class="edge el">start</div>
+    <div class="edge er">end</div>
+    <div class="blabel" data-sfx-on-anchor="msg-ding" data-sfx-at-scene-ms="5380">a fixed budget</div>
+    <div class="budget"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // build the 10 budget units inside the fixed stretch.
+    const bud = document.querySelector("#scene-59 .budget");
+    const units = [];
+    for (let i = 0; i < 10; i++) {
+      const u = document.createElement("div"); u.className = "unit";
+      u.style.left = (372 + i * 118) + "px";
+      bud.appendChild(u); units.push(u);
+    }
+
+    // GRAPHICS crossfade.
+    tl.fromTo("#scene-59", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+
+    // "the simplest gate" (478.15; local 1.36) — headline + eyebrow + the LEFT boundary wall.
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 1.0);
+    tl.fromTo(".headline", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45 }, 1.36);
+    tl.to(".wl", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 1.36);
+    tl.fromTo(".el", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.5);
+
+    // "fixed window" (480.17; local 3.38) — the RIGHT boundary wall + the track span between them.
+    tl.to(".wr", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 3.38);
+    tl.fromTo(".er", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.5);
+    tl.fromTo(".track", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.5);
+
+    // "A fixed budget over a fixed stretch of time" (481.77->484.05; local 4.98->7.26)
+    // — green allowance units fill the span left-to-right.
+    tl.fromTo(".blabel", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 4.98);
+    units.forEach((u, i) => {
+      tl.fromTo(u, { opacity: 0, scale: 0.8, transformOrigin: "50% 100%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 4.98 + i * 0.2);
+    });
+
+    window.__timelines["scene-59"] = tl;
+  </script>
+</body>
+</html>

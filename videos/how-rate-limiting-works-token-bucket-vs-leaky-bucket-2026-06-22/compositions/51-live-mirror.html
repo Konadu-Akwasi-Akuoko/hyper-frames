@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Scene 51 — one ticks down as you spend, the other ticks up as you fill</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d12; --panel: #11141b; --border: #1f242c;
+      --fg: #e8eaed; --muted: #7a8493; --dim: #3a4150;
+      --accent: #ffb547; --accent-2: #67e8f9; --danger: #ff6b5d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: "Inter", sans-serif; }
+    #scene-51 { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+
+    #scene-51 .eyebrow { position: absolute; left: 0; right: 0; top: 140px; text-align: center;
+      font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0; }
+    #scene-51 .divider { position: absolute; left: 960px; top: 250px; width: 0; height: 470px; border-left: 1px solid var(--dim); opacity: 0; }
+
+    #scene-51 .col { position: absolute; top: 250px; width: 560px; text-align: center; opacity: 0; }
+    #scene-51 .colL { left: 220px; } #scene-51 .colR { left: 1140px; }
+    #scene-51 .lab { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 26px; letter-spacing: 0.16em; text-transform: uppercase; }
+    #scene-51 .num { font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 280px; font-variant-numeric: tabular-nums; line-height: 1; margin-top: 12px; }
+    #scene-51 .dir { font-family: "Inter"; font-weight: 400; font-size: 32px; color: var(--muted); margin-top: 24px; }
+    #scene-51 .colL .lab, #scene-51 .colL .num { color: var(--accent-2); }
+    #scene-51 .colR .lab, #scene-51 .colR .num { color: var(--accent); }
+    #scene-51 .dir b { font-weight: 600; }
+    #scene-51 .colL .dir b { color: var(--accent-2); } #scene-51 .colR .dir b { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="scene-51" data-composition-id="scene-51" data-width="1920" data-height="1080">
+    <div class="eyebrow">the same count, mirrored</div>
+    <div class="divider"></div>
+
+    <div class="col colL">
+      <div class="lab">counter</div>
+      <div class="num nL" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="1860">10</div>
+      <div class="dir">&darr; <b>spend it</b> &middot; down from ten</div>
+    </div>
+    <div class="col colR">
+      <div class="lab">token bucket</div>
+      <div class="num nR" data-sfx-on-anchor="ui-tick" data-sfx-at-scene-ms="4980">0</div>
+      <div class="dir">&uarr; <b>fill it</b> &middot; up to ten</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const lEl = () => document.querySelector("#scene-51 .nL");
+    const rEl = () => document.querySelector("#scene-51 .nR");
+
+    // GRAPHICS crossfade — continuous from scene 50; both columns enter at their start values (10 / 0).
+    tl.fromTo("#scene-51", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(".eyebrow", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4 }, 0.3);
+    tl.fromTo(".divider", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.4);
+    tl.fromTo(".colL", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45 }, 0.3);
+    tl.fromTo(".colR", { opacity: 0, x: 16 }, { opacity: 0.5, x: 0, duration: 0.45 }, 0.3);
+
+    // "One ticks down from ten as you spend it" (423.93->425.25; local 0.66->1.98) — left drains 10->0.
+    const cl = { v: 10 };
+    const updL = () => { lEl().textContent = Math.round(cl.v); };
+    tl.to(cl, { v: 0, duration: 1.2, ease: "steps(10)", snap: { v: 1 }, onUpdate: updL }, 0.66);
+
+    // "the other ticks up to ten as you fill it" (427.05->428.43; local 3.78->5.16) — right fills 0->10.
+    tl.to(".colL", { opacity: 0.5, duration: 0.4 }, 3.6);   // the spent side recedes
+    tl.to(".colR", { opacity: 1, duration: 0.4 }, 3.6);     // the filling side comes forward
+    const cr = { v: 0 };
+    const updR = () => { rEl().textContent = Math.round(cr.v); };
+    tl.to(cr, { v: 10, duration: 1.2, ease: "steps(10)", snap: { v: 1 }, onUpdate: updR }, 3.78);
+
+    window.__timelines["scene-51"] = tl;
+  </script>
+</body>
+</html>
