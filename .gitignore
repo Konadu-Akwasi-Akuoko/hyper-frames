@@ -20,6 +20,14 @@ __pycache__/
 # Rendered video output (large binaries; render locally, don't commit)
 renders/
 
+# Talking-head video sources (large binaries, regenerable; don't commit).
+# b-roll/ holds raw downloaded stock footage; talking-head.mp4 is the muted
+# picture layer derived from the cut master by tools/derive-streams. Both
+# routinely exceed GitHub's 100MB per-file limit. The audio (voiceover.mp3,
+# raw.mp3) stays tracked.
+videos/*/assets/video/b-roll/
+videos/*/assets/video/talking-head.mp4
+
 # Shorts rendered video output (per-short out/ holds the large MP4 + cover; render locally)
 videos/*/shorts/*/out/
 
