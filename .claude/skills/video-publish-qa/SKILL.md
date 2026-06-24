@@ -19,10 +19,11 @@ write-gate. This file is only the packaging-specific checklist that rides on it.
 ## MCP write surface
 
 `video_update_metadata` (50u) can WRITE title, description, tags, category, and
-privacy. `video_set_thumbnail` (50u) can write the thumbnail. `caption_insert` /
-`caption_update` (400u each — confirm the quota cost before calling) can write
-captions directly. `video_upload` and `video_schedule` are also available for
-upload and scheduling.
+privacy. `video_set_thumbnail` (50u) can write the thumbnail. `caption_insert`
+(400u) adds a new caption track; `caption_update` (450u) *replaces* an existing
+track and needs that track's id from a prior `caption_list(video_id)` (1u) — both
+are cost-gated, confirm before calling. `video_upload` / `video_schedule` exist
+too but are upload-time, not part of post-publish QA.
 
 ## Step 1 — Auth, quota, and resolve the video
 
@@ -82,12 +83,17 @@ titles).
 - Must be **"true"**. If "false" → FLAG (this was the flagship's regression).
   - Offer to run `create-srt-and-translate` (English only) to produce
     `captions.srt` if it doesn't already exist.
-  - Then call `caption_insert(video_id, path="captions.srt", language="en")`
+  - Then call `caption_insert(video_id, file_path="captions.srt", language="en", name="English")`
     (400u — show `cost_preview` and wait for explicit approval before calling).
   - If the user prefers the manual path: `Studio → Subtitles → Add language →
     English → Upload file → With timing`.
   - Note the payoff: English captions also unlock YouTube auto-translate and the
     Hindi auto-dub the channel's India-heavy audience benefits from.
+- If `caption` is already **"true"** but the track is wrong (wrong language, still
+  a draft, or garbled timing): don't insert a duplicate. Call `caption_list(video_id)`
+  (1u) to get the track id, then **replace** it with `caption_update(caption_id,
+  file_path="captions.srt")` (450u — same cost gate as insert). Inserting a second
+  same-language track instead of updating is the common mistake here.
 
 ## Step 3 — The write gate (title / tags / description / thumbnail / captions)
 
