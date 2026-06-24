@@ -89,7 +89,7 @@ titles).
   - Note the payoff: English captions also unlock YouTube auto-translate and the
     Hindi auto-dub the channel's India-heavy audience benefits from.
 
-## Step 3 — The write gate (title / tags / description / thumbnail only)
+## Step 3 — The write gate (title / tags / description / thumbnail / captions)
 
 For every fix the MCP *can* apply, follow the `youtube-studio` write-gate —
 **preview-then-confirm, no standing auto-apply:**
@@ -105,6 +105,8 @@ For every fix the MCP *can* apply, follow the `youtube-studio` write-gate —
      publishing as higher-friction; confirm it on its own.
 5. A thumbnail swap, if proposed, → `video_set_thumbnail(video_id, path)` after
    its own preview.
+6. Caption writes (`caption_insert` / `caption_update`) — always gate behind
+   `cost_preview` + explicit user approval; each call costs 400–450 units.
 
 Never auto-apply. Never bulk-write across multiple videos without a per-video
 affirmative.
