@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=6MJv7A17j60",
     "archetype": "number-stat",
     "layout": "centered-stack",
-    "device": ["progress-bar", "giant-number"],
+    "device": [
+      "progress-bar",
+      "giant-number"
+    ],
     "face": false,
     "accent": "lime",
     "text": "med",
     "reads_as": "a supersonic jet over a color-coded loudness meter sweeping from quiet-blue to loud-red",
     "layout_map": "Vertical Short content fills the center band (~x440-840 of the 1280 frame), blurred sky panels flank both sides. A white sleek supersonic jet flies left-to-right across the upper third (cells 6-7, jet body ~y150-230) with a small heat/flame bloom at its nose tip. Lime-yellow stacked headline 'PERCEIVED LOUDNESS' centered ~y280 (cell 7, all-caps, bold) with subtitle '(PLdB)' in white just below ~y320. The hero device is a horizontal audio-waveform/loudness scale spanning the full content width centered ~y420 (cells 10-11): a row of colored vertical bars graduating cyan-to-red left-to-right under a numeric axis 40-50-60-70-80-90-100-110 with dot tick marks. Small red badge 'SO' bottom-right of the bar ~x720,y510. White caption 'ON THE GROUND' centered at bottom ~y545 (cell 15). Bright daytime cloud-sky background.",
     "why_it_works": "the color-graded meter turns an abstract decibel claim into an instantly-readable danger gradient, and the jet sells the subject in one glance",
-    "mimic_for": "a measured quantity placed on a labeled scale or gradient (loudness, temperature, risk) where the value's position on the scale is the payoff"
+    "mimic_for": "a measured quantity placed on a labeled scale or gradient (loudness, temperature, risk) where the value's position on the scale is the payoff",
+    "title": "NASA Just Tested Its New Supersonic Plane"
   },
   {
     "slug": "cleo-abram-im-not-a-robot-captcha",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=xRYWj06N1k8",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["hand-point", "glow-accent"],
+    "device": [
+      "hand-point",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "lime",
     "text": "low",
     "reads_as": "a hand cursor about to tick the 'I'm not a robot' captcha box",
     "layout_map": "Clean off-white grid-paper background fills the whole frame (this Short uses a light substrate, no letterbox blur). The hero is a realistic reCAPTCHA 'I'm not a robot' widget centered ~y285 (cell 7): grey-bordered card with the empty checkbox on its left, 'I'm not a robot' label, and the blue reCAPTCHA refresh logo + 'Privacy - Terms' on its right. A white pointing-hand cursor hovers exactly over the checkbox ~x460,y300, mid-click. A lime-yellow dashed line loops down and right from the checkbox, curving across the lower half (cells 10-11-15) toward the caption. White caption 'WE'VE BEEN THINKING ABOUT' centered at bottom ~y545 (cell 15, all-caps). Minimal, lots of negative space.",
     "why_it_works": "the universally-recognized captcha box plus the click-ready cursor creates an interrupted-action tension everyone instantly understands",
-    "mimic_for": "a familiar UI element or everyday interaction reframed as a mystery, where a pointer signals the about-to-happen action"
+    "mimic_for": "a familiar UI element or everyday interaction reframed as a mystery, where a pointer signals the about-to-happen action",
+    "title": "Why Robots Can\u2019t Check \u201cI\u2019m Not A Robot\u201d"
   },
   {
     "slug": "cleo-abram-purest-water-glacier-glass",
@@ -38,14 +46,17 @@
     "watch_url": "https://www.youtube.com/watch?v=OZuWmpv6l0s",
     "archetype": "face-reaction",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "host crouched on a glacier holding a clear glass of water straight at camera",
-    "layout_map": "Vertical Short content fills the center band, blurred icy-mountain panels flank both sides. Cleo's full upper body fills the center, crouched in a black expedition parka on white glacial ice with turquoise meltwater pools behind her; her face is centered ~x640,y260 (cell 7) looking at camera with a slight smile. Her right hand extends toward the lens holding a clear glass of water ~x600,y330 (cell 7, lower) — the glass is the focal hero. Bright cyan/turquoise glacier-lake water dominates the mid background. White caption 'WORLD'S PUREST WATER' centered low ~y535 (cell 15, all-caps). Cold blue-white high-key palette throughout.",
+    "layout_map": "Vertical Short content fills the center band, blurred icy-mountain panels flank both sides. Cleo's full upper body fills the center, crouched in a black expedition parka on white glacial ice with turquoise meltwater pools behind her; her face is centered ~x640,y260 (cell 7) looking at camera with a slight smile. Her right hand extends toward the lens holding a clear glass of water ~x600,y330 (cell 7, lower) \u2014 the glass is the focal hero. Bright cyan/turquoise glacier-lake water dominates the mid background. White caption 'WORLD'S PUREST WATER' centered low ~y535 (cell 15, all-caps). Cold blue-white high-key palette throughout.",
     "why_it_works": "the everyday object (a glass of water) in an extreme remote setting plus direct eye contact makes a superlative claim feel personal and earned",
-    "mimic_for": "a host-on-location reveal where a relatable object held to camera anchors a 'purest / most extreme X' superlative"
+    "mimic_for": "a host-on-location reveal where a relatable object held to camera anchors a 'purest / most extreme X' superlative",
+    "title": "The World\u2019s Purest Natural Water"
   },
   {
     "slug": "cleo-abram-transistor-scale-ipod-glasses",
@@ -54,14 +65,18 @@
     "watch_url": "https://www.youtube.com/watch?v=_bnO8RkdrsU",
     "archetype": "comparison-vs",
     "layout": "centered-stack",
-    "device": ["giant-number", "glow-accent"],
+    "device": [
+      "giant-number",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "lime",
     "text": "med",
     "reads_as": "an iPod Classic and giant sunglasses on a tiled floor with a measured scale-comparison overlay",
     "layout_map": "Vertical Short content fills the center band over a pale green tiled-floor 3D render. Top of the content: oversized green-lens aviator sunglasses lying on the tiles (cells 6-7, ~y180). Below them a white iPod Classic lies flat on the floor (cells 10-11, body centered ~x640,y390) as the size-reference object. A lime-yellow measurement scale overlays the scene: a lime label 'IPOD CLASSIC' ~y300 with white dimension '10.3cm' beneath it ~x680,y320 pointing to the iPod, and a second diagonal lime label '...CENTIMETERS' running up-left along a measuring grid mat (cell 10). A lime vertical pin/marker drops onto the iPod center ~x640,y420. Clean isometric studio-render lighting, soft shadows.",
     "why_it_works": "placing a known nostalgic object next to a precise centimeter callout makes an invisible-scale claim ('way smaller than you think') concrete and measurable",
-    "mimic_for": "a scale or size comparison anchored by a familiar reference object, with a measured dimension callout proving the surprising number"
+    "mimic_for": "a scale or size comparison anchored by a familiar reference object, with a measured dimension callout proving the surprising number",
+    "title": "Transistors Are WAY Smaller Than You Think"
   },
   {
     "slug": "cleo-abram-tornado-forming-dashcam",
@@ -70,14 +85,17 @@
     "watch_url": "https://www.youtube.com/watch?v=ZyB1i6Y9_m4",
     "archetype": "object-hero",
     "layout": "full-bleed-object",
-    "device": ["danger-red"],
+    "device": [
+      "danger-red"
+    ],
     "face": false,
     "accent": "grey",
     "text": "low",
     "reads_as": "a massive tornado funnel touching down across a field, shot from a car",
     "layout_map": "Vertical Short content fills the center band with real dashcam/field footage of a huge grey-white tornado funnel; blurred sky panels flank both sides. The funnel is the full-bleed hero, a fat vertical column from top cloud-base down to the ground, filling the center from ~y20 to ~y560 (cells 3-7-11-15), widest at its top. Power lines cross diagonally behind it. Green farmland strip and fence run along the bottom ~y600. Small white attribution 'SOURCE: CELTON HENDERSON' top-left ~x460,y50 (cell 6). White caption 'IS FORMING A TORNADO!' centered low ~y560 (cell 15, all-caps). Desaturated stormy grey-green palette; the dark car dashboard edge frames the very bottom.",
     "why_it_works": "raw real-disaster footage of a tornado mid-formation is a primal scroll-stopper that needs no graphic embellishment",
-    "mimic_for": "a dramatic real-world phenomenon or event captured as documentary footage, where the raw spectacle itself is the hook"
+    "mimic_for": "a dramatic real-world phenomenon or event captured as documentary footage, where the raw spectacle itself is the hook",
+    "title": "Why So Many Tornadoes Happen HERE"
   },
   {
     "slug": "cleo-abram-electric-ferrari-xray-glow",
@@ -86,14 +104,18 @@
     "watch_url": "https://www.youtube.com/watch?v=tOZAKMm7jxY",
     "archetype": "object-hero",
     "layout": "full-bleed-object",
-    "device": ["glow-accent", "danger-red"],
+    "device": [
+      "glow-accent",
+      "danger-red"
+    ],
     "face": false,
     "accent": "red",
     "text": "low",
     "reads_as": "a sleek Ferrari front-end dissolving into a glowing red electric x-ray wireframe",
-    "layout_map": "Vertical Short content fills the center band in a dim industrial warehouse; blurred warehouse panels flank both sides. The hero is the front three-quarter of a silver/white Ferrari sports car filling the lower-center (cells 7-11, nose ~x600,y360) with the yellow Ferrari badge visible on the hood. The car's right side and rear dissolve into a glowing red/orange wireframe x-ray effect — energetic red light streaks and a translucent red ghost-chassis trail off to the right (cells 8-12). Cool steel-grey corrugated warehouse interior behind, warm red glow as the only accent. White caption 'ALL ELECTRIC FERRARI!' centered low ~y545 (cell 15, all-caps). Moody low-key lighting, strong red-vs-steel contrast.",
-    "why_it_works": "the half-real / half-glowing-x-ray treatment signals 'familiar object, radically reengineered inside' — controversy and tech in one image",
-    "mimic_for": "a familiar product reinvented under the hood, where an energy/x-ray glow on a hero object signals a hidden technological change"
+    "layout_map": "Vertical Short content fills the center band in a dim industrial warehouse; blurred warehouse panels flank both sides. The hero is the front three-quarter of a silver/white Ferrari sports car filling the lower-center (cells 7-11, nose ~x600,y360) with the yellow Ferrari badge visible on the hood. The car's right side and rear dissolve into a glowing red/orange wireframe x-ray effect \u2014 energetic red light streaks and a translucent red ghost-chassis trail off to the right (cells 8-12). Cool steel-grey corrugated warehouse interior behind, warm red glow as the only accent. White caption 'ALL ELECTRIC FERRARI!' centered low ~y545 (cell 15, all-caps). Moody low-key lighting, strong red-vs-steel contrast.",
+    "why_it_works": "the half-real / half-glowing-x-ray treatment signals 'familiar object, radically reengineered inside' \u2014 controversy and tech in one image",
+    "mimic_for": "a familiar product reinvented under the hood, where an energy/x-ray glow on a hero object signals a hidden technological change",
+    "title": "The First Electric Ferrari Is Controversial"
   },
   {
     "slug": "cleo-abram-deep-sea-vampire-squid",
@@ -102,14 +124,17 @@
     "watch_url": "https://www.youtube.com/watch?v=MQwZdGiaPsw",
     "archetype": "object-hero",
     "layout": "full-bleed-object",
-    "device": ["neon-on-dark"],
+    "device": [
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "amber",
     "text": "low",
     "reads_as": "a strange amber deep-sea creature with one glowing blue eye against the black abyss",
     "layout_map": "Vertical Short content fills the center band with real deep-sea footage on a near-black navy abyss; subtle dark panels flank the sides. The hero is a translucent amber/olive deep-sea cephalopod (vampire-squid-like) filling most of the center, bulbous webbed body from ~y90 down to ~y500 (cells 3-7-11), tapering to dark tentacles at the bottom. Its single luminous pale-blue eye sits ~x440,y470 (cell 10) as the focal pop against the warm body. White attribution 'SOURCE: MONTEREY BAY AQUARIUM RESEARCH INSTITUTE' top ~y60 (cell 7). White caption 'THAT WE CAN USE TO DISCOVER' centered low ~y560 (cell 15, all-caps). Deep-ocean black-blue background, amber subject is the only warm element.",
     "why_it_works": "a genuinely alien-looking real creature isolated on black triggers curiosity and unease, the warm body and glowing eye carrying all the contrast",
-    "mimic_for": "an unfamiliar or alien specimen revealed in isolation on a dark field, where the creature's strangeness alone stops the scroll"
+    "mimic_for": "an unfamiliar or alien specimen revealed in isolation on a dark field, where the creature's strangeness alone stops the scroll",
+    "title": "Guess How Many Deep Sea Animals Are UNKNOWN"
   },
   {
     "slug": "cleo-abram-nuclear-fission-spaceship",
@@ -118,13 +143,17 @@
     "watch_url": "https://www.youtube.com/watch?v=NV8jFpd4INk",
     "archetype": "diagram-arch",
     "layout": "centered-stack",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "lime",
     "text": "low",
     "reads_as": "a spaceship firing a green nuclear-fission exhaust beam with an atom diagram inset",
-    "layout_map": "Vertical Short content fills the center band over a starfield/galaxy space background; dark space panels flank both sides. A white/grey spacecraft sits upper-center (cell 7, body ~x620,y210) angled down-left, firing a bright lime-green exhaust plume that streaks diagonally down to the bottom-left corner (through cells 11 and 14). Below the ship, a circular inset diagram of an atom — a glowing nucleus core surrounded by orbiting particle dots inside a faint blue circle — is centered ~x600,y440 (cell 11) as the explanatory hero, visually fed by the green beam. White caption 'BY DOING NUCLEAR FISSION IN SPACE!' centered low ~y560 (cell 15, all-caps). Deep black-blue cosmic background with scattered stars; lime-green is the dominant accent.",
+    "layout_map": "Vertical Short content fills the center band over a starfield/galaxy space background; dark space panels flank both sides. A white/grey spacecraft sits upper-center (cell 7, body ~x620,y210) angled down-left, firing a bright lime-green exhaust plume that streaks diagonally down to the bottom-left corner (through cells 11 and 14). Below the ship, a circular inset diagram of an atom \u2014 a glowing nucleus core surrounded by orbiting particle dots inside a faint blue circle \u2014 is centered ~x600,y440 (cell 11) as the explanatory hero, visually fed by the green beam. White caption 'BY DOING NUCLEAR FISSION IN SPACE!' centered low ~y560 (cell 15, all-caps). Deep black-blue cosmic background with scattered stars; lime-green is the dominant accent.",
     "why_it_works": "pairing a dramatic propulsion beam with a literal atom diagram makes a complex propulsion claim legible and futuristic at a glance",
-    "mimic_for": "a how-it-works mechanism reveal where a hero object is paired with a small explanatory diagram/inset showing the underlying physics"
+    "mimic_for": "a how-it-works mechanism reveal where a hero object is paired with a small explanatory diagram/inset showing the underlying physics",
+    "title": "The First Nuclear Space Ship"
   }
 ]

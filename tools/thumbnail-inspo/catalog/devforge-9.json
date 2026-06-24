@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=pUOwlDFTlro",
     "archetype": "face-reaction",
     "layout": "centered-stack",
-    "device": ["shocked-face", "x-mark"],
+    "device": [
+      "shocked-face",
+      "x-mark"
+    ],
     "face": true,
     "accent": "white",
     "text": "low",
-    "reads_as": "a crying wojak flanked by a rejected code window and a confused brain — the universal 'why is coding so hard' meltdown",
+    "reads_as": "a crying wojak flanked by a rejected code window and a confused brain \u2014 the universal 'why is coding so hard' meltdown",
     "layout_map": "Dark near-black grid background. A single bold white all-caps headline 'I WISH I KNEW THIS' spans the top, baseline ~y55, centered across cells 1-4. A grey crying/distressed wojak face sits dead-center, cell 10-11, center ~x640,y360, filling roughly the middle third of the frame from chin to shoulders. Left of him in cell 5 (~x130,y210) is a code-editor window icon with a small red X badge on its lower-right corner. Right of him in cell 8 (~x1100,y210) is a pink brain icon with a yellow question-mark badge. No stat or number; flat meme composition.",
     "why_it_works": "the relatable-suffering wojak plus the rejected-code X and confused-brain icons instantly say 'I felt this pain' without reading any text",
-    "mimic_for": "a beginner-frustration or 'I wish someone told me this' beat where a concept feels overwhelming"
+    "mimic_for": "a beginner-frustration or 'I wish someone told me this' beat where a concept feels overwhelming",
+    "title": "If Coding Feels Hard... Watch This Once"
   },
   {
     "slug": "devforge-lang-tiles-dont-do-this",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=CWyFVjboHY4",
     "archetype": "comparison-vs",
     "layout": "split-vertical",
-    "device": ["checkmark", "x-mark"],
+    "device": [
+      "checkmark",
+      "x-mark"
+    ],
     "face": false,
     "accent": "orange",
     "text": "low",
-    "reads_as": "two tilted cards of language logos, one blessed with a green check and one stamped with a red X — right way vs wrong way",
+    "reads_as": "two tilted cards of language logos, one blessed with a green check and one stamped with a red X \u2014 right way vs wrong way",
     "layout_map": "Bright orange/amber background with grid overlay. Two white rounded tilted panels of tech logos split the upper two-thirds: LEFT panel (cells 1-2-5-6, center ~x240,y230) holds HTML5, Python, and JS logos and carries a large green checkmark at its lower-right (~x430,y430); RIGHT panel (cells 3-4-7-8, center ~x980,y230) holds React, Rust, Svelte logos and carries a large red X badge at its lower-right (~x1140,y430). A massive bold yellow drop-shadowed all-caps headline 'DON'T DO THIS!' spans the bottom, baseline ~y660, across cells 13-16. No face, no stat.",
     "why_it_works": "the green-check vs red-X split forces a snap judgment about which stack is right, and the warning headline dares you to find out you're on the wrong side",
-    "mimic_for": "a good-tools-vs-bad-tools or right-stack-vs-wrong-stack comparison beat"
+    "mimic_for": "a good-tools-vs-bad-tools or right-stack-vs-wrong-stack comparison beat",
+    "title": "You Think You\u2019re Coding Right? Watch This First"
   },
   {
     "slug": "devforge-js-crown-king",
@@ -38,14 +46,17 @@
     "watch_url": "https://www.youtube.com/watch?v=OOc1A_7iR3E",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent"],
+    "device": [
+      "glow-accent"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "low",
-    "reads_as": "the yellow JS logo wearing a golden jeweled crown, towering over the lesser language logos at its feet — JavaScript is king",
-    "layout_map": "Bright blue grid background. Center hero: the yellow JavaScript square logo (cell 10-11, center ~x640,y420) filling the middle of the frame, topped by a large golden jeweled crown sitting on its upper edge (~x640,y180, cells 2-3). Flanking it at the bottom corners are smaller rival language logos — Java + Python stacked at lower-left (cells 13-14, ~x90,y560), and Ruby/gem + C++ at lower-right (cells 15-16, ~x1180,y560). No headline text and no stat; the crown-on-logo is the whole message.",
-    "why_it_works": "the crown is an instant hierarchy symbol — one logo is literally enthroned above the others, provoking agree/disagree without a single word",
-    "mimic_for": "a 'this tool/language is the best / reigns supreme' superiority beat"
+    "reads_as": "the yellow JS logo wearing a golden jeweled crown, towering over the lesser language logos at its feet \u2014 JavaScript is king",
+    "layout_map": "Bright blue grid background. Center hero: the yellow JavaScript square logo (cell 10-11, center ~x640,y420) filling the middle of the frame, topped by a large golden jeweled crown sitting on its upper edge (~x640,y180, cells 2-3). Flanking it at the bottom corners are smaller rival language logos \u2014 Java + Python stacked at lower-left (cells 13-14, ~x90,y560), and Ruby/gem + C++ at lower-right (cells 15-16, ~x1180,y560). No headline text and no stat; the crown-on-logo is the whole message.",
+    "why_it_works": "the crown is an instant hierarchy symbol \u2014 one logo is literally enthroned above the others, provoking agree/disagree without a single word",
+    "mimic_for": "a 'this tool/language is the best / reigns supreme' superiority beat",
+    "title": "Why JavaScript is the BEST Programming Language"
   },
   {
     "slug": "devforge-tailwind-3-minutes",
@@ -54,14 +65,18 @@
     "watch_url": "https://www.youtube.com/watch?v=KMuoA37vlSI",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["giant-number", "glow-accent"],
+    "device": [
+      "giant-number",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "low",
-    "reads_as": "the glowing cyan Tailwind wave mark on dark code, with a giant '3 MINUTES' promise — learn it fast",
-    "layout_map": "Dark navy background with faint code text and grid. The cyan Tailwind double-wave logo glows large in the upper-center, two stacked waves filling cells 2-3-6-7, center ~x640,y230. Small monospace cyan utility-class words orbit the corners: 'flex' top-left (~x120,y90), 'p-4' top-right (~x1110,y90), 'm-2' mid-left (~x110,y360), 'lg:' mid-right (~x1130,y360). A bottom headline reads '3 MINUTES' baseline ~y670 (cells 13-16) — the '3' is large white and 'MINUTES' in cyan to its right. No face.",
+    "reads_as": "the glowing cyan Tailwind wave mark on dark code, with a giant '3 MINUTES' promise \u2014 learn it fast",
+    "layout_map": "Dark navy background with faint code text and grid. The cyan Tailwind double-wave logo glows large in the upper-center, two stacked waves filling cells 2-3-6-7, center ~x640,y230. Small monospace cyan utility-class words orbit the corners: 'flex' top-left (~x120,y90), 'p-4' top-right (~x1110,y90), 'm-2' mid-left (~x110,y360), 'lg:' mid-right (~x1130,y360). A bottom headline reads '3 MINUTES' baseline ~y670 (cells 13-16) \u2014 the '3' is large white and 'MINUTES' in cyan to its right. No face.",
     "why_it_works": "the glowing logo brands the topic instantly while the giant time-promise sells a quick, low-cost payoff",
-    "mimic_for": "a 'learn X in N minutes' fast-tutorial or speed-promise beat"
+    "mimic_for": "a 'learn X in N minutes' fast-tutorial or speed-promise beat",
+    "title": "The Complete Tailwind CSS Tutorial 2026"
   },
   {
     "slug": "devforge-99-percent-vs-you",
@@ -70,14 +85,18 @@
     "watch_url": "https://www.youtube.com/watch?v=RYG9VThnRhQ",
     "archetype": "comparison-vs",
     "layout": "split-vertical",
-    "device": ["vs-bolt", "danger-red"],
+    "device": [
+      "vs-bolt",
+      "danger-red"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
-    "reads_as": "a crumbling grey platform of the masses vs a glowing neon platform of one — a red lightning bolt splitting them",
+    "reads_as": "a crumbling grey platform of the masses vs a glowing neon platform of one \u2014 a red lightning bolt splitting them",
     "layout_map": "Dark grid background. White headline '99% vs YOU' spans the top, baseline ~y65, centered cells 1-4, with 'vs' smaller in the middle. The frame is split vertically by a jagged red lightning bolt running down the center (~x640, cells 11-15). LEFT half (cell 9-10, center ~x300,y330) shows a dull grey cracked/crumbling 3D platform with a tiny figure, labeled 'THE 99%' in caps at the bottom (~x300,y560). RIGHT half (cell 11-12, center ~x980,y320) shows a bright cyan/purple neon-grid platform with a glowing white figure standing tall, labeled 'YOU' at the bottom (~x980,y560).",
     "why_it_works": "the dull-mob vs glowing-individual platforms plus the red vs-bolt make the viewer want to be on the winning side and learn the shift",
-    "mimic_for": "a 'most people vs the few who get it' contrast or paradigm-shift beat"
+    "mimic_for": "a 'most people vs the few who get it' contrast or paradigm-shift beat",
+    "title": "99% of Developers Will Miss This AI Shift (ft Claude Code, Ralph, Kombai)"
   },
   {
     "slug": "devforge-best-vscode-extensions",
@@ -86,14 +105,18 @@
     "watch_url": "https://www.youtube.com/watch?v=Xsag1LQOPdc",
     "archetype": "logo-grid",
     "layout": "text-center",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": false,
     "accent": "blue",
     "text": "med",
-    "reads_as": "the giant VS Code logo surrounded by glowing extension icons — a curated toolkit reveal",
+    "reads_as": "the giant VS Code logo surrounded by glowing extension icons \u2014 a curated toolkit reveal",
     "layout_map": "Image is 640x480 (Shorts-sddefault scale). Black background. Big bold white 'BEST' top-left (cells 1-2, baseline ~y95) and blue 'VSCODE' to its right (cells 2-4), with smaller white 'EXTENSIONS' beneath the right end (~x420,y130). The large blue VS Code angular logo dominates the center, cells 10-11, center ~x290,y210, filling the middle third. Six neon outline extension/tool icons ring it: blue-robot top-left (~x170,y160), purple hex mid-left (~x70,y210), red-shutter mid-right (~x540,y210), green hex lower-left (~x90,y290), pink wifi-burst lower-right (~x380,y290), plus a corner mark. No face, no stat.",
     "why_it_works": "the dominant brand logo plus a ring of glowing mystery tool icons promises a packed curated list worth scanning",
-    "mimic_for": "a 'best tools/extensions for X' curated logo-grid roundup beat"
+    "mimic_for": "a 'best tools/extensions for X' curated logo-grid roundup beat",
+    "title": "These VS Code Extensions will 10x your Productivity"
   },
   {
     "slug": "devforge-code-is-dead-thinker",
@@ -102,14 +125,18 @@
     "watch_url": "https://www.youtube.com/watch?v=b1auSFhePLM",
     "archetype": "face-reaction",
     "layout": "centered-stack",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "white",
     "text": "low",
     "reads_as": "a cartoon dev thinking hand-on-chin amid glowing skill icons under a bold 'CODE IS DEAD' claim",
     "layout_map": "Dark grid background. Bold white all-caps headline 'CODE IS DEAD' spans the top, baseline ~y55, centered cells 1-4. A cartoon/illustrated young developer in a blue hoodie sits center, hand on chin in a thinking pose, cell 10-11, center ~x640,y400, filling the middle-lower third. A halo of neon skill icons floats around his head and shoulders: a glowing AI/chip badge upper-left (~x430,y230), yellow lightbulb top (~x720,y210), green chat bubble upper-right (~x880,y230), heart/brain lower-left (~x420,y470), pink question-bubble lower-right (~x880,y470). No stat number.",
     "why_it_works": "the provocative death-of-coding claim paired with a pensive face and skill icons frames a what-now reckoning the viewer must resolve",
-    "mimic_for": "a provocative 'X is dead, here's what matters now' soft-skills-over-coding beat"
+    "mimic_for": "a provocative 'X is dead, here's what matters now' soft-skills-over-coding beat",
+    "title": "These 5 Skills Matter More Than Coding in the AI Era"
   },
   {
     "slug": "devforge-the-reality-wojak-beanie",
@@ -118,13 +145,17 @@
     "watch_url": "https://www.youtube.com/watch?v=ZZ-ryuJ1M3M",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "shocked-face"],
+    "device": [
+      "danger-red",
+      "shocked-face"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a worn grey beanie wojak on the left, jolted by a two-line headline whose word 'REALITY' is slammed onto a red bar",
     "layout_map": "Dark background with grid and faint language logos (Python, JS, C++) drifting across the top-left (cells 1-3, ~y90). A grey distressed wojak face in a black beanie occupies the LEFT third, cell 9-10, center ~x230,y330, filling from forehead to chest with a hand raised near the chin. The headline sits RIGHT of the face in two stacked lines: 'THE' in white caps (~x720,y230, cell 7) over 'REALITY' in white caps slammed onto a solid red highlight bar (~x900,y330, cells 7-8). No stat number.",
     "why_it_works": "the defeated wojak plus the harsh red 'REALITY' bar promises a blunt truth that punctures the viewer's expectations",
-    "mimic_for": "a 'here's the harsh reality' myth-busting or expectation-vs-truth beat"
+    "mimic_for": "a 'here's the harsh reality' myth-busting or expectation-vs-truth beat",
+    "title": "Coding for Beginners: Skip the Mistakes, Get the Job"
   }
 ]

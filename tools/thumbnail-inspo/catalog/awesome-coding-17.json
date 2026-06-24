@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=UEU4SzBjqrc",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "neon-on-dark"],
+    "device": [
+      "shocked-face",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "wide-eyed terrified man reacts to the BAD PARTS of Go",
     "layout_map": "Right ~38% of frame is a wide-eyed, sweating shocked male face (cells 4/8/12, center ~x980,y300) on a dark teal grid-graph background that fills the whole frame. Three stacked ALL-CAPS headline rows on the left: white 'GO' huge across cells 1-2 baseline ~y75, red 'BAD' cells 1-2 baseline ~y210 (the colored accent word), white 'PARTS' cells 9-10 baseline ~y330. Background is a near-black blue-teal blueprint grid with faint numbered axes. No stat or badge.",
     "why_it_works": "the panicked face plus a red warning word frames the topic as a danger you didn't see coming",
-    "mimic_for": "a beloved tool's hidden downsides or gotchas revealed"
+    "mimic_for": "a beloved tool's hidden downsides or gotchas revealed",
+    "title": "HARD truths before switching to Go..."
   },
   {
     "slug": "awesome-coding-real-minimalist-htmx-go",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=Qi9A6-xoOkA",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "glow-accent"],
+    "device": [
+      "neon-on-dark",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "yellow",
     "text": "high",
     "reads_as": "a smug bespectacled guy presents the real minimalist HTMX + Go stack",
     "layout_map": "Right ~30% is a side-lit man in glasses with a knowing expression (cells 4/8, center ~x1030,y260) over a dark blue grid background. Left side stacks three rows: black serif 'Real' on a yellow highlighter swipe, cells 1-3 baseline ~y95 (the accent treatment); blue lowercase 'minimalist' cells 1-5 baseline ~y190; large white ALL-CAPS 'HTMX + GO' spanning cells 9-12 baseline ~y320. Background is a dark navy blueprint grid filling the frame. No stat or badge.",
     "why_it_works": "the yellow-marker word and confident face signal an opinionated take on the cleanest stack",
-    "mimic_for": "a curated tech-stack or 'the right way' recommendation"
+    "mimic_for": "a curated tech-stack or 'the right way' recommendation",
+    "title": "Modern Web With Go and HTMX"
   },
   {
     "slug": "awesome-coding-database-history-retro-pet",
@@ -38,14 +46,17 @@
     "watch_url": "https://www.youtube.com/watch?v=6szdySvorzA",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark"],
+    "device": [
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "pink",
     "text": "med",
     "reads_as": "the history of databases, told through a vintage Commodore PET computer",
     "layout_map": "Right ~35% holds a retro beige Commodore PET computer/monitor object (cells 4/8/12, center ~x1010,y330) on a dark teal grid. Left two stacked ALL-CAPS rows: pink 'DATABASE' cells 1-3 baseline ~y210 (the accent word), white 'HISTORY' cells 9-11 baseline ~y330. Background is a dark blue-teal blueprint grid filling the frame. No face, no stat.",
     "why_it_works": "the nostalgic retro hardware promises an origin story, not a dry tech lecture",
-    "mimic_for": "the history or evolution of a technology"
+    "mimic_for": "the history or evolution of a technology",
+    "title": "The fascinating history of Databases"
   },
   {
     "slug": "awesome-coding-pwa-puzzled-gosling",
@@ -54,14 +65,17 @@
     "watch_url": "https://www.youtube.com/watch?v=3ODP6tTpjqA",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark"],
+    "device": [
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "a puzzled, hand-to-chin man wonders what PWAs actually are",
     "layout_map": "Right ~30% is a skeptical man with hand on chin, head slightly tilted (cells 4/8, center ~x1040,y270) over a dark grid. Left-center holds one giant ALL-CAPS acronym 'PWA' spanning cells 5-7 baseline ~y280, white with a cyan-gradient 'W' as the accent letter. Background is a dark navy blueprint grid filling the frame. No stat or badge; very low text density.",
     "why_it_works": "the big acronym plus a genuinely confused face turns the term into an open question",
-    "mimic_for": "explaining a buzzword or acronym most people can't define"
+    "mimic_for": "explaining a buzzword or acronym most people can't define",
+    "title": "Progressive Web Apps Explained"
   },
   {
     "slug": "awesome-coding-me-no-code-patrick",
@@ -70,14 +84,18 @@
     "watch_url": "https://www.youtube.com/watch?v=6alBAr_FfaM",
     "archetype": "meme",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "neon-on-dark"],
+    "device": [
+      "red-arrow",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
     "reads_as": "dopey Patrick Star embodies the 'me no code' mediocre dev",
     "layout_map": "Right ~30% is grinning open-mouthed Patrick Star (SpongeBob meme character) (cells 8/12, center ~x1060,y310) on a dark grid. Left text is a two-line phrase: white 'me' + red script 'no' cells 5-7 baseline ~y210, with a red curved arrow pointing from 'no' toward Patrick (the device); large white 'code' cells 9-10 baseline ~y320. Tiny white 'MEME MONDAY'-style stamp top-right corner ~x1190,y30. Background dark navy blueprint grid filling the frame.",
     "why_it_works": "the dumb meme face plus a red arrow mocks low-effort coding and bait the in-joke",
-    "mimic_for": "a self-deprecating or comedic take on bad/lazy dev habits"
+    "mimic_for": "a self-deprecating or comedic take on bad/lazy dev habits",
+    "title": "They want mediocre developers..."
   },
   {
     "slug": "awesome-coding-terrible-times-ahead-strained-face",
@@ -86,14 +104,18 @@
     "watch_url": "https://www.youtube.com/watch?v=DcJ53EatUOU",
     "archetype": "face-reaction",
     "layout": "text-left-face-right",
-    "device": ["shocked-face", "neon-on-dark"],
+    "device": [
+      "shocked-face",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "a man peering anxiously through his fingers braces for terrible times ahead",
     "layout_map": "Right ~35% is a worried man peering between his own fingers/hand over a dark grid (cells 4/8/12, center ~x1000,y280). Left two-row headline: red script 'terrible' cells 1-3 baseline ~y110 (the accent word), white 'times ahead' cells 1-4 baseline ~y250. Background dark blue-teal blueprint grid filling the frame. No stat or badge.",
     "why_it_works": "the dread-filled peeking face plus a red doom word promises a bleak prediction",
-    "mimic_for": "a pessimistic forecast or warning about the industry's future"
+    "mimic_for": "a pessimistic forecast or warning about the industry's future",
+    "title": "Software will really suck in a few years..."
   },
   {
     "slug": "awesome-coding-ts-loves-node-conflicted-face",
@@ -102,14 +124,18 @@
     "watch_url": "https://www.youtube.com/watch?v=-9azrdZEPCE",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "neon-on-dark"],
+    "device": [
+      "red-arrow",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "low",
-    "reads_as": "TypeScript now loves Node — shown by logos, hearts, and a conflicted guy",
+    "reads_as": "TypeScript now loves Node \u2014 shown by logos, hearts, and a conflicted guy",
     "layout_map": "Left half stacks two tech logos: blue 'TS' TypeScript tile (cells 1-2, ~x120,y120) up top and the green Node.js hexagon logo below (cells 5-6/9-10, ~x180,y330). A red curved arrow plus three red heart emojis connect TS down to Node across cells 2-3-7 (~x340-560,y130-200), the device. Right ~28% is a conflicted/grimacing man in glasses (cells 4/8/12, center ~x1080,y280). Background dark navy blueprint grid filling the frame. No headline text, no stat.",
     "why_it_works": "two logos joined by hearts plus a skeptical face tease an unexpected reconciliation",
-    "mimic_for": "two technologies coming together or one adopting another's feature"
+    "mimic_for": "two technologies coming together or one adopting another's feature",
+    "title": "Node quietly dropped its biggest update in years..."
   },
   {
     "slug": "awesome-coding-wasm-huge-3-0-hero-mask",
@@ -118,13 +144,17 @@
     "watch_url": "https://www.youtube.com/watch?v=O8uazkirvVo",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "giant-number"],
+    "device": [
+      "red-arrow",
+      "giant-number"
+    ],
     "face": true,
     "accent": "purple",
     "text": "med",
     "reads_as": "a costumed luchador hero hypes the huge WebAssembly 3.0 release",
     "layout_map": "Right ~25% is a masked luchador/superhero-costumed man (cells 4/8/12, center ~x1130,y300) on a dark grid. Left holds the purple 'Wa' WebAssembly logo tile (cells 5-6, ~x230,y300). Big white 'WASM' wordmark spans cells 6-7 baseline ~y300. Red handwritten 'huge' with a red arrow sits top-left above the logo (cells 1-2, ~x260,y70) pointing down (the device). A teal '3.0' version badge sits lower-center cells 11-12 ~x830,y470 (giant-number tell). Background dark navy blueprint grid filling the frame.",
     "why_it_works": "the hero costume plus a 'huge' arrow and version badge frame a release as a heroic milestone",
-    "mimic_for": "a major version release or breakthrough update of a technology"
+    "mimic_for": "a major version release or breakthrough update of a technology",
+    "title": "WebAssembly might actually save web dev..."
   }
 ]

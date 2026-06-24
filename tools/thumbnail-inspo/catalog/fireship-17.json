@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=lkIFF4maKMU",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "low",
-    "reads_as": "huge yellow 'JS' + red '101' badge next to a rainbow brain — left/right brain hemispheres labeled",
+    "reads_as": "huge yellow 'JS' + red '101' badge next to a rainbow brain \u2014 left/right brain hemispheres labeled",
     "layout_map": "Dark graph-paper grid background full bleed. Left half is a two-row stacked headline: giant yellow 'JS' (Inter 900, all-caps) filling cells 5-6, baseline ~y260; below it a solid red rounded rectangle badge with white '101' in cells 9-10, baseline ~y400. Right half is a photoreal anatomical brain object centered ~x980,y330 filling cells 3-4 and 7-8 (~40% of frame width), its left hemisphere grey and right hemisphere rainbow-colored; small white caps labels 'BEFORE' (grey side) and 'AFTER' (color side) sit across the brain at ~y370, cell 7-8 seam.",
     "why_it_works": "the rainbow-half brain promises a transformation (know-nothing to fluent) while the giant yellow JS instantly names the subject with zero reading effort",
-    "mimic_for": "a '100+ concepts' or fundamentals roundup that takes you from beginner to fluent in one language or tool"
+    "mimic_for": "a '100+ concepts' or fundamentals roundup that takes you from beginner to fluent in one language or tool",
+    "title": "100+ JavaScript Concepts you Need to Know"
   },
   {
     "slug": "fireship-how-to-flex-physique",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=r6tH55syq0o",
     "archetype": "face-reaction",
     "layout": "face-left",
-    "device": ["glow-accent", "red-circle"],
+    "device": [
+      "glow-accent",
+      "red-circle"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "muscular confident guy on the left, big red 'FLEX' headline shouting the punchline",
     "layout_map": "Dark grid background. Left ~45% is a muscular man in a dark polo, arms crossed, head ~x120,y90, body filling cells 1,5,9,13 and bleeding to ~x430; he wears a small orange/red circular badge on his chest. Top-right shows a faint screenshot/contributions graph note ('contributions in the last year') near cell 3, ~x540,y40. Right-of-center headline stack: white lowercase 'howto' in cells 6-7 baseline ~y180, then giant red 'FLEX' all-caps in cells 10-11 baseline ~y310, then small white parenthetical '(as a programmer)' centered ~x780,y400 cell 14-15. Headline is right-aligned to clear the figure.",
-    "why_it_works": "the buff body subverts the programmer stereotype and the red FLEX delivers the joke instantly — ego/identity bait that makes devs click to compare",
-    "mimic_for": "a status/ego/identity beat — how to show off, who's the best, flexing skills or credentials"
+    "why_it_works": "the buff body subverts the programmer stereotype and the red FLEX delivers the joke instantly \u2014 ego/identity bait that makes devs click to compare",
+    "mimic_for": "a status/ego/identity beat \u2014 how to show off, who's the best, flexing skills or credentials",
+    "title": "How programmers flex on each other"
   },
   {
     "slug": "fireship-learn-to-code-arrow",
@@ -38,14 +46,18 @@
     "watch_url": "https://www.youtube.com/watch?v=NtfbWkxJTHw",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["red-arrow", "glow-accent"],
+    "device": [
+      "red-arrow",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "weird AI portrait in a frame on the left, big red 'LEARN -> CODE' with language logos top-right",
     "layout_map": "Dark grid background. Left ~38% is a boxed, glitchy AI-generated portrait of a person at a desk inside a thin white frame, center ~x180,y280, occupying cells 9,13 and up into 5. Top-center small white 'HOW TO' caps inside a dark pill at cell 6, ~x600,y90, with a row of three colored language logos (Python, JS, Swift) to its right at cells 7-8, ~y90. Big red 'LEARN' all-caps spans cells 6-8 baseline ~y280; below, a white right-arrow then 'CODE' white caps in a box at cells 11-12 baseline ~y390, the arrow pointing left-to-right into CODE.",
     "why_it_works": "the LEARN -> CODE arrow frames the whole video as a path/transformation, while the uncanny portrait adds intrigue and the logos signal which languages",
-    "mimic_for": "a how-to-get-started / learning-path beat that promises taking the viewer from zero to writing real code"
+    "mimic_for": "a how-to-get-started / learning-path beat that promises taking the viewer from zero to writing real code",
+    "title": "How to Learn to Code - 8 Hard Truths"
   },
   {
     "slug": "fireship-uncensored-ai-dolphin",
@@ -54,14 +66,18 @@
     "watch_url": "https://www.youtube.com/watch?v=GyllRd2E6fg",
     "archetype": "object-hero",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "red",
     "text": "med",
     "reads_as": "a smug grey dolphin mascot on the right vs an orange model logo + '8x7b', with red 'UNCENSORED' warning",
     "layout_map": "Dark grid background, CODE REPORT format. Left half headline: an orange/red stylized 'M' mascot logo at cell 5, ~x120,y160, followed by white '8x7b' caps in cells 6-7 baseline ~y200; below, red 'UNCENSORED' all-caps spanning cells 9-11 baseline ~y330. Right ~40% is a cartoon grey dolphin character with a smug grin facing left, center ~x1000,y300, filling cells 4,8,12,16, holding/wearing a small OpenAI-style spiral logo medallion near its chest ~x950,y400. Bottom-left a small black 'CODE REPORT' badge at cell 13, ~x70,y680.",
-    "why_it_works": "the red UNCENSORED is forbidden-fruit bait and the smug dolphin mascot personifies the rogue model — danger + personality stops the scroll",
-    "mimic_for": "an edgy/uncensored/jailbreak tool reveal, or any 'powerful and dangerous' new release the audience isn't supposed to run"
+    "why_it_works": "the red UNCENSORED is forbidden-fruit bait and the smug dolphin mascot personifies the rogue model \u2014 danger + personality stops the scroll",
+    "mimic_for": "an edgy/uncensored/jailbreak tool reveal, or any 'powerful and dangerous' new release the audience isn't supposed to run",
+    "title": "This new AI is powerful and uncensored\u2026 Let\u2019s run it"
   },
   {
     "slug": "fireship-10-frameworks-logo-grid",
@@ -70,14 +86,18 @@
     "watch_url": "https://www.youtube.com/watch?v=cuHDQhDhvPE",
     "archetype": "logo-grid",
     "layout": "text-left-face-right",
-    "device": ["giant-number", "neon-on-dark"],
+    "device": [
+      "giant-number",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "yellow",
     "text": "low",
     "reads_as": "giant yellow-boxed '10' on the left, a tidy grid of nine JS-framework logos on the right",
     "layout_map": "Dark grid background. Left ~38% holds a thick yellow-outlined rounded box framing a giant black '10' (Inter 900) centered ~x180,y230, cells 5-6 and 9-10; directly below it a white 'FRAMEWORKS' caps inside a small white-outlined pill at cell 14, ~x180,y400. Right ~55% is a 3x3 grid of colorful circular framework logo badges (Solid, Vue, ?, Angular, ?, Svelte, three.js/Threlte, React, ?) occupying cells 3-4,7-8,11-12,15-16, each logo ~x680-1180 across columns, rows centered ~y150/~y300/~y440.",
     "why_it_works": "the giant 10 quantifies the payoff and the logo grid lets viewers instantly spot their favorite framework and click to defend it",
-    "mimic_for": "a numbered roundup comparing N tools/frameworks/libraries — '10 of X' where viewers want to see if their pick made the list"
+    "mimic_for": "a numbered roundup comparing N tools/frameworks/libraries \u2014 '10 of X' where viewers want to see if their pick made the list",
+    "title": "I built the same app 10 times // Which JS Framework is best?"
   },
   {
     "slug": "fireship-10-design-patterns-scroll",
@@ -86,14 +106,18 @@
     "watch_url": "https://www.youtube.com/watch?v=tv-_1er1mWI",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["giant-number", "hand-point"],
+    "device": [
+      "giant-number",
+      "hand-point"
+    ],
     "face": false,
     "accent": "red",
     "text": "high",
     "reads_as": "big red 'DESIGN PATTERNS' headline left, an ancient stone scroll/tablet illustration with a hand reaching up on the right",
     "layout_map": "Dark grid background. Left ~55% is a four-element stacked headline: white '10' caps with white 'SOFTWARE' in an outlined pill beside it at cells 5-6 baseline ~y150; giant red 'DESIGN' all-caps cells 5-7 baseline ~y280; white 'PATTERNS' caps in a dark pill at cells 9-10 baseline ~y400. Right ~38% is an illustrated weathered stone scroll/tablet covered in glyphs, center ~x1010,y210, cells 4,8; below it a stylized open hand reaching upward at cell 12, ~x980,y460 (hand-point gesture toward the tablet).",
     "why_it_works": "the ancient-scroll-of-wisdom metaphor frames design patterns as timeless arcane knowledge while the red headline keeps it punchy",
-    "mimic_for": "a foundational-knowledge / timeless-principles explainer — design patterns, algorithms, classic concepts framed as wisdom to learn"
+    "mimic_for": "a foundational-knowledge / timeless-principles explainer \u2014 design patterns, algorithms, classic concepts framed as wisdom to learn",
+    "title": "10 Design Patterns Explained in 10 Minutes"
   },
   {
     "slug": "fireship-lua-100s-moon-orbit",
@@ -102,14 +126,18 @@
     "watch_url": "https://www.youtube.com/watch?v=jUuqBZwwkQw",
     "archetype": "object-hero",
     "layout": "centered-stack",
-    "device": ["glow-accent", "neon-on-dark"],
+    "device": [
+      "glow-accent",
+      "neon-on-dark"
+    ],
     "face": false,
     "accent": "blue",
     "text": "low",
     "reads_as": "the blue Lua logo (moon + orbiting satellite) huge in the center on a near-black backdrop",
     "layout_map": "Near-black background. Top white headline 'X00 SECONDS OF' runs across cells 2-3 inside a faint blue banner strip, baseline ~y55 (the '100 SECONDS OF' series tag). Center hero is the Lua logo: a large blue filled circle (the moon/planet) centered ~x340,y430 spanning cells 7,10,11,15, with a small white crescent highlight at its top-right ~x370,y320, plus a smaller blue satellite circle orbiting upper-right ~x400,y220; a grey dashed orbit ring circles the whole logo. White 'Lua' lowercase wordmark sits across the planet center ~x320,y460, cell 11.",
-    "why_it_works": "the single bold logo on black is the cleanest possible '100 Seconds of X' series template — instant brand recognition, zero clutter, the logo IS the hook",
-    "mimic_for": "a short '__ in 100 seconds' style language/tool primer where the tool's own logo is iconic enough to carry the frame alone"
+    "why_it_works": "the single bold logo on black is the cleanest possible '100 Seconds of X' series template \u2014 instant brand recognition, zero clutter, the logo IS the hook",
+    "mimic_for": "a short '__ in 100 seconds' style language/tool primer where the tool's own logo is iconic enough to carry the frame alone",
+    "title": "Lua in 100 Seconds"
   },
   {
     "slug": "fireship-vscode-fast-vs-slow-poop",
@@ -118,13 +146,17 @@
     "watch_url": "https://www.youtube.com/watch?v=ifTF3ags0XI",
     "archetype": "comparison-vs",
     "layout": "split-vertical",
-    "device": ["vs-bolt", "red-arrow"],
+    "device": [
+      "vs-bolt",
+      "red-arrow"
+    ],
     "face": false,
     "accent": "cyan",
     "text": "med",
-    "reads_as": "left side 'VSCODE FAST' with the VS Code logo, right side 'NOT SLOW' with a poop emoji — a fast-vs-slow split",
+    "reads_as": "left side 'VSCODE FAST' with the VS Code logo, right side 'NOT SLOW' with a poop emoji \u2014 a fast-vs-slow split",
     "layout_map": "Two-panel vertical split on a blue grid; a jagged diagonal seam down the center ~x640. LEFT panel (darker blue): white/cyan 'VSCODE' caps cells 1-2 baseline ~y90, white italic 'FAST' cell 5-6 baseline ~y200, a white down-right arrow pointing to the blue VS Code infinity logo at cell 13-14, ~x250,y560. RIGHT panel (lighter blue): white 'NOT' caps with a strike feel + white 'SLOW' caps cells 3-4 baseline ~y90/~y160, a white arrow curving down-left to a smiling brown poop emoji at cell 15, ~x720,y560. The diagonal seam acts as the vs divider.",
-    "why_it_works": "the literal fast-vs-poop split makes the value judgment instant and funny — viewers click to learn how to be on the fast/good side",
-    "mimic_for": "a do-this-not-that / good-vs-bad-workflow beat — productivity tips contrasting the right way against the slow embarrassing way"
+    "why_it_works": "the literal fast-vs-poop split makes the value judgment instant and funny \u2014 viewers click to learn how to be on the fast/good side",
+    "mimic_for": "a do-this-not-that / good-vs-bad-workflow beat \u2014 productivity tips contrasting the right way against the slow embarrassing way",
+    "title": "25 VS Code Productivity Tips and Speed Hacks"
   }
 ]

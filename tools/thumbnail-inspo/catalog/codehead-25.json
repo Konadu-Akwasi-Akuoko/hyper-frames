@@ -6,14 +6,18 @@
     "watch_url": "https://www.youtube.com/watch?v=If90OuYRYeY",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "A bandage-wrapped 'Hellraiser' face beside huge white-then-red text screaming THE WORST over rising flames.",
     "layout_map": "Background is a dark cyan engineering-graph grid; orange flames lick up the bottom-right quadrant (cells 11-12, 15-16). A pale bandage-wrapped pinhead face fills the left edge cells 1/5/9, center ~x140,y180, occupying roughly the left 20% of frame. Headline is two rows top-right: row1 'This is the' in white Inter caps, baseline ~y50 spanning cells 2-4; row2 'WORST..' in bold red, baseline ~y115, large, spanning cells 6-8. Text is right-aligned in the upper-right zone away from the face. No stat or badge.",
-    "why_it_works": "The unfinished red 'WORST..' plus a horror face withholds WHAT is worst, and the flames signal catastrophe — pure dread-curiosity.",
-    "mimic_for": "a strong-opinion takedown where something popular is declared the worst / most painful thing in the field"
+    "why_it_works": "The unfinished red 'WORST..' plus a horror face withholds WHAT is worst, and the flames signal catastrophe \u2014 pure dread-curiosity.",
+    "mimic_for": "a strong-opinion takedown where something popular is declared the worst / most painful thing in the field",
+    "title": "Why Full Stack Is THE WORST Thing To Happen To Software Engineers"
   },
   {
     "slug": "codehead-agile-experience-wojak-flames",
@@ -22,14 +26,18 @@
     "watch_url": "https://www.youtube.com/watch?v=q0bgSuGf5HE",
     "archetype": "big-text",
     "layout": "text-center",
-    "device": ["danger-red", "neon-on-dark"],
+    "device": [
+      "danger-red",
+      "neon-on-dark"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "A crying wojak face surrounded by flames under the headline 'The Agile Experience' with Agile in red.",
     "layout_map": "Dark cyan graph-grid background with orange flames burning across the entire bottom band (cells 9-16) and creeping up both sides. A line-art crying wojak face sits center-frame, center ~x600,y400, cells 6/7/10/11, filling the lower-middle ~30% of frame. Single headline row across the top: 'The Agile Experience' in white Inter caps with the middle word 'Agile' in bold red, baseline ~y45, spanning full width cells 1-4. No stat or number; the flames are the device along with the red accent word.",
-    "why_it_works": "Naming a buzzword ('Agile') in danger-red over a sobbing face engulfed in flames frames a relatable process as suffering — empathy plus dread.",
-    "mimic_for": "a satirical 'what it's really like' take on a hyped methodology, process, or workflow that's secretly miserable"
+    "why_it_works": "Naming a buzzword ('Agile') in danger-red over a sobbing face engulfed in flames frames a relatable process as suffering \u2014 empathy plus dread.",
+    "mimic_for": "a satirical 'what it's really like' take on a hyped methodology, process, or workflow that's secretly miserable",
+    "title": "How Every \"Agile\" Sprint Turns into a CHAOTIC MESS"
   },
   {
     "slug": "codehead-i-wish-i-knew-python-java",
@@ -38,14 +46,18 @@
     "watch_url": "https://www.youtube.com/watch?v=IXueV01xC0U",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "logo-grid"],
+    "device": [
+      "danger-red",
+      "logo-grid"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "A hooded crying figure on the left, big white/red 'I Wish I Knew...' text, and Python + Java logos clustered bottom-right.",
     "layout_map": "Dark cyan graph-grid background. A hooded, head-bowed crying line-art figure occupies the left edge, center ~x150,y260, cells 1/5/9/13, filling left ~22% of frame. Headline is two rows in the upper-center-right: row1 'I Wish' in white Inter caps, baseline ~y70, cells 6-7; row2 'I Knew...' in bold red, baseline ~y150, cells 6-8. Bottom-right carries a logo pair: the Python logo at ~x690,y450 (cell 11) and the Java cup logo at ~x830,y470 (cell 12), each tagged '16'. No numeric stat.",
-    "why_it_works": "Regret framing ('I Wish I Knew...') over a weeping figure promises hard-won lessons, while the language logos tell you exactly the domain — curiosity plus relevance.",
-    "mimic_for": "a 'things nobody told me' lessons-learned video tied to one or two specific named technologies"
+    "why_it_works": "Regret framing ('I Wish I Knew...') over a weeping figure promises hard-won lessons, while the language logos tell you exactly the domain \u2014 curiosity plus relevance.",
+    "mimic_for": "a 'things nobody told me' lessons-learned video tied to one or two specific named technologies",
+    "title": "Programming Truths NOBODY Told Me..."
   },
   {
     "slug": "codehead-oh-no-mobile-stacks",
@@ -54,14 +66,18 @@
     "watch_url": "https://www.youtube.com/watch?v=obwQC7WPkTs",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["neon-on-dark", "logo-grid"],
+    "device": [
+      "neon-on-dark",
+      "logo-grid"
+    ],
     "face": true,
     "accent": "cyan",
     "text": "low",
     "reads_as": "A shadowy worried face clutching a phone, 'Oh no...' headline, and a cluster of mobile-dev logos (Swift, Flutter, Android Studio).",
     "layout_map": "Dark cyan graph-grid background. A dim, desaturated worried line-art face holding a phone fills the left edge, center ~x150,y320, cells 1/5/9/13, ~22% of frame. Headline 'Oh no...' in white Inter caps top-center-right, baseline ~y70, cells 6-8. Bottom-right holds a logo cluster: Swift (red rounded-square) at ~x630,y200 cell 11, Flutter at ~x820,y210 cell 12, and Android Studio (green/blue) at ~x720,y400 cell 15. No numeric stat.",
     "why_it_works": "A dread reaction ('Oh no...') paired with a stack of recognizable platform logos sets up a 'this whole area is in trouble' verdict without saying why.",
-    "mimic_for": "a worried state-of-the-field take on a specific dev domain, anchored by its signature toolchain logos"
+    "mimic_for": "a worried state-of-the-field take on a specific dev domain, anchored by its signature toolchain logos",
+    "title": "We Need To Talk About Mobile Dev..."
   },
   {
     "slug": "codehead-bored-do-this-html5-spring",
@@ -70,14 +86,18 @@
     "watch_url": "https://www.youtube.com/watch?v=mAvQo7GR1JI",
     "archetype": "big-text",
     "layout": "centered-stack",
-    "device": ["logo-grid", "glow-accent"],
+    "device": [
+      "logo-grid",
+      "glow-accent"
+    ],
     "face": true,
     "accent": "lime",
     "text": "med",
     "reads_as": "A calm headphoned anime face dead-center flanked by HTML5 and Spring logos, with 'BORED?' top-left and 'DO THIS!' bottom-right.",
     "layout_map": "Lighter cyan graph-grid background. A calm grey-toned anime man with headphones sits center, center ~x600,y380, cells 6/7/10/11, filling the middle ~30%. Headline split into two corners: 'BORED?' white Inter caps top-left, baseline ~y70, cells 1-2; 'DO THIS!' white Inter caps bottom-right, baseline ~y680, cells 11-12. Left mid holds the orange HTML5 shield logo at ~x70,y320 (cell 9). Right upper holds the green Spring leaf logo with a small gold crown at ~x830,y130 (cell 4). No numeric stat.",
     "why_it_works": "A question-then-command frame ('BORED? / DO THIS!') diagonally bracketing a relaxed face turns boredom into a prescription, with the two logos teasing the swap.",
-    "mimic_for": "a 'tired of X? do this instead' suggestion that pits a stale technology against a fresher recommended one"
+    "mimic_for": "a 'tired of X? do this instead' suggestion that pits a stale technology against a fresher recommended one",
+    "title": "The Fun Way To Learn Web Development"
   },
   {
     "slug": "codehead-i-hate-this-unity-ea",
@@ -86,13 +106,17 @@
     "watch_url": "https://www.youtube.com/watch?v=2oTyi8EKrTo",
     "archetype": "big-text",
     "layout": "text-left-face-right",
-    "device": ["danger-red", "logo-grid"],
+    "device": [
+      "danger-red",
+      "logo-grid"
+    ],
     "face": true,
     "accent": "red",
     "text": "med",
     "reads_as": "A drained wojak slumped at an old desktop beside 'I Hate This..' (Hate in red) with Unity and EA logos below.",
     "layout_map": "Dark cyan graph-grid background. A weary line-art wojak hunched at a boxy CRT desktop occupies the left, center ~x180,y330, cells 1/5/9/13, ~25% of frame. Headline two rows upper-center-right: row1 'I Hate' white Inter caps with 'Hate' in bold red, baseline ~y90, cells 6-8; row2 'This..' white caps, baseline ~y200, cells 6-8. Bottom-center-right holds a logo pair: the Unity cube logo at ~x600,y540 (cell 14) and the EA logo at ~x740,y540 (cell 15). No numeric stat.",
-    "why_it_works": "A burnt-out worker plus red 'Hate' over named industry-giant logos channels collective frustration into a clear villain — outrage-curiosity.",
-    "mimic_for": "a frustrated industry-critique video blaming specific big-name companies/engines for a field's decline"
+    "why_it_works": "A burnt-out worker plus red 'Hate' over named industry-giant logos channels collective frustration into a clear villain \u2014 outrage-curiosity.",
+    "mimic_for": "a frustrated industry-critique video blaming specific big-name companies/engines for a field's decline",
+    "title": "The Sad State Of The Game Dev Industry"
   }
 ]
