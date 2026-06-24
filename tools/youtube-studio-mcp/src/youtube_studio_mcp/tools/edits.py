@@ -124,6 +124,37 @@ def _video_cancel_schedule(svc: Any, video_id: str) -> dict:
     return {"schedule_cancelled": video_id, "response": resp}
 
 
+def _video_set_localizations(svc: Any, video_id: str, localizations: dict,
+                             default_language: str | None) -> dict:
+    """Set per-language localized title/description. Ungated. Requires
+    snippet.defaultLanguage. Existing translations merged, not replaced.
+    Source: https://developers.google.com/youtube/v3/docs/videos"""
+    if not default_language:
+        try:
+            current = clients.run(
+                lambda y: y.videos().list(part="snippet", id=video_id), svc)
+            quota.record("videos.list")
+            existing = (current.get("items") or [{}])[0]
+            default_language = existing.get("snippet", {}).get("defaultLanguage")
+        except Exception:
+            default_language = None
+        if not default_language:
+            return {"error": "default_language_required",
+                    "reason": ("Set default_language (the video's primary "
+                               "language) — the API rejects localizations "
+                               "without it.")}
+    try:
+        resp = mutate.fetch_merge_update(
+            svc, resource="videos", id=video_id, parts="snippet,localizations",
+            patch={"snippet": {"defaultLanguage": default_language},
+                   "localizations": localizations},
+            record_list="videos.list", record_update="videos.update")
+    except KeyError:
+        return {"error": "video_not_found", "video_id": video_id}
+    return {"localized": video_id, "languages": sorted(localizations.keys()),
+            "response": resp}
+
+
 def register(app: FastMCP) -> None:
     @app.tool()
     @clients.http_safe
@@ -307,3 +338,14 @@ def register(app: FastMCP) -> None:
         """Cancel a pending scheduled publish (keeps it private, clears
         publishAt). Quota ~51 units. Ungated."""
         return _video_cancel_schedule(clients.youtube_data(), video_id)
+
+    @app.tool()
+    @clients.http_safe
+    def video_set_localizations(video_id: str, localizations: dict,
+                                default_language: str | None = None) -> dict:
+        """Set localized title/description per language. Quota ~51 units. Ungated.
+        localizations = {lang: {"title": ..., "description": ...}}.
+        default_language is the video's primary language (e.g. "en"); required by
+        the API; read from the video if omitted. Existing translations merged."""
+        return _video_set_localizations(
+            clients.youtube_data(), video_id, localizations, default_language)
