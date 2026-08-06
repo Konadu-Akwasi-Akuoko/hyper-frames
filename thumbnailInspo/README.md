@@ -283,6 +283,26 @@ hand-edit below this line.
 | [devforge-which-is-best-three-phones](#devforge-which-is-best-three-phones) | devforge | comparison-vs | grid-tiles | vs-bolt, glow-accent | no | purple | comparison-vs | a three-way head-to-head comparison of competing tools, models, or products |
 | [devforge-browser-url-matrix-rain](#devforge-browser-url-matrix-rain) | devforge | code-screenshot | text-center | neon-on-dark, glow-accent | no | lime | open-why-how | a 'what really happens under the hood' explainer that exposes the hidden internals of a common action |
 | [devforge-react-hooks-are-easy-atom](#devforge-react-hooks-are-easy-atom) | devforge | big-text | text-left-face-right | glow-accent | no | red | speed-primer | a 'this scary-sounding concept is actually easy' reassurance video on one specific framework feature |
+| [edmund-yong-start-earning-pov-cafe-topband](#edmund-yong-start-earning-pov-cafe-topband) | edmund-yong | big-text | text-center | big-text | no | white | first-person-feat | a first-person build/earn beat where our own editor-on-screen POV photo carries the scene and a single 2-word promise tops it |
+| [edmund-yong-234am-time-overlay-night](#edmund-yong-234am-time-overlay-night) | edmund-yong | number-stat | text-center | giant-number, big-text | no | white | first-person-feat | a grind/late-night or early-morning work-ethic beat where the time-of-day itself is the hook |
+| [edmund-yong-claude-warm-bloom-skyline](#edmund-yong-claude-warm-bloom-skyline) | edmund-yong | big-text | text-center | glow-accent, big-text | no | orange | speed-primer | a single-tool deep-dive where the product NAME is the whole hook and we want an aspirational bright-background treatment |
+| [edmund-yong-again-period-flatlay-point](#edmund-yong-again-period-flatlay-point) | edmund-yong | big-text | text-center | big-text, hand-point | no | white | curiosity-reversal | a repeat-success or 'I did the thing again' beat where a terse one-word headline and a pointing hand carry confident authority |
+| [edmund-yong-cursor-pro-glow-dashed-arrow](#edmund-yong-cursor-pro-glow-dashed-arrow) | edmund-yong | big-text | text-center | glow-accent, hand-drawn-arrow | no | white | identity-advice | a tool/feature spotlight where a hand-drawn arrow needs to point the viewer at the exact thing on our screen |
+| [edmund-yong-coding-is-fun-skyline-pov](#edmund-yong-coding-is-fun-skyline-pov) | edmund-yong | big-text | text-center | big-text | no | white | first-person-feat | a mindset/enjoyment beat where an aspirational environment and a short upbeat statement sell the feeling of the craft |
+| [edmund-yong-i-sold-it-flatlay-openhand](#edmund-yong-i-sold-it-flatlay-openhand) | edmund-yong | big-text | text-center | big-text, hand-point | no | white | scale-story | an outcome/milestone reveal beat ('I shipped it', 'I sold it') where a terse declaration and a presenting hand front a real result |
+| [edmund-yong-minimalist-setup-lightbar-question-arrow](#edmund-yong-minimalist-setup-lightbar-question-arrow) | edmund-yong | object-hero | full-bleed-object | glow-accent, hand-drawn-arrow | no | white | identity-advice | a gear/accessory reveal where one isolated object plus a glowing ? and an arrow create wordless 'what is that?' curiosity |
+| [edmund-yong-startup-ideas-office-pov-can](#edmund-yong-startup-ideas-office-pov-can) | edmund-yong | big-text | text-center | big-text | no | white | open-why-how | a topic/how-to beat shot as a real working session, where a recurring desk prop (a drink, a notebook) signals authenticity |
+| [edmund-yong-602am-time-overlay-dawn](#edmund-yong-602am-time-overlay-dawn) | edmund-yong | number-stat | text-center | giant-number, big-text | no | white | first-person-feat | a dawn/early-start discipline beat where the clock time itself is the entire hook (companion to the late-night timestamp pattern) |
+| [edmund-yong-start-now-sunset-rounded-scrim](#edmund-yong-start-now-sunset-rounded-scrim) | edmund-yong | big-text | text-center | big-text | no | white | open-why-how | a motivational/imperative call-to-action beat where a soft rounded scrim is needed to float big text over a busy bright background |
+| [edmund-yong-solo-startup-night-lamp-thirdperson](#edmund-yong-solo-startup-night-lamp-thirdperson) | edmund-yong | big-text | text-left-face-right | big-text | no | white | first-person-feat | an identity/lifestyle beat ('solo founder', 'indie hacker') where a cozy after-hours environment carries the mood under a two-word label |
+| [edmund-yong-new-income-airport-thirdperson](#edmund-yong-new-income-airport-thirdperson) | edmund-yong | big-text | text-center | big-text | no | white | first-person-feat | a location-independence / passive-income beat where a travel setting (airport, train, hotel) sells the work-from-anywhere promise |
+| [edmund-yong-day-in-the-life-cafe-pov-fourword](#edmund-yong-day-in-the-life-cafe-pov-fourword) | edmund-yong | big-text | text-center | big-text | no | white | first-person-feat | a vlog/behind-the-scenes 'day in the life' beat where a familiar 4-word format label runs edge-to-edge over a POV work photo |
+| [edmund-yong-freedom-highrise-window-pov](#edmund-yong-freedom-highrise-window-pov) | edmund-yong | big-text | text-center | big-text | no | white | open-why-how | an emotional-payoff beat where one abstract aspirational word (freedom, focus, calm) rides a premium environment shot |
+| [edmund-yong-full-roadmap-onscreen-diagram-gesture](#edmund-yong-full-roadmap-onscreen-diagram-gesture) | edmund-yong | roadmap | text-center | big-text, hand-point | no | multicolor | identity-advice | a roadmap/curriculum beat where the real multi-stage plan is displayed on-screen and a hand presents it under a 'full roadmap' label |
+| [edmund-yong-openclaw-red-neon-wide-desk](#edmund-yong-openclaw-red-neon-wide-desk) | edmund-yong | big-text | text-center | neon-on-dark, danger-red | yes | red | first-person-feat | a launch/announce beat for a named tool or project where a red neon-glow wordmark needs to feel urgent and high-stakes |
+| [edmund-yong-full-workflow-dual-reaction-pip](#edmund-yong-full-workflow-dual-reaction-pip) | edmund-yong | face-reaction | centered-stack | shocked-face, hand-point | yes | white | first-person-feat | a workflow/tool-result beat where reaction-face PIP panels are grafted around our screen to inject emotion and social proof |
+| [edmund-yong-ai-workflow-floating-app-icon-stack](#edmund-yong-ai-workflow-floating-app-icon-stack) | edmund-yong | logo-grid | centered-stack | app-icons | no | blue | identity-advice | a 'my stack / tools I use' beat where a vertical stack of clean app icons replaces a headline as the entire hook |
+| [edmund-yong-beautiful-floating-app-icons-pov](#edmund-yong-beautiful-floating-app-icons-pov) | edmund-yong | big-text | text-center | big-text, app-icons | no | white | open-why-how | a design/polish beat where one outcome word plus the two tools that achieve it (as floating icons) tell the whole story |
 | [fireship-programming-iceberg-logo-field](#fireship-programming-iceberg-logo-field) | fireship | iceberg | text-left-face-right | neon-on-dark, glow-accent | yes | cyan | identity-advice | a deep-dive / 'everything ranked from common to obscure' explainer where the payoff is breadth and hidden complexity |
 | [fireship-100-seconds-skull-redbar](#fireship-100-seconds-skull-redbar) | fireship | object-hero | centered-stack | danger-red, big-text | no | red | speed-primer | a short fast explainer of an esoteric or 'cursed' topic where the hook is brevity plus a touch of menace |
 | [fireship-how-to-build-her-arrow-portrait](#fireship-how-to-build-her-arrow-portrait) | fireship | before-after | text-left-face-right | red-arrow, glow-accent | yes | red | first-person-feat | a 'we built X and here's the surprisingly real result' reveal that points from process to an impressive human-like output |
@@ -2797,6 +2817,186 @@ hand-edit below this line.
 - Why it works: A literal hook pun on the React logo plus the reassuring 'are easy' promise lowers the intimidation of a tricky topic
 - Mimic for: a 'this scary-sounding concept is actually easy' reassurance video on one specific framework feature
 - Original pair (shape to mimic, not copy): "Learn React Hooks in JUST 4 Minutes!" · title_shape=speed-primer · title_pattern=concrete-noun-verb
+
+### edmund-yong-start-earning-pov-cafe-topband
+- Image: `edmund-yong/01-CNsvts6pVzo.jpg` · Source: https://www.youtube.com/watch?v=CNsvts6pVzo
+- Tags: archetype=big-text · layout=text-center · device=[big-text] · face=no · accent=white · text=low
+- Reads as: a first-person over-the-laptop cafe shot with a giant bold white 'Start earning' sprawled edge-to-edge across the very top
+- Layout map: Full-bleed POV photo: hands on a dark MacBook keyboard centered-bottom, the lit code editor filling the screen cells 6-11 ~y220-560, an iced coffee 'FROM HEARTS COFFEE' prop bottom-left ~x90,y330, a wireless earbuds case bottom-right ~x1170,y470, blurred city-window background. Headline 'Start earning' in heavy white Helvetica-style caps-and-lowercase, single line bleeding off both edges, top-aligned baseline ~y150 (x~20 to x~1260), set directly on the photo with a soft dark vignette under it for legibility. No badge, no scrim box, no face.
+- Why it works: the calm POV 'this is literally my screen right now' framing plus one oversized verb-phrase promise reads as an authentic over-the-shoulder invitation, not a designed ad
+- Mimic for: a first-person build/earn beat where our own editor-on-screen POV photo carries the scene and a single 2-word promise tops it
+- Original pair (shape to mimic, not copy): "How I Code Profitable Apps SOLO (no wasted time / beginner friendly / with AI)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### edmund-yong-234am-time-overlay-night
+- Image: `edmund-yong/02-cESaIUWoCJQ.jpg` · Source: https://www.youtube.com/watch?v=cESaIUWoCJQ
+- Tags: archetype=number-stat · layout=text-center · device=[giant-number, big-text] · face=no · accent=white · text=low
+- Reads as: a wide third-person shot of a lone coder at a dining table late at night with a giant white '2:34am' clock-stamp across the top
+- Layout map: Third-person environmental wide shot: a man in a black tee seen from behind-right working at a wooden dining table center-right ~x650,y430, laptop on a stand showing a dark editor, dim living room with a beige sofa and Christmas tree to the left, night windows behind. Headline '2:34am' in heavy white Helvetica caps-lowercase, centered, baseline ~y200, sitting on a faint translucent dark gradient band ~y90-300 that spans the full width for legibility. No face visible (back of head), no badge.
+- Why it works: stamping the literal hour as the headline turns an ordinary desk photo into a grind/dedication story the eye reads instantly, the unusual time implying obsession and payoff
+- Mimic for: a grind/late-night or early-morning work-ethic beat where the time-of-day itself is the hook
+- Original pair (shape to mimic, not copy): "How I Coded ANOTHER Profitable App SOLO (step by step / from scratch / with AI)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### edmund-yong-claude-warm-bloom-skyline
+- Image: `edmund-yong/03-Ffh9OeJ7yxw.jpg` · Source: https://www.youtube.com/watch?v=Ffh9OeJ7yxw
+- Tags: archetype=big-text · layout=text-center · device=[glow-accent, big-text] · face=no · accent=orange · text=low
+- Reads as: a sunlit high-rise POV of a laptop running Claude Code with one enormous white 'Claude' wordmark glowing warm-orange across the top
+- Layout map: Bright POV photo from a skyscraper desk: open MacBook centered ~x640,y430 showing a dark Claude Code terminal, a black coffee cup bottom-center ~x430,y640, a hand on the trackpad lower-right, green plant right edge, golden-hour city towers through the window. Headline 'Claude' in white heavy Helvetica caps-lowercase, single huge word spanning cells 2-15 baseline ~y230, ringed by a soft warm-orange outer bloom/halo so the white pops against the bright sky. No box, no face, no badge.
+- Why it works: the single product wordmark wrapped in a warm glow against a luminous skyline frames a tool reveal as aspirational and premium, the bloom doing the contrast work a dark scrim usually would
+- Mimic for: a single-tool deep-dive where the product NAME is the whole hook and we want an aspirational bright-background treatment
+- Original pair (shape to mimic, not copy): "800+ hours of Learning Claude Code in 8 minutes (2026 tutorial / unknown tricks / newest model)" · title_shape=speed-primer · title_pattern=concrete-noun-verb
+
+### edmund-yong-again-period-flatlay-point
+- Image: `edmund-yong/07-_tLJR5OaiCw.jpg` · Source: https://www.youtube.com/watch?v=_tLJR5OaiCw
+- Tags: archetype=big-text · layout=text-center · device=[big-text, hand-point] · face=no · accent=white · text=low
+- Reads as: a clean white studio desk shot, a hand pointing at the code monitor, with a single white 'Again.' (full stop) across the top
+- Layout map: First-person studio desk: Apple Studio Display centered ~x560,y320 full of dark code, two boom arms (Shure mic left ~x270,y360, camera arm right), a black water bottle bottom-left ~x180,y510, a flip-clock '9 15' center-bottom ~x620,y540, a white compact mechanical keyboard ~x560,y600, and a laptop bottom-right showing a colorful calendar grid ~x1020,y560. A right hand enters from the lower-right pointing at the monitor ~x760,y430. Headline 'Again.' in heavy white Helvetica caps-lowercase WITH a deliberate period, centered, baseline ~y120, on a faint dark gradient band across the top. Clinical white-on-white room.
+- Why it works: the one-word headline ending in a hard full stop reads as a confident punchline ('I did it again.'), and the pointing hand directs the eye to the proof on the screen
+- Mimic for: a repeat-success or 'I did the thing again' beat where a terse one-word headline and a pointing hand carry confident authority
+- Original pair (shape to mimic, not copy): "OpenAI "Ended" My Startup: Here's What I Learned (Tokyo coding vlog)" · title_shape=curiosity-reversal · title_pattern=curiosity-gap-reversal
+
+### edmund-yong-cursor-pro-glow-dashed-arrow
+- Image: `edmund-yong/09-V-zhv95AhF8.jpg` · Source: https://www.youtube.com/watch?v=V-zhv95AhF8
+- Tags: archetype=big-text · layout=text-center · device=[glow-accent, hand-drawn-arrow] · face=no · accent=white · text=low
+- Reads as: a night-city POV laptop shot with a glowing white 'Cursor Pro' across the top and a hand-drawn dashed arrow curving down to the editor
+- Layout map: POV over a dark MacBook on a wood desk, screen full of a colorful Cursor editor cells 6-11 ~y170-380, a hand on the keyboard bottom-right, glittering night-city skyline filling the blurred background. Headline 'Cursor Pro' split across the top in heavy white Helvetica with a soft white outer glow: 'Cursor' upper-left cells 1-5 baseline ~y130, 'Pro' upper-right cells 11-15 baseline ~y130. A white hand-drawn dashed curved arrow starts under 'Cursor' ~x120,y230 and sweeps down-right to point at the laptop screen ~x340,y320. No face, no badge.
+- Why it works: the glowing product name split around the device plus a casual hand-drawn arrow pointing at the live tool reads as a friendly 'look right here' demo, the doodle arrow adding an informal personal touch
+- Mimic for: a tool/feature spotlight where a hand-drawn arrow needs to point the viewer at the exact thing on our screen
+- Original pair (shape to mimic, not copy): "Cursor AI Tricks That Made Me a Better Solo Developer (& more productive)" · title_shape=identity-advice · title_pattern=identity-status
+
+### edmund-yong-coding-is-fun-skyline-pov
+- Image: `edmund-yong/10-Q9uXOSGS8IQ.jpg` · Source: https://www.youtube.com/watch?v=Q9uXOSGS8IQ
+- Tags: archetype=big-text · layout=text-center · device=[big-text] · face=no · accent=white · text=low
+- Reads as: a bright daytime POV over a laptop against a sweeping city skyline, with a giant white 'Coding is fun' filling the top third
+- Layout map: POV photo: both hands on a dark MacBook centered-bottom ~x640,y620, screen full of a dark editor cells 6-10 ~y250-540, panoramic daylit cityscape (Shibuya-style) through the full-width window behind. Headline 'Coding is fun' in heavy white Helvetica caps-lowercase, single line bleeding off both edges, baseline ~y170, on a faint translucent dark band ~y120-330 for contrast against the bright sky. No face, no badge.
+- Why it works: a sweeping aspirational skyline plus a plain-spoken feel-good claim sells the lifestyle of the work itself, the calm POV implying 'this could be your view'
+- Mimic for: a mindset/enjoyment beat where an aspirational environment and a short upbeat statement sell the feeling of the craft
+- Original pair (shape to mimic, not copy): "How I Make Coding FUN with Simple Habits (and achieve my goals)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### edmund-yong-i-sold-it-flatlay-openhand
+- Image: `edmund-yong/11-wbvMph3m88Q.jpg` · Source: https://www.youtube.com/watch?v=wbvMph3m88Q
+- Tags: archetype=big-text · layout=text-center · device=[big-text, hand-point] · face=no · accent=white · text=low
+- Reads as: a clean white studio desk with an open hand gesturing toward a laptop calendar, topped by a bold white 'I Sold It'
+- Layout map: First-person studio desk shot: Apple Studio Display center ~x640,y300 full of dark code, white water bottle left ~x320,y480, a flip-clock '8 59' center-right ~x830,y530, supplement bottles far right ~x1080,y540, and a laptop bottom-center ~x640,y560 showing a colorful month calendar grid. An open left hand enters from the lower-left, palm up, gesturing at the laptop ~x400,y540. Headline 'I Sold It' in heavy white Helvetica caps-lowercase, single line across the top, baseline ~y120, set directly on the bright wall (no scrim needed). Bright white-on-white room.
+- Why it works: a flat declarative milestone ('I Sold It') over a calm proof-laden desk plus an open presenting hand reads as a confident reveal of a real outcome, curiosity coming from WHAT was sold
+- Mimic for: an outcome/milestone reveal beat ('I shipped it', 'I sold it') where a terse declaration and a presenting hand front a real result
+- Original pair (shape to mimic, not copy): "My First Startup Exit: $100K Revenue, 5-Figure Sale (my story & what I learned)" · title_shape=scale-story · title_pattern=identity-status
+
+### edmund-yong-minimalist-setup-lightbar-question-arrow
+- Image: `edmund-yong/12-nCuaNmeVfQY.jpg` · Source: https://www.youtube.com/watch?v=nCuaNmeVfQY
+- Tags: archetype=object-hero · layout=full-bleed-object · device=[glow-accent, hand-drawn-arrow] · face=no · accent=white · text=low
+- Reads as: a single open laptop hero-lit on a bare concrete table with a glowing white '?' and a hand-drawn curl arrow pointing at the monitor light bar clipped to its top
+- Layout map: Dark moody concrete room, one product as the hero: an open MacBook centered-right ~x680,y400, lid showing a dark code editor, a slim monitor light-bar accessory clipped across the TOP of the screen ~x640,y150 (the subject of the frame). Empty left third holds the graphics: a large glowing white '?' question mark ~x200,y170 and a glowing white hand-drawn looping/curl arrow sweeping from lower-left up to point at the light bar ~x300,y330 to ~x460,y150. No headline words, no face; the glowing ? + arrow + isolated gear carry it.
+- Why it works: isolating one gadget in a dark studio with a glowing question mark and a literal arrow manufactures 'what is that thing on top?' curiosity with zero text
+- Mimic for: a gear/accessory reveal where one isolated object plus a glowing ? and an arrow create wordless 'what is that?' curiosity
+- Original pair (shape to mimic, not copy): "Minimalist Tech Setup: What I Use Daily For Coding, Content & Travel" · title_shape=identity-advice · title_pattern=identity-status
+
+### edmund-yong-startup-ideas-office-pov-can
+- Image: `edmund-yong/13-OoofplYkDQI.jpg` · Source: https://www.youtube.com/watch?v=OoofplYkDQI
+- Tags: archetype=big-text · layout=text-center · device=[big-text] · face=no · accent=white · text=low
+- Reads as: a coworking-cafe POV over a laptop with a canned coffee prop, topped by a bold white 'Startup Ideas'
+- Layout map: POV photo: hands on a dark MacBook centered-bottom ~x600,y600, glowing blue editor on screen, a black 'TULLY'S COFFEE BARISTA'S BLACK' canned-coffee prop standing bottom-left ~x110,y370, blurred open-plan workspace with seated people behind. Headline 'Startup Ideas' in heavy white Helvetica caps-lowercase, single line bleeding off both edges, baseline ~y100, on a faint dark gradient band across the top. No face, no badge.
+- Why it works: the recognizable canned-coffee prop plus a plain topic headline grounds the scene as a real working session, the prop becoming a low-key signature that reads as authenticity
+- Mimic for: a topic/how-to beat shot as a real working session, where a recurring desk prop (a drink, a notebook) signals authenticity
+- Original pair (shape to mimic, not copy): "How to Validate SOLO Startup Ideas Fast (beginner friendly guide)" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### edmund-yong-602am-time-overlay-dawn
+- Image: `edmund-yong/14-QI2t35PLsCw.jpg` · Source: https://www.youtube.com/watch?v=QI2t35PLsCw
+- Tags: archetype=number-stat · layout=text-center · device=[giant-number, big-text] · face=no · accent=white · text=low
+- Reads as: a wide third-person dawn shot of a coder at a dining table with a giant white '6:02am' clock-stamp across the top
+- Layout map: Third-person environmental wide shot from upper-left: a man in dark clothes seen from behind-right typing on a laptop at a wooden dining table center-right ~x650,y460, a black tumbler and phone-with-MagSafe-wallet on the table, a mic boom right, dim apartment with a pale-blue dawn through the floor-to-ceiling windows left. Headline '6:02am' in heavy white Helvetica caps-lowercase, centered, baseline ~y180, on a faint translucent dark gradient band ~y90-270 spanning the full width. Back of head only, no badge.
+- Why it works: the early-hour timestamp as headline frames discipline and a head start, pairing with the same grind narrative as the 2:34am variant to brand a time-of-day device
+- Mimic for: a dawn/early-start discipline beat where the clock time itself is the entire hook (companion to the late-night timestamp pattern)
+- Original pair (shape to mimic, not copy): "Building a Profitable App from Scratch SOLO ($1K+ MRR in 1 Month)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### edmund-yong-start-now-sunset-rounded-scrim
+- Image: `edmund-yong/15-0LE0trd740Q.jpg` · Source: https://www.youtube.com/watch?v=0LE0trd740Q
+- Tags: archetype=big-text · layout=text-center · device=[big-text] · face=no · accent=white · text=low
+- Reads as: a golden-hour cafe POV of a laptop and forearm, with a massive white 'Start now' on a soft rounded-rectangle scrim
+- Layout map: POV photo: a dark laptop angled left ~x420,y430 with a faint editor on screen, the creator's bare forearm and hand on the keyboard from the right ~x760,y450, a phone + earbuds case on the round cafe table bottom-center, a warm sunset street scene ('LUNA' signage) through the window behind. Headline 'Start now' in very large heavy white Helvetica caps-lowercase, baseline ~y260, sitting on a subtle translucent dark ROUNDED-RECTANGLE scrim panel ~x40,y60 to ~x1240,y330 that softens the busy sunset behind. No face, no badge.
+- Why it works: an oversized imperative command on a soft rounded scrim against a warm sunset reads as a direct, almost motivational nudge, the rounded panel giving an iOS-clean modern feel
+- Mimic for: a motivational/imperative call-to-action beat where a soft rounded scrim is needed to float big text over a busy bright background
+- Original pair (shape to mimic, not copy): "Should I Code or Market First as a Solo Startup Founder? (Coding Vlog)" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### edmund-yong-solo-startup-night-lamp-thirdperson
+- Image: `edmund-yong/16-JxB0FX_4ql4.jpg` · Source: https://www.youtube.com/watch?v=JxB0FX_4ql4
+- Tags: archetype=big-text · layout=text-left-face-right · device=[big-text] · face=no · accent=white · text=low
+- Reads as: a cozy night cafe POV with an overhead lamp glow, a laptop full of code, and a bold white 'Solo Startup' on a soft scrim top-left
+- Layout map: POV over a dark MacBook angled center ~x560,y340, screen dense with a colorful editor, a brown lounge sofa to the right, a hanging pendant lamp top-left, warm dim cafe at night through the windows. Headline 'Solo Startup' in heavy white Helvetica caps-lowercase, upper-left and bleeding off the left edge, baseline ~y170, on a translucent dark rounded scrim panel ~x0,y40 to ~x980,y260 occupying the top-left two-thirds. No face, no badge.
+- Why it works: the warm night-cafe ambience plus a steady two-word identity headline sells the romantic 'building alone after hours' lifestyle that defines the channel's niche
+- Mimic for: an identity/lifestyle beat ('solo founder', 'indie hacker') where a cozy after-hours environment carries the mood under a two-word label
+- Original pair (shape to mimic, not copy): "Building a Solo Startup in my 20s (realistic coding vlog)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### edmund-yong-new-income-airport-thirdperson
+- Image: `edmund-yong/17-x3C-3dX3e6Q.jpg` · Source: https://www.youtube.com/watch?v=x3C-3dX3e6Q
+- Tags: archetype=big-text · layout=text-center · device=[big-text] · face=no · accent=white · text=low
+- Reads as: a third-person airport-terminal shot of a man coding on his lap beside a suitcase, with a bold white 'New Income' stacked top-right
+- Layout map: Third-person side shot: a man in a grey tee sits in an airport gate chair (cells 1-7, body fills the left half, head cropped above frame ~y0), coding on a laptop balanced on his lap ~x680,y370, a rolling suitcase bottom-right ~x1020,y560, a passerby blurred mid-stride right, teal-lit Changi-style terminal with a 'Transfer' sign top-right. Headline stacked two lines white heavy Helvetica caps-lowercase: 'New' baseline ~y110 and 'Income' baseline ~y260, right-of-center cells 6-12, on a faint dark gradient block behind. No visible face (cropped), no badge.
+- Why it works: the work-from-anywhere airport setting plus a money headline literally embodies location-independent income, the suitcase and terminal selling the freedom angle before any words are read
+- Mimic for: a location-independence / passive-income beat where a travel setting (airport, train, hotel) sells the work-from-anywhere promise
+- Original pair (shape to mimic, not copy): "Coding a Profitable Whop App From Scratch with AI (full guide / solo / beginner friendly)" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### edmund-yong-day-in-the-life-cafe-pov-fourword
+- Image: `edmund-yong/18-l5tdsK_Od2Q.jpg` · Source: https://www.youtube.com/watch?v=l5tdsK_Od2Q
+- Tags: archetype=big-text · layout=text-center · device=[big-text] · face=no · accent=white · text=med
+- Reads as: a bright cafe POV over a code-filled laptop with the four-word white 'Day in the Life' bleeding across the entire top
+- Layout map: POV photo: a dark MacBook centered ~x640,y360, screen packed with a dense colorful three-pane editor, a hand on the keyboard bottom-center, an AirPods Max-style case bottom-left, fairy-lit cafe windows behind. Headline 'Day in the Life' in heavy white Helvetica caps-lowercase, a single long line that bleeds off BOTH edges (the 'D' and the 'e' clipped), baseline ~y150, set directly on the photo with a soft dark vignette. No face, no badge.
+- Why it works: the familiar 'day in the life' format label letting the headline run off both edges signals scale and intimacy at once, a low-friction vlog promise the niche audience clicks reflexively
+- Mimic for: a vlog/behind-the-scenes 'day in the life' beat where a familiar 4-word format label runs edge-to-edge over a POV work photo
+- Original pair (shape to mimic, not copy): "Life as a 26 y/o Solo Startup Founder (realistic coding vlog)" · title_shape=first-person-feat · title_pattern=identity-status
+
+### edmund-yong-freedom-highrise-window-pov
+- Image: `edmund-yong/20-qMTKz4Wa_HI.jpg` · Source: https://www.youtube.com/watch?v=qMTKz4Wa_HI
+- Tags: archetype=big-text · layout=text-center · device=[big-text] · face=no · accent=white · text=low
+- Reads as: a moody dusk high-rise POV over a laptop against a city overpass view, with one huge white 'Freedom' across the top
+- Layout map: POV photo: a dark MacBook angled center ~x560,y360 on a white marble counter, screen full of a dark editor, hands on the keyboard lower-right, a teal lounge chair left, a sweeping dusk cityscape with elevated roads and car-light trails through the full-width window. Headline 'Freedom' in heavy white Helvetica caps-lowercase, single huge word centered, baseline ~y180, on a subtle translucent dark rounded scrim ~x150,y70 to ~x1130,y270. No face, no badge.
+- Why it works: a single abstract aspirational noun over a premium twilight-city view sells the emotional payoff of the work (autonomy) rather than its mechanics, maximizing aspirational pull
+- Mimic for: an emotional-payoff beat where one abstract aspirational word (freedom, focus, calm) rides a premium environment shot
+- Original pair (shape to mimic, not copy): "Why I Quit My 9-5 to Build a Solo Startup (coding vlog)" · title_shape=open-why-how · title_pattern=open-what-why-how
+
+### edmund-yong-full-roadmap-onscreen-diagram-gesture
+- Image: `edmund-yong/25-FEc4EW9s2BU.jpg` · Source: https://www.youtube.com/watch?v=FEc4EW9s2BU
+- Tags: archetype=roadmap · layout=text-center · device=[big-text, hand-point] · face=no · accent=multicolor · text=med
+- Reads as: a studio desk where a monitor displays a colorful three-column beginner roadmap diagram, a hand presenting it, under a bold white 'Full Roadmap'
+- Layout map: First-person studio desk: a large monitor centered ~x600,y320 showing a real on-screen roadmap diagram - three labeled column stages '1 Learn the Essentials' (blue), '2 Pick Your Tools' (purple), '3 Ship & Get Paid' (green) with stacked node cards under each and connector arrows between columns. A flip-clock '9 30' bottom-left ~x270,y620, a white bottle right ~x1080,y470, a laptop bottom-center showing code. The creator's open right hand enters from the lower-right presenting the diagram ~x900,y560. Headline 'Full Roadmap' in heavy white Helvetica caps-lowercase across the top, baseline ~y90, bleeding off both edges on the bright wall. Bright white room.
+- Why it works: showing the actual color-coded roadmap on-screen plus a presenting hand promises a complete structured plan you can see exists, the visible stages making 'comprehensive' feel concrete
+- Mimic for: a roadmap/curriculum beat where the real multi-stage plan is displayed on-screen and a hand presents it under a 'full roadmap' label
+- Original pair (shape to mimic, not copy): "Everything I'd Learn to Ship My First PROFITABLE App in 2026 (beginner friendly)" · title_shape=identity-advice · title_pattern=identity-status
+
+### edmund-yong-openclaw-red-neon-wide-desk
+- Image: `edmund-yong/26-XmSxfFrkcDs.jpg` · Source: https://www.youtube.com/watch?v=XmSxfFrkcDs
+- Tags: archetype=big-text · layout=text-center · device=[neon-on-dark, danger-red] · face=yes · accent=red · text=low
+- Reads as: a wide top-down studio shot of the creator at a long white desk with a glowing red-outlined white 'OpenClaw' blazing across the top
+- Layout map: Elevated wide third-person shot: the creator in a black tee seated at a long white desk on the right ~x720,y400, typing on a keyboard, a laptop on a stand center, a purple-lit light bar along the desk, scattered camera gear and a mug on the left half of the desk. Headline 'OpenClaw' in heavy white Helvetica caps-lowercase spanning nearly the full width, baseline ~y200, with a strong RED outer neon glow/outline making the white letters blaze against the muted grey room. Small visible side profile of the creator's face, no badge.
+- Why it works: the red neon outline on a single product/codename against a desaturated room makes the wordmark feel urgent and high-stakes, red signalling 'important / new tool' amid an otherwise calm scene
+- Mimic for: a launch/announce beat for a named tool or project where a red neon-glow wordmark needs to feel urgent and high-stakes
+- Original pair (shape to mimic, not copy): "My OpenClaw Workflows & Automations For Building Apps SOLO (easy setup / running 24/7)" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### edmund-yong-full-workflow-dual-reaction-pip
+- Image: `edmund-yong/27-xyKxB8q7wQk.jpg` · Source: https://www.youtube.com/watch?v=xyKxB8q7wQk
+- Tags: archetype=face-reaction · layout=centered-stack · device=[shocked-face, hand-point] · face=yes · accent=white · text=low
+- Reads as: a studio desk flanked by two white-bordered reaction-selfie panels (a shocked open-mouth woman left, a smiling thumbs-up woman right) around a center AI screen, under a bold white 'Full Workflow'
+- Layout map: First-person studio desk center: a monitor ~x600,y360 showing an AI chat generating UGC ad video frames, a flip-clock '10 05' bottom-center, a presenting hand entering from lower-center ~x470,y490. Two vertical white-rounded-border PIP selfie panels overlaid: LEFT panel cells 1-3 ~x230,y390 a woman with a shocked wide-eyed open mouth; RIGHT panel cells 13-15 ~x1080,y400 a woman smiling with one finger raised and a caption 'it's called createskills.io - cheat code'. Headline 'Full Workflow' in heavy white Helvetica caps-lowercase across the top, baseline ~y150, bleeding off both edges. 
+- Why it works: two genuine reaction faces (shock + delight) bracketing the screen import social proof and emotion into an otherwise dry workflow demo, the expressions promising a surprising payoff
+- Mimic for: a workflow/tool-result beat where reaction-face PIP panels are grafted around our screen to inject emotion and social proof
+- Original pair (shape to mimic, not copy): "How I Make Marketing Ads for My Apps SOLO (Higgsfield + Claude)" · title_shape=first-person-feat · title_pattern=concrete-noun-verb
+
+### edmund-yong-ai-workflow-floating-app-icon-stack
+- Image: `edmund-yong/28-qHDjSTqs7Bc.jpg` · Source: https://www.youtube.com/watch?v=qHDjSTqs7Bc
+- Tags: archetype=logo-grid · layout=centered-stack · device=[app-icons] · face=no · accent=blue · text=low
+- Reads as: a textless POV studio shot of code on a monitor with three glossy iOS-style app icons stacked down the left edge as the whole hook
+- Layout map: POV over a low laptop bottom-center ~x680,y560 (hands on keyboard) toward a large monitor full of code top-center ~x620,y200, a silver YouTube play-button plaque on the wall right ~x1060,y180, a white bottle far right, a flip-clock '2 02' center-right. Down the LEFT edge a vertical stack of three large glossy rounded-square app icons: a purple/blue terminal-bloom icon top ~x180,y150, a blue retro ghost-terminal icon middle ~x180,y330, a black 3D cube/prism icon bottom ~x180,y560. No headline text; the floating icon trio carries the whole frame.
+- Why it works: stacking three crisp app icons against a real desk turns the thumbnail into a wordless 'here's my exact stack' list, the polished icons promising a concrete tool reveal with no reading
+- Mimic for: a 'my stack / tools I use' beat where a vertical stack of clean app icons replaces a headline as the entire hook
+- Original pair (shape to mimic, not copy): "My AI Coding Workflow — Everything I Use Now (for peak performance)" · title_shape=identity-advice · title_pattern=identity-status
+
+### edmund-yong-beautiful-floating-app-icons-pov
+- Image: `edmund-yong/29--ZeY0vUlt24.jpg` · Source: https://www.youtube.com/watch?v=-ZeY0vUlt24
+- Tags: archetype=big-text · layout=text-center · device=[big-text, app-icons] · face=no · accent=white · text=low
+- Reads as: a bright high-rise POV of hands coding, two glossy app icons floating beside the laptop, under one huge white 'Beautiful'
+- Layout map: POV photo: a dark MacBook center ~x680,y360 with a warm-toned editor on screen, forearms in a black sleeve typing from the left, a phone with a round grip on the white desk bottom-right ~x980,y560, a bright glass-tower view through the window. Two glossy rounded-square app icons float at mid-height flanking the laptop: an orange burst/spark icon left of screen ~x560,y300 and a purple/blue terminal-bloom icon right of screen ~x960,y310. Headline 'Beautiful' in heavy white Helvetica caps-lowercase across the top, baseline ~y110, bleeding off both edges on the bright background. No face, no badge.
+- Why it works: a single aesthetic-claim word plus two floating tool icons promises both the outcome (beautiful) and the means (these apps) in one glance, marrying the big-text and icon-reveal devices
+- Mimic for: a design/polish beat where one outcome word plus the two tools that achieve it (as floating icons) tell the whole story
+- Original pair (shape to mimic, not copy): "How To Make Your Apps Beautiful Without a Designer (Claude Code & Codex + Mobbin MCP)" · title_shape=open-why-how · title_pattern=open-what-why-how
 
 ### fireship-programming-iceberg-logo-field
 - Image: `fireship/01-pEfrdAtAmqk.jpg` · Source: https://www.youtube.com/watch?v=pEfrdAtAmqk

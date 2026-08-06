@@ -1,9 +1,5 @@
 {
   "env": {},
-  "enabledPlugins": {
-    "motion-canvas@akwasi-automation-hub": false,
-    "hyperframes@hyperframes": true
-  },
   "hooks": {
     "SessionStart": [
       {
@@ -16,5 +12,10 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "motion-canvas@akwasi-automation-hub": false,
+    "hyperframes@hyperframes": true,
+    "opusclip@opus-skills": true
   }
 }

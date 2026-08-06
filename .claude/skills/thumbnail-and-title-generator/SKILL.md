@@ -117,7 +117,11 @@ archetypes/devices so the round is a real choice (e.g. a face-reaction, a
 giant-number stat, a comparison-vs) — matched to the video's beats via each row's
 `archetype` / `device` / `mimic-for`. (If the user asked for variations on a
 single idea, pick ONE reference and vary headline/accent/face across a/b/c.) In
-vertical mode, prefer references that survive a 9:16 crop. Print the picks:
+vertical mode, prefer references that survive a 9:16 crop. Print the picks, and
+**`open` each picked reference image so the user can see it** (`open
+thumbnailInspo/<channel>/<file>`) — then print the per-direction source list of
+`<label> · <youtube-source-url>` (no `file://`, no local path; the image is
+already on screen):
 
 `A ← thumbnailInspo/<channel>/<file> (<slug>): <archetype>/<device> — why it fits.`
 
@@ -280,10 +284,14 @@ its reference** AND your own eyes agree. Never report unverified output.
 
 ### Step 10 — Present + iterate
 
-Tell the user the round is ready: the `file://` contact-sheet URL (each card
-shows the paired YouTube title; `?grid` overlays the numbered coord grid), plus
-the rendered PNGs. Interpret feedback per `reference/iteration-recipes.md` and
-generate the next round (default: a new round folder). Loop.
+Tell the user the round is ready and **`open` the contact sheet for them**
+(`open <video-dir>/thumbnails/round-N/contact-sheet.html`) — each card shows the
+paired YouTube title; append `?grid` to a variant URL to overlay the numbered
+coord grid. Also `open` the three rendered PNGs. `open` is how the user actually
+sees them — `file://` and markdown links won't open in their terminal; print
+paths only as a written record. Interpret feedback per
+`reference/iteration-recipes.md` and generate the next round (default: a new
+round folder). Loop.
 
 Never pick a winner among the three, and never declare "good enough" — the user
 judges and YouTube's A/B mechanism measures. The loop ends only when the user
@@ -329,6 +337,14 @@ sources (description/credits).
   YouTube A/B measures. The loop ends on the user's "ship it".
 - **No editorial chrome** beyond the signature (the coord grid is design-only,
   never in the final PNG).
+- **To show the user any local image, `open` it.** When you reference a file for
+  the user to *view* — candidate references, gridded refs, rendered PNGs, the
+  contact sheet — run `open <path>` (macOS) so it launches in Preview/browser.
+  `file://` URLs and relative markdown links do **not** open in the user's Claude
+  Code terminal. Alongside the `open`, print a written record as a per-direction
+  list of `<label> · <youtube-source-url>` (the source URL from the reference's
+  `## Entries` block / channel `_manifest.json`) — **never** a `file://` or local
+  path in that list; the file is already on screen, the list is for the source.
 - **Preserve the consumer contract:** `a/b/c.html`, `contact-sheet.html`, the
   `variant-letter`/`variant-text`/`variant-yt-text` spans, `<span
   class="thumbnail-row">` rows + `<title>`, and the output PNG names — other

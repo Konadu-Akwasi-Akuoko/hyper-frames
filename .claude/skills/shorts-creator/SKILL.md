@@ -1,6 +1,6 @@
 ---
 name: shorts-creator
-description: Turn a finished long-form hyper-frames video into ~5 (up to 10) vertical 9:16 Shorts that funnel back to it, each ending on a Cleo-Abram-style subscribe CTA. Two-phase and human-in-the-loop — Phase 1 selects self-contained beats from the parent and drafts each clip's script + a staggered upload plan for review; Phase 2 builds one approved Short at a time (voiceover → portrait HyperFrames composition → vertical cover → 1080×1920 render). Publishing can be done via the MCP (`video_upload` + `video_schedule`) or manually in Studio. Use when the user says "make shorts from this video", "cut this into shorts", "generate the shorts", "create vertical clips", "turn this into reels/tiktoks", or names a finished `videos/<slug>-<date>/` folder and asks for Shorts. Runs after a long-form video's script.md + transcript.json exist (ideally after it's rendered).
+description: Turn a finished long-form hyper-frames video into ~5 (up to 10) vertical 9:16 Shorts that funnel back to it, each ending on a Cleo-Abram-style subscribe CTA. Two-phase and human-in-the-loop — Phase 1 selects self-contained beats from the parent and drafts each clip's script + a staggered upload plan for review; Phase 2 builds one approved Short at a time (voiceover → portrait HyperFrames composition → vertical cover → 1080×1920 render). Publishing fans the finished render out to TikTok / Instagram / X / LinkedIn / YouTube by driving the `opusclip` plugin skill (`project create --skip-curate` → `post schedule`), or YouTube-only via the `youtube-studio` MCP / manual Studio. Use when the user says "make shorts from this video", "cut this into shorts", "generate the shorts", "create vertical clips", "turn this into reels/tiktoks", "schedule/post the shorts", or names a finished `videos/<slug>-<date>/` folder and asks for Shorts. Runs after a long-form video's script.md + transcript.json exist (ideally after it's rendered).
 ---
 
 # shorts-creator
@@ -29,11 +29,26 @@ human.
 
 ## Hard constraints
 
-1. **Publishing can use the MCP or Studio.** The `youtube-studio` MCP now supports
-   `video_upload` (uploads as private by default) and `video_schedule`. This skill
-   renders the MP4s and writes a stagger plan + per-Short copy; the user can then
-   publish via `video_upload` + `video_schedule` (under the standard write-gate)
-   or upload manually in Studio — either path is valid.
+1. **Publishing: multi-platform via OpusClip, or YouTube via the MCP/Studio.**
+   This skill renders the MP4s and writes a stagger plan + per-Short copy; the
+   actual posting then runs through one of two paths:
+   - **Cross-platform distribution (TikTok / Instagram / X / LinkedIn / YouTube)**
+     drives the **`opusclip` plugin skill** — do NOT reimplement OpusClip here, it
+     owns its own CLI. Upload the finished render with `project create --file
+     <out/mp4> --skip-curate` (so OpusClip ingests it as one clip without
+     re-clipping), then `post schedule` it to each connected account at its plan
+     date. See **"Cross-platform distribution"** below.
+   - **YouTube-only** can instead use the `youtube-studio` MCP (`video_upload`
+     private + `video_schedule`) for richer control (captions, metadata QA), or a
+     manual Studio upload. Either YouTube path is valid.
+
+   **NEVER post to the "IRL Coder" YouTube channel** (OpusClip
+   `post_account_id` `694a97bfb945edd75645afc4` / channel `UCfWQCu9N56U5B_tPJ-nh0Ow`).
+   The Shorts YouTube destination is **"Akwasi Konadu Akuoko"** (OpusClip
+   `post_account_id` `69352002d409efbfe42cab42` / channel
+   `UCYKFy3oPn2b6gbjAzmgNgJg`). Both channels are linked in OpusClip, so the
+   account is selected explicitly — never let the IRL Coder account into the
+   fan-out.
 2. **Shorts scripts are NOT written by `script-writer`.** That skill is the
    long-form house voice and deliberately carries **no CTA**. A Short is a
    different artifact — single-idea, ~130–260 words, a 5–9-word hook, and it
@@ -158,22 +173,50 @@ one technical thing worth eyeballing per Short). Save under `out/`.
 
 **Step F — Publish hand-off.** Write `publish.md` for this Short: title,
 description (lead with the hook, link the parent video, comment-bait sequel
-offer), 3–5 hashtags (`#Shorts` + topic nouns), and the scheduled date from the
-stagger plan. Then offer the publish path: either call `video_upload(path="out/<mp4>",
-privacy_status="private")` + `video_schedule(video_id, publish_at=<plan date>)`
-under the standard write-gate, or instruct the manual Studio path:
-`Studio → Create → Upload videos → (the out/ MP4) → set title/description/
-hashtags → Visibility → Schedule → (the plan date)`. Optionally run
-`video-publish-qa` against the Short once it's live to catch thin tags / captions
-off.
+offer), 3–5 hashtags (`#Shorts` + topic nouns), the scheduled date from the
+stagger plan, and the **target platforms**. Then run the distribution (see
+"Cross-platform distribution" below) or hand off the YouTube-only path —
+`video_upload(path="out/<mp4>", privacy_status="private")` + `video_schedule(...)`
+under the write-gate, or the manual Studio path (`Studio → Create → Upload
+videos → … → Schedule`). Optionally run `video-publish-qa` against the YouTube
+Short once it's live to catch thin tags / captions.
+
+## Cross-platform distribution (via the `opusclip` skill)
+
+To fan a finished Short out to TikTok / Instagram / X / LinkedIn (and YouTube,
+if not using the MCP path), drive the **`opusclip` plugin skill** — it owns the
+CLI and auth; this skill only sequences it. The render is already a finished
+1080×1920 MP4, so OpusClip must **not** re-clip it:
+
+1. **Confirm destinations.** `opusclip post account list`. The connected
+   accounts (this channel's): Instagram Business, LinkedIn, TikTok Business, X
+   (TWITTER, 1 credit/post), and YouTube **"Akwasi Konadu Akuoko"**. **Exclude
+   "IRL Coder"** — see Hard constraint #1.
+2. **Ingest the render as one clip.** `opusclip project create --file out/<mp4>
+   --skip-curate --aspect portrait --title "<Short title>"`, then
+   `opusclip clip list --project <PID>` to get the single `clip_id`.
+3. **Schedule per platform.** For each chosen account, `opusclip post schedule
+   --project <PID> --clip <CID> --account <ACCOUNT_ID> --title "<title>" --at
+   <plan-date as UTC ISO, e.g. 2026-06-27T14:00:00Z>`. Convert the stagger
+   plan's local date to UTC. Optionally `post copy create` first for
+   per-platform captions.
+
+**Gate (outward-facing):** scheduling posts to the user's real accounts is a
+publish action — preview the exact platforms + UTC times + the per-account
+command and get an explicit yes **before** the first `post schedule`. Never loop
+`post schedule` across platforms without that confirmation; OpusClip's own skill
+also gates batches >5. Each X post costs 1 credit.
 
 ## Publish — the stagger plan
 
 Default **5 Shorts, one every ~3 days** (configurable up to 10). The plan
 staggers them so the channel gets a sustained drip feeding the parent, not a
 single-day dump. Each Short's `publish.md` carries its own copy; `PLAN.md`
-carries the schedule table. Uploading and scheduling can be done via the MCP
-(`video_upload` + `video_schedule` under the write-gate) or manually in Studio.
+carries the schedule table. Uploading and scheduling run through the `opusclip`
+skill's `post schedule` per platform (see "Cross-platform distribution"), or — for
+YouTube only — the `youtube-studio` MCP (`video_upload` + `video_schedule` under
+the write-gate) or a manual Studio upload. The same stagger date drives every
+platform's `--at` time (converted to UTC).
 
 ## This skill does NOT
 - A/B test titles or thumbnails (no YouTube API support — Studio UI only).
@@ -189,4 +232,7 @@ carries the schedule table. Uploading and scheduling can be done via the MCP
 - `voiceover-elevenlabs-v2` / `transcribe-and-plan-cuts` — VO + transcript.
 - `thumbnail-and-title-generator` — the vertical 1080×1920 cover.
 - `hyperframes-cli` — `init` / `lint` / `render` from inside each Short folder.
+- `opusclip` (plugin skill) — the cross-platform distributor: `post account
+  list` / `project create --file --skip-curate` / `post schedule`. Never post to
+  the IRL Coder channel (Hard constraint #1).
 - `video-publish-qa` — optional post-upload metadata QA per Short.

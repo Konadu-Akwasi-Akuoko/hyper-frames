@@ -80,7 +80,12 @@ the loop survives a fresh session.
    landscape **1920×1080**; a **1080×1920** root means this is a **portrait**
    video (a Short / vertical) — read `reference/portrait-mode.md` once and author
    every block at 1080×1920. You don't choose orientation; you honor whatever the
-   root declares (the `shorts-creator` skill scaffolds the portrait root). And
+   root declares (the `shorts-creator` skill scaffolds the portrait root). When
+   the root is portrait, **this is a Short owned by `shorts-creator`** — you only
+   author its composition. Selection, render, and **all publishing/distribution
+   (the multi-platform OpusClip schedule) live in `shorts-creator`'s publish
+   step**; never post or schedule from here. Defer to that skill for anything
+   beyond the composition. And
    **detect a talking-head source** the same way: if `design.md` declares a
    `talking-head:` field **or** `assets/video/talking-head.mp4` exists, read
    `reference/talking-head.md` once and treat the face video as a **locked
